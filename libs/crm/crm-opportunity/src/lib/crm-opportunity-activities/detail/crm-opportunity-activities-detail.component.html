@@ -15,11 +15,17 @@
                         <mat-option [value]="a" translate>CRM_{{ a }}</mat-option>
                     }
                 </mat-select>
+                @if (form.controls['activityType'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field class="default">
                 <mat-label translate>COMMON_SUBJECT</mat-label>
                 <input matInput type="text" formControlName="subject" required>
+                @if (form.controls['subject'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field class="default">
@@ -37,6 +43,9 @@
             <mat-form-field class="default">
                 <mat-label translate>MISSION_DURATION</mat-label>
                 <input matInput type="number" formControlName="duration">
+                @if (form.controls['duration'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field class="default">
@@ -89,6 +98,9 @@
                                   [model]="userLookup"
                                   formControlName="ownerId" required>
                 </ss-auto-complete>
+                @if (form.controls['ownerId'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
         </div>

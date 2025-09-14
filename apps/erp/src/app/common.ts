@@ -558,6 +558,7 @@ export const CRM_CAMPAIGN_URL = 'crm-campaign';
 export const CRM_MAILING_LIST_URL = 'crm_mailing_lists';
 export const CRM_TEAMS_URL = 'crm-teams-list';
 export const CRM_OPPORTUNITY_URL = 'crm-opportunity';
+export const CRM_EMAIL_TEMPLATE_URL = 'crm-email-template';
 
 // #############
 // # FULL URLS #
@@ -1061,6 +1062,7 @@ export const ABS_CRM_CAMPAIGN_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_CAMPA
 export const ABS_CRM_MAILING_LIST_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_MAILING_LIST_URL].join('/');
 export const ABS_CRM_TEAMS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_TEAMS_URL].join('/');
 export const ABS_CRM_OPPORTUNITY_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_OPPORTUNITY_URL].join('/');
+export const ABS_CRM_EMAIL_TEMPLATE_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_EMAIL_TEMPLATE_URL].join('/');
 
 
 
