@@ -77,8 +77,8 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
     override selectRow(row: AssetInventoryDoc) {
         super.selectRow(row);
         this.#summarySrv
-            .get(row.id)
-            .subscribe(data => this.summaryData = [data]);
+            .get(row?.id||0)
+            .subscribe(data => this.summaryData = data? [data] : []);
     }
 
     override excel() {
@@ -96,7 +96,7 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
     }
 
     override refresh(callback?: () => void) {
-        super.refresh(callback);
         this.selectRow(null);
+        super.refresh(callback);
     }
 }
