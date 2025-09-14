@@ -100,5 +100,12 @@
     "FEEDBACK":              "Retour d'information",
     "EMAIL":                 "Email",
     "CALL":                  "Appel",
-    "MEETING":               "Réunion"
+    "MEETING":               "Réunion",
+    "EMAIL_TEMPLATES":       "Modèles d'email",
+    "EMAIL_TEMPLATE":        "Modèle d'email",
+    "THUMBNAIL":             "Vignette",
+    "HTML_CONTENT":          "Contenu HTML",
+    "TEXT_CONTENT":          "Contenu texte",
+    "MERGE_FIELDS":          "Champs de fusion"
+
 }

@@ -100,5 +100,12 @@
     "FEEDBACK":             "التغذية الراجعة",
     "EMAIL":                "البريد الإلكتروني",
     "CALL":                 "مكالمة",
-    "MEETING":              "اجتماع"
+    "MEETING":              "اجتماع",
+    "EMAIL_TEMPLATES":      "قوالب البريد الإلكتروني",
+    "EMAIL_TEMPLATE":       "قالب البريد الإلكتروني",
+    "THUMBNAIL":            "صورة مصغرة",
+    "HTML_CONTENT":         "محتوى HTML",
+    "TEXT_CONTENT":         "المحتوى النصي",
+    "MERGE_FIELDS":         "حقول الدمج"
+
 }

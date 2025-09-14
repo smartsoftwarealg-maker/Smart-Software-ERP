@@ -12,12 +12,11 @@ import {
     MatRowDef,
     MatTable,
 } from '@angular/material/table';
-import { MatMiniFabButton } from '@angular/material/button';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { MatTooltip } from '@angular/material/tooltip';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CrmOpportunityTrackingService } from '../crm-opportunity-tracking.service';
 import { CRMOpportunityProgressLogger } from '../api';
+import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
     selector: 'ss-crm-opportunity-tracking-list',
@@ -34,6 +33,7 @@ import { CRMOpportunityProgressLogger } from '../api';
         MatRow,
         MatRowDef,
         MatHeaderRowDef,
+        PaginationComponent,
     ],
     templateUrl: './crm-opportunity-tracking-list.component.html',
     styleUrl: './crm-opportunity-tracking-list.component.scss',
