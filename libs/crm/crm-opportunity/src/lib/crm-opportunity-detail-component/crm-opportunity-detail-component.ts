@@ -135,6 +135,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
                 next: () => {
                     this.form.markAsUntouched();
                     this.#snackBarSrv.showSuccessMessage();
+                    this.list()
                 },
                 error: () => {
                     this.#snackBarSrv.showFailureMessage();
