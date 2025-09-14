@@ -1,15 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {
-    HttpClient,
-    HttpEvent,
-    HttpEventType,
-    HttpHeaders,
-    HttpParams,
-    HttpProgressEvent
-} from '@angular/common/http';
+import { HttpResponse} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
+import {HttpClient, HttpEventType, HttpHeaders, HttpParams, HttpProgressEvent} from '@angular/common/http';
 import {filter, last, map, tap} from 'rxjs/operators';
-import {of} from 'rxjs';
 import {LoginInfo} from './models';
 import {AppConfigService} from './app-config.service';
 
@@ -132,6 +125,29 @@ export class HttpService {
                     params: httpParams
                 }
             ).pipe(map(ress => ress.body));
+    }
+
+    public getFullResponse(url: string, httpParams?: HttpParams): Observable<HttpResponse<Object>> {
+        if (this.baseUrl === undefined) {
+            //    this.baseUrl = '';
+            throw new Error('HTTP SERVICE NOT READY');
+        }
+        if (this.baseUrl == null || url == null) {
+            throw new Error('Invalid URL: ' + this.baseUrl + url);
+        }
+        const fullURL = this.baseUrl + url;
+        if (fullURL.endsWith('NaN')) {
+            throw new Error('Invalid URI: ' + url);
+        }
+        return this
+            .httpClient
+            .get(fullURL,
+                {
+                    headers: HttpService.getHeaders(),
+                    observe: 'response',
+                    params: httpParams
+                }
+            );
     }
 
     public post(url: string, data?: any | null): Observable<any> {

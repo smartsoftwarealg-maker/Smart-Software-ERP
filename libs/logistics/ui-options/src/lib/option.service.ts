@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {dateToDmyStr, HttpService, isString} from '@ss/common/api-common';
 import {ERR, Option} from './option.class';
 import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
-import {from, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
+import { HttpResponse} from '@angular/common/http';
 
 export const OPTION_URL = '/logistics/options';
 
@@ -26,6 +27,14 @@ export class OptionService extends BaseEntityExtendedService<Option> {
     recalculateDocument(since: Date, document: number): Observable<ERR[]> {
         const date = isString(since)? since : dateToDmyStr(since);
         return this.httpSrv.put(`/recalculate-documents?date=${date}&document=${document}`);
+    }
+    recalculateDocument2(since: Date, document: number): Observable<string> {
+        const date = isString(since)? since : dateToDmyStr(since);
+        return this.httpSrv.put(`/recalculate-documents?date=${date}&document=${document}`);
+    }
+
+    getStatus(uuid: string): Observable<HttpResponse<Object>> {
+        return this.httpSrv.getFullResponse(`/recalculate-documents?uuid=${uuid}`);
     }
 
     // recalculatePriceFetch(since: Date): Observable<ERR[]> {
