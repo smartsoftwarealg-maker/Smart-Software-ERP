@@ -42,19 +42,6 @@
                     </mat-form-field>
 
                     <mat-form-field>
-                        <mat-label translate>CRM_HTML_CONTENT</mat-label>
-                        <input matInput type="text" formControlName="htmlContent">
-                        @if(form.controls['htmlContent'].invalid) {
-                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                        }
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <mat-label translate>CRM_TEXT_CONTENT</mat-label>
-                        <input matInput type="text" formControlName="textContent">
-                    </mat-form-field>
-
-                    <mat-form-field>
                         <mat-label translate>COMMON_CATEGORY</mat-label>
                         <mat-select formControlName="category">
                             @for (c of CATEGORY; track c) {
@@ -111,6 +98,20 @@
                                         [required]=true>
                         </ss-date-picker>
                     </mat-form-field>
+
+                    <mat-form-field class="memo">
+                        <mat-label translate>CRM_HTML_CONTENT</mat-label>
+                        <textarea matInput formControlName="htmlContent" rows="2"></textarea>
+                        @if(form.controls['htmlContent'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field class="memo">
+                        <mat-label translate>CRM_TEXT_CONTENT</mat-label>
+                        <textarea matInput formControlName="textContent" rows="2"></textarea>
+                    </mat-form-field>
+
                 </div>
             </mat-card-content>
         </mat-card>
