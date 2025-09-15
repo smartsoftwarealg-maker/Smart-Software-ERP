@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import { Currency, LotsService, Lot } from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
@@ -36,6 +36,7 @@ import {
 } from '@angular/material/table';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import {switchMap, takeWhile, timer} from "rxjs";
 
 interface EvalPrice {
     id: number;
@@ -74,6 +75,7 @@ interface EvalPrice {
     ],
 })
 export class PriceRecalculationComponent implements OnInit {
+    private readonly POLL_INTERVAL_MS = 5000; // Poll every 3 seconds
     private storeNameSrv = inject(LotsService);
 
     evalPriceOptions: EvalPrice[] = [
@@ -83,7 +85,7 @@ export class PriceRecalculationComponent implements OnInit {
 
     form: UntypedFormGroup | null = null;
 
-    processing = false;
+    processing = signal(false);
     data: ERR[] = [];
     selected: ERR = null;
     displayedColumns = [
@@ -130,17 +132,33 @@ export class PriceRecalculationComponent implements OnInit {
         if (this.form.valid) {
             this.shellSrv.setLoading(true);
             const value = this.form.value;
-            this.processing = true;
-            this.optionSrv.recalculatePrice(value.inventory_date).subscribe({
+            this.processing.set(true);
+            this.optionSrv
+                .recalculatePrice2(value.inventory_date)
+                .pipe(
+                    switchMap((jobId) => {
+                        // Start polling
+                        return timer(0, this.POLL_INTERVAL_MS)
+                            .pipe(
+                                switchMap(() => this.optionSrv.getStatus(jobId)),
+                                takeWhile((statusRes, index) => statusRes.status === 102 && index < 100,
+                                true // Include the last emission (when Completed/Failed)
+                            ),
+                        );
+                    }),
+                )
+                .subscribe({
                 next: (res) => {
-                    this.data = res;
-                    this.snackBarSrv.showSuccessMessage();
-                    this.shellSrv.setLoading(false);
-                    this.processing = false;
+                    if (res.status === 200) {
+                        this.data = res.body as ERR[];
+                        this.snackBarSrv.showSuccessMessage();
+                        this.shellSrv.setLoading(false);
+                        this.processing.set(false);
+                    }
                 },
                 error: (err) => {
                     this.shellSrv.setLoading(false);
-                    this.processing = false;
+                    this.processing.set(false);
                     if (err.status === 0 || err.status === 502) {
                         this.snackBarSrv.showSuccessMessage();
                     } else {

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AppContext, HttpService, LanguageService, LoginInfo, LoginService} from '@ss/common/api-common';
 import { catchError, map, Observable, of, switchMap, tap } from "rxjs";
 import { ShellService, ToolbarLabel } from "@ss/common/ui-shell";
+import {HttpParams, HttpResponse} from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
@@ -51,11 +52,10 @@ export class PayrollMonthService {
                 map(_ => true));
     }
 
-    close(): Observable<boolean> {
+    close(): Observable<string> {
         return this
             .httpSrv
-            .post('/payroll/close')
-            .pipe(map(_ => true));
+            .post('/payroll/close');
     }
 
     cancel(): Observable<boolean> {
@@ -74,6 +74,10 @@ export class PayrollMonthService {
             .httpSrv
             .get<LoginInfo>('/ctx')
             .pipe(map(res => res.ctx));
+    }
+
+    public getStatus(uuid: string): Observable<HttpResponse<Object>> {
+        return this.httpSrv.getFullResponse(`/payroll/close?uuid=${uuid}`);
     }
 }
 

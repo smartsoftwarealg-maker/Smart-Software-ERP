@@ -18,7 +18,7 @@
     "REPORT_NOT_FOUND":             "التقرير غي موجود.",
     "MISSING_SMTP_CONFIGURATION":   "تكوين SMTP مفقود" ,
     "MISSING_COMPANY_EMAIL":        "البريد الإلكتروني للشركة مفقود",
-    "MISSING_ACCOUNT":              "رقم الحساب مفقود",
+    "MISSING_ACCOUNT":              "رقم الحساب مفقود في العناصر التالية",
     "STOCKED_ITEM":                 "عملية غير صالحة لعنصر مخزّن.",
     "NON_STOCKED_ITEM":             "عملية غير صالحة لعنصر غير مخزّن.",
     "NOT_CURRENT_MONTH":            "الشهر المحدد ليس الشهر الحالي",
@@ -75,5 +75,6 @@
     "NO_QTY_SPECIFIED":             "لم يتم تحديد الكمية",
     "OBSOLETE_CONVENTION":          "لا توجد اتفاقية لهذا الناقل. من فضلك ، أنشئ اتفاقية جديدة.",
     "ALREADY_RECORDED":             "تم تسجيل هذه الوثيقة بالفعل في المحاسبة.",
-    "PROJECT_QTY_EXCEEDED":         "تم تجاوز كمية المشروع"
+    "PROJECT_QTY_EXCEEDED":         "تم تجاوز كمية المشروع",
+    "UNKNOWN_ERROR":                "خطأ غير معروف"
 }

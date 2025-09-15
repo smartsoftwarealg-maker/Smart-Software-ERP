@@ -53,7 +53,7 @@ export class DocumentRecalculationComponent implements OnInit {
     #snackBarSrv = inject(SnackBarService);
     #route = inject(ActivatedRoute);
 
-    private readonly POLL_INTERVAL_MS = 5000; // Poll every 3 seconds
+    private readonly POLL_INTERVAL_MS = 3000; // Poll every 3 seconds
     private readonly MAX_POLL_TIME_MS = 5 * 60 * 1000; // Max 5 minutes
 
     evalDocumentOptions: EvalDocument[] = [
@@ -84,17 +84,19 @@ export class DocumentRecalculationComponent implements OnInit {
             if (value.document > 0) {
                 this.processing.set(true);
 
-                this.#optionSrv.recalculateDocument2(value.inventory_date, value.document)
+                this.#optionSrv
+                    .recalculateDocument2(value.inventory_date, value.document)
                     .pipe(
-                    switchMap((jobId) => {
-                        // Start polling
-                        return timer(0, this.POLL_INTERVAL_MS).pipe(
-                            switchMap(() => this.#optionSrv.getStatus(jobId).pipe(tap(res => console.log('**************status', res.status)))),
-                            takeWhile((statusRes, index) => statusRes.status === 102 && index < 100,
-                                true // Include the last emission (when Completed/Failed)
-                            ),
-                        );
-                    }),
+                        switchMap((jobId) => {
+                            // Start polling
+                            return timer(0, this.POLL_INTERVAL_MS)
+                                .pipe(
+                                    switchMap(() => this.#optionSrv.getStatus(jobId)),
+                                    takeWhile((statusRes, index) => statusRes.status === 102 && index < 100,
+                                        true // Include the last emission (when Completed/Failed)
+                                ),
+                            );
+                        }),
                     ).subscribe({
                     next: res => {
                         if (res.status === 200) {
@@ -102,11 +104,10 @@ export class DocumentRecalculationComponent implements OnInit {
                             this.processing.set(false);
                             this.#snackBarSrv.showSuccessMessage();
                         }
-                        console.log('---------------status', res.status);
                     }, error: err => {
                         this.#shellSrv.setLoading(false);
                         this.processing.set(false);
-                        this.#snackBarSrv.showFailureMessage();
+                        throw err;
                     }
                 });
             }
