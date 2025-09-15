@@ -40,6 +40,7 @@ import {
     Toolbar,
 } from 'ngx-editor';
 import { Observable, of } from 'rxjs';
+import { CRMEmailTemplatesService } from '../../../../email-templates/src/lib/crm-email-templates.service';
 
 enum Panels {
     GENERAL = 0,
@@ -72,6 +73,7 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     #userSrv = inject(UserListService);
     #loginSrv = inject(LoginService);
     #mailingListSrv = inject(MailingListService);
+    #emailTemplateSrv = inject(CRMEmailTemplatesService);
     #entitySrv = inject(CompaignService);
     #router = inject(Router);
     #route = inject(ActivatedRoute);
@@ -86,7 +88,13 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     isResponsible = signal(this.#loginSrv.appCtx.responsible);
 
     mailingListLookup = new DefaultAutoCompleteModel(this.#mailingListSrv);
+    emailTemplateLookup = new DefaultAutoCompleteModel(
+        this.#emailTemplateSrv,
+        'id',
+        'name',
+    );
     mailingList = new FormControl<number | null>(null);
+    template = new FormControl<number | null>(null);
 
     html = '';
     htmlForm = new FormGroup({
@@ -121,6 +129,17 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
             this.form = this.setupForm({ id: 0 } as Campaign);
         }
         this.editor = new Editor();
+        this.template.valueChanges.subscribe(() => {
+            if (this.template.value) {
+                this.#emailTemplateSrv.get(+this.template.value).subscribe({
+                    next: (res) => {
+                        this.htmlForm.controls.editorContent.setValue(
+                            res?.htmlContent,
+                        );
+                    },
+                });
+            }
+        });
     }
 
     list() {
@@ -203,7 +222,7 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     send() {
         const tMessage: TMessage = {
             mailingListId: +this.mailingList.getRawValue(),
-            templateId: 1,
+            templateId: +this.template.getRawValue(),
         };
         this.#entitySrv.send(tMessage).subscribe({
             next: () => {

@@ -228,6 +228,12 @@
                                           [formControl]="mailingList">
                         </ss-auto-complete>
                     </mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>CRM_EMAIL_TEMPLATE</mat-label>
+                        <ss-auto-complete [model]="emailTemplateLookup"
+                                          [formControl]="template">
+                        </ss-auto-complete>
+                    </mat-form-field>
                     <form [formGroup]="htmlForm">
                         @if (editor) {
                             <div class="editor">
