@@ -22,7 +22,7 @@
         <mat-table mat-table [dataSource]="data$">
 
             <ng-container matColumnDef="subject">
-                <mat-header-cell *matHeaderCellDef translate>CRM_SUBJECT</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef translate>COMMON_SUBJECT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
                     <a (click)="showDetail(e.id)">{{ e.subject }}</a>
                 </mat-cell>

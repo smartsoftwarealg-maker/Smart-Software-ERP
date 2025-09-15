@@ -12,10 +12,9 @@
     <button matButton (click)="select(Panels.EMAIL)"><i
             class="fa-solid fa-phone"></i> {{ 'COMMON_EMAIL'|translate }}
     </button>
-
-    <button matButton (click)="save()"><span><i
-            class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
-</div>
+        <button matButton (click)="save()" [disabled]="isEmail()"><span><i
+                class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
+    </div>
 
 @if (form) {
     <form [formGroup]="form">

@@ -60,3 +60,8 @@ export interface Campaign {
     updatedAt: Date;
     updatedBy: number;
 }
+
+export interface TMessage {
+    mailingListId: number;
+    templateId: number;
+}

@@ -106,6 +106,24 @@
     "THUMBNAIL":            "صورة مصغرة",
     "HTML_CONTENT":         "محتوى HTML",
     "TEXT_CONTENT":         "المحتوى النصي",
-    "MERGE_FIELDS":         "حقول الدمج"
-
+    "MERGE_FIELDS":         "حقول الدمج",
+    "ONBOARDING":           "إعداد أولي (انضمام)",
+    "SALES FOLLOW-UP":      "متابعة المبيعات",
+    "NURTURE":              "رعاية العملاء",
+    "WIN-BACK":             "استعادة العملاء",
+    "CUSTOMER SUCCESS":     "نجاح العملاء",
+    "SUPPORT":              "الدعم",
+    "TRANSACTIONAL":        "مُعاملاتي",
+    "MARKETING":            "التسويق",
+    "FEEDBACK_SURVEYS":     "استطلاعات الرأي",
+    "RENEWAL_UPSELL":       "تجديد / بيع إضافي",
+    "EVENT PROMOTION":      "الترويج للفعالية",
+    "REFERRAL PROGRAM":     "برنامج الإحالة",
+    "COMPLIANCE":           "الامتثال",
+    "INTERNAL":             "داخلي",
+    "TRIAL":                "تجربة",
+    "ABANDONED CART":       "سلة مهجورة",
+    "ACTIVE":               "نشط",
+    "INACTIVE":             "غير نشط",
+    "DEPRECATED":           "مهمل / غير مدعوم"
 }

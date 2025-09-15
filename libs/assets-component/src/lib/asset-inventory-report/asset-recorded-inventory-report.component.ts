@@ -14,6 +14,8 @@ import { AssetRecordedInventoryService } from '../services/asset-recorded-invent
 import { Sort } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import {FormControl} from "@angular/forms";
+import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 
 @Component({
     selector: 'ss-asset-recorded-inventory-report',
@@ -55,6 +57,8 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
     ];
     pagination = PaginationModel.newInstance({pageSize: 5, page: 1, elementCount: 0});
 
+    filter = new FormControl('');
+
     constructor() {
         effect(() => {
             this.onDocument(this.documentId());
@@ -76,7 +80,7 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
 
     private refresh() {
         this.listSrv
-            .getPage(this.pagination, null)
+            .getPage(this.pagination, this.filter.getRawValue())
             .subscribe(res => this.data = res);
     }
 
@@ -92,6 +96,14 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
 
     ngOnInit() {
         this.data = [];
+        this.filter.valueChanges
+            .pipe(
+                debounceTime(300),         // wait 300ms after the user stops typing
+                distinctUntilChanged()      // only refresh if the value actually changed
+            )
+            .subscribe(() => {
+                this.refresh();
+            });
         this.refresh();
     }
 

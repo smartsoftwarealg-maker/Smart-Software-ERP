@@ -106,6 +106,26 @@
     "THUMBNAIL":             "Vignette",
     "HTML_CONTENT":          "Contenu HTML",
     "TEXT_CONTENT":          "Contenu texte",
-    "MERGE_FIELDS":          "Champs de fusion"
+    "MERGE_FIELDS":          "Champs de fusion",
+    "ONBOARDING":            "Intégration",
+    "SALES FOLLOW-UP":       "Relance commerciale",
+    "NURTURE":               "Nurture (fidélisation)",
+    "WIN-BACK":              "Récupération de client",
+    "CUSTOMER SUCCESS":      "Succès client",
+    "SUPPORT":               "Support",
+    "TRANSACTIONAL":         "Transactionnel",
+    "MARKETING":             "Marketing",
+    "FEEDBACK_SURVEYS":      "Enquêtes de satisfaction",
+    "RENEWAL_UPSELL":        "Renouvellement / Vente additionnelle",
+    "EVENT PROMOTION":       "Promotion d'événement",
+    "REFERRAL PROGRAM":      "Programme de parrainage",
+    "COMPLIANCE":            "Conformité",
+    "INTERNAL":              "Interne",
+    "TRIAL":                 "Essai",
+    "ABANDONED CART":        "Panier abandonné",
+    "ACTIVE":                "Actif",
+    "INACTIVE":              "Inactif",
+    "DEPRECATED":            "Obsolète"
+
 
 }

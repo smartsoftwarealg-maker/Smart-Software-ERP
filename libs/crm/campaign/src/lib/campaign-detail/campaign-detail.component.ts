@@ -1,4 +1,11 @@
-import {Component, computed, inject, OnDestroy, OnInit, signal} from '@angular/core';
+import {
+    Component,
+    computed,
+    inject,
+    OnDestroy,
+    OnInit,
+    signal,
+} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -17,7 +24,7 @@ import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { CompaignService } from '../compaign.service';
-import { Campaign, CHANNELS, CTYPES, STATUS } from '../campaign.api';
+import { Campaign, CHANNELS, CTYPES, STATUS, TMessage } from '../campaign.api';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {
     DefaultAutoCompleteModel,
@@ -35,8 +42,9 @@ import {
 import { Observable, of } from 'rxjs';
 
 enum Panels {
-    DETAIL = 0,
-    EMAIL = 1,
+    GENERAL = 0,
+    DETAIL = 1,
+    EMAIL = 2,
 }
 
 @Component({
@@ -61,7 +69,6 @@ enum Panels {
     ],
 })
 export class CampaignDetailComponent implements OnInit, OnDestroy {
-
     #userSrv = inject(UserListService);
     #loginSrv = inject(LoginService);
     #mailingListSrv = inject(MailingListService);
@@ -188,12 +195,24 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     selectedPanel = signal<Panels>(Panels.DETAIL);
     isDetail = computed(() => this.selectedPanel() === Panels.DETAIL);
     isEmail = computed(() => this.selectedPanel() === Panels.EMAIL);
+
     select(idx: number) {
         this.selectedPanel.set(idx);
     }
 
-
     send() {
+        const tMessage: TMessage = {
+            mailingListId: +this.mailingList.getRawValue(),
+            templateId: 1,
+        };
+        this.#entitySrv.send(tMessage).subscribe({
+            next: () => {
+                this.#snackBarSrv.showSuccessMessage();
+            },
+            error: () => {
+                this.#snackBarSrv.showFailureMessage();
+            },
+        });
         console.log(this.htmlForm.value);
     }
 
