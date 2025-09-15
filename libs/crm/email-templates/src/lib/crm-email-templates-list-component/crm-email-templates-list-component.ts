@@ -64,8 +64,6 @@ export class CrmEmailTemplatesListComponent implements OnInit, OnDestroy {
         'name',
         'subject',
         'thumbnail',
-        'htmlContent',
-        'textContent',
         'category',
         'tags',
         'mergeFields',

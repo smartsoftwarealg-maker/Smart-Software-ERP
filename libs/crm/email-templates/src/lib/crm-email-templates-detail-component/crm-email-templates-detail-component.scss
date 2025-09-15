@@ -8,7 +8,7 @@
 .content__div,
 form, .size {
     width: 90%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 8px auto;
 }
 
@@ -30,6 +30,12 @@ mat-card {
     grid-template-columns:  repeat(4, 1fr);
     grid-template-areas: "descrip source opened   ecd"
                          "detail  detail campaign optout";
+    align-items: flex-start;
+
+    .memo {
+        grid-column: 1 / -1; // makes it span all 4 columns
+        width: 100%;
+    }
 }
 
 mat-toolbar {
