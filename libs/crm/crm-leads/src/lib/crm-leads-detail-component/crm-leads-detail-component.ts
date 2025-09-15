@@ -19,7 +19,7 @@ import {
     CrmLeadsActivityLinesDetailComponent
 } from '../crm-leads-activity-lines-detail/crm-leads-activity-lines-detail.component';
 import { CrmLeadActivityService } from '../crm-lead-activity.service';
-import { NgIf } from '@angular/common';
+
 
 enum Panels {
     GENERAL = 0,
@@ -40,7 +40,6 @@ enum Panels {
         UiAutoCompleteComponent,
         CrmLeadsActivityListComponent,
         CrmLeadsActivityLinesDetailComponent,
-        NgIf
     ],
     templateUrl: './crm-leads-detail-component.html',
     styleUrl: './crm-leads-detail-component.scss',

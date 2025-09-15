@@ -1,10 +1,7 @@
-import { Component } from '@angular/core';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { PaginatorPersistenceService } from '@ss/common/api-common';
+import { PaginationModel } from '@ss/common/api-common';
 import {
     MatTable,
     MatColumnDef,
@@ -17,12 +14,13 @@ import {
     MatRowDef,
     MatRow,
 } from '@angular/material/table';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
+import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { CompaignService } from '../compaign.service';
-import {Campaign, STATUS, CTYPES} from '../campaign.api';
-import {DatePipe} from "@angular/common";
+import { Campaign, STATUS, CTYPES } from '../campaign.api';
+import { DatePipe } from '@angular/common';
+import {MatButton} from "@angular/material/button";
 
 @Component({
     selector: 'ss-campaign-list',
@@ -45,9 +43,22 @@ import {DatePipe} from "@angular/common";
         MatRow,
         PaginationComponent,
         DatePipe,
+        MatButton,
+        TranslatePipe,
     ],
 })
-export class CampaignListComponent extends BaseEntityListComponent<Campaign> {
+export class CampaignListComponent implements OnInit, OnDestroy {
+    #entitySrv = inject(CompaignService);
+    #router = inject(Router);
+    #route = inject(ActivatedRoute);
+    #shellSrv = inject(ShellService);
+
+    pagination = PaginationModel.newInstance({
+        page: 1,
+        pageSize: 15,
+        elementCount: 0,
+    });
+    selectedRow: Campaign | null = null;
     displayedColumns = [
         'name',
         'cType',
@@ -60,40 +71,68 @@ export class CampaignListComponent extends BaseEntityListComponent<Campaign> {
         'budget',
     ];
 
-    // displayedColumns = ['name', 'cType', 'status', 'description', 'audienceQuery', 'audienceSize', 'tag', 'startDate', 'endDate', 'budget', 'actualCost', 'expectedRevenue', 'channels'];
+    data: Campaign[] = [];
+    loading = false;
 
-    constructor(
-        public override entitySrv: CompaignService,
-        public override shellSrv: ShellService,
-        public override snackBarSrv: SnackBarService,
-        public override route: ActivatedRoute,
-        public override confirmationSrv: ConfirmationDialogService,
-        public override defReportSrv: DefaultReportService,
-        public override router: Router,
-        public override pagPersistSrv: PaginatorPersistenceService,
-    ) {
-        super(
-            entitySrv,
-            shellSrv,
-            snackBarSrv,
-            route,
-            router,
-            confirmationSrv,
-            defReportSrv,
-            pagPersistSrv,
-            'CRM_CAMPAIGNS',
-        );
+    constructor() {
+        this.pagination.onChange = () => this.refresh();
     }
 
-    getStatus(status: string){
-        return  this.STATUS.find(x => x.value == status).description;
+    ngOnInit(): void {
+        this.#shellSrv.setGoBackPath('..', this.#route);
+        this.#shellSrv.setTitle('CRM_CAMPAIGNS');
+        this.refresh();
     }
 
-    getCType(type: string){
-        return this.CTYPES.find(x => x.value == type).description;
+    sort(event: Sort) {
+        this.#entitySrv.sortColumn = event;
+        this.refresh();
+    }
+
+    selectRow(row: Campaign): void {
+        this.selectedRow = row;
+    }
+
+    private refresh(): void {
+        this.loading = true;
+        this.#entitySrv.getPage(this.pagination).subscribe((res) => {
+            this.data = res;
+            this.loading = false;
+        });
+    }
+
+    edit(campaign: Campaign): void {
+        this.showDetail(campaign.id);
+    }
+
+    public goBack(): void {
+        this.#router.navigate(['..'], { relativeTo: this.#route }).then();
+    }
+
+    add() {
+        this.showDetail(0);
+    }
+
+    search() {
+        console.log('Search leads');
+    }
+
+    public showDetail(id: number): void {
+        this.#router.navigate([id], { relativeTo: this.#route }).then();
+    }
+
+    ngOnDestroy() {
+        this.#shellSrv.reset();
+    }
+
+    getStatus(status: string) {
+        return this.STATUS.find((x) => x.value == status).description;
+    }
+
+    getCType(type: string) {
+        return this.CTYPES.find((x) => x.value == type).description;
     }
 
     protected readonly CTYPES = CTYPES;
     protected readonly STATUS = STATUS;
-    //protected readonly CHANNELS = CHANNELS;
 }

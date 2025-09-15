@@ -1,4 +1,11 @@
 
+<div class="button__div">
+    <mat-form-field>
+        <mat-label translate>COMMON_SEARCH</mat-label>
+        <input matInput [formControl]="filter" type="text">
+    </mat-form-field>
+</div>
+
 <div class="main-table content-div">
     <mat-table mat-table [dataSource]="data">
 

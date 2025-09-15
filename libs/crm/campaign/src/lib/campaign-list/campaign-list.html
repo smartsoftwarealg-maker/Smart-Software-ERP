@@ -1,87 +1,98 @@
-<div class="container size">
-    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+<div class="ctrl__div size">
+    <button matButton (click)="add()"><span><i class="fa-solid fa-plus"></i> {{ 'COMMON_ADD'|translate }}</span>
+    </button>
+    <button matButton (click)="search()"><span><i
+            class="fa-solid fa-magnifying-glass"></i> {{ 'COMMON_SEARCH'|translate }}</span></button>
+</div>
+<div class="div_table size">
+    @if (!loading) {
+        <div class="table__div">
+            <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_NAME</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.name }}
-            </mat-cell>
-        </ng-container>
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_NAME</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        <a (click)="edit(e)">{{ e.name }}</a>
+                    </mat-cell>
+                </ng-container>
 
-        <ng-container matColumnDef="cType">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_CTYPE</mat-header-cell>
-            <mat-cell *matCellDef="let e" translate>
-                {{ getCType(e.cType) }}
-            </mat-cell>
-        </ng-container>
+                <ng-container matColumnDef="cType">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_CTYPE</mat-header-cell>
+                    <mat-cell *matCellDef="let e" translate>
+                        {{ getCType(e.cType) }}
+                    </mat-cell>
+                </ng-container>
 
-        <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
-            <mat-cell *matCellDef="let e" translate>
-                {{ getStatus(e.status) }}
-            </mat-cell>
-        </ng-container>
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
+                    <mat-cell *matCellDef="let e" translate>
+                        {{ getStatus(e.status) }}
+                    </mat-cell>
+                </ng-container>
 
-        <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.description }}
-            </mat-cell>
-        </ng-container>
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.description }}
+                    </mat-cell>
+                </ng-container>
 
-        <ng-container matColumnDef="audienceQuery">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_AUDIENCE_QUERY</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.audienceQuery }}
-            </mat-cell>
-        </ng-container>
+                <ng-container matColumnDef="audienceQuery">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_AUDIENCE_QUERY</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.audienceQuery }}
+                    </mat-cell>
+                </ng-container>
 
-        <ng-container matColumnDef="audienceSize">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_AUDIENCE_SIZE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.audienceSize }}
-            </mat-cell>
-        </ng-container>
+                <ng-container matColumnDef="audienceSize">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_AUDIENCE_SIZE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.audienceSize }}
+                    </mat-cell>
+                </ng-container>
 
-        <!--        <ng-container matColumnDef="tag">-->
-        <!--            <mat-header-cell *matHeaderCellDef mat-sort-header translate>WAR_TAG</mat-header-cell>-->
-        <!--            <mat-cell *matCellDef="let e">-->
-        <!--                {{ e.tag }}-->
-        <!--            </mat-cell>-->
-        <!--        </ng-container>-->
+                <!--        <ng-container matColumnDef="tag">-->
+                <!--            <mat-header-cell *matHeaderCellDef mat-sort-header translate>WAR_TAG</mat-header-cell>-->
+                <!--            <mat-cell *matCellDef="let e">-->
+                <!--                {{ e.tag }}-->
+                <!--            </mat-cell>-->
+                <!--        </ng-container>-->
 
-        <ng-container matColumnDef="startDate">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_START_DATE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.startDate | date: 'dd/MM/yyyy' }}
-            </mat-cell>
-        </ng-container>
+                <ng-container matColumnDef="startDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_START_DATE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.startDate | date: 'dd/MM/yyyy' }}
+                    </mat-cell>
+                </ng-container>
 
-        <ng-container matColumnDef="endDate">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_END_DATE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.endDate | date: 'dd/MM/yyyy' }}
-            </mat-cell>
-        </ng-container>
+                <ng-container matColumnDef="endDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_END_DATE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.endDate | date: 'dd/MM/yyyy' }}
+                    </mat-cell>
+                </ng-container>
 
-        <ng-container matColumnDef="owner">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_OWNER</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.ownerDescription }}
-            </mat-cell>
-        </ng-container>
+                <ng-container matColumnDef="owner">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_OWNER</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.ownerDescription }}
+                    </mat-cell>
+                </ng-container>
 
-        <ng-container matColumnDef="budget">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_BUDGET</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.budget }}
-            </mat-cell>
-        </ng-container>
+                <ng-container matColumnDef="budget">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>CRM_BUDGET</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.budget }}
+                    </mat-cell>
+                </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.id == selectedRow?.id" (click)="selectRow(row)"
+                         *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+        </div>
+    }
 </div>
 <div class="size b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>

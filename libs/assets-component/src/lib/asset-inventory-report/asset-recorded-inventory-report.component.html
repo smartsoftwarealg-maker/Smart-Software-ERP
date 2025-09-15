@@ -1,4 +1,11 @@
+<div class="button__div">
+    <mat-form-field>
+        <mat-label translate>COMMON_SEARCH</mat-label>
+        <input matInput [formControl]="filter" type="text">
+    </mat-form-field>
+</div>
 <div class="table__div">
+
     <mat-table mat-table [dataSource]="data" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="description">
@@ -108,7 +115,7 @@
 
         <ng-container matColumnDef="recorded">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate><i
-                class="fa-solid fa-check-double located"></i>
+                    class="fa-solid fa-check-double located"></i>
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
                 <mat-checkbox [checked]="(e.inventoryId||0) > 0" (click)="update(e)"

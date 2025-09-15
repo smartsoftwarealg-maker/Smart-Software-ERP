@@ -15,6 +15,8 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { AssetUnidentifiedInventoryService } from '@ss/assets-component';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import {FormControl} from "@angular/forms";
+import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 
 @Component({
     selector: 'ss-asset-unidentified-child-inventory-list',
@@ -36,6 +38,7 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
         elementCount: 0
     });
     entitySrv = inject(AssetUnidentifiedInventoryService);
+    filter = new FormControl('');
 
     displayedColumns = [
         'creationDate',
@@ -62,11 +65,19 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
 
     ngOnInit() {
         this.refresh();
+        this.filter.valueChanges
+            .pipe(
+                debounceTime(300),         // wait 300ms after the user stops typing
+                distinctUntilChanged()      // only refresh if the value actually changed
+            )
+            .subscribe(() => {
+                this.refresh();
+            });
     }
 
     refresh() {
         this.entitySrv
-            .getPage(this.pagination)
+            .getPage(this.pagination, this.filter.getRawValue())
             .subscribe(res => this.data = res);
     }
 

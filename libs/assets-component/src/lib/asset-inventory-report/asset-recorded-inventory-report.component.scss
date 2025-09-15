@@ -2,7 +2,7 @@
 .container,
 mat-card {
     width: 1400px;
-    margin: 1em auto;
+    margin: 0 auto;
 }
 
 mat-card {
@@ -78,4 +78,12 @@ mat-card {
     .table__div {
         height: auto;
     }
+}
+
+.button__div {
+    display: flex;
+    margin-bottom: -20px;
+    width: 100%;
+    z-index: 999;
+    justify-content: center;
 }
