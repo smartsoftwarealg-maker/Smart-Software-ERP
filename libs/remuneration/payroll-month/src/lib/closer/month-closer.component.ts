@@ -3,7 +3,20 @@ import {PayrollMonthService} from '../payroll-month.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { catchError, delay, map, mergeMap, Observable, of, repeat, retry, switchMap, tap, throwError } from "rxjs";
+import {
+    catchError,
+    delay,
+    map,
+    mergeMap,
+    Observable,
+    of,
+    repeat,
+    retry,
+    switchMap,
+    takeWhile,
+    tap,
+    throwError, timer
+} from "rxjs";
 import {SnackBarService} from '@ss/common/ui-shell';
 import { LanguageService, LoginService } from "@ss/common/api-common";
 
@@ -24,9 +37,12 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, MatProgressSpinner, TranslatePipe]
 })
 export class MonthCloserComponent implements OnInit {
+    private maxMonth = 0;
+    private readonly POLL_INTERVAL_MS = 3000; // Poll every 3 seconds
+
     form: UntypedFormGroup = null;
     processing = false;
-    private maxMonth = 0;
+
   constructor(private selectorSrv: PayrollMonthService,
               private formBuilder: UntypedFormBuilder,
               private router: Router,
@@ -78,23 +94,22 @@ export class MonthCloserComponent implements OnInit {
                   if (confirmed) {
                       return this.selectorSrv
                                  .close()
-                                 .pipe(switchMap(() => this.selectorSrv.maxMonth()),
-                                       switchMap(res => this.selectorSrv.selectMonth(res.month)));
+                                 .pipe(switchMap(jobId => {
+                                     return timer(0, this.POLL_INTERVAL_MS)
+                                         .pipe(
+                                             switchMap(() => this.selectorSrv.getStatus(jobId)),
+                                             takeWhile((statusRes, index) => statusRes.status === 102 && index < 100,true // Include the last emission (when Completed/Failed)
+                                             ),
+                                         );
+                                 }),
+
+                                 switchMap(() => this.selectorSrv.maxMonth()),
+                                 switchMap(res => this.selectorSrv.selectMonth(res.month)));
                   } else {
                       return of(false)
                   }
-              }),
-            catchError(err =>
-              this.retries(1)
-                .pipe(tap(res => {
-                    if (!res) {
-                      throw err;
-                    }
-                  }),
-                  switchMap(() => this.selectorSrv.maxMonth()),
-                  switchMap(res => this.selectorSrv.selectMonth(res.month)))
-            ))
-          .subscribe({
+              })
+            ).subscribe({
                   next: res => {
                       this.processing = false;
                       if (res) {

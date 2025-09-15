@@ -23,6 +23,11 @@ export class OptionService extends BaseEntityExtendedService<Option> {
         const receptionParam = receptions ? `&receptions=${receptions}` : '';
         return this.httpSrv.put(`/recalculate?date=${date}${receptionParam}`);
     }
+    recalculatePrice2(since: Date, receptions?: string): Observable<string> {
+        const date = isString(since)? since : dateToDmyStr(since);
+        const receptionParam = receptions ? `&receptions=${receptions}` : '';
+        return this.httpSrv.put(`/recalculate?date=${date}${receptionParam}`);
+    }
 
     recalculateDocument(since: Date, document: number): Observable<ERR[]> {
         const date = isString(since)? since : dateToDmyStr(since);

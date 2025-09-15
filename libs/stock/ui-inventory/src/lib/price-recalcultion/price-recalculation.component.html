@@ -23,7 +23,7 @@
                     <button mat-raised-button
                             color="primary"
                             type="button"
-                            [disabled]="processing && !form.valid"
+                            [disabled]="processing() && !form.valid"
                             (click)="recalculate()">
                         {{ 'STOCK_RECALCULATE' | translate }}
                     </button>

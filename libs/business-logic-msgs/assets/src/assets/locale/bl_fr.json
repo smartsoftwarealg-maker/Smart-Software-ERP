@@ -18,7 +18,7 @@
     "REPORT_NOT_FOUND":                   "Rapport introuvable.",
     "MISSING_SMTP_CONFIGURATION":         "Configuration smtp manquante",
     "MISSING_COMPANY_EMAIL":              "E-mail de l'entreprise manquant.",
-    "MISSING_ACCOUNT":                    "Numéro de compte manquant",
+    "MISSING_ACCOUNT":                    "Soit le code de classification, soit le numéro de compte est invalide pour les articles suivants.",
     "STOCKED_ITEM":                       "Opération invalide pour un article stocké.",
     "NON_STOCKED_ITEM":                   "Opération invalide pour un article non stocké.",
     "NOT_CURRENT_MONTH":                  "Le mois sélectionné n'est pas le mois en cours",
@@ -75,5 +75,6 @@
     "NO_QTY_SPECIFIED":                   "Aucune quantité spécifiée pour la production.",
     "OBSOLETE_CONVENTION":                "Il n'existe aucune convention pour ce transporteur. Veuillez créer une nouvelle convention.",
     "ALREADY_RECORDED":                   "Ce document est déjà enregistré en comptabilité.",
-    "PROJECT_QTY_EXCEEDED":               "La quantité de ce projet a été dépassée."
+    "PROJECT_QTY_EXCEEDED":               "La quantité de ce projet a été dépassée.",
+    "UNKNOWN_ERROR":                      "Une erreur inconnue est survenue. Veuillez, réessayer plus tard."
 }

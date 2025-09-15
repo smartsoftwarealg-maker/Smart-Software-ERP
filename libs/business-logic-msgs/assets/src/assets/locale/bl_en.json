@@ -18,7 +18,7 @@
     "REPORT_NOT_FOUND":              "Report not found.",
     "MISSING_SMTP_CONFIGURATION":    "Missing smtp configuration",
     "MISSING_COMPANY_EMAIL":         "Missing company email.",
-    "MISSING_ACCOUNT":               "Missing account number",
+    "MISSING_ACCOUNT":               "Either the classification code or the account number is invalid for the following articles.",
     "STOCKED_ITEM":                  "Invalid operation for a stocked item.",
     "NON_STOCKED_ITEM":              "Invalid operation for a non stocked item.",
     "NOT_CURRENT_MONTH":             "The month selected is not the current month",
@@ -75,5 +75,6 @@
     "NO_QTY_SPECIFIED":              "No quantity specified for this production.",
     "OBSOLETE_CONVENTION":           "There is no convention for this transporter. Please, create a new convention.",
     "ALREADY_RECORDED":              "This document is already recorded in the accounting system.",
-    "PROJECT_QTY_EXCEEDED":          "The quantity of this project has been exceeded."
+    "PROJECT_QTY_EXCEEDED":          "The quantity of this project has been exceeded.",
+    "UNKNOWN_ERROR":                 "An unknown error occurred. Please, try again later."
 }
