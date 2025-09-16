@@ -6,9 +6,9 @@
             class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
 </div>
 @if (form !== null) {
-    <form [formGroup]="form" class="grouped-form">
-        <div class="form-group">
-            <mat-form-field class="default">
+    <form [formGroup]="form">
+        <div class="content__div">
+            <mat-form-field>
                 <mat-label translate>CRM_ACTIVITY_TYPE</mat-label>
                 <mat-select formControlName="activityType">
                     @for (a of ACTIVITY_TYPE; track a) {
@@ -20,7 +20,7 @@
                 }
             </mat-form-field>
 
-            <mat-form-field class="default">
+            <mat-form-field class="medium">
                 <mat-label translate>COMMON_SUBJECT</mat-label>
                 <input matInput type="text" formControlName="subject" required>
                 @if (form.controls['subject'].invalid) {
@@ -28,19 +28,19 @@
                 }
             </mat-form-field>
 
-            <mat-form-field class="default">
+            <mat-form-field>
                 <mat-label translate>COMMON_DETAIL</mat-label>
                 <input matInput type="text" formControlName="detail">
             </mat-form-field>
 
-            <mat-form-field class="default">
+            <mat-form-field>
                 <mat-label translate>CRM_DUE_DATE</mat-label>
                 <ss-date-picker formControlName="dueDate"
                                 [type]="'date'">
                 </ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default">
+            <mat-form-field>
                 <mat-label translate>MISSION_DURATION</mat-label>
                 <input matInput type="number" formControlName="duration">
                 @if (form.controls['duration'].invalid) {
@@ -48,14 +48,14 @@
                 }
             </mat-form-field>
 
-            <mat-form-field class="default">
+            <mat-form-field>
                 <mat-label translate>CRM_COMPLETION_DATE</mat-label>
                 <ss-date-picker formControlName="completionDate"
                                 [type]="'date'">
                 </ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default">
+            <mat-form-field>
                 <mat-label translate>COMMON_STATUS</mat-label>
                 <mat-select formControlName="status">
                     @for (s of STATUS; track s) {
@@ -67,7 +67,7 @@
                 }
             </mat-form-field>
 
-            <mat-form-field class="default">
+            <mat-form-field>
                 <mat-label translate>CRM_PRIORITY</mat-label>
                 <mat-select formControlName="priority">
                     @for (p of PRIORITY; track p) {
@@ -79,7 +79,7 @@
                 }
             </mat-form-field>
 
-            <mat-form-field class="default">
+            <mat-form-field>
                 <mat-label translate>COMMON_TEAM</mat-label>
                 <ss-auto-complete matInput
                                   [model]="teamLookup"
@@ -87,12 +87,7 @@
                 </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field class="default">
-                <mat-label translate>CRM_FEEDBACK</mat-label>
-                <input matInput type="text" formControlName="feedback">
-            </mat-form-field>
-
-            <mat-form-field class="default">
+            <mat-form-field>
                 <mat-label translate>CRM_ASSIGNED_TO</mat-label>
                 <ss-auto-complete matInput
                                   [model]="userLookup"
@@ -103,7 +98,24 @@
                 }
             </mat-form-field>
 
+            @if (form.controls['activityType'].value !== 'EMAIL') {
+                <mat-form-field class="large">
+                    <mat-label translate>CRM_FEEDBACK</mat-label>
+                    <input matInput type="text" formControlName="feedback">
+                </mat-form-field>
+            }
         </div>
     </form>
+    @if (form.controls['activityType'].value === 'EMAIL') {
+        <div class="editor">
+            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary">
+            </ngx-editor-menu>
+            <ngx-editor [editor]="editor" [formControl]="editorContent">
+            </ngx-editor>
+        </div>
+        <div class="send__div">
+            <button mat-button color="primary" (click)="send()" translate>COMMON_SEND</button>
+        </div>
+    }
 }
 

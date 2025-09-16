@@ -74,7 +74,7 @@ export class CrmContactsDetailComponent
                 linkedInUrl: [b?.linkedInUrl || ''],
                 twitterHandle: [b?.twitterHandle || ''],
                 facebookUrl: [b?.facebookUrl || ''],
-                preferredContactMethod: [b?.preferredContactMethod || ''],
+                preferredContactMethod: [b?.preferredContactMethod, Validators.required],
                 preferredLanguage: [b?.preferredLanguage || ''],
                 marketingOptIn: [b?.marketingOptIn],
                 createdAt: [new Date()],

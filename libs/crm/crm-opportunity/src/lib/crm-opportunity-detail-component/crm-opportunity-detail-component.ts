@@ -207,10 +207,6 @@ export class CrmOpportunityDetailComponent implements OnInit {
         }
     }
 
-    saveStatus() {
-        this.saveProgress();
-    }
-
     saveProgress() {
         const form: CRMOpportunity = this.form?.getRawValue();
         const val: CRMOpportunityProgress = {

@@ -278,6 +278,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             vfGuarantee:         [b.vfGuarantee],
             ftGuarantee:         [b.ftGuarantee],
             advancement:         [b.advancement],
+            advancementFT:       [b.advancementFT],
             receptionType:       [b.receptionType||1],
         });
     }

@@ -232,7 +232,6 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
                 this.#snackBarSrv.showFailureMessage();
             },
         });
-        console.log(this.htmlForm.value);
     }
 
     ngOnDestroy() {

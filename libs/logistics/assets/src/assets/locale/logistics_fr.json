@@ -198,5 +198,7 @@
     "CONVENTION_TYPE":       "Type de convention",
     "CONVENTION_DATE":       "Date de la convention",
     "AMENDMENT":             "Avenant",
-    "INITIAL":               "Initiale"
+    "INITIAL":               "Initiale",
+    "VT_ADVANCEMENT":        "Avance avant taxes",
+    "FT_ADVANCEMENT":        "Avance après taxes"
 }

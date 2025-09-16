@@ -457,6 +457,7 @@
     "SECONDARY_PHONE":      "Téléphone secondaire",
     "PRIMARY_PHONE_TYPE":   "Type de téléphone principal",
     "SECONDARY_PHONE_TYPE": "Type de téléphone secondaire",
-    "FAX":                  "Fax"
+    "FAX":                  "Fax",
+    "WHATSAPP":             "WhatsApp"
 
 }

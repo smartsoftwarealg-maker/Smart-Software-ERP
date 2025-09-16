@@ -1,12 +1,12 @@
-.size {
-    width: 90%;
-    max-width: 1100px;
-    margin: 0 auto;
-    //padding-top: 1em;
+@use '@angular/material' as mat;
+
+mat-card {
+    border-radius: 1.4em;
 }
 
-mat-tab-group {
-    min-height: calc(100% - 64px);
+.content__div > ss-crm-leads-activity-lines-detail {
+    flex: 1 1 100%;
+    width: 100%;
 }
 
 .ctrl__div {
@@ -15,51 +15,79 @@ mat-tab-group {
     gap: 1em;
 }
 
-.grouped-form {
-    margin: 0 auto;
-    max-width: 1100px;
+.content__div {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 0 2rem 2rem 2rem;
+    flex-wrap: wrap;
+    justify-items: stretch;
+    justify-content: stretch;
+    gap: 1em;
+    width: 100%;
+    overflow: hidden;
+    padding-top: .5em;
 
-    .form-group {
-        border-radius: 8px;
-        padding: 0 1rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        margin-bottom: 1rem;
-
-        .tiny {
-            flex: 0 0 120px;
-        }
-
-
-        .small {
-            flex: 1 0 150px;
-            max-width: 180px;
-        }
-
-        .medium {
-            flex: 1.4 0 180px;
-            max-width: 210px;
-        }
-
-        .large {
-            flex: 2.5 0 270px;
-            max-width: 350px;
-        }
-
-        .very-large {
-            flex: 3 0 48%;
-            max-width: 450px;
-            min-width: 270px;
-        }
-
+    .medium {
+        flex : 1.4 1 auto;
     }
 
-
+    .large {
+        flex : 2 1 auto;
+    }
 }
+
+.content__div,
+form, .size {
+    width: 100%;
+    margin: 8px auto;
+}
+
+.send__div {
+    display: flex;
+    justify-content: flex-end;
+    width: 96%;
+    max-width: 700px;
+    margin: 8px auto;
+}
+
+.NgxEditor,
+.NgxEditor__Content {
+    height: 20em !important;
+    min-height: 20em !important;
+    border: red solid 1px;
+    max-width: 700px;
+}
+
+.editor {
+    height: 20em;
+    max-height: 25em;
+    width: 90%;
+    max-width: 700px;
+    overflow: auto;
+}
+
+
+mat-form-field {
+    flex-grow: 1;
+    max-width: 250px;
+}
+
+.company__detail {
+    flex: 2 1 25em;
+}
+
+mat-toolbar {
+    max-height: 40px;
+    margin-bottom: 0.5em;
+    font-weight: bolder;
+}
+
+@media (width <= 900px) {
+    .detail__div {
+        display: grid;
+        gap: .5em;
+        justify-items: stretch;
+        justify-content: stretch;
+        grid-template-columns:  repeat(3, 1fr);
+    }
+}
+
+
