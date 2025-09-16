@@ -1,5 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {
+    FormControl,
+    FormGroup,
     ReactiveFormsModule,
     UntypedFormBuilder,
     Validators,
@@ -14,7 +16,7 @@ import {
 import { MatOption, MatSelect } from '@angular/material/select';
 import { MatButton } from '@angular/material/button';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { CRMOpportunityActivity } from '../api';
+import {CRMOpportunityActivity, EMessage} from '../api';
 import { CrmOpportunityActiveService } from '../crm-opportunity-active.service';
 import {ACTIVITY_TYPE, PRIORITY, STATUS} from '../../crm-opportunity-api';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -25,6 +27,9 @@ import {
 } from '@ss/common/ui-auto-complete';
 import {UserListService} from "@ss/common/api-users";
 import {CrmTeamsService} from "@ss/crm/crm-teams";
+import {Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar} from "ngx-editor";
+import {TMessage} from "@ss/crm/campaign";
+import {CRMOpportunityService} from "../../crm-opportunity.service";
 
 @Component({
     selector: 'ss-crm-contact-line-detail',
@@ -44,6 +49,8 @@ import {CrmTeamsService} from "@ss/crm/crm-teams";
         DatePickerComponent,
         MaterialModule,
         UiAutoCompleteComponent,
+        NgxEditorComponent,
+        NgxEditorMenuComponent,
     ],
     standalone: true,
 })
@@ -55,9 +62,30 @@ export class CrmOpportunityActivitiesDetailComponent
     private userSrv = inject(UserListService);
     private teamSrv = inject(CrmTeamsService);
     userLookup = new DefaultAutoCompleteModel(this.userSrv);
-
     teamLookup = new DefaultAutoCompleteModel(this.teamSrv);
 
+    // htmlForm = new FormGroup({
+    //     editorContent: new FormControl(
+    //         { value: '', disabled: false },
+    //         Validators.required,
+    //     ),
+    // });
+    editorContent = new FormControl(
+        { value: '', disabled: false },
+        Validators.required,
+    );
+    email: string = '';
+    editor: Editor = new Editor();
+    toolbar: Toolbar = [
+        ['bold', 'italic'],
+        ['underline', 'strike'],
+        ['code', 'blockquote'],
+        ['ordered_list', 'bullet_list'],
+        [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+        ['link', 'image'],
+        ['text_color', 'background_color'],
+        ['align_left', 'align_center', 'align_right', 'align_justify'],
+    ];
 
     constructor(protected detailSrv: CrmOpportunityActiveService) {
         super(detailSrv, 'CRMOpportunityActiveLineDetail');
@@ -80,6 +108,34 @@ export class CrmOpportunityActivitiesDetailComponent
             teamId: [a?.teamId],
             createdAt: [a?.createdAt || new Date()],
             createdBy: [a?.createdBy || this.loginSrv.appCtx.id],
+        });
+    }
+
+    private opportunitySrv= inject(CRMOpportunityService)
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.opportunitySrv.get(this.detailSrv.getParentId()).subscribe({
+            next: (crmOpportunity) => {
+                this.email = crmOpportunity.contactEmail
+            },
+        });
+    }
+
+    send() {
+        const eMessage: EMessage = {
+            to: this.email,
+            body: this.editorContent.value,
+            isHTML: true,
+            subject: this.form?.controls['subject'].value,
+        };
+        this.detailSrv.sendEmail(eMessage).subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: () => {
+                this.snackBarSrv.showFailureMessage();
+            },
         });
     }
 

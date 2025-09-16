@@ -24,5 +24,10 @@ export interface CRMOpportunityActivity {
     opportunityDescription?: string;
 }
 
-
+export interface EMessage {
+    to: string;
+    subject: string;
+    body: string;
+    isHTML: boolean;
+}
 
