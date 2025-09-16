@@ -98,11 +98,15 @@
 
             <mat-form-field class="medium">
                 <mat-label translate>CRM_PREFERRED_CONTACT_METHOD</mat-label>
-                <mat-select formControlName="preferredContactMethod">
+                <mat-select formControlName="preferredContactMethod" required>
                     <mat-option value="EMAIL" translate>ADMINISTRATION_EMAIL</mat-option>
                     <mat-option value="PHONE" translate>ADMINISTRATION_PHONE</mat-option>
                     <mat-option value="SMS" translate>COMMON_SMS</mat-option>
+                    <mat-option value="WHATSAPP" translate>COMMON_WHATSAPP</mat-option>
                 </mat-select>
+                @if (form.controls['preferredContactMethod'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
             <mat-form-field class="medium">
                 <mat-label translate>CRM_PREFERRED_LANGUAGE</mat-label>

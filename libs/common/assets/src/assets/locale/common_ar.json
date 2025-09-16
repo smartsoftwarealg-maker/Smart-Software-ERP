@@ -453,7 +453,8 @@
     "SECONDARY_PHONE":      "الهاتف الثانوي",
     "PRIMARY_PHONE_TYPE":   "نوع الهاتف الأساسي",
     "SECONDARY_PHONE_TYPE": "نوع الهاتف الثانوي",
-    "FAX":                  "فاكس"
+    "FAX":                  "فاكس",
+    "WHATSAPP":             "واتساب"
 
 }
 

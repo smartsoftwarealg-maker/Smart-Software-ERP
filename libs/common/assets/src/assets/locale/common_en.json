@@ -461,5 +461,7 @@
     "SECONDARY_PHONE":      "Secondary phone",
     "PRIMARY_PHONE_TYPE":   "Primary phone type",
     "SECONDARY_PHONE_TYPE": "Secondary phone type",
-    "FAX":                  "Fax"
+    "FAX":                  "Fax",
+    "WHATSAPP":             "WhatsApp"
+
 }
