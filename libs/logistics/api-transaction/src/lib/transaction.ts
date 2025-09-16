@@ -98,6 +98,7 @@ export interface Transaction {
     vfGuarantee?: number;
     ftGuarantee?: number;
     advancement?: number
+    advancementFT?: number
     receptionType?: number;
     supplierAccount?: number;
 }

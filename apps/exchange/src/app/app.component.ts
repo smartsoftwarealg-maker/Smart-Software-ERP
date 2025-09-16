@@ -4,12 +4,16 @@ import {switchMap} from 'rxjs/operators';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {administrationNavTree} from './administration/side-nav-tree';
 import {exchangeNavTree, fileNavTree} from './exchange/side-nav-tree';
+import {MessageComponent} from "@ss/common/ui-error-handler";
 
 @Component({
     selector: 'ss-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
+    imports: [
+        MessageComponent
+    ]
 })
 export class AppComponent implements OnInit {
     loaded = true;

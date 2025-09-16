@@ -3,19 +3,6 @@
     <mat-card-content>
       @if (form) {
         <form novalidate [formGroup]="form">
-          <!--            <mat-form-field class="default-50 sm-100">-->
-          <!--                <mat-label translate>STOCK_STORE</mat-label>-->
-          <!--                <ss-auto-complete matInput-->
-          <!--                                  [required]="true"-->
-          <!--                                  [model]="storeAutoCompleteModel"-->
-        <!--                                  formControlName="store"></ss-auto-complete>-->
-        <!--                <mat-error-->
-        <!--                    *ngIf="form.controls['store'].hasError('required')" translate>COMMON_FIELD_REQUIRED-->
-      <!--                </mat-error>-->
-      <!--                <mat-error-->
-      <!--                    *ngIf="form.controls['store'].hasError('validOption')" translate>COMMON_NO_MATCH-->
-    <!--                </mat-error>-->
-  <!--            </mat-form-field>-->
   <mat-form-field floatLabel="always" class="default-100 sm-100">
     <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
     <input matInput formControlName="description" type="text" required>
