@@ -197,5 +197,7 @@
     "CONVENTION_TYPE":       "نوع الاتفاقية",
     "CONVENTION_DATE":       "تاريخ الاتفاقية",
     "AMENDMENT":             "تعديل",
-    "INITIAL":               "أولي"
+    "INITIAL":               "أولي",
+    "VT_ADVANCEMENT":        "المقدم قبل الضريبة",
+    "FT_ADVANCEMENT":        "المقدم بعد الضريبة"
 }

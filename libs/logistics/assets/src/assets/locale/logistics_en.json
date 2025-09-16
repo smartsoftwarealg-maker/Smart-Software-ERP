@@ -199,6 +199,8 @@
     "CONVENTION_TYPE":       "Convention type",
     "CONVENTION_DATE":       "Convention date",
     "AMENDMENT":             "Amendment",
-    "INITIAL":               "Initial"
+    "INITIAL":               "Initial",
+    "VT_ADVANCEMENT":        "VAT free advancement",
+    "FT_ADVANCEMENT":        "Full tax advancement"
 
 }
