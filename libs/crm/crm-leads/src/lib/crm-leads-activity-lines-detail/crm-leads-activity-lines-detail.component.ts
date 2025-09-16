@@ -5,7 +5,7 @@ import {
     UntypedFormGroup,
     Validators,
     FormsModule,
-    ReactiveFormsModule, FormBuilder
+    ReactiveFormsModule, FormBuilder, FormGroup, FormControl
 } from '@angular/forms';
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -13,11 +13,15 @@ import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { UserListService } from '@ss/common/api-users';
-import { CRMLeadActivity } from '../lead-activity-api';
+import { CRMLeadActivity, EMessage } from '../lead-activity-api';
 import { CrmLeadActivityService } from '../crm-lead-activity.service';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { FurnitureStatusService } from '@ss/common/api-lookup';
+import { ACTIVITY_TYPE } from '../../../../crm-opportunity/src/lib/crm-opportunity-api';
+import { Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar } from 'ngx-editor';
+import { NgIf } from '@angular/common';
 
 
 @Component({
@@ -35,7 +39,10 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
         TranslateDirective,
         TranslatePipe,
         UiAutoCompleteComponent,
-        DatePickerComponent
+        DatePickerComponent,
+        NgxEditorComponent,
+        NgxEditorMenuComponent,
+        NgIf
     ]
 })
 export class CrmLeadsActivityLinesDetailComponent implements OnInit {
@@ -44,11 +51,13 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
     #entitySrv = inject(CrmLeadActivityService);
     #snackBarSrv = inject(SnackBarService);
     #shellSrv = inject(ShellService);
+    private statusSrv = inject(FurnitureStatusService);
     #route = inject(ActivatedRoute);
      router = inject(Router);
+    statusAutoCompleteModel = new DefaultAutoCompleteModel(this.statusSrv);
     private confirmationSrv = inject(ConfirmationDialogService);
     public form: UntypedFormGroup | null = null;
-
+    protected readonly ACTIVITY_TYPE = ACTIVITY_TYPE;
     usersLookup = new DefaultAutoCompleteModel(this.#usersSrv);
     @Input() activityId!: number | null;
     @Input() parentId!: number;
@@ -76,7 +85,6 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
             status: [e.status, Validators.required],
             dueDate: [e.dueDate, Validators.required],
             completionDate: [e.completionDate, Validators.required],
-            leadDescription: [e.leadDescription, Validators.required],
             createdBy: [e.createdBy, Validators.required],
             ownerId: [e.ownerId, Validators.required]
         });
@@ -108,6 +116,7 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
                 parentId: this.parentId
             } as CRMLeadActivity);
         }
+        this.editor = new Editor();
     }
 
 
@@ -120,12 +129,32 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
     save() {
         this.form.markAllAsTouched();
         if (!this.form.valid) {
-            this.#snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
+            this.#snackBarSrv.showFailureMessage();
             return;
         }
 
         const val = this.readForm();
+        const emailBody = this.htmlForm.value.editorContent;
 
+        if (val.activityType === 'EMAIL') {
+            const message: EMessage = {
+                to: this.htmlForm.value.toEmail,
+                subject: val.subject,
+                body: emailBody,
+                isHTML: true
+            };
+
+            this.#entitySrv.sendEmail(message).subscribe({
+                next: () => {
+                    this.#snackBarSrv.showSuccessMessage();
+                    this.closed.emit();
+                },
+                error: () => {
+                    this.#snackBarSrv.showFailureMessage();
+                }
+            });
+            return;
+        }
         this.#entitySrv.update(val).subscribe({
             next: (id) => {
                 if (val.id === 0) {
@@ -142,6 +171,25 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
         });
     }
 
+    editor: Editor|null = null;
+    toolbar: Toolbar = [
+        ['bold', 'italic'],
+        ['underline', 'strike'],
+        ['code', 'blockquote'],
+        ['ordered_list', 'bullet_list'],
+        [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+        ['link', 'image'],
+        ['text_color', 'background_color'],
+        ['align_left', 'align_center', 'align_right', 'align_justify'],
+    ];
 
+    html = '';
+    htmlForm = new FormGroup({
+        toEmail: new FormControl('', [Validators.required, Validators.email]),
+        editorContent: new FormControl(
+            { value: '', disabled: false },
+            Validators.required
+        ),
+    });
 
 }

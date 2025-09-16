@@ -17,4 +17,11 @@ export interface CRMLeadActivity {
     updatedBy?: number;
     ownerDescription?: string;
     leadDescription?: string;
+    toEmail?: string;
+}
+export interface EMessage {
+    to?: string;
+    subject?: string;
+    body?: string;
+    isHTML?: boolean;
 }

@@ -1,45 +1,47 @@
 
-.main-container {
+.table_div size  {
     display: block;
-    margin: auto;
     position: relative;
-    max-width: 1400px;
-    width: 100%;
+    width: 1350px;
+    margin: 8px auto;
 }
 
-main-table {
-    width: 100%;
-    min-height: 400px;
-    display: grid;
-}
+
 
 
 .mat-column-subject {
     flex: 1 1 20%;
-    min-width: 180px;
+    min-width: 260px
 }
 
 .mat-column-activityType {
     flex: 1 1 15%;
-    min-width: 140px;
+    min-width: 160px;
 }
 
 .mat-column-priority,
 .mat-column-status {
     flex: 1 1 10%;
-    min-width: 120px;
+    min-width: 140px;
+    justify-content: center;
+    text-align: center;
 }
 
 .mat-column-dueDate,
 .mat-column-completionDate {
     flex: 1 1 12%;
-    min-width: 120px;
+    min-width: 150px;
+    justify-content: center;
+    text-align: center;
+
 }
 
 .mat-column-ownerDescription,
 .mat-column-leadDescription {
     flex: 1 1 15%;
-    min-width: 220px;
+    min-width: 190px;
+    justify-content: center;
+    text-align: center;
 }
 
 
@@ -65,7 +67,7 @@ mat-header-cell {
 }
 
 
-.ctrl-div {
+.ctrl__div {
     display: flex;
     justify-content: flex-end;
     padding: 1px;

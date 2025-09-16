@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { HttpService } from '@ss/common/api-common';
-import { CRMLeadActivity } from './lead-activity-api';
+import { CRMLeadActivity, EMessage } from './lead-activity-api';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -9,6 +10,9 @@ import { CRMLeadActivity } from './lead-activity-api';
 export class CrmLeadActivityService extends BaseEntityService<CRMLeadActivity> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, '/activities', '/crm/leads/');
+    }
+    sendEmail(message: EMessage): Observable<any> {
+        return this.httpSrv.post('/email', message);
     }
 
 }
