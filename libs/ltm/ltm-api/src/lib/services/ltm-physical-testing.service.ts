@@ -4,7 +4,6 @@ import { HttpService } from '@ss/common/api-common';
 import { LtmBaseTestingClass } from './ltm-base-testing.class';
 import { HttpParams } from '@angular/common/http';
 import { catchError, Observable, of, repeat } from 'rxjs';
-import { AssetInventoryDoc } from '@ss/assets-component';
 
 @Injectable({
     providedIn: 'root'

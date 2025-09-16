@@ -26,7 +26,7 @@ export class LotInputDialogComponent {
     #dialogRef =  inject(MatDialogRef<LotInputDialogComponent>);
 
     supplierLookup = new DefaultAutoCompleteModel<Agent>(this.#supplierSrv, 'id', 'denomination');
-    storeLookup = new DefaultAutoCompleteModel(this.#lotSrv);
+    lotLookup = new DefaultAutoCompleteModel(this.#lotSrv);
     invalidForm = signal(false);
 
 

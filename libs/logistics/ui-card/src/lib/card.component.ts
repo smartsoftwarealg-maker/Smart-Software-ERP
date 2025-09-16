@@ -1,21 +1,21 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {Card, CardService} from '@ss/logistics/api-card';
 import {ArticleService} from '@ss/master-data/api-article';
-import { MaterialModule, PaginationModel } from '@ss/common/api-common';
+import {LoginService, MaterialModule, PaginationModel} from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {Lot} from '@ss/common/api-lookup';
+import {Lot, StoreService} from '@ss/common/api-lookup';
 import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import {ArticleLotsService} from '@ss/stock/api-article-store';
 import {LanguageService} from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { HttpParams } from '@angular/common/http';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import {OptionService} from '@ss/logistics/ui-options';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'ss-card',
@@ -28,23 +28,26 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-
-
         PaginationComponent,
         UiAutoCompleteComponent
     ]
 
 })
 export class CardComponent implements OnInit {
-    private storeSrv =  inject(ArticleLotsService);
+    #lotSrv =  inject(ArticleLotsService);
+    #storeSrv = inject(StoreService);
+    #optionSrv = inject(OptionService);
+    #loginSrv = inject(LoginService);
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeSrv);
+    storeLookup = new DefaultAutoCompleteModel(this.#storeSrv);
+    lotLookup = new LotLookupClass(this.#lotSrv);
+
+    usesLots = signal(false);
 
     storeForm: UntypedFormGroup = new UntypedFormGroup({
         store: new UntypedFormControl()
     });
 
-    //
     public readonly pagination = PaginationModel.newInstance();
 
 
@@ -87,14 +90,17 @@ export class CardComponent implements OnInit {
             if (!this.useStoreForm) {
                 this.loadCard();
             } else {
-                this.storeSrv.setParentId(this.articleId);
+                this.#lotSrv.setParentId(this.articleId);
             }
 
-            this.pagination.onChange = () => this.loadCard();
-
         });
-
-
+        this.pagination.onChange = () => this.loadCard();
+        this.storeLookup.onObjectSelected = (s) => this.lotLookup.lotId = s?.id||0;
+        this.#optionSrv
+            .get(this.#loginSrv.appCtx.center)
+            .subscribe(res => {
+                this.usesLots.set(res.usesLots||false);
+            });
     }
 
 
@@ -113,6 +119,20 @@ export class CardComponent implements OnInit {
         });
 
     }
+}
 
+class LotLookupClass extends DefaultAutoCompleteModel<Lot> {
+    lotId = 0;
 
+    constructor(srv: ArticleLotsService) {
+        super(srv);
+    }
+
+    override filter =
+        (filter: string) => this.entitySrv.getList(0,
+            50,
+            filter,
+            this.descriptionField,
+            this.lotId > 0 ? new HttpParams().set('store', this.lotId.toString()) : null)
+            .pipe(map(x => this.filterLoadedData(x.body)));
 }
