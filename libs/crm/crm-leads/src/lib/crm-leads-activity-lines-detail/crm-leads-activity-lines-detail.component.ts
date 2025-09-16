@@ -42,7 +42,6 @@ import { NgIf } from '@angular/common';
         DatePickerComponent,
         NgxEditorComponent,
         NgxEditorMenuComponent,
-        NgIf
     ]
 })
 export class CrmLeadsActivityLinesDetailComponent implements OnInit {
