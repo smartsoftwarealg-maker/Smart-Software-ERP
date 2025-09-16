@@ -134,7 +134,7 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
                 this.#emailTemplateSrv.get(+this.template.value).subscribe({
                     next: (res) => {
                         this.htmlForm.controls.editorContent.setValue(
-                            res?.htmlContent,
+                            res?.htmlContent
                         );
                     },
                 });
@@ -147,9 +147,9 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     }
 
     save() {
-        this.#entitySrv.save(this.form.getRawValue() as Campaign).subscribe({
+        this.#entitySrv.save(this.form?.getRawValue() as Campaign).subscribe({
             next: () => {
-                this.form.markAsUntouched();
+                this.form?.markAsUntouched();
                 this.#snackBarSrv.showSuccessMessage();
             },
             error: () => {
@@ -222,7 +222,7 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     send() {
         const tMessage: TMessage = {
             mailingListId: +this.mailingList.getRawValue(),
-            templateId: +this.template.getRawValue(),
+            templateId: +this.template.getRawValue()
         };
         this.#entitySrv.send(tMessage).subscribe({
             next: () => {
