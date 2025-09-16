@@ -21,7 +21,7 @@
         @if (isEditable) {
             <button mat-mini-fab (click)="deleteSelected()"
                     [matTooltip]="'COMMON_DELETE' | translate"
-                    [disabled]="!selectedId"
+                    [disabled]="!selectedId || selectedRow?.qty !=0"
                     color="warn">
                 <span class="fas fa-trash-alt"></span>
             </button>
