@@ -1,6 +1,6 @@
 .size {
     width: 90%;
-    margin: 4PX auto;
+    margin: 4px auto;
 }
 
 .ctrl__div {
@@ -31,11 +31,13 @@
 .mat-column-jobTitle,
 .mat-column-company,
 .mat-column-detail,
-.mat-column-description,
 .mat-column-ownerDescription,
 .mat-column-email {
     flex: 1 1 150px;
     //border-left: gray solid 1px;
+}
+.mat-column-description {
+    flex: 2 0 300px;
 }
 
 .mat-column-status,
@@ -77,13 +79,13 @@ i {
 }
 
 // Set color for links when hovered
-a:hover {
-    color: green;
-    cursor: pointer!important;
-    font-weight: bolder;
-    font-size: 1.2em;
-}
-
-a {
-    text-decoration: underline;
-}
+//a:hover {
+//    color: green;
+//    cursor: pointer!important;
+//    font-weight: bolder;
+//    font-size: 1.2em;
+//}
+//
+//a {
+//    text-decoration: underline;
+//}

@@ -57,6 +57,11 @@
     //border-left: gray solid 1px;
 }
 
+.mat-column-name {
+    flex: 1 1 250px;
+    border-left: gray solid 1px;
+}
+
 .mat-column-btn {
     flex: 0 0 45px;
     justify-content: center;
@@ -66,6 +71,7 @@ table__div {
     width: 100%;
     height: 100%;
     overflow: auto;
+    min-width: fit-content;
 }
 mat-table {
     width: 100%;
@@ -74,16 +80,4 @@ mat-table {
 
 i {
     margin-right: .5em;
-}
-
-// Set color for links when hovered
-a:hover {
-    color: green;
-    cursor: pointer!important;
-    font-weight: bolder;
-    font-size: 1.2em;
-}
-
-a {
-    text-decoration: underline;
 }

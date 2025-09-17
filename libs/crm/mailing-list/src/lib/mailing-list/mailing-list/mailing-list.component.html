@@ -4,7 +4,7 @@
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.description}}
+                <a mat-button (click)="showDetail(e.id)">{{e.description}}</a>
             </mat-cell>
         </ng-container>
 

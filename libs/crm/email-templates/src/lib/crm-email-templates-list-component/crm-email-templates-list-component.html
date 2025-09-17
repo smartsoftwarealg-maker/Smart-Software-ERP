@@ -12,7 +12,7 @@
                 <ng-container matColumnDef="name">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NAME</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        <a (click)="edit(e)">{{ e.name }}</a>
+                        <a mat-button (click)="edit(e)">{{ e.name }}</a>
                     </mat-cell>
                 </ng-container>
 

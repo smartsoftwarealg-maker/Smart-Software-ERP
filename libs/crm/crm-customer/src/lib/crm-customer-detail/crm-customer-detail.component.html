@@ -16,6 +16,10 @@
             <button matButton (click)="select(0)" [class.selected__btn]="selectedDiv() === 0" translate>
                 <i class="fa-solid fa-circle-info"></i> LOGISTICS_INFO
             </button>
+            <button matButton (click)="save()"><span><i
+                class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span>
+            </button>
+
         </div>
         <div class="general__div">
             <mat-toolbar><span translate>LOGISTICS_GENERAL</span></mat-toolbar>
