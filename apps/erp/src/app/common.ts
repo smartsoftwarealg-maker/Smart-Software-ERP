@@ -560,6 +560,10 @@ export const CRM_TEAMS_URL = 'crm-teams-list';
 export const CRM_OPPORTUNITY_URL = 'crm-opportunity';
 export const CRM_EMAIL_TEMPLATE_URL = 'crm-email-template';
 export const CRM_CALENDAR_URL = 'crm-calendar';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 87ef75d51 (Several improvements)
 // #############
 // # FULL URLS #
 // #############
