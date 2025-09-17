@@ -1068,6 +1068,10 @@ export const ABS_CRM_TEAMS_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_TEAMS_UR
 export const ABS_CRM_OPPORTUNITY_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_OPPORTUNITY_URL].join('/');
 export const ABS_CRM_EMAIL_TEMPLATE_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_EMAIL_TEMPLATE_URL].join('/');
 export const ABS_CRM_CALENDAR_URL = '/' + [MAIN_PAGE_URL, CRM_APP_URL, CRM_CALENDAR_URL].join('/');
+<<<<<<< HEAD
+=======
+
+>>>>>>> c670f3e0a (fix comflicts)
 
 
 
