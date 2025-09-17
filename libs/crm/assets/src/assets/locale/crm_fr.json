@@ -125,7 +125,6 @@
     "ABANDONED CART":        "Panier abandonné",
     "ACTIVE":                "Actif",
     "INACTIVE":              "Inactif",
-    "DEPRECATED":            "Obsolète"
-
-
+    "DEPRECATED":            "Obsolète",
+    "CALENDAR":              "Calendrier"
 }

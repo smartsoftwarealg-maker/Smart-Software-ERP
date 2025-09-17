@@ -125,5 +125,6 @@
     "ABANDONED CART":      "ABANDONED CART",
     "ACTIVE":              "Active",
     "INACTIVE":            "INACTIVE",
-    "DEPRECATED":          "DEPRECATED"
+    "DEPRECATED":          "DEPRECATED",
+    "CALENDAR":            "Calendar"
 }
