@@ -136,7 +136,7 @@ export const administrationNavTree: SideNavNode = {
 
         {
             name: 'COMMON_DB_UPDATER',
-            icon: 'fa-solid fa-calendar-lines-pen',
+            icon: 'fa-solid fa-database',
             route: ABS_DB_UPDATER_URL,
             accessRights: 'Logging'
         },

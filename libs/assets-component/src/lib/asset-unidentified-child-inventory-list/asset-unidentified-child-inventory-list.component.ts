@@ -46,7 +46,6 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
         'classDescription',
         'count',
         'serialNo',
-        'classDescription',
         'officeDescription',
         'beneficiaryDescription',
         'memo'
