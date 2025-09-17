@@ -14,7 +14,7 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { CRMLead } from '../lead-api';
+import {CRMLead, CRMLeadProgress} from '../lead-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { CRMCampaignService } from '../crm-comaign.service';
@@ -246,19 +246,14 @@ export class CrmLeadsDetailComponent implements OnInit {
     }
 
     saveProgress() {
-        const form: CRMOpportunity = this.form?.getRawValue();
-        const val: CRMOpportunityProgress = {
+        const form: CRMLead = this.form?.getRawValue();
+        const val: CRMLeadProgress = {
             id: form.id,
             status: form.status,
-            stage: form.stage,
-            probability: form.probability,
+            score: form.score,
             priority: form.priority,
             ownerId: form.ownerId,
             teamId: form.teamId,
-            createdAt: form.createdDate,
-            amount: form.amount,
-            closedBy: form.closedBy,
-            createdBy: form.createdBy,
             memo: form.memo,
         };
         this.#entitySrv.saveProgress(val).subscribe({

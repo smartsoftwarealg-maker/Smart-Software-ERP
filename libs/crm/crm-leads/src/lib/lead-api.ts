@@ -35,10 +35,21 @@ export interface CRMLead {
     companyDescription?: string;
     ownerDescription?: string;
     campaignDescription?: string;
+    memo?: string;
 }
 
 export interface LeadConverter {
     leadId: number;
     companyId: number;
     contactId: number;
+}
+
+export interface CRMLeadProgress {
+    id: number;
+    status: string;
+    score: number;
+    priority: string;
+    ownerId?: number;
+    teamId?: number;
+    memo?: string;
 }

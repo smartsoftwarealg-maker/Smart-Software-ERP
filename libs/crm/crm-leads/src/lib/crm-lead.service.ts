@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import {CRMLead, LeadConverter} from './lead-api';
+import {CRMLead, CRMLeadProgress, LeadConverter} from './lead-api';
 import { HttpService } from '@ss/common/api-common';
 import {CRMOpportunityProgress} from "../../../crm-opportunity/src/lib/crm-opportunity-api";
 
@@ -12,8 +12,8 @@ export class CRMLeadsService extends BaseEntityService<CRMLead> {
         super(httpSrv, '/crm/leads');
     }
 
-    saveProgress(progress: CRMOpportunityProgress) {
-        return this.httpSrv.post('/crm/opportunities/progress', progress);
+    saveProgress(progress: CRMLeadProgress) {
+        return this.httpSrv.post('/crm/leads/progress', progress);
     }
 
     converter(converter: LeadConverter) {
