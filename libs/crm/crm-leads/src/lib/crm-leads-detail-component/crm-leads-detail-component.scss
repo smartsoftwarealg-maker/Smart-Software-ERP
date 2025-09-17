@@ -1,8 +1,11 @@
 @use '@angular/material' as mat;
+
 .content__div > ss-crm-leads-activity-lines-detail {
     flex: 1 1 100%;
     width: 100%;
 }
+
+.ctrl__div,
 .content__div,
 form {
     width: 90%;
@@ -75,7 +78,7 @@ mat-form-field {
 }
 
 .company__detail {
-    flex: 2 1 25em;
+    flex: 2 1 35em;
 }
 
 mat-toolbar {

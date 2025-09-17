@@ -1,4 +1,4 @@
-<div class="ctrl__div size">
+<div class="ctrl__div">
     <button matButton (click)="list()">
         @if (this.form?.touched && this.form.dirty) {
             <span><i class="fa-solid fa-rotate-right"></i> {{ 'COMMON_CANCEL'|translate }}</span>
@@ -25,6 +25,7 @@
     <button matButton (click)="save()"><span><i
             class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
 </div>
+
 @if (form) {
     <form [formGroup]="form">
         <mat-card>

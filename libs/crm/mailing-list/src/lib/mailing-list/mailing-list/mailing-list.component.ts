@@ -22,6 +22,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { Lookup } from '@ss/common/api-lookup';
 import { MailingListService } from '../mailing-list.service';
+import {MatButton} from "@angular/material/button";
 
 @Component({
     selector: 'ss-crm-mailing-list',
@@ -43,6 +44,7 @@ import { MailingListService } from '../mailing-list.service';
         MatRowDef,
         MatRow,
         PaginationComponent,
+        MatButton,
     ],
 })
 export class MailingListComponent extends BaseEntityListComponent<Lookup> {

@@ -4,14 +4,14 @@
         <ng-container matColumnDef="customerCode">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CUSTOMER_CODE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.customerCode }}
+                <a mat-button (click)="showDetail(e.id)">{{ e.customerCode }} </a>
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="denomination">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DENOMINATION</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.denomination }}
+                <a mat-button (click)="showDetail(e.id)">{{ e.denomination }} </a>
             </mat-cell>
         </ng-container>
 
