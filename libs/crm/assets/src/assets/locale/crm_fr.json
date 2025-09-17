@@ -126,5 +126,6 @@
     "ACTIVE":                "Actif",
     "INACTIVE":              "Inactif",
     "DEPRECATED":            "Obsolète",
-    "CALENDAR":              "Calendrier"
+    "CALENDAR":              "Calendrier",
+    "CONVERT":               "Convertir"
 }

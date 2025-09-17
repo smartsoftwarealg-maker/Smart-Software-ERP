@@ -7,8 +7,8 @@ export interface CRMLead {
     company?: string;
     companySite?: string;
     companyIndustry?: string;
-    annualRevenue?:number;
-    numberOfEmployees?:number;
+    annualRevenue?: number;
+    numberOfEmployees?: number;
     jobTitle?: string;
     addressLine1?: string;
     addressLine2?: string;
@@ -21,7 +21,7 @@ export interface CRMLead {
     score: number;
     priority: string;
     estimatedValue?: number;
-    probability:  number;
+    probability: number;
     expectedCloseDate?: Date;
     campaignId?: number;
     ownerId?: number;
@@ -35,4 +35,10 @@ export interface CRMLead {
     companyDescription?: string;
     ownerDescription?: string;
     campaignDescription?: string;
+}
+
+export interface LeadConverter {
+    leadId: number;
+    companyId: number;
+    contactId: number;
 }

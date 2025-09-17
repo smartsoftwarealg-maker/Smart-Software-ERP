@@ -1,4 +1,11 @@
-import { Component, computed, inject, Input, OnInit, signal } from '@angular/core';
+import {
+    Component,
+    computed,
+    inject,
+    Input,
+    OnInit,
+    signal,
+} from '@angular/core';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CRMLeadsService } from '../crm-lead.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,15 +18,21 @@ import { CRMLead } from '../lead-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { CRMCampaignService } from '../crm-comaign.service';
-import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import {
+    DefaultAutoCompleteModel,
+    UiAutoCompleteComponent,
+} from '@ss/common/ui-auto-complete';
 import { UserListService } from '@ss/common/api-users';
 import { CityService } from '@ss/common/api-lookup';
 import { CrmLeadsActivityListComponent } from '../crm-leads-activity-list/crm-leads-activity-list.component';
-import {
-    CrmLeadsActivityLinesDetailComponent
-} from '../crm-leads-activity-lines-detail/crm-leads-activity-lines-detail.component';
+import { CrmLeadsActivityLinesDetailComponent } from '../crm-leads-activity-lines-detail/crm-leads-activity-lines-detail.component';
 import { CrmLeadActivityService } from '../crm-lead-activity.service';
-
+import {
+    CRMOpportunity,
+    CRMOpportunityProgress,
+} from '../../../../crm-opportunity/src/lib/crm-opportunity-api';
+import { MatDialog } from '@angular/material/dialog';
+import { LeadConverterDialogComponent } from '../lead-converter-dialog/lead-converter-dialog.component';
 
 enum Panels {
     GENERAL = 0,
@@ -47,9 +60,9 @@ enum Panels {
     providers: [
         {
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-            useValue: { appearance: 'outline' }
-        }
-    ]
+            useValue: { appearance: 'outline' },
+        },
+    ],
 })
 export class CrmLeadsDetailComponent implements OnInit {
     #loginSrv = inject(LoginService);
@@ -69,9 +82,8 @@ export class CrmLeadsDetailComponent implements OnInit {
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
     cityLookup = new DefaultAutoCompleteModel(this.#citySrv);
 
-
     formBuilder = inject(FormBuilder);
-
+    dialog = inject(MatDialog);
 
     public STATES = [
         'NEW',
@@ -83,7 +95,7 @@ export class CrmLeadsDetailComponent implements OnInit {
         'NEGOTIATION',
         'CLOSED_WON',
         'CLOSED_LOST',
-        'UNQUALIFIED'
+        'UNQUALIFIED',
     ];
 
     public STATUS = [
@@ -93,7 +105,7 @@ export class CrmLeadsDetailComponent implements OnInit {
         'PROPOSAL_SENT',
         'NEGOTIATION',
         'CLOSED_WON',
-        'CLOSED_LOST'
+        'CLOSED_LOST',
     ];
 
     public SOURCE = [
@@ -102,15 +114,10 @@ export class CrmLeadsDetailComponent implements OnInit {
         'EVENT',
         'CAMPAIGN',
         'SOCIAL',
-        'PARTNER'
+        'PARTNER',
     ];
 
-    public PRIORITIES = [
-        'LOW',
-        'MEDIUM',
-        'HIGH',
-        'CRITICAL'
-    ];
+    public PRIORITIES = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
 
     selectedPanel = signal<Panels>(Panels.DETAIL);
 
@@ -121,8 +128,9 @@ export class CrmLeadsDetailComponent implements OnInit {
     isContact = computed(() => this.selectedPanel() === Panels.CONTACT);
     isProgress = computed(() => this.selectedPanel() === Panels.PROGRESS);
     isActivity = computed(() => this.selectedPanel() === Panels.ACTIVITY);
-    isActivityDetail = computed(() => this.selectedPanel() === Panels.ACTIVITY_LINE_DETAIL);
-
+    isActivityDetail = computed(
+        () => this.selectedPanel() === Panels.ACTIVITY_LINE_DETAIL,
+    );
 
     public form: UntypedFormGroup | null = null;
 
@@ -145,7 +153,7 @@ export class CrmLeadsDetailComponent implements OnInit {
             this.#entitySrv.get(id).subscribe({
                 next: (crmLead) => {
                     this.form = this.setupForm(crmLead);
-                }
+                },
             });
         } else {
             this.form = this.setupForm({ id: 0 } as CRMLead);
@@ -167,10 +175,9 @@ export class CrmLeadsDetailComponent implements OnInit {
             },
             error: () => {
                 this.#snackBarSrv.showFailureMessage();
-            }
+            },
         });
     }
-
 
     // cancel() {
     //     this.#router.navigate(['../'], { relativeTo: this.#route }).then();
@@ -196,7 +203,10 @@ export class CrmLeadsDetailComponent implements OnInit {
             status: [b?.status || 'NEW'],
             source: [b?.source || 'WEB'],
             createdAt: [b?.createdAt || this.#NOW, Validators.required],
-            createdBy: [b?.createdBy || this.#loginSrv.appCtx.id, Validators.required],
+            createdBy: [
+                b?.createdBy || this.#loginSrv.appCtx.id,
+                Validators.required,
+            ],
             updatedAt: [b?.updatedAt || this.#NOW],
             expectedCloseDate: [b?.expectedCloseDate],
             campaignId: [b?.campaignId],
@@ -216,10 +226,9 @@ export class CrmLeadsDetailComponent implements OnInit {
             city: [b?.city],
             postalCode: [b?.postalCode],
             probability: [b?.probability || 0],
-            isDeleted: [false]
+            isDeleted: [false],
         });
     }
-
 
     select(idx: number) {
         this.selectedPanel.set(idx);
@@ -236,4 +245,49 @@ export class CrmLeadsDetailComponent implements OnInit {
         this.select(Panels.ACTIVITY_LINE_DETAIL);
     }
 
+    saveProgress() {
+        const form: CRMOpportunity = this.form?.getRawValue();
+        const val: CRMOpportunityProgress = {
+            id: form.id,
+            status: form.status,
+            stage: form.stage,
+            probability: form.probability,
+            priority: form.priority,
+            ownerId: form.ownerId,
+            teamId: form.teamId,
+            createdAt: form.createdDate,
+            amount: form.amount,
+            closedBy: form.closedBy,
+            createdBy: form.createdBy,
+            memo: form.memo,
+        };
+        this.#entitySrv.saveProgress(val).subscribe({
+            next: () => {
+                this.#snackBarSrv.showSuccessMessage();
+            },
+            error: (e) => {
+                this.#snackBarSrv.showFailureMessage();
+                throw e;
+            },
+        });
+    }
+
+    openDialog() {
+        const dialogRef = this.dialog.open(LeadConverterDialogComponent, {
+            width: '500px',
+            height: '21em',
+            data: {
+                leadId: +this.form?.controls['id'].value,
+                companyId: 0,
+                contactId: 0,
+            },
+            disableClose: true,
+        });
+
+        dialogRef.afterClosed().subscribe((result) => {
+            result
+                ? this.#snackBarSrv.showSuccessMessage()
+                : null ;
+        });
+    }
 }
