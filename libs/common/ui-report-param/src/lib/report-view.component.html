@@ -19,7 +19,9 @@
               <i class="{{treeControl.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
             </button>
             {{ node.name }}
-            <mat-divider></mat-divider>
+            <mat-divider>
+
+            </mat-divider>
 
             <ul [class.tree-invisible]="!treeControl.isExpanded(node)">
               <ng-container matTreeNodeOutlet></ng-container>

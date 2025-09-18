@@ -99,9 +99,9 @@ export class DocumentRecalculationComponent implements OnInit {
                         }),
                     ).subscribe({
                     next: res => {
+                        this.#shellSrv.setLoading(false);
+                        this.processing.set(false);
                         if (res.status === 200) {
-                            this.#shellSrv.setLoading(false);
-                            this.processing.set(false);
                             this.#snackBarSrv.showSuccessMessage();
                         }
                     }, error: err => {

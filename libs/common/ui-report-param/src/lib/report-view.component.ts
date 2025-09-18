@@ -1,10 +1,10 @@
-import { Component, inject, input, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { LookupsService } from '@ss/common/api-lookup';
-import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { NestedTreeControl } from '@angular/cdk/tree';
-import { v6 as uuidv6 } from 'uuid';
+import {Component, inject, input, OnDestroy, OnInit, signal, ViewChild} from '@angular/core';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
+import {LookupsService} from '@ss/common/api-lookup';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {NestedTreeControl} from '@angular/cdk/tree';
+import {v6 as uuidv6} from 'uuid';
 
 
 import {
@@ -16,7 +16,7 @@ import {
     ReportTreeService,
     ReportViewData
 } from '@ss/common/api-reports';
-import { MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
+import {MatTree, MatTreeNestedDataSource} from '@angular/material/tree';
 import {
     dateTimeToStr,
     HttpService,
@@ -25,23 +25,35 @@ import {
     MaterialModule,
     PaginatorPersistenceService
 } from '@ss/common/api-common';
-import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { delay, Observable, of, retry, tap, throwError, timeout, timer } from 'rxjs';
-import { HttpParams } from '@angular/common/http';
-import { FormControl, FormGroup, UntypedFormGroup } from '@angular/forms';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { map, switchMap } from 'rxjs/operators';
-import { DeviceDetectorService } from 'ngx-device-detector';
-import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { Directory, Filesystem } from '@capacitor/filesystem';
-import { FileOpener } from '@capacitor-community/file-opener';
+import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
+import {
+    asapScheduler,
+    delay,
+    from,
+    Observable,
+    of,
+    retry,
+    scheduled,
+    takeWhile,
+    tap,
+    throwError,
+    timeout,
+    timer
+} from 'rxjs';
+import {HttpParams} from '@angular/common/http';
+import {FormControl, FormGroup, UntypedFormGroup} from '@angular/forms';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {map, switchMap} from 'rxjs/operators';
+import {DeviceDetectorService} from 'ngx-device-detector';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import {Directory, Filesystem} from '@capacitor/filesystem';
+import {FileOpener} from '@capacitor-community/file-opener';
 
 
+import {DatePickerComponent} from '@ss/common/ui-datepicker';
 
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
+import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 
 
 @Component({
@@ -50,21 +62,22 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './report-view.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    RouterModule,
-    DatePickerComponent,
-    UiAutoCompleteComponent
-],
+        MaterialModule,
+        TranslateDirective,
+        RouterModule,
+        DatePickerComponent,
+        UiAutoCompleteComponent
+    ],
 })
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
-    private deviceService = inject( DeviceDetectorService);
+    private deviceService = inject(DeviceDetectorService);
     private paramLookupSrv = inject(ReportParamLookupService);
+    private readonly POLL_INTERVAL_MS = 3000; // Poll every 3 seconds
 
     showParameterSaveButton = signal(false);
     isResponsible = signal(false);
 
-    @ViewChild('tree', { static: false }) tree: MatTree<unknown>;
+    @ViewChild('tree', {static: false}) tree: MatTree<unknown>;
 
     private uuid = '';
     isLTM = input(false);
@@ -74,7 +87,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         ['PDF', 'application/pdf']
     ]);
 
-    pdfSrc: string|null = null;
+    pdfSrc: string | null = null;
     htmlSrc: SafeHtml = null;
     generating = signal(false);
     // leftPaneHidden = false;
@@ -111,7 +124,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         super(reportService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_REPORTS');
         const os = this.deviceService.getDeviceInfo().os.toLowerCase();
         this.isAndroid = os === 'android' || os === 'ios';
-        this.isResponsible.set(this.loginSrv.appCtx.responsible||this.loginSrv.appCtx.manager);
+        this.isResponsible.set(this.loginSrv.appCtx.responsible || this.loginSrv.appCtx.manager);
     }
 
     override ngOnInit(): void {
@@ -143,7 +156,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     }
 
     override getPage(): Observable<ReportParam[]> {
-        return this.selectedReport? this.entitySrv.getPage(this.pagination, this.filter, this.sortBy,
+        return this.selectedReport ? this.entitySrv.getPage(this.pagination, this.filter, this.sortBy,
             new HttpParams().set('report', `${this.app}/${this.selectedReport.parent}/${this.selectedReport.name}`)
                 .set('app', this.app)) : of([]);
     }
@@ -159,13 +172,13 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             const cc = {reportType: new FormControl<string>(''), name: new FormControl<string>('')};
 
             this.data.forEach(e => {
-                cc[e.name] = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp'? e.valueString?.substring(0, 11) + '05:00:00' : e.valueString);
+                cc[e.name] = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp' ? e.valueString?.substring(0, 11) + '05:00:00' : e.valueString);
                 if (e.lookupTable) {
                     e.lookupModel = new ParamAutoCompleteModel(this.paramLookupSrv, e.lookupTable);
                     e.description = e.description.substring(0, e.description.indexOf('//'));
                 }
             });
-            cc['reportType'] = new FormControl(this.isLTM()? 'HTML' : 'PDF');
+            cc['reportType'] = new FormControl(this.isLTM() ? 'HTML' : 'PDF');
             this.form = new FormGroup(cc);
         });
     }
@@ -174,7 +187,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         return valueList?.map(x => x.description).join(' ');
     }
 
-    private doReportGeneration(res: any, data: ReportViewData): Window|null {
+    private doReportGeneration(res: any, data: ReportViewData): Window | null {
         if (this.form.value.reportType === 'EXCEL') {
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(res);
@@ -214,49 +227,67 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             paramList: this.createList()
         };
 
-        const loop: Observable<unknown> = this.httpSrv
-            .get(`/reports/view?uuid=${this.uuid}`)
-            .pipe(delay(3000),
-                  switchMap(res => res['processing'] ? loop : of(res)));
 
-        const obs = (this.form.value.reportType === 'HTML') ?
-            this.reportService.viewHTML(data) : this.reportService.viewPDF(data);
 
-        obs.pipe(
-            retry({ delay: (error, retryCount) => {
-                  if (error.status === 500 || retryCount > 15) {
-                      throw error;
-                  }
-                  return timer(10_000);
-                }}),
 
-            map(res => {
-                if (this.form.value.reportType === 'HTML') {
-                    return res;
-                } else {
-                    const obj: Blob = <Blob>res;
-                    return new Blob([obj], { type: this.getMimeType() });
-                }
-            }),
-            switchMap(res => {
-                const w = this.doReportGeneration(res, data);
-                return of(w).pipe(delay(300));
-            }),
-        ).subscribe({
-            next: win => {
+        this.reportService.put(data)
+            .pipe(switchMap(jobId => {
+                    return timer(0, this.POLL_INTERVAL_MS)
+                        .pipe(
+                            switchMap(() => this.reportService.getStatus('/reports/view', jobId)),
+                            takeWhile((statusRes, index) => statusRes.status === 102 && index < 100, true)
+                        )
+                }),
+                switchMap(res => data.rType === 'HTML' ? scheduled((<Blob>res.body).text(), asapScheduler) : of(res.body)),
+                tap(res => this.doReportGeneration(res, data)))
+            .subscribe({
+            next: res => {
                 this.generating.set(false);
-                if (win) {
-                    try {
-                        win.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
-                    } catch (e) {}
-                }
-            },
-            error: err => {
+            }, error: err => {
                 this.generating.set(false);
                 throw err;
             }
         });
+        /*
+        const loop: Observable<unknown> = this.httpSrv
+            .get(`/reports/view?uuid=${this.uuid}`)
+            .pipe(delay(3000),
+                switchMap(res => res['processing'] ? loop : of(res)));
+                obs.pipe(
+                    retry({ delay: (error, retryCount) => {
+                          if (error.status === 500 || retryCount > 15) {
+                              throw error;
+                          }
+                          return timer(10_000);
+                        }}),
 
+                    map(res => {
+                        if (this.form.value.reportType === 'HTML') {
+                            return res;
+                        } else {
+                            const obj: Blob = <Blob>res;
+                            return new Blob([obj], { type: this.getMimeType() });
+                        }
+                    }),
+                    switchMap(res => {
+                        const w = this.doReportGeneration(res, data);
+                        return of(w).pipe(delay(300));
+                    }),
+                ).subscribe({
+                    next: win => {
+                        this.generating.set(false);
+                        if (win) {
+                            try {
+                                win.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
+                            } catch (e) {}
+                        }
+                    },
+                    error: err => {
+                        this.generating.set(false);
+                        throw err;
+                    }
+                });
+        */
     }
 
     getMimeType(): string {
@@ -278,18 +309,18 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     createList(): ParamValue[] {
         return this.data
             .filter(p => this.form.controls[p.name] &&
-                                     this.form.controls[p.name].value !== null &&
-                                     this.form.controls[p.name].value !== '')
+                this.form.controls[p.name].value !== null &&
+                this.form.controls[p.name].value !== '')
             .map(p => {
-                return { name: p.name, value: this.defaultValue(p.name, p.typeName) };
+                return {name: p.name, value: this.defaultValue(p.name, p.typeName)};
             });
     }
 
 
     private defaultValue(ctrlName: string, typeName: string): any {
         const value = this.form.controls[ctrlName].value;
-        return typeName === 'java.sql.Timestamp'? dateTimeToStr(value).substring(0, 19):
-            value === false? 'false' : value === true? 'true' : value;
+        return typeName === 'java.sql.Timestamp' ? dateTimeToStr(value).substring(0, 19) :
+            value === false ? 'false' : value === true ? 'true' : value;
     }
 
     private async writeThenOpenFile(fileBlob: any): Promise<void> {
@@ -304,7 +335,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             path: 'report.pdf',
             directory: Directory.Documents
         });
-        return  await FileOpener.open({ filePath: path.uri });
+        return await FileOpener.open({filePath: path.uri});
     }
 
     private blobToBse64(blob: Blob): Promise<string> {
@@ -336,6 +367,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 super.refresh(callback);
             });
     }
+
     protected canShowProcessingStatus(): boolean {
         return false;
     }
@@ -355,17 +387,17 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.httpSrv
             .post(`/reports/save-params`, data)
             .subscribe({
-            next: res => {
-                if (res['count']) {
-                    this.snackBarSrv.showSuccessMessage();
-                }
-                this.generating.set(false);
-            },
-            error: err => {
+                next: res => {
+                    if (res['count']) {
+                        this.snackBarSrv.showSuccessMessage();
+                    }
+                    this.generating.set(false);
+                },
+                error: err => {
                     this.generating.set(false);
                     throw err;
-            }
-        });
+                }
+            });
         this.showParameterSaveButton.set(false);
     }
 
