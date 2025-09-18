@@ -37,6 +37,7 @@ mat-card {
     display: flex;
     flex-wrap: wrap;
     justify-items: stretch;
+    align-items: flex-start;
     gap: 1em;
     width: 100%;
     overflow: hidden;
@@ -79,6 +80,20 @@ mat-form-field {
 
 .company__detail {
     flex: 2 1 35em;
+}
+
+.email {
+    flex: 1.2 1 30em;
+}
+
+.memo {
+    flex: 3 0 60%;
+    padding: 0;
+}
+
+.default {
+    flex: 1 1 auto;
+    max-width: 300px;
 }
 
 mat-toolbar {

@@ -227,6 +227,7 @@ export class CrmLeadsDetailComponent implements OnInit {
             postalCode: [b?.postalCode],
             probability: [b?.probability || 0],
             isDeleted: [false],
+            memo: [b.memo]
         });
     }
 
