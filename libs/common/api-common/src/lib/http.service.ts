@@ -88,7 +88,7 @@ export class HttpService {
             }));
     }
 
-    public getBlob(url: string, httpParams?: HttpParams, timeout = 0): Observable<Blob> {
+    public getBlob(url: string, httpParams?: HttpParams): Observable<Blob> {
         if (this.baseUrl == null || url == null) {
             throw new Error('Invalid URL');
         }
@@ -148,7 +148,30 @@ export class HttpService {
                     observe: 'response',
                     params: httpParams
                 }
-            );
+            ).pipe(tap(ress => console.log(ress.status)));
+    }
+    public getBlobResponse(url: string, httpParams?: HttpParams): Observable<HttpResponse<Object>> {
+        if (this.baseUrl === undefined) {
+            //    this.baseUrl = '';
+            throw new Error('HTTP SERVICE NOT READY');
+        }
+        if (this.baseUrl == null || url == null) {
+            throw new Error('Invalid URL: ' + this.baseUrl + url);
+        }
+        const fullURL = this.baseUrl + url;
+        if (fullURL.endsWith('NaN')) {
+            throw new Error('Invalid URI: ' + url);
+        }
+        return this
+            .httpClient
+            .get(fullURL,
+                {
+                    headers: HttpService.getHeaders(),
+                    observe: 'response',
+                    params: httpParams,
+                    responseType: 'blob'
+                }
+            ).pipe(tap(ress => console.log(ress.status)));
     }
 
     public post(url: string, data?: any | null): Observable<any> {
@@ -258,7 +281,7 @@ export class HttpService {
             );
     }
 
-    public putBlob(url: string, data?: any | null, timeout = 600000): Observable<ArrayBuffer> {
+    public putBlob(url: string, data?: any | null): Observable<ArrayBuffer> {
         return this
             .httpClient
             .put(this.baseUrl + url,

@@ -1,6 +1,6 @@
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
-import {HttpParams} from '@angular/common/http';
+import {HttpParams, HttpResponse} from '@angular/common/http';
 import {HttpService, isString, PaginationModel} from '@ss/common/api-common';
 import {Sort} from '@angular/material/sort';
 
@@ -31,6 +31,11 @@ export class BaseEntityService<T> {
     public excel(filter?: string): Observable<Blob> {
         const params = filter? new HttpParams().set('filter', filter) : null;
         return this.httpSrv.getBlob(this.getUrl() + '/excel', params);
+    }
+    public getBlob(url: string, httpParams?: HttpParams): Observable<Blob> {
+        console.log('url*****************************', this.getUrl() + url)
+        const res =  this.httpSrv.getBlob(this.getUrl() + url, httpParams);
+        return res;
     }
 
     public json(filter?: string): Observable<Blob> {
@@ -92,7 +97,9 @@ export class BaseEntityService<T> {
     getParentId() {
         return this.parentId;
     }
-
+    public putBlob(url: string, data?: any | null): Observable<ArrayBuffer> {
+        return this.httpSrv.putBlob(this.getUrl() + url, data);
+    }
     protected getUrl(): string {
         if (this.parentUrl) {
             if (this.parentId == null) {
@@ -118,5 +125,10 @@ export class BaseEntityService<T> {
 
     get sortColumn(): string {
         return this._sortColumn;
+    }
+
+    public getStatus(url: string, uuid: string): Observable<HttpResponse<Object>> {
+        return this.httpSrv
+            .getBlobResponse(url, new HttpParams().set('uuid', uuid));
     }
 }
