@@ -351,6 +351,10 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 if (location) {
                     this.form.controls['reference'].setValue(location.reference);
                     this.form.controls['store'].setValue(location.storeId);
+                    this.articleStock = location.stock;
+
+                    const priceList = [location.price1, location.price2, location.price3, location.price4, location.price5];
+                    this.form.controls['price'].setValue(priceList[this.#priceIndex]);
                 }
             });
     }
