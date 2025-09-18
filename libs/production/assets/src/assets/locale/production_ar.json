@@ -24,5 +24,8 @@
     "LOT_PRIORITY": "أولويات الحصص",
     "RM":                     "م.أ",
     "SF":                     "ن.ن",
-    "FP":                     "م.ن"
+    "FP":                     "م.ن",
+    "PRICE1":                 "Price 1",
+    "PRICE2":                 "Price 2",
+    "PRICE3":                 "Price 3"
 }
