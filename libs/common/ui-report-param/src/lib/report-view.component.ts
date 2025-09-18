@@ -26,7 +26,20 @@ import {
     PaginatorPersistenceService
 } from '@ss/common/api-common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {delay, Observable, of, retry, takeWhile, tap, throwError, timeout, timer} from 'rxjs';
+import {
+    asapScheduler,
+    delay,
+    from,
+    Observable,
+    of,
+    retry,
+    scheduled,
+    takeWhile,
+    tap,
+    throwError,
+    timeout,
+    timer
+} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 import {FormControl, FormGroup, UntypedFormGroup} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
@@ -225,7 +238,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                             takeWhile((statusRes, index) => statusRes.status === 102 && index < 100, true)
                         )
                 }),
-                tap(res => this.doReportGeneration(res.body, data)))
+                switchMap(res => data.rType === 'HTML' ? scheduled((<Blob>res.body).text(), asapScheduler) : of(res.body)),
+                tap(res => this.doReportGeneration(res, data)))
             .subscribe({
             next: res => {
                 this.generating.set(false);

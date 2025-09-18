@@ -148,9 +148,9 @@ export class HttpService {
                     observe: 'response',
                     params: httpParams
                 }
-            ).pipe(tap(ress => console.log(ress.status)));
+            );
     }
-    public getBlobResponse(url: string, httpParams?: HttpParams): Observable<HttpResponse<Object>> {
+    public getBlobResponse(url: string, httpParams?: HttpParams): Observable<HttpResponse<Blob>> {
         if (this.baseUrl === undefined) {
             //    this.baseUrl = '';
             throw new Error('HTTP SERVICE NOT READY');
@@ -171,7 +171,7 @@ export class HttpService {
                     params: httpParams,
                     responseType: 'blob'
                 }
-            ).pipe(tap(ress => console.log(ress.status)));
+            );
     }
 
     public post(url: string, data?: any | null): Observable<any> {
