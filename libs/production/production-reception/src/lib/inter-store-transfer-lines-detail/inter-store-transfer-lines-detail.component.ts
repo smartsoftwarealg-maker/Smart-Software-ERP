@@ -37,8 +37,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class InterStoreTransferLinesDetailComponent
     extends BaseChildEntityDetailComponent<InterStoreTransferLine>
-    implements OnInit
-{
+    implements OnInit {
     #dialog = inject(MatDialog);
     #formBuilder = inject(FormBuilder);
     #lotSrv = inject(LotsService);
@@ -53,7 +52,7 @@ export class InterStoreTransferLinesDetailComponent
     // storeLookup2: LotAutoCompleteModel = new LotAutoCompleteModel(this.lotSrv);
     storeName = signal('');
     stock = signal(0);
-    qtyIsnull = signal(false);
+    qtyIsNotNull = signal(false);
 
     constructor(protected override entitySrv: InterStoreTransferLinesService) {
         super(entitySrv, 'PROD_INTER_STORE_TRANSFER_DETAIL');
@@ -68,14 +67,14 @@ export class InterStoreTransferLinesDetailComponent
                 .getStock(e.sourceRef, e.sourceStore)
                 .subscribe( res => this.stock.set(res.stock));
         }
-        this.qtyIsnull.set(e.qty == 0)
+        this.qtyIsNotNull.set(e.id > 0 && (e?.qty||0) > 0)
 
         return this.#formBuilder.group({
             id:               [e.id],
             parentId:         [e.parentId],
             rightId:          [e.rightId || 0],
-            sourceRef:        [{ value: e.sourceRef, disabled: this.qtyIsnull}, Validators.required],
-            sourceStore:      [{value:e.sourceStore, disabled: this.qtyIsnull}, Validators.required],
+            sourceRef:        [{ value: e.sourceRef,  disabled: this.qtyIsNotNull()}, Validators.required],
+            sourceStore:      [{ value:e.sourceStore, disabled: this.qtyIsNotNull()}, Validators.required],
             qty:              [e.qty||0, Validators.required],
             destinationRef:   [e.destinationRef],
             storeDescription: [e.storeDescription],

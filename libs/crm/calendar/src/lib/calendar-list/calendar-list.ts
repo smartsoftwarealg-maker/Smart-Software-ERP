@@ -29,7 +29,6 @@ import { MatSort, Sort } from '@angular/material/sort';
         MatHeaderCell,
         MatHeaderRow,
         MatHeaderRowDef,
-        MatMiniFabButton,
         MatRow,
         MatRowDef,
         MatTable,

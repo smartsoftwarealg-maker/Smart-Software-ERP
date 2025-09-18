@@ -34,7 +34,7 @@
                             (click)="showSearchDialog()"
                             color="accent"
                             [matTooltip]=message
-                            [disabled]="!qtyIsnull()">
+                            [disabled]="qtyIsNotNull()">
                         <i class="fas fa-search icon"></i>
                     </button>
                 </div>
