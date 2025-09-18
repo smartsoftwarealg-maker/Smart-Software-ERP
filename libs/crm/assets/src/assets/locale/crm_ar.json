@@ -126,5 +126,6 @@
     "ACTIVE":               "نشط",
     "INACTIVE":             "غير نشط",
     "DEPRECATED":           "مهمل / غير مدعوم",
-    "CALENDAR":             "التقويم"
+    "CALENDAR":             "التقويم",
+    "CONVERT":              "تحويل"
 }

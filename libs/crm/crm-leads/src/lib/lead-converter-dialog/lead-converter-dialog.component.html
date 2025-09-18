@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-card-content>
+        <form novalidate [formGroup]="form">
+            <mat-form-field class="default-100" autofocus>
+                <mat-label translate>CRM_LEAD</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="leadLookup"
+                                  formControlName="leadId"
+                                  required="true"
+                                  autofocus>
+                </ss-auto-complete>
+                @if (form.controls['leadId'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="default-100" autofocus>
+                <mat-label translate>COMMON_COMPANY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="companyLookup"
+                                  formControlName="companyId"
+                                  required="true"
+                                  autofocus>
+                </ss-auto-complete>
+                @if (form.controls['companyId'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="default-100" autofocus>
+                <mat-label translate>LOGISTICS_CONTACT</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="contactLookup"
+                                  formControlName="contactId"
+                                  required="true"
+                                  autofocus>
+                </ss-auto-complete>
+                @if (form.controls['contactId'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-footer>
+        <div class="ctrl-div">
+            <div>
+                <button mat-raised-button color="primary"
+                        type="button"
+                        (click)="save()"
+                        [disabled]="form.invalid">
+                    <i class="fa-solid fa-floppy-disk  icon"></i>
+                    {{ 'COMMON_SAVE' | translate }}
+                </button>
+            </div>
+            <div>
+                <button mat-raised-button color="warn" type="button" (click)="cancel()">
+                    <i class="fa-solid fa-rotate-left icon"></i>
+                    {{ 'COMMON_CANCEL' | translate }}
+                </button>
+            </div>
+        </div>
+    </mat-card-footer>
+</mat-card>

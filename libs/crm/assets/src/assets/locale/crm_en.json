@@ -117,14 +117,16 @@
     "MARKETING":           "Marketing",
     "FEEDBACK_SURVEYS":    "Feedback surveys",
     "RENEWAL_UPSELL":      "Renewal upsell",
-    "EVENT PROMOTION":     "EVENT PROMOTION",
+    "EVENT PROMOTION":     "Event promotion",
     "REFERRAL PROGRAM":    "Referral program",
     "COMPLIANCE":          "Compliance",
     "INTERNAL":            "Internal",
     "TRIAL":               "Trial",
-    "ABANDONED CART":      "ABANDONED CART",
+    "ABANDONED CART":      "Abandoned cart",
     "ACTIVE":              "Active",
-    "INACTIVE":            "INACTIVE",
-    "DEPRECATED":          "DEPRECATED",
-    "CALENDAR":            "Calendar"
+    "INACTIVE":            "Inactive",
+    "CALENDAR":            "Calendar",
+    "DEPRECATED":          "Deprecated",
+    "CONVERT":             "Convert"
+
 }

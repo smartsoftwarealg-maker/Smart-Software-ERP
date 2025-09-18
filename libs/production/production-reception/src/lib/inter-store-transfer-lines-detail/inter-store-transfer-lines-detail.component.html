@@ -33,7 +33,8 @@
                     <button mat-mini-fab
                             (click)="showSearchDialog()"
                             color="accent"
-                            [matTooltip]=message>
+                            [matTooltip]=message
+                            [disabled]="!qtyIsnull()">
                         <i class="fas fa-search icon"></i>
                     </button>
                 </div>

@@ -53,6 +53,7 @@ export class InterStoreTransferLinesDetailComponent
     // storeLookup2: LotAutoCompleteModel = new LotAutoCompleteModel(this.lotSrv);
     storeName = signal('');
     stock = signal(0);
+    qtyIsnull = signal(false);
 
     constructor(protected override entitySrv: InterStoreTransferLinesService) {
         super(entitySrv, 'PROD_INTER_STORE_TRANSFER_DETAIL');
@@ -67,14 +68,14 @@ export class InterStoreTransferLinesDetailComponent
                 .getStock(e.sourceRef, e.sourceStore)
                 .subscribe( res => this.stock.set(res.stock));
         }
-
+        this.qtyIsnull.set(e.qty == 0)
 
         return this.#formBuilder.group({
             id:               [e.id],
             parentId:         [e.parentId],
             rightId:          [e.rightId || 0],
-            sourceRef:        [{ value: e.sourceRef, disabled: e.qty > 0 }, Validators.required],
-            sourceStore:      [e.sourceStore, Validators.required],
+            sourceRef:        [{ value: e.sourceRef, disabled: this.qtyIsnull}, Validators.required],
+            sourceStore:      [{value:e.sourceStore, disabled: this.qtyIsnull}, Validators.required],
             qty:              [e.qty||0, Validators.required],
             destinationRef:   [e.destinationRef],
             storeDescription: [e.storeDescription],
