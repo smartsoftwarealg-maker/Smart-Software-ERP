@@ -77,7 +77,7 @@ export class ProductionArticleDetailComponent
     hasBoom = signal(false);
 
     constructor(
-        public entitySrv: ArticleService,
+        public override entitySrv: ArticleService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -125,6 +125,8 @@ export class ProductionArticleDetailComponent
             salesUnit:    [a.salesUnit],
             purchaseUnit: [a.purchaseUnit],
             price1:       [a.price1 || 0],
+            price3:       [a.price2 || 0],
+            price2:       [a.price3 || 0],
             reference:    [a.reference, Validators.required],
             appId:        [a.appId || this.entitySrv.getParentId()],
             notForSale:   [a.notForSale || false, Validators.required],

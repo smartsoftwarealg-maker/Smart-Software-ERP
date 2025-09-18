@@ -57,6 +57,8 @@ export interface Article {
     articleType: number;
     accountno: string;
     price1: number;
+    price2: number;
+    price3: number;
     awp?: number;
     appId: number;
     salesUnit: number;

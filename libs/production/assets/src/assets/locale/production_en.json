@@ -24,5 +24,8 @@
     "LOT_PRIORITY":           "Lot priorities",
     "RM":                     "RM",
     "SF":                     "SF",
-    "FP":                     "FP"
+    "FP":                     "FP",
+    "PRICE1":                 "Price 1",
+    "PRICE2":                 "Price 2",
+    "PRICE3":                 "Price 3"
 }
