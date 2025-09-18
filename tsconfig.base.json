@@ -288,6 +288,7 @@
                 "libs/costing/costing-utils/src/index.ts"
             ],
             "@ss/crm/assets": ["libs/crm/assets/src/index.ts"],
+            "@ss/crm/calendar-list": ["libs/crm/calendar/src/index.ts"],
             "@ss/crm/campaign": ["libs/crm/campaign/src/index.ts"],
             "@ss/crm/contact-methods": [
                 "libs/crm/contact-methods/src/index.ts"
