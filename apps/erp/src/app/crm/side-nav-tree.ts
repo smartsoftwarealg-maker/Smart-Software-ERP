@@ -13,7 +13,7 @@ export const crmNavTree: SideNavNode = {
     name: 'CRM',
     icon: 'fa-solid fa-handshake',
     children: [
-        {
+        /*{
             name: 'CRM_SALUTATIONS',
             icon: 'fa-solid fa-handshake-simple',
             route: ABS_CRM_SALUTATIONS_URL,
@@ -48,7 +48,7 @@ export const crmNavTree: SideNavNode = {
             icon: 'fa-solid fa-money-check-dollar-pen',
             route: ABS_CRM_PAYMENT_TERMS_URL,
             accessRights: 'CRMPaymentTerm'
-        },
+        },*/
         {
             name: 'CRM_MAILING_LIST',
             icon: 'fa-solid fa-inbox',
