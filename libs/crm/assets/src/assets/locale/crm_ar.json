@@ -125,5 +125,7 @@
     "ABANDONED CART":       "سلة مهجورة",
     "ACTIVE":               "نشط",
     "INACTIVE":             "غير نشط",
-    "DEPRECATED":           "مهمل / غير مدعوم"
+    "DEPRECATED":           "مهمل / غير مدعوم",
+    "CALENDAR":             "التقويم",
+    "CONVERT":              "تحويل"
 }

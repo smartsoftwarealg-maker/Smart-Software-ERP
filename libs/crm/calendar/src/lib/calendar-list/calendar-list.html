@@ -1,0 +1,71 @@
+<div class="ctrl__div size">
+    <button matButton (click)="search()"><span><i
+        class="fa-solid fa-magnifying-glass"></i> {{ 'COMMON_SEARCH'|translate }}</span></button>
+</div>
+
+<div class="div_table size">
+    @if (!loading) {
+        <div class="table__div">
+            <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+                <ng-container matColumnDef="subject">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_SUBJECT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.subject }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="activityType">
+                    <mat-header-cell *matHeaderCellDef translate>CRM_ACTIVITY_TYPE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.activityType }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="priority">
+                    <mat-header-cell *matHeaderCellDef translate>CRM_PRIORITY</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.priority | translate }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.status | translate }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="dueDate">
+                    <mat-header-cell *matHeaderCellDef translate>CRM_DUE_DATE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.dueDate | date: 'dd/MM/yyyy' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="completionDate">
+                    <mat-header-cell *matHeaderCellDef translate>CRM_COMPLETION_DATE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.completionDate | date: 'dd/MM/yyyy' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="ownerDescription">
+                    <mat-header-cell *matHeaderCellDef translate>CRM_OWNER</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.ownerDescription }}
+                    </mat-cell>
+                </ng-container>
+
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.id == selectedRow?.id" (click)="selectRow(row)"
+                         *matRowDef="let row; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+        </div>
+    }
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
