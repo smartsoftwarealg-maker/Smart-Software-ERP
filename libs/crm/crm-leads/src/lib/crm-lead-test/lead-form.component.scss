@@ -1,0 +1,66 @@
+.crm-lead-form {
+    padding: 24px;
+    font-family: "Roboto", "Helvetica", sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.form-title {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 500;
+    color: #1976d2;
+}
+
+.form-subtitle {
+    margin: 0 0 24px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.lead-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.section {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fafafa;
+}
+
+.section legend {
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0 8px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.flex-1 {
+    flex: 1 1 300px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 16px;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    border-radius: 8px;
+}

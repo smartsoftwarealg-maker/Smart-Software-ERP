@@ -1,4 +1,4 @@
-<div class="ctrl_div default-100">
+<div class="ctrl_div b-primary">
     <button mat-mini-fab color="primary"
             [matTooltip]="'COMMON_SAVE' | translate"
             (click)="save()"
@@ -16,17 +16,12 @@
 
 <mat-card>
     @if (form) {
-        <form novalidate [formGroup]="form" class="grouped-form">
+        <form [formGroup]="form">
 
-            <mat-form-field class="default-33">
-                <mat-label translate>COMMON_SUBJECT</mat-label>
-                <input matInput formControlName="subject">
-            </mat-form-field>
-
-            <mat-form-field class="default-33">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>CRM_ACTIVITY_TYPE</mat-label>
                 <mat-select formControlName="activityType">
-                    @for (a of ACTIVITY_TYPE;track a) {
+                    @for (a of ACTIVITY_TYPE; track a) {
                         <mat-option [value]="a" translate>CRM_{{ a }}</mat-option>
                     }
                 </mat-select>
@@ -35,22 +30,30 @@
                 }
             </mat-form-field>
 
-            <mat-form-field class="default-33">
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_SUBJECT</mat-label>
+                <input matInput formControlName="subject">
+            </mat-form-field>
+
+            <mat-form-field class="default-25 sm-100">
                 <mat-label translate>CRM_PRIORITY</mat-label>
-                <input matInput formControlName="priority">
+                <mat-select formControlName="priority">
+                    @for (p of priority; track p) {
+                        <mat-option [value]="p" translate>CRM_{{ p }}</mat-option>
+                    }
+                </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="default-33">
+            <mat-form-field class="default-25 sm-100">
                 <mat-label translate>COMMON_STATUS</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="statusAutoCompleteModel"
-                                  formControlName="status"></ss-auto-complete>
-                @if (form.controls['status'].invalid) {
-                    <mat-error translate>COMMON_STATUS</mat-error>
+                <mat-select formControlName="status">
+                @for (s of status; track s) {
+                    <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                 }
+                </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="default-33">
+            <mat-form-field class="default-25 sm-100">
                 <mat-label translate>CRM_DUE_DATE</mat-label>
                 <ss-date-picker formControlName="dueDate"
                                 [type]="'date'"
@@ -58,14 +61,13 @@
                 </ss-date-picker>
             </mat-form-field>
 
-            <mat-form-field class="default-33">
+            <mat-form-field class="default-25 sm-100">
                 <mat-label translate>CRM_COMPLETION_DATE</mat-label>
                 <ss-date-picker formControlName="completionDate"
-                                [type]="'date'"
-                                [required]=true>
+                                [type]="'date'">
                 </ss-date-picker>
             </mat-form-field>
-            <mat-form-field class="default-33">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_CREATED_BY</mat-label>
                 <ss-auto-complete matInput
                                   [required]="true"
@@ -75,30 +77,40 @@
                 </ss-auto-complete>
             </mat-form-field>
 
-            <mat-form-field class="default-33">
+            <mat-form-field class="default-50 sm-100">
                 <mat-label translate>CRM_OWNER</mat-label>
                 <ss-auto-complete matInput
                                   [model]="usersLookup"
                                   formControlName="ownerId">
                 </ss-auto-complete>
             </mat-form-field>
-
-        </form>
-        <form [formGroup]="htmlForm">
-            @if (form?.value.activityType === 'EMAIL') {
-                <mat-form-field class="default-33">
-                    <mat-label>Email To</mat-label>
-                    <input matInput formControlName="toEmail" required>
+            @if (form.controls['activityType'].value === "EMAIL") {
+            } @else {
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_DETAIL</mat-label>
+                    <textarea matInput formControlName="detail" ></textarea>
                 </mat-form-field>
             }
-            <div class="editor">
-                @if (editor) {
-                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary">
-                    </ngx-editor-menu>
-                    <ngx-editor [editor]="editor" formControlName="editorContent">
-                    </ngx-editor>
-                }
-            </div>
+<!--            <pre>{{ form.value | json }}</pre>-->
         </form>
+
+
+<!--        <form [formGroup]="htmlForm" class="default-100">-->
+<!--            @if (form?.value.activityType === 'EMAIL') {-->
+<!--                <mat-form-field class="default-50 sm-100">-->
+<!--                    <mat-label>Email To</mat-label>-->
+<!--                    <input matInput formControlName="toEmail" required>-->
+<!--                </mat-form-field>-->
+<!--            }-->
+
+<!--            <div class="editor">-->
+<!--                @if (editor) {-->
+<!--                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary">-->
+<!--                    </ngx-editor-menu>-->
+<!--                    <ngx-editor [editor]="editor" formControlName="editorContent">-->
+<!--                    </ngx-editor>-->
+<!--                }-->
+<!--            </div>-->
+<!--        </form>-->
     }
 </mat-card>

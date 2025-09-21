@@ -127,5 +127,9 @@
     "INACTIVE":              "Inactif",
     "DEPRECATED":            "Obsolète",
     "CALENDAR":              "Calendrier",
-    "CONVERT":               "Convertir"
+    "CONVERT":               "Convertir",
+    "FAILED":                "Échoué",
+    "NO_SHOW":               "Non présent",
+    "PENDING":               "En attente",
+    "COMPLETED":             "Terminé"
 }

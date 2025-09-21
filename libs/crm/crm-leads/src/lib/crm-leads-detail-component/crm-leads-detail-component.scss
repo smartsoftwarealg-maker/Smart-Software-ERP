@@ -20,7 +20,7 @@ mat-card {
 .ctrl__div {
     display: flex;
     justify-content: flex-end;
-    gap: 1em;
+    gap: 2px;
 }
 
 .detail__div {
@@ -91,15 +91,42 @@ mat-form-field {
     padding: 0;
 }
 
+.progress__div {
+    display: flex;
+    gap: 2px;
+    width: 100%;
+    justify-content: flex-end;
+}
+
 .default {
     flex: 1 1 auto;
     max-width: 300px;
 }
 
 mat-toolbar {
-    max-height: 40px;
+    margin-top: 0.5em;
     margin-bottom: 0.5em;
-    font-weight: bolder;
+    font-weight: 800;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.section {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fafafa;
+}
+.row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.flex-1 {
+    flex: 1 1 300px;
 }
 
 
@@ -115,4 +142,5 @@ mat-toolbar {
                              "ecd     campaign optout";
     }
 }
+
 

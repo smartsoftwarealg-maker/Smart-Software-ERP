@@ -14,11 +14,12 @@ import {
 } from '@angular/material/table';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { MatMiniFabButton } from '@angular/material/button';
+import {MatButton, MatMiniFabButton} from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { CRMLeadActivity } from '../lead-activity-api';
 import { CrmLeadActivityService } from '../crm-lead-activity.service';
 import { DatePipe } from '@angular/common';
+import {MatToolbar} from "@angular/material/toolbar";
 
 @Component({
     selector: 'ss-crm-leads-activity-list',
@@ -41,7 +42,8 @@ import { DatePipe } from '@angular/common';
         MatMiniFabButton,
         TranslatePipe,
         MatTooltip,
-        DatePipe
+        DatePipe,
+        MatButton
     ]
 })
 export class CrmLeadsActivityListComponent extends BaseChildEntityListComponent<CRMLeadActivity> {
@@ -65,14 +67,13 @@ export class CrmLeadsActivityListComponent extends BaseChildEntityListComponent<
     @Output()
     onEdit = new EventEmitter<number>();
 
-    edit() {
+    override edit() {
         if (this.selectedId) {
             this.onEdit.emit(this.selectedId);
         }
     }
 
     add() {
-
         this.onEdit.emit(0);
     }
 
@@ -85,7 +86,7 @@ export class CrmLeadsActivityListComponent extends BaseChildEntityListComponent<
         super.ngOnInit();
     }
 
-    showDetail(id: number) {
+    override showDetail(id: number) {
         this.onEdit.emit(id);
     }
 }

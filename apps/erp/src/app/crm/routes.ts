@@ -78,6 +78,7 @@ import {
     CrmEmailTemplatesListComponent
 } from '@ss/crm/email-templates';
 import { CalendarList } from '@ss/crm/calendar-list';
+import {LeadFormComponent} from "../../../../../libs/crm/crm-leads/src/lib/crm-lead-test/crm-lead-test.component";
 
 export const crmRoutes: Routes = [
     {
@@ -400,6 +401,7 @@ export const crmRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
+    { path: 'lead-test', component: LeadFormComponent},
     {
         path: CRM_CALENDAR_URL,
         children: [

@@ -1,12 +1,26 @@
-.table_div size  {
-    display: block;
-    position: relative;
-    width: 1350px;
-    margin: 8px auto;
+.ctrl__div,
+.size  {
+    width: 98%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+.table_div {
+    overflow: auto;
+    min-height: 20em;
+}
 
+mat-table {
+    height: fit-content;
+    min-width: fit-content;
+    min-height: 20em;
+}
 
+mat-toolbar {
+    margin-bottom: 0.5em;
+    font-weight: bolder;
+    border: red solid 1px;
+}
 
 .mat-column-subject {
     flex: 1 1 20%;
@@ -47,7 +61,8 @@
 
 .mat-header-cell, .mat-cell {
     padding: 4px 8px;
-    border-left: 1px solid white; }
+    border-left: 1px solid white;
+}
 
 
 mat-header-cell {
@@ -69,8 +84,10 @@ mat-header-cell {
 .ctrl__div {
     display: flex;
     justify-content: flex-end;
-    padding: 1px;
     gap: 8px;
+    padding: .5em;
+    margin-bottom: 8px;
+    height: fit-content;
 }
 
 .pagination-container {

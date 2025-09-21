@@ -1,4 +1,4 @@
-<div class="ctrl__div">
+<div class="ctrl__div b-primary">
     <button mat-mini-fab color="primary" (click)="add()" [matTooltip]="'COMMON_ADD' | translate">
         <span class="fas fa-plus"></span>
     </button>
@@ -18,12 +18,12 @@
 </div>
 
 <div class="table_div size">
-    <mat-table mat-table [dataSource]="data$" class="main-table">
+    <mat-table mat-table [dataSource]="data$">
 
         <ng-container matColumnDef="subject">
             <mat-header-cell *matHeaderCellDef translate>COMMON_SUBJECT</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                <a (click)="showDetail(e.id)">{{ e.subject }}</a>
+                <a mat-button (click)="showDetail(e.id)">{{ e.subject }}</a>
             </mat-cell>
         </ng-container>
 
