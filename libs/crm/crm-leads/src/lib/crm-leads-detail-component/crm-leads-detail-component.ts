@@ -27,12 +27,12 @@ import { CityService } from '@ss/common/api-lookup';
 import { CrmLeadsActivityListComponent } from '../crm-leads-activity-list/crm-leads-activity-list.component';
 import { CrmLeadsActivityLinesDetailComponent } from '../crm-leads-activity-lines-detail/crm-leads-activity-lines-detail.component';
 import { CrmLeadActivityService } from '../crm-lead-activity.service';
-import {
-    CRMOpportunity,
-    CRMOpportunityProgress,
-} from '../../../../crm-opportunity/src/lib/crm-opportunity-api';
 import { MatDialog } from '@angular/material/dialog';
 import { LeadConverterDialogComponent } from '../lead-converter-dialog/lead-converter-dialog.component';
+import { CrmTeamsService } from '@ss/crm/crm-teams';
+import {DeviceDetectorService} from "ngx-device-detector";
+import {BreakpointObserver} from "@angular/cdk/layout";
+import {toSignal} from "@angular/core/rxjs-interop";
 
 enum Panels {
     GENERAL = 0,
@@ -65,6 +65,8 @@ enum Panels {
     ],
 })
 export class CrmLeadsDetailComponent implements OnInit {
+    #breakPointObs =  inject(BreakpointObserver);
+    #teamSrv = inject(CrmTeamsService);
     #loginSrv = inject(LoginService);
     #userSrv = inject(UserListService);
     #campaignSrv = inject(CRMCampaignService);
@@ -77,13 +79,28 @@ export class CrmLeadsDetailComponent implements OnInit {
     #snackBarSrv = inject(SnackBarService);
     #shellSrv = inject(ShellService);
     #NOW = new Date();
+    #isHandset = toSignal(this.#breakPointObs.observe(['(max-width: 400px)']));
 
     campaignLookup = new DefaultAutoCompleteModel(this.#campaignSrv);
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
+    teamLookup = new DefaultAutoCompleteModel(this.#teamSrv);
     cityLookup = new DefaultAutoCompleteModel(this.#citySrv);
+    isMobile = computed(() => this.#isHandset()?.matches);
 
     formBuilder = inject(FormBuilder);
     dialog = inject(MatDialog);
+    readonly industries = [
+        'TECHNOLOGY',
+        'HEALTHCARE',
+        'FINANCE',
+        'MANUFACTURING',
+        'SERVICES',
+        'RETAIL',
+        'EDUCATION',
+        'NON-PROFIT',
+        'GOVERNMENT',
+        'OTHER',
+    ];
 
     public STATES = [
         'NEW',
@@ -134,17 +151,6 @@ export class CrmLeadsDetailComponent implements OnInit {
 
     public form: UntypedFormGroup | null = null;
 
-    // form = this.formBuilder.group({
-    //     id: [0],
-    //     firstName: [''],
-    //     lastName: [''],
-    //     email: [''],
-    //     phone: [''],
-    //     status: [''],
-    //     createdAt: [new Date()],
-    //     createdBy: [this.#loginSrv.appCtx.agentId || 0],
-    //     username: ['s'],
-    // });
 
     ngOnInit(): void {
         const id = +this.#route.snapshot.paramMap.get('id');
@@ -202,32 +208,31 @@ export class CrmLeadsDetailComponent implements OnInit {
             state: [b?.state],
             status: [b?.status || 'NEW'],
             source: [b?.source || 'WEB'],
-            createdAt: [b?.createdAt || this.#NOW, Validators.required],
-            createdBy: [
-                b?.createdBy || this.#loginSrv.appCtx.id,
-                Validators.required,
-            ],
-            updatedAt: [b?.updatedAt || this.#NOW],
-            expectedCloseDate: [b?.expectedCloseDate],
-            campaignId: [b?.campaignId],
-            ownerId: [b?.ownerId],
-            priority: [b?.priority || 'LOW'],
-            score: [b?.score || 0, [Validators.min(0), Validators.max(10)]],
-            company: [b?.company],
-            companySite: [b?.companySite],
-            companyIndustry: [b?.companyIndustry],
-            annualRevenue: [b?.annualRevenue, Validators.min(0)],
-            numberOfEmployees: [b?.numberOfEmployees, Validators.min(0)],
-            lastName: [b?.lastName],
-            firstName: [b?.firstName],
-            jobTitle: [b?.jobTitle],
-            addressLine1: [b?.addressLine1],
-            addressLine2: [b?.addressLine2],
-            city: [b?.city],
-            postalCode: [b?.postalCode],
-            probability: [b?.probability || 0],
-            isDeleted: [false],
-            memo: [b.memo]
+            createdAt:          [b?.createdAt || this.#NOW, Validators.required],
+            createdBy:          [ b?.createdBy || this.#loginSrv.appCtx.id, Validators.required, ],
+            updatedAt:          [b?.updatedAt || this.#NOW],
+            expectedCloseDate:  [b?.expectedCloseDate],
+            campaignId:         [b?.campaignId],
+            ownerId:            [b?.ownerId],
+            teamId:             [b?.teamId],
+            priority:           [b?.priority || 'LOW'],
+            score:              [b?.score || 0, [Validators.min(0), Validators.max(10)]],
+            company:            [b?.company],
+            companyDescription: [b?.companyDescription],
+            companySite:        [b?.companySite],
+            companyIndustry:    [b?.companyIndustry],
+            annualRevenue:      [b?.annualRevenue, Validators.min(0)],
+            numberOfEmployees:  [b?.numberOfEmployees, Validators.min(0)],
+            lastName:           [b?.lastName],
+            firstName:          [b?.firstName],
+            jobTitle:           [b?.jobTitle],
+            addressLine1:       [b?.addressLine1],
+            addressLine2:       [b?.addressLine2],
+            city:               [b?.city],
+            postalCode:         [b?.postalCode],
+            probability:        [b?.probability || 0],
+            isDeleted:          [false],
+            memo:               [b.memo]
         });
     }
 
@@ -249,13 +254,13 @@ export class CrmLeadsDetailComponent implements OnInit {
     saveProgress() {
         const form: CRMLead = this.form?.getRawValue();
         const val: CRMLeadProgress = {
-            id: form.id,
-            status: form.status,
-            score: form.score,
+            id:       form.id,
+            status:   form.status,
+            score:    form.score,
             priority: form.priority,
-            ownerId: form.ownerId,
-            teamId: form.teamId,
-            memo: form.memo,
+            ownerId:  form.ownerId,
+            teamId:   form.teamId,
+            memo:     form.memo,
         };
         this.#entitySrv.saveProgress(val).subscribe({
             next: () => {

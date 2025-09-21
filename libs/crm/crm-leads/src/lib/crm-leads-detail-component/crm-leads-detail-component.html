@@ -1,178 +1,168 @@
-<div class="ctrl__div">
+<mat-toolbar class="ctrl__div">
     <button matButton (click)="list()">
         @if (this.form?.touched && this.form.dirty) {
-            <span><i class="fa-solid fa-rotate-right"></i> {{ 'COMMON_CANCEL'|translate }}</span>
+            <i class="fa-solid fa-rotate-right"></i> <span>{{ 'COMMON_CANCEL'|translate }} </span>
         } @else {
-            <span><i class="fa-solid fa-rotate-left"></i> {{ 'COMMON_LIST'|translate }}</span>
+            <i class="fa-solid fa-rotate-left"></i> <span>{{ 'COMMON_LIST'|translate }}</span>
         }
     </button>
-    <button matButton (click)="select(Panels.DETAIL)"><i
-            class="fa-solid fa-list-ol"></i> {{ 'COMMON_DETAIL'|translate }}
+    <button matButton (click)="select(Panels.DETAIL)" [matTooltip]="'COMMON_DETAIL' | translate">
+        <i class="fa-solid fa-list-ol"></i>
+        @if (!isMobile()) {
+            {{ 'COMMON_DETAIL'|translate }}
+        }
     </button>
-    <button matButton (click)="select(Panels.CONTACT)"><i
-            class="fa-solid fa-phone"></i> {{ 'LOGISTICS_CONTACT'|translate }}
+    <button matButton (click)="select(Panels.CONTACT)" [matTooltip]="'LOGISTICS_CONTACT' | translate">
+        <i class="fa-solid fa-phone"></i>
+        @if (!isMobile()) {
+            {{ 'LOGISTICS_CONTACT'|translate }}
+        }
     </button>
-    <button matButton (click)="select(Panels.PROGRESS)"><i
-            class="fa-solid fa-arrow-progress"></i> {{ 'CRM_PROGRESS'|translate }}
+    <button matButton (click)="select(Panels.PROGRESS)" [matTooltip]="'CRM_PROGRESS' | translate">
+        <i class="fa-solid fa-arrow-progress"></i>
+        @if (!isMobile()) {
+            {{ 'CRM_PROGRESS'|translate }}
+        }
     </button>
     <button matButton
             (click)="select(Panels.ACTIVITY)"
-            [disabled]="leadId === 0">
-        <i class="fa-solid fa-list-check"></i> {{ 'CRM_ACTIVITIES' | translate }}
+            [disabled]="leadId === 0"
+            [matTooltip]="'CRM_ACTIVITIES' | translate">
+        <i class="fa-solid fa-list-check"></i>
+        @if (!isMobile()) {
+            {{ 'CRM_ACTIVITIES' | translate }}
+        }
     </button>
 
-
-    <button matButton (click)="save()"><span><i
-            class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
-</div>
+    <button matButton (click)="save()"
+            [matTooltip]="'COMMON_SAVE' | translate"
+            [disabled]="!form?.valid || isProgress()">
+        <i class="fa-solid fa-floppy-disk"></i>
+        @if (!isMobile()) {
+            {{ 'COMMON_SAVE'|translate }}
+        }
+    </button>
+</mat-toolbar>
 
 @if (form) {
     <form [formGroup]="form">
         <mat-card>
             <mat-card-header>
                 <mat-toolbar>
-                    <h6 translate>CRM_LEAD</h6>
+                    <span translate>CRM_LEAD</span>
                 </mat-toolbar>
 
             </mat-card-header>
             <mat-card-content>
-                <div class="detail__div">
-                    <mat-form-field class="descrip">
-                        <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                        <input matInput type="text" formControlName="description">
-                    </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                    <input matInput type="text" formControlName="description">
+                </mat-form-field>
 
-                    <mat-form-field class="opened">
-                        <mat-label translate>CRM_OPENED_AT</mat-label>
-                        <ss-date-picker formControlName="createdAt"
-                                        [type]="'date'"
-                                        [required]=true>
-                        </ss-date-picker>
-                    </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_SOURCE</mat-label>
+                    <mat-select formControlName="source">
+                        @for (s of SOURCE; track s) {
+                            <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
 
-                    <mat-form-field class="ecd">
-                        <mat-label translate>CRM_EXP_CLOSE_DATE</mat-label>
-                        <ss-date-picker formControlName="expectedCloseDate"
-                                        [type]="'date'">
-                        </ss-date-picker>
-                    </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CRM_CAMPAIGN</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="campaignLookup"
+                                      formControlName="campaignId">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-                    <mat-form-field class="source">
-                        <mat-label translate>COMMON_SOURCE</mat-label>
-                        <mat-select formControlName="source">
-                            @for (s of SOURCE; track s) {
-                                <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_OPENED_AT</mat-label>
+                    <ss-date-picker formControlName="createdAt"
+                                    [type]="'date'"
+                                    [required]=true>
+                    </ss-date-picker>
+                </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_EXP_CLOSE_DATE</mat-label>
+                    <ss-date-picker formControlName="expectedCloseDate"
+                                    [type]="'date'">
+                    </ss-date-picker>
+                </mat-form-field>
 
-                    <mat-form-field class="detail">
-                        <mat-label translate>COMMON_DETAIL</mat-label>
-                        <input matInput formControlName="detail" type="text">
-                    </mat-form-field>
-
-                    <mat-form-field class="campaign">
-                        <mat-label translate>CRM_CAMPAIGN</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="campaignLookup"
-                                          formControlName="campaignId">
-                        </ss-auto-complete>
-                    </mat-form-field>
-
-                </div>
-
+                <mat-form-field class="full-width">
+                    <mat-label translate>COMMON_DETAIL</mat-label>
+                    <textarea matInput formControlName="detail" rows="3"></textarea>
+                </mat-form-field>
             </mat-card-content>
         </mat-card>
 
-        <!--        @if (isGeneral()) {-->
-        <!--            <div class="panel__div">-->
-        <!--                <mat-toolbar>-->
-        <!--                    <span translate>CRM_COMPANY_DETAIL</span>-->
-        <!--                </mat-toolbar>-->
-        <!--                <div class="content__div">-->
-        <!--                    <mat-form-field>-->
-        <!--                        <mat-label translate>COMMON_COMPANY</mat-label>-->
-        <!--                        <input matInput type="text" formControlName="company">-->
-        <!--                    </mat-form-field>-->
-        <!--                    <mat-form-field>-->
-        <!--                        <mat-label translate>COMMON_WEB_SITE</mat-label>-->
-        <!--                        <input matInput type="text" formControlName="companySite">-->
-        <!--                    </mat-form-field>-->
-        <!--                    <mat-form-field>-->
-        <!--                        <mat-label translate>CRM_INDUSTRY</mat-label>-->
-        <!--                        <input matInput type="text" formControlName="companyIndustry">-->
-        <!--                    </mat-form-field>-->
-        <!--                    <mat-form-field>-->
-        <!--                        <mat-label translate>CRM_ANNUAL_REVENUE</mat-label>-->
-        <!--                        <input matInput type="number" formControlName="annualRevenue">-->
-        <!--                    </mat-form-field>-->
-        <!--                    <mat-form-field>-->
-        <!--                        <mat-label translate>CRM_NUMB_OF_EMPLOYEES</mat-label>-->
-        <!--                        <input matInput type="number" formControlName="numberOfEmployees">-->
-        <!--                    </mat-form-field>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        }-->
 
         @if (isProgress()) {
             <div class="panel__div">
                 <mat-toolbar>
                     <span translate>CRM_PROGRESS</span>
                 </mat-toolbar>
-                <div class="content__div">
-                    <mat-form-field class="default">
-                        <mat-label translate>CRM_OWNER</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="userLookup"
-                                          formControlName="ownerId">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CRM_OWNER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="userLookup"
+                                      formControlName="ownerId">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_STATE</mat-label>
-                        <mat-select formControlName="state">
-                            @for (s of STATES; track s) {
-                                <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_TEAM</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="teamLookup"
+                                      formControlName="teamId">
+                    </ss-auto-complete>
+                </mat-form-field>
 
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_STATUS</mat-label>
-                        <mat-select formControlName="status">
-                            @for (s of STATUS; track s) {
-                                <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_STATE</mat-label>
+                    <mat-select formControlName="state">
+                        @for (s of STATES; track s) {
+                            <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
 
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_PRIORITY</mat-label>
-                        <mat-select formControlName="priority">
-                            @for (s of PRIORITIES; track s) {
-                                <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_STATUS</mat-label>
+                    <mat-select formControlName="status">
+                        @for (s of STATUS; track s) {
+                            <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
 
-                    <mat-form-field class="default">
-                        <mat-label translate>CRM_SCORE</mat-label>
-                        <input matInput type="number" formControlName="score" min="0" max="10">
-                    </mat-form-field>
+                <mat-form-field class="default-50 ">
+                    <mat-label translate>COMMON_PRIORITY</mat-label>
+                    <mat-select formControlName="priority">
+                        @for (s of PRIORITIES; track s) {
+                            <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
 
-                    <mat-form-field class="memo">
-                        <mat-label translate>COMMON_MEMO</mat-label>
-                        <textarea matInput formControlName="memo" type="text"></textarea>
-                    </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CRM_SCORE</mat-label>
+                    <input matInput type="number" formControlName="score" min="0" max="10">
+                </mat-form-field>
 
-                    <div style="display: flex; width: 100%; justify-content: flex-end">
-                        <button matButton (click)="saveProgress()">
-                            <i class="fa-solid fa-circle-check"></i> {{ 'CRM_PROGRESS'|translate }}
-                        </button>
-                        <button matButton (click)="openDialog()">
-                            <i class="fa-solid fa-circle-check"></i> {{ 'CRM_CONVERT'|translate }}
-                        </button>
-                    </div>
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_MEMO</mat-label>
+                    <textarea matInput formControlName="memo" type="text"></textarea>
+                </mat-form-field>
+
+                <div class="progress__div">
+                    <button mat-flat-button (click)="saveProgress()">
+                        <i class="fa-solid fa-arrow-progress"></i> {{ 'CRM_PROGRESS'|translate }}
+                    </button>
+                    <button mat-flat-button (click)="openDialog()">
+                        <i class="fa-solid fa-circle-check"></i> {{ 'CRM_CONVERT'|translate }}
+                    </button>
                 </div>
             </div>
         }
@@ -182,100 +172,96 @@
                 <mat-toolbar>
                     <span translate>CRM_COMPANY_DETAIL</span>
                 </mat-toolbar>
-                <div class="content__div">
-                    <mat-form-field class="company__detail">
-                        <mat-label translate>CRM_COMPANY_DETAIL</mat-label>
-                        <input matInput type="text" formControlName="company">
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_WEB_SITE</mat-label>
-                        <input matInput type="text" formControlName="companySite">
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>CRM_INDUSTRY</mat-label>
-                        <input matInput type="text" formControlName="companyIndustry">
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>CRM_ANNUAL_REVENUE</mat-label>
-                        <input matInput type="number" formControlName="annualRevenue">
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>CRM_NUMB_OF_EMPLOYEES</mat-label>
-                        <input matInput type="number" formControlName="numberOfEmployees">
-                    </mat-form-field>
-                </div>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_COMPANY</mat-label>
+                    <input matInput type="text" formControlName="company">
+                </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_WEB_SITE</mat-label>
+                    <input matInput type="text" formControlName="companySite">
+                </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_INDUSTRY</mat-label>
+                    <mat-select formControlName="companyIndustry">
+                        @for (industry of industries; track industry) {
+                            <mat-option [value]="industry" translate>CRM_{{ industry }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CRM_ANNUAL_REVENUE</mat-label>
+                    <input matInput type="number" formControlName="annualRevenue">
+                </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>CRM_NUMB_OF_EMPLOYEES</mat-label>
+                    <input matInput type="number" formControlName="numberOfEmployees">
+                </mat-form-field>
+                <mat-form-field class="default-100">
+                    <mat-label translate>CRM_COMPANY_DETAIL</mat-label>
+                    <textarea matInput type="text" formControlName="companyDescription" rows="3"></textarea>
+                </mat-form-field>
             </div>
         }
         @if (isContact()) {
-            <div class="panel__div">
-                <mat-toolbar>
-                    <span translate>CRM_CONTACT_DETAIL</span>
-                </mat-toolbar>
-                <div class="content__div">
-                    <mat-form-field class="email">
-                        <mat-label translate>LOGISTICS_EMAIL</mat-label>
-                        <input matInput type="text" formControlName="email">
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>ADMINISTRATION_PHONE</mat-label>
-                        <input matInput type="text" formControlName="phone">
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_FIRST_NAME</mat-label>
-                        <input matInput type="text" formControlName="firstName">
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_LAST_NAME</mat-label>
-                        <input matInput type="text" formControlName="lastName">
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_ADDRESS_LINE1</mat-label>
-                        <input matInput type="text" formControlName="addressLine1">
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_ADDRESS_LINE1</mat-label>
-                        <input matInput type="text" formControlName="addressLine2">
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_CITY</mat-label>
-                        <ss-auto-complete matInput
-                                          [model]="cityLookup"
-                                          formControlName="city">
-                        </ss-auto-complete>
-                    </mat-form-field>
-                    <mat-form-field class="default">
-                        <mat-label translate>COMMON_POSTAL_CODE</mat-label>
-                        <input matInput type="text" formControlName="postalCode">
-                    </mat-form-field>
-                </div>
-            </div>
+            <mat-toolbar>
+                <span translate>CRM_CONTACT_DETAIL</span>
+            </mat-toolbar>
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_LAST_NAME</mat-label>
+                <input matInput type="text" formControlName="lastName">
+            </mat-form-field>
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_FIRST_NAME</mat-label>
+                <input matInput type="text" formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_EMAIL</mat-label>
+                <input matInput type="text" formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ADMINISTRATION_PHONE</mat-label>
+                <input matInput type="text" formControlName="phone">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_ADDRESS_LINE1</mat-label>
+                <input matInput type="text" formControlName="addressLine1">
+            </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_ADDRESS_LINE1</mat-label>
+                <input matInput type="text" formControlName="addressLine2">
+            </mat-form-field>
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_CITY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="cityLookup"
+                                  formControlName="city">
+                </ss-auto-complete>
+            </mat-form-field>
+            <mat-form-field class="default-50">
+                <mat-label translate>COMMON_POSTAL_CODE</mat-label>
+                <input matInput type="text" formControlName="postalCode">
+            </mat-form-field>
         }
 
         @if (isActivity()) {
-            <div class="panel__div">
+            @if (leadId > 0) {
                 <mat-toolbar>
                     <span translate>CRM_ACTIVITIES</span>
                 </mat-toolbar>
-                <div class="content__div">
-                    @if (leadId > 0) {
-                        <ss-crm-leads-activity-list
-                                [parentId]="leadId"
-                                (onEdit)="onEditActivity($event)">
-                        </ss-crm-leads-activity-list>
-                    }
-                </div>
-            </div>
+                <ss-crm-leads-activity-list
+                    [parentId]="leadId"
+                    (onEdit)="onEditActivity($event)">
+                </ss-crm-leads-activity-list>
+            }
         } @else if (isActivityDetail()) {
-            <div class="content__div">
-                @if (isActivityDetail()) {
-                    <ss-crm-leads-activity-lines-detail
-                            [activityId]="activityId"
-                            [parentId]="leadId"
-                            (closed)="select(Panels.ACTIVITY)">
-                    </ss-crm-leads-activity-lines-detail>
-                }
-            </div>
-
+            <mat-toolbar>
+                <span translate>CRM_ACTIVITIES</span>
+            </mat-toolbar>
+            <ss-crm-leads-activity-lines-detail
+                [activityId]="activityId"
+                [parentId]="leadId"
+                (closed)="select(Panels.ACTIVITY)">
+            </ss-crm-leads-activity-lines-detail>
         }
 
     </form>

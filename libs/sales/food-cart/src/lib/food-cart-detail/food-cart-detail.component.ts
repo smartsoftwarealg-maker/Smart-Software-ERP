@@ -49,7 +49,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 
 })
-export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
+class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
     searchCtrl = new FormControl<string>('');
     private isHandset: Observable<BreakpointState> = null;
     public cartTotal = 0.0;
@@ -294,3 +294,5 @@ export class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
         this.selectedPartId = row?.partId;
     }
 }
+
+export default FoodCartDetailComponent

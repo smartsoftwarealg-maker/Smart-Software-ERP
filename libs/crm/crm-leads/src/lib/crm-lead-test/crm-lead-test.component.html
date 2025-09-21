@@ -1,0 +1,229 @@
+<div class="crm-lead-form">
+    <h2 class="form-title">New Lead</h2>
+    <p class="form-subtitle">Capture prospect information to start the sales process.</p>
+
+    <form [formGroup]="leadForm" (ngSubmit)="onSave()" class="lead-form">
+
+        <!-- Contact Information -->
+        <fieldset class="section">
+            <legend>Contact Information</legend>
+            <div class="row">
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName" required>
+                    <mat-error *ngIf="hasError('firstName', 'required')">First name is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName" required>
+                    <mat-error *ngIf="hasError('lastName', 'required')">Last name is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email">
+                    <mat-hint>example@company.com</mat-hint>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Phone</mat-label>
+                    <input matInput type="tel" formControlName="phone">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Job Title</mat-label>
+                <input matInput formControlName="jobTitle">
+            </mat-form-field>
+        </fieldset>
+
+        <!-- Company Information -->
+        <fieldset class="section">
+            <legend>Company Information</legend>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Company</mat-label>
+                <input matInput formControlName="company" required>
+                <mat-error *ngIf="hasError('company', 'required')">Company is required</mat-error>
+            </mat-form-field>
+
+            <div class="row">
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Industry</mat-label>
+                    <mat-select formControlName="companyIndustry">
+                        <mat-option value="Technology">Technology</mat-option>
+                        <mat-option value="Finance">Finance</mat-option>
+                        <mat-option value="Healthcare">Healthcare</mat-option>
+                        <mat-option value="Manufacturing">Manufacturing</mat-option>
+                        <mat-option value="Education">Education</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Website</mat-label>
+                    <input matInput type="url" formControlName="companySite">
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Annual Revenue ($)</mat-label>
+                    <input matInput type="number" step="10000" formControlName="annualRevenue">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label># Employees</mat-label>
+                    <input matInput type="number" formControlName="numberOfEmployees">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Description</mat-label>
+                <textarea matInput rows="3" formControlName="companyDescription"></textarea>
+            </mat-form-field>
+        </fieldset>
+
+        <!-- Address -->
+        <fieldset class="section">
+            <legend>Address</legend>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Street Address</mat-label>
+                <input matInput formControlName="addressLine1">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Address Line 2</mat-label>
+                <input matInput formControlName="addressLine2">
+            </mat-form-field>
+
+            <div class="row">
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>City</mat-label>
+                    <input matInput formControlName="city">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>State/Province</mat-label>
+                    <input matInput formControlName="state">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Postal Code</mat-label>
+                    <input matInput formControlName="postalCode">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Country</mat-label>
+                <input matInput formControlName="country">
+            </mat-form-field>
+        </fieldset>
+
+        <!-- Sales & Details -->
+        <fieldset class="section">
+            <legend>Sales & Details</legend>
+            <div class="row">
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Lead Source</mat-label>
+                    <mat-select formControlName="source">
+                        <mat-option value="Web Form">Web Form</mat-option>
+                        <mat-option value="Referral">Referral</mat-option>
+                        <mat-option value="Cold Call">Cold Call</mat-option>
+                        <mat-option value="Partner">Partner</mat-option>
+                        <mat-option value="Trade Show">Trade Show</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="status">
+                        <mat-option value="New">New</mat-option>
+                        <mat-option value="Contacted">Contacted</mat-option>
+                        <mat-option value="Qualified">Qualified</mat-option>
+                        <mat-option value="In Progress">In Progress</mat-option>
+                        <mat-option value="Converted">Converted</mat-option>
+                        <mat-option value="Unqualified">Unqualified</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Priority</mat-label>
+                    <mat-select formControlName="priority">
+                        <mat-option value="Low">Low</mat-option>
+                        <mat-option value="Medium">Medium</mat-option>
+                        <mat-option value="High">High</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Score</mat-label>
+                    <input matInput type="number" min="0" max="100" formControlName="score">
+                    <mat-hint>0–100 based on engagement</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Estimated Value ($)</mat-label>
+                    <input matInput type="number" formControlName="estimatedValue">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Probability (%)</mat-label>
+                    <input matInput type="number" min="0" max="100" formControlName="probability">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Expected Close Date</mat-label>
+                <input matInput [matDatepicker]="closePicker" formControlName="expectedCloseDate">
+                <mat-datepicker-toggle matSuffix [for]="closePicker"></mat-datepicker-toggle>
+                <mat-datepicker #closePicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Campaign</mat-label>
+                <mat-select formControlName="campaignId">
+                    <mat-option *ngFor="let c of campaigns" [value]="c.id">{{ c.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </fieldset>
+
+        <!-- Notes & Ownership -->
+        <fieldset class="section">
+            <legend>Internal</legend>
+            <div class="row">
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Owner</mat-label>
+                    <mat-select formControlName="ownerId">
+                        <mat-option *ngFor="let u of users" [value]="u.id">{{ u.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="flex-1">
+                    <mat-label>Team</mat-label>
+                    <mat-select formControlName="teamId">
+                        <mat-option *ngFor="let t of teams" [value]="t.id">{{ t.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Memo / Internal Notes</mat-label>
+                <textarea matInput rows="4" formControlName="memo"></textarea>
+            </mat-form-field>
+        </fieldset>
+
+        <!-- Actions -->
+        <div class="actions">
+            <button mat-button type="button" (click)="onCancel()">Cancel</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="leadForm.invalid">
+                Save Lead
+            </button>
+        </div>
+    </form>
+</div>

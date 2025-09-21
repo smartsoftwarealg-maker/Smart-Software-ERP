@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, output, Output} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -7,7 +7,7 @@ import {
     FormsModule,
     ReactiveFormsModule, FormBuilder, FormGroup, FormControl
 } from '@angular/forms';
-import { MaterialModule } from '@ss/common/api-common';
+import {LoginService, MaterialModule} from '@ss/common/api-common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -19,9 +19,8 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { FurnitureStatusService } from '@ss/common/api-lookup';
-import { ACTIVITY_TYPE } from '../../../../crm-opportunity/src/lib/crm-opportunity-api';
+import { ACTIVITY_TYPE } from '@ss/crm/opportunity';
 import { Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar } from 'ngx-editor';
-import { NgIf } from '@angular/common';
 
 
 @Component({
@@ -45,15 +44,13 @@ import { NgIf } from '@angular/common';
     ]
 })
 export class CrmLeadsActivityLinesDetailComponent implements OnInit {
-    private formBuilder = inject(FormBuilder);
+    #formBuilder = inject(FormBuilder);
     #usersSrv = inject(UserListService);
     #entitySrv = inject(CrmLeadActivityService);
     #snackBarSrv = inject(SnackBarService);
-    #shellSrv = inject(ShellService);
-    private statusSrv = inject(FurnitureStatusService);
-    #route = inject(ActivatedRoute);
-     router = inject(Router);
-    statusAutoCompleteModel = new DefaultAutoCompleteModel(this.statusSrv);
+    #statusSrv = inject(FurnitureStatusService);
+    #loginSrv = inject(LoginService);
+    statusAutoCompleteModel = new DefaultAutoCompleteModel(this.#statusSrv);
     private confirmationSrv = inject(ConfirmationDialogService);
     public form: UntypedFormGroup | null = null;
     protected readonly ACTIVITY_TYPE = ACTIVITY_TYPE;
@@ -64,28 +61,26 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
     public entitySrv: CrmLeadActivityService;
     public shellSrv: ShellService;
     public route: ActivatedRoute;
+    public status = ['SCHEDULED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED', 'FAILED', 'NO_SHOW', 'PENDING'];
+    public priority = ['LOW','MEDIUM','HIGH','CRITICAL'];
 
 
-    // this.route.parent?.params.subscribe(params => {
-    //     if (params['id']) {
-    //         this.entitySrv.setParentId(params['id']);
-    //     }
-    // });
-    @Output() closed = new EventEmitter<void>();
+     closed = output<void>();
 
 
     public setupForm(e: CRMLeadActivity): UntypedFormGroup {
-        return this.formBuilder.group({
-            id: [e.id],
-            parentId: [e.parentId || this.#entitySrv.getParentId()],
-            subject: [e.subject, Validators.required],
-            activityType: [e.activityType, Validators.required],
-            priority: [e.priority, Validators.required],
-            status: [e.status, Validators.required],
-            dueDate: [e.dueDate, Validators.required],
-            completionDate: [e.completionDate, Validators.required],
-            createdBy: [e.createdBy, Validators.required],
-            ownerId: [e.ownerId, Validators.required]
+        return this.#formBuilder.group({
+            id:             [e.id],
+            parentId:       [e.parentId || this.#entitySrv.getParentId()],
+            subject:        [e.subject, Validators.required],
+            activityType:   [e.activityType, Validators.required],
+            priority:       [e.priority, Validators.required],
+            status:         [e.status, Validators.required],
+            dueDate:        [e.dueDate, Validators.required],
+            completionDate: [e.completionDate],
+            createdBy:      [{ value: e.createdBy || this.#loginSrv.appCtx.id, disabled: true }, Validators.required],
+            ownerId:        [e.ownerId || this.#loginSrv.appCtx.id, Validators.required],
+            detail:         [e.detail],
         });
     }
 
@@ -148,8 +143,9 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
                     this.#snackBarSrv.showSuccessMessage();
                     this.closed.emit();
                 },
-                error: () => {
+                error: err => {
                     this.#snackBarSrv.showFailureMessage();
+                    throw err;
                 }
             });
             return;

@@ -127,5 +127,9 @@
     "INACTIVE":             "غير نشط",
     "DEPRECATED":           "مهمل / غير مدعوم",
     "CALENDAR":             "التقويم",
-    "CONVERT":              "تحويل"
+    "CONVERT":              "تحويل",
+    "FAILED":               "غير موفق",
+    "PENDING":              "في الانتظار",
+    "NO_SHOW":              "لم يحضر",
+    "COMPLETED":            "مكتمل"
 }

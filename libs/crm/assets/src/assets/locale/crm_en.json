@@ -127,6 +127,10 @@
     "INACTIVE":            "Inactive",
     "CALENDAR":            "Calendar",
     "DEPRECATED":          "Deprecated",
-    "CONVERT":             "Convert"
+    "CONVERT":             "Convert",
+    "FAILED":              "Failed",
+    "NO_SHOW":             "No show",
+    "PENDING":             "Pending",
+    "COMPLETED":           "Completed"
 
 }
