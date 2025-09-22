@@ -9,12 +9,12 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { filter, Observable, of, switchMap } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import { InterStoreTransferLine, Transaction } from './transaction';
+import { Transaction } from './transaction';
 import { WorkflowDialogComponent } from '@ss/workflow';
 import { LoginService, User } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { DocImportComponent, DocImportService } from '@ss/logistics/ui-doc-import';
-import { Directive, inject, OnInit, ViewChild } from '@angular/core';
+import {Directive, inject, OnInit, signal, ViewChild} from '@angular/core';
 import { CCGroup, Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import {
     Agent,
@@ -73,6 +73,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         click: () => this.importDocument()
     };
     protected lookupsSrv = inject(LookupsService);
+    protected isProjectRequired = signal(false);
 
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
@@ -102,9 +103,9 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         protected dialog: MatDialog,
         public override title: string) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
-        this.agentLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
+        this.agentLookup.onObjectSelected = e => this.onAgentSelected(e);
         this.supplierLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
-        this.customerLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
+        this.customerLookup.onObjectSelected = e => this.onAgentSelected(e);
         this.salesProjectLookup.onObjectSelected = e => this.updateProjectStatus(e);
         this.purchaseProjectLookup.onObjectSelected = e => this.updateProjectStatus(e);
     }
@@ -232,6 +233,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             b.date = new Date();
         }
 
+        this.customerLookup
+            .getById(b.agent)
+            .subscribe(a => this.onAgentSelected(a));
+
         this.importBtn.disabled = !b?.id;
         this.detailSrv.setParentId(b.id || 0);
         this.purchaseProjectSrv.setParentId(b.agent || 0);
@@ -333,6 +338,17 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         super.finishLoading(e);
         this.updateProjectLookups(e?.agent || 0);
     }
+
+    private onAgentSelected(agent: Agent) {
+        this.isProjectRequired.set(agent?.projectRequired);
+        if (agent.projectRequired === true) {
+            this.form.controls['project'].setValidators(Validators.required)
+        } else {
+            this.form.controls['project'].removeValidators(Validators.required);
+        }
+        this.updateProjectLookups(agent?.id || 0);
+    }
+
 }
 
 class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {

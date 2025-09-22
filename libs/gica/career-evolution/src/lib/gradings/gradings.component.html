@@ -23,36 +23,39 @@
 </mat-card>
 <div class="container__div">
     <div class="emp__div">
-        <div class="table_div">
-            <mat-table mat-table [dataSource]="data$ | async" class="main-table" matSort (matSortChange)="sort($event)">
+        @if (nonEmptyTable()) {
+            <div class="table_div">
+                <mat-table mat-table [dataSource]="data$ | async" class="main-table" matSort
+                           (matSortChange)="sort($event)">
 
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ID</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{ e.id }}
-                    </mat-cell>
-                </ng-container>
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ID</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.id }}
+                        </mat-cell>
+                    </ng-container>
 
-                <ng-container matColumnDef="lastName">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_LAST_NAME</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{ e.lastName }}
-                    </mat-cell>
-                </ng-container>
+                    <ng-container matColumnDef="lastName">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_LAST_NAME</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.lastName }}
+                        </mat-cell>
+                    </ng-container>
 
-                <ng-container matColumnDef="firstName">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FIRST_NAME</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{ e.firstName }}
-                    </mat-cell>
-                </ng-container>
+                    <ng-container matColumnDef="firstName">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FIRST_NAME</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.firstName }}
+                        </mat-cell>
+                    </ng-container>
 
-                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="selectEmployee(row)"
-                         *matRowDef="let row; columns: displayedColumns;">
-                </mat-row>
-            </mat-table>
-        </div>
+                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                    <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="selectEmployee(row)"
+                             *matRowDef="let row; columns: displayedColumns;">
+                    </mat-row>
+                </mat-table>
+            </div>
+        }
         <ss-pagination [paginationModel]="paginator"></ss-pagination>
 
         @if (employee()?.id) {
@@ -78,26 +81,23 @@
                     </mat-form-field>
                     <mat-checkbox formControlName="validated1" translate>COMMON_VALIDATED</mat-checkbox>
                 </div>
-            }
-            @if (gradeCtrl.value === 2) {
-                <div class="appreciation">
-                    <mat-form-field>
-                        <mat-label translate>PAYROLL_APPRECIATION</mat-label>
-                        <input matInput formControlName="appreciation2" type="text">
-                    </mat-form-field>
-                    <mat-checkbox formControlName="validated2" translate>COMMON_VALIDATED</mat-checkbox>
-                </div>
-            }
-
-            @if (gradeCtrl.value === 3) {
-                <div class="appreciation">
-                    <mat-form-field class="appreciation">
-                        <mat-label translate>PAYROLL_APPRECIATION</mat-label>
-                        <input matInput formControlName="appreciation3" type="text">
-                    </mat-form-field>
-                    <mat-checkbox formControlName="validated3" translate>COMMON_VALIDATED</mat-checkbox>
-                </div>
-            }
+            } @if (gradeCtrl.value === 2) {
+            <div class="appreciation">
+                <mat-form-field>
+                    <mat-label translate>PAYROLL_APPRECIATION</mat-label>
+                    <input matInput formControlName="appreciation2" type="text">
+                </mat-form-field>
+                <mat-checkbox formControlName="validated2" translate>COMMON_VALIDATED</mat-checkbox>
+            </div>
+        } @if (gradeCtrl.value === 3) {
+            <div class="appreciation">
+                <mat-form-field class="appreciation">
+                    <mat-label translate>PAYROLL_APPRECIATION</mat-label>
+                    <input matInput formControlName="appreciation3" type="text">
+                </mat-form-field>
+                <mat-checkbox formControlName="validated3" translate>COMMON_VALIDATED</mat-checkbox>
+            </div>
+        }
 
             <div formArrayName="grades">
                 @for (l of labels; track l; let i = $index) {
