@@ -1,4 +1,5 @@
 export const PAYMENT_URL = '/payments';
+export const ADVANCEMENTS_URL = '/advancements';
 
 export interface Payment {
     id: number;
@@ -20,6 +21,7 @@ export interface Payment {
     credit?: number;
     modeDescription?: string;
     denomination?: string;
+    isAdvancements?: boolean;
 }
 
 export interface Accounting {

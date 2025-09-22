@@ -182,6 +182,7 @@ export const PAYMENT_ORDER = 'payment-orders';
 export const LOGISTICS_ARTICLES_URL = 'articles';
 export const LOGISTICS_PAY_METHOD_URL = 'mpay';
 export const LOGISTICS_PAYMENTS_URL = 'payments';
+export const LOGISTICS_ADVANCEMENTS_URL = 'advancements';
 export const LOGISTICS_SPAYMENTS_URL = 'spayments';
 export const LOGISTICS_CPAYMENTS_URL = 'cpayments';
 export const LOGISTICS_COMPENSATION_URL = 'compensations';
@@ -759,6 +760,8 @@ export const ABS_FINANCE_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, 
 export const ABS_FINANCE_CUSTOMER_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_CCOMPENSATION_URL].join('/');
 export const ABS_FINANCE_SUPPLIER_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SCOMPENSATION_URL].join('/');
 export const ABS_FINANCE_REPORTS_URL = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, COMMON_REPORTS_URL].join('/');
+export const ABS_FINANCE_ADVANCEMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_ADVANCEMENTS_URL].join('/');
+
 // HR
 export const ABS_HR_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_CATEGORIES_URL].join('/');
 export const ABS_HR_DIPLOMAS_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_DIPLOMAS_URL].join('/');
