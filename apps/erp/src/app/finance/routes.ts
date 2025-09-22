@@ -7,11 +7,16 @@ import {
     LOGISTICS_CCOMPENSATION_URL,
     PAYMENT_ORDER,
     DASHBOARD_URL,
-    COMMON_REPORTS_URL
+    COMMON_REPORTS_URL, LOGISTICS_ADVANCEMENTS_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
-import {PaymentsListComponent, PaymentsDetailComponent} from '@ss/logistics/payments';
+import {
+    PaymentsListComponent,
+    PaymentsDetailComponent,
+    AdvancementsListComponent,
+    AdvancementsDetailComponent
+} from '@ss/logistics/payments';
 import {PaymentCompensationComponent} from '@ss/logistics/payment-compensation';
 import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '@ss/purchases/payment-orders';
 import {DashboardComponent} from '@ss/dashboard';
@@ -51,6 +56,26 @@ export const financeRoutes: Routes = [
                 component: PaymentsDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_ADVANCEMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AdvancementsListComponent,
+                canActivate: [loginGuard],
+                data: { url: '/spayments', agents: '/suppliers' }
+            },
+            {
+                path: ':id',
+                component: AdvancementsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: { url: '/spayments', agents: '/suppliers' }
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
