@@ -1,173 +1,75 @@
-import {Component, EventEmitter, inject, Input, OnInit, output, Output} from '@angular/core';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, inject, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import {
+    FormBuilder,
+    FormControl,
     UntypedFormGroup,
     Validators,
-    FormsModule,
-    ReactiveFormsModule, FormBuilder, FormGroup, FormControl
+    ReactiveFormsModule,
+    FormsModule
 } from '@angular/forms';
-import {LoginService, MaterialModule} from '@ss/common/api-common';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { MaterialModule, LoginService } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { UserListService } from '@ss/common/api-users';
-import { CRMLeadActivity, EMessage } from '../lead-activity-api';
-import { CrmLeadActivityService } from '../crm-lead-activity.service';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { of } from 'rxjs';
+import { Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar } from 'ngx-editor';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { FurnitureStatusService } from '@ss/common/api-lookup';
+import { CrmLeadActivityService } from '../crm-lead-activity.service';
+import { CRMLeadActivity, EMessage } from '../lead-activity-api';
 import { ACTIVITY_TYPE } from '@ss/crm/opportunity';
-import { Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar } from 'ngx-editor';
-
+import { of } from 'rxjs';
+import { SnackBarService } from '@ss/common/ui-shell';
+import { CRMOpportunityService } from '../../../../crm-opportunity/src/lib/crm-opportunity.service';
+import { CRMLead } from '../lead-api';
+import { CRMLeadsService } from '@ss/crm/leads';
 
 @Component({
     selector: 'ss-crm-leads-activity-lines-detail',
-    templateUrl: 'crm-leads-activity-lines-detail.component.html',
-    styleUrl: 'crm-leads-activity-lines-detail.component.scss',
+    templateUrl: './crm-leads-activity-lines-detail.component.html',
+    styleUrls: ['./crm-leads-activity-lines-detail.component.scss'],
     standalone: true,
     imports: [
         MaterialModule,
         MatCard,
-        FormsModule,
-        ReactiveFormsModule,
         MatFormField,
         MatLabel,
+        FormsModule,
+        ReactiveFormsModule,
         TranslateDirective,
         TranslatePipe,
         UiAutoCompleteComponent,
         DatePickerComponent,
         NgxEditorComponent,
-        NgxEditorMenuComponent,
+        NgxEditorMenuComponent
     ]
 })
 export class CrmLeadsActivityLinesDetailComponent implements OnInit {
-    #formBuilder = inject(FormBuilder);
-    #usersSrv = inject(UserListService);
-    #entitySrv = inject(CrmLeadActivityService);
-    #snackBarSrv = inject(SnackBarService);
-    #statusSrv = inject(FurnitureStatusService);
-    #loginSrv = inject(LoginService);
-    statusAutoCompleteModel = new DefaultAutoCompleteModel(this.#statusSrv);
+    // Dependencies
+    private formBuilder = inject(FormBuilder);
+    private usersSrv = inject(UserListService);
+    private entitySrv = inject(CrmLeadActivityService);
+    private snackBarSrv = inject(SnackBarService);
+    private statusSrv = inject(FurnitureStatusService);
+    private loginSrv = inject(LoginService);
     private confirmationSrv = inject(ConfirmationDialogService);
-    public form: UntypedFormGroup | null = null;
-    protected readonly ACTIVITY_TYPE = ACTIVITY_TYPE;
-    usersLookup = new DefaultAutoCompleteModel(this.#usersSrv);
+
+
     @Input() activityId!: number | null;
     @Input() parentId!: number;
-
-    public entitySrv: CrmLeadActivityService;
-    public shellSrv: ShellService;
-    public route: ActivatedRoute;
-    public status = ['SCHEDULED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED', 'FAILED', 'NO_SHOW', 'PENDING'];
-    public priority = ['LOW','MEDIUM','HIGH','CRITICAL'];
+    @Output() closed = new EventEmitter<void>();
 
 
-     closed = output<void>();
+    public form: UntypedFormGroup | null = null;
+    public usersLookup = new DefaultAutoCompleteModel(this.usersSrv);
+    public statusAutoCompleteModel = new DefaultAutoCompleteModel(this.statusSrv);
 
 
-    public setupForm(e: CRMLeadActivity): UntypedFormGroup {
-        return this.#formBuilder.group({
-            id:             [e.id],
-            parentId:       [e.parentId || this.#entitySrv.getParentId()],
-            subject:        [e.subject, Validators.required],
-            activityType:   [e.activityType, Validators.required],
-            priority:       [e.priority, Validators.required],
-            status:         [e.status, Validators.required],
-            dueDate:        [e.dueDate, Validators.required],
-            completionDate: [e.completionDate],
-            createdBy:      [{ value: e.createdBy || this.#loginSrv.appCtx.id, disabled: true }, Validators.required],
-            ownerId:        [e.ownerId || this.#loginSrv.appCtx.id, Validators.required],
-            detail:         [e.detail],
-        });
-    }
-
-
-
-    cancel() {
-        const obs = this.form?.dirty
-            ? this.confirmationSrv.confirm('COMMON_CANCEL', 'COMMON_CANCEL')
-            : of(true);
-
-        obs.subscribe(res => {
-            if (res) {
-                this.closed.emit();
-            }
-        });
-    }
-
-
-    ngOnInit() {
-        if (this.activityId ) {
-            this.#entitySrv.get(this.activityId).subscribe(activity => {
-                this.form = this.setupForm(activity);
-            });
-        } else {
-            this.form = this.setupForm({
-                id: 0,
-                parentId: this.parentId
-            } as CRMLeadActivity);
-        }
-        this.editor = new Editor();
-    }
-
-
-
-    readForm(): CRMLeadActivity {
-        return this.form.getRawValue();
-    }
-
-
-    save() {
-        this.form.markAllAsTouched();
-        if (!this.form.valid) {
-            this.#snackBarSrv.showFailureMessage();
-            return;
-        }
-
-        const val = this.readForm();
-        const emailBody = this.htmlForm.value.editorContent;
-
-        if (val.activityType === 'EMAIL') {
-            const message: EMessage = {
-                to: this.htmlForm.value.toEmail,
-                subject: val.subject,
-                body: emailBody,
-                isHTML: true
-            };
-
-            this.#entitySrv.sendEmail(message).subscribe({
-                next: () => {
-                    this.#snackBarSrv.showSuccessMessage();
-                    this.closed.emit();
-                },
-                error: err => {
-                    this.#snackBarSrv.showFailureMessage();
-                    throw err;
-                }
-            });
-            return;
-        }
-        this.#entitySrv.update(val).subscribe({
-            next: (id) => {
-                if (val.id === 0) {
-                    val.id = id;
-                }
-                this.form?.markAsUntouched();
-                this.#snackBarSrv.showSuccessMessage();
-                this.closed.emit();
-            },
-            error: () => {
-                this.#snackBarSrv.showFailureMessage();
-                this.form?.reset(val);
-            }
-        });
-    }
-
-    editor: Editor|null = null;
-    toolbar: Toolbar = [
+    public editor: Editor = new Editor();
+    public editorContent!: FormControl;
+    public toolbar: Toolbar = [
         ['bold', 'italic'],
         ['underline', 'strike'],
         ['code', 'blockquote'],
@@ -175,16 +77,109 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
         [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
         ['link', 'image'],
         ['text_color', 'background_color'],
-        ['align_left', 'align_center', 'align_right', 'align_justify'],
+        ['align_left', 'align_center', 'align_right', 'align_justify']
     ];
 
-    html = '';
-    htmlForm = new FormGroup({
-        toEmail: new FormControl('', [Validators.required, Validators.email]),
-        editorContent: new FormControl(
-            { value: '', disabled: false },
-            Validators.required
-        ),
-    });
+    protected readonly ACTIVITY_TYPE = ACTIVITY_TYPE;
+    public status = ['SCHEDULED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED', 'FAILED', 'NO_SHOW', 'PENDING'];
+    public priority = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
 
+    public email: string = '';
+
+    private leadSrv = inject(CRMLeadsService);
+
+    ngOnInit() {
+        if (this.activityId) {
+            this.entitySrv.get(this.activityId).subscribe(activity => {
+                this.form = this.setupForm(activity);
+            });
+        } else {
+            this.form = this.setupForm({ id: 0, parentId: this.parentId } as CRMLeadActivity);
+        }
+        this.leadSrv.get(this.entitySrv.getParentId()).subscribe({
+            next: (crmLead: CRMLead) => {
+                this.email = crmLead.email;
+            }
+        });
+    }
+
+    public setupForm(e: CRMLeadActivity): UntypedFormGroup {
+        return this.formBuilder.group({
+            id: [e.id],
+            parentId: [e.parentId || this.entitySrv.getParentId()],
+            subject: [e.subject, Validators.required],
+            activityType: [e.activityType, Validators.required],
+            priority: [e.priority, Validators.required],
+            status: [e.status, Validators.required],
+            dueDate: [e.dueDate, Validators.required],
+            completionDate: [e.completionDate],
+            createdBy: [{ value: e.createdBy || this.loginSrv.appCtx.id, disabled: true }, Validators.required],
+            ownerId: [e.ownerId || this.loginSrv.appCtx.id, Validators.required],
+            detail: new FormControl(e.detail || '', Validators.required)
+        });
+    }
+
+    public readForm(): CRMLeadActivity {
+        return this.form!.getRawValue();
+    }
+
+    cancel() {
+        const obs = this.form?.dirty
+            ? this.confirmationSrv.confirm('COMMON_CANCEL', 'COMMON_CANCEL')
+            : of(true);
+
+        obs.subscribe(res => {
+            if (res) this.closed.emit();
+        });
+    }
+
+    save() {
+        this.form!.markAllAsTouched();
+        if (!this.form!.valid) {
+            this.snackBarSrv.showFailureMessage();
+            return;
+        }
+
+        const val = this.readForm();
+
+        this.entitySrv.save(val).subscribe({
+            next: id => {
+                if (val.id === 0) val.id = id;
+                this.form?.markAsUntouched();
+                this.snackBarSrv.showSuccessMessage();
+                this.closed.emit();
+            },
+            error: () => {
+                this.snackBarSrv.showFailureMessage();
+                this.form?.reset(val);
+            }
+        });
+
+        if (val.activityType === 'EMAIL') {
+            const message: EMessage = {
+                to: this.email,
+                subject: val.subject,
+                body: val.detail,
+                isHTML: true
+            };
+            this.entitySrv.sendEmail(message).subscribe({
+                next: () => this.snackBarSrv.showSuccessMessage(),
+                error: () => this.snackBarSrv.showFailureMessage()
+            });
+        }
+    }
+
+
+    send() {
+        const eMessage: EMessage = {
+            to: this.email,
+            body: this.editorContent.value,
+            isHTML: true,
+            subject: this.form?.controls['subject'].value
+        };
+        this.entitySrv.sendEmail(eMessage).subscribe({
+            next: () => this.snackBarSrv.showSuccessMessage(),
+            error: () => this.snackBarSrv.showFailureMessage()
+        });
+    }
 }

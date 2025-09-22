@@ -21,7 +21,7 @@
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>CRM_ACTIVITY_TYPE</mat-label>
                 <mat-select formControlName="activityType">
-                    @for (a of ACTIVITY_TYPE; track a) {
+                    @for (a of ACTIVITY_TYPE;track a) {
                         <mat-option [value]="a" translate>CRM_{{ a }}</mat-option>
                     }
                 </mat-select>
@@ -38,7 +38,7 @@
             <mat-form-field class="default-25 sm-100">
                 <mat-label translate>CRM_PRIORITY</mat-label>
                 <mat-select formControlName="priority">
-                    @for (p of priority; track p) {
+                    @for (p of priority;track p) {
                         <mat-option [value]="p" translate>CRM_{{ p }}</mat-option>
                     }
                 </mat-select>
@@ -47,9 +47,9 @@
             <mat-form-field class="default-25 sm-100">
                 <mat-label translate>COMMON_STATUS</mat-label>
                 <mat-select formControlName="status">
-                @for (s of status; track s) {
-                    <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
-                }
+                    @for (s of status;track s) {
+                        <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
+                    }
                 </mat-select>
             </mat-form-field>
 
@@ -84,33 +84,40 @@
                                   formControlName="ownerId">
                 </ss-auto-complete>
             </mat-form-field>
-            @if (form.controls['activityType'].value === "EMAIL") {
+            @if (form.controls['activityType'].value === 'EMAIL') {
+                <div class="editor">
+                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary"></ngx-editor-menu>
+                    <ngx-editor [editor]="editor" formControlName="detail"></ngx-editor>
+                </div>
+                <div class="send__div">
+                    <button mat-button color="primary" (click)="send()" translate>COMMON_SEND</button>
+                </div>
             } @else {
                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_DETAIL</mat-label>
-                    <textarea matInput formControlName="detail" ></textarea>
+                    <textarea matInput formControlName="detail"></textarea>
                 </mat-form-field>
             }
-<!--            <pre>{{ form.value | json }}</pre>-->
+            <!--            <pre>{{ form.value | json }}</pre>-->
         </form>
 
 
-<!--        <form [formGroup]="htmlForm" class="default-100">-->
-<!--            @if (form?.value.activityType === 'EMAIL') {-->
-<!--                <mat-form-field class="default-50 sm-100">-->
-<!--                    <mat-label>Email To</mat-label>-->
-<!--                    <input matInput formControlName="toEmail" required>-->
-<!--                </mat-form-field>-->
-<!--            }-->
+        <!--        <form [formGroup]="htmlForm" class="default-100">-->
+            <!--            @if (form?.value.activityType === 'EMAIL') {-->
+            <!--                <mat-form-field class="default-50 sm-100">-->
+            <!--                    <mat-label>Email To</mat-label>-->
+            <!--                    <input matInput formControlName="toEmail" required>-->
+            <!--                </mat-form-field>-->
+            <!--            }-->
 
-<!--            <div class="editor">-->
-<!--                @if (editor) {-->
-<!--                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary">-->
-<!--                    </ngx-editor-menu>-->
-<!--                    <ngx-editor [editor]="editor" formControlName="editorContent">-->
-<!--                    </ngx-editor>-->
-<!--                }-->
-<!--            </div>-->
-<!--        </form>-->
+            <!--            <div class="editor">-->
+            <!--                @if (editor) {-->
+            <!--                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary">-->
+            <!--                    </ngx-editor-menu>-->
+            <!--                    <ngx-editor [editor]="editor" formControlName="editorContent">-->
+            <!--                    </ngx-editor>-->
+            <!--                }-->
+            <!--            </div>-->
+            <!--        </form>-->
     }
 </mat-card>

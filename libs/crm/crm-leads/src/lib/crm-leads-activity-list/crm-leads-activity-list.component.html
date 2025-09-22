@@ -30,21 +30,21 @@
         <ng-container matColumnDef="activityType">
             <mat-header-cell *matHeaderCellDef translate>CRM_ACTIVITY_TYPE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.activityType }}
+                {{ ("CRM_" + e.activityType) | translate }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="priority">
             <mat-header-cell *matHeaderCellDef translate>CRM_PRIORITY</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.priority | translate }}
+                {{ ("CRM_" + e.priority) | translate }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="status">
             <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.status | translate }}
+                {{ ("CRM_" + e.status) | translate }}
             </mat-cell>
         </ng-container>
 
@@ -66,13 +66,6 @@
             <mat-header-cell *matHeaderCellDef translate>CRM_OWNER</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.ownerDescription }}
-            </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="leadDescription">
-            <mat-header-cell *matHeaderCellDef translate>CRM_LEAD</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.leadDescription }}
             </mat-cell>
         </ng-container>
 
