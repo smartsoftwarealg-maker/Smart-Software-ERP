@@ -1,7 +1,7 @@
 .ctrl__div,
 .size  {
     width: 98%;
-    max-width: 1200px;
+    max-width: 1350px;
     margin: 0 auto;
 }
 
@@ -49,10 +49,9 @@ mat-toolbar {
 
 }
 
-.mat-column-ownerDescription,
-.mat-column-leadDescription {
+.mat-column-ownerDescription{
     flex: 1 1 15%;
-    min-width: 190px;
+    min-width: 250px;
     justify-content: center;
     text-align: center;
 }

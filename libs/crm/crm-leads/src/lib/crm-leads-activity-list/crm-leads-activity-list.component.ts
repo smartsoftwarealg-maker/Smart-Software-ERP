@@ -19,7 +19,6 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { CRMLeadActivity } from '../lead-activity-api';
 import { CrmLeadActivityService } from '../crm-lead-activity.service';
 import { DatePipe } from '@angular/common';
-import {MatToolbar} from "@angular/material/toolbar";
 
 @Component({
     selector: 'ss-crm-leads-activity-list',
@@ -55,8 +54,7 @@ export class CrmLeadsActivityListComponent extends BaseChildEntityListComponent<
         'status',
         'dueDate',
         'completionDate',
-        'ownerDescription',
-        'leadDescription'
+        'ownerDescription'
     ];
 
     constructor(protected override detailSrv: CrmLeadActivityService) {

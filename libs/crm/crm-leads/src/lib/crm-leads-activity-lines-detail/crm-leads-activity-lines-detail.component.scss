@@ -17,3 +17,10 @@ mat-card {
     justify-content: flex-end;
     gap: .5em
 }
+.send__div {
+    display: flex;
+    justify-content: flex-end;
+    width: 96%;
+    max-width: 700px;
+    margin: 8px auto;
+}
