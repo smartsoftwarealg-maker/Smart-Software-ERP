@@ -233,10 +233,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             b.date = new Date();
         }
 
-        this.customerLookup
-            .getById(b.agent)
-            .subscribe(a => this.onAgentSelected(a));
-
         this.importBtn.disabled = !b?.id;
         this.detailSrv.setParentId(b.id || 0);
         this.purchaseProjectSrv.setParentId(b.agent || 0);
@@ -337,11 +333,14 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     finishLoading(e: Transaction) {
         super.finishLoading(e);
         this.updateProjectLookups(e?.agent || 0);
+        this.customerLookup
+            .getById(e.agent||0)
+            .subscribe(a => this.onAgentSelected(a));
     }
 
     private onAgentSelected(agent: Agent) {
         this.isProjectRequired.set(agent?.projectRequired);
-        if (agent.projectRequired === true) {
+        if (agent?.projectRequired === true) {
             this.form.controls['project'].setValidators(Validators.required)
         } else {
             this.form.controls['project'].removeValidators(Validators.required);
