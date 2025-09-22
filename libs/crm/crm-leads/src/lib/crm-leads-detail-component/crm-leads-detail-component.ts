@@ -33,6 +33,7 @@ import { CrmTeamsService } from '@ss/crm/crm-teams';
 import {DeviceDetectorService} from "ngx-device-detector";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {toSignal} from "@angular/core/rxjs-interop";
+import { CrmLeadsTrackingListComponent } from '../crm-leads-tracking/list/crm-leads-tracking-list.component';
 
 enum Panels {
     GENERAL = 0,
@@ -41,6 +42,7 @@ enum Panels {
     PROGRESS = 3,
     ACTIVITY = 4,
     ACTIVITY_LINE_DETAIL = 5,
+    TRACKING = 6,
 }
 
 @Component({
@@ -53,6 +55,7 @@ enum Panels {
         UiAutoCompleteComponent,
         CrmLeadsActivityListComponent,
         CrmLeadsActivityLinesDetailComponent,
+        CrmLeadsTrackingListComponent
     ],
     templateUrl: './crm-leads-detail-component.html',
     styleUrl: './crm-leads-detail-component.scss',
@@ -143,6 +146,7 @@ export class CrmLeadsDetailComponent implements OnInit {
     isGeneral = computed(() => this.selectedPanel() === Panels.GENERAL);
     isDetail = computed(() => this.selectedPanel() === Panels.DETAIL);
     isContact = computed(() => this.selectedPanel() === Panels.CONTACT);
+    isTracking = computed(() => this.selectedPanel() === Panels.TRACKING);
     isProgress = computed(() => this.selectedPanel() === Panels.PROGRESS);
     isActivity = computed(() => this.selectedPanel() === Panels.ACTIVITY);
     isActivityDetail = computed(
