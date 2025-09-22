@@ -122,6 +122,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
     employee  = signal<IEmployee|null>(null);
     finalGrade = signal(false);
     gradeDifference = signal(0);
+    nonEmptyTable = signal(true);
     imageModel = new ImageModel(this.httpSrv);
 
     subordinateLookup  = new PersonAutocompleteClass(this.subordinateSrv);
@@ -216,7 +217,11 @@ export class GradingsComponent implements OnInit, OnDestroy {
         this.data$ = srv
             .getList(this.paginator.page - 1, this.paginator.pageSize, this.searchCtrl.value + filter, this.subordinateSrv.sortColumn)
             .pipe(
-                tap(res => this.paginator.elementCount = res.itemCount),
+                tap(res => {
+                    this.paginator.elementCount = res.itemCount;
+                    this.nonEmptyTable.set(res.itemCount > 0);
+
+                }),
                 map(res => res.body)
             );
         this.refresh({id: 0, firstName: null, lastName: null});

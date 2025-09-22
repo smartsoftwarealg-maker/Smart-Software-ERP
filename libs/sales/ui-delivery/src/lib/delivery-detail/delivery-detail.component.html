@@ -63,7 +63,8 @@
                     <mat-label translate>COMMON_PROJECT</mat-label>
                     <ss-auto-complete matInput
                                       [model]="salesProjectLookup"
-                                      formControlName="project">
+                                      formControlName="project"
+                                      [required]="isProjectRequired()">
                     </ss-auto-complete>
                     @if (form.controls['project'].hasError('blocked')) {
                         <mat-error translate>LOGISTICS_PROJECT_BLOCKED</mat-error>

@@ -97,8 +97,7 @@ const TRANSPORTER = 3;
 })
 export class AgentDetailComponent
     extends BaseEntityDetailComponent<Agent>
-    implements OnInit
-{
+    implements OnInit {
     private optionSrv = inject(OptionService);
     private defaultAgentType = 0;
     private dialog = inject(MatDialog);
@@ -284,23 +283,21 @@ export class AgentDetailComponent
             website: [a.website, Validators.pattern(urlRegExp)],
             nis: [a.nis],
             nif: [a.nif],
-            debtLimit: [a.debtLimit || 0],
-            debtTerm: [a.debtTerm, FormValidators.integerValidator],
-            payMode: [a.payMode],
-            checkDueDays: [a.checkDueDays, FormValidators.integerValidator],
-            activity: [a.activity],
-            recordBlocked: [a.recordBlocked],
-            blockingReason: {
-                value: a.blockingReason,
-                disabled: a.recordBlocked,
-            },
-            subcontractor: [a.subcontractor],
-            postalCode: [a.postalCode],
-            approval: [a.approval],
-            category: [a.category],
-            tin: [a.tin],
-            department: [a.department],
-            creationTime: { value: a.creationTime, disabled: true },
+            debtLimit:       [a.debtLimit || 0],
+            debtTerm:        [a.debtTerm, FormValidators.integerValidator],
+            payMode:         [a.payMode],
+            checkDueDays:    [a.checkDueDays, FormValidators.integerValidator],
+            activity:        [a.activity],
+            recordBlocked:   [a.recordBlocked],
+            blockingReason:  [{ value: a.blockingReason,  disabled: a.recordBlocked }],
+            subcontractor:   [a.subcontractor],
+            postalCode:      [a.postalCode],
+            projectRequired: [a.projectRequired === true],
+            approval:        [a.approval],
+            category:        [a.category],
+            tin:             [a.tin],
+            department:      [a.department],
+            creationTime:    [{ value: a.creationTime, disabled: true }],
         });
     }
 

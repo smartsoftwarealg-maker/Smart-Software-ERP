@@ -199,5 +199,6 @@
     "AMENDMENT":             "تعديل",
     "INITIAL":               "أولي",
     "VT_ADVANCEMENT":        "المقدم قبل الضريبة",
-    "FT_ADVANCEMENT":        "المقدم بعد الضريبة"
+    "FT_ADVANCEMENT":        "المقدم بعد الضريبة",
+    "PROJECT_REQUIRED":      "المشروع إجباري عند البيع"
 }

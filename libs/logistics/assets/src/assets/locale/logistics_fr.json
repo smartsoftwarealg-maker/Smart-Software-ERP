@@ -200,5 +200,6 @@
     "AMENDMENT":             "Avenant",
     "INITIAL":               "Initiale",
     "VT_ADVANCEMENT":        "Avance avant taxes",
-    "FT_ADVANCEMENT":        "Avance après taxes"
+    "FT_ADVANCEMENT":        "Avance après taxes",
+    "PROJECT_REQUIRED":      "Projet requis pour les ventes"
 }

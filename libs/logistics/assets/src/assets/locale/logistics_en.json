@@ -201,6 +201,7 @@
     "AMENDMENT":             "Amendment",
     "INITIAL":               "Initial",
     "VT_ADVANCEMENT":        "VAT free advancement",
-    "FT_ADVANCEMENT":        "Full tax advancement"
+    "FT_ADVANCEMENT":        "Full tax advancement",
+    "PROJECT_REQUIRED":      "Project required for sales"
 
 }
