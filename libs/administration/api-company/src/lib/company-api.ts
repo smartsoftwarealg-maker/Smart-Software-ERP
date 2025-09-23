@@ -28,6 +28,7 @@ export interface Company {
     nif: string;
     bankAccount: string;
     logo: string;
+    consolidationCompany: boolean;
 }
 
 

@@ -1,7 +1,6 @@
 import { enableProdMode, ErrorHandler, importProvidersFrom } from '@angular/core';
 import { environment, appRoutes } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { provideRouter, Routes, withComponentInputBinding } from '@angular/router';
 import { MAIN_PAGE_URL, UPDATE_PASSWORD_URL, AUTH_2FA_URL, LOGIN_URL, CENTER_SELECT_URL } from '@ss/common/api-common';

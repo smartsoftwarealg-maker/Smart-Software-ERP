@@ -1,12 +1,15 @@
-@if (errorSrv.showMessage) {
+<h1>Eerror: errorSrv.message()</h1>
+@if (errorSrv.errorSet()) {
   <div class="abs-error-container">
     <div class="err-msg b-b-background f-f-text">
       <div class="message-content">
-        <h2>{{errorSrv.message}}</h2>
+          @for (msg of errorSrv.message(); track $index) {
+               <h2>{{msg}}</h2>
+          }
       </div>
       <h3 class="error-title mat-h1 f-warn">
         <i class="fas fa-exclamation-triangle mat-48 margin-end-16"></i>
-        <span translate>{{errorSrv.statusText}}</span>
+        <span translate>{{errorSrv.statusText()}}</span>
       </h3>
       <div class="dialog-actions">
         <button autofocus class="float-end" mat-mini-fab color="warn" (click)="onCloseClick()">

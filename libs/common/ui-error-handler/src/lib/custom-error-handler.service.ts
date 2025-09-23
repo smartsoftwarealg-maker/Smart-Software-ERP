@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import {isString, LanguageService} from '@ss/common/api-common';
 
@@ -6,70 +6,76 @@ import {isString, LanguageService} from '@ss/common/api-common';
     providedIn: 'root'
 })
 export class CustomErrorHandlerService {
-
+    private langSrv = inject(LanguageService);
     public onUpdate: () => void = null;
-    public message: string;
-    public status: number;
-    public statusText: string;
+    public message = signal<string[]>([]);
+    public statusText = signal<string|null>('');
+    public errorSet = signal(false);
 
-    private errorSet = false;
-
-    constructor(private langSrv: LanguageService) {
-    }
-
-    public get showMessage() {
-        return this.errorSet;
-    }
 
     // todo: Push error into a queue instead of keeping the last one only
     public setError(err: HttpErrorResponse | any) {
-        this.status = err == null || err.status == null
-            ? 0
-            : err.status;
-
         // Business logic exception has this type: { code: string, params: string[] }
         if (err && err.error) {
-            this.message = isString(err.error.code) ?
+            this.message.set([isString(err.error.code) ?
                 this.langSrv.translate('BL_' + err.error.code) :
-                isString(err.error) ? err.error : err.error.exception;
+                isString(err.error) ? err.error : err.error.exception]);
         }
-        if (!this.message) {
-            this.message = err.message
+        if (!this.message()) {
+            this.message.set(err.message
                 ? err.message
-                : this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)});
+                : this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)}));
         }
         if (err.error) {
-            if (err.error['exception']) {
-                this.message = err.error['exception'];
-            } else if (typeof err.error === 'object' && err.error instanceof ArrayBuffer) {
+            if (err.error instanceof ArrayBuffer) {
                 const decoder = new TextDecoder('utf-8');
                 const str = decoder.decode(err.error.toString());
                 const exception = JSON.parse(str);
                 if (exception?.exception) {
-                    this.message = exception['exception'];
+                    this.message.set([exception['exception']]);
                 } else {
                     if (str.length > 10) {
-                        this.message = str
-                            .replace(`"exception":`, '');
+                        this.message.set(str.replace(`"exception":`, '').split(`\n`));
                     }
                 }
+                this.errorSet.set(true);
+            } else if (err.error instanceof Blob) {
+                // Extract the error message from the Blob
+                (<Blob>err.error).text().then(text => {
+                    const msg = text.replace(`"exception":`, '')
+                        .replace(`{"`, '')
+                        .replace(`"}`, '')
+                        .split('\\n');
+                    console.log(msg);
+                    this.message.set(msg);
+                    this.errorSet.set(true);
+                    if (this.onUpdate) {
+                        this.onUpdate();
+                    }
+                });
+            } else if (err.error['exception']) {
+                const msg = err.error['exception']
+                    .replace(`"exception":`, '')
+                    .replace(`{"`, '')
+                    .replace(`"}`, '')
+                    .replace(`\\t`, '||')
+                    .split('\\n');
+                this.message.set(msg);
+                this.errorSet.set(true);
             }
         }
 
-        this.statusText = err.error? err.error['params'] || '' : '';
+        this.statusText.set(err?.error['params'] || '');
 
-        this.errorSet = true;
-        console.log(this.message);
         if (this.onUpdate) {
             this.onUpdate();
         }
     }
 
     public clearError() {
-        this.message = null;
-        this.status = null;
-        this.statusText = null;
-        this.errorSet = false;
+        this.message.set(null);
+        this.statusText.set(null);
+        this.errorSet.set(false);
         if (this.onUpdate) {
             this.onUpdate();
         }

@@ -76,5 +76,6 @@
     "OBSOLETE_CONVENTION":          "لا توجد اتفاقية لهذا الناقل. من فضلك ، أنشئ اتفاقية جديدة.",
     "ALREADY_RECORDED":             "تم تسجيل هذه الوثيقة بالفعل في المحاسبة.",
     "PROJECT_QTY_EXCEEDED":         "تم تجاوز كمية المشروع",
-    "UNKNOWN_ERROR":                "خطأ غير معروف"
+    "UNKNOWN_ERROR":                "خطأ غير معروف",
+    "CANNOT_DELETE_ACTIVE_EMPLOYEE": "لا يمكن حذف مرتب موظف غير موقوف."
 }

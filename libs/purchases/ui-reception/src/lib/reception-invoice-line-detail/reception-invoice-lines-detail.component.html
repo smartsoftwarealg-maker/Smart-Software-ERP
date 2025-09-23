@@ -1,0 +1,145 @@
+<div class="button_div">
+
+    @if (isEditable) {
+        <button mat-mini-fab (click)="save()"
+                color="accent">
+            <i class="fas fa-save"></i>
+        </button>
+    }
+    <button mat-mini-fab (click)="cancel()"
+            color="warn">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+
+@if (form !== null) {
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="form">
+
+                <mat-form-field id="position" class="default-25 sm-50">
+                    <mat-label translate>COMMON_POSITION</mat-label>
+                    <input matInput formControlName="position" type="number">
+                </mat-form-field>
+                <div class="default-25 sm-hide"></div>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>STOCK_ARTICLE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="articleLookup"
+                                      formControlName="reference"></ss-auto-complete>
+                    @if (form.controls['reference'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    } @if (form.controls['reference'].hasError('validOption')) {
+                    <mat-error translate>COMMON_NO_MATCH</mat-error>
+                }
+                </mat-form-field>
+
+                <div class="default-50 sm-100">
+                    <mat-form-field style="width: calc(100% - 50px); margin-right: .5em">
+                        <mat-label translate>STOCK_STORE</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="storeLookup"
+                                          formControlName="store">
+                        </ss-auto-complete>
+                        @if (form.controls['store'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+                    @if (form.controls['qtySatisfied'].value < 0.0001 && usesLots()) {
+                        <button mat-mini-fab
+                                (click)="showLotInputDialog()"
+                                color="accent"
+                                [matTooltip]="'COMMON_ADD' | translate">
+                            <i class="fas fa-add icon"></i>
+                        </button>
+                    }
+                </div>
+
+                <mat-form-field id="qtyOrdered" class="default-25 sm-50">
+                    <mat-label translate>LOGISTICS_QTY_ORDERED</mat-label>
+                    <input matInput formControlName="qtyOrdered" type="number" step=".01" [readonly]="true">
+                </mat-form-field>
+
+                <mat-form-field id="qtySatisfied" class="default-25 sm-50">
+                    <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
+                    <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
+                    @if (form.controls['qtySatisfied'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <!--                <mat-form-field id="qtyInvoiced" class="default-50 sm-100">-->
+                <!--                    <mat-label translate>LOGISTICS_QTY_INVOICED</mat-label>-->
+                <!--                    <input matInput formControlName="qtyInvoiced" type="number" step=".01" required>-->
+                <!--                    <mat-error *ngIf="form.controls['qtyInvoiced'].hasError('required')" translate>-->
+                <!--                        COMMON_FIELD_REQUIRED-->
+                <!--                    </mat-error>-->
+                <!--                </mat-form-field>-->
+
+
+                <mat-form-field id="price" class="default-25 sm-50">
+                    <mat-label translate>LOGISTICS_PRICE</mat-label>
+                    <input matInput formControlName="price" type="number" step=".01" required>
+                    @if (form.controls['price'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field id="vat" class="default-25 sm-100">
+                    <mat-label translate>LOGISTICS_VAT</mat-label>
+                    <input matInput formControlName="vat" type="number" step="1">
+                    @if (form.controls['vat'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field id="vat2" class="default-25 sm-100">
+                    <mat-label><span translate>LOGISTICS_VAT</span>2</mat-label>
+                    <input matInput formControlName="vat2" type="number" step="1">
+                </mat-form-field>
+
+
+                <mat-form-field class="default-25 sm-100">
+                    <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
+                    <input matInput formControlName="charge" type="number" step="1">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_COST_CENTER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="cCenterLookup"
+                                      formControlName="costCenter">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field id="header" class="default-50 sm-100">
+                    <mat-label translate>STOCK_HEADER</mat-label>
+                    <textarea matInput formControlName="observation" cdkTextareaAutosize="true"></textarea>
+                </mat-form-field>
+
+                <mat-form-field id="footer" class="default-50 sm-100">
+                    <mat-label translate>STOCK_FOOTER</mat-label>
+                    <textarea matInput formControlName="footerMemo" cdkTextareaAutosize="true"></textarea>
+                </mat-form-field>
+
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+}
+
+<!--    <div class="doc-info">-->
+<!--        @if (selectedReference) {-->
+<!--            <ss-doc-info-->
+<!--                [displayedGroups]="['document', 'agent', 'article']"-->
+<!--                [params]="{-->
+<!--                    articleReference: selectedReference,-->
+<!--                    agentId: agentId,-->
+<!--                    documentId: parentId,-->
+<!--                    documentURL:'/inventory'-->
+<!--                }">-->
+<!--            </ss-doc-info>-->
+<!--        }-->
+<!--    </div-->
