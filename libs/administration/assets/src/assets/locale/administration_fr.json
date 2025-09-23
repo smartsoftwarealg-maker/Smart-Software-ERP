@@ -93,5 +93,6 @@
     "GLOBAL_VALIDATION": "Validation globale",
     "VALIDATE_ALL": "Tout valider",
     "ADDRESS": "Adresse",
-    "BLOCKING_YEAR": "Année de blocage"
+    "BLOCKING_YEAR": "Année de blocage",
+    "CONSOLIDATION_UNIT": "Unite de consolidation"
 }
