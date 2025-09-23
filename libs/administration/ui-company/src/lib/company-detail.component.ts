@@ -66,6 +66,7 @@ export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
             nif: [b.nif],
             email: [b.email, Validators.email],
             bankAccount: [b.bankAccount],
+            consolidationCompany: [!!b.consolidationCompany],
             logo: [b.logo],
         });
     }
