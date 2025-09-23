@@ -36,7 +36,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         PaginationComponent,
     ],
     templateUrl: './crm-opportunity-tracking-list.component.html',
-    styleUrl: './crm-leads-tracking-list.component.scss',
+    styleUrl: './crm-opportunity-tracking-list.component.scss',
     standalone: true,
 })
 export class CrmOpportunityTrackingListComponent extends BaseChildEntityListComponent<CRMOpportunityProgressLogger> {
