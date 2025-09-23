@@ -36,7 +36,7 @@ import { CRMLeadsProgressLogger } from './api';
         PaginationComponent,
     ],
     templateUrl: './crm-leads-tracking-list.component.html',
-    styleUrl: './crm-leads-tracking-list.component.scss',
+    styleUrls: ['./crm-leads-tracking-list.component.scss'],
     standalone: true,
 })
 export class CrmLeadsTrackingListComponent extends BaseChildEntityListComponent<CRMLeadsProgressLogger> {

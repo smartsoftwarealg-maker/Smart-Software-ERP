@@ -93,5 +93,6 @@
     "GLOBAL_VALIDATION": "Global validation",
     "VALIDATE_ALL": "Validate all",
     "ADDRESS": "Address",
-    "BLOCKING_YEAR": "Block year"
+    "BLOCKING_YEAR": "Block year",
+    "CONSOLIDATION_UNIT": "Consolidation unit"
 }
