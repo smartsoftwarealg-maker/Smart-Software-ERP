@@ -18,8 +18,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     MaterialModule,
     TranslateDirective,
     ReactiveFormsModule,
-    UiAutoCompleteComponent,
-    TranslatePipe
+    UiAutoCompleteComponent
 ]
 })
 export class ReceptionInvoiceLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

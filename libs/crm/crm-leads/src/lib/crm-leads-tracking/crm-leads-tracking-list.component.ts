@@ -14,9 +14,9 @@ import {
 } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
-import { CrmLeadsTrackingService } from '../crm-leads-tracking.service';
+import { CrmLeadsTrackingService } from './crm-leads-tracking.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { CRMLeadsProgressLogger } from '../api';
+import { CRMLeadsProgressLogger } from './api';
 
 @Component({
     selector: 'ss-crm-leads-tracking-list',

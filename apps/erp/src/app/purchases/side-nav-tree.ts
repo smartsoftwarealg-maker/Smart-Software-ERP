@@ -13,7 +13,7 @@ import {
     ABS_PURCHASE_REPORT_RIGHT_URL,
     ABS_PRICE_REQUEST_URL,
     ABS_FINANCE_SPAYMENTS,
-    ABS_LOGISTICS_SUPPLIER_URL
+    ABS_LOGISTICS_SUPPLIER_URL, ABS_PURCHASE_INVOICE_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -68,6 +68,18 @@ export const purchasesNavTree: SideNavNode = {
             name: 'COMMON_RECEPTION',
             icon: 'fas fa-cart-arrow-down',
             route: ABS_PURCHASE_RECEPTION_URL,
+            accessRights: 'Reception'
+        },
+        {
+            name: 'COMMON_RECEPTION',
+            icon: 'fas fa-cart-arrow-down',
+            route: ABS_PURCHASE_RECEPTION_URL,
+            accessRights: 'Reception'
+        },
+        {
+            name: 'PURCHASES_PURCHASE_INVOICE',
+            icon: 'fas fa-cart-arrow-down',
+            route: ABS_PURCHASE_INVOICE_URL,
             accessRights: 'Reception'
         },
         {

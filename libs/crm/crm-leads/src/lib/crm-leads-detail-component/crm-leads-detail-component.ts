@@ -33,7 +33,7 @@ import { CrmTeamsService } from '@ss/crm/crm-teams';
 import {DeviceDetectorService} from "ngx-device-detector";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {toSignal} from "@angular/core/rxjs-interop";
-import { CrmLeadsTrackingListComponent } from '../crm-leads-tracking/list/crm-leads-tracking-list.component';
+import { CrmLeadsTrackingListComponent } from '../crm-leads-tracking/crm-leads-tracking-list.component';
 
 enum Panels {
     GENERAL = 0,
