@@ -1,0 +1,32 @@
+:host {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    width: 600px;
+    min-width: 320px;
+}
+
+mat-card {
+    margin-top: 24px;
+
+    mat-card-content {
+        margin-top: 24px;
+    }
+}
+
+.value {
+    width: 260px;
+    display: block;
+    margin: auto;
+}
+
+
+#report-area.mat-card {
+    margin: 0 0 16px 0!important;
+    padding: 0!important;
+}
+
+#report-area.mat-card mat-card-content{
+    margin: 0 !important;
+}
+

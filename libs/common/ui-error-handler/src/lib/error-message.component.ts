@@ -1,4 +1,4 @@
-import {Component, ChangeDetectorRef} from '@angular/core';
+import {Component, ChangeDetectorRef, inject} from '@angular/core';
 import { CustomErrorHandlerService } from '@ss/common/ui-error-handler';
 
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -12,9 +12,11 @@ import { MatMiniFabButton } from '@angular/material/button';
     imports: [TranslateDirective, MatMiniFabButton]
 })
 export class MessageComponent {
+    private cdRef= inject(ChangeDetectorRef);
+    protected errorSrv = inject(CustomErrorHandlerService);
 
-    constructor(public errorSrv: CustomErrorHandlerService, private cdRef: ChangeDetectorRef) {
-        errorSrv.onUpdate = () => cdRef.detectChanges();
+    constructor() {
+        this.errorSrv.onUpdate = () => this.cdRef.detectChanges();
     }
 
     public onCloseClick(): void {
