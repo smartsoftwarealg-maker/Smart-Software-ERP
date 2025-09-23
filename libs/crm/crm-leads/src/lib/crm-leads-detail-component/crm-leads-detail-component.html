@@ -19,9 +19,18 @@
         }
     </button>
     <button matButton (click)="select(Panels.PROGRESS)" [matTooltip]="'CRM_PROGRESS' | translate">
-        <i class="fa-solid fa-arrow-progress"></i>
+        <i class="fa-solid fa-chart-line"></i>
         @if (!isMobile()) {
             {{ 'CRM_PROGRESS'|translate }}
+        }
+    </button>
+    <button matButton
+            (click)="select(Panels.TRACKING)"
+            [disabled]="leadId === 0"
+            [matTooltip]="'CRM_TRACKING' | translate">
+        <i class="fa-solid fa-arrow-progress"></i>
+        @if (!isMobile()) {
+            {{ 'CRM_TRACKING'|translate }}
         }
     </button>
     <button matButton
@@ -62,7 +71,7 @@
                 <mat-form-field class="default-50">
                     <mat-label translate>COMMON_SOURCE</mat-label>
                     <mat-select formControlName="source">
-                        @for (s of SOURCE; track s) {
+                        @for (s of SOURCE;track s) {
                             <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                         }
                     </mat-select>
@@ -122,7 +131,7 @@
                 <mat-form-field class="default-50">
                     <mat-label translate>COMMON_STATE</mat-label>
                     <mat-select formControlName="state">
-                        @for (s of STATES; track s) {
+                        @for (s of STATES;track s) {
                             <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                         }
                     </mat-select>
@@ -131,7 +140,7 @@
                 <mat-form-field class="default-50">
                     <mat-label translate>COMMON_STATUS</mat-label>
                     <mat-select formControlName="status">
-                        @for (s of STATUS; track s) {
+                        @for (s of STATUS;track s) {
                             <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                         }
                     </mat-select>
@@ -140,7 +149,7 @@
                 <mat-form-field class="default-50 ">
                     <mat-label translate>COMMON_PRIORITY</mat-label>
                     <mat-select formControlName="priority">
-                        @for (s of PRIORITIES; track s) {
+                        @for (s of PRIORITIES;track s) {
                             <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
                         }
                     </mat-select>
@@ -183,7 +192,7 @@
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>CRM_INDUSTRY</mat-label>
                     <mat-select formControlName="companyIndustry">
-                        @for (industry of industries; track industry) {
+                        @for (industry of industries;track industry) {
                             <mat-option [value]="industry" translate>CRM_{{ industry }}</mat-option>
                         }
                     </mat-select>
@@ -262,6 +271,17 @@
                 [parentId]="leadId"
                 (closed)="select(Panels.ACTIVITY)">
             </ss-crm-leads-activity-lines-detail>
+        }
+
+        @if (isTracking()) {
+            <div class="panel__div">
+                <mat-toolbar>
+                    <span translate>CRM_TRACKING</span>
+                </mat-toolbar>
+                @if (leadId > 0) {
+                    <ss-crm-leads-tracking-list [parentId]="leadId"></ss-crm-leads-tracking-list>
+                }
+            </div>
         }
 
     </form>
