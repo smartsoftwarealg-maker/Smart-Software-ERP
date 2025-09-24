@@ -26,7 +26,7 @@ import { Observable, of, switchMap, tap } from 'rxjs';
 
 
 @Component({
-    selector: 'ss-inter-store-transfer-detail',
+    selector: 'ss-reception-detail',
     templateUrl: './reception-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,

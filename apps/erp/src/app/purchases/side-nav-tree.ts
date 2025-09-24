@@ -78,7 +78,7 @@ export const purchasesNavTree: SideNavNode = {
         },
         {
             name: 'PURCHASES_PURCHASE_INVOICE',
-            icon: 'fas fa-cart-arrow-down',
+            icon: 'fa-solid fa-file-invoice',
             route: ABS_PURCHASE_INVOICE_URL,
             accessRights: 'Reception'
         },

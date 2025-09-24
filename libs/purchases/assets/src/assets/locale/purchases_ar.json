@@ -10,5 +10,6 @@
     "AUTH_NO":               "رقم التفويض",
     "AUTH_DATE":             "تاريخ الترخيص",
     "PRICE_REQUEST":         "المساومة",
-    "SOURCE_DOC":            "المصدر"
+    "SOURCE_DOC":            "المصدر",
+    "PURCHASE_INVOICE":      "فاتورة شراء"
 }

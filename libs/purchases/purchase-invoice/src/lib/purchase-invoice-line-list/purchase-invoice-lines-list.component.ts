@@ -9,14 +9,14 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
-import { ReceptionLinesService } from '../reception-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import {PurchaseInvoiceLineService} from "../purchase-invoice-line.service";
 
 @Component({
-    selector: 'ss-reception-invoice-lines-list',
+    selector: 'ss-purchase-invoice-lines-list',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
-    templateUrl: './reception-invoice-lines-list.component.html',
+    templateUrl: './purchase-invoice-lines-list.component.html',
     standalone: true,
     imports: [
         CommonModule,
@@ -28,7 +28,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         PaginationComponent
     ]
 })
-export class ReceptionInvoiceLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
+export class PurchaseInvoiceLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     override displayedColumns = [
         'position',
         'storeDescription',
@@ -42,7 +42,7 @@ export class ReceptionInvoiceLinesListComponent extends BaseTransactionLinesList
     ];
 
     constructor(
-        public override detailSrv: ReceptionLinesService,
+        public override detailSrv: PurchaseInvoiceLineService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

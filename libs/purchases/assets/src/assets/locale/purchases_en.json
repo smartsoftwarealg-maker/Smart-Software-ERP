@@ -10,5 +10,6 @@
     "AUTH_NO":               "Authorization No.",
     "AUTH_DATE":             "Authorization date",
     "PRICE_REQUEST":         "Price inquiry",
-    "SOURCE_DOC":            "Source document"
+    "SOURCE_DOC":            "Source document",
+    "PURCHASE_INVOICE":      "Purchase invoice"
 }
