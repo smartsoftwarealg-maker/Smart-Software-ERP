@@ -22,7 +22,7 @@
                     <input matInput formControlName="position" type="number">
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-75 sm-100">
                     <mat-label translate>STOCK_ARTICLE</mat-label>
                     <ss-auto-complete matInput
                                       [required]="true"
@@ -57,10 +57,10 @@
                 <!--                    }-->
                 <!--                </div>-->
 
-                <mat-form-field id="qtySatisfied" class="default-25 sm-50">
-                    <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
-                    <input matInput formControlName="qtySatisfied" type="number" step=".01" [readonly]="true">
-                </mat-form-field>
+<!--                <mat-form-field id="qtySatisfied" class="default-25 sm-50">-->
+<!--                    <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>-->
+<!--                    <input matInput formControlName="qtySatisfied" type="number" step=".01" [readonly]="true">-->
+<!--                </mat-form-field>-->
 
                 <!--                <mat-form-field id="qtySatisfied" class="default-25 sm-50">-->
                 <!--                    <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>-->
@@ -105,6 +105,8 @@
                     <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
                     <input matInput formControlName="charge" type="number" step="1">
                 </mat-form-field>
+
+                <div class="default-25 sm-hide">
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_COST_CENTER</mat-label>

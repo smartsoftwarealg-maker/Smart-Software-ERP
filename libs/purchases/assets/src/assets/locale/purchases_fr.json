@@ -10,5 +10,6 @@
     "AUTH_NO":               "Numéro d'autorisation.",
     "AUTH_DATE":             "Date d'autorisation",
     "PRICE_REQUEST":         "Demande de prix",
-    "SOURCE_DOC":            "Document source"
+    "SOURCE_DOC":            "Document source",
+    "PURCHASE_INVOICE":      "Facture d'achat"
 }

@@ -554,6 +554,9 @@
             "@ss/purchases/preiceRequest": [
                 "libs/purchases/price-request/src/index.ts"
             ],
+            "@ss/purchases/purchase-invoice": [
+                "libs/purchases/purchase-invoice/src/index.ts"
+            ],
             "@ss/purchases/reception-cancellation": [
                 "libs/purchases/reception-cancellation/src/index.ts"
             ],

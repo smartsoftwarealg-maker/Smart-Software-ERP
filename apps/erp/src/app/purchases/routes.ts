@@ -24,7 +24,6 @@ import {
 } from '@ss/purchases/ui-purchase-order';
 import {PURCHASE_RECEPTION_URL, PURCHASE_ORDER_URL} from '../common';
 import {
-    ReceptionInvoiceLinesListComponent,
     ReceptionLinesDetailComponent,
     ReceptionLinesListComponent,
     ReceptionListComponent
@@ -69,9 +68,10 @@ import {
 } from '@ss/purchases/preiceRequest';
 import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent';
 import { AGENT_ARCHIVES, AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
-import {
-    ReceptionInvoiceLinesDetailComponent
-} from "@ss/purchases/ui-reception";
+import { PurchaseInvoiceListComponent} from '@ss/purchases/purchase-invoice';
+import { PurchaseInvoiceDetailComponent} from '@ss/purchases/purchase-invoice';
+import { PurchaseInvoiceLinesListComponent} from '@ss/purchases/purchase-invoice';
+import { PurchaseInvoiceLinesDetailComponent} from '@ss/purchases/purchase-invoice';
 
 export const routes: Routes = [
     {
@@ -244,13 +244,13 @@ export const routes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ReceptionListComponent,
+                component: PurchaseInvoiceListComponent,
                 canActivate: [loginGuard],
                 children: docInfoRoutes
             },
             {
                 path: ':id',
-                component: ReceptionDetailComponent,
+                component: PurchaseInvoiceDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
@@ -264,13 +264,13 @@ export const routes: Routes = [
                     },
                     {
                         path: 'lines-list',
-                        component: ReceptionInvoiceLinesListComponent,
+                        component: PurchaseInvoiceLinesListComponent,
                         children: docInfoRoutes
                     },
                     {
                         path: 'lines-detail',
                         children: [
-                            { path: ':id', component: ReceptionInvoiceLinesDetailComponent },
+                            { path: ':id', component: PurchaseInvoiceLinesDetailComponent },
                         ]
                     },
                     ...docInfoRoutes
