@@ -18,6 +18,7 @@ import { UserListService } from '@ss/common/api-users';
 import { CRMEmailTemplatesService } from '../crm-email-templates.service';
 import { STATUS } from '../crm-email-templates.api';
 import { CrmTeamsService } from '@ss/crm/crm-teams';
+import { Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar } from 'ngx-editor';
 
 @Component({
     selector: 'crm-email-templates-detail-component',
@@ -27,6 +28,8 @@ import { CrmTeamsService } from '@ss/crm/crm-teams';
         TranslatePipe,
         DatePickerComponent,
         UiAutoCompleteComponent,
+        NgxEditorMenuComponent,
+        NgxEditorComponent
     ],
     templateUrl: './crm-email-templates-detail-component.html',
     styleUrl: './crm-email-templates-detail-component.scss',
@@ -116,6 +119,17 @@ export class CrmEmailTemplatesDetailComponent implements OnInit {
             updatedBy: [b?.updatedBy || this.#loginSrv.appCtx.id],
         });
     }
+
+    editor: Editor = new Editor();
+    toolbar: Toolbar = [
+        ['bold', 'italic'],
+        ['underline', 'strike'],
+        ['ordered_list', 'bullet_list'],
+        [{ heading: ['h1', 'h2', 'h3'] }],
+        ['link', 'image'],
+        ['text_color', 'background_color'],
+        ['align_left', 'align_center', 'align_right'],
+    ];
 
     protected readonly STATUS = STATUS;
     protected readonly CATEGORY = CATEGORY;

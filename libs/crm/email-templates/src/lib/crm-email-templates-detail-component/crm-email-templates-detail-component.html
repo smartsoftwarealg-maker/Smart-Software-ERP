@@ -99,13 +99,15 @@
                         </ss-date-picker>
                     </mat-form-field>
 
-                    <mat-form-field class="memo">
+                    <div class="memo">
                         <mat-label translate>CRM_HTML_CONTENT</mat-label>
-                        <textarea matInput formControlName="htmlContent" rows="2"></textarea>
+                        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary"></ngx-editor-menu>
+                        <ngx-editor [editor]="editor" [formControl]="form.controls['htmlContent']"></ngx-editor>
                         @if(form.controls['htmlContent'].invalid) {
                             <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                         }
-                    </mat-form-field>
+                    </div>
+
 
                     <mat-form-field class="memo">
                         <mat-label translate>CRM_TEXT_CONTENT</mat-label>
