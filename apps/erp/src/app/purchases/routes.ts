@@ -24,6 +24,7 @@ import {
 } from '@ss/purchases/ui-purchase-order';
 import {PURCHASE_RECEPTION_URL, PURCHASE_ORDER_URL} from '../common';
 import {
+    ReceptionInvoiceLinesListComponent,
     ReceptionLinesDetailComponent,
     ReceptionLinesListComponent,
     ReceptionListComponent
@@ -70,7 +71,7 @@ import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent
 import { AGENT_ARCHIVES, AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
 import {
     ReceptionInvoiceLinesDetailComponent
-} from "../../../../../libs/purchases/ui-reception/src/lib/reception-invoice-line-detail/reception-invoice-lines-detail.component";
+} from "@ss/purchases/ui-reception";
 
 export const routes: Routes = [
     {
@@ -263,7 +264,7 @@ export const routes: Routes = [
                     },
                     {
                         path: 'lines-list',
-                        component: ReceptionLinesListComponent,
+                        component: ReceptionInvoiceLinesListComponent,
                         children: docInfoRoutes
                     },
                     {

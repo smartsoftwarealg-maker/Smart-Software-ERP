@@ -35,7 +35,7 @@ export class ReceptionInvoiceLinesListComponent extends BaseTransactionLinesList
         'storeName',
         'reference',
         'description',
-        'qtySatisfied',
+        'qtyInvoiced',
         'price',
         'vat',
         'total'

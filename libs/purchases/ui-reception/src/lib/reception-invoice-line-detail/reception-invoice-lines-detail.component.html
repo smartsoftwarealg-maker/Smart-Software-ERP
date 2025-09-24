@@ -21,7 +21,6 @@
                     <mat-label translate>COMMON_POSITION</mat-label>
                     <input matInput formControlName="position" type="number">
                 </mat-form-field>
-                <div class="default-25 sm-hide"></div>
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>STOCK_ARTICLE</mat-label>
@@ -73,7 +72,7 @@
 
                 <mat-form-field id="qtyInvoiced" class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_QTY_INVOICED</mat-label>
-                    <input matInput formControlName="qtyInvoiced" type="number" step=".01" required>
+                    <input matInput formControlName="qtyInvoiced" type="number" step="1" required>
                     @if (form.controls['qtyInvoiced'].hasError('required')) {
                         <mat-error translate> COMMON_FIELD_REQUIRED</mat-error>
                     }
