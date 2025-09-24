@@ -16,17 +16,13 @@ export class CustomErrorHandlerService {
     // todo: Push error into a queue instead of keeping the last one only
     public setError(err: HttpErrorResponse | any) {
         // Business logic exception has this type: { code: string, params: string[] }
-        if (err && err.error) {
-            this.message.set([isString(err.error.code) ?
-                this.langSrv.translate('BL_' + err.error.code) :
-                isString(err.error) ? err.error : err.error.exception]);
-        }
-        if (!this.message()) {
-            this.message.set(err.message
-                ? err.message
-                : this.langSrv.translate('COMMON_CONNECTION_FAILED', { backend: this.serverFromUrl(err.url)}));
-        }
-        if (err.error) {
+        if (err?.error && isString(err.error.code)) {
+            this.message.set([ this.langSrv.translate('BL_' + err.error.code)]);
+            this.errorSet.set(true);
+        } else if (err?.error && isString(err.error.exception)) {
+            this.message.set([ err.error.exception]);
+            this.errorSet.set(true);
+        } else if (err.error) {
             if (err.error instanceof ArrayBuffer) {
                 const decoder = new TextDecoder('utf-8');
                 const str = decoder.decode(err.error.toString());
