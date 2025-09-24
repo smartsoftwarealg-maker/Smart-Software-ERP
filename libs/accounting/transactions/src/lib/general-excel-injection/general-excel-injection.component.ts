@@ -1,5 +1,5 @@
 import { Component, inject, input, OnInit, signal } from '@angular/core';
-import { finalize, Subscription } from 'rxjs';
+import {catchError, finalize, Subscription} from 'rxjs';
 import { HttpEventType} from '@angular/common/http';
 import { ActivatedRoute, Router} from '@angular/router';
 import { ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -51,18 +51,19 @@ export class GeneralExcelInjectionComponent implements OnInit {
     uploadSub: Subscription;
     columns = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     form = this.#formBuilder.group({
-        journal:      ['', Validators.required],
-        day:          ['', Validators.required],
-        number:       ['', Validators.required],
-        period:       ['', Validators.required],
-        accountNo:    ['', Validators.required],
-        description:  ['', Validators.required],
-        customerCode: [''],
-        denomination: [''],
-        reference:    [''],
-        checkNo:      [''],
-        debit:        ['', Validators.required],
-        credit:       ['', Validators.required],
+        journal:        ['', Validators.required],
+        day:            ['', Validators.required],
+        number:         ['', Validators.required],
+        period:         ['', Validators.required],
+        accountNo:      ['', Validators.required],
+        description:    ['', Validators.required],
+        customerCode:   [''],
+        denomination:   [''],
+        reference:      [''],
+        checkNo:        [''],
+        debit:          ['', Validators.required],
+        credit:         ['', Validators.required],
+        deleteExisting: [false, Validators.required],
     });
 
     ngOnInit(): void {
@@ -75,18 +76,19 @@ export class GeneralExcelInjectionComponent implements OnInit {
 
     private appendFormValue(formData: FormData) {
         const formValue = this.form.value;
-        formData.append("JOURNAL", formValue.journal)
-        formData.append("DAY", formValue.day)
-        formData.append("NUMBER", formValue.number)
-        formData.append("PERIOD", formValue.period)
-        formData.append("ACCOUNTNO", formValue.accountNo)
-        formData.append("DESCRIPTION", formValue.description)
-        formData.append("CUSTOMER_CODE", formValue.customerCode)
-        formData.append("DENOMINATION", formValue.denomination)
-        formData.append("REFERENCE", formValue.reference)
-        formData.append("CHECKNO", formValue.checkNo)
-        formData.append("DEBIT", formValue.debit)
-        formData.append("CREDIT", formValue.credit)
+        formData.append('JOURNAL', formValue.journal)
+        formData.append('DAY', formValue.day)
+        formData.append('NUMBER', formValue.number)
+        formData.append('PERIOD', formValue.period)
+        formData.append('ACCOUNTNO', formValue.accountNo)
+        formData.append('DESCRIPTION', formValue.description)
+        formData.append('CUSTOMER_CODE', formValue.customerCode)
+        formData.append('DENOMINATION', formValue.denomination)
+        formData.append('REFERENCE', formValue.reference)
+        formData.append('CHECKNO', formValue.checkNo)
+        formData.append('DEBIT', formValue.debit)
+        formData.append('CREDIT', formValue.credit)
+        formData.append('DELETE_EXISTING', formValue.deleteExisting+'');
 
     }
 
@@ -101,10 +103,9 @@ export class GeneralExcelInjectionComponent implements OnInit {
             this.uploadSub = this.#injectSrv
                 .inject(formData)
                 .pipe(finalize(() => {
-                    this.reset();
-                    this.processing.set(false);
-                }))
-                .subscribe({
+                        this.reset();
+                        this.processing.set(false);
+                    })).subscribe({
                     next: (res: any) => {
                         if (res.type == HttpEventType.UploadProgress) {
                             this.uploadProgress = Math.round(100 * (res.loaded / res.total));

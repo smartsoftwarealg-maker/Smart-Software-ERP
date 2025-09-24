@@ -18,8 +18,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     MaterialModule,
     TranslateDirective,
     ReactiveFormsModule,
-    UiAutoCompleteComponent,
-    TranslatePipe
+    UiAutoCompleteComponent
 ]
 })
 export class ReceptionInvoiceLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
@@ -27,16 +26,16 @@ export class ReceptionInvoiceLinesDetailComponent extends BaseTransactionLinesDe
         super(receptionLinesSrv,  DOC_RECEPTION);
     }
 
-    readForm(): TransactionLine {
-        const value =  super.readForm();
-        value.qtyInvoiced = value.qtySatisfied;
-        return value;
-    }
+    // readForm(): TransactionLine {
+    //     const value =  super.readForm();
+    //     value.qtyInvoiced = value.qtySatisfied;
+    //     return value;
+    // }
 
     setupForm(b: TransactionLine): UntypedFormGroup {
         const fg = super.setupForm(b);
+        fg.controls['qtySatisfied'].disable({onlySelf: true});
         fg.controls['charge']?.setValue(Math.abs(fg.controls['charge']?.value||0));
         return fg;
     }
-
 }

@@ -13,7 +13,8 @@ import {
     LOGISTICS_ARTICLES_URL,
     STOCK_ARTICLE_URL,
     PURCHASE_RECEPTION_CANCELLATION_URL,
-    IMPORT_PURCHASE_RECEPTION_URL, ADMIN_REPORT_RIGHTS_URL, PRICE_REQUEST_URL, LOGISTICS_SUPPLIER_URL
+    IMPORT_PURCHASE_RECEPTION_URL, ADMIN_REPORT_RIGHTS_URL, PRICE_REQUEST_URL, LOGISTICS_SUPPLIER_URL,
+    PURCHASE_RECEPTION_INVOICE_URL
 } from '../common';
 import {
     PurchaseOrderDetailComponent,
@@ -23,6 +24,7 @@ import {
 } from '@ss/purchases/ui-purchase-order';
 import {PURCHASE_RECEPTION_URL, PURCHASE_ORDER_URL} from '../common';
 import {
+    ReceptionInvoiceLinesListComponent,
     ReceptionLinesDetailComponent,
     ReceptionLinesListComponent,
     ReceptionListComponent
@@ -67,6 +69,9 @@ import {
 } from '@ss/purchases/preiceRequest';
 import { AgentDetailComponent, AgentListComponent } from '@ss/logistics/ui-agent';
 import { AGENT_ARCHIVES, AppArchiveDetailComponent, AppArchiveListComponent } from '@ss/common/app-archive';
+import {
+    ReceptionInvoiceLinesDetailComponent
+} from "@ss/purchases/ui-reception";
 
 export const routes: Routes = [
     {
@@ -227,6 +232,45 @@ export const routes: Routes = [
                         path: 'lines-detail',
                         children: [
                             { path: ':id', component: ReceptionLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+        ]
+    },
+    {
+        path: PURCHASE_RECEPTION_INVOICE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ReceptionListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ReceptionDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'costs-list', component: ExtraCostListComponent },
+                    {
+                        path: 'costs-detail',
+                        children: [
+                            { path: ':id', component: ExtraCostDetailComponent }
+                        ]
+                    },
+                    {
+                        path: 'lines-list',
+                        component: ReceptionInvoiceLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: ReceptionInvoiceLinesDetailComponent },
                         ]
                     },
                     ...docInfoRoutes
