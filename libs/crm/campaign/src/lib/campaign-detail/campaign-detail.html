@@ -3,18 +3,18 @@
         @if (this.form?.touched && this.form.dirty) {
             <span><i class="fa-solid fa-rotate-right"></i> {{ 'COMMON_CANCEL'|translate }}</span>
         } @else {
-            <span><i class="fa-solid fa-rotate-left"></i> {{ 'COMMON_LIST'|translate }}</span>
-        }
+        <span><i class="fa-solid fa-rotate-left"></i> {{ 'COMMON_LIST'|translate }}</span>
+    }
     </button>
     <button matButton (click)="select(Panels.DETAIL)"><i
-            class="fa-solid fa-list-ol"></i> {{ 'COMMON_DETAIL'|translate }}
+        class="fa-solid fa-list-ol"></i> {{ 'COMMON_DETAIL'|translate }}
     </button>
     <button matButton (click)="select(Panels.EMAIL)"><i
-            class="fa-solid fa-phone"></i> {{ 'COMMON_EMAIL'|translate }}
+        class="fa-solid fa-phone"></i> {{ 'COMMON_EMAIL'|translate }}
     </button>
-        <button matButton (click)="save()" [disabled]="isEmail()"><span><i
-                class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
-    </div>
+    <button matButton (click)="save()" [disabled]="isEmail()"><span><i
+        class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
+</div>
 
 @if (form) {
     <form [formGroup]="form">
@@ -161,10 +161,10 @@
                     <mat-form-field>
                         <mat-label translate>CRM_OWNER</mat-label>
                         <ss-auto-complete
-                                [required]="true"
-                                formControlName="ownerId"
-                                [model]="userLookup"
-                                required>
+                            [required]="true"
+                            formControlName="ownerId"
+                            [model]="userLookup"
+                            required>
                         </ss-auto-complete>
                     </mat-form-field>
 
@@ -212,42 +212,38 @@
             </div>
         }
     </form>
-}
-
-@if (isEmail()) {
+} @if (isEmail()) {
     <div class="panel__div size">
         <mat-toolbar>
             <span translate>CRM_EMAIL</span>
         </mat-toolbar>
         <div class="content__div">
             @if (form?.controls['id']?.value > 0) {
-                <div class="content">
-                    <mat-form-field class="default-50 sm-100">
+                <div class="ctrl__div">
+                    <mat-form-field id="mailingList">
                         <mat-label translate>CRM_MAILING_LIST</mat-label>
                         <ss-auto-complete [model]="mailingListLookup"
                                           [formControl]="mailingList">
                         </ss-auto-complete>
                     </mat-form-field>
-                    <mat-form-field class="default-50 sm-100">
+                    <mat-form-field id="template">
                         <mat-label translate>CRM_EMAIL_TEMPLATE</mat-label>
                         <ss-auto-complete [model]="emailTemplateLookup"
                                           [formControl]="template">
                         </ss-auto-complete>
                     </mat-form-field>
+                    <button id="sendBtn" mat-raised-button color="primary" (click)="send()" translate>COMMON_SEND</button>
+                </div>
+                @if (editor) {
                     <form [formGroup]="htmlForm">
-                        @if (editor) {
-                            <div class="editor">
-                                <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary">
-                                </ngx-editor-menu>
-                                <ngx-editor [editor]="editor" formControlName="editorContent">
-                                </ngx-editor>
-                            </div>
-                        }
+                        <div class="editor">
+                            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary">
+                            </ngx-editor-menu>
+                            <ngx-editor [editor]="editor" formControlName="editorContent">
+                            </ngx-editor>
+                        </div>
                     </form>
-                </div>
-                <div class="send__div">
-                    <button mat-button color="primary" (click)="send()" translate>COMMON_SEND</button>
-                </div>
+                }
             }
         </div>
     </div>

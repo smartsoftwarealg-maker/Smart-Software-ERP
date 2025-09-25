@@ -27,7 +27,7 @@ mat-card {
 
 .content__div,
 form, .size {
-    width: 90%;
+    width: 100%;
     max-width: 1400px;
     margin: 8px auto;
 }
@@ -39,16 +39,32 @@ form, .size {
     max-width: 1000px;
     margin: 8px auto;
 }
+.ctrl__div {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: baseline;
+}
+
+//#template,
+//#mailingList {
+//    flex-grow: 1;
+//}
+
+#sendBtn {
+    margin-left: auto;
+}
 
 .NgxEditor,
 .NgxEditor__Content {
     height: 20em !important;
     min-height: 20em !important;
-    border: red solid 1px;
 }
 
 .editor {
-    //height: 20em;
+    width: 100%;
+    height: 20em;
     max-height: 20em;
     overflow: auto;
 }
