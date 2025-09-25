@@ -101,5 +101,6 @@
     "CLASSES_ACCOUNTS":         "حسابات الفصول",
     "DELETE_ALL_CENTERS":       "حذف مراكز التجميع",
     "GENERATION_CANCEL":        "إلغاء الجيل",
-    "SINGLE_ACCOUNTING":        "محاسبة فريدة لجميع المراكز"
+    "SINGLE_ACCOUNTING":        "محاسبة فريدة لجميع المراكز",
+    "DELETE_EXISTING":          "حذف التسجيلات الموجودة"
 }

@@ -1,4 +1,3 @@
-@use '@angular/material' as mat;
 
 .content__div > ss-crm-leads-activity-lines-detail {
     flex: 1 1 100%;
@@ -55,6 +54,21 @@ mat-toolbar {
         grid-template-areas: "descrip source   opened"
                              "detail  detail   detail"
                              "ecd     campaign optout";
+    }
+}
+
+@media (width <= 400px) {
+    .detail__div {
+        display: grid;
+        gap: .5em;
+        justify-items: stretch;
+        justify-content: stretch;
+        grid-template-columns:  1fr 1fr;
+        grid-template-areas: "descrip source"
+                             "opened  opened"
+                             "detail  detail "
+                             "ecd     campaign "
+                             "optout  output";
     }
 }
 

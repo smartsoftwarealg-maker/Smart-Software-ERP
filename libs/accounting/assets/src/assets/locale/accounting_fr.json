@@ -102,6 +102,7 @@
     "CLASSES_ACCOUNTS":         "Comptes de classes",
     "DELETE_ALL_CENTERS":       "Supprimer tous les centres",
     "GENERATION_CANCEL":        "Génération annulée",
-    "SINGLE_ACCOUNTING":        "Unique comptabilité pour tous les centres"
+    "SINGLE_ACCOUNTING":        "Unique comptabilité pour tous les centres",
+    "DELETE_EXISTING":          "Supprimer les ecritures existantes"
 }
 
