@@ -10,11 +10,11 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 import {
     AccJournalsService,
     Journal,
-    ScheduledSalesExcelInjectionService,
+    ScheduledSalesExcelInjectionService, XITotal,
     XLSInjectionFormat
 } from '@ss/accounting/accounting-api';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { MaterialModule } from '@ss/common/api-common';
+import {LanguageService, MaterialModule} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {ExcelInjectionFormatService} from '@ss/accounting/accounting-api';
@@ -23,6 +23,7 @@ import {debounceTime, distinctUntilChanged, map} from "rxjs/operators";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {MatAutocompleteActivatedEvent} from "@angular/material/autocomplete";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
+
 
 @Component({
     selector: 'ss-general-excel-injection',
@@ -53,6 +54,7 @@ export class GeneralExcelInjectionComponent implements OnInit {
     #excelFormatSrv = inject(ExcelInjectionFormatService);
     #xlsFormat = signal<number>(null);
     #confirmationSrv = inject(ConfirmationDialogService)
+    #langSrv = inject(LanguageService);
 
     journals = this.#journalSrv.getList(0, 50);
     updatable = false;
@@ -128,7 +130,8 @@ export class GeneralExcelInjectionComponent implements OnInit {
             this.processing.set(true);
             this.uploadSub = this.#injectSrv
                 .inject(formData)
-                .pipe(finalize(() => {
+                .pipe(takeUntilDestroyed(this.#destroyRef),
+                    finalize(() => {
                         this.reset();
                         this.processing.set(false);
                     })).subscribe({
@@ -136,10 +139,14 @@ export class GeneralExcelInjectionComponent implements OnInit {
                         if (res.type == HttpEventType.UploadProgress) {
                             this.uploadProgress = Math.round(100 * (res.loaded / res.total));
                         } else if (res.type == HttpEventType.Response) {
-                            const ret = res.body;
-                            if (ret['count'] > 0) {
-                                this.#snackBarSrv.showSuccessMessage();
-                                this.processing.set(false);
+                            const ret: XITotal = res.body;
+                            this.processing.set(false);
+                            if (ret) {
+                                const msg = this.#langSrv.translate('COMMON_TOTAL');
+                                const debit = this.#langSrv.translate('COMMON_DEBIT');
+                                const credit = this.#langSrv.translate('COMMON_CREDIT');
+                                window.alert(`${msg}, ${debit}: ${ret.debit.toFixed(2)} - ${credit}: ${ret.credit.toFixed(2)}`);
+                                // this.#snackBarSrv.showSuccessMessage();
                             }
                             this.cancel();
                         }

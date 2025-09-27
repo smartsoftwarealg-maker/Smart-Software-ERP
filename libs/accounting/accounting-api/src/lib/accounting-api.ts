@@ -283,3 +283,5 @@ export interface XLSInjectionFormat {
     xlsFormat: string;
     formatType: number;
 }
+
+export interface XITotal{debit: number; credit: number;}
