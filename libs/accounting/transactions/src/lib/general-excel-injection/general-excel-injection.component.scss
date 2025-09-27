@@ -18,6 +18,7 @@ mat-card {
 .button__div {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
 }
 
 .ctrl-div {
@@ -60,4 +61,9 @@ button {
 
 .right-1em {
     margin-right: 1em;
+}
+
+.format__div {
+    display: flex;
+    gap: 4px;
 }

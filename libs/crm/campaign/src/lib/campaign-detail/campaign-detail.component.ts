@@ -46,6 +46,7 @@ enum Panels {
     GENERAL = 0,
     DETAIL = 1,
     EMAIL = 2,
+    TRACEABILITY = 3,
 }
 
 @Component({
@@ -191,7 +192,7 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
                     disabled: !this.isResponsible(),
                 },
             ],
-            createdAt: [e.createdAt || new Date(), Validators.required],
+            createdAt: [{ value: e.createdAt || new Date(), disabled: true }, Validators.required],
             // createdAt: [{value:e.createdAt || new Date(), disabled:true}],
             createdBy: [
                 {
@@ -214,6 +215,7 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     selectedPanel = signal<Panels>(Panels.DETAIL);
     isDetail = computed(() => this.selectedPanel() === Panels.DETAIL);
     isEmail = computed(() => this.selectedPanel() === Panels.EMAIL);
+    isTraceability = computed(() => this.selectedPanel() === Panels.TRACEABILITY);
 
     select(idx: number) {
         this.selectedPanel.set(idx);

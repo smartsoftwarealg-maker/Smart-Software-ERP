@@ -18,7 +18,7 @@ mat-card {
 .content__div {
     display: flex;
     flex-wrap: wrap;
-    justify-items: stretch;
+    justify-content: space-between ;
     gap: 1em;
     width: 100%;
     overflow: auto;
@@ -27,8 +27,8 @@ mat-card {
 
 .content__div,
 form, .size {
-    width: 100%;
-    max-width: 1400px;
+    width: 96%;
+    max-width: 1200px;
     margin: 8px auto;
 }
 
@@ -73,13 +73,12 @@ form, .size {
 
 
 .detail__div {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: .5em;
-    justify-items: stretch;
-    justify-content: stretch;
-    grid-template-columns:  repeat(4, 1fr);
-    grid-template-areas: "name ctype status description"
-                         "detail  detail campaign optout";
+    width: 100%;
+    margin: 4px auto;
+    max-width: 1200px;
 }
 
 mat-form-field {
@@ -96,15 +95,3 @@ mat-toolbar {
     margin-bottom: 0.5em;
     font-weight: bolder;
 }
-
-@media (width <= 900px) {
-    .detail__div {
-        display: grid;
-        gap: .5em;
-        justify-items: stretch;
-        justify-content: stretch;
-        grid-template-columns:  repeat(3, 1fr);
-    }
-}
-
-

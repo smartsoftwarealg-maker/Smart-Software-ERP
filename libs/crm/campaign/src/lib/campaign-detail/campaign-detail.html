@@ -12,8 +12,13 @@
     <button matButton (click)="select(Panels.EMAIL)"><i
         class="fa-solid fa-phone"></i> {{ 'COMMON_EMAIL'|translate }}
     </button>
-    <button matButton (click)="save()" [disabled]="isEmail()"><span><i
-        class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
+    <button matButton (click)="select(Panels.TRACEABILITY)"><i
+        class="fa-solid fa-phone"></i> {{ 'COMMON_TRACEABILITY'|translate }}
+    </button>
+
+    <button matButton (click)="save()" [disabled]="isEmail()"><span>
+        <i class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span>
+    </button>
 </div>
 
 @if (form) {
@@ -87,12 +92,12 @@
                     <span translate>COMMON_DETAIL</span>
                 </mat-toolbar>
                 <div class="content__div">
-                    <mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
                         <mat-label translate>CRM_TAG</mat-label>
                         <input matInput formControlName="tag" type="text" autofocus>
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
                         <mat-label translate>ATT_START_DATE</mat-label>
                         <ss-date-picker formControlName="startDate"
                                         [type]="'date'"
@@ -103,7 +108,7 @@
                         }
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
                         <mat-label translate>COMMON_END_DATE</mat-label>
                         <ss-date-picker formControlName="endDate"
                                         [type]="'date'"
@@ -111,22 +116,22 @@
                         </ss-date-picker>
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
                         <mat-label translate>CRM_BUDGET</mat-label>
                         <input matInput formControlName="budget" type="number" autofocus>
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
                         <mat-label translate>CRM_ACTUAL_COST</mat-label>
                         <input matInput formControlName="actualCost" type="number" required autofocus>
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
                         <mat-label translate>CRM_EXPECTED_REVENUE</mat-label>
                         <input matInput formControlName="expectedRevenue" type="number" autofocus>
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
                         <mat-label translate>CRM_CHANNELS</mat-label>
                         <mat-select formControlName="channels">
                             @for (c of CHANNELS; track c.value) {
@@ -148,7 +153,7 @@
                     <!--                <input matInput formControlName="smsTemplateId" type="number" autofocus>-->
                     <!--            </mat-form-field>-->
 
-                    <mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
                         <mat-label translate>CRM_LANDING_PAGE_URL</mat-label>
                         <input matInput formControlName="landingPageUrl" type="string" autofocus>
                     </mat-form-field>
@@ -158,7 +163,7 @@
                     <!--                <input matInput formControlName="callScript" type="string" autofocus>-->
                     <!--            </mat-form-field>-->
 
-                    <mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
                         <mat-label translate>CRM_OWNER</mat-label>
                         <ss-auto-complete
                             [required]="true"
@@ -168,45 +173,6 @@
                         </ss-auto-complete>
                     </mat-form-field>
 
-                    <mat-form-field>
-                        <mat-label translate>COMMON_CREATED_AT</mat-label>
-                        <ss-date-picker formControlName="createdAt"
-                                        [type]="'date'"
-                                        [required]=true required>
-                        </ss-date-picker>
-                        @if (form.controls['createdAt']?.invalid) {
-                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                        }
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <mat-label translate>COMMON_CREATED_BY</mat-label>
-                        <ss-auto-complete [required]="true"
-                                          formControlName="createdBy"
-                                          [model]="userLookup"
-                                          required>
-                        </ss-auto-complete>
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <mat-label translate>COMMON_UPDATED_AT</mat-label>
-                        <ss-date-picker formControlName="updatedAt"
-                                        [type]="'date'"
-                                        [required]=false required>
-                        </ss-date-picker>
-                        @if (form.controls['updatedAt']?.invalid) {
-                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                        }
-                    </mat-form-field>
-
-                    <mat-form-field>
-                        <mat-label translate>COMMON_UPDATED_BY</mat-label>
-                        <ss-auto-complete [required]="true"
-                                          formControlName="updatedBy"
-                                          [model]="userLookup"
-                                          required>
-                        </ss-auto-complete>
-                    </mat-form-field>
 
                 </div>
             </div>
@@ -232,7 +198,8 @@
                                           [formControl]="template">
                         </ss-auto-complete>
                     </mat-form-field>
-                    <button id="sendBtn" mat-raised-button color="primary" (click)="send()" translate>COMMON_SEND</button>
+                    <button id="sendBtn" mat-raised-button color="primary" (click)="send()" translate>COMMON_SEND
+                    </button>
                 </div>
                 @if (editor) {
                     <form [formGroup]="htmlForm">
@@ -245,6 +212,53 @@
                     </form>
                 }
             }
+        </div>
+    </div>
+} @if (isTraceability()) {
+    <div class="panel__div size">
+        <mat-toolbar>
+            <span translate>COMMON_TRACEABILITY</span>
+        </mat-toolbar>
+        <div class="content__div">
+            <mat-form-field>
+                <mat-label translate>COMMON_CREATED_AT</mat-label>
+                <ss-date-picker formControlName="createdAt"
+                                [type]="'date'"
+                                [required]=true required>
+                </ss-date-picker>
+                @if (form.controls['createdAt']?.invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label translate>COMMON_CREATED_BY</mat-label>
+                <ss-auto-complete [required]="true"
+                                  formControlName="createdBy"
+                                  [model]="userLookup"
+                                  required>
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label translate>COMMON_UPDATED_AT</mat-label>
+                <ss-date-picker formControlName="updatedAt"
+                                [type]="'date'"
+                                [required]=false required>
+                </ss-date-picker>
+                @if (form.controls['updatedAt']?.invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label translate>COMMON_UPDATED_BY</mat-label>
+                <ss-auto-complete [required]="true"
+                                  formControlName="updatedBy"
+                                  [model]="userLookup"
+                                  required>
+                </ss-auto-complete>
+            </mat-form-field>
         </div>
     </div>
 }

@@ -276,3 +276,10 @@ export interface ClosedPeriod {
     period:   number;
     closed: boolean;
 }
+
+export interface XLSInjectionFormat {
+    id: number;
+    description: string;
+    xlsFormat: string;
+    formatType: number;
+}

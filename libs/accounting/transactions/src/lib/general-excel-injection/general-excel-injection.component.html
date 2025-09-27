@@ -154,6 +154,20 @@
                         <i class="fa-solid fa-upload  icon"></i>
                         {{ 'COMMON_UPLOAD' | translate }}
                     </button>
+
+                    <div class="format__div">
+                        <input type="text"
+                               [placeholder]="'COMMON_TYPE_TO_SELECT' |translate"
+                               [formControl]="excelFormat"
+                               [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" (optionActivated)="optionSelected($event)" (optionSelected)="optionSelected($event)">
+                            @for (format of formats | async; track format.id) {
+                                <mat-option [value]="format">{{format.description}}</mat-option>
+                            }
+                        </mat-autocomplete>
+                        <button mat-mini-fab (click)="saveFormat(auto.value)" [disabled]="!excelFormat.value"><i class="fa-solid fa-floppy-disk"></i></button>
+                        <button mat-mini-fab (click)="deleteFormat()"><i class="fa-solid fa-trash-xmark"></i></button>
+                    </div>
                     <button mat-raised-button color="warn" type="button" (click)="cancel()">
                         <i class="fa-solid fa-arrow-rotate-left icon"></i>
                         {{ 'COMMON_CANCEL' | translate }}
@@ -162,7 +176,8 @@
             </mat-card>
         }
 
-    } @if (processing()) {
-    <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
-}
+    }
+    @if (processing()) {
+        <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+    }
 </div>
