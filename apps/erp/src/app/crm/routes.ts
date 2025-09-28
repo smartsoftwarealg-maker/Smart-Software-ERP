@@ -78,7 +78,7 @@ import {
     CrmEmailTemplatesListComponent
 } from '@ss/crm/email-templates';
 import { CalendarList } from '@ss/crm/calendar-list';
-import {LeadFormComponent} from "../../../../../libs/crm/crm-leads/src/lib/crm-lead-test/crm-lead-test.component";
+import {LeadFormComponent} from '@ss/crm/leads';
 
 export const crmRoutes: Routes = [
     {
@@ -214,9 +214,9 @@ export const crmRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    { path: '', redirectTo: 'linelist', pathMatch: 'full' },
+                    { path: '', redirectTo: 'line-list', pathMatch: 'full' },
                     {
-                        path: 'linelist',
+                        path: 'line-list',
                         children: [
                             { path: '', component: MailingLinesListComponent },
                             {
@@ -323,9 +323,9 @@ export const crmRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
-                    { path: '', redirectTo: 'linelist', pathMatch: 'full' },
+                    { path: '', redirectTo: 'line-list', pathMatch: 'full' },
                     {
-                        path: 'linelist',
+                        path: 'line-list',
                         children: [
                             { path: '', component: CrmTeamsLinesListComponent },
                             {

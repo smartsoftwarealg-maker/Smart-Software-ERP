@@ -4,7 +4,7 @@
     <button matButton (click)="search()"><span><i
             class="fa-solid fa-magnifying-glass"></i> {{ 'COMMON_SEARCH'|translate }}</span></button>
 </div>
-<div class="div_table size">
+<div class="table__div size">
     @if (!loading) {
         <div class="table__div">
             <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
@@ -12,7 +12,7 @@
                 <ng-container matColumnDef="name">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_NAME</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        <a (click)="edit(e)">{{ e.name }}</a>
+                        <a mat-button (click)="edit(e)">{{ e.name }}</a>
                     </mat-cell>
                 </ng-container>
 

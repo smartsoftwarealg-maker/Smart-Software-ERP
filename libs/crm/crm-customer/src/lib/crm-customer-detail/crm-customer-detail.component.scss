@@ -62,8 +62,6 @@ mat-expansion-panel {
 }
 
 .general__div {
-    display: flex;
-    flex-wrap: wrap;
     gap: .5em;
     border-radius: 1.4em;
 
@@ -81,11 +79,11 @@ mat-expansion-panel {
 }
 
 mat-toolbar {
-    max-height: 1.6em;
+    max-height: 1.8em;
     font-size: .9em;
     font-weight: bolder;
     word-spacing: 0.5rem;
-
+    margin-bottom: .5em;
 }
 
 @media (max-width: 550px) {
