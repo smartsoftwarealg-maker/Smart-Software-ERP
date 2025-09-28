@@ -12,7 +12,7 @@ import {
     MatRowDef,
     MatTable,
 } from '@angular/material/table';
-import { MatMiniFabButton } from '@angular/material/button';
+import {MatButton, MatMiniFabButton} from '@angular/material/button';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatTooltip } from '@angular/material/tooltip';
 import { CRMContact } from '../api';
@@ -38,6 +38,7 @@ import { LanguageService } from '@ss/common/api-common';
         MatRow,
         MatRowDef,
         MatHeaderRowDef,
+        MatButton,
     ],
     templateUrl: './crm-contacts-list.component.html',
     styleUrl: './crm-contacts-list.component.scss',

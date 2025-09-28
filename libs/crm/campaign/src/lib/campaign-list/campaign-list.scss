@@ -16,8 +16,9 @@
 
 }
 
-.div_table {
+.table__div {
     height: calc(100% - 128px);
+    min-width: fit-content;
     overflow: auto;
 }
 
@@ -44,7 +45,7 @@ i {
 
 .mat-column-name,
 {
-    flex: 1 1 100px;
+    flex: 1 1 200px;
 }
 
 .mat-column-description,
@@ -54,7 +55,7 @@ i {
 
 .mat-column-audienceSize,
 .mat-column-budget {
-    flex: 1 1 70px;
+    flex: 1 1 90px;
     justify-content: center;
 }
 
@@ -63,7 +64,7 @@ i {
 .mat-column-startDate,
 .mat-column-endDate,
 .mat-column-owner {
-    flex: 1 1 100px;
+    flex: 1 1 120px;
     justify-content: center;
 }
 
@@ -75,16 +76,4 @@ i {
         position: sticky;
         margin: auto;
     }
-}
-
-// Set color for links when hovered
-a:hover {
-    color: green;
-    cursor: pointer !important;
-    font-weight: bolder;
-    font-size: 1.2em;
-}
-
-a {
-    text-decoration: underline;
 }

@@ -19,3 +19,4 @@ export * from './lib/acc-project.service'
 export * from './lib/accounting-generation.service';
 export * from './lib/balance-queries.service';
 export * from './lib/scheduled-sales-excel-injection.service';
+export * from './lib/excel-injection-format.service';

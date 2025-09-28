@@ -276,3 +276,12 @@ export interface ClosedPeriod {
     period:   number;
     closed: boolean;
 }
+
+export interface XLSInjectionFormat {
+    id: number;
+    description: string;
+    xlsFormat: string;
+    formatType: number;
+}
+
+export interface XITotal{debit: number; credit: number;}

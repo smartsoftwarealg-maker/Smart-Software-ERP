@@ -3,12 +3,18 @@
     max-width: 1400px;
     margin: 4PX auto;
 }
-
+.table__div {
+    height: calc(100% - 128px);
+    min-width: fit-content;
+    min-height: 25em;
+    overflow: auto;
+}
 .ctrl__div {
     display: flex;
     justify-content: flex-end;
     gap: 1em;
 }
+
 
 mat-table {
     width: 100%;

@@ -23,8 +23,9 @@
         </div>
         <div class="general__div">
             <mat-toolbar><span translate>LOGISTICS_GENERAL</span></mat-toolbar>
+
             <div class="general__div">
-                <mat-form-field id="denomination">
+                <mat-form-field id="denomination" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_DENOMINATION</mat-label>
                     <input matInput formControlName="denomination" type="text" required>
                     @if (form.controls['denomination'].invalid) {
@@ -32,8 +33,7 @@
                     }
                 </mat-form-field>
 
-                <div class="customer__code">
-
+                <div class="default-50 sm-100" >
                     <mat-form-field id="customerCode">
                         <mat-label translate>COMMON_CUSTOMER_CODE</mat-label>
                         <input matInput formControlName="customerCode" type="text">
@@ -55,7 +55,7 @@
                     }
                 </div>
 
-                <mat-form-field id="agentType">
+                <mat-form-field id="agentType" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_AGENT_TYPE</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="agentType"
@@ -66,7 +66,7 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field id="currency">
+                <mat-form-field id="currency" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_CURRENCY</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="currency"
@@ -78,7 +78,7 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field id="price">
+                <mat-form-field id="price" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_PRICE</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="price"
@@ -89,7 +89,7 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_COMPANY_TYPE</mat-label>
                     <ss-auto-complete matInput
                                       formControlName="companyType"
@@ -217,11 +217,9 @@
         }
         @if (selectedDiv() == 4) {
             <mat-toolbar><span translate><i class="fa-solid fa-phone"></i> LOGISTICS_CONTACT </span></mat-toolbar>
-            <div class="form__div">
                 @if (id) {
                     <router-outlet></router-outlet>
                 }
-            </div>
         }
     </form>
 }

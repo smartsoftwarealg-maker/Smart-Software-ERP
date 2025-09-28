@@ -13,3 +13,18 @@
     gap: 1em;
 }
 
+
+.name__div {
+    max-width: calc(48% - 90px);
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .5em;
+    padding: 0;
+}
+
+.tiny {
+    flex-grow: 0;
+}
+.large {
+    flex-grow: 1;
+}

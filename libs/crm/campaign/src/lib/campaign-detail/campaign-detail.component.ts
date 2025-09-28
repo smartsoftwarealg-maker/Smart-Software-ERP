@@ -46,6 +46,7 @@ enum Panels {
     GENERAL = 0,
     DETAIL = 1,
     EMAIL = 2,
+    TRACEABILITY = 3,
 }
 
 @Component({
@@ -167,46 +168,29 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
 
     private setupForm(e: Campaign): UntypedFormGroup {
         return this.formBuilder.group({
-            id: [e.id],
-            name: [e.name, Validators.required],
-            cType: [e.cType, Validators.required],
-            status: [e.status, Validators.required],
-            description: [e.description],
-            audienceQuery: [e.audienceQuery],
-            audienceSize: [e.audienceSize],
-            tag: [e.tag],
-            startDate: [e.startDate, Validators.required],
-            endDate: [e.endDate],
-            budget: [e.budget],
-            actualCost: [e.actualCost, Validators.required],
+            id:              [e.id],
+            name:            [e.name, Validators.required],
+            cType:           [e.cType, Validators.required],
+            status:          [e.status, Validators.required],
+            description:     [e.description],
+            audienceQuery:   [e.audienceQuery],
+            audienceSize:    [e.audienceSize],
+            tag:             [e.tag],
+            startDate:       [e.startDate, Validators.required],
+            endDate:         [e.endDate],
+            budget:          [e.budget],
+            actualCost:      [e.actualCost, Validators.required],
             expectedRevenue: [e.expectedRevenue],
-            channels: [e.channels, Validators.required],
+            channels:        [e.channels, Validators.required],
             emailTemplateId: [e.emailTemplateId],
-            smsTemplateId: [e.smsTemplateId],
-            landingPageUrl: [e.landingPageUrl],
-            callScript: [e.callScript],
-            ownerId: [
-                {
-                    value: e.ownerId || this.#loginSrv.appCtx.id,
-                    disabled: !this.isResponsible(),
-                },
-            ],
-            createdAt: [e.createdAt || new Date(), Validators.required],
-            // createdAt: [{value:e.createdAt || new Date(), disabled:true}],
-            createdBy: [
-                {
-                    value: e.createdBy || this.#loginSrv.appCtx.id,
-                    disabled: true,
-                },
-            ],
-            updatedAt: [e.updatedAt || new Date(), Validators.required],
-            //updatedAt: [{value:e.updatedAt || new Date(), disabled:true}],
-            updatedBy: [
-                {
-                    value: e.updatedBy || this.#loginSrv.appCtx.id,
-                    disabled: true,
-                },
-            ],
+            smsTemplateId:   [e.smsTemplateId],
+            landingPageUrl:  [e.landingPageUrl],
+            callScript:      [e.callScript],
+            ownerId:         [ {value: e.ownerId || this.#loginSrv.appCtx.id, disabled: !this.isResponsible() }],
+            createdAt:       [{ value: e.createdAt || new Date(), disabled: true }],
+            createdBy:       [{ value: e.createdBy || this.#loginSrv.appCtx.id,  disabled: true,}],
+            updatedAt:       [{ value: e.updatedAt || new Date(), disabled: true}],
+            updatedBy:       [{ value: e.updatedBy || this.#loginSrv.appCtx.id, disabled: true  }],
         });
     }
 
@@ -214,6 +198,7 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     selectedPanel = signal<Panels>(Panels.DETAIL);
     isDetail = computed(() => this.selectedPanel() === Panels.DETAIL);
     isEmail = computed(() => this.selectedPanel() === Panels.EMAIL);
+    isTraceability = computed(() => this.selectedPanel() === Panels.TRACEABILITY);
 
     select(idx: number) {
         this.selectedPanel.set(idx);
