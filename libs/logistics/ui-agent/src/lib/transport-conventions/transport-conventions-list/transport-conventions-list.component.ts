@@ -47,6 +47,7 @@ export class TransportConventionsListComponent
         'conventionDate',
         'fromDate',
         'toDate',
+        'centerDescription'
     ];
 
     constructor(public override detailSrv: TransportConventionService) {

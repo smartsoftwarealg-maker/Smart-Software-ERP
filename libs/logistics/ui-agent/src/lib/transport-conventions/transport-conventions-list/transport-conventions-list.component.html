@@ -25,6 +25,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="centerDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_SPECIFIC_TO</mat-header-cell>
+            <mat-cell *matCellDef="let e" translate>
+                {{e.centerDescription }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="conventionDate">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CONVENTION_DATE</mat-header-cell>
             <mat-cell *matCellDef="let e">

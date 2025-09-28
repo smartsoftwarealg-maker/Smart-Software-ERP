@@ -52,6 +52,17 @@
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
+
+                <mat-form-field id="description" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_CENTER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="centerLookup"
+                                      formControlName="center">
+                    </ss-auto-complete>
+                    @if (form.controls['id'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
             </form>
         }
     </mat-card-content>
