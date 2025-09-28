@@ -17,37 +17,44 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import {MaterialModule} from "@ss/common/api-common";
 import {RouterModule} from "@angular/router";
+import {CenterService} from "@ss/administration/api-center";
+import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
 @Component({
     selector: 'ss-transport-conventions-detail',
     templateUrl: './transport-conventions-detail.component.html',
     styleUrls: ['./transport-conventions-detail.component.scss'],
     standalone: true,
     imports: [
-    ReactiveFormsModule,
-    MaterialModule,
-    TranslateDirective,
-    DatePickerComponent,
-    RouterModule
-],
+        ReactiveFormsModule,
+        MaterialModule,
+        TranslateDirective,
+        DatePickerComponent,
+        RouterModule,
+        UiAutoCompleteComponent
+    ],
 })
 export class TransportConventionsDetailComponent
     extends BaseChildEntityDetailComponent<TransportConvention>
-    implements OnInit
-{
-    private formBuilder = inject(FormBuilder);
+    implements OnInit {
+    #centerSrv = inject(CenterService);
+    #formBuilder = inject(FormBuilder);
+
+    centerLookup = new DefaultAutoCompleteModel(this.#centerSrv);
+
 
     constructor(public override entitySrv: TransportConventionService) {
         super(entitySrv, 'TransportConvention');
     }
 
     setupForm(e: TransportConvention): UntypedFormGroup {
-        return this.formBuilder.group({
-            id: [e.id],
-            parentId: [e.parentId || this.entitySrv.getParentId()],
+        return this.#formBuilder.group({
+            id:             [e.id],
+            parentId:       [e.parentId || this.entitySrv.getParentId()],
             conventionType: [e.conventionType, Validators.required],
             conventionDate: [e.conventionDate || new Date()],
-            fromDate: [e.fromDate || new Date(), Validators.required],
-            toDate: [e.toDate || new Date(), Validators.required],
+            fromDate:       [e.fromDate || new Date(), Validators.required],
+            toDate:         [e.toDate || new Date(), Validators.required],
+            center:         [e.center],
         });
     }
 

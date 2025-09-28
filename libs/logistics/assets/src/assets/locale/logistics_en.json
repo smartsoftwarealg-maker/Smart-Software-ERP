@@ -203,6 +203,7 @@
     "VT_ADVANCEMENT":        "VAT free advancement",
     "FT_ADVANCEMENT":        "Full tax advancement",
     "PROJECT_REQUIRED":      "Project required for sales",
-    "ADVANCEMENT_INVOICE":   "Advancement invoice"
+    "ADVANCEMENT_INVOICE":   "Advancement invoice",
+    "SPECIFIC_TO":           "Specific to"
 
 }
