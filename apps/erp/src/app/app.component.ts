@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.multiCompany = multiCompany;
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage     = homePage;
-        this.shellSrv.setApplicationTitle('Smart ERP 2.6.65');
+        this.shellSrv.setApplicationTitle('Smart ERP 2.6.66');
         this.httpSrv
             .init()
             .pipe(
