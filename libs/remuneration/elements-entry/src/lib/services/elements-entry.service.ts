@@ -35,14 +35,12 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     }
 
     load() {
-        if (this.inputFilter.length == 0 || this.elements.length == 0) {
-            zip(this.inputFilterSrv.getList(0, 50),
-                this.elementInfoSrv.getList(0, 2000))
-                .subscribe(res => {
-                    this.inputFilter = res[0].body;
-                    this.elements = res[1].body;
-                });
-        }
+        zip(this.inputFilterSrv.getList(0, 50),
+            this.elementInfoSrv.getList(0, 2000))
+            .subscribe(res => {
+                this.inputFilter = res[0].body;
+                this.elements = res[1].body;
+            });
     }
 
     public colsList(): string[] {

@@ -30,13 +30,13 @@
       <mat-radio-button value="1"
         class="default-80"
         [checked]="infoSrv.selectionMode === 1 "
-        (click)="setSelectionMode(1)"
+        (click)="setSelectionMode(VARIABLE)"
         translate>COMMON_VARIABLE
       </mat-radio-button>
       <mat-radio-button value="2"
         class="default-80"
-        [checked]="infoSrv.selectionMode === 2 "
-        (click)="setSelectionMode(2)"
+        [checked]="infoSrv.selectionMode === 2"
+        (click)="setSelectionMode(FIXED)"
         translate>REMUN_FIXED
       </mat-radio-button>
       <mat-radio-button value="3"

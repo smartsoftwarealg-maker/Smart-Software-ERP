@@ -107,7 +107,7 @@ export const payrollNavTree: SideNavNode = {
             name: 'PAYROLL_FIXED_ELEMENTS',
             icon: 'fas fa-address-card',
             route: ABS_FIXED_ELEMENTS_URL,
-            accessRights: 'Element'
+            accessRights: 'FixedElement'
         },
         {
             name: 'REMUN_ELEMENTS_ENTRY',
