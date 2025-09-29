@@ -59,6 +59,9 @@ export class CustomErrorHandlerService {
                 this.message.set(msg);
                 this.errorSet.set(true);
             }
+        } else if (err['message']) {
+            this.message.set([err['message']]);
+            this.errorSet.set(true);
         }
 
         this.statusText.set(err?.error['params'] || '');

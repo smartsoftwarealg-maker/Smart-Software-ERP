@@ -64,6 +64,9 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
     imageModel: ImageModel;
     employee: Employee = null;
 
+    readonly VARIABLE = 1;
+    readonly FIXED = 2;
+
     constructor(
         public infoSrv: ElementsEntryService,
         public override shellSrv: ShellService,
@@ -140,12 +143,22 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
         this.infoSrv.selectionMode = mode;
         this.infoSrv.loadDataCols();
         this.load();
+        this.checkAccessRights();
     }
 
+    private checkAccessRights() {
+        const entity = this.infoSrv.selectionMode == this.FIXED? 'FixedElement' : 'Element';
+        const rights = this.shellSrv.getEntityRights(entity);
+        this.saveButton.disabled = rights && !rights.write;
+    }
     override readForm(): ELine {
         const data = super.readForm();
         data.cols = this.infoSrv.colsString();
         return data;
+    }
+
+    canShowProcessingStatus() {
+        return false;
     }
 
 }

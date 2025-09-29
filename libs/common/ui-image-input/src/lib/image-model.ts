@@ -1,5 +1,5 @@
 import {HttpService} from '@ss/common/api-common';
-import {Observable, of} from 'rxjs';
+import {catchError, Observable, of} from 'rxjs';
 import {map, switchMap} from 'rxjs/operators';
 
 enum Operation {
@@ -57,8 +57,15 @@ export class ImageModel {
         this.imageUrl = backendUrl;
         if (backendUrl) {
             this.loading = true;
-            this.httpSrv.getBlob(backendUrl)
-                .subscribe({
+            this.httpSrv
+                .getBlob(backendUrl)
+                .pipe(catchError(err => {
+                    this.loading = false;
+                    if (err.status !== 404) {
+                        throw err;
+                    }
+                    return of(null);
+                })).subscribe({
                     next:
                         blob => {
                             this.setImageBlob(blob, uploadOnSave);
