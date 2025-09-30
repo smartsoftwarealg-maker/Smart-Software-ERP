@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import {
-    AccessRight,
+    AccessRight, LanguageService,
     LoginService, MaterialModule,
     PaginatorPersistenceService,
     Role
@@ -29,6 +29,10 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { MatCheckbox } from '@angular/material/checkbox';
 
+interface APP {
+    key: string;
+    description: string;
+}
 @Component({
     selector: 'ss-access-rights',
     templateUrl: './access-rights-list.component.html',
@@ -65,13 +69,14 @@ import { MatCheckbox } from '@angular/material/checkbox';
 ]
 })
 export class AccessRightsListComponent extends BaseEntityListComponent<AccessRight> {
+    private langSrv = inject(LanguageService);
     private roleSrv = inject(RoleService);
     public agentAutoCompleteModel = new DefaultAutoCompleteModel(this.roleSrv);
 
     processing = signal(false);
 
     apps: string[] = [];
-    sortedApps: string[] = [];
+    sortedApps: APP[] = [];
     application = '';
     menuItems: string[] = [];
     roleList: Role[] = [];
@@ -97,8 +102,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         public override router: Router,
         private lookupSrv: LookupsService,
         public formBuilder: UntypedFormBuilder,
-        public override pagPersistSrv: PaginatorPersistenceService,
-    ) {
+        public override pagPersistSrv: PaginatorPersistenceService ) {
         super(rightsSrv,
             shellSrv,
             snackBarSrv,
@@ -126,10 +130,11 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                 }))
             .subscribe(res => {
                 this.apps = (res['apps'].sort((a, b) => a.localeCompare(b)) || []);
-                this.apps.unshift('APPLICATIONS');
+                // this.apps.unshift('APPLICATIONS');
                 this.sortedApps = this.apps
-                    .map(e => 'COMMON_' + e)
-                    .sort((a, b) => a.localeCompare(b));
+                    .map(e => ({key: e, description: this.langSrv.translate('COMMON_' + e) }))
+                    .sort((a, b) => a.description.localeCompare(b.description));
+                this.apps = this.sortedApps.map(e => e.key);
             });
     }
 
@@ -226,6 +231,11 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         this.application = app['value'];
         this.rightsSrv
             .getEntities(this.application)
-            .subscribe(res => this.menuItems = res);
+            .subscribe(res => {
+                const sorted = res
+                    .map(e => ({key: e, description: this.langSrv.translate(e) }))
+                    .sort((a, b) => a.description.localeCompare(b.description));
+                this.menuItems = sorted.map(e => e.key);
+            });
     }
 }

@@ -58,6 +58,7 @@ export class DbUpdaterComponent implements OnInit {
     update(selection: MatListOption[]) {
         this.output = '';
         this.processing.set(true);
+        this.searchText.disable({ emitEvent: false, onlySelf: true });
         const list: string[] = selection.map(e => e.value.toString());
         let freshOut = '';
         const loop: Observable<DBResponse> = this.updateSrv
@@ -78,6 +79,7 @@ export class DbUpdaterComponent implements OnInit {
                     freshOut +=  `*****************************${file}*******************************\n`;
                     freshOut += res.info;
                     this.output = freshOut;
+                    this.searchText.enable({ emitEvent: false, onlySelf: true });
                 }),
                     catchError(e => {
                         freshOut +=  `*****************************${file}*******************************\n`;

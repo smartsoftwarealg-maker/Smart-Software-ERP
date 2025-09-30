@@ -387,7 +387,7 @@
     "DECISION_DATE":      "Date de la décision",
     "PERIOD":             "Période",
     "HR_TABLES":          "Tables RH",
-    "PRODUCTION":         "Production",
+    "APP_PRODUCTION":         "Production",
     "UNSELECT_ALL":       "Tout désélectionner",
     "UPDATED_BY":         "Etabli par",
     "MISS_MATCH":         "Manque de correspondance",
@@ -458,6 +458,8 @@
     "PRIMARY_PHONE_TYPE":   "Type de téléphone principal",
     "SECONDARY_PHONE_TYPE": "Type de téléphone secondaire",
     "FAX":                  "Fax",
-    "WHATSAPP":             "WhatsApp"
+    "WHATSAPP":             "WhatsApp",
+    "MISSIONS":             "Missions",
+    "ATTENDANCE_APP":       "Pointage"
 
 }

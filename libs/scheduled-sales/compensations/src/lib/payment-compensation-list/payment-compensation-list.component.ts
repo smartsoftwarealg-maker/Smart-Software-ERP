@@ -149,4 +149,11 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
         super.refresh(callback);
         this.selectRow(null);
     }
+
+    override ngOnInit() {
+        this.addButton.visible = false;
+        this.editButton.visible = false;
+        this.deleteButton.visible = false;
+        super.ngOnInit();
+    }
 }

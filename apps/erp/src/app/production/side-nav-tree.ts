@@ -18,7 +18,7 @@ import {
 export const productionNavTree: SideNavNode = {
     name: 'PROD_PRODUCTION',
     icon: 'fa-solid fa-conveyor-belt-arm',
-    accessRights: 'PRODUCTION_APP',
+    accessRights: 'APP_PRODUCTION',
     children: [
         {
             name: 'STOCK_MODELS',

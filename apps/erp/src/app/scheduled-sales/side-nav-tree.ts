@@ -131,12 +131,12 @@ export const scheduledSalesNavTree: SideNavNode = {
             route: ABS_SALES_INVOICE_VALIDATION_URL,
             accessRights: 'Validation'
         },
-        {
-            name: 'SCH_COMPENSATIONS',
-            icon: 'fa-solid fa-scale-unbalanced',
-            route: ABS_SALES_COMPENSATIONS_URL,
-            accessRights: 'Compensation'
-        },
+        // {
+        //     name: 'SCH_COMPENSATIONS',
+        //     icon: 'fa-solid fa-scale-unbalanced',
+        //     route: ABS_SALES_COMPENSATIONS_URL,
+        //     accessRights: 'Compensation'
+        // },
         {
             name: 'LOGISTICS_PAYMENT_COMPENSATION',
             icon: 'fa-solid fa-scale-unbalanced-flip',

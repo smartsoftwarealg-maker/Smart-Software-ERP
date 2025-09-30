@@ -91,7 +91,7 @@ export class BudgetCommitmentDetailComponent extends BaseEntityDetailComponent<B
     override ngOnInit() {
         super.ngOnInit();
         if (this.entitySrv.getParentId() < 1) {
-            this.router.navigate(['..'], {relativeTo: this.activatedRoute});
+            this.router.navigate(['..'], {relativeTo: this.activatedRoute}).then();
         }
     }
 }

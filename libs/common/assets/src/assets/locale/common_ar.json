@@ -390,7 +390,7 @@
     "DECISION_DATE":      "تاريخ القرار",
     "PERIOD":             "فترة",
     "HR_TABLES":         "جداول الموارد البشرية",
-    "PRODUCTION":         "الإنتاج",
+    "APP_PRODUCTION":    "الإنتاج",
     "UNSELECT_ALL":       "الغاء اختيار الكل",
     "UPDATED_BY":         "تحديث من قبل",
     "MISS_MATCH":         "خطأ عدم التطابق",
@@ -454,7 +454,8 @@
     "PRIMARY_PHONE_TYPE":   "نوع الهاتف الأساسي",
     "SECONDARY_PHONE_TYPE": "نوع الهاتف الثانوي",
     "FAX":                  "فاكس",
-    "WHATSAPP":             "واتساب"
-
+    "WHATSAPP":             "واتساب",
+    "MISSIONS":             "المهام",
+    "ATTENDANCE_APP":       "الحضور"
 }
 

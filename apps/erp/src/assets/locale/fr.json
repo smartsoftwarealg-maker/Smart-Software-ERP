@@ -126,5 +126,7 @@
     "PROJECT":         "Projet/Contrat",
     "HR_TABLES":       "Tables RH",
     "ACCOUNTING_APP":  "Comptabilité",
-    "PROJECTS":        "Projets"
+    "PROJECTS":        "Projets",
+    "APP_PRODUCTION":  "Manufacturing",
+    "ATTENDANCE_APP": "Pointage"
 }
