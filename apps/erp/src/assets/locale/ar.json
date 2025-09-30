@@ -122,5 +122,6 @@
     "PRODUCTION":      "الإنتاج",
     "ACCOUNTING_APP":  "المحاسبة",
     "CRM": "إدارة علاقات العملاء",
-    "PROJECTS": "المشاريع"
+    "PROJECTS": "المشاريع",
+    "ATTENDANCE_APP": "الحضور"
 }

@@ -394,7 +394,7 @@
     "DECISION_DATE": "Decision date",
     "PERIOD": "Period",
     "HR_TABLES": "HR tables",
-    "PRODUCTION": "Production",
+    "APP_PRODUCTION": "Production",
     "UNSELECT_ALL": "Unselect all",
     "UPDATED_BY": "Updated by",
     "MISS_MATCH": "Miss match",
@@ -462,6 +462,8 @@
     "PRIMARY_PHONE_TYPE":   "Primary phone type",
     "SECONDARY_PHONE_TYPE": "Secondary phone type",
     "FAX":                  "Fax",
-    "WHATSAPP":             "WhatsApp"
+    "WHATSAPP":             "WhatsApp",
+    "MISSIONS":             "Missions",
+    "ATTENDANCE_APP":       "Attendance"
 
 }

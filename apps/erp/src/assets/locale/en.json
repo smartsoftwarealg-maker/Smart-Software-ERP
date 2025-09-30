@@ -123,8 +123,9 @@
     "SOCIAL":          "Social works",
     "AAVIEWER":        "APPArchive",
     "PROJECT":         "Project/Contract",
-    "PRODUCTION":       "Production",
+    "APP_PRODUCTION":  "Manufacturing",
     "HR_TABLES": "HR tables",
     "ACCOUNTING_APP": "Accounting",
-    "PROJECTS": "Projects"
+    "PROJECTS": "Projects",
+    "ATTENDANCE_APP": "Attendance"
 }
