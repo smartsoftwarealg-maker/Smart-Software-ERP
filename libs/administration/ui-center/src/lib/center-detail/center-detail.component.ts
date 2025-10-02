@@ -95,6 +95,7 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
             fundId:         [b.fundId],
             monthValidated: [b.monthValidated],
             city:           [b.city],
+            emailPassword:  [b.emailPassword],
         });
     }
 

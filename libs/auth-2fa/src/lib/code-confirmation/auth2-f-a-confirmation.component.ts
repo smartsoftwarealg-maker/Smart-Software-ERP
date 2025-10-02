@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { AgentService } from '@ss/logistics/api-agent';
 import { SnackBarService } from '@ss/common/ui-shell';
-import { ESender, LanguageService, LoginService } from '@ss/common/api-common';
+import {ESender, IsParamService, LanguageService, LoginService} from '@ss/common/api-common';
 import { Router } from '@angular/router';
 
 
@@ -11,14 +11,24 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatCardModule } from "@angular/material/card";
-import { TranslatePipe } from '@ss/common/ui-lang';
+import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-code-confirmation',
     templateUrl: './auth2-f-a-confirmation.component.html',
     styleUrls: ['./auth2-f-a-confirmation.component.scss'],
     standalone: true,
-    imports: [FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatButtonModule, MatProgressBarModule, MatCardModule, TranslatePipe]
+    imports: [
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatProgressBarModule,
+        MatCardModule,
+        TranslatePipe,
+        TranslateDirective
+    ]
 })
 export class Auth2FAConfirmationComponent {
     private THIRTY_MINUTES = 30 * 30;
@@ -29,7 +39,7 @@ export class Auth2FAConfirmationComponent {
     private agentSrv = inject(AgentService);
     private fb = inject(FormBuilder);
     private sendingDate = new Date();
-
+    private isParamSrv = inject(IsParamService);
 
     code = 0;
     codeSent = false;
@@ -73,13 +83,13 @@ export class Auth2FAConfirmationComponent {
             this.snackBarSrv.showMessage('COMMON_CODE_EXPIRED');
         } else {
             if (+this.form.value.code === this.code) {
-                this.loginSrv
-                    .setVerified()
-                    .subscribe(() => {
-                        this.loginSrv.appCtx.verified = true;
-                        this.verified = true;
-                        this.snackBarSrv.showSuccessMessage();
-                    });
+                    this.loginSrv
+                        .setVerified()
+                        .subscribe(() => {
+                            this.loginSrv.appCtx.verified = true;
+                            this.verified = true;
+                            this.snackBarSrv.showSuccessMessage();
+                        });
             } else {
                 this.snackBarSrv.showMessage('COMMON_INVALID_CODE');
             }
