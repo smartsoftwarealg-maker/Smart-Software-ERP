@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    <mat-label translate>COMMON_2FA_SETUP</mat-label>
+    <mat-label class="f-primary" translate>COMMON_2FA_SETUP</mat-label>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="form">
@@ -10,10 +10,10 @@
           type="text" required>
       </mat-form-field>
       @if (codeSent && !verified) {
-        <p translate>ADMINISTRATION_CODE_SENT</p>
+        <p class="f-warn" translate>COMMON_CODE_SENT</p>
       }
       @if (verified) {
-        <p translate>ADMINISTRATION_CODE_VERIFIED</p>
+        <p  class="f-warn" translate>COMMON_CODE_VERIFIED</p>
       }
       @if (codeSent) {
         <mat-form-field appearance="fill" class="default-100">
@@ -30,7 +30,7 @@
   </mat-card-content>
   <mat-card-actions>
     <div class="button__div default-100">
-      @if (form.controls['email'].value?.indexOf('@') > 0) {
+      @if (form.controls['email'].value.indexOf('@') > 0) {
         <button mat-raised-button
           [disabled]="!form.valid"
           color="primary"

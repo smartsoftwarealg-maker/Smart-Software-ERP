@@ -29,6 +29,7 @@ export interface Center {
     severe: boolean;
     isPublic: boolean;
     city?: number;
+    emailPassword?: string;
 }
 
 
