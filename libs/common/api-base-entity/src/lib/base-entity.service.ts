@@ -33,9 +33,7 @@ export class BaseEntityService<T> {
         return this.httpSrv.getBlob(this.getUrl() + '/excel', params);
     }
     public getBlob(url: string, httpParams?: HttpParams): Observable<Blob> {
-        console.log('url*****************************', this.getUrl() + url)
-        const res =  this.httpSrv.getBlob(this.getUrl() + url, httpParams);
-        return res;
+        return  this.httpSrv.getBlob(this.getUrl() + url, httpParams);
     }
 
     public json(filter?: string): Observable<Blob> {

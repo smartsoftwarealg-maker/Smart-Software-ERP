@@ -100,5 +100,6 @@
     "DESTINATION_STORE":       "Destination Store",
     "DESTINATION_ARTICLE":     "Destination Article",
     "SOURCE_REFERENCE":        "Source Reference",
-    "DOCUMENT_RECALCULATION":  "Document recalculation"
+    "DOCUMENT_RECALCULATION":  "Document recalculation",
+    "TRANSFER_REINTEGRATION":  "Transfer reintegration"
 }

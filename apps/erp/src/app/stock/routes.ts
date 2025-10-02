@@ -29,7 +29,7 @@ import {
     REFERENCE_CORRECTION_URL,
     STOCK_RESERVATIONS_URL,
     STOCK_ARTICLE_TYPE_URL,
-    STOCK_DOCUMENT_RECALCULATION_URL
+    STOCK_DOCUMENT_RECALCULATION_URL, STOCK_TRANSFER_REINTEGRATION_URL
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -114,6 +114,7 @@ import {
 import { UserStoresComponent } from '@ss/master-data/ui-store';
 import { ArticleDetailComponent, ArticleListComponent, ReferenceCorrectionComponent } from '@ss/master-data/ui-article';
 import { ArticleTypeDetailComponent, ArticleTypeListComponent } from '@ss/production/production-article';
+import { TransferReintegrationDetailComponent, TransferReintegrationLinesDetailComponent, TransferReintegrationLinesListComponent, TransferReintegrationListComponent } from '@ss/stock/transfer-reintegration';
 
 export const mainRoutes: Routes = [
     {
@@ -363,6 +364,40 @@ export const mainRoutes: Routes = [
             },
         ]
     },
+    {
+        path: STOCK_TRANSFER_REINTEGRATION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TransferReintegrationListComponent,
+                canActivate: [loginGuard],
+                canActivateChild: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: TransferReintegrationDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                canActivateChild: [loginGuard],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: TransferReintegrationLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: TransferReintegrationLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+        ]
+    },
+
     {
         path: STOCK_RESERVATIONS_URL,
         children: [
