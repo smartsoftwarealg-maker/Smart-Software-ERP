@@ -756,6 +756,9 @@
             "@ss/stock/inventory-transfers": [
                 "libs/stock/inventory-transfers/src/index.ts"
             ],
+            "@ss/stock/transfer-reintegration": [
+                "libs/stock/transfer-reintegration/src/index.ts"
+            ],
             "@ss/stock/ui-article-store-assignment": [
                 "libs/stock/ui-article-store-assignment/src/index.ts"
             ],

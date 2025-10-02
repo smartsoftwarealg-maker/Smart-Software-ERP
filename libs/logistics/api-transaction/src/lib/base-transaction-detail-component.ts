@@ -281,6 +281,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             advancement:         [b.advancement],
             advancementFT:       [b.advancementFT],
             receptionType:       [b.receptionType||1],
+            isValidated:         [b.isValidated],
         });
     }
 
@@ -318,7 +319,9 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     protected disableControls(url: string) {
         const enabled = url.indexOf('-detail') < 0;
-        this.saveButton.visible = enabled;
+        console.log('validated', this.form?.controls['isValidated']);
+        const validated = !!this.form?.controls['isValidated'].value;
+        this.saveButton.visible = enabled && !validated;
         this.shellSrv.setGoBackEnabled(enabled);
     }
 

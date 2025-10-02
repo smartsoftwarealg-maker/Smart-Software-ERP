@@ -25,7 +25,11 @@ import {
     ABS_STOCK_REPORT_RIGHT_URL,
     ABS_REFERENCE_CORRECTION_URL,
     ABS_STOCK_RESERVATION_URL,
-    ABS_STOCK_ARTICLE_TYPES_URL, ABS_STOCK_MARKS_URL, ABS_STOCK_SUBCLASSES_URL, ABS_INVENTORY_DOCUMENT_RECALCULATION_URL
+    ABS_STOCK_ARTICLE_TYPES_URL,
+    ABS_STOCK_MARKS_URL,
+    ABS_STOCK_SUBCLASSES_URL,
+    ABS_INVENTORY_DOCUMENT_RECALCULATION_URL,
+    ABS_STOCK_TRANSFER_REINTEGRATION_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -165,6 +169,12 @@ export const stockNavTree: SideNavNode = {
             icon: 'fa-solid fa-money-bill-transfer',
             route: ABS_STOCK_TRANSFER_URL,
             accessRights: 'Transfer'
+        },
+        {
+            name: 'STOCK_TRANSFER_REINTEGRATION',
+            icon: 'fa-solid fa-rotate-left',
+            route: ABS_STOCK_TRANSFER_REINTEGRATION_URL,
+            accessRights: 'CTransfer'
         },
         {
             name: 'STOCK_TRANSFER_RECEPTIONS',

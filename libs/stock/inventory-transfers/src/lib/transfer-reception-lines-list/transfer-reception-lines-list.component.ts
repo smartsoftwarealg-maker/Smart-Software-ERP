@@ -50,7 +50,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class TransferReceptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {
 
-    displayedColumns = [
+    override displayedColumns = [
         'position',
         'store',
         'reference',

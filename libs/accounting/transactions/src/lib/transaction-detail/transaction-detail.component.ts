@@ -71,6 +71,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        console.log('************************************************detail')
         this.route
             .params
             .pipe(tap(params => this.id = +params['id']),
