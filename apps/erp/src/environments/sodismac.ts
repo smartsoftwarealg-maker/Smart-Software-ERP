@@ -39,18 +39,23 @@ import { payrollNavTree } from '../app/payroll/side-nav-tree';
 import { attendanceNavTree } from '../app/attendance/side-nav-tree';
 import { missionsNavTree } from '../app/missions/side-nav-tree';
 import { treasuryNavTree } from '../app/treasury/side-nav-tree';
-import {budgetNavTree} from "../app/budget/side-nav-tree";
+import {budgetNavTree} from '../app/budget/side-nav-tree';
+import {SideNavNode} from '../../../../libs/common/api-common/src';
 
 export const environment = {
-    production: false,
+    production: true,
 };
+
+function patch(stockBar: SideNavNode): SideNavNode {
+    return stockBar;
+}
 
 export const navBar = [
     administrationNavTree,
     organizationsNavTree,
     logisticsAdminNavTree,
     purchasesNavTree,
-    stockNavTree,
+    patch(stockNavTree),
     contractsNavTree,
     salesNavTree,
     financeNavTree,

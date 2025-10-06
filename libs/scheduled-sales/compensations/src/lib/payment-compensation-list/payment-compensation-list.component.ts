@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal, Signal } from '@angular/core';
+import {Component, computed, DestroyRef, effect, inject, signal, Signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Debt } from '../services/compensation-api';
@@ -17,14 +17,18 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { PaginationModel, PaginatorPersistenceService } from '@ss/common/api-common';
+import {MaterialModule, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { DebtService } from '../services/debt.service';
 import { HttpParams } from '@angular/common/http';
 import { MatRadioButton, MatRadioChange, MatRadioGroup } from '@angular/material/radio';
 import { SsDirectPaymentService } from '@ss/scheduled-sales/api-scheduled-sales';
-import { callback } from 'chart.js/helpers';
+import {FormControl, ReactiveFormsModule} from "@angular/forms";
+import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
+import {takeUntil} from "rxjs";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 
 enum SelectionMode {
     Debt = 1,
@@ -35,6 +39,7 @@ enum SelectionMode {
     selector: 'ss-payments-compensations-list',
     imports: [
         CommonModule,
+        MaterialModule,
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -51,12 +56,17 @@ enum SelectionMode {
         MatSortHeader,
         MatCheckbox,
         MatRadioButton,
-        MatRadioGroup
+        MatRadioGroup,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        ReactiveFormsModule
     ],
     templateUrl: './payment-compensation-list.component.html',
     styleUrl: './payment-compensation-list.component.scss',
 })
 export class PaymentCompensationListComponent extends BaseEntityListComponent<Payment> {
+    #destroyRef = inject(DestroyRef);
     #debtsSrv = inject(DebtService);
     #selectionMode = signal<SelectionMode>(SelectionMode.Debt);
 
@@ -64,7 +74,8 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
     childColumns = ['date', 'invoiceNumber', 'customerCode', 'customerName', 'ftt', 'payment', 'paid'];
     childPaginator = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0 });
     childData: Debt[] = [];
-    selectedChild = 0;
+    selectedChild = signal(0);
+    searchField = new FormControl<string>('');
 
     constructor(
         public override entitySrv: SsDirectPaymentService,
@@ -95,18 +106,21 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
 
     private refreshChild() {
         const params = new HttpParams();
-        const params1 = (this.#selectionMode() === SelectionMode.Debt)?  params.set('agent', this.selectedRow?.agentId || -1) : params.set('payment', this.selected);
+        const params1 =
+            ((this.#selectionMode() === SelectionMode.Debt)?
+            params.set('agent', this.selectedRow?.agentId || -1) :
+            params.set('payment', this.selected)).set('filter', this.searchField.value);
         this.#debtsSrv
             .getList(this.childPaginator.page - 1, this.childPaginator.pageSize, null, null, params1)
             .subscribe(res => {
                 this.childData = res.body;
                 this.childPaginator.elementCount = res.itemCount;
-                this.selectedChild = 0;
+                this.selectedChild.set(0);
             });
     }
 
     selectChildRow(row: Debt) {
-        this.selectedChild = row?.id ||0;
+        this.selectedChild.set( row?.id ||0);
     }
 
     joinOrFree(row: Debt) {
@@ -155,5 +169,13 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
         this.editButton.visible = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
+        this.searchField
+            .valueChanges
+            .pipe(
+                takeUntilDestroyed(this.#destroyRef),
+                debounceTime(300),
+                distinctUntilChanged(),
+            )
+            .subscribe(() => this.refreshChild());
     }
 }

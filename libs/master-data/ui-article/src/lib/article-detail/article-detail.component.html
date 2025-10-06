@@ -71,9 +71,11 @@
           </ss-auto-complete>
         </mat-form-field>
 
+        @let mark = (isSODISMAC() ? 'STOCK_GICA_CLASS' : 'STOCK_MARK')|translate;
+        @let type = (isSODISMAC() ? 'STOCK_GICA_SUBCLASS' : 'COMMON_TYPE')|translate;
 
         <mat-form-field class="default-50 sm-100">
-          <mat-label translate>STOCK_MARK</mat-label>
+          <mat-label translate>{{mark}}</mat-label>
           <ss-auto-complete matInput
             [model]="markLookup"
             formControlName="mark">
@@ -81,7 +83,7 @@
         </mat-form-field>
 
         <mat-form-field class="default-50 sm-100">
-          <mat-label translate>COMMON_TYPE</mat-label>
+          <mat-label translate>{{type}}</mat-label>
           <ss-auto-complete matInput
             [model]="typeLookup"
             formControlName="articleType">

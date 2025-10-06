@@ -18,10 +18,11 @@ import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
-import { HttpService, MaterialModule } from '@ss/common/api-common';
+import {HttpService, IsParamService, MaterialModule} from '@ss/common/api-common';
 
-import { TranslateDirective } from '@ss/common/ui-lang';
+import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
+import {toSignal} from "@angular/core/rxjs-interop";
 
 @Component({
     selector: 'ss-article-detail',
@@ -29,15 +30,17 @@ import { ArticleStoreComponent } from '@ss/stock/article-store';
     templateUrl: './article-detail.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    RouterModule,
-    TranslateDirective,
-    ImageInputComponent,
-    UiAutoCompleteComponent,
-    ArticleStoreComponent
-]
+        MaterialModule,
+        RouterModule,
+        TranslateDirective,
+        ImageInputComponent,
+        UiAutoCompleteComponent,
+        ArticleStoreComponent,
+        TranslatePipe
+    ]
 })
 export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
+    private isParamSrv = inject(IsParamService);
     private subClassSrv =  inject(SubclassService);
     private classSrv =  inject(ClassService);
     private markSrv  =  inject(MarkService);
@@ -48,6 +51,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
     imageModel: ImageModel;
     aid = 0;
 
+    isSODISMAC = toSignal(this.isParamSrv.is('SODISMAC'));
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
     subClassLookup = new DefaultAutoCompleteModel(this.subClassSrv);
     unitLookup = new DefaultAutoCompleteModel(this.unitSrv);

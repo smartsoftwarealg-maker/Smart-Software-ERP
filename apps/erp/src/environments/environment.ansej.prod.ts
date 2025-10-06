@@ -7,12 +7,10 @@ import {salesNavTree} from '../app/sales/side-nav-tree';
 import {financeNavTree} from '../app/finance/side-nav-tree';
 import {hrNavTree} from '../app/hr/side-nav-tree';
 import {payrollNavTree} from '../app/payroll/side-nav-tree';
-import {webArchNavTree} from '../app/web-arch/side-nav-tree';
 import {accountingNavTree} from '../app/accounting/side-nav-tree';
 import {assetsNavTree} from '../app/assets-app/side-nav-tree';
 import {treasuryNavTree} from '../app/treasury/side-nav-tree';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
-import {scheduledSalesNavTree} from '../app/scheduled-sales/side-nav-tree';
 import {missionsNavTree} from '../app/missions/side-nav-tree';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {Routes} from '@angular/router';
@@ -36,17 +34,14 @@ import {
     WEBARCH_APP_URL,
     MISSIONS_APP_URL,
     CONTRACTS_APP_URL,
-    SHOPPING_CART_APP_URL,
-    FOOD_CART_APP_URL,
     WORK_FLOW_APP_URL,
     BUDGET_APP_URL,
-    LTM_APP_URL,
     FURNITURE_APP_URL,
     ATTENDANCE_APP_URL,
     ARCH_VIEWER_URL,
-    CMMS_APP_URL,
     PARK_APP_URL,
-    SERVICE_SALES, COSTING_APP_URL, GICA_APP_URL, SOCIAL_APP_URL
+    SERVICE_SALES,
+    SOCIAL_APP_URL
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {foodNavTree} from '../app/food/side-nav-tree';
