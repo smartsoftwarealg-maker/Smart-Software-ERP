@@ -86,5 +86,9 @@
     "RETURNED_AMOUNT": "المبلغ المرجع",
     "IRG": "ضريبة الدخل",
     "IRG_CALCULATOR": "حاسبة الضريبة",
-    "INCLUDE_SPECIAL_MONTHS": "تضمين الأشهر الخاصة"
+    "INCLUDE_SPECIAL_MONTHS": "تضمين الأشهر الخاصة",
+    "PAYROLL_LOCK": "تجميد المرتبات",
+    "PAYROLL_COMPLETE": "تمت المرتبات",
+    "PAYROLL_LOCK_READY": "المرتبات جاهزة للتجميد",
+    "LOCK_PAYROLL": "جمد المرتبات"
 }

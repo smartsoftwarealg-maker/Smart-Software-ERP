@@ -20,7 +20,7 @@ import {
     PAY_LOANS_URL,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
-    PAY_MONTH_SELECTOR, PAY_OPTIONS_URL,
+    PAY_MONTH_SELECTOR, PAY_OPTIONS_URL, PAY_PERIOD_LOCK_URL,
     PAY_SALARY_GRID,
     PAY_SPECIAL_PAYROLL_URL,
     PAY_VACATION_PLANNING,
@@ -120,6 +120,7 @@ import { PayrollOptionsComponent } from 'payroll/payroll-options';
 import { FundsListComponent, FundsDetailComponent } from '@ss/payroll/funds';
 import { IrgComponent } from '@ss/payroll/irg';
 import {LoanInjectionComponent} from '@ss/payroll/loan-injection';
+import {PayrollLock} from "@ss/payroll/payroll-lock";
 
 export const mainRoutes: Routes = [
     {
@@ -134,6 +135,11 @@ export const mainRoutes: Routes = [
     {
         path: PAY_EDO_URL,
         component: EdoComponent,
+        canActivate: [loginGuard]
+    },
+    {
+        path: PAY_PERIOD_LOCK_URL,
+        component: PayrollLock,
         canActivate: [loginGuard]
     },
     {
