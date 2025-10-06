@@ -1,10 +1,10 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CRMOpportunityService } from '../crm-opportunity.service';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { Observable, of } from 'rxjs';
+import { filter, Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {
@@ -31,6 +31,7 @@ import { CrmTeamsService } from '@ss/crm/crm-teams';
 import { CRMLeadsService } from '@ss/crm/leads';
 import { CrmOpportunityActiveService } from '../crm-opportunity-activities/crm-opportunity-active.service';
 import {CrmOpportunityTrackingService} from "../crm-opportunity-tracking/crm-opportunity-tracking.service";
+import { CrmQuotesService } from '../crm-opportunity-quotes/crm-quotes.service';
 
 enum Panels {
     GENERAL = 0,
@@ -38,6 +39,7 @@ enum Panels {
     STATUS = 2,
     ACTIVITY = 3,
     TRACKING = 4,
+    QUOTES = 5
 }
 
 @Component({
@@ -76,6 +78,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     #teamSrv = inject(CrmTeamsService);
     #leadSrv = inject(CRMLeadsService);
     #loginSrv = inject(LoginService);
+    #quotesSrv = inject(CrmQuotesService);
     #opportunityActiveSrv = inject(CrmOpportunityActiveService);
     #trackingSrv = inject(CrmOpportunityTrackingService);
 
@@ -101,11 +104,19 @@ export class CrmOpportunityDetailComponent implements OnInit {
     isStatus = computed(() => this.selectedPanel() === Panels.STATUS);
     isTracking = computed(() => this.selectedPanel() === Panels.TRACKING);
     isActivity = computed(() => this.selectedPanel() === Panels.ACTIVITY);
+    isQuotes = computed(() => this.selectedPanel() === Panels.QUOTES);
 
     public form: UntypedFormGroup | null = null;
+    disableSave = false;
 
     ngOnInit(): void {
         const id = +this.#route.snapshot.paramMap.get('id');
+        this.#router.events
+            .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+            .subscribe((event) => {
+                const url = event.url;
+                this.disableSave = url.includes('/quotes/') || url.includes('/items/');
+            });
         this.#shellSrv.setTitle('CRM_OPPORTUNITY');
         this.#entitySrv.get(id).subscribe({
             next: (crmOpportunity) => {
@@ -153,6 +164,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     private setupForm(b: CRMOpportunity) {
         this.#opportunityActiveSrv.setParentId(b?.id);
         this.#trackingSrv.setParentId(b?.id);
+        this.#quotesSrv.setParentId(b?.id);
         this.id = b?.id;
         this.#contactSrv.setParentId(b?.id || 0);
         return this.formBuilder.group({
@@ -205,6 +217,12 @@ export class CrmOpportunityDetailComponent implements OnInit {
                 .navigate(['tracking'], { relativeTo: this.#route })
                 .then();
         }
+        if (idx == Panels.QUOTES) {
+            this.#router
+                .navigate(['quotes'], { relativeTo: this.#route })
+                .then();
+        }
+
     }
 
     saveProgress() {

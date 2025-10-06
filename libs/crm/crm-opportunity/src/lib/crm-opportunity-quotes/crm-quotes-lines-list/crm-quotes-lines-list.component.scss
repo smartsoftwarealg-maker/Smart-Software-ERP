@@ -1,0 +1,41 @@
+.size {
+    width: 100%;
+    max-width: 1400px;
+}
+
+.ctrl__div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+mat-table {
+    width: 100%;
+    min-width: 1000px;
+}
+
+.mat-column-reference{
+    flex: 1 1 120px;
+    border-left: gray solid 1px;
+    justify-content: center;
+}
+.mat-column-quantity,
+.mat-column-listPrice,
+.mat-column-unitPrice{
+    flex: 1 1 120px;
+    border-left: gray solid 1px;
+    justify-content: flex-end;
+}
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.pagination-container {
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

@@ -464,6 +464,9 @@
     "FAX":                  "Fax",
     "WHATSAPP":             "WhatsApp",
     "MISSIONS":             "Missions",
-    "ATTENDANCE_APP":       "Attendance"
-
+    "ATTENDANCE_APP":       "Attendance",
+    "USER":                 "User",
+    "UNIT_PRICE":           "Unit price",
+    "LIST_PRICE":           "List price",
+    "PRODUCT_DESCRIPTION":  "Product description"
 }
