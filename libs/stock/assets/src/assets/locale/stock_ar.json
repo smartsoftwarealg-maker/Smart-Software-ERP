@@ -100,5 +100,7 @@
     "DESTINATION_STORE":       "وجهة المخزن",
     "SOURCE_REFERENCE":        "مرجع الوجهة",
     "DOCUMENT_RECALCULATION":   "حساب المستند",
-    "TRANSFER_REINTEGRATION":   "استرجاع التحويل"
+    "TRANSFER_REINTEGRATION":   "استرجاع التحويل",
+    "GICA_CLASS":               "فئة جيكا",
+    "GICA_SUBCLASS":            "فئة جيكا الفرعية"
 }

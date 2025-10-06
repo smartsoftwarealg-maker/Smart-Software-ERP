@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
-import { LanguageService, MainPageService, SideNavNode } from '@ss/common/api-common';
+import {IsParamService, LanguageService, MainPageService, SideNavNode} from '@ss/common/api-common';
 
 
 import { WorkflowInboxService } from '@ss/workflow';
@@ -35,14 +35,12 @@ export class MainPageComponent implements OnInit, OnDestroy {
         keepOnToolbar: KeepOnToolbar.ALWAYS,
         click: () => this.#router.navigate(['/app/administration/workflow-inbox']).then(() => this.#badgeBtn.visible = false)
     };
-
+    public srv = inject(MainPageService);
+    public shellSrv = inject(ShellService);
+    public langSrv = inject(LanguageService);
 
     public searchResult: SideNavNode[] = null;
 
-    constructor(public srv: MainPageService,
-                public shellSrv: ShellService,
-                public langSrv: LanguageService) {
-    }
 
     ngOnInit(): void {
         this.updateGoBackButton();

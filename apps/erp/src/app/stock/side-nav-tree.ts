@@ -33,6 +33,7 @@ import {
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
+
 export const stockNavTree: SideNavNode = {
     name: 'STOCK',
     icon: 'fas fa-warehouse-alt',
@@ -51,16 +52,16 @@ export const stockNavTree: SideNavNode = {
             accessRights: 'Subclass'
         },
         {
-            name: 'COMMON_TYPES',
-            icon: 'fa-solid fa-people-roof',
-            route: ABS_STOCK_ARTICLE_TYPES_URL,
-            accessRights: 'ArticleType'
-        },
-        {
             name: 'COMMON_MARKS',
             icon: 'fa-solid fa-copyright',
             route: ABS_STOCK_MARKS_URL,
             accessRights: 'Mark'
+        },
+        {
+            name: 'COMMON_TYPES',
+            icon: 'fa-solid fa-people-roof',
+            route: ABS_STOCK_ARTICLE_TYPES_URL,
+            accessRights: 'ArticleType'
         },
         {
             name: 'STOCK_ARTICLES',

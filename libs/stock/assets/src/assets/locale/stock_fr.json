@@ -100,5 +100,7 @@
     "DESTINATION_ARTICLE":     "Destination Article",
     "SOURCE_REFERENCE":        "Source Reference",
     "DOCUMENT_RECALCULATION":  "Recalcul du document",
-    "TRANSFER_REINTEGRATION":  "Reintégration de cession"
+    "TRANSFER_REINTEGRATION":  "Reintégration de cession",
+    "GICA_CLASS":              "Classe GICA",
+    "GICA_SUBCLASS":           "Sous-Classe GICA"
 }

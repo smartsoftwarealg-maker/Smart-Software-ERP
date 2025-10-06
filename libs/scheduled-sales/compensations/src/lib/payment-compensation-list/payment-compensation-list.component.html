@@ -72,6 +72,11 @@
 </div>
 
 <div class="size mode__div">
+    <mat-form-field class="search_field">
+        <mat-label translate>COMMON_SEARCH</mat-label>
+        <input [formControl]="searchField" matInput type="text">
+    </mat-form-field>
+
     <mat-radio-group >
         <mat-radio-button value="1" (change)="onChange($event)" [checked]="true" translate>COMMON_NON_PAID
         </mat-radio-button>
@@ -140,7 +145,7 @@
 
 
         <mat-header-row *matHeaderRowDef="childColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selectedChild" (click)="selectChildRow(row)"
+        <mat-row class="selectable" [class.selected]="row.id == selectedChild()" (click)="selectChildRow(row)"
                  *matRowDef="let row; columns: childColumns;">
         </mat-row>
     </mat-table>
