@@ -15,6 +15,7 @@ import {AgentAssetsListComponent} from '@ss/assets-component';
 import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
 import { UiTransactionlineQuantitiesComponent } from '@ss/logistics/quantities';
 import { UiMrpComponent } from '@ss/logistics/ui-mrp';
+import {PAYROLL_MONTH_LOCK_URL} from "../../../../libs/payroll/payroll-lock/src/lib/payroll-lock/month-lock.api";
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -305,6 +306,7 @@ export const PAY_OPTIONS_URL          = 'payroll-options';
 export const PAY_FUNDS_URL            = 'payroll-funds';
 export const PAY_IRG_CALC             = 'irg-calc';
 export const PAYROLL_LOAN_INJECTION_URL = 'loan-injection';
+export const PAY_PERIOD_LOCK_URL = 'payroll-periods';
 
 // Assets
 export const ASSETS_ASSET_URL            = 'assets';
@@ -813,6 +815,7 @@ export const ABS_ELEMENTSINFO_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_E
 export const ABS_ELEMENT_TYPES_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ELEMENT_TYPES_URL].join('/');
 export const ABS_FORMULAS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_FORMULAS_URL].join('/');
 export const ABS_MONTH_CLOSER_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_MONTH_CLOSER].join('/');
+export const ABS_MONTH_LOCK_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_MONTH_LOCK_URL].join('/');
 export const ABS_VACATION_PLANNING_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_VACATION_PLANNING].join('/');
 export const ABS_MONTH_CANCELER_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_MONTH_CANCELER].join('/');
 export const ABS_ARCHIVE_GENERATOR_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ARCHIVE_GENERATOR].join('/');

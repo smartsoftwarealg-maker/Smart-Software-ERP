@@ -501,6 +501,9 @@
             "@ss/payroll/loan-injection": [
                 "libs/payroll/loan-injection/src/index.ts"
             ],
+            "@ss/payroll/payroll-lock": [
+                "libs/payroll/payroll-lock/src/index.ts"
+            ],
             "@ss/payroll/salary-grid": [
                 "libs/payroll/salary-grid/src/index.ts"
             ],

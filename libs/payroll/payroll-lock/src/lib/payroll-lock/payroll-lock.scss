@@ -1,0 +1,50 @@
+.btn__div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+mat-card {
+    width: 90%;
+    max-width: 500px;
+    margin: 8px auto;
+    padding: 1em;
+    border-radius: 1.4em;
+}
+
+
+mat-checkbox {
+    display: block;
+}
+
+i {
+    margin-right: .5em;
+}
+
+mat-divider {
+    width: 100%;
+    margin: 0.5em auto;
+    font-size: 1.2em;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+}
+
+mat-card-header,
+mat-card-actions {
+    width: 100%;
+}
+
+.title__div,
+.mat-mdc-card-header-text,
+.mat-mdc-card-title {
+    width: 100%!important;
+}
+
+.title__div {
+    width: 100%;
+    display: flex;
+    font-weight: bolder;
+    justify-content: center;
+    height: 2em;
+}

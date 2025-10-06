@@ -17,7 +17,7 @@ import {
     ABS_INPUT_FILTERS_URL,
     ABS_LOANS_URL,
     ABS_MONTH_CANCELER_URL,
-    ABS_MONTH_CLOSER_URL,
+    ABS_MONTH_CLOSER_URL, ABS_MONTH_LOCK_URL,
     ABS_MONTH_SELECTOR_URL,
     ABS_PAYROLL_DASHBOARD_URL,
     ABS_PAYROLL_EMPLOYEES_URL,
@@ -139,6 +139,12 @@ export const payrollNavTree: SideNavNode = {
             route: ABS_EDO_URL,
             accessRights: 'EDO'
         },
+        // {
+        //     name: 'REMUN_PAYROLL_LOCK',
+        //     icon: 'fa-solid fa-lock',
+        //     route: ABS_MONTH_LOCK_URL,
+        //     accessRights: 'PLocker'
+        // },
         {
             name: 'REMUN_MONTH_CLOSURE',
             icon: 'fas fa-door-closed',

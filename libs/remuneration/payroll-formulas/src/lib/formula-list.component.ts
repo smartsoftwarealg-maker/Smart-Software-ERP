@@ -11,6 +11,7 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import {PayrollMonthService} from "@ss/remuneration/payroll-month";
 
 @Component({
     selector: 'ss-formula-list',
@@ -20,6 +21,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class FormulaListComponent extends BaseEntityListComponent<Formula> {
+    private monthSelectorSrv  = inject(PayrollMonthService);
     private generateBtn: ToolbarButton = {
         disabled: false,
         icon: 'fa-solid fa-grid-2-plus',
@@ -32,6 +34,12 @@ export class FormulaListComponent extends BaseEntityListComponent<Formula> {
     override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.generateBtn);
+        this.monthSelectorSrv
+            .isUpdatableMonth()
+            .subscribe(upd => {
+                this.deleteButton.visible = upd;
+                this.addButton.visible = upd;
+            });
     }
 
     override finishLoading(data: Formula[]) {

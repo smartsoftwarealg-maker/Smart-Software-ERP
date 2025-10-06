@@ -67,8 +67,6 @@
     "CACO_CONTRIBUTION": "CACOBPTH contribution",
     "CACO": "CACOBAPTH D.A.S",
     "NORMAL_PAY": "Normal payroll",
-    "MIN":        "Minimum value",
-    "MAX":        "Maximum value",
     "FOLLOWUP": "Follow up",
     "STRICT_POSITIVE": "Greater than zero",
     "ARCHIVE_GENERATOR": "Archive generator",
@@ -88,5 +86,9 @@
     "RETURNED_AMOUNT":    "Returned amount",
     "IRG":                "IRG",
     "IRG_CALCULATOR":     "IRG calculator",
-    "INCLUDE_SPECIAL_MONTHS": "Include special months"
+    "INCLUDE_SPECIAL_MONTHS": "Include special months",
+    "PAYROLL_LOCK": "Payroll lock",
+    "PAYROLL_COMPLETE": "Payroll complete",
+    "PAYROLL_LOCK_READY": "Payroll lock ready",
+    "LOCK_PAYROLL": "Lock payroll"
 }

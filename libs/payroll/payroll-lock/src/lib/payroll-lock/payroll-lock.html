@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title >
+            <div class="title__div" translate> REMUN_PAYROLL_LOCK </div>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-checkbox #complete translate>REMUN_PAYROLL_COMPLETE</mat-checkbox>
+        <mat-checkbox #ready translate>REMUN_PAYROLL_LOCK_READY</mat-checkbox>
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="btn__div">
+            <button mat-button (click)="cancel()">
+                <i class="fa-solid fa-cancel"></i>
+                {{ 'COMMON_CANCEL' | translate }}
+            </button>
+            <button mat-button [disabled]="!complete.checked || !ready.checked || !isCurrentMonth()"
+                    (cancel)="lock()">
+                <i class="fa-solid fa-lock"></i>
+                {{ 'REMUN_LOCK_PAYROLL' | translate }}
+            </button>
+        </div>
+    </mat-card-actions>
+</mat-card>

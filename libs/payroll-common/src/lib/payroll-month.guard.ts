@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
 import {LoginService} from '@ss/common/api-common';
@@ -9,6 +9,7 @@ import {ShellService} from '@ss/common/ui-shell';
     providedIn: 'root'
 })
 export class PayrollMonthGuard {
+    #monthSelectorSrv = inject(PayrollMonthService);
     constructor(private loginSrv: LoginService,
                 private router: Router,
                 private monthSrv: PayrollMonthService,
@@ -24,5 +25,9 @@ export class PayrollMonthGuard {
         return this.loginSrv?.appCtx &&
         this.loginSrv.appCtx?.payMonth > 100000 ? true :
             this.router.createUrlTree(['/app/payroll/select']);
+    }
+
+    isCurrentMonth(): Observable<boolean> {
+        return this.monthSrv.isUpdatableMonth();
     }
 }
