@@ -131,6 +131,8 @@
     "FAILED":              "Failed",
     "NO_SHOW":             "No show",
     "PENDING":             "Pending",
-    "COMPLETED":           "Completed"
+    "COMPLETED":           "Completed",
+    "SENT":                "Sent",
+    "QUOTES":              "Quotes"
 
 }

@@ -1,0 +1,41 @@
+<div class="size ctrl__div">
+    <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()" [disabled]="!selectedId" [matTooltip]="'COMMON_EDIT' | translate" color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate" [disabled]="!selectedId" color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<div class="table_div size">
+    <mat-table mat-table [dataSource]="data$ | async" class="main-table">
+
+        <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+            <mat-cell *matCellDef="let e">{{ e.reference }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_QUANTITY</mat-header-cell>
+            <mat-cell *matCellDef="let e">{{ e.quantity }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="listPrice">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_LIST_PRICE</mat-header-cell>
+            <mat-cell *matCellDef="let e">{{ e.listPrice | number:'1.2-2' }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="unitPrice">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_UNIT_PRICE</mat-header-cell>
+            <mat-cell *matCellDef="let e">{{ e.unitPrice | number:'1.2-2' }}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedRow?.id" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>

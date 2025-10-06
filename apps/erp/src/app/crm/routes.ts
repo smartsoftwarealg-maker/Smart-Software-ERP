@@ -78,7 +78,13 @@ import {
     CrmEmailTemplatesListComponent
 } from '@ss/crm/email-templates';
 import { CalendarList } from '@ss/crm/calendar-list';
-import {LeadFormComponent} from '@ss/crm/leads';
+import { LeadFormComponent } from '@ss/crm/leads';
+import {
+    CrmQuotesDetailComponent,
+    CrmQuotesLinesListComponent,
+    QuoteLinesDetailComponent,
+    CrmQuotesListComponent
+} from '@ss/crm/opportunity';
 
 export const crmRoutes: Routes = [
     {
@@ -378,10 +384,39 @@ export const crmRoutes: Routes = [
                                 pathMatch: 'full'
                             }
                         ]
+                    },
+                    {
+                        path: 'quotes',
+                        children: [
+                            {
+                                path: '',
+                                component: CrmQuotesListComponent
+                            },
+                            {
+                                path: ':id',
+                                component: CrmQuotesDetailComponent,
+                                canDeactivate: [CanDeactivateService],
+                                children: [
+                                    { path: '', redirectTo: 'items', pathMatch: 'full' },
+                                    {
+                                        path: 'items',
+                                        children: [
+                                            {
+                                                path: '',
+                                                component: CrmQuotesLinesListComponent
+                                            },
+                                            {
+                                                path: ':id',
+                                                component: QuoteLinesDetailComponent
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
-            },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+            }
         ]
     },
     {
@@ -401,7 +436,7 @@ export const crmRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-    { path: 'lead-test', component: LeadFormComponent},
+    { path: 'lead-test', component: LeadFormComponent },
     {
         path: CRM_CALENDAR_URL,
         children: [

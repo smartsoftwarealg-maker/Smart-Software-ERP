@@ -131,5 +131,6 @@
     "FAILED":               "غير موفق",
     "PENDING":              "في الانتظار",
     "NO_SHOW":              "لم يحضر",
-    "COMPLETED":            "مكتمل"
+    "COMPLETED":            "مكتمل",
+    "QUOTES":               "الاقتباسات"
 }
