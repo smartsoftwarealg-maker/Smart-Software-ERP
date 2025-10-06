@@ -456,6 +456,10 @@
     "FAX":                  "فاكس",
     "WHATSAPP":             "واتساب",
     "MISSIONS":             "المهام",
-    "ATTENDANCE_APP":       "الحضور"
+    "ATTENDANCE_APP":       "الحضور",
+    "USER":                "المستخدم",
+    "UNIT_PRICE":          "سعر الوحدة النهائي",
+    "LIST_PRICE":          "السعر الأصلي",
+    "PRODUCT_DESCRIPTION": "وصف المنتج"
 }
 

@@ -1,0 +1,59 @@
+<div class="ctrl__div size">
+    <button matButton (click)="cancel()">
+        <span><i class="fa-solid fa-rotate-right"></i> {{ 'COMMON_CANCEL' | translate }}</span>
+    </button>
+    <button matButton (click)="save()">
+        <span><i class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE' | translate }}</span>
+    </button>
+</div>
+
+@if (form !== null) {
+    <form [formGroup]="form">
+        <div class="content__div">
+
+            <mat-form-field class="default-75 sm-100">
+                <mat-label translate>COMMON_REFERENCE</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="articleLookup"
+                                  formControlName="reference">
+                </ss-auto-complete>
+                @if (form.controls['reference'].hasError('required')) {
+                    <mat-error
+                        translate>COMMON_FIELD_REQUIRED
+                    </mat-error>
+                }
+                @if (form.controls['reference'].hasError('validOption')) {
+                    <mat-error
+                        translate>COMMON_NO_MATCH
+                    </mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="default-75 sm-100">
+                <mat-label translate>COMMON_QUANTITY</mat-label>
+                <input matInput type="number" formControlName="quantity" required>
+                @if (form.controls['quantity'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="default-75 sm-100">
+                <mat-label translate>COMMON_LIST_PRICE</mat-label>
+                <input matInput type="number" formControlName="listPrice" required>
+                @if (form.controls['listPrice'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="default-75 sm-100">
+                <mat-label translate>COMMON_UNIT_PRICE</mat-label>
+                <input matInput type="number" formControlName="unitPrice" required>
+                @if (form.controls['unitPrice'].invalid) {
+                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                }
+            </mat-form-field>
+
+        </div>
+    </form>
+}

@@ -1,0 +1,21 @@
+.ctrl__div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.content__div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    width: 100%;
+
+    .large {
+        flex: 2 1 auto;
+    }
+}
+
+mat-form-field {
+    flex-grow: 1;
+    max-width: 300px;
+}

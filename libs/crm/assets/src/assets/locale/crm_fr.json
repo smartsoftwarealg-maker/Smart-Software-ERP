@@ -131,5 +131,6 @@
     "FAILED":                "Échoué",
     "NO_SHOW":               "Non présent",
     "PENDING":               "En attente",
-    "COMPLETED":             "Terminé"
+    "COMPLETED":             "Terminé",
+    "QUOTES":                "Devis"
 }

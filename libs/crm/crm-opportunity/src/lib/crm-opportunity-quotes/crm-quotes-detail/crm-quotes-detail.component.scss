@@ -1,0 +1,37 @@
+.quote-card {
+    padding: 20px;
+    margin: 20px;
+}
+
+.quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+mat-form-field {
+    flex: 1;
+    min-width: 200px;
+}
+
+.full-width-table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+.ctrl__div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
