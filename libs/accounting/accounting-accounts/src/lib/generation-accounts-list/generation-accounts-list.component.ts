@@ -50,5 +50,4 @@ export class GenerationAccountsListComponent extends BaseEntityListComponent<Gen
             'ACC_GENERATION_ACCOUNTS');
         this.pagination.pageSize = 15;
     }
-
 }

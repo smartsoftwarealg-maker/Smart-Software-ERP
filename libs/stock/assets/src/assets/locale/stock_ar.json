@@ -101,6 +101,6 @@
     "SOURCE_REFERENCE":        "مرجع الوجهة",
     "DOCUMENT_RECALCULATION":   "حساب المستند",
     "TRANSFER_REINTEGRATION":   "استرجاع التحويل",
-    "GICA_CLASS":               "فئة جيكا",
-    "GICA_SUBCLASS":            "فئة جيكا الفرعية"
+    "GICA_CLASSES":             "فئة جيكا",
+    "GICA_SUBCLASSES":          "فئة جيكا الفرعية"
 }

@@ -102,6 +102,6 @@
     "SOURCE_REFERENCE":        "Source Reference",
     "DOCUMENT_RECALCULATION":  "Document recalculation",
     "TRANSFER_REINTEGRATION":  "Transfer reintegration",
-    "GICA_CLASS":              "GICA Class",
-    "GICA_SUBCLASS":           "GICA Subclass"
+    "GICA_CLASSES":              "GICA Classes",
+    "GICA_SUBCLASSES":           "GICA Subclasses"
 }

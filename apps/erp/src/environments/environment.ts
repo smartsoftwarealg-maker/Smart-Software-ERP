@@ -12,7 +12,7 @@ import {assetsNavTree} from '../app/assets-app/side-nav-tree';
 import {treasuryNavTree} from '../app/treasury/side-nav-tree';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
 import {scheduledSalesNavTree} from '../app/scheduled-sales/side-nav-tree';
-import {CanActivateService, INDEX_PAGE_URL} from '@ss/common/api-common';
+import {CanActivateService, INDEX_PAGE_URL, SideNavNode} from '@ss/common/api-common';
 import {missionsNavTree} from '../app/missions/side-nav-tree';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {MainPageComponent} from '@ss/common/ui-main-page';
@@ -68,6 +68,18 @@ import { gicaNavTree } from '../app/gica/side-nav-tree';
 import { socialNavTree } from '../app/social/side-nav-tree';
 import { productionNavTree } from '../app/production/side-nav-tree';
 
+function patch(stockBar: SideNavNode): SideNavNode {
+    stockBar.children
+        .filter((child) => child.name === 'COMMON_MARKS')
+        .forEach(e => e.name = 'STOCK_GICA_CLASSES');
+
+    stockBar.children
+        .filter((child) => child.name === 'COMMON_TYPES')
+        .forEach(e => e.name = 'STOCK_GICA_SUBCLASSES');
+    console.log(stockBar.children.filter((child) => child.name === 'COMMON_TYPES'));
+    return stockBar;
+}
+
 export const environment = {
     production: false,
     multiCompany: false,
@@ -79,7 +91,7 @@ export const navBar = [
     organizationsNavTree,
     logisticsAdminNavTree,
     purchasesNavTree,
-    stockNavTree,
+    patch(stockNavTree),
     contractsNavTree,
     salesNavTree,
     ssalesNavTree,
