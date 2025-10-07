@@ -21,7 +21,6 @@ import { MatTooltip } from '@angular/material/tooltip';
     standalone: true,
     imports: [
         DatePipe,
-        DecimalPipe,
         MatCell,
         MatCellDef,
         MatColumnDef,
@@ -43,7 +42,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     styleUrl: './crm-quotes-list.component.scss'
 })
 export class CrmQuotesListComponent extends BaseChildEntityListComponent<CRMQuote> {
-    displayedColumns = [
+    override displayedColumns = [
         'number',
         'date',
         'user'
@@ -51,7 +50,8 @@ export class CrmQuotesListComponent extends BaseChildEntityListComponent<CRMQuot
     constructor(protected override detailSrv: CrmQuotesService) {
         super(detailSrv, 'CrmQuotesList' );
     }
-    ngOnInit() {
+
+    override ngOnInit() {
         super.ngOnInit();
         this.refresh();
     }

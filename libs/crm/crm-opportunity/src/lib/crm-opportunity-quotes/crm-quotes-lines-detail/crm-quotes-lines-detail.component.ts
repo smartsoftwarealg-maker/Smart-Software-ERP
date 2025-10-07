@@ -27,7 +27,6 @@ import { LoginService } from '@ss/common/api-common';
         MatButton,
         TranslatePipe,
         TranslateDirective,
-        DatePickerComponent,
         UiAutoCompleteComponent
     ]
 })
@@ -40,15 +39,15 @@ export class QuoteLinesDetailComponent
         super(detailSrv, 'CRMQuoteLineDetail');
     }
 
-    protected loginSrv = inject(LoginService);
+    protected override loginSrv = inject(LoginService);
     articleLookup: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
 
     override setupForm(q: CRMQuoteItem) {
         return this.fb.group({
-            id: [q?.id || 0],
-            parentId: [q?.parentId || this.detailSrv.getParentId()],
+            id:        [q?.id || 0],
+            parentId:  [q?.parentId || this.detailSrv.getParentId()],
             reference: [q?.reference],
-            quantity: [q?.quantity],
+            quantity:  [q?.quantity],
             listPrice: [q?.listPrice],
             unitPrice: [q?.unitPrice]
         });

@@ -38,8 +38,7 @@ import { CrmQuoteItemsService } from '../crm-quote-item.service';
         MatHeaderRow,
         MatRow,
         MatRowDef,
-        MatHeaderRowDef,
-        PaginationComponent
+        MatHeaderRowDef
     ],
     templateUrl: './crm-quotes-lines-list.component.html',
     styleUrl: './crm-quotes-lines-list.component.scss'

@@ -47,6 +47,14 @@ export const environment = {
 };
 
 function patch(stockBar: SideNavNode): SideNavNode {
+    stockBar.children
+        .filter((child) => child.name === 'COMMON_MARKS')
+        .forEach(e => e.name = 'STOCK_SODISMAC_CLASS');
+
+    stockBar.children
+        .filter((child) => child.name === 'COMMON_TYPES')
+        .forEach(e => e.name = 'STOCK_SODISMAC_SUBCLASS');
+
     return stockBar;
 }
 
