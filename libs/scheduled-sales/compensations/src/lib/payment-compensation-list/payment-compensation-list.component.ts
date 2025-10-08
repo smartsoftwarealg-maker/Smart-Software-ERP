@@ -18,7 +18,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {MaterialModule, PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
+import {MatSort, MatSortHeader, Sort} from '@angular/material/sort';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { DebtService } from '../services/debt.service';
 import { HttpParams } from '@angular/common/http';
@@ -157,6 +157,11 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
 
     protected override canShowProcessingStatus(): boolean {
         return false;
+    }
+
+    sortChild(event: Sort) {
+        this.#debtsSrv.sortColumn = event;
+        this.refreshChild();
     }
 
     override refresh(callback?: () => void) {
