@@ -213,6 +213,7 @@ export class CmmsAssetDetailComponent extends BaseEntityDetailComponent<Asset> i
             {
                 width: '600px',
                 height: '520px',
+                disableClose: true,
                 data: {id: 0, description: null, cmms: true }
             });
         dialogRef

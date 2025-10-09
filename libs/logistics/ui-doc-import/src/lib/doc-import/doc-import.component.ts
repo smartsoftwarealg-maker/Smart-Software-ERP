@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnInit } from "@angular/core";
+import {Component, DestroyRef, inject, Inject, OnInit} from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup} from '../lookup';
 import {ImportInfo} from '../import-info';
@@ -26,6 +26,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, MatOption, MatInput, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatButton, PaginationComponent, DatePipe, TranslatePipe]
 })
 export class DocImportComponent implements OnInit {
+    private destroyRef = inject(DestroyRef);
     private dialogRef = inject(MatDialogRef<DocImportComponent>);
     private docImportService = inject(DocImportService);
     private subscriptions: Subscription[] = [];
@@ -36,6 +37,7 @@ export class DocImportComponent implements OnInit {
 
     public  document = new FormControl<number>(0);
     public  searchNumber = new FormControl<number>(0);
+    public  searchReference = new FormControl<string|null>(null);
     public  importInfo: ImportInfo = null;
     paginator = PaginationModel.newInstance({page: 0, pageSize: 10, elementCount: 0 });
 
@@ -50,7 +52,7 @@ export class DocImportComponent implements OnInit {
         this.subscriptions.push(
             this.document
                 .valueChanges
-                .pipe(switchMap(docCode => this.docImportService.getList(docCode, this.searchNumber.value||0, this.agentId, 0, 50)))
+                .pipe(switchMap(docCode => this.docImportService.getList(docCode, this.searchNumber.value||0, this.agentId, this.searchReference.value, 0, 50)))
                 .subscribe(res => {
                     this.importList = res.body;
                     this.paginator.elementCount = res.itemCount;
@@ -59,7 +61,16 @@ export class DocImportComponent implements OnInit {
         this.subscriptions.push(
             this.searchNumber
                 .valueChanges
-                .pipe(switchMap(numb => this.docImportService.getList(this.document.value, (numb||0), this.agentId, 0, 50)))
+                .pipe(switchMap(numb => this.docImportService.getList(this.document.value, numb, this.agentId, this.searchReference.value, 0, 50)))
+                .subscribe(res => {
+                    this.importList = res.body;
+                    this.paginator.elementCount = res.itemCount;
+                }));
+
+        this.subscriptions.push(
+            this.searchReference
+                .valueChanges
+                .pipe(switchMap(reference => this.docImportService.getList(this.document.value, this.searchNumber.value||0, this.agentId, reference, 0, 50)))
                 .subscribe(res => {
                     this.importList = res.body;
                     this.paginator.elementCount = res.itemCount;
@@ -68,7 +79,7 @@ export class DocImportComponent implements OnInit {
 
     public close() {
         this.subscriptions.forEach(s => s.unsubscribe());
-        this.dialogRef.close({ document: +this.document.value, number: this.importInfo.number });
+        this.dialogRef.close({ document: +this.document.value, number: this.importInfo.number, reference: this.searchReference.value });
     }
 
     public cancel() {
@@ -81,7 +92,7 @@ export class DocImportComponent implements OnInit {
 
     private refresh() {
         this.docImportService
-            .getList(this.document.value, this.searchNumber.value, this.agentId, this.paginator.page - 1, this.paginator.pageSize)
+            .getList(this.document.value, this.searchNumber.value, this.agentId, this.searchReference.value, this.paginator.page - 1, this.paginator.pageSize)
             .subscribe(res => {
                 this.importList = res.body;
                 this.paginator.elementCount = res.itemCount;

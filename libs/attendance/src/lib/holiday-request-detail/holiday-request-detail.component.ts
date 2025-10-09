@@ -93,6 +93,7 @@ export class HolidayRequestDetailComponent extends BaseEntityDetailComponent<Hol
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '500px',
+                disableClose: true,
                 data: { transacId: id, senderId: 1, documentId: HOLIDAY_REQUEST }
             });
 

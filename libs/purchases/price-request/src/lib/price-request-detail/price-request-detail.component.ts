@@ -6,7 +6,7 @@ import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {
-    BaseTransactionDetailComponent, Transaction
+    BaseTransactionDetailComponent, DOC_DELIVERY, DOC_PURCHASE_REQUEST, DOC_QUOTATION, DOC_SALES_ORDER, Transaction
 } from '@ss/logistics/api-transaction';
 import {MatDialog} from '@angular/material/dialog';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -54,7 +54,7 @@ export class PriceRequestDetailComponent extends BaseTransactionDetailComponent 
         this.currencySrv.load().subscribe();
     }
     protected override showImportButton(): boolean {
-        return false;
+        return true;
     }
     protected override requireAgentToImportDocument(): boolean {
         return false;
@@ -63,6 +63,8 @@ export class PriceRequestDetailComponent extends BaseTransactionDetailComponent 
         return true;
     }
     protected override importedDocuments(): Lookup[] {
-        return [];
+        return [
+            {id: DOC_PURCHASE_REQUEST, description: 'PURCHASES_PURCHASE_REQUEST'},
+        ];
     }
 }

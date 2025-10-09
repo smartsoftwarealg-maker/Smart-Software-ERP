@@ -15,8 +15,8 @@ import { OptionService } from '@ss/logistics/ui-options';
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     #optionSrv =  inject(OptionService);
-    #loginSrv = inject(LoginService);
     private _isEditable_ = true;
+    protected loginSrv = inject(LoginService);
     protected subscription: Subscription = null;
     searchText = new FormControl<string>('');
     parentId: number;
@@ -48,7 +48,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         // this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
 
         this.#optionSrv
-            .get(this.#loginSrv.appCtx.center)
+            .get(this.loginSrv.appCtx.center)
             .pipe(
                 tap(res => {
                     this.usesLots.set(res.usesLots);

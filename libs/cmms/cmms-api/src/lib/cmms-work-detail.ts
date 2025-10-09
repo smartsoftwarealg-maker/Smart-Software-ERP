@@ -163,6 +163,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
             const dialogRef = this.dialog.open(WorkflowDialogComponent, {
                 width: '350px',
                 height: '500px',
+                disableClose: true,
                 data: { transacId: id, senderId: this.loginSrv.appCtx.id, validated: this.validated, documentId: CMMS_WORK_ORDER }
             });
 
