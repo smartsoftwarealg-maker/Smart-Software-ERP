@@ -16,6 +16,7 @@ import { DocumentSourcesComponent } from 'logistics/ui-document-sources';
 import { UiTransactionlineQuantitiesComponent } from '@ss/logistics/quantities';
 import { UiMrpComponent } from '@ss/logistics/ui-mrp';
 import {PAYROLL_MONTH_LOCK_URL} from "../../../../libs/payroll/payroll-lock/src/lib/payroll-lock/month-lock.api";
+import { UiTotalStockComponent } from '../../../../libs/logistics/ui-total-stock/src';
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -1102,6 +1103,10 @@ export const docInfoRoutes: Routes = [
     {
         path: 'stock',
         component: UiStockInfoComponent
+    },
+    {
+       path: 'total-stock',
+       component: UiTotalStockComponent
     },
     {
         path: 'card',

@@ -103,5 +103,6 @@
     "DOCUMENT_RECALCULATION":  "Document recalculation",
     "TRANSFER_REINTEGRATION":  "Transfer reintegration",
     "GICA_CLASSES":              "GICA Classes",
-    "GICA_SUBCLASSES":           "GICA Subclasses"
+    "GICA_SUBCLASSES":           "GICA Subclasses",
+    "TOTAL_STOCK":              "Total stock"
 }
