@@ -11,13 +11,19 @@ export class DocImportService {
 
     constructor(private httpService: HttpService) { }
 
-    getList(document: number, numb: number, agent: number, page: number, pageSize: number): Observable<{ body: ImportInfo[], itemCount: number }> {
+    getList(document: number,
+            numb: number,
+            agent: number,
+            reference: string,
+            page: number,
+            pageSize: number): Observable<{ body: ImportInfo[], itemCount: number }> {
         const params = new HttpParams()
             .set('document', document)
             .set('number', numb)
             .set('agent', agent||0)
             .set('page', `${page}-${pageSize}`);
-        return this.httpService.getData('/imports', page, pageSize, null, null, params);
+        const params1 = reference? params.set('reference', reference) : params;
+        return this.httpService.getData('/imports', page, pageSize, null, null, params1);
     }
 
     importDoc(document: number, numb: number, destination: number): Observable<number> {

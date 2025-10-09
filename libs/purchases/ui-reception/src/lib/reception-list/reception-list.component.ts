@@ -17,7 +17,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
-    selector: 'ss-inter-store-transfer-list',
+    selector: 'ss-reception-list',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './reception-list.component.html',
     standalone: true,

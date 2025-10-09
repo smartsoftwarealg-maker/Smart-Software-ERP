@@ -18,7 +18,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import {PurchaseInvoiceService} from "../purchase-invoice.service";
 
 @Component({
-    selector: 'ss-inter-store-transfer-list',
+    selector: 'ss-purchase-invoice-list',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './purchase-invoice-list.component.html',
     standalone: true,

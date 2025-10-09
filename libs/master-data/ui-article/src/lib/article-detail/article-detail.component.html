@@ -47,9 +47,14 @@
               </mat-option>
             }
           </mat-select>
-        </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
+        </mat-form-field>
+          <mat-form-field floatLabel="always" class="default-25 sm-50">
+              <mat-label translate>LOGISTICS_IMPORT_TAX</mat-label>
+              <input matInput formControlName="importTax" type="number" min="0" max="30">
+          </mat-form-field>
+
+        <mat-form-field class="default-25 sm-50">
           <mat-label translate>STOCK_CLASS</mat-label>
           <ss-auto-complete matInput
             [required]="true"

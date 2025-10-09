@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent, DOC_INVOICE_CANCELLATION,
+    BaseTransactionLinesDetailComponent, DOC_INVOICE_CANCELLATION, TransactionLine,
     TransactionLinesService
 } from '@ss/logistics/api-transaction';
 
 import { MaterialModule } from '@ss/common/api-common';
-import { ReactiveFormsModule } from '@angular/forms';
+import {ReactiveFormsModule, UntypedFormGroup} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 

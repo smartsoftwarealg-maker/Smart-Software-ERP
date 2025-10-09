@@ -22,6 +22,13 @@
       </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="currencyRate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_EXCHANGE_RATE</mat-header-cell>
+      <mat-cell *matCellDef="let e">
+        {{ e.currencyRate | number: '1.2-5'}}
+      </mat-cell>
+    </ng-container>
+
 
     <ng-container matColumnDef="date">
       <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>

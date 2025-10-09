@@ -203,5 +203,7 @@
     "FT_ADVANCEMENT":        "Avance après taxes",
     "PROJECT_REQUIRED":      "Projet requis pour les ventes",
     "ADVANCEMENT_INVOICE":   "Facture d'avance",
-    "SPECIFIC_TO":           "Spécifique à"
+    "SPECIFIC_TO":           "Spécifique à",
+    "D10":                   "D10",
+    "IMPORT_TAX":            "Taxe d'importation"
 }

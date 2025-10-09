@@ -193,6 +193,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             const dialogRef = this.dialog.open(DocImportComponent, {
                 width: '80%',
                 height: '80%',
+                maxWidth: '800px',
                 data: { documentList: this.importedDocuments(), agentId: agentId },
                 disableClose: true
             });
@@ -319,7 +320,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     protected disableControls(url: string) {
         const enabled = url.indexOf('-detail') < 0;
-        console.log('validated', this.form?.controls['isValidated']);
         const validated = !!this.form?.controls['isValidated'].value;
         this.saveButton.visible = enabled && !validated;
         this.shellSrv.setGoBackEnabled(enabled);

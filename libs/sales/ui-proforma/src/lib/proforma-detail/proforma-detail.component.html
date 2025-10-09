@@ -72,7 +72,7 @@
                     <mat-label translate>STOCK_DEALER</mat-label>
                     <ss-auto-complete matInput
                                       [required]="true"
-                                      [disabled]="!isManager"
+
                                       [model]="dealerAutoCompleteModel"
                                       formControlName="dealer"></ss-auto-complete>
                     @if (form.controls['dealer'].hasError('required')) {

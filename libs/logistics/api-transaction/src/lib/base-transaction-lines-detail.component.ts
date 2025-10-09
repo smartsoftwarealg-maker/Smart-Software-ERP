@@ -33,6 +33,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Agent, AgentService } from '@ss/logistics/api-agent';
 import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
 import { ArticleSearchDlg } from '@ss/ligistics/article-search';
+import {DELIVERY_CANCELLATION, IMPORT_RECEPTION, INVOICE_CANCELLATION} from "@ss/workflow";
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
@@ -152,8 +153,13 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         this.selectedRow = e;
         this.form = this.setupForm(e);
         const subs2 = this.form.get('qtyOrdered').valueChanges.subscribe(next => {
+            const isCancellation =
+                !this.loginSrv.appCtx.manager &&
+                (this.document === INVOICE_CANCELLATION ||
+                 this.document === DELIVERY_CANCELLATION)
+            console.log('isCan', isCancellation);
             if (typeof next === 'number') {
-                if (next > 0.0 && this.selectedRow?.reference) {
+                if ((next > 0.0 && this.selectedRow?.reference) || isCancellation) {
                     this.form.get('reference').disable();
                     this.form.get('store').disable();
                 } else {
@@ -186,6 +192,10 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             this.form.controls['store'].setValue(null);
         } else {
             this.form.controls['store'].enable({onlySelf: true});
+        }
+
+        if (this.document === IMPORT_RECEPTION) {
+            this.form.controls['charge3'].setValue(a?.importTax||0);
         }
 
         this.articleSrv
@@ -234,10 +244,15 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 });
         }
 
+        const referenceDisabled =
+            !this.isEditable ||
+            ((this.document === INVOICE_CANCELLATION || this.document === DELIVERY_CANCELLATION) && !this.loginSrv.appCtx.manager) ||
+            ( b.qtySatisfied > 0.0001 || (this.document === DOC_PRODUCTION && !!b.sourceDoc));
+
         return this.formBuilder.group({
             id:           [b.id],
             transacId:    [this.parentId],
-            reference:    [{ value: b.reference, disabled: !this.isEditable || ( b.qtySatisfied > 0.0001 || (this.document === DOC_PRODUCTION && !!b.sourceDoc)) }],
+            reference:    [{ value: b.reference, disabled: referenceDisabled }],
             sourceDoc:    [b.sourceDoc],
             store:        [{ value: b.store, disabled: !this.isEditable || b.qtySatisfied > 0.0}],
             qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: !this.isEditable || (this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && (b.sourceDoc == undefined || b.qtySatisfied < 0.00001) ))}, Validators.required],

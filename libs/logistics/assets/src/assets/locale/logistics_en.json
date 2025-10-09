@@ -204,6 +204,7 @@
     "FT_ADVANCEMENT":        "Full tax advancement",
     "PROJECT_REQUIRED":      "Project required for sales",
     "ADVANCEMENT_INVOICE":   "Advancement invoice",
-    "SPECIFIC_TO":           "Specific to"
-
+    "SPECIFIC_TO":           "Specific to",
+    "D10":                   "D10",
+    "IMPORT_TAX":            "Import tax"
 }
