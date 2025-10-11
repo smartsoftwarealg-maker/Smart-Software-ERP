@@ -460,6 +460,7 @@
     "USER":                "المستخدم",
     "UNIT_PRICE":          "سعر الوحدة النهائي",
     "LIST_PRICE":          "السعر الأصلي",
-    "PRODUCT_DESCRIPTION": "وصف المنتج"
+    "PRODUCT_DESCRIPTION": "وصف المنتج",
+    "ACCOUNT_MAP":         "مخطط الحسابات"
 }
 

@@ -66,6 +66,7 @@
     "CLASS": "Class",
     "EDIT_CLASS": "Edit class",
     "SUBCLASSES": "Subclasses",
+    "SUBCLASS": "Subclass",
     "EDIT_SUBCLASS": "Edit subclass",
     "STORE_NAMES": "Stores",
     "EDIT_STORE_NAME": "Edit store",
@@ -468,5 +469,6 @@
     "USER":                 "User",
     "UNIT_PRICE":           "Unit price",
     "LIST_PRICE":           "List price",
-    "PRODUCT_DESCRIPTION":  "Product description"
+    "PRODUCT_DESCRIPTION":  "Product description",
+    "ACCOUNT_MAP":          "Account map"
 }

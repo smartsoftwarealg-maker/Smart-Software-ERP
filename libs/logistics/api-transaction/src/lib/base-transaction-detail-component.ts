@@ -133,7 +133,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     }
 
     public override canDeactivate(): Observable<boolean> {
-        const parent = +(this.router.getCurrentNavigation().extractedUrl.queryParamMap.get('parent') || '0');
+        const parent = +(this.router.currentNavigation().extractedUrl.queryParamMap.get('parent') || '0');
         return parent === 0 || !this.isEditable ?
             of(true) :
             this.entitySrv
@@ -194,7 +194,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                 width: '80%',
                 height: '80%',
                 maxWidth: '800px',
-                data: { documentList: this.importedDocuments(), agentId: agentId },
+                data: { documentList: this.importedDocuments(), agentId: agentId, destination: this.form.controls['document'].value },
                 disableClose: true
             });
 

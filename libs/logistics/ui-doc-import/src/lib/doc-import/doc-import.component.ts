@@ -31,6 +31,7 @@ export class DocImportComponent implements OnInit {
     private docImportService = inject(DocImportService);
     private subscriptions: Subscription[] = [];
     private  agentId = 0;
+    private  destination = 0;
     public   documentList: Lookup[];
     public   importList: ImportInfo[] = [];
     readonly displayedColumns = ['number', 'date', 'reference', 'refDate'];
@@ -42,9 +43,10 @@ export class DocImportComponent implements OnInit {
     paginator = PaginationModel.newInstance({page: 0, pageSize: 10, elementCount: 0 });
 
 
-    constructor(@Inject(MAT_DIALOG_DATA) private data: { documentList: Lookup[], agentId?: number }) {
+    constructor(@Inject(MAT_DIALOG_DATA) private data: { documentList: Lookup[], destination: number, agentId?: number }) {
         this.documentList = data.documentList;
         this.agentId = data.agentId;
+        this.destination = data.destination;
         this.paginator.onChange = () => this.refresh();
     }
 
@@ -52,7 +54,7 @@ export class DocImportComponent implements OnInit {
         this.subscriptions.push(
             this.document
                 .valueChanges
-                .pipe(switchMap(docCode => this.docImportService.getList(docCode, this.searchNumber.value||0, this.agentId, this.searchReference.value, 0, 50)))
+                .pipe(switchMap(docCode => this.docImportService.getList(docCode, this.searchNumber.value||0, this.agentId, this.destination, this.searchReference.value, 0, 50)))
                 .subscribe(res => {
                     this.importList = res.body;
                     this.paginator.elementCount = res.itemCount;
@@ -61,7 +63,7 @@ export class DocImportComponent implements OnInit {
         this.subscriptions.push(
             this.searchNumber
                 .valueChanges
-                .pipe(switchMap(numb => this.docImportService.getList(this.document.value, numb, this.agentId, this.searchReference.value, 0, 50)))
+                .pipe(switchMap(numb => this.docImportService.getList(this.document.value, numb, this.agentId, this.destination, this.searchReference.value, 0, 50)))
                 .subscribe(res => {
                     this.importList = res.body;
                     this.paginator.elementCount = res.itemCount;
@@ -70,7 +72,7 @@ export class DocImportComponent implements OnInit {
         this.subscriptions.push(
             this.searchReference
                 .valueChanges
-                .pipe(switchMap(reference => this.docImportService.getList(this.document.value, this.searchNumber.value||0, this.agentId, reference, 0, 50)))
+                .pipe(switchMap(reference => this.docImportService.getList(this.document.value, this.searchNumber.value||0, this.agentId, this.destination, reference, 0, 50)))
                 .subscribe(res => {
                     this.importList = res.body;
                     this.paginator.elementCount = res.itemCount;
@@ -92,7 +94,7 @@ export class DocImportComponent implements OnInit {
 
     private refresh() {
         this.docImportService
-            .getList(this.document.value, this.searchNumber.value, this.agentId, this.searchReference.value, this.paginator.page - 1, this.paginator.pageSize)
+            .getList(this.document.value, this.searchNumber.value, this.agentId, this.destination, this.searchReference.value, this.paginator.page - 1, this.paginator.pageSize)
             .subscribe(res => {
                 this.importList = res.body;
                 this.paginator.elementCount = res.itemCount;

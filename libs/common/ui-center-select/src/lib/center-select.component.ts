@@ -5,7 +5,7 @@ import {
     BLOCKED_REASON_PAGE_URL,
     Center,
     Company,
-    INDEX_PAGE_URL, LoginService, MainPageService,
+    INDEX_PAGE_URL, LanguageService, LoginService, MainPageService,
     PROFILE_PAGE_URL
 } from '@ss/common/api-common';
 import {
@@ -39,10 +39,15 @@ import { AgentService } from '@ss/logistics/api-agent';
     imports: [MatStepper, NgClass, MatStepperIcon, MatStep, MatStepLabel, TranslateDirective, MatFormField, MatSelect, MatOption, MatLabel, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, MatButton, AsyncPipe, TranslatePipe]
 })
 export class CenterSelectComponent implements OnInit {
+    #langSrv = inject(LanguageService);
+
     private ccListSrv = inject(CenterService);
     private mainPageSrv = inject(MainPageService);
     private agentSrv = inject(AgentService);
-
+    private loginSrv  = inject(LoginService);
+    private router  = inject(Router);
+    private rightsSrv  = inject(UserRightsService);
+    private shellSrv  = inject(ShellService);
     companyList: Company[] = [];
     centerList: Center[] = [];
 
@@ -59,11 +64,6 @@ export class CenterSelectComponent implements OnInit {
 
     @ViewChild('stepper', {static: false}) stepper: MatStepper;
 
-    constructor(private loginSrv: LoginService,
-                private router: Router,
-                private rightsSrv: UserRightsService,
-                private shellSrv: ShellService) {
-    }
 
     ngOnInit() {
         this.companyList = [];
@@ -80,18 +80,18 @@ export class CenterSelectComponent implements OnInit {
         this.loading = true;
         this.ccListSrv.getCompanyList()
             .subscribe({
-                next: r => {
-                    this.companyList = r;
-                    if (this.companyList.length === 1) {
-                        this.selectCompany(this.companyList[0].id);
+                    next: r => {
+                        this.companyList = r;
+                        if (this.companyList.length === 1) {
+                            this.selectCompany(this.companyList[0].id);
+                        }
+                        this.endLoading();
+                    },
+                    error: err => {
+                        this.endLoading();
+                        throw err;
                     }
-                    this.endLoading();
-                },
-                error: err => {
-                    this.endLoading();
-                    throw err;
                 }
-            }
             );
     }
 

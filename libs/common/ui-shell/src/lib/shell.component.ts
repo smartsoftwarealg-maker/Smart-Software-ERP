@@ -11,7 +11,7 @@ import {
     inject
 } from '@angular/core';
 import { ShellService } from './shell.service';
-import { CdkTree, NestedTreeControl } from '@angular/cdk/tree';
+import { CdkTree } from '@angular/cdk/tree';
 import {
     CENTER_SELECT_URL,
     HttpService,
@@ -48,7 +48,12 @@ import { ThemeSelectComponent } from '@ss/common/ui-theme';
 export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
     #httpSrv = inject(HttpService);
     #rightsSrv = inject(UserRightsService);
-    private router = inject(Router);
+    #router = inject(Router);
+
+    protected shellSrv = inject(ShellService);
+    protected loginSrv = inject(LoginService);
+    protected cdRef = inject(ChangeDetectorRef);
+    protected langSrv = inject(LanguageService);
 
     @ViewChild(CdkTree)
     tree!: CdkTree<SideNavNode>;
@@ -62,12 +67,6 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     public lastScroll = 0;
     // side nav
     childrenAccessor = (dataNode: SideNavNode) => dataNode.children;
-
-    constructor(
-        public loginSrv: LoginService,
-        public langSrv: LanguageService,
-        public shellSrv: ShellService,
-        protected cdRef: ChangeDetectorRef) { }
 
     ngOnInit() {
         this.#rightsSrv
@@ -155,7 +154,7 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     }
 
     centerSelect() {
-        this.router.navigate(['/' + CENTER_SELECT_URL]).then();
+        this.#router.navigate(['/' + CENTER_SELECT_URL]).then();
     }
 
     protected readonly LoginType = LoginType;

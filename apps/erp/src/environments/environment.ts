@@ -68,22 +68,12 @@ import { gicaNavTree } from '../app/gica/side-nav-tree';
 import { socialNavTree } from '../app/social/side-nav-tree';
 import { productionNavTree } from '../app/production/side-nav-tree';
 
-function patch(stockBar: SideNavNode): SideNavNode {
-    stockBar.children
-        .filter((child) => child.name === 'COMMON_MARKS')
-        .forEach(e => e.name = 'STOCK_GICA_CLASSES');
-
-    stockBar.children
-        .filter((child) => child.name === 'COMMON_TYPES')
-        .forEach(e => e.name = 'STOCK_GICA_SUBCLASSES');
-    console.log(stockBar.children.filter((child) => child.name === 'COMMON_TYPES'));
-    return stockBar;
-}
 
 export const environment = {
     production: false,
     multiCompany: false,
     company: null,
+    sodismac: true
 };
 
 export const navBar = [
@@ -91,7 +81,7 @@ export const navBar = [
     organizationsNavTree,
     logisticsAdminNavTree,
     purchasesNavTree,
-    patch(stockNavTree),
+    stockNavTree,
     contractsNavTree,
     salesNavTree,
     ssalesNavTree,

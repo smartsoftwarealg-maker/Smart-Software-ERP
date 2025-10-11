@@ -27,6 +27,7 @@ import { initialize } from './admobile';
 })
 export class AppComponent implements OnInit {
     #companySelectorSrv = inject(CompanySelectorService);
+    #langSrv = inject(LanguageService);
     // private snackSrv = inject(SnackBarService);
     // private deviceSrv = inject(DeviceDetectorService);
     private httpSrv = inject(HttpService);
@@ -45,7 +46,8 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.multiCompany = multiCompany;
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage     = homePage;
-        this.shellSrv.setApplicationTitle('Smart ERP 2.6.76');
+        this.#langSrv.isSodismac = !!environment['sodismac'];
+        this.shellSrv.setApplicationTitle('Smart ERP 2.6.77');
         this.httpSrv
             .init()
             .pipe(

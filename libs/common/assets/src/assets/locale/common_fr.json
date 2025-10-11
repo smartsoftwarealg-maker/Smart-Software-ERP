@@ -74,6 +74,7 @@
     "CLASS": "Class",
     "EDIT_CLASS": "Modifier classe",
     "SUBCLASSES": "Sous-classes",
+    "SUBCLASS": "Sous-classe",
     "EDIT_SUBCLASS": "Modifier Sous-class",
     "STORE_NAMES": "Magasins",
     "EDIT_STORE_NAME": "Modifier nom magasin",
@@ -464,5 +465,6 @@
     "USER":                 "Utilisateur",
     "UNIT_PRICE":           "Prix unitaire",
     "LIST_PRICE":           "Prix de base",
-    "PRODUCT_DESCRIPTION":  "Description du produit"
+    "PRODUCT_DESCRIPTION":  "Description du produit",
+    "ACCOUNT_MAP":          "Plan Comptable"
 }

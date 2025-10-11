@@ -8,7 +8,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, Reactive
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Observable} from 'rxjs';
 import {GenerationAccountService} from '@ss/accounting/api-accounts';
-import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import {LanguageService, MaterialModule, PaginatorPersistenceService} from '@ss/common/api-common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -25,8 +25,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class ClassListComponent extends BaseEntityListComponent<Class> {
-
-    displayedColumns = ['description', 'accountno'];
+    displayedColumns = ['description', 'descriptionAr', 'accountno'];
 
     constructor(
         public classSrv: ClassService,

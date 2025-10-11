@@ -13,6 +13,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import {Article} from "@ss/master-data/api-article";
 
 @Component({
     selector: 'ss-import-reception-lines-detail',
@@ -39,5 +40,10 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 export class ImportReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(protected receptionLinesSrv: TransactionLinesService) {
         super(receptionLinesSrv, DOC_RECEPTION);
+    }
+
+    override onArticle(a: Article) {
+        super.onArticle(a);
+        this.form.controls['vat'].setValue(0);
     }
 }
