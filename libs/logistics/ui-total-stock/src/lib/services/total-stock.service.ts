@@ -23,7 +23,7 @@ export class TotalStockService extends BaseEntityService<TotalStock> {
             paginator.pageSize,
             filter,
             sortBy,
-            new HttpParams().set('find', reference))
+            new HttpParams().set('reference', reference))
             .pipe(map((data: { itemCount: number, body: TotalStock[] }) => {
                     paginator.elementCount = data.itemCount;
                     return data.body;
