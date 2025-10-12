@@ -102,5 +102,6 @@
     "DOCUMENT_RECALCULATION":   "حساب المستند",
     "TRANSFER_REINTEGRATION":   "استرجاع التحويل",
     "GICA_CLASSES":             "فئة جيكا",
-    "GICA_SUBCLASSES":          "فئة جيكا الفرعية"
+    "GICA_SUBCLASSES":          "فئة جيكا الفرعية",
+    "TOTAL_STOCK":              "إجمالي المخزون"
 }

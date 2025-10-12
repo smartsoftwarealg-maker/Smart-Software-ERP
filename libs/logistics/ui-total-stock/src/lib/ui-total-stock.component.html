@@ -1,0 +1,33 @@
+<div class="main-container">
+    <div class="container_div">
+        <mat-table mat-table [dataSource]="data" class="content-div">
+
+            <ng-container matColumnDef="reference">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.reference }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.description }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="stock">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_STOCK</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.stock | number : '1.2-4' }}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+</div>
