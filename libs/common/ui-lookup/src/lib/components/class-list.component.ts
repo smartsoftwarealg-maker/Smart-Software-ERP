@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import {Class, ClassService} from '@ss/common/api-lookup';
+import {Class, ClassService, SubclassService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -8,7 +8,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, Reactive
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Observable} from 'rxjs';
 import {GenerationAccountService} from '@ss/accounting/api-accounts';
-import {LanguageService, MaterialModule, PaginatorPersistenceService} from '@ss/common/api-common';
+import {IsParamService, LanguageService, MaterialModule, PaginatorPersistenceService} from '@ss/common/api-common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -16,6 +16,7 @@ import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import {toSignal} from "@angular/core/rxjs-interop";
 
 @Component({
     selector: 'ss-class-list',
@@ -25,6 +26,8 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class ClassListComponent extends BaseEntityListComponent<Class> {
+    #langSrv = inject(LanguageService);
+
     displayedColumns = ['description', 'descriptionAr', 'accountno'];
 
     constructor(
@@ -38,6 +41,9 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(classSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_CLASSES');
         this.pagination.pageSize = 10;
+        if (this.#langSrv.isSodismac) {
+            this.displayedColumns = ['descriptionAr', 'description', 'accountno', 'subclassDescription'];
+        }
     }
 
     override processLoadedData(data: Class[]): Observable<Class[]> {
@@ -62,8 +68,11 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent]
 })
 export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
-    private accountSrv =  inject(GenerationAccountService);
-    accountLookupModel = new DefaultAutoCompleteModel(this.accountSrv) ;
+    #subclassSrv = inject(SubclassService);
+    #accountSrv =  inject(GenerationAccountService);
+    accountLookupModel = new DefaultAutoCompleteModel(this.#accountSrv) ;
+    subclassLookupModel = new DefaultAutoCompleteModel(this.#subclassSrv) ;
+    langSrv = inject(LanguageService);
 
     constructor(
         public classSrv: ClassService,
@@ -80,7 +89,8 @@ export class ClassDetailComponent extends BaseEntityDetailComponent<Class> {
             id:            [e.id],
             description:   [e.description, Validators.required],
             descriptionAr: [e.descriptionAr],
-            accountId:     [e.accountId]
+            accountId:     [e.accountId],
+            subclassId:    [e.subclassId]
         });
     }
 }

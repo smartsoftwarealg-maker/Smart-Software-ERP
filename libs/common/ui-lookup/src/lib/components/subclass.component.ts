@@ -61,7 +61,7 @@ import {AssetClassService} from "@ss/assets-component";
 export class SubclassListComponent extends BaseEntityListComponent<Subclass> {
     #isSodismac = toSignal(inject(IsParamService).is('SODISMAC'));
 
-    displayedColumns = ['description', 'descriptionAr', 'classDescription'];
+    displayedColumns = ['description', 'descriptionAr'];
     descriptionAr = computed(() => this.#isSodismac()? 'ADMINISTRATION_CODE' : 'ADMINISTRATION_DESCRIPTION_AR');
 
     constructor(
@@ -92,20 +92,20 @@ export class SubclassListComponent extends BaseEntityListComponent<Subclass> {
                     <mat-label translate>{{ descriptionAr() }}</mat-label>
                     <input matInput formControlName="descriptionAr" type="text">
                 </mat-form-field>
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_CLASS</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="classLookup"
-                                      formControlName="classId">
-                    </ss-auto-complete>
-                </mat-form-field>
+<!--                <mat-form-field class="default-50 sm-100">-->
+<!--                    <mat-label translate>COMMON_CLASS</mat-label>-->
+<!--                    <ss-auto-complete matInput-->
+<!--                                      [model]="classLookup"-->
+<!--                                      formControlName="classId">-->
+<!--                    </ss-auto-complete>-->
+<!--                </mat-form-field>-->
             </form>
         }
     </mat-card>
     `,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class SubclassDetailComponent extends BaseEntityDetailComponent<Subclass> {
     #classSrv     = inject(ClassService);

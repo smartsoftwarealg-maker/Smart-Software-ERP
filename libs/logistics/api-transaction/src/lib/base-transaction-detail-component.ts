@@ -320,7 +320,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     protected disableControls(url: string) {
         const enabled = url.indexOf('-detail') < 0;
-        const validated = !!this.form?.controls['isValidated'].value;
+        const validated = !!this.form?.controls['isValidated']?.value;
         this.saveButton.visible = enabled && !validated;
         this.shellSrv.setGoBackEnabled(enabled);
     }

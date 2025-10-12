@@ -171,6 +171,8 @@ export interface Class {
     accountId?: number;
     accountno?: string;
     accountName?: string;
+    subclassId?: number;
+    subclassDescription?: string;
 }
 
 export interface Subclass {

@@ -8,7 +8,7 @@
 
             <mat-form-field class="default-100">
                 <mat-label translate>ADMINISTRATION_CODE</mat-label>
-                <input matInput formControlName="descriptionAr" type="text" required autofocus>
+                <input matInput formControlName="descriptionAr" type="text">
             </mat-form-field>
 
             <mat-form-field class="default-100">
@@ -16,6 +16,14 @@
                 <ss-auto-complete matInput
                                   [model]="accountLookupModel"
                                   formControlName="accountId">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="default-100">
+                <mat-label translate>COMMON_SUBCLASS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="subclassLookupModel"
+                                  formControlName="subclassId">
                 </ss-auto-complete>
             </mat-form-field>
         </form>
