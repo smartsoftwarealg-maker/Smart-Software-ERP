@@ -39,7 +39,7 @@ export const DAIRA_URL = '/lookups/dairas';
 export const TYPES_URL = '/lookups/types';
 export const UNIT_URL = '/lookups/units';
 export const CLASSES_URL = '/classes';
-export const SUBCLASSES_URL = '/lookups/subclasses';
+export const SUBCLASSES_URL = '/subclasses';
 export const LOTS_URL = '/lots';
 export const STORE_URL = '/stores';
 export const UNITS_URL = '/lookups/units';
@@ -171,13 +171,18 @@ export interface Class {
     accountId?: number;
     accountno?: string;
     accountName?: string;
+    subclassId?: number;
+    subclassDescription?: string;
 }
 
 export interface Subclass {
     id: number;
     description: string;
     descriptionAr?: string;
+    classId?: number;
+    classDescription: string;
 }
+
 export interface Store {
     id: number;
     centerId: number;

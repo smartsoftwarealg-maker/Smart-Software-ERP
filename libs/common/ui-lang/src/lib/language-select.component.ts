@@ -18,7 +18,7 @@ export class LanguageSelectComponent {
     @ViewChild('trigger', { static: false }) trigger: MatMenuTrigger;
 
     selectLocale(language: string): void {
-        this.langSrv.setLanguage(language).subscribe();
+        this.langSrv.setLanguage(language).subscribe(() => {});
     }
 
     public click(): void {

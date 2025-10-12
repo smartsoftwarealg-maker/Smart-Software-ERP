@@ -14,6 +14,7 @@ export class DocImportService {
     getList(document: number,
             numb: number,
             agent: number,
+            destination: number,
             reference: string,
             page: number,
             pageSize: number): Observable<{ body: ImportInfo[], itemCount: number }> {
@@ -21,6 +22,7 @@ export class DocImportService {
             .set('document', document)
             .set('number', numb)
             .set('agent', agent||0)
+            .set('destination', destination)
             .set('page', `${page}-${pageSize}`);
         const params1 = reference? params.set('reference', reference) : params;
         return this.httpService.getData('/imports', page, pageSize, null, null, params1);

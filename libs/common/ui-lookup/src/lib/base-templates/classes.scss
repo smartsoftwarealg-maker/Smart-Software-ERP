@@ -1,6 +1,6 @@
 .size {
     width: 80%;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 4px auto 0;
 }
 
@@ -10,11 +10,17 @@
     height: calc(100% - 64px);
     overflow-x: auto;
 }
+
 .table_div {
     height: calc(100% - 70px);
 }
 .mat-column-description {
     flex: 1 1 250px;
+}
+
+
+.mat-column-descriptionAr {
+    flex: 1 1 150px;
 }
 
 .mat-column-accountno {

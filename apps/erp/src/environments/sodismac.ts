@@ -10,7 +10,7 @@ import {stockNavTree} from '../app/stock/side-nav-tree';
 import {salesNavTree} from '../app/sales/side-nav-tree';
 import {financeNavTree} from '../app/finance/side-nav-tree';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
-import {CanActivateService, INDEX_PAGE_URL} from '@ss/common/api-common';
+import {CanActivateService, INDEX_PAGE_URL, SideNavNode} from '@ss/common/api-common';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {MainPageComponent} from '@ss/common/ui-main-page';
 import {
@@ -40,30 +40,19 @@ import { attendanceNavTree } from '../app/attendance/side-nav-tree';
 import { missionsNavTree } from '../app/missions/side-nav-tree';
 import { treasuryNavTree } from '../app/treasury/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
-import {SideNavNode} from '../../../../libs/common/api-common/src';
 
 export const environment = {
     production: true,
+    sodismac: true
 };
 
-function patch(stockBar: SideNavNode): SideNavNode {
-    stockBar.children
-        .filter((child) => child.name === 'COMMON_MARKS')
-        .forEach(e => e.name = 'STOCK_SODISMAC_CLASS');
-
-    stockBar.children
-        .filter((child) => child.name === 'COMMON_TYPES')
-        .forEach(e => e.name = 'STOCK_SODISMAC_SUBCLASS');
-
-    return stockBar;
-}
 
 export const navBar = [
     administrationNavTree,
     organizationsNavTree,
     logisticsAdminNavTree,
     purchasesNavTree,
-    patch(stockNavTree),
+    stockNavTree,
     contractsNavTree,
     salesNavTree,
     financeNavTree,

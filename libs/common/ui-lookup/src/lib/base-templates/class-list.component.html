@@ -8,10 +8,24 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="descriptionAr">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_CODE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.descriptionAr}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="accountno">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNTNO</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNT_MAP</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.accountno}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="subclassDescription">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_SUBCLASS</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.subclassDescription}}
             </mat-cell>
         </ng-container>
 

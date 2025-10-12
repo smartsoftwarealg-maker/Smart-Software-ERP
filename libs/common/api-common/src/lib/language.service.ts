@@ -1,11 +1,12 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {forkJoin, Observable, of, Subject, zip} from 'rxjs';
-import {catchError, map, switchMap} from 'rxjs/operators';
+import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import {Direction} from '@angular/cdk/bidi';
 import {HttpClient} from '@angular/common/http';
 import {dateStrToDmy, dateStrToYmd, dateToDmyStr, dateToYmdStr, isString, removeTimeForDateStr} from './utils';
 import {AppConfigService} from './app-config.service';
 import {LoginService} from './login.service';
+import {IsParamService} from "./is-param.service";
 
 function formatFullName(first: string, last: string) {
     return (first == null ? '' : first) + (last == null ? '' : (' ' + last));
@@ -89,6 +90,9 @@ interface LanguageConfig {
     providedIn: 'root'
 })
 export class LanguageService {
+    #_isSODISMAC = false;
+    #swapMap: Set<string> = new Set<string>();
+
     private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
 
     private static readonly LOCAL_STORAGE_KEY = 'localeCode';
@@ -210,9 +214,7 @@ export class LanguageService {
     }
 
     public init(): Observable<void> {
-        return this
-            .appConfigSrv
-            .getConfig()
+        return this.appConfigSrv.getConfig()
             .pipe(switchMap(conf => this.setLanguage(this.parseConfig(conf))));
     }
 
@@ -299,6 +301,22 @@ export class LanguageService {
         return lang.length > 0 ? lang[0].code : null;
     }
 
+    private swap(map: { [key: string]: string; }, from: string, to: string) {
+        const tmp = map[from];
+        map[from] = map[to];
+        map[to] = tmp;
+    }
+
+    private swapSODISMACLabels() {
+        if (this.isSodismac && !this.#swapMap.has(this.lang)) {
+            this.#swapMap.add(this.currentLanguage?.code);
+            const res = this.data[this.lang];
+            this.swap(res, 'COMMON_CLASSES', 'COMMON_SUBCLASSES');
+            this.swap(res, 'COMMON_CLASS', 'COMMON_SUBCLASS');
+            this.swap(res, 'COMMON_EDIT_CLASS', 'COMMON_EDIT_SUBCLASS');
+        }
+    }
+
     private load(src: Source): Observable<boolean> {
         if (this.currentLanguage == null || src.loaded[this.currentLanguage.code]) {
             return of(false);
@@ -306,10 +324,12 @@ export class LanguageService {
         this.sources.push(src);
         return this.httpClient
             .get<{ [key: string]: string; }>(src.uri + this.currentLanguage.code + '.json')
-            .pipe(
-                map((conf: { [key: string]: string; }) => {
+            .pipe(map((conf: { [key: string]: string; }) => {
                     src.loaded[this.currentLanguage.code] = true;
                     this.pushData(conf, src.prefix);
+                    if (src.prefix.indexOf('COMMON_') === 0) {
+                        this.swapSODISMACLabels();
+                    }
                     return true;
                 }),
                 catchError(err => {
@@ -470,5 +490,12 @@ export class LanguageService {
 
     getMonth(month: number) {
         return month >= 1 && month <= 12? this.translate(this.MONTHS[month - 1]) : '';
+    }
+
+    set isSodismac(value: boolean) {
+        this.#_isSODISMAC = value;
+    }
+    get isSodismac() {
+        return this.#_isSODISMAC;
     }
 }

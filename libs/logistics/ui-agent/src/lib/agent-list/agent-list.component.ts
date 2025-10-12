@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -41,6 +41,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
     };
 
     private isParamSrv = inject(IsParamService);
+
 
     private isAQS       = false;
     private DEF_COLUMNS = [
