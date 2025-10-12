@@ -1,0 +1,32 @@
+{
+    "name": "logistics-ui-total-stock",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/logistics/ui-total-stock/src",
+    "prefix": "ss",
+    "targets": {
+        "lint": {
+            "executor": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/logistics/ui-total-stock/tsconfig.lib.json",
+                    "libs/logistics/ui-total-stock/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/logistics/ui-total-stock/**/*"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/logistics/ui-total-stock"
+            ],
+            "options": {
+                "jestConfig": "libs/logistics/ui-total-stock/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    }
+}
