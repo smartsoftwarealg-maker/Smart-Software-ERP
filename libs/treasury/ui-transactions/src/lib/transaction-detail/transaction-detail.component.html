@@ -1,93 +1,105 @@
 <mat-card>
-  <mat-card-content>
-    @if (form !== null) {
-      <form novalidate [formGroup]="form">
-        <mat-form-field id="code" class="default-50">
-          <mat-label translate>COMMON_JOURNAL</mat-label>
-          <input matInput formControlName="journalDesc" type="text">
-        </mat-form-field>
-        <mat-form-field class="default-50">
-          <mat-label translate>COMMON_DATE</mat-label>
-          <ss-date-picker formControlName="transacDate"></ss-date-picker>
-        </mat-form-field>
-        <mat-form-field id="description" class="default-100">
-          <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-          <input matInput formControlName="description" type="text" required>
-          @if (form.controls['description'].invalid) {
-            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-          }
-        </mat-form-field>
-        <mat-form-field class="default-50" >
-          <mat-label translate>COMMON_AGENT</mat-label>
-          <ss-auto-complete matInput
-            [required]="true"
-            formControlName="agent"
-            [model]="agentLookup">
-          </ss-auto-complete>
-        </mat-form-field>
-        @if (entitySrv.isBank()) {
-          <div class="default-50">
-            <mat-checkbox formControlName="bankExpenses" translate >TRS_BANK_EXPENSES</mat-checkbox>?
-          </div>
-        }
-        @if (entitySrv.isBank()) {
-          <mat-form-field class="default-50" >
-            <mat-label translate>COMMON_BANK</mat-label>
-            <input matInput formControlName="reference2" type="text" required>
-            @if (form.controls['reference2'].invalid) {
-              <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
-          </mat-form-field>
-        }
-        @if (entitySrv.isBank()) {
-          <mat-form-field class="default-50">
-            <mat-label translate>COMMON_CHECKNO</mat-label>
-            <input matInput formControlName="reference" type="text" required>
-            @if (form.controls['reference'].invalid) {
-              <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
-          </mat-form-field>
-        }
-        <mat-form-field class="default-50">
-          <mat-label translate>TRS_NATURE</mat-label>
-          <ss-auto-complete matInput
-            [model]="groupLookup"
-            formControlName="treasuryGroup"
-            autofocus>
-          </ss-auto-complete>
-          @if (form.controls['treasuryGroup']?.invalid) {
-            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-          }
-        </mat-form-field>
-        <mat-form-field class="default-50">
-          <mat-label translate>TRS_PIECENO</mat-label>
-          <input matInput formControlName="pieceno" type="number" required>
-        </mat-form-field>
-        @if (!entitySrv.isBank()) {
-          <div class="default-50"> </div>
-        }
-        <mat-form-field class="default-50 a-number">
-          <mat-label translate>TRS_INCOME</mat-label>
-          <input matInput formControlName="income"
-            type="number"
-            (blur)="onAmount()"
-            required>
-        </mat-form-field>
-        <mat-form-field class="default-50 a-number">
-          <mat-label translate>TRS_EXPENSE</mat-label>
-          <input matInput
-            formControlName="expense"
-            type="number"
-            (blur)="onAmount()"
-            required>
-        </mat-form-field>
-        <mat-form-field class="default-100">
-          <mat-label translate>COMMON_MEMO</mat-label>
-          <input matInput formControlName="memo" type="text">
-        </mat-form-field>
-      </form>
-    }
+    <mat-card-content>
+        @if (form !== null) {
+            <form novalidate [formGroup]="form">
+                <mat-form-field id="code" class="default-50">
+                    <mat-label translate>COMMON_JOURNAL</mat-label>
+                    <input matInput formControlName="journalDesc" type="text">
+                </mat-form-field>
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker formControlName="transacDate"></ss-date-picker>
+                </mat-form-field>
 
-  </mat-card-content>
+                <mat-form-field id="description" class="default-100">
+                    <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text" required>
+                    @if (form.controls['description'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_AGENT</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      formControlName="agent"
+                                      [model]="agentLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                @if (entitySrv.isBank()) {
+                    <div class="default-50">
+                        <mat-checkbox formControlName="bankExpenses" translate>TRS_BANK_EXPENSES</mat-checkbox>
+                        ?
+                    </div>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>COMMON_BANK</mat-label>
+                        <input matInput formControlName="reference2" type="text" required>
+                        @if (form.controls['reference2'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>COMMON_CHECKNO</mat-label>
+                        <input matInput formControlName="reference" type="text" required>
+                        @if (form.controls['reference'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field class="default-50">
+                        <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
+                        <input matInput formControlName="dueDays" type="number" min="0" max="365">
+                        @if (form.controls['dueDays'].invalid) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+                }
+                <mat-form-field class="default-50">
+                    <mat-label translate>TRS_NATURE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="groupLookup"
+                                      formControlName="treasuryGroup"
+                                      autofocus>
+                    </ss-auto-complete>
+                    @if (form.controls['treasuryGroup']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>TRS_PIECENO</mat-label>
+                    <input matInput formControlName="pieceno" type="number" required>
+                </mat-form-field>
+
+                @if (!entitySrv.isBank()) {
+                    <div class="default-50"></div>
+                }
+                <mat-form-field class="default-50 a-number">
+                    <mat-label translate>TRS_INCOME</mat-label>
+                    <input matInput formControlName="income"
+                           type="number"
+                           (blur)="onAmount()"
+                           required>
+                </mat-form-field>
+                <mat-form-field class="default-50 a-number">
+                    <mat-label translate>TRS_EXPENSE</mat-label>
+                    <input matInput
+                           formControlName="expense"
+                           type="number"
+                           (blur)="onAmount()"
+                           required>
+                </mat-form-field>
+                <mat-form-field class="default-100">
+                    <mat-label translate>COMMON_MEMO</mat-label>
+                    <input matInput formControlName="memo" type="text">
+                </mat-form-field>
+            </form>
+        }
+
+    </mat-card-content>
 </mat-card>
 <router-outlet></router-outlet>

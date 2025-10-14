@@ -23,6 +23,7 @@ export interface TTransaction {
     memo?: string,
     agent?: number;
     agentName?: string;
+    dueDays: number;
 }
 
 export interface TTransactionLine {

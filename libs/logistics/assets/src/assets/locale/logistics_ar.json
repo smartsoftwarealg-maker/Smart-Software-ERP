@@ -194,6 +194,7 @@
     "MASTER_WORK":           "العمل الرئيسي",
     "ODS_DATE":              "تاريخ أمر الإنطلاق",
     "TRANSPORT_CONVENTION":  "اتفاقية النقل",
+    "TRANSPORT_CONVENTIONS":  "اتفاقيات النقل",
     "CONVENTION_TYPE":       "نوع الاتفاقية",
     "CONVENTION_DATE":       "تاريخ الاتفاقية",
     "AMENDMENT":             "تعديل",

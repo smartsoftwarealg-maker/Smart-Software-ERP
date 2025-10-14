@@ -61,18 +61,18 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         const db = a.amount > 0.0 ? a.amount : 0.0;
         const cr = a.amount < 0.0 ? -a.amount : 0.0;
         return this.formBuilder.group({
-            id: [a.id],
-            center: [a.center || this.loginSrv.appCtx.center],
-            number: [a.number || 0],
-            bankId: [a.bankId],
-            bank: [a.bank],
-            description: [a.description, Validators.required],
-            date: [a.date || new Date(), Validators.required],
-            dueDays: [a.dueDays || 0, Validators.required],
-            agent: [a.agent, Validators.required],
-            debit: [{ value: db, disabled: cr > 0.000001}, Validators.required],
-            credit: [{ value: cr, disabled: db > 0.000001}, Validators.required],
-            mode: [a.mode || 2, Validators.required],
+            id:           [a.id],
+            center:       [a.center || this.loginSrv.appCtx.center],
+            number:       [a.number || 0],
+            bankId:       [a.bankId],
+            bank:         [a.bank],
+            description:  [a.description, Validators.required],
+            date:         [a.date || new Date(), Validators.required],
+            dueDays:      [a.dueDays || 0, Validators.required],
+            agent:        [a.agent, Validators.required],
+            debit:        [{ value: db, disabled: cr > 0.000001}, Validators.required],
+            credit:       [{ value: cr, disabled: db > 0.000001}, Validators.required],
+            mode:         [a.mode || 2, Validators.required],
         });
     }
 

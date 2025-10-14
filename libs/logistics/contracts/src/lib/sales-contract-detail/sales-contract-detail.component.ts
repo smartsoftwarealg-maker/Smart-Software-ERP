@@ -43,10 +43,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
     private loginSrv = inject(LoginService);
     private customerSrv = inject(CustomerService);
     private typeSrv = inject(ProjectTypeService);
-    private motiveSrv = inject(ProjectMotiveService);
     private awardSrv = inject(AwardProcedureService);
-    private articleSrv = inject(ArticleService);
-    private contractArticleSrv = inject(ContractArticleService);
     shownPanel: string = null;
     customerLookupModel = new DefaultAutoCompleteModel(this.customerSrv, 'id', 'denomination');
     typeLookup    = new DefaultAutoCompleteModel(this.typeSrv);
