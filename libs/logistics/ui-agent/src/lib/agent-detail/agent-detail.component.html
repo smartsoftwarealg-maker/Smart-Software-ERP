@@ -417,19 +417,6 @@
                     }
                 </mat-expansion-panel>
 
-                @if (target == TRANSPORTER && id) {
-                    <mat-expansion-panel #transportPanel (opened)="openPanel('transport')"
-                                         [class]="getPanelHeaderClass('transport', transportPanel)">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title translate>
-                                LOGISTICS_TRANSPORT_CONVENTION
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        @if (transportPanel.expanded) {
-                            <router-outlet></router-outlet>
-                        }
-                    </mat-expansion-panel>
-                }
 
                 <mat-expansion-panel #archivePanel (opened)="openPanel('archive')"
                                      [class]="getPanelHeaderClass('archive', archivePanel)">

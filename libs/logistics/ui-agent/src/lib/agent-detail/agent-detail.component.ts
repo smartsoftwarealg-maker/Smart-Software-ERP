@@ -68,7 +68,6 @@ import { AgentPriceService } from '@ss/logistics/api-agent-price';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
 import { OptionService } from '@ss/logistics/ui-options';
-import { TransportConventionService } from '../transport-conventions/transport-convention.service';
 import {
     AccountAutocompleteModel,
     AccountService,
@@ -91,8 +90,7 @@ const TRANSPORTER = 3;
         ReactiveFormsModule,
         AppArchiveMainComponent,
         UiAutoCompleteComponent,
-        ChildAttributesComponent,
-        RouterOutlet
+        ChildAttributesComponent
     ],
 })
 export class AgentDetailComponent
@@ -117,7 +115,6 @@ export class AgentDetailComponent
     private companyTypeSrv = inject(CompanyTypeService);
     private citySrv = inject(CityService);
     private countrySrv = inject(CountryService);
-    private transportConventionSrv = inject(TransportConventionService);
     private accountSrv = inject(AccountService);
     accountLookup = new AccountAutocompleteModel(this.accountSrv);
 
@@ -417,7 +414,6 @@ export class AgentDetailComponent
     loadEntity(id: number): Observable<Agent> {
         this.archiveSrv.appId = AGENT_ARCHIVES;
         this.archiveSrv.setParentId(id);
-        this.transportConventionSrv.setParentId(id);
         return super.loadEntity(id);
     }
 

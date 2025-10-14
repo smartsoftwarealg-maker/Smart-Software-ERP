@@ -57,12 +57,6 @@ import {
     DeliveryTimeListComponent
 } from '@ss/common/ui-lookup';
 import { AgentMergeComponent } from '@ss/logistics/agent-merge';
-import {
-    TransportConventionsListComponent
-} from '@ss/logistics/ui-agent';
-import {
-    TransportConventionsDetailComponent
-} from '@ss/logistics/ui-agent';
 
 export const mainRoutes: Routes = [
     {
@@ -165,13 +159,7 @@ export const mainRoutes: Routes = [
                                     {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             },
-                            {
-                                path: 'transport',
-                                children: [
-                                    {path: '', component: TransportConventionsListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
-                                    {path: ':id', component: TransportConventionsDetailComponent, data: { appId: AGENT_ARCHIVES }},
-                                ]
-                            }
+
                         ]
                     }
                 ]

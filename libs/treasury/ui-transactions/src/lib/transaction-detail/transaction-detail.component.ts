@@ -98,6 +98,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
             treasuryGroup: [e.treasuryGroup],
             groupName:     [e.groupName    ],
             memo:          [e.memo         ],
+            dueDays:       [e.dueDays||0, Validators.required ],
         });
     }
 

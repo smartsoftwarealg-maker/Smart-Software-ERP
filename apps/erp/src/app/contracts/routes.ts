@@ -3,7 +3,8 @@ import {
     CONTRACTS_PROJECT_TYPE_URL,
     CONTRACT_PROJECT_URL,
     CONTRACTS_PROJECT_MOTIVE_URL,
-    CONTRACTS_AWARD_PROCEDURE_URL, CONTRACTS_PURCHASE_CONTRACT_URL, SALES_COMPENSATION_URL, CONTRACT_CEMENT_URL
+    CONTRACTS_AWARD_PROCEDURE_URL, CONTRACTS_PURCHASE_CONTRACT_URL, CONTRACT_CEMENT_URL,
+    TRANSPORT_CONTRACT_URL
 } from '../common';
 import {CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {
@@ -20,7 +21,7 @@ import {
     PurchaseContractDetailComponent,
     PurchaseContractListComponent,
     SalesContractDetailComponent,
-    SalesContractListComponent
+    SalesContractListComponent, TransportContractDetailComponent, TransportContractListComponent
 } from '@ss/logistics/contracts';
 import {
     ProjectMotiveDetailComponent,
@@ -108,6 +109,33 @@ export const mainRoutes: Routes = [
                             {path: ':id', component: ContractArticleDetailComponent }
                         ]
                     },
+                    {
+                        path: 'archives',
+                        children: [
+                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: PART_ARCHIVES }},
+                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: CONTRACT_ARCHIVES }}
+                        ]
+                    },
+                ]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
+    {
+        path: TRANSPORT_CONTRACT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TransportContractListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: TransportContractDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
                     {
                         path: 'archives',
                         children: [

@@ -4,7 +4,7 @@ import {
     ABS_CONTRACTS_AWARD_PROCEDURE, ABS_CONTRACTS_CEMENT_URL, ABS_CONTRACTS_CONTRACT_URL,
     ABS_CONTRACTS_PROJECT_MOTIVE,
     ABS_CONTRACTS_PROJECT_TYPE,
-    ABS_CONTRACTS_PROJECT_URL
+    ABS_CONTRACTS_PROJECT_URL, ABS_TRANSPORT_CONTRACT_URL
 } from '../common';
 
 export const contractsNavTree: SideNavNode = {
@@ -40,6 +40,12 @@ export const contractsNavTree: SideNavNode = {
             name: 'COMMON_CONTRACTS',
             icon: 'fa-solid fa-file-contract',
             route: ABS_CONTRACTS_CONTRACT_URL,
+            accessRights: 'PProject'
+        },
+        {
+            name: 'LOGISTICS_TRANSPORT_CONVENTIONS',
+            icon: 'fa-solid fa-truck',
+            route: ABS_TRANSPORT_CONTRACT_URL,
             accessRights: 'PProject'
         },
         {

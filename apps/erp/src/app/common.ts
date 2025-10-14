@@ -219,7 +219,7 @@ export const CONTRACTS_PURCHASE_CONTRACT_URL = 'purchase-contracts';
 export const SALES_COMPENSATION_URL = 'sales-compensations';
 export const SALES_PAYMENT_COMPENSATION_URL = 'payment-compensations';
 export const SALES_INVOICE_VALIDATION_URL = 'invoice-validation';
-
+export const TRANSPORT_CONTRACT_URL = 'transport-contracts';
 
 
 // Sales
@@ -727,6 +727,7 @@ export const ABS_CONTRACTS_CONTRACT_URL = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_UR
 export const ABS_CONTRACTS_PROJECT_MOTIVE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL, CONTRACTS_PROJECT_MOTIVE_URL].join('/');
 export const ABS_CONTRACTS_AWARD_PROCEDURE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL, CONTRACTS_AWARD_PROCEDURE_URL].join('/');
 export const ABS_CONTRACTS_CEMENT_URL = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL, CONTRACT_CEMENT_URL].join('/');
+export const ABS_TRANSPORT_CONTRACT_URL = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL, TRANSPORT_CONTRACT_URL].join('/');
 
 // Scheduled sales
 export const ABS_SCHEDULED_SALES_PROJECTS           = '/' + [MAIN_PAGE_URL, SCHEDULED_SALES_APP_URL, SS_PROJECTS_URL].join('/');

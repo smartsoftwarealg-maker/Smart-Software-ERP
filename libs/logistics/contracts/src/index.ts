@@ -10,3 +10,6 @@ export * from './lib/purchase-contract-detail/purchase-contract-detail.component
 export * from  './lib/purchase-contract.service';
 export * from './lib/cement-contract-detail/cement-contract-detail.component';
 export * from './lib/cement-contract-list/cement-contract-list.component';
+export * from './lib/transport-contract.service';
+export * from './lib/transport-contract-list/transport-contract-list.component';
+export * from './lib/transport-contract-detail/transport-contract-detail.component';
