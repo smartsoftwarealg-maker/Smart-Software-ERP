@@ -55,11 +55,23 @@ export const crmNavTree: SideNavNode = {
             route: ABS_CRM_MAILING_LIST_URL,
             accessRights: 'CRMMailingList'
         },
+        // {
+        //     name: 'CRM_EMAIL_TEMPLATES',
+        //     icon: 'fas fa-envelope',
+        //     route: ABS_CRM_EMAIL_TEMPLATE_URL,
+        //     accessRights: 'CRMEmail'
+        // },
         {
             name: 'CRM_EMAIL_TEMPLATES',
             icon: 'fas fa-envelope',
             route: ABS_CRM_EMAIL_TEMPLATE_URL,
             accessRights: 'CRMEmail',
+        },
+        {
+            name: 'CRM_TEAMS',
+            icon: 'fas fa-people-group',
+            route: ABS_CRM_TEAMS_URL,
+            accessRights: 'CRMTeams'
         },
         {
             name: 'LOGISTICS_CUSTOMERS',
@@ -84,18 +96,6 @@ export const crmNavTree: SideNavNode = {
             icon: 'fa-solid fa-handshake',
             route: ABS_CRM_OPPORTUNITY_URL,
             accessRights: 'CRMCustomer'
-        },
-        {
-            name: 'CRM_TEAMS',
-            icon: 'fas fa-people-group',
-            route: ABS_CRM_TEAMS_URL,
-            accessRights: 'CRMTeams'
-        },
-        {
-            name: 'CRM_EMAIL_TEMPLATES',
-            icon: 'fas fa-envelope',
-            route: ABS_CRM_EMAIL_TEMPLATE_URL,
-            accessRights: 'CRMEmail'
         },
         {
             name: 'CRM_CALENDAR',

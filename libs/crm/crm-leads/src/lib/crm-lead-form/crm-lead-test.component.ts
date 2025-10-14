@@ -3,46 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MaterialModule} from "@ss/common/api-common";
+import {CRMLead} from "../lead-api";
 
-export interface CRMLead {
-    id: number;
-    description: string;
-    detail: string;
-    email?: string;
-    phone?: string;
-    company?: string;
-    companySite?: string;
-    companyIndustry?: string;
-    annualRevenue?: number;
-    numberOfEmployees?: number;
-    jobTitle?: string;
-    addressLine1?: string;
-    addressLine2?: string;
-    city?: number;
-    state?: string;
-    postalCode?: string;
-    country?: string;
-    source: string;
-    status: string;
-    score: number;
-    priority: string;
-    estimatedValue?: number;
-    probability: number;
-    expectedCloseDate?: Date;
-    campaignId?: number;
-    ownerId?: number;
-    teamId?: number;
-    createdAt: Date;
-    createdBy: number;
-    updatedAt: Date;
-    updatedBy?: number;
-    lastName?: string;
-    firstName?: string;
-    companyDescription?: string;
-    ownerDescription?: string;
-    campaignDescription?: string;
-    memo?: string;
-}
 
 @Component({
     selector: 'app-lead-form',
@@ -132,6 +94,6 @@ export class LeadFormComponent implements OnInit {
     }
 
     onCancel(): void {
-        this.router.navigate(['/leads']);
+        this.router.navigate(['/leads']).then();
     }
 }
