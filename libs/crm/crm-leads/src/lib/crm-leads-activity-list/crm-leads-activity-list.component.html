@@ -1,20 +1,23 @@
 <div class="ctrl__div b-primary">
-    <button mat-mini-fab color="primary" (click)="add()" [matTooltip]="'COMMON_ADD' | translate">
-        <span class="fas fa-plus"></span>
-    </button>
+    <span translate>CRM_ACTIVITIES</span>
+    <div class="btn__div">
+        <button mat-mini-fab color="primary" (click)="add()" [matTooltip]="'COMMON_ADD' | translate">
+            <span class="fas fa-plus"></span>
+        </button>
 
-    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-            [disabled]="!selectedId"
-            color="warn">
-        <span class="fas fa-trash-alt"></span>
-    </button>
+        <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+                [disabled]="!selectedId"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
 
-    <button mat-mini-fab (click)="edit()"
-            [matTooltip]="'COMMON_EDIT' | translate"
-            [disabled]="!selectedId"
-            color="accent">
-        <span class="fas fa-pen"></span>
-    </button>
+        <button mat-mini-fab (click)="edit()"
+                [matTooltip]="'COMMON_EDIT' | translate"
+                [disabled]="!selectedId"
+                color="accent">
+            <span class="fas fa-pen"></span>
+        </button>
+    </div>
 </div>
 
 <div class="table_div size">

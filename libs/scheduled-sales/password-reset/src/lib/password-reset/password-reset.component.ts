@@ -5,7 +5,7 @@ import { MaterialModule, UserService } from '@ss/common/api-common';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { Agent, CustomerService } from '@ss/logistics/api-agent';
+import {Agent, AgentService, CustomerService} from '@ss/logistics/api-agent';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 
@@ -28,7 +28,7 @@ export class PasswordResetComponent implements OnInit {
     #route =  inject(ActivatedRoute);
     #fb =  inject(FormBuilder);
     #userSrv = inject(UserService);
-    #customerSrv = inject(CustomerService);
+    #customerSrv = inject(AgentService);
 
     customerLookup = new DefaultAutoCompleteModel<Agent>(this.#customerSrv, 'id', 'denomination');
     form = this.#fb.group ({

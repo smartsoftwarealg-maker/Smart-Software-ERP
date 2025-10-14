@@ -254,9 +254,9 @@
 
         @if (isActivity()) {
             @if (leadId > 0) {
-                <mat-toolbar>
-                    <span translate>CRM_ACTIVITIES</span>
-                </mat-toolbar>
+<!--                <mat-toolbar>-->
+<!--                    <span translate>CRM_ACTIVITIES</span>-->
+<!--                </mat-toolbar>-->
                 <ss-crm-leads-activity-list
                     [parentId]="leadId"
                     (onEdit)="onEditActivity($event)">
