@@ -52,7 +52,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeInvitationListComponent extends BaseChildEntityListComponent<Invitation> {
     // @Input() editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'reference',
         'issueDate',
         'invitationDate',

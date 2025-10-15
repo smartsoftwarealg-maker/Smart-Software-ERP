@@ -23,7 +23,7 @@ export class EmployeeOldCareerListComponent extends BaseChildEntityListComponent
     activePersonnel = true;
     editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'post',
         'rate',
         //        'ctype',

@@ -232,7 +232,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.imageModel = new ImageModel(this.httpSrv);
     }
 
-    loadEntity(id: number): Observable<Employee> {
+    override loadEntity(id: number): Observable<Employee> {
         this.updateChildren(id);
         this.showPanel(this.ACTIVATION_ROUTE);
         this.subscriptions
@@ -482,7 +482,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         }
     }
 
-    protected goBack() {
+    protected override goBack() {
         if (this.form.controls['id'].value > 0) {
             super.goBack();
         } else {

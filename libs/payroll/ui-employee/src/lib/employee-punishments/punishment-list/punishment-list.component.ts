@@ -19,7 +19,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, DatePipe, TranslatePipe]
 })
 export class PunishmentListComponent extends BaseChildEntityListComponent<Punishment>{
-    public displayedColumns = [
+    public override displayedColumns = [
         'number',
         'date',
         'from',

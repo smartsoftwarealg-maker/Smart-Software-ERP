@@ -5,7 +5,7 @@ import {Office} from '@ss/common/api-lookup';
 
 export type Id = number | string;
 
-export interface AutoCompleteModel<T> {
+export interface AutoCompleteModel<T extends {id: Id}> {
     valueOf: (a: T) => Id;
     toString: (a: T) => string;
     getById: (a: Id) => Observable<T>;
@@ -20,11 +20,12 @@ export interface AutoCompleteModel<T> {
     isPerfectMatch(a: T, b: string): boolean; // for some lookups matching the code is a perfect match, ex: typing 25 in a city lookup matches 25-Constontine
 }
 
-export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
+export class DefaultAutoCompleteModel<T extends {id: Id}> implements AutoCompleteModel<T> {
     #searchLength = 49;
     public options: T[];
     public cache: T;
-    public filterLoadedData = (x: T[]) => x.filter(e => e && e[this.descriptionField]);
+    public filterLoadedData =
+        (x: T[]) => x.filter(e => e && !!((e as any))[this.descriptionField] );
 
     constructor(public entitySrv: BaseEntityService<T>,
                 public idField: string = 'id',
@@ -34,7 +35,7 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
     onValueChanged = (e: Id) => {};
     onObjectSelected = (e: T) => {};
 
-    valueOf = (x: T) => x ? x[this.idField] : null;
+    valueOf = (x: T) => x ? (x as any)[this.idField] as Id: null;
 
     toString = (x: any) => x ? x[this.descriptionField]?.substring(0, 50) : null;
 
@@ -50,10 +51,10 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
 
     addEntry(entry: string): Observable<number> {
         if (this.descriptionField === 'description') {
-            const entity = {};
+            const entity = {id: 0, description: entry};
             entity['id'] = 0;
             entity['description'] = entry;
-            return this.entitySrv.save(entity as T);
+            return this.entitySrv.save((entity as unknown) as T);
         } else return of(0);
     }
 
@@ -62,22 +63,22 @@ export class DefaultAutoCompleteModel<T> implements AutoCompleteModel<T> {
     }
 }
 
-export class EmptyAutoCompleteModel implements AutoCompleteModel<number> {
-    options: number[] = [];
-    cache: null;
+// export class EmptyAutoCompleteModel implements AutoCompleteModel<number> {
+//     options: number[] = [];
+//     cache: null;
+//
+//     valueOf = () => <Id>null;
+//     toString = () => <string>null;
+//     getById = () => of(<number>null);
+//     filter = () => of(<number[]>[]);
+//     isPerfectMatch = (o: number, f: string) => false;
+//
+//     addEntry(entry: string): Observable<number> {
+//         return of(0);
+//     }
+// }
 
-    valueOf = () => <Id>null;
-    toString = () => <string>null;
-    getById = () => of(<number>null);
-    filter = () => of(<number[]>[]);
-    isPerfectMatch = (o: number, f: string) => false;
-
-    addEntry(entry: string): Observable<number> {
-        return of(0);
-    }
-}
-
-export class CodeDescriptionAutoCompleteModel<T> extends DefaultAutoCompleteModel<T> {
+export class CodeDescriptionAutoCompleteModel<T extends {id: Id}> extends DefaultAutoCompleteModel<T> {
     constructor(public override entitySrv: BaseEntityService<T>) {
         super(entitySrv, 'id', 'description');
     }

@@ -4,7 +4,7 @@ export const TRANSPORT_URL = '/lookups/missions_transport';
 export const TRAJECTORY_URL = '/payroll/trajectories';
 
 export interface Trajectory {
-    d: number;
+    id: number;
     description: string;
     descriptionAr?: string;
     distance: number;

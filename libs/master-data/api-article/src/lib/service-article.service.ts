@@ -23,7 +23,7 @@ export class ServiceArticleService extends BaseEntityExtendedService<Article> {
         return super.get(iid);
     }
 
-    getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{
+    override getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{
         itemCount: number;
         body: Article[]
     }> {

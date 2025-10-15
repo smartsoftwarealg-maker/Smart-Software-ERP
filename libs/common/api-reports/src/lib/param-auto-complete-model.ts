@@ -10,7 +10,7 @@ export class ParamAutoCompleteModel extends DefaultAutoCompleteModel<Lookup> {
         super(entitySrv);
     }
 
-    getById = (id: Id) => id ? (<ReportParamLookupService>this.entitySrv).getById(+id || 0, this.tableName) : of(null);
+    override getById = (id: Id) => id ? (<ReportParamLookupService>this.entitySrv).getById(+id || 0, this.tableName) : of(null);
 
-    filter = (filter: string) => (<ReportParamLookupService>this.entitySrv).getValues(filter, this.tableName).pipe(map(x => this.filterLoadedData(x.body)));
+    override filter = (filter: string) => (<ReportParamLookupService>this.entitySrv).getValues(filter, this.tableName).pipe(map(x => this.filterLoadedData(x.body)));
 }

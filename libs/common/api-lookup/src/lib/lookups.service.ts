@@ -138,7 +138,7 @@ export class LookupsService {
         return this.lookupCacheSrv.load<Division>(DIVISIONS_URL, 'divisions');
     }
 
-    public getTable(url, table: string): Observable<Lookup[]> {
+    public getTable(url: string, table: string): Observable<Lookup[]> {
         return this.lookupCacheSrv.load<Lookup>(url, table);
     }
 

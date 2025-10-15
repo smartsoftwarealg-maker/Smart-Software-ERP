@@ -52,7 +52,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeSuspensionListComponent extends BaseChildEntityListComponent<Suspension> {
     // @Input() editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'reference',
         'refDate',
         'fromDate',

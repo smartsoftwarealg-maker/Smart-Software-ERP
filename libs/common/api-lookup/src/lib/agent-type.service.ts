@@ -13,7 +13,7 @@ export class AgentTypeService extends BaseEntityService<Lookup> {
         super(httpSrv, AGENT_TYPE_URL);
     }
 
-    public get(iid: number): Observable<Lookup> {
+    public override get(iid: number): Observable<Lookup> {
         const id = iid === undefined || iid === null ? 0 : iid;
         return (id as number) < 0 ? of(null) : this.httpSrv.get(this.getUrl() + '/' + id);
     }

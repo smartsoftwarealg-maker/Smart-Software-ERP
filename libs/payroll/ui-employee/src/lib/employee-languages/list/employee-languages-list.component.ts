@@ -21,7 +21,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeLanguagesListComponent extends BaseChildEntityListComponent<PersonLanguage>{
     // @Input() editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'languageId',
         'readLevel',
         'writeLevel'

@@ -21,7 +21,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeDiplomaListComponent extends BaseChildEntityListComponent<PersonDiploma> {
     // @Input() editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'diplomaName',
         'subjectName',
         // 'diploma_year',

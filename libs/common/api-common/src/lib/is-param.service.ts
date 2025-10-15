@@ -14,6 +14,6 @@ export class IsParamService {
         return this
             .#http
             .get<{param: boolean}>(`/is?param=${param}`)
-            .pipe(map(res => res[param]));
+            .pipe(map(res => res.param));
     }
 }

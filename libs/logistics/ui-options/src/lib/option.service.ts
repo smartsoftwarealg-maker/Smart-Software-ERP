@@ -38,7 +38,7 @@ export class OptionService extends BaseEntityExtendedService<Option> {
         return this.httpSrv.put(`/recalculate-documents?date=${date}&document=${document}`);
     }
 
-    getStatus(uuid: string): Observable<HttpResponse<Object>> {
+    override getStatus(uuid: string): Observable<HttpResponse<Object>> {
         return this.httpSrv.getFullResponse(`/recalculate-documents?uuid=${uuid}`);
     }
 

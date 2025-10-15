@@ -14,17 +14,17 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
 
 
     protected constructor(
-        public entitySrv: BaseEntityService<T>,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
+        public override entitySrv: BaseEntityService<T>,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
         public route: ActivatedRoute,
         public formBuilder: UntypedFormBuilder,
-        public confirmationSrv: ConfirmationDialogService,
+        public override confirmationSrv: ConfirmationDialogService,
         public title: string) {
         super(entitySrv);
     }
 
-    public ngOnInit() {
+    public override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.setTitle(this.title); // set title save as list
         this.shellSrv.setGoBackPath('..', this.route);
@@ -32,7 +32,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
         this.load();
     }
 
-    public ngOnDestroy() {
+    public override ngOnDestroy() {
         super.ngOnDestroy();
         this.shellSrv.reset();
     }
@@ -86,11 +86,11 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
     }
 
     /** called with the new id to allow to upload attachment to this object */
-    public uploadAttachments(id?: number): Observable<any> {
+    public override uploadAttachments(id?: number): Observable<any> {
         return of(null);
     }
 
-    protected goBack() {
+    protected override goBack() {
         this.shellSrv.goBack();
     }
 
