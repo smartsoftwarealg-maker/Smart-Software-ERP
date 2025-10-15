@@ -19,6 +19,7 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
+import {MatSort} from "@angular/material/sort";
 
 @Component({
     selector: 'ss-vacation-planning-detail-list',
@@ -43,6 +44,7 @@ import { MatTooltip } from '@angular/material/tooltip';
         MatRowDef,
         MatRow,
         PaginationComponent,
+        MatSort,
     ],
 })
 export class VacationPlanningDetailListComponent extends BaseChildEntityListComponent<VacationPlanningDetail> {

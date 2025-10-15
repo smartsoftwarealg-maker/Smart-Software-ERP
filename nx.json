@@ -18,10 +18,10 @@
     },
     "generators": {
         "@nx/angular:application": {
-            "style": "scss",
+            "e2eTestRunner": "cypress",
             "linter": "eslint",
-            "unitTestRunner": "jest",
-            "e2eTestRunner": "cypress"
+            "style": "scss",
+            "unitTestRunner": "jest"
         },
         "@nx/angular:library": {
             "linter": "eslint",
@@ -59,6 +59,11 @@
             "cache": true,
             "dependsOn": ["^build"],
             "inputs": ["production", "^production"]
+        },
+        "@angular/build:application": {
+            "cache": true,
+            "dependsOn": ["^build"],
+            "inputs": ["production", "^production"]
         }
     },
     "namedInputs": {
@@ -70,7 +75,10 @@
             "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
             "!{projectRoot}/tsconfig.spec.json",
             "!{projectRoot}/jest.config.[jt]s",
-            "!{projectRoot}/eslint.config.js"
+            "!{projectRoot}/eslint.config.js",
+            "!{projectRoot}/cypress/**/*",
+            "!{projectRoot}/**/*.cy.[jt]s?(x)",
+            "!{projectRoot}/cypress.config.[jt]s"
         ]
     },
     "plugins": [
@@ -78,6 +86,21 @@
             "plugin": "@nx/eslint-plugin",
             "options": {
                 "targetName": "lint"
+            }
+        },
+        {
+            "plugin": "@nx/cypress/plugin",
+            "options": {
+                "targetName": "e2e",
+                "openTargetName": "open-cypress",
+                "componentTestingTargetName": "component-test",
+                "ciTargetName": "e2e-ci"
+            }
+        },
+        {
+            "plugin": "@nx/eslint/plugin",
+            "options": {
+                "targetName": "eslint:lint"
             }
         }
     ]

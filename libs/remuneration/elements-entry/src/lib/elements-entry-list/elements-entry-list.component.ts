@@ -126,7 +126,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
         this.refresh();
     }
 
-    refresh(callback?: () => void) {
+    override refresh(callback?: () => void) {
         if (this.infoSrv.selectedInput >= 0) {
             super.refresh(callback);
         }

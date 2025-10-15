@@ -18,8 +18,8 @@ import {
 } from '@ss/master-data/api-article';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { InterStoreTransferLinesService } from '../interStoreTransfer-lines.service';
-import { ArticleSearchDlg } from '@ss/ligistics/article-search';
 import { MatDialog } from '@angular/material/dialog';
+import {ArticleSearchDlg} from '@ss/logistics/article-search';
 
 @Component({
     selector: 'ss-production-inter-store-transfer-lines-detail',
