@@ -15,7 +15,15 @@ import { LoginService, User } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
 import { DocImportComponent, DocImportService } from '@ss/logistics/ui-doc-import';
 import {Directive, inject, OnInit, signal, ViewChild} from '@angular/core';
-import { CCGroup, Currency, CurrencyService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
+import {
+    CCGroup,
+    Currency,
+    CurrencyService,
+    DeliveryTimeService,
+    Lookup,
+    LookupsService,
+    PayMethod
+} from '@ss/common/api-lookup';
 import {
     Agent,
     AgentService,
@@ -34,6 +42,8 @@ import { OptionService } from '@ss/logistics/ui-options';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+    #deliveryTimeSrv = inject(DeliveryTimeService);
+
     private CONSUMPTION_DOCUMENT = 260;
     private PURCHASE_REQUEST = 10;
     private optionSrv = inject(OptionService);
@@ -51,6 +61,8 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     protected currencySrv = inject(CurrencyService);
     protected purchaseProjectSrv = inject(PurchaseContractService);
     protected salesProjectSrv = inject(SalesContractService);
+    protected deliveryTimeLookup = new DefaultAutoCompleteModel(this.#deliveryTimeSrv);
+
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
 

@@ -32,11 +32,6 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class PurchaseRequestDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    #deliveryTimeSrv = inject(DeliveryTimeService);
-
-    deliveryTimeLookup = new DefaultAutoCompleteModel(this.#deliveryTimeSrv);
-
-
     constructor(public orderService: PurchaseRequestService,
         public override detailSrv: PurchaseRequestLinesService,
                 public override shellSrv: ShellService,
