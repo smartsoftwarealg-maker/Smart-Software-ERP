@@ -20,7 +20,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeWivesListComponent extends BaseChildEntityListComponent<Wife> {
     //@Input() editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         //        'notDivorced',
         'name',
         'birthdate',

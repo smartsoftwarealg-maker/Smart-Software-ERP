@@ -50,7 +50,7 @@ export class PostElementsListComponent
     extends BaseChildEntityListComponent<PostElement>
     implements OnInit
 {
-    displayedColumns = ['description', 'amount'];
+    public override displayedColumns = ['description', 'amount'];
     entitySrv = inject(PostService);
 
     constructor(public override detailSrv: PostElementsService) {

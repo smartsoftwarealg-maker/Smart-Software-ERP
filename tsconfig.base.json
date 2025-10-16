@@ -352,9 +352,6 @@
             "@ss/hr-missions/missions": [
                 "libs/hr-missions/missions/src/index.ts"
             ],
-            "@ss/ligistics/article-search": [
-                "libs/logictics/article-search/src/index.ts"
-            ],
             "@ss/logistics/agent-merge": [
                 "libs/logistics/agent-merge/src/index.ts"
             ],
@@ -391,6 +388,9 @@
             ],
             "@ss/logistics/api-transaction": [
                 "libs/logistics/api-transaction/src/index.ts"
+            ],
+            "@ss/logistics/article-search": [
+                "libs/logistics/article-search/src/index.ts"
             ],
             "@ss/logistics/contracts": [
                 "libs/logistics/contracts/src/index.ts"

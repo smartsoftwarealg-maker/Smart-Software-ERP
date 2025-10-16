@@ -36,7 +36,7 @@ export class EmployeeActivationDetailComponent extends BaseChildEntityDetailComp
     suspensionReasons = this.suspensionReasonSrv.getList(0, 500).pipe(map(res => res.body));
 
     constructor(
-        public entitySrv: EmployeeActivationService) {
+        public override entitySrv: EmployeeActivationService) {
         super(entitySrv, 'Activation');
     }
 

@@ -82,7 +82,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         this.isAsset = this.route.snapshot?.data['assets'] || false;
     }
 
-    ngOnInit() {
+    override ngOnInit() {
         super.ngOnInit();
         this.agentService.activeOnly = true;
         this.shellSrv.addButton(this.#activeOnlyBtn);

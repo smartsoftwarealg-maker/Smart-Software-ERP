@@ -107,7 +107,7 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     }
 
 
-    @HostListener('window:resize', ['$event'])
+    @HostListener('window:resize')
     onResize() {
         this.check();
     }

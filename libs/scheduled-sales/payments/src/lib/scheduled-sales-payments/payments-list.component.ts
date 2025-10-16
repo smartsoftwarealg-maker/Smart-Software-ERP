@@ -75,7 +75,7 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
     from = new FormControl<Date>(new Date(this.NOW.getTime() - 365 * 24 * 60 * 60 * 1000));
     to = new FormControl<Date>(this.NOW);
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'date',
         'payMethodDescription',
         'chkDate',

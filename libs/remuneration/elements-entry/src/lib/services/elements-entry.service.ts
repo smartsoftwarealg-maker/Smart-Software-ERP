@@ -75,11 +75,11 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
         return this.httpSrv.get<PSpecial[]>('/payroll/special-payrolls');
     }
 
-    getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<ELine[]> {
+    override getPage(pageModel: PaginationModel, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<ELine[]> {
         return super.getPage(pageModel, filter, sortBy, extraPrams);
     }
 
-    public excel(): Observable<Blob> {
+    override excel(): Observable<Blob> {
         return this.httpSrv.getBlob('/payroll/excel');
     }
 

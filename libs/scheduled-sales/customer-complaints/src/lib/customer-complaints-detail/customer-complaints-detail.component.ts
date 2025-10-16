@@ -54,8 +54,10 @@ import { ImageModel } from '@ss/common/ui-image-input';
 })
 export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent<CustomerComplaint> {
     private agentSrv = inject(AgentService);
-    private loginSrv = inject(LoginService);
     private complaintTypeSrv = inject(ComplaintTypeService);
+
+    protected loginSrv = inject(LoginService);
+
     public imageModel: ImageModel;
     public fileName = '';
     public uploadUtil: ImageUploaderUtil = new ImageUploaderUtil();

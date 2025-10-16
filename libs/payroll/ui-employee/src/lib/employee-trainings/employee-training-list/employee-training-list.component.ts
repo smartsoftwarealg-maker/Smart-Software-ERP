@@ -21,7 +21,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeTrainingListComponent extends BaseChildEntityListComponent<Training> {
     // @Input() editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'reference',
         'ref_date',
         'motiveName',

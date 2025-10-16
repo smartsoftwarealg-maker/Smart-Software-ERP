@@ -52,7 +52,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeReintegrationListComponent extends BaseChildEntityListComponent<Reintegration> {
     // @Input() editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'reference',
         'refDate',
         'department',

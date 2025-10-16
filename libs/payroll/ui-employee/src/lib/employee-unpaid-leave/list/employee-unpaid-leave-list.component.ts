@@ -52,7 +52,7 @@ import { ActivePersonnelService } from '@ss/payroll/ui-employee';
 export class EmployeeUnpaidLeaveListComponent extends BaseChildEntityListComponent<UnpaidLeave> {
     //@Input() editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'reference',
         'refDate',
         'fromDate',

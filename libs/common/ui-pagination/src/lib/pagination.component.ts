@@ -60,7 +60,8 @@ export class PaginationComponent implements OnInit {
             const data = evt.clipboardData.getData('text/plain').trim();
             if (data != null && data !== '') {
                 if (/^[0-9]+$/.test(data)) {
-                    evt.target['value'] = +data;
+                    this.pageInput.nativeElement.value = +data;
+                    // evt.target.value = +data;
                 }
             }
             return false;

@@ -19,7 +19,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 })
 export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Career> implements OnInit {
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'paymonth',
         'decision',
         'decision_date',

@@ -32,7 +32,7 @@ import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { MatDialog } from '@angular/material/dialog';
 import { Agent, AgentService } from '@ss/logistics/api-agent';
 import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
-import { ArticleSearchDlg } from '@ss/ligistics/article-search';
+import { ArticleSearchDlg } from '@ss/logistics/article-search';
 import {DELIVERY_CANCELLATION, IMPORT_RECEPTION, INVOICE_CANCELLATION} from "@ss/workflow";
 
 @Directive()

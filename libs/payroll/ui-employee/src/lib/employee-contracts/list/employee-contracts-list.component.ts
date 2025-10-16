@@ -22,7 +22,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeContractListComponent extends BaseChildEntityListComponent<Contract> {
     editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'number',
         'recordNumber',
         'date',

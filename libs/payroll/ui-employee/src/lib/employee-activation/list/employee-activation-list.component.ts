@@ -19,7 +19,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class EmployeeActivationListComponent extends BaseChildEntityListComponent<EmployeeActivation> {
     foreignRecord = false;
-    public displayedColumns = [
+    public override displayedColumns = [
         'centerName',
         'hireDate',
         'empTypeDescription',
@@ -36,7 +36,7 @@ export class EmployeeActivationListComponent extends BaseChildEntityListComponen
         super(entitySrv, 'Activation');
     }
 
-    selectRow(row: EmployeeActivation) {
+    override selectRow(row: EmployeeActivation) {
         super.selectRow(row);
         this.foreignRecord = row?.centerId !== this.loginSrv.appCtx.center;
     }

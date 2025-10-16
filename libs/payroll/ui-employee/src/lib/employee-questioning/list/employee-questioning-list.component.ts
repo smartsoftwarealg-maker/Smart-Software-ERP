@@ -52,7 +52,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeQuestioningListComponent extends BaseChildEntityListComponent<Questioning> {
     // @Input() editable = true;
 
-    public displayedColumns = [
+    public override displayedColumns = [
         'reference',
         'refDate',
         'question',

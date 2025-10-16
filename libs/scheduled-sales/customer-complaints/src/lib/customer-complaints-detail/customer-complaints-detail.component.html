@@ -61,7 +61,7 @@
             </mat-card-header>
             <mat-card-content>
                 <div class="image">
-                    @if (uploadUtil.imgSrc.length > 10) {
+                    @if (uploadUtil.imgSrc) {
                         <img [src]="uploadUtil.imgSrc" [alt]="'image'" height="100%" />
                     } @else {
                         <h1>Missing image</h1>

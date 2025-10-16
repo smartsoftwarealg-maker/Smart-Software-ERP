@@ -1,0 +1,54 @@
+{
+    "comments": [
+        "Config format was changed, contact Muaaz (muaaz.h.is@gmail.com) for help",
+        "You can Still use the old format, it will work.",
+        "        ",
+        "URL Rules examples: ",
+        "        ",
+        "        ",
+        "        frontend  ?:4430",
+        "        backend   http://?:9998",
+        "    BackEnd is same as FrontEnd if the frontend is on port 4430, but with port 9998",
+        "        ",
+        "        ",
+        "        frontend: ?",
+        "        backend:  https://?:9999",
+        "    BackEnd is same as FrontEnd, but with port 9999 using https protocol",
+        "        ",
+        "        ",
+        "The order of the rules matters"
+    ],
+    "version": "3.1",
+    "defaultUrl": "http://localhost:8080",
+    "urlRules": [
+        {
+            "frontend": "?",
+            "backend": "?:8080"
+        }
+    ],
+    "useBrowserLanguage": true,
+    "defaultLanguage": "ar",
+    "languages": [
+        {
+            "code": "ar",
+            "dir": "rtl",
+            "name": "العربية",
+            "dateFormat": "default",
+            "personFullNameFormat": "default"
+        },
+        {
+            "code": "en",
+            "dir": "ltr",
+            "name": "English",
+            "dateFormat": "default",
+            "personFullNameFormat": "default"
+        },
+        {
+            "code": "fr",
+            "dir": "ltr",
+            "name": "Français",
+            "dateFormat": "fr",
+            "personFullNameFormat": "fr"
+        }
+    ]
+}

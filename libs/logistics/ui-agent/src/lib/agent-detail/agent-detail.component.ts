@@ -411,7 +411,7 @@ export class AgentDetailComponent
         this.shellSrv.addButton(this.invImportBtn);
     }
 
-    loadEntity(id: number): Observable<Agent> {
+    override loadEntity(id: number): Observable<Agent> {
         this.archiveSrv.appId = AGENT_ARCHIVES;
         this.archiveSrv.setParentId(id);
         return super.loadEntity(id);

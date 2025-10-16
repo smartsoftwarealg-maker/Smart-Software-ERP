@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import {FundService, PaymentInfoService} from '@ss/payroll/api-employee';
-import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {UntypedFormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup} from '@angular/forms';
 import {Fund, LookupsService, MaritalStatus} from '@ss/common/api-lookup';
 import {switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
@@ -32,7 +32,7 @@ export class PaymentInfoComponent {
     private shellSrv = inject(ShellService);
 
     isEditable = this.shellSrv.getCurrentNodeRights()?.edit || false;
-    form = null;
+    form: UntypedFormGroup|null = null;
     maritalStatus: MaritalStatus[];
     funds: Fund[] = [];
     fund1Lookup = new DefaultAutoCompleteModel(this.fundSrv);

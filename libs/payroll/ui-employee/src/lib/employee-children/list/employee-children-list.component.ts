@@ -19,7 +19,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     imports: [MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe]
 })
 export class EmployeeChildrenListComponent extends BaseChildEntityListComponent<Child> {
-    public displayedColumns = [
+    public override displayedColumns = [
         'name',
         'birthDate',
         'birthPlace',

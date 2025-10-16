@@ -109,7 +109,7 @@
         <mat-label translate>PAYROLL_APPLICATION_MONTH</mat-label>
         <mat-select formControlName="paymonthM">
           @for (m of MONTHS; track m.id) {
-            <mat-option [value]="m.id" translate>{{ m.description }}</mat-option>
+            <mat-option [value]=m.id translate>{{ m.description }}</mat-option>
           }
         </mat-select>
       </mat-form-field>
