@@ -14,7 +14,7 @@
     "CURRENCIES": "Devises",
     "TAX_PAYABLE": "Taxes à payer",
     "COMM_REGISTER": "Registre Comm",
-    "FISCAL_ID": "N Fiscal",
+    "FISCAL_ID": "N° Fiscal",
     "ARTICLE_NO": "Numéro d'article",
     "STAMP_PAYABLE": "Timbre",
     "PRICE": "Prix",
@@ -206,5 +206,6 @@
     "ADVANCEMENT_INVOICE":   "Facture d'avance",
     "SPECIFIC_TO":           "Spécifique à",
     "D10":                   "D10",
-    "IMPORT_TAX":            "Taxe d'importation"
+    "IMPORT_TAX":            "Taxe d'importation",
+    "COLLECTOR":             "Suivi par"
 }
