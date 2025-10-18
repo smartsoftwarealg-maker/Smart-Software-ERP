@@ -375,6 +375,15 @@
                             </ss-auto-complete>
                         </mat-form-field>
 
+                        @if (!isSupplier()) {
+                            <mat-form-field class="default-50 sm-100">
+                                <mat-label translate>LOGISTICS_COLLECTOR</mat-label>
+                                <ss-auto-complete matInput
+                                                  formControlName="collector"
+                                                  [model]="userLookup">
+                                </ss-auto-complete>
+                            </mat-form-field>
+                        }
                     </mat-expansion-panel>
                 }
                 <mat-expansion-panel #centerPanel

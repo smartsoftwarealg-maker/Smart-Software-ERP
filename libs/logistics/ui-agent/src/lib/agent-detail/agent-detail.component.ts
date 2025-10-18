@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {
     KeepOnToolbar,
     ShellService,
@@ -46,7 +46,7 @@ import {
     FormValidators,
     IsParamService,
     LoginService,
-    MaterialModule,
+    MaterialModule, UserService,
 } from '@ss/common/api-common';
 import { BankService } from '@ss/administration/api-bank';
 import {
@@ -72,6 +72,7 @@ import {
     AccountAutocompleteModel,
     AccountService,
 } from '@ss/accounting/api-accounts';
+import {UserListService} from "@ss/common/api-users";
 
 const PARTNER = 0;
 const SUPPLIER = 1;
@@ -96,6 +97,7 @@ const TRANSPORTER = 3;
 export class AgentDetailComponent
     extends BaseEntityDetailComponent<Agent>
     implements OnInit {
+    #userSrv = inject(UserListService);
     private optionSrv = inject(OptionService);
     private defaultAgentType = 0;
     private dialog = inject(MatDialog);
@@ -116,10 +118,6 @@ export class AgentDetailComponent
     private citySrv = inject(CityService);
     private countrySrv = inject(CountryService);
     private accountSrv = inject(AccountService);
-    accountLookup = new AccountAutocompleteModel(this.accountSrv);
-
-    public target = 0;
-
     private invImportBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
@@ -129,8 +127,12 @@ export class AgentDetailComponent
         click: () => this.importAgents(),
     };
 
+
+    accountLookup = new AccountAutocompleteModel(this.accountSrv);
+    userLookup = new DefaultAutoCompleteModel(this.#userSrv);
+    target = 0;
     archiveSrv = inject(AppArchiveService);
-    public LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
+    LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
     AQS = false;
 
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
@@ -154,6 +156,7 @@ export class AgentDetailComponent
 
     centerLookup = new DefaultAutoCompleteModel<Lookup>(this.centerSrv);
     centerCtrl = new FormControl<number>(0);
+    isSupplier = signal(false);
 
     constructor(
         public agentSrv: AgentService,
@@ -191,6 +194,7 @@ export class AgentDetailComponent
                 const isSupplier = res['supplier'];
                 const isCustomer = res['customer'];
                 const isTransporter = res['transporter'];
+                this.isSupplier.set(isSupplier);
                 this.entitySrv.setURL(
                     isCustomer
                         ? CUSTOMER_URL
@@ -266,20 +270,20 @@ export class AgentDetailComponent
             fiscalID: [a.fiscalID],
             articleNo: [a.articleNo],
             stampPayable: [a.stampPayable],
-            price: [a.price || 0],
-            denominationAr: [a.denominationAr],
-            addressAr: [a.addressAr],
-            address2Ar: [a.address2Ar],
-            capital: [a.capital],
-            bank: [a.bank],
-            bankAccount: [a.bankAccount],
-            swift: [a.swift],
-            agentType: [a.agentType || this.defaultAgentType],
-            companyType: [a.companyType],
-            email: [a.email, Validators.email],
-            website: [a.website, Validators.pattern(urlRegExp)],
-            nis: [a.nis],
-            nif: [a.nif],
+            price:           [a.price || 0],
+            denominationAr:  [a.denominationAr],
+            addressAr:       [a.addressAr],
+            address2Ar:      [a.address2Ar],
+            capital:         [a.capital],
+            bank:            [a.bank],
+            bankAccount:     [a.bankAccount],
+            swift:           [a.swift],
+            agentType:       [a.agentType || this.defaultAgentType],
+            companyType:     [a.companyType],
+            email:           [a.email, Validators.email],
+            website:         [a.website, Validators.pattern(urlRegExp)],
+            nis:             [a.nis],
+            nif:             [a.nif],
             debtLimit:       [a.debtLimit || 0],
             debtTerm:        [a.debtTerm, FormValidators.integerValidator],
             payMode:         [a.payMode],
@@ -295,6 +299,7 @@ export class AgentDetailComponent
             tin:             [a.tin],
             department:      [a.department],
             creationTime:    [{ value: a.creationTime, disabled: true }],
+            collector:       [a.collector],
         });
     }
 

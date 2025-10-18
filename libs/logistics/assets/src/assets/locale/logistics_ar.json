@@ -205,5 +205,6 @@
     "ADVANCEMENT_INVOICE":   "فاتورة التقدمة",
     "SPECIFIC_TO":           "خاص بـ",
     "D10":                   "د10",
-    "IMPORT_TAX":            "ضريبة الاستيراد"
+    "IMPORT_TAX":            "ضريبة الاستيراد",
+    "COLLECTOR":             "المكلف"
 }

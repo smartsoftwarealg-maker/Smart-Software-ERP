@@ -207,5 +207,6 @@
     "ADVANCEMENT_INVOICE":   "Advancement invoice",
     "SPECIFIC_TO":           "Specific to",
     "D10":                   "D10",
-    "IMPORT_TAX":            "Import tax"
+    "IMPORT_TAX":            "Import tax",
+    "COLLECTOR":             "Collector"
 }

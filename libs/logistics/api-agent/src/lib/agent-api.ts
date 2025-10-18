@@ -57,6 +57,7 @@ export interface Agent {
     activityDescription?: string;
     department?: number;
     projectRequired?: boolean;
+    collector?: number;
     /**
      * @deprecated This field doesn't exist in the backend; it will be removed
      */
