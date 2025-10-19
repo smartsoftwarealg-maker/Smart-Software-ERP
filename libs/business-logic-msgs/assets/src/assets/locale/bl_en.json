@@ -77,5 +77,6 @@
     "ALREADY_RECORDED":              "This document is already recorded in the accounting system.",
     "PROJECT_QTY_EXCEEDED":          "The quantity of this project has been exceeded.",
     "UNKNOWN_ERROR":                 "An unknown error occurred. Please, try again later.",
-    "CANNOT_DELETE_ACTIVE_EMPLOYEE": "Cannot delete payroll of an active employee"
+    "CANNOT_DELETE_ACTIVE_EMPLOYEE": "Cannot delete payroll of an active employee",
+    "NO_PROGRESS":                   "No progress made and no documents are generated for this request."
 }

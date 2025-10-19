@@ -8,7 +8,7 @@ import { HttpService } from '@ss/common/api-common';
 })
 export class CRMLeadsService extends BaseEntityService<CRMLead> {
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, '/crm/leads');
+        super(httpSrv, '/leads', '/crm/users');
     }
 
     saveProgress(progress: CRMLeadProgress) {
