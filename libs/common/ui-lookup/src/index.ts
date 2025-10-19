@@ -51,3 +51,4 @@ export * from './lib/components/cost-center-group.component';
 export * from './lib/components/post-elements-list/post-elements-list.component';
 export * from './lib/components/post-elements-detail/post-elements-detail.component';
 export * from './lib/components/delivery-time.component';
+export * from './lib/components/region.component';

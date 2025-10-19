@@ -470,5 +470,7 @@
     "UNIT_PRICE":           "Unit price",
     "LIST_PRICE":           "List price",
     "PRODUCT_DESCRIPTION":  "Product description",
-    "ACCOUNT_MAP":          "Account map"
+    "ACCOUNT_MAP":          "Account map",
+    "REGIONS":               "Regions",
+    "REGION":                "Region"
 }

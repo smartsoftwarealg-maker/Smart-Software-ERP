@@ -19,7 +19,7 @@ import {
     ABS_ADMINISTRATION_REPORT_RIGHTS_URL,
     ABS_ADMINISTRATION_REPORT_PRIVILEGE_URL,
     ABS_ADMINISTRATION_PASS_ENCODING_URL,
-    ABS_ADMINISTRATION_GLOBAL_VALIDATION_URL
+    ABS_ADMINISTRATION_GLOBAL_VALIDATION_URL, ABS_ADMINISTRATION_REGION_URL
 } from '../common';
 
 import {SideNavNode} from '@ss/common/api-common';
@@ -46,6 +46,12 @@ export const administrationNavTree: SideNavNode = {
             icon: 'fas fa-user',
             route: ABS_ADMINISTRATION_ROLE_URL,
             accessRights: 'Role'
+        },
+        {
+            name: 'COMMON_REGIONS',
+            icon: 'fa-solid fa-compass',
+            route: ABS_ADMINISTRATION_REGION_URL,
+            accessRights: 'Region'
         },
         {
             name: 'COMMON_WILAYAS',

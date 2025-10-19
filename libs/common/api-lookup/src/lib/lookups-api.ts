@@ -4,7 +4,8 @@ export const VATS_URL = '/logistics/vats';
 export const MARITAL_STATUS_URL = '/lookups/marital_status';
 export const CAREER_MOTIVE_URL = '/lookups/career_motives';
 export const LOOKUPS_APPLICATIONS_URL = '/lookups/erp_applications';
-export const WILAYAS_URL = '/lookups/wilayas';
+export const WILAYAS_URL = '/wilayas';
+export const REGIONS_URL = '/lookups/regions';
 export const BLOOD_GROUP_URL = '/lookups/blood_groups';
 export const NATIONALITIES_URL = '/lookups/nationalities';
 export const VEHICLE_TYPES = '/lookups/vehicle_types';
@@ -76,6 +77,7 @@ export interface Wilaya {
     id: number;
     description: string;
     descriptionAr?: string;
+    region?: number;
 }
 
 export interface Vat {

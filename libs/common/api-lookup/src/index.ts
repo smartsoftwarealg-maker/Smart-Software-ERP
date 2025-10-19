@@ -68,3 +68,7 @@ export * from './lib/lookups-api';
 export * from './lib/store.service';
 export * from './lib/trn-subjects.service';
 export * from './lib/holiday-type.service';
+export * from './lib/region.service';
+
+export class LookupService {
+}

@@ -26,7 +26,7 @@ import {
     ADMINISTRATION_REPORT_PRIVILEGE_URL,
     ADMIN_WORKFLOW_CHART_URL,
     ADMINISTRATION_PASS_ENCODING_URL,
-    ADMINISTRATION_GLOBAL_VALIDATION_URL
+    ADMINISTRATION_GLOBAL_VALIDATION_URL, ADMINISTRATION_REGION_URL
 } from '../common';
 import { ABS_INDEX_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -47,7 +47,8 @@ import {
     WilayaDetailComponent,
     AppArchiveDocumentListComponent,
     AppArchiveDocumentDetailComponent,
-    FurnitureStatusListComponent, FurnitureStatusDetailComponent, DairaListComponent, DairaDetailComponent
+    FurnitureStatusListComponent, FurnitureStatusDetailComponent, DairaListComponent, DairaDetailComponent,
+    RegionDetailComponent, RegionListComponent
 } from '@ss/common/ui-lookup';
 import { AccessRightsListComponent } from '@ss/common/ui-access-rights';
 import { TraceabilityComponent } from '@ss/common/ui-traceability';
@@ -307,6 +308,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: WilayaDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: ADMINISTRATION_REGION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: RegionListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: RegionDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },
