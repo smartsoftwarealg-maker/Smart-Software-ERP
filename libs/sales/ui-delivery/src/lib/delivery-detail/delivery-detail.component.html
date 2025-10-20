@@ -7,8 +7,7 @@
                     <mat-label translate>STOCK_NUMBER</mat-label>
                     <input matInput formControlName="number" type="number" required readonly>
                     @if (form.controls['number']?.invalid) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
 
@@ -59,7 +58,7 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-25 sm-100">
                     <mat-label translate>COMMON_PROJECT</mat-label>
                     <ss-auto-complete matInput
                                       [model]="salesProjectLookup"
@@ -71,7 +70,7 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-25 sm-100">
                     <mat-label translate>STOCK_DEALER</mat-label>
                     <ss-auto-complete matInput
                                       [required]="true"
@@ -87,7 +86,7 @@
                     }
                 </mat-form-field>
 
-                <div class="default-50 sm-100"></div>
+
                 <mat-tab-group>
                     <mat-tab>
                         <ng-template mat-tab-label>
@@ -137,6 +136,19 @@
                         <ng-template mat-tab-label>
                             <span translate>LOGISTICS_DISPATCH</span>
                         </ng-template>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_SHIPMENT_MODE</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="shipmentModeLookup"
+                                              formControlName="shipMode">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_DELIVERY_ADDRESS</mat-label>
+                            <input matInput formControlName="altAgent" type="text" >
+                        </mat-form-field>
 
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>LOGISTICS_TRANSPORTER</mat-label>

@@ -209,5 +209,6 @@
     "IMPORT_TAX":            "Taxe d'importation",
     "COLLECTOR":             "Suivi par",
     "SHIPMENT_MODES":        "Modes de transport",
-    "SHIPMENT_MODE":         "Mode de transport"
+    "SHIPMENT_MODE":         "Mode de transport",
+    "DELIVERY_ADDRESS":      "Adresse de livraison"
 }

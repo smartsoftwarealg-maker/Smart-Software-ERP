@@ -60,8 +60,8 @@
     "HEADER": "Header",
     "FOOTER": "Footer",
     "EDIT_ACCOUNT": "Edit account",
-    "QTY_SATISFIED": "Qty Satisfied",
-    "QTY_INVOICED": "Qty Invoiced",
+    "QTY_SATISFIED": "Quantity Satisfied",
+    "QTY_INVOICED": "Quantity Invoiced",
     "ARTICLE": "Article",
     "ARTICLES": "Articles",
     "DOCUMENT": "Document",
@@ -210,5 +210,6 @@
     "IMPORT_TAX":            "Import tax",
     "COLLECTOR":             "Collector",
     "SHIPMENT_MODES":        "Shipment modes",
-    "SHIPMENT_MODE":         "Shipment mode"
+    "SHIPMENT_MODE":         "Shipment mode",
+    "DELIVERY_ADDRESS":      "Delivery address"
 }
