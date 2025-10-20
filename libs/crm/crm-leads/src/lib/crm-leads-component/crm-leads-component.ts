@@ -23,7 +23,6 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ShellService} from '@ss/common/ui-shell';
 import {MatRadioButton, MatRadioChange, MatRadioGroup} from "@angular/material/radio";
-import {sign} from "chart.js/helpers";
 
 
 @Component({
@@ -62,7 +61,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
     #router = inject(Router);
     #route = inject(ActivatedRoute);
     #shellSrv = inject(ShellService);
-    isResponsible = signal(false);
+    isResponsible = signal(this.#loginSrv.appCtx.responsible);
     pagination = PaginationModel.newInstance({
         page: 1,
         pageSize: 15,

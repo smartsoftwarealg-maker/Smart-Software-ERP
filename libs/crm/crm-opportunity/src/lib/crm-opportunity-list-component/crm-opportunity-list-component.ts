@@ -1,7 +1,7 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CRMOpportunityService } from '../crm-opportunity.service';
-import { PaginationModel } from '@ss/common/api-common';
+import {LoginService, PaginationModel} from '@ss/common/api-common';
 import { CRMOpportunity } from '../crm-opportunity-api';
 import {
     MatCell,
@@ -21,6 +21,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatButton } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShellService } from '@ss/common/ui-shell';
+import {MatRadioButton, MatRadioChange, MatRadioGroup} from "@angular/material/radio";
 
 @Component({
     selector: 'ss-crm-opportunity-component',
@@ -43,16 +44,21 @@ import { ShellService } from '@ss/common/ui-shell';
         MatHeaderCellDef,
         TranslatePipe,
         MatButton,
+        MatRadioGroup,
+        MatRadioButton,
     ],
     templateUrl: './crm-opportunity-list-component.html',
     styleUrl: './crm-opportunity-list-component.scss',
     standalone: true,
 })
 export class CrmOpportunityListComponent implements OnInit, OnDestroy {
+    #loginSrv = inject(LoginService);
     #entitySrv = inject(CRMOpportunityService);
     #router = inject(Router);
     #route = inject(ActivatedRoute);
     #shellSrv = inject(ShellService);
+
+    isResponsible = signal(this.#loginSrv.appCtx.responsible);
 
     pagination = PaginationModel.newInstance({
         page: 1,
@@ -80,6 +86,7 @@ export class CrmOpportunityListComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.#shellSrv.setGoBackPath('..', this.#route);
         this.#shellSrv.setTitle('CRM_OPPORTUNITIES');
+        this.#entitySrv.setParentId(this.#loginSrv.appCtx.id||0);
         this.refresh();
     }
 
@@ -123,5 +130,10 @@ export class CrmOpportunityListComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.#shellSrv.reset();
+    }
+
+    onRadioChange(event: MatRadioChange) {
+        this.#entitySrv.setParentId(+event.value === 1? this.#loginSrv.appCtx.id : 0);
+        this.refresh();
     }
 }

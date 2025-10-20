@@ -18,7 +18,7 @@ import {
     LOGISTICS_ORDER_ANOMALIES_URL,
     LOGISTICS_TRANSPORTER_URL,
     DELIVERY_TIME_URL,
-    LOGISTICS_AGENT_MERGE_URL
+    LOGISTICS_AGENT_MERGE_URL, LOGISTICS_DELIVERY_TIME_URL, LOGISTICS_SHIPMENT_MODE_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -57,12 +57,16 @@ import {
     DeliveryTimeListComponent
 } from '@ss/common/ui-lookup';
 import { AgentMergeComponent } from '@ss/logistics/agent-merge';
+import {
+    ShipmentModeDetailComponent,
+    ShipmentModeListComponent
+} from '@ss/common/ui-lookup';
 
 export const mainRoutes: Routes = [
-    {
-        path: LOOKUPS_URL,
-        loadChildren: () => import('./logistics-admin-lookups.module').then(m => m.LogisticsAdminLookupsModule)
-    },
+    // {
+    //     path: LOOKUPS_URL,
+    //     loadChildren: () => import('./logistics-admin-lookups.module').then(m => m.LogisticsAdminLookupsModule)
+    // },
     {
         path: LOGISTICS_AGENT_URL,
         children: [
@@ -408,6 +412,43 @@ export const mainRoutes: Routes = [
         component: LogisticsOrderAnomaliesComponent,
         canActivate: [loginGuard]
     },
+
+    {
+        path: LOGISTICS_DELIVERY_TIME_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DeliveryTimeListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: DeliveryTimeDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
+    {
+        path: LOGISTICS_SHIPMENT_MODE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ShipmentModeListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: ShipmentModeDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
 ];

@@ -36,7 +36,7 @@ export const purchasesNavTree: SideNavNode = {
         },
         {
             name: 'LOGISTICS_SUPPLIER',
-            icon: 'fa-solid fa-ship',
+            icon: 'fa-solid fa-handshake',
             route: ABS_LOGISTICS_SUPPLIER_URL,
             accessRights: 'Supplier'
         },

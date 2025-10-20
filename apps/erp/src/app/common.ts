@@ -208,6 +208,8 @@ export const FURNITURE_STATUS_URL = 'furniture-states';
 export const LOGISTICS_WORKFLOW_URL = 'workflow-messages';
 export const DELIVERY_TIME_URL = 'delivery-times';
 export const LOGISTICS_AGENT_MERGE_URL = 'agent-merge';
+export const LOGISTICS_DELIVERY_TIME_URL = 'delivery-time';
+export const LOGISTICS_SHIPMENT_MODE_URL = 'shipment-mode';
 
 
 // Contracts
@@ -721,6 +723,7 @@ export const ABS_LOGISTICS_UNITS = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, STOC
 export const ABS_LOGISTICS_ORDER_ANOMALIES = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_ORDER_ANOMALIES_URL].join('/');
 export const ABS_LOGISTICS_DELIVERY_TIMES = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, DELIVERY_TIME_URL].join('/');
 export const ABS_LOGISTICS_AGENT_MERGE = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_AGENT_MERGE_URL].join('/');
+export const ABS_LOGISTICS_SHIPMENT_MODES = '/' + [MAIN_PAGE_URL, LOGISTICS_APP_URL, LOGISTICS_SHIPMENT_MODE_URL].join('/');
 
 // Contracts
 export const ABS_CONTRACTS_PROJECT_TYPE = '/' + [MAIN_PAGE_URL, CONTRACTS_APP_URL,  CONTRACTS_PROJECT_TYPE_URL].join('/');

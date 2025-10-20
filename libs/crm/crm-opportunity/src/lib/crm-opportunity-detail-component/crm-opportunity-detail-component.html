@@ -35,8 +35,7 @@
 
             </mat-card-header>
             <mat-card-content>
-                <div class="detail__div">
-                    <mat-form-field>
+                    <mat-form-field class="default-25 sm-100">
                         <mat-label translate>COMMON_NAME</mat-label>
                         <input matInput type="text" formControlName="name" required>
                         @if (form.controls['name'].invalid) {
@@ -44,7 +43,7 @@
                         }
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>COMMON_COMPANY</mat-label>
                         <ss-auto-complete matInput
                                           [required]="false"
@@ -56,7 +55,7 @@
                         }
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>CRM_CAMPAIGN</mat-label>
                         <ss-auto-complete matInput
                                           [model]="campaignLookup"
@@ -64,7 +63,7 @@
                         </ss-auto-complete>
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>CRM_PRIMARY_CONTACT</mat-label>
                         <ss-auto-complete matInput
                                           [required]="false"
@@ -76,16 +75,15 @@
                         }
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>ADMINISTRATION_PHONE</mat-label>
                         <input matInput type="text" formControlName="contactPhone">
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field class="default-25 sm-50">
                         <mat-label translate>COMMON_EMAIL</mat-label>
                         <input matInput type="text" formControlName="contactEmail">
                     </mat-form-field>
-                </div>
             </mat-card-content>
         </mat-card>
 

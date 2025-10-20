@@ -18,6 +18,4 @@ export class CRMLeadsService extends BaseEntityService<CRMLead> {
     converter(converter: LeadConverter) {
         return this.httpSrv.post('/crm/leads/convert', converter);
     }
-
-
 }

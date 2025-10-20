@@ -208,5 +208,7 @@
     "SPECIFIC_TO":           "Specific to",
     "D10":                   "D10",
     "IMPORT_TAX":            "Import tax",
-    "COLLECTOR":             "Collector"
+    "COLLECTOR":             "Collector",
+    "SHIPMENT_MODES":        "Shipment modes",
+    "SHIPMENT_MODE":         "Shipment mode"
 }
