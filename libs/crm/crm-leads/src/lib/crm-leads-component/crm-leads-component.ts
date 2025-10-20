@@ -1,7 +1,7 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CRMLeadsService } from '../crm-lead.service';
-import { PaginationModel } from '@ss/common/api-common';
+import {LoginService, PaginationModel} from '@ss/common/api-common';
 import { CRMLead } from '../lead-api';
 import {
     MatCell,
@@ -22,6 +22,8 @@ import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ShellService} from '@ss/common/ui-shell';
+import {MatRadioButton, MatRadioChange, MatRadioGroup} from "@angular/material/radio";
+
 
 @Component({
     selector: 'ss-crm-leads-component',
@@ -46,17 +48,20 @@ import {ShellService} from '@ss/common/ui-shell';
         MatTooltip,
         TranslatePipe,
         MatButton,
+        MatRadioGroup,
+        MatRadioButton,
     ],
     templateUrl: './crm-leads-component.html',
     styleUrl: './crm-leads-component.scss',
     standalone: true,
 })
 export class CrmLeadsComponent implements OnInit, OnDestroy {
+    #loginSrv = inject(LoginService);
     #entitySrv = inject(CRMLeadsService);
     #router = inject(Router);
     #route = inject(ActivatedRoute);
     #shellSrv = inject(ShellService);
-
+    isResponsible = signal(this.#loginSrv.appCtx.responsible);
     pagination = PaginationModel.newInstance({
         page: 1,
         pageSize: 15,
@@ -83,11 +88,14 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
 
     constructor() {
         this.pagination.onChange = () => this.refresh();
+        this.#entitySrv.setParentId(0);
     }
 
     ngOnInit(): void {
         this.#shellSrv.setGoBackPath('..', this.#route);
         this.#shellSrv.setTitle('CRM_LEADS');
+        this.#entitySrv.setParentId(this.#loginSrv.appCtx.id||0);
+        this.isResponsible.set(this.#loginSrv.appCtx.responsible);
         this.refresh();
     }
 
@@ -130,5 +138,10 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.#shellSrv.reset();
+    }
+
+    onRadioChange(event: MatRadioChange) {
+        this.#entitySrv.setParentId(+event.value === 1? this.#loginSrv.appCtx.id : 0);
+        this.refresh();
     }
 }

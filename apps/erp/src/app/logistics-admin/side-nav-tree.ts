@@ -14,7 +14,7 @@ import {
     ABS_LOGISTICS_DOCUMENT_URL,
     ABS_LOGISTICS_ORDER_ANOMALIES,
     ABS_LOGISTICS_TRANSPORTER_URL,
-    ABS_LOGISTICS_DELIVERY_TIMES, ABS_LOGISTICS_AGENT_MERGE
+    ABS_LOGISTICS_DELIVERY_TIMES, ABS_LOGISTICS_AGENT_MERGE, ABS_LOGISTICS_SHIPMENT_MODES
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -43,7 +43,7 @@ export const logisticsAdminNavTree: SideNavNode = {
         },
         {
             name: 'LOGISTICS_SUPPLIER',
-            icon: 'fa-solid fa-ship',
+            icon: 'fa-solid fa-handshake',
             route: ABS_LOGISTICS_SUPPLIER_URL,
             accessRights: 'Supplier'
         },
@@ -106,6 +106,12 @@ export const logisticsAdminNavTree: SideNavNode = {
             icon: 'fa-solid fa-truck-bolt',
             route: ABS_LOGISTICS_DELIVERY_TIMES,
             accessRights: 'DeliveryTime'
+        },
+        {
+            name: 'LOGISTICS_SHIPMENT_MODES',
+            icon: 'fa-solid fa-ship',
+            route: ABS_LOGISTICS_SHIPMENT_MODES,
+            accessRights: 'ShipmentMode'
         },
         {
             name: 'LOGISTICS_AGENT_MERGE',

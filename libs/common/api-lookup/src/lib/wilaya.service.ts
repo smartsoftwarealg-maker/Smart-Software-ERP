@@ -13,9 +13,4 @@ export class WilayaService extends BaseEntityService<Wilaya> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, WILAYAS_URL);
     }
-
-    getByIDs(list: number[]): Observable<Wilaya[]> {
-        const params = new HttpParams().set('ids', list.join(','));
-        return this.httpSrv.get<Wilaya[]>(WILAYAS_URL, params);
-    }
 }

@@ -12,6 +12,12 @@
 mat-table {
     width: 100%;
     min-width: 1000px;
+    min-height: 15em;
+}
+
+.table_div {
+    overflow: auto;
+    min-height: 12em;
 }
 
 .mat-column-ownerDescription,

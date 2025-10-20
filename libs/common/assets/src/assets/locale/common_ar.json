@@ -461,6 +461,8 @@
     "UNIT_PRICE":          "سعر الوحدة النهائي",
     "LIST_PRICE":          "السعر الأصلي",
     "PRODUCT_DESCRIPTION": "وصف المنتج",
-    "ACCOUNT_MAP":         "مخطط الحسابات"
+    "ACCOUNT_MAP":         "مخطط الحسابات",
+    "REGIONS": "النواحي",
+    "REGION": "الناحية"
 }
 

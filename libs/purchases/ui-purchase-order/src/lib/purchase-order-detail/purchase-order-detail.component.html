@@ -58,7 +58,6 @@
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_DELIVERY_TIME</mat-label>
                     <ss-auto-complete matInput
-                                      [required]="true"
                                       [model]="deliveryTimeLookup"
                                       formControlName="deliveryTime">
                     </ss-auto-complete>
@@ -153,6 +152,20 @@
                         <ng-template mat-tab-label>
                             <span translate>LOGISTICS_DISPATCH</span>
                         </ng-template>
+
+                        <mat-form-field class="default-25 sm-50">
+                            <mat-label translate>LOGISTICS_SHIPMENT_MODE</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="shipmentModeLookup"
+                                              formControlName="shipMode">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_DELIVERY_ADDRESS</mat-label>
+                            <input matInput formControlName="altAgent" type="text" >
+                        </mat-form-field>
 
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>LOGISTICS_TRANSPORTER</mat-label>

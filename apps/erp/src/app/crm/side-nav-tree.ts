@@ -89,13 +89,13 @@ export const crmNavTree: SideNavNode = {
             name: 'CRM_LEADS',
             icon: 'fa-solid fa-telescope',
             route: ABS_CRM_LEADS_URL,
-            accessRights: 'CRMCustomer'
+            accessRights: 'CRMLead'
         },
         {
             name: 'CRM_OPPORTUNITIES',
             icon: 'fa-solid fa-handshake',
             route: ABS_CRM_OPPORTUNITY_URL,
-            accessRights: 'CRMCustomer'
+            accessRights: 'CRMOpportunity'
         },
         {
             name: 'CRM_CALENDAR',

@@ -22,7 +22,7 @@ import {
     DeliveryTimeService,
     Lookup,
     LookupsService,
-    PayMethod
+    PayMethod, ShipmentModeService
 } from '@ss/common/api-lookup';
 import {
     Agent,
@@ -43,6 +43,7 @@ import { OptionService } from '@ss/logistics/ui-options';
 @Directive()
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     #deliveryTimeSrv = inject(DeliveryTimeService);
+    #shipmentModeSrv = inject(ShipmentModeService);
 
     private CONSUMPTION_DOCUMENT = 260;
     private PURCHASE_REQUEST = 10;
@@ -62,6 +63,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     protected purchaseProjectSrv = inject(PurchaseContractService);
     protected salesProjectSrv = inject(SalesContractService);
     protected deliveryTimeLookup = new DefaultAutoCompleteModel(this.#deliveryTimeSrv);
+    protected shipmentModeLookup = new DefaultAutoCompleteModel(this.#shipmentModeSrv);
 
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
@@ -295,6 +297,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             advancementFT:       [b.advancementFT],
             receptionType:       [b.receptionType||1],
             isValidated:         [b.isValidated],
+            shipMode:            [b.shipMode],
         });
     }
 

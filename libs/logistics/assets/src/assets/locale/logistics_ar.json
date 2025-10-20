@@ -206,5 +206,8 @@
     "SPECIFIC_TO":           "خاص بـ",
     "D10":                   "د10",
     "IMPORT_TAX":            "ضريبة الاستيراد",
-    "COLLECTOR":             "المكلف"
+    "COLLECTOR":             "المكلف",
+    "SHIPMENT_MODES":        "طرق الشحن",
+    "SHIPMENT_MODE":         "طريقة الشحن",
+    "DELIVERY_ADDRESS":      "عنوان التسليم"
 }

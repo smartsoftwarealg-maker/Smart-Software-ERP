@@ -15,6 +15,7 @@ import { MatInput } from '@angular/material/input';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import {UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
 
 @Component({
     selector: 'ss-contract-motive-list',
@@ -69,8 +70,8 @@ export class ContractMotiveDetailComponent extends BaseEntityDetailComponent<Loo
 
     public override setupForm(e: Lookup): UntypedFormGroup {
         return this.formBuilder.group({
-            id: e.id,
-            description: [e.description, Validators.required],
+            id:            [e.id],
+            description:   [e.description, Validators.required],
             descriptionAr: [e.descriptionAr]
         });
     }

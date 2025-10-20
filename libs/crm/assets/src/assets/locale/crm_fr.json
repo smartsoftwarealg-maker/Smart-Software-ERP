@@ -132,5 +132,7 @@
     "NO_SHOW":               "Non présent",
     "PENDING":               "En attente",
     "COMPLETED":             "Terminé",
-    "QUOTES":                "Devis"
+    "QUOTES":                "Devis",
+    "MY_CRM":                "Mon CRM",
+    "COMPANY_CRM":           "CRM de l'entreprise"
 }

@@ -466,5 +466,7 @@
     "UNIT_PRICE":           "Prix unitaire",
     "LIST_PRICE":           "Prix de base",
     "PRODUCT_DESCRIPTION":  "Description du produit",
-    "ACCOUNT_MAP":          "Plan Comptable"
+    "ACCOUNT_MAP":          "Plan Comptable",
+    "REGIONS":              "Régions",
+    "REGION":               "Régions"
 }

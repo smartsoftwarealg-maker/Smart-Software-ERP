@@ -101,6 +101,7 @@ export interface Transaction {
     advancementFT?: number
     receptionType?: number;
     supplierAccount?: number;
+    shipMode?: number;
 }
 
 export interface ExtraCost {

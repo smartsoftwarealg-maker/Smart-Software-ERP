@@ -201,23 +201,24 @@ export class CrmLeadsDetailComponent implements OnInit {
     }
 
     private setupForm(b: CRMLead) {
+        this.#entitySrv.setParentId(this.#loginSrv.appCtx.id);
         this.#activitySrv.setParentId(b.id);
         this.leadId = b.id;
         return this.formBuilder.group({
-            id: [b?.id || 0, Validators.required],
-            description: [b?.description, Validators.required],
-            detail: [b?.detail, Validators.required],
-            email: [b?.email],
-            phone: [b?.phone],
-            state: [b?.state],
-            status: [b?.status || 'NEW'],
-            source: [b?.source || 'WEB'],
+            id:                 [b?.id || 0, Validators.required],
+            description:        [b?.description, Validators.required],
+            detail:             [b?.detail, Validators.required],
+            email:              [b?.email],
+            phone:              [b?.phone],
+            state:              [b?.state],
+            status:             [b?.status || 'NEW'],
+            source:             [b?.source || 'WEB'],
             createdAt:          [b?.createdAt || this.#NOW, Validators.required],
             createdBy:          [ b?.createdBy || this.#loginSrv.appCtx.id, Validators.required, ],
             updatedAt:          [b?.updatedAt || this.#NOW],
             expectedCloseDate:  [b?.expectedCloseDate],
             campaignId:         [b?.campaignId],
-            ownerId:            [b?.ownerId],
+            ownerId:            [b?.ownerId || this.#loginSrv.appCtx.id, Validators.required],
             teamId:             [b?.teamId],
             priority:           [b?.priority || 'LOW'],
             score:              [b?.score || 0, [Validators.min(0), Validators.max(10)]],

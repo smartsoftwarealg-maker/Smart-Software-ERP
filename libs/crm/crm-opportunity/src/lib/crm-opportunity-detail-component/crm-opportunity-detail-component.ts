@@ -24,9 +24,8 @@ import {
 } from '@ss/common/ui-auto-complete';
 import { UserListService } from '@ss/common/api-users';
 import { CityService } from '@ss/common/api-lookup';
-import { AgentService } from '@ss/logistics/api-agent';
+import {Agent, AgentService, CustomerService} from '@ss/logistics/api-agent';
 import { CrmContactService } from '@ss/crm/crm-customer';
-import { CompanyService } from '@ss/administration/api-company';
 import { CrmTeamsService } from '@ss/crm/crm-teams';
 import { CRMLeadsService } from '@ss/crm/leads';
 import { CrmOpportunityActiveService } from '../crm-opportunity-activities/crm-opportunity-active.service';
@@ -74,7 +73,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     #shellSrv = inject(ShellService);
     #agentSrv = inject(AgentService);
     #contactSrv = inject(CrmContactService);
-    #companySrv = inject(CompanyService);
+    #customerSrv = inject(CustomerService);
     #teamSrv = inject(CrmTeamsService);
     #leadSrv = inject(CRMLeadsService);
     #loginSrv = inject(LoginService);
@@ -88,7 +87,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     cityLookup = new DefaultAutoCompleteModel(this.#citySrv);
     agentLookup = new DefaultAutoCompleteModel(this.#agentSrv);
     contactLookup = new CRMContactLookup(this.#contactSrv);
-    companyLookup = new DefaultAutoCompleteModel(this.#companySrv);
+    companyLookup = new DefaultAutoCompleteModel<Agent>(this.#customerSrv, 'id', 'denomination');
     leadLookup = new DefaultAutoCompleteModel(this.#leadSrv);
 
     public id = 0;
@@ -110,6 +109,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     disableSave = false;
 
     ngOnInit(): void {
+        this.#entitySrv.setParentId(this.#loginSrv.appCtx.id||0);
         const id = +this.#route.snapshot.paramMap.get('id');
         this.#router.events
             .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
@@ -148,8 +148,9 @@ export class CrmOpportunityDetailComponent implements OnInit {
                     this.#snackBarSrv.showSuccessMessage();
                     this.list()
                 },
-                error: () => {
+                error: (err) => {
                     this.#snackBarSrv.showFailureMessage();
+                    throw err;
                 },
             });
     }
@@ -177,7 +178,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
             teamId: [b?.teamId],
             partnerId: [b?.partnerId],
             primaryContactId: [b?.primaryContactId],
-            amount: [b?.amount, Validators.required],
+            amount: [b?.amount||0.0, Validators.required],
             currency: [b?.currency || 0, Validators.required],
             expectedRevenue: [b?.expectedRevenue],
             budgetAllocated: [b?.budgetAllocated],

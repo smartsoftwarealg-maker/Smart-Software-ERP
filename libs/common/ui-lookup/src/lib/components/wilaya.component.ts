@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import {Wilaya, WilayaService} from '@ss/common/api-lookup';
+import {RegionService, Wilaya, WilayaService} from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -14,6 +14,7 @@ import { MatInput } from '@angular/material/input';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
 
 
 @Component({
@@ -46,12 +47,39 @@ export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
 
 @Component({
     selector: 'ss-wilaya-detail',
-    templateUrl: '../base-templates/detail-template.html',
+    template: `
+        <mat-card>
+            @if (form) {
+                <form [formGroup]="form">
+                    <mat-form-field class="default-100">
+                        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                        <input matInput formControlName="description" type="text" required autofocus>
+                    </mat-form-field>
+
+                    <mat-form-field class="default-100">
+                        <mat-label translate>ADMINISTRATION_DESCRIPTION_AR</mat-label>
+                        <input matInput formControlName="descriptionAr" type="text">
+                    </mat-form-field>
+
+                    <mat-form-field id="agentType" class="default-100">
+                        <mat-label translate>COMMON_REGION</mat-label>
+                        <ss-auto-complete matInput
+                                          formControlName="region"
+                                          [model]="regionLookup">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                </form>
+            }
+        </mat-card>
+    `,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
+    imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent]
 })
 export class WilayaDetailComponent extends BaseEntityDetailComponent<Wilaya> {
+    #regionSrv = inject(RegionService);
+
+    regionLookup = new DefaultAutoCompleteModel(this.#regionSrv);
 
     constructor(
         public wilayaSrv: WilayaService,
@@ -65,9 +93,10 @@ export class WilayaDetailComponent extends BaseEntityDetailComponent<Wilaya> {
 
     public override setupForm(e: Wilaya): UntypedFormGroup {
         return this.formBuilder.group({
-            id: e.id,
-            description: [e.description, Validators.required],
-            descriptionAr: [e.descriptionAr]
+            id:            [e.id],
+            description:   [e.description, Validators.required],
+            descriptionAr: [e.descriptionAr],
+            region:        [e.region]
         });
     }
 }
