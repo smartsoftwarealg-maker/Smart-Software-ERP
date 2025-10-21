@@ -46,13 +46,13 @@ export const contractsNavTree: SideNavNode = {
             name: 'LOGISTICS_TRANSPORT_CONVENTIONS',
             icon: 'fa-solid fa-truck',
             route: ABS_TRANSPORT_CONTRACT_URL,
-            accessRights: 'PProject'
+            accessRights: 'TProject'
         },
         {
             name: 'LOGISTICS_CEMENT_PROJECTS',
             icon: 'fa-solid fa-person-digging',
             route: ABS_CONTRACTS_CEMENT_URL,
-            accessRights: 'SProject'
+            accessRights: 'CProject'
         },
 
     ]
