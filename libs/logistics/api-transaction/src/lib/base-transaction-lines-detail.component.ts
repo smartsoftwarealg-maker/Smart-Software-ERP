@@ -155,9 +155,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         const subs2 = this.form.get('qtyOrdered').valueChanges.subscribe(next => {
             const isCancellation =
                 !this.loginSrv.appCtx.manager &&
+                !this.loginSrv.appCtx.responsible &&
                 (this.document === INVOICE_CANCELLATION ||
                  this.document === DELIVERY_CANCELLATION)
-            console.log('isCan', isCancellation);
             if (typeof next === 'number') {
                 if ((next > 0.0 && this.selectedRow?.reference) || isCancellation) {
                     this.form.get('reference').disable();
