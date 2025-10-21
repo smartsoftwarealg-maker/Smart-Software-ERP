@@ -5,7 +5,7 @@
                 <mat-label translate>COMMON_SEARCH</mat-label>
                 <input matInput [formControl]="searchText" type="text">
             </mat-form-field>
-            @if (isEditable && loginSrv.appCtx.manager){
+            @if (isEditable && loginSrv.appCtx.responsible){
                     <button mat-mini-fab
                             color="primary"
                             (click)="showDetail(0)"
