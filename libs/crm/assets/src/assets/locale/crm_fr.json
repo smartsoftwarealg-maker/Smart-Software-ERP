@@ -134,5 +134,6 @@
     "COMPLETED":             "Terminé",
     "QUOTES":                "Devis",
     "MY_CRM":                "Mon CRM",
-    "COMPANY_CRM":           "CRM de l'entreprise"
+    "COMPANY_CRM":           "CRM de l'entreprise",
+    "IS_DECISION_MAKER":     "Est un décideur"
 }

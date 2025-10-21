@@ -134,5 +134,6 @@
     "COMPLETED":            "مكتمل",
     "QUOTES":               "الاقتباسات",
     "MY_CRM":               "العلاقات الشخصية",
-    "COMPANY_CRM":          "العلاقات العامة"
+    "COMPANY_CRM":          "العلاقات العامة",
+    "IS_DECISION_MAKER":    "هو مقرر"
 }

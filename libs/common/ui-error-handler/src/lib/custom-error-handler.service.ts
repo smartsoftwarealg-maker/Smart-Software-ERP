@@ -58,6 +58,9 @@ export class CustomErrorHandlerService {
                     .split('\\n');
                 this.message.set(msg);
                 this.errorSet.set(true);
+            } else if (err instanceof HttpErrorResponse) {
+                this.message.set([err.message]);
+                this.errorSet.set(true);
             }
         } else if (err instanceof HttpErrorResponse) {
             this.message.set([err.message]);

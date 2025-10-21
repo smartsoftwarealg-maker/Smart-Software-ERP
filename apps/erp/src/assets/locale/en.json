@@ -57,6 +57,7 @@
     "Child": "Child",
     "SProject":        "Project",
     "PProject":        "Contract",
+    "TProject":        "Transport Convention",
     "AgentMerge": "Agent merge",
 
 

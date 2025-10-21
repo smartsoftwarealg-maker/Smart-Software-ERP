@@ -135,6 +135,7 @@
     "SENT":                "Sent",
     "QUOTES":              "Quotes",
     "MY_CRM":              "My CRM",
-    "COMPANY_CRM":         "Company CRM"
+    "COMPANY_CRM":         "Company CRM",
+    "IS_DECISION_MAKER":   "Is decision maker"
 
 }
