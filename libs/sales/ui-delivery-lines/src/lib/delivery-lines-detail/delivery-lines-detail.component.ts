@@ -43,9 +43,9 @@ export class DeliveryLinesDetailComponent extends BaseTransactionLinesDetailComp
         super(inventoryLinesService, DOC_DELIVERY);
     }
 
-    override setupForm(b: TransactionLine): UntypedFormGroup {
-        const form = super.setupForm(b);
-        form.controls['qtyOrdered']?.disable();
-        return form;
-    }
+    // override setupForm(b: TransactionLine): UntypedFormGroup {
+    //     const form = super.setupForm(b);
+    //     form.controls['qtyOrdered']?.disable();
+    //     return form;
+    // }
 }

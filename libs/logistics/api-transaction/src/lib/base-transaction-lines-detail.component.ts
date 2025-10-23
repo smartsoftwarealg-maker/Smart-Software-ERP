@@ -255,7 +255,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         const referenceIsDisabled =
             !this.isEditable ||
             ((this.document === INVOICE_CANCELLATION || this.document === DELIVERY_CANCELLATION) && !this.loginSrv.appCtx.manager && !this.loginSrv.appCtx.responsible) ||
-            ( b.qtySatisfied > 0.0001 || (this.document === DOC_PRODUCTION && !!b.sourceDoc) || (this.document >= 200 && this.document <= 800 && b.qtyOrdered > 0.0001));
+            ( b.qtySatisfied > 0.0001 || !!b.sourceDoc || (this.document >= 200 && this.document <= 800 && b.qtyOrdered > 0.0001));
 
 
         return this.formBuilder.group({
@@ -329,16 +329,16 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     // save() {
     //     this.router.navigate(['../../lines-list'], {relativeTo: this.route}).then();
     // }
-    cancel() {
-        const obs = this.form.dirty ?
-            this.confirmationSrv.confirm('COMMON_CANCEL', 'COMMON_CANCEL') :
-            of(true);
-        obs.subscribe(res => {
-            if (res) {
-                this.router.navigate(['../../lines-list'], {relativeTo: this.route}).then();
-            }
-        });
-    }
+    // cancel() {
+    //             this.router.navigate(['../../lines-list'], {relativeTo: this.route}).then();
+    //     // const obs = this.form.dirty ?
+    //     //     this.confirmationSrv.confirm('COMMON_CANCEL', 'COMMON_CANCEL') :
+    //     //     of(true);
+    //     // obs.subscribe(res => {
+    //     //     if (res) {
+    //     //     }
+    //     // });
+    // }
 
     protected goBack() {
         this.router.navigate(['../../lines-list'], {relativeTo: this.route}).then();

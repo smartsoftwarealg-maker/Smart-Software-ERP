@@ -67,10 +67,6 @@ export class LtmTestingDetailComponent extends BaseEntityDetailComponent<LTMTest
         });
     }
 
-    // onLine(id: number) {
-    //     this.matterSrv.setParentId(id);
-    //     console.log('*****************id', id);
-    // }
 
     onMatter(m: LTMLineMatter) {
         this.testLookupSrv.setParentId(m.matterId);

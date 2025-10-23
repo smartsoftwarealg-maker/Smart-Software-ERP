@@ -64,6 +64,8 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                 this.shellSrv.setLoading(false);
                 this.goBack();
                 this.form.markAsUntouched();
+                this.form.markAsPristine();
+                this.form.markAsUntouched({onlySelf: false});
                 this.snackBarSrv.showSuccessMessage();
                 // this.saveButton.disabled = false;
             },
