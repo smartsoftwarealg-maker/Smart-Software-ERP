@@ -18,6 +18,8 @@
     "CDeliveryLine":                "Detail avoir livraison",
     "CDelivery":                    "Avoir livraison",
     "CInvoiceLine":                 "Detail avoir facture",
+    "CInvoice":                     "Avoir sur facture",
+    "EInvoice":                     "Facture export",
     "ReservationLine:":             "Detail reservation",
     "TransactionLine":               "Detail transaction",
     "POrderLine":                   "Detail commande fournisseur",
@@ -60,9 +62,6 @@
     "TProject":        "Convention transport",
     "AgentMerge": "Fusion tiers",
     "RREQUEST":   "Demande de pieces",
-
-
-
     "MAIN_MENU": "Menu principal",
     "ABOUT": "Information",
     "PAYROLL":"Paie",

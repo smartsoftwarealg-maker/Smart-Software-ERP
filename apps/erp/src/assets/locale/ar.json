@@ -18,6 +18,8 @@
     "CDeliveryLine":                "تفاصيل إلغاء التسليم",
     "CDelivery":                "إلغاء التسليم",
     "CInvoiceLine":                 "تفاصيل ألغاء الفاتورة",
+    "CInvoice":                 "ألغاء الفاتورة",
+    "EInvoice":                 "فاتورة التصدير",
     "ReservationLine:":             "تفاصيل الحجز",
     "TransactionLine":               "تفاصيل المعاملة",
     "OfferLine":                    "تفاصيل العرض",
