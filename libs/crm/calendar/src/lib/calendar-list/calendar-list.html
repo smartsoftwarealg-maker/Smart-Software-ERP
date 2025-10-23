@@ -1,6 +1,13 @@
 <div class="ctrl__div size">
-    <button matButton (click)="search()"><span><i
-        class="fa-solid fa-magnifying-glass"></i> {{ 'COMMON_SEARCH'|translate }}</span></button>
+
+    @if (isResponsible()) {
+        <mat-radio-group aria-label="Select an option" value="1" (change)="onRadioChange($event)">
+            <mat-radio-button value="1" translate>CRM_MY_CRM</mat-radio-button>
+            <mat-radio-button value="2" translate>CRM_COMPANY_CRM</mat-radio-button>
+        </mat-radio-group>
+    }
+
+    <button matButton (click)="search()"><span><i class="fa-solid fa-magnifying-glass"></i> {{ 'COMMON_SEARCH'|translate }}</span></button>
 </div>
 
 <div class="div_table size">
