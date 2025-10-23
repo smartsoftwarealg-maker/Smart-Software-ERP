@@ -65,7 +65,7 @@
                     <button mat-mini-fab
                             (click)="showSearchDialog()"
                             color="accent"
-                            [disabled]="form.controls['qtySatisfied'].value > 0.001"
+                            [disabled]="!form || !form.controls || form.controls['reference'].disabled"
                             [matTooltip]=message >
                         <i class="fas fa-search icon"></i>
                     </button>
@@ -109,17 +109,17 @@
                 </mat-form-field>
 
 
-                <mat-form-field id="vat2" class="default-50 sm-100">
+                <mat-form-field id="vat2" class="default-25 sm-50">
                     <mat-label><span translate>LOGISTICS_VAT</span>2</mat-label>
                     <input matInput formControlName="vat2" type="number" step="1">
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
                     <input matInput formControlName="charge" type="number" step="1">
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-25 sm-50">
                     <mat-label translate>COMMON_COST_CENTER</mat-label>
                     <ss-auto-complete matInput
                                       [model]="cCenterLookup"

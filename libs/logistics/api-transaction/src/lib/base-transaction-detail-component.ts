@@ -147,26 +147,26 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     }
 
     public override canDeactivate(): Observable<boolean> {
-        const parent = +(this.router.currentNavigation().extractedUrl.queryParamMap.get('parent') || '0');
-        return parent === 0 || !this.isEditable ?
+        return !this.isEditable ?
             of(true) :
-            this.entitySrv
-                .get(this.id)
-                .pipe(
-                    map(res => {
-                        if (res) {
-                            res.dirty = res?.dirty && res?.document >= 200 && res?.document <= 800;
-                        }
-                        return res;
-                    }),
-                    tap(res => {
-                        if (res?.dirty && this.form) {
-                            this.form.markAsDirty({ onlySelf: false });
-                            this.form.markAsUntouched({ onlySelf: false });
-                            this.snackBarSrv.showFailureMessage('COMMON_SAVE_REQUIRED');
-                        }
-                    }),
-                    switchMap(res => res?.dirty ? of(false) : super.canDeactivate()));
+            this.form.dirty?
+                this.confirmationSrv.confirmDontSave() :
+                this.entitySrv
+                    .get(this.id)
+                    .pipe(
+                        map(res => {
+                            if (res) {
+                                res.dirty = res?.dirty && res?.document >= 200 && res?.document <= 800;
+                                if (res?.dirty) {
+                                    this.form.markAsDirty({onlySelf: false});
+                                    this.form.markAsTouched({onlySelf: false});
+                                    this.form.markAsUntouched({onlySelf: false});
+                                    this.snackBarSrv.showFailureMessage('COMMON_SAVE_REQUIRED');
+                                }
+                            }
+                            return res.dirty;
+                        }),
+                        switchMap(dirty => dirty ?  this.confirmationSrv.confirmDontSave() : of(true)));
     }
 
     protected abstract showImportButton(): boolean;

@@ -149,30 +149,33 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             });
     }
 
-    finishLoading(e: TransactionLine) {
-        this.selectedRow = e;
-        this.form = this.setupForm(e);
-        const subs2 = this.form.get('qtyOrdered').valueChanges.subscribe(next => {
-            const isCancellation =
-                !this.loginSrv.appCtx.manager &&
-                !this.loginSrv.appCtx.responsible &&
-                (this.document === INVOICE_CANCELLATION ||
-                 this.document === DELIVERY_CANCELLATION)
-            if (typeof next === 'number') {
-                if ((next > 0.0 && this.selectedRow?.reference) || isCancellation) {
-                    this.form.get('reference').disable();
-                    this.form.get('store').disable();
-                } else {
-                    this.form.get('reference').enable();
-                    this.form.get('store').enable();
-                }
-            }
-        });
-
-        this.subscriptions.push(subs2);
-        this.shellSrv.setLoading(false);
-        this.onStore({ id: e.store, center: this.loginSrv.appCtx.center, description: '', storeId: e.store });
-    }
+    // finishLoading(e: TransactionLine) {
+    //     this.selectedRow = e;
+    //     this.form = this.setupForm(e);
+    //     // console.log('*************************isCance', this.document);
+    //     // const subs2 = this.form
+    //     //     .get('qtyOrdered')
+    //     //     .valueChanges.subscribe(next => {
+    //     //         const isCancellation =
+    //     //             !this.loginSrv.appCtx.manager &&
+    //     //             !this.loginSrv.appCtx.responsible &&
+    //     //             (this.document === INVOICE_CANCELLATION ||
+    //     //                 this.document === DELIVERY_CANCELLATION);
+    //     //         if (typeof next === 'number') {
+    //     //             if ((next > 0.0 && this.selectedRow?.reference) || isCancellation) {
+    //     //                 this.form.get('reference').disable();
+    //     //                 this.form.get('store').disable();
+    //     //             } else {
+    //     //                 this.form.get('reference').enable();
+    //     //                 this.form.get('store').enable();
+    //     //             }
+    //     //         }
+    //     //     });
+    //     //
+    //     // this.subscriptions.push(subs2);
+    //     this.shellSrv.setLoading(false);
+    //     this.onStore({ id: e.store, center: this.loginSrv.appCtx.center, description: '', storeId: e.store });
+    // }
 
     readForm(): TransactionLine {
         return this.form.getRawValue();
@@ -224,11 +227,16 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
 
     onStore(s: Lot) {
         this.articleSrv
-            .getPPrice(this.form.controls['reference'].value, s?.id || 0, this.parentId, this.id)
+            .getPPrice(this.form?.controls['reference'].value, s?.id || 0, this.parentId, this.id)
             .subscribe({
                 next: res => this.updateStockAndValue(res),
                 error: () => this.resetPrice()
             });
+    }
+
+    finishLoading(e: TransactionLine) {
+        super.finishLoading(e);
+        this.onStore({ id: e.store, center: this.loginSrv.appCtx.center, description: '', storeId: e.store });
     }
 
     public setupForm(b: TransactionLine): UntypedFormGroup {
@@ -244,17 +252,18 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 });
         }
 
-        const referenceDisabled =
+        const referenceIsDisabled =
             !this.isEditable ||
-            ((this.document === INVOICE_CANCELLATION || this.document === DELIVERY_CANCELLATION) && !this.loginSrv.appCtx.manager) ||
-            ( b.qtySatisfied > 0.0001 || (this.document === DOC_PRODUCTION && !!b.sourceDoc));
+            ((this.document === INVOICE_CANCELLATION || this.document === DELIVERY_CANCELLATION) && !this.loginSrv.appCtx.manager && !this.loginSrv.appCtx.responsible) ||
+            ( b.qtySatisfied > 0.0001 || !!b.sourceDoc || (this.document >= 200 && this.document <= 800 && b.qtyOrdered > 0.0001));
+
 
         return this.formBuilder.group({
             id:           [b.id],
             transacId:    [this.parentId],
-            reference:    [{ value: b.reference, disabled: referenceDisabled }],
+            reference:    [{ value: b.reference, disabled: referenceIsDisabled }],
             sourceDoc:    [b.sourceDoc],
-            store:        [{ value: b.store, disabled: !this.isEditable || b.qtySatisfied > 0.0}],
+            store:        [{ value: b.store, disabled: referenceIsDisabled }],
             qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: !this.isEditable || (this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && (b.sourceDoc == undefined || b.qtySatisfied < 0.00001) ))}, Validators.required],
             qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: !this.isEditable || (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 || this.document === DOC_PRODUCTION)}, Validators.required],
             qtyInvoiced:  [{ value: b.qtyInvoiced ||0, disabled: !this.isEditable || (this.document != DOC_RECEPTION)} , Validators.required],
@@ -320,16 +329,16 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     // save() {
     //     this.router.navigate(['../../lines-list'], {relativeTo: this.route}).then();
     // }
-    cancel() {
-        const obs = this.form.dirty ?
-            this.confirmationSrv.confirm('COMMON_CANCEL', 'COMMON_CANCEL') :
-            of(true);
-        obs.subscribe(res => {
-            if (res) {
-                this.router.navigate(['../../lines-list'], {relativeTo: this.route}).then();
-            }
-        });
-    }
+    // cancel() {
+    //             this.router.navigate(['../../lines-list'], {relativeTo: this.route}).then();
+    //     // const obs = this.form.dirty ?
+    //     //     this.confirmationSrv.confirm('COMMON_CANCEL', 'COMMON_CANCEL') :
+    //     //     of(true);
+    //     // obs.subscribe(res => {
+    //     //     if (res) {
+    //     //     }
+    //     // });
+    // }
 
     protected goBack() {
         this.router.navigate(['../../lines-list'], {relativeTo: this.route}).then();

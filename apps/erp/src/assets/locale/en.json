@@ -18,6 +18,8 @@
     "CDeliveryLine":    "Delivery cancellation Line",
     "CDelivery":        "Delivery cancellation",
     "CInvoiceLine":     "Invoice cancellation Line",
+    "CInvoice":         "Invoice cancellation",
+    "EInvoice":         "Export invoice",
     "ReservationLine:": "Reservation Line",
     "TransactionLine": "Transaction Line",
     "POrderLine":      "Purchase Order Line",
