@@ -30,8 +30,6 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         TranslatePipe,
         ReactiveFormsModule,
         RouterModule,
-
-
         DocInfoComponent,
         PaginationComponent
     ]
@@ -44,6 +42,7 @@ export class DeliveryCancellationLinesListComponent extends BaseTransactionLines
         'description',
         'qtyOrdered',
         'qtySatisfied',
+        'units',
         'price',
         'vat',
         'total'

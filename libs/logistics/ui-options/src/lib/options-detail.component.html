@@ -47,7 +47,6 @@
         <mat-form-field class="default-50 sm-100">
           <mat-label translate>LOGISTICS_PASSING_CLIENT</mat-label>
           <ss-auto-complete matInput
-            [required]="true"
             [model]="customerLookup"
             formControlName="passingClient">
           </ss-auto-complete>
@@ -75,6 +74,9 @@
           <mat-checkbox formControlName="blockNewLots" translate>STOCK_BLOCK_LOTS</mat-checkbox>
         </div>
 
+          <div class="default-50 sm-100">
+              <mat-checkbox formControlName="usesUnits" translate>STOCK_USES_UNITS</mat-checkbox>
+          </div>
       </form>
     }
   </mat-card-content>

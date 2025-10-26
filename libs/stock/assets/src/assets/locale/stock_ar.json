@@ -103,5 +103,7 @@
     "TRANSFER_REINTEGRATION":   "استرجاع التحويل",
     "GICA_CLASSES":             "فئة جيكا",
     "GICA_SUBCLASSES":          "فئة جيكا الفرعية",
-    "TOTAL_STOCK":              "إجمالي المخزون"
+    "TOTAL_STOCK":              "إجمالي المخزون",
+    "USES_UNITS":               "استعمل عدد الوحدات",
+    "UNITS":                    "الوحدات"
 }

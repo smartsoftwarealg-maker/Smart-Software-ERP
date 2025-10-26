@@ -103,5 +103,7 @@
     "TRANSFER_REINTEGRATION":  "Reintégration de cession",
     "GICA_CLASSES":            "Classes GICA",
     "GICA_SUBCLASSES":         "Sous-Classes GICA",
-    "TOTAL_STOCK":              "Stock total"
+    "TOTAL_STOCK":              "Stock total",
+    "USES_UNITS":               "Utilise unités d'article",
+    "UNITS":                    "Unités"
 }

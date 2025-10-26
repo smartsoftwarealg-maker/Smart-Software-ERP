@@ -66,7 +66,7 @@
                             (click)="showSearchDialog()"
                             color="accent"
                             [disabled]="!form || !form.controls || form.controls['reference'].disabled"
-                            [matTooltip]=message >
+                            [matTooltip]=message>
                         <i class="fas fa-search icon"></i>
                     </button>
                 </div>
@@ -87,6 +87,23 @@
                     }
                 </mat-form-field>
 
+                @if (usesUnits()) {
+                    <mat-form-field id="units" class="default-25 sm-50">
+                        <mat-label translate>STOCK_UNITS</mat-label>
+                        <mat-select formControlName="units">
+                            @for (u of packagingUnits; track u.units) {
+                                <mat-option [value]="u.units">
+                                    {{ u.description }}
+                                </mat-option>
+                            }
+                        </mat-select>
+
+                        @if (form.controls['units'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+                }
+
                 <mat-form-field class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_QTY_INVOICED</mat-label>
                     <input matInput formControlName="qtyInvoiced" type="number" step=".01" readonly>
@@ -99,6 +116,7 @@
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
+
 
                 <mat-form-field id="vat" class="default-25 sm-50">
                     <mat-label translate>LOGISTICS_VAT</mat-label>

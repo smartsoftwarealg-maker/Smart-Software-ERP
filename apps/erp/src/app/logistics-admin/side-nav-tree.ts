@@ -14,7 +14,7 @@ import {
     ABS_LOGISTICS_DOCUMENT_URL,
     ABS_LOGISTICS_ORDER_ANOMALIES,
     ABS_LOGISTICS_TRANSPORTER_URL,
-    ABS_LOGISTICS_DELIVERY_TIMES, ABS_LOGISTICS_AGENT_MERGE, ABS_LOGISTICS_SHIPMENT_MODES
+    ABS_LOGISTICS_DELIVERY_TIMES, ABS_LOGISTICS_AGENT_MERGE, ABS_LOGISTICS_SHIPMENT_MODES, ABS_LOGISTICS_PACKAGING_UNITS
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -100,6 +100,12 @@ export const logisticsAdminNavTree: SideNavNode = {
             icon: 'fa-solid fa-weight-hanging',
             route: ABS_LOGISTICS_UNITS,
             accessRights: 'Unit'
+        },
+        {
+            name: 'LOGISTICS_PACKAGING_UNITS',
+            icon: 'fa-solid fa-forklift',
+            route: ABS_LOGISTICS_PACKAGING_UNITS,
+            accessRights: 'PackagingUnit'
         },
         {
             name: 'LOGISTICS_DELIVERY_TIMES',

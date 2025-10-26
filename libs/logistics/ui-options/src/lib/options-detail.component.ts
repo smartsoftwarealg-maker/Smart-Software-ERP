@@ -104,6 +104,7 @@ export class OptionsDetailComponent
             usesLots:           [a.usesLots || false, Validators.required],
             blockNewLots:       [a.blockNewLots || false, Validators.required],
             prodStore:          [a.prodStore],
+            usesUnits:          [a.usesUnits || false, Validators.required],
         });
     }
 

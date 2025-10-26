@@ -18,7 +18,7 @@ import {
     LOGISTICS_ORDER_ANOMALIES_URL,
     LOGISTICS_TRANSPORTER_URL,
     DELIVERY_TIME_URL,
-    LOGISTICS_AGENT_MERGE_URL, LOGISTICS_DELIVERY_TIME_URL, LOGISTICS_SHIPMENT_MODE_URL
+    LOGISTICS_AGENT_MERGE_URL, LOGISTICS_DELIVERY_TIME_URL, LOGISTICS_SHIPMENT_MODE_URL, PACKAGING_UNITS_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -61,6 +61,8 @@ import {
     ShipmentModeDetailComponent,
     ShipmentModeListComponent
 } from '@ss/common/ui-lookup';
+
+import {PackagingUnitsDetailComponent, PackagingUnitsListComponent} from "@ss/logistics/packaging-units";
 
 export const mainRoutes: Routes = [
     // {
@@ -270,6 +272,23 @@ export const mainRoutes: Routes = [
             {
                 path: ':id',
                 component: DeliveryTimeDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: PACKAGING_UNITS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PackagingUnitsListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: PackagingUnitsDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService]
             },

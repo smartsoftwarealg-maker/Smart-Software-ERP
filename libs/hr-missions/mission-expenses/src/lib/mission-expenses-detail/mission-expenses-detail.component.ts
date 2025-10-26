@@ -101,7 +101,6 @@ export class MissionExpensesDetailComponent extends BaseEntityDetailComponent<Mi
         val.payMonth = (+formVal.payMonthY) * 100 + (+formVal.payMonthM);
         delete formVal.payMonthY;
         delete formVal.payMonthM;
-        console.log(val);
         return val;
     }
 }

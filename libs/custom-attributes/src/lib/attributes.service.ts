@@ -53,7 +53,6 @@ export class AttributesService extends BaseEntityService<AttribTempl> {
     }
 
     saveLookupValue(v: AttribVal): Observable<number> {
-        console.log(v);
         return v.id?
             this.httpSrv
                 .put(`/attributes/${v.code}/values`, v)

@@ -61,13 +61,14 @@
     flex-wrap: nowrap;
 }
 
+/* TODO: verify overflow: hidden??? */
 .static-container {
     position: absolute;
     top: 96px;
     right: 0;
     bottom: 0;
     left: 0;
-    overflow: auto;
+    overflow-y: auto;
     transition: top 750ms;
 
     .static-container-bottom-padding {

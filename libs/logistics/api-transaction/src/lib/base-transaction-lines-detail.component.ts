@@ -34,13 +34,17 @@ import { Agent, AgentService } from '@ss/logistics/api-agent';
 import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
 import { ArticleSearchDlg } from '@ss/logistics/article-search';
 import {DELIVERY_CANCELLATION, IMPORT_RECEPTION, INVOICE_CANCELLATION} from "@ss/workflow";
+import {PackagingUnitsService} from "@ss/logistics/packaging-units";
+import {PackagingUnit} from "@ss/logistics/packaging-units";
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
+    #packagingUnitSrv = inject(PackagingUnitsService);
     #dialog = inject(MatDialog);
     #costCenterSrv = inject(CostCenterService);
     #agentSrv = inject(AgentService);
     #priceIndex = 0;
+
     private locationSrv = inject(StockInfoService);
     private formBuilder = inject(UntypedFormBuilder);
     private articleSrv = inject(ArticleService);
@@ -50,6 +54,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     protected lotSrv = inject(LotsService);
     protected optionSrv =  inject(OptionService);
     protected loginSrv  =  inject(LoginService);
+    protected packagingUnits: PackagingUnit[] = [];
 
     public confirmationSrv = inject(ConfirmationDialogService);
     public snackBarSrv = inject(SnackBarService);
@@ -57,6 +62,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     public showStock = true;
 
     usesLots = signal(false);
+    usesUnits = signal(false);
 
     selectedRow: TransactionLine = null;
     agentId = 0;
@@ -92,8 +98,11 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 tap(res => {
                     this.mainStore = res.mainStore;
                     this.usesLots.set(res.usesLots);
+                    this.usesUnits.set(res.usesUnits);
                     this.storeLookup.showLot = res.usesLots;
                 }),
+                switchMap(res => res.usesUnits? this.#packagingUnitSrv.getData2(0, 50) : of([] as PackagingUnit[])),
+                tap(res => this.packagingUnits = res),
                 switchMap(() => this.entitySrv.getTransaction(this.parentId)),
                 tap(transac => this.agentId = transac.agent),
                 switchMap(() => this.agentId? this.#agentSrv.get(this.agentId) : of(null)),
@@ -257,6 +266,12 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             ((this.document === INVOICE_CANCELLATION || this.document === DELIVERY_CANCELLATION) && !this.loginSrv.appCtx.manager && !this.loginSrv.appCtx.responsible) ||
             ( b.qtySatisfied > 0.0001 || !!b.sourceDoc || (this.document >= 200 && this.document <= 800 && b.qtyOrdered > 0.0001));
 
+        const unitsIsDisable = !this.isEditable ||
+                                       b.qtySatisfied > 0.0 ||
+                                       ((this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 ) && b.qtyOrdered > 0.0) ||
+                                       (b.sourceDoc && this.document >= DOC_SEPARATOR_200 && this.document <= DOC_SEPARATOR_800 && b.qtyOrdered > 0.0);
+
+        const units = b.id && b.qtySatisfied > 0? (b.units || 1) : 1;
 
         return this.formBuilder.group({
             id:           [b.id],
@@ -264,20 +279,21 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             reference:    [{ value: b.reference, disabled: referenceIsDisabled }],
             sourceDoc:    [b.sourceDoc],
             store:        [{ value: b.store, disabled: referenceIsDisabled }],
-            qtyOrdered:   [{ value: b.qtyOrdered || 0, disabled: !this.isEditable || (this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && (b.sourceDoc == undefined || b.qtySatisfied < 0.00001) ))}, Validators.required],
-            qtySatisfied: [{ value: b.qtySatisfied ||0, disabled: !this.isEditable || (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 || this.document === DOC_PRODUCTION)}, Validators.required],
-            qtyInvoiced:  [{ value: b.qtyInvoiced ||0, disabled: !this.isEditable || (this.document != DOC_RECEPTION)} , Validators.required],
-            qtyReturned:  [{ value: b.qtyReturned ||0, disabled: true} , Validators.required],
+            qtyOrdered:   [{ value: b.qtyOrdered / units || 0, disabled: !this.isEditable || (this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && (b.sourceDoc == undefined || b.qtySatisfied < 0.00001) ))}, Validators.required],
+            qtySatisfied: [{ value: b.qtySatisfied / units ||0, disabled: !this.isEditable || (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 || this.document === DOC_PRODUCTION)}, Validators.required],
+            qtyInvoiced:  [{ value: b.qtyInvoiced / units ||0, disabled: !this.isEditable || (this.document != DOC_RECEPTION)} , Validators.required],
+            qtyReturned:  [{ value: b.qtyReturned / units||0, disabled: true} , Validators.required],
             price:        [{ value: b.price || 0, disabled: !this.isEditable }, Validators.required],
-            vat:          [{value: b.vat || 0, disabled: !this.isEditable }, Validators.required],
-            vat2:         [{value: b.vat2, disabled: !this.isEditable }],
-            observation:  [{value: b.observation, disabled: !this.isEditable }],
-            footerMemo:   [{value: b.footerMemo, disabled: !this.isEditable }],
+            vat:          [{ value: b.vat || 0, disabled: !this.isEditable }, Validators.required],
+            vat2:         [{ value: b.vat2, disabled: !this.isEditable }],
+            observation:  [{ value: b.observation, disabled: !this.isEditable }],
+            footerMemo:   [{ value: b.footerMemo, disabled: !this.isEditable }],
             position:     [{ value: b.position || 0, disabled: !this.isEditable }],
-            charge:       [{value: b.charge || 0, disabled: !this.isEditable }],
+            charge:       [{ value: b.charge || 0, disabled: !this.isEditable }],
             charge2:      [b.charge2 || 0],
             charge3:      [b.charge3 || 0],
             charge4:      [b.charge4 || 0],
+            units:        [{ value: units, disabled: unitsIsDisable }, Validators.min(1)],
             costCenter:   [{value: b.costCenter, disabled: !this.isEditable}],
             pprice:       [{value:b.pprice, disabled: !this.isEditable }],
             bomId:        [{ value: b.bomId, disabled: !this.isEditable || ( (this.document == DOC_PRODUCTION || this.document == DOC_PRODUCTION_ORDER) && b.qtySatisfied > 0.00001 )}],
@@ -302,6 +318,12 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             return;
         }
         const val = this.readForm();
+        if (this.usesUnits()) {
+            val.qtyOrdered *= val.units;
+            val.qtySatisfied *= val.units;
+            val.qtyInvoiced *= val.units;
+            val.qtyReturned *= val.units;
+        }
         val.id = this.queryId;
         this.entitySrv.update(val)
             .pipe(tap(i => {
@@ -320,6 +342,12 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 error: err => {
                     this.snackBarSrv.showFailureMessage();
                     this.shellSrv.setLoading(false);
+                    if (this.usesUnits()) {
+                        val.qtyOrdered /= val.units;
+                        val.qtySatisfied /= val.units;
+                        val.qtyInvoiced /= val.units;
+                        val.qtyReturned /= val.units;
+                    }
                     this.form?.reset(val);
                     this.saveButton.disabled = false;
                     throw err;

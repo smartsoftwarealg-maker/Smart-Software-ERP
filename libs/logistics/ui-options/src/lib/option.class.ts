@@ -25,7 +25,7 @@ export class Option {
     inventoryYear: number;
     disallowNonStockedOrder: boolean;
     lock_printed_documents: boolean;
-    uses_units: boolean;
+    usesUnits: boolean;
     arbitrary_uninvoicing: boolean;
     usesLots: boolean;
     art_accno_required: boolean;

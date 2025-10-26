@@ -31,12 +31,12 @@ if (environment.production) {
     enableProdMode();
 }
 
-bootstrapApplication(App, {
+bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule),
-        provideAnimationsAsync(),
+        // provideAnimationsAsync(),
         provideHttpClient(withInterceptorsFromDi(), withFetch()),
-        provideRouter(routes, withComponentInputBinding()),
+        provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
         { provide: ErrorHandler, useClass: CustomErrorHandler }
     ]
 }).catch((err) => {
