@@ -5,12 +5,16 @@ import {ShellService} from "@ss/common/ui-shell";
 import {switchMap} from "rxjs/operators";
 import {environment, langAssets} from "./environments/environment";
 import {sSpaceNavTree} from "./side-nav-tree";
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MessageComponent } from '@ss/common/ui-error-handler';
+
 
 @Component({
-    imports: [RouterModule],
+    imports: [RouterModule, MatProgressSpinner, MessageComponent],
     selector: 'app-root',
     templateUrl: './app.html',
     styleUrl: './app.scss',
+    standalone: true
 })
 export class App implements OnInit {
     protected title = 'sspace';
@@ -47,4 +51,6 @@ export class App implements OnInit {
             error: () => this.#loginSrv.logout().then()
         });
     }
+
+
 }

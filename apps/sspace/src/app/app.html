@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+@if (loaded) {
+    <div [dir]="langSrv.dir"
+         class="app-root-container">
+        <router-outlet></router-outlet>
+    </div>
+} @else {
+    <div class="spinner__div">
+        <mat-progress-spinner [diameter]="500"></mat-progress-spinner>
+    </div>
+}
+<ss-error-message></ss-error-message>
