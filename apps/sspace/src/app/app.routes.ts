@@ -1,5 +1,10 @@
 import { Route } from '@angular/router';
-import {COMMON_CUSTOMER_PROFILE_URL, SS_CUSTOMER_COMPLAINTS_URL} from "./common";
+import {
+    COMMON_CUSTOMER_PROFILE_URL,
+    SS_CUSTOMER_COMPLAINTS_URL,
+    SS_CUSTOMER_POLL_URL, SS_CUSTOMER_SUGGESTION_URL,
+    SSPACE_REPORTS_URL
+} from './common';
 import {
     AUTH_2FA_URL, BLOCKED_REASON_PAGE_URL,
     CanActivateService,
@@ -17,6 +22,11 @@ import {LoginComponent} from "@ss/common/ui-login";
 import {BlockedReasonComponent, CenterSelectComponent} from "@ss/common/ui-center-select";
 import {Auth2FAConfirmationComponent, PasswordUpdateComponent} from "@ss/auth-2fa";
 import {restCodeGuard} from "../../../cspace/customer-guards";
+import { CustomerPollComponent } from '@ss/scheduleds-sales/polls';
+import {
+    CustomerSuggestionsDetailComponent,
+    CustomerSuggestionsListComponent
+} from '@ss/scheduled-sales/customer-suggestions';
 
 export const appRoutes: Route[] = [
     {
@@ -44,11 +54,31 @@ export const appRoutes: Route[] = [
                     },
                 ]
             },
-
             {
                 path: COMMON_CUSTOMER_PROFILE_URL,
                 component: CustomerProfileComponent,
                 canActivate: [CustomerCanActivateService],
+            },
+            {
+                path: SS_CUSTOMER_POLL_URL,
+                component: CustomerPollComponent,
+                canActivate: [CustomerCanActivateService],
+            },
+            {
+                path: SS_CUSTOMER_SUGGESTION_URL,
+                children: [
+                    {
+                        path: LIST_URL,
+                        component: CustomerSuggestionsListComponent,
+                        canActivate: [CustomerCanActivateService]
+                    },
+                    {
+                        path: ':id',
+                        component: CustomerSuggestionsDetailComponent,
+                        canActivate: [CustomerCanActivateService],
+                        canDeactivate: [CanDeactivateService],
+                    },
+                ]
             },
 
             { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },

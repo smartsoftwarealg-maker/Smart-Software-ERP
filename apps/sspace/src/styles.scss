@@ -21,22 +21,6 @@ body {
     --admob-bottom-padding: 0px;
 }
 
-/* Default SnackBar style (no ad) */
-.snackbar-no-ad {
-    margin-bottom: 0;
-}
-
-/* SnackBar style when AdMob is visible */
-.snackbar-with-ad {
-    position: absolute;
-    bottom: 64px;
-    left: calc(50% - 170px);
-}
-
-.has-admob-banner {
-    padding-bottom: var(--admob-bottom-padding);
-}
-
 // Use these classes to style your components
 
 @mixin themes-patches() {
@@ -155,7 +139,7 @@ body {
             color: var(--mat-sys-on-primary);
         }
 
-        i, div, span {
+        div, .mat-mdc-icon-button {
             color: var(--mat-sys-on-primary);
         }
     }
@@ -259,6 +243,13 @@ button.mat-custom-time-minute {
     margin: 0 8px;
     max-width: calc(50% - 16px);
     width: calc(50% - 16px);
+}
+
+.default-75 {
+    display: inline-block;
+    margin: 0 8px;
+    max-width: calc(75% - 16px);
+    width: calc(75% - 16px);
 }
 
 .default-100 {
@@ -542,7 +533,7 @@ mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
 }
 
 .table_div {
-    height: calc(100% - 120px);
+    //height: calc(100% - 120px);
     overflow-x: auto;
 }
 
@@ -556,4 +547,15 @@ mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
 
 .pagination-container {
     flex-grow: 0;
+}
+
+/* SnackBar style when AdMob is visible */
+.snackbar-with-ad {
+    position: absolute;
+    bottom: 64px;
+    left: calc(50% - 170px);
+}
+
+.has-admob-banner {
+    padding-bottom: var(--admob-bottom-padding);
 }

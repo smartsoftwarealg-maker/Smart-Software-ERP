@@ -27,17 +27,16 @@ const routes: Routes = [
     { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
 ];
 
-
 if (environment.production) {
     enableProdMode();
 }
 
-bootstrapApplication(AppComponent, {
+bootstrapApplication(App, {
     providers: [
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule),
         provideAnimationsAsync(),
         provideHttpClient(withInterceptorsFromDi(), withFetch()),
-        provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
+        provideRouter(routes, withComponentInputBinding()),
         { provide: ErrorHandler, useClass: CustomErrorHandler }
     ]
 }).catch((err) => {

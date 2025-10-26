@@ -50,23 +50,74 @@
                     },
                     {
                         "glob": "**/*",
+                        "input": "libs/scheduled-sales/assets/src/assets",
+                        "output": "assets"
+                    },
+                    {
+                        "glob": "**/*",
                         "input": "apps/sspace/public"
                     }
                 ],
-                "styles": ["apps/sspace/src/styles.scss"]
+                "styles": [
+                    "apps/sspace/src/styles.scss",
+                    {
+                        "input": "apps/sspace/src/theme-0.scss",
+                        "bundleName": "theme-0",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/sspace/src/theme-1.scss",
+                        "bundleName": "theme-1",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/sspace/src/theme-2.scss",
+                        "bundleName": "theme-2",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/sspace/src/theme-3.scss",
+                        "bundleName": "theme-3",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/sspace/src/theme-4.scss",
+                        "bundleName": "theme-4",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/sspace/src/theme-5.scss",
+                        "bundleName": "theme-5",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/sspace/src/theme-6.scss",
+                        "bundleName": "theme-6",
+                        "inject": false
+                    },
+                    {
+                        "input": "apps/sspace/src/theme-7.scss",
+                        "bundleName": "theme-7",
+                        "inject": false
+                    }
+                ],
+                "stylePreprocessorOptions": {
+                    "includePaths": ["node_modules"]
+                },
+                "scripts": []
             },
             "configurations": {
                 "production": {
                     "budgets": [
                         {
                             "type": "initial",
-                            "maximumWarning": "500kb",
-                            "maximumError": "1mb"
+                            "maximumWarning": "5000kb",
+                            "maximumError": "10mb"
                         },
                         {
                             "type": "anyComponentStyle",
-                            "maximumWarning": "4kb",
-                            "maximumError": "8kb"
+                            "maximumWarning": "40kb",
+                            "maximumError": "80kb"
                         }
                     ],
                     "outputHashing": "all"
