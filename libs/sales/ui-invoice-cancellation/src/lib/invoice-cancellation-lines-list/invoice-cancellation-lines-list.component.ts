@@ -41,6 +41,7 @@ export class InvoiceCancellationLinesListComponent extends BaseTransactionLinesL
         'description',
         'qtyOrdered',
         'qtySatisfied',
+        'units',
         'price',
         'vat',
         'total'

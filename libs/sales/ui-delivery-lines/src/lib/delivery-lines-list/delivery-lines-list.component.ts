@@ -64,9 +64,7 @@ import { WeightCaptureDialogButtonComponent } from '@ss/sales/weight-capture';
         WeightCaptureDialogButtonComponent,
     ],
 })
-export class DeliveryLinesListComponent
-    extends BaseTransactionLinesListComponent
-    implements OnInit
+export class DeliveryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit
 {
     displayedColumns = [
         'position',
@@ -75,6 +73,7 @@ export class DeliveryLinesListComponent
         'description',
         'qtyOrdered',
         'qtySatisfied',
+        'units',
         'price',
         'vat',
         'total',

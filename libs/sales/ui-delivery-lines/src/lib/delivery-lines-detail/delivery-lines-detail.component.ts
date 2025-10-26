@@ -13,6 +13,7 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MatTooltip } from '@angular/material/tooltip';
+import {MaterialModule} from "@ss/common/api-common";
 
 @Component({
     selector: 'ss-delivery-lines-detail',
@@ -21,6 +22,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     standalone: true,
     imports: [
         MatMiniFabButton,
+        MaterialModule,
         MatCard,
         MatCardContent,
         FormsModule,
@@ -34,7 +36,7 @@ import { MatTooltip } from '@angular/material/tooltip';
         MatHint,
         CdkTextareaAutosize,
         TranslatePipe,
-        MatTooltip
+        MatTooltip,
     ]
 })
 export class DeliveryLinesDetailComponent extends BaseTransactionLinesDetailComponent {
@@ -42,10 +44,4 @@ export class DeliveryLinesDetailComponent extends BaseTransactionLinesDetailComp
         public inventoryLinesService: DeliveryLinesService) {
         super(inventoryLinesService, DOC_DELIVERY);
     }
-
-    // override setupForm(b: TransactionLine): UntypedFormGroup {
-    //     const form = super.setupForm(b);
-    //     form.controls['qtyOrdered']?.disable();
-    //     return form;
-    // }
 }

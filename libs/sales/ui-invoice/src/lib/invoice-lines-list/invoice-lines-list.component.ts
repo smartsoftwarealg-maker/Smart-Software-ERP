@@ -76,6 +76,7 @@ export class InvoiceLinesListComponent
         'description',
         'qtyOrdered',
         'qtySatisfied',
+        'units',
         'price',
         'vat',
         'total',

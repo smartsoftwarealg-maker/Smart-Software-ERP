@@ -3,11 +3,13 @@ import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {ImportInfo} from './import-info';
 import {HttpParams} from '@angular/common/http';
+import {Sort} from "@angular/material/sort";
 
 @Injectable({
     providedIn: 'root'
 })
 export class DocImportService {
+    private _sortColumn: string = null;
 
     constructor(private httpService: HttpService) { }
 
@@ -23,9 +25,10 @@ export class DocImportService {
             .set('number', numb)
             .set('agent', agent||0)
             .set('destination', destination)
+            .set('sort', this._sortColumn || 'number')
             .set('page', `${page}-${pageSize}`);
         const params1 = reference? params.set('reference', reference) : params;
-        return this.httpService.getData('/imports', page, pageSize, null, null, params1);
+        return this.httpService.getData('/imports', page, pageSize, this._sortColumn, null, params1);
     }
 
     importDoc(document: number, numb: number, destination: number): Observable<number> {
@@ -35,5 +38,13 @@ export class DocImportService {
             destination: destination
         };
         return this.httpService.put('/imports', data);
+    }
+
+    set sortColumn(s: Sort) {
+        this._sortColumn = (s.direction === 'desc' ? '-' : '') + s.active;
+    }
+
+    get sortColumn(): string {
+        return this._sortColumn;
     }
 }

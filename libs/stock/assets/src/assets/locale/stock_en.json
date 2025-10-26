@@ -104,5 +104,7 @@
     "TRANSFER_REINTEGRATION":  "Transfer reintegration",
     "GICA_CLASSES":              "GICA Classes",
     "GICA_SUBCLASSES":           "GICA Subclasses",
-    "TOTAL_STOCK":              "Total stock"
+    "TOTAL_STOCK":              "Total stock",
+    "USES_UNITS":               "Uses article units",
+    "UNITS":                    "Units"
 }

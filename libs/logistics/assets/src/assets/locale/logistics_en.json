@@ -211,5 +211,6 @@
     "COLLECTOR":             "Collector",
     "SHIPMENT_MODES":        "Shipment modes",
     "SHIPMENT_MODE":         "Shipment mode",
-    "DELIVERY_ADDRESS":      "Delivery address"
+    "DELIVERY_ADDRESS":      "Delivery address",
+    "PACKAGING_UNITS":       "Packaging units"
 }

@@ -17,13 +17,14 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { MatButton } from "@angular/material/button";
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import {MatSort, MatSortHeader, Sort} from '@angular/material/sort';
 
 @Component({
     selector: 'ss-doc-import',
     templateUrl: './doc-import.component.html',
     styleUrls: ['./doc-import.component.scss'],
     standalone: true,
-    imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, MatOption, MatInput, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatButton, PaginationComponent, DatePipe, TranslatePipe]
+    imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, MatOption, MatInput, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatButton, PaginationComponent, DatePipe, TranslatePipe, MatSort, MatSortHeader]
 })
 export class DocImportComponent implements OnInit {
     private destroyRef = inject(DestroyRef);
@@ -99,5 +100,10 @@ export class DocImportComponent implements OnInit {
                 this.importList = res.body;
                 this.paginator.elementCount = res.itemCount;
             });
+    }
+
+    sort(event: Sort) {
+        this.docImportService.sortColumn = event;
+        this.refresh();
     }
 }

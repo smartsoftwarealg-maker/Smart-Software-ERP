@@ -20,6 +20,10 @@ export class BaseEntityService<T> {
             );
     }
 
+    public getData2(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<T[]> {
+        return this.httpSrv.getData<T>(this.getUrl(), page, pageSize, filter, this._sortColumn || sortBy, extraPrams).pipe(map(data => data.body));
+    }
+
     public getListSimple(): Observable<T[]> {
         return this.httpSrv.get<T[]>(this.getUrl());
     }

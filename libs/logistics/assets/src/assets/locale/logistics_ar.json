@@ -209,5 +209,6 @@
     "COLLECTOR":             "المكلف",
     "SHIPMENT_MODES":        "طرق الشحن",
     "SHIPMENT_MODE":         "طريقة الشحن",
-    "DELIVERY_ADDRESS":      "عنوان التسليم"
+    "DELIVERY_ADDRESS":      "عنوان التسليم",
+    "PACKAGING_UNITS":       "وحدات التعبئة"
 }

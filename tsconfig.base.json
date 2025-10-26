@@ -829,7 +829,12 @@
             "payroll/payroll-options": [
                 "libs/payroll/payroll-options/src/index.ts"
             ],
-            "social/reimbursements": ["libs/social/reimbursements/src/index.ts"]
+            "social/reimbursements": [
+                "libs/social/reimbursements/src/index.ts"
+            ],
+            "@ss/logistics/packaging-units": [
+                "libs/logistics/packaging-units/src/index.ts"
+            ]
         }
     },
     "exclude": ["node_modules", "tmp"]

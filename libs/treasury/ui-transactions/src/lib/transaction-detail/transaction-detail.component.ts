@@ -132,7 +132,6 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
 
     override readForm(): TTransaction {
         const value = this.form.getRawValue();
-        console.log(value.transacDate);
         value.transacDate = dateToStr(value.transacDate ? value.transacDate : this.entitySrv.date);
         value.balance = (value.income ||0) - (value.expense || 0);
         value.journalId = this.entitySrv.journalId;

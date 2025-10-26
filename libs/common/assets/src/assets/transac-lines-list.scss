@@ -74,6 +74,11 @@ mat-table {
     border-left: white solid 1px;
 }
 
+.mat-column-units {
+    flex: 1 1 90px;
+    border-left: white solid 1px;
+    justify-content: center;
+}
 
 .add-button {
     position: absolute;
@@ -84,7 +89,6 @@ mat-table {
 }
 
 .container_div {
-    overflow-y: auto;
     height: 100%;
 }
 .pagination-container {

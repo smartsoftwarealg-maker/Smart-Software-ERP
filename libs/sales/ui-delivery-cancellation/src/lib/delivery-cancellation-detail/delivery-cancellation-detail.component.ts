@@ -45,7 +45,7 @@ export class DeliveryCancellationDetailComponent extends BaseTransactionDetailCo
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         protected dialog: MatDialog) {
-        super(deliveryService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_DELIVERY_CANCEL');
+        super(deliveryService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_DELIVERY_CANCELLATION');
     }
 
     protected showImportButton(): boolean {

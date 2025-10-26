@@ -8,6 +8,7 @@ export interface TransactionLine {
     qtySatisfied: number;
     qtyInvoiced: number;
     qtyReturned: number;
+    units: number;
     price: number;
     vat: number;
     vat2: number;
@@ -25,4 +26,5 @@ export interface TransactionLine {
     charge4: number;
     bomId?: number;
     costCenter?: number;
+    unitsDescription?: string;
 }

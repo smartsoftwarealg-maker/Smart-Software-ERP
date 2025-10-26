@@ -56,7 +56,6 @@ export class InterStoreTransferLinesDetailComponent
 
     constructor(protected override entitySrv: InterStoreTransferLinesService) {
         super(entitySrv, 'PROD_INTER_STORE_TRANSFER_DETAIL');
-        this.articleLookup.onValueChanged = (e) => console.log(e);
     }
 
 

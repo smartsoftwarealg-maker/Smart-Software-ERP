@@ -78,13 +78,32 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field id="qtySatisfied" class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
-                    <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
-                    @if (form.controls['qtySatisfied'].hasError('required')) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                @if (usesUnits()) {
+                    <mat-form-field id="qtySatisfied" class="default-25 sm-50">
+                        <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
+                        <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
+                        @if (form.controls['qtySatisfied'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+                    <mat-form-field id="units" class="default-25 sm-50">
+                        <mat-label translate>STOCK_UNITS</mat-label>
+                        <input matInput formControlName="units" type="number" step="1" required min="1" max="100">
+                        @if (form.controls['units'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+                } @else {
+                    @if (usesUnits()) {
+                        <mat-form-field id="units" class="default-50 sm-100">
+                            <mat-label translate>STOCK_UNITS</mat-label>
+                            <input matInput formControlName="units" type="number" step="1" required min="1" max="100">
+                            @if (form.controls['units'].hasError('required')) {
+                                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                            }
+                        </mat-form-field>
                     }
-                </mat-form-field>
+                }
 
                 <mat-form-field id="price" class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_PRICE</mat-label>

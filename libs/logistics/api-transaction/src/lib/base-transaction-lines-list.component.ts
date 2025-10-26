@@ -11,24 +11,30 @@ import {FormControl} from '@angular/forms';
 import { Directive, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { OptionService } from '@ss/logistics/ui-options';
+import {PackagingUnitsService} from "@ss/logistics/packaging-units";
+import {PackagingUnit} from "../../../packaging-units/src/lib/packaging-units.api";
 
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
+    #packagingUnitSrv = inject(PackagingUnitsService);
     #optionSrv =  inject(OptionService);
-    private _isEditable_ = true;
+    #_isEditable_ = true;
+    #_unitsMap = new Map<number, string>();
+
     protected loginSrv = inject(LoginService);
     protected subscription: Subscription = null;
+    readonly pagination = PaginationModel.newInstance();
+
     searchText = new FormControl<string>('');
     parentId: number;
     data: TransactionLine[];
     selectedId: number;
     selectedRow: TransactionLine = null;
     usesLots = signal(false);
+    usesUnits = signal(false);
 
     displayedColumns: string[] = [];
 
-    private _updated = false;
-    readonly pagination = PaginationModel.newInstance();
 
     constructor(
         public detailSrv: TransactionLinesClass,
@@ -44,7 +50,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.parentId = this.detailSrv.getParentId();
-        this._isEditable_ = this.detailSrv.editable;
+        this.#_isEditable_ = this.detailSrv.editable;
         // this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
 
         this.#optionSrv
@@ -52,7 +58,15 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
             .pipe(
                 tap(res => {
                     this.usesLots.set(res.usesLots);
-                    this.displayedColumns = this.displayedColumns.filter(e => res.usesLots || (e !== 'lotNumber' && e !== 'expirationDate' && e !== 'storeName') );
+                    this.usesUnits.set(res.usesUnits);
+                    this.displayedColumns = this.displayedColumns
+                        .filter(e => (res.usesLots || (e !== 'lotNumber' && e !== 'expirationDate' && e !== 'storeName')) &&
+                                            (res.usesUnits || (e !== 'units')));
+                }),
+                switchMap(res => res.usesUnits? this.#packagingUnitSrv.getData2(0, 50) : of([] as PackagingUnit[])),
+                tap(res => {
+                    this.#_unitsMap.clear();
+                    res.forEach(e => this.#_unitsMap.set(e.units, e.description));
                 }),
                 switchMap(() => this.loadDetailLines()))
             .subscribe(() => this.shellSrv.setLoading(false));
@@ -67,7 +81,10 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
 
     public loadDetailLines(): Observable<TransactionLine[]> {
         return (this.detailSrv.getParentId()? this.detailSrv.getPage(this.pagination, this.searchText.value, null) : of([]))
-            .pipe(tap(data => this.data = data));
+            .pipe(tap(data => {
+                this.data = data;
+                this.data.forEach(d => d.unitsDescription = this.#_unitsMap.get(d.units)||d.units+'')
+            }));
     }
 
     select(row: TransactionLine) {
@@ -107,9 +124,9 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         }
     }
 
-    get updated() {
-        return this._updated;
-    }
+    // get updated() {
+    //     return this._updated;
+    // }
 
 
     unsubscribe(): void {
@@ -120,13 +137,13 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         this.subscription?.unsubscribe();
     }
 
-    @Input()
-    set isEditable(e: boolean) {
-        this._isEditable_ = e;
-    }
+    // @Input()
+    // set isEditable(e: boolean) {
+    //     this.#_isEditable_ = e;
+    // }
 
     get isEditable() {
-        return this._isEditable_;
+        return this.#_isEditable_;
     }
 
     @Input()
