@@ -54,14 +54,14 @@
         <ng-container matColumnDef="dueDate">
             <mat-header-cell *matHeaderCellDef translate>CRM_DUE_DATE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.dueDate | date: 'dd/MM/yyyy' }}
+                {{ e.dueDate | date: 'dd/MM/yyyy HH:mm' }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="completionDate">
             <mat-header-cell *matHeaderCellDef translate>CRM_COMPLETION_DATE</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.completionDate | date: 'dd/MM/yyyy' }}
+                {{ e.completionDate | date: 'dd/MM/yyyy HH:mm' }}
             </mat-cell>
         </ng-container>
 
