@@ -235,6 +235,8 @@
     "JOURNAL": "Journal",
     "PROJECT": "Project",
     "PROJECTS": "Projects",
+    "SALES_PROJECTS": "Sales projects",
+    "PURCHASE_CONTRACTS": "Purchase contracts",
     "COUNT": "Count",
     "FURNITURE_STATUS": "Status",
     "QTY": "Qty",

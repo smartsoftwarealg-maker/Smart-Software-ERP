@@ -237,6 +237,8 @@
     "NO_":                "رقم",
     "JOURNAL":            "الدفتر",
     "PROJECTS":           "المشاريع",
+    "SALES_PROJECTS":     "مشاريع البيع",
+    "PURCHASE_CONTRACTS":  "مشاريع الشراء",
     "PROJECT":             "مشروع",
     "COUNT":               "عدد",
     "FURNITURE_STATUS":    "حالة الأثاث",

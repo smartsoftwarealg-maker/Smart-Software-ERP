@@ -40,7 +40,7 @@
         </ng-container>
 
         <ng-container matColumnDef="customerName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_TRANSPORTER</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{e.customerName}}
             </mat-cell>
@@ -53,12 +53,12 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="wilaya">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_WILAYA</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{e.wilayaName }}
-            </mat-cell>
-        </ng-container>
+<!--        <ng-container matColumnDef="wilaya">-->
+<!--            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_WILAYA</mat-header-cell>-->
+<!--            <mat-cell *matCellDef="let e">-->
+<!--                {{e.wilayaName }}-->
+<!--            </mat-cell>-->
+<!--        </ng-container>-->
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
