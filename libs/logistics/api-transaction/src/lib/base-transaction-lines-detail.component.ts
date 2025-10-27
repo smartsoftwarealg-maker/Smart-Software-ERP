@@ -271,7 +271,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                                        ((this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 ) && b.qtyOrdered > 0.0) ||
                                        (b.sourceDoc && this.document >= DOC_SEPARATOR_200 && this.document <= DOC_SEPARATOR_800 && b.qtyOrdered > 0.0);
 
-        const units = b.id && b.qtySatisfied > 0? (b.units || 1) : 1;
+        const units = b.units || 1;
 
         return this.formBuilder.group({
             id:           [b.id],

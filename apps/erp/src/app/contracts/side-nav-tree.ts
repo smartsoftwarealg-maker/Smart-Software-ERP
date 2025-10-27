@@ -31,13 +31,13 @@ export const contractsNavTree: SideNavNode = {
             accessRights: 'ProjectMotive'
         },
         {
-            name: 'COMMON_PROJECTS',
+            name: 'COMMON_SALES_PROJECTS',
             icon: 'fa-solid fa-file-signature',
             route: ABS_CONTRACTS_PROJECT_URL,
             accessRights: 'SProject'
         },
         {
-            name: 'COMMON_CONTRACTS',
+            name: 'COMMON_PURCHASE_CONTRACTS',
             icon: 'fa-solid fa-file-contract',
             route: ABS_CONTRACTS_CONTRACT_URL,
             accessRights: 'PProject'

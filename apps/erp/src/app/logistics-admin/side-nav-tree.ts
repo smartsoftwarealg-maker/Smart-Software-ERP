@@ -36,19 +36,19 @@ export const logisticsAdminNavTree: SideNavNode = {
             accessRights: 'Article'
         },
         {
-            name: 'COMMON_AGENT',
+            name: 'COMMON_AGENTS',
             icon: 'fas fa-user',
             route: ABS_LOGISTICS_AGENT_URL,
             accessRights: 'Agent'
         },
         {
-            name: 'LOGISTICS_SUPPLIER',
+            name: 'LOGISTICS_SUPPLIERS',
             icon: 'fa-solid fa-handshake',
             route: ABS_LOGISTICS_SUPPLIER_URL,
             accessRights: 'Supplier'
         },
         {
-            name: 'LOGISTICS_CUSTOMER',
+            name: 'LOGISTICS_CUSTOMERS',
             icon: 'fa-solid fa-cart-shopping',
             route: ABS_LOGISTICS_CUSTOMER_URL,
             accessRights: 'Customer'

@@ -41,7 +41,6 @@ export class TransportContractListComponent extends BaseEntityListComponent<Proj
         'customerName',
         'fromDate',
         'toDate',
-        'wilaya'
     ];
     constructor(
         public override entitySrv: TransportContractService,
