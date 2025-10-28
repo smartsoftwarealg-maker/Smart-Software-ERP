@@ -62,7 +62,7 @@ export class PurchaseContractDetailComponent extends BaseEntityDetailComponent<P
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_CONTRACTS');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PURCHASE_CONTRACTS');
         this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
         this.supplierLookupModel.onObjectSelected = e => this.entitySrv.setParentId(e.id || 0);
         // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);
@@ -89,7 +89,8 @@ export class PurchaseContractDetailComponent extends BaseEntityDetailComponent<P
             salesPurchase:  [2],
             wilaya:         [b.wilaya],
             fiscalId:       [b.fiscalId],
-            isBlocked:      [b.isBlocked||false]
+            isBlocked:      [b.isBlocked||false],
+            multiCenters:   [b.multiCenters||false]
         });
     }
 

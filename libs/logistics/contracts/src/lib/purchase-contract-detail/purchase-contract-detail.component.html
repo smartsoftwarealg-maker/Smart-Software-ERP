@@ -26,7 +26,7 @@
         </mat-form-field>
 
         <mat-form-field class="default-50 sm-100">
-          <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+          <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
           <ss-auto-complete matInput
             [model]="supplierLookupModel"
             formControlName="customer">
@@ -46,16 +46,6 @@
           <ss-date-picker formControlName="toDate"></ss-date-picker>
         </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-          <mat-label translate>COMMON_WILAYA</mat-label>
-          <ss-auto-complete matInput
-            [model]="wilayaLookup"
-            formControlName="wilaya">
-          </ss-auto-complete>
-          @if (form.controls['wilaya'].invalid) {
-            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-          }
-        </mat-form-field>
 
         <mat-form-field class="default-50 sm-100">
           <mat-label translate>COMMON_TYPE</mat-label>
@@ -73,6 +63,17 @@
           <input matInput formControlName="projMotive" type="text" autofocus maxlength="70">
         </mat-form-field>
 
+          <mat-form-field class="default-50 sm-100">
+              <mat-label translate>COMMON_WILAYA</mat-label>
+              <ss-auto-complete matInput
+                                [model]="wilayaLookup"
+                                formControlName="wilaya">
+              </ss-auto-complete>
+              @if (form.controls['wilaya'].invalid) {
+                  <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+              }
+          </mat-form-field>
+
         <mat-form-field class="default-50 sm-100">
           <mat-label translate>LOGISTICS_AWARD_PROCEDURE</mat-label>
           <ss-auto-complete matInput
@@ -81,12 +82,15 @@
           </ss-auto-complete>
         </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-          <mat-label translate>LOGISTICS_ARTICLE_NO</mat-label>
-          <input matInput formControlName="fiscalId" type="text" maxlength="70">
-        </mat-form-field>
+<!--        <mat-form-field class="default-50 sm-100">-->
+<!--          <mat-label translate>LOGISTICS_ARTICLE_NO</mat-label>-->
+<!--          <input matInput formControlName="fiscalId" type="text" maxlength="70">-->
+<!--        </mat-form-field>-->
         <div id="manager" class="default-50 sm-100">
           <mat-checkbox formControlName="isBlocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
+        </div>
+        <div id="multiCenters" class="default-50 sm-100">
+          <mat-checkbox formControlName="multiCenters" translate>LOGISTICS_MULTI_CENTERS</mat-checkbox>
         </div>
       </form>
     }

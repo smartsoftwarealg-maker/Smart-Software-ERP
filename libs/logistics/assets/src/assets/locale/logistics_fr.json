@@ -212,5 +212,6 @@
     "SHIPMENT_MODES":        "Modes de transport",
     "SHIPMENT_MODE":         "Mode de transport",
     "DELIVERY_ADDRESS":      "Adresse de livraison",
-    "PACKAGING_UNITS":       "Unités d'emballage"
+    "PACKAGING_UNITS":       "Unités d'emballage",
+    "MULTI_CENTERS":         "Centres multiples"
 }

@@ -56,6 +56,7 @@ export interface Project {
     odsDate?: Date;
     representative?: string;
     extendedMode?: boolean;
+    multiCenters: boolean;
 }
 
 export interface ProjectArticle {
