@@ -64,7 +64,7 @@ export class PurchaseContractListComponent extends BaseEntityListComponent<Proje
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'COMMON_CONTRACTS');
+            'COMMON_PURCHASE_CONTRACTS');
         this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
         this.agentLookup.onObjectSelected = a => this.onCustomer(a);
     }

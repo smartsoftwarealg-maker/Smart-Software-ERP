@@ -28,9 +28,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
-       
+
 
         RouterModule,
         PaginationComponent,
@@ -67,7 +67,7 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-                'COMMON_PROJECTS');
+                'COMMON_SALES_PROJECTS');
         this.entitySrv.setParentId(0);
         this.agentLookup.onObjectSelected = a => this.onCustomer(a);
     }

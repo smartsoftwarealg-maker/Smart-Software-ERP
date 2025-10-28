@@ -213,5 +213,6 @@
     "SHIPMENT_MODES":        "Shipment modes",
     "SHIPMENT_MODE":         "Shipment mode",
     "DELIVERY_ADDRESS":      "Delivery address",
-    "PACKAGING_UNITS":       "Packaging units"
+    "PACKAGING_UNITS":       "Packaging units",
+    "MULTI_CENTERS":         "Multi centers"
 }

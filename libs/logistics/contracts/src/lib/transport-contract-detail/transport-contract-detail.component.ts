@@ -89,7 +89,8 @@ export class TransportContractDetailComponent extends BaseEntityDetailComponent<
             salesPurchase:  [2],
             wilaya:         [b.wilaya],
             fiscalId:       [b.fiscalId],
-            isBlocked:      [b.isBlocked||false]
+            isBlocked:      [b.isBlocked||false],
+            multiCenters:   [b.multiCenters||false]
         });
     }
 }

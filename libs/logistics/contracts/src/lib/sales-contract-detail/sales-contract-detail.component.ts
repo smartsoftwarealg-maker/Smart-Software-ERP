@@ -60,7 +60,7 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_PROJECTS');
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_SALES_PROJECTS');
         this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
         this.customerLookupModel.onObjectSelected = a => this.entitySrv.setParentId(a?.id || 0);
         // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);
@@ -87,7 +87,8 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
             salesPurchase:  [1],
             fiscalId:       [b.fiscalId],
             wilaya:         [b.wilaya],
-            isBlocked:      [b.isBlocked||false]
+            isBlocked:      [b.isBlocked||false],
+            multiCenters:   [b.multiCenters||false]
         });
     }
 
