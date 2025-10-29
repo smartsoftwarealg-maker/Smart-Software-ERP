@@ -47,7 +47,7 @@
                         <mat-label translate>ADMINISTRATION_ABBREVIATION</mat-label>
                         <input matInput formControlName="abbreviation" type="text">
                         @if (form.controls['abbreviation'].invalid) {
-                            <mat-error [translate]="{maxLen: 3}">
+                            <mat-error [translate]="{maxLen: 4}">
                                 COMMON_FIELD_MAX_LENGTH
                             </mat-error>
                         }
