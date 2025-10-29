@@ -45,7 +45,6 @@ import {CRMOpportunityService} from "../../crm-opportunity.service";
         MatOption,
         TranslateDirective,
         MatButton,
-        MatError,
         DatePickerComponent,
         MaterialModule,
         UiAutoCompleteComponent,

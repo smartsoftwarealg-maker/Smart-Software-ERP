@@ -88,7 +88,7 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
             activityCode:   [b.activityCode],
             payMonth:       [b.payMonth],
             bankRib:        [b.bankRib],
-            abbreviation:   [b.abbreviation, Validators.maxLength(3)],
+            abbreviation:   [b.abbreviation, Validators.maxLength(4)],
             fiscalId:       [b.fiscalId],
             commReg:        [b.commReg],
             addressAr:      [b.addressAr],

@@ -30,7 +30,7 @@ import {
     BranchService,
     ConsumerService,
     CustomerService,
-    SupplierService
+    SupplierService, TransporterService
 } from '@ss/logistics/api-agent';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
 import { UserListService } from '@ss/common/api-users';
@@ -44,6 +44,7 @@ import { OptionService } from '@ss/logistics/ui-options';
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     #deliveryTimeSrv = inject(DeliveryTimeService);
     #shipmentModeSrv = inject(ShipmentModeService);
+    #transporterSrv = inject(TransporterService);
 
     private CONSUMPTION_DOCUMENT = 260;
     private PURCHASE_REQUEST = 10;
@@ -97,7 +98,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public purchaseProjectLookup = new ProjectLookupModel(this.purchaseProjectSrv);
     public salesProjectLookup = new ProjectLookupModel(this.salesProjectSrv);
     public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
-    public transporterAutoCompleteModel = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
+    public transporterLookup = new DefaultAutoCompleteModel<Agent>(this.#transporterSrv, 'id', 'denomination');
     public consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
     public executionRef = 0;
