@@ -8,11 +8,11 @@ export interface CRMOpportunityActivity {
     activityType: string;
     subject: string;
     detail?: string;
-    dueDate?: string;
+    dueDate?: Date;
     priority: string;
     duration: number;
     status: string;
-    completionDate?: Date;
+    completionDate?: Date ;
     feedback?: string;
     ownerId: number;
     teamId?: number;
