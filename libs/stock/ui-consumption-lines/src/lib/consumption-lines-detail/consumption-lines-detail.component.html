@@ -56,7 +56,7 @@
                     <button mat-mini-fab
                             (click)="showSearchDialog()"
                             color="accent"
-                            [disabled]="form.controls['qtySatisfied'].value > 0.001"
+                            [disabled]="referenceIsDisabled()"
                             [matTooltip]=message >
                         <i class="fas fa-search icon"></i>
                     </button>

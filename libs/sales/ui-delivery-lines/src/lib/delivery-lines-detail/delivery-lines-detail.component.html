@@ -65,7 +65,7 @@
                     <button mat-mini-fab
                             (click)="showSearchDialog()"
                             color="accent"
-                            [disabled]="!form || !form.controls || form.controls['reference'].disabled"
+                            [disabled]="referenceIsDisabled()"
                             [matTooltip]=message>
                         <i class="fas fa-search icon"></i>
                     </button>
