@@ -1,121 +1,100 @@
-<div class="ctrl__div size">
-    <button matButton (click)="cancel()">
-        <span> <i class="fa-solid fa-rotate-right"></i> {{ 'COMMON_CANCEL'|translate }}</span>
+<div class="ctrl_div b-primary">
+    <button mat-mini-fab color="primary"
+            matTooltip="{{ 'COMMON_SAVE' | translate }}"
+            (click)="save()"
+            [disabled]="!form?.valid">
+        <i class="fas fa-save"></i>
     </button>
-    <button matButton (click)="save()"><span><i
-            class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}</span></button>
+    <button mat-mini-fab color="warn"
+            matTooltip="{{ 'COMMON_CANCEL' | translate }}"
+            (click)="cancel()">
+        <i class="fas fa-redo"></i>
+    </button>
 </div>
-@if (form !== null) {
-    <form [formGroup]="form">
-        <div class="content__div">
-            <mat-form-field>
-                <mat-label translate>CRM_ACTIVITY_TYPE</mat-label>
-                <mat-select formControlName="activityType">
-                    @for (a of ACTIVITY_TYPE; track a) {
-                        <mat-option [value]="a" translate>CRM_{{ a }}</mat-option>
-                    }
-                </mat-select>
-                @if (form.controls['activityType'].invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
 
-            <mat-form-field class="medium">
-                <mat-label translate>COMMON_SUBJECT</mat-label>
-                <input matInput type="text" formControlName="subject" required>
-                @if (form.controls['subject'].invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label translate>COMMON_DETAIL</mat-label>
-                <input matInput type="text" formControlName="detail">
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label translate>CRM_DUE_DATE</mat-label>
-                <ss-date-picker formControlName="dueDate"
-                                [type]="'date'">
-                </ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label translate>MISSION_DURATION</mat-label>
-                <input matInput type="number" formControlName="duration">
-                @if (form.controls['duration'].invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label translate>CRM_COMPLETION_DATE</mat-label>
-                <ss-date-picker formControlName="completionDate"
-                                [type]="'date'">
-                </ss-date-picker>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label translate>COMMON_STATUS</mat-label>
-                <mat-select formControlName="status">
-                    @for (s of STATUS; track s) {
-                        <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
-                    }
-                </mat-select>
-                @if (form.controls['status'].invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label translate>CRM_PRIORITY</mat-label>
-                <mat-select formControlName="priority">
-                    @for (p of PRIORITY; track p) {
-                        <mat-option [value]="p" translate>CRM_{{ p }}</mat-option>
-                    }
-                </mat-select>
-                @if (form.controls['priority'].invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label translate>COMMON_TEAM</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="teamLookup"
-                                  formControlName="teamId">
-                </ss-auto-complete>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label translate>CRM_ASSIGNED_TO</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="userLookup"
-                                  formControlName="ownerId" required>
-                </ss-auto-complete>
-                @if (form.controls['ownerId'].invalid) {
-                    <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                }
-            </mat-form-field>
-
-            @if (form.controls['activityType'].value !== 'EMAIL') {
-                <mat-form-field class="large">
-                    <mat-label translate>CRM_FEEDBACK</mat-label>
-                    <input matInput type="text" formControlName="feedback">
+<mat-card>
+    @if (form) {
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="form-grid">
+                <mat-form-field>
+                    <mat-label translate>CRM_ACTIVITY_TYPE</mat-label>
+                    <mat-select formControlName="activityType">
+                        @for (a of ACTIVITY_TYPE; track a) {
+                            <mat-option [value]="a" translate>CRM_{{ a }}</mat-option>
+                        }
+                    </mat-select>
                 </mat-form-field>
-            }
-        </div>
-    </form>
-    @if (form.controls['activityType'].value === 'EMAIL') {
-        <div class="editor">
-            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary">
-            </ngx-editor-menu>
-            <ngx-editor [editor]="editor" [formControl]="editorContent">
-            </ngx-editor>
-        </div>
-        <div class="send__div">
-            <button mat-button color="primary" (click)="send()" translate>COMMON_SEND</button>
-        </div>
-    }
-}
 
+                <mat-form-field>
+                    <mat-label translate>COMMON_SUBJECT</mat-label>
+                    <input matInput formControlName="subject" required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label translate>COMMON_DETAIL</mat-label>
+                    <input matInput formControlName="detail">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label translate>CRM_DUE_DATE</mat-label>
+                    <ss-date-picker formControlName="dueDate" [type]="'datetime'"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label translate>MISSION_DURATION</mat-label>
+                    <input matInput type="number" formControlName="duration">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label translate>CRM_COMPLETION_DATE</mat-label>
+                    <ss-date-picker formControlName="completionDate" [type]="'datetime'"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label translate>COMMON_STATUS</mat-label>
+                    <mat-select formControlName="status">
+                        @for (s of STATUS; track s) {
+                            <mat-option [value]="s" translate>CRM_{{ s }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label translate>CRM_PRIORITY</mat-label>
+                    <mat-select formControlName="priority">
+                        @for (p of PRIORITY; track p) {
+                            <mat-option [value]="p" translate>CRM_{{ p }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label translate>COMMON_TEAM</mat-label>
+                    <ss-auto-complete matInput [model]="teamLookup" formControlName="teamId"></ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label translate>CRM_ASSIGNED_TO</mat-label>
+                    <ss-auto-complete matInput [model]="userLookup" formControlName="ownerId"></ss-auto-complete>
+                </mat-form-field>
+
+                @if (form.controls['activityType'].value !== 'EMAIL') {
+                    <mat-form-field class="span-2">
+                        <mat-label translate>CRM_FEEDBACK</mat-label>
+                        <textarea matInput formControlName="feedback" rows="3"></textarea>
+                    </mat-form-field>
+                }
+            </div>
+        </form>
+
+        @if (form.controls['activityType'].value === 'EMAIL') {
+            <div class="editor">
+                <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary"></ngx-editor-menu>
+                <ngx-editor [editor]="editor" [formControl]="editorContent"></ngx-editor>
+            </div>
+            <div class="send__div">
+                <button mat-button color="primary" (click)="send()" translate>COMMON_SEND</button>
+            </div>
+        }
+    }
+</mat-card>

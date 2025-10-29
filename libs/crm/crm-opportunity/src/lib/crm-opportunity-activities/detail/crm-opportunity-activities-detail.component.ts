@@ -98,7 +98,7 @@ export class CrmOpportunityActivitiesDetailComponent
             activityType: [a?.activityType || '', Validators.required],
             subject: [a?.subject || '', Validators.required],
             detail: [a?.detail],
-            dueDate: [a?.dueDate],
+            dueDate: [a?.dueDate || new Date()],
             priority: [a?.priority, Validators.required],
             duration: [a?.duration || '', Validators.required],
             status: [a?.status, Validators.required],

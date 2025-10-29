@@ -1,43 +1,30 @@
-@use '@angular/material' as mat;
-
 mat-card {
-    border-radius: 1.4em;
+    width: 96%;
+    max-width: 1200px;
+    margin: 8px auto;
+    border-radius: 1em;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.content__div > ss-crm-leads-activity-lines-detail {
-    flex: 1 1 100%;
-    width: 100%;
-}
-
-.ctrl__div {
+.ctrl_div {
+    width: 96%;
+    max-width: 1200px;
+    margin: 5px auto;
     display: flex;
     justify-content: flex-end;
+    gap: 0.5em;
+    padding: 8px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1em;
 }
 
-.content__div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-items: stretch;
-    justify-content: stretch;
-    gap: 1em;
-    width: 100%;
-    overflow: hidden;
-    padding-top: .5em;
-
-    .medium {
-        flex : 1.4 1 auto;
-    }
-
-    .large {
-        flex : 2 1 auto;
-    }
-}
-
-.content__div,
-form, .size {
-    width: 100%;
-    margin: 8px auto;
+.form-grid .span-2 {
+    grid-column: span 2;
 }
 
 .send__div {
@@ -48,46 +35,19 @@ form, .size {
     margin: 8px auto;
 }
 
-.NgxEditor,
-.NgxEditor__Content {
-    height: 20em !important;
-    min-height: 20em !important;
-    border: red solid 1px;
-    max-width: 700px;
+.editor ngx-editor-menu {
+    background: #f7f7f7;
+    border-radius: 8px 8px 0 0;
+    padding: 4px;
 }
 
-.editor {
-    height: 20em;
-    max-height: 25em;
-    width: 90%;
-    max-width: 700px;
-    overflow: auto;
+.editor ngx-editor {
+    border: 1px solid #ddd;
+    border-radius: 0 0 8px 8px;
 }
 
-
-mat-form-field {
-    flex-grow: 1;
-    max-width: 250px;
-}
-
-.company__detail {
-    flex: 2 1 25em;
-}
-
-mat-toolbar {
-    max-height: 40px;
-    margin-bottom: 0.5em;
-    font-weight: bolder;
-}
-
-@media (width <= 900px) {
-    .detail__div {
-        display: grid;
-        gap: .5em;
-        justify-items: stretch;
-        justify-content: stretch;
-        grid-template-columns:  repeat(3, 1fr);
+@media (max-width: 900px) {
+    .form-grid {
+        grid-template-columns: 1fr;
     }
 }
-
-
