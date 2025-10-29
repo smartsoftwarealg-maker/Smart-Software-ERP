@@ -63,12 +63,13 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
 
     usesLots = signal(false);
     usesUnits = signal(false);
+    referenceIsDisabled = signal(false);
+
 
     selectedRow: TransactionLine = null;
     agentId = 0;
     parentId: number;
     selectedReference: string = null;
-    isManager = false;
     mainStore = 0;
     saveDisabled = false;
     articleStock = 0.0;
@@ -261,10 +262,13 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 });
         }
 
+
+
         const referenceIsDisabled =
             !this.isEditable ||
             ((this.document === INVOICE_CANCELLATION || this.document === DELIVERY_CANCELLATION) && !this.loginSrv.appCtx.manager && !this.loginSrv.appCtx.responsible) ||
             ( b.qtySatisfied > 0.0001 || !!b.sourceDoc || (this.document >= 200 && this.document <= 800 && b.qtyOrdered > 0.0001));
+        this.referenceIsDisabled.set(referenceIsDisabled);
 
         const unitsIsDisable = !this.isEditable ||
                                        b.qtySatisfied > 0.0 ||
