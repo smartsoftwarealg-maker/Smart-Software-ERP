@@ -34,7 +34,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule),
-        // provideAnimationsAsync(),
+        provideAnimationsAsync(),
         provideHttpClient(withInterceptorsFromDi(), withFetch()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
         { provide: ErrorHandler, useClass: CustomErrorHandler }

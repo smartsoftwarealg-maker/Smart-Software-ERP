@@ -32,7 +32,7 @@ import {
     WORK_FLOW_APP_URL,
     ATTENDANCE_APP_URL,
     ARCH_VIEWER_URL,
-    PRODUCTION_APP_URL
+    PRODUCTION_APP_URL, PARK_APP_URL
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -41,6 +41,7 @@ import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
 import { productionNavTree } from '../app/production/side-nav-tree';
 import {attendanceNavTree} from '../app/attendance/side-nav-tree';
 import {MainPageComponent} from '@ss/common/ui-main-page';
+import {parkNavTree} from "../app/park/side-nav-tree";
 
 
 export const environment = {
@@ -62,6 +63,7 @@ export const navBar = [
     attendanceNavTree,
     missionsNavTree,
     // accountingNavTree,
+    parkNavTree,
     assetsNavTree,
     treasuryNavTree,
     dashboardNavTree,
@@ -104,6 +106,10 @@ export const appRoutes: Routes =  [
         path: INDEX_PAGE_URL,
         component: MainPageComponent,
         canActivate: [CanActivateService]
+    },
+    {
+        path: PARK_APP_URL,
+        loadChildren: () => import('../app/park/park.module').then(m => m.ParkModule)
     },
     {
         path: ORGANIZATIONS_APP_URL,
