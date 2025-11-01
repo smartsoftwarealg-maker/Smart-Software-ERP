@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {CCGroup, Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
+import {Currency, CurrencyService, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -10,6 +10,7 @@ import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
+import { MaterialModule } from '@ss/common/api-common';
 
 
 @Component({
