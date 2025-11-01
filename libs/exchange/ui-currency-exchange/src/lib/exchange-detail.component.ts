@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,15 +8,15 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DepositTypeService} from '@ss/exchange/api-currency-deposit';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Agent, AgentService} from '@ss/logistics/api-agent';
-import {LoginService} from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {CurrencyExchangeService, Exchange} from '@ss/exchange/api-currency-exchange';
-import { MatCard, MatCardContent } from "@angular/material/card";
+import { MatCard, MatCardContent } from '@angular/material/card';
 
-import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
-import { TranslateDirective } from "../../../../common/ui-lang/src/lib/translate.directive";
-import { DatePickerComponent } from "../../../../common/ui-datepicker/src/lib/date-picker.component";
-import { UiAutoCompleteComponent } from "../../../../common/ui-auto-complete/src/lib/auto-complete.component";
-import { MatInput } from "@angular/material/input";
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { MatInput } from '@angular/material/input';
 
 @Component({
     selector: 'ss-exchange-detail',
