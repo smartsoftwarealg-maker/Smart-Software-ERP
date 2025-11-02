@@ -9,7 +9,7 @@ mat-card {
     border-radius: 1.4em;
 }
 mat-table {
-    min-width: 1000px;
+    min-width: fit-content;
 }
 .size {
     width: 96%;
@@ -45,7 +45,8 @@ mat-table {
 
 .mat-column-date,
 .mat-column-number {
-    flex: 1 1 100px;
+    flex: 1 1 120px;
+    min-width: fit-content;
 }
 .mat-column-product {
     flex: 1 1 220px;

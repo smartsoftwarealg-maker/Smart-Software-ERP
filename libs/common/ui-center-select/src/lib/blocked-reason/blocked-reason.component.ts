@@ -30,7 +30,7 @@ export class BlockedReasonComponent implements OnInit {
 
     ngOnInit() {
         if (!this.loginSrv?.appCtx?.agentId) {
-            this.router.navigate(['/' + LOGIN_URL]); // when the page refresh appCtx is gone
+            this.router.navigate(['/' + LOGIN_URL]).then(); // when the page refresh appCtx is gone
         }
         this.agentSrv.currentCustomer().subscribe({
             next: (res) => {
@@ -40,6 +40,6 @@ export class BlockedReasonComponent implements OnInit {
     }
 
     goBack() {
-        this.router.navigate(['/' + INDEX_PAGE_URL]).then(() => {});
+        // this.router.navigate(['/' + INDEX_PAGE_URL]).then(() => {});
     }
 }

@@ -84,6 +84,8 @@ export class CustomerSalesHistoryComponent extends BaseEntityListComponent<Sales
         const lastYear = new Date();
         lastYear.setFullYear(this.TODAY.getFullYear() - 1);
         this.searchForm.controls.from.setValue(lastYear);
+        this.entitySrv.from = lastYear;
+        this.entitySrv.to = this.TODAY;
 
         this.subscriptions.push(
             this.searchForm
@@ -97,5 +99,6 @@ export class CustomerSalesHistoryComponent extends BaseEntityListComponent<Sales
                     this.refresh();
                 })
         );
+        this.refresh();
     }
 }
