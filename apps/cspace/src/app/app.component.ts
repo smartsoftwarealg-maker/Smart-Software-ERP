@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.homePage     = homePage;
         this.#loginSrv.customerLogin = LoginType.BOTH;
         this.#loginSrv.customerLogin = LoginType.CUSTOMER;
-        this.#shellSrv.setApplicationTitle('Customer Space 2.10');
+        this.#shellSrv.setApplicationTitle('Customer Space 2.20');
         this.#httpSrv
             .init(company)
             .pipe(

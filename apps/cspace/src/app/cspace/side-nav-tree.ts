@@ -58,13 +58,6 @@ export const cSpaceNavTree: SideNavNode[] =
             customerRights: {read: true, edit: true, delete: true, write: true}
         },
         {
-            name: 'COMMON_REPORTS',
-            icon: 'fa-solid fa-file-chart-column',
-            route: ABS_CSPACE_REPORTS_URL,
-            accessRights: 'Report',
-            customerRights: {read: true, edit: true, delete: true, write: true}
-        },
-        {
             name: 'COMMON_COMPLAINTS',
             icon: 'fa-solid fa-face-angry',
             route: ABS_CUSTOMER_COMPLAINTS_URL,
@@ -79,6 +72,13 @@ export const cSpaceNavTree: SideNavNode[] =
             customerRights: {read: true, edit: true, delete: true, write: true}
         },
         {
+            name: 'SCH_CUSTOMER_POLL',
+            icon: 'fa-regular fa-clipboard-question',
+            route: ABS_CUSTOMER_POLL_URL,
+            accessRights: 'CustomerPoll',
+            customerRights: {read: true, edit: true, delete: true, write: true}
+        },
+        {
             name: 'COMMON_PROFILE',
             icon: 'fas fa-file-chart-line',
             route: ABS_CUSTOMER_PROFILE_URL,
@@ -86,10 +86,10 @@ export const cSpaceNavTree: SideNavNode[] =
             customerRights: {read: true, edit: true, delete: true, write: true}
         },
         {
-            name: 'SCH_CUSTOMER_POLL',
-            icon: 'fa-regular fa-clipboard-question',
-            route: ABS_CUSTOMER_POLL_URL,
-            accessRights: 'CustomerPoll',
+            name: 'COMMON_REPORTS',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_CSPACE_REPORTS_URL,
+            accessRights: 'Report',
             customerRights: {read: true, edit: true, delete: true, write: true}
-        }
+        },
     ];

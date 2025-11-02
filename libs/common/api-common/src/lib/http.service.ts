@@ -380,6 +380,8 @@ export class HttpService {
             this.baseUrl = 'https://client2.sg.dz';
         } else if (company === 'SCH_SCAKE') {
             this.baseUrl = 'https://client2.scake.dz';
+        } else if (company === 'SCH_CAPA') {
+            this.baseUrl = 'http://localhost:8080';
         } else {
             this.baseUrl = 'https://demo.smartsoftware-dz.com:4430';
             // this.baseUrl = 'http://localhost:8080'; // default to local development

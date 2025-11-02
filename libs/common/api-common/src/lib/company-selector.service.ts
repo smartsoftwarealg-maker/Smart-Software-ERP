@@ -13,6 +13,7 @@ export class CompanySelectorService {
         ['SCH_SCHS', 'https://www.schs.dz'],
         ['SCH_SCSG', 'https://www.sg.dz'],
         ['SCH_SCAEK', 'https://www.scaek.dz'],
+        ['SCH_CAPA', 'https://www.capa.dz'],
         ['SCH_TEST', 'https://demo.smartsoftware-dz.com/'],
     ]);
 
@@ -21,6 +22,7 @@ export class CompanySelectorService {
         'SCH_SCHS',
         'SCH_SCSG',
         'SCH_SCAEK',
+        'SCH_CAPA',
         'SCH_TEST'
     ];
 

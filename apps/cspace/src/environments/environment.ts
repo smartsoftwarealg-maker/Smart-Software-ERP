@@ -5,8 +5,9 @@
 
 export const environment = {
     production: false,
-    company: 'SCH_TEST',
-    homePage: 'https://smartsoftware-dz.com',
+    company: 'SCH_CAPA',
+    homePage: 'https://' +
+        '.com',
     multiCompany: true
 };
 export const langAssets = [
