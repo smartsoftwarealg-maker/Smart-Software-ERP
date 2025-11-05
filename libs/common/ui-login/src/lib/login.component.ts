@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     #router = inject(Router);
     readonly #USER_DATA = 'USER_DATA';
     protected deviceSrv = inject(DeviceDetectorService);
-    protected multiCompany = signal(this.#companySelectorSrv.multiCompany);
+    protected multiCompany = signal(false);
 
     protected loginSrv = inject(LoginService);
     public user: User = { username: '', password: '' };
@@ -92,6 +92,7 @@ export class LoginComponent implements OnInit {
             clearTimeout(this.#time);
         }
         if (this.#companySelectorSrv.multiCompany) {
+            this.multiCompany.set(true);
             this.#companySelectorSrv.spaceCompany = localStorage.getItem(this.#DEFAULT_COMPANY);
             if (!this.deviceSrv.isDesktop()) {
                 const checkName = async () => {

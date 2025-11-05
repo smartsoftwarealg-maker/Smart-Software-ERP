@@ -57,5 +57,6 @@
     "NO":                "No",
     "POLL_HISTORY":      "History poll charts",
     "TEST":              "Test",
-    "DAILY_RATE":        "Daily rate"
+    "DAILY_RATE":        "Daily rate",
+    "CAPA":              "CAPA"
 }

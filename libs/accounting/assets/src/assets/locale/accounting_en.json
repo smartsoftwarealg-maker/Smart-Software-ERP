@@ -103,5 +103,7 @@
     "DELETE_ALL_CENTERS":       "Delete all centers",
     "GENERATION_CANCEL":        "Generation cancel",
     "SINGLE_ACCOUNTING":        "Unique accounting for all centers",
-    "DELETE_EXISTING":          "Delete existing transactions"
+    "DELETE_EXISTING":          "Delete existing transactions",
+    "ENTRY":                    "Stock in",
+    "EXIT":                     "Stock out"
 }

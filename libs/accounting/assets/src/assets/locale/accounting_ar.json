@@ -102,5 +102,7 @@
     "DELETE_ALL_CENTERS":       "حذف مراكز التجميع",
     "GENERATION_CANCEL":        "إلغاء الجيل",
     "SINGLE_ACCOUNTING":        "محاسبة فريدة لجميع المراكز",
-    "DELETE_EXISTING":          "حذف التسجيلات الموجودة"
+    "DELETE_EXISTING":          "حذف التسجيلات الموجودة",
+    "ENTRY":                    "دخول",
+    "EXIT":                     "خروخ"
 }

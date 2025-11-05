@@ -2,7 +2,7 @@ export const environment = {
     production: true,
     company: '',
     homePage: '',
-    multiCompany: true
+    multiCompany: false
 };
 // export const homePage: string|null = 'https://www.ecde.dz/';
  export const homePage: string|null = 'https://schs.dz';

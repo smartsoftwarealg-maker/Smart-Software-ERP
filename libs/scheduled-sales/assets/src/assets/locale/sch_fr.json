@@ -58,5 +58,6 @@
     "NO":                 "Non",
     "POLL_HISTORY":       "Sondage historique",
     "TEST":               "Test",
-    "DAILY_RATE":         "Tarif journalier"
+    "DAILY_RATE":         "Tarif journalier",
+    "CAPA":               "CAPA"
 }
