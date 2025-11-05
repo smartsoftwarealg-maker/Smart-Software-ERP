@@ -1,6 +1,6 @@
 {
     "name": "ss",
-    "version": "2.6.98",
+    "version": "2.7.1",
     "license": "PRIVATE",
     "scripts": {
         "ng": "nx",

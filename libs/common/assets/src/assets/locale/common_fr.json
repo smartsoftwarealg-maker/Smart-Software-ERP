@@ -470,5 +470,6 @@
     "PRODUCT_DESCRIPTION":  "Description du produit",
     "ACCOUNT_MAP":          "Plan Comptable",
     "REGIONS":              "Régions",
-    "REGION":               "Régions"
+    "REGION":               "Régions",
+    "FUND":                 "Fond"
 }

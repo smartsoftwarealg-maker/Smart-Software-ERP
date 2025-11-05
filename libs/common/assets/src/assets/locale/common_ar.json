@@ -465,6 +465,7 @@
     "PRODUCT_DESCRIPTION": "وصف المنتج",
     "ACCOUNT_MAP":         "مخطط الحسابات",
     "REGIONS": "النواحي",
-    "REGION": "الناحية"
+    "REGION": "الناحية",
+    "FUND":   "الصندوق"
 }
 

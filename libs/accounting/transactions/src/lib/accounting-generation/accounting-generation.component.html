@@ -17,12 +17,12 @@
             <mat-label translate>COMMON_TYPE</mat-label>
             <mat-select formControlName="genType">
                 <mat-option value="1" translate>COMMON_PURCHASE</mat-option>
-                <mat-option value="2" translate>STOCK_INVENTORY_ENTRY</mat-option>
-                <mat-option value="3" translate>STOCK_INVENTORY_EXIT</mat-option>
+                <mat-option value="2" translate>ACC_ENTRY</mat-option>
+                <mat-option value="3" translate>ACC_EXIT</mat-option>
                 <mat-option value="4" translate>COMMON_SALES</mat-option>
                 <mat-option value="5" translate>COMMON_PAYROLL</mat-option>
                 <mat-option value="6" translate>COMMON_BANK</mat-option>
-                <mat-option value="7" translate>COMMON_CASH</mat-option>
+                <mat-option value="7" translate>COMMON_FUND</mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -181,7 +181,7 @@
             <ng-container matColumnDef="date">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.date | date: 'mm/MM/yyyy' }}
+                    {{ e.date | date: 'MM/dd/yyyy' }}
                 </mat-cell>
             </ng-container>
 

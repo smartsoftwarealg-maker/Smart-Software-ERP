@@ -1,9 +1,10 @@
 export const environment = {
     production: true,
     company: 'SCH_CAPA',
-    homePage: 'https://www.capa.dz',
+    homePage: 'https://erp.capa-dz.com',
     multiCompany: false
 };
+export const homePage: string|null = 'https://erp.capa-dz.com';
 
 export const langAssets = [
     ['assets/locale/', ''],

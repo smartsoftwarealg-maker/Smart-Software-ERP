@@ -64,6 +64,7 @@ export class CompanySelectorService {
     }
 
     set multiCompany(multi: boolean) {
+        console.log(multi);
         this.#_multiCompany = multi;
         this.missingBackend.set(this.#_multiCompany && !this.#company);
     }

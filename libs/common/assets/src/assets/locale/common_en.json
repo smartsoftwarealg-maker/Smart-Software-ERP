@@ -474,5 +474,6 @@
     "PRODUCT_DESCRIPTION":  "Product description",
     "ACCOUNT_MAP":          "Account map",
     "REGIONS":               "Regions",
-    "REGION":                "Region"
+    "REGION":                "Region",
+    "FUND":                  "Fund"
 }
