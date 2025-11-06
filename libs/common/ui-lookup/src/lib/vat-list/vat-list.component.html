@@ -15,6 +15,20 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="salesAccount">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_SALES_ACCOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.salesAccount}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="purchaseAccount">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PURCHASE_ACCOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.purchaseAccount}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="value">
             <mat-header-cell *matHeaderCellDef translate>COMMON_VALUE</mat-header-cell>
             <mat-cell style="justify-content: flex-end; direction: ltr;" *matCellDef="let e">

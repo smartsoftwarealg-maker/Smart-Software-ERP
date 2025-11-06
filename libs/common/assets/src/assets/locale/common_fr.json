@@ -471,5 +471,7 @@
     "ACCOUNT_MAP":          "Plan Comptable",
     "REGIONS":              "Régions",
     "REGION":               "Régions",
-    "FUND":                 "Fond"
+    "FUND":                 "Fond",
+    "SALES_ACCOUNT":         "Compte vente",
+    "PURCHASE_ACCOUNT":      "Compte achat"
 }

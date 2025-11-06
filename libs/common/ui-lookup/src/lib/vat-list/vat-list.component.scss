@@ -2,7 +2,7 @@
 :host {
     display: block;
     margin: 1em auto;
-    max-width: 700px;
+    max-width: 900px;
 }
 
 .table__div {
@@ -21,6 +21,11 @@
     flex: 2 1 250px;
 }
 
+.mat-column-salesAccount,
+.mat-column-purchaseAccount {
+    flex: 1 1 150px;
+}
+
 .mat-column-value {
     flex: 0 1 100px;
     padding-right: 8px !important;
@@ -35,4 +40,8 @@
         position: sticky;
         margin: auto;
     }
+}
+
+mat-table {
+    min-width: fit-content;
 }
