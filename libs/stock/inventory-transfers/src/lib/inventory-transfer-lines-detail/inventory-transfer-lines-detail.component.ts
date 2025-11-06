@@ -12,6 +12,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import {MaterialModule} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-inventory-transfer-lines-detail',
@@ -19,20 +20,21 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
     imports: [
-    MatMiniFabButton,
-    MatCard,
-    MatCardContent,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    TranslateDirective,
-    MatInput,
-    UiAutoCompleteComponent,
-    MatError,
-    MatHint,
-    CdkTextareaAutosize
-],
+        MaterialModule,
+        MatMiniFabButton,
+        MatCard,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        UiAutoCompleteComponent,
+        MatError,
+        MatHint,
+        CdkTextareaAutosize
+    ],
 })
 export class InventoryTransferLinesDetailComponent extends BaseTransactionLinesDetailComponent {
     constructor(public inventoryLinesService: TransactionLinesService) {

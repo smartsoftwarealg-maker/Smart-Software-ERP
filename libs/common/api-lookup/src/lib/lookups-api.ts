@@ -85,6 +85,8 @@ export interface Vat {
     descriptionAr?: string;
     id: number;
     value: number;
+    salesAccount?: string;
+    purchaseAccount?: string;
 }
 
 export class MaritalStatus {

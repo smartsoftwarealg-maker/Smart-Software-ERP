@@ -31,7 +31,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class VatListComponent extends BaseEntityListComponent<Vat> {
 
-    displayedColumns = ['description', 'descriptionAr','value'];
+    displayedColumns = ['description', 'descriptionAr','value','salesAccount','purchaseAccount'];
 
     constructor(
         public vatSrv: VatService,

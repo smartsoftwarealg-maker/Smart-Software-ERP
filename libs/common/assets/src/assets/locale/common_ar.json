@@ -466,6 +466,8 @@
     "ACCOUNT_MAP":         "مخطط الحسابات",
     "REGIONS": "النواحي",
     "REGION": "الناحية",
-    "FUND":   "الصندوق"
+    "FUND":   "الصندوق",
+    "SALES_ACCOUNT":         "حساب البيع",
+    "PURCHASE_ACCOUNT":      "حساب الشراء"
 }
 

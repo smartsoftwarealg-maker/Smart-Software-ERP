@@ -475,5 +475,7 @@
     "ACCOUNT_MAP":          "Account map",
     "REGIONS":               "Regions",
     "REGION":                "Region",
-    "FUND":                  "Fund"
+    "FUND":                  "Fund",
+    "SALES_ACCOUNT":         "Sales account",
+    "PURCHASE_ACCOUNT":      "Purchase account"
 }
