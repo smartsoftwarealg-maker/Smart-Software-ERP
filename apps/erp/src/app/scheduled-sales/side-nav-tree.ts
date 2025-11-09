@@ -58,7 +58,7 @@ export const scheduledSalesNavTree: SideNavNode = {
         //     route: ABS_SCHEDULED_SALES_COMPANY_TYPE
         // },
         // {
-        //     name: 'SCH_DISCOUNTS',
+        //     name: 'COMMON_DISCOUNTSNTS',
         //     icon: 'fa-solid fa-badge-percent',
         //     route: ABS_SCHEDULED_SALES_DISCOUNT_TYPES,
         //     accessRights: 'Discount'
