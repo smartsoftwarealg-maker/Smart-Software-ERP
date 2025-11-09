@@ -150,7 +150,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public override canDeactivate(): Observable<boolean> {
         return !this.isEditable ?
             of(true) :
-            this.form.dirty?
+            this.form?.dirty?
                 this.confirmationSrv.confirmDontSave() :
                 this.entitySrv
                     .get(this.id)
@@ -165,7 +165,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                                     this.snackBarSrv.showFailureMessage('COMMON_SAVE_REQUIRED');
                                 }
                             }
-                            return res.dirty;
+                            return res?.dirty === true;
                         }),
                         switchMap(dirty => dirty ?  this.confirmationSrv.confirmDontSave() : of(true)));
     }

@@ -42,7 +42,6 @@ export class CustomErrorHandlerService {
                         .replace(`{"`, '')
                         .replace(`"}`, '')
                         .split('\\n');
-                    console.log(msg);
                     this.message.set(msg);
                     this.errorSet.set(true);
                     if (this.onUpdate) {

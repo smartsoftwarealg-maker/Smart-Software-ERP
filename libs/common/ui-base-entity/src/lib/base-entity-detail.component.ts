@@ -90,6 +90,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
         return of(null);
     }
 
+
     protected override goBack() {
         this.shellSrv.goBack();
     }

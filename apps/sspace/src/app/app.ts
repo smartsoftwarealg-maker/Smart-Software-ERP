@@ -50,7 +50,6 @@ export class App implements OnInit {
             },
             error: () => this.#loginSrv.logout().then()
         });
-        console.log(company, homePage, multiCompany);
     }
 
 
