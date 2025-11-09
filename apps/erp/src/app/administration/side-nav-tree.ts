@@ -19,7 +19,7 @@ import {
     ABS_ADMINISTRATION_REPORT_RIGHTS_URL,
     ABS_ADMINISTRATION_REPORT_PRIVILEGE_URL,
     ABS_ADMINISTRATION_PASS_ENCODING_URL,
-    ABS_ADMINISTRATION_GLOBAL_VALIDATION_URL, ABS_ADMINISTRATION_REGION_URL
+    ABS_ADMINISTRATION_GLOBAL_VALIDATION_URL, ABS_ADMINISTRATION_REGION_URL, ABS_ADMINISTRATION_PASS_RESET_URL
 } from '../common';
 
 import {SideNavNode} from '@ss/common/api-common';
@@ -165,7 +165,13 @@ export const administrationNavTree: SideNavNode = {
             name: 'ADMINISTRATION_PASSWORD_ENCODING',
             icon: 'fa-solid fa-lock-hashtag',
             route: ABS_ADMINISTRATION_PASS_ENCODING_URL,
-            accessRights: 'passEncoding'
+            accessRights: 'PassEncoding'
+        },
+        {
+            name: 'COMMON_PASSWORD_RESET',
+            icon: 'fa-solid fa-lock-hashtag',
+            route: ABS_ADMINISTRATION_PASS_RESET_URL,
+            accessRights: 'PassEncoding'
         },
     ]
 };
