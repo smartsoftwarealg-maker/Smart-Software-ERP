@@ -26,7 +26,7 @@ import {
     ADMINISTRATION_REPORT_PRIVILEGE_URL,
     ADMIN_WORKFLOW_CHART_URL,
     ADMINISTRATION_PASS_ENCODING_URL,
-    ADMINISTRATION_GLOBAL_VALIDATION_URL, ADMINISTRATION_REGION_URL
+    ADMINISTRATION_GLOBAL_VALIDATION_URL, ADMINISTRATION_REGION_URL, PASSWORD_RESET_URL
 } from '../common';
 import { ABS_INDEX_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -73,6 +73,7 @@ import { ReportRightsComponent } from '@ss/administration/reports-rights';
 import { ReportPrivilegesComponent } from '@common/report-privileges';
 import { PassEncodingComponent } from '@ss/administration/pass-encoding';
 import { GlobalValidationComponent } from '@ss/administration/global-validation';
+import {PasswordResetComponent} from "@ss/scheduled-sales/password-reset";
 
 export const mainRoutes: Routes = [
     //    // NOT USED
@@ -455,6 +456,11 @@ export const mainRoutes: Routes = [
         path: ADMINISTRATION_PASS_ENCODING_URL,
         component: PassEncodingComponent,
         canActivate: [loginGuard]
+    },
+    {
+        path: PASSWORD_RESET_URL,
+        component: PasswordResetComponent,
+        canActivate: [loginGuard],
     },
     {
         path: ADMINISTRATION_GLOBAL_VALIDATION_URL,
