@@ -87,9 +87,8 @@ export class LeadFormComponent implements OnInit {
     onSave(): void {
         if (this.leadForm.valid) {
             const lead: CRMLead = this.leadForm.value;
-            console.log('Saving lead:', lead);
             // Call API service here
-            this.router.navigate(['/leads']);
+            this.router.navigate(['/leads']).then();
         }
     }
 

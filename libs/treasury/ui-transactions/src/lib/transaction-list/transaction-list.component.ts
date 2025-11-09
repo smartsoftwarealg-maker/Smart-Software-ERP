@@ -68,11 +68,9 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
     private readonly CASH_COLS = [
         'description',
         'agentName',
-        'groupName',
         'income',
         'expenses',
         'pieceno',
-        'groupName',
         'memo'];
 
     private readonly BANK_COLS = [
