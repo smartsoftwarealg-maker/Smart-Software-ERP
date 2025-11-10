@@ -4,7 +4,7 @@ import {
     ABS_SALES_AGENT_URL, ABS_SALES_CUSTOMER_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DELIVERY_CANCEL_URL,
-    ABS_SALES_DELIVERY_URL, ABS_SALES_EXPORT_INVOICE_URL,
+    ABS_SALES_DELIVERY_URL, ABS_SALES_DISCOUNT_URL, ABS_SALES_EXPORT_INVOICE_URL,
     ABS_SALES_INVOICE_CANCEL_URL,
     ABS_SALES_INVOICE_URL,
     ABS_SALES_ORDER_URL,
@@ -89,6 +89,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fas fa-coins',
             route: ABS_FINANCE_CPAYMENTS,
             accessRights: 'CPayment'
+        },
+        {
+            name: 'SALES_DISCOUNTS',
+            icon: 'fa-solid fa-percent',
+            route: ABS_SALES_DISCOUNT_URL,
+            accessRights: 'Discount'
         },
         // {
         //     name: 'LOGISTICS_PAYMENT_COMPENSATION',

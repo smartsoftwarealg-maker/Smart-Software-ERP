@@ -25,5 +25,7 @@
     "COMPLEMENT_CANCEL": "Complement cancellation",
     "EXPORT_INVOICE":        "Export invoice",
     "TARE_WEIGHT":      "Tare weight",
-    "BRUT_WEIGHT":      "Brut weight"
+    "BRUT_WEIGHT":      "Brut weight",
+    "DISCOUNTS":        "Discounts",
+    "DISCOUNTS_DETAIL": "Discounts detail"
 }

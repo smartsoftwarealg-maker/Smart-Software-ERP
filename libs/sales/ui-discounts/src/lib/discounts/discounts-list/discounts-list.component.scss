@@ -1,0 +1,39 @@
+.size {
+    width: 90%;
+    max-width: 600px;
+    margin: 1em auto;
+
+}
+mat-header-cell {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.70em;
+    justify-content: center!important;
+    font-family: Arial, serif;
+}
+
+.container {
+    min-height: calc(100% - 120px);
+    overflow-y: auto;
+    margin-top: 4px;
+}
+
+
+.mat-column-discount {
+    flex: 2 1 150px;
+    justify-content: flex-end;
+}
+.mat-column-threshold {
+    flex: 2 1 150px;
+    justify-content: flex-start;
+}
+
+.pagination-container {
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}

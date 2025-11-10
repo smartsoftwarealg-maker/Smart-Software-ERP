@@ -244,6 +244,8 @@ export const SALES_CATEGORY_URL = 'sales-categories';
 export const SS_COMPLAINTS_URL     = 'sales-complaints';
 export const SS_SUGGESTIONS_URL    = 'sales-suggestions';
 export const SALES_PRICE_LIST_URL  = 'sales-pricelist';
+export const SALES_DISCOUNT_URL  = 'sales-discounts';
+
 
 // HR
 export const HR_CATEGORIES_URL = 'categories';
@@ -1018,6 +1020,7 @@ export const ABS_SALES_SERVICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_
 export const ABS_SALES_REPORT_PRIVILEGE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, ADMINISTRATION_REPORT_PRIVILEGE_URL].join('/');
 export const ABS_PRICE_LIST_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_PRICE_LIST_URL].join('/');
 export const ABS_SALES_CUSTOMER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, LOGISTICS_CUSTOMER_URL].join('/');
+export const ABS_SALES_DISCOUNT_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DISCOUNT_URL].join('/');
 
 //services
 export const ABS_SERVICE_CLASSES_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_CLASSES_URL].join('/');
@@ -1114,8 +1117,8 @@ export const docInfoRoutes: Routes = [
         component: UiStockInfoComponent
     },
     {
-       path: 'total-stock',
-       component: UiTotalStockComponent
+        path: 'total-stock',
+        component: UiTotalStockComponent
     },
     {
         path: 'card',

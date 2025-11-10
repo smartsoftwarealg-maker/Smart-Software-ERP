@@ -469,6 +469,8 @@
     "REGION": "الناحية",
     "FUND":   "الصندوق",
     "SALES_ACCOUNT":         "حساب البيع",
-    "PURCHASE_ACCOUNT":      "حساب الشراء"
+    "PURCHASE_ACCOUNT":      "حساب الشراء",
+    "THRESHOLD":             "الحد المسموح",
+    "DISCOUNT":              "الخصم"
 }
 
