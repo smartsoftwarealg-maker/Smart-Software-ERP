@@ -47,7 +47,7 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
         public override confirmationSrv: ConfirmationDialogService,
         protected override readonly loginSrv: LoginService,
         protected override dialog: MatDialog) {
-        super(receptionService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_EDIT_RECEPTION');
+        super(receptionService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PURCHASES_IMPORT_RECEPTION');
     }
 
     protected showImportButton(): boolean {

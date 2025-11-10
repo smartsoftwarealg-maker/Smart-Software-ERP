@@ -1,85 +1,104 @@
 <div class="button_div">
 
-  @if (isEditable) {
-    <button mat-mini-fab (click)="save()"
-      color="accent">
-      <i class="fas fa-save"></i>
+    @if (isEditable) {
+        <button mat-mini-fab (click)="save()"
+                color="accent">
+            <i class="fas fa-save"></i>
+        </button>
+    }
+    <button mat-mini-fab (click)="cancel()"
+            color="warn">
+        <i class="fas fa-redo"></i>
     </button>
-  }
-  <button mat-mini-fab (click)="cancel()"
-    color="warn">
-    <i class="fas fa-redo"></i>
-  </button>
 </div>
 
 <mat-card>
-  <mat-card-content>
-    @if (form !== null) {
-      <form novalidate [formGroup]="form">
-        <mat-form-field id="position" class="default-50 sm-100">
-          <mat-label translate>COMMON_POSITION</mat-label>
-          <input matInput formControlName="position" type="number">
-        </mat-form-field>
-        <mat-form-field class="default-50 sm-100">
-          <mat-label translate>STOCK_STORE</mat-label>
-          <ss-auto-complete matInput
-            [model]="storeLookup"
-          formControlName="store"></ss-auto-complete>
-          @if (form.controls['store'].hasError('required')) {
-            <mat-error
-              translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-          }
-          @if (form.controls['store'].hasError('validOption')) {
-            <mat-error
-              translate>COMMON_NO_MATCH
-            </mat-error>
-          }
-        </mat-form-field>
-        <mat-form-field class="default-50 sm-100">
-          <mat-label translate>STOCK_ARTICLE</mat-label>
-          <ss-auto-complete matInput
-            [required]="true"
-            [model]="articleLookup"
-          formControlName="reference"></ss-auto-complete>
-          @if (form.controls['reference'].hasError('required')) {
-            <mat-error
-              translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-          }
-          @if (form.controls['reference'].hasError('validOption')) {
-            <mat-error
-              translate>COMMON_NO_MATCH
-            </mat-error>
-          }
-        </mat-form-field>
-        <mat-form-field id="qtySatisfied" class="default-50 sm-100">
-          <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
-          <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
-          @if (form.controls['qtySatisfied'].hasError('required')) {
-            <mat-error
-              translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-          }
-        </mat-form-field>
-        <mat-form-field id="price" class="default-50 sm-100">
-          <mat-label translate>LOGISTICS_PRICE</mat-label>
-          <input matInput formControlName="price" type="number" step=".01" required>
-          @if (form.controls['price'].hasError('required')) {
-            <mat-error
-              translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-          }
-        </mat-form-field>
-        <mat-form-field id="header" class="default-50 sm-100">
-          <mat-label translate>STOCK_HEADER</mat-label>
-          <textarea matInput formControlName="observation" cdkTextareaAutosize="true"></textarea>
-        </mat-form-field>
-        <mat-form-field id="footer" class="default-50 sm-100">
-          <mat-label translate>STOCK_FOOTER</mat-label>
-          <textarea matInput formControlName="footerMemo" cdkTextareaAutosize="true"></textarea>
-        </mat-form-field>
-      </form>
-    }
-  </mat-card-content>
+    <mat-card-content>
+        @if (form !== null) {
+            <form novalidate [formGroup]="form">
+                <mat-form-field id="position" class="default-50 sm-100">
+                    <mat-label translate>COMMON_POSITION</mat-label>
+                    <input matInput formControlName="position" type="number">
+                </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>STOCK_STORE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="storeLookup"
+                                      formControlName="store"></ss-auto-complete>
+                    @if (form.controls['store'].hasError('required')) {
+                        <mat-error
+                            translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
+                    @if (form.controls['store'].hasError('validOption')) {
+                        <mat-error
+                            translate>COMMON_NO_MATCH
+                        </mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>STOCK_ARTICLE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="articleLookup"
+                                      formControlName="reference"></ss-auto-complete>
+                    @if (form.controls['reference'].hasError('required')) {
+                        <mat-error
+                            translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
+                    @if (form.controls['reference'].hasError('validOption')) {
+                        <mat-error
+                            translate>COMMON_NO_MATCH
+                        </mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field id="qtySatisfied" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
+                    <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
+                    @if (form.controls['qtySatisfied'].hasError('required')) {
+                        <mat-error
+                            translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+                @if (usesUnits()) {
+                    <mat-form-field id="units" class="default-50 sm-100">
+                        <mat-label translate>STOCK_UNITS</mat-label>
+                        <mat-select formControlName="units">
+                            @for (u of packagingUnits; track u.units) {
+                                <mat-option [value]="u.units">
+                                    {{ u.description }}
+                                </mat-option>
+                            }
+                        </mat-select>
+
+                        @if (form.controls['units'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+                }
+
+
+                <mat-form-field id="price" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_PRICE</mat-label>
+                    <input matInput formControlName="price" type="number" step=".01" required>
+                    @if (form.controls['price'].hasError('required')) {
+                        <mat-error
+                            translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field id="header" class="default-50 sm-100">
+                    <mat-label translate>STOCK_HEADER</mat-label>
+                    <textarea matInput formControlName="observation" cdkTextareaAutosize="true"></textarea>
+                </mat-form-field>
+                <mat-form-field id="footer" class="default-50 sm-100">
+                    <mat-label translate>STOCK_FOOTER</mat-label>
+                    <textarea matInput formControlName="footerMemo" cdkTextareaAutosize="true"></textarea>
+                </mat-form-field>
+            </form>
+        }
+    </mat-card-content>
 </mat-card>

@@ -11,5 +11,6 @@
     "AUTH_DATE":             "Authorization date",
     "PRICE_REQUEST":         "Price inquiry",
     "SOURCE_DOC":            "Source document",
-    "PURCHASE_INVOICE":      "Purchase invoice"
+    "PURCHASE_INVOICE":      "Purchase invoice",
+    "IMPORT_RECEPTION":      "Import reception"
 }

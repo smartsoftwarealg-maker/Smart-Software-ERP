@@ -65,6 +65,6 @@ export class ImportReceptionListComponent extends BaseEntityListComponent<Transa
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override pagPersistSrv: PaginatorPersistenceService) {
-        super(receptionSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_RECEPTION');
+        super(receptionSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PURCHASES_IMPORT_RECEPTION');
     }
 }
