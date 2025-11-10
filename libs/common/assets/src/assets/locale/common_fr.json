@@ -474,5 +474,7 @@
     "REGION":               "Régions",
     "FUND":                 "Fond",
     "SALES_ACCOUNT":         "Compte vente",
-    "PURCHASE_ACCOUNT":      "Compte achat"
+    "PURCHASE_ACCOUNT":      "Compte achat",
+    "THRESHOLD":             "Valeur seuil",
+    "DISCOUNT":               "Remise"
 }

@@ -25,5 +25,7 @@
     "COMPLEMENT_CANCEL": "تكملة الإلغاء",
     "EXPORT_INVOICE":       "فاتورة تصدير",
     "TARE_WEIGHT":      "الوزن الصافي",
-    "BRUT_WEIGHT":      "الوزن الخام"
+    "BRUT_WEIGHT":      "الوزن الخام",
+    "DISCOUNTS":        "الخصومات" ,
+    "DISCOUNTS_DETAIL": "تفاصيل الخصومات"
 }

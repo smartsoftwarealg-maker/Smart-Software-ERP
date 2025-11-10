@@ -478,5 +478,7 @@
     "REGION":                "Region",
     "FUND":                  "Fund",
     "SALES_ACCOUNT":         "Sales account",
-    "PURCHASE_ACCOUNT":      "Purchase account"
+    "PURCHASE_ACCOUNT":      "Purchase account",
+    "THRESHOLD":             "Threshold",
+    "DISCOUNT":              "Discount"
 }

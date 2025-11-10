@@ -25,5 +25,7 @@
     "COMPLEMENT_CANCEL": "Annulation Complément",
     "EXPORT_INVOICE":       "Facture d'exportation",
     "TARE_WEIGHT":      "Poids à vide",
-    "BRUT_WEIGHT":      "Poids brut"
+    "BRUT_WEIGHT":      "Poids brut",
+    "DISCOUNTS":        "Remises",
+    "DISCOUNTS_DETAIL": "Detail des remises"
 }
