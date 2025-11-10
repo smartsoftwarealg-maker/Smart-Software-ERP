@@ -11,5 +11,6 @@
     "AUTH_DATE":             "تاريخ الترخيص",
     "PRICE_REQUEST":         "المساومة",
     "SOURCE_DOC":            "المصدر",
-    "PURCHASE_INVOICE":      "فاتورة شراء"
+    "PURCHASE_INVOICE":      "فاتورة شراء",
+    "IMPORT_RECEPTION":      "استلام الاستيراد"
 }

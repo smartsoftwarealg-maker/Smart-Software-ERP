@@ -111,7 +111,7 @@
                             <mat-label translate>LOGISTICS_CURRENCY</mat-label>
                             <ss-auto-complete matInput
                                               [required]="true"
-                                              [model]="currencyCompleteModel"
+                                              [model]="currencyLookup"
                                               formControlName="currency">
                             </ss-auto-complete>
                             @if (form.controls['currency'].hasError('required')) {

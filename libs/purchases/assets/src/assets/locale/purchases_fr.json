@@ -11,5 +11,6 @@
     "AUTH_DATE":             "Date d'autorisation",
     "PRICE_REQUEST":         "Demande de prix",
     "SOURCE_DOC":            "Document source",
-    "PURCHASE_INVOICE":      "Facture d'achat"
+    "PURCHASE_INVOICE":      "Facture d'achat",
+    "IMPORT_RECEPTION":      "Réception d'importation"
 }

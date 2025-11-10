@@ -97,7 +97,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public purchaseProjectLookup = new ProjectLookupModel(this.purchaseProjectSrv);
     public salesProjectLookup = new ProjectLookupModel(this.salesProjectSrv);
-    public currencyCompleteModel = new DefaultAutoCompleteModel<Currency>(this.currencySrv);
+    public currencyLookup = new ForeignCurrencyModel(this.currencySrv);
     public transporterLookup = new DefaultAutoCompleteModel<Agent>(this.#transporterSrv, 'id', 'denomination');
     public consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
@@ -306,7 +306,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         return this.lookupsSrv.getCCGroups()
             .pipe(tap(x => this.groups = x),
                 switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
-                tap(res => this.optionSrv.options = res));
+                tap(res => {
+                    this.optionSrv.options = res;
+                    this.currencyLookup.localCurrency = res.defaultCurrency;
+                }));
     }
 
     get isManager() {
@@ -375,4 +378,26 @@ class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {
     }
 
     toString = (x: Project) => x ? `${x.contractNo} - ${x.description}` : null;
+}
+
+class ForeignCurrencyModel extends DefaultAutoCompleteModel<Currency> {
+    #_localCurrency: number = 0;
+
+    constructor(srv: BaseEntityService<Currency>) {
+        super(srv);
+    }
+
+
+    filterLoadedData: (x: Currency[]) => Currency[] =
+        (x: Currency[]) => x && x.filter(x => x.id !== this.#_localCurrency && !!x.description);
+
+// toString = (x: Currency) => x ? `${x.code} - ${x.description}` : null;
+
+    get localCurrency() {
+        return this.#_localCurrency;
+    }
+
+    set localCurrency(value: number) {
+        this.#_localCurrency = value;
+    }
 }
