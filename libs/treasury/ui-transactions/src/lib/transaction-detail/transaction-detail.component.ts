@@ -18,6 +18,7 @@ import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatCheckbox } from '@angular/material/checkbox';
+import {CostCenterService} from "@ss/logistics/api-cost-center";
 
 @Component({
     selector: 'ss-transaction-detail',
@@ -42,10 +43,12 @@ import { MatCheckbox } from '@angular/material/checkbox';
 ],
 })
 export class TransactionDetailComponent extends BaseEntityDetailComponent<TTransaction> {
+    private costCenterSrv = inject(CostCenterService);
     private agentSrv = inject(AgentService);
     private groupSrv = inject(TreasuryGroupService);
     groupLookup = new DefaultAutoCompleteModel(this.groupSrv);
     agentLookup = new AgentLookupModel(this.agentSrv);
+    costCenterLookup = new DefaultAutoCompleteModel(this.costCenterSrv);
 
     constructor(
         public override entitySrv: TreasuryTransactionService,
@@ -99,6 +102,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
             groupName:     [e.groupName    ],
             memo:          [e.memo         ],
             dueDays:       [e.dueDays||0, Validators.required ],
+            costCenter:    [e.costCenter]
         });
     }
 

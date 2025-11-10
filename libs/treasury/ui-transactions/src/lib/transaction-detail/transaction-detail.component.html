@@ -58,26 +58,26 @@
                         }
                     </mat-form-field>
                 }
-<!--                <mat-form-field class="default-50">-->
-<!--                    <mat-label translate>TRS_NATURE</mat-label>-->
-<!--                    <ss-auto-complete matInput-->
-<!--                                      [model]="groupLookup"-->
-<!--                                      formControlName="treasuryGroup"-->
-<!--                                      autofocus>-->
-<!--                    </ss-auto-complete>-->
-<!--                    @if (form.controls['treasuryGroup']?.invalid) {-->
-<!--                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>-->
-<!--                    }-->
-<!--                </mat-form-field>-->
+                <!--                <mat-form-field class="default-50">-->
+                <!--                    <mat-label translate>TRS_NATURE</mat-label>-->
+                <!--                    <ss-auto-complete matInput-->
+                <!--                                      [model]="groupLookup"-->
+                <!--                                      formControlName="treasuryGroup"-->
+                <!--                                      autofocus>-->
+                <!--                    </ss-auto-complete>-->
+                <!--                    @if (form.controls['treasuryGroup']?.invalid) {-->
+                <!--                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>-->
+                <!--                    }-->
+                <!--                </mat-form-field>-->
 
                 <mat-form-field class="default-50">
                     <mat-label translate>TRS_PIECENO</mat-label>
                     <input matInput formControlName="pieceno" type="number" required>
                 </mat-form-field>
 
-<!--                @if (!entitySrv.isBank()) {-->
-<!--                    <div class="default-50"></div>-->
-<!--                }-->
+                <!--                @if (!entitySrv.isBank()) {-->
+                <!--                    <div class="default-50"></div>-->
+                <!--                }-->
                 <mat-form-field class="default-50 a-number">
                     <mat-label translate>TRS_INCOME</mat-label>
                     <input matInput formControlName="income"
@@ -93,6 +93,16 @@
                            (blur)="onAmount()"
                            required>
                 </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_COST_CENTER</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      formControlName="costCenter"
+                                      [model]="costCenterLookup">
+                    </ss-auto-complete>
+                </mat-form-field>
+
                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_MEMO</mat-label>
                     <input matInput formControlName="memo" type="text">
