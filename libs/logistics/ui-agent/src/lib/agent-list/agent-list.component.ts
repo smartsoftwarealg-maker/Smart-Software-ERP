@@ -1,10 +1,18 @@
 import {Component, inject, signal} from '@angular/core';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LookupsService} from '@ss/common/api-lookup';
+import {LookupsService, UNIT_URL} from '@ss/common/api-lookup';
 import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import { Agent, AGENT_URL, AgentService, CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL } from '@ss/logistics/api-agent';
+import {
+    Agent,
+    AGENT_URL,
+    AgentService, BRANCH_URL,
+    CUSTOMER_URL,
+    INTERNAL_URL,
+    SUPPLIER_URL,
+    TRANSPORTER_URL
+} from '@ss/logistics/api-agent';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -97,12 +105,17 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
             }),
             switchMap(() => this.route.data),
             tap(res => {
-                const isSupplier = res['supplier'];
-                const isCustomer = res['customer'];
-                const isTransporter = res['transporter'];
+                const URLs = [CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL, BRANCH_URL, INTERNAL_URL, AGENT_URL];
+                const TTLs = ['LOGISTICS_CUSTOMER', 'LOGISTICS_SUPPLIER', 'LOGISTICS_TRANSPORTER', 'COMMON_UNITS', 'LOGISTICS_INTERNAL_AGENTS', 'COMMON_AGENTS'];
 
-                this.agentService.setURL(isCustomer? CUSTOMER_URL : isSupplier? SUPPLIER_URL : isTransporter? TRANSPORTER_URL : AGENT_URL);
-                this.shellSrv.setTitle(isCustomer? 'LOGISTICS_CUSTOMER': isSupplier ? 'LOGISTICS_SUPPLIER' : isTransporter ? 'LOGISTICS_TRANSPORTER' : 'COMMON_AGENTS');
+                const idx = res['customer']? 0 :
+                    res['supplier']? 1 :
+                    res['transporter']? 2 :
+                    res['unit']? 3 :
+                    res['internalAgent']? 4 : 5;
+
+                this.agentService.setURL(URLs[idx]);
+                this.shellSrv.setTitle(TTLs[idx]);
             }));
     }
 

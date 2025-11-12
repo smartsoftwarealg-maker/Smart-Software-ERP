@@ -1,5 +1,5 @@
 {
-    "name": "crm-teams",
+    "name": "ui-discounts",
     "$schema": "../../../node_modules/nx/schemas/project-schema.json",
     "sourceRoot": "libs/sales/ui-discounts/src",
     "prefix": "ss",

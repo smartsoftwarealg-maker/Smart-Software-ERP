@@ -14,7 +14,11 @@ import {
     ABS_LOGISTICS_DOCUMENT_URL,
     ABS_LOGISTICS_ORDER_ANOMALIES,
     ABS_LOGISTICS_TRANSPORTER_URL,
-    ABS_LOGISTICS_DELIVERY_TIMES, ABS_LOGISTICS_AGENT_MERGE, ABS_LOGISTICS_SHIPMENT_MODES, ABS_LOGISTICS_PACKAGING_UNITS
+    ABS_LOGISTICS_DELIVERY_TIMES,
+    ABS_LOGISTICS_AGENT_MERGE,
+    ABS_LOGISTICS_SHIPMENT_MODES,
+    ABS_LOGISTICS_PACKAGING_UNITS,
+    ABS_LOGISTICS_INTERNAL_AGENTS_URL, ABS_LOGISTICS_UNITS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -58,6 +62,18 @@ export const logisticsAdminNavTree: SideNavNode = {
             icon: 'fa-solid fa-van-shuttle',
             route: ABS_LOGISTICS_TRANSPORTER_URL,
             accessRights: 'Transporter'
+        },
+        {
+            name: 'LOGISTICS_UNITS',
+            icon: 'fa-solid fa-building-flag',
+            route: ABS_LOGISTICS_UNITS_URL,
+            accessRights: 'CUnit' //Company unit
+        },
+        {
+            name: 'LOGISTICS_INTERNAL_AGENTS',
+            icon: 'fa-solid fa-people-simple',
+            route: ABS_LOGISTICS_INTERNAL_AGENTS_URL,
+            accessRights: 'Internal'
         },
         {
             name: 'COMMON_VAT',
