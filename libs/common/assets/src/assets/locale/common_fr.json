@@ -476,5 +476,7 @@
     "SALES_ACCOUNT":         "Compte vente",
     "PURCHASE_ACCOUNT":      "Compte achat",
     "THRESHOLD":             "Valeur seuil",
-    "DISCOUNT":               "Remise"
+    "DISCOUNT":               "Remise",
+    "TRANSFERS": "Cessions",
+    "TRANSFER_RECEPTIONS": "Réceptions sur cessions"
 }

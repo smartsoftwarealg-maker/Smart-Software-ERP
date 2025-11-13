@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import {LanguageService, LoginService, MaterialModule, PaginationModel} from '@ss/common/api-common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -53,6 +53,8 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     readonly PAYROLL = 5;
     readonly BANK = 6;
     readonly CASH = 7;
+    readonly TRANSFER_OUT = 8;
+    readonly TRANSFER_IN = 9;
 
     private documentMap = new Map(
         [
@@ -62,14 +64,16 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             [4, { code: 258, description: 'sales', stock: false }],
             [5, { code: 0, description: 'payroll', stock: false }],
             [6, { code: 0, description: 'bank', stock: false }],
-            [7, { code: 0, description: 'cash', stock: false }]
+            [7, { code: 0, description: 'cash', stock: false }],
+            [8, { code: 259, description: 'transfer_out', stock: false }],
+            [9, { code: 516, description: 'transfer_in', stock: false }],
         ]);
     private subscriptions: Subscription[] = [];
 
-    showingTransactions = true;
-    showingBank = false;
-    showingCash = false;
-    showingPayroll = false;
+    showingTransactions = signal(true);
+    showingBank = signal(false);
+    showingCash = signal(false);
+    showingPayroll = signal(false);
 
     form: UntypedFormGroup | null = null;
     journalLookup = new ActiveJournalLookup(this.journalSrv, this.loginSrv);
@@ -163,6 +167,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
 
     private showTransactions(key: number) {
         const value = this.documentMap.get(key);
+        console.log('value', key, value);
         const params = new HttpParams()
             .set('document', value?.code || 0)
             .set('stock', value?.stock);
@@ -247,10 +252,10 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
         this.processing = true;
         this.shellSrv.setLoading(true);
         const key = +this.form?.controls['genType'].value;
-        this.showingBank = key === this.BANK;
-        this.showingCash = key === this.CASH;
-        this.showingPayroll = key === this.PAYROLL;
-        this.showingTransactions = key >= this.PURCHASE && key <= this.SALES;
+        this.showingBank.set( key === this.BANK);
+        this.showingCash.set( key === this.CASH);
+        this.showingPayroll.set( key === this.PAYROLL);
+        this.showingTransactions.set( (key >= this.PURCHASE && key <= this.SALES) || key >= this.TRANSFER_OUT);
 
         switch (key) {
         case this.BANK:

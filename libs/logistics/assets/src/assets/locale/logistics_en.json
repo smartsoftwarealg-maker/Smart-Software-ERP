@@ -214,5 +214,7 @@
     "SHIPMENT_MODE":         "Shipment mode",
     "DELIVERY_ADDRESS":      "Delivery address",
     "PACKAGING_UNITS":       "Packaging units",
-    "MULTI_CENTERS":         "Multi centers"
+    "MULTI_CENTERS":         "Multi centers",
+    "UNITS":                 "Units",
+    "INTERNAL_AGENTS":       "Internal agents"
 }

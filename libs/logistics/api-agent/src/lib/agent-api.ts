@@ -5,6 +5,7 @@ export const BRANCH_URL = '/branches';
 export const CENTER_URL = '/centers';
 export const SUPPLIER_URL = '/suppliers';
 export const TRANSPORTER_URL = '/transporters';
+export const INTERNAL_URL = '/internals';
 
 export interface Agent {
     id: number;

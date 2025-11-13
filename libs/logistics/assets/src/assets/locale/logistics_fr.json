@@ -213,5 +213,7 @@
     "SHIPMENT_MODE":         "Mode de transport",
     "DELIVERY_ADDRESS":      "Adresse de livraison",
     "PACKAGING_UNITS":       "Unités d'emballage",
-    "MULTI_CENTERS":         "Centres multiples"
+    "MULTI_CENTERS":         "Centres multiples",
+    "UNITS":                 "Unités",
+    "INTERNAL_AGENTS":       "Agents internes"
 }

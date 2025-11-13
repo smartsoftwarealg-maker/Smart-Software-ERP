@@ -66,6 +66,6 @@ export class TransferReceptionListComponent  extends BaseEntityListComponent<Tra
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'STOCK_TRANSFER_RECEPTIONS');
+            'COMMON_TRANSFER_RECEPTIONS');
     }
 }

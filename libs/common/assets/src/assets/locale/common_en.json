@@ -480,5 +480,7 @@
     "SALES_ACCOUNT":         "Sales account",
     "PURCHASE_ACCOUNT":      "Purchase account",
     "THRESHOLD":             "Threshold",
-    "DISCOUNT":              "Discount"
+    "DISCOUNT":              "Discount",
+    "TRANSFERS": "Transfers",
+    "TRANSFER_RECEPTIONS": "Transfer receptions"
 }

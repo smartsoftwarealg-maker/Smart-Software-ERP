@@ -212,5 +212,7 @@
     "SHIPMENT_MODE":         "طريقة الشحن",
     "DELIVERY_ADDRESS":      "عنوان التسليم",
     "PACKAGING_UNITS":       "وحدات التعبئة",
-    "MULT_CENTERS":          "متعدد المراكز"
+    "MULTI_CENTERS":         "متعدد المراكز",
+    "UNITS":                 "الوحدات",
+    "INTERNAL_AGENTS":       "الشركاء الداخليون"
 }

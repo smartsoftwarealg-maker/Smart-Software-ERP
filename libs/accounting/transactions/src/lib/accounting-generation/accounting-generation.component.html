@@ -19,7 +19,9 @@
                 <mat-option value="1" translate>COMMON_PURCHASE</mat-option>
                 <mat-option value="2" translate>ACC_ENTRY</mat-option>
                 <mat-option value="3" translate>ACC_EXIT</mat-option>
-                <mat-option value="4" translate>COMMON_SALES</mat-option>
+                <mat-option value="4" translate>ACC_EXIT</mat-option>
+                <mat-option value="8" translate>COMMON_TRANSFERS</mat-option>
+                <mat-option value="9" translate>COMMON_TRANSFER_RECEPTIONS</mat-option>
                 <mat-option value="5" translate>COMMON_PAYROLL</mat-option>
                 <mat-option value="6" translate>COMMON_BANK</mat-option>
                 <mat-option value="7" translate>COMMON_FUND</mat-option>
@@ -48,7 +50,7 @@
         </button>
     </form>
 }
-@if (showingTransactions) {
+@if (showingTransactions()) {
     <div class="container_div center-div">
         <div class="table_div">
             <mat-table mat-table [dataSource]="data" class="content-div">
@@ -84,7 +86,7 @@
         </div>
     </div>
 }
-@if (showingPayroll) {
+@if (showingPayroll()) {
     <div class="container_div  center-div">
         <mat-table mat-table [dataSource]="payrollData" class="content-div">
 
@@ -136,7 +138,7 @@
         </mat-table>
     </div>
 }
-@if (showingBank) {
+@if (showingBank()) {
     <div class="container_div center-div">
         <mat-table mat-table [dataSource]="checkData" class="content-div">
 
@@ -167,7 +169,7 @@
         </mat-table>
     </div>
 }
-@if (showingCash) {
+@if (showingCash()) {
     <div class="container_div center-div">
         <mat-table mat-table [dataSource]="cashData" class="content-div">
 

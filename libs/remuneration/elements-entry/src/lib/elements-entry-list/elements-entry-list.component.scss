@@ -1,6 +1,6 @@
 .size_div {
     width: 96%;
-    max-width: 1600px;
+    max-width: 1700px;
     margin: 4px auto;
 }
 
@@ -19,13 +19,12 @@
 }
 
 .journal__table {
-    overflow-x: auto;
-
+    overflow: auto;
+    max-height: calc(100vh - 200px);
     mat-row:last-child {
         font-weight: bolder;
         font-size: .9em;
     }
-
 }
 
 .header_div {

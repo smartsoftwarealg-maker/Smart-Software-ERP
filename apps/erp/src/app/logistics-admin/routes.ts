@@ -18,7 +18,8 @@ import {
     LOGISTICS_ORDER_ANOMALIES_URL,
     LOGISTICS_TRANSPORTER_URL,
     DELIVERY_TIME_URL,
-    LOGISTICS_AGENT_MERGE_URL, LOGISTICS_DELIVERY_TIME_URL, LOGISTICS_SHIPMENT_MODE_URL, PACKAGING_UNITS_URL
+    LOGISTICS_AGENT_MERGE_URL, LOGISTICS_DELIVERY_TIME_URL, LOGISTICS_SHIPMENT_MODE_URL, PACKAGING_UNITS_URL,
+    LOGISTICS_INTERNAL_AGENT_URL, LOGISTICS_UNIT_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -156,6 +157,76 @@ export const mainRoutes: Routes = [
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
                         data: {sales: true, transporter: true },
+                        children: [
+                            //{ path: '', redirectTo: 'transport', pathMatch: 'full'},
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
+                                ]
+                            },
+
+                        ]
+                    }
+                ]
+            },
+        ]
+    },
+    {
+        path: LOGISTICS_INTERNAL_AGENT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentListComponent,
+                canActivate: [loginGuard],
+                data: {sales: true, internalAgent: true },
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: {sales: true, internalAgent: true },
+                        children: [
+                            //{ path: '', redirectTo: 'transport', pathMatch: 'full'},
+                            {
+                                path: 'archive',
+                                children: [
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
+                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
+                                ]
+                            },
+
+                        ]
+                    }
+                ]
+            },
+        ]
+    },
+    {
+        path: LOGISTICS_UNIT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: AgentListComponent,
+                canActivate: [loginGuard],
+                data: {sales: true, unit: true },
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: AgentDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        data: {sales: true, unit: true },
                         children: [
                             //{ path: '', redirectTo: 'transport', pathMatch: 'full'},
                             {

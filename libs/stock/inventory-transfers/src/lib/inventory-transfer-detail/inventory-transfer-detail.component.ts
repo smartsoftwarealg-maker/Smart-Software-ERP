@@ -43,7 +43,7 @@ export class InventoryTransferDetailComponent extends BaseTransactionDetailCompo
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService) {
-        super(transferService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'STOCK_TRANSFERS');
+        super(transferService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'COMMON_TRANSFERS');
     }
 
     protected importedDocuments(): Lookup[] {

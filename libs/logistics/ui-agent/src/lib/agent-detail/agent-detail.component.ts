@@ -5,7 +5,7 @@ import {
     SnackBarService,
     ToolbarButton,
 } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import {
@@ -35,8 +35,8 @@ import {
     AGENT_URL,
     AgentCenter,
     AgentCenterService,
-    AgentService,
-    CUSTOMER_URL,
+    AgentService, BRANCH_URL,
+    CUSTOMER_URL, INTERNAL_URL,
     SUPPLIER_URL,
     TRANSPORTER_URL,
 } from '@ss/logistics/api-agent';
@@ -46,7 +46,7 @@ import {
     FormValidators,
     IsParamService,
     LoginService,
-    MaterialModule, UserService,
+    MaterialModule,
 } from '@ss/common/api-common';
 import { BankService } from '@ss/administration/api-bank';
 import {
@@ -95,8 +95,7 @@ const TRANSPORTER = 3;
     ],
 })
 export class AgentDetailComponent
-    extends BaseEntityDetailComponent<Agent>
-    implements OnInit {
+    extends BaseEntityDetailComponent<Agent> implements OnInit {
     #userSrv = inject(UserListService);
     private optionSrv = inject(OptionService);
     private defaultAgentType = 0;
@@ -127,6 +126,7 @@ export class AgentDetailComponent
         click: () => this.importAgents(),
     };
 
+    protected isInternal = signal(false);
 
     accountLookup = new AccountAutocompleteModel(this.accountSrv);
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
@@ -134,6 +134,7 @@ export class AgentDetailComponent
     archiveSrv = inject(AppArchiveService);
     LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
     AQS = false;
+
 
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
     activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
@@ -195,24 +196,38 @@ export class AgentDetailComponent
                 const isCustomer = res['customer'];
                 const isTransporter = res['transporter'];
                 this.isSupplier.set(isSupplier);
-                this.entitySrv.setURL(
-                    isCustomer
-                        ? CUSTOMER_URL
-                        : isSupplier
-                            ? SUPPLIER_URL
-                            : isTransporter
-                                ? TRANSPORTER_URL
-                                : AGENT_URL,
-                );
-                this.shellSrv.setTitle(
-                    isCustomer
-                        ? 'LOGISTICS_CUSTOMER'
-                        : isSupplier
-                            ? 'LOGISTICS_SUPPLIER'
-                            : isTransporter
-                                ? 'LOGISTICS_TRANSPORTER'
-                                : 'COMMON_AGENTS',
-                );
+
+                const URLs = [CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL, BRANCH_URL, INTERNAL_URL, AGENT_URL];
+                const TTLs = ['LOGISTICS_CUSTOMER', 'LOGISTICS_SUPPLIER', 'LOGISTICS_TRANSPORTER', 'COMMON_UNITS', 'LOGISTICS_INTERNAL_AGENTS', 'COMMON_AGENTS'];
+
+                const idx = res['customer']? 0 :
+                    res['supplier']? 1 :
+                        res['transporter']? 2 :
+                            res['unit']? 3 :
+                                res['internalAgent']? 4 : 5;
+
+                this.entitySrv.setURL(URLs[idx]);
+                this.shellSrv.setTitle(TTLs[idx]);
+                this.isInternal.set(idx === 4);
+                switch (idx) {
+                case 0:
+                    this.agentTypeLookup = new CustomerLookup(this.agentTypeSrv);
+                    break;
+                case 1:
+                    this.agentTypeLookup = new SupplierLookup(this.agentTypeSrv);
+                    break;
+                case 2:
+                    this.agentTypeLookup = new TransporterLookup(this.agentTypeSrv);
+                    break;
+                case 3:
+                    this.agentTypeLookup = new BranchLookup(this.agentTypeSrv);
+                    break;
+                case 4:
+                    this.agentTypeLookup = new InternalTypeLookup(this.agentTypeSrv);
+                    break;
+                case 5:
+                    break;
+                }
                 this.agentTypeLookup = isSupplier
                     ? new SupplierLookup(this.agentTypeSrv)
                     : isCustomer
@@ -493,6 +508,26 @@ export class AgentDetailComponent
     }
 
     protected readonly TRANSPORTER = TRANSPORTER;
+}
+
+class BranchLookup extends DefaultAutoCompleteModel<Lookup> {
+    constructor(public srv: AgentTypeService) {
+        super(srv);
+    }
+
+    override filterLoadedData = (x: Lookup[]) => x.filter((e) => e && e.id == 4);
+    override getById = (id: Id) =>
+        id === null || id === undefined ? of(null) : this.entitySrv.get(id);
+}
+
+class InternalTypeLookup extends DefaultAutoCompleteModel<Lookup> {
+    constructor(public srv: AgentTypeService) {
+        super(srv);
+    }
+
+    override filterLoadedData = (x: Lookup[]) => x.filter((e) => e && e.id == 5);
+    override getById = (id: Id) =>
+        id === null || id === undefined ? of(null) : this.entitySrv.get(id);
 }
 
 class CustomerLookup extends DefaultAutoCompleteModel<Lookup> {

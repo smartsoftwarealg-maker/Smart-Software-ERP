@@ -166,7 +166,7 @@ export const stockNavTree: SideNavNode = {
             accessRights: 'Consumption'
         },
         {
-            name: 'STOCK_TRANSFERS',
+            name: 'COMMON_TRANSFERS',
             icon: 'fa-solid fa-money-bill-transfer',
             route: ABS_STOCK_TRANSFER_URL,
             accessRights: 'Transfer'
@@ -178,7 +178,7 @@ export const stockNavTree: SideNavNode = {
             accessRights: 'CTransfer'
         },
         {
-            name: 'STOCK_TRANSFER_RECEPTIONS',
+            name: 'COMMON_TRANSFER_RECEPTIONS',
             icon: 'fa-solid fa-bag-shopping',
             route: ABS_STOCK_TRANSFER_RECEPTION_URL,
             accessRights: 'TransferReception'
