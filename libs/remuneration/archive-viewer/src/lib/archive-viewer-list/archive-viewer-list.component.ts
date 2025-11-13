@@ -125,7 +125,7 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
     _formulaVariables: string[] = [];
     _formulaHeaders:   string[] = [];
     _info: string[][] = [
-        ['post',       this.langSrv.translate('PAYROLL_POST')],
+        ['post',       this.langSrv.translate('COMMON_POST')],
         ['birthDate',  this.langSrv.translate('PAYROLL_BIRTH_DATE')],
         ['birthPlace', this.langSrv.translate('PAYROLL_BIRTH_PLACE')],
         ['address1',   this.langSrv.translate('COMMON_ADDRESS')],
@@ -164,7 +164,7 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
         ['wifeFather',       this.langSrv.translate('PAYROLL_WIFE_FATHER')],
         ['wifeMother',       this.langSrv.translate('PAYROLL_WIFE_MOTHER')],
         ['wifeMotherAr',     this.langSrv.translate('PAYROLL_WIFE_MOTHER_AR')],
-        ['postAr',           this.langSrv.translate('PAYROLL_POST_AR')],
+        ['postAr',           this.langSrv.translate('COMMON_POST_AR')],
         ['paymonth',         this.langSrv.translate('PAYROLL_MONTH')],
     ];
     _minYear = 0;

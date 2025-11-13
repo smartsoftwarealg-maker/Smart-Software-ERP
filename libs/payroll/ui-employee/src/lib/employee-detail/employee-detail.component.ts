@@ -199,7 +199,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     readonly PAYROLL_IEP = 1;
     readonly PAYROLL_OLD_ELEMENTS = 2;
     readonly PAYROLL_RANK = 3;
-    readonly PAYROLL_POST = 4;
+    readonly COMMON_POST = 4;
 
     fixedElementEditInProgress = false;
     hrMode = false;
@@ -213,7 +213,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         {id: 1, description: 'PAYROLL_IEP'},
         {id: 2, description: 'PAYROLL_OLD_ELEMENTS'},
         {id: 3, description: 'PAYROLL_SALARY_GRID'},
-        {id: 4, description: 'PAYROLL_POST'},
+        {id: 4, description: 'COMMON_POST'},
     ];
     bloodGroups$ = this.bloodGroupSrv.getList(0, 50).pipe(map(res => res.body));
     elementDescriptions = signal<string[]>([]);
@@ -453,7 +453,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
                     this.infoSrv.generateFromIEP(id) :
                     code === this.PAYROLL_OLD_ELEMENTS ? this.infoSrv.generateFromOldElements(id) :
                         code === this.PAYROLL_RANK ? this.infoSrv.generateFromRank(id) :
-                            code === this.PAYROLL_POST ? this.infoSrv.generateFromPost(id) : of({ count: -1 }) : of({ count: -1 })
+                            code === this.COMMON_POST ? this.infoSrv.generateFromPost(id) : of({ count: -1 }) : of({ count: -1 })
             ),
             switchMap(res => this.loadFixedElements().pipe(map(() => res))))
             .subscribe({

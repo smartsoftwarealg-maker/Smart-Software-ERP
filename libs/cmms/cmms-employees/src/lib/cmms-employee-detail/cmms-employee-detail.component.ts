@@ -90,7 +90,7 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
     // readonly PAYROLL_IEP = 1;
     // readonly PAYROLL_OLD_ELEMENTS = 2;
     // readonly PAYROLL_RANK = 3;
-    // readonly PAYROLL_POST = 4;
+    // readonly COMMON_POST = 4;
 
     hrMode = false;
     activePersonnel = true;

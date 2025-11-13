@@ -53,7 +53,7 @@ export class AttendanceLogComponent implements OnInit {
         this.langSrv.translate('COMMON_ID'),
         this.langSrv.translate('COMMON_FIRST_NAME'),
         this.langSrv.translate('COMMON_LAST_NAME'),
-        this.langSrv.translate('PAYROLL_POST')
+        this.langSrv.translate('COMMON_POST')
     ];
     private FIXED_COLS = ['id', 'firstName', 'lastName', 'post'];
     private ipList = signal<string[]>([]);
