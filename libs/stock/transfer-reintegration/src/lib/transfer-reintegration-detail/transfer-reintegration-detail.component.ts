@@ -41,7 +41,7 @@ export class TransferReintegrationDetailComponent extends BaseTransactionDetailC
     }
 
     protected importedDocuments(): Lookup[] {
-        return [{ id: DOC_TRANSFER, description: 'STOCK_TRANSFERS' }];
+        return [{ id: DOC_TRANSFER, description: 'COMMON_TRANSFERS' }];
     }
 
     protected requireAgent(): boolean {

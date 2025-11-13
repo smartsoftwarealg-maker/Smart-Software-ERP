@@ -66,6 +66,6 @@ export class InventoryTransferListComponent extends BaseEntityListComponent<Tran
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'STOCK_TRANSFERS');
+            'COMMON_TRANSFERS');
     }
 }

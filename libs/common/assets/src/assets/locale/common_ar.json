@@ -471,6 +471,7 @@
     "SALES_ACCOUNT":         "حساب البيع",
     "PURCHASE_ACCOUNT":      "حساب الشراء",
     "THRESHOLD":             "الحد المسموح",
-    "DISCOUNT":              "الخصم"
+    "DISCOUNT":              "الخصم",
+    "TRANSFERS": "التحويلات",
+    "TRANSFER_RECEPTIONS": "استقبالات النقل"
 }
-
