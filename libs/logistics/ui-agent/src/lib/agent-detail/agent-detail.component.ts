@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, computed, inject, OnInit, signal} from '@angular/core';
 import {
     KeepOnToolbar,
     ShellService,
@@ -27,7 +27,7 @@ import {
     DepartmentService,
     Lookup,
     LookupsService,
-    PayModeService,
+    PayModeService, PostService,
     SalesCategoryService,
 } from '@ss/common/api-lookup';
 import {
@@ -94,8 +94,8 @@ const TRANSPORTER = 3;
         ChildAttributesComponent
     ],
 })
-export class AgentDetailComponent
-    extends BaseEntityDetailComponent<Agent> implements OnInit {
+export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
+    #postSrv = inject(PostService);
     #userSrv = inject(UserListService);
     private optionSrv = inject(OptionService);
     private defaultAgentType = 0;
@@ -126,10 +126,10 @@ export class AgentDetailComponent
         click: () => this.importAgents(),
     };
 
-    protected isInternal = signal(false);
 
     accountLookup = new AccountAutocompleteModel(this.accountSrv);
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
+    postLookup = new DefaultAutoCompleteModel(this.#postSrv);
     target = 0;
     archiveSrv = inject(AppArchiveService);
     LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
@@ -157,7 +157,12 @@ export class AgentDetailComponent
 
     centerLookup = new DefaultAutoCompleteModel<Lookup>(this.centerSrv);
     centerCtrl = new FormControl<number>(0);
-    isSupplier = signal(false);
+    agentType = signal(0);
+    isSupplier = computed(() => this.agentType() === 0 || this.agentType() === 1);
+    isCustomer = computed(() => this.agentType() === 1 || this.agentType() === 2);
+    isUnit = computed(() => this.agentType() === 3);
+    isInternal = computed(() => this.agentType() === 4);
+    isTransporter = computed(() => this.agentType() === 5);
 
     constructor(
         public agentSrv: AgentService,
@@ -195,20 +200,19 @@ export class AgentDetailComponent
                 const isSupplier = res['supplier'];
                 const isCustomer = res['customer'];
                 const isTransporter = res['transporter'];
-                this.isSupplier.set(isSupplier);
 
                 const URLs = [CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL, BRANCH_URL, INTERNAL_URL, AGENT_URL];
                 const TTLs = ['LOGISTICS_CUSTOMER', 'LOGISTICS_SUPPLIER', 'LOGISTICS_TRANSPORTER', 'COMMON_UNITS', 'LOGISTICS_INTERNAL_AGENTS', 'COMMON_AGENTS'];
+                const TYPES = [2, 0, 5, 3, 4];
 
                 const idx = res['customer']? 0 :
                     res['supplier']? 1 :
                         res['transporter']? 2 :
                             res['unit']? 3 :
                                 res['internalAgent']? 4 : 5;
-
+                this.agentType.set(TYPES[idx]||0);
                 this.entitySrv.setURL(URLs[idx]);
                 this.shellSrv.setTitle(TTLs[idx]);
-                this.isInternal.set(idx === 4);
                 switch (idx) {
                 case 0:
                     this.agentTypeLookup = new CustomerLookup(this.agentTypeSrv);
@@ -268,23 +272,23 @@ export class AgentDetailComponent
                 a.customerCode,
                 Validators.compose([Validators.maxLength(14)]),
             ],
-            isInternal: [a.isInternal],
-            denomination: [a.denomination, Validators.required],
-            address: [a.address],
-            address2: [a.address2],
-            city: [a.city],
-            country: [a.country],
-            phone: [a.phone],
-            mobile: [a.mobile],
-            fax: [a.fax],
-            contact: [a.contact],
-            info: [a.info],
-            currency: [a.currency || this.optionSrv.options?.defaultCurrency],
-            taxPayable: [a.taxPayable],
-            commRegister: [a.commRegister],
-            fiscalID: [a.fiscalID],
-            articleNo: [a.articleNo],
-            stampPayable: [a.stampPayable],
+            isInternal:      [a.isInternal],
+            denomination:    [a.denomination, Validators.required],
+            address:         [a.address],
+            address2:        [a.address2],
+            city:            [a.city],
+            country:         [a.country],
+            phone:           [a.phone],
+            mobile:          [a.mobile],
+            fax:             [a.fax],
+            contact:         [a.contact],
+            info:            [a.info],
+            currency:        [a.currency || this.optionSrv.options?.defaultCurrency],
+            taxPayable:      [a.taxPayable],
+            commRegister:    [a.commRegister],
+            fiscalID:        [a.fiscalID],
+            articleNo:       [a.articleNo],
+            stampPayable:    [a.stampPayable],
             price:           [a.price || 0],
             denominationAr:  [a.denominationAr],
             addressAr:       [a.addressAr],
@@ -308,13 +312,14 @@ export class AgentDetailComponent
             blockingReason:  [{ value: a.blockingReason,  disabled: a.recordBlocked }],
             subcontractor:   [a.subcontractor],
             postalCode:      [a.postalCode],
-            projectRequired: [a.projectRequired === true],
+            projectRequired: [a.projectRequired === true || (a.id === 0 && this.isTransporter())],
             approval:        [a.approval],
             category:        [a.category],
             tin:             [a.tin],
             department:      [a.department],
             creationTime:    [{ value: a.creationTime, disabled: true }],
             collector:       [a.collector],
+            post:            [a.post]
         });
     }
 

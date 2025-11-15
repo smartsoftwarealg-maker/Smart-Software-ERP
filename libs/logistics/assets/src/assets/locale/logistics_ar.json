@@ -202,7 +202,7 @@
     "INITIAL":               "أولي",
     "VT_ADVANCEMENT":        "المقدم قبل الضريبة",
     "FT_ADVANCEMENT":        "المقدم بعد الضريبة",
-    "PROJECT_REQUIRED":      "المشروع إجباري عند البيع",
+    "PROJECT_REQUIRED":      "المشروع إجباري عند الصفقات",
     "ADVANCEMENT_INVOICE":   "فاتورة التقدمة",
     "SPECIFIC_TO":           "خاص بـ",
     "D10":                   "د10",

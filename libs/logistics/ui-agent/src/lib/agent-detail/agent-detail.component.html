@@ -98,15 +98,6 @@
                             </ss-auto-complete>
                         </mat-form-field>
                     }
-                    @if (AQS) {
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>COMMON_DEPARTMENT</mat-label>
-                            <ss-auto-complete matInput
-                                              formControlName="department"
-                                              [model]="departmentLookup">
-                            </ss-auto-complete>
-                        </mat-form-field>
-                    }
 
                 </mat-expansion-panel>
 
@@ -375,7 +366,7 @@
                             </ss-auto-complete>
                         </mat-form-field>
 
-                        @if (!isSupplier()) {
+                        @if (isCustomer()) {
                             <mat-form-field class="default-50 sm-100">
                                 <mat-label translate>LOGISTICS_COLLECTOR</mat-label>
                                 <ss-auto-complete matInput
@@ -384,6 +375,27 @@
                                 </ss-auto-complete>
                             </mat-form-field>
                         }
+
+                        @if (AQS) {
+                            <mat-form-field class="default-50 sm-100">
+                                <mat-label translate>COMMON_DEPARTMENT</mat-label>
+                                <ss-auto-complete matInput
+                                                  formControlName="department"
+                                                  [model]="departmentLookup">
+                                </ss-auto-complete>
+                            </mat-form-field>
+                        }
+
+                        @if (isInternal()) {
+                            <mat-form-field class="default-50 sm-100">
+                                <mat-label translate>COMMON_POST</mat-label>
+                                <ss-auto-complete matInput
+                                                  formControlName="post"
+                                                  [model]="postLookup">
+                                </ss-auto-complete>
+                            </mat-form-field>
+                        }
+
                     </mat-expansion-panel>
                 }
                 <mat-expansion-panel #centerPanel

@@ -59,6 +59,7 @@ export interface Agent {
     department?: number;
     projectRequired?: boolean;
     collector?: number;
+    post?: number;
     /**
      * @deprecated This field doesn't exist in the backend; it will be removed
      */

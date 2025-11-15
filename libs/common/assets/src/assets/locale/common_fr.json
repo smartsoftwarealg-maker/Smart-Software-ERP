@@ -472,11 +472,11 @@
     "ACCOUNT_MAP":          "Plan Comptable",
     "REGIONS":              "Régions",
     "REGION":               "Régions",
-    "FUND":                 "Fond",
-    "SALES_ACCOUNT":         "Compte vente",
-    "PURCHASE_ACCOUNT":      "Compte achat",
-    "THRESHOLD":             "Valeur seuil",
-    "DISCOUNT":               "Remise",
-    "TRANSFERS": "Cessions",
-    "TRANSFER_RECEPTIONS": "Réceptions sur cessions"
+    "FUND":                 "Caisse",
+    "SALES_ACCOUNT":        "Compte vente",
+    "PURCHASE_ACCOUNT":     "Compte achat",
+    "THRESHOLD":            "Valeur seuil",
+    "DISCOUNT":             "Remise",
+    "TRANSFERS":            "Cessions",
+    "TRANSFER_RECEPTIONS":  "Réceptions sur cessions"
 }

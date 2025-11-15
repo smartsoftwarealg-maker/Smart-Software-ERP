@@ -203,7 +203,7 @@
     "INITIAL":               "Initiale",
     "VT_ADVANCEMENT":        "Avance avant taxes",
     "FT_ADVANCEMENT":        "Avance après taxes",
-    "PROJECT_REQUIRED":      "Projet requis pour les ventes",
+    "PROJECT_REQUIRED":      "Projet requis pour les transactions",
     "ADVANCEMENT_INVOICE":   "Facture d'avance",
     "SPECIFIC_TO":           "Spécifique à",
     "D10":                   "D10",

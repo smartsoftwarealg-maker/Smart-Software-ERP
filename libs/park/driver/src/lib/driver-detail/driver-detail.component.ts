@@ -89,7 +89,7 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
 
     cityLookup = new CityLookup(this.citySrv);
 
-    readonly PAYROLL_POST = 4;
+    readonly COMMON_POST = 4;
     readonly ARCHIVE_PANEL = 1;
     readonly LICENSE_PANEL = 2;
     readonly VEHICLE_PANEL = 3;
