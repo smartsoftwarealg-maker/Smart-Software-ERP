@@ -78,5 +78,6 @@
     "PROJECT_QTY_EXCEEDED":          "The quantity of this project has been exceeded.",
     "UNKNOWN_ERROR":                 "An unknown error occurred. Please, try again later.",
     "CANNOT_DELETE_ACTIVE_EMPLOYEE": "Cannot delete payroll of an active employee",
-    "NO_PROGRESS":                   "No progress made and no documents are generated for this request."
+    "NO_PROGRESS":                   "No progress made and no documents are generated for this request.",
+    "PROJECT_REQUIRED":              "A project/contract/convention is required"
 }

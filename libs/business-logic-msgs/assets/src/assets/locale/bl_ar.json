@@ -78,5 +78,6 @@
     "PROJECT_QTY_EXCEEDED":         "تم تجاوز كمية المشروع",
     "UNKNOWN_ERROR":                "خطأ غير معروف",
     "CANNOT_DELETE_ACTIVE_EMPLOYEE": "لا يمكن حذف مرتب موظف غير موقوف.",
-    "NO_PROGRESS":                   "لا يوجد أي تقدم"
+    "NO_PROGRESS":                   "لا يوجد أي تقدم",
+    "PROJECT_REQUIRED":              "مشروع / عقد / اتفاقية مطلوب"
 }
