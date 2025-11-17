@@ -1,6 +1,6 @@
 {
     "name": "ss",
-    "version": "2.7.17",
+    "version": "2.7.18",
     "license": "PRIVATE",
     "scripts": {
         "ng": "nx",
@@ -81,7 +81,6 @@
         "@nx/eslint-plugin": "22.0.3",
         "@nx/jest": "22.0.3",
         "@nx/js": "22.0.3",
-        "@nx/powerpack-license": "5.0.0",
         "@nx/web": "22.0.3",
         "@nx/workspace": "22.0.3",
         "@schematics/angular": "20.3.10",

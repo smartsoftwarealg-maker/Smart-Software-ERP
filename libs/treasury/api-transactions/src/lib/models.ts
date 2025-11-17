@@ -25,6 +25,7 @@ export interface TTransaction {
     agentName?: string;
     dueDays: number;
     costCenter?: number;
+    costCenterDescription?: string;
 }
 
 export interface TTransactionLine {

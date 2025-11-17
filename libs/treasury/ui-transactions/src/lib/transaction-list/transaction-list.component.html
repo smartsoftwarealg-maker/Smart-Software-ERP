@@ -55,6 +55,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="costCenterDescription">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_COST_CENTER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.costCenterDescription }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="reference2">
             <mat-header-cell *matHeaderCellDef translate>COMMON_BANK</mat-header-cell>
             <mat-cell *matCellDef="let e">
