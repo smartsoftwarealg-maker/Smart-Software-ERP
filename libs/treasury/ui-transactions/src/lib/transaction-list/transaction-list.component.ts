@@ -71,6 +71,8 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
         'income',
         'expenses',
         'pieceno',
+        'groupName',
+        'costCenterDescription',
         'memo'];
 
     private readonly BANK_COLS = [

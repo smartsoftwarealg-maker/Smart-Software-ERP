@@ -58,17 +58,17 @@
                         }
                     </mat-form-field>
                 }
-                <!--                <mat-form-field class="default-50">-->
-                <!--                    <mat-label translate>TRS_NATURE</mat-label>-->
-                <!--                    <ss-auto-complete matInput-->
-                <!--                                      [model]="groupLookup"-->
-                <!--                                      formControlName="treasuryGroup"-->
-                <!--                                      autofocus>-->
-                <!--                    </ss-auto-complete>-->
-                <!--                    @if (form.controls['treasuryGroup']?.invalid) {-->
-                <!--                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>-->
-                <!--                    }-->
-                <!--                </mat-form-field>-->
+                <mat-form-field class="default-50">
+                    <mat-label translate>TRS_NATURE</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="groupLookup"
+                                      formControlName="treasuryGroup"
+                                      autofocus>
+                    </ss-auto-complete>
+                    @if (form.controls['treasuryGroup']?.invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
 
                 <mat-form-field class="default-50">
                     <mat-label translate>TRS_PIECENO</mat-label>
