@@ -1,0 +1,81 @@
+<div class="container size">
+    <form [formGroup]="filterForm" class="filter-bar">
+
+        <mat-form-field class="default-25 sm-100">
+            <mat-label translate>COMMON_FROM</mat-label>
+            <ss-date-picker formControlName="from"></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field class="default-25 sm-100">
+            <mat-label translate>COMMON_TO</mat-label>
+            <ss-date-picker formControlName="to"></ss-date-picker>
+        </mat-form-field>
+
+        <div class="actions">
+            <button mat-button color="accent" (click)="generate()">
+                <i class="fas fa-magic"></i> Generate
+            </button>
+        </div>
+    </form>
+
+    <div class="container size">
+        <mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+            <ng-container matColumnDef="year">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PERIOD</mat-header-cell>
+                <mat-cell *matCellDef="let e">{{ e.year }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="customerCode">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_CUSTOMER_CODE</mat-header-cell>
+                <mat-cell *matCellDef="let e">{{ e.customerCode }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="customerName">
+                <mat-header-cell *matHeaderCellDef translate>STOCK_CUSTOMER</mat-header-cell>
+                <mat-cell *matCellDef="let e">{{ e.customerName }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_AMOUNT</mat-header-cell>
+                <mat-cell *matCellDef="let e">{{ e.amount | number:'1.2-2' }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="rate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_RATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">{{ e.rate }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="generated">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_GENERATED</mat-header-cell>
+                <mat-cell *matCellDef="let e">{{ e.generated }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="select">
+                <mat-header-cell *matHeaderCellDef translate>
+                    COMMON_SELECT
+                </mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <mat-checkbox
+                        [checked]="e.select"
+                        (change)="toggleSelection(e, $event.checked)"
+                        [disabled]="e.amount === 0">
+                    </mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row
+                class="selectable"
+                [class.selected]="row.agentId === selectedRow?.agentId"
+                *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+
+
+        </mat-table>
+    </div>
+</div>
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

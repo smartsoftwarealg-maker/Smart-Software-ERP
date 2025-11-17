@@ -473,5 +473,6 @@
     "THRESHOLD":             "الحد المسموح",
     "DISCOUNT":              "الخصم",
     "TRANSFERS": "التحويلات",
-    "TRANSFER_RECEPTIONS": "استقبالات النقل"
+    "TRANSFER_RECEPTIONS": "استقبالات النقل",
+    "GENERATED":             "تم إنشاؤه"
 }

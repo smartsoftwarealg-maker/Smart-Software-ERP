@@ -7,7 +7,7 @@ import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes, LOGISTICS_AGENT_URL, LOGISTICS_CUSTOMER_URL,
-    SALES_AD_URL, SALES_DISCOUNT_URL, SALES_PRICE_LIST_URL, SALES_SERVICE_ARTICLE_URL
+    SALES_AD_URL, SALES_DISCOUNT_TURNOVER, SALES_DISCOUNT_URL, SALES_PRICE_LIST_URL, SALES_SERVICE_ARTICLE_URL
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -47,6 +47,9 @@ import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { ReportPrivilegesComponent } from '@common/report-privileges';
 import { PriceListDetailComponent, PriceListListComponent } from '@ss/master-data/price-list';
 import { DiscountsDetailComponent, DiscountsListComponent } from '../../../../../libs/sales/ui-discounts/src';
+import {
+    TurnoverListComponent
+} from '../../../../../libs/sales/ui-discounts/src/lib/discounts/turnover/turnover-list.component';
 
 export const lookupRoutes: Routes = [];
 
@@ -335,6 +338,18 @@ export const mainRoutes: Routes = [
                  component: DiscountsDetailComponent,
                  canActivate: [loginGuard],
                  canDeactivate: [CanDeactivateService],
+                 children: docInfoRoutes
+             },
+             { path: '', redirectTo: LIST_URL, pathMatch: 'full' }
+         ]
+     },
+    {
+         path: SALES_DISCOUNT_TURNOVER,
+         children: [
+             {
+                 path: LIST_URL,
+                 component: TurnoverListComponent,
+                 canActivate: [loginGuard],
                  children: docInfoRoutes
              },
              { path: '', redirectTo: LIST_URL, pathMatch: 'full' }

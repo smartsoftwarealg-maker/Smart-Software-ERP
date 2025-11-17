@@ -27,5 +27,6 @@
     "TARE_WEIGHT":      "Poids à vide",
     "BRUT_WEIGHT":      "Poids brut",
     "DISCOUNTS":        "Remises",
-    "DISCOUNTS_DETAIL": "Detail des remises"
+    "DISCOUNTS_DETAIL": "Detail des remises",
+    "DISCOUNT_SCALE":   "Echelle de remise"
 }
