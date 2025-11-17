@@ -481,6 +481,7 @@
     "PURCHASE_ACCOUNT":      "Purchase account",
     "THRESHOLD":             "Threshold",
     "DISCOUNT":              "Discount",
-    "TRANSFERS": "Transfers",
-    "TRANSFER_RECEPTIONS": "Transfer receptions"
+    "TRANSFERS":             "Transfers",
+    "TRANSFER_RECEPTIONS":   "Transfer receptions",
+    "GENERATED":             "Generated"
 }

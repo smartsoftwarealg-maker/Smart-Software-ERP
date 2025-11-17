@@ -27,5 +27,6 @@
     "TARE_WEIGHT":      "الوزن الصافي",
     "BRUT_WEIGHT":      "الوزن الخام",
     "DISCOUNTS":        "الخصومات" ,
-    "DISCOUNTS_DETAIL": "تفاصيل الخصومات"
+    "DISCOUNTS_DETAIL": "تفاصيل الخصومات",
+    "DISCOUNT_SCALE":   "مقياس الخصم"
 }

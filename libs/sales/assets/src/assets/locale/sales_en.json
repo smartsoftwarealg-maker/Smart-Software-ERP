@@ -27,5 +27,6 @@
     "TARE_WEIGHT":      "Tare weight",
     "BRUT_WEIGHT":      "Brut weight",
     "DISCOUNTS":        "Discounts",
-    "DISCOUNTS_DETAIL": "Discounts detail"
+    "DISCOUNTS_DETAIL": "Discounts detail",
+    "DISCOUNT_SCALE":   "Discount scale"
 }

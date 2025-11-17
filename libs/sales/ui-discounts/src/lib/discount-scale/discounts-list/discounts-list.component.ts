@@ -67,7 +67,7 @@ export class DiscountsListComponent extends BaseEntityListComponent<SalesDiscoun
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'SALES_DISCOUNTS',
+            'SALES_DISCOUNT_SCALE',
         );
     }
 }

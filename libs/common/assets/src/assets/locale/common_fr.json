@@ -478,5 +478,6 @@
     "THRESHOLD":            "Valeur seuil",
     "DISCOUNT":             "Remise",
     "TRANSFERS":            "Cessions",
-    "TRANSFER_RECEPTIONS":  "Réceptions sur cessions"
+    "TRANSFER_RECEPTIONS":  "Réceptions sur cessions",
+    "GENERATED":            "Genere"
 }
