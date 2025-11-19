@@ -53,7 +53,7 @@ export class Bom2DetailComponent extends BaseEntityDetailComponent<BOM> {
         return this.#formBuilder.group({
             id:          [e.id],
             productId:   [e.productId, Validators.required],
-            description: [e.description, Validators.required],
+            description: [e.description, [Validators.required, Validators.minLength(3)]],
             from:        [e.from],
             to:          [e.to],
             version:     [e.version||1, Validators.required],

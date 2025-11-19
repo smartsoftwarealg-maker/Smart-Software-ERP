@@ -7,17 +7,18 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import {JsonPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-bom-dialog',
     standalone: true,
     imports: [
-    MatButtonModule,
-    TranslateDirective,
-    MaterialModule,
-    TranslatePipe,
-    UiAutoCompleteComponent
-],
+        MatButtonModule,
+        TranslateDirective,
+        MaterialModule,
+        TranslatePipe,
+        UiAutoCompleteComponent,
+    ],
     templateUrl: './bom-dialog.component.html',
     styleUrl: './bom-dialog.component.css',
 })
