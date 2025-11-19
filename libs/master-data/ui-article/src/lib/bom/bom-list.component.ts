@@ -159,7 +159,7 @@ export class BomListComponent implements OnDestroy, OnInit {
 
     protected showAddDialog() {
         const bom = this.selectedBOM?.bom;
-        this.edit({ id: 0, productId: 0, bomId: bom.productId || null, qty: 0, price: 0, version: 1});
+        this.edit({ id: 0, productId: null, bomId: bom?.id || 0, qty: 0, price: 0, version: 1});
     }
 
     protected editSelected() {

@@ -49,17 +49,11 @@ import { of } from 'rxjs';
         PaginationComponent,
         MatFormFieldModule,
         MatLabel,
-        MatInput,
         ReactiveFormsModule,
         MatCheckbox,
         DecimalPipe,
-        PercentPipe,
         MatButton,
-        NgIf,
         DatePickerComponent,
-        MatSelect,
-        MatOption,
-        NgForOf
     ]
 })
 export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
