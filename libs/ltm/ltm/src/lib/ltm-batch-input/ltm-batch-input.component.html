@@ -150,8 +150,7 @@
       <tr class="content__div f-background">
         <td class="b-primary" style="text-align: left"> {{c.description|translate}}</td>
         @for (f of simulatedTotals.controls; track f; let i = $index) {
-          @let
-          deviation = totalsOptimalValues[i] > 0 ? 100.0 * (f.controls['value'].value - totalsOptimalValues[i]) / totalsOptimalValues[i] : 100.0;
+          @let deviation = totalsOptimalValues[i] > 0 ? 100.0 * (f.controls['value'].value - totalsOptimalValues[i]) / totalsOptimalValues[i] : 100.0;
           <td [style.background-color]="c.color">
             @if (deviation >= c.range[0] && deviation <= c.range[1]) {
               <i class="fa-solid fa-circle-dot dot"></i>

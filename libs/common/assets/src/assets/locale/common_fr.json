@@ -1,4 +1,5 @@
 {
+    "SECTOR": "Secteur",
     "ACCOUNTNO": "N° de compte",
     "DESCRIPTION": "Description",
     "DESCRIPTION_AR": "Description (ar)",
@@ -216,7 +217,7 @@
     "REFERENCE": "Référence",
     "OFFICES": "Bureau",
     "EXCEL_EXPORT": "Exporter vers Excel",
-    "LOCATION":           "Lieu",
+    "LOCATION":           "Localisation",
     "INVALID_FORM":       "Ce formulaire est invalide",
     "PURCHASE":           "Achat",
     "DB_UPDATER":         "Mise à jour de la base de données",
