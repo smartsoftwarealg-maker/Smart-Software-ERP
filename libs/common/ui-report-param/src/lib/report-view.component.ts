@@ -218,12 +218,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.releasePdf();
         this.htmlSrc = null;
         this.generating.set(true);
-        this.uuid = uuidv6();
         const data: ReportViewData = {
             app: this.app + this.selectedReport.parent,
             rType: this.form.value.reportType,
             fileName: this.selectedReport.name.replace('.jasper', ''),
-            uuid: this.uuid,
             paramList: this.createList()
         };
 
@@ -320,7 +318,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     private defaultValue(ctrlName: string, typeName: string): any {
         const value = this.form.controls[ctrlName].value;
         return typeName === 'java.sql.Timestamp' ? dateTimeToStr(value).substring(0, 19) :
-            value === false ? 'false' : value === true ? 'true' : value;
+            value === false ? 'false' : value === true ? 'true' : value.toString();
     }
 
     private async writeThenOpenFile(fileBlob: any): Promise<void> {
