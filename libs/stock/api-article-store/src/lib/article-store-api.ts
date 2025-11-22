@@ -17,6 +17,8 @@ export interface ArticleStore {
     referenceId: number;
     reference: string;
     stock?: number;
+    location?: string;
+    locSector?: string;
     pp?: number;
     price1: number;
     price2: number;

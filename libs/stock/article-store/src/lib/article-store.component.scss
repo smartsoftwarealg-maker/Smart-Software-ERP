@@ -10,12 +10,21 @@ mat-card {
     display: flex;
     flex-direction: row;
     gap: 8px;
+    justify-content: flex-end;
+    margin-bottom: 4px;
 }
 
 
 .mat-column-storeName,
 .mat-column-lotNumber {
     flex: 1 1 250px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+.mat-column-location,
+.mat-column-locSector {
+    flex: 1 1 150px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
@@ -36,4 +45,13 @@ mat-card {
         position: sticky;
         margin: auto;
     }
+}
+.table__div {
+    max-width: min(100%, 900px);
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
+mat-table {
+    min-width: 800px;
 }
