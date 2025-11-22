@@ -48,6 +48,14 @@
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_PRODUCTION</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="productionLookup"
+                                      formControlName="production">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
                     <ss-auto-complete matInput
                                       [model]="supplierLookup"

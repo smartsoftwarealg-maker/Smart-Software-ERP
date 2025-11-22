@@ -31,6 +31,7 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
     supplierLookup    = new AccountStringAutocompleteModel(this.accountSrv);
     stockLookup       = new AccountStringAutocompleteModel(this.accountSrv);
     consumptionLookup = new AccountStringAutocompleteModel(this.accountSrv);
+    productionLookup = new AccountStringAutocompleteModel(this.accountSrv);
     salesLookup       = new AccountStringAutocompleteModel(this.accountSrv);
 
     constructor(
@@ -61,6 +62,7 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
             purchase:    [b.purchase],
             supplier:    [b.supplier],
             sales:       [b.sales],
+            production:  [b.production],
             description: [b.description, Validators.required],
         });
     }

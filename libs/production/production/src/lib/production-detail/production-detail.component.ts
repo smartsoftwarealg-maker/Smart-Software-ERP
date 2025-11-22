@@ -42,7 +42,7 @@ export class ProductionDetailComponent extends BaseTransactionDetailComponent {
                 public override lookupsSrv: LookupsService,
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {
-        super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PROD_PRODUCTION');
+        super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'COMMON_PRODUCTION');
     }
 
     override setupForm(b: Transaction): FormGroup {

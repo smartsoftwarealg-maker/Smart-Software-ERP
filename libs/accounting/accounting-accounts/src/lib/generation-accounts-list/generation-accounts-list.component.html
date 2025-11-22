@@ -15,6 +15,13 @@
         </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="production">
+        <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PRODUCTION</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+            {{e.production}}
+        </mat-cell>
+    </ng-container>
+
 
     <ng-container matColumnDef="supplier">
         <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_SUPPLIER</mat-header-cell>
