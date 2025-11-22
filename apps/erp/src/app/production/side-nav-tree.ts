@@ -78,7 +78,7 @@ export const productionNavTree: SideNavNode = {
             name: 'PROD_PRODUCTION_ORDER',
             icon: 'fa-solid fa-industry',
             route: ABS_PRODUCTION_ORDER_URL,
-            accessRights: 'POrder',
+            accessRights: 'ProductionOrder',
         },
         {
             name: 'PROD_PRODUCTION_MRP',
@@ -90,7 +90,7 @@ export const productionNavTree: SideNavNode = {
             name: 'PROD_PRODUCTIONS',
             icon: 'fa-brands fa-product-hunt',
             route: ABS_PRODUCTION_URL,
-            accessRights: 'POrder',
+            accessRights: 'Production',
         },
         {
             name: 'PROD_INTER_STORE_TRANSFER',
