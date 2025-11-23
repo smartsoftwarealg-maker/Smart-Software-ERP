@@ -1,0 +1,124 @@
+@use '@angular/material' as mat;
+
+.form_container {
+    box-sizing: border-box;
+    padding: 5px;
+    display: grid;
+    grid-gap: 10px;
+    height: 100%;
+    width: 98%;
+    max-width: 1400px;
+    margin: 0 auto;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 70px 1fr 64px;
+    grid-template-areas: "customer date"
+                         "payments debts"
+                         "cancel   make";
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 60px 1fr 1fr 64px 64px;
+        grid-template-areas:
+                         "date     ."
+                         "customer customer"
+                         "payments payments"
+                         "debts    debts"
+                         "cancel   make";
+
+    }
+}
+.label {
+    height: 3em;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5em;
+    font-weight: bold;
+}
+.date {
+    grid-area: date;
+    max-width: 220px;
+}
+.customer {
+    grid-area: customer;
+}
+.payments {
+    grid-area: payments;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+mat-tree {
+    flex-grow: 1;
+}
+.debts {
+    grid-area: debts;
+    overflow: hidden;
+}
+
+.list__div {
+    height: calc(100% - 90px);
+    overflow-y: auto;
+}
+
+.cancel {
+    grid-area: cancel;
+    justify-self: start;
+}
+
+.make {
+    grid-area: make;
+    justify-self: end;
+}
+
+.mat-tree-node {
+    user-select: none;
+    cursor: move;
+    &.cdk-drag-preview {
+        @include mat.elevation(6, var(--mat-sys-secondary-fixed-dim), 0.1);
+    }
+    &.cdk-drag-placeholder {
+        opacity: 0;
+    }
+}
+
+mat-list {
+    height: calc(100% - 90px);
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.th__description {
+    margin-left: 48px;
+    width: 200px;
+}
+
+.td__description {
+    width: 320px;
+    max-width: 350px;
+    overflow-x: hidden;
+}
+
+.td__amount {
+    width: 120px;
+    text-align: end;
+    font-weight: bold;
+}
+
+.debt__div {
+    display: flex;
+    width: 100%;
+}
+.debt_description {
+    flex: 1 1 250px;
+    white-space: normal;
+}
+.debt_amount {
+    flex: 1 1 100px;
+    justify-self: flex-end;
+    text-align: end;
+    margin-left: 0.5em;
+    display: flex;
+    align-items: center;
+}

@@ -212,6 +212,7 @@ export const DELIVERY_TIME_URL = 'delivery-times';
 export const LOGISTICS_AGENT_MERGE_URL = 'agent-merge';
 export const LOGISTICS_DELIVERY_TIME_URL = 'delivery-time';
 export const LOGISTICS_SHIPMENT_MODE_URL = 'shipment-mode';
+export const LOGISTICS_BRANCHES_URL = 'branches';
 export const PACKAGING_UNITS_URL = 'logistics-packaging-units';
 
 
@@ -783,6 +784,7 @@ export const ABS_FINANCE_CUSTOMER_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_
 export const ABS_FINANCE_SUPPLIER_COMPENSATIONS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_SCOMPENSATION_URL].join('/');
 export const ABS_FINANCE_REPORTS_URL = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_FINANCE_ADVANCEMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_ADVANCEMENTS_URL].join('/');
+export const ABS_FINANCE_BRANCHES = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_BRANCHES_URL].join('/');
 
 // HR
 export const ABS_HR_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_CATEGORIES_URL].join('/');
