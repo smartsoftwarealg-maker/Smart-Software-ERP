@@ -7,7 +7,7 @@ import {
     LOGISTICS_CCOMPENSATION_URL,
     PAYMENT_ORDER,
     DASHBOARD_URL,
-    COMMON_REPORTS_URL, LOGISTICS_ADVANCEMENTS_URL
+    COMMON_REPORTS_URL, LOGISTICS_ADVANCEMENTS_URL, LOGISTICS_BRANCHES_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -22,6 +22,7 @@ import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '@ss/purcha
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {loginGuard} from '../erp-guards';
+import {BranchesComponent} from "../../../../../libs/logistics/ui-branches/src";
 
 export const financeRoutes: Routes = [
     {
@@ -38,6 +39,11 @@ export const financeRoutes: Routes = [
         path: LOGISTICS_SCOMPENSATION_URL,
         component: PaymentCompensationComponent,
         data: { agents: '/suppliers' }
+    },
+    {
+        path: LOGISTICS_BRANCHES_URL,
+        component: BranchesComponent,
+        data: { agents: '/branches' }
     },
     {
         path: LOGISTICS_COMPENSATION_URL,

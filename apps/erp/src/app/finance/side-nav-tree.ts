@@ -1,6 +1,6 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_FINANCE_ADVANCEMENTS,
+    ABS_FINANCE_ADVANCEMENTS, ABS_FINANCE_BRANCHES,
     ABS_FINANCE_COMPENSATIONS, ABS_FINANCE_CPAYMENTS, ABS_FINANCE_CUSTOMER_COMPENSATIONS, ABS_FINANCE_DASHBOARD_URL,
     ABS_FINANCE_PAYMENT_ORDERS,
     ABS_FINANCE_PAYMENTS, ABS_FINANCE_REPORTS_URL, ABS_FINANCE_SPAYMENTS, ABS_FINANCE_SUPPLIER_COMPENSATIONS,
@@ -29,6 +29,12 @@ export const financeNavTree: SideNavNode = {
             icon: 'fa-solid fa-money-check-dollar-pen',
             route: ABS_FINANCE_SPAYMENTS,
             accessRights: 'SPayment'
+        },
+        {
+            name: 'LOGISTICS_BRANCHES',
+            icon: 'fa-solid fa-code-branch',
+            route: ABS_FINANCE_BRANCHES,
+            accessRights: 'Branch'
         },
         {
             name: 'LOGISTICS_SUPPLIER_COMPENSATION',

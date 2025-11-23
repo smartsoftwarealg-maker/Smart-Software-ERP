@@ -215,5 +215,6 @@
     "PACKAGING_UNITS":       "Unités d'emballage",
     "MULTI_CENTERS":         "Centres multiples",
     "UNITS":                 "Unités",
-    "INTERNAL_AGENTS":       "Agents internes"
+    "INTERNAL_AGENTS":       "Agents internes",
+    "BRANCHES":              "Branches"
 }

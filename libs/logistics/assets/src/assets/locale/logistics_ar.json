@@ -214,5 +214,6 @@
     "PACKAGING_UNITS":       "وحدات التعبئة",
     "MULTI_CENTERS":         "متعدد المراكز",
     "UNITS":                 "الوحدات",
-    "INTERNAL_AGENTS":       "الشركاء الداخليون"
+    "INTERNAL_AGENTS":       "الشركاء الداخليون",
+    "BRANCHES":              "الفروع"
 }
