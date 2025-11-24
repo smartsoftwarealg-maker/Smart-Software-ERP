@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {PayrollMonthService} from '../payroll-month.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -46,25 +46,26 @@ export class MonthSelectorComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setLoading(true);
-        this.shellSrv.setTitle('REMUN_MONTH_SELECTION')
+        this.shellSrv.setTitle('REMUN_MONTH_SELECTION');
         zip(this.selectorSrv.minMonth(),
             this.selectorSrv.maxMonth(),
             this.selectorSrv.ctx(),
             this.specialSrv.getList(0, 50))
             .subscribe({
                 next: res => {
-                    this.minMonth.set(res[0].month);
-                    this.maxMonth.set(res[1].month);
-                    const min = +(res[0].month / 100).toFixed(0);
-                    const max = +(res[1].month / 100).toFixed(0);
-                    const curYear = (+((res[2].payMonth || this.maxMonth()) / 100) % 10000).toFixed(0);
-                    const curMonth = +((res[2].payMonth || this.maxMonth()) % 100).toFixed(0);
+                    this.minMonth.set(res[0].month||(<number>res[0][1]));
+                    this.maxMonth.set(res[1].month||(res[1][1]) as number);
+                    const min = this.minMonth();
+                    const max = this.maxMonth();
+                    console.log(res[0], res[1], res[2]);
+                    const curYear = (+((res[2]['payMonth'] || this.maxMonth()) / 100) % 10000).toFixed(0);
+                    const curMonth = +((res[2]['payMonth'] || this.maxMonth()) % 100).toFixed(0);
                     this.specialList = res[3].body;
                     this.specialList.push({
                         id: 0,
                         center: 0,
                         paymonth: res[2].payMonth % 1_000_000,
-                        description: this.langSrv.translate("REMUN_NORMAL_PAY")
+                        description: this.langSrv.translate('REMUN_NORMAL_PAY')
                     });
                     this.form = this.formBuilder
                         .group({
