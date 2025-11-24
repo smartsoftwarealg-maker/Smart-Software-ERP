@@ -65,13 +65,13 @@ export const attendanceNavTree: SideNavNode = {
             name: 'ATT_ATTENDANCE_LOG',
             icon: 'fa-solid fa-user-gear',
             route: ABS_ATTENDANCE_LOG_URL,
-            accessRights: 'Attendance'
+            accessRights: 'AttendanceLog'
         },
         {
             name: 'ATT_SERIAL_ATTENDANCE',
             icon: 'fa-solid fa-calendar-circle-user',
             route: ABS_SERIAL_ATTENDANCE_URL,
-            accessRights: 'ATTSignature'
+            accessRights: 'SSignature'
         },
     ],
     accessRights: 'ATTENDANCE_APP'

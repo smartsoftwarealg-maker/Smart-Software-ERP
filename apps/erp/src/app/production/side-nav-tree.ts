@@ -16,7 +16,7 @@ import {
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
-    name: 'PROD_PRODUCTION',
+    name: 'COMMON_PRODUCTION',
     icon: 'fa-solid fa-conveyor-belt-arm',
     accessRights: 'APP_PRODUCTION',
     children: [
