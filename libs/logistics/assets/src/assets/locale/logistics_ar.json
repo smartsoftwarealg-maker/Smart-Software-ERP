@@ -215,5 +215,9 @@
     "MULTI_CENTERS":         "متعدد المراكز",
     "UNITS":                 "الوحدات",
     "INTERNAL_AGENTS":       "الشركاء الداخليون",
-    "BRANCHES":              "الفروع"
+    "BRANCHES":              "الفروع",
+    "BRANCHES_PAYMENTS_COMPENSATION": " تعويض فروع",
+    "TRANSPORTERS_PAYMENTS": "تسديد النقل",
+    "TRANSPORTER_PAYMENTS_COMPENSATION": "تعويض النقل",
+    "BRANCH_PAYMENTS": "مدفوعات الفروع"
 }
