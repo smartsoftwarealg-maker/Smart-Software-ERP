@@ -217,5 +217,9 @@
     "MULTI_CENTERS":         "Multi centers",
     "UNITS":                 "Units",
     "INTERNAL_AGENTS":       "Internal agents",
-    "BRANCHES":              "Branches"
+    "BRANCHES":              "Branches",
+    "BRANCHES_PAYMENTS_COMPENSATION": "Branch compensation",
+    "TRANSPORTERS_PAYMENTS": "Transporter payments",
+    "TRANSPORTER_PAYMENTS_COMPENSATION": "Transporter compensation",
+    "BRANCH_PAYMENTS": "Branch payments"
 }

@@ -216,5 +216,9 @@
     "MULTI_CENTERS":         "Centres multiples",
     "UNITS":                 "Unités",
     "INTERNAL_AGENTS":       "Agents internes",
-    "BRANCHES":              "Branches"
+    "BRANCHES":              "Branches",
+    "BRANCHES_PAYMENTS_COMPENSATION": "Compensation unités",
+    "TRANSPORTERS_PAYMENTS": "Paiements transporteurs",
+    "TRANSPORTER_PAYMENTS_COMPENSATION": "Compensation transporteurs",
+    "BRANCH_PAYMENTS": "Paiements unités"
 }

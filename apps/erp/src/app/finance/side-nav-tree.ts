@@ -1,10 +1,21 @@
 import {SideNavNode} from '@ss/common/api-common';
 import {
-    ABS_FINANCE_ADVANCEMENTS, ABS_FINANCE_BRANCHES,
-    ABS_FINANCE_COMPENSATIONS, ABS_FINANCE_CPAYMENTS, ABS_FINANCE_CUSTOMER_COMPENSATIONS, ABS_FINANCE_DASHBOARD_URL,
+    ABS_FINANCE_ADVANCEMENTS,
+    ABS_FINANCE_BPAYMENTS,
+    ABS_FINANCE_BRANCHES_PAYMENTS_COMPENSATION,
+    ABS_FINANCE_COMPENSATIONS,
+    ABS_FINANCE_CPAYMENTS,
+    ABS_FINANCE_CUSTOMER_COMPENSATIONS,
+    ABS_FINANCE_DASHBOARD_URL,
     ABS_FINANCE_PAYMENT_ORDERS,
-    ABS_FINANCE_PAYMENTS, ABS_FINANCE_REPORTS_URL, ABS_FINANCE_SPAYMENTS, ABS_FINANCE_SUPPLIER_COMPENSATIONS,
-    ABS_PURCHASE_DASHBOARD_URL, ABS_PURCHASE_REPORTS_URL
+    ABS_FINANCE_PAYMENTS,
+    ABS_FINANCE_REPORTS_URL,
+    ABS_FINANCE_SPAYMENTS,
+    ABS_FINANCE_SUPPLIER_COMPENSATIONS,
+    ABS_FINANCE_TPAYMENTS,
+    ABS_FINANCE_TRANSPORTER_PAYMENTS_COMPENSATION,
+    ABS_PURCHASE_DASHBOARD_URL,
+    ABS_PURCHASE_REPORTS_URL,
 } from '../common';
 
 export const financeNavTree: SideNavNode = {
@@ -31,10 +42,16 @@ export const financeNavTree: SideNavNode = {
             accessRights: 'SPayment'
         },
         {
-            name: 'LOGISTICS_BRANCHES',
-            icon: 'fa-solid fa-code-branch',
-            route: ABS_FINANCE_BRANCHES,
-            accessRights: 'Branch'
+            name: 'LOGISTICS_BRANCH_PAYMENTS',
+            icon: 'fa-regular fa-money-bill-trend-up',
+            route: ABS_FINANCE_BPAYMENTS,
+            accessRights: 'BPayment'
+        },
+        {
+            name: 'LOGISTICS_TRANSPORTERS_PAYMENTS',
+            icon: 'fa-solid fa-circle-dollar',
+            route: ABS_FINANCE_TPAYMENTS,
+            accessRights: 'BPayment'
         },
         {
             name: 'LOGISTICS_SUPPLIER_COMPENSATION',
@@ -47,6 +64,18 @@ export const financeNavTree: SideNavNode = {
             icon: 'fa-solid fa-scale-unbalanced',
             route: ABS_FINANCE_CUSTOMER_COMPENSATIONS,
             accessRights: 'CCompensation'
+        },
+        {
+            name: 'LOGISTICS_BRANCHES_PAYMENTS_COMPENSATION',
+            icon: 'fa-solid fa-scale-balanced',
+            route: ABS_FINANCE_BRANCHES_PAYMENTS_COMPENSATION,
+            accessRights: 'BPayment'
+        },
+        {
+            name: 'LOGISTICS_TRANSPORTER_PAYMENTS_COMPENSATION',
+            icon: 'fa-thin fa-scale-balanced',
+            route: ABS_FINANCE_TRANSPORTER_PAYMENTS_COMPENSATION,
+            accessRights: 'TPayment'
         },
         {
             name: 'LOGISTICS_ADVANCEMENT_INVOICE',

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
 import { WeightCapture } from './weight-capture-api';
@@ -7,7 +7,7 @@ import { WeightCapture } from './weight-capture-api';
     providedIn: 'root',
 })
 export class WeightCaptureService {
-    constructor(private httpSrv: HttpService) {}
+    private httpSrv = inject(HttpService);
 
     getWeightCapture(id: number): Observable<WeightCapture> {
         return this.httpSrv.get<WeightCapture>(

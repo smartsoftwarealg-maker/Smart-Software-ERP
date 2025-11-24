@@ -29,7 +29,7 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
     ngOnInit() {
         this.weightCaptureSrv.getBalanceUrl().subscribe({
             next: (res) => {
-                if (res.url.length > 0) {
+                if (res?.url?.length > 0) {
                     this.balanceTruckSrv.setBalanceUrl(res.url);
                     this.urlExists.set(true);
                 }

@@ -7,7 +7,12 @@ import {
     LOGISTICS_CCOMPENSATION_URL,
     PAYMENT_ORDER,
     DASHBOARD_URL,
-    COMMON_REPORTS_URL, LOGISTICS_ADVANCEMENTS_URL, LOGISTICS_BRANCHES_URL
+    COMMON_REPORTS_URL,
+    LOGISTICS_ADVANCEMENTS_URL,
+    LOGISTICS_BRANCHES_URL,
+    LOGISTICS_BPAYMENTS_URL,
+    LOGISTICS_TPAYMENTS_URL,
+    LOGISTICS_TRANSPORTERS_URL,
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -22,7 +27,6 @@ import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '@ss/purcha
 import {DashboardComponent} from '@ss/dashboard';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {loginGuard} from '../erp-guards';
-import {BranchesComponent} from "../../../../../libs/logistics/ui-branches/src";
 
 export const financeRoutes: Routes = [
     {
@@ -42,8 +46,13 @@ export const financeRoutes: Routes = [
     },
     {
         path: LOGISTICS_BRANCHES_URL,
-        component: BranchesComponent,
+        component: PaymentCompensationComponent,
         data: { agents: '/branches' }
+    },
+    {
+        path: LOGISTICS_TRANSPORTERS_URL,
+        component: PaymentCompensationComponent,
+        data: { agents: '/transporters' }
     },
     {
         path: LOGISTICS_COMPENSATION_URL,
@@ -122,6 +131,46 @@ export const financeRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 data: { url: '/cpayments', agents: '/customers' }
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_BPAYMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PaymentsListComponent,
+                canActivate: [loginGuard],
+                data: { url: '/bpayments', agents: '/branches' }
+            },
+            {
+                path: ':id',
+                component: PaymentsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: { url: '/bpayments', agents: '/branches' }
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: LOGISTICS_TPAYMENTS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PaymentsListComponent,
+                canActivate: [loginGuard],
+                data: { url: '/tpayments', agents: '/transporters' }
+            },
+            {
+                path: ':id',
+                component: PaymentsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: { url: '/tpayments', agents: '/transporters' }
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

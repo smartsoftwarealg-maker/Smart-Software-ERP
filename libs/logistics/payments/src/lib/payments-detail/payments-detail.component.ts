@@ -32,6 +32,23 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
     private bankSrv  = inject(BankService);
     private agentService = inject(AgentService);
 
+    protected titleMap = new Map([
+        ['/customers', 'LOGISTICS_CUSTOMER_PAYMENTS'],
+        ['/suppliers', 'LOGISTICS_SUPPLIER_PAYMENTS'],
+        ['/branches', 'LOGISTICS_BRANCH_PAYMENTS'],
+        ['/transporters', 'LOGISTICS_TRANSPORTER_PAYMENTS'],
+    ]);
+
+    displayedColumns = [
+        'date',
+        'denomination',
+        'description',
+        // 'modeDescription',
+        'number',
+        'debit',
+        'credit',
+    ];
+
     public agentAutoCompleteModel    = new AgentLookupModel(this.agentService);
     public bankAutoCompleteModel    = new DefaultAutoCompleteModel(this.bankSrv);
     public modeAutoCompleteModel    = new DefaultAutoCompleteModel(this.typeSrv);
@@ -52,6 +69,9 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
             .subscribe(data => {
                 if (data['agents']) {
                     this.agentService.setURL(data['agents']);
+                    this.shellSrv.setTitle(
+                        this.titleMap.get(data['agents']) ?? 'COMMON_PAYMENTS',
+                    );
                 }
             });
     }

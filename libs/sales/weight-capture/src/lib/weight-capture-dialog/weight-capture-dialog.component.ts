@@ -16,10 +16,10 @@ const BRUT = 1;
     selector: 'ss-weight-capture-dialog',
     standalone: true,
     imports: [
-    MatButtonModule,
-    TranslateDirective,
-    MaterialModule
-],
+        MatButtonModule,
+        TranslateDirective,
+        MaterialModule
+    ],
     templateUrl: './weight-capture-dialog.component.html',
     styleUrl: './weight-capture-dialog.component.scss',
 })
