@@ -43,7 +43,7 @@ export interface TImport{
     date: Date;
     from: Date;
     to: Date;
-    consolidated: Boolean;
+    consolidated: boolean;
 }
 
 export interface Summary{journal: string, period: number, balance: number, rTotal: number}

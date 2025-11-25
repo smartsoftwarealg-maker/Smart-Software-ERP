@@ -115,7 +115,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
             this.form.controls['income'].enable({ onlySelf: true });
             this.form.controls['expense'].disable({ onlySelf: true });
             this.form.controls['bankExpenses'].disable({ onlySelf: true });
-            this.form.controls['bankExpenses'].setValue(0.0);
+            this.form.controls['bankExpenses'].setValue(false);
         } else if (income - expense < 0) {
             this.form.controls['expense'].enable({ onlySelf: true });
             this.form.controls['income'].disable({ onlySelf: true });
