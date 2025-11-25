@@ -14,7 +14,7 @@ import {
     STOCK_ARTICLE_URL,
     PURCHASE_RECEPTION_CANCELLATION_URL,
     IMPORT_PURCHASE_RECEPTION_URL, ADMIN_REPORT_RIGHTS_URL, PRICE_REQUEST_URL, LOGISTICS_SUPPLIER_URL,
-    PURCHASE_RECEPTION_INVOICE_URL
+    PURCHASE_RECEPTION_INVOICE_URL, PURCHASE_TRANSPORTERS_RECEPTION_URL
 } from '../common';
 import {
     PurchaseOrderDetailComponent,
@@ -72,6 +72,11 @@ import { PurchaseInvoiceListComponent} from '@ss/purchases/purchase-invoice';
 import { PurchaseInvoiceDetailComponent} from '@ss/purchases/purchase-invoice';
 import { PurchaseInvoiceLinesListComponent} from '@ss/purchases/purchase-invoice';
 import { PurchaseInvoiceLinesDetailComponent} from '@ss/purchases/purchase-invoice';
+import {
+    TransporterReceptionDetailComponent, TransporterReceptionLinesDetailComponent,
+    TransporterReceptionLinesListComponent,
+    TransporterReceptionListComponent
+} from "../../../../../libs/purchases/ui-transporters/src";
 
 export const routes: Routes = [
     {
@@ -316,6 +321,45 @@ export const routes: Routes = [
             },
             {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
             {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {
+        path: PURCHASE_TRANSPORTERS_RECEPTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TransporterReceptionListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: TransporterReceptionDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'costs-list', component: ExtraCostListComponent },
+                    {
+                        path: 'costs-detail',
+                        children: [
+                            { path: ':id', component: ExtraCostDetailComponent }
+                        ]
+                    },
+                    {
+                        path: 'lines-list',
+                        component: TransporterReceptionLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: TransporterReceptionLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
         ]
     },
     {

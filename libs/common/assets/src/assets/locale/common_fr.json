@@ -481,5 +481,6 @@
     "DISCOUNT":             "Remise",
     "TRANSFERS":            "Cessions",
     "TRANSFER_RECEPTIONS":  "Réceptions sur cessions",
-    "GENERATED":            "Genere"
+    "GENERATED":            "Genere",
+    "TRANSPORTER_RECEPTIONS": "Receptions Transporteurs"
 }

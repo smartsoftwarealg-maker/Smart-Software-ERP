@@ -485,5 +485,6 @@
     "DISCOUNT":              "Discount",
     "TRANSFERS":             "Transfers",
     "TRANSFER_RECEPTIONS":   "Transfer receptions",
-    "GENERATED":             "Generated"
+    "GENERATED":             "Generated",
+    "TRANSPORTER_RECEPTIONS": "Transporter Receptions"
 }

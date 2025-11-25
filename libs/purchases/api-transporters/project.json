@@ -1,0 +1,32 @@
+{
+    "name": "purchases-api-transporters",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/purchases/api-transporters/src",
+    "prefix": "ss",
+    "targets": {
+        "lint": {
+            "executor": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/purchases/api-transporters/tsconfig.lib.json",
+                    "libs/purchases/api-transporters/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/purchases/api-transporters/**/*"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/purchases/api-transporters"
+            ],
+            "options": {
+                "jestConfig": "libs/purchases/api-transporters/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

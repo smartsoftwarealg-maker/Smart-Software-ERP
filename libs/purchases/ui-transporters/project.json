@@ -1,0 +1,30 @@
+{
+    "name": "purchases-ui-transporters",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/purchases/ui-transporters/src",
+    "prefix": "ss",
+    "targets": {
+        "lint": {
+            "executor": "@angular-devkit/build-angular:tslint",
+            "options": {
+                "tsConfig": [
+                    "libs/purchases/ui-transporters/tsconfig.lib.json",
+                    "libs/purchases/ui-transporters/tsconfig.spec.json"
+                ],
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/purchases/ui-transporters/**/*"
+                ]
+            }
+        },
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/libs/purchases/ui-transporters"],
+            "options": {
+                "jestConfig": "libs/purchases/ui-transporters/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    }
+}

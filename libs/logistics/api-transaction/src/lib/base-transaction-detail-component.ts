@@ -94,7 +94,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     public agentLookup = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
-    public supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public purchaseProjectLookup = new ProjectLookupModel(this.purchaseProjectSrv);
     public salesProjectLookup = new ProjectLookupModel(this.salesProjectSrv);
     public currencyLookup = new ForeignCurrencyModel(this.currencySrv);
@@ -119,7 +118,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         public override title: string) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
         this.agentLookup.onObjectSelected = e => this.onAgentSelected(e);
-        this.supplierLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
+        this.transporterLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
         this.customerLookup.onObjectSelected = e => this.onAgentSelected(e);
         this.salesProjectLookup.onObjectSelected = e => this.updateProjectStatus(e);
         this.purchaseProjectLookup.onObjectSelected = e => this.updateProjectStatus(e);
