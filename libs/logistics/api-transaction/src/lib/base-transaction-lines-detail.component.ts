@@ -403,16 +403,18 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         });
         dialogRef
             .afterClosed()
-            .subscribe((location: Location|null) => {
-                if (location) {
-                    this.form.controls['reference'].setValue(location.reference);
-                    this.form.controls['store'].setValue(location.storeId);
-                    this.articleStock = location.stock;
+            .pipe(tap((location: Location|null) => {
+                    if (location) {
+                        this.form.controls['reference'].setValue(location.reference);
+                        this.form.controls['store'].setValue(location.storeId);
+                        this.articleStock = location.stock;
 
-                    const priceList = [location.price1, location.price2, location.price3, location.price4, location.price5];
-                    this.form.controls['price'].setValue(priceList[this.#priceIndex]);
-                }
-            });
+                        const priceList = [location.price1, location.price2, location.price3, location.price4, location.price5];
+                        this.form.controls['price'].setValue(priceList[this.#priceIndex]);
+                    }
+                }),
+                switchMap(res => this.articleSrv.get(res.referenceId))
+            ).subscribe((article: Article) => this.onArticle(article));
     }
 
     @HostListener('document:keydown', ['$event'])

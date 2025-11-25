@@ -1,0 +1,75 @@
+<div class="container">
+    @if (!processing()) {
+        @if (!processing()) {
+            <mat-card>
+                <div class="file-upload">
+                    <input type="file"
+                           class="file-input"
+                           accept=".xlsx, application/msexcel"
+                           (change)="onChange(fileUpload.files)"
+                           #fileUpload>
+
+                    <div translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }}</div>
+
+                    <button mat-mini-fab color="primary"
+                            class="upload-btn"
+                            (click)="fileUpload.click()">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                </div>
+                <form [formGroup]="form">
+                    <mat-form-field class="default-50 sm-100 right-1em">
+                        <mat-label translate>COMMON_ID</mat-label>
+                        <mat-select formControlName="id" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>COMMON_TYPE</mat-label>
+                        <mat-select formControlName="aType" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="default-50 sm-100 right-1em">
+                        <mat-label translate>COMMON_AMOUNT</mat-label>
+                        <mat-select formControlName="amount" required>
+                            @for (c of columns; track c) {
+                                <mat-option [value]="c">
+                                    {{ c }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                </form>
+
+
+                <div class="button__div">
+                    <button mat-raised-button color="primary"
+                            type="button"
+                            (click)="onFileSelected(fileUpload.files)"
+                            [disabled]="!fileName">
+                        <i class="fa-solid fa-upload  icon"></i>
+                        {{ 'COMMON_UPLOAD' | translate }}
+                    </button>
+
+                    <button mat-raised-button color="warn" type="button" (click)="cancel()">
+                        <i class="fa-solid fa-arrow-rotate-left icon"></i>
+                        {{ 'COMMON_CANCEL' | translate }}
+                    </button>
+                </div>
+            </mat-card>
+        }
+
+    }
+    @if (processing()) {
+        <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+    }
+</div>
