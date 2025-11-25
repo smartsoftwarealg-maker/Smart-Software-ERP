@@ -18,7 +18,7 @@ import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatCheckbox } from '@angular/material/checkbox';
-import {CostCenterService} from "@ss/logistics/api-cost-center";
+import {CostCenterService} from '@ss/logistics/api-cost-center';
 
 @Component({
     selector: 'ss-transaction-detail',
@@ -26,21 +26,21 @@ import {CostCenterService} from "@ss/logistics/api-cost-center";
     styleUrls: ['./transaction-detail.component.scss'],
     standalone: true,
     imports: [
-    MatCard,
-    MaterialModule,
-    MatCardContent,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    TranslateDirective,
-    MatInput,
-    DatePickerComponent,
-    MatError,
-    UiAutoCompleteComponent,
-    MatCheckbox,
-    RouterOutlet
-],
+        MatCard,
+        MaterialModule,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        DatePickerComponent,
+        MatError,
+        UiAutoCompleteComponent,
+        MatCheckbox,
+        RouterOutlet
+    ],
 })
 export class TransactionDetailComponent extends BaseEntityDetailComponent<TTransaction> {
     private costCenterSrv = inject(CostCenterService);
@@ -86,10 +86,10 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
             centerId:      [e.centerId || this.loginSrv.appCtx.center],
             journalId:     [e.journalId || this.entitySrv.journalId],
             journalDesc:   [{ value: this.entitySrv.journalDescription, disabled: true}],
-            transacDate:   [{ value: e.transacDate || this.entitySrv.date, disabled: false }],
+            transacDate:   [{ value: e.transacDate || this.entitySrv.date||new Date(), disabled: false }],
             reference:     [{ value: e.reference, disabled: !this.entitySrv.isBank()}],
             reference2:    [{ value: e.reference2, disabled: !this.entitySrv.isBank()}],
-            pieceno:       [e.pieceno, Validators.required],
+            pieceno:       [e.pieceno||1, Validators.required],
             operationDate: [e.operationDate || 0],
             balance:       [e.balance],
             agent:         [e.agent],
@@ -115,7 +115,7 @@ export class TransactionDetailComponent extends BaseEntityDetailComponent<TTrans
             this.form.controls['income'].enable({ onlySelf: true });
             this.form.controls['expense'].disable({ onlySelf: true });
             this.form.controls['bankExpenses'].disable({ onlySelf: true });
-            this.form.controls['bankExpenses'].setValue(0.0);
+            this.form.controls['bankExpenses'].setValue(false);
         } else if (income - expense < 0) {
             this.form.controls['expense'].enable({ onlySelf: true });
             this.form.controls['income'].disable({ onlySelf: true });

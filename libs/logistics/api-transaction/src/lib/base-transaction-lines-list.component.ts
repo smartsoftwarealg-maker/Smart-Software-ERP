@@ -11,8 +11,8 @@ import {FormControl} from '@angular/forms';
 import { Directive, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { OptionService } from '@ss/logistics/ui-options';
-import {PackagingUnitsService} from "@ss/logistics/packaging-units";
-import {PackagingUnit} from "../../../packaging-units/src/lib/packaging-units.api";
+import {PackagingUnitsService} from '@ss/logistics/packaging-units';
+import {PackagingUnit} from '@ss/logistics/packaging-units';
 
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
@@ -83,7 +83,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         return (this.detailSrv.getParentId()? this.detailSrv.getPage(this.pagination, this.searchText.value, null) : of([]))
             .pipe(tap(data => {
                 this.data = data;
-                this.data.forEach(d => d.unitsDescription = this.#_unitsMap.get(d.units)||d.units+'')
+                this.data.forEach(d => d.unitsDescription = this.#_unitsMap.get(d.units)||d.units+'');
             }));
     }
 

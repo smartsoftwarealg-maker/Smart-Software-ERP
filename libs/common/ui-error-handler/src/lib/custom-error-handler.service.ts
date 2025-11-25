@@ -31,16 +31,16 @@ export class CustomErrorHandlerService {
                     this.message.set([exception['exception']]);
                 } else {
                     if (str.length > 10) {
-                        this.message.set(str.replace(`"exception":`, '').split(`\n`));
+                        this.message.set(str.replace('"exception":', '').split('\n'));
                     }
                 }
                 this.errorSet.set(true);
             } else if (err.error instanceof Blob) {
                 // Extract the error message from the Blob
                 (<Blob>err.error).text().then(text => {
-                    const msg = text.replace(`"exception":`, '')
-                        .replace(`{"`, '')
-                        .replace(`"}`, '')
+                    const msg = text.replace('"exception":', '')
+                        .replace('{"', '')
+                        .replace('"}', '')
                         .split('\\n');
                     this.message.set(msg);
                     this.errorSet.set(true);
@@ -50,10 +50,10 @@ export class CustomErrorHandlerService {
                 });
             } else if (err.error['exception']) {
                 const msg = err.error['exception']
-                    .replace(`"exception":`, '')
-                    .replace(`{"`, '')
-                    .replace(`"}`, '')
-                    .replace(`\\t`, '||')
+                    .replace('"exception":', '')
+                    .replace('{"', '')
+                    .replace('"}', '')
+                    .replace('\\t', '||')
                     .split('\\n');
                 this.message.set(msg);
                 this.errorSet.set(true);

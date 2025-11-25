@@ -17,10 +17,11 @@ export class BalanceService {
 
     getTruckScale(): Observable<TruckScale> {
         this.stopPolling$ = new Subject<void>();
-        return timer(0, 5000).pipe(
-            takeUntil(this.stopPolling$),
-            switchMap(() => this.http.get<TruckScale>(this.url)),
-        );
+        return timer(0, 5000)
+            .pipe(
+                takeUntil(this.stopPolling$),
+                switchMap(() => this.http.get<TruckScale>(this.url)),
+            );
     }
 
     reset(): void {
@@ -30,5 +31,4 @@ export class BalanceService {
             this.stopPolling$ = null;
         }
     }
-
 }
