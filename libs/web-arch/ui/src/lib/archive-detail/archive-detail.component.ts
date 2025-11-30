@@ -21,12 +21,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./archive-detail.component.css'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    RouterModule,
-    UiAutoCompleteComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        RouterModule,
+        UiAutoCompleteComponent
+    ]
 })
 export class ArchiveDetailComponent implements OnInit {
     private service = inject( ArchiveService);

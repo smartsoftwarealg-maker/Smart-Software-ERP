@@ -1,11 +1,11 @@
-import { Component, inject, input, Input, OnInit, signal } from '@angular/core';
+import { Component, inject, Input, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { ShellService, SnackBarService } from "@ss/common/ui-shell";
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ImageUploaderUtil, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {AppArchiveService} from '../app-archive.service';
 import {AppArchive} from '../app-archive-api';
-import { tap } from "rxjs";
+import { tap } from 'rxjs';
 
 
 
@@ -20,13 +20,13 @@ import { ActivePersonnelService } from '@ss/payroll/ui-employee';
     styleUrls: ['./app-archive-list.component.scss'],
     standalone: true,
     imports: [
-    RouterModule,
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    TranslateDirective,
-    TranslatePipe
-]
+        RouterModule,
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        TranslateDirective,
+        TranslatePipe
+    ]
 })
 export class AppArchiveListComponent implements OnInit {
     private _id = 0;
@@ -53,7 +53,7 @@ export class AppArchiveListComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.subscribe(res => {
             const showBackButton = res['showBackButton']||'false';
-            this.showBackButton.set(showBackButton.toLowerCase() === "true");
+            this.showBackButton.set(showBackButton.toLowerCase() === 'true');
         });
 
         this.route
@@ -62,29 +62,29 @@ export class AppArchiveListComponent implements OnInit {
                 const appId = +param.get('appId') || 0;
                 if (appId > 0) {
                     this.entitySrv.appId = appId;
-                    const id = +param.get("documentId") || 0;
+                    const id = +param.get('documentId') || 0;
                     if (id > 0) {
                         this.entitySrv.setParentId(id);
                     }
-                    const editable = param.get("editable");
-                    this.entitySrv.editable = editable && editable.toLowerCase() === "true";
+                    const editable = param.get('editable');
+                    this.entitySrv.editable = editable && editable.toLowerCase() === 'true';
                 }
 
-            this.route
-                .parent
-                .parent
-                .paramMap
-                .pipe(
-                    tap(params => {
-                        const id = +params.get('id');
-                        if (id > 0) {
-                            this.entitySrv.setParentId(id);
-                        }
-                    }))
-                .subscribe(res => {
-                });
-            this.refresh();
-        });
+                this.route
+                    .parent
+                    .parent
+                    .paramMap
+                    .pipe(
+                        tap(params => {
+                            const id = +params.get('id');
+                            if (id > 0) {
+                                this.entitySrv.setParentId(id);
+                            }
+                        }))
+                    .subscribe(res => {
+                    });
+                this.refresh();
+            });
         const rights = this.shellSrv.getCurrentNodeRights();
         this.isEditable = rights.edit;
     }
@@ -169,10 +169,8 @@ export class AppArchiveListComponent implements OnInit {
             } else {
                 this.filename = null;
                 this.entitySrv
-                    .image(this.selectedId)
-                    .subscribe(res => {
-                        ImageUploaderUtil.toBase64(res, (s: string) => this.imgSrc = s);
-                    });
+                    .thumbNail(this.selectedId)
+                    .subscribe(res => ImageUploaderUtil.toBase64(res, (s: string) => this.imgSrc = s));
             }
         }
     }
@@ -183,7 +181,7 @@ export class AppArchiveListComponent implements OnInit {
             .subscribe(res => {
                 const pdfSrc = window.URL.createObjectURL(res);
                 const w = window.open(pdfSrc);
-                setTimeout(() => w.document.title = this.selectedArchive?.filename||'' + this.selectedId, 200);
+                setTimeout(() => w.document.title = this.selectedArchive?.filename||'' + this.selectedId, 200);                
                 window.URL.revokeObjectURL(pdfSrc);
             });
     }
