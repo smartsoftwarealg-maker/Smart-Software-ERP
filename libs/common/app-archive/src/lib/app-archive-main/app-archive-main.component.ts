@@ -1,6 +1,6 @@
 import { Component, inject, input, Input, OnInit, ViewChild } from '@angular/core';
 import {AppArchiveService} from '../app-archive.service';
-import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 import { MaterialModule } from '@ss/common/api-common';
 
@@ -8,19 +8,16 @@ import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-
 @Component({
     selector: 'ss-app-archive-main',
     templateUrl: './app-archive-main.component.html',
     styleUrls: ['./app-archive-main.component.scss'],
     standalone: true,
     imports: [
-    RouterModule,
-    MaterialModule,
-    ReactiveFormsModule
-],
+        RouterModule,
+        MaterialModule,
+        ReactiveFormsModule
+    ],
 
 })
 export class AppArchiveMainComponent {

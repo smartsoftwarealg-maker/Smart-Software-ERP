@@ -28,6 +28,10 @@ export class AppArchiveService extends BaseEntityExtendedService<AppArchive> {
         return this.httpSrv.getBlob(`/applications/${id}/upload`);
     }
 
+    thumbNail(id: number): Observable<any> {
+        return this.httpSrv.getBlob(`/applications/${id}/thumbnail`);
+    }
+
     set appId(id: number) {
         this._appId = id;
     }
