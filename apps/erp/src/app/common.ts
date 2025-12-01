@@ -501,6 +501,7 @@ export const FURNITURE_TYPES_URL      = 'furniture-types';
 // App. Archive viewer
 export const AA_VIEWER = 'aa-viewer';
 export const AA_RIGHTS = 'aa-rights';
+export const AA_GENERIC = 'aa-generic';
 
 // Costing
 export const COSTING_ITEMS_URL = 'costing-items';
@@ -990,6 +991,7 @@ export const ABS_PARK_DESTINATION_URL = '/' + [MAIN_PAGE_URL, PARK_APP_URL, PARK
 // App. Archive viewer
 export const ABS_APP_ARCHIVE_VIEWER_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_VIEWER].join('/');
 export const ABS_ARCHIVE_RIGHTS_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_RIGHTS].join('/');
+export const ABS_GENERIC_ARCHIVE_URL      = '/' + [MAIN_PAGE_URL, ARCH_VIEWER_APP_URL, AA_GENERIC].join('/');
 
 // Assets
 export const ABS_ASSETS_URL = '/' + [MAIN_PAGE_URL, ASSETS_APP_URL, ASSETS_ASSET_URL].join('/');

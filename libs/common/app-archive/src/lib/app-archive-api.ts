@@ -13,7 +13,7 @@ export const PART_ARCHIVES            = 10;
 export const DRIVER_ARCHIVES          = 11;
 export const VEHICLE_ARCHIVES         = 12;
 export const TREASURY_ARCHIVES        = 13;
-export const GENERIC_ARCHIVES         = 13;
+export const GENERIC_ARCHIVES         = 14;
 
 export const APP_ARCHIVE_URL = '/archives';
 export const ARCHIVE_ROUTE_URL = 'archive';

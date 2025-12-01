@@ -482,5 +482,6 @@
     "TRANSFERS":            "Cessions",
     "TRANSFER_RECEPTIONS":  "Réceptions sur cessions",
     "GENERATED":            "Genere",
-    "TRANSPORT_RECEPTIONS": "Receptions Transporteurs"
+    "TRANSPORTER_RECEPTIONS": "Receptions Transporteurs",
+    "GENERIC_ARCHIVE":        "Archive générique"
 }
