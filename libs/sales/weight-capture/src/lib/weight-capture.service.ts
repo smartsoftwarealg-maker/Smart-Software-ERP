@@ -1,13 +1,14 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpService } from '@ss/common/api-common';
-import { Observable } from 'rxjs';
-import { WeightCapture } from './weight-capture-api';
+import {AppConfigService, HttpService} from '@ss/common/api-common';
+import {map, Observable} from 'rxjs';
+import {ScaleConfig, WeightCapture} from './weight-capture-api';
 
 @Injectable({
     providedIn: 'root',
 })
 export class WeightCaptureService {
     private httpSrv = inject(HttpService);
+    private appConfigSrv = inject(AppConfigService);
 
     getWeightCapture(id: number): Observable<WeightCapture> {
         return this.httpSrv.get<WeightCapture>(
@@ -15,7 +16,7 @@ export class WeightCaptureService {
         );
     }
 
-    getBalanceUrl(): Observable<{ url: string}> {
+    getBalanceUrl(): Observable<{ url: string }> {
         return this.httpSrv.get<{ url: string }>('/logistics/weight-capture/balance-url',);
     }
 
@@ -25,5 +26,13 @@ export class WeightCaptureService {
 
     updateBrut(w: WeightCapture) {
         return this.httpSrv.put('/logistics/weight-capture/update-brut', w);
+    }
+
+    getScalesConfig(): Observable<ScaleConfig> {
+        return this.appConfigSrv.getConfig().pipe(
+            map(conf => {
+                return conf.scales as ScaleConfig;
+            })
+        );
     }
 }
