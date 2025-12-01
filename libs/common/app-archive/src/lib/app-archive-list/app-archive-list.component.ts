@@ -167,7 +167,7 @@ export class AppArchiveListComponent implements OnInit {
                 this.filename = a.filename;
                 this.imgSrc = ('./assets/img/word.png');
             } else {
-                this.filename = null;
+
                 this.entitySrv
                     .thumbNail(this.selectedId)
                     .subscribe(res => ImageUploaderUtil.toBase64(res, (s: string) => this.imgSrc = s));
@@ -181,7 +181,7 @@ export class AppArchiveListComponent implements OnInit {
             .subscribe(res => {
                 const pdfSrc = window.URL.createObjectURL(res);
                 const w = window.open(pdfSrc);
-                setTimeout(() => w.document.title = this.selectedArchive?.filename||'' + this.selectedId, 200);                
+                setTimeout(() => w.document.title = this.selectedArchive?.filename||'' + this.selectedId, 200);
                 window.URL.revokeObjectURL(pdfSrc);
             });
     }
