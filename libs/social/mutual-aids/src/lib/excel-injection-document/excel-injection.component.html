@@ -9,7 +9,7 @@
                            (change)="onChange(fileUpload.files)"
                            #fileUpload>
 
-                    <div translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }}</div>
+                    <div translate>{{ file?.name || "COMMON_NO_FILE_SELECTED" }}</div>
 
                     <button mat-mini-fab color="primary"
                             class="upload-btn"
@@ -54,8 +54,8 @@
                 <div class="button__div">
                     <button mat-raised-button color="primary"
                             type="button"
-                            (click)="onFileSelected(fileUpload.files)"
-                            [disabled]="!fileName">
+                            (click)="uploadFile()"
+                            [disabled]="!file">
                         <i class="fa-solid fa-upload  icon"></i>
                         {{ 'COMMON_UPLOAD' | translate }}
                     </button>

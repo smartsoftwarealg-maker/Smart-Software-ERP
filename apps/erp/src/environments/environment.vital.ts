@@ -43,6 +43,7 @@ import { ssalesNavTree } from '../app/service-sales/side-nav-tree';
 import { productionNavTree } from '../app/production/side-nav-tree';
 import {attendanceNavTree} from '../app/attendance/side-nav-tree';
 import {MainPageComponent} from '@ss/common/ui-main-page';
+import {financeNavTree} from "../app/finance/side-nav-tree";
 
 
 export const environment = {
@@ -58,6 +59,7 @@ export const navBar = [
     contractsNavTree,
     salesNavTree,
     ssalesNavTree,
+    financeNavTree,
     hrLookupNavTree,
     hrNavTree,
     payrollNavTree,
