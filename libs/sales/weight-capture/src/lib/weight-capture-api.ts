@@ -19,4 +19,8 @@ export interface TruckScale {
     reading: number;
 }
 
+export interface ScaleConfig {
+    apiKey: string;
+    server: string;
+}
 
