@@ -40,7 +40,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     });
 
     private weightCaptureSrv = inject(WeightCaptureService);
-    private balanceTruckSrv = inject(ScaleService);
+    private scaleService = inject(ScaleService);
     private snackBarSrv = inject(SnackBarService);
 
     constructor(
@@ -75,7 +75,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.balanceTruckSrv.reset();
+        this.scaleService.reset();
     }
 
     save() {
@@ -122,7 +122,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     }
 
     readTruckScale() {
-        this.balanceTruckSrv.startPolling().subscribe({
+        this.scaleService.startPolling().subscribe({
             next: (list) => {
                 this.scaleTruckFC.setValue(7778);
             },
