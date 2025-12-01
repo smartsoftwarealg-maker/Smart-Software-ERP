@@ -5,3 +5,4 @@ export * from './lib/app-archive-api';
 export * from './lib/app-archive.service';
 export * from './lib/app-archive-rights/app-archive-rights.component';
 export * from './lib/app-archive-viewer/app-archive-viewer.component';
+export * from './lib/app-generic-archive/app-generic-archive.component';

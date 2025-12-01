@@ -486,5 +486,6 @@
     "TRANSFERS":             "Transfers",
     "TRANSFER_RECEPTIONS":   "Transfer receptions",
     "GENERATED":             "Generated",
-    "TRANSPORT_RECEPTIONS": "Transporter Receptions"
+    "TRANSPORTER_RECEPTIONS": "Transporter Receptions",
+    "GENERIC_ARCHIVE":        "Generic archive"
 }
