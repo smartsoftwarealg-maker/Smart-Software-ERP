@@ -23,7 +23,7 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
     private dialog = inject(MatDialog);
 
     private weightCaptureSrv = inject(WeightCaptureService);
-    private scaleService = inject(ScaleService);
+    private balanceTruckSrv = inject(ScaleService);
     scaleExists = signal(false);
 
     ngOnInit() {
