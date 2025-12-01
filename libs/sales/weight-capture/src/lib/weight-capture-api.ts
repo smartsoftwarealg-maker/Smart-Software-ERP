@@ -15,12 +15,17 @@ export interface TruckStatus {
     type: 'tare'|'brut';
 }
 
-export interface TruckScale {
+export interface Scale {
+    id: number;
+    name: string;
     reading: number;
 }
 
+export interface ScaleList {
+    scales: Scale[];
+}
+
 export interface ScaleConfig {
-    apiKey: string;
-    server: string;
+    url: string;
 }
 

@@ -478,5 +478,6 @@
     "TRANSFER_RECEPTIONS": "استقبالات النقل",
     "GENERATED":             "تم إنشاؤه",
     "TRANSPORTER_RECEPTIONS": "استقبالات الناقلين",
-    "GENERIC_ARCHIVE":        "الأرشيف العام"
+    "GENERIC_ARCHIVE":        "الأرشيف العام",
+    "TRANSPORT_RECEPTIONS": "استقبالات الناقلين"
 }

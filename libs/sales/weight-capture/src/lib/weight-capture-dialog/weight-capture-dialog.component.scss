@@ -15,7 +15,7 @@ mat-card {
 }
 
 .text {
-    font-size: 4em;
+    font-size: 3em;
 }
 
 input {
@@ -46,4 +46,19 @@ mat-label {
     text-align: left;
     vertical-align: top;
     border: 1px solid #ccc; /* optional */
+}
+
+.scale-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.scale-field {
+    flex: 1;
+}
+
+.read-btn {
+    height: 36px;
 }

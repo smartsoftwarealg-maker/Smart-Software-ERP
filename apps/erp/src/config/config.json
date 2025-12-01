@@ -52,7 +52,6 @@
         }
     ],
     "scales": {
-        "apiKey":"737800" ,
-        "server": "http://127.0.0.1:9988"
+        "url": "http://127.0.0.1:9998/api/scale/list?api-key=737800"
     }
 }
