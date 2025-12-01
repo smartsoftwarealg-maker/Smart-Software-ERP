@@ -62,7 +62,7 @@ export class TransporterReceptionListComponent extends BaseEntityListComponent<T
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'COMMON_RECEPTION',
+            'PURCHASES_TRANSPORT_RECEPTIONS',
         );
     }
 }
