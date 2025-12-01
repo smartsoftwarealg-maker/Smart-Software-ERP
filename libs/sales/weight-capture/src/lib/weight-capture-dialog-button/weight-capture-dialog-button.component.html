@@ -1,8 +1,8 @@
 @if (scaleExists()) {
-    <button mat-mini-fab (click)="openTareDialog()" color="warn" [disabled]="!transactionId">
+    <button mat-mini-fab (click)="openTareDialog()" color="warn" [disabled]="!transactionId()">
         <i class="fa-solid fa-truck-container-empty"></i>
     </button>
-    <button mat-mini-fab (click)="openBrutDialog()" color="warn" [disabled]="!transactionId">
+    <button mat-mini-fab (click)="openBrutDialog()" color="warn" [disabled]="!transactionId()">
         <i class="fa-solid fa-truck-container"></i>
     </button>
 }
