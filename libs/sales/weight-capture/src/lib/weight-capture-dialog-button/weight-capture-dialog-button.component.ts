@@ -7,7 +7,7 @@ import {
     WeightCaptureDialogComponent,
     WeightCaptureService,
 } from '@ss/sales/weight-capture';
-import { BalanceService } from '../balance.service';
+import { ScaleService } from '../scale.service';
 
 @Component({
     selector: 'ss-weight-capture-dialog-button-dialog',
@@ -23,15 +23,14 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
     private dialog = inject(MatDialog);
 
     private weightCaptureSrv = inject(WeightCaptureService);
-    private balanceTruckSrv = inject(BalanceService);
-    urlExists = signal(false);
+    private balanceTruckSrv = inject(ScaleService);
+    scaleExists = signal(false);
 
     ngOnInit() {
-        this.weightCaptureSrv.getBalanceUrl().subscribe({
-            next: (res) => {
-                if (res?.url?.length > 0) {
-                    this.balanceTruckSrv.setBalanceUrl(res.url);
-                    this.urlExists.set(true);
+        this.weightCaptureSrv.hasScaleConfig().subscribe({
+            next: (exists) => {
+                if (exists) {
+                    this.scaleExists.set(true);
                 }
             },
             error: () => {},

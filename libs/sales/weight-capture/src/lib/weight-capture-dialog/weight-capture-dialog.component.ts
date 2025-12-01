@@ -6,7 +6,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { TruckStatus } from '../weight-capture-api';
 import { WeightCaptureService } from '../weight-capture.service';
-import { BalanceService } from '../balance.service';
+import { ScaleService } from '../scale.service';
 import { SnackBarService } from '@ss/common/ui-shell';
 
 const TARE = 0;
@@ -40,7 +40,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     });
 
     private weightCaptureSrv = inject(WeightCaptureService);
-    private balanceTruckSrv = inject(BalanceService);
+    private balanceTruckSrv = inject(ScaleService);
     private snackBarSrv = inject(SnackBarService);
 
     constructor(
@@ -122,9 +122,9 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     }
 
     readTruckScale() {
-        this.balanceTruckSrv.getTruckScale().subscribe({
-            next: (weight) => {
-                this.scaleTruckFC.setValue(weight.reading);
+        this.balanceTruckSrv.startPolling().subscribe({
+            next: (list) => {
+                this.scaleTruckFC.setValue(7778);
             },
             error: (err) => {
                 throw err;
