@@ -1,7 +1,6 @@
 import {Component, inject, Input, OnInit, signal} from '@angular/core';
 import {finalize, Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
-import {ActivatedRoute, Router} from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -11,9 +10,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 import {MutualAidService} from "../../../../social-api/src/lib/services/mutual-aid.service";
 import {FormBuilder, FormsModule, Validators} from "@angular/forms";
 import {MatCard} from "@angular/material/card";
-import {UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
 import {MaterialModule} from "@ss/common/api-common";
-import {AsyncPipe} from "@angular/common";
 import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
@@ -32,7 +29,7 @@ export class ExcelInjectionComponent implements OnInit {
     requiredFileType = '.xlsx';
     processing = signal(false);
 
-    fileName = '';
+    file: File = null;
     uploadProgress = 0;
     uploadSub: Subscription;
     queryList = '';
@@ -58,16 +55,15 @@ export class ExcelInjectionComponent implements OnInit {
         this.shellSrv.setGoBackPathByRelativeUrl('..');
     }
 
-    onChange(e: any) {
-        this.fileName = e[0]?.name;
+    onChange(e: FileList) {
+        this.file = e[0];
+        console.log('file', e);
     }
 
-    onFileSelected(files: any) {
-        const file:File = files[0];
-        if (file) {
-            this.fileName = file.name;
+    uploadFile() {
+        if (this.file && this.file.size > 0) {
             const formData = new FormData();
-            formData.append("file", file);
+            formData.append('file', this.file, this.file.name);
             const formValue = this.form.value;
             formData.append('ID', formValue.id)
             formData.append('TYPE', formValue.aType)
@@ -98,6 +94,8 @@ export class ExcelInjectionComponent implements OnInit {
                         throw err;
                     }
                 });
+        } else {
+            console.log('**************************file is empty')
         }
     }
 
