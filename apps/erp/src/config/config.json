@@ -50,5 +50,9 @@
             "dateFormat": "fr",
             "personFullNameFormat": "fr"
         }
-    ]
+    ],
+    "scales": {
+        "apiKey":"737800" ,
+        "server": "http://127.0.0.1:9988"
+    }
 }
