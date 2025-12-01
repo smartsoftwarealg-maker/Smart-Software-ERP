@@ -44,16 +44,15 @@ export class TransporterReceptionDetailComponent extends BaseTransactionDetailCo
     private isSrv = inject(IsParamService);
     private extraCostSrv = inject(ExtraCostService);
     private URLs = ['./lines-list', './costs-list'];
-    private costSrv = inject(ExtraCostService);
 
-    private importContractBtn: ToolbarButton = {
-        disabled: false,
-        icon: 'fa-solid fa-file-arrow-up',
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'LOGISTICS_IMPORT_CONTRACT',
-        visible: true,
-        click: () => this.importContract(),
-    };
+    // private importContractBtn: ToolbarButton = {
+    //     disabled: false,
+    //     icon: 'fa-solid fa-file-arrow-up',
+    //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
+    //     label: 'LOGISTICS_IMPORT_CONTRACT',
+    //     visible: true,
+    //     click: () => this.importContract(),
+    // };
 
     showAccTab = signal(true);
 
@@ -78,7 +77,7 @@ export class TransporterReceptionDetailComponent extends BaseTransactionDetailCo
             confirmationSrv,
             loginSrv,
             dialog,
-            'STOCK_EDIT_RECEPTION');
+            'PURCHASES_TRANSPORT_RECEPTIONS');
     }
 
     protected showImportButton(): boolean {
@@ -89,11 +88,6 @@ export class TransporterReceptionDetailComponent extends BaseTransactionDetailCo
         return true;
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.addButton(this.importContractBtn);
-        this.currencySrv.load().subscribe();
-    }
 
     protected requireAgentToImportDocument(): boolean {
         return true;
@@ -103,9 +97,9 @@ export class TransporterReceptionDetailComponent extends BaseTransactionDetailCo
         return [{ id: 2, description: 'LOGISTICS_PURCHASE_ORDER' }];
     }
 
-    override finishLoading(e: Transaction) {
-        this.costSrv.setParentId(e?.id);
-        super.finishLoading(e);
+    override ngOnInit() {
+        super.ngOnInit();
+        this.onTabChange(0);
     }
 
     onTabChange(idx: number) {
@@ -114,20 +108,6 @@ export class TransporterReceptionDetailComponent extends BaseTransactionDetailCo
         }
     }
 
-    private importContract() {
-        if (!this.importContractBtn.disabled && this.form.controls['project'].value) {
-            this.entitySrv
-                .consumeContract(this.id)
-                .pipe(switchMap(() =>
-                    this.outlet?.component instanceof BaseTransactionLinesListComponent?
-                        this.outlet?.component.loadDetailLines() : of(0)))
-                .subscribe(() => {
-                    this.executionRef++;
-                    this.shellSrv.setLoading(false);
-                    this.snackBarSrv.showSuccessMessage();
-                });
-        }
-    }
 
     loadEntity(id: number): Observable<Transaction> {
         this.extraCostSrv.setParentId(id||0);

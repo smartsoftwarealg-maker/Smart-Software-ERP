@@ -93,10 +93,11 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
     public agentLookup = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
-    public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
     public purchaseProjectLookup = new ProjectLookupModel(this.purchaseProjectSrv);
     public salesProjectLookup = new ProjectLookupModel(this.salesProjectSrv);
     public currencyLookup = new ForeignCurrencyModel(this.currencySrv);
+    public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
+    public supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
     public transporterLookup = new DefaultAutoCompleteModel<Agent>(this.#transporterSrv, 'id', 'denomination');
     public consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
@@ -241,6 +242,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     }
 
     public override setupForm(b: Transaction) {
+        console.log(b);
         if (!b.id) {
             b.id = 0;
             b.number = 0;

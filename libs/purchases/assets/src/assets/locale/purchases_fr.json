@@ -12,5 +12,6 @@
     "PRICE_REQUEST":         "Demande de prix",
     "SOURCE_DOC":            "Document source",
     "PURCHASE_INVOICE":      "Facture d'achat",
-    "IMPORT_RECEPTION":      "Réception d'importation"
+    "IMPORT_RECEPTION":      "Réception d'importation",
+    "TRANSPORT_RECEPTIONS":  "Réceptions transporteur"
 }

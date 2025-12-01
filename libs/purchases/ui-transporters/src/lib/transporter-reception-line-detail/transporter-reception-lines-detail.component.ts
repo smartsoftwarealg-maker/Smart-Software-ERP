@@ -10,7 +10,7 @@ import { TransporterReceptionLinesService } from '../transporter-reception-lines
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
 @Component({
-    selector: 'ss-reception-lines-detail',
+    selector: 'ss-transport-reception-lines-detail',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './transporter-reception-lines-detail.component.html',
     standalone: true,

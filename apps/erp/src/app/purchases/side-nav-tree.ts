@@ -80,20 +80,20 @@ export const purchasesNavTree: SideNavNode = {
             name: 'PURCHASES_IMPORT_PURCHASE_ORDER',
             icon: 'fa-solid fa-sailboat',
             route: ABS_IMPORT_PURCHASE_RECEPTION_URL,
-            accessRights: 'Reception'
+            accessRights: 'IReception'
         },
         {
-            name: 'COMMON_TRANSPORTER_RECEPTIONS',
+            name: 'PURCHASES_TRANSPORT_RECEPTIONS',
             icon: 'fa-solid fa-truck-fast',
             route: ABS_PURCHASE_TRANSPORTERS_RECEPTION_URL,
-            accessRights: 'TransportReception'
+            accessRights: 'TReception'
         },
 
         {
             name: 'STOCK_RECEPTION_CANCELLATION',
             icon: 'fa-solid fa-cart-minus',
             route: ABS_PURCHASE_RECEPTION_CANCELLATION_URL,
-            accessRights: 'Reception'
+            accessRights: 'CReception'
         },
         {
             name: 'COMMON_PAYMENTS',

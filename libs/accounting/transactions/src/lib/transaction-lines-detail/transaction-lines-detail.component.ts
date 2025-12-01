@@ -151,6 +151,7 @@ export class TransactionLinesDetailComponent implements OnInit {
 
     private accountSelected(a: Account) {
         this.selectedAccount.set(a);
+        this.form.get('accountNo')?.setValue(a?.accountNo);
     }
 
 
