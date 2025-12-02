@@ -1,24 +1,19 @@
-<div class="size">
+<div class="survey-container">
     @if (showThanksMessage) {
-        <mat-card>
-            <mat-card class="thanks-message" appearance="outlined">
-                <mat-card-header>
-                    <mat-card-title></mat-card-title>
-                </mat-card-header>
-                <mat-card-content>
-                    <p translate>SCH_POLL_THANKS</p>
-                </mat-card-content>
-                <mat-card-footer>
-                    <button mat-flat-button color="secondly" (click)="shellSrv.goBack();" translate>
-                        SCH_YOUR_WELCOME
-                    </button>
-                </mat-card-footer>
-            </mat-card>
+        <mat-card appearance="outlined">
+            <mat-card-content>
+                <p translate>SCH_POLL_THANKS</p>
+            </mat-card-content>
+            <mat-card-footer>
+                <button mat-flat-button color="secondly" (click)="shellSrv.goBack();" translate>
+                    SCH_YOUR_WELCOME
+                </button>
+            </mat-card-footer>
         </mat-card>
     } @else {
         <mat-stepper #stepper class="default-100">
-            @for (c of data; track c.id; let idx = $index, e = $even) {
-                @if (e) {
+            @for (c of data; track c.id; let idx = $index) {
+                @if ($even) {
                     <mat-step #step [completed]="completeState()">
                         <ng-template matStepLabel="fa-regular fa-question"></ng-template>
                         @for (k of [idx, idx + 1]; track k) {
@@ -68,13 +63,13 @@
                             }
                         }
 
-                        <div class="actions">
+                        <div class="survey-navigation">
                             @if (idx + 1 < data.length) {
                                 <button mat-flat-button color="primary" matStepperNext [disabled]="!completeState()"
                                         (click)="setCanGoNextPage(idx+2)" translate>COMMON_NEXT
                                 </button>
                             } @else {
-                                <button mat-flat-button color="secondly" (click)="save()" [disabled]="!completeState()"
+                                <button mat-flat-button color="secondary" (click)="save()" [disabled]="!completeState()"
                                         translate>
                                     COMMON_SUBMIT
                                 </button>

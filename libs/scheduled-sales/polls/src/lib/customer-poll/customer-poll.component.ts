@@ -47,6 +47,7 @@ export class CustomerPollComponent {
     public completeState = signal(false);
 
     ngOnInit() {
+        this.shellSrv.setTitle("SCH_CUSTOMER_POLL")
         this.shellSrv.setGoBackPath('../..', this.route);
         this.showThanksMessage = false;
         const storage = localStorage.getItem(this.#_DATA_);
