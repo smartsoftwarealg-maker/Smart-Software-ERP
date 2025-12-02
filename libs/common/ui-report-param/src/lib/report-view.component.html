@@ -72,7 +72,7 @@
             }
             @if (d.typeName == 'java.lang.Boolean') {
               <div class="boolean-param">
-                <mat-checkbox formControlName="{{ d.name }}"> {{ d.description }}</mat-checkbox>
+                <mat-checkbox formControlName="{{ d.name }}" [checked]="d.valueString"> {{ d.description }} </mat-checkbox>
               </div>
             }
             @if (d.typeName == 'java.lang.String') {
