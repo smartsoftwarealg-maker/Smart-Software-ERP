@@ -79,7 +79,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     @ViewChild('tree', {static: false}) tree: MatTree<unknown>;
 
-    private uuid = '';
     isLTM = input(false);
     private readonly mimeMap = new Map([
         ['Excel', 'application/excel'],
@@ -172,7 +171,11 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             const cc = {reportType: new FormControl<string>(''), name: new FormControl<string>('')};
 
             this.data.forEach(e => {
-                cc[e.name] = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp' ? e.valueString?.substring(0, 11) + '05:00:00' : e.valueString);
+                cc[e.name] = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp' ?
+                    e.valueString?.substring(0, 11) + '05:00:00' : e.valueString === 'false' ?
+                        false : e.valueString === 'true' ?
+                            true : e.valueString);
+
                 if (e.lookupTable) {
                     e.lookupModel = new ParamAutoCompleteModel(this.paramLookupSrv, e.lookupTable);
                     e.description = e.description.substring(0, e.description.indexOf('//'));
@@ -183,9 +186,9 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         });
     }
 
-    parseValueList(valueList: { description: string }[]) {
-        return valueList?.map(x => x.description).join(' ');
-    }
+    // parseValueList(valueList: { description: string }[]) {
+    //     return valueList?.map(x => x.description).join(' ');
+    // }
 
     private doReportGeneration(res: any, data: ReportViewData): Window | null {
         if (this.form.value.reportType === 'EXCEL') {
@@ -226,26 +229,24 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         };
 
 
-
-
         this.reportService.put(data)
             .pipe(switchMap(jobId => {
-                    return timer(0, this.POLL_INTERVAL_MS)
-                        .pipe(
-                            switchMap(() => this.reportService.getStatus('/reports/view', jobId)),
-                            takeWhile((statusRes, index) => statusRes.status === 102 && index < 100, true)
-                        )
-                }),
-                switchMap(res => data.rType === 'HTML' ? scheduled((<Blob>res.body).text(), asapScheduler) : of(res.body)),
-                tap(res => this.doReportGeneration(res, data)))
+                return timer(0, this.POLL_INTERVAL_MS)
+                    .pipe(
+                        switchMap(() => this.reportService.getStatus('/reports/view', jobId)),
+                        takeWhile((statusRes, index) => statusRes.status === 102 && index < 100, true)
+                    );
+            }),
+            switchMap(res => data.rType === 'HTML' ? scheduled((<Blob>res.body).text(), asapScheduler) : of(res.body)),
+            tap(res => this.doReportGeneration(res, data)))
             .subscribe({
-            next: res => {
-                this.generating.set(false);
-            }, error: err => {
-                this.generating.set(false);
-                throw err;
-            }
-        });
+                next: () => {
+                    this.generating.set(false);
+                }, error: err => {
+                    this.generating.set(false);
+                    throw err;
+                }
+            });
         /*
         const loop: Observable<unknown> = this.httpSrv
             .get(`/reports/view?uuid=${this.uuid}`)
@@ -383,7 +384,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
 
         this.httpSrv
-            .post(`/reports/save-params`, data)
+            .post('/reports/save-params', data)
             .subscribe({
                 next: res => {
                     if (res['count']) {
