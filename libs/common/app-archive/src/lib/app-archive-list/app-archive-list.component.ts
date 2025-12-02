@@ -4,7 +4,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ImageUploaderUtil, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {AppArchiveService} from '../app-archive.service';
-import {AppArchive} from '../app-archive-api';
+import {AppArchive, GENERIC_ARCHIVES} from '../app-archive-api';
 import { tap } from 'rxjs';
 
 
@@ -185,4 +185,6 @@ export class AppArchiveListComponent implements OnInit {
                 window.URL.revokeObjectURL(pdfSrc);
             });
     }
+
+    protected readonly GENERIC_ARCHIVES = GENERIC_ARCHIVES;
 }

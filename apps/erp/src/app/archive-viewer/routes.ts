@@ -8,11 +8,13 @@ import {
     AppArchiveViewerComponent, AppGenericArchiveComponent,
 } from '@ss/common/app-archive';
 import { AA_GENERIC, AA_RIGHTS, AA_VIEWER } from '../common';
+import {loginGuard} from "../erp-guards";
 
 export const viewerRoutes: Routes = [
     {
         path: AA_GENERIC,
         component:AppGenericArchiveComponent,
+        canActivate: [loginGuard],
         children: [
             {path: '', component: AppArchiveListComponent, pathMatch: 'full'},
             {path: ':id', component: AppArchiveDetailComponent}

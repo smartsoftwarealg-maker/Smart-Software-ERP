@@ -3,6 +3,7 @@
     flex-direction: row;
     margin: 8px 0;
 }
+
 .tool_bar {
     width: 100%;
     display: flex;
@@ -11,6 +12,7 @@
     padding: 4px;
     box-sizing: border-box;
 }
+
 .title {
     flex: 1 1 200px;
 }
@@ -36,10 +38,12 @@
     max-width: 50%;
     min-height: 70%;
 }
+
 mat-label {
     font-weight: bolder;
     font-size: 1.5em;
 }
+
 .list_div {
     overflow-y: auto;
     flex: 1 1 40%;
@@ -55,6 +59,7 @@ mat-label {
 .content-div {
     width: min(370px, 100%);
 }
+
 .imj {
     flex: 2 1 50%;
     display: flex;
@@ -76,3 +81,12 @@ $color: hsl(100, 60%, 50%, .6);
     outline: 2px solid $color;
 }
 
+@media (width <= 600px) {
+    .content_div {
+        max-width: 100%;
+    }
+}
+
+.full-page {
+    min-width: 100%;
+}
