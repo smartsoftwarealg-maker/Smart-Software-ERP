@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="content_div">
+    <div class="content_div" [class.full-page]="entitySrv.appId == GENERIC_ARCHIVES">
         <div class="tool_bar ">
             <!--            <mat-label translate>COMMON_ARCHIVE</mat-label>-->
             @if (isEditable) {

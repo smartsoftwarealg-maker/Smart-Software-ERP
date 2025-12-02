@@ -6,7 +6,6 @@ import {
 } from '@ss/common/app-archive';
 import { ActivatedRoute } from '@angular/router';
 import { ShellService } from '@ss/common/ui-shell';
-import { LoginService } from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-generic-archive',
@@ -19,7 +18,6 @@ export class AppGenericArchiveComponent implements OnInit {
     private archiveSrv = inject(AppArchiveService);
     private shellSrv = inject(ShellService);
     private route = inject(ActivatedRoute);
-    public loginSrv = inject(LoginService);
 
     ngOnInit() {
         this.shellSrv.setTitle('COMMON_GENERIC_ARCHIVE');
