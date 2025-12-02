@@ -4,10 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { TruckStatus } from '../weight-capture-api';
+import {Scale, ScaleList, TruckStatus} from '../weight-capture-api';
 import { WeightCaptureService } from '../weight-capture.service';
-import { BalanceService } from '../balance.service';
+import { ScaleService } from '../scale.service';
 import { SnackBarService } from '@ss/common/ui-shell';
+import {NgForOf} from "@angular/common";
+
 
 const TARE = 0;
 const BRUT = 1;
@@ -18,7 +20,8 @@ const BRUT = 1;
     imports: [
         MatButtonModule,
         TranslateDirective,
-        MaterialModule
+        MaterialModule,
+        NgForOf
     ],
     templateUrl: './weight-capture-dialog.component.html',
     styleUrl: './weight-capture-dialog.component.scss',
@@ -26,7 +29,8 @@ const BRUT = 1;
 export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     private fb = inject(FormBuilder);
     public type = 0;
-    scaleTruckFC = new FormControl(0);
+    public scaleControls: FormControl[] = [];
+    public scales: Scale[] = [];
     form = this.fb.group({
         id: [0],
         tareId: [0],
@@ -40,7 +44,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     });
 
     private weightCaptureSrv = inject(WeightCaptureService);
-    private balanceTruckSrv = inject(BalanceService);
+    private scaleService = inject(ScaleService);
     private snackBarSrv = inject(SnackBarService);
 
     constructor(
@@ -75,7 +79,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.balanceTruckSrv.reset();
+        this.scaleService.reset();
     }
 
     save() {
@@ -109,27 +113,35 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
         }
     }
 
-    readTare() {
-        this.form.controls.tare.setValue(+this.scaleTruckFC.value);
-    }
-
-    readBrut() {
-        this.form.controls.brut.setValue(+this.scaleTruckFC.value);
-    }
-
     cancel() {
         this.dialogRef.close();
     }
 
     readTruckScale() {
-        this.balanceTruckSrv.getTruckScale().subscribe({
-            next: (weight) => {
-                this.scaleTruckFC.setValue(weight.reading);
+        this.scaleService.startPolling().subscribe({
+            next: (list: ScaleList) => {
+                this.scales = list.scales;
+                if (this.scaleControls.length !== this.scales.length) {
+                    this.scaleControls = this.scales.map(s => new FormControl(s.reading));
+                } else {
+                    this.scales.forEach((s, i) => this.scaleControls[i].setValue(s.reading));
+                }
             },
-            error: (err) => {
-                throw err;
-            },
+            error: (err) => { throw err; },
         });
+    }
+
+    get weightControl() {
+        return this.type === TARE ? this.form.controls.tare : this.form.controls.brut;
+    }
+
+    readWeight(index: number) {
+        const value = this.scaleControls[index].value;
+        if(this.type === TARE) {
+            this.form.controls.tare.setValue(+value);
+        } else {
+            this.form.controls.brut.setValue(+value);
+        }
     }
 
     readonly TARE = TARE;

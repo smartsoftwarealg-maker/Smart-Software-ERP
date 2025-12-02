@@ -16,10 +16,6 @@ export class WeightCaptureService {
         );
     }
 
-    getBalanceUrl(): Observable<{ url: string }> {
-        return this.httpSrv.get<{ url: string }>('/logistics/weight-capture/balance-url',);
-    }
-
     updateTare(w: WeightCapture) {
         return this.httpSrv.put('/logistics/weight-capture/update-tare', w);
     }
@@ -34,5 +30,11 @@ export class WeightCaptureService {
                 return conf.scales as ScaleConfig;
             })
         );
+    }
+
+    hasScaleConfig(): Observable<boolean>{
+        return this.getScalesConfig().pipe(map(
+          x => x != null
+        ))
     }
 }

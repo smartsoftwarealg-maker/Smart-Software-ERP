@@ -2,34 +2,32 @@
     @if (form) {
         <mat-card-content>
             <form novalidate [formGroup]="form">
-                <mat-form-field class="default-100" appearance="fill">
-                    <mat-label class="form-field" translate>COMMON_BALANCE</mat-label>
-                    <input matInput [formControl]="scaleTruckFC" type="text" class="text" readonly>
-                </mat-form-field>
-                @if (type == TARE) {
-                    <mat-form-field class="default-100" appearance="fill">
-                        <mat-label translate>SALES_TARE_WEIGHT</mat-label>
-                        <input matInput formControlName="tare" type="text" class="text" readonly>
+                @for (ctrl of scaleControls; track ctrl; let i = $index) {
+                    <div class="scale-line">
+                    <mat-form-field  appearance="fill" class="scale-field">
+                        <mat-label translate>{{ scales[i]?.name }}</mat-label>
+                        <input matInput [formControl]="ctrl" type="text" class="text" readonly>
                     </mat-form-field>
-                } @else {
-                    <mat-form-field class="default-100" appearance="fill">
-                        <mat-label translate>SALES_BRUT_WEIGHT</mat-label>
-                        <input matInput formControlName="brut" type="text" class="text" readonly>
-                    </mat-form-field>
+
+                    <button mat-raised-button color="primary"
+                            type="button"
+                            class="read-btn"
+                            (click)="readWeight(i)" translate>
+                        <i class="fa-solid fa-check"></i>
+                        COMMON_READ
+                    </button>
+                    </div>
                 }
+                <div class="scale-line">
+                    <mat-form-field appearance="fill" class="scale-field">
+                        <mat-label translate>
+                            {{ type === TARE ? 'SALES_TARE_WEIGHT' : 'SALES_BRUT_WEIGHT' }}
+                        </mat-label>
+                        <input matInput [formControl]="weightControl" type="text" class="text" readonly>
+                    </mat-form-field>
+                </div>
             </form>
             <div class="ctrl-div">
-                @if (type == TARE) {
-                    <button mat-raised-button color="primary" type="button" (click)="readTare()" translate>
-                        <i class="fa-solid fa-check"></i>
-                        COMMON_READ
-                    </button>
-                } @else {
-                    <button mat-raised-button color="primary" type="button" (click)="readBrut()" translate>
-                        <i class="fa-solid fa-check"></i>
-                        COMMON_READ
-                    </button>
-                }
                 <button mat-raised-button color="secondly" type="button" (click)="cancel()" translate>
                     <i class="fa-solid fa-floppy-disk"></i>
                     COMMON_CANCEL
