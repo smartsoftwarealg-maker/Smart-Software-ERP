@@ -110,6 +110,7 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
             subClass:     [a.subClass],
             info:         [a.info],
             importTax:    [a.importTax || 0],
+            discountable: [a.discountable],
         });
     }
 

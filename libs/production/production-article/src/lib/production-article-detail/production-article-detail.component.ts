@@ -137,7 +137,8 @@ export class ProductionArticleDetailComponent
             subClass:     [a.subClass],
             dosageUnit:   [a.dosageUnit],
             packaging:    [a.packaging],
-            productType:  [a.productType]
+            productType:  [a.productType],
+            discountable: [a.discountable],
         });
     }
 
