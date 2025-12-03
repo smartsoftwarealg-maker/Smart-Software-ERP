@@ -8,7 +8,6 @@ import {Scale, ScaleList, TruckStatus} from '../weight-capture-api';
 import { WeightCaptureService } from '../weight-capture.service';
 import { ScaleService } from '../scale.service';
 import { SnackBarService } from '@ss/common/ui-shell';
-import {NgForOf} from "@angular/common";
 
 
 const TARE = 0;

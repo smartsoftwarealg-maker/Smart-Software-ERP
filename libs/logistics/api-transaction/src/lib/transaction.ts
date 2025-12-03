@@ -171,6 +171,8 @@ export interface InterStoreTransferLine {
     destinationStore?:number;
     storeDescription?: string;
     lotDescription?: string;
+    price: number;
+    pPrice: number;
 }
 
 export const COSTS_URL = '/costs';

@@ -75,10 +75,12 @@ export class InterStoreTransferLinesDetailComponent
             sourceRef:        [{ value: e.sourceRef,  disabled: this.qtyIsNotNull()}, Validators.required],
             sourceStore:      [{ value:e.sourceStore, disabled: this.qtyIsNotNull()}, Validators.required],
             qty:              [e.qty||0, Validators.required],
-            destinationRef:   [e.destinationRef],
+            destinationRef:   [e.sourceRef||'none'],
             storeDescription: [e.storeDescription],
             destinationStore: [e.destinationStore],
             lotDescription:   [e.lotDescription],
+            price:            [0],
+            pPrice:           [0]
         });
     }
 
