@@ -36,19 +36,7 @@ export class BudgetListComponent extends BaseEntityListComponent<Budget> {
         'description',
     ];
 
-/* <<<<<<<<<<<<<<  ✨ Windsurf Command ⭐ >>>>>>>>>>>>>>>> */
-    /**
-     * Component constructor.
-     * @param entitySrv BudgetService instance.
-     * @param shellSrv ShellService instance.
-     * @param snackBarSrv SnackBarService instance.
-     * @param route ActivatedRoute instance.
-     * @param router Router instance.
-     * @param defReportSrv DefaultReportService instance.
-     * @param confirmationSrv ConfirmationDialogService instance.
-     * @param pagPersistSrv PaginatorPersistenceService instance.
-     */
-/* <<<<<<<<<<  40eca738-7c8b-4712-a922-7451f3fa2fe9  >>>>>>>>>>> */
+
     constructor(
         public override entitySrv: BudgetService,
         public override shellSrv: ShellService,
