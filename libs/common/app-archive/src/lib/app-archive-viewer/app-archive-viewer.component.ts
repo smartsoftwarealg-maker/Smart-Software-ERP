@@ -37,6 +37,7 @@ export class AppArchiveViewerComponent implements OnInit {
     private ASSET_COLS = ['COMMON_REFERENCE', 'ASSET_SERIAL_NUMBER', 'COMMON_DESCRIPTION', 'COMMON_DESCRIPTION'];
     private TRANSACTION_COLS = ['COMMON_NUMBER', 'COMMON_DATE', 'COMMON_AGENT', 'COMMON_DESCRIPTION'];
     private PARTNER_COLS = ['LOGISTICS_DENOMINATION', 'COMMON_CUSTOMER_CODE', 'COMMON_ADDRESS', 'COMMON_DESCRIPTION'];
+    //private GENERIC_COLS = ['COMMON_FILENAME'];
     private shellSrv = inject(ShellService);
     private route = inject(ActivatedRoute);
     private fb = inject(FormBuilder);
@@ -172,6 +173,9 @@ export class AppArchiveViewerComponent implements OnInit {
                 this.datePipe.transform(params.refDate, 'dd/MM/yyyy'),
                 0,
                 this.paginator.pageSize);
+        case 14:
+            this.columnHeaders = [];//this.GENERIC_COLS;
+            return this.archiveSrv.getList(0, this.paginator.pageSize, params.description);
         default:
             return of({ body: [], itemCount: 0 });
         }

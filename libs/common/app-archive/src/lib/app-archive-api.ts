@@ -46,6 +46,7 @@ export interface AppArchiveObs {
 }
 
 export const APPLICATIONS: Lookup[] = [
+    { 'id': 14, 'description': 'COMMON_GENERIC_ARCHIVE', descriptionAr: 'AGeneral' },
     { 'id': 1, 'description': 'COMMON_AGENT', descriptionAr: 'AAAgent' },
     { 'id': 2, 'description': 'ASSET_RECEPTIONS', descriptionAr: 'AAAssetReception' },
     { 'id': 3, 'description': 'COMMON_ASSETS', descriptionAr: 'AAAsset' },
