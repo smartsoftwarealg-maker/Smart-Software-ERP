@@ -20,8 +20,7 @@ const BRUT = 1;
     imports: [
         MatButtonModule,
         TranslateDirective,
-        MaterialModule,
-        NgForOf
+        MaterialModule
     ],
     templateUrl: './weight-capture-dialog.component.html',
     styleUrl: './weight-capture-dialog.component.scss',
