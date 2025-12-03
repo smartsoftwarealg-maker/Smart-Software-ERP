@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {Component, computed, inject, OnInit, signal} from '@angular/core';
 import {
     AppArchiveMainComponent,
     AppArchiveService,
@@ -15,7 +15,7 @@ import { ShellService } from '@ss/common/ui-shell';
     standalone: true,
 })
 export class AppGenericArchiveComponent implements OnInit {
-    private archiveSrv = inject(AppArchiveService);
+    public archiveSrv = inject(AppArchiveService);
     private shellSrv = inject(ShellService);
     private route = inject(ActivatedRoute);
 
@@ -23,6 +23,7 @@ export class AppGenericArchiveComponent implements OnInit {
         this.shellSrv.setTitle('COMMON_GENERIC_ARCHIVE');
         this.shellSrv.setGoBackPath('..', this.route);
         this.archiveSrv.appId = GENERIC_ARCHIVES;
+        this.archiveSrv.setParentId(14);
     }
 
     protected readonly GENERIC_ARCHIVES = GENERIC_ARCHIVES;
