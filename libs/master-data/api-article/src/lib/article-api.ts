@@ -85,6 +85,7 @@ export interface Article {
     packaging?:number;
     productType?: number;
     importTax: number;
+    discountable: boolean;
 }
 
 export interface StockInfo {
