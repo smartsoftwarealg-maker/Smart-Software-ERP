@@ -23,7 +23,7 @@ export class AppGenericArchiveComponent implements OnInit {
         this.shellSrv.setTitle('COMMON_GENERIC_ARCHIVE');
         this.shellSrv.setGoBackPath('..', this.route);
         this.archiveSrv.appId = GENERIC_ARCHIVES;
-        this.archiveSrv.setParentId(0);
+        this.archiveSrv.setParentId(14);
     }
 
     protected readonly GENERIC_ARCHIVES = GENERIC_ARCHIVES;
