@@ -26,19 +26,20 @@ import { Observable } from 'rxjs';
     styleUrl: './inter-store-transfer-detail.component.scss',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    DatePickerComponent,
-    RouterOutlet,
-    UiAutoCompleteComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        DatePickerComponent,
+        RouterOutlet,
+        UiAutoCompleteComponent
+    ]
 })
 export class InterStoreTransferDetailComponent
     extends BaseEntityDetailComponent<InterStoreTransfer>
     implements OnInit {
     #interStoreTransferLinesSrv = inject(InterStoreTransferLinesService);
     #storeSrv = inject(StoreService);
+    // eslint-disable-next-line no-unused-private-class-members
     #router = inject(Router);
 
     storeLookup = new DefaultAutoCompleteModel(this.#storeSrv);
@@ -75,8 +76,7 @@ export class InterStoreTransferDetailComponent
             number:    [{ value: e.number, disabled: true }],
             header:    [e.header],
             date:      [e.date||new Date(), Validators.required],
-            storeId:   [e.storeId, Validators.required]
+            storeId:   [e.storeId, Validators.required],
         });
     }
-
 }
