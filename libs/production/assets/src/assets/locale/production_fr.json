@@ -25,5 +25,6 @@
     "FP":                     "PF2",
     "PRICE1":                 "Prix 1",
     "PRICE2":                 "Prix 2",
-    "PRICE3":                 "Prix 3"
+    "PRICE3":                 "Prix 3",
+    "BOM_DUP_CONFIRM": "Veuillez confirmer la duplication de la nomenclature sélectionnée"
 }

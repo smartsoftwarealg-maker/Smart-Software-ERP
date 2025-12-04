@@ -28,4 +28,8 @@ export class BomService extends BaseEntityService<BOM> {
         const params = new HttpParams().set('reference', reference).set('version', version);
         return this.httpSrv.get<BOM[]>('/manufacturing/bom-versions', params);
     }
+
+    duplicate(bomId: number): Observable<{ id: number}> {
+        return this.httpSrv.put(`/manufacturing/bom-duplicate/${bomId}`);
+    }
 }
