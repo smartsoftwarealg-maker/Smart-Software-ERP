@@ -104,7 +104,6 @@ export class LoginService {
                     ) : of(null);
     }
 
-
     public centerLogin(center: number): Observable<LoginInfo> {
         return this
             .#httpSrv

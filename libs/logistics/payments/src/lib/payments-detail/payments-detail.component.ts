@@ -83,7 +83,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         return this.formBuilder.group({
             id:           [a.id],
             center:       [a.center || this.loginSrv.appCtx.center],
-            number:       [a.number || 0],
+            number:       [a.number || '0'],
             bankId:       [a.bankId],
             bank:         [a.bank],
             description:  [a.description, Validators.required],
@@ -93,6 +93,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
             debit:        [{ value: db, disabled: cr > 0.000001}, Validators.required],
             credit:       [{ value: cr, disabled: db > 0.000001}, Validators.required],
             mode:         [a.mode || 2, Validators.required],
+            canceled:     [a.canceled]
         });
     }
 
