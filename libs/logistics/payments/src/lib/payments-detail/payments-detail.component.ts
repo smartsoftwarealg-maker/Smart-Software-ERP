@@ -36,7 +36,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         ['/customers', 'LOGISTICS_CUSTOMER_PAYMENTS'],
         ['/suppliers', 'LOGISTICS_SUPPLIER_PAYMENTS'],
         ['/branches', 'LOGISTICS_BRANCH_PAYMENTS'],
-        ['/transporters', 'LOGISTICS_TRANSPORTER_PAYMENTS'],
+        ['/transporters', 'LOGISTICS_TRANSPORTERS_PAYMENTS'],
     ]);
 
     displayedColumns = [

@@ -41,7 +41,7 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
         ['/cpayments', 'LOGISTICS_CUSTOMER_PAYMENTS'],
         ['/spayments', 'LOGISTICS_SUPPLIER_PAYMENTS'],
         ['/bpayments', 'LOGISTICS_BRANCH_PAYMENTS'],
-        ['/tpayments', 'LOGISTICS_TRANSPORTER_PAYMENTS'],
+        ['/tpayments', 'LOGISTICS_TRANSPORTERS_PAYMENTS'],
     ]);
 
     displayedColumns = [
