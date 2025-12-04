@@ -22,13 +22,13 @@ import { BomListComponent } from '../bom/bom-list.component';
     selector: 'ss-bom-detail',
     standalone: true,
     imports: [
-    MatButtonModule,
-    MaterialModule,
-    TranslateDirective,
-    UiAutoCompleteComponent,
-    DatePickerComponent,
-    BomListComponent
-],
+        MatButtonModule,
+        MaterialModule,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        DatePickerComponent,
+        BomListComponent
+    ],
     templateUrl: './bom2-detail.component.html',
     styleUrl: './bom2-detail.component.css'
 })
@@ -59,7 +59,7 @@ export class Bom2DetailComponent extends BaseEntityDetailComponent<BOM> {
             version:     [e.version||1, Validators.required],
             updateMemo:  [e.updateMemo],
             updateDate:  [e.updateDate],
-        })
+        });
     }
 
 }

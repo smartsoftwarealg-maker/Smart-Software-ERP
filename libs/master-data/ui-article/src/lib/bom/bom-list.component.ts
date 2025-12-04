@@ -29,6 +29,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     styleUrl: './bom-list.component.css',
 })
 export class BomListComponent implements OnDestroy, OnInit {
+    private duplicateButton: ToolbarButton = {
+        icon: 'fa-solid fa-copy',
+        label: 'COMMON_DUPLICATE',
+        disabled: true,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.ALWAYS,
+        click: () => this.duplicate()
+    };
     private dialog = inject(MatDialog);
     private langSrv = inject(LanguageService);
     private EMPTY_BOM: BOM = {id: 0, qty: 0, productRef: '',  productDescription: this.langSrv.translate('LOGISTICS_BOM'), productId: 0, version: 1};
@@ -81,13 +89,16 @@ export class BomListComponent implements OnDestroy, OnInit {
     readonly idEffect = effect(() => this.refresh(null, this.bomId()));
 
     ngOnInit() {
+        if (this.editButton.visible) {
+            this.shellSrv.addButton(this.duplicateButton);
+        }
         this.searchCtrl
-          .valueChanges
-          .pipe(
-            debounceTime(300),
-            distinctUntilChanged(),
-            takeUntilDestroyed(this.destroyRef)
-          ).subscribe(res => this.refresh(res, this.bomId()));
+            .valueChanges
+            .pipe(
+                debounceTime(300),
+                distinctUntilChanged(),
+                takeUntilDestroyed(this.destroyRef)
+            ).subscribe(res => this.refresh(res, this.bomId()));
     }
 
     refresh(filter?: string, id?: number) {
@@ -130,7 +141,7 @@ export class BomListComponent implements OnDestroy, OnInit {
 
     protected deleteSelected() {
         if (this.selectedBOM && this.selectedBOM.bom.id > 0) {
-           const parent = this.getSelectedParent(this.dataSource.data, this.selectedBOM);
+            const parent = this.getSelectedParent(this.dataSource.data, this.selectedBOM);
             this.confirmationSrv.confirmDelete()
                 .pipe(switchMap(yes => yes ? this.entitySrv.remove(this.selectedBOM.bom.id) : of({ count: 0 })))
                 .subscribe(res => {
@@ -202,4 +213,18 @@ export class BomListComponent implements OnDestroy, OnInit {
         this.shellSrv.reset();
     }
 
+    private duplicate() {
+        if (this.selectedBOM) {
+            this.confirmationSrv
+                .confirm('LOGISTICS_BOM', 'LOGISTICS_CONFIRM_DUPLICATE')
+                .pipe(switchMap(yes => yes ? this.entitySrv.duplicate(this.selectedBOM.bom.id) : of({id: 0})))
+                .subscribe(res => {
+                    if (res.id > 0) {
+                        this.snackBarSrv.showSuccessMessage();
+                    } else {
+                        this.snackBarSrv.showFailureMessage();
+                    }
+                });
+        }
+    }
 }

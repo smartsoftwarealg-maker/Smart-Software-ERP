@@ -1,16 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { LTMLineMatter } from '@ltm/ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
+import { ActivatedRoute, Router } from '@angular/router';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {LtmLineMatterService} from '@ltm/ltm-api';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-
-import { ReactiveFormsModule } from "@angular/forms";
-
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { ReactiveFormsModule } from '@angular/forms';
 import { LtmMatterDuplicateComponent } from '../ltm-matter-duplicate/ltm-matter-duplicate.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -22,11 +19,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./line-matter-list.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    PaginationComponent,
-    ReactiveFormsModule,
-    TranslateDirective
-],
+        MaterialModule,
+        PaginationComponent,
+        ReactiveFormsModule,
+        TranslateDirective
+    ],
 })
 export class LineMatterListComponent extends BaseEntityListComponent<LTMLineMatter> {
     private dialog = inject(MatDialog);
@@ -65,7 +62,7 @@ export class LineMatterListComponent extends BaseEntityListComponent<LTMLineMatt
     }
 
     private duplicate() {
-        if (!!this.selected) {
+        if (this.selected) {
             const dialogRef = this.dialog.open(LtmMatterDuplicateComponent, {
                 disableClose: true,
                 width: '450px',
