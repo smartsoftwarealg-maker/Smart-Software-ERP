@@ -8,6 +8,5 @@ import {mainRoutes} from './routes';
     ]
 })
 export class SalesModule {
-    constructor() {
-    }
+    constructor() {}
 }

@@ -227,7 +227,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     private refreshTransactions() {
         this.processing.set(true);
         this.entitySrv
-            .findByJournal(this.selectedJournal, this.pagination.page, this.pagination.pageSize)
+            .findByJournal(this.selectedJournal, this.pagination.page, this.pagination.pageSize, this.filter)
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
