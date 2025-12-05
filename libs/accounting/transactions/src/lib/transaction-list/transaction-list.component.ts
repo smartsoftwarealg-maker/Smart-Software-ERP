@@ -2,8 +2,7 @@ import { Component, effect, inject, OnDestroy, OnInit, signal, ViewChild } from 
 import { ActivatedRoute, NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import {
     AccFileService,
-    AccJournalsService, AccPoliciesService, ACCPolicy,
-    ACCTransaction,
+    AccJournalsService, AccPoliciesService, ACCTransaction,
     AccTransactionLineService,
     AccTransactionService,
     Journal, JournalSummary
@@ -95,7 +94,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_TRANSACTIONS');
         entitySrv.setParentId(0);
         this.pagination.onChange = () => this.refreshTransactions();
-
     }
 
     // override preload(): Observable<any> {
@@ -218,9 +216,8 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .journalSummary()
             .pipe(
                 tap(res => this.journalSummary.set(res)),
-                switchMap(() => this.entitySrv.findByJournal(this.entitySrv.getParentId(), this.pagination.page, this.pagination.pageSize))
-                )
-            .subscribe(res => {
+                switchMap(() => this.entitySrv.findByJournal(this.entitySrv.getParentId(), this.pagination.page, this.pagination.pageSize, this.filter))
+            ).subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;
                 this.processing.set(false);
@@ -289,7 +286,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             });
     }
 
-    override refresh(callback?: () => void) {
+    override refresh() {
         this.processing.set(true);
         if (this.transactionMode) {
             super.refresh(() => this.processing.set(false));

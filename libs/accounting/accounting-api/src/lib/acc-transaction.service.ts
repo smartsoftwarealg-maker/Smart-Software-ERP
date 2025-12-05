@@ -14,15 +14,15 @@ import {Lookup} from '@ss/common/api-lookup';
     providedIn: 'root'
 })
 export class AccTransactionService extends BaseEntityService<ACCTransaction> {
-    selectedTransaction = signal<ACCTransaction|null>(null)
+    selectedTransaction = signal<ACCTransaction|null>(null);
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ACC_TRANSACTION_URL, ACC_JOURNALS_URL);
     }
 
-    findByJournal(journalId: number, page: number, pageSize: number): Observable<{ body: ACCTransaction[], itemCount: number }> {
-        const params = new HttpParams().set("journal", journalId);
-        return this.getList(page - 1, pageSize, null, null, params);
+    findByJournal(journalId: number, page: number, pageSize: number, filter?: string): Observable<{ body: ACCTransaction[], itemCount: number }> {
+        const params = new HttpParams().set('journal', journalId);
+        return this.getList(page - 1, pageSize, filter, null, params);
     }
 
     getProjects(): Observable<Lookup[]> {
