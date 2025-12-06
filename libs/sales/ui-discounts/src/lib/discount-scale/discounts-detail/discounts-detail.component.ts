@@ -18,7 +18,6 @@ import { MatInput } from '@angular/material/input';
 import { SalesDiscount } from '../discounts-api.class';
 import { SalesDiscountsService } from '../sales-discounts.service';
 
-
 @Component({
     selector: 'ss-sales-discounts',
     templateUrl: 'discounts-detail.component.html',
@@ -47,7 +46,7 @@ export class DiscountsDetailComponent extends BaseEntityDetailComponent<SalesDis
         public override formBuilder: UntypedFormBuilder,
     ) {
         super(
-          entitySrv,
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,

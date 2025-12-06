@@ -46,10 +46,10 @@ import { ServiceArticleDetailComponent, ServiceArticleListComponent } from '@ss/
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { ReportPrivilegesComponent } from '@common/report-privileges';
 import { PriceListDetailComponent, PriceListListComponent } from '@ss/master-data/price-list';
-import { DiscountsDetailComponent, DiscountsListComponent } from '../../../../../libs/sales/ui-discounts/src';
+import { DiscountsDetailComponent, DiscountsListComponent } from '@ss/sales/ui-discounts';
 import {
     TurnoverListComponent
-} from '../../../../../libs/sales/ui-discounts/src/lib/discounts/turnover/turnover-list.component';
+} from '@ss/sales/ui-discounts';
 
 export const lookupRoutes: Routes = [];
 

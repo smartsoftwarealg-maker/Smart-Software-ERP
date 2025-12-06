@@ -645,6 +645,7 @@
                 "libs/sales/shopping-cart/src/index.ts"
             ],
             "@ss/sales/ui-delivery": ["libs/sales/ui-delivery/src/index.ts"],
+            "@ss/sales/ui-discounts": ["libs/sales/ui-discounts/src/index.ts"],
             "@ss/sales/ui-delivery-cancellation": [
                 "libs/sales/ui-delivery-cancellation/src/index.ts"
             ],

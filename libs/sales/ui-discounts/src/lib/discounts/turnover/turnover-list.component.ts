@@ -1,30 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 
-import { FormBuilder, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    ReactiveFormsModule,
+    UntypedFormGroup,
+} from '@angular/forms';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 
-import { MatInput } from '@angular/material/input';
 import { MatCheckbox } from '@angular/material/checkbox';
-import { DecimalPipe, NgForOf, NgIf, PercentPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { Turnover } from '../turnover-api.class';
 import { TurnoverService } from '../turnover.service';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { MatSelect } from '@angular/material/select';
-import { MatOption } from '@angular/material/core';
 import { of } from 'rxjs';
-
-
 
 @Component({
     selector: 'ss-turnover-list',
@@ -57,9 +57,11 @@ import { of } from 'rxjs';
     ]
 })
 export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
+    private fb  = inject(FormBuilder);
+
     displayedColumns = ['year', 'customerCode', 'customerName', 'amount', 'rate', 'generated', 'select'];
     public filterForm: UntypedFormGroup | null = null;
-    agents: any[] = [];
+    agents: number[] = [];
 
     constructor(
         public override entitySrv: TurnoverService,
@@ -69,20 +71,18 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override router: Router,
-        public override pagPersistSrv: PaginatorPersistenceService,
-        private fb: FormBuilder
-    ) {
-        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'ACC_TURNOVER');
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'SALES_DISCOUNTS');
 
         this.filterForm = this.fb.group({
-            from: [null],
-            to: [null],
+            from: new FormControl<Date>(new Date()),
+            to:   new FormControl<Date>(new Date()),
         });
     }
 
     override getPage() {
-        const f = this.filterForm?.value?.from;
-        const t = this.filterForm?.value?.to;
+        const f: Date = this.filterForm?.value?.from;
+        const t: Date = this.filterForm?.value?.to;
 
         if (!f || !t) {
             return of([]);
@@ -93,13 +93,14 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
 
         return this.entitySrv.getTurnover(from, to);
     }
-    private formatDate(d: any): string {
+
+    private formatDate(d: Date): string {
         const D = new Date(d);
         return D.toISOString().split('T')[0];
     }
 
 
-    toggleSelection(row: any, checked: boolean) {
+    toggleSelection(row: Turnover, checked: boolean) {
         // uncheck all other rows
         this.data.forEach(r => r.select = false);
 
@@ -115,12 +116,12 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
             return;
         }
         const payload = {
-            from: this.filterForm?.value.from,
-            to: this.filterForm?.value.to,
+            from:   this.filterForm?.value.from,
+            to:     this.filterForm?.value.to,
             agents: [this.selectedRow.agentId]
         };
         if (!payload.from || !payload.to) {
-            this.snackBarSrv.showFailureMessage('Select Period First');
+            this.snackBarSrv.showFailureMessage();
             return;
         }
         this.shellSrv.setLoading(true);
@@ -131,7 +132,7 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
                 this.refresh();
             },
             error: () => {
-                this.snackBarSrv.showFailureMessage('Generation failed');
+                this.snackBarSrv.showFailureMessage();
                 this.shellSrv.setLoading(false);
             }
         });

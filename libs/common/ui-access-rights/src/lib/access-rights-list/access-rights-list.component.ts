@@ -39,34 +39,34 @@ interface APP {
     styleUrls: ['./access-rights-list.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    MatCheckbox,
-    MatFormField,
-    MatLabel,
-    TranslateDirective,
-    MatSelect,
-    MatOption,
-    MatList,
-    MatListItem,
-    NgClass,
-    FormsModule,
-    ReactiveFormsModule,
-    UiAutoCompleteComponent,
-    MatSlideToggle,
-    MatTable,
-    MatColumnDef,
-    MatHeaderCellDef,
-    MatHeaderCell,
-    MatCellDef,
-    MatCell,
-    MatHeaderRowDef,
-    MatHeaderRow,
-    MatRowDef,
-    MatRow,
-    PaginationComponent,
-    TranslatePipe,
-    MatCheckbox
-]
+        MaterialModule,
+        MatCheckbox,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatSelect,
+        MatOption,
+        MatList,
+        MatListItem,
+        NgClass,
+        FormsModule,
+        ReactiveFormsModule,
+        UiAutoCompleteComponent,
+        MatSlideToggle,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        TranslatePipe,
+        MatCheckbox
+    ]
 })
 export class AccessRightsListComponent extends BaseEntityListComponent<AccessRight> {
     private langSrv = inject(LanguageService);
@@ -177,6 +177,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         if (!id) {
             this.form.controls['roles'].setValue(0);
             this.form.reset();
+            this.selectedRow = null;
         }
         this.editButton.disabled = false;
     }

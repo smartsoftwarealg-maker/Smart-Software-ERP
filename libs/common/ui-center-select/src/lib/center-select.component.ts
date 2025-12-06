@@ -146,15 +146,25 @@ export class CenterSelectComponent implements OnInit {
                         this.shellSrv.setCompanyName(this.centerList.filter(c => c.id === this.selectedCenter)[0]?.description);
                         this.loginSrv.appCtx.accPeriod = this.loginSrv.appCtx.accFile = 0;
                         this.shellSrv.setLabels([]);
-                        this.agentSrv.currentCustomer().subscribe({
-                            next:(cst)=>{
-                                const dest1 = cst.recordBlocked ? BLOCKED_REASON_PAGE_URL : dest;
-                                this.router.navigate(['/' + dest1]).then(() => {});
-                            },
-                            error:()=>{
-                                this.router.navigate(['/' + dest]).then(() => {});
-                            }
-                        });
+                        if (this.loginSrv.appCtx.id) {
+                            this.router.navigate(['/' + dest]).then(() => {});
+                        } else {
+                            this.agentSrv.currentCustomer().subscribe({
+                                next: (cst) => {
+                                    const dest1 = cst.recordBlocked
+                                        ? BLOCKED_REASON_PAGE_URL
+                                        : dest;
+                                    this.router
+                                        .navigate(['/' + dest1])
+                                        .then(() => {});
+                                },
+                                error: () => {
+                                    this.router
+                                        .navigate(['/' + dest])
+                                        .then(() => {});
+                                },
+                            });
+                        }
                     }, error: err => {
                         this.endLoading();
                         throw err;
