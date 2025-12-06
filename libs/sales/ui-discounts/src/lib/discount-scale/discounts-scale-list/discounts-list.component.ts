@@ -24,7 +24,7 @@ import { SalesDiscount } from '../discounts-api.class';
 import { SalesDiscountsService } from '../sales-discounts.service';
 
 @Component({
-    selector: 'ss-sales-discounts',
+    selector: 'ss-discount-scale-list',
     templateUrl: 'discounts-list.component.html',
     styleUrls: ['discounts-list.component.scss'],
     standalone: true,

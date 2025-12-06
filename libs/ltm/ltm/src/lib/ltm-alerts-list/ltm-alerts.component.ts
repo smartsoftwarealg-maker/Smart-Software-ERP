@@ -1,13 +1,13 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
-import { ActivatedRoute, Router } from "@angular/router";
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ActivatedRoute, Router } from '@angular/router';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import { CommonModule } from "@angular/common";
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { LTM_NON_CONFORMITY_DOC, LTMAbnormalTest } from '@ltm/ltm-api';
 import { LtmAbnormalTestService } from '@ltm/ltm-api';
 import { filter } from 'rxjs';
@@ -51,7 +51,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         from: [new Date(new Date().getTime() - 24 * 3600 * 1000 * 30 )],
         to:   [new Date()],
         open: [false]
-    })
+    });
 
     constructor(
         public override entitySrv: LtmAbnormalTestService,
@@ -74,17 +74,17 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         this.entitySrv
             .refresh(formValue.from, formValue.to, formValue.open, this.pagination.page - 1, this.pagination.pageSize, this.shellSrv.getSearchText())
             .subscribe({
-                    next: data => {
-                        this.shellSrv.setLoading(false); // stop the animation
-                        this.data = data.body;
-                        this.pagination.elementCount = data.itemCount;
-                    },
-                    error: err => {
-                        this.data = []; // clear everything;
-                        this.shellSrv.setLoading(false); // stop the animation
-                        throw err;
-                    }
+                next: data => {
+                    this.shellSrv.setLoading(false); // stop the animation
+                    this.data = data.body;
+                    this.pagination.elementCount = data.itemCount;
+                },
+                error: err => {
+                    this.data = []; // clear everything;
+                    this.shellSrv.setLoading(false); // stop the animation
+                    throw err;
                 }
+            }
             );
     }
 
@@ -110,7 +110,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
     }
 
     override showDetail(id: number) {
-        this.router.navigate([id], {relativeTo: this.route}).then()
+        this.router.navigate([id], {relativeTo: this.route}).then();
     }
 
     override ngOnDestroy() {
@@ -131,6 +131,6 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
             if (!res) {
                 this.snackBarSrv.showSuccessMessage();
             }
-        })
+        });
     }
 }

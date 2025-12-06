@@ -12,7 +12,7 @@
         </mat-form-field>
 
         <div class="actions">
-            <button mat-button color="accent" (click)="generate()">
+            <button mat-button color="accent" (click)="generate()" [disabled]="emptySelection()">
                 <i class="fas fa-magic"></i> Generate
             </button>
         </div>
@@ -23,7 +23,7 @@
 
             <ng-container matColumnDef="year">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PERIOD</mat-header-cell>
-                <mat-cell *matCellDef="let e">{{ e.year }}</mat-cell>
+                <mat-cell *matCellDef="let e">{{ e.month | number: '2.0'}} / {{ e.year }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="customerCode">
@@ -52,15 +52,15 @@
             </ng-container>
 
             <ng-container matColumnDef="select">
-                <mat-header-cell *matHeaderCellDef translate>
-                    COMMON_SELECT
-                </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef><mat-checkbox (change)="toggleAll($event.checked)"></mat-checkbox></mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    <mat-checkbox
-                        [checked]="e.select"
-                        (change)="toggleSelection(e, $event.checked)"
-                        [disabled]="e.amount === 0">
-                    </mat-checkbox>
+                    @if (e.rate > 0) {
+                        <mat-checkbox
+                            [checked]="selectedAgents().includes(e.agentId)"
+                            (change)="toggleSelection(e, $event.checked)"
+                            [disabled]="e.amount === 0">
+                        </mat-checkbox>
+                    }
                 </mat-cell>
             </ng-container>
 

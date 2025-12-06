@@ -19,9 +19,9 @@ import { SalesDiscount } from '../discounts-api.class';
 import { SalesDiscountsService } from '../sales-discounts.service';
 
 @Component({
-    selector: 'ss-sales-discounts',
-    templateUrl: 'discounts-detail.component.html',
-    styleUrl: 'discounts-detail.component.scss',
+    selector: 'ss-sales-scale-discounts-detail',
+    templateUrl: 'discounts-scale-detail.component.html',
+    styleUrl: 'discounts-scale-detail.component.scss',
     standalone: true,
     imports: [
         MaterialModule,
@@ -35,7 +35,7 @@ import { SalesDiscountsService } from '../sales-discounts.service';
         RouterOutlet
     ]
 })
-export class DiscountsDetailComponent extends BaseEntityDetailComponent<SalesDiscount> {
+export class DiscountsScaleDetailComponent extends BaseEntityDetailComponent<SalesDiscount> {
     private salesDiscountsService = inject(SalesDiscountsService);
     constructor(
         public override entitySrv: SalesDiscountsService,

@@ -52,37 +52,36 @@ mat-header-cell {
 
 
 .mat-column-year {
-    flex: 2 1 150px;
+    flex: 1 1 100px;
     justify-content: center;
 }
 
 .mat-column-customerCode {
-    flex: 2 1 200px;
-    justify-content: center;
+    flex: 1 1 100px;
 }
 
 .mat-column-customerName {
     flex: 2 1 200px;
-    justify-content: center;
 }
 
 .mat-column-amount {
     justify-content: right;
-    flex: 2 1 200px;
+    flex: 1 1 150px;
 }
 
 .mat-column-rate {
-    flex: 2 1 150px;
+    flex: 1 1 150px;
     justify-content: flex-end;
 }
 
 .mat-column-generated {
-    flex: 2 1 150px;
+    flex: 1 1 150px;
     justify-content: flex-end;
 }
+
 .mat-column-select {
-    flex: 2 1 150px;
-    justify-content: flex-end;
+    flex: 1 1 50px;
+    justify-content: center;
 }
 
 .pagination-container {
