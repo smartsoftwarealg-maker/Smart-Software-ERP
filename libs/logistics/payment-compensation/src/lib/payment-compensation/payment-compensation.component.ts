@@ -5,7 +5,11 @@ import { ReactiveFormsModule, UntypedFormControl } from "@angular/forms";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
 import {map, Observable, of, switchMap} from "rxjs";
-import { LanguageService, MaterialModule } from "@ss/common/api-common";
+import {
+    dateToYmdStr,
+    LanguageService,
+    MaterialModule,
+} from '@ss/common/api-common';
 import {Accounting, Debt, Payment} from "@ss/logistics/api-common";
 import {ActivatedRoute} from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -172,20 +176,19 @@ export class PaymentCompensationComponent implements OnInit {
         if (this.selectedPayment && this.selectedDebt && this.selectedDebt.id) {
             const date = this.date.value || new Date();
             this.agentSrv
-                .makePayment(this.selectedPayment?.id, this.selectedDebt?.id, this.langSrv.formatDate(date), this.selectedDebt.balance)
+                .makePayment(this.selectedPayment?.id, this.selectedDebt?.id, dateToYmdStr(date), this.selectedDebt.balance)
                 .pipe(switchMap(res => {
                     if (res.id > 0) {
                         this.snackBarSrv.showSuccessMessage();
                         this.selectedPayment = null;
                         this.selectedDebt = null;
-                        return this.dataObs(this.agentAutoCompleteModel.cache?.id)
+                        return this.dataObs(this.agentAutoCompleteModel.cache?.id);
                     } else {
                         this.snackBarSrv.showFailureMessage();
                         this.selectedPayment = null;
                         return of(this.dataSource.data);
                     }
-                }))
-                .subscribe(res => this.dataSource.data = res);
+                })).subscribe(res => this.dataSource.data = res);
         }
     }
 
