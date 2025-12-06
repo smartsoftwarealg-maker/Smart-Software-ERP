@@ -46,7 +46,7 @@ import { ServiceArticleDetailComponent, ServiceArticleListComponent } from '@ss/
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { ReportPrivilegesComponent } from '@common/report-privileges';
 import { PriceListDetailComponent, PriceListListComponent } from '@ss/master-data/price-list';
-import { DiscountsDetailComponent, DiscountsListComponent } from '@ss/sales/ui-discounts';
+import { DiscountsScaleDetailComponent, DiscountsListComponent } from '@ss/sales/ui-discounts';
 import {
     TurnoverListComponent
 } from '@ss/sales/ui-discounts';
@@ -324,37 +324,37 @@ export const mainRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
     },
-     {
-         path: SALES_DISCOUNT_URL,
-         children: [
-             {
-                 path: LIST_URL,
-                 component: DiscountsListComponent,
-                 canActivate: [loginGuard],
-                 children: docInfoRoutes
-             },
-             {
-                 path: ':id',
-                 component: DiscountsDetailComponent,
-                 canActivate: [loginGuard],
-                 canDeactivate: [CanDeactivateService],
-                 children: docInfoRoutes
-             },
-             { path: '', redirectTo: LIST_URL, pathMatch: 'full' }
-         ]
-     },
     {
-         path: SALES_DISCOUNT_TURNOVER,
-         children: [
-             {
-                 path: LIST_URL,
-                 component: TurnoverListComponent,
-                 canActivate: [loginGuard],
-                 children: docInfoRoutes
-             },
-             { path: '', redirectTo: LIST_URL, pathMatch: 'full' }
-         ]
-     },
+        path: SALES_DISCOUNT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: DiscountsListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: DiscountsScaleDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: SALES_DISCOUNT_TURNOVER,
+        children: [
+            {
+                path: LIST_URL,
+                component: TurnoverListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
 
     {
         path: LOGISTICS_AGENT_URL,

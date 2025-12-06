@@ -1,18 +1,33 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import {
+    dateToYmdStr,
+    MaterialModule,
+    PaginatorPersistenceService,
+} from '@ss/common/api-common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 
 import {
     FormBuilder,
     FormControl,
     ReactiveFormsModule,
-    UntypedFormGroup,
+
 } from '@angular/forms';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import {
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatCellDef,
+    MatCell,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+} from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -24,7 +39,9 @@ import { MatButton } from '@angular/material/button';
 import { Turnover } from '../turnover-api.class';
 import { TurnoverService } from '../turnover.service';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-turnover-list',
@@ -54,14 +71,27 @@ import { of } from 'rxjs';
         DecimalPipe,
         MatButton,
         DatePickerComponent,
-    ]
+    ],
 })
 export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
-    private fb  = inject(FormBuilder);
+    #destroyRef = inject(DestroyRef);
+    #fb = inject(FormBuilder);
 
-    displayedColumns = ['year', 'customerCode', 'customerName', 'amount', 'rate', 'generated', 'select'];
-    public filterForm: UntypedFormGroup | null = null;
-    agents: number[] = [];
+    displayedColumns = [
+        'year',
+        'customerCode',
+        'customerName',
+        'amount',
+        'rate',
+        'generated',
+        'select',
+    ];
+    filterForm = this.#fb.group({
+        from: new FormControl<Date>(new Date()),
+        to: new FormControl<Date>(new Date()),
+    });
+    selectedAgents = signal<number[]>([]);
+    emptySelection = computed(() => this.selectedAgents().length < 1);
 
     constructor(
         public override entitySrv: TurnoverService,
@@ -71,16 +101,31 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override router: Router,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'SALES_DISCOUNTS');
-
-        this.filterForm = this.fb.group({
-            from: new FormControl<Date>(new Date()),
-            to:   new FormControl<Date>(new Date()),
-        });
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'SALES_DISCOUNTS',
+        );
     }
 
-    override getPage() {
+    override ngOnInit() {
+        super.ngOnInit();
+        this.filterForm.valueChanges.pipe(
+            takeUntilDestroyed(this.#destroyRef),
+            debounceTime(300),
+            distinctUntilChanged()
+        ).subscribe(() => this.refresh());
+    }
+
+    override getPage(): Observable<Turnover[]> {
         const f: Date = this.filterForm?.value?.from;
         const t: Date = this.filterForm?.value?.to;
 
@@ -88,42 +133,36 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
             return of([]);
         }
 
-        const from = this.formatDate(f);
-        const to = this.formatDate(t);
+        const from = dateToYmdStr(f);
+        const to = dateToYmdStr(t);
 
         return this.entitySrv.getTurnover(from, to);
     }
 
-    private formatDate(d: Date): string {
-        const D = new Date(d);
-        return D.toISOString().split('T')[0];
+    toggleSelection(row: Turnover, checked: boolean) {
+        const id = row?.agentId;
+        if (checked) {
+            this.selectedAgents.update((ids) => [...ids, id]);
+        } else {
+            this.selectedAgents.update((ids) => ids.filter((i) => i !== id));
+        }
     }
 
-
-    toggleSelection(row: Turnover, checked: boolean) {
-        // uncheck all other rows
-        this.data.forEach(r => r.select = false);
-
-        // set this one as selected
-        row.select = checked;
-
-        // update selectedRow used by Generate
-        this.selectedRow = checked ? row : null;
+    toggleAll(checked: boolean) {
+        if (checked) {
+            this.selectedAgents.update(() => this.data.map((d) => d.agentId));
+        } else {
+            this.selectedAgents.update(() => []);
+        }
     }
 
     generate() {
-        if (!this.selectedRow) {
-            return;
-        }
+        const filter = this.filterForm.getRawValue();
         const payload = {
-            from:   this.filterForm?.value.from,
-            to:     this.filterForm?.value.to,
-            agents: [this.selectedRow.agentId]
+            from: filter.from,
+            to: filter.to,
+            agents: this.selectedAgents(),
         };
-        if (!payload.from || !payload.to) {
-            this.snackBarSrv.showFailureMessage();
-            return;
-        }
         this.shellSrv.setLoading(true);
         this.entitySrv.generate(payload).subscribe({
             next: () => {
@@ -134,7 +173,7 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
             error: () => {
                 this.snackBarSrv.showFailureMessage();
                 this.shellSrv.setLoading(false);
-            }
+            },
         });
     }
 }

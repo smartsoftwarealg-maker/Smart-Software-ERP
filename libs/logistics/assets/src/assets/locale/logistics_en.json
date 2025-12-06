@@ -31,7 +31,7 @@
     "NIF": "NIF",
     "DEBT_LIMIT": "Debt limit",
     "DEBT_TERM": "Debt term",
-    "CHECK_DUE_DAYS": "Check due days",
+    "CHECK_DUE_DAYS": "Due days",
     "ACTIVITIES": "Activities",
     "ACTIVITY": "Activity",
     "RECORD_BLOCKED": "Record blocked",
