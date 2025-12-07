@@ -319,7 +319,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             department:      [a.department],
             creationTime:    [{ value: a.creationTime, disabled: true }],
             collector:       [a.collector],
-            post:            [a.post]
+            post:            [a.post],
+            starred:         [a.starred]
         });
     }
 

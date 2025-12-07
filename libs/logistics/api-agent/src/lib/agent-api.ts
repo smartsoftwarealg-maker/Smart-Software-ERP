@@ -60,6 +60,7 @@ export interface Agent {
     projectRequired?: boolean;
     collector?: number;
     post?: number;
+    starred: boolean;
     /**
      * @deprecated This field doesn't exist in the backend; it will be removed
      */

@@ -1,13 +1,14 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
-import {LookupsService, UNIT_URL} from '@ss/common/api-lookup';
+import {LookupsService} from '@ss/common/api-lookup';
 import {Observable, switchMap} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {
     Agent,
     AGENT_URL,
-    AgentService, BRANCH_URL,
+    AgentService,
+    BRANCH_URL,
     CUSTOMER_URL,
     INTERNAL_URL,
     SUPPLIER_URL,
@@ -17,11 +18,10 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { IsParamService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 @Component({
@@ -30,13 +30,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './agent-list.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    TranslateDirective,
-    DocInfoComponent,
-    PaginationComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        TranslateDirective,
+        DocInfoComponent,
+        PaginationComponent
+    ]
 })
 export class AgentListComponent extends BaseEntityListComponent<Agent> {
     #activeOnlyBtn: ToolbarButton = {
@@ -53,6 +53,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
 
     private isAQS       = false;
     private DEF_COLUMNS = [
+        'starred',
         'customerCode',
         'denomination',
         'typeDescription',
@@ -110,9 +111,9 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
 
                 const idx = res['customer']? 0 :
                     res['supplier']? 1 :
-                    res['transporter']? 2 :
-                    res['unit']? 3 :
-                    res['internalAgent']? 4 : 5;
+                        res['transporter']? 2 :
+                            res['unit']? 3 :
+                                res['internalAgent']? 4 : 5;
 
                 this.agentService.setURL(URLs[idx]);
                 this.shellSrv.setTitle(TTLs[idx]);
@@ -124,5 +125,18 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         this.#activeOnlyBtn.label = this.agentService.activeOnly ? 'COMMON_SHOW_ALL' : 'COMMON_SHOW_ACTIVE_ONLY';
         this.#activeOnlyBtn.icon = this.agentService.activeOnly ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off';
         this.refresh();
+    }
+
+    star(id: number, starred: boolean) {
+        if (this.editable) {
+            this.data
+                .filter((i) => i.id === id)
+                .forEach((i) => {
+                    i.starred = starred;
+                    this.entitySrv
+                        .update(i)
+                        .subscribe(() => i.starred = starred);
+                });
+        }
     }
 }
