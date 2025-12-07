@@ -28,5 +28,7 @@
     "BRUT_WEIGHT":      "Poids brut",
     "DISCOUNTS":        "Remises",
     "DISCOUNTS_DETAIL": "Detail des remises",
-    "DISCOUNT_SCALE":   "Echelle de remise"
+    "DISCOUNT_SCALE":   "Echelle de remise",
+    "REBATES":          "Ristournes",
+    "GENERATE_REBATES": "Générer les ristournes"
 }

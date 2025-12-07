@@ -105,6 +105,12 @@ export class OptionsDetailComponent
             blockNewLots:       [a.blockNewLots || false, Validators.required],
             prodStore:          [a.prodStore],
             usesUnits:          [a.usesUnits || false, Validators.required],
+            art_accno_required: [a.art_accno_required || false, Validators.required],
+            two_step_reception: [a.two_step_reception || false, Validators.required],
+            check_chron_order:  [a.check_chron_order || false, Validators.required],
+            SalesPrice4Factor:  [a.SalesPrice4Factor || 1, Validators.required],
+            SalesPrice5Factor:  [a.SalesPrice5Factor || 1, Validators.required],
+            qtyDiscount:        [a.qtyDiscount || false, Validators.required],
         });
     }
 
