@@ -47,6 +47,10 @@ mat-table {
     flex: 1 1 250px;
 }
 
+.mat-column-starred {
+    flex: 0 0 40px;
+    justify-content: center;
+}
 
 .pagination-container {
 

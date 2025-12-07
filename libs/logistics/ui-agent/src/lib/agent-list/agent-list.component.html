@@ -9,6 +9,17 @@
         </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="starred">
+        <mat-header-cell *matHeaderCellDef mat-sort-header><i class="fa-regular fa-star"></i></mat-header-cell>
+        <mat-cell *matCellDef="let e">
+           @if (e.starred) {
+               <i class="fa-solid fa-star" (click)="star(e.id,false)"></i>
+           } @else {
+               <i class="fa-regular fa-star" (click)="star(e.id,true)"></i>
+           }
+        </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="denomination">
         <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DENOMINATION</mat-header-cell>
         <mat-cell *matCellDef="let e">
