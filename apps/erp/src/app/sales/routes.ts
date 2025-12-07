@@ -48,7 +48,7 @@ import { ReportPrivilegesComponent } from '@common/report-privileges';
 import { PriceListDetailComponent, PriceListListComponent } from '@ss/master-data/price-list';
 import { DiscountsScaleDetailComponent, DiscountsListComponent } from '@ss/sales/ui-discounts';
 import {
-    TurnoverListComponent
+    SalesDiscountComponent
 } from '@ss/sales/ui-discounts';
 
 export const lookupRoutes: Routes = [];
@@ -348,7 +348,7 @@ export const mainRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: TurnoverListComponent,
+                component: SalesDiscountComponent,
                 canActivate: [loginGuard],
                 children: docInfoRoutes
             },

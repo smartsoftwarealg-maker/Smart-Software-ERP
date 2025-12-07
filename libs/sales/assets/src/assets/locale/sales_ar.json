@@ -28,5 +28,7 @@
     "BRUT_WEIGHT":      "الوزن الخام",
     "DISCOUNTS":        "الخصومات" ,
     "DISCOUNTS_DETAIL": "تفاصيل الخصومات",
-    "DISCOUNT_SCALE":   "مقياس الخصم"
+    "DISCOUNT_SCALE":   "مقياس الخصم",
+    "REBATES":          "الحسومات",
+    "GENERATE_REBATES": "توليد الحسومات"
 }

@@ -36,17 +36,17 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { DecimalPipe } from '@angular/common';
 import { MatButton } from '@angular/material/button';
-import { Turnover } from '../turnover-api.class';
-import { TurnoverService } from '../turnover.service';
+import { Turnover } from '../sales-discount-api.class';
+import { SalesDiscountService } from '../sales-discount.service';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { Observable, of } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-turnover-list',
-    templateUrl: './turnover-list.component.html',
-    styleUrls: ['./turnover-list.component.scss'],
+    templateUrl: './sales-discount.component.html',
+    styleUrls: ['./sales-discount.component.scss'],
     standalone: true,
     imports: [
         MatTable,
@@ -73,7 +73,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
         DatePickerComponent,
     ],
 })
-export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
+export class SalesDiscountComponent extends BaseEntityListComponent<Turnover> {
     #destroyRef = inject(DestroyRef);
     #fb = inject(FormBuilder);
 
@@ -94,7 +94,7 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
     emptySelection = computed(() => this.selectedAgents().length < 1);
 
     constructor(
-        public override entitySrv: TurnoverService,
+        public override entitySrv: SalesDiscountService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -112,7 +112,7 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'SALES_DISCOUNTS',
+            'SALES_REBATES',
         );
     }
 
@@ -150,7 +150,7 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
 
     toggleAll(checked: boolean) {
         if (checked) {
-            this.selectedAgents.update(() => this.data.map((d) => d.agentId));
+            this.selectedAgents.update(() => this.data.filter(d => d.generated < 0.01).map((d) => d.agentId));
         } else {
             this.selectedAgents.update(() => []);
         }
@@ -163,17 +163,20 @@ export class TurnoverListComponent extends BaseEntityListComponent<Turnover> {
             to: filter.to,
             agents: this.selectedAgents(),
         };
-        this.shellSrv.setLoading(true);
-        this.entitySrv.generate(payload).subscribe({
-            next: () => {
-                this.snackBarSrv.showSuccessMessage();
-                this.shellSrv.setLoading(false);
-                this.refresh();
-            },
-            error: () => {
-                this.snackBarSrv.showFailureMessage();
-                this.shellSrv.setLoading(false);
-            },
-        });
+
+        this.confirmationSrv
+            .confirm('SALES_REBATES', 'SALES_GENERATE_REBATES')
+            .pipe(switchMap((res) => res ? this.entitySrv.generate(payload) : of({ count: 0 })))
+            .subscribe({
+                next: (res) => {
+                    if (res.count > 0) {
+                        this.snackBarSrv.showSuccessMessage();
+                    }
+                    this.refresh();
+                },
+                error: () => {
+                    this.snackBarSrv.showFailureMessage();
+                },
+            });
     }
 }

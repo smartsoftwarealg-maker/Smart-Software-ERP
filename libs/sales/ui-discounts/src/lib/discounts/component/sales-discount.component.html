@@ -54,7 +54,7 @@
             <ng-container matColumnDef="select">
                 <mat-header-cell *matHeaderCellDef><mat-checkbox (change)="toggleAll($event.checked)"></mat-checkbox></mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    @if (e.rate > 0) {
+                    @if (e.rate > 0 && e.generated < 0.01) {
                         <mat-checkbox
                             [checked]="selectedAgents().includes(e.agentId)"
                             (change)="toggleSelection(e, $event.checked)"

@@ -103,5 +103,6 @@
     "GICA_SUBCLASSES":         "Sous-Classes GICA",
     "TOTAL_STOCK":              "Stock total",
     "USES_UNITS":               "Utilise unités d'article",
-    "UNITS":                    "Unités"
+    "UNITS":                    "Unités",
+    "QTY_DISCOUNT":             "Ristourne en quantités"
 }

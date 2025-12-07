@@ -1,23 +1,23 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {AgentLookupModel, AgentService} from "@ss/logistics/api-agent";
-import { ReactiveFormsModule, UntypedFormControl } from "@angular/forms";
-import {FlatTreeControl} from "@angular/cdk/tree";
-import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
-import {map, Observable, of, switchMap} from "rxjs";
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
+import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
+import {FlatTreeControl} from '@angular/cdk/tree';
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import {map, Observable, of, switchMap} from 'rxjs';
 import {
     dateToYmdStr,
     LanguageService,
     MaterialModule,
 } from '@ss/common/api-common';
-import {Accounting, Debt, Payment} from "@ss/logistics/api-common";
-import {ActivatedRoute} from "@angular/router";
-import { CommonModule } from "@angular/common";
-import { DragDropModule } from "@angular/cdk/drag-drop";
+import {Accounting, Debt, Payment} from '@ss/logistics/api-common';
+import {ActivatedRoute} from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import {PaginationModel} from '@ss/common/api-common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -73,7 +73,7 @@ export class PaymentCompensationComponent implements OnInit {
     selectedDebt: Debt = null;
     agentAutoCompleteModel = new AgentLookupModel(this.agentSrv);
     agent = new UntypedFormControl();
-    date = new UntypedFormControl(new Date())
+    date = new UntypedFormControl(new Date());
 
     treeControl = new FlatTreeControl<FlatPaymentNode>(node => node.level, node => node.expandable);
 
@@ -85,7 +85,7 @@ export class PaymentCompensationComponent implements OnInit {
                 level: level,
                 amount: node.amount,
                 paidAmount: node.children && node.children.length > 0?
-                            node.children.map(e => e.amount).reduce((a, b) => a + b): 0.0,
+                    node.children.map(e => e.amount).reduce((a, b) => a + b): 0.0,
                 id: node.id
             };
         },
@@ -110,7 +110,7 @@ export class PaymentCompensationComponent implements OnInit {
                 const name = data['agents'];
                 this.agentSrv.setURL(name);
                 this.partner = (name === '/customers')? this.CUSTOMER :
-                               (name === '/suppliers')? this.SUPPLIER : this.AGENT;
+                    (name === '/suppliers')? this.SUPPLIER : this.AGENT;
             }
         });
     }
@@ -136,7 +136,7 @@ export class PaymentCompensationComponent implements OnInit {
                         children: null,
                         id: e.id
                     };
-                })
+                });
         });
     }
 
@@ -144,24 +144,24 @@ export class PaymentCompensationComponent implements OnInit {
         return this.agentSrv
             .getDebts(+id)
             .pipe(switchMap(res => {
-                    this.debts = res.map(d => ({...d, document: d.document.substring(d.document.indexOf(', ') + 1)}));
-                    return this.agentSrv.getPayments(+id, this.pagination.page - 1, this.pagination.pageSize)}),
-                switchMap(res => {
-                    this.pagination.elementCount = res.itemCount;
-                    const ret = this.paymentToTree(res.body);
-                    return this.agentSrv
-                        .getCompensations(+id, res.body.map(e => e.id).join(','))
-                        .pipe(map(next => {
-                            this.updatePaymentTree(next, ret);
-                            return ret;
-                        }));
-                }));
+                this.debts = res.map(d => ({...d, document: d.document.substring(d.document.indexOf(', ') + 1)}));
+                return this.agentSrv.getPayments(+id, this.pagination.page - 1, this.pagination.pageSize);}),
+            switchMap(res => {
+                this.pagination.elementCount = res.itemCount;
+                const ret = this.paymentToTree(res.body);
+                return this.agentSrv
+                    .getCompensations(+id, res.body.map(e => e.id).join(','))
+                    .pipe(map(next => {
+                        this.updatePaymentTree(next, ret);
+                        return ret;
+                    }));
+            }));
     }
 
     onAgentChange(id: number | string) {
         this.dataSource.data = [];
         this.dataObs(id || 0)
-          .subscribe(res => this.dataSource.data = res);
+            .subscribe(res => this.dataSource.data = res);
     }
 
     selectPayment(node: FlatPaymentNode) {
@@ -201,7 +201,7 @@ export class PaymentCompensationComponent implements OnInit {
                         this.snackBarSrv.showSuccessMessage();
                         this.selectedPayment = null;
                         this.selectedDebt = null;
-                        return this.dataObs(this.agentAutoCompleteModel.cache?.id)
+                        return this.dataObs(this.agentAutoCompleteModel.cache?.id);
                     } else {
                         this.snackBarSrv.showFailureMessage();
                         return of(this.dataSource.data);
@@ -223,7 +223,7 @@ export class PaymentCompensationComponent implements OnInit {
 
     onDebtDrop(event: DragEvent, paymentId: number) {
         event.preventDefault();
-        const debtId = +event.dataTransfer.getData("text");
+        const debtId = +event.dataTransfer.getData('text');
         const debt = this.debts.find(d => d.id === debtId);
         this.selectedDebt = debt;
         this.selectedPayment = this.treeControl.dataNodes.find(n => n.id === paymentId);
@@ -234,7 +234,7 @@ export class PaymentCompensationComponent implements OnInit {
 
     onPaymentDrop(event: DragEvent) {
         event.preventDefault();
-        const id = +event.dataTransfer.getData("text");
+        const id = +event.dataTransfer.getData('text');
         this.selectedPayment = this.treeControl.dataNodes.find(n => n.id === id);
         this.cancelPayments();
     }
@@ -254,6 +254,6 @@ export class PaymentCompensationComponent implements OnInit {
     }
 
     onStart(event: DragEvent, id: string) {
-        event.dataTransfer.setData("text", id);
+        event.dataTransfer.setData('text', id);
     }
 }
