@@ -8,5 +8,6 @@ export * from './lib/crm-opportunity-quotes/crm-quotes-list/crm-quotes-list.comp
 export * from './lib/crm-opportunity-quotes/crm-quotes-detail/crm-quotes-detail.component';
 export * from './lib/crm-opportunity-quotes/crm-quotes-lines-detail/crm-quotes-lines-detail.component';
 export * from './lib/crm-opportunity-quotes/crm-quotes-lines-list/crm-quotes-lines-list.component';
+export * from './lib/crm-opportunity-quotes/crm-email-sender/crm-email-sender.component';
 
 // export * from './lib/crm-opportunity-tracking/detail/crm-opportunity-tracking-detail.component';

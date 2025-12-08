@@ -1,0 +1,28 @@
+mat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+}
+
+.default-100 {
+    width: 100%;
+}
+
+
+.ctrl__div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+    padding: 8px;
+    max-width: 350px;
+}
+
+.ctrl__div button {
+    height: 36px;
+    min-width: 100px;
+}
+
+::ng-deep .mat-mdc-button.mat-raised-button {
+    border-radius: 20px;
+}

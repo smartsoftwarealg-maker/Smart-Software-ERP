@@ -2,39 +2,44 @@
     <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
         <span class="fas fa-plus"></span>
     </button>
-    <button mat-mini-fab (click)="edit()" [disabled]="!selectedId" [matTooltip]="'COMMON_EDIT' | translate" color="accent">
+    <button mat-mini-fab (click)="edit()" [disabled]="!selectedId" [matTooltip]="'COMMON_EDIT' | translate"
+            color="accent">
         <span class="fas fa-pen"></span>
     </button>
-    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate" [disabled]="!selectedId" color="warn">
+    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate" [disabled]="!selectedId"
+            color="warn">
         <span class="fas fa-trash-alt"></span>
     </button>
+    <button mat-mini-fab type="button" (click)="selectReport()" [matTooltip]="'COMMON_SELECT_REPORT' | translate"
+            color="accent">
+        <span class="fas fa-folders"></span>
+    </button>
+    <button mat-mini-fab color="accent" (click)="emailQuote()" [disabled]="!selectedRow"
+            [matTooltip]="'COMMON_EMAIL_REPORT' | translate">
+        <span class="fas fa-at"></span>
+    </button>
 </div>
-
 <div class="table_div size">
     <mat-table mat-table [dataSource]="data$ | async" class="main-table">
-
         <ng-container matColumnDef="number">
             <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
-            <mat-cell *matCellDef="let e">{{ e.number}}</mat-cell>
+            <mat-cell *matCellDef="let e">{{ e.number }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="date">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
             <mat-cell *matCellDef="let e">{{ e.date | date:'dd/MM/yyyy' }}</mat-cell>
         </ng-container>
-
-
         <ng-container matColumnDef="user">
             <mat-header-cell *matHeaderCellDef translate>COMMON_USER</mat-header-cell>
-            <mat-cell *matCellDef="let e">{{ e.userId}}</mat-cell>
+            <mat-cell *matCellDef="let e">{{ e.userId }}</mat-cell>
         </ng-container>
-
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selectedRow?.id" (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-
     <div class="pagination-container b-b-background">
-        <ss-pagination [paginationModel]="paginator"></ss-pagination>
+        <ss-pagination [paginationModel]="paginator">
+        </ss-pagination>
     </div>
 </div>
