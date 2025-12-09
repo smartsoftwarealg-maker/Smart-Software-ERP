@@ -6,7 +6,7 @@
                     <div class="scale-line">
                     <mat-form-field  appearance="fill" class="scale-field">
                         <mat-label translate>{{ scales[i]?.name }}</mat-label>
-                        <input matInput [formControl]="ctrl" type="text" class="text" readonly [value]="ctrl.value !== null ? ctrl.value : '-'">
+                        <input matInput [formControl]="ctrl" type="text" class="text" readonly>
                     </mat-form-field>
 
                     <button mat-raised-button color="primary"

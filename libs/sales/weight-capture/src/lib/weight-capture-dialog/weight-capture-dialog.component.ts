@@ -123,7 +123,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
                 if (this.scaleControls.length !== this.scales.length) {
                     this.scaleControls = this.scales.map(s => new FormControl(s.reading));
                 } else {
-                    this.scales.forEach((s, i) => this.scaleControls[i].setValue(s.reading));
+                    this.scales.forEach((s, i) => this.scaleControls[i].setValue(s.reading !== null ? s.reading : '-'));
                 }
             },
             error: (err) => { throw err; },
