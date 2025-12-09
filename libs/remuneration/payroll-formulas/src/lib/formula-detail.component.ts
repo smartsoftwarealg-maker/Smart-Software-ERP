@@ -9,7 +9,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {LookupsService} from '@ss/common/api-lookup';
 import {PayrollFormulasService} from './payroll-formulas.service';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import {MonthSelectorComponent, PayrollMonthService} from "@ss/remuneration/payroll-month";
+import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatCard, MatCardContent } from '@angular/material/card';
 
@@ -19,7 +19,7 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
-import {Observable, switchMap, tap} from "rxjs";
+import {Observable, switchMap, tap} from 'rxjs';
 
 @Component({
     selector: 'ss-formula-detail',
@@ -46,12 +46,12 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(detailSrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              formBuilder,
-              confirmationSrv,
-              'REMUN_FORMULAS');
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'REMUN_FORMULAS');
     }
 
     setupForm(e: Formula): UntypedFormGroup {
@@ -68,7 +68,8 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
             followup_fld:  [e.followup_fld],
             val_sign:      [e.val_sign || 1]
         });
-        if (!this.isCurrentMonth) {
+        if (!this.isCurrentMonth && e?.base !== '-1') {
+            this.saveButton.visible = false;
             form.disable();
         }
         return form;
@@ -79,7 +80,6 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
             .isUpdatableMonth()
             .pipe(
                 tap(res => {
-                    this.saveButton.visible = res;
                     this.isCurrentMonth = res;
                 }),
                 switchMap((() => super.loadEntity(id))));
