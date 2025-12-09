@@ -40,8 +40,6 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
     public openTareDialog() {
         const tare: TruckStatus = { id: this.transactionId(), type: 'tare' };
         this.dialog.open(WeightCaptureDialogComponent, {
-            minWidth: 'fit-content',
-            minHeight: 'fit-content',
             disableClose: true,
             data: tare,
         });
@@ -50,8 +48,6 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
     public openBrutDialog() {
         const brut: TruckStatus = { id: this.transactionId(), type: 'brut' };
         this.dialog.open(WeightCaptureDialogComponent, {
-            minWidth: 'fit-content',
-            height: 'fit-content',
             disableClose: true,
             data: brut,
         });
