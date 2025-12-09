@@ -11,7 +11,7 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import {PayrollMonthService} from "@ss/remuneration/payroll-month";
+import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 
 @Component({
     selector: 'ss-formula-list',
@@ -47,7 +47,7 @@ export class FormulaListComponent extends BaseEntityListComponent<Formula> {
         this.generateBtn.visible = data.length == 0;
     }
 
-    httpSrv = inject(HttpService)
+    httpSrv = inject(HttpService);
 
     displayedColumns = [
         'variable',
@@ -70,13 +70,13 @@ export class FormulaListComponent extends BaseEntityListComponent<Formula> {
         public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(listSrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              router,
-              confirmationSrv,
-              defReportSrv,
-              pagPersistSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
             'REMUN_FORMULAS');
         this.pagination.pageSize = 10;
     }
@@ -84,12 +84,12 @@ export class FormulaListComponent extends BaseEntityListComponent<Formula> {
     private generate(){
         this.httpSrv.post('/payroll/generate-formulas', {}).subscribe({
             next: () => {
-                this.refresh()
+                this.refresh();
             },
             error: error => {
                 this.snackBarSrv.showFailureMessage();
                 throw error;
             }
-        })
+        });
     };
 }
