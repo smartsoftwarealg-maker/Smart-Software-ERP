@@ -16,7 +16,7 @@ import {
 import {AssetsService} from '../services/assets.service';
 import { IsParamService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {Agent, AgentService, ConsumerService, CustomerService, SupplierService} from '@ss/logistics/api-agent';
+import {Agent, AgentService, ConsumerService, CustomerService} from '@ss/logistics/api-agent';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {Account, AccountAutocompleteModel, AccountService} from '@ss/accounting/api-accounts';
 import {debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
@@ -30,10 +30,9 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 import {OfficeSearchComponent} from '../office-search/office-search.component';
 import {AssetReceptionService} from '../services/asset-reception.service';
 import {
-    AGENT_ARCHIVES,
     AppArchiveService,
     ASSET_ARCHIVES,
-    ARCHIVE_ROUTE_URL, AppArchiveListComponent
+    ARCHIVE_ROUTE_URL
 } from '@ss/common/app-archive';
 import {AssetCostsService} from '../services/asset-costs.service';
 import {AssetRevaluationService} from '../services/asset-revaluation.service';
@@ -174,7 +173,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             if (this.router.url.indexOf(dest) < 0) {
                 this.router
                     .navigate([dest], { relativeTo: this.route })
-                    .then(_ => {
+                    .then(() => {
                         if (this.outlet?.component instanceof AssetCostsListComponent) {
                             (<AssetCostsListComponent>this.outlet?.component).isEditable = this.isEditable;
                         }
@@ -190,7 +189,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
         this.assetBlockingSrv.setParentId(b.id);
         this.rateSrv.setParentId(b.id);
         this.receptionSrv.sortColumn = {active: 'id', direction: 'asc'};
-        const today = new Date();
+        new Date();
         this.importBtn.visible = !b.id && this.isANSEJ;
         this.minLength = this.isANSEJ ? 11 : 1;
         const ref2Validators = this.isANSEJ ? [Validators.maxLength(5), Validators.required] : [Validators.maxLength(20)];
@@ -266,7 +265,7 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
             this.detailSrv
                 .getMaxReception()
                 .pipe(tap(res => form.controls['receptionNumber'].setValue(res.reception)),
-                    switchMap(_ => this.detailSrv.getMaxReference()))
+                    switchMap(() => this.detailSrv.getMaxReference()))
                 .subscribe(res => {
                     this.maxReference = res.reference;
                     form.controls['reference2'].setValue(this.maxReference);
@@ -291,9 +290,9 @@ export class AssetsDetailComponent extends BaseEntityDetailComponent<Asset> impl
                 this.isANSEJ = res;
                 this.importBtn.visible = this.isANSEJ;
             }),
-            switchMap(_ => this.isParamSrv.is('AQS')),
+            switchMap(() => this.isParamSrv.is('AQS')),
             tap(res => this.isAQS = res),
-            switchMap(_ => this.endSrv.getList(0, 50)),
+            switchMap(() => this.endSrv.getList(0, 50)),
             tap(res => this.assetEnds = res.body),
             switchMap(() => this.route.data),
             tap(map => this.isCMMS = map['isCMMS'] === 'true'));
