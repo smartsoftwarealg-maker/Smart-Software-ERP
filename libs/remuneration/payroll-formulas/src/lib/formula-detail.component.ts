@@ -71,7 +71,7 @@ export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {
         if (!this.isCurrentMonth && e?.base !== '-1') {
             this.saveButton.visible = false;
             form.disable();
-        }
+        }branch
         return form;
     }
 
