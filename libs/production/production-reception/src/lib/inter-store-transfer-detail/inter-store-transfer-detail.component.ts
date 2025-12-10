@@ -39,6 +39,7 @@ export class InterStoreTransferDetailComponent
     implements OnInit {
     #interStoreTransferLinesSrv = inject(InterStoreTransferLinesService);
     #storeSrv = inject(StoreService);
+    #loginSrv = inject(LoginService);
     // eslint-disable-next-line no-unused-private-class-members
     #router = inject(Router);
 
@@ -51,9 +52,7 @@ export class InterStoreTransferDetailComponent
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        protected readonly loginSrv: LoginService,
-        protected dialog: MatDialog,
-    ) {
+        protected dialog: MatDialog) {
         super(
             entitySrv,
             shellSrv,
@@ -73,6 +72,7 @@ export class InterStoreTransferDetailComponent
     override setupForm(e: InterStoreTransfer): UntypedFormGroup {
         return this.formBuilder.group({
             id:        [e.id],
+            center:    [e.center || this.#loginSrv.appCtx.center],
             number:    [{ value: e.number, disabled: true }],
             header:    [e.header],
             date:      [e.date||new Date(), Validators.required],

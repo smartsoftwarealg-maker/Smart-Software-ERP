@@ -18,8 +18,7 @@
                 </mat-form-field>
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>STOCK_DESTINATION_STORE</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="storeLookup"
+                    <ss-auto-complete [model]="storeLookup"
                                       formControlName="storeId"></ss-auto-complete>
                     @if (form.controls['storeId'].hasError('required')) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
