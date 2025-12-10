@@ -52,8 +52,7 @@ export class InterStoreTransferDetailComponent
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
         public override confirmationSrv: ConfirmationDialogService,
-        protected dialog: MatDialog,
-    ) {
+        protected dialog: MatDialog) {
         super(
             entitySrv,
             shellSrv,
