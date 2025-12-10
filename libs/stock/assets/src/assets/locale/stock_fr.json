@@ -104,5 +104,6 @@
     "TOTAL_STOCK":              "Stock total",
     "USES_UNITS":               "Utilise unités d'article",
     "UNITS":                    "Unités",
-    "QTY_DISCOUNT":             "Ristourne en quantités"
+    "QTY_DISCOUNT":             "Ristourne en quantités",
+    "SERVICE_INVOICE_ONLY":     "Facture de service uniquement"
 }
