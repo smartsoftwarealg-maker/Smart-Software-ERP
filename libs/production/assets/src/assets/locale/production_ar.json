@@ -20,12 +20,15 @@
     "PRODUCT_TYPE":           "نوع المنتج",
     "UPDATE_DATE":           "تاريخ التحديث",
     "CANCEL_PRODUCTION":      "الغاء الانتاج",
-    "LOT_PRIORITY": "أولويات الحصص",
+    "LOT_PRIORITY":           "أولويات الحصص",
     "RM":                     "م.أ",
     "SF":                     "ن.ن",
     "FP":                     "م.ن",
     "PRICE1":                 "السعر 1",
     "PRICE2":                 "السعر 2",
     "PRICE3":                 "السعر 3",
-    "BOM_DUP_CONFIRM": "الرجاء تأكيد تكرار قائمة المواد المحددة"
+    "BOM_DUP_CONFIRM":        "الرجاء تأكيد تكرار قائمة المواد المحددة",
+    "RESERVE":                "احجز",
+    "RELEASE":                "سرح",
+    "TRANSFER":               "حول"
 }

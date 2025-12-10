@@ -1,10 +1,10 @@
-import { Component, OnInit} from '@angular/core';
-import { ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router} from '@angular/router';
-import { ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { ArticleService} from '@ss/master-data/api-article';
-import { LotsService} from '@ss/common/api-lookup';
-import { BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
+import { Component, OnInit } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { ArticleService } from '@ss/master-data/api-article';
+import { LotsService } from '@ss/common/api-lookup';
+import { BaseTransactionLinesListComponent } from '@ss/logistics/api-transaction';
 import { ProductionOrderLinesService } from '../production-order-services/production-order-lines.service';
 import { DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -19,7 +19,11 @@ import {
     MatHeaderCell,
     MatCell,
     MatHeaderRow,
-    MatRow, MatHeaderCellDef, MatCellDef, MatHeaderRowDef, MatRowDef
+    MatRow,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatHeaderRowDef,
+    MatRowDef,
 } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
@@ -28,7 +32,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-production-order-lines-list',
     templateUrl: './production-order-lines-list.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
+    styleUrls: ['./production-order-lines-list.component.scss'],
     standalone: true,
     imports: [
         MatFormField,
@@ -53,11 +57,14 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         MatHeaderCellDef,
         MatCellDef,
         MatHeaderRowDef,
-        MatRowDef
-    ]
+        MatRowDef,
+    ],
 })
-export class ProductionOrderLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+export class ProductionOrderLinesListComponent
+    extends BaseTransactionLinesListComponent
+    implements OnInit
+{
+    override displayedColumns = [
         'position',
         'reference',
         'description',
@@ -66,7 +73,10 @@ export class ProductionOrderLinesListComponent extends  BaseTransactionLinesList
         'storeDescription',
         'storeName',
         'price',
-        'total'
+        'total',
+        'reserve',
+        'release',
+        'transfer',
     ];
 
     constructor(
@@ -77,7 +87,53 @@ export class ProductionOrderLinesListComponent extends  BaseTransactionLinesList
         public override router: Router,
         public override articleSrv: ArticleService,
         public override storeNamesSrv: LotsService,
-        public override confirmationSrv: ConfirmationDialogService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
+        public override confirmationSrv: ConfirmationDialogService,
+    ) {
+        super(
+            detailSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            articleSrv,
+            storeNamesSrv,
+            confirmationSrv,
+        );
+    }
+
+    reserve(id: number) {
+        this.detailSrv.reserve(id).subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
+    }
+
+    release(id: number) {
+        this.detailSrv.release(id).subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
+    }
+
+    transfer(id: number) {
+        this.detailSrv.transfer(id).subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
     }
 }

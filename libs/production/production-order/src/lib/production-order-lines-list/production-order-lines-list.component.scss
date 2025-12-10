@@ -1,82 +1,81 @@
+mat-table {
+    min-width: 900px;
+    height: 100%;
+    min-height: 250px;
+}
 
-:host {
-    display: block;
-    margin: auto;
+mat-header-cell {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.70em;
+    justify-content: center !important;
+    border-left: white solid 1px;
+    font-family: Arial, serif;
+}
+
+.main-container {
     position: relative;
-    max-width: 836px;
-    width: 100%;
     padding-top: 24px;
+    min-height: 30%;
+    width: 90%;
+    max-width: 1400px;
+    margin: 24px auto 0;
 }
-
-.content-div {
-    width: 100%;
-    max-width: 836px;
-    min-height: 320px;
-}
-
-// keep the material design specs
-.mat-row, .mat-header-row {
-    padding-right: 16px;
-    padding-left: 16px;
-}
-
 
 .mat-column-position {
-    flex: 0 1 50px;
-    padding-right: 4px !important;
-    padding-left: 4px !important;
-}
-
-.mat-column-storeName {
-    flex: 1 1 100px;
-    padding-left: 8px !important;
-}
-
-.mat-column-reference {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    flex: 1 1 50px;
+    justify-content: center !important;
+    max-width: 50px;
 }
 
 .mat-column-description {
-    flex: 1 1 auto;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+    flex: 2 1 300px;
+    padding-left: 4px;
+    border-left: white solid 1px;
+    min-width: 100px;
 }
 
-.mat-column-qtySatisfied {
-    flex: 1 1 70px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+.mat-column-reference,
+.mat-column-storeDescription,
+.mat-column-storeName {
+    flex: 1 0 110px;
+    padding: 0 4px;
+    border-left: ghostwhite solid 1px;
 }
 
-.mat-column-qtyOrdered {
-    flex: 1 1 70px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+.mat-column-qtySatisfied,
+.mat-column-qtyOrdered,
+.mat-column-price,
+.mat-column-total,
+.mat-column-position {
+    flex: 1 0 100px;
+    justify-content: flex-end;
+    padding: 0 4px;
+    border-left: white solid 1px;
 }
 
-.mat-column-price {
-    flex: 1 1 100px;
-    padding-right: 8px !important;
-    padding-left: 8px !important;
+.mat-column-reserve,
+.mat-column-release,
+.mat-column-transfer {
+    flex: 0 1 45px;
+    max-width: 45px;
+    justify-content: center;
 }
-
-.mat-column-controls {
-    flex: 0 1 55px;
-    padding-left: 0px;
-}
-
 
 .add-button {
     position: absolute;
     z-index: 999;
-    top: 0;
+    top: -20px;
     left: 50%;
     transform: translateX(-50%);
 }
 
+.container_div {
+    height: 100%;
+}
+
 .pagination-container {
+    flex: 0 1 1%;
 
     ss-pagination {
         left: 0;
@@ -84,4 +83,14 @@
         position: sticky;
         margin: auto;
     }
+}
+
+.doc-info {
+    flex: 1 1 50%;
+    height: 60%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 150px;
+    max-width: 1400px;
 }

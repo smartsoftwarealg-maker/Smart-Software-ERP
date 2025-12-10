@@ -27,5 +27,8 @@
     "PRICE1": "Price 1",
     "PRICE2": "Price 2",
     "PRICE3": "Price 3",
-    "BOM_DUP_CONFIRM": "Please, confirm the duplication of the selected BOM"
+    "BOM_DUP_CONFIRM": "Please, confirm the duplication of the selected BOM",
+    "RESERVE": "Reserve",
+    "RELEASE": "Release",
+    "TRANSFER": "Transfer"
 }
