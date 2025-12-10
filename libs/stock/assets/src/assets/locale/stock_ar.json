@@ -104,5 +104,6 @@
     "TOTAL_STOCK":              "إجمالي المخزون",
     "USES_UNITS":               "استعمل عدد الوحدات",
     "UNITS":                    "الوحدات",
-    "QTY_DISCOUNT":             "خصم في الكميات"
+    "QTY_DISCOUNT":             "خصم في الكميات",
+    "SERVICE_INVOICE_ONLY":     "فاتورة الخدمة فقط"
 }

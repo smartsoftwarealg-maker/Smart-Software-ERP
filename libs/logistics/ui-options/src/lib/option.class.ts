@@ -47,6 +47,7 @@ export class Option {
     returnInvoiceMerge: boolean;
     prodStore: number;
     qtyDiscount: boolean;
+    serviceInvoiceOnly: boolean;
 }
 
 export interface MiniLine {

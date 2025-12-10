@@ -105,5 +105,6 @@
     "TOTAL_STOCK":              "Total stock",
     "USES_UNITS":               "Uses article units",
     "UNITS":                    "Units",
-    "QTY_DISCOUNT":             "Rebate in quantities"
+    "QTY_DISCOUNT":             "Rebate in quantities",
+    "SERVICE_INVOICE_ONLY":     "Service invoice only"
 }
