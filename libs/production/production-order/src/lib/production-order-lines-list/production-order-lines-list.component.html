@@ -107,6 +107,32 @@
                     </mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="reserve">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let e" mat-tool>
+                        <button matIconButton [matTooltip]="'PROD_RESERVE' | translate" (click)="reserve(e.id)">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="release">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        <button matIconButton [matTooltip]="'PROD_RELEASE' | translate" (click)="release(e.id)">
+                            <i class="fas fa-xmark"></i>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="transfer">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        <button matIconButton [matTooltip]="'PROD_TRANSFER' | translate" (click)="transfer(e.id)">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </mat-cell>
+                </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
                 <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
