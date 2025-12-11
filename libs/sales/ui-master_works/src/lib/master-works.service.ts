@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@ss/common/api-common';
 import { BaseEntityService } from '@ss/common/api-base-entity';
-import {masterWork} from './master_works-api.class';
+import {masterWork} from './master-works-api.class';
 
 
 export const MASTERWORKS_URL = '/lookups/master_works';

@@ -20,14 +20,14 @@ import {
 import {MatSort, MatSortHeader} from '@angular/material/sort';
 import {TranslateDirective} from '@ss/common/ui-lang';
 import {PaginationComponent} from '@ss/common/ui-pagination';
-import {masterWork} from "../master_works-api.class";
-import {MasterWorksService} from "../masterWorks.service";
+import {masterWork} from "../master-works-api.class";
+import {MasterWorksService} from "../master-works.service";
 
 
 @Component({
-    selector: 'ss-sales-masterWorks-list',
-    templateUrl: 'masterWorks-list.component.html',
-    styleUrls: ['masterWorks-list.component.scss'],
+    selector: 'ss-sales-master_works-list',
+    templateUrl: 'master-works-list.component.html',
+    styleUrls: ['master-works-list.component.scss'],
     standalone: true,
     imports: [
         MatTable,

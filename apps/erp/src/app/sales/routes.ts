@@ -51,8 +51,8 @@ import { DiscountsScaleDetailComponent, DiscountsListComponent } from '@ss/sales
 import {
     SalesDiscountComponent
 } from '@ss/sales/ui-discounts';
-import {SectorsDetailComponent, SectorsListComponent} from "../../../../../libs/sales/ui-sectors/src";
-import {MasterWorksDetailComponent, MasterWorksListComponent} from "../../../../../libs/sales/ui-master_works/src";
+import {SectorsDetailComponent, SectorsListComponent} from '@ss/sales/ui-sectors';
+import {MasterWorksDetailComponent, MasterWorksListComponent} from '@ss/sales/ui-master_works';
 
 export const lookupRoutes: Routes = [];
 

@@ -15,13 +15,13 @@ import {TranslateDirective} from '@ss/common/ui-lang';
 import {MatCard} from '@angular/material/card';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
-import {MasterWorksService} from "../masterWorks.service";
-import {masterWork} from "../master_works-api.class";
+import {MasterWorksService} from "../master-works.service";
+import {masterWork} from "../master-works-api.class";
 
 @Component({
-    selector: 'ss-sales-masterWorks-detail',
-    templateUrl: 'masterWorks-detail.component.html',
-    styleUrl: 'masterWorks-detail.component.scss',
+    selector: 'ss-sales-master_works-detail',
+    templateUrl: 'master-works-detail.component.html',
+    styleUrl: 'master-works-detail.component.scss',
     standalone: true,
     imports: [
         MaterialModule,

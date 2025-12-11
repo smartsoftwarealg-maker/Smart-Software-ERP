@@ -646,6 +646,8 @@
             ],
             "@ss/sales/ui-delivery": ["libs/sales/ui-delivery/src/index.ts"],
             "@ss/sales/ui-discounts": ["libs/sales/ui-discounts/src/index.ts"],
+            "@ss/sales/ui-sectors": ["libs/sales/ui-sectors/src/index.ts"],
+            "@ss/sales/ui-master_works": ["libs/sales/ui-master_works/src/index.ts"],
             "@ss/sales/ui-delivery-cancellation": [
                 "libs/sales/ui-delivery-cancellation/src/index.ts"
             ],
