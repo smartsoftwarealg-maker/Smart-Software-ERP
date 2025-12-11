@@ -25,7 +25,24 @@
                 </button>
             }
         </div>
+        @if (selectedId) {
+            <div class="operation-button">
+                <button mat-mini-fab (click)="reserve()" [matTooltip]="'PROD_RESERVE' | translate"
+                        color="warn">
+                    <span class="fas fa-check"></span>
+                </button>
 
+                <button mat-mini-fab (click)="release()" [matTooltip]="'PROD_RELEASE' | translate"
+                        color="warn">
+                    <span class="fas fa-xmark"></span>
+                </button>
+
+                <button mat-mini-fab (click)="transfer()" [matTooltip]="'PROD_TRANSFER' | translate"
+                        color="warn">
+                    <span class="fas fa-exchange-alt"></span>
+                </button>
+            </div>
+        }
         <div class="container_div">
             <mat-table mat-table [dataSource]="data" class="main-table">
 
@@ -107,33 +124,6 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="reserve">
-                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                    <mat-cell *matCellDef="let e" mat-tool>
-                        <button matIconButton [matTooltip]="'PROD_RESERVE' | translate" (click)="reserve(e.id)">
-                            <i class="fas fa-check"></i>
-                        </button>
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="release">
-                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        <button matIconButton [matTooltip]="'PROD_RELEASE' | translate" (click)="release(e.id)">
-                            <i class="fas fa-xmark"></i>
-                        </button>
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="transfer">
-                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        <button matIconButton [matTooltip]="'PROD_TRANSFER' | translate" (click)="transfer(e.id)">
-                            <i class="fas fa-exchange-alt"></i>
-                        </button>
-                    </mat-cell>
-                </ng-container>
-
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
                 <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
                          *matRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -145,8 +135,8 @@
 
         <div class="doc-info">
             <ss-doc-info
-                [displayedGroups]="['document', 'article']"
-                [params]="{
+                    [displayedGroups]="['document', 'article']"
+                    [params]="{
                 documentId: selectedRow?.transacId,
                 documentURL:'/sales-order',
                 articleReference: selectedRow?.reference,

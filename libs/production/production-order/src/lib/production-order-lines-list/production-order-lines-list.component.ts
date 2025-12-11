@@ -74,9 +74,6 @@ export class ProductionOrderLinesListComponent
         'storeName',
         'price',
         'total',
-        'reserve',
-        'release',
-        'transfer',
     ];
 
     constructor(
@@ -101,8 +98,8 @@ export class ProductionOrderLinesListComponent
         );
     }
 
-    reserve(id: number) {
-        this.detailSrv.reserve(id).subscribe({
+    reserve() {
+        this.detailSrv.reserve(this.selectedId).subscribe({
             next: () => {
                 this.snackBarSrv.showSuccessMessage();
             },
@@ -113,8 +110,8 @@ export class ProductionOrderLinesListComponent
         });
     }
 
-    release(id: number) {
-        this.detailSrv.release(id).subscribe({
+    release() {
+        this.detailSrv.release(this.selectedId).subscribe({
             next: () => {
                 this.snackBarSrv.showSuccessMessage();
             },
@@ -125,8 +122,8 @@ export class ProductionOrderLinesListComponent
         });
     }
 
-    transfer(id: number) {
-        this.detailSrv.transfer(id).subscribe({
+    transfer() {
+        this.detailSrv.transfer(this.selectedId).subscribe({
             next: () => {
                 this.snackBarSrv.showSuccessMessage();
             },

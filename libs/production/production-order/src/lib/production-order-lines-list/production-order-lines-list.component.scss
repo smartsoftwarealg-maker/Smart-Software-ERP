@@ -54,20 +54,22 @@ mat-header-cell {
     border-left: white solid 1px;
 }
 
-.mat-column-reserve,
-.mat-column-release,
-.mat-column-transfer {
-    flex: 0 1 45px;
-    max-width: 45px;
-    justify-content: center;
-}
-
 .add-button {
     position: absolute;
     z-index: 999;
     top: -20px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+
+.operation-button {
+    position: absolute;
+    z-index: 999;
+    top: -5px;
+    left: 95%;
+    transform: translateX(-50%);
+    width: 144px;
 }
 
 .container_div {
