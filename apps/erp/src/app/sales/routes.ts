@@ -7,7 +7,8 @@ import {
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
     docInfoRoutes, LOGISTICS_AGENT_URL, LOGISTICS_CUSTOMER_URL,
-    SALES_AD_URL, SALES_DISCOUNT_TURNOVER, SALES_DISCOUNT_URL, SALES_PRICE_LIST_URL, SALES_SERVICE_ARTICLE_URL
+    SALES_AD_URL, SALES_DISCOUNT_TURNOVER, SALES_DISCOUNT_URL, SALES_MASTER_WORKS_URL, SALES_PRICE_LIST_URL,
+    SALES_SECTORS_URL, SALES_SERVICE_ARTICLE_URL
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -50,6 +51,8 @@ import { DiscountsScaleDetailComponent, DiscountsListComponent } from '@ss/sales
 import {
     SalesDiscountComponent
 } from '@ss/sales/ui-discounts';
+import {SectorsDetailComponent, SectorsListComponent} from "../../../../../libs/sales/ui-sectors/src";
+import {MasterWorksDetailComponent, MasterWorksListComponent} from "../../../../../libs/sales/ui-master_works/src";
 
 export const lookupRoutes: Routes = [];
 
@@ -350,6 +353,44 @@ export const mainRoutes: Routes = [
                 path: LIST_URL,
                 component: SalesDiscountComponent,
                 canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: SALES_SECTORS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SectorsListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: SectorsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: docInfoRoutes
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: SALES_MASTER_WORKS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: MasterWorksListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: MasterWorksDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' }

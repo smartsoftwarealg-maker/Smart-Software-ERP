@@ -253,6 +253,8 @@ export const SS_SUGGESTIONS_URL    = 'sales-suggestions';
 export const SALES_PRICE_LIST_URL  = 'sales-pricelist';
 export const SALES_DISCOUNT_URL  = 'sales-discounts';
 export const SALES_DISCOUNT_TURNOVER  = 'discounts/turnover';
+export const SALES_SECTORS_URL = 'sales/sectors';
+export const SALES_MASTER_WORKS_URL  = 'sales/master-works';
 
 
 // HR
@@ -1038,6 +1040,8 @@ export const ABS_PRICE_LIST_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_PRI
 export const ABS_SALES_CUSTOMER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, LOGISTICS_CUSTOMER_URL].join('/');
 export const ABS_SALES_DISCOUNT_SCALE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DISCOUNT_URL].join('/');
 export const ABS_SALES_DISCOUNTS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DISCOUNT_TURNOVER].join('/');
+export const ABS_SALES_SECTORS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_SECTORS_URL].join('/');
+export const ABS_SALES_MASTER_WORKS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_MASTER_WORKS_URL].join('/');
 
 //services
 export const ABS_SERVICE_CLASSES_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_CLASSES_URL].join('/');

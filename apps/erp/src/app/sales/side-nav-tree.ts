@@ -6,11 +6,11 @@ import {
     ABS_SALES_DELIVERY_CANCEL_URL,
     ABS_SALES_DELIVERY_URL, ABS_SALES_DISCOUNT_SCALE_URL, ABS_SALES_DISCOUNTS_URL, ABS_SALES_EXPORT_INVOICE_URL,
     ABS_SALES_INVOICE_CANCEL_URL,
-    ABS_SALES_INVOICE_URL,
+    ABS_SALES_INVOICE_URL, ABS_SALES_MASTER_WORKS_URL,
     ABS_SALES_ORDER_URL,
     ABS_SALES_PROFORMA_URL,
     ABS_SALES_REPORT_PRIVILEGE_URL,
-    ABS_SALES_REPORTS_URL
+    ABS_SALES_REPORTS_URL, ABS_SALES_SECTORS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -115,10 +115,16 @@ export const salesNavTree: SideNavNode = {
         //     accessRights: 'ADS'
         // },
         {
-            name: 'COMMON_REPORTS',
-            icon: 'fa-solid fa-file-chart-column',
-            route: ABS_SALES_REPORTS_URL,
-            accessRights: 'Report'
+            name: 'COMMON_SECTOR',
+            icon: 'fa-solid fa-layer-group',
+            route: ABS_SALES_SECTORS_URL,
+            accessRights: 'Sector'
+        },
+        {
+            name: 'LOGISTICS_MASTER_WORK',
+            icon: 'fa-solid fa-briefcase',
+            route: ABS_SALES_MASTER_WORKS_URL,
+            accessRights: 'MasterWork'
         },
         {
             name: 'ADMINISTRATION_WORKFLOW_INBOX',
@@ -137,6 +143,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fa-solid fa-ranking-star',
             route: ABS_SALES_REPORT_PRIVILEGE_URL,
             accessRights: 'RPrivilege'
+        },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_SALES_REPORTS_URL,
+            accessRights: 'Report'
         },
     ],
     accessRights: 'SALES'
