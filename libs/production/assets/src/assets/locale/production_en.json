@@ -30,5 +30,6 @@
     "BOM_DUP_CONFIRM": "Please, confirm the duplication of the selected BOM",
     "RESERVE": "Reserve",
     "RELEASE": "Release",
-    "TRANSFER": "Transfer"
+    "TRANSFER": "Transfer",
+    "CANCEL_TRANSFER": "Cancel transfer"
 }

@@ -30,5 +30,6 @@
     "BOM_DUP_CONFIRM":        "الرجاء تأكيد تكرار قائمة المواد المحددة",
     "RESERVE":                "احجز",
     "RELEASE":                "سرح",
-    "TRANSFER":               "حول"
+    "TRANSFER":               "حول",
+    "CANCEL_TRANSFER":        "الغ التحويل"
 }
