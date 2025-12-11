@@ -69,12 +69,6 @@ export const productionNavTree: SideNavNode = {
             accessRights: 'UnlockLots',
         },
         {
-            name: 'PROD_LOT_PRIORITY',
-            icon: 'fa-solid fa-arrow-up-wide-short',
-            route: ABS_LOT_PRIORITY_URL,
-            accessRights: 'LotPriority',
-        },
-        {
             name: 'PROD_PRODUCTION_ORDER',
             icon: 'fa-solid fa-industry',
             route: ABS_PRODUCTION_ORDER_URL,

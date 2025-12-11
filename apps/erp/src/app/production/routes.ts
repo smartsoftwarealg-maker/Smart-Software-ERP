@@ -309,19 +309,6 @@ export const prodRoutes: Routes = [
         ],
     },
     {
-        path: PRODUCTION_LOT_PRIORITY_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: LotPriorityListComponent,
-                canActivate: [loginGuard],
-                children: docInfoRoutes,
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-        ],
-    },
-    {
         path: COMMON_REPORTS_URL,
         component: ReportViewComponent,
         canActivate: [loginGuard],
