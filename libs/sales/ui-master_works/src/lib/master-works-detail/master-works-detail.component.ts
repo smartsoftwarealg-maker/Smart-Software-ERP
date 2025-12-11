@@ -61,7 +61,7 @@ export class MasterWorksDetailComponent extends BaseEntityDetailComponent<master
         return this.formBuilder.group({
             id: e.id,
             description: [e.description, Validators.required],
-            descriptionAr: [e.descriptionAr, Validators.required],
+            descriptionAr: [e.descriptionAr],
         });
     }
 }
