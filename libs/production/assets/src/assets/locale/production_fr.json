@@ -29,5 +29,6 @@
     "BOM_DUP_CONFIRM": "Veuillez confirmer la duplication de la nomenclature sélectionnée",
     "RESERVE":               "Réserver",
     "RELEASE":               "Libérer",
-    "TRANSFER":              "Transfert"
+    "TRANSFER":              "Transfert",
+    "CANCEL_TRANSFER":       "Annuler le transfert"
 }

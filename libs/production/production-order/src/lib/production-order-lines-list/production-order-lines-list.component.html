@@ -41,6 +41,11 @@
                         color="warn">
                     <span class="fas fa-exchange-alt"></span>
                 </button>
+
+                <button mat-mini-fab (click)="cancelTransfer()" [matTooltip]="'PROD_CANCEL_TRANSFER' | translate"
+                        color="warn">
+                    <span class="fas fa-undo-alt"></span>
+                </button>
             </div>
         }
         <div class="container_div">

@@ -133,4 +133,16 @@ export class ProductionOrderLinesListComponent
             },
         });
     }
+
+    cancelTransfer() {
+        this.detailSrv.cancelTransfer(this.selectedId).subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
+    }
 }
