@@ -79,5 +79,9 @@
     "UNKNOWN_ERROR":                "خطأ غير معروف",
     "CANNOT_DELETE_ACTIVE_EMPLOYEE": "لا يمكن حذف مرتب موظف غير موقوف.",
     "NO_PROGRESS":                   "لا يوجد أي تقدم",
-    "PROJECT_REQUIRED":              "مشروع / عقد / اتفاقية مطلوب"
+    "PROJECT_REQUIRED":              "مشروع / عقد / اتفاقية مطلوب",
+    "ALREADY_RESERVED":              "",
+    "ALREADY_TRANSFERRED":           "",
+    "NO_TRANSFER_CREATED":           "",
+    "NO_RESERVATION_CREATED":        ""
 }

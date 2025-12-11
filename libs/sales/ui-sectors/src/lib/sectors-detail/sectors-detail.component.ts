@@ -15,8 +15,8 @@ import {TranslateDirective} from '@ss/common/ui-lang';
 import {MatCard} from '@angular/material/card';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
-import {Sector} from "../sectors-api.class";
-import {SectorsService} from "../sectors.service";
+import {Sector} from '../sectors-api.class';
+import {SectorsService} from '../sectors.service';
 
 @Component({
     selector: 'ss-sales-sectors-detail',
@@ -31,8 +31,7 @@ import {SectorsService} from "../sectors.service";
         MatFormField,
         MatLabel,
         TranslateDirective,
-        MatInput,
-        RouterOutlet
+        MatInput
     ]
 })
 export class SectorsDetailComponent extends BaseEntityDetailComponent<Sector> {

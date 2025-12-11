@@ -79,5 +79,9 @@
     "UNKNOWN_ERROR":                 "An unknown error occurred. Please, try again later.",
     "CANNOT_DELETE_ACTIVE_EMPLOYEE": "Cannot delete payroll of an active employee",
     "NO_PROGRESS":                   "No progress made and no documents are generated for this request.",
-    "PROJECT_REQUIRED":              "A project/contract/convention is required"
+    "PROJECT_REQUIRED":              "A project/contract/convention is required",
+    "ALREADY_RESERVED":              "Already reserved",
+    "ALREADY_TRANSFERRED":           "Already transferred",
+    "NO_TRANSFER_CREATED":           "No transfer created",
+    "NO_RESERVATION_CREATED":        "No reservation created"
 }
