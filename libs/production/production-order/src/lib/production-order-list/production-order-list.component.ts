@@ -6,7 +6,7 @@ import {PaginatorPersistenceService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { ProductionOrderService } from "../production-order-services/production-order.service";
+import { ProductionOrderService } from '../production-order-services/production-order.service';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
