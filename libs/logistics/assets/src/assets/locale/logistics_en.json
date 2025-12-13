@@ -202,7 +202,7 @@
     "CONVENTION_DATE":       "Convention date",
     "AMENDMENT":             "Amendment",
     "INITIAL":               "Initial",
-    "VT_ADVANCEMENT":        "VAT free advancement",
+    "VF_ADVANCEMENT":        "VAT free advancement",
     "FT_ADVANCEMENT":        "Full tax advancement",
     "PROJECT_REQUIRED":      "Project required for transactions",
     "ADVANCEMENT_INVOICE":   "Advancement invoice",
@@ -221,5 +221,6 @@
     "BRANCHES_PAYMENTS_COMPENSATION": "Branch compensation",
     "TRANSPORTERS_PAYMENTS": "Transporter payments",
     "TRANSPORTER_PAYMENTS_COMPENSATION": "Transporter compensation",
-    "BRANCH_PAYMENTS": "Branch payments"
+    "BRANCH_PAYMENTS": "Branch payments",
+    "ADVANCEMENT_AMOUNT": "Advancement amount"
 }

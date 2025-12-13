@@ -201,7 +201,7 @@
     "CONVENTION_DATE":       "Date de la convention",
     "AMENDMENT":             "Avenant",
     "INITIAL":               "Initiale",
-    "VT_ADVANCEMENT":        "Avance avant taxes",
+    "VF_ADVANCEMENT":        "Avance avant taxes",
     "FT_ADVANCEMENT":        "Avance après taxes",
     "PROJECT_REQUIRED":      "Projet requis pour les transactions",
     "ADVANCEMENT_INVOICE":   "Facture d'avance",
@@ -220,5 +220,6 @@
     "BRANCHES_PAYMENTS_COMPENSATION": "Compensation unités",
     "TRANSPORTERS_PAYMENTS": "Paiements transporteurs",
     "TRANSPORTER_PAYMENTS_COMPENSATION": "Compensation transporteurs",
-    "BRANCH_PAYMENTS": "Paiements unités"
+    "BRANCH_PAYMENTS": "Paiements unités",
+    "ADVANCEMENT_AMOUNT": "Montant de l'avance"
 }

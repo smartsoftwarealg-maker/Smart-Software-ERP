@@ -200,7 +200,7 @@
     "CONVENTION_DATE":       "تاريخ الاتفاقية",
     "AMENDMENT":             "تعديل",
     "INITIAL":               "أولي",
-    "VT_ADVANCEMENT":        "المقدم قبل الضريبة",
+    "VF_ADVANCEMENT":        "المقدم قبل الضريبة",
     "FT_ADVANCEMENT":        "المقدم بعد الضريبة",
     "PROJECT_REQUIRED":      "المشروع إجباري عند الصفقات",
     "ADVANCEMENT_INVOICE":   "فاتورة التقدمة",
@@ -219,5 +219,6 @@
     "BRANCHES_PAYMENTS_COMPENSATION": " تعويض فروع",
     "TRANSPORTERS_PAYMENTS": "تسديد النقل",
     "TRANSPORTER_PAYMENTS_COMPENSATION": "تعويض النقل",
-    "BRANCH_PAYMENTS": "مدفوعات الفروع"
+    "BRANCH_PAYMENTS": "مدفوعات الفروع",
+    "ADVANCEMENT_AMOUNT": "مبلغ المقدم"
 }

@@ -97,6 +97,7 @@ export interface Transaction {
     deliveryTime?: number;
     vfGuarantee?: number;
     ftGuarantee?: number;
+    advancementAmount: number;
     advancement?: number
     advancementFT?: number
     receptionType?: number;

@@ -242,7 +242,6 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     }
 
     public override setupForm(b: Transaction) {
-        console.log(b);
         if (!b.id) {
             b.id = 0;
             b.number = 0;
@@ -300,6 +299,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             receptionType:       [b.receptionType||1],
             isValidated:         [b.isValidated],
             shipMode:            [b.shipMode],
+            advancementAmount:   [b.advancementAmount],
         });
     }
 
