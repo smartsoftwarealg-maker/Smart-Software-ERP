@@ -152,5 +152,6 @@
     "CUSTOMS":          "",
     "TRANSIT":          "",
     "PRICE_DISCOUNT":   "",
-    "PASSING_CLIENT":   ""
+    "PASSING_CLIENT":   "",
+    "ADVANCEMENT_AMOUNT": "Avans Tutarı"
 }
