@@ -136,10 +136,11 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
 
     readWeight(index: number) {
         const value = this.scaleControls[index].value;
+        const finalValue = isNaN(+value) ? null : +value;
         if(this.type === TARE) {
-            this.form.controls.tare.setValue(+value);
+            this.form.controls.tare.setValue(finalValue);
         } else {
-            this.form.controls.brut.setValue(+value);
+            this.form.controls.brut.setValue(finalValue);
         }
     }
 
