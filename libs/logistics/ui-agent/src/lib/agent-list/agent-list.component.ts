@@ -35,8 +35,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         TranslateDirective,
         DocInfoComponent,
-        PaginationComponent
-    ]
+        PaginationComponent,
+    ],
 })
 export class AgentListComponent extends BaseEntityListComponent<Agent> {
     #activeOnlyBtn: ToolbarButton = {
@@ -50,17 +50,17 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
 
     private isParamSrv = inject(IsParamService);
 
-
-    private isAQS       = false;
+    private isAQS = false;
     private DEF_COLUMNS = [
         'starred',
         'customerCode',
         'denomination',
         'typeDescription',
-        'address'
+        'address',
     ];
 
     private AQS_COLUMNS = [
+        'starred',
         'customerCode',
         'denomination',
         'typeDescription',
@@ -71,7 +71,6 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
 
     isSales = false;
     isAsset = false;
-
 
     displayedColumns = this.DEF_COLUMNS;
 
@@ -84,10 +83,21 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(agentService, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_AGENTS');
-        this.pagination.pageSize = this.isSales? 10 : 15;
-        this.isSales = this.route.snapshot?.data['sales']  || false;
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            agentService,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'COMMON_AGENTS',
+        );
+        this.pagination.pageSize = this.isSales ? 10 : 15;
+        this.isSales = this.route.snapshot?.data['sales'] || false;
         this.isAsset = this.route.snapshot?.data['assets'] || false;
     }
 
@@ -98,32 +108,58 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
     }
 
     override preload(): Observable<any> {
-        return this.isParamSrv
-            .is('AQS')
-            .pipe(tap((b: boolean) => {
+        return this.isParamSrv.is('AQS').pipe(
+            tap((b: boolean) => {
                 this.isAQS = b;
-                this.displayedColumns = this.isAQS ? this.AQS_COLUMNS : this.DEF_COLUMNS;
+                this.displayedColumns = this.isAQS
+                    ? this.AQS_COLUMNS
+                    : this.DEF_COLUMNS;
             }),
             switchMap(() => this.route.data),
-            tap(res => {
-                const URLs = [CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL, BRANCH_URL, INTERNAL_URL, AGENT_URL];
-                const TTLs = ['LOGISTICS_CUSTOMER', 'LOGISTICS_SUPPLIER', 'LOGISTICS_TRANSPORTER', 'COMMON_UNITS', 'LOGISTICS_INTERNAL_AGENTS', 'COMMON_AGENTS'];
+            tap((res) => {
+                const URLs = [
+                    CUSTOMER_URL,
+                    SUPPLIER_URL,
+                    TRANSPORTER_URL,
+                    BRANCH_URL,
+                    INTERNAL_URL,
+                    AGENT_URL,
+                ];
+                const TTLs = [
+                    'LOGISTICS_CUSTOMER',
+                    'LOGISTICS_SUPPLIER',
+                    'LOGISTICS_TRANSPORTER',
+                    'COMMON_UNITS',
+                    'LOGISTICS_INTERNAL_AGENTS',
+                    'COMMON_AGENTS',
+                ];
 
-                const idx = res['customer']? 0 :
-                    res['supplier']? 1 :
-                        res['transporter']? 2 :
-                            res['unit']? 3 :
-                                res['internalAgent']? 4 : 5;
+                const idx = res['customer']
+                    ? 0
+                    : res['supplier']
+                      ? 1
+                      : res['transporter']
+                        ? 2
+                        : res['unit']
+                          ? 3
+                          : res['internalAgent']
+                            ? 4
+                            : 5;
 
                 this.agentService.setURL(URLs[idx]);
                 this.shellSrv.setTitle(TTLs[idx]);
-            }));
+            }),
+        );
     }
 
     private toggleActivity() {
         this.agentService.toggle();
-        this.#activeOnlyBtn.label = this.agentService.activeOnly ? 'COMMON_SHOW_ALL' : 'COMMON_SHOW_ACTIVE_ONLY';
-        this.#activeOnlyBtn.icon = this.agentService.activeOnly ? 'fa-solid fa-toggle-on' : 'fa-solid fa-toggle-off';
+        this.#activeOnlyBtn.label = this.agentService.activeOnly
+            ? 'COMMON_SHOW_ALL'
+            : 'COMMON_SHOW_ACTIVE_ONLY';
+        this.#activeOnlyBtn.icon = this.agentService.activeOnly
+            ? 'fa-solid fa-toggle-on'
+            : 'fa-solid fa-toggle-off';
         this.refresh();
     }
 
@@ -135,7 +171,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
                     i.starred = starred;
                     this.entitySrv
                         .update(i)
-                        .subscribe(() => i.starred = starred);
+                        .subscribe(() => (i.starred = starred));
                 });
         }
     }
