@@ -65,8 +65,19 @@
   <div class="full__height size_98">
     <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
+        <ng-container matColumnDef="starred">
+            <mat-header-cell *matHeaderCellDef mat-sort-header><i class="fa-regular fa-star"></i></mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                @if (e.starred) {
+                    <i class="fa-solid fa-star" (click)="star(e.id,false)"></i>
+                } @else {
+                    <i class="fa-regular fa-star" (click)="star(e.id,true)"></i>
+                }
+            </mat-cell>
+        </ng-container>
+
       <ng-container matColumnDef="customerCode">
-        <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CODE</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>
         <mat-cell *matCellDef="let e">
           {{ e.customerCode }}
         </mat-cell>

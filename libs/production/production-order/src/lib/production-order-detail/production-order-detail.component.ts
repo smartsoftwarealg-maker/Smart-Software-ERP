@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
+import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { Observable, of, switchMap } from 'rxjs';
-import {tap} from 'rxjs/operators';
+import { of, switchMap } from 'rxjs';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {
     BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_SUPPLIER_QUOTATION,
@@ -21,8 +20,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-
-import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
@@ -30,7 +27,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './production-order-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class ProductionOrderDetailComponent extends BaseTransactionDetailComponent {
 
