@@ -42,12 +42,6 @@
 
         </mat-form-field>
 
-        <div class="default-50 sm-100"></div>
-        <mat-tab-group>
-          <mat-tab>
-            <ng-template mat-tab-label>
-              <span translate>COMMON_MEMO</span>
-            </ng-template>
             <mat-form-field id="header" class="default-50 sm-100">
               <mat-label translate>STOCK_HEADER</mat-label>
               <textarea matInput formControlName="header" cdkTextareaAutosize="true"></textarea>
@@ -57,16 +51,6 @@
               <mat-label translate>STOCK_FOOTER</mat-label>
               <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
             </mat-form-field>
-          </mat-tab>
-
-<!--          <mat-tab>-->
-<!--            <ng-template mat-tab-label>-->
-<!--              <span translate>COMMON_PRODUCTION_MRP</span>-->
-<!--            </ng-template>-->
-
-<!--          </mat-tab>-->
-
-        </mat-tab-group>
       </form>
     }
   </mat-card-content>
