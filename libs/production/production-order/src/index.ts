@@ -5,4 +5,6 @@ export * from './lib/production-order-lines-detail/production-order-lines-detail
 export * from './lib/production-order-services/production-order-api';
 export * from './lib/production-order-services/production-order-lines.service';
 export * from './lib/production-order-services/production-order.service';
+export * from './lib/reservations/reservations.component';
+export * from './lib/transfers/transfers.component';
 

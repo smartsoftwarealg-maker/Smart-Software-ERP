@@ -77,6 +77,18 @@ export class DocInfoComponent {
                     description: 'PROD_MRP_REPORT',
                     url: 'mrp',
                     paramsProvided: (p: string[]) => {return p.includes('prodId');}
+                },
+                {
+                    name: 'reservations',
+                    description: 'PROD_RESERVATIONS',
+                    url: 'mrp/reservations',
+                    paramsProvided: (p: string[]) => {return p.includes('reservationsId');}
+                },
+                {
+                    name: 'transfers',
+                    description: 'PROD_TRANSFERS',
+                    url: 'mrp/transfers',
+                    paramsProvided: (p: string[]) => {return p.includes('transfersId');}
                 }
             ]
         },
@@ -157,6 +169,18 @@ export class DocInfoComponent {
                     description: 'STOCK_CONSUMPTION',
                     url: 'consumptions',
                     paramsProvided: (p: string[]) => p.includes('prodDetail')
+                },
+                {
+                    name: 'reservations',
+                    description: 'PROD_RESERVATIONS_DETAIL',
+                    url: 'mrp/reservations',
+                    paramsProvided: (p: string[]) => {return p.includes('reservationsDetail');}
+                },
+                {
+                    name: 'transfers',
+                    description: 'PROD_TRANSFERS_DETAIL',
+                    url: 'mrp/transfers',
+                    paramsProvided: (p: string[]) => {return p.includes('transfersDetail');}
                 }
             ]
         },

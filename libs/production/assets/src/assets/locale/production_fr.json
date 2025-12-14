@@ -30,5 +30,9 @@
     "RESERVE":               "Réserver",
     "RELEASE":               "Libérer",
     "TRANSFER":              "Transfert",
-    "CANCEL_TRANSFER":       "Annuler le transfert"
+    "CANCEL_TRANSFER":       "Annuler le transfert",
+    "RESERVATIONS":         "Réservations",
+    "TRANSFERS":            "Transferts",
+    "RESERVATIONS_DETAIL":  "Détail des réservations",
+    "TRANSFERS_DETAIL":     "Détail des transferts"
 }

@@ -31,5 +31,9 @@
     "RESERVE":                "احجز",
     "RELEASE":                "سرح",
     "TRANSFER":               "حول",
-    "CANCEL_TRANSFER":        "الغ التحويل"
+    "CANCEL_TRANSFER":        "الغ التحويل",
+    "RESERVATIONS":           "الحجوزات",
+    "TRANSFERS":              "التحويلات",
+    "RESERVATIONS_DETAIL":    "تفاصيل الحجوزات",
+    "TRANSFERS_DETAIL":       "تفاصيل التحويلات"
 }

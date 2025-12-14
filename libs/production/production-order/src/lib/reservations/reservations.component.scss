@@ -1,0 +1,30 @@
+:host {
+    display: block;
+    margin: auto;
+    position: relative;
+    max-width: 1624px;
+    width: 100%;
+}
+
+.content-div {
+    width: 100%;
+    max-width: 1624px;
+    min-height: 320px;
+}
+
+.mat-column-reference,
+.mat-column-storeName,
+.mat-column-unitsDescription {
+    flex: 2 1;
+    justify-content: center;
+}
+
+.mat-column-description {
+    flex: 3 1;
+    justify-content: left;
+}
+
+.mat-column-qtySatisfied, {
+    flex: 1 1;
+    justify-content: flex-end;
+}
