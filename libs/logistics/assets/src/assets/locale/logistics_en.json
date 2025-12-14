@@ -222,5 +222,9 @@
     "TRANSPORTERS_PAYMENTS": "Transporter payments",
     "TRANSPORTER_PAYMENTS_COMPENSATION": "Transporter compensation",
     "BRANCH_PAYMENTS": "Branch payments",
-    "ADVANCEMENT_AMOUNT": "Advancement amount"
+    "ADVANCEMENT_AMOUNT": "Advancement amount",
+    "COMPLEMENTARY_INVOICE": "Complementary invoice",
+    "BALANCE_TOLERANCE":     "Balance tolerance",
+    "VALUE_BETWEEN_0&1000": "Value must be between 0 and 1000"
+
 }

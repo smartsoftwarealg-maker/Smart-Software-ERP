@@ -57,6 +57,14 @@
           <ss-date-picker formControlName="inventoryDate"></ss-date-picker>
         </mat-form-field>
 
+        <mat-form-field class="default-50 sm-100">
+          <mat-label translate>LOGISTICS_BALANCE_TOLERANCE</mat-label>
+          <input matInput type="number" [max]="1000" [min]="0" formControlName="balanceTolerance">
+            @if (form.controls['balanceTolerance'].value > 1000 || form.controls['balanceTolerance'].value < 0 ) {
+                <mat-error translate>LOGISTICS_VALUE_BETWEEN_0&1000</mat-error>
+            }
+        </mat-form-field>
+
         <div class="default-50 sm-100">
           <mat-checkbox formControlName="usesLots" translate>STOCK_USES_LOTS</mat-checkbox>
         </div>
@@ -84,6 +92,10 @@
 
           <div class="default-50 sm-100">
               <mat-checkbox formControlName="serviceInvoiceOnly" translate>STOCK_SERVICE_INVOICE_ONLY</mat-checkbox>
+          </div>
+
+          <div class="default-50 sm-100">
+              <mat-checkbox formControlName="complementaryInvoice" translate>LOGISTICS_COMPLEMENTARY_INVOICE</mat-checkbox>
           </div>
       </form>
     }
