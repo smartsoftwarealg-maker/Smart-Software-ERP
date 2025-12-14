@@ -111,7 +111,9 @@ export class OptionsDetailComponent
             SalesPrice4Factor:  [a.SalesPrice4Factor || 1, Validators.required],
             SalesPrice5Factor:  [a.SalesPrice5Factor || 1, Validators.required],
             qtyDiscount:        [a.qtyDiscount || false, Validators.required],
-            serviceInvoiceOnly: [a.serviceInvoiceOnly]
+            serviceInvoiceOnly: [a.serviceInvoiceOnly],
+            balanceTolerance:   [a.balanceTolerance || 0, [Validators.min(0), Validators.max(1000)]],
+            complementaryInvoice:[a.complementaryInvoice],
         });
     }
 

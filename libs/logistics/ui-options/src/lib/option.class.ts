@@ -48,6 +48,8 @@ export class Option {
     prodStore: number;
     qtyDiscount: boolean;
     serviceInvoiceOnly: boolean;
+    balanceTolerance: number
+    complementaryInvoice: boolean
 }
 
 export interface MiniLine {
