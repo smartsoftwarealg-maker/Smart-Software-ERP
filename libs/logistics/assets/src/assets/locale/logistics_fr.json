@@ -222,7 +222,7 @@
     "TRANSPORTER_PAYMENTS_COMPENSATION": "Compensation transporteurs",
     "BRANCH_PAYMENTS": "Paiements unités",
     "ADVANCEMENT_AMOUNT": "Montant de l'avance",
-    "COMPLEMENTARY_INVOICE": "LA FACTURE COMPLÉMENTAIRE",
-    "BALANCE_TOLERANCE":     "LA TOLÉRANCE DE SOLDE",
-    "VALUE_BETWEEN_0&1000":     "LA VALUER DOIT ENTRE 0 ET 1000"
+    "COMPLEMENTARY_INVOICE": "La facture complémentaire",
+    "BALANCE_TOLERANCE":     "Tolérance d'échelle",
+    "VALUE_BETWEEN_0&1000":     "La valeur doit entre 0 et 1000"
 }
