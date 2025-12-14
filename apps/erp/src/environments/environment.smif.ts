@@ -55,6 +55,7 @@ export const langAssets = [
     ['assets/locale/webarch_',        'WAR_'],
     ['assets/locale/assets_',         'ASSET_'],
     ['assets/locale/treasury_',       'TRS_'],
+    ['assets/locale/sch_',            'SCH_'],
 ];
 
 export const appRoutes: Routes =  [
