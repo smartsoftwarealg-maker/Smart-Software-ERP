@@ -12,7 +12,7 @@ import { SnackBarService } from '@ss/common/ui-shell';
 const TARE = 0;
 const BRUT = 1;
 const KG = 1; // one Kilogram = itself
-const T = 0.001; // One Kilogram = 0.0001T
+const T = 0.001; // One Kilogram = 0.001T
 
 @Component({
     selector: 'ss-weight-capture-dialog',
@@ -24,7 +24,7 @@ const T = 0.001; // One Kilogram = 0.0001T
 export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     private fb = inject(FormBuilder);
     public type = 0;
-    public unit = KG;
+    public unit = T;
     public scaleControls: FormControl[] = [];
     public scales: Scale[] = [];
     form = this.fb.group({
