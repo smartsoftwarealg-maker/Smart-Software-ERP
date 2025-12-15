@@ -62,3 +62,17 @@ mat-label {
 .read-btn {
     height: 36px;
 }
+
+mat-card-header{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    max-width: 250px;
+    margin: 5px auto ;
+
+    mat-radio-group{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
