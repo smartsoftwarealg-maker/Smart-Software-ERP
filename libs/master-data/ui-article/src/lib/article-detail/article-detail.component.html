@@ -70,26 +70,24 @@
 
         <mat-form-field class="default-50 sm-100">
           <mat-label translate>STOCK_SUBCLASS</mat-label>
-          <ss-auto-complete matInput
-            [model]="subClassLookup"
+          <ss-auto-complete
+              [model]="subClassLookup"
             formControlName="subClass">
           </ss-auto-complete>
         </mat-form-field>
 
-        @let mark = (isSODISMAC() ? 'STOCK_GICA_CLASS' : 'STOCK_MARK')|translate;
-        @let type = (isSODISMAC() ? 'STOCK_GICA_SUBCLASS' : 'COMMON_TYPE')|translate;
 
         <mat-form-field class="default-50 sm-100">
-          <mat-label translate>{{mark}}</mat-label>
-          <ss-auto-complete matInput
+          <mat-label translate>STOCK_MARK</mat-label>
+          <ss-auto-complete
             [model]="markLookup"
             formControlName="mark">
           </ss-auto-complete>
         </mat-form-field>
 
         <mat-form-field class="default-50 sm-100">
-          <mat-label translate>{{type}}</mat-label>
-          <ss-auto-complete matInput
+          <mat-label translate>COMMON_TYPE</mat-label>
+          <ss-auto-complete
             [model]="typeLookup"
             formControlName="articleType">
           </ss-auto-complete>
@@ -97,14 +95,14 @@
 
         <mat-form-field class="default-25 sm-50">
           <mat-label translate>STOCK_UNIT</mat-label>
-          <ss-auto-complete matInput
+          <ss-auto-complete
             [model]="unitLookup"
             formControlName="salesUnit">
           </ss-auto-complete>
         </mat-form-field>
         <mat-form-field class="default-25 sm-50">
           <mat-label translate>STOCK_PURCHASE_UNIT</mat-label>
-          <ss-auto-complete matInput
+          <ss-auto-complete
             [model]="purchaseUnitLookup"
             formControlName="purchaseUnit">
           </ss-auto-complete>

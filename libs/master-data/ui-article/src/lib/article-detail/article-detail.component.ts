@@ -22,7 +22,7 @@ import {HttpService, IsParamService, MaterialModule} from '@ss/common/api-common
 
 import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
-import {toSignal} from "@angular/core/rxjs-interop";
+import {toSignal} from '@angular/core/rxjs-interop';
 
 @Component({
     selector: 'ss-article-detail',
