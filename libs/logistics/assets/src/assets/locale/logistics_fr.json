@@ -223,6 +223,6 @@
     "BRANCH_PAYMENTS": "Paiements unités",
     "ADVANCEMENT_AMOUNT": "Montant de l'avance",
     "COMPLEMENTARY_INVOICE": "La facture complémentaire",
-    "BALANCE_TOLERANCE":     "Tolérance d'échelle",
+    "BALANCE_TOLERANCE‱":     "Tolérance d'échelle ‱",
     "VALUE_BETWEEN_0&1000":     "La valeur doit entre 0 et 1000"
 }

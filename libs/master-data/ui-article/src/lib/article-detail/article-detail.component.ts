@@ -20,7 +20,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import {HttpService, IsParamService, MaterialModule} from '@ss/common/api-common';
 
-import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
+import {TranslateDirective} from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
 import {toSignal} from '@angular/core/rxjs-interop';
 
@@ -36,7 +36,6 @@ import {toSignal} from '@angular/core/rxjs-interop';
         ImageInputComponent,
         UiAutoCompleteComponent,
         ArticleStoreComponent,
-        TranslatePipe
     ]
 })
 export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
