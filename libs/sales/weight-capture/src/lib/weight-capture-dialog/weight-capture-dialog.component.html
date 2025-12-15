@@ -1,5 +1,11 @@
 <mat-card>
     @if (form) {
+        <mat-card-header>
+            <mat-radio-group (change)="unit = +$event.value" >
+                <mat-radio-button [checked]="unit == KG" [value]="KG">KG</mat-radio-button>
+                <mat-radio-button [checked]="unit == T" [value]="T">T</mat-radio-button>
+            </mat-radio-group>
+        </mat-card-header>
         <mat-card-content>
             <form novalidate [formGroup]="form">
                 @for (ctrl of scaleControls; track ctrl; let i = $index) {

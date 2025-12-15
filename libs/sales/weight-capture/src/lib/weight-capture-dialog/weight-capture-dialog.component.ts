@@ -4,30 +4,27 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import {Scale, ScaleList, TruckStatus} from '../weight-capture-api';
+import { Scale, ScaleList, TruckStatus } from '../weight-capture-api';
 import { WeightCaptureService } from '../weight-capture.service';
 import { ScaleService } from '../scale.service';
 import { SnackBarService } from '@ss/common/ui-shell';
-import {NgForOf} from "@angular/common";
-
 
 const TARE = 0;
 const BRUT = 1;
+const KG = 1; // one Kilogram = itself
+const T = 0.001; // One Kilogram = 0.0001T
 
 @Component({
     selector: 'ss-weight-capture-dialog',
     standalone: true,
-    imports: [
-        MatButtonModule,
-        TranslateDirective,
-        MaterialModule
-    ],
+    imports: [MatButtonModule, TranslateDirective, MaterialModule],
     templateUrl: './weight-capture-dialog.component.html',
     styleUrl: './weight-capture-dialog.component.scss',
 })
 export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     private fb = inject(FormBuilder);
     public type = 0;
+    public unit = KG;
     public scaleControls: FormControl[] = [];
     public scales: Scale[] = [];
     form = this.fb.group({
@@ -121,23 +118,33 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
             next: (list: ScaleList) => {
                 this.scales = list.scales;
                 if (this.scaleControls.length !== this.scales.length) {
-                    this.scaleControls = this.scales.map(s => new FormControl(s.reading));
+                    this.scaleControls = this.scales.map(
+                        (s) => new FormControl(s.reading),
+                    );
                 } else {
-                    this.scales.forEach((s, i) => this.scaleControls[i].setValue(s.reading !== null ? s.reading : '-'));
+                    this.scales.forEach((s, i) =>
+                        this.scaleControls[i].setValue(
+                            s.reading !== null ? s.reading : '-',
+                        ),
+                    );
                 }
             },
-            error: (err) => { throw err; },
+            error: (err) => {
+                throw err;
+            },
         });
     }
 
     get weightControl() {
-        return this.type === TARE ? this.form.controls.tare : this.form.controls.brut;
+        return this.type === TARE
+            ? this.form.controls.tare
+            : this.form.controls.brut;
     }
 
     readWeight(index: number) {
         const value = this.scaleControls[index].value;
-        const finalValue = isNaN(+value) ? null : +value;
-        if(this.type === TARE) {
+        const finalValue = isNaN(+value) ? null : +value * this.unit;
+        if (this.type === TARE) {
             this.form.controls.tare.setValue(finalValue);
         } else {
             this.form.controls.brut.setValue(finalValue);
@@ -145,4 +152,6 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     }
 
     readonly TARE = TARE;
+    readonly T = T;
+    readonly KG = KG;
 }
