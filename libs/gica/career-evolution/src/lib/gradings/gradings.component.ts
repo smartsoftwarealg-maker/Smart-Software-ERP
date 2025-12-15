@@ -127,7 +127,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
 
     subordinateLookup  = new PersonAutocompleteClass(this.subordinateSrv);
     // employeeCtrl = new FormControl<number>(0);
-    readonly currYear = new Date().getFullYear() - 1;
+    readonly currYear = new Date().getFullYear();
     yearCtrl = new FormControl<number>({ value: this.currYear, disabled: false }, [Validators.min(this.currYear - 3)]);
     gradeCtrl = new FormControl<number>(1);
     searchCtrl = new FormControl<string>('');
