@@ -215,6 +215,9 @@
             "@ss/common/api-reports": ["libs/common/api-reports/src/index.ts"],
             "@ss/common/api-users": ["libs/common/api-users/src/index.ts"],
             "@ss/common/app-archive": ["libs/common/app-archive/src/index.ts"],
+            "@ss/transactions-common/ui-free-invoice": [
+                "libs/transactions-common/ui-free-invoice/src/index.ts"
+            ],
             "@ss/common/ui-access-rights": [
                 "libs/common/ui-access-rights/src/index.ts"
             ],
@@ -397,6 +400,9 @@
             ],
             "@ss/logistics/document-numbering": [
                 "libs/logistics/document-numbering/src/index.ts"
+            ],
+            "@ss/logistics/packaging-units": [
+                "libs/logistics/packaging-units/src/index.ts"
             ],
             "@ss/logistics/payment-compensation": [
                 "libs/logistics/payment-compensation/src/index.ts"
@@ -645,18 +651,19 @@
                 "libs/sales/shopping-cart/src/index.ts"
             ],
             "@ss/sales/ui-delivery": ["libs/sales/ui-delivery/src/index.ts"],
-            "@ss/sales/ui-discounts": ["libs/sales/ui-discounts/src/index.ts"],
-            "@ss/sales/ui-sectors": ["libs/sales/ui-sectors/src/index.ts"],
-            "@ss/sales/ui-master_works": ["libs/sales/ui-master_works/src/index.ts"],
             "@ss/sales/ui-delivery-cancellation": [
                 "libs/sales/ui-delivery-cancellation/src/index.ts"
             ],
             "@ss/sales/ui-delivery-lines": [
                 "libs/sales/ui-delivery-lines/src/index.ts"
             ],
+            "@ss/sales/ui-discounts": ["libs/sales/ui-discounts/src/index.ts"],
             "@ss/sales/ui-invoice": ["libs/sales/ui-invoice/src/index.ts"],
             "@ss/sales/ui-invoice-cancellation": [
                 "libs/sales/ui-invoice-cancellation/src/index.ts"
+            ],
+            "@ss/sales/ui-master_works": [
+                "libs/sales/ui-master_works/src/index.ts"
             ],
             "@ss/sales/ui-order-lines": [
                 "libs/sales/ui-order-lines/src/index.ts"
@@ -665,6 +672,7 @@
             "@ss/sales/ui-sales-order": [
                 "libs/sales/ui-sales-order/src/index.ts"
             ],
+            "@ss/sales/ui-sectors": ["libs/sales/ui-sectors/src/index.ts"],
             "@ss/sales/ui-transactionlines": [
                 "libs/sales/ui-transactionlines/src/index.ts"
             ],
@@ -832,12 +840,7 @@
             "payroll/payroll-options": [
                 "libs/payroll/payroll-options/src/index.ts"
             ],
-            "social/reimbursements": [
-                "libs/social/reimbursements/src/index.ts"
-            ],
-            "@ss/logistics/packaging-units": [
-                "libs/logistics/packaging-units/src/index.ts"
-            ]
+            "social/reimbursements": ["libs/social/reimbursements/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

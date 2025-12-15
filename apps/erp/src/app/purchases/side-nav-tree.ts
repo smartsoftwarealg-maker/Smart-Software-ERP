@@ -13,7 +13,10 @@ import {
     ABS_PURCHASE_REPORT_RIGHT_URL,
     ABS_PRICE_REQUEST_URL,
     ABS_FINANCE_SPAYMENTS,
-    ABS_LOGISTICS_SUPPLIER_URL, ABS_PURCHASE_INVOICE_URL, ABS_PURCHASE_TRANSPORTERS_RECEPTION_URL
+    ABS_LOGISTICS_SUPPLIER_URL,
+    ABS_PURCHASE_INVOICE_URL,
+    ABS_PURCHASE_TRANSPORTERS_RECEPTION_URL,
+    ABS_SALES_FREE_INVOICE_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -63,6 +66,12 @@ export const purchasesNavTree: SideNavNode = {
             icon: 'fas fa-money-check-alt',
             route: ABS_PURCHASE_ORDER_URL,
             accessRights: 'POrder'
+        },
+        {
+            name: 'COMMON_FREE_INVOICE',
+            icon: 'fas fa-file-invoice',
+            route: ABS_SALES_FREE_INVOICE_URL,
+            accessRights: 'FreeInvoice'
         },
         {
             name: 'COMMON_RECEPTION',

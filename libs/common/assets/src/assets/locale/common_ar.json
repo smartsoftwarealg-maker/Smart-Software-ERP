@@ -479,5 +479,7 @@
     "GENERATED":             "تم إنشاؤه",
     "TRANSPORTER_RECEPTIONS": "استقبالات الناقلين",
     "GENERIC_ARCHIVE":        "الأرشيف العام",
-    "TRANSPORT_RECEPTIONS": "استقبالات الناقلين"
+    "TRANSPORT_RECEPTIONS": "استقبالات الناقلين",
+    "FREE_INVOICE":          "الفاتورة الحرة",
+    "EDIT_FREE_INVOICE":     "تعديل الفاتورة الحرة"
 }

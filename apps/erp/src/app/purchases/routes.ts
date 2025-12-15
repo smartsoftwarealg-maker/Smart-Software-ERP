@@ -14,7 +14,7 @@ import {
     STOCK_ARTICLE_URL,
     PURCHASE_RECEPTION_CANCELLATION_URL,
     IMPORT_PURCHASE_RECEPTION_URL, ADMIN_REPORT_RIGHTS_URL, PRICE_REQUEST_URL, LOGISTICS_SUPPLIER_URL,
-    PURCHASE_RECEPTION_INVOICE_URL, PURCHASE_TRANSPORTERS_RECEPTION_URL
+    PURCHASE_RECEPTION_INVOICE_URL, PURCHASE_TRANSPORTERS_RECEPTION_URL, SALES_FREE_INVOICE_URL
 } from '../common';
 import {
     PurchaseOrderDetailComponent,
@@ -77,7 +77,12 @@ import {
     TransporterReceptionLinesListComponent,
     TransporterReceptionListComponent
 } from "../../../../../libs/purchases/ui-transporters/src";
-
+import {
+    FreeInvoiceLinesDetailComponent,
+    FreeInvoiceLinesListComponent,
+    FreeInvoiceDetailComponent,
+    FreeInvoiceListComponent
+} from "@ss/transactions-common/ui-free-invoice";
 export const routes: Routes = [
     {
         path: PURCHASE_QUOTATION_URL,
@@ -479,6 +484,37 @@ export const routes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
+            },
+            {
+                path: SALES_FREE_INVOICE_URL,
+                children: [
+                    {
+                        path: LIST_URL,
+                        component: FreeInvoiceListComponent,
+                        canActivate: [loginGuard],
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: ':id',
+                        component: FreeInvoiceDetailComponent,
+                        canActivate: [loginGuard],
+                        canDeactivate: [CanDeactivateService],
+                        children: [
+                            { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                            { path: 'lines-list',
+                                component: FreeInvoiceLinesListComponent,
+                                children: docInfoRoutes
+                            },
+                            {
+                                path: 'lines-detail',
+                                children: [
+                                    { path: ':id', component: FreeInvoiceLinesDetailComponent, canDeactivate: [CanDeactivateService] },
+                                ]
+                            },
+                            ...docInfoRoutes
+                        ]
+                    },
+                ]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }

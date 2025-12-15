@@ -1,16 +1,24 @@
 import {
     ABS_ADMINISTRATION_WORKFLOW_INBOX_URL,
-    ABS_FINANCE_CPAYMENTS, ABS_PRICE_LIST_URL,
-    ABS_SALES_AGENT_URL, ABS_SALES_CUSTOMER_URL,
+    ABS_FINANCE_CPAYMENTS,
+    ABS_PRICE_LIST_URL,
+    ABS_SALES_AGENT_URL,
+    ABS_SALES_CUSTOMER_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DELIVERY_CANCEL_URL,
-    ABS_SALES_DELIVERY_URL, ABS_SALES_DISCOUNT_SCALE_URL, ABS_SALES_DISCOUNTS_URL, ABS_SALES_EXPORT_INVOICE_URL,
+    ABS_SALES_DELIVERY_URL,
+    ABS_SALES_DISCOUNT_SCALE_URL,
+    ABS_SALES_DISCOUNTS_URL,
+    ABS_SALES_EXPORT_INVOICE_URL,
+    ABS_SALES_FREE_INVOICE_URL,
     ABS_SALES_INVOICE_CANCEL_URL,
-    ABS_SALES_INVOICE_URL, ABS_SALES_MASTER_WORKS_URL,
+    ABS_SALES_INVOICE_URL,
+    ABS_SALES_MASTER_WORKS_URL,
     ABS_SALES_ORDER_URL,
     ABS_SALES_PROFORMA_URL,
     ABS_SALES_REPORT_PRIVILEGE_URL,
-    ABS_SALES_REPORTS_URL, ABS_SALES_SECTORS_URL
+    ABS_SALES_REPORTS_URL,
+    ABS_SALES_SECTORS_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -35,6 +43,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fa-solid fa-money-check-dollar-pen',
             route: ABS_PRICE_LIST_URL,
             accessRights: 'Location'
+        },
+        {
+            name: 'COMMON_FREE_INVOICE',
+            icon: 'fas fa-file-invoice',
+            route: ABS_SALES_FREE_INVOICE_URL,
+            accessRights: 'FreeInvoice'
         },
         {
             name: 'LOGISTICS_PROFORMA',

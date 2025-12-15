@@ -8,7 +8,7 @@ import {
     DASHBOARD_URL,
     docInfoRoutes, LOGISTICS_AGENT_URL, LOGISTICS_CUSTOMER_URL,
     SALES_AD_URL, SALES_DISCOUNT_TURNOVER, SALES_DISCOUNT_URL, SALES_MASTER_WORKS_URL, SALES_PRICE_LIST_URL,
-    SALES_SECTORS_URL, SALES_SERVICE_ARTICLE_URL
+    SALES_SECTORS_URL, SALES_SERVICE_ARTICLE_URL, SALES_FREE_INVOICE_URL
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -53,6 +53,12 @@ import {
 } from '@ss/sales/ui-discounts';
 import {SectorsDetailComponent, SectorsListComponent} from '@ss/sales/ui-sectors';
 import {MasterWorksDetailComponent, MasterWorksListComponent} from '@ss/sales/ui-master_works';
+import {
+    FreeInvoiceLinesDetailComponent,
+    FreeInvoiceLinesListComponent,
+    FreeInvoiceDetailComponent,
+    FreeInvoiceListComponent
+} from "@ss/transactions-common/ui-free-invoice";
 
 export const lookupRoutes: Routes = [];
 
@@ -485,6 +491,37 @@ export const mainRoutes: Routes = [
         component: ReportPrivilegesComponent,
         data: {reportBase: 'sales'},
         canActivate: [loginGuard]
+    },
+    {
+        path: SALES_FREE_INVOICE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: FreeInvoiceListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: FreeInvoiceDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: FreeInvoiceLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: FreeInvoiceLinesDetailComponent, canDeactivate: [CanDeactivateService] },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+        ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
