@@ -12,10 +12,13 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { ReceptionLinesService } from '../reception-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import {WeightCaptureDialogButtonComponent} from "@ss/sales/weight-capture";
 
 @Component({
     selector: 'ss-reception-lines-list',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
+    styleUrls: [
+        '../../../../../common/assets/src/assets/transac-lines-list.scss',
+    ],
     templateUrl: './reception-lines-list.component.html',
     standalone: true,
     imports: [
@@ -25,10 +28,14 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         TranslatePipe,
         ReactiveFormsModule,
         DocInfoComponent,
-        PaginationComponent
-    ]
+        PaginationComponent,
+        WeightCaptureDialogButtonComponent,
+    ],
 })
-export class ReceptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {
+export class ReceptionLinesListComponent
+    extends BaseTransactionLinesListComponent
+    implements OnInit
+{
     override displayedColumns = [
         'position',
         'storeDescription',
@@ -38,7 +45,7 @@ export class ReceptionLinesListComponent  extends BaseTransactionLinesListCompon
         'qtySatisfied',
         'price',
         'vat',
-        'total'
+        'total',
     ];
 
     constructor(
@@ -49,7 +56,17 @@ export class ReceptionLinesListComponent  extends BaseTransactionLinesListCompon
         public override router: Router,
         public override articleSrv: ArticleService,
         public override storeNamesSrv: LotsService,
-        public override confirmationSrv: ConfirmationDialogService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
+        public override confirmationSrv: ConfirmationDialogService,
+    ) {
+        super(
+            detailSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            articleSrv,
+            storeNamesSrv,
+            confirmationSrv,
+        );
     }
 }
