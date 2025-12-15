@@ -18,6 +18,7 @@ import { UiMrpComponent } from '@ss/logistics/ui-mrp';
 import {PAYROLL_MONTH_LOCK_URL} from "../../../../libs/payroll/payroll-lock/src/lib/payroll-lock/month-lock.api";
 import { UiTotalStockComponent } from '../../../../libs/logistics/ui-total-stock/src';
 import {ReservationsComponent, TransfersComponent} from "@ss/production/production-order";
+import {FREE_INVOICE} from "@ss/workflow";
 
 // common
 export const LOOKUPS_URL = 'lookups';
@@ -256,6 +257,7 @@ export const SALES_DISCOUNT_URL  = 'sales-discounts';
 export const SALES_DISCOUNT_TURNOVER  = 'discounts/turnover';
 export const SALES_SECTORS_URL = 'sales-sectors';
 export const SALES_MASTER_WORKS_URL  = 'sales-master-works';
+export const SALES_FREE_INVOICE_URL  = 'free-invoice';
 
 
 // HR
@@ -1043,6 +1045,7 @@ export const ABS_SALES_DISCOUNT_SCALE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL,
 export const ABS_SALES_DISCOUNTS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DISCOUNT_TURNOVER].join('/');
 export const ABS_SALES_SECTORS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_SECTORS_URL].join('/');
 export const ABS_SALES_MASTER_WORKS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_MASTER_WORKS_URL].join('/');
+export const ABS_SALES_FREE_INVOICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_FREE_INVOICE_URL].join('/');
 
 //services
 export const ABS_SERVICE_CLASSES_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_CLASSES_URL].join('/');

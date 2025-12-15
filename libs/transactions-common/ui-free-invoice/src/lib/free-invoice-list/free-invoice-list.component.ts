@@ -1,0 +1,69 @@
+import { Component, inject, input } from '@angular/core';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {PaginatorPersistenceService} from '@ss/common/api-common';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { Transaction } from '@ss/logistics/api-transaction';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { PaginationComponent } from '@ss/common/ui-pagination';
+import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
+import { DatePipe, DecimalPipe } from '@angular/common';
+import { CurrencyService } from '@ss/common/api-lookup';
+import {FreeInvoiceService} from "../free-invoice.service";
+
+@Component({
+    selector: 'ss-free-invoice-list',
+    styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
+    templateUrl: './free-invoice-list.component.html',
+    standalone: true,
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DatePipe, DecimalPipe]
+})
+export class FreeInvoiceListComponent extends BaseEntityListComponent<Transaction> {
+    #currencySrv = inject(CurrencyService);
+    currencyMap: Map<number, string> = new Map<number, string>();
+
+    showCurrency = input(false);
+
+    displayedColumns = [
+        'number',
+        'date',
+        'agent',
+        'payMethod',
+        'reference',
+        'referenceDocDate',
+        'docStatus'
+    ];
+
+
+    constructor(
+        public invoiceSrv: FreeInvoiceService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override defReportSrv: DefaultReportService,
+        public override pagPersistSrv: PaginatorPersistenceService) {
+        super(invoiceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_FREE_INVOICE');
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        if (this.showCurrency()) {
+            this.#currencySrv
+                .getList(0, 50)
+                .subscribe((currencies) => {
+                currencies.body.forEach(c => this.currencyMap.set(c.id, c.description))
+                const chunk1 = this.displayedColumns.slice(0, 5);
+                const chunk2 = this.displayedColumns.slice(5);
+                chunk1.push('currency');
+                chunk1.push('currencyRate');
+                this.displayedColumns = chunk1.concat(chunk2);
+            });
+        }
+    }
+}
