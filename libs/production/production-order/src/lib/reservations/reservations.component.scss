@@ -13,18 +13,22 @@
 }
 
 .mat-column-reference,
-.mat-column-storeName,
 .mat-column-unitsDescription {
-    flex: 2 1;
+    flex: 1 1 80px;
     justify-content: center;
 }
 
+.mat-column-storeName {
+    flex: 1 1 100px;
+    justify-content: left;
+}
+
 .mat-column-description {
-    flex: 3 1;
+    flex: 2 1 150px;
     justify-content: left;
 }
 
 .mat-column-qtySatisfied, {
-    flex: 1 1;
-    justify-content: flex-end;
+    flex: 1 1 80px;
+    justify-content: right;
 }

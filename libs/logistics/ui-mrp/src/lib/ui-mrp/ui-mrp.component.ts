@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 
 import { MRP, MRP_URL } from '../../../../../production/mrp/src/lib/api/mrp-api';
 import { HttpService } from '@ss/common/api-common';
