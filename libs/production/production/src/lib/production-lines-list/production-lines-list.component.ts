@@ -57,7 +57,10 @@ import { MaterialModule } from '@ss/common/api-common';
         MatRowDef,
     ],
 })
-export class ProductionLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
+export class ProductionLinesListComponent
+    extends BaseTransactionLinesListComponent
+    implements OnInit
+{
     private productionSrv = inject(ProductionService);
 
     override displayedColumns = [
@@ -107,32 +110,36 @@ export class ProductionLinesListComponent extends BaseTransactionLinesListCompon
 
     private refresh() {
         this.detailSrv.getPage(this.pagination).subscribe({
-            next: data => {
+            next: (data) => {
                 this.data = data;
             },
             error: () => {
                 this.snackBarSrv.showFailureMessage('refresh failed');
-            }
+            },
         });
     }
 
     public produce(id: number) {
         this.productionSrv.produce(id).subscribe({
-            next:()=>{
+            next: () => {
                 this.snackBarSrv.showSuccessMessage();
                 this.refresh();
             },
-            error:(err)=>{
+            error: (err) => {
                 this.snackBarSrv.showFailureMessage();
                 throw err;
-            }
+            },
         });
     }
 
     public cancel(id: number) {
         this.confirmationSrv
             .confirm('COMMON_CANCEL', 'PROD_CANCEL_PRODUCTION')
-            .pipe(switchMap(res => res ? this.productionSrv.cancel(id) : of(null)))
+            .pipe(
+                switchMap((res) =>
+                    res ? this.productionSrv.cancel(id) : of(null),
+                ),
+            )
             .subscribe({
                 next: () => {
                     this.snackBarSrv.showSuccessMessage();
@@ -141,7 +148,30 @@ export class ProductionLinesListComponent extends BaseTransactionLinesListCompon
                 error: (err) => {
                     this.snackBarSrv.showFailureMessage();
                     throw err;
-                }
+                },
             });
+    }
+    transfer() {
+        this.detailSrv.transfer(this.selectedId).subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
+    }
+
+    cancelTransfer() {
+        this.detailSrv.cancelTransfer(this.selectedId).subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
     }
 }

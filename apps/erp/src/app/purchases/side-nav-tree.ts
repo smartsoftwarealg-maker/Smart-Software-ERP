@@ -16,7 +16,7 @@ import {
     ABS_LOGISTICS_SUPPLIER_URL,
     ABS_PURCHASE_INVOICE_URL,
     ABS_PURCHASE_TRANSPORTERS_RECEPTION_URL,
-    ABS_SALES_FREE_INVOICE_URL
+    ABS_SALES_FREE_INVOICE_URL, ABS_PURCHASE_FREE_INVOICE_URL
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -70,7 +70,7 @@ export const purchasesNavTree: SideNavNode = {
         {
             name: 'COMMON_FREE_INVOICE',
             icon: 'fas fa-file-invoice',
-            route: ABS_SALES_FREE_INVOICE_URL,
+            route: ABS_PURCHASE_FREE_INVOICE_URL,
             accessRights: 'FreeInvoice'
         },
         {

@@ -54,7 +54,7 @@ export class FreeInvoiceDetailComponent
     implements OnInit
 {
     showCurrency = input(false);
-
+    appName : string;
     constructor(
         protected override loginSrv: LoginService,
         public override entitySrv: FreeInvoiceService,
@@ -80,6 +80,11 @@ export class FreeInvoiceDetailComponent
             dialog,
             'COMMON_EDIT_FREE_INVOICE',
         );
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.appName = this.route.snapshot.data['app']
     }
 
     protected showImportButton(): boolean {
