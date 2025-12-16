@@ -165,12 +165,6 @@ export class DocInfoComponent {
                     paramsProvided: (p: string[]) => p.includes('prodDetail')
                 },
                 {
-                    name: 'consumptions',
-                    description: 'STOCK_CONSUMPTION',
-                    url: 'consumptions',
-                    paramsProvided: (p: string[]) => p.includes('prodDetail')
-                },
-                {
                     name: 'reservations',
                     description: 'PROD_RESERVATIONS_DETAIL',
                     url: 'mrp/reservations',
@@ -181,6 +175,12 @@ export class DocInfoComponent {
                     description: 'PROD_TRANSFERS_DETAIL',
                     url: 'mrp/transfers',
                     paramsProvided: (p: string[]) => {return p.includes('transfersDetail');}
+                },
+                {
+                    name: 'consumptions',
+                    description: 'STOCK_CONSUMPTION',
+                    url: 'consumptions',
+                    paramsProvided: (p: string[]) => p.includes('prodDetail')
                 }
             ]
         },
