@@ -122,27 +122,4 @@ export class ProductionOrderLinesListComponent
         });
     }
 
-    transfer() {
-        this.detailSrv.transfer(this.selectedId).subscribe({
-            next: () => {
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: (err) => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            },
-        });
-    }
-
-    cancelTransfer() {
-        this.detailSrv.cancelTransfer(this.selectedId).subscribe({
-            next: () => {
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: (err) => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            },
-        });
-    }
 }
