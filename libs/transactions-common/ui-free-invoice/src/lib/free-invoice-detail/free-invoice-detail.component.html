@@ -27,20 +27,36 @@
                         <mat-label translate>STOCK_REFERENCE_DOC_DATE</mat-label>
                         <ss-date-picker formControlName="referenceDocDate"></ss-date-picker>
                     </mat-form-field>
-
-                    <mat-form-field class="default-50 sm-100">
-                        <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
-                        <ss-auto-complete matInput
-                                          [required]="true"
-                                          [model]="customerLookup"
-                                          formControlName="agent"></ss-auto-complete>
-                        <!--                <mat-error-->
-                        <!--                    *ngIf="form.controls['agent'].hasError('required')" translate>COMMON_FIELD_REQUIRED-->
-                        <!--                </mat-error>-->
-                        <!--                <mat-error-->
-                        <!--                    *ngIf="form.controls['agent'].hasError('validOption')" translate>COMMON_NO_MATCH-->
-                        <!--                </mat-error>-->
-                    </mat-form-field>
+                    @if (appName == 'sales') {
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
+                            <ss-auto-complete matInput
+                                              [required]="true"
+                                              [model]="customerLookup"
+                                              formControlName="agent"></ss-auto-complete>
+                            @if (form.controls['agent'].hasError('required')) {
+                                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                            }
+                            @if (form.controls['agent'].hasError('validOption')) {
+                                <mat-error translate>COMMON_NO_MATCH</mat-error>
+                            }
+                        </mat-form-field>
+                    }
+                    @if (appName == 'purchase') {
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+                            <ss-auto-complete matInput
+                                              [required]="true"
+                                              [model]="supplierLookup"
+                                              formControlName="agent"></ss-auto-complete>
+                            @if (form.controls['agent'].hasError('required')) {
+                                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                            }
+                            @if (form.controls['agent'].hasError('validOption')) {
+                                <mat-error translate>COMMON_NO_MATCH</mat-error>
+                            }
+                        </mat-form-field>
+                    }
 
                     <mat-form-field class="default-50 sm-100">
                         <mat-label translate>LOGISTICS_PAY_METHOD</mat-label>
@@ -152,10 +168,10 @@
                                     <mat-label translate>LOGISTICS_VF_ADVANCEMENT</mat-label>
                                     <input matInput formControlName="advancement" type="number">
                                 </mat-form-field>
-<!--                                <mat-form-field id="Advancement_FF" class="default-25 sm-50">-->
-<!--                                    <mat-label translate>LOGISTICS_FT_ADVANCEMENT</mat-label>-->
-<!--                                    <input matInput formControlName="advancementFT" type="number">-->
-<!--                                </mat-form-field>-->
+                                <!--                                <mat-form-field id="Advancement_FF" class="default-25 sm-50">-->
+                                <!--                                    <mat-label translate>LOGISTICS_FT_ADVANCEMENT</mat-label>-->
+                                <!--                                    <input matInput formControlName="advancementFT" type="number">-->
+                                <!--                                </mat-form-field>-->
                                 <mat-form-field id="Advancement_AMOUNT" class="default-25 sm-50">
                                     <mat-label translate>LOGISTICS_ADVANCEMENT_AMOUNT</mat-label>
                                     <input matInput formControlName="advancementAmount" type="number">
