@@ -19,12 +19,4 @@ export class ProductionOrderLinesService extends TransactionLinesClass {
         return  this.httpSrv.post(`/production/mrp/release/${id}`)
     }
 
-    transfer(id: number){
-        return  this.httpSrv.post(`/production/mrp/transfer/${id}`)
-    }
-
-    cancelTransfer(id: number){
-        return  this.httpSrv.post(`/production/mrp/untransfer/${id}`)
-    }
-
 }

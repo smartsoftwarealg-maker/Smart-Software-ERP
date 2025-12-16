@@ -1,5 +1,5 @@
 @if (parentId) {
-    <div class="main-container">
+        <div class="main-container">
         <div class="add-button">
             <mat-form-field>
                 <mat-label translate>COMMON_SEARCH</mat-label>
@@ -23,9 +23,9 @@
                     <span class="fas fa-trash-alt"></span>
                 </button>
             }
+        </div>
             @if (selectedId && selectedRow.qtySatisfied < 0.1 || true) {
                 <div class="operation-button">
-
                     <button mat-mini-fab (click)="transfer()" [matTooltip]="'PROD_TRANSFER' | translate"
                             color="warn">
                         <span class="fas fa-exchange-alt"></span>
@@ -37,8 +37,6 @@
                     </button>
                 </div>
             }
-        </div>
-
         <div class="container_div">
             <mat-table mat-table [dataSource]="data" class="main-table">
 
@@ -147,8 +145,8 @@
 
         <div class="doc-info">
             <ss-doc-info
-                [displayedGroups]="['document', 'article']"
-                [params]="{
+                    [displayedGroups]="['document', 'article']"
+                    [params]="{
                 documentId: selectedRow?.transacId,
                 articleReference: selectedRow?.reference,
                 detailId: selectedId,
