@@ -485,39 +485,40 @@ export const routes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 children: docInfoRoutes
             },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
+    },
+    {
+        path: SALES_FREE_INVOICE_URL,
+        children: [
             {
-                path: SALES_FREE_INVOICE_URL,
+                path: LIST_URL,
+                component: FreeInvoiceListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: FreeInvoiceDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: {app: 'purchase'},
                 children: [
-                    {
-                        path: LIST_URL,
-                        component: FreeInvoiceListComponent,
-                        canActivate: [loginGuard],
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: FreeInvoiceLinesListComponent,
                         children: docInfoRoutes
                     },
                     {
-                        path: ':id',
-                        component: FreeInvoiceDetailComponent,
-                        canActivate: [loginGuard],
-                        canDeactivate: [CanDeactivateService],
+                        path: 'lines-detail',
                         children: [
-                            { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
-                            { path: 'lines-list',
-                                component: FreeInvoiceLinesListComponent,
-                                children: docInfoRoutes
-                            },
-                            {
-                                path: 'lines-detail',
-                                children: [
-                                    { path: ':id', component: FreeInvoiceLinesDetailComponent, canDeactivate: [CanDeactivateService] },
-                                ]
-                            },
-                            ...docInfoRoutes
+                            { path: ':id', component: FreeInvoiceLinesDetailComponent, canDeactivate: [CanDeactivateService] },
                         ]
                     },
+                    ...docInfoRoutes
                 ]
             },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
         ]
     },
 

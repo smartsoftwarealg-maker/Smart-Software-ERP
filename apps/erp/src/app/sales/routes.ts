@@ -506,6 +506,7 @@ export const mainRoutes: Routes = [
                 component: FreeInvoiceDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+                data: {app: 'sales'},
                 children: [
                     { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
                     { path: 'lines-list',
