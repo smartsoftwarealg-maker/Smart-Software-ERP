@@ -165,13 +165,13 @@ export const administrationNavTree: SideNavNode = {
             name: 'ADMINISTRATION_PASSWORD_ENCODING',
             icon: 'fa-solid fa-lock-hashtag',
             route: ABS_ADMINISTRATION_PASS_ENCODING_URL,
-            accessRights: 'PassReset'
+            accessRights: 'PassEncoding'
         },
         {
             name: 'COMMON_PASSWORD_RESET',
             icon: 'fa-solid fa-lock-hashtag',
             route: ABS_ADMINISTRATION_PASS_RESET_URL,
-            accessRights: 'PassEncoding'
+            accessRights: 'PassReset'
         },
     ]
 };

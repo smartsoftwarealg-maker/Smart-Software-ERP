@@ -14,7 +14,6 @@ import {
     ABS_CUSTOMER_COMPLAINTS_URL,
     ABS_SCHEDULED_SALES_REPORTS_URL,
     ABS_SCHEDULED_SALES_PASSWORD_RESET_URL,
-    ABS_SALES_COMPENSATIONS_URL,
     ABS_PAYMENT_COMPENSATIONS_URL,
     ABS_SALES_INVOICE_VALIDATION_URL,
     ABS_SCHEDULED_SALES_POLL_URL,
@@ -178,7 +177,7 @@ export const scheduledSalesNavTree: SideNavNode = {
             name: 'COMMON_PASSWORD_RESET',
             icon: 'fa-solid fa-empty-set',
             route: ABS_SCHEDULED_SALES_PASSWORD_RESET_URL,
-            accessRights: 'User'
+            accessRights: 'PassReset'
         },
         {
             name: 'COMMON_REPORTS',
