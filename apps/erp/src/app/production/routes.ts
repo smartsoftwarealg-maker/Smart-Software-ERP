@@ -17,7 +17,7 @@ import {
     PRODUCTION_UNLOCKING_LOTS_URL,
     PRODUCTION_ARTICLE_TYPES_URL,
     PRODUCTION_DOSAGE_UNITS_URL,
-    PRODUCTION_PACKAGING_UNITS_URL, COMMON_REPORTS_URL, PRODUCTION_LOT_PRIORITY_URL
+    PRODUCTION_PACKAGING_UNITS_URL, COMMON_REPORTS_URL, PRODUCTION_LOT_PRIORITY_URL, PRODUCTIONS_TRANSFER_URL
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -59,6 +59,11 @@ import {
 } from '@ss/production/production-reception';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
 import { LotPriorityListComponent } from "@ss/production/lot";
+import {
+    ProductionTransferDetailComponent,
+    ProductionTransferLinesListComponent,
+    ProductionTransferListComponent
+} from "@ss/production/production-transfer";
 
 export const prodRoutes: Routes = [
     {
@@ -318,6 +323,34 @@ export const prodRoutes: Routes = [
         path: PRODUCTION_UNLOCKING_LOTS_URL,
         component: UnlockingLotsComponent,
         canActivate: [loginGuard],
+    },
+    {
+        path: PRODUCTIONS_TRANSFER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductionTransferListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: ProductionTransferDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'lines-list',
+                        component: ProductionTransferLinesListComponent,
+                        children: [...docInfoRoutes, { path: 'consumptions', component: ProductionConsumptionComponent}],
+                    },
+                    ...docInfoRoutes,
+                ],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
