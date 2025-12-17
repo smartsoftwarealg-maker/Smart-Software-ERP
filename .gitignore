@@ -54,3 +54,4 @@ apps/cspace/android/.idea/
 package-lock.json
 android/.kotlin
 apps/cspace/android/app/release
+android/app
