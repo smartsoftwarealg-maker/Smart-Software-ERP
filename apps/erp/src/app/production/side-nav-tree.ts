@@ -90,7 +90,7 @@ export const productionNavTree: SideNavNode = {
             name: 'PROD_PRODUCTIONS_TRANSFER',
             icon: 'fa-brands fa-product-hunt',
             route: ABS_PRODUCTIONS_TRANSFER_URL,
-            accessRights: 'Production',
+            accessRights: 'ProductionTransfer',
         },
         {
             name: 'PROD_INTER_STORE_TRANSFER',
