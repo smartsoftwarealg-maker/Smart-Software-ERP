@@ -34,5 +34,7 @@
     "RESERVATIONS":         "Réservations",
     "TRANSFERS":            "Transferts",
     "RESERVATIONS_DETAIL":  "Détail des réservations",
-    "TRANSFERS_DETAIL":     "Détail des transferts"
+    "TRANSFERS_DETAIL":     "Détail des transferts",
+    "PRODUCTIONS_TRANSFER": "Transfert de productions",
+    "PRODUCTION_TRANSFER":  "Transfert de production"
 }

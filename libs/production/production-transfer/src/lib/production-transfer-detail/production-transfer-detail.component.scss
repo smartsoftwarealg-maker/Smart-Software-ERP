@@ -1,0 +1,27 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 98%;
+    width: min(100%, 900px);
+    margin: 0 auto;
+    gap: 5px;
+    padding: 5px;
+}
+
+mat-card {
+    border-radius: 1.4em;
+    padding: 8px;
+}
+
+mat-card,
+.detail_div {
+    width: 98%;
+    max-width: 1000px;
+    margin: 5px auto;
+    padding: 4px 0;
+}
+
+.detail_div {
+    max-width: 1400px;
+    overflow-x: auto;
+}

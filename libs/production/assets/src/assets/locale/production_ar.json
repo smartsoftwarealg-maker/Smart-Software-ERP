@@ -35,5 +35,7 @@
     "RESERVATIONS":           "الحجوزات",
     "TRANSFERS":              "التحويلات",
     "RESERVATIONS_DETAIL":    "تفاصيل الحجوزات",
-    "TRANSFERS_DETAIL":       "تفاصيل التحويلات"
+    "TRANSFERS_DETAIL":       "تفاصيل التحويلات",
+    "PRODUCTIONS_TRANSFER":   "تحويل المنتجات",
+    "PRODUCTION_TRANSFER":    "تحويل المنتج"
 }
