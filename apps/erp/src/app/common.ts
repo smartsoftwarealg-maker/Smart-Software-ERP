@@ -570,6 +570,7 @@ export const PRODUCTION_UNLOCKING_LOTS_URL = 'unlocking-lots';
 export const PRODUCTION_ARTICLE_TYPES_URL = 'article_types';
 export const PRODUCTION_DOSAGE_UNITS_URL = 'dosage_units';
 export const PRODUCTION_PACKAGING_UNITS_URL = 'packaging_units';
+export const PRODUCTIONS_TRANSFER_URL = 'production-transfer';
 
 // crm
 export const CRM_SALUTATIONS_URL = 'salutations';
@@ -1098,6 +1099,7 @@ export const ABS_PRODUCTION_DOSAGE_UNITS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_
 export const ABS_PRODUCTION_PACKAGING_UNITS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, PRODUCTION_PACKAGING_UNITS_URL].join('/');
 export const ABS_PRODUCTION_REPORTS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, COMMON_REPORTS_URL].join('/');
 export const ABS_LOT_PRIORITY_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, PRODUCTION_LOT_PRIORITY_URL].join('/');
+export const ABS_PRODUCTIONS_TRANSFER_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, PRODUCTIONS_TRANSFER_URL].join('/');
 
 // CRM
 
