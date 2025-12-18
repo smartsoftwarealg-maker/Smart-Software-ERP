@@ -80,8 +80,8 @@
     "CANNOT_DELETE_ACTIVE_EMPLOYEE":      "Impossible de supprimer un employé actif",
     "NO_PROGRESS":                        "Aucun progrès effectué et aucun document généré pour cette demande.",
     "PROJECT_REQUIRED":                   "Un projet/contrat/convention est requis.",
-    "ALREADY_RESERVED":                   "",
-    "ALREADY_TRANSFERRED":                "",
-    "NO_TRANSFER_CREATED":                "",
-    "NO_RESERVATION_CREATED":             ""
+    "ALREADY_RESERVED":                   "Déjà réservé",
+    "ALREADY_TRANSFERRED":                "Déjà transféré",
+    "NO_TRANSFER_CREATED":                "Aucun transfert créé",
+    "NO_RESERVATION_CREATED":             "Aucune réservation créée"
 }

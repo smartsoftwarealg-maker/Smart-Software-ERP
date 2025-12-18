@@ -35,6 +35,7 @@ export interface BOM {
     updateMemo?: string;
     from?: Date;
     to?: Date;
+    units: number;
     version: number;
     productRef?: string;
     productDescription?: string;
