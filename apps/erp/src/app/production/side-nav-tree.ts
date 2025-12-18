@@ -88,7 +88,7 @@ export const productionNavTree: SideNavNode = {
         },
         {
             name: 'PROD_PRODUCTIONS_TRANSFER',
-            icon: 'fa-brands fa-product-hunt',
+            icon: 'fa-solid fa-people-arrows',
             route: ABS_PRODUCTIONS_TRANSFER_URL,
             accessRights: 'ProductionTransfer',
         },
