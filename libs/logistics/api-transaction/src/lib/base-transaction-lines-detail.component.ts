@@ -33,7 +33,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { Agent, AgentService } from '@ss/logistics/api-agent';
 import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
 import { ArticleSearchDlg } from '@ss/logistics/article-search';
-import {DELIVERY_CANCELLATION, IMPORT_RECEPTION, INVOICE_CANCELLATION} from '@ss/workflow';
+import {
+    DELIVERY_CANCELLATION,
+    IMPORT_RECEPTION,
+    INVOICE_CANCELLATION,
+    PRODUCTION_ORDER,
+} from '@ss/workflow';
 import {PackagingUnitsService} from '@ss/logistics/packaging-units';
 import {PackagingUnit} from '@ss/logistics/packaging-units';
 
@@ -270,11 +275,11 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             ( b.qtySatisfied > 0.0001 || !!b.sourceDoc || (this.document >= 200 && this.document <= 800 && b.qtyOrdered > 0.0001));
         this.referenceIsDisabled.set(referenceIsDisabled);
 
-        const unitsIsDisable = !this.isEditable ||
+        const unitsIsDisabled = !this.isEditable ||
                                        b.qtySatisfied > 0.0 ||
                                        ((this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 ) && b.qtyOrdered > 0.0) ||
-                                       (b.sourceDoc && this.document >= DOC_SEPARATOR_200 && this.document <= DOC_SEPARATOR_800 && b.qtyOrdered > 0.0);
-
+                                       (b.sourceDoc && this.document >= DOC_SEPARATOR_200 && this.document <= DOC_SEPARATOR_800 && b.qtyOrdered > 0.0) ||
+                                       b.document == PRODUCTION_ORDER;
         const units = b.units || 1;
 
         return this.formBuilder.group({
@@ -297,7 +302,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             charge2:      [b.charge2 || 0],
             charge3:      [b.charge3 || 0],
             charge4:      [b.charge4 || 0],
-            units:        [{ value: units, disabled: unitsIsDisable }, Validators.min(1)],
+            units:        [{ value: units, disabled: unitsIsDisabled }, Validators.min(1)],
             costCenter:   [{value: b.costCenter, disabled: !this.isEditable}],
             pprice:       [{value:b.pprice, disabled: !this.isEditable }],
             bomId:        [{ value: b.bomId, disabled: !this.isEditable || ( (this.document == DOC_PRODUCTION || this.document == DOC_PRODUCTION_ORDER) && b.qtySatisfied > 0.00001 )}],

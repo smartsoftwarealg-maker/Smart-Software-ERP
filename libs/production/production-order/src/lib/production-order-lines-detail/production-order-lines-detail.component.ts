@@ -21,6 +21,7 @@ import { ArticleAutoCompleteModel } from '@ss/master-data/api-article';
 import { BomLookupClass, BomService } from '@ss/master-data/ui-article';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
+import { PRODUCTION_ORDER } from '@ss/workflow';
 
 @Component({
     selector: 'ss-production-order-lines-detail',
@@ -48,8 +49,7 @@ import { MatSelect } from '@angular/material/select';
 })
 export class ProductionOrderLinesDetailComponent
     extends BaseTransactionLinesDetailComponent
-    implements OnInit, OnDestroy
-{
+    implements OnInit, OnDestroy {
     #articleSrv = inject(ManufacturedArticleService);
     #bomSrv = inject(BomService);
 
@@ -68,6 +68,7 @@ export class ProductionOrderLinesDetailComponent
         if (this.usesUnits()) {
             b.qtyOrdered = b.units;
         }
+        b.document = PRODUCTION_ORDER;
         return super.setupForm(b);
     }
 
