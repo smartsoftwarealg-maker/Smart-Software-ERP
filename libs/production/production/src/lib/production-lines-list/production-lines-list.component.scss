@@ -1,21 +1,21 @@
 .main-table {
     width: 100%;
-    overflow-x: auto;
+    //overflow-x: auto;
 }
 
 mat-table {
-    min-width: 900px;
+    min-width: fit-content;
     height: 100%;
     min-height: 250px;
 }
 
-                                                                                                                                                                                                                                                    .main-container {
+.main-container {
     position: relative;
     padding-top: 24px;
     min-height: 30%;
     width: 90%;
     max-width: 1400px;
-    margin: 24px auto 0;
+    //margin: 24px auto 0;
 }
 
 // keep the material design specs
@@ -33,25 +33,34 @@ mat-table {
 .mat-column-action {
     flex: 0 0 65px;
     justify-content: center !important;
+    border-left: white solid 1px;
+}
+
+.mat-column-units {
+    flex: 1 0 120px;
+    justify-content: center !important;
+    border-left: ghostwhite solid 1px;
 }
 
 .mat-column-description {
     flex: 2 1 300px;
     padding-left: 4px;
     border-left: white solid 1px;
-    min-width: 100px;
+    min-width: 250px;
 }
 
 .mat-column-storeDescription {
     flex: 1 1 150px;
     padding: 0 4px;
     border-left: ghostwhite solid 1px;
+    min-width: 120px;
 }
 
 .mat-column-storeName,
 .mat-column-reference {
     flex: 1 1 120px;
     padding: 0 4px;
+    min-width: 120px;
     border-left: ghostwhite solid 1px;
 }
 
@@ -80,7 +89,7 @@ mat-table {
     left: 50%;
     transform: translateX(-50%);
     display: inherit;
-    gap:4px
+    gap: 4px
 }
 
 .container_div {

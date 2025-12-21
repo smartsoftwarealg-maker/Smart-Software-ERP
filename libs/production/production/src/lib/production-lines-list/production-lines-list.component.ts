@@ -12,16 +12,7 @@ import { DecimalPipe } from '@angular/common';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
-import { MatTooltip } from '@angular/material/tooltip';
 import {
-    MatTable,
-    MatColumnDef,
-    MatHeaderCell,
-    MatCell,
-    MatHeaderRow,
-    MatRow,
     MatHeaderCellDef,
     MatCellDef,
     MatHeaderRowDef,
@@ -35,7 +26,7 @@ import { ProductionService } from '../production-services/production.service';
 import { AccTransactionLineService } from '@ss/accounting/accounting-api';
 import { of, switchMap } from 'rxjs';
 import { MaterialModule } from '@ss/common/api-common';
-import {OptionService} from "@ss/logistics/ui-options";
+import {OptionService} from '@ss/logistics/ui-options';
 
 @Component({
     selector: 'ss-production-lines-list',
@@ -70,6 +61,7 @@ export class ProductionLinesListComponent
         'description',
         'qtyOrdered',
         'qtySatisfied',
+        'units',
         'storeDescription',
         'storeName',
         'price',

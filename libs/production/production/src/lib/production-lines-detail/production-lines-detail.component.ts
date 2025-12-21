@@ -13,6 +13,8 @@ import { Article, ArticleAutoCompleteModel } from '@ss/master-data/api-article';
 import { ManufacturedArticleService } from '@ss/master-data/api-article';
 import { MatTooltip } from '@angular/material/tooltip';
 import { BomLookupClass, BomService } from '@ss/master-data/ui-article';
+import { MatOption } from '@angular/material/core';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
     selector: 'ss-production-lines-detail',
@@ -33,23 +35,26 @@ import { BomLookupClass, BomService } from '@ss/master-data/ui-article';
         MatError,
         CdkTextareaAutosize,
         TranslatePipe,
-        MatTooltip
-    ]
+        MatTooltip,
+        MatOption,
+        MatSelect,
+    ],
 })
 export class ProductionLinesDetailComponent
     extends BaseTransactionLinesDetailComponent
-    implements OnInit, OnDestroy {
+    implements OnInit, OnDestroy
+{
     #articleSrv = inject(ManufacturedArticleService);
     #bomSrv = inject(BomService);
 
-    override articleLookup: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.#articleSrv);
+    override articleLookup: ArticleAutoCompleteModel =
+        new ArticleAutoCompleteModel(this.#articleSrv);
     bomLookup: BomLookupClass = new BomLookupClass(this.#bomSrv);
 
     constructor(protected detailSrv: ProductionLinesService) {
         super(detailSrv, DOC_PRODUCTION);
         this.articleLookup.onObjectSelected = (a) => this.onArticleLookup(a);
     }
-
 
     override setupForm(b: TransactionLine): UntypedFormGroup {
         this.bomLookup.reference = b?.reference;
