@@ -13,5 +13,6 @@
     "SOURCE_DOC":            "Source document",
     "PURCHASE_INVOICE":      "Purchase invoice",
     "IMPORT_RECEPTION":      "Import reception",
-    "TRANSPORT_RECEPTIONS":  "Transporter receptions"
+    "TRANSPORT_RECEPTIONS":  "Transporter receptions",
+    "UPDATE_QTY":            "Update quantity"
 }

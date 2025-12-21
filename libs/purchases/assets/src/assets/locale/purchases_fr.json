@@ -13,5 +13,6 @@
     "SOURCE_DOC":            "Document source",
     "PURCHASE_INVOICE":      "Facture d'achat",
     "IMPORT_RECEPTION":      "Réception d'importation",
-    "TRANSPORT_RECEPTIONS":  "Réceptions transporteur"
+    "TRANSPORT_RECEPTIONS":  "Réceptions transporteur",
+    "UPDATE_QTY":            "Modifier quantité"
 }

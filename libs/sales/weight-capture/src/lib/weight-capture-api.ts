@@ -13,6 +13,7 @@ export interface WeightCapture {
 export interface TruckStatus {
     id: number;
     type: 'tare'|'brut';
+    document: number;
 }
 
 export interface Scale {

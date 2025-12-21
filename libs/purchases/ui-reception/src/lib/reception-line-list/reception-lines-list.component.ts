@@ -1,18 +1,26 @@
-import {Component, OnInit,} from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import { Component, OnInit } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import {ArticleService} from '@ss/master-data/api-article';
-import {LotsService} from '@ss/common/api-lookup';
-import { BaseTransactionLinesListComponent } from '@ss/logistics/api-transaction';
+import { ArticleService } from '@ss/master-data/api-article';
+import { LotsService } from '@ss/common/api-lookup';
+import {
+    BaseTransactionLinesListComponent,
+    DOC_PRODUCTION,
+    DOC_PRODUCTION_ORDER,
+    DOC_RECEPTION,
+    DOC_SEPARATOR_200,
+    DOC_SEPARATOR_800,
+    TransactionLine,
+} from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { ReceptionLinesService } from '../reception-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import {WeightCaptureDialogButtonComponent} from "@ss/sales/weight-capture";
+import { WeightCaptureDialogButtonComponent } from '@ss/sales/weight-capture';
 
 @Component({
     selector: 'ss-reception-lines-list',
@@ -69,4 +77,28 @@ export class ReceptionLinesListComponent
             confirmationSrv,
         );
     }
+
+    updateQty(id: number, qty: number) {
+        this.detailSrv.get(id).subscribe({
+            next: (t) => {
+                t.qtySatisfied = qty;
+                t.qtyInvoiced = qty;
+                this.detailSrv.update(t).subscribe({
+                    next: () => {
+                        this.snackBarSrv.showSuccessMessage();
+                    },
+                    error: (err) => {
+                        this.snackBarSrv.showFailureMessage();
+                        throw err;
+                    },
+                });
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
+    }
+
+    protected readonly DOC_RECEPTION = DOC_RECEPTION;
 }

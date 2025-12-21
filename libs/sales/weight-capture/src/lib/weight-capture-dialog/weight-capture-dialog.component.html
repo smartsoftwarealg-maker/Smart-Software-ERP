@@ -1,7 +1,7 @@
 <mat-card>
     @if (form) {
         <mat-card-header>
-            <mat-radio-group (change)="unit = +$event.value" >
+            <mat-radio-group (change)="unit = +$event.value">
                 <mat-radio-button [checked]="unit == KG" [value]="KG">KG</mat-radio-button>
                 <mat-radio-button [checked]="unit == T" [value]="T">T</mat-radio-button>
             </mat-radio-group>
@@ -10,18 +10,18 @@
             <form novalidate [formGroup]="form">
                 @for (ctrl of scaleControls; track ctrl; let i = $index) {
                     <div class="scale-line">
-                    <mat-form-field  appearance="fill" class="scale-field">
-                        <mat-label translate>{{ scales[i]?.name }}</mat-label>
-                        <input matInput [formControl]="ctrl" type="text" class="text" readonly>
-                    </mat-form-field>
+                        <mat-form-field appearance="fill" class="scale-field">
+                            <mat-label translate>{{ scales[i]?.name }}</mat-label>
+                            <input matInput [formControl]="ctrl" type="text" class="text" readonly>
+                        </mat-form-field>
 
-                    <button mat-raised-button color="primary"
-                            type="button"
-                            class="read-btn"
-                            (click)="readWeight(i)" translate>
-                        <i class="fa-solid fa-check"></i>
-                        COMMON_READ
-                    </button>
+                        <button mat-raised-button color="primary"
+                                type="button"
+                                class="read-btn"
+                                (click)="readWeight(i)" translate>
+                            <i class="fa-solid fa-check"></i>
+                            COMMON_READ
+                        </button>
                     </div>
                 }
                 <div class="scale-line">
@@ -31,6 +31,9 @@
                         </mat-label>
                         <input matInput [formControl]="weightControl" type="text" class="text" readonly>
                     </mat-form-field>
+                    @if (isReception()) {
+                        <mat-checkbox [formControl]="updateQty" translate>PURCHASES_UPDATE_QTY</mat-checkbox>
+                    }
                 </div>
             </form>
             <div class="ctrl-div">

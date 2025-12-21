@@ -1,129 +1,129 @@
 @if (parentId) {
-  <div class="main-container">
+    <div class="main-container">
 
-    <div class="add-button">
-      <mat-form-field>
-        <mat-label translate>COMMON_SEARCH</mat-label>
-        <input matInput [formControl]="searchText" type="text">
-      </mat-form-field>
+        <div class="add-button">
+            <mat-form-field>
+                <mat-label translate>COMMON_SEARCH</mat-label>
+                <input matInput [formControl]="searchText" type="text">
+            </mat-form-field>
 
-      @if (isEditable) {
-        <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
-          <span class="fas fa-plus"></span>
-        </button>
-      }
-      <button mat-mini-fab (click)="edit()"
-        [matTooltip]="'COMMON_EDIT' | translate"
-        [disabled]="!selectedId"
-        color="accent">
-        <span class="fas fa-pen"></span>
-      </button>
-      @if (isEditable) {
-        @if (isEditable) {
-          <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-            [disabled]="!selectedId"
-            color="warn">
-            <span class="fas fa-trash-alt"></span>
-          </button>
-           <ss-weight-capture-dialog-button-dialog
-                    [transactionId]="selectedId"></ss-weight-capture-dialog-button-dialog>
-        }
-      }
-    </div>
-
-    <div class="container_div">
-      <mat-table mat-table [dataSource]="data" class="main-table">
-
-
-        <ng-container matColumnDef="position">
-          <mat-header-cell *matHeaderCellDef translate>COMMON_POSITION</mat-header-cell>
-          <mat-cell *matCellDef="let e">
-            {{ e.position }}
-          </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="storeDescription">
-          <mat-header-cell *matHeaderCellDef translate>{{ 'STOCK_STORE' }}</mat-header-cell>
-          <mat-cell *matCellDef="let e">
-            {{ e.storeName }}
-          </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="storeName">
-          <mat-header-cell *matHeaderCellDef translate>{{ usesLots() ? 'STOCK_LOT' : 'STOCK_STORE' }}
-          </mat-header-cell>
-
-          <mat-cell *matCellDef="let e">
-            {{ e.storeName }}
-          </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="reference">
-          <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-          <mat-cell *matCellDef="let e">
-            {{ e.reference }}
-          </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="description">
-          <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
-          <mat-cell *matCellDef="let e">
-            {{ e.refDescription }}
-          </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="qtySatisfied">
-          <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_SATISFIED</mat-header-cell>
-          <mat-cell *matCellDef="let e">
-            {{ e.qtySatisfied | number : '1.2-3' }}
-          </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="price">
-          <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
-          <mat-cell *matCellDef="let e">
-            {{ e.price | number : '1.2-2' }}
-          </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="total">
-          <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
-          <mat-cell *matCellDef="let e">
-            {{ e.price * e.qtySatisfied | number : '1.2-3' }}
-          </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="vat">
-          <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>
-          <mat-cell *matCellDef="let e">
-            {{ e.vat | number : '1.2-2' }}
-          </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="controls">
-          <mat-header-cell *matHeaderCellDef></mat-header-cell>
-          <mat-cell *matCellDef="let e">
-            <button mat-icon-button (click)="edit()">
-              <span class="fas fa-pen"></span>
+            @if (isEditable) {
+                <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
+                    <span class="fas fa-plus"></span>
+                </button>
+            }
+            <button mat-mini-fab (click)="edit()"
+                    [matTooltip]="'COMMON_EDIT' | translate"
+                    [disabled]="!selectedId"
+                    color="accent">
+                <span class="fas fa-pen"></span>
             </button>
-            <button mat-icon-button (click)="deleteSelected()">
-              <span class="fas fa-trash-alt"></span>
-            </button>
-          </mat-cell>
-        </ng-container>
+            @if (isEditable) {
+                <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+                        [disabled]="!selectedId"
+                        color="warn">
+                    <span class="fas fa-trash-alt"></span>
+                </button>
+                <ss-weight-capture-dialog-button-dialog [document]="DOC_RECEPTION"
+                                                        [transactionId]="selectedId"
+                                                        [callback]="updateQty.bind(this)">
+                </ss-weight-capture-dialog-button-dialog>
+            }
+        </div>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
-        *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
-    </div>
-    <div class="pagination-container b-b-background">
-      <ss-pagination [paginationModel]="pagination"></ss-pagination>
-    </div>
+        <div class="container_div">
+            <mat-table mat-table [dataSource]="data" class="main-table">
 
-    <div class="doc-info">
-      @if (selectedRow?.transacId) {
-        <ss-doc-info
-          [displayedGroups]="['article', 'document']"
+
+                <ng-container matColumnDef="position">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_POSITION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.position }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="storeDescription">
+                    <mat-header-cell *matHeaderCellDef translate>{{ 'STOCK_STORE' }}</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.storeName }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="storeName">
+                    <mat-header-cell *matHeaderCellDef translate>{{ usesLots() ? 'STOCK_LOT' : 'STOCK_STORE' }}
+                    </mat-header-cell>
+
+                    <mat-cell *matCellDef="let e">
+                        {{ e.storeName }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="reference">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.reference }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.refDescription }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="qtySatisfied">
+                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_SATISFIED</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.qtySatisfied | number : '1.2-3' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.price | number : '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="total">
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.price * e.qtySatisfied | number : '1.2-3' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="vat">
+                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.vat | number : '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="controls">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        <button mat-icon-button (click)="edit()">
+                            <span class="fas fa-pen"></span>
+                        </button>
+                        <button mat-icon-button (click)="deleteSelected()">
+                            <span class="fas fa-trash-alt"></span>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
+                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+        <div class="pagination-container b-b-background">
+            <ss-pagination [paginationModel]="pagination"></ss-pagination>
+        </div>
+
+        <div class="doc-info">
+            @if (selectedRow?.transacId) {
+                <ss-doc-info
+                        [displayedGroups]="['article', 'document']"
                         [params]="{
                         documentId: selectedRow?.transacId,
                         documentURL:'/correctionIn',
@@ -131,8 +131,8 @@
                         articleStoreId: selectedRow?.store,
                         detailId: selectedRow?.id||0
                }">
-        </ss-doc-info>
-      }
+                </ss-doc-info>
+            }
+        </div>
     </div>
-  </div>
 }

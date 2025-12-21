@@ -1,4 +1,11 @@
-import { Component, Inject, inject, OnDestroy, OnInit } from '@angular/core';
+import {
+    Component,
+    Inject,
+    inject,
+    OnDestroy,
+    OnInit,
+    signal,
+} from '@angular/core';
 import { MaterialModule } from '@ss/common/api-common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormControl } from '@angular/forms';
@@ -8,6 +15,7 @@ import { Scale, ScaleList, TruckStatus } from '../weight-capture-api';
 import { WeightCaptureService } from '../weight-capture.service';
 import { ScaleService } from '../scale.service';
 import { SnackBarService } from '@ss/common/ui-shell';
+import { DOC_RECEPTION } from '@ss/logistics/api-transaction';
 
 const TARE = 0;
 const BRUT = 1;
@@ -38,6 +46,8 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
         tareUserDescription: [''],
         brutUserDescription: [''],
     });
+    isReception = signal(false);
+    updateQty = new FormControl(false);
 
     private weightCaptureSrv = inject(WeightCaptureService);
     private scaleService = inject(ScaleService);
@@ -48,6 +58,9 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
         @Inject(MAT_DIALOG_DATA) private data: TruckStatus,
     ) {
         this.data.type == 'tare' ? (this.type = TARE) : (this.type = BRUT);
+        this.isReception.set(
+            data.document == DOC_RECEPTION && this.data.type == 'brut',
+        );
         this.weightCaptureSrv.getWeightCapture(data.id).subscribe({
             next: (res) => {
                 this.form.controls['id'].setValue(res.id || 0);
@@ -99,7 +112,8 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
                 .subscribe({
                     next: () => {
                         this.snackBarSrv.showSuccessMessage();
-                        this.dialogRef.close(this.form.getRawValue());
+                        const quantity = this.calculateQuantity();
+                        this.dialogRef.close(quantity);
                     },
                     error: (err) => {
                         this.snackBarSrv.showFailureMessage();
@@ -107,6 +121,15 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
                     },
                 });
         }
+    }
+
+    private calculateQuantity(): number | null {
+        if (!this.updateQty.value) return null;
+        const brut = Number(this.form.controls.brut.value);
+        const tare = Number(this.form.controls.tare.value);
+        return (!isNaN(brut) && !isNaN(tare))
+            ? (brut - tare) * this.unit
+            : null;
     }
 
     cancel() {
