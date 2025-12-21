@@ -311,6 +311,15 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         this.queryId = value;
     }
 
+    protected scaleUnits(val: TransactionLine) {
+        if (this.usesUnits()) {
+            val.qtyOrdered *= val.units;
+            val.qtySatisfied *= val.units;
+            val.qtyInvoiced *= val.units;
+            val.qtyReturned *= val.units;
+        }
+    }
+
     save() {
         if (this.saveButton.disabled) {
             return;
@@ -322,12 +331,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             return;
         }
         const val = this.readForm();
-        if (this.usesUnits()) {
-            val.qtyOrdered *= val.units;
-            val.qtySatisfied *= val.units;
-            val.qtyInvoiced *= val.units;
-            val.qtyReturned *= val.units;
-        }
+        this.scaleUnits(val);
         val.id = this.queryId;
         this.entitySrv.update(val)
             .pipe(tap(i => {
