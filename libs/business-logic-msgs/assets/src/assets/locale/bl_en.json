@@ -84,5 +84,6 @@
     "ALREADY_TRANSFERRED":           "Already transferred",
     "NO_TRANSFER_CREATED":           "No transfer created",
     "NO_RESERVATION_CREATED":        "No reservation created",
-    "PRODUCTION_ORDER_RESERVED":     "Production is already reserved. No further update is allowed"
+    "PRODUCTION_ORDER_RESERVED":     "Production is already reserved. No further update is allowed",
+    "QTY_ALREADY_SPECIFIED":         "Quantity is already satisfied. The transfer cannot be canceled."
 }

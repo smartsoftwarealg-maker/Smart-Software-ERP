@@ -36,7 +36,7 @@ import { ArticleSearchDlg } from '@ss/logistics/article-search';
 import {
     DELIVERY_CANCELLATION,
     IMPORT_RECEPTION,
-    INVOICE_CANCELLATION,
+    INVOICE_CANCELLATION, PRODUCTION,
     PRODUCTION_ORDER,
 } from '@ss/workflow';
 import {PackagingUnitsService} from '@ss/logistics/packaging-units';
@@ -275,11 +275,18 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             ( b.qtySatisfied > 0.0001 || !!b.sourceDoc || (this.document >= 200 && this.document <= 800 && b.qtyOrdered > 0.0001));
         this.referenceIsDisabled.set(referenceIsDisabled);
 
-        const unitsIsDisabled = !this.isEditable ||
-                                       b.qtySatisfied > 0.0 ||
-                                       ((this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 ) && b.qtyOrdered > 0.0) ||
-                                       (b.sourceDoc && this.document >= DOC_SEPARATOR_200 && this.document <= DOC_SEPARATOR_800 && b.qtyOrdered > 0.0) ||
-                                       b.document == PRODUCTION_ORDER;
+        const unitsIsDisabled =
+            !this.isEditable ||
+            b.qtySatisfied > 0.0 ||
+            ((this.document < DOC_SEPARATOR_200 ||
+                this.document > DOC_SEPARATOR_800) &&
+                b.qtyOrdered > 0.0) ||
+            (b.sourceDoc &&
+                this.document >= DOC_SEPARATOR_200 &&
+                this.document <= DOC_SEPARATOR_800 &&
+                b.qtyOrdered > 0.0) ||
+            b.document == PRODUCTION_ORDER ||
+            b.document == PRODUCTION;
         const units = b.units || 1;
 
         return this.formBuilder.group({

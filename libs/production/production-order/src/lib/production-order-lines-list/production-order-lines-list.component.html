@@ -89,7 +89,7 @@
                 <ng-container matColumnDef="qtySatisfied">
                     <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_SATISFIED</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{ e.qtySatisfied / e.units | number : '1.2-4' }}
+                        {{ e.qtySatisfied / (e.units || 1) | number : '1.2-4' }}
                     </mat-cell>
                 </ng-container>
 
