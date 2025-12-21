@@ -36,5 +36,7 @@
     "RESERVATIONS_DETAIL":  "Détail des réservations",
     "TRANSFERS_DETAIL":     "Détail des transferts",
     "PRODUCTIONS_TRANSFER": "Transfert de productions",
-    "PRODUCTION_TRANSFER":  "Transfert de production"
+    "PRODUCTION_TRANSFER":  "Transfert de production",
+    "RELEASE_CONFIRMATION": "Êtes-vous sûr de vouloir libérer ce produit",
+    "CANCEL_TRANSFER_CONFIRMATION": "Êtes-vous sûr de vouloir annuler le transfert de ce produit"
 }

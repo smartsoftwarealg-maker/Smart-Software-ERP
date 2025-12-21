@@ -119,14 +119,20 @@ export class ProductionTransferLinesListComponent
     }
 
     cancelTransfer() {
-        this.detailSrv.cancelTransfer(this.selectedId).subscribe({
-            next: () => {
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: (err) => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            },
-        });
+        this.confirmationSrv
+            .confirm('PROD_CANCEL_TRANSFER_CONFIRMATION', 'PROD_CANCEL_TRANSFER_CONFIRMATION')
+            .subscribe((res) => {
+                if (res) {
+                    this.detailSrv.cancelTransfer(this.selectedId).subscribe({
+                        next: () => {
+                            this.snackBarSrv.showSuccessMessage();
+                        },
+                        error: (err) => {
+                            this.snackBarSrv.showFailureMessage();
+                            throw err;
+                        },
+                    });
+                }
+            });
     }
 }

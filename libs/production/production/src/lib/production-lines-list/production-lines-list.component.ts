@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ArticleService } from '@ss/master-data/api-article';
@@ -35,6 +35,7 @@ import { ProductionService } from '../production-services/production.service';
 import { AccTransactionLineService } from '@ss/accounting/accounting-api';
 import { of, switchMap } from 'rxjs';
 import { MaterialModule } from '@ss/common/api-common';
+import {OptionService} from "@ss/logistics/ui-options";
 
 @Component({
     selector: 'ss-production-lines-list',
@@ -62,7 +63,7 @@ export class ProductionLinesListComponent
     implements OnInit
 {
     private productionSrv = inject(ProductionService);
-
+    #optionSrv = inject(OptionService);
     override displayedColumns = [
         'position',
         'reference',
@@ -96,10 +97,6 @@ export class ProductionLinesListComponent
             storeNamesSrv,
             confirmationSrv,
         );
-    }
-
-    override ngOnInit() {
-        super.ngOnInit();
     }
 
     override select(row: TransactionLine) {
@@ -151,6 +148,7 @@ export class ProductionLinesListComponent
                 },
             });
     }
+
     transfer() {
         this.detailSrv.transfer(this.selectedId).subscribe({
             next: () => {
@@ -164,14 +162,31 @@ export class ProductionLinesListComponent
     }
 
     cancelTransfer() {
-        this.detailSrv.cancelTransfer(this.selectedId).subscribe({
-            next: () => {
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: (err) => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            },
+        this.confirmationSrv
+            .confirm('PROD_CANCEL_TRANSFER_CONFIRMATION', 'PROD_CANCEL_TRANSFER_CONFIRMATION')
+            .subscribe((res) => {
+                if (res) {
+                    this.detailSrv.cancelTransfer(this.selectedId).subscribe({
+                        next: () => {
+                            this.snackBarSrv.showSuccessMessage();
+                        },
+                        error: (err) => {
+                            this.snackBarSrv.showFailureMessage();
+                            throw err;
+                        },
+                    });
+                }
+            });
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+
+        this.#optionSrv.get(this.loginSrv.appCtx.center).subscribe((res) => {
+            this.usesUnits.set(res.usesUnits);
+            this.displayedColumns = this.displayedColumns.filter(
+                (e) => res.usesUnits || e !== 'units',
+            );
         });
     }
 }
