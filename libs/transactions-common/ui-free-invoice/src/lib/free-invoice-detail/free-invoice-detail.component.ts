@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {
     BaseTransactionDetailComponent,
     DOC_DELIVERY,
+    DOC_PURCHASE_ORDER,
     DOC_QUOTATION,
     DOC_SALES_ORDER,
 } from '@ss/logistics/api-transaction';
@@ -102,6 +103,7 @@ export class FreeInvoiceDetailComponent
     protected importedDocuments(): Lookup[] {
         return [
             { id: DOC_QUOTATION, description: 'LOGISTICS_PROFORMA' },
+            { id: DOC_PURCHASE_ORDER, description: 'LOGISTICS_PURCHASE_ORDER' },
             { id: DOC_SALES_ORDER, description: 'SALES_ORDER' },
             { id: DOC_DELIVERY, description: 'COMMON_DELIVERY' },
         ];
