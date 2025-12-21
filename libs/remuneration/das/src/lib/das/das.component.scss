@@ -6,7 +6,7 @@
 
 mat-card {
     width: 90%;
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 16px auto;
     border-radius: 1.5em;
     padding: 12px;
@@ -38,8 +38,15 @@ button {
 
 .edo-text {
     width: calc(100% - 16px);
-    height: calc(100% - 128px);
-    margin: 0 auto;
+    height: calc(100% - 300px);
+    margin: 4px auto;
+}
+
+.save, .generate {
+    min-width: 7em;
+    i {
+        margin-right: 5px;
+    }
 }
 
 textarea {

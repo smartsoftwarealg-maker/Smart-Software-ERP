@@ -13,13 +13,13 @@ export class BomLookupClass extends DefaultAutoCompleteModel<BOM> {
 
     toString = (x: BOM) => x ? `${x.description}, ${x.version}`?.substring(0, 50) : null;
     filter = (filter: string) => {
-        const params = new HttpParams()
-            .set('reference', this.#referenceField)
-            .set('version', filter);
+        // const params = new HttpParams()
+        //     .set('reference', this.#referenceField)
+        //     .set('version', filter);
         return this.entitySrv
             .versions(this.#referenceField, filter)
             .pipe(map(x => this.filterLoadedData(x)));
-    }
+    };
 
     set reference(ref: string) {
         this.#referenceField = ref;

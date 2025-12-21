@@ -75,6 +75,7 @@
           class="generate"
           [disabled]="!form.valid"
           (click)="generate()">
+            <i class="fa-solid fa-engine"></i>
           {{ 'COMMON_GENERATE' | translate }}
         </button>
         <button mat-raised-button
@@ -83,6 +84,7 @@
           class="save"
           [disabled]="!form.valid"
           (click)="save()">
+            <i class="fa-solid fa-save"></i>
           {{ 'COMMON_SAVE' | translate }}
         </button>
       </div>
@@ -92,7 +94,7 @@
 
 <div class="edo-text">
   <textarea cols="100"
-    rows="40"
+    rows="50"
     class="text-area"
     readonly
     [value]="edoText">

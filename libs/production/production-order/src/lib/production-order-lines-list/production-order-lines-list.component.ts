@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -28,6 +28,7 @@ import {
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { OptionService } from '@ss/logistics/ui-options';
 
 @Component({
     selector: 'ss-production-order-lines-list',
@@ -64,11 +65,13 @@ export class ProductionOrderLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit
 {
+    #optionSrv = inject(OptionService);
     override displayedColumns = [
         'position',
         'reference',
         'description',
         'qtyOrdered',
+        'units',
         'qtySatisfied',
         'storeDescription',
         'storeName',
@@ -122,4 +125,14 @@ export class ProductionOrderLinesListComponent
         });
     }
 
+    override ngOnInit() {
+        super.ngOnInit();
+
+        this.#optionSrv.get(this.loginSrv.appCtx.center).subscribe((res) => {
+            this.usesUnits.set(res.usesUnits);
+            this.displayedColumns = this.displayedColumns.filter(
+                (e) => res.usesUnits || e !== 'units',
+            );
+        });
+    }
 }

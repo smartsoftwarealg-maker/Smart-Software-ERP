@@ -13,7 +13,7 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MatTooltip } from '@angular/material/tooltip';
-import {MaterialModule} from "@ss/common/api-common";
+import {MaterialModule} from '@ss/common/api-common';
 
 @Component({
     selector: 'ss-delivery-lines-detail',

@@ -18,7 +18,7 @@ mat-header-cell {
     padding-top: 24px;
     min-height: 30%;
     width: 90%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 24px auto 0;
 }
 
@@ -29,10 +29,10 @@ mat-header-cell {
 }
 
 .mat-column-description {
-    flex: 2 1 300px;
+    flex: 3 1 300px;
     padding-left: 4px;
     border-left: white solid 1px;
-    min-width: 100px;
+    min-width: 220px;
 }
 
 .mat-column-reference,
@@ -50,6 +50,13 @@ mat-header-cell {
 .mat-column-position {
     flex: 1 0 100px;
     justify-content: flex-end;
+    padding: 0 4px;
+    border-left: white solid 1px;
+}
+
+.mat-column-units {
+    flex: 1 0 100px;
+    justify-content: flex-start;
     padding: 0 4px;
     border-left: white solid 1px;
 }
@@ -73,6 +80,8 @@ mat-header-cell {
 
 .container_div {
     height: 100%;
+    width: 100%;
+    overflow-x: auto;
 }
 
 .pagination-container {

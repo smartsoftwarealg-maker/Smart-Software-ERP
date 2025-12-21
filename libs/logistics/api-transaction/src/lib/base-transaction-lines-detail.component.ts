@@ -33,9 +33,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Agent, AgentService } from '@ss/logistics/api-agent';
 import { LotInputDialogComponent } from '@ss/production/lot-input-dialog';
 import { ArticleSearchDlg } from '@ss/logistics/article-search';
-import {DELIVERY_CANCELLATION, IMPORT_RECEPTION, INVOICE_CANCELLATION} from "@ss/workflow";
-import {PackagingUnitsService} from "@ss/logistics/packaging-units";
-import {PackagingUnit} from "@ss/logistics/packaging-units";
+import {DELIVERY_CANCELLATION, IMPORT_RECEPTION, INVOICE_CANCELLATION} from '@ss/workflow';
+import {PackagingUnitsService} from '@ss/logistics/packaging-units';
+import {PackagingUnit} from '@ss/logistics/packaging-units';
 
 @Directive()
 export abstract class BaseTransactionLinesDetailComponent extends AbstractEntityComponent<TransactionLine> implements OnInit {
@@ -311,6 +311,15 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         this.queryId = value;
     }
 
+    protected scaleUnits(val: TransactionLine) {
+        if (this.usesUnits()) {
+            val.qtyOrdered *= val.units;
+            val.qtySatisfied *= val.units;
+            val.qtyInvoiced *= val.units;
+            val.qtyReturned *= val.units;
+        }
+    }
+
     save() {
         if (this.saveButton.disabled) {
             return;
@@ -322,12 +331,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             return;
         }
         const val = this.readForm();
-        if (this.usesUnits()) {
-            val.qtyOrdered *= val.units;
-            val.qtySatisfied *= val.units;
-            val.qtyInvoiced *= val.units;
-            val.qtyReturned *= val.units;
-        }
+        this.scaleUnits(val);
         val.id = this.queryId;
         this.entitySrv.update(val)
             .pipe(tap(i => {
@@ -404,16 +408,16 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         dialogRef
             .afterClosed()
             .pipe(tap((location: Location|null) => {
-                    if (location) {
-                        this.form.controls['reference'].setValue(location.reference);
-                        this.form.controls['store'].setValue(location.storeId);
-                        this.articleStock = location.stock;
+                if (location) {
+                    this.form.controls['reference'].setValue(location.reference);
+                    this.form.controls['store'].setValue(location.storeId);
+                    this.articleStock = location.stock;
 
-                        const priceList = [location.price1, location.price2, location.price3, location.price4, location.price5];
-                        this.form.controls['price'].setValue(priceList[this.#priceIndex]);
-                    }
-                }),
-                switchMap(res => this.articleSrv.get(res.referenceId))
+                    const priceList = [location.price1, location.price2, location.price3, location.price4, location.price5];
+                    this.form.controls['price'].setValue(priceList[this.#priceIndex]);
+                }
+            }),
+            switchMap(res => this.articleSrv.get(res.referenceId))
             ).subscribe((article: Article) => this.onArticle(article));
     }
 

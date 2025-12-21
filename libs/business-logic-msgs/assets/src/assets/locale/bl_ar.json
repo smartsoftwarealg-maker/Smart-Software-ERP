@@ -80,8 +80,9 @@
     "CANNOT_DELETE_ACTIVE_EMPLOYEE": "لا يمكن حذف مرتب موظف غير موقوف.",
     "NO_PROGRESS":                   "لا يوجد أي تقدم",
     "PROJECT_REQUIRED":              "مشروع / عقد / اتفاقية مطلوب",
-    "ALREADY_RESERVED":              "",
-    "ALREADY_TRANSFERRED":           "",
-    "NO_TRANSFER_CREATED":           "",
-    "NO_RESERVATION_CREATED":        ""
+    "ALREADY_RESERVED":              "محجوز بالفعل",
+    "ALREADY_TRANSFERRED":           "تم التحويل بالفعل",
+    "NO_TRANSFER_CREATED":           "لم يتم إنشاء أي تحويل",
+    "NO_RESERVATION_CREATED":        "لم يتم إنشاء أي حجز",
+    "PRODUCTION_ORDER_RESERVED":     "تم حجز أمر الإنتاج بالفعل. لا يسمح بأي تحديث آخر"
 }

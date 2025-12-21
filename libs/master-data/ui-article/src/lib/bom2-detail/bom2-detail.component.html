@@ -13,8 +13,7 @@
 
                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_PRODUCT</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
+                    <ss-auto-complete [required]="true"
                                       [model]="finalProductLookup"
                                       formControlName="productId">
                     </ss-auto-complete>
@@ -42,6 +41,31 @@
                     <mat-label translate>PROD_UPDATE_DATE</mat-label>
                     <ss-date-picker formControlName="updateDate" type="date"></ss-date-picker>
                 </mat-form-field>
+
+                @if (usesUnits()) {
+                    <mat-form-field id="qty" class="default-50 sm-100">
+                        <mat-label translate>COMMON_QTY</mat-label>
+                        <input matInput formControlName="qty" type="number" step="1" required>
+                        @if (form.controls['qty'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field id="units" class="default-50 sm-100">
+                        <mat-label translate>STOCK_UNITS</mat-label>
+                        <mat-select formControlName="units">
+                            @for (u of packagingUnits; track u.units) {
+                                <mat-option [value]="u.units">
+                                    {{ u.description }}
+                                </mat-option>
+                            }
+                        </mat-select>
+
+                        @if (form.controls['units'].hasError('required')) {
+                            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                        }
+                    </mat-form-field>
+                }
 
                 <mat-form-field class="default-100">
                     <mat-label translate>COMMON_MEMO</mat-label>

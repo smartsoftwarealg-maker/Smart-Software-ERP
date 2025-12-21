@@ -38,10 +38,10 @@ export class DasComponent implements OnInit {
     bases: Formula[] = [];
     edoText: string = '';
     modes: Lookup[] = [{ id: 1, description: 'REMUN_EMPLOYER'},
-                       { id: 2, description: 'PAYROLL_EMPLOYEE'}];
+        { id: 2, description: 'PAYROLL_EMPLOYEE'}];
 
     periods: Lookup[] = [{ id: 1, description: 'REMUN_DAYS'},
-                         { id: 2, description: 'REMUN_HOURS'}];
+        { id: 2, description: 'REMUN_HOURS'}];
 
     constructor(private shellSrv: ShellService,
                 private dasSrv: DasService,
@@ -63,11 +63,11 @@ export class DasComponent implements OnInit {
                 this.funds = res[0];
                 this.absences = res[1].body.filter(e => e.description != null &&
                                                         e.variable.startsWith('a') &&
-                                                        e.description.toLowerCase().indexOf('abs') >= 0)
+                                                        e.description.toLowerCase().indexOf('abs') >= 0);
                 this.bases = res[1].body.filter(e => e.description != null &&
                                                (e.description.toLowerCase().indexOf('base') >= 0 ||
-                                                e.variable == 'a998'))
-                });
+                                                e.variable == 'a998'));
+            });
     }
 
     generate() {

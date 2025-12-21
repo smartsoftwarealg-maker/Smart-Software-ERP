@@ -14,14 +14,19 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import {
     Article,
-    ManufacturedArticleService
+    BOM,
+    ManufacturedArticleService,
 } from '@ss/master-data/api-article';
 import { ArticleAutoCompleteModel } from '@ss/master-data/api-article';
 import { BomLookupClass, BomService } from '@ss/master-data/ui-article';
+import { MatOption } from '@angular/material/core';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
     selector: 'ss-production-order-lines-detail',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
+    styleUrls: [
+        '../../../../../common/assets/src/assets/transac-lines-detail.scss',
+    ],
     templateUrl: './production-order-lines-detail.component.html',
     standalone: true,
     imports: [
@@ -37,27 +42,42 @@ import { BomLookupClass, BomService } from '@ss/master-data/ui-article';
         UiAutoCompleteComponent,
         MatError,
         CdkTextareaAutosize,
+        MatOption,
+        MatSelect,
     ],
 })
-export class ProductionOrderLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy  {
+export class ProductionOrderLinesDetailComponent
+    extends BaseTransactionLinesDetailComponent
+    implements OnInit, OnDestroy
+{
     #articleSrv = inject(ManufacturedArticleService);
     #bomSrv = inject(BomService);
 
-    override articleLookup: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.#articleSrv);
+    override articleLookup: ArticleAutoCompleteModel =
+        new ArticleAutoCompleteModel(this.#articleSrv);
     bomLookup: BomLookupClass = new BomLookupClass(this.#bomSrv);
 
     constructor(protected detailSrv: ProductionOrderLinesService) {
         super(detailSrv, DOC_PRODUCTION_ORDER);
         this.articleLookup.onObjectSelected = (a) => this.onArticleLookup(a);
+        this.bomLookup.onObjectSelected = b => this.onBomLookup(b);
     }
 
     override setupForm(b: TransactionLine): UntypedFormGroup {
         this.bomLookup.reference = b?.reference;
+        if (this.usesUnits()) {
+            b.qtyOrdered = b.units;
+        }
         return super.setupForm(b);
     }
 
     override onArticle(a: Article) {
         super.onArticle(a);
         this.bomLookup.reference = a?.reference;
+    }
+
+
+    onBomLookup(b: BOM) {
+        this.form.get('units')?.setValue(b.units);
     }
 }
