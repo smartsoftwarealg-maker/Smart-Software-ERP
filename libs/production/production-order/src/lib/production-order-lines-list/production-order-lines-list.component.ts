@@ -114,15 +114,21 @@ export class ProductionOrderLinesListComponent
     }
 
     release() {
-        this.detailSrv.release(this.selectedId).subscribe({
-            next: () => {
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: (err) => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            },
-        });
+        this.confirmationSrv
+            .confirm('PROD_RELEASE_CONFIRMATION', 'PROD_RELEASE_CONFIRMATION')
+            .subscribe((res) => {
+                if (res) {
+                    this.detailSrv.release(this.selectedId).subscribe({
+                        next: () => {
+                            this.snackBarSrv.showSuccessMessage();
+                        },
+                        error: (err) => {
+                            this.snackBarSrv.showFailureMessage();
+                            throw err;
+                        },
+                    });
+                }
+            });
     }
 
     override ngOnInit() {

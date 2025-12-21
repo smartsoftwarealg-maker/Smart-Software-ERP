@@ -66,21 +66,21 @@ mat-table {
     border-left: white solid 1px;
 }
 
+.btn--div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5em;
+}
+
 .add-button {
     position: absolute;
     z-index: 999;
     top: -20px;
     left: 50%;
     transform: translateX(-50%);
-}
-
-.operation-button {
-    position: absolute;
-    z-index: 999;
-    top: -5px;
-    left: 95%;
-    transform: translateX(-50%);
-    width: 192px;
+    display: inherit;
+    gap:4px
 }
 
 .container_div {
@@ -106,4 +106,17 @@ mat-header-cell {
     justify-content: center !important;
     border-left: white solid 1px;
     font-family: Arial, serif;
+}
+
+@media (width < 600px) {
+    .add-button {
+        position: absolute;
+        z-index: 999;
+        top: -70px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 255px;
+    }
 }
