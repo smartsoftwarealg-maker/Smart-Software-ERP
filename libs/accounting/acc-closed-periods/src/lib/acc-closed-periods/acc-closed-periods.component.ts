@@ -65,7 +65,7 @@ export class AccClosedPeriodsComponent implements OnInit {
 
     closePeriod(closed: boolean) {
         this.selectedRow.closed = closed;
-        this.closedPeriodSrv.closeP(this.selectedRow).subscribe({
+        this.closedPeriodSrv.closePeriod(this.selectedRow).subscribe({
             next: () => {
                 this.snackBarSrv.showSuccessMessage();
             },

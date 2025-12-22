@@ -8,15 +8,15 @@ import { ClosedPeriod } from '@ss/accounting/accounting-api';
 })
 export class ClosedPeriodsService extends BaseEntityService<ClosedPeriod> {
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, '/accounting/periods');
+        super(httpSrv, '/accounting/acc-periods');
     }
 
     list(){
-        return this.httpSrv.get<ClosedPeriod[]>('/accounting/periods');
+        return this.httpSrv.get<ClosedPeriod[]>('/accounting/acc-periods');
     }
 
-    closeP(c : ClosedPeriod){
-        return this.httpSrv.post('/accounting/periods', c);
+    closePeriod(c : ClosedPeriod){
+        return this.httpSrv.post('/accounting/acc-periods', c);
     }
 
 }
