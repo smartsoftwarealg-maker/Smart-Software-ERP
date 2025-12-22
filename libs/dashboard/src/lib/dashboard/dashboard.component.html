@@ -76,7 +76,6 @@
           </ng-container>
         }
 
-
         <mat-header-row *matHeaderRowDef="headers; sticky: true"></mat-header-row>
         <mat-row class="selectable"
           *matRowDef="let row; columns: headers;">
@@ -89,7 +88,7 @@
   </div>
 </div>
 
-<div class="chart__div" [class.hidden]="!smallData()">
+<div class="chart__div" [class.hidden]="!smallData() || !validData()">
   <canvas [id]="'chart'"
     [ngStyle]="processing? {display: 'none'} : {display: 'block'}"
     [style.background]="light?'white' : 'black'">
