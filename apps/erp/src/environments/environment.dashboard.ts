@@ -36,10 +36,10 @@ export const appRoutes: Routes =  [
         component: MainPageComponent,
         canActivate: [CanActivateService]
     },
-    // {
-    //     path: SCHEDULED_SALES_APP_URL,
-    //     loadChildren: () => import('../app/scheduled-sales/scheduled-sales.module').then(m => m.ScheduledSalesModule)
-    // },
+    {
+        path: SCHEDULED_SALES_APP_URL,
+        loadChildren: () => import('../app/scheduled-sales/scheduled-sales.module').then(m => m.ScheduledSalesModule)
+    },
     {
         path: ADMINISTRATION_APP_URL,
         loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)
