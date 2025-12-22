@@ -301,6 +301,33 @@
                         }
                     ]
                 },
+                "dashboard": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/environment.dashboard.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "100mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                },
                 "scaek": {
                     "fileReplacements": [
                         {
@@ -898,6 +925,33 @@
                         }
                     ]
                 },
+                "dashboard": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/environment.dashboard.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "100mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                },
                 "scaek": {
                     "fileReplacements": [
                         {
@@ -1397,6 +1451,33 @@
                         {
                             "replace": "apps/erp/src/environments/environment.ts",
                             "with": "apps/erp/src/environments/environment.capa.ts"
+                        }
+                    ],
+                    "optimization": true,
+                    "outputHashing": "all",
+                    "sourceMap": false,
+                    "namedChunks": true,
+                    "extractLicenses": true,
+                    "vendorChunk": false,
+                    "buildOptimizer": true,
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "20mb",
+                            "maximumError": "100mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "60kb",
+                            "maximumError": "100kb"
+                        }
+                    ]
+                },
+                "dashboard": {
+                    "fileReplacements": [
+                        {
+                            "replace": "apps/erp/src/environments/environment.ts",
+                            "with": "apps/erp/src/environments/environment.dashboard.ts"
                         }
                     ],
                     "optimization": true,
