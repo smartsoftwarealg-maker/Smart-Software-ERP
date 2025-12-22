@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -55,6 +55,7 @@ export class ProductionLinesListComponent
 {
     private productionSrv = inject(ProductionService);
     #optionSrv = inject(OptionService);
+    hasQtyStyle = signal<boolean>(false);
     override displayedColumns = [
         'position',
         'reference',
@@ -111,6 +112,7 @@ export class ProductionLinesListComponent
     public produce(id: number) {
         this.productionSrv.produce(id).subscribe({
             next: () => {
+                this.hasQtyStyle.set(false);
                 this.snackBarSrv.showSuccessMessage();
                 this.refresh();
             },
@@ -131,6 +133,7 @@ export class ProductionLinesListComponent
             )
             .subscribe({
                 next: () => {
+                    this.hasQtyStyle.set(true);
                     this.snackBarSrv.showSuccessMessage();
                     this.refresh();
                 },
@@ -155,7 +158,10 @@ export class ProductionLinesListComponent
 
     cancelTransfer() {
         this.confirmationSrv
-            .confirm('PROD_CANCEL_TRANSFER_CONFIRMATION', 'PROD_CANCEL_TRANSFER_CONFIRMATION')
+            .confirm(
+                'PROD_CANCEL_TRANSFER_CONFIRMATION',
+                'PROD_CANCEL_TRANSFER_CONFIRMATION',
+            )
             .subscribe((res) => {
                 if (res) {
                     this.detailSrv.cancelTransfer(this.selectedId).subscribe({
