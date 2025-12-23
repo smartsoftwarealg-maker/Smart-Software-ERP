@@ -1,0 +1,91 @@
+mat-table {
+    min-width: 1200px;
+}
+
+mat-header-cell {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.75em;
+    font-family: Arial, serif;
+}
+
+.table-container  {
+    width: 96%;
+    height: 45%;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex: 1 0 60%;
+    overflow-x: auto;
+    min-height: 350px;
+}
+
+
+.pagination-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+.doc-info {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex: 1 1 40%;
+}
+
+.content-div {
+    width: 100%;
+    min-width: 800px;
+}
+
+.number {
+    text-align: end;
+    font-weight: bold;
+}
+
+.mat-column-agent {
+    flex: 1 1 200px;
+    border-left: gray solid 1px;
+    padding-left: 4px;
+}
+
+.mat-column-currencyRate,
+.mat-column-referenceDocDate,
+.mat-column-reference,
+.mat-column-date,
+.mat-column-docStatus,
+.mat-column-number {
+    flex: 1 1 100px;
+    border-left: gray solid 1px;
+}
+.mat-column-docStatus {
+    border-right: gray solid 1px;
+}
+.mat-column-locked,
+.mat-column-dirty {
+    flex: 1 1 90px;
+    justify-content: center;
+    border-left: gray solid 1px;
+}
+
+.dirty {
+    color: red;
+    text-decoration: line-through;
+}
+
+.mat-column-dealer,
+.mat-column-dealerName,
+.mat-column-payMethod {
+    flex: 1 1 120px;
+    border-left: gray solid 1px;
+}
+
+.mat-column-currency {
+    flex: 1 1 100px;
+    border-left: gray solid 1px;
+}
+.mat-column-currencyRate {
+    flex: 1 1 80px;
+    border-left: gray solid 1px;
+    justify-content: end;
+}
