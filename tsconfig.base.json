@@ -669,6 +669,9 @@
                 "libs/sales/ui-order-lines/src/index.ts"
             ],
             "@ss/sales/ui-proforma": ["libs/sales/ui-proforma/src/index.ts"],
+            "@ss/sales/ui-quick-order": [
+                "libs/sales/ui-quick-order/src/index.ts"
+            ],
             "@ss/sales/ui-sales-order": [
                 "libs/sales/ui-sales-order/src/index.ts"
             ],

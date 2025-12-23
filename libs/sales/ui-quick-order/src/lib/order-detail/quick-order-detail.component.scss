@@ -1,0 +1,33 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 98%;
+    width: min(100%, 900px);
+    margin: 0 auto;
+    gap: 5px;
+    padding: 5px;
+}
+
+mat-card {
+    border-radius: 1.4em;
+    padding: 8px;
+}
+
+mat-card,
+.detail_div {
+    width: 96%;
+    max-width: 1000px;
+    margin: 5px auto;
+    padding: 4px 0;
+}
+
+.filler__div {
+    height: .5em;
+}
+.detail_div {
+    max-width: 1400px;
+}
+
+.mat-mdc-tab-body-content {
+    margin-bottom: .5em !important;
+}
