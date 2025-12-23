@@ -54,7 +54,8 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VALIDATED</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
-                              [checked]="!e.dirty"></mat-checkbox>
+                              [checked]="!e.dirty">
+                </mat-checkbox>
             </mat-cell>
         </ng-container>
 
@@ -62,7 +63,8 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_LOCKED</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
-                              [checked]="e.locked"></mat-checkbox>
+                              [checked]="e.locked === true">
+                </mat-checkbox>
             </mat-cell>
         </ng-container>
 

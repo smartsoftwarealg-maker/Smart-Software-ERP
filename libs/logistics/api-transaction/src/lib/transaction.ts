@@ -70,7 +70,7 @@ export interface Transaction {
     reference: string;
     referenceDocDate: Date;
     payMethod: number;
-    locked: string;
+    locked: boolean;
     creationTime: string;
     discountDescription?: string;
     discount?: number;

@@ -28,8 +28,8 @@ export class OrderListComponent  extends BaseEntityListComponent<Transaction> {
         'date',
         'agent',
         'payMethod',
-        'dirty',
-        'locked',
+        // 'dirty',
+        // 'locked',
         'docStatus'
     ];
 
