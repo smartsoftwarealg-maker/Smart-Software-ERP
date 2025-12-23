@@ -653,7 +653,26 @@ export const mainRoutes: Routes = [
                 component: QuickOrderDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                children: [...docInfoRoutes],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'lines-list',
+                        component: OrderLinesListComponent,
+                        data: { source: 'quick' },
+                        children: docInfoRoutes,
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            {
+                                path: ':id',
+                                component: OrderLinesDetailComponent,
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
+                    },
+                    ...docInfoRoutes,
+                ],
             },
         ],
     },

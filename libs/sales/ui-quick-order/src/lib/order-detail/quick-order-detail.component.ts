@@ -1,6 +1,6 @@
 import { Component, inject, ViewChild } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import {
     FormsModule,
     ReactiveFormsModule,
@@ -23,14 +23,20 @@ import { QuickOrder } from '../quick-order.api';
 import { QuickOrderService } from '../quick-order.service';
 import {
     Agent,
+    AgentLookupModel,
     AgentService,
     TransporterService,
 } from '@ss/logistics/api-agent';
 import { UserListService } from '@ss/common/api-users';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
-import { Currency, CurrencyService, PayMethod } from '@ss/common/api-lookup';
+import { PayMethod } from '@ss/common/api-lookup';
 import { Project, SalesContractService } from '@ss/logistics/contracts';
 import { BaseEntityService } from '@ss/common/api-base-entity';
+import {
+    ArticleAutoCompleteModel,
+    ArticleService,
+} from '@ss/master-data/api-article';
+import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
 
 @Component({
     imports: [
@@ -40,6 +46,7 @@ import { BaseEntityService } from '@ss/common/api-base-entity';
         TranslateDirective,
         DatePickerComponent,
         UiAutoCompleteComponent,
+        RouterOutlet,
     ],
     selector: 'ss-ui-quick-order-detail',
     standalone: true,
@@ -66,18 +73,18 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             'SALES_QUICK_ORDER_DETAIL',
         );
     }
-
+    formId: number;
     #loginSrv = inject(LoginService);
     #agentSrv = inject(AgentService);
     #userSrv = inject(UserListService);
     #payMethodSrv = inject(PayMethodService);
     #salesProjectSrv = inject(SalesContractService);
     #transporterSrv = inject(TransporterService);
-    #currencySrv = inject(CurrencyService);
+    #articleSrv = inject(ArticleService);
+    #orderLineSrv = inject(SalesOrderLinesService);
 
-    agentLookup = new DefaultAutoCompleteModel(this.#agentSrv);
+    agentLookup = new AgentLookupModel(this.#agentSrv);
     userLookup = new UserLookup(this.#userSrv);
-    dealerLookup = new UserLookup(this.#userSrv);
     payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(
         this.#payMethodSrv,
     );
@@ -87,12 +94,14 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
         'id',
         'denomination',
     );
-    public currencyAutoCompleteModel = new DefaultAutoCompleteModel<Currency>(
-        this.#currencySrv,
+    articleLookup: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(
+        this.#articleSrv,
     );
 
     public override setupForm(q: QuickOrder): UntypedFormGroup {
-        this.#salesProjectSrv.setParentId(q.agent || 0)
+        this.#salesProjectSrv.setParentId(q.agent || 0);
+        this.#orderLineSrv.setParentId(q.id || 0);
+        this.formId = q.id || 0;
         return this.formBuilder.group({
             id: [q.id],
             centerId: [q.centerId || this.#loginSrv.appCtx.center],
