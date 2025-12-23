@@ -23,19 +23,19 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 @Component({
     selector: 'ss-acc-closed-periods',
     imports: [
-    MatCell,
-    MatCellDef,
-    MatCheckbox,
-    MatColumnDef,
-    MatHeaderCell,
-    MatTable,
-    MatHeaderCellDef,
-    MatHeaderRow,
-    MatHeaderRowDef,
-    MatRow,
-    MatRowDef,
-    TranslateDirective
-],
+        MatCell,
+        MatCellDef,
+        MatCheckbox,
+        MatColumnDef,
+        MatHeaderCell,
+        MatTable,
+        MatHeaderCellDef,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatRow,
+        MatRowDef,
+        TranslateDirective
+    ],
     templateUrl: './acc-closed-periods.component.html',
     styleUrl: './acc-closed-periods.component.scss',
     standalone: true,
@@ -65,14 +65,16 @@ export class AccClosedPeriodsComponent implements OnInit {
 
     closePeriod(closed: boolean) {
         this.selectedRow.closed = closed;
-        this.closedPeriodSrv.closePeriod(this.selectedRow).subscribe({
-            next: () => {
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: () => {
-                this.snackBarSrv.showFailureMessage();
-            },
-        });
+        this.closedPeriodSrv
+            .closePeriod(this.selectedRow)
+            .subscribe({
+                next: () => {
+                    this.snackBarSrv.showSuccessMessage();
+                },
+                error: () => {
+                    this.snackBarSrv.showFailureMessage();
+                },
+            });
     }
 
     selectRow(row: ClosedPeriod) {
