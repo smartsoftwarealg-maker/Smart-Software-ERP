@@ -18,20 +18,26 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 @Component({
     selector: 'ss-order-lines-list',
     templateUrl: './order-lines-list.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
+    styleUrls: [
+        '../../../../../common/assets/src/assets/transac-lines-list.scss',
+    ],
     standalone: true,
-    imports: [CommonModule,
+    imports: [
+        CommonModule,
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-       
 
-
-        DocInfoComponent, TranslatePipe, PaginationComponent
-    ]
+        DocInfoComponent,
+        TranslatePipe,
+        PaginationComponent,
+    ],
 })
-export class OrderLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
+export class OrderLinesListComponent
+    extends BaseTransactionLinesListComponent
+    implements OnInit
+{
     displayedColumns = [
         'position',
         'store',
@@ -41,7 +47,7 @@ export class OrderLinesListComponent extends BaseTransactionLinesListComponent i
         'qtySatisfied',
         'price',
         'vat',
-        'total'
+        'total',
     ];
 
     constructor(
@@ -52,14 +58,27 @@ export class OrderLinesListComponent extends BaseTransactionLinesListComponent i
         public override router: Router,
         public override articleSrv: ArticleService,
         public override storeNamesSrv: LotsService,
-        public override confirmationSrv: ConfirmationDialogService) {
-        super(detailSrv,
+        public override confirmationSrv: ConfirmationDialogService,
+    ) {
+        super(
+            detailSrv,
             shellSrv,
             snackBarSrv,
             route,
             router,
             articleSrv,
             storeNamesSrv,
-            confirmationSrv);
+            confirmationSrv,
+        );
+    }
+    override ngOnInit() {
+        super.ngOnInit();
+        this.route.data.subscribe(({ source }) => {
+            if (source === 'quick') {
+                this.displayedColumns = this.displayedColumns.filter(
+                    (col) => col !== 'store',
+                );
+            }
+        });
     }
 }

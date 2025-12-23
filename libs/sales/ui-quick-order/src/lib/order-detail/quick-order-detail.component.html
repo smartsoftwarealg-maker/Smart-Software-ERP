@@ -16,19 +16,6 @@
                     <ss-date-picker formControlName="date"></ss-date-picker>
                 </mat-form-field>
 
-                <mat-form-field id="reference" class="default-25 sm-100">
-                    <mat-label translate>COMMON_REFERENCE</mat-label>
-                    <input matInput formControlName="reference" type="text">
-                </mat-form-field>
-
-                <mat-form-field class="default-25 sm-100">
-                    <mat-label translate>COMMON_QTY</mat-label>
-                    <input matInput formControlName="qty" type="number" required>
-                    @if (form.controls['qty'].invalid) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
-                </mat-form-field>
-
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
                     <ss-auto-complete matInput
@@ -58,96 +45,29 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>STOCK_DEALER</mat-label>
+                <mat-form-field id="reference" class="default-50 sm-100">
+                    <mat-label translate>COMMON_REFERENCE</mat-label>
                     <ss-auto-complete matInput
-                                      [required]="false"
-                                      [model]="dealerLookup"
-                                      formControlName="dealer"></ss-auto-complete>
-                </mat-form-field>
-
-
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_USER</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="false"
-                                      [model]="userLookup"
-                                      formControlName="userID">
+                                      [model]="articleLookup"
+                                      formControlName="reference">
                     </ss-auto-complete>
                 </mat-form-field>
 
                 <mat-form-field class="default-25 sm-100">
-                    <mat-label translate>LOGISTICS_CURRENCY</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="false"
-                                      [model]="currencyAutoCompleteModel"
-                                      formControlName="currency"></ss-auto-complete>
-                </mat-form-field>
-
-                <mat-form-field class="default-25 sm-100">
-                    <mat-label translate>LOGISTICS_EXCHANGE_RATE</mat-label>
-                    <input matInput formControlName="currencyRate" type="number" required>
-                    @if (form.controls['currencyRate'].invalid) {
+                    <mat-label translate>COMMON_QTY</mat-label>
+                    <input matInput formControlName="qty" type="number">
+                    @if (form.controls['qty'].invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_TRANSPORTER</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="transporterLookup"
-                                      formControlName="transporter">
-                    </ss-auto-complete>
-                </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_DRIVER</mat-label>
-                    <input matInput formControlName="driver" type="text">
-                </mat-form-field>
-
-                <mat-form-field class="default-25 sm-100">
-                    <mat-label translate>LOGISTICS_DRIVER_LICENSE</mat-label>
-                    <input matInput formControlName="license" type="text">
-                </mat-form-field>
-
-                <mat-form-field class="default-25 sm-100">
-                    <mat-label translate>LOGISTICS_LICENSE_DATE</mat-label>
-                    <ss-date-picker formControlName="licenseDate"></ss-date-picker>
-                </mat-form-field>
-
-                <mat-form-field class="default-25 sm-100">
-                    <mat-label translate>LOGISTICS_LICENSE_ISSUER</mat-label>
-                    <input matInput formControlName="licenseIssuer" type="text">
-                </mat-form-field>
-
-                <mat-form-field class="default-25 sm-100">
-                    <mat-label translate>LOGISTICS_PLATE_NUMBER</mat-label>
-                    <input matInput formControlName="plateNumber" type="text" maxlength="15">
-                    @if (form.controls['plateNumber'].hasError('maxlength')) {
-                        <mat-error [translate]="{maxLen: 15}">
-                            COMMON_FIELD_MAX_LENGTH
-                        </mat-error>
-                    }
-                </mat-form-field>
-
-                <mat-form-field class="default-25 sm-100">
-                    <mat-label translate>LOGISTICS_PLATE_NUMBER2</mat-label>
-                    <input matInput formControlName="plateNumber2" type="text" maxlength="15">
-                    @if (form.controls['plateNumber2'].hasError('maxlength')) {
-                        <mat-error [translate]="{maxLen: 15}">
-                            COMMON_FIELD_MAX_LENGTH
-                        </mat-error>
-                    }
-                </mat-form-field>
-
-                <div class="default-25 sm-50">
-                    <mat-checkbox formControlName="dirty" translate>COMMON_VALIDATED</mat-checkbox>
-                </div>
-
-                <div class="default-25 sm-50">
-                    <mat-checkbox formControlName="locked" translate>COMMON_LOCKED</mat-checkbox>
-                </div>
             </form>
         </mat-card-content>
     </mat-card>
+
+    @if (formId) {
+        <router-outlet></router-outlet>
+    }
+
 }
