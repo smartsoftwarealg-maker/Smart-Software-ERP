@@ -108,13 +108,13 @@ export class OptionsDetailComponent
             art_accno_required: [a.art_accno_required || false, Validators.required],
             two_step_reception: [a.two_step_reception || false, Validators.required],
             check_chron_order:  [a.check_chron_order || false, Validators.required],
-            SalesPrice4Factor:  [a.SalesPrice4Factor || 1, Validators.required],
-            SalesPrice5Factor:  [a.SalesPrice5Factor || 1, Validators.required],
+            salesPrice4Factor:  [a.salesPrice4Factor || 1, Validators.required],
+            salesPrice5Factor:  [a.salesPrice5Factor || 1, Validators.required],
             qtyDiscount:        [a.qtyDiscount || false, Validators.required],
             serviceInvoiceOnly: [a.serviceInvoiceOnly],
             balanceTolerance:   [a.balanceTolerance || 0, [Validators.min(0), Validators.max(1000)]],
             complementaryInvoice:[a.complementaryInvoice],
-            AllowExpiredProjects:[a.AllowExpiredProjects],
+            allowExpiredProjects:[a.allowExpiredProjects],
         });
     }
 
