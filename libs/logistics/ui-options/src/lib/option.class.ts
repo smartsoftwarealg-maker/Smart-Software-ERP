@@ -31,8 +31,8 @@ export class Option {
     art_accno_required: boolean;
     two_step_reception: boolean;
     check_chron_order: boolean;
-    SalesPrice4Factor: number;
-    SalesPrice5Factor: number;
+    salesPrice4Factor: number;
+    salesPrice5Factor: number;
     generate_GL: boolean;
     blockNewLots: boolean;
     severe: boolean;
@@ -50,7 +50,7 @@ export class Option {
     serviceInvoiceOnly: boolean;
     balanceTolerance: number;
     complementaryInvoice: boolean;
-    AllowExpiredProjects: boolean;
+    allowExpiredProjects: boolean;
 }
 
 export interface MiniLine {
