@@ -114,6 +114,7 @@ export class OptionsDetailComponent
             serviceInvoiceOnly: [a.serviceInvoiceOnly],
             balanceTolerance:   [a.balanceTolerance || 0, [Validators.min(0), Validators.max(1000)]],
             complementaryInvoice:[a.complementaryInvoice],
+            AllowExpiredProjects:[a.AllowExpiredProjects],
         });
     }
 

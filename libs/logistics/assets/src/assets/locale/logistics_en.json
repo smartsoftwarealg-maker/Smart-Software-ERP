@@ -226,5 +226,6 @@
     "COMPLEMENTARY_INVOICE": "Complementary invoice",
     "BALANCE_TOLERANCE‱":     "Balance tolerance ‱",
     "VALUE_BETWEEN_0&1000": "Value must be between 0 and 1000",
-    "LICENSE_DATE":         "License date"
+    "LICENSE_DATE":         "License date",
+    "ALLOW_EXPIRED_PROJECTS": "Allow expired projects"
 }
