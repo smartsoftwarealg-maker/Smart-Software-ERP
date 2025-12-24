@@ -87,5 +87,6 @@
     "PRODUCTION_ORDER_RESERVED":          "L'ordre de production est déjà réservé. Aucune autre mise à jour n'est autorisée",
     "QTY_ALREADY_SPECIFIED":              "La quantité est déjà satisfaite. Le transfert ne peut pas être annulé.",
     "MISSING_REFERENCE":                  "Référence manquante.",
-    "MISSING_QUANTITY":                   "Quantité manquante."
+    "MISSING_QUANTITY":                   "Quantité manquante.",
+    "PAYROLL_ERROR":                      "La paie contient les erreurs suivantes : "
 }

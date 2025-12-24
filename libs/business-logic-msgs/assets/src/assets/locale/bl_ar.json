@@ -86,6 +86,7 @@
     "NO_RESERVATION_CREATED":        "لم يتم إنشاء أي حجز",
     "PRODUCTION_ORDER_RESERVED":     "تم حجز أمر الإنتاج بالفعل. لا يسمح بأي تحديث آخر",
     "QTY_ALREADY_SPECIFIED":         "الكمية مستوفاة بالفعل. لا يمكن إلغاء التحويل.",
-    "MISSING_REFERENCE":             "المرجع غير موجود",
-    "MISSING_QUANTITY":              "الكمية غير موجودة"
+    "MISSING_REFERENCE":             "المرجع مفقود.",
+    "MISSING_QUANTITY":              "الكمية مفقودة.",
+    "PAYROLL_ERROR":                 "يحتوي كشف الرواتب على الأخطاء التالية: "
 }

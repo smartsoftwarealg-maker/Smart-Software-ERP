@@ -87,5 +87,6 @@
     "PRODUCTION_ORDER_RESERVED":     "Production is already reserved. No further update is allowed",
     "QTY_ALREADY_SPECIFIED":         "Quantity is already satisfied. The transfer cannot be canceled.",
     "MISSING_REFERENCE":             "Missing reference.",
-    "MISSING_QUANTITY":              "Missing quantity."
+    "MISSING_QUANTITY":              "Missing quantity.",
+    "PAYROLL_ERROR":                 "The payroll contains the following errors: "
 }
