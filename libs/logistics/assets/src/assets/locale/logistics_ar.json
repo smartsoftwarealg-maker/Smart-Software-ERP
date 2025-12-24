@@ -224,5 +224,6 @@
     "COMPLEMENTARY_INVOICE": "فُرُوغ الفاتورة",
     "BALANCE_TOLERANCE‱":     "هامش التسامح في الوزن ‱",
     "VALUE_BETWEEN_0&1000": "القيمة يجب أن تكون بين 0 و 1000",
-    "LICENSE_DATE":         "تاريخ الرخصة"
+    "LICENSE_DATE":         "تاريخ الرخصة",
+    "ALLOW_EXPIRED_PROJECTS": "السماح بالمشاريع المُنتهية"
 }
