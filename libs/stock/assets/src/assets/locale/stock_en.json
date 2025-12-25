@@ -106,5 +106,8 @@
     "USES_UNITS":               "Uses article units",
     "UNITS":                    "Units",
     "QTY_DISCOUNT":             "Rebate in quantities",
-    "SERVICE_INVOICE_ONLY":     "Service invoice only"
+    "SERVICE_INVOICE_ONLY":     "Service invoice only",
+    "SALABLE":                  "Salable",
+    "PURCHASABLE":              "Purchasable",
+    "CONSUMABLE":               "Consumable"
 }

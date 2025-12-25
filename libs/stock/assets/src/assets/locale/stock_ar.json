@@ -105,5 +105,8 @@
     "USES_UNITS":               "استعمل عدد الوحدات",
     "UNITS":                    "الوحدات",
     "QTY_DISCOUNT":             "خصم في الكميات",
-    "SERVICE_INVOICE_ONLY":     "فاتورة الخدمة فقط"
+    "SERVICE_INVOICE_ONLY":     "فاتورة الخدمة فقط",
+    "SALABLE":                  "قابل للبيع",
+    "PURCHASABLE":              "قابل للشراء",
+    "CONSUMABLE":               "قابل للاستهلاك"
 }
