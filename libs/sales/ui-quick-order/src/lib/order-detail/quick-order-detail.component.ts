@@ -54,6 +54,23 @@ import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
     templateUrl: './quick-order-detail.component.html',
 })
 export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOrder> {
+    formId: number;
+    #loginSrv = inject(LoginService);
+    #agentSrv = inject(AgentService);
+    #userSrv = inject(UserListService);
+    #payMethodSrv = inject(PayMethodService);
+    #salesProjectSrv = inject(SalesContractService);
+    #transporterSrv = inject(TransporterService);
+    #articleSrv = inject(ArticleService);
+    #orderLineSrv = inject(SalesOrderLinesService);
+
+    agentLookup = new AgentLookupModel(this.#agentSrv);
+    userLookup = new UserLookup(this.#userSrv);
+    payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(
+        this.#payMethodSrv,
+    );
+    salesProjectLookup = new ProjectLookupModel(this.#salesProjectSrv);
+
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
     constructor(
         public override entitySrv: QuickOrderService,
@@ -73,27 +90,12 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             'SALES_QUICK_ORDER_DETAIL',
         );
     }
-    formId: number;
-    #loginSrv = inject(LoginService);
-    #agentSrv = inject(AgentService);
-    #userSrv = inject(UserListService);
-    #payMethodSrv = inject(PayMethodService);
-    #salesProjectSrv = inject(SalesContractService);
-    #transporterSrv = inject(TransporterService);
-    #articleSrv = inject(ArticleService);
-    #orderLineSrv = inject(SalesOrderLinesService);
-
-    agentLookup = new AgentLookupModel(this.#agentSrv);
-    userLookup = new UserLookup(this.#userSrv);
-    payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(
-        this.#payMethodSrv,
-    );
-    salesProjectLookup = new ProjectLookupModel(this.#salesProjectSrv);
     public transporterLookup = new DefaultAutoCompleteModel<Agent>(
         this.#transporterSrv,
         'id',
         'denomination',
     );
+
     articleLookup: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(
         this.#articleSrv,
     );
