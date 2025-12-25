@@ -108,5 +108,6 @@
     "SERVICE_INVOICE_ONLY":     "Facture de service uniquement",
     "SALABLE":                  "Vendable",
     "PURCHASABLE":              "Achetable",
-    "CONSUMABLE":               "Consommable"
+    "CONSUMABLE":               "Consommable",
+    "NO_ORDER_CONTROL":         "Pas de contrôle des commandes de vente"
 }

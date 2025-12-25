@@ -90,6 +90,7 @@ export interface Article {
     salable: boolean;
     purchasable: boolean;
     consumable: boolean;
+    noOrderControl: boolean;
 }
 
 export interface StockInfo {
