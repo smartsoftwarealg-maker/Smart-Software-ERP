@@ -1,11 +1,11 @@
-import { Component, DestroyRef, EventEmitter, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import {LogNode, Schema, TraceabilityService} from "./traceability.service";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
-import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
-import { debounceTime, distinctUntilChanged, switchMap, takeUntil } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 
 
@@ -124,7 +124,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     }
 
     public refresh() {
-        this.processing.set(true);
+        //this.processing.set(true);
         const value = this.form.value;
         this.traceSrv.getDetails(
             value.fromDate,
