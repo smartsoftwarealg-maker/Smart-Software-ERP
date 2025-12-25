@@ -22,7 +22,8 @@
 }
 
 .mat-column-reference {
-    flex: 1 1 120px;
+    flex: 1 1 200px;
+    min-width: 200px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
