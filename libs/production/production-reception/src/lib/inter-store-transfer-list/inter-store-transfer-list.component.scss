@@ -11,6 +11,7 @@
 
 .main-table {
     width: 100%;
+    min-width: fit-content;
 }
 
 mat-table {
@@ -36,6 +37,10 @@ mat-table {
     flex: 1 1 180px;
     padding-right: 8px !important;
     padding-left: 8px !important;
+}
+
+.mat-column-reference {
+    min-width: 200px;
 }
 
 .pagination-container {
