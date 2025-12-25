@@ -1,8 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Article, ArticleService} from '@ss/master-data/api-article';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import {tap} from 'rxjs/operators';
+import { switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {UntypedFormBuilder, Validators} from '@angular/forms';
 import {
@@ -23,6 +23,7 @@ import {HttpService, IsParamService, MaterialModule} from '@ss/common/api-common
 import {TranslateDirective} from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
 import {toSignal} from '@angular/core/rxjs-interop';
+import { WeightCaptureService } from '@ss/sales/weight-capture';
 
 @Component({
     selector: 'ss-article-detail',
@@ -36,21 +37,24 @@ import {toSignal} from '@angular/core/rxjs-interop';
         ImageInputComponent,
         UiAutoCompleteComponent,
         ArticleStoreComponent,
-    ]
+    ],
 })
-export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
-    private isParamSrv = inject(IsParamService);
-    private subClassSrv =  inject(SubclassService);
-    private classSrv =  inject(ClassService);
-    private markSrv  =  inject(MarkService);
-    private unitSrv  =  inject(UnitService);
-    private vatSrv   = inject(VatService);
-    private typeSrv  = inject(ArticleTypeService);
+export class ArticleDetailComponent
+    extends BaseEntityDetailComponent<Article>
+    implements OnInit
+{
+    private weightCaptureSrv = inject(WeightCaptureService);
+    private subClassSrv = inject(SubclassService);
+    private classSrv = inject(ClassService);
+    private markSrv = inject(MarkService);
+    private unitSrv = inject(UnitService);
+    private vatSrv = inject(VatService);
+    private typeSrv = inject(ArticleTypeService);
 
     imageModel: ImageModel;
     aid = 0;
+    scaleExists = signal(false);
 
-    isSODISMAC = toSignal(this.isParamSrv.is('SODISMAC'));
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
     subClassLookup = new DefaultAutoCompleteModel(this.subClassSrv);
     unitLookup = new DefaultAutoCompleteModel(this.unitSrv);
@@ -70,14 +74,32 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
-        public router: Router) {
-        super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_EDIT_ARTICLE');
+        public router: Router,
+    ) {
+        super(
+            articleSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            'STOCK_EDIT_ARTICLE',
+        );
         this.imageModel = new ImageModel(this.httpSrv);
     }
 
-
     public override preload(): Observable<Vat[]> {
-        return this.lookupsSrv.getVats().pipe(tap(res => this.vats = res));
+        return this.weightCaptureSrv
+            .hasScaleConfig()
+            .pipe(
+                tap((exists) => {
+                    if (exists) {
+                        this.scaleExists.set(true);
+                    }
+                }),
+                switchMap(() => this.lookupsSrv.getVats()),
+                tap((res) => (this.vats = res))
+            );
     }
 
     override finishLoading(e: Article) {
@@ -91,28 +113,29 @@ export class ArticleDetailComponent extends BaseEntityDetailComponent<Article> i
         this.aid = a.id;
         return this.formBuilder.group({
             description2: [a.description2, Validators.required],
-            id:           [a.id],
-            mark:         [a.mark],
-            maxQty:       [a.maxQty],
-            minQty:       [a.minQty],
-            klass:        [a.klass],
-            salesUnit:    [a.salesUnit],
+            id: [a.id],
+            mark: [a.mark],
+            maxQty: [a.maxQty],
+            minQty: [a.minQty],
+            klass: [a.klass],
+            salesUnit: [a.salesUnit],
             purchaseUnit: [a.purchaseUnit],
-            price1:       [a.price1 || 0],
-            reference:    [a.reference, Validators.required],
-            appId:        [a.appId || this.articleSrv.getParentId()],
-            notForSale:   [a.notForSale || false, Validators.required],
-            vat:          [a.vat],
-            vat2:         [a.vat2],
-            blocked:      [a.blocked],
-            articleType:  [a.articleType],
-            subClass:     [a.subClass],
-            info:         [a.info],
-            importTax:    [a.importTax || 0],
-            discountable: [a.discountable],
-            salable:      [a.salable],
-            purchasable:  [a.purchasable],
-            consumable:   [a.consumable],
+            price1: [a.price1 || 0],
+            reference: [a.reference, Validators.required],
+            appId: [a.appId || this.articleSrv.getParentId()],
+            notForSale:     [a.notForSale || false, Validators.required],
+            vat:            [a.vat],
+            vat2:           [a.vat2],
+            blocked:        [a.blocked],
+            articleType:    [a.articleType],
+            subClass:       [a.subClass],
+            info:           [a.info],
+            importTax:      [a.importTax || 0],
+            discountable:   [a.discountable],
+            salable:        [a.salable],
+            purchasable:    [a.purchasable],
+            consumable:     [a.consumable],
+            noOrderControl: [a.noOrderControl],
         });
     }
 

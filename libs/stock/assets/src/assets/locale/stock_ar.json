@@ -108,5 +108,6 @@
     "SERVICE_INVOICE_ONLY":     "فاتورة الخدمة فقط",
     "SALABLE":                  "قابل للبيع",
     "PURCHASABLE":              "قابل للشراء",
-    "CONSUMABLE":               "قابل للاستهلاك"
+    "CONSUMABLE":               "قابل للاستهلاك",
+    "NO_ORDER_CONTROL":         "لا يوجد مراقبة لطلبات البيع"
 }
