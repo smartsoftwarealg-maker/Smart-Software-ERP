@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ELine} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -7,23 +7,20 @@ import {
     ReactiveFormsModule,
     UntypedFormArray,
     UntypedFormBuilder,
-    UntypedFormGroup,
-    Validators
-} from "@angular/forms";
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { LookupsService, MaritalStatusService } from '@ss/common/api-lookup';
+    UntypedFormGroup
+} from '@angular/forms';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { MaritalStatusService } from '@ss/common/api-lookup';
 import {ElementsEntryService} from '../services/elements-entry.service';
 import {MatSelectChange} from '@angular/material/select';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
-import { HttpService, MaterialModule } from "@ss/common/api-common";
+import {
+    HttpService,
+    LoginService,
+    MaterialModule,
+} from '@ss/common/api-common';
 import { EmployeeService } from '@ss/employee-services/employee-services';
-
-
-
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
-
-
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { FundService } from '@ss/payroll/api-employee';
 import { BankService } from '@ss/administration/api-bank';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -41,14 +38,15 @@ type Employee = {
     styleUrls: ['./elements-entry-detail.component.scss', '../common-css.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    ImageInputComponent,
-    UiAutoCompleteComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        ImageInputComponent,
+        UiAutoCompleteComponent
+    ]
 })
 export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELine> implements OnInit {
+    #loginSrv = inject(LoginService);
     #fundSrv = inject(FundService);
     #httpSrv = inject(HttpService);
     #bankSrv = inject(BankService);
@@ -63,6 +61,7 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
 
     imageModel: ImageModel;
     employee: Employee = null;
+    hasFixedRights = signal(true);
 
     readonly VARIABLE = 1;
     readonly FIXED = 2;
@@ -87,6 +86,8 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
 
     override ngOnInit() {
         super.ngOnInit();
+        this.hasFixedRights.set(this.shellSrv.getEntityRights('FixedElement')?.write ||
+                                this.#loginSrv.appCtx.manager);
         this.infoSrv.load();
     }
 
@@ -100,7 +101,7 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
             fullName: e.firstName + ' ' + e.lastName,
             post: e.post,
             imageModel: this.imageModel
-        }
+        };
         const form = this.formBuilder.group({
             id:        [e.id],
             firstName: [e.firstName || 'first name'],
