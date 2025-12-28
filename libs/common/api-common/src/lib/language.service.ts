@@ -493,6 +493,7 @@ export class LanguageService {
     }
 
     set isSodismac(value: boolean) {
+        console.log(value);
         this.#_isSODISMAC = value;
     }
     get isSodismac() {

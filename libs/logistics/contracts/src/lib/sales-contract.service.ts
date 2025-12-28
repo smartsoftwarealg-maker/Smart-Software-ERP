@@ -4,7 +4,7 @@ import {Project, PROJECT_AGENT_URL, PROJECT_URL} from './contract-api.class';
 import {HttpService} from '@ss/common/api-common';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class SalesContractService extends BaseEntityService<Project> {
     selectedId = 0;

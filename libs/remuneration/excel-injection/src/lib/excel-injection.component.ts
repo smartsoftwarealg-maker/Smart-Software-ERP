@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {HttpService} from '@ss/common/api-common';
 import {ExcelInjectionService} from './excel-injection.service';
 import {finalize, Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
@@ -24,7 +23,7 @@ export class ExcelInjectionComponent implements OnInit {
     updatable = false;
 
     @Input()
-    requiredFileType = '.xlsx';
+        requiredFileType = '.xlsx';
     processing = false;
 
     fileName = '';
@@ -57,8 +56,8 @@ export class ExcelInjectionComponent implements OnInit {
         if (file) {
             this.fileName = file.name;
             const formData = new FormData();
-            formData.append("file", file);
-            formData.append("consolidated", consolidated + '');
+            formData.append('file', file);
+            formData.append('consolidated', consolidated + '');
 
             this.processing = true;
             this.uploadSub = this.injectSrv

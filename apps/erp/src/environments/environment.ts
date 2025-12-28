@@ -73,7 +73,7 @@ export const environment = {
     production: false,
     multiCompany: false,
     company: null,
-    sodismac: true
+    sodismac: false
 };
 
 export const navBar = [
