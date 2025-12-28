@@ -32,7 +32,7 @@ import {FreeInvoiceLinesService} from "../invoice-lines.service";
 
 
 @Component({
-    selector: 'ss-invoice-lines-list',
+    selector: 'ss-invoice-lines-detail',
     templateUrl: './free-invoice-lines-list.component.html',
     styleUrls: [
         '../../../../../common/assets/src/assets/transac-lines-list.scss',

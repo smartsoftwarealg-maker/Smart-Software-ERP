@@ -89,6 +89,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             confirmationSrv,
             'SALES_QUICK_ORDER_DETAIL',
         );
+        this.agentLookup.onObjectSelected = a => this.#salesProjectSrv.setParentId(a?.id || 0);
     }
     public transporterLookup = new DefaultAutoCompleteModel<Agent>(
         this.#transporterSrv,
