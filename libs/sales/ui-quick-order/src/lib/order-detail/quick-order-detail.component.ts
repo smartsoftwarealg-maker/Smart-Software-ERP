@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject, signal, ViewChild } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import {
@@ -11,7 +11,7 @@ import {
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { OrderLinesListComponent } from '@ss/sales/ui-order-lines';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {
     DefaultAutoCompleteModel,
@@ -38,6 +38,11 @@ import {
 } from '@ss/master-data/api-article';
 import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
 
+export enum DuplicateMode {
+    Count = 0,
+    DateRange = 1,
+}
+
 @Component({
     imports: [
         MaterialModule,
@@ -47,6 +52,7 @@ import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
         DatePickerComponent,
         UiAutoCompleteComponent,
         RouterOutlet,
+        TranslatePipe,
     ],
     selector: 'ss-ui-quick-order-detail',
     standalone: true,
@@ -71,6 +77,8 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     );
     salesProjectLookup = new ProjectLookupModel(this.#salesProjectSrv);
 
+    duplicateMode = signal<DuplicateMode>(DuplicateMode.Count);
+
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
     constructor(
         public override entitySrv: QuickOrderService,
@@ -89,7 +97,8 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             confirmationSrv,
             'SALES_QUICK_ORDER_DETAIL',
         );
-        this.agentLookup.onObjectSelected = a => this.#salesProjectSrv.setParentId(a?.id || 0);
+        this.agentLookup.onObjectSelected = (a) =>
+            this.#salesProjectSrv.setParentId(a?.id || 0);
     }
     public transporterLookup = new DefaultAutoCompleteModel<Agent>(
         this.#transporterSrv,
@@ -131,8 +140,23 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             plateNumber2: [q.plateNumber2],
             reference: [q.reference],
             qty: [q.qty || 0, Validators.required],
+            duplicateCount: [q.duplicateCount || 0],
+            from: [q.from || new Date()],
+            to: [q.to || new Date()],
         });
     }
+
+    override readForm(): QuickOrder {
+        if (this.duplicateMode() == DuplicateMode.Count) {
+            this.form?.removeControl('from');
+            this.form?.removeControl('to');
+        } else {
+            this.form?.controls['duplicateCount'].setValue(0);
+        }
+        return super.readForm();
+    }
+
+    readonly DuplicateMode = DuplicateMode;
 }
 
 class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {

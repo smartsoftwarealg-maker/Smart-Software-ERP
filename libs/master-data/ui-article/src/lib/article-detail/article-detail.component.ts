@@ -1,28 +1,36 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {Article, ArticleService} from '@ss/master-data/api-article';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { Article, ArticleService } from '@ss/master-data/api-article';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { switchMap, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {UntypedFormBuilder, Validators} from '@angular/forms';
+import { switchMap, take, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import {
     ArticleTypeService,
     ClassService,
     LookupsService,
-    MarkService, SubclassService,
+    MarkService,
+    SubclassService,
     UnitService,
     Vat,
-    VatService
+    VatService,
 } from '@ss/common/api-lookup';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {
+    DefaultAutoCompleteModel,
+    UiAutoCompleteComponent,
+} from '@ss/common/ui-auto-complete';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
-import {HttpService, IsParamService, MaterialModule} from '@ss/common/api-common';
+import {
+    HttpService,
+    IsParamService,
+    MaterialModule,
+} from '@ss/common/api-common';
 
-import {TranslateDirective} from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
-import {toSignal} from '@angular/core/rxjs-interop';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { WeightCaptureService } from '@ss/sales/weight-capture';
 
 @Component({
@@ -43,7 +51,6 @@ export class ArticleDetailComponent
     extends BaseEntityDetailComponent<Article>
     implements OnInit
 {
-    private weightCaptureSrv = inject(WeightCaptureService);
     private subClassSrv = inject(SubclassService);
     private classSrv = inject(ClassService);
     private markSrv = inject(MarkService);
@@ -53,7 +60,6 @@ export class ArticleDetailComponent
 
     imageModel: ImageModel;
     aid = 0;
-    scaleExists = signal(false);
 
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
     subClassLookup = new DefaultAutoCompleteModel(this.subClassSrv);
@@ -89,17 +95,11 @@ export class ArticleDetailComponent
     }
 
     public override preload(): Observable<Vat[]> {
-        return this.weightCaptureSrv
-            .hasScaleConfig()
-            .pipe(
-                tap((exists) => {
-                    if (exists) {
-                        this.scaleExists.set(true);
-                    }
-                }),
-                switchMap(() => this.lookupsSrv.getVats()),
-                tap((res) => (this.vats = res))
-            );
+        return this.lookupsSrv.getVats().pipe(
+            tap((res) => {
+                this.vats = res;
+            }),
+        );
     }
 
     override finishLoading(e: Article) {
@@ -123,19 +123,18 @@ export class ArticleDetailComponent
             price1: [a.price1 || 0],
             reference: [a.reference, Validators.required],
             appId: [a.appId || this.articleSrv.getParentId()],
-            notForSale:     [a.notForSale || false, Validators.required],
-            vat:            [a.vat],
-            vat2:           [a.vat2],
-            blocked:        [a.blocked],
-            articleType:    [a.articleType],
-            subClass:       [a.subClass],
-            info:           [a.info],
-            importTax:      [a.importTax || 0],
-            discountable:   [a.discountable],
-            salable:        [a.salable],
-            purchasable:    [a.purchasable],
-            consumable:     [a.consumable],
-            noOrderControl: [a.noOrderControl],
+            notForSale: [a.notForSale || false, Validators.required],
+            vat: [a.vat],
+            vat2: [a.vat2],
+            blocked: [a.blocked],
+            articleType: [a.articleType],
+            subClass: [a.subClass],
+            info: [a.info],
+            importTax: [a.importTax || 0],
+            discountable: [a.discountable],
+            salable: [a.salable],
+            purchasable: [a.purchasable],
+            consumable: [a.consumable],
         });
     }
 

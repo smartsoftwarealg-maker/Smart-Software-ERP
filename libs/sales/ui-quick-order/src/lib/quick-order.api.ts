@@ -30,4 +30,7 @@ export interface QuickOrder {
     reference?: string; // Option[String] = None → ?
     qty: number; // Default = 0.0
     agentDescription?: string; // Option[String] = None → ?
+    duplicateCount?: number;
+    from?: Date;
+    to?: Date;
 }

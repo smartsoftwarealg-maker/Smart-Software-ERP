@@ -490,5 +490,7 @@
     "GENERIC_ARCHIVE":       "Generic archive",
     "TRANSPORT_RECEPTIONS":  "Transporter Receptions",
     "FREE_INVOICE":          "Free invoice",
-    "EDIT_FREE_INVOICE":     "Edit free invoice"
+    "EDIT_FREE_INVOICE":     "Edit free invoice",
+    "DUPLICATE_FROM_TO":     "Duplicate from to",
+    "DUPLICATE_N_TIMES":     "Duplicate n times"
 }
