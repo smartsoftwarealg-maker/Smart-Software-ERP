@@ -140,23 +140,18 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             plateNumber2: [q.plateNumber2],
             reference: [q.reference],
             qty: [q.qty || 0, Validators.required],
-            duplicateCount: [q.duplicateCount || 0],
-            from: [q.from || new Date()],
-            to: [q.to || new Date()],
+            duplicateCount: [q.duplicateCount || 0, Validators.max(50)],
+            from: [q.from],
+            to: [q.to],
         });
     }
 
-    override readForm(): QuickOrder {
-        if (this.duplicateMode() == DuplicateMode.Count) {
-            this.form?.removeControl('from');
-            this.form?.removeControl('to');
-        } else {
-            this.form?.controls['duplicateCount'].setValue(0);
-        }
-        return super.readForm();
+    onTabChange(tab: number) {
+        this.duplicateMode.set(tab);
+        this.form?.controls['duplicateCount'].setValue(0);
+        this.form?.controls['from'].setValue(null);
+        this.form?.controls['to'].setValue(null);
     }
-
-    readonly DuplicateMode = DuplicateMode;
 }
 
 class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {

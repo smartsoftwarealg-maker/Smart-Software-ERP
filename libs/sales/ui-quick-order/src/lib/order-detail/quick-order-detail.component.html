@@ -61,7 +61,7 @@
                     }
                 </mat-form-field>
                 <mat-tab-group [selectedIndex]="duplicateMode()"
-                               (selectedIndexChange)="duplicateMode.set($event)">
+                               (selectedIndexChange)="onTabChange($event)">
                     <mat-tab label="{{ 'COMMON_DUPLICATE_N_TIMES' | translate }}">
                         <div style="height: 1.5em"></div>
                         <div class="tab-content">
@@ -93,5 +93,4 @@
     @if (formId) {
         <router-outlet></router-outlet>
     }
-
 }
