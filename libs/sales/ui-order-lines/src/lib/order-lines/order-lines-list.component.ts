@@ -14,6 +14,7 @@ import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { WeightCaptureDialogButtonComponent } from '@ss/sales/weight-capture';
 
 @Component({
     selector: 'ss-order-lines-list',
@@ -32,6 +33,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         DocInfoComponent,
         TranslatePipe,
         PaginationComponent,
+        WeightCaptureDialogButtonComponent,
     ],
 })
 export class OrderLinesListComponent

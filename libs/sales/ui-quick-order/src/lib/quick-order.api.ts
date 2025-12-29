@@ -34,3 +34,8 @@ export interface QuickOrder {
     from?: Date;
     to?: Date;
 }
+
+export interface InvoiceInfo {
+    id: number;
+    invoiceNumber?: number;
+}
