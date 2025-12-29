@@ -44,10 +44,10 @@
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="sourceDescription">
+            <ng-container matColumnDef="referenceDescription">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.sourceDescription }}
+                    {{ e.referenceDescription }}
                 </mat-cell>
             </ng-container>
 
@@ -58,10 +58,10 @@
                 </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="sourceRef">
+            <ng-container matColumnDef="reference">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.sourceRef }}
+                    {{ e.reference }}
                 </mat-cell>
             </ng-container>
 
@@ -91,7 +91,7 @@
                     documentId: selectedRow?.id,
                     documentURL:'/inter-store-transfer',
                     detailId: selectedRow?.id,
-                    articleReference: selectedRow?.sourceRef,
+                    articleReference: selectedRow?.reference,
                     articleStoreId: selectedRow?.sourceStore
         }">
         </ss-doc-info>

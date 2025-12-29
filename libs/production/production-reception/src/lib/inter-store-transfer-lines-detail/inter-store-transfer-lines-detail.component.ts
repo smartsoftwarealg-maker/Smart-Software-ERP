@@ -63,24 +63,27 @@ export class InterStoreTransferLinesDetailComponent
         this.storeName.set(e?.storeDescription||'');
         if (e.id > 0) {
             this.entitySrv
-                .getStock(e.sourceRef, e.sourceStore)
+                .getStock(e.reference, e.sourceStore)
                 .subscribe( res => this.stock.set(res.stock));
         }
-        this.qtyIsNotNull.set(e.id > 0 && (e?.qty||0) > 0)
+        this.qtyIsNotNull.set(e.id > 0 && (e?.qty||0) > 0);
 
         return this.#formBuilder.group({
-            id:               [e.id],
-            parentId:         [e.parentId],
-            rightId:          [e.rightId || 0],
-            sourceRef:        [{ value: e.sourceRef,  disabled: this.qtyIsNotNull()}, Validators.required],
-            sourceStore:      [{ value:e.sourceStore, disabled: this.qtyIsNotNull()}, Validators.required],
-            qty:              [e.qty||0, Validators.required],
-            destinationRef:   [e.sourceRef||'none'],
-            storeDescription: [e.storeDescription],
-            destinationStore: [e.destinationStore],
-            lotDescription:   [e.lotDescription],
-            price:            [0],
-            pPrice:           [0]
+            id: [e.id],
+            parentId: [e.parentId],
+            referenceId: [e.referenceId||0],
+            reference: [
+                { value: e.reference, disabled: this.qtyIsNotNull() },
+                Validators.required,
+            ],
+            storeId: [
+                { value: e.storeId, disabled: this.qtyIsNotNull() },
+                Validators.required,
+            ],
+            qty: [e.qty || 0, Validators.required],
+            lotDescription: [e.lotDescription],
+            price: [0],
+            pPrice: [0],
         });
     }
 
@@ -95,8 +98,9 @@ export class InterStoreTransferLinesDetailComponent
             .afterClosed()
             .subscribe((location: Location|null) => {
                 if (location) {
-                    this.form.controls['sourceRef'].setValue(location.reference);
-                    this.form.controls['sourceStore'].setValue(location.storeId);
+                    this.form.controls['reference'].setValue(location.reference);
+                    this.form.controls['referenceId'].setValue(location.referenceId);
+                    this.form.controls['storeId'].setValue(location.storeId);
                     this.storeName.set(location.storeName);
                     this.stock.set(location.stock);
                 }

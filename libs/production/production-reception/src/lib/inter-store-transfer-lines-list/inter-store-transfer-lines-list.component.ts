@@ -25,8 +25,8 @@ export class InterStoreTransferLinesListComponent extends BaseChildEntityListCom
     override displayedColumns = [
         'storeDescription',
         'lotDescription',
-        'sourceRef',
-        'sourceDescription',
+        'reference',
+        'referenceDescription',
         'qty',
     ];
 

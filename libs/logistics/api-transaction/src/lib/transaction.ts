@@ -162,14 +162,15 @@ export interface  InterStoreTransfer {
 export interface InterStoreTransferLine {
     id: number;
     parentId: number;
-    rightId: number;
-    sourceRef: string;
+    storeId: number;
+    referenceId: number;
+    reference: string;
     sourceDescription?: string;
-    sourceStore?:number;
+    sourceStore?: number;
     qty: number;
     destinationRef: string;
     destinationDescription?: string;
-    destinationStore?:number;
+    destinationStore?: number;
     storeDescription?: string;
     lotDescription?: string;
     price: number;
