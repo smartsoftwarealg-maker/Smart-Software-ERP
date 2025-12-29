@@ -9,7 +9,7 @@ mat-header-cell {
     font-family: Arial, serif;
 }
 
-.table-container  {
+.table-container {
     width: 96%;
     height: 45%;
     max-width: 1400px;
@@ -58,9 +58,11 @@ mat-header-cell {
     flex: 1 1 100px;
     border-left: gray solid 1px;
 }
+
 .mat-column-docStatus {
     border-right: gray solid 1px;
 }
+
 .mat-column-locked,
 .mat-column-dirty {
     flex: 1 1 90px;
@@ -84,8 +86,20 @@ mat-header-cell {
     flex: 1 1 100px;
     border-left: gray solid 1px;
 }
-.mat-column-currencyRate {
+
+.mat-column-currencyRate,
+.mat-column-invoiceNumber {
     flex: 1 1 80px;
     border-left: gray solid 1px;
     justify-content: end;
+}
+
+.invoice {
+    opacity: 50%;
+}
+
+.mat-column-option {
+    flex: 0 0 60px;
+    justify-content: center;
+    border-left: gray solid 1px;
 }

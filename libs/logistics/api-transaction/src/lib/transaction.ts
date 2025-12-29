@@ -103,6 +103,7 @@ export interface Transaction {
     receptionType?: number;
     supplierAccount?: number;
     shipMode?: number;
+    invoiceNumber?: number;
 }
 
 export interface ExtraCost {

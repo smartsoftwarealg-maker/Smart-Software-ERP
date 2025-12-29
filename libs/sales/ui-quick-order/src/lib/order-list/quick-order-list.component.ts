@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -23,8 +23,12 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { DatePipe } from '@angular/common';
-import { QuickOrder } from '../quick-order.api';
+import { InvoiceInfo, QuickOrder } from '../quick-order.api';
 import { QuickOrderService } from '../quick-order.service';
+import { InvoiceService } from '@ss/sales/api-invoice';
+import { catchError, EMPTY, filter, forkJoin, switchMap, tap } from 'rxjs';
+import { error } from '@capacitor/assets/dist/util/log';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
     selector: 'ss-ui-quick-order',
@@ -49,6 +53,7 @@ import { QuickOrderService } from '../quick-order.service';
         PaginationComponent,
         DocInfoComponent,
         DatePipe,
+        MatIconButton,
     ],
 })
 export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder> {
@@ -58,6 +63,8 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         'agent',
         'payMethod',
         'docStatus',
+        'invoiceNumber',
+        'option',
     ];
 
     constructor(
@@ -81,5 +88,61 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
             pagPersistSrv,
             'SALES_QUICK_ORDER',
         );
+    }
+    invoiceSrv = inject(InvoiceService);
+    invoiceInfo: InvoiceInfo[] = [];
+
+    getInvoices(): void {
+        const ids = this.data.map((d) => d.id).join(',');
+
+        this.quickOrderSrv
+            .quickOrders(ids)
+            .pipe(
+                tap((res) => (this.invoiceInfo = res)),
+
+                switchMap((items) =>
+                    forkJoin(
+                        items
+                            .filter((item) => item.invoiceNumber)
+                            .map((item) =>
+                                this.invoiceSrv.get(item.id).pipe(
+                                    filter((invoice) => !invoice.invoiceNumber),
+                                    switchMap((invoice) =>
+                                        this.invoiceSrv.update({
+                                            ...invoice,
+                                            invoiceNumber: item.invoiceNumber,
+                                        }),
+                                    ),
+                                    catchError(() => EMPTY),
+                                ),
+                            ),
+                    ),
+                ),
+            )
+            .subscribe();
+    }
+
+    isInvoice(id: number) {
+        return this.invoiceInfo.some((invoice) => invoice.id === id);
+    }
+
+    getInvoiceNumber(id: number) {
+        return this.invoiceInfo.find((inv) => inv.id === id)?.invoiceNumber;
+    }
+
+    invoice(id: number) {
+        this.quickOrderSrv.invoice(id).subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
+    }
+
+    override refresh() {
+        super.refresh(this.getInvoices.bind(this));
     }
 }
