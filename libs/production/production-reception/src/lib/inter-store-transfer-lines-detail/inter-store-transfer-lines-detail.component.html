@@ -22,9 +22,9 @@
                         <ss-auto-complete matInput
                                           [required]="true"
                                           [model]="lotLookup"
-                                          formControlName="sourceStore">
+                                          formControlName="storeId">
                         </ss-auto-complete>
-                        @if (form.controls['sourceStore'].hasError('required')) {
+                        @if (form.controls['storeId'].hasError('required')) {
                             <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                         }
                         <mat-hint> {{ storeName()}}</mat-hint>
@@ -45,9 +45,9 @@
                         <mat-label translate>STOCK_SOURCE_REFERENCE</mat-label>
                         <ss-auto-complete matInput
                                           [model]="articleLookup"
-                                          formControlName="sourceRef">
+                                          formControlName="reference">
                         </ss-auto-complete>
-                        @if (form.controls['sourceRef'].hasError('required')) {
+                        @if (form.controls['reference'].hasError('required')) {
                             <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                         }
                         <mat-hint><span translate>STOCK_STOCK</span>: {{ stock() | number: '1.2-4'}}</mat-hint>

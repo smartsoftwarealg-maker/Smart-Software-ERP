@@ -30,13 +30,13 @@ mat-table {
 
 .mat-column-storeDescription,
 .mat-column-lotDescription,
-.mat-column-sourceRef {
+.mat-column-reference {
     flex: 1 1 120px;
     padding-left: 4px;
     border-left: grey solid 1px;
     min-width: 130px;
 }
-.mat-column-sourceDescription {
+.mat-column-referenceDescription {
     flex: 1 1 200px;
     padding-left: 4px;
     border-left: grey solid 1px;
