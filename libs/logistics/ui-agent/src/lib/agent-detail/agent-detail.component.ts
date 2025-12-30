@@ -197,9 +197,9 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             tap((res) => (this.optionSrv.options = res)),
             switchMap(() => this.route.data),
             tap((res) => {
-                const isSupplier = res['supplier'];
-                const isCustomer = res['customer'];
-                const isTransporter = res['transporter'];
+                // const isSupplier = res['supplier'];
+                // const isCustomer = res['customer'];
+                // const isTransporter = res['transporter'];
 
                 const URLs = [CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL, BRANCH_URL, INTERNAL_URL, AGENT_URL];
                 const TTLs = ['LOGISTICS_CUSTOMER', 'LOGISTICS_SUPPLIER', 'LOGISTICS_TRANSPORTER', 'COMMON_UNITS', 'LOGISTICS_INTERNAL_AGENTS', 'COMMON_AGENTS'];
@@ -232,14 +232,14 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 case 5:
                     break;
                 }
-                this.agentTypeLookup = isSupplier
-                    ? new SupplierLookup(this.agentTypeSrv)
-                    : isCustomer
-                        ? new CustomerLookup(this.agentTypeSrv)
-                        : isTransporter
-                            ? new TransporterLookup(this.agentTypeSrv)
-                            : this.agentTypeLookup;
-                this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
+                // this.agentTypeLookup = isSupplier
+                //     ? new SupplierLookup(this.agentTypeSrv)
+                //     : isCustomer
+                //         ? new CustomerLookup(this.agentTypeSrv)
+                //         : isTransporter
+                //             ? new TransporterLookup(this.agentTypeSrv)
+                //             : this.agentTypeLookup;
+                // this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
             }),
         );
     }
@@ -521,7 +521,7 @@ class BranchLookup extends DefaultAutoCompleteModel<Lookup> {
         super(srv);
     }
 
-    override filterLoadedData = (x: Lookup[]) => x.filter((e) => e && e.id == 4);
+    override filterLoadedData = (x: Lookup[]) => x.filter((e) => e && e.id == 3);
     override getById = (id: Id) =>
         id === null || id === undefined ? of(null) : this.entitySrv.get(id);
 }
@@ -531,7 +531,7 @@ class InternalTypeLookup extends DefaultAutoCompleteModel<Lookup> {
         super(srv);
     }
 
-    override filterLoadedData = (x: Lookup[]) => x.filter((e) => e && e.id == 5);
+    override filterLoadedData = (x: Lookup[]) => x.filter((e) => e && e.id == 4);
     override getById = (id: Id) =>
         id === null || id === undefined ? of(null) : this.entitySrv.get(id);
 }
