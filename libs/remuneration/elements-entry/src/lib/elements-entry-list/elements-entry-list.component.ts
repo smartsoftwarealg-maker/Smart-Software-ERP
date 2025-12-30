@@ -5,7 +5,12 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router} from '@angular/router';
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { DefaultReportService} from '@ss/common/ui-default-report-component';
-import { HttpService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
+import {
+    HttpService,
+    LoginService,
+    MaterialModule,
+    PaginatorPersistenceService,
+} from '@ss/common/api-common';
 import {ElementsEntryService} from '../services/elements-entry.service';
 import {Observable, of, switchMap, tap} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
@@ -37,34 +42,40 @@ import { callback } from 'chart.js/helpers';
         TranslatePipe,
         PaginationComponent,
         UiAutoCompleteComponent,
-        LeavePlanningCalculatorComponent
-    ]
-
+        LeavePlanningCalculatorComponent,
+    ],
 })
-export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> implements OnInit {
-    private employeeSrv  = inject(EmployeeService);
-    private httpSrv  = inject(HttpService);
-    private monthSelectorSrv  = inject(PayrollMonthService);
-    private formBuilder  = inject(UntypedFormBuilder);
-    private commonFieldSrv  = inject(CommonElementsService);
-
+export class ElementsEntryListComponent
+    extends BaseEntityListComponent<ELine>
+    implements OnInit
+{
+    private employeeSrv = inject(EmployeeService);
+    private httpSrv = inject(HttpService);
+    private monthSelectorSrv = inject(PayrollMonthService);
+    private formBuilder = inject(UntypedFormBuilder);
+    private commonFieldSrv = inject(CommonElementsService);
+    private loginSrv = inject(LoginService);
     private readonly JOURNAL_IDX = 4;
     private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post'];
     private FIXED_JOURNAL_HEADERS = ['id', 'firstName', 'lastName'];
 
-    commonElementsLookup = new DefaultAutoCompleteModel(this.commonFieldSrv, 'field');
+    commonElementsLookup = new DefaultAutoCompleteModel(
+        this.commonFieldSrv,
+        'field',
+    );
     form: UntypedFormGroup = null;
     selectedTabIndex = signal(0);
     mainTableWidth = 600;
     slipTableWidth = 600;
 
-    slipColumns      = ['description', 'base', 'rate', 'gain', 'deduction'];
+    slipColumns = ['description', 'base', 'rate', 'gain', 'deduction'];
     displayedColumns = ['photo', 'id', 'firstName', 'lastName', 'post'];
     journalColumns = this.FIXED_JOURNAL_HEADERS;
 
     paySlip: PaymentElement[] = [];
     journalData: MJournal[] = [];
     headers: string[] = [];
+    hasFixedRights = signal(true);
 
     constructor(
         public infoSrv: ElementsEntryService,
@@ -74,19 +85,39 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override router: Router,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENTS_ENTRY');
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            infoSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'REMUN_ELEMENTS_ENTRY',
+        );
         this.pagination.pageSize = 10;
-        this.form = this.formBuilder.group( {
+        this.form = this.formBuilder.group({
             field: [''],
-            value: [0.0]
+            value: [0.0],
         });
     }
 
     override getPage(): Observable<ELine[]> {
-        const mode = this.infoSrv.selectionMode === 1? 'false' : 'true';
-        const extraPrams = new HttpParams().set('input', this.infoSrv.selectedInput).set('fixed', mode);
-        return this.infoSrv.selectedInput == 0 ? of([]) : this.infoSrv.getPage(this.pagination, this.filter, this.filter, extraPrams);
+        const mode = this.infoSrv.selectionMode === 1 ? 'false' : 'true';
+        const extraPrams = new HttpParams()
+            .set('input', this.infoSrv.selectedInput)
+            .set('fixed', mode);
+        return this.infoSrv.selectedInput == 0
+            ? of([])
+            : this.infoSrv.getPage(
+                  this.pagination,
+                  this.filter,
+                  this.filter,
+                  extraPrams,
+              );
     }
 
     override processLoadedData(data: ELine[]): Observable<ELine[]> {
@@ -95,7 +126,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
         this.mainTableWidth = 600 + 150 * colList.length;
         this.displayedColumns = this.FIXED_COLS.concat(colList);
 
-        const res = data.map(e => {
+        const res = data.map((e) => {
             e.imageModel = new ImageModel(this.httpSrv);
             e.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(e.id));
             e.imageModel.readOnly = true;
@@ -106,14 +137,16 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
 
     override ngOnInit() {
         // this.deleteButton.visible = false;
+        this.hasFixedRights.set(
+            this.shellSrv.getEntityRights('FixedElement')?.write ||
+                this.loginSrv.appCtx.manager,
+        );
         this.addButton.visible = false;
         super.ngOnInit();
         this.infoSrv.load();
-        this.monthSelectorSrv
-            .isUpdatableMonth()
-            .subscribe(upd => {
-                this.editButton.visible = upd;
-            });
+        this.monthSelectorSrv.isUpdatableMonth().subscribe((upd) => {
+            this.editButton.visible = upd;
+        });
     }
 
     selectInput(ev: MatSelectChange) {
@@ -122,7 +155,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
     }
 
     setSelectionMode(mode: number) {
-        this.infoSrv.selectionMode = mode === 2? 2 : 1;
+        this.infoSrv.selectionMode = mode === 2 ? 2 : 1;
         this.refresh();
     }
 
@@ -134,7 +167,7 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
 
     override select(id: number) {
         super.select(id);
-        this.infoSrv.getSlip(id).subscribe(res => {
+        this.infoSrv.getSlip(id).subscribe((res) => {
             this.paySlip = res || [];
         });
     }
@@ -143,28 +176,35 @@ export class ElementsEntryListComponent extends BaseEntityListComponent<ELine> i
         this.selectedTabIndex.set(index);
         if (this.JOURNAL_IDX === index) {
             this.shellSrv.setLoading(true);
-            this.infoSrv
-                .getJournal()
-                .subscribe(res => {
-                    this.journalData = res.data;
-                    this.headers = res.headers;
-                    this.journalColumns = this.FIXED_JOURNAL_HEADERS.concat(res.headers);
-                    this.slipTableWidth = 570 + 150 * res.headers.length;
-                    this.shellSrv.setLoading(false);
-                });
+            this.infoSrv.getJournal().subscribe((res) => {
+                this.journalData = res.data;
+                this.headers = res.headers;
+                this.journalColumns = this.FIXED_JOURNAL_HEADERS.concat(
+                    res.headers,
+                );
+                this.slipTableWidth = 570 + 150 * res.headers.length;
+                this.shellSrv.setLoading(false);
+            });
         }
     }
 
     updateCommon() {
         // this.commonFieldSrv.update({field: })
-        const payload = { field: this.form.controls['field'].value,
-            value: this.form.controls['value'].value
+        const payload = {
+            field: this.form.controls['field'].value,
+            value: this.form.controls['value'].value,
         };
         if (payload.field?.length == 4) {
             this.confirmationSrv
                 .confirm('REMUN_UPDATE_ALL', 'REMUN_UPDATE_ALL')
-                .pipe(switchMap(res => res? this.commonFieldSrv.updateAll(payload) : of(false)))
-                .subscribe(res => {
+                .pipe(
+                    switchMap((res) =>
+                        res
+                            ? this.commonFieldSrv.updateAll(payload)
+                            : of(false),
+                    ),
+                )
+                .subscribe((res) => {
                     if (typeof res !== 'boolean') {
                         this.snackBarSrv.showSuccessMessage();
                     }
