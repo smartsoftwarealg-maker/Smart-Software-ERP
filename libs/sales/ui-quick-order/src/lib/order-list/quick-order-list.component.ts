@@ -26,9 +26,9 @@ import { DatePipe } from '@angular/common';
 import { InvoiceInfo, QuickOrder } from '../quick-order.api';
 import { QuickOrderService } from '../quick-order.service';
 import { InvoiceService } from '@ss/sales/api-invoice';
-import { catchError, EMPTY, filter, forkJoin, switchMap, tap } from 'rxjs';
-import { error } from '@capacitor/assets/dist/util/log';
+import { catchError, EMPTY, filter, forkJoin, of, switchMap, tap } from 'rxjs';
 import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
     selector: 'ss-ui-quick-order',
@@ -54,6 +54,7 @@ import { MatIconButton } from '@angular/material/button';
         DocInfoComponent,
         DatePipe,
         MatIconButton,
+        MatTooltip,
     ],
 })
 export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder> {
@@ -96,7 +97,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         const ids = this.data.map((d) => d.id).join(',');
 
         this.quickOrderSrv
-            .quickOrders(ids)
+            .getInvoiceInfo(ids)
             .pipe(
                 tap((res) => (this.invoiceInfo = res)),
 
@@ -113,7 +114,9 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
                                             invoiceNumber: item.invoiceNumber,
                                         }),
                                     ),
-                                    catchError(() => EMPTY),
+                                    catchError((err) => {
+                                        return EMPTY;
+                                    }),
                                 ),
                             ),
                     ),
@@ -122,18 +125,15 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
             .subscribe();
     }
 
-    isInvoice(id: number) {
-        return this.invoiceInfo.some((invoice) => invoice.id === id);
-    }
-
     getInvoiceNumber(id: number) {
         return this.invoiceInfo.find((inv) => inv.id === id)?.invoiceNumber;
     }
 
-    invoice(id: number) {
-        this.quickOrderSrv.invoice(id).subscribe({
+    generateInvoice(id: number) {
+        this.quickOrderSrv.generateInvoice(id).subscribe({
             next: () => {
                 this.snackBarSrv.showSuccessMessage();
+                this.refresh();
             },
             error: (err) => {
                 this.snackBarSrv.showFailureMessage();

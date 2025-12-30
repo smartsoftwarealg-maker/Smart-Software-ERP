@@ -74,10 +74,10 @@
         </ng-container>
 
         <ng-container matColumnDef="option">
-            <mat-header-cell *matHeaderCellDef ></mat-header-cell>
+            <mat-header-cell *matHeaderCellDef ><i class="fas fa-file-invoice" matTooltip="SALES_GENERATE_INVOICE"></i></mat-header-cell>
             <mat-cell *matCellDef="let e">
                 @if (!getInvoiceNumber(e.id)) {
-                    <button matIconButton (click)="invoice(e.id)">
+                    <button matIconButton (click)="generateInvoice(e.id)">
                         <i class="fa-solid fa-check"></i>
                     </button>
                 }
@@ -88,7 +88,7 @@
         <mat-row class="selectable"
                  [class.selected]="row.id == selected"
                  [class.dirty]="row.dirty"
-                 [class.invoice]="isInvoice(row.id)"
+                 [class.invoice]="getInvoiceNumber(row.id) > 0"
                  (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>

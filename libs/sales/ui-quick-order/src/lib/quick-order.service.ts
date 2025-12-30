@@ -11,11 +11,11 @@ export class QuickOrderService extends BaseEntityService<QuickOrder> {
         super(httpSrv, QUICK_ORDER_URL);
     }
 
-    quickOrders(id: string) {
+    getInvoiceInfo(id: string) {
         return this.httpSrv.get<InvoiceInfo[]>('/quick-order/info?id=' + id);
     }
 
-    invoice(id: number) {
+    generateInvoice(id: number) {
         return this.httpSrv.post(`/quick-order/${id}/invoice`);
     }
 }

@@ -1,5 +1,5 @@
 <div class="table-container">
-    <mat-table mat-table [dataSource]="data" class="main-table"  matSort (matSortChange)="sort($event)">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
         <ng-container matColumnDef="agent">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER</mat-header-cell>
             <mat-cell *matCellDef="let e">
@@ -10,14 +10,14 @@
         <ng-container matColumnDef="number">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_NUMBER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.number}}
+                {{ e.number }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="docStatus">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_STATUS</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.docStatus}}
+                {{ e.docStatus }}
             </mat-cell>
         </ng-container>
 
@@ -68,11 +68,30 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="invoiceNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_INVOICE_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ getInvoiceNumber(e.id) }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="option">
+            <mat-header-cell *matHeaderCellDef><i class="fas fa-file-invoice" matTooltip="SALES_GENERATE_INVOICE"></i>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                @if (!getInvoiceNumber(e.id)) {
+                    <button matIconButton (click)="generateInvoice(e.id)">
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+                }
+            </mat-cell>
+        </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable"
                  [class.selected]="row.id == selected"
                  [class.dirty]="row.dirty"
+                 [class.invoice]="getInvoiceNumber(row.id) > 0"
                  (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>

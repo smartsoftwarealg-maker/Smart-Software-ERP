@@ -1,28 +1,67 @@
-import { Component } from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
-import {SalesOrderService} from '@ss/sales/api-sales-order';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { Component, inject } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { PaginatorPersistenceService } from '@ss/common/api-common';
+import { SalesOrderService } from '@ss/sales/api-sales-order';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import {
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatCellDef,
+    MatCell,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+} from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { DatePipe } from '@angular/common';
+import { InvoiceInfo } from '../../../../ui-quick-order/src/lib/quick-order.api';
+import { tap } from 'rxjs';
+import { QuickOrderService } from '../../../../ui-quick-order/src/lib/quick-order.service';
+import { MatIconButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
     selector: 'ss-ui-order',
     templateUrl: './order-list.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
+    styleUrls: [
+        '../../../../../common/assets/src/assets/transac-list.scss',
+        'order-list.component.scss',
+    ],
     standalone: true,
-    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DatePipe]
+    imports: [
+        MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatSortHeader,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatCheckbox,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DocInfoComponent,
+        DatePipe,
+        MatIconButton,
+        MatTooltip,
+    ],
 })
-export class OrderListComponent  extends BaseEntityListComponent<Transaction> {
+export class OrderListComponent extends BaseEntityListComponent<Transaction> {
     displayedColumns = [
         'number',
         'date',
@@ -30,7 +69,9 @@ export class OrderListComponent  extends BaseEntityListComponent<Transaction> {
         'payMethod',
         // 'dirty',
         // 'locked',
-        'docStatus'
+        'docStatus',
+        'invoiceNumber',
+        'option',
     ];
 
     constructor(
@@ -41,7 +82,54 @@ export class OrderListComponent  extends BaseEntityListComponent<Transaction> {
         public override router: Router,
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(orderSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'SALES_ORDER');
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            orderSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'SALES_ORDER',
+        );
+    }
+    quickOrderSrv = inject(QuickOrderService);
+    invoiceInfo: InvoiceInfo[] = [];
+
+    override refresh() {
+        super.refresh(this.getInvoices.bind(this));
+    }
+
+    getInvoices(): void {
+        const ids = this.data.map((d) => d.id).join(',');
+
+        this.quickOrderSrv.getInvoiceInfo(ids).subscribe({
+            next: (res) => {
+                this.invoiceInfo = res;
+            },
+            error: (err) => {
+                throw err
+            }
+        });
+    }
+
+    getInvoiceNumber(id: number) {
+        return this.invoiceInfo.find((inv) => inv.id === id)?.invoiceNumber;
+    }
+
+    generateInvoice(id: number) {
+        this.quickOrderSrv.generateInvoice(id).subscribe({
+            next: () => {
+                this.snackBarSrv.showSuccessMessage();
+                this.refresh();
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
     }
 }
