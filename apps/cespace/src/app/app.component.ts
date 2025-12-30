@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService, LanguageService, LoginService, SideNavNode} from '@ss/common/api-common';
+import {HttpService, LanguageService} from '@ss/common/api-common';
 import { switchMap } from 'rxjs/operators';
 import { ShellService } from '@ss/common/ui-shell';
 import { exchangeNavTree } from './exchange/side-nav-tree';
-import {DeviceDetectorService} from "ngx-device-detector";
-import {AdmobClass} from '@ss/common/api-admob';
-import {RouterOutlet} from "@angular/router";
-import {MessageComponent} from "@ss/common/ui-error-handler";
+import {DeviceDetectorService} from 'ngx-device-detector';
+import {AdService} from '@ss/common/api-admob';
+import {RouterOutlet} from '@angular/router';
+import {MessageComponent} from '@ss/common/ui-error-handler';
 
 @Component({
     selector: 'ss-root',
@@ -23,12 +23,8 @@ export class AppComponent implements OnInit {
         private shellSrv: ShellService,
         private deviceSrv: DeviceDetectorService,
         public langSrv: LanguageService,
+        private adService: AdService
     ) {
-        if (this.deviceSrv.isMobile()) {
-            AdmobClass.initialize()
-                .then(AdmobClass.banner)
-                .then(() => {});
-        }
     }
 
     ngOnInit() {
@@ -39,6 +35,9 @@ export class AppComponent implements OnInit {
             .subscribe(() => {
                 this.shellSrv.setSideNavDataSource(exchangeNavTree);
                 this.loaded = true;
+                if (this.deviceSrv.isMobile()) {
+                    this.adService.showBanner();
+                }
             });
     }
 }
