@@ -3,18 +3,18 @@ import { AdMob, BannerAdOptions, BannerAdSize, BannerAdPosition, BannerAdPluginE
 
 export class AdmobClass {
     static async initialize(): Promise<void> {
-        AdMob.initialize({
+        await AdMob.initialize({
             testingDevices: ['2077ef9a63d2b398840261c8221a0c9b'],
             initializeForTesting: true,
         });
     }
 
     static async banner(): Promise<void> {
-        AdMob.addListener(BannerAdPluginEvents.Loaded, () => {
+        await AdMob.addListener(BannerAdPluginEvents.Loaded, () => {
             // Subscribe Banner Event Listener
         });
 
-        AdMob.addListener(BannerAdPluginEvents.SizeChanged, (size: AdMobBannerSize) => {
+        await AdMob.addListener(BannerAdPluginEvents.SizeChanged, (size: AdMobBannerSize) => {
             // Subscribe Change Banner Size
         });
 
@@ -26,7 +26,7 @@ export class AdmobClass {
             isTesting: false
             // npa: true
         };
-        AdMob.showBanner(options);
+        await AdMob.showBanner(options);
     }
 
 }
