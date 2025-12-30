@@ -63,7 +63,7 @@ export class InterStoreTransferLinesDetailComponent
         this.storeName.set(e?.storeDescription||'');
         if (e.id > 0) {
             this.entitySrv
-                .getStock(e.reference, e.sourceStore)
+                .getStock(e.reference, e.storeId)
                 .subscribe( res => this.stock.set(res.stock));
         }
         this.qtyIsNotNull.set(e.id > 0 && (e?.qty||0) > 0);
