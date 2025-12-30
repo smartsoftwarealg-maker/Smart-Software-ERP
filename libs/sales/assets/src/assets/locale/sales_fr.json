@@ -32,5 +32,6 @@
     "REBATES": "Ristournes",
     "GENERATE_REBATES": "Générer les ristournes",
     "QUICK_ORDER":        "Commande rapide",
-    "QUICK_ORDER_DETAIL": "Détail de la commande rapide"
+    "QUICK_ORDER_DETAIL": "Détail de la commande rapide",
+    "GENERATE_INVOICE":   "Générer une facture"
 }
