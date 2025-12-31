@@ -152,6 +152,9 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             shipMode: [0],
             altAgent: [q.altAgent],
             footer: [q.footer],
+            discountDescription: [q.discountDescription],
+            discount: [q.discount || 0],
+            fixedDiscountVAT: [q.fixedDiscountVAT || 0],
         });
     }
 
