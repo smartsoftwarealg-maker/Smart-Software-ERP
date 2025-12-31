@@ -88,5 +88,9 @@
     "QTY_ALREADY_SPECIFIED":         "الكمية مستوفاة بالفعل. لا يمكن إلغاء التحويل.",
     "MISSING_REFERENCE":             "المرجع مفقود.",
     "MISSING_QUANTITY":              "الكمية مفقودة.",
-    "PAYROLL_ERROR":                 "يحتوي كشف الرواتب على الأخطاء التالية: "
+    "PAYROLL_ERROR":                 "يحتوي كشف الرواتب على الأخطاء التالية: ",
+    "INVALID_INVOICE_DATE":          "تاريخ الفاتورة غير صالح.",
+    "NO_PRODUCT_TO_INVOICE":         "لا يوجد منتج للفاتورة.",
+    "MISSING_SHIPPING_INFO":         "معلومات الشحن مفقودة.",
+    "INVALID_DATE_RANGE":            "نطاق التاريخ غير صالح"
 }
