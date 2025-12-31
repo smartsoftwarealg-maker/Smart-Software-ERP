@@ -66,6 +66,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="mode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_MODE</mat-header-cell>
+            <mat-cell *matCellDef="let e" translate>
+                {{ getInvoiceType(e.invoiceType) }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="invoiceNumber">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_INVOICE_NUMBER</mat-header-cell>
             <mat-cell *matCellDef="let e">

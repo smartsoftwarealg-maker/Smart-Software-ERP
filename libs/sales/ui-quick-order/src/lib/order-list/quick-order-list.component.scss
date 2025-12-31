@@ -87,6 +87,12 @@ mat-header-cell {
     border-left: gray solid 1px;
 }
 
+.mat-column-mode {
+    flex: 1 1 75px;
+    border-left: gray solid 1px;
+    justify-content: center;
+}
+
 .mat-column-currencyRate,
 .mat-column-invoiceNumber {
     flex: 1 1 80px;
