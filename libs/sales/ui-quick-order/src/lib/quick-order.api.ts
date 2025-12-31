@@ -33,6 +33,9 @@ export interface QuickOrder {
     duplicateCount?: number;
     from?: Date;
     to?: Date;
+    invoiceType: 1 | 2;
+    altAgent?: string;
+    footer?: string;
 }
 
 export interface InvoiceInfo {
