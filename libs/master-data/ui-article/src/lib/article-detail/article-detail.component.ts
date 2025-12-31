@@ -135,6 +135,7 @@ export class ArticleDetailComponent
             salable: [a.salable],
             purchasable: [a.purchasable],
             consumable: [a.consumable],
+            discount:[a.discount || 0]
         });
     }
 

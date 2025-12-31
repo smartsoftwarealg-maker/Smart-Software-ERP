@@ -29,7 +29,7 @@ import {
 } from '@ss/logistics/api-agent';
 import { UserListService } from '@ss/common/api-users';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
-import { PayMethod } from '@ss/common/api-lookup';
+import { PayMethod, ShipmentModeService } from '@ss/common/api-lookup';
 import { Project, SalesContractService } from '@ss/logistics/contracts';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import {
@@ -69,6 +69,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     #transporterSrv = inject(TransporterService);
     #articleSrv = inject(ArticleService);
     #orderLineSrv = inject(SalesOrderLinesService);
+    #shipmentModeSrv = inject(ShipmentModeService);
 
     agentLookup = new AgentLookupModel(this.#agentSrv);
     userLookup = new UserLookup(this.#userSrv);
@@ -109,6 +110,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     articleLookup: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(
         this.#articleSrv,
     );
+    shipmentModeLookup = new DefaultAutoCompleteModel(this.#shipmentModeSrv);
 
     public override setupForm(q: QuickOrder): UntypedFormGroup {
         this.#salesProjectSrv.setParentId(q.agent || 0);
@@ -143,6 +145,13 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             duplicateCount: [q.duplicateCount || 0, Validators.max(50)],
             from: [q.from],
             to: [q.to],
+            invoiceType: [
+                q.invoiceType || 1,
+                [Validators.min(1), Validators.max(2)],
+            ],
+            shipMode: [0],
+            altAgent: [q.altAgent],
+            footer: [q.footer],
         });
     }
 

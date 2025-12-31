@@ -90,6 +90,7 @@ export interface Article {
     salable: boolean;
     purchasable: boolean;
     consumable: boolean;
+    discount: number;
 }
 
 export interface StockInfo {

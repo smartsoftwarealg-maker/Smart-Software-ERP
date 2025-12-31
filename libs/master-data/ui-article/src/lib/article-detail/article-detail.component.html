@@ -76,8 +76,7 @@
                         </ss-auto-complete>
                     </mat-form-field>
 
-
-                    <mat-form-field class="default-50 sm-100">
+                    <mat-form-field class="default-25 sm-100">
                         <mat-label translate>STOCK_MARK</mat-label>
                         <ss-auto-complete
                             [model]="markLookup"
@@ -85,12 +84,17 @@
                         </ss-auto-complete>
                     </mat-form-field>
 
-                    <mat-form-field class="default-50 sm-100">
+                    <mat-form-field class="default-25 sm-100">
                         <mat-label translate>COMMON_TYPE</mat-label>
                         <ss-auto-complete
                             [model]="typeLookup"
                             formControlName="articleType">
                         </ss-auto-complete>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" class="default-25 sm-100">
+                        <mat-label translate>COMMON_DISCOUNT</mat-label>
+                        <input matInput formControlName="discount">
                     </mat-form-field>
 
                     <mat-form-field class="default-25 sm-50">
