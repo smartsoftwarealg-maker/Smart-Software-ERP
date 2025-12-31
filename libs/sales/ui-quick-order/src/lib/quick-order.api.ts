@@ -36,6 +36,9 @@ export interface QuickOrder {
     invoiceType: 1 | 2;
     altAgent?: string;
     footer?: string;
+    discountDescription?: string;
+    discount?: number;
+    fixedDiscountVAT?: number;
 }
 
 export interface InvoiceInfo {
