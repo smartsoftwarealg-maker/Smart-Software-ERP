@@ -64,6 +64,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         'agent',
         'payMethod',
         'docStatus',
+        'mode',
         'invoiceNumber',
         'option',
     ];
@@ -144,5 +145,15 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
 
     override refresh() {
         super.refresh(this.getInvoices.bind(this));
+    }
+
+    getInvoiceType(n: number) {
+        if (n === 1) {
+            return 'COMMON_INVOICE';
+        }
+        if (n === 2) {
+            return 'COMMON_DELIVERY';
+        }
+        return '';
     }
 }
