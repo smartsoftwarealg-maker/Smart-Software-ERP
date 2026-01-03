@@ -28,6 +28,7 @@ import {
     SALES_SERVICE_ARTICLE_URL,
     SALES_FREE_INVOICE_URL,
     SALES_QUICK_ORDER_URL,
+    SALES_ARTICLE_URL,
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -72,10 +73,6 @@ import {
     AppArchiveDetailComponent,
     AppArchiveListComponent,
 } from '@ss/logistics/ui-agent';
-import {
-    ServiceArticleDetailComponent,
-    ServiceArticleListComponent,
-} from '@ss/service-sales/service-articles';
 import { AGENT_ARCHIVES } from '@ss/common/app-archive';
 import { ReportPrivilegesComponent } from '@common/report-privileges';
 import {
@@ -105,6 +102,14 @@ import {
     QuickOrderDetailComponent,
     QuickOrderListComponent,
 } from '@ss/sales/ui-quick-order';
+import {
+    ArticleDetailComponent,
+    ArticleListComponent,
+} from '@ss/master-data/ui-article';
+import {
+    ServiceArticleDetailComponent,
+    ServiceArticleListComponent,
+} from '@ss/service-sales/service-articles';
 
 export const lookupRoutes: Routes = [];
 
@@ -578,6 +583,26 @@ export const mainRoutes: Routes = [
             },
         ],
     },
+    {
+        path: SALES_ARTICLE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ArticleListComponent,
+                canActivate: [loginGuard],
+                data: { price: 'price1' },
+            },
+            {
+                path: ':id',
+                component: ArticleDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: { price: 'price1' }
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
+
     {
         path: SALES_SERVICE_ARTICLE_URL,
         children: [

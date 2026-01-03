@@ -116,7 +116,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
         this.#salesProjectSrv.setParentId(q.agent || 0);
         this.#orderLineSrv.setParentId(q.id || 0);
         this.formId = q.id || 0;
-        return this.formBuilder.group({
+        const form = this.formBuilder.group({
             id: [q.id],
             centerId: [q.centerId || this.#loginSrv.appCtx.center],
             document: [q.document || 0],
@@ -153,9 +153,25 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             altAgent: [q.altAgent],
             footer: [q.footer],
             discountDescription: [q.discountDescription],
-            discount: [q.discount || 0],
+            discount: [{ value: q.discount || 0, disabled: true }],
             fixedDiscountVAT: [q.fixedDiscountVAT || 0],
         });
+
+        if (q.id > 0) {
+            this.entitySrv.getInvoiceInfo(q.id + '').subscribe((res) => {
+                    if (res[0].invoiceNumber) {
+                        [
+                            'project',
+                            'agent',
+                            'invoiceType',
+                            'payMethod',
+                            'date'
+                        ].forEach((c) => form?.controls[c].disable());
+                    }
+                });
+            }
+
+        return form;
     }
 
     onTabChange(tab: number) {

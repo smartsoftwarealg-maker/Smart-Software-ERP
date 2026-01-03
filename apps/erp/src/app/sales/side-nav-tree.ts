@@ -3,6 +3,7 @@ import {
     ABS_FINANCE_CPAYMENTS,
     ABS_PRICE_LIST_URL,
     ABS_SALES_AGENT_URL,
+    ABS_SALES_ARTICLE_URL,
     ABS_SALES_CUSTOMER_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DELIVERY_CANCEL_URL,
@@ -27,6 +28,12 @@ export const salesNavTree: SideNavNode = {
     name: 'SALES',
     icon: 'fas fa-truck',
     children: [
+        {
+            name: 'COMMON_PRODUCTS',
+            icon: 'fa-solid fa-conveyor-belt-arm',
+            route: ABS_SALES_ARTICLE_URL,
+            accessRights: 'Article',
+        },
         {
             name: 'COMMON_AGENT',
             icon: 'fas fa-user',

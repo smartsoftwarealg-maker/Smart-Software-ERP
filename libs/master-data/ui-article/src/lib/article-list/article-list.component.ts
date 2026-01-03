@@ -36,7 +36,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
     private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'unitDescription'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'unitDescription'];
+    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'unitDescription', 'price1', 'discount'];
     displayedColumns = this.STOCK_COLS;
 
     constructor(
@@ -65,9 +65,9 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
     override ngOnInit() {
         super.ngOnInit();
         this.route
-            .paramMap
+            .data
             .subscribe(res => {
-                this.displayedColumns = res.get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS;
+                this.displayedColumns = res['price'] === 'price1'? this.SALES_COLS : this.STOCK_COLS;
             });
         this.subscriptions.push(
             this.filterCtrl

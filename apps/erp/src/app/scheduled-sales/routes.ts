@@ -311,6 +311,7 @@ export const scheduledSalesRoutes: Routes = [
                 path: LIST_URL,
                 component: ArticleListComponent,
                 canActivate: [loginGuard],
+                data: { price: 'price1' },
             },
             {
                 path: ':id',
