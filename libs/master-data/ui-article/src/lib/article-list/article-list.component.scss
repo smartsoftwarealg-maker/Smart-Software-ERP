@@ -22,8 +22,8 @@
 }
 
 .mat-column-reference {
-    flex: 1 1 200px;
-    min-width: 200px;
+    flex: 1 1 150px;
+    min-width: 160px;
     padding-right: 8px !important;
     padding-left: 8px !important;
 }
@@ -62,6 +62,15 @@
 
 .mat-column-vat {
     flex: 0 0 50px;
+    justify-content: end;
+    padding-left: 8px !important;
+}
+
+.mat-column-discount,
+.mat-column-price1,
+.mat-column-awp {
+    flex: 1 1 100px;
+    justify-content: end;
     padding-left: 8px !important;
 }
 

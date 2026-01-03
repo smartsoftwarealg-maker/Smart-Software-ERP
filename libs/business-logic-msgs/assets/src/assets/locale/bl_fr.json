@@ -92,5 +92,6 @@
     "INVALID_INVOICE_DATE":               "Date de facturation invalide.",
     "NO_PRODUCT_TO_INVOICE":              "Aucun produit à facturer.",
     "MISSING_SHIPPING_INFO":              "Informations d'expédition manquantes.",
-    "INVALID_DATE_RANGE":                 "Plage de dates invalide"
+    "INVALID_DATE_RANGE":                 "Plage de dates invalide",
+    "SINGLE_ACCOUNTING":                  "La comptabilité du site est enregistrée ailleurs"
 }

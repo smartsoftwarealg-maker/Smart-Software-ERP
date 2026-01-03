@@ -59,6 +59,13 @@
       </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="discount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DISCOUNT</mat-header-cell>
+      <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">
+        {{ e.discount | number: '1.2-2'}}
+      </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="vat">
       <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_VAT</mat-header-cell>
       <mat-cell *matCellDef="let e" style="justify-content: flex-end; direction: ltr;">

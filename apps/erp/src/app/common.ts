@@ -259,6 +259,7 @@ export const SALES_SECTORS_URL = 'sales-sectors';
 export const SALES_MASTER_WORKS_URL  = 'sales-master-works';
 export const SALES_FREE_INVOICE_URL  = 'free-invoice';
 export const SALES_QUICK_ORDER_URL = 'quick-order';
+export const SALES_ARTICLE_URL = 'sales-products';
 
 // HR
 export const HR_CATEGORIES_URL = 'categories';
@@ -1048,6 +1049,7 @@ export const ABS_SALES_SECTORS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_
 export const ABS_SALES_MASTER_WORKS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_MASTER_WORKS_URL].join('/');
 export const ABS_SALES_FREE_INVOICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_FREE_INVOICE_URL].join('/');
 export const ABS_SALES_QUICK_ORDER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_QUICK_ORDER_URL].join('/');
+export const ABS_SALES_ARTICLE_URL =     '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_ARTICLE_URL].join('/');
 
 //services
 export const ABS_SERVICE_CLASSES_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_CLASSES_URL].join('/');

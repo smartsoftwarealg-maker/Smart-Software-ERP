@@ -92,5 +92,6 @@
     "INVALID_INVOICE_DATE":          "تاريخ الفاتورة غير صالح.",
     "NO_PRODUCT_TO_INVOICE":         "لا يوجد منتج للفاتورة.",
     "MISSING_SHIPPING_INFO":         "معلومات الشحن مفقودة.",
-    "INVALID_DATE_RANGE":            "نطاق التاريخ غير صالح"
+    "INVALID_DATE_RANGE":            "نطاق التاريخ غير صالح",
+    "SINGLE_ACCOUNTING":             "يتم تسجيل محاسبة الموقع في مكان آخر"
 }

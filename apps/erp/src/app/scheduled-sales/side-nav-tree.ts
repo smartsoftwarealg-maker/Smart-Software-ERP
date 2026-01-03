@@ -43,7 +43,7 @@ export const scheduledSalesNavTree: SideNavNode = {
             name: 'LOGISTICS_ARTICLE',
             icon: 'fas fa-box',
             route: ABS_SCHEDULED_SALES_ARTICLE,
-            accessRights: 'Agent'
+            accessRights: 'Article'
         },
         {
             name: 'COMMON_VAT',

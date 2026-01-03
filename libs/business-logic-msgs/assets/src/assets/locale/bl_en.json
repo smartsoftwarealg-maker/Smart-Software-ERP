@@ -91,5 +91,6 @@
     "PAYROLL_ERROR":                 "The payroll contains the following errors: ",
     "INVALID_INVOICE_DATE":          "Invalid invoicing date.",
     "NO_PRODUCT_TO_INVOICE":         "No product to invoice.",
-    "INVALID_DATE_RANGE":            "Invalid date range"
+    "INVALID_DATE_RANGE":            "Invalid date range",
+    "SINGLE_ACCOUNTING":             "The site's accounting is recorded elsewhere"
 }
