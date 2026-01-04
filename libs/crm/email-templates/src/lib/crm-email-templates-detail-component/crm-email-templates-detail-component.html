@@ -104,7 +104,7 @@
         </mat-card>
         <div class="html__div default-100">
             <mat-label translate>CRM_HTML_CONTENT</mat-label>
-            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary"></ngx-editor-menu>
+            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar" class="f-primary" ></ngx-editor-menu>
             <ngx-editor [editor]="editor" formControlName="htmlContent"></ngx-editor>
             @if(form.controls['htmlContent'].invalid) {
                 <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>

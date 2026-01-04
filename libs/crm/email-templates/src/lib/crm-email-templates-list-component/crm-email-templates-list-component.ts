@@ -63,7 +63,7 @@ export class CrmEmailTemplatesListComponent implements OnInit, OnDestroy {
     displayedColumns = [
         'name',
         'subject',
-        'thumbnail',
+        // 'thumbnail',
         'category',
         'tags',
         'mergeFields',

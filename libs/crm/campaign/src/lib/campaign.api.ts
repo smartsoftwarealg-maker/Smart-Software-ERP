@@ -59,6 +59,7 @@ export interface Campaign {
     createdBy: number;
     updatedAt: Date;
     updatedBy: number;
+    isAutomated: boolean;
 }
 
 export interface TMessage {

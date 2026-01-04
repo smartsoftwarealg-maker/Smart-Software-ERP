@@ -161,9 +161,10 @@ export class CrmCustomerDetailComponent
         this.agentTypeLookup = new CustomerLookup(this.agentTypeSrv);
         this.defaultAgentType = 0;
         this.entitySrv.setURL(CUSTOMER_URL);
-        return this.optionSrv
-            .get(this.loginSrv.appCtx.center)
-            .pipe(tap((res) => (this.optionSrv.options = res)));
+        return super.preload();
+        // return this.optionSrv
+        //     .get(this.loginSrv.appCtx.center)
+        //     .pipe(tap((res) => (this.optionSrv.options = res)));
     }
 
     override finishLoading(e: Agent) {

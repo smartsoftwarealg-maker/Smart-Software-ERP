@@ -6,30 +6,24 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import {CATEGORY, EmailTemplate} from '../crm-email-templates.api';
+import { CATEGORY, EmailTemplate, STATUS } from '../crm-email-templates.api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import {
-    DefaultAutoCompleteModel,
-    UiAutoCompleteComponent,
-    UserLookup,
-} from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent, UserLookup } from '@ss/common/ui-auto-complete';
 import { UserListService } from '@ss/common/api-users';
 import { CRMEmailTemplatesService } from '../crm-email-templates.service';
-import { STATUS } from '../crm-email-templates.api';
 import { CrmTeamsService } from '@ss/crm/crm-teams';
-import { Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar } from 'ngx-editor';
+import { Editor, NgxEditorModule, toDoc, toHTML, Toolbar } from 'ngx-editor';
 
 @Component({
-    selector: 'crm-email-templates-detail-component',
+    selector: 'ss-crm-email-templates-detail-component',
     imports: [
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
         DatePickerComponent,
         UiAutoCompleteComponent,
-        NgxEditorMenuComponent,
-        NgxEditorComponent
+        NgxEditorModule,
     ],
     templateUrl: './crm-email-templates-detail-component.html',
     styleUrl: './crm-email-templates-detail-component.scss',
@@ -52,6 +46,21 @@ export class CrmEmailTemplatesDetailComponent implements OnInit {
     #snackBarSrv = inject(SnackBarService);
     #shellSrv = inject(ShellService);
     #NOW = new Date();
+    #jsonDoc = {
+        type: 'doc',
+        content: [
+            {
+                type: 'paragraph',
+                content: [
+                    {
+                        type: 'text',
+                        text: '',
+                    },
+                ],
+            },
+        ],
+    };
+
 
     formBuilder = inject(FormBuilder);
     userLookup = new UserLookup(this.#userSrv);
@@ -64,8 +73,8 @@ export class CrmEmailTemplatesDetailComponent implements OnInit {
         this.#shellSrv.setTitle('CRM_EMAIL_TEMPLATE');
         if (id > 0) {
             this.#entitySrv.get(id).subscribe({
-                next: (crmLead) => {
-                    this.form = this.setupForm(crmLead);
+                next: (template) => {
+                    this.form = this.setupForm(template);
                 },
             });
         } else {
@@ -77,14 +86,33 @@ export class CrmEmailTemplatesDetailComponent implements OnInit {
         this.#router.navigate(['..'], { relativeTo: this.#route }).then();
     }
 
+    getEditorContentAsHTML(): string {
+        // Convert to HTML string
+        return toHTML(this.#jsonDoc);
+    }
+
+    // To load HTML into the editor manually (optional, input binding handles this too)
+    loadHtmlIntoEditor(htmlString: string): void {
+        const jsonDoc = toDoc(htmlString); // Convert HTML string to JSON doc
+        this.editor.setContent(jsonDoc);
+    }
+
     save() {
+        const value = this.form.getRawValue();
+        value.createdAt = null;
+        value.updatedAt = null;
+        value.createdBy = null;
+        value.updatedBy = null;
+        const content = toHTML(value.htmlContent);
+        console.log( value.htmlContent, content );
+        value.htmlContent = content;
         this.#entitySrv
-            .save(this.form.getRawValue() as EmailTemplate)
+            .save(value)
             .subscribe({
                 next: () => {
                     this.form.markAsUntouched();
                     this.#snackBarSrv.showSuccessMessage();
-                    this.list()
+                    this.list();
                 },
                 error: () => {
                     this.#snackBarSrv.showFailureMessage();
@@ -100,12 +128,14 @@ export class CrmEmailTemplatesDetailComponent implements OnInit {
     }
 
     private setupForm(b: EmailTemplate) {
+        this.editor.setContent(toDoc(b.htmlContent as string));
+        const content = b?.htmlContent? toDoc(b?.htmlContent) : null;
         return this.formBuilder.group({
             id: [b?.id || 0, Validators.required],
             name: [b?.name, Validators.required],
             subject: [b?.subject, Validators.required],
             thumbnail: [b?.thumbnail],
-            htmlContent: [b?.htmlContent, Validators.required],
+            htmlContent: [content, Validators.required],
             textContent: [b?.textContent],
             category: [b?.category],
             tags: [b?.tags],
@@ -113,7 +143,7 @@ export class CrmEmailTemplatesDetailComponent implements OnInit {
             status: [b?.status || 'NEW'],
             ownerId: [b?.ownerId, Validators.required],
             teamId: [b?.teamId],
-            createdAt: [b?.createdAt || this.#NOW, Validators.required],
+            createdAt: [{ value: b?.createdAt || this.#NOW, disabled: true }],
             createdBy: [b?.createdBy || this.#loginSrv.appCtx.id],
             updatedAt: [b?.updatedAt || this.#NOW],
             updatedBy: [b?.updatedBy || this.#loginSrv.appCtx.id],
