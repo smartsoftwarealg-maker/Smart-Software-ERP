@@ -29,7 +29,7 @@ import { CrmContactService } from '@ss/crm/crm-customer';
 import { CrmTeamsService } from '@ss/crm/crm-teams';
 import { CRMLeadsService } from '@ss/crm/leads';
 import { CrmOpportunityActiveService } from '../crm-opportunity-activities/crm-opportunity-active.service';
-import {CrmOpportunityTrackingService} from "../crm-opportunity-tracking/crm-opportunity-tracking.service";
+import {CrmOpportunityTrackingService} from '../crm-opportunity-tracking/crm-opportunity-tracking.service';
 import { CrmQuotesService } from '../crm-opportunity-quotes/crm-quotes.service';
 
 enum Panels {
@@ -118,11 +118,13 @@ export class CrmOpportunityDetailComponent implements OnInit {
                 this.disableSave = url.includes('/quotes/') || url.includes('/items/');
             });
         this.#shellSrv.setTitle('CRM_OPPORTUNITY');
-        this.#entitySrv.get(id).subscribe({
-            next: (crmOpportunity) => {
-                this.form = this.setupForm(crmOpportunity);
-            },
-        });
+        this.#entitySrv
+            .get(id)
+            .subscribe({
+                next: (crmOpportunity) => {
+                    this.form = this.setupForm(crmOpportunity);
+                },
+            });
     }
 
     list() {
@@ -130,7 +132,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
     }
 
     save() {
-        let opportunity: CRMOpportunity = this.form?.getRawValue();
+        const opportunity: CRMOpportunity = this.form?.getRawValue();
         delete opportunity.status;
         delete opportunity.stage;
         delete opportunity.probability;
@@ -146,7 +148,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
                 next: () => {
                     this.form.markAsUntouched();
                     this.#snackBarSrv.showSuccessMessage();
-                    this.list()
+                    this.list();
                 },
                 error: (err) => {
                     this.#snackBarSrv.showFailureMessage();
@@ -172,7 +174,7 @@ export class CrmOpportunityDetailComponent implements OnInit {
             id: [b?.id || 0, Validators.required],
             name: [b?.name, Validators.required],
             ownerId: [b?.ownerId || this.#loginSrv.appCtx.id],
-            companyId: [b?.companyId || this.#loginSrv.appCtx.company],
+            companyId: [b?.companyId],
             contactEmail: [b?.contactEmail || ''],
             contactPhone: [b?.contactPhone || ''],
             teamId: [b?.teamId],

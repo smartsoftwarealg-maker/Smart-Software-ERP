@@ -1,14 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {
     FormControl,
-    FormGroup,
     ReactiveFormsModule,
     UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import {
-    MatError,
     MatFormField,
     MatInput,
     MatLabel,
@@ -20,16 +18,15 @@ import {CRMOpportunityActivity, EMessage} from '../api';
 import { CrmOpportunityActiveService } from '../crm-opportunity-active.service';
 import {ACTIVITY_TYPE, PRIORITY, STATUS} from '../../crm-opportunity-api';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { MaterialModule, UserService } from '@ss/common/api-common';
+import { MaterialModule } from '@ss/common/api-common';
 import {
     DefaultAutoCompleteModel,
     UiAutoCompleteComponent,
 } from '@ss/common/ui-auto-complete';
-import {UserListService} from "@ss/common/api-users";
-import {CrmTeamsService} from "@ss/crm/crm-teams";
-import {Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar} from "ngx-editor";
-import {TMessage} from "@ss/crm/campaign";
-import {CRMOpportunityService} from "../../crm-opportunity.service";
+import {UserListService} from '@ss/common/api-users';
+import {CrmTeamsService} from '@ss/crm/crm-teams';
+import {Editor, Toolbar} from 'ngx-editor';
+import {CRMOpportunityService} from '../../crm-opportunity.service';
 
 @Component({
     selector: 'ss-crm-contact-line-detail',
@@ -48,8 +45,6 @@ import {CRMOpportunityService} from "../../crm-opportunity.service";
         DatePickerComponent,
         MaterialModule,
         UiAutoCompleteComponent,
-        NgxEditorComponent,
-        NgxEditorMenuComponent,
     ],
     standalone: true,
 })
@@ -110,13 +105,13 @@ export class CrmOpportunityActivitiesDetailComponent
         });
     }
 
-    private opportunitySrv= inject(CRMOpportunityService)
+    private opportunitySrv= inject(CRMOpportunityService);
 
     override ngOnInit() {
         super.ngOnInit();
         this.opportunitySrv.get(this.detailSrv.getParentId()).subscribe({
             next: (crmOpportunity) => {
-                this.email = crmOpportunity.contactEmail
+                this.email = crmOpportunity.contactEmail;
             },
         });
     }

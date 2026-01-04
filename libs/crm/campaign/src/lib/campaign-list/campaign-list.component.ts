@@ -17,7 +17,7 @@ import {
 import { MatSort, MatSortHeader, Sort } from '@angular/material/sort';
 import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { CompaignService } from '../compaign.service';
+import { CampaignService } from '../campaign.service';
 import { Campaign, STATUS, CTYPES } from '../campaign.api';
 import { DatePipe } from '@angular/common';
 import {MatButton} from "@angular/material/button";
@@ -48,7 +48,7 @@ import {MatButton} from "@angular/material/button";
     ],
 })
 export class CampaignListComponent implements OnInit, OnDestroy {
-    #entitySrv = inject(CompaignService);
+    #entitySrv = inject(CampaignService);
     #router = inject(Router);
     #route = inject(ActivatedRoute);
     #shellSrv = inject(ShellService);

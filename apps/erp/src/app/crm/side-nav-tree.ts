@@ -53,7 +53,7 @@ export const crmNavTree: SideNavNode = {
             name: 'CRM_MAILING_LIST',
             icon: 'fa-solid fa-inbox',
             route: ABS_CRM_MAILING_LIST_URL,
-            accessRights: 'CRMMailingList'
+            accessRights: 'CRMMailingList',
         },
         // {
         //     name: 'CRM_EMAIL_TEMPLATES',
@@ -62,47 +62,47 @@ export const crmNavTree: SideNavNode = {
         //     accessRights: 'CRMEmail'
         // },
         {
+            name: 'CRM_TEAMS',
+            icon: 'fas fa-people-group',
+            route: ABS_CRM_TEAMS_URL,
+            accessRights: 'CRMTeams',
+        },
+        {
             name: 'CRM_EMAIL_TEMPLATES',
             icon: 'fas fa-envelope',
             route: ABS_CRM_EMAIL_TEMPLATE_URL,
             accessRights: 'CRMEmail',
         },
         {
-            name: 'CRM_TEAMS',
-            icon: 'fas fa-people-group',
-            route: ABS_CRM_TEAMS_URL,
-            accessRights: 'CRMTeams'
-        },
-        {
             name: 'LOGISTICS_CUSTOMERS',
             icon: 'fa-solid fa-users',
             route: ABS_CRM_CUSTOMER_URL,
-            accessRights: 'CRMCustomer'
+            accessRights: 'CRMCustomer',
         },
         {
             name: 'CRM_CAMPAIGNS',
             icon: 'fas fa-bullhorn',
             route: ABS_CRM_CAMPAIGN_URL,
-            accessRights: 'CRMCampaign'
+            accessRights: 'CRMCampaign',
         },
         {
             name: 'CRM_LEADS',
             icon: 'fa-solid fa-telescope',
             route: ABS_CRM_LEADS_URL,
-            accessRights: 'CRMLead'
+            accessRights: 'CRMLead',
         },
         {
             name: 'CRM_OPPORTUNITIES',
             icon: 'fa-solid fa-handshake',
             route: ABS_CRM_OPPORTUNITY_URL,
-            accessRights: 'CRMOpportunity'
+            accessRights: 'CRMOpportunity',
         },
         {
             name: 'CRM_CALENDAR',
             icon: 'fa-regular fa-calendar',
             route: ABS_CRM_CALENDAR_URL,
-            accessRights: 'CRMCalendar'
-        }
+            accessRights: 'CRMCalendar',
+        },
     ],
-    accessRights: 'CRM'
+    accessRights: 'CRM',
 };

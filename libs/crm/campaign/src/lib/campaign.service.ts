@@ -8,7 +8,7 @@ export const CAMPAIGN_URL = '/crm/campaigns';
 @Injectable({
     providedIn: 'root',
 })
-export class CompaignService extends BaseEntityService<Campaign> {
+export class CampaignService extends BaseEntityService<Campaign> {
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, CAMPAIGN_URL);
     }

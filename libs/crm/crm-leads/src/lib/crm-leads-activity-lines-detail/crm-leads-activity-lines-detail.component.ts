@@ -14,7 +14,7 @@ import { MaterialModule, LoginService } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { UserListService } from '@ss/common/api-users';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar } from 'ngx-editor';
+import { Editor, Toolbar } from 'ngx-editor';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { FurnitureStatusService } from '@ss/common/api-lookup';
 import { CrmLeadActivityService } from '../crm-lead-activity.service';
@@ -22,7 +22,6 @@ import { CRMLeadActivity, EMessage } from '../lead-activity-api';
 import { ACTIVITY_TYPE } from '@ss/crm/opportunity';
 import { of } from 'rxjs';
 import { SnackBarService } from '@ss/common/ui-shell';
-import { CRMOpportunityService } from '../../../../crm-opportunity/src/lib/crm-opportunity.service';
 import { CRMLead } from '../lead-api';
 import { CRMLeadsService } from '@ss/crm/leads';
 
@@ -42,8 +41,6 @@ import { CRMLeadsService } from '@ss/crm/leads';
         TranslatePipe,
         UiAutoCompleteComponent,
         DatePickerComponent,
-        NgxEditorComponent,
-        NgxEditorMenuComponent
     ]
 })
 export class CrmLeadsActivityLinesDetailComponent implements OnInit {

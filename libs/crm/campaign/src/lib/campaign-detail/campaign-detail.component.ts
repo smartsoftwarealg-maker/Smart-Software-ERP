@@ -23,7 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { CompaignService } from '../compaign.service';
+import { CampaignService } from '../campaign.service';
 import { Campaign, CHANNELS, CTYPES, STATUS, TMessage } from '../campaign.api';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {
@@ -34,13 +34,11 @@ import {
 import { UserListService } from '@ss/common/api-users';
 import { MailingListService } from '@ss/crm/mailing-list';
 import {
-    NgxEditorComponent,
-    NgxEditorMenuComponent,
-    Editor,
+    Editor, NgxEditorModule,
     Toolbar,
 } from 'ngx-editor';
 import { Observable, of } from 'rxjs';
-import { CRMEmailTemplatesService } from '../../../../email-templates/src/lib/crm-email-templates.service';
+import { CRMEmailTemplatesService } from '@ss/crm/email-templates';
 
 enum Panels {
     GENERAL = 0,
@@ -65,9 +63,8 @@ enum Panels {
         MatInput,
         DatePickerComponent,
         UiAutoCompleteComponent,
-        NgxEditorMenuComponent,
-        NgxEditorComponent,
         TranslatePipe,
+        NgxEditorModule,
     ],
 })
 export class CampaignDetailComponent implements OnInit, OnDestroy {
@@ -75,7 +72,7 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     #loginSrv = inject(LoginService);
     #mailingListSrv = inject(MailingListService);
     #emailTemplateSrv = inject(CRMEmailTemplatesService);
-    #entitySrv = inject(CompaignService);
+    #entitySrv = inject(CampaignService);
     #router = inject(Router);
     #route = inject(ActivatedRoute);
     #confirmationSrv = inject(ConfirmationDialogService);
@@ -97,7 +94,7 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     mailingList = new FormControl<number | null>(null);
     template = new FormControl<number | null>(null);
 
-    html = '';
+    // html = '';
     htmlForm = new FormGroup({
         editorContent: new FormControl(
             { value: '', disabled: false },
@@ -132,13 +129,15 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
         this.editor = new Editor();
         this.template.valueChanges.subscribe(() => {
             if (this.template.value) {
-                this.#emailTemplateSrv.get(+this.template.value).subscribe({
-                    next: (res) => {
-                        this.htmlForm.controls.editorContent.setValue(
-                            res?.htmlContent
-                        );
-                    },
-                });
+                this.#emailTemplateSrv
+                    .get(+this.template.value)
+                    .subscribe({
+                        next: (res) => {
+                            this.htmlForm.controls.editorContent.setValue(
+                                res?.htmlContent,
+                            );
+                        },
+                    });
             }
         });
     }
@@ -168,29 +167,45 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
 
     private setupForm(e: Campaign): UntypedFormGroup {
         return this.formBuilder.group({
-            id:              [e.id],
-            name:            [e.name, Validators.required],
-            cType:           [e.cType, Validators.required],
-            status:          [e.status, Validators.required],
-            description:     [e.description],
-            audienceQuery:   [e.audienceQuery],
-            audienceSize:    [e.audienceSize],
-            tag:             [e.tag],
-            startDate:       [e.startDate, Validators.required],
-            endDate:         [e.endDate],
-            budget:          [e.budget],
-            actualCost:      [e.actualCost, Validators.required],
+            id: [e.id],
+            name: [e.name, Validators.required],
+            cType: [e.cType, Validators.required],
+            status: [e.status, Validators.required],
+            description: [e.description],
+            audienceQuery: [e.audienceQuery],
+            audienceSize: [e.audienceSize||0],
+            tag: [e.tag],
+            startDate: [e.startDate||new Date(), Validators.required],
+            endDate: [e.endDate],
+            budget: [e.budget],
+            actualCost: [e.actualCost||0, Validators.required],
             expectedRevenue: [e.expectedRevenue],
-            channels:        [e.channels, Validators.required],
+            channels: [e.channels, Validators.required],
             emailTemplateId: [e.emailTemplateId],
-            smsTemplateId:   [e.smsTemplateId],
-            landingPageUrl:  [e.landingPageUrl],
-            callScript:      [e.callScript],
-            ownerId:         [ {value: e.ownerId || this.#loginSrv.appCtx.id, disabled: !this.isResponsible() }],
-            createdAt:       [{ value: e.createdAt || new Date(), disabled: true }],
-            createdBy:       [{ value: e.createdBy || this.#loginSrv.appCtx.id,  disabled: true,}],
-            updatedAt:       [{ value: e.updatedAt || new Date(), disabled: true}],
-            updatedBy:       [{ value: e.updatedBy || this.#loginSrv.appCtx.id, disabled: true  }],
+            smsTemplateId: [e.smsTemplateId],
+            landingPageUrl: [e.landingPageUrl],
+            callScript: [e.callScript],
+            ownerId: [
+                {
+                    value: e.ownerId || this.#loginSrv.appCtx.id,
+                    disabled: !this.isResponsible(),
+                },
+            ],
+            createdAt: [{ value: e.createdAt || new Date(), disabled: true }],
+            createdBy: [
+                {
+                    value: e.createdBy || this.#loginSrv.appCtx.id,
+                    disabled: true,
+                },
+            ],
+            updatedAt: [{ value: e.updatedAt || new Date(), disabled: true }],
+            isAutomated: [e.isAutomated||false],
+            updatedBy: [
+                {
+                    value: e.updatedBy || this.#loginSrv.appCtx.id,
+                    disabled: true,
+                },
+            ],
         });
     }
 
@@ -198,7 +213,9 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     selectedPanel = signal<Panels>(Panels.DETAIL);
     isDetail = computed(() => this.selectedPanel() === Panels.DETAIL);
     isEmail = computed(() => this.selectedPanel() === Panels.EMAIL);
-    isTraceability = computed(() => this.selectedPanel() === Panels.TRACEABILITY);
+    isTraceability = computed(
+        () => this.selectedPanel() === Panels.TRACEABILITY,
+    );
 
     select(idx: number) {
         this.selectedPanel.set(idx);
@@ -207,7 +224,7 @@ export class CampaignDetailComponent implements OnInit, OnDestroy {
     send() {
         const tMessage: TMessage = {
             mailingListId: +this.mailingList.getRawValue(),
-            templateId: +this.template.getRawValue()
+            templateId: +this.template.getRawValue(),
         };
         this.#entitySrv.send(tMessage).subscribe({
             next: () => {
