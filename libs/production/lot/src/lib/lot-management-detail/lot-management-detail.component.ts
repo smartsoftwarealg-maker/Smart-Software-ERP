@@ -22,12 +22,12 @@ import { StoresService } from '@ss/stock/api-article-store';
     templateUrl: './lot-management-detail.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    RouterModule,
-    TranslateDirective,
-    UiAutoCompleteComponent,
-    DatePickerComponent
-],
+        MaterialModule,
+        RouterModule,
+        TranslateDirective,
+        UiAutoCompleteComponent,
+        DatePickerComponent
+    ],
 })
 export class LotManagementDetailComponent
     extends BaseEntityDetailComponent<Lot>
@@ -78,7 +78,7 @@ export class LotManagementDetailComponent
             lotNumber:      [l.lotNumber || 1, Validators.maxLength(14)],
             creationDate:   [l.creationDate],
             expirationDate: [l.expirationDate],
-            team:           [l.team || 0],
+            team:           [l.team],
             center:         [l.center || 0],
         });
     }
