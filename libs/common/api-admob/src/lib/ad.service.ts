@@ -5,7 +5,6 @@ import { AdMob, BannerAdOptions, BannerAdSize, BannerAdPosition } from '@capacit
     providedIn: 'root'
 })
 export class AdService {
-
     constructor() {
         AdMob.initialize({
             testingDevices: ['2077ef9a63d2b398840261c8221a0c9b'],
@@ -13,18 +12,18 @@ export class AdService {
         });
     }
 
-    showBanner() {
+    showBanner(id: string) {
         const options: BannerAdOptions = {
-            adId: 'ca-app-pub-3388839794730339/2242445689',
+            adId: id, // 'ca-app-pub-3388839794730339/2242445689',
             adSize: BannerAdSize.BANNER,
             position: BannerAdPosition.BOTTOM_CENTER,
             margin: 0,
             isTesting: true // Set to true for testing
         };
-        AdMob.showBanner(options);
+        AdMob.showBanner(options).then();
     }
 
     hideBanner() {
-        AdMob.hideBanner();
+        AdMob.hideBanner().then();
     }
 }
