@@ -98,12 +98,13 @@ export interface Transaction {
     vfGuarantee?: number;
     ftGuarantee?: number;
     advancementAmount: number;
-    advancement?: number
-    advancementFT?: number
+    advancement?: number;
+    advancementFT?: number;
     receptionType?: number;
     supplierAccount?: number;
     shipMode?: number;
     invoiceNumber?: number;
+    paymentId?: number;
 }
 
 export interface ExtraCost {
