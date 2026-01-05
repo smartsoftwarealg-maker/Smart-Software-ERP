@@ -170,11 +170,9 @@
                             <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
                         </mat-form-field>
                     </mat-tab>
-                    @if (id) {
+                    @if (agentId) {
                         <mat-tab label="{{ 'COMMON_PAYMENTS' | translate }}">
-                            <ss-quick-order-payment [id]="+form.controls['paymentId'].getRawValue()"
-                                                    [agent]="+form.controls['agent'].getRawValue()">
-                            </ss-quick-order-payment>
+                            <ss-quick-order-payment [id]="id"></ss-quick-order-payment>
                         </mat-tab>
                     }
                 </mat-tab-group>

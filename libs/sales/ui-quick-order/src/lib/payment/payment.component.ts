@@ -25,6 +25,9 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { PaymentsDetailService } from '../../../../../logistics/payments/src/lib/services/payments-detail.service';
 import { Payment } from '@ss/logistics/api-common';
 import { LoginService } from '@ss/common/api-common';
+import { QuickOrderService } from '../quick-order.service';
+import { QuickOrder } from '../quick-order.api';
+import { catchError, concatMap, map, of, throwError } from 'rxjs';
 
 @Component({
     selector: 'ss-quick-order-payment',
@@ -47,6 +50,7 @@ import { LoginService } from '@ss/common/api-common';
 })
 export class PaymentComponent implements OnInit {
     #entitySrv = inject(PaymentsDetailService);
+    #quickOrderSrv = inject(QuickOrderService);
     #typeSrv = inject(PayModeService);
     #bankSrv = inject(BankService);
     #snackBarSrv = inject(SnackBarService);
@@ -56,13 +60,20 @@ export class PaymentComponent implements OnInit {
     bankAutoCompleteModel = new DefaultAutoCompleteModel(this.#bankSrv);
     modeAutoCompleteModel = new DefaultAutoCompleteModel(this.#typeSrv);
 
+    quickOrder: QuickOrder;
     id = input(0);
-    agent = input(0);
 
     public form: UntypedFormGroup | null = null;
 
     ngOnInit(): void {
-        this.refresh(this.id());
+        if (this.id()) {
+            this.#quickOrderSrv.get(this.id()).subscribe({
+                next: (quickOrder) => {
+                    this.quickOrder = quickOrder;
+                    this.refresh(quickOrder.paymentId);
+                },
+            });
+        }
     }
 
     refresh(id: number) {
@@ -73,21 +84,8 @@ export class PaymentComponent implements OnInit {
                 },
             });
         } else {
-            this.form = this.setupForm({id : 0} as Payment);
+            this.form = this.setupForm({ id: 0 } as Payment);
         }
-    }
-
-    save() {
-        const val = this.readForm();
-        this.#entitySrv.save(val).subscribe({
-            next: () => {
-                this.form?.markAsUntouched();
-                this.#snackBarSrv.showSuccessMessage();
-            },
-            error: () => {
-                this.#snackBarSrv.showFailureMessage();
-            },
-        });
     }
 
     private setupForm(p: Payment): UntypedFormGroup {
@@ -102,7 +100,7 @@ export class PaymentComponent implements OnInit {
             description: [p.description, Validators.required],
             date: [p.date || new Date(), Validators.required],
             dueDays: [p.dueDays || 0, Validators.required],
-            agent: [p.agent || this.agent()],
+            agent: [p.agent || this.quickOrder.agent],
             debit: [
                 { value: db, disabled: cr > 0.000001 },
                 Validators.required,
@@ -122,6 +120,40 @@ export class PaymentComponent implements OnInit {
         p.debit = p.credit = null;
         p.center = this.#loginSrv.appCtx.center;
         return p;
+    }
+
+    save() {
+        const val = this.readForm();
+        this.#entitySrv
+            .save(val)
+            .pipe(
+                concatMap((res) => {
+                    if (!(this.quickOrder.paymentId > 0)) {
+                        const order = {
+                            ...this.quickOrder,
+                            paymentId: res,
+                        };
+                        return this.#quickOrderSrv.save(order);
+                    } else {
+                        return of(res);
+                    }
+                }),
+                catchError((error) => {
+                    this.#snackBarSrv.showFailureMessage();
+                    return throwError(() => error);
+                }),
+            )
+            .subscribe({
+                next: () => {
+                    this.cancel();
+                    this.form?.markAsUntouched();
+                    this.#snackBarSrv.showSuccessMessage();
+                },
+                error: (error) => {
+                    this.#snackBarSrv.showFailureMessage();
+                    throw error;
+                },
+            });
     }
 
     onDebitChange(_: Event) {
@@ -147,10 +179,12 @@ export class PaymentComponent implements OnInit {
     }
 
     cancel() {
-        this.refresh(this.id());
+        this.refresh(this.quickOrder.paymentId);
+        this.form?.markAsPristine();
     }
 
     delete() {
         this.refresh(0);
+        this.form?.markAsPristine();
     }
 }
