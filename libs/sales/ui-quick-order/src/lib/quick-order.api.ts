@@ -39,6 +39,7 @@ export interface QuickOrder {
     discountDescription?: string;
     discount?: number;
     fixedDiscountVAT?: number;
+    paymentId?: number;
 }
 
 export interface InvoiceInfo {

@@ -37,6 +37,7 @@ import {
     ArticleService,
 } from '@ss/master-data/api-article';
 import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
+import { PaymentComponent } from '../payment/payment.component';
 
 export enum DuplicateMode {
     Count = 0,
@@ -53,6 +54,7 @@ export enum DuplicateMode {
         UiAutoCompleteComponent,
         RouterOutlet,
         TranslatePipe,
+        PaymentComponent,
     ],
     selector: 'ss-ui-quick-order-detail',
     standalone: true,
@@ -79,6 +81,10 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     salesProjectLookup = new ProjectLookupModel(this.#salesProjectSrv);
 
     duplicateMode = signal<DuplicateMode>(DuplicateMode.Count);
+    today: Date = new Date();
+    tomorrow: Date = new Date(this.today.getTime() + 24 * 60 * 60 * 1000);
+    paymentId: number;
+    agentId: number;
 
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
     constructor(
@@ -121,7 +127,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             centerId: [q.centerId || this.#loginSrv.appCtx.center],
             document: [q.document || 0],
             number: [q.number || 1],
-            date: [q.date || new Date(), Validators.required],
+            date: [q.date, Validators.required],
             agent: [q.agent],
             userID: [q.userID],
             dealer: [q.dealer],
@@ -155,21 +161,25 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             discountDescription: [q.discountDescription],
             discount: [{ value: q.discount || 0, disabled: true }],
             fixedDiscountVAT: [q.fixedDiscountVAT || 0],
+            paymentId: [q.paymentId],
         });
+
+        this.paymentId = q.paymentId || 0;
+        this.agentId = q.agent;
 
         if (q.id > 0) {
             this.entitySrv.getInvoiceInfo(q.id + '').subscribe((res) => {
-                    if (res[0].invoiceNumber) {
-                        [
-                            'project',
-                            'agent',
-                            'invoiceType',
-                            'payMethod',
-                            'date'
-                        ].forEach((c) => form?.controls[c].disable());
-                    }
-                });
-            }
+                if (res[0].invoiceNumber) {
+                    [
+                        'project',
+                        'agent',
+                        'invoiceType',
+                        'payMethod',
+                        'date',
+                    ].forEach((c) => form?.controls[c].disable());
+                }
+            });
+        }
 
         return form;
     }
