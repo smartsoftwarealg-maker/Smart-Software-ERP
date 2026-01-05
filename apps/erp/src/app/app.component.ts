@@ -24,7 +24,7 @@ import { AdService } from '@ss/common/api-admob';
 export class AppComponent implements OnInit {
     #adId:'ca-app-pub-8350344729252908/7124743448';
     #adService = inject(AdService);
-    #deviceSrv: DeviceDetectorService;
+    #deviceSrv =  inject(DeviceDetectorService);
 
     #companySelectorSrv = inject(CompanySelectorService);
     #langSrv = inject(LanguageService);
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage = homePage;
         this.#langSrv.isSodismac = !!environment['sodismac'];
-        this.shellSrv.setApplicationTitle('Smart ERP 2.8.48');
+        this.shellSrv.setApplicationTitle('Smart ERP 2.8.49');
         this.httpSrv
             .init()
             .pipe(
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
                 next: () => {
                     this.shellSrv.setSideNavDataSource(navBar);
                     this.loaded = true;
-                    if (this.#deviceSrv.isMobile()) {
+                    if (this.#deviceSrv?.isMobile()) {
                         this.#adService.showBanner(this.#adId);
                     }
                 },
