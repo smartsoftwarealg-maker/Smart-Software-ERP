@@ -24,8 +24,7 @@ export class AppComponent implements OnInit {
         private deviceSrv: DeviceDetectorService,
         public langSrv: LanguageService,
         private adService: AdService
-    ) {
-    }
+    ) {    }
 
     ngOnInit() {
         this.shellSrv.setApplicationTitle('Currency Exchange, Ver. 0.0.2 Beta');

@@ -12,20 +12,20 @@ import { ThemeService } from '@ss/common/ui-theme';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { environment } from '../environments/environment';
 import { initialize } from './admobile';
+import { AdService } from '@ss/common/api-admob';
 
 @Component({
     selector: 'ss-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
-    imports: [
-        Dir,
-        RouterOutlet,
-        MatProgressSpinner,
-        MessageComponent
-    ],
+    imports: [Dir, RouterOutlet, MatProgressSpinner, MessageComponent],
 })
 export class AppComponent implements OnInit {
+    #adId:'ca-app-pub-8350344729252908/7124743448';
+    #adService = inject(AdService);
+    #deviceSrv =  inject(DeviceDetectorService);
+
     #companySelectorSrv = inject(CompanySelectorService);
     #langSrv = inject(LanguageService);
     // private snackSrv = inject(SnackBarService);
@@ -45,20 +45,24 @@ export class AppComponent implements OnInit {
         const homePage = environment['homePage'];
         this.#companySelectorSrv.multiCompany = multiCompany;
         this.#companySelectorSrv.spaceCompany = company;
-        this.#companySelectorSrv.homePage     = homePage;
+        this.#companySelectorSrv.homePage = homePage;
         this.#langSrv.isSodismac = !!environment['sodismac'];
-        this.shellSrv.setApplicationTitle('Smart ERP 2.8.48');
+        this.shellSrv.setApplicationTitle('Smart ERP 2.8.49');
         this.httpSrv
             .init()
             .pipe(
                 switchMap(() => this.langSrv.init()),
                 switchMap(() => this.langSrv.addSources(langAssets)),
-            ).subscribe({
+            )
+            .subscribe({
                 next: () => {
                     this.shellSrv.setSideNavDataSource(navBar);
                     this.loaded = true;
+                    if (this.#deviceSrv?.isMobile()) {
+                        this.#adService.showBanner(this.#adId);
+                    }
                 },
-                error: () => this.loginSrv.logout().then()
+                error: () => this.loginSrv.logout().then(),
             });
 
         // console.log('Main app....................................')
@@ -70,5 +74,4 @@ export class AppComponent implements OnInit {
         //     this.snackSrv.hasAd = true;
         // }
     }
-
 }
