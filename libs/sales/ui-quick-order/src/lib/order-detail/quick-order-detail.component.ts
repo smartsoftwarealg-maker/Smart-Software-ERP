@@ -127,7 +127,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             centerId: [q.centerId || this.#loginSrv.appCtx.center],
             document: [q.document || 0],
             number: [q.number || 1],
-            date: [q.date, Validators.required],
+            date: [q.date || new Date, Validators.required],
             agent: [q.agent],
             userID: [q.userID],
             dealer: [q.dealer],
