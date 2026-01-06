@@ -86,7 +86,7 @@ export class LotManagementDetailComponent
     override readForm(): Lot {
         const lot = this.form.getRawValue();
         lot.expires = lot.expirationDate !== null;
-        lot.description = lot.lotNumber + '';
+        // lot.description = lot.lotNumber + '';
         return lot;
     }
 }
