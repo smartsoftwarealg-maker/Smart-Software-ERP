@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import {ArticleService} from '@ss/master-data/api-article';
-import {LotsService} from '@ss/common/api-lookup';
-import {BaseTransactionLinesListComponent, SalesOrderLinesService} from '@ss/logistics/api-transaction';
+import { Component, inject, OnInit } from '@angular/core';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { ArticleService } from '@ss/master-data/api-article';
+import { LotsService } from '@ss/common/api-lookup';
+import {
+    BaseTransactionLinesListComponent,
+    SalesOrderLinesService, TransactionLine,
+} from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,13 +17,20 @@ import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { WeightCaptureDialogButtonComponent } from '@ss/sales/weight-capture';
+import {
+    WeightCapture,
+    WeightCaptureDialogButtonComponent,
+    WeightCaptureService,
+} from '@ss/sales/weight-capture';
+import { forkJoin, map, Observable, of, switchMap } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-order-lines-list',
     templateUrl: './order-lines-list.component.html',
     styleUrls: [
         '../../../../../common/assets/src/assets/transac-lines-list.scss',
+        'order-lines-list.component.scss',
     ],
     standalone: true,
     imports: [
@@ -73,6 +83,10 @@ export class OrderLinesListComponent
             confirmationSrv,
         );
     }
+
+    private weightCaptureSrv = inject(WeightCaptureService);
+    weightCaptures = new Map<number, WeightCapture>();
+
     override ngOnInit() {
         super.ngOnInit();
         this.route.data.subscribe(({ source }) => {
@@ -82,5 +96,37 @@ export class OrderLinesListComponent
                 );
             }
         });
+
+        this.weightCaptureSrv.hasScaleConfig().subscribe({
+            next: (exists) => {
+                if (exists) {
+                    this.displayedColumns.push('tare', 'brut');
+                }
+            },
+            error: () => {},
+        });
     }
+
+    public override loadDetailLines(): Observable<TransactionLine[]> {
+        return super.loadDetailLines().pipe(
+            tap((data) => {
+                data.forEach((line) => {
+                    this.weightCaptureSrv
+                        .getWeightCapture(line.id)
+                        .subscribe((captures) => {
+                            this.weightCaptures.set(line.id, captures);
+                        });
+                });
+            }),
+        );
+    }
+
+    getTureWeight(id: number) {
+        return this.weightCaptures.get(id)?.tare;
+    }
+
+    getBrutWeight(id: number) {
+        return this.weightCaptures.get(id)?.brut;
+    }
+
 }

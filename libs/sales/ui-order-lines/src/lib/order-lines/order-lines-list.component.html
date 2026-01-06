@@ -102,6 +102,19 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="tare">
+                <mat-header-cell *matHeaderCellDef translate>SALES_TARE_WEIGHT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ getTureWeight(e.id) }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="brut">
+                <mat-header-cell *matHeaderCellDef translate>SALES_BRUT_WEIGHT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ getBrutWeight(e.id) }}
+                </mat-cell>
+            </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
