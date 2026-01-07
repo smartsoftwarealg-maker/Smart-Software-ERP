@@ -81,7 +81,7 @@ export const salesNavTree: SideNavNode = {
             name: 'SALES_ORDER_INVOICING',
             icon: 'fa-solid fa-file-invoice',
             route: ABS_SALES_ORDER_INVOICING_URL,
-            accessRights: 'SOrder',
+            accessRights: 'SInvoice',
         },
         {
             name: 'COMMON_DELIVERY',
