@@ -20,7 +20,8 @@
             <span class="fas fa-trash-alt"></span>
         </button>
         <ss-weight-capture-dialog-button-dialog
-            [transactionId]="selectedId"></ss-weight-capture-dialog-button-dialog>
+            [transactionId]="selectedId">
+        </ss-weight-capture-dialog-button-dialog>
     </div>
 
     <div class="main-table">
@@ -105,14 +106,14 @@
             <ng-container matColumnDef="tare">
                 <mat-header-cell *matHeaderCellDef translate>SALES_TARE_WEIGHT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ getTureWeight(e.id) }}
+                    {{ e.tareWeight }}
                 </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="brut">
                 <mat-header-cell *matHeaderCellDef translate>SALES_BRUT_WEIGHT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ getBrutWeight(e.id) }}
+                    {{ e.brutWeight }}
                 </mat-cell>
             </ng-container>
 

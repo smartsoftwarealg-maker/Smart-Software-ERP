@@ -56,8 +56,8 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
         });
         if (this.document() == DOC_RECEPTION) {
             dialogRef.afterClosed().subscribe((result) => {
-                if (result != null && typeof (result) == "number"){
-                    this.callback()?.(this.transactionId(), result)
+                if (result != null && typeof (result) == 'number'){
+                    this.callback()?.(this.transactionId(), result);
                 }
             })
         }
