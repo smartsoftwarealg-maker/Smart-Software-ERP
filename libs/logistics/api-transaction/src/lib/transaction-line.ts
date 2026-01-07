@@ -27,4 +27,6 @@ export interface TransactionLine {
     bomId?: number;
     costCenter?: number;
     unitsDescription?: string;
+    tareWeight?: number;
+    brutWeight?: number;
 }

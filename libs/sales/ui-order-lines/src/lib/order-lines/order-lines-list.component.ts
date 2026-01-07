@@ -48,6 +48,9 @@ export class OrderLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit
 {
+    private weightCaptureSrv = inject(WeightCaptureService);
+    weightCaptures = new Map<number, WeightCapture>();
+
     displayedColumns = [
         'position',
         'store',
@@ -82,30 +85,22 @@ export class OrderLinesListComponent
         );
     }
 
-    private weightCaptureSrv = inject(WeightCaptureService);
-    weightCaptures = new Map<number, WeightCapture>();
-
     override ngOnInit() {
         super.ngOnInit();
-        this.route
-            .data
-            .subscribe(({ source }) => {
-                this.displayedColumns = this.displayedColumns
-                    .filter(
-                        (col) => col !== 'store' || source !== 'quick',
-                    );
-            });
+        this.route.data.subscribe(({ source }) => {
+            this.displayedColumns = this.displayedColumns.filter(
+                (col) => col !== 'store' || source !== 'quick',
+            );
+        });
 
-        this.weightCaptureSrv
-            .hasScaleConfig()
-            .subscribe({
-                next: (exists) => {
-                    if (exists) {
-                        this.displayedColumns.push('tare', 'brut');
-                    }
-                },
-                error: () => {},
-            });
+        this.weightCaptureSrv.hasScaleConfig().subscribe({
+            next: (exists) => {
+                if (exists) {
+                    this.displayedColumns.push('tare', 'brut');
+                }
+            },
+            error: () => {},
+        });
     }
 
     public override loadDetailLines(): Observable<TransactionLine[]> {
@@ -115,6 +110,8 @@ export class OrderLinesListComponent
                     this.weightCaptureSrv
                         .getWeightCapture(line.id)
                         .subscribe((captures) => {
+                            line.tareWeight = captures.tare;
+                            line.brutWeight = captures.brut;
                             this.weightCaptures.set(line.id, captures);
                         });
                 });
@@ -122,12 +119,11 @@ export class OrderLinesListComponent
         );
     }
 
-    getTureWeight(id: number) {
+    getTareWeight(id: number) {
         return this.weightCaptures.get(id)?.tare;
     }
 
     getBrutWeight(id: number) {
         return this.weightCaptures.get(id)?.brut;
     }
-
 }
