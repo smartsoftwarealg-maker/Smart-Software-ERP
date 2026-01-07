@@ -260,6 +260,7 @@ export const SALES_MASTER_WORKS_URL  = 'sales-master-works';
 export const SALES_FREE_INVOICE_URL  = 'free-invoice';
 export const SALES_QUICK_ORDER_URL = 'quick-order';
 export const SALES_ARTICLE_URL = 'sales-products';
+export const SALES_ORDER_INVOICING_URL = 'sales-invoicing';
 
 // HR
 export const HR_CATEGORIES_URL = 'categories';
@@ -1040,7 +1041,11 @@ export const ABS_SALES_REPORTS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, COMMON
 export const ABS_SALES_DASHBOARD_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, DASHBOARD_URL].join('/');
 export const ABS_SALES_AGENT_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, STOCK_AGENT_URL].join('/');
 export const ABS_SALES_SERVICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_SERVICE_ARTICLE_URL].join('/');
-export const ABS_SALES_REPORT_PRIVILEGE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, ADMINISTRATION_REPORT_PRIVILEGE_URL].join('/');
+export const ABS_SALES_REPORT_PRIVILEGE_URL =
+    '/' +
+    [MAIN_PAGE_URL, SALES_APP_URL, ADMINISTRATION_REPORT_PRIVILEGE_URL].join(
+        '/',
+    );
 export const ABS_PRICE_LIST_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_PRICE_LIST_URL].join('/');
 export const ABS_SALES_CUSTOMER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, LOGISTICS_CUSTOMER_URL].join('/');
 export const ABS_SALES_DISCOUNT_SCALE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_DISCOUNT_URL].join('/');
@@ -1050,6 +1055,7 @@ export const ABS_SALES_MASTER_WORKS_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, S
 export const ABS_SALES_FREE_INVOICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_FREE_INVOICE_URL].join('/');
 export const ABS_SALES_QUICK_ORDER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_QUICK_ORDER_URL].join('/');
 export const ABS_SALES_ARTICLE_URL =     '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_ARTICLE_URL].join('/');
+export const ABS_SALES_ORDER_INVOICING_URL =     '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_ORDER_INVOICING_URL].join('/');
 
 //services
 export const ABS_SERVICE_CLASSES_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_CLASSES_URL].join('/');

@@ -126,5 +126,6 @@
     "ACCOUNTING_APP":  "المحاسبة",
     "CRM": "إدارة علاقات العملاء",
     "PROJECTS": "المشاريع",
-    "ATTENDANCE_APP": "الحضور"
+    "ATTENDANCE_APP": "الحضور",
+    "SInvoice": "فاتورة مجدولة"
 }
