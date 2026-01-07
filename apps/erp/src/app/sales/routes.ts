@@ -29,6 +29,7 @@ import {
     SALES_FREE_INVOICE_URL,
     SALES_QUICK_ORDER_URL,
     SALES_ARTICLE_URL,
+    SALES_ORDER_INVOICING_URL,
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -110,6 +111,7 @@ import {
     ServiceArticleDetailComponent,
     ServiceArticleListComponent,
 } from '@ss/service-sales/service-articles';
+import { OrderInvoicingComponent } from '@ss/sales/ui-order-invoicing';
 
 export const lookupRoutes: Routes = [];
 
@@ -597,7 +599,7 @@ export const mainRoutes: Routes = [
                 component: ArticleDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                data: { price: 'price1' }
+                data: { price: 'price1' },
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
         ],
@@ -698,6 +700,17 @@ export const mainRoutes: Routes = [
                     },
                     ...docInfoRoutes,
                 ],
+            },
+        ],
+    },
+    {
+        path: SALES_ORDER_INVOICING_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: OrderInvoicingComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
             },
         ],
     },

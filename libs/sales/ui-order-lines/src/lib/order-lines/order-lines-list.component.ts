@@ -6,7 +6,8 @@ import { ArticleService } from '@ss/master-data/api-article';
 import { LotsService } from '@ss/common/api-lookup';
 import {
     BaseTransactionLinesListComponent,
-    SalesOrderLinesService, TransactionLine,
+    SalesOrderLinesService,
+    TransactionLine,
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
@@ -16,7 +17,6 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import {
-    WeightCapture,
     WeightCaptureDialogButtonComponent,
     WeightCaptureService,
 } from '@ss/sales/weight-capture';
@@ -37,7 +37,6 @@ import { tap } from 'rxjs/operators';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-
         DocInfoComponent,
         TranslatePipe,
         PaginationComponent,
@@ -49,7 +48,6 @@ export class OrderLinesListComponent
     implements OnInit
 {
     private weightCaptureSrv = inject(WeightCaptureService);
-    weightCaptures = new Map<number, WeightCapture>();
 
     displayedColumns = [
         'position',
@@ -84,9 +82,7 @@ export class OrderLinesListComponent
             confirmationSrv,
         );
     }
-
     override ngOnInit() {
-        super.ngOnInit();
         this.route.data.subscribe(({ source }) => {
             this.displayedColumns = this.displayedColumns.filter(
                 (col) => col !== 'store' || source !== 'quick',
@@ -101,6 +97,7 @@ export class OrderLinesListComponent
             },
             error: () => {},
         });
+        super.ngOnInit();
     }
 
     public override loadDetailLines(): Observable<TransactionLine[]> {
@@ -112,18 +109,19 @@ export class OrderLinesListComponent
                         .subscribe((captures) => {
                             line.tareWeight = captures.tare;
                             line.brutWeight = captures.brut;
-                            // this.weightCaptures.set(line.id, captures);
                         });
                 });
             }),
         );
     }
 
-    getTareWeight(id: number) {
-        return this.weightCaptures.get(id)?.tare;
-    }
-
-    getBrutWeight(id: number) {
-        return this.weightCaptures.get(id)?.brut;
+    refresh(bool: boolean) {
+        if (bool) {
+            this.loadDetailLines().subscribe({
+                next: (data) => {
+                    this.data = data;
+                },
+            });
+        }
     }
 }

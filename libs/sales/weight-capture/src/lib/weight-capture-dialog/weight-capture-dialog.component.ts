@@ -98,7 +98,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
                 .subscribe({
                     next: () => {
                         this.snackBarSrv.showSuccessMessage();
-                        this.dialogRef.close(this.form.getRawValue());
+                        this.dialogRef.close(true);
                     },
                     error: (err) => {
                         this.snackBarSrv.showFailureMessage();
@@ -113,7 +113,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
                     next: () => {
                         this.snackBarSrv.showSuccessMessage();
                         const quantity = this.calculateQuantity();
-                        this.dialogRef.close(quantity);
+                            this.dialogRef.close( quantity != null ? quantity : true ); // if quantity = 0 it's true
                     },
                     error: (err) => {
                         this.snackBarSrv.showFailureMessage();
@@ -133,7 +133,7 @@ export class WeightCaptureDialogComponent implements OnInit, OnDestroy {
     }
 
     cancel() {
-        this.dialogRef.close();
+        this.dialogRef.close(false);
     }
 
     readTruckScale() {

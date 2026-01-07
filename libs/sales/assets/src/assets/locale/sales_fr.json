@@ -33,5 +33,6 @@
     "GENERATE_REBATES": "Générer les ristournes",
     "QUICK_ORDER":        "Commande rapide",
     "QUICK_ORDER_DETAIL": "Détail de la commande rapide",
-    "GENERATE_INVOICE":   "Générer une facture"
+    "GENERATE_INVOICE":   "Générer une facture",
+    "ORDER_INVOICING":    "Facturation des commandes"
 }

@@ -20,7 +20,7 @@
             <span class="fas fa-trash-alt"></span>
         </button>
         <ss-weight-capture-dialog-button-dialog
-            [transactionId]="selectedId">
+            [transactionId]="selectedId" (change)="refresh($event)">
         </ss-weight-capture-dialog-button-dialog>
     </div>
 

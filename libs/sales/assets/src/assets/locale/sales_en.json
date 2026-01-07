@@ -33,5 +33,6 @@
     "GENERATE_REBATES": "Generate rebates",
     "QUICK_ORDER":        "Quick order",
     "QUICK_ORDER_DETAIL": "Quick order detail",
-    "GENERATE_INVOICE":   "Generate invoice"
+    "GENERATE_INVOICE":   "Generate invoice",
+    "ORDER_INVOICING":    "Order invoicing"
 }

@@ -665,6 +665,9 @@
             "@ss/sales/ui-master_works": [
                 "libs/sales/ui-master_works/src/index.ts"
             ],
+            "@ss/sales/ui-order-invoicing": [
+                "libs/sales/ui-order-invoicing/src/index.ts"
+            ],
             "@ss/sales/ui-order-lines": [
                 "libs/sales/ui-order-lines/src/index.ts"
             ],

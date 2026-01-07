@@ -15,6 +15,7 @@ import {
     ABS_SALES_INVOICE_CANCEL_URL,
     ABS_SALES_INVOICE_URL,
     ABS_SALES_MASTER_WORKS_URL,
+    ABS_SALES_ORDER_INVOICING_URL,
     ABS_SALES_ORDER_URL,
     ABS_SALES_PROFORMA_URL,
     ABS_SALES_QUICK_ORDER_URL,
@@ -74,6 +75,12 @@ export const salesNavTree: SideNavNode = {
             name: 'SALES_QUICK_ORDER',
             icon: 'fas fa-rocket',
             route: ABS_SALES_QUICK_ORDER_URL,
+            accessRights: 'SOrder',
+        },
+        {
+            name: 'SALES_ORDER_INVOICING',
+            icon: 'fa-solid fa-file-invoice',
+            route: ABS_SALES_ORDER_INVOICING_URL,
             accessRights: 'SOrder',
         },
         {
