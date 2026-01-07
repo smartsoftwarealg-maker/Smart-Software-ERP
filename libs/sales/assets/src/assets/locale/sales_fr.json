@@ -34,5 +34,5 @@
     "QUICK_ORDER":        "Commande rapide",
     "QUICK_ORDER_DETAIL": "Détail de la commande rapide",
     "GENERATE_INVOICE":   "Générer une facture",
-    "ORDER_INVOICING":    "Facturation des commandes"
+    "ORDER_INVOICING":    "Facture programmée"
 }
