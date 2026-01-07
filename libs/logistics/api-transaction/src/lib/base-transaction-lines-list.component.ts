@@ -17,10 +17,10 @@ import {PackagingUnit} from '@ss/logistics/packaging-units';
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     #packagingUnitSrv = inject(PackagingUnitsService);
-    #optionSrv =  inject(OptionService);
     #_isEditable_ = true;
     #_unitsMap = new Map<number, string>();
 
+    protected optionSrv = inject(OptionService);
     protected loginSrv = inject(LoginService);
     protected subscription: Subscription = null;
     readonly pagination = PaginationModel.newInstance();
@@ -35,7 +35,6 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
 
     displayedColumns: string[] = [];
 
-
     constructor(
         public detailSrv: TransactionLinesClass,
         public shellSrv: ShellService,
@@ -44,8 +43,12 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         public router: Router,
         public articleSrv: ArticleService,
         public storeNamesSrv: LotsService,
-        public confirmationSrv: ConfirmationDialogService) {
-        this.pagination.onChange = () => this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
+        public confirmationSrv: ConfirmationDialogService,
+    ) {
+        this.pagination.onChange = () =>
+            this.loadDetailLines().subscribe(() =>
+                this.shellSrv.setLoading(false),
+            );
     }
 
     ngOnInit() {
@@ -53,38 +56,61 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         this.#_isEditable_ = this.detailSrv.editable;
         // this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
 
-        this.#optionSrv
+        this.optionSrv
             .get(this.loginSrv.appCtx.center)
             .pipe(
-                tap(res => {
+                tap((res) => {
                     this.usesLots.set(res.usesLots);
                     this.usesUnits.set(res.usesUnits);
-                    this.displayedColumns = this.displayedColumns
-                        .filter(e => (res.usesLots || (e !== 'lotNumber' && e !== 'expirationDate' && e !== 'storeName')) &&
-                                            (res.usesUnits || (e !== 'units')));
+                    this.displayedColumns = this.displayedColumns.filter(
+                        (e) =>
+                            (res.usesLots ||
+                                (e !== 'lotNumber' &&
+                                    e !== 'expirationDate' &&
+                                    e !== 'storeName')) &&
+                            (res.usesUnits || e !== 'units') &&
+                            (!res.serviceInvoiceOnly || e !== 'store'),
+                    );
                 }),
-                switchMap(res => res.usesUnits? this.#packagingUnitSrv.getData2(0, 50) : of([] as PackagingUnit[])),
-                tap(res => {
+                switchMap((res) =>
+                    res.usesUnits
+                        ? this.#packagingUnitSrv.getData2(0, 50)
+                        : of([] as PackagingUnit[]),
+                ),
+                tap((res) => {
                     this.#_unitsMap.clear();
-                    res.forEach(e => this.#_unitsMap.set(e.units, e.description));
+                    res.forEach((e) =>
+                        this.#_unitsMap.set(e.units, e.description),
+                    );
                 }),
-                switchMap(() => this.loadDetailLines()))
+                switchMap(() => this.loadDetailLines()),
+            )
             .subscribe(() => this.shellSrv.setLoading(false));
 
-        this.subscription = this.searchText
-            .valueChanges
-            .pipe(
-                debounceTime(300),
-                distinctUntilChanged()
-            ).subscribe( () => this.loadDetailLines().subscribe());
+        this.subscription = this.searchText.valueChanges
+            .pipe(debounceTime(300), distinctUntilChanged())
+            .subscribe(() => this.loadDetailLines().subscribe());
     }
 
     public loadDetailLines(): Observable<TransactionLine[]> {
-        return (this.detailSrv.getParentId()? this.detailSrv.getPage(this.pagination, this.searchText.value, null) : of([]))
-            .pipe(tap(data => {
+        return (
+            this.detailSrv.getParentId()
+                ? this.detailSrv.getPage(
+                    this.pagination,
+                    this.searchText.value,
+                    null,
+                )
+                : of([])
+        ).pipe(
+            tap((data) => {
                 this.data = data;
-                this.data.forEach(d => d.unitsDescription = this.#_unitsMap.get(d.units)||d.units+'');
-            }));
+                this.data.forEach(
+                    (d) =>
+                        (d.unitsDescription =
+                            this.#_unitsMap.get(d.units) || d.units + ''),
+                );
+            }),
+        );
     }
 
     select(row: TransactionLine) {
@@ -93,29 +119,28 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     }
 
     public deleteSelected(): void {
-        this.confirmationSrv.confirmDelete()
-            .subscribe(b => {
-                if (b && this.selectedId && this.selectedId > 0) {
-                    const a = this.data.filter(x => x.id === this.selectedId)[0];
-                    if (a && a.id) {
-                        this.shellSrv.setLoading(true);
-                        this.detailSrv
-                            .remove(a.id)
-                            .pipe(switchMap(() => this.loadDetailLines()))
-                            .subscribe({
-                                next: () => {
-                                    this.shellSrv.setLoading(false);
-                                    this.snackBarSrv.showSuccessMessage();
-                                },
-                                error: err => {
-                                    this.snackBarSrv.showFailureMessage();
-                                    this.shellSrv.setLoading(false);
-                                    throw err;
-                                }
-                            });
-                    }
+        this.confirmationSrv.confirmDelete().subscribe((b) => {
+            if (b && this.selectedId && this.selectedId > 0) {
+                const a = this.data.filter((x) => x.id === this.selectedId)[0];
+                if (a && a.id) {
+                    this.shellSrv.setLoading(true);
+                    this.detailSrv
+                        .remove(a.id)
+                        .pipe(switchMap(() => this.loadDetailLines()))
+                        .subscribe({
+                            next: () => {
+                                this.shellSrv.setLoading(false);
+                                this.snackBarSrv.showSuccessMessage();
+                            },
+                            error: (err) => {
+                                this.snackBarSrv.showFailureMessage();
+                                this.shellSrv.setLoading(false);
+                                throw err;
+                            },
+                        });
                 }
-            });
+            }
+        });
     }
 
     edit() {
@@ -127,7 +152,6 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     // get updated() {
     //     return this._updated;
     // }
-
 
     unsubscribe(): void {
         this.subscription?.unsubscribe();
@@ -153,8 +177,10 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         }
     }
     showDetail(id: number) {
-        this.router.navigate(
-            ['lines-detail', id || 0],
-            { relativeTo: this.route.parent}).then();
+        this.router
+            .navigate(['lines-detail', id || 0], {
+                relativeTo: this.route.parent,
+            })
+            .then();
     }
 }

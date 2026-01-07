@@ -59,8 +59,8 @@ export class ProductionTransferLinesListComponent
         'qtySatisfied',
         'storeDescription',
         'storeName',
-        'price',
-        'total',
+        // 'price',
+        // 'total',
     ];
 
     constructor(

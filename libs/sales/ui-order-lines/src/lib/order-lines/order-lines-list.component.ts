@@ -11,9 +11,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
-import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -22,7 +20,7 @@ import {
     WeightCaptureDialogButtonComponent,
     WeightCaptureService,
 } from '@ss/sales/weight-capture';
-import { forkJoin, map, Observable, of, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -89,22 +87,25 @@ export class OrderLinesListComponent
 
     override ngOnInit() {
         super.ngOnInit();
-        this.route.data.subscribe(({ source }) => {
-            if (source === 'quick') {
-                this.displayedColumns = this.displayedColumns.filter(
-                    (col) => col !== 'store',
-                );
-            }
-        });
+        this.route
+            .data
+            .subscribe(({ source }) => {
+                this.displayedColumns = this.displayedColumns
+                    .filter(
+                        (col) => col !== 'store' || source !== 'quick',
+                    );
+            });
 
-        this.weightCaptureSrv.hasScaleConfig().subscribe({
-            next: (exists) => {
-                if (exists) {
-                    this.displayedColumns.push('tare', 'brut');
-                }
-            },
-            error: () => {},
-        });
+        this.weightCaptureSrv
+            .hasScaleConfig()
+            .subscribe({
+                next: (exists) => {
+                    if (exists) {
+                        this.displayedColumns.push('tare', 'brut');
+                    }
+                },
+                error: () => {},
+            });
     }
 
     public override loadDetailLines(): Observable<TransactionLine[]> {

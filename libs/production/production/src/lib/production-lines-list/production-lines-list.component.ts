@@ -53,7 +53,7 @@ export class ProductionLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit
 {
-    private productionSrv = inject(ProductionService);
+    #productionSrv = inject(ProductionService);
     #optionSrv = inject(OptionService);
     hasQtyStyle = signal<boolean>(false);
     override displayedColumns = [
@@ -110,7 +110,7 @@ export class ProductionLinesListComponent
     }
 
     public produce(id: number) {
-        this.productionSrv.produce(id).subscribe({
+        this.#productionSrv.produce(id).subscribe({
             next: () => {
                 this.hasQtyStyle.set(false);
                 this.snackBarSrv.showSuccessMessage();
@@ -128,7 +128,7 @@ export class ProductionLinesListComponent
             .confirm('COMMON_CANCEL', 'PROD_CANCEL_PRODUCTION')
             .pipe(
                 switchMap((res) =>
-                    res ? this.productionSrv.cancel(id) : of(null),
+                    res ? this.#productionSrv.cancel(id) : of(null),
                 ),
             )
             .subscribe({
@@ -180,11 +180,18 @@ export class ProductionLinesListComponent
     override ngOnInit() {
         super.ngOnInit();
 
-        this.#optionSrv.get(this.loginSrv.appCtx.center).subscribe((res) => {
-            this.usesUnits.set(res.usesUnits);
-            this.displayedColumns = this.displayedColumns.filter(
-                (e) => res.usesUnits || e !== 'units',
-            );
-        });
+        const confidential = ['price', 'total'];
+        this.#optionSrv
+            .get(this.loginSrv.appCtx.center)
+            .subscribe((res) => {
+                this.usesUnits.set(res.usesUnits);
+                console.log(
+                    '________________________responsible',
+                    this.loginSrv.appCtx.manager,
+                );
+                this.displayedColumns = this.displayedColumns
+                    .filter((e) => (res.usesUnits || e !== 'units') &&
+                    (this.loginSrv.appCtx.responsible || this.loginSrv.appCtx.manager || !confidential.includes(e)));
+            });
     }
 }
