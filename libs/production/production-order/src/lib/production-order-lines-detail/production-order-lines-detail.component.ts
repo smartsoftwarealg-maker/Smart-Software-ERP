@@ -65,9 +65,6 @@ export class ProductionOrderLinesDetailComponent
 
     override setupForm(b: TransactionLine): UntypedFormGroup {
         this.bomLookup.reference = b?.reference;
-        if (this.usesUnits()) {
-            b.qtyOrdered = b.units;
-        }
         b.document = PRODUCTION_ORDER;
         return super.setupForm(b);
     }
