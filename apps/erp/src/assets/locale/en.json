@@ -130,5 +130,6 @@
     "HR_TABLES": "HR tables",
     "ACCOUNTING_APP": "Accounting",
     "PROJECTS": "Projects",
-    "ATTENDANCE_APP": "Attendance"
+    "ATTENDANCE_APP": "Attendance",
+    "SInvoice": "Scheduled invoice"
 }

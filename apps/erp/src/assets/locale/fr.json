@@ -128,5 +128,6 @@
     "ACCOUNTING_APP":  "Comptabilité",
     "PROJECTS":        "Projets",
     "APP_PRODUCTION":  "Manufacturing",
-    "ATTENDANCE_APP": "Pointage"
+    "ATTENDANCE_APP": "Pointage",
+    "SInvoice":        "Facture programmée"
 }
