@@ -112,7 +112,7 @@ export class OrderLinesListComponent
                         .subscribe((captures) => {
                             line.tareWeight = captures.tare;
                             line.brutWeight = captures.brut;
-                            this.weightCaptures.set(line.id, captures);
+                            // this.weightCaptures.set(line.id, captures);
                         });
                 });
             }),

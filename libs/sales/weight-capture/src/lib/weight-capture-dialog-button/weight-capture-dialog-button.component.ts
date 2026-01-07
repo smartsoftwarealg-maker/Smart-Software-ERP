@@ -59,7 +59,7 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
                 if (result != null && typeof (result) == 'number'){
                     this.callback()?.(this.transactionId(), result);
                 }
-            })
+            });
         }
 
     }
