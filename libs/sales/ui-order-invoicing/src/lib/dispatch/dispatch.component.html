@@ -1,0 +1,73 @@
+@if (form) {
+    <div class="ctrl_div">
+        <button mat-mini-fab color="primary"
+                [matTooltip]="'COMMON_SAVE' | translate"
+                (click)="save()"
+                [disabled]="!form?.valid || form.pristine">
+            <i class="fas fa-save"></i>
+        </button>
+        <button mat-mini-fab
+                color="warn"
+                [matTooltip]="'COMMON_CANCEL' | translate"
+                (click)="cancel()"
+                [disabled]="form?.pristine">
+            <i class="fas fa-redo"></i>
+        </button>
+    </div>
+    <form [formGroup]="form">
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_SHIPMENT_MODE</mat-label>
+            <ss-auto-complete matInput
+                              [model]="shipmentModeLookup"
+                              formControlName="shipMode">
+            </ss-auto-complete>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_DELIVERY_ADDRESS</mat-label>
+            <input matInput formControlName="altAgent" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_TRANSPORTER</mat-label>
+            <ss-auto-complete matInput
+                              [model]="transporterLookup"
+                              formControlName="transporter">
+            </ss-auto-complete>
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_DRIVER</mat-label>
+            <input matInput formControlName="driver" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_DRIVER_LICENSE</mat-label>
+            <input matInput formControlName="license" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_DATE</mat-label>
+            <ss-date-picker formControlName="licenseDate"></ss-date-picker>
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_LICENSE_ISSUER</mat-label>
+            <input matInput formControlName="licenseIssuer" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_PLATE_NUMBER</mat-label>
+            <input matInput formControlName="plateNumber" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_PLATE_NUMBER2</mat-label>
+            <input matInput formControlName="plateNumber2" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>LOGISTICS_DESTINATION</mat-label>
+            <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
+        </mat-form-field>
+    </form>
+}

@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import { SnackBarService } from '@ss/common/ui-shell';
 import {
     UntypedFormGroup,
@@ -22,12 +22,12 @@ import {
 import { MatMiniFabButton } from '@angular/material/button';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatTooltip } from '@angular/material/tooltip';
-import { PaymentsDetailService } from '../../../../../logistics/payments/src/lib/services/payments-detail.service';
+import { PaymentsDetailService } from '@ss/logistics/payments';
 import { Payment } from '@ss/logistics/api-common';
 import { LoginService } from '@ss/common/api-common';
 import { QuickOrderService } from '../quick-order.service';
 import { QuickOrder } from '../quick-order.api';
-import { catchError, concatMap, map, of, throwError } from 'rxjs';
+import { catchError, concatMap, of, throwError } from 'rxjs';
 
 @Component({
     selector: 'ss-quick-order-payment',
@@ -48,7 +48,7 @@ import { catchError, concatMap, map, of, throwError } from 'rxjs';
         MatTooltip,
     ],
 })
-export class PaymentComponent implements OnInit {
+export class PaymentComponent {
     #entitySrv = inject(PaymentsDetailService);
     #quickOrderSrv = inject(QuickOrderService);
     #typeSrv = inject(PayModeService);
@@ -62,10 +62,17 @@ export class PaymentComponent implements OnInit {
 
     quickOrder: QuickOrder;
     id = input(0);
-
     public form: UntypedFormGroup | null = null;
 
-    ngOnInit(): void {
+    constructor() {
+        effect(() => {
+            if (this.id() > 0) {
+                this.loadPayment();
+            }
+        });
+    }
+
+    loadPayment() {
         if (this.id()) {
             this.#quickOrderSrv.get(this.id()).subscribe({
                 next: (quickOrder) => {

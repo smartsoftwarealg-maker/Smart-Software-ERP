@@ -11,7 +11,7 @@ import {
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { OrderLinesListComponent } from '@ss/sales/ui-order-lines';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {
     DefaultAutoCompleteModel,
@@ -53,7 +53,6 @@ export enum DuplicateMode {
         DatePickerComponent,
         UiAutoCompleteComponent,
         RouterOutlet,
-        TranslatePipe,
         PaymentComponent,
     ],
     selector: 'ss-ui-quick-order-detail',

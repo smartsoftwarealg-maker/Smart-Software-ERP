@@ -711,6 +711,7 @@ export const mainRoutes: Routes = [
                 component: OrderInvoicingComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+                data: { source: 'quick' },
             },
         ],
     },
