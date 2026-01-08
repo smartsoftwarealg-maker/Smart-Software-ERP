@@ -81,7 +81,8 @@
         </ng-container>
 
         <ng-container matColumnDef="option">
-            <mat-header-cell *matHeaderCellDef ><i class="fas fa-file-invoice" matTooltip="SALES_GENERATE_INVOICE"></i></mat-header-cell>
+            <mat-header-cell *matHeaderCellDef><i class="fas fa-file-invoice" matTooltip="SALES_GENERATE_INVOICE"></i>
+            </mat-header-cell>
             <mat-cell *matCellDef="let e">
                 @if (!getInvoiceNumber(e.id)) {
                     <button matIconButton (click)="generateInvoice(e.id)">
@@ -104,106 +105,140 @@
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 @if (selected) {
-    <div class="table-container">
-        <mat-table mat-table [dataSource]="transactions" class="main-table">
+    <div class="container">
+        <mat-tab-group>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span translate>COMMON_DETAIL</span>
+                </ng-template>
+                <div class="table-container">
+                    <div class="scale-btn-div">
+                        <ss-weight-capture-dialog-button-dialog class="scale-btn"
+                                                                [transactionId]="transacLineId"
+                                                                (change)="reloadTransaction($event)">
+                        </ss-weight-capture-dialog-button-dialog>
+                    </div>
+                    <mat-table mat-table [dataSource]="transactions" class="main-table">
 
-            <ng-container matColumnDef="position">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_POSITION</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.position }}
-                </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="position">
+                            <mat-header-cell *matHeaderCellDef translate>COMMON_POSITION</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e.position }}
+                            </mat-cell>
+                        </ng-container>
 
-            <ng-container matColumnDef="store">
-                <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.storeName }}
-                </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="store">
+                            <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e.storeName }}
+                            </mat-cell>
+                        </ng-container>
 
-            <ng-container matColumnDef="reference">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.reference }}
-                </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="reference">
+                            <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e.reference }}
+                            </mat-cell>
+                        </ng-container>
 
-            <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.refDescription }}
-                </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="description">
+                            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e.refDescription }}
+                            </mat-cell>
+                        </ng-container>
 
-            <ng-container matColumnDef="qtyOrdered">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_ORDERED</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.qtyOrdered | number : '1.2-4' }}
-                </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="qtyOrdered">
+                            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_ORDERED</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e.qtyOrdered | number : '1.2-4' }}
+                            </mat-cell>
+                        </ng-container>
 
-            <ng-container matColumnDef="qtySatisfied">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_SATISFIED</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.qtySatisfied | number : '1.2-4' }}
-                </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="total">
-                <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ (e.price * e.qtyOrdered) | number : '1.2-4' }}
-                </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="qtySatisfied">
+                            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY_SATISFIED</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e.qtySatisfied | number : '1.2-4' }}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="total">
+                            <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ (e.price * e.qtyOrdered) | number : '1.2-4' }}
+                            </mat-cell>
+                        </ng-container>
 
-            <ng-container matColumnDef="price">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.price | number : '1.2-4' }}
-                </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="vat">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ e.vat | number : '1.2-2' }}
-                </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="price">
+                            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_PRICE</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e.price | number : '1.2-4' }}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="vat">
+                            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_VAT</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e.vat | number : '1.2-2' }}
+                            </mat-cell>
+                        </ng-container>
 
-            <ng-container matColumnDef="controls">
-                <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    <button mat-icon-button (click)="edit()">
-                        <span class="fas fa-pen"></span>
-                    </button>
-                    @if (e.qtySatisfied < 0.001) {
-                        <button mat-icon-button (click)="deleteSelected()"
-                        >
-                            <span class="fas fa-trash-alt"></span>
-                        </button>
-                    }
-                </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="controls">
+                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                <button mat-icon-button (click)="edit()">
+                                    <span class="fas fa-pen"></span>
+                                </button>
+                                @if (e.qtySatisfied < 0.001) {
+                                    <button mat-icon-button (click)="deleteSelected()"
+                                    >
+                                        <span class="fas fa-trash-alt"></span>
+                                    </button>
+                                }
+                            </mat-cell>
+                        </ng-container>
 
-            <ng-container matColumnDef="tare">
-                <mat-header-cell *matHeaderCellDef translate>SALES_TARE_WEIGHT</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ getTureWeight(e.id) }}
-                </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="tare">
+                            <mat-header-cell *matHeaderCellDef translate>SALES_TARE_WEIGHT</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e.tareWeight }}
+                            </mat-cell>
+                        </ng-container>
 
-            <ng-container matColumnDef="brut">
-                <mat-header-cell *matHeaderCellDef translate>SALES_BRUT_WEIGHT</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{ getBrutWeight(e.id) }}
-                </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="brut">
+                            <mat-header-cell *matHeaderCellDef translate>SALES_BRUT_WEIGHT</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e.brutWeight }}
+                            </mat-cell>
+                        </ng-container>
 
-            <mat-header-row *matHeaderRowDef="transactionDisplayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable"
-                     *matRowDef="let row; columns: transactionDisplayedColumns;"></mat-row>
-        </mat-table>
+                        <mat-header-row *matHeaderRowDef="transactionColumns; sticky: true"></mat-header-row>
+                        <mat-row class="selectable" [class.selected]="row.id === transacLineId"
+                                 (click)="selectTransac(row.id)"
+                                 *matRowDef="let row; columns: transactionColumns;"></mat-row>
+                    </mat-table>
+                </div>
+
+                <div class="pagination-container b-b-background">
+                    <ss-pagination [paginationModel]="transacPagination"></ss-pagination>
+                </div>
+
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span translate>LOGISTICS_DISPATCH</span>
+                </ng-template>
+                <div class="sub-container">
+                    <ss-quick-order-dispatch [id]="selected"></ss-quick-order-dispatch>
+                </div>
+            </mat-tab>
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span translate>COMMON_PAYMENTS</span>
+                </ng-template>
+                <div class="sub-container">
+                    <ss-quick-order-payment [id]="selected"></ss-quick-order-payment>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
     </div>
 }
-
-<div class="pagination-container b-b-background">
-    <ss-pagination [paginationModel]="transacPagination"></ss-pagination>
-</div>

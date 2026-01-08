@@ -3,7 +3,7 @@
         <button mat-mini-fab color="primary"
                 [matTooltip]="'COMMON_SAVE' | translate"
                 (click)="save()"
-                [disabled]="!form?.valid">
+                [disabled]="!form?.valid || form.pristine" >
             <i class="fas fa-save"></i>
         </button>
         <button mat-mini-fab
@@ -81,7 +81,6 @@
         <mat-form-field class="default-50">
             <mat-label translate>COMMON_BANK</mat-label>
             <ss-auto-complete matInput
-                              [required]="false"
                               [model]="bankAutoCompleteModel"
                               formControlName="bankId">
             </ss-auto-complete>

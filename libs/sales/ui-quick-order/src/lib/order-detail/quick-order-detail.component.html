@@ -87,8 +87,11 @@
                         </mat-form-field>
                     </mat-tab>
                     @if (!id) {
-                        <mat-tab label="{{ 'COMMON_DUPLICATE_N_TIMES' | translate }}">
+                        <mat-tab>
                             <div style="height: 1.5em"></div>
+                            <ng-template mat-tab-label>
+                                <span translate>COMMON_DUPLICATE_N_TIMES</span>
+                            </ng-template>
                             <div class="tab-content">
                                 <mat-form-field class="default-50 sm-100">
                                     <mat-label translate>COMMON_COUNT</mat-label>
@@ -96,8 +99,11 @@
                                 </mat-form-field>
                             </div>
                         </mat-tab>
-                        <mat-tab label="{{ 'COMMON_DUPLICATE_FROM_TO' | translate }}">
+                        <mat-tab>
                             <div style="height: 1.5em"></div>
+                            <ng-template mat-tab-label>
+                                <span translate>COMMON_DUPLICATE_FROM_TO</span>
+                            </ng-template>
                             <div class="tab-content">
                                 <mat-form-field class="default-50 sm-100">
                                     <mat-label translate>COMMON_FROM</mat-label>
@@ -171,7 +177,10 @@
                         </mat-form-field>
                     </mat-tab>
                     @if (agentId) {
-                        <mat-tab label="{{ 'COMMON_PAYMENTS' | translate }}">
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <span translate>COMMON_PAYMENTS</span>
+                            </ng-template>
                             <ss-quick-order-payment [id]="id"></ss-quick-order-payment>
                         </mat-tab>
                     }
