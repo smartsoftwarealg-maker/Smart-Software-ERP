@@ -29,7 +29,7 @@ import {
     SALES_FREE_INVOICE_URL,
     SALES_QUICK_ORDER_URL,
     SALES_ARTICLE_URL,
-    SALES_ORDER_INVOICING_URL,
+    SALES_ORDER_INVOICING_URL, SALES_CATEGORY_URL,
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -112,6 +112,7 @@ import {
     ServiceArticleListComponent,
 } from '@ss/service-sales/service-articles';
 import { OrderInvoicingComponent } from '@ss/sales/ui-order-invoicing';
+import { SalesCategoryDetailComponent, SalesCategoryListComponent } from '@ss/common/ui-lookup';
 
 export const lookupRoutes: Routes = [];
 
@@ -703,6 +704,24 @@ export const mainRoutes: Routes = [
             },
         ],
     },
+    {
+        path: SALES_CATEGORY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: SalesCategoryListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: SalesCategoryDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
+
     {
         path: SALES_ORDER_INVOICING_URL,
         children: [
