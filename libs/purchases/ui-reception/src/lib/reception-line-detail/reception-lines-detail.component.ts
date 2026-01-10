@@ -15,12 +15,12 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './reception-lines-detail.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    UiAutoCompleteComponent,
-    TranslatePipe
-]
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        UiAutoCompleteComponent,
+        TranslatePipe
+    ]
 })
 export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public receptionLinesSrv: ReceptionLinesService) {
@@ -36,6 +36,7 @@ export class ReceptionLinesDetailComponent extends BaseTransactionLinesDetailCom
     setupForm(b: TransactionLine): UntypedFormGroup {
         const fg = super.setupForm(b);
         fg.controls['charge']?.setValue(Math.abs(fg.controls['charge']?.value||0));
+        fg.controls['charge3']?.setValue(0);
         return fg;
     }
 
