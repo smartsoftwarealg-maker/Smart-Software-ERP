@@ -4,6 +4,7 @@ import {
     ABS_PRICE_LIST_URL,
     ABS_SALES_AGENT_URL,
     ABS_SALES_ARTICLE_URL,
+    ABS_SALES_CATEGORY_DISCOUNTS,
     ABS_SALES_CUSTOMER_URL,
     ABS_SALES_DASHBOARD_URL,
     ABS_SALES_DELIVERY_CANCEL_URL,
@@ -52,6 +53,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fa-solid fa-money-check-dollar-pen',
             route: ABS_PRICE_LIST_URL,
             accessRights: 'Location',
+        },
+        {
+            name: 'SALES_CATEGORY_DISCOUNTS',
+            icon: 'fa-solid fa-badge-percent',
+            route: ABS_SALES_CATEGORY_DISCOUNTS,
+            accessRights: 'ArticleDiscount',
         },
         {
             name: 'COMMON_FREE_INVOICE',

@@ -16,19 +16,19 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     selector: 'ss-test-equipment-test-detail',
     standalone: true,
     imports: [
-    MatTooltip,
-    MatCard,
-    MatCardContent,
-    MatCardHeader,
-    MatFormField,
-    MatLabel,
-    MatMiniFabButton,
-    MaterialModule,
-    ReactiveFormsModule,
-    TranslatePipe,
-    TranslateDirective,
-    UiAutoCompleteComponent
-],
+        MatTooltip,
+        MatCard,
+        MatCardContent,
+        MatCardHeader,
+        MatFormField,
+        MatLabel,
+        MatMiniFabButton,
+        MaterialModule,
+        ReactiveFormsModule,
+        TranslatePipe,
+        TranslateDirective,
+        UiAutoCompleteComponent
+    ],
     templateUrl: './test-equipment-test-detail.component.html',
     styleUrl: './test-equipment-test-detail.component.scss'
 })
@@ -47,6 +47,6 @@ export class TestEquipmentTestDetailComponent extends BaseChildEntityDetailCompo
             id:       [b.id],
             testId:   [b.testId, Validators.required],
             parentId: [b.parentId||this.entitySrv.getParentId(), Validators.required]
-        })
+        });
     }
 }

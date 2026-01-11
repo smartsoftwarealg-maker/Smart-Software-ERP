@@ -212,10 +212,6 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             this.form.controls['store'].enable({onlySelf: true});
         }
 
-        if (this.document === IMPORT_RECEPTION) {
-            this.form.controls['charge3'].setValue(a?.importTax||0);
-        }
-
         this.articleSrv
             .getPPrice(this.selectedReference, this.form?.controls['store'].value || 0, this.parentId, this.id)
             .subscribe({

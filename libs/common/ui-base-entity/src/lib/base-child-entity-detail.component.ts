@@ -33,19 +33,27 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
     }
 
     ngOnInit() {
-        this.route
-            .paramMap
-            .pipe(
-                tap(map => this.id = +map.get('id') || 0),
-                switchMap(() => this.idParamMap()),
-                switchMap(map => {
-                    this.EMPTY_RECORD.parentId = +map.get('id') || 0;
-                    this.entitySrv.setParentId(this.EMPTY_RECORD.parentId);
-                    return this.id? this.entitySrv.get(this.id) : of(this.EMPTY_RECORD);
-                })
-            ).subscribe(ent => {
-                this.form = this.setupForm(ent);
-            });
+        // this.route
+        //     .paramMap
+        //     .pipe(
+        //         tap(map => this.id = +map.get('id') || 0),
+        //         switchMap(() => this.idParamMap()),
+        //         switchMap(map => {
+        //             this.EMPTY_RECORD.parentId = +map.get('id') || 0;
+        //             this.entitySrv.setParentId(this.EMPTY_RECORD.parentId);
+        //             return this.id? this.entitySrv.get(this.id) : of(this.EMPTY_RECORD);
+        //         })
+        //     ).subscribe(ent => {
+        //         this.form = this.setupForm(ent);
+        //     });
+
+        this.EMPTY_RECORD.parentId = this.entitySrv.getParentId();
+        const obs = this.id
+            ? this.entitySrv.get(this.id)
+            : of(this.EMPTY_RECORD);
+
+        obs.subscribe(ent => this.form = this.setupForm(ent));
+
         this.isEditable = this.shellSrv.getCurrentNodeRights()?.edit || false;
         const isManager = this.loginSrv?.appCtx?.manager || false;
         const rights = this.shellSrv.getEntityRights(this.entity);

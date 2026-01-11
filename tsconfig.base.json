@@ -849,7 +849,12 @@
             "payroll/payroll-options": [
                 "libs/payroll/payroll-options/src/index.ts"
             ],
-            "social/reimbursements": ["libs/social/reimbursements/src/index.ts"]
+            "social/reimbursements": [
+                "libs/social/reimbursements/src/index.ts"
+            ],
+            "@ss/sales/category-discounts": [
+                "libs/sales/category-discounts/src/index.ts"
+            ]
         }
     },
     "exclude": ["node_modules", "tmp"]
