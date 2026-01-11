@@ -13,7 +13,6 @@ export class CategoryDiscountService extends BaseEntityService<CategoryDiscount>
 
     override setParentId(id: number) {
         super.setParentId(id);
-        console.log('+++++++++++++++++++++++++++++id', id);
         this.curParentId.set(id);
     }
 }
