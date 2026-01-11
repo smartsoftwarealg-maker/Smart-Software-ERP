@@ -56,9 +56,9 @@ export const salesNavTree: SideNavNode = {
         },
         {
             name: 'SALES_CATEGORY_DISCOUNTS',
-            icon: 'fa-solid fa-money-check-dollar-pen',
+            icon: 'fa-solid fa-badge-percent',
             route: ABS_SALES_CATEGORY_DISCOUNTS,
-            accessRights: 'CDiscount',
+            accessRights: 'ArticleDiscount',
         },
         {
             name: 'COMMON_FREE_INVOICE',

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Category, CategoryService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,6 +14,7 @@ import { MatInput } from '@angular/material/input';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { CategoryDiscountService } from '@ss/sales/category-discounts';
 
 
 @Component({
@@ -21,9 +22,25 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: '../base-templates/list-template.html',
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
-    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
+    imports: [
+        MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatSortHeader,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+    ],
 })
 export class CategoryListComponent extends BaseEntityListComponent<Category> {
+    #discountService = inject(CategoryDiscountService);
 
     displayedColumns = ['description', 'descriptionAr'];
 
@@ -35,10 +52,25 @@ export class CategoryListComponent extends BaseEntityListComponent<Category> {
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override router: Router,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(categorySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'COMMON_CATEGORIES');
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            categorySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'COMMON_CATEGORIES',
+        );
     }
 
+    select(id: number) {
+        super.select(id);
+        this.#discountService.setParentId(id||0);
+    }
 }
 
 

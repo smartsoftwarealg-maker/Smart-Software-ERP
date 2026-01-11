@@ -29,7 +29,8 @@ import {
     SALES_FREE_INVOICE_URL,
     SALES_QUICK_ORDER_URL,
     SALES_ARTICLE_URL,
-    SALES_ORDER_INVOICING_URL, SALES_CATEGORY_URL,
+    SALES_ORDER_INVOICING_URL,
+    SALES_CATEGORY_DISCOUNT_URL,
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -112,7 +113,11 @@ import {
     ServiceArticleListComponent,
 } from '@ss/service-sales/service-articles';
 import { OrderInvoicingComponent } from '@ss/sales/ui-order-invoicing';
-import { SalesCategoryDetailComponent, SalesCategoryListComponent } from '@ss/common/ui-lookup';
+import {
+    CategoryDiscountsDetailComponent, CategoryDiscountsListComponent,
+    DiscountCategoryDetailComponent,
+    DiscountCategoryListComponent,
+} from '@ss/sales/category-discounts';
 
 export const lookupRoutes: Routes = [];
 
@@ -705,16 +710,34 @@ export const mainRoutes: Routes = [
         ],
     },
     {
-        path: SALES_CATEGORY_URL,
+        path: SALES_CATEGORY_DISCOUNT_URL,
         children: [
             {
                 path: LIST_URL,
-                component: SalesCategoryListComponent,
+                component: DiscountCategoryListComponent,
+                children: [
+                    { path: '', redirectTo: 'discounts', pathMatch: 'full' },
+                    {
+                        path: 'discounts',
+                        children: [
+                            {
+                                path: '',
+                                component: CategoryDiscountsListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: CategoryDiscountsDetailComponent,
+                            },
+                        ],
+                    },
+                ],
+
                 canActivate: [loginGuard],
             },
             {
                 path: ':id',
-                component: SalesCategoryDetailComponent,
+                component: DiscountCategoryDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

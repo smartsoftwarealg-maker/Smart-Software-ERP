@@ -250,6 +250,7 @@ export const SERVICE_INVOICE_CANCELLATION_URL = 'service-cinvoice';
 export const SERVICE_CLASSES_URL = 'service-classes';
 export const COMPLEMENT_INVOICE_URL = 'complement-invoice';
 export const SALES_CATEGORY_URL = 'sales-categories';
+export const SALES_CATEGORY_DISCOUNT_URL = 'sales-categories-discounts';
 export const SS_COMPLAINTS_URL     = 'sales-complaints';
 export const SS_SUGGESTIONS_URL    = 'sales-suggestions';
 export const SALES_PRICE_LIST_URL  = 'sales-pricelist';
@@ -1056,7 +1057,7 @@ export const ABS_SALES_FREE_INVOICE_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, S
 export const ABS_SALES_QUICK_ORDER_URL = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_QUICK_ORDER_URL].join('/');
 export const ABS_SALES_ARTICLE_URL =     '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_ARTICLE_URL].join('/');
 export const ABS_SALES_ORDER_INVOICING_URL =     '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_ORDER_INVOICING_URL].join('/');
-export const ABS_SALES_CATEGORY_DISCOUNTS = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_CATEGORY_URL].join('/');
+export const ABS_SALES_CATEGORY_DISCOUNTS = '/' + [MAIN_PAGE_URL, SALES_APP_URL, SALES_CATEGORY_DISCOUNT_URL].join('/');
 
 //services
 export const ABS_SERVICE_CLASSES_URL = '/' + [MAIN_PAGE_URL, SERVICE_APP_URL, SERVICE_CLASSES_URL].join('/');

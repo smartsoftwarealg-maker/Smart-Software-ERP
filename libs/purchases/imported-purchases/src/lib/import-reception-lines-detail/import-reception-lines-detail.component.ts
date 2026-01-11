@@ -13,7 +13,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import {Article} from "@ss/master-data/api-article";
+import {Article} from '@ss/master-data/api-article';
 
 @Component({
     selector: 'ss-import-reception-lines-detail',
@@ -22,20 +22,20 @@ import {Article} from "@ss/master-data/api-article";
         '../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
     imports: [
-    MatMiniFabButton,
-    MatCard,
-    MatCardContent,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    TranslateDirective,
-    MatInput,
-    UiAutoCompleteComponent,
-    MatError,
-    CdkTextareaAutosize,
-    TranslatePipe
-]
+        MatMiniFabButton,
+        MatCard,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        UiAutoCompleteComponent,
+        MatError,
+        CdkTextareaAutosize,
+        TranslatePipe
+    ]
 })
 export class ImportReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(protected receptionLinesSrv: TransactionLinesService) {
@@ -45,5 +45,6 @@ export class ImportReceptionLinesDetailComponent extends BaseTransactionLinesDet
     override onArticle(a: Article) {
         super.onArticle(a);
         this.form.controls['vat'].setValue(0);
+        this.form.controls['charge3'].setValue(a?.importTax || 0);
     }
 }
