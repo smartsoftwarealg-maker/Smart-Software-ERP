@@ -35,5 +35,5 @@
     "QUICK_ORDER_DETAIL":   "تفاصيل الطلب السريع",
     "GENERATE_INVOICE": "إنشاء الفاتورة",
     "ORDER_INVOICING":    "فاتورة الطلب",
-    "CATEGORY_DISCOUNT": "خصومات الفئات"
+    "CATEGORY_DISCOUNTS": "خصومات الفئات"
 }
