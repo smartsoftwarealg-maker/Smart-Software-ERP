@@ -35,5 +35,6 @@
     "QUICK_ORDER_DETAIL": "Détail de la commande rapide",
     "GENERATE_INVOICE":   "Générer une facture",
     "ORDER_INVOICING":    "Facture programmée",
-    "CATEGORY_DISCOUNTS": "Remises par catégorie"
+    "CATEGORY_DISCOUNTS": "Remises par catégorie",
+    "WEIGHT_CAPTURE": "Saisie du poids"
 }

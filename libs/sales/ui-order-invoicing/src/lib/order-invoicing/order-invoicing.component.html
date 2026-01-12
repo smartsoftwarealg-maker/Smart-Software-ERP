@@ -231,7 +231,8 @@
                 </div>
             </mat-tab>
 
-            <mat-tab>
+            @if (isInvoicing()) {
+                <mat-tab>
                 <ng-template mat-tab-label>
                     <span translate>COMMON_PAYMENTS</span>
                 </ng-template>
@@ -239,6 +240,7 @@
                     <ss-quick-order-payment [id]="selected"></ss-quick-order-payment>
                 </div>
             </mat-tab>
+            }
         </mat-tab-group>
     </div>
 }

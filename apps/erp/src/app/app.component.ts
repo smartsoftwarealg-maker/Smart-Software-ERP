@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CompanySelectorService, HttpService, LoginService } from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ShellService } from '@ss/common/ui-shell';
 import {langAssets, navBar} from '../environments/environment';
 import { RouterOutlet } from '@angular/router';
 import { Dir } from '@angular/cdk/bidi';
@@ -11,7 +11,6 @@ import { MessageComponent } from '@ss/common/ui-error-handler';
 import { ThemeService } from '@ss/common/ui-theme';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { environment } from '../environments/environment';
-import { initialize } from './admobile';
 import { AdService } from '@ss/common/api-admob';
 
 @Component({
@@ -22,9 +21,9 @@ import { AdService } from '@ss/common/api-admob';
     imports: [Dir, RouterOutlet, MatProgressSpinner, MessageComponent],
 })
 export class AppComponent implements OnInit {
-    #adId:'ca-app-pub-8350344729252908/7124743448';
+    #adId: 'ca-app-pub-8350344729252908~3197940877'; //'ca-app-pub-8350344729252908/7124743448';
     #adService = inject(AdService);
-    #deviceSrv =  inject(DeviceDetectorService);
+    #deviceSrv = inject(DeviceDetectorService);
 
     #companySelectorSrv = inject(CompanySelectorService);
     #langSrv = inject(LanguageService);
@@ -47,7 +46,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage = homePage;
         this.#langSrv.isSodismac = !!environment['sodismac'];
-        this.shellSrv.setApplicationTitle('Smart ERP 2.8.55');
+        this.shellSrv.setApplicationTitle('Smart ERP 2.8.56');
         this.httpSrv
             .init()
             .pipe(
