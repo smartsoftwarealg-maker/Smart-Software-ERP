@@ -2,7 +2,7 @@ export const environment = {
     production: false,
     company: 'SCH_CAPA',
     homePage: 'https://erp.capa-dz.com',
-    multiCompany: false
+    multiCompany: true
 };
 export const homePage: string|null = 'https://erp.capa-dz.com';
 
