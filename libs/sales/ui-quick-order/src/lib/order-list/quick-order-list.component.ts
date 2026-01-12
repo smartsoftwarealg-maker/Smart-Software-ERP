@@ -66,7 +66,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         'docStatus',
         'mode',
         'invoiceNumber',
-        'option',
+        // 'option',
     ];
 
     constructor(

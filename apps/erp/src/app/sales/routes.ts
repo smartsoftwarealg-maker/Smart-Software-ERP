@@ -31,6 +31,7 @@ import {
     SALES_ARTICLE_URL,
     SALES_ORDER_INVOICING_URL,
     SALES_CATEGORY_DISCOUNT_URL,
+    SALES_ORDER_WEIGHT_CAPTURE_URL,
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -753,7 +754,20 @@ export const mainRoutes: Routes = [
                 component: OrderInvoicingComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                data: { source: 'quick' },
+                data: { invoicing: true },
+            },
+        ],
+    },
+
+    {
+        path: SALES_ORDER_WEIGHT_CAPTURE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: OrderInvoicingComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                data: { invoicing: false },
             },
         ],
     },

@@ -18,6 +18,7 @@ import {
     ABS_SALES_MASTER_WORKS_URL,
     ABS_SALES_ORDER_INVOICING_URL,
     ABS_SALES_ORDER_URL,
+    ABS_SALES_ORDER_WEIGHING_URL,
     ABS_SALES_PROFORMA_URL,
     ABS_SALES_QUICK_ORDER_URL,
     ABS_SALES_REPORT_PRIVILEGE_URL,
@@ -83,6 +84,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fas fa-rocket',
             route: ABS_SALES_QUICK_ORDER_URL,
             accessRights: 'SOrder',
+        },
+        {
+            name: 'SALES_WEIGHT_CAPTURE',
+            icon: 'fa-solid fa-solid fa-scale-balanced',
+            route: ABS_SALES_ORDER_WEIGHING_URL,
+            accessRights: 'WeightCapture',
         },
         {
             name: 'SALES_ORDER_INVOICING',

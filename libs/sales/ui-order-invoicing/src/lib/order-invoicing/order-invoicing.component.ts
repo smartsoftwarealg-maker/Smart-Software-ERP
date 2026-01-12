@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
+    LoginService,
     MaterialModule,
     PaginationModel,
     PaginatorPersistenceService,
@@ -40,6 +41,7 @@ import { of, switchMap } from 'rxjs';
 import { ScheduledInvoiceService } from './scheduled-invoice.service';
 import { DispatchComponent } from '../dispatch/dispatch.component';
 import { PaymentComponent } from '../../../../ui-quick-order/src/lib/payment/payment.component';
+import { OptionService } from '@ss/logistics/ui-options';
 
 @Component({
     selector: 'ss-ui-order-invoicing',
@@ -74,6 +76,10 @@ import { PaymentComponent } from '../../../../ui-quick-order/src/lib/payment/pay
     ],
 })
 export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder> {
+    #optionSrv = inject(OptionService);
+    #loginSrv = inject(LoginService);
+    isInvoicing = signal(false);
+
     displayedColumns = [
         'number',
         'date',
@@ -124,19 +130,31 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         this.addButton.visible = false;
         this.deleteButton.visible = false;
         this.editButton.visible = false;
-        this.route.data.subscribe(({ source }) => {
-            this.transactionColumns = this.transactionColumns.filter(
-                (col) => col !== 'store' || source !== 'quick',
+        this.route.data.subscribe((data) => {
+            const invoicing = data['invoicing'] === true;
+            this.isInvoicing.set(invoicing);
+            this.displayedColumns = this.displayedColumns.filter(
+                (col) => col !== 'option' || invoicing,
             );
         });
-        this.weightCaptureSrv.hasScaleConfig().subscribe({
-            next: (exists) => {
-                if (exists) {
-                    this.transactionColumns.push('tare', 'brut');
-                }
-            },
-            error: () => {},
-        });
+        this.weightCaptureSrv
+            .hasScaleConfig()
+            .pipe(
+                tap((exists) => {
+                    if (exists) {
+                        this.transactionColumns.push('tare', 'brut');
+                    }
+                }),
+                switchMap(() => this.#optionSrv.get(this.#loginSrv.appCtx.center))
+            )
+            .subscribe({
+                next: (opt) => {
+                    this.transactionColumns = this.transactionColumns.filter(
+                        (col) => col !== 'store' || !opt.serviceInvoiceOnly,
+                    );
+                },
+                error: () => {},
+            });
         super.ngOnInit();
     }
 
@@ -187,8 +205,8 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
     generateInvoice(id: number) {
         this.confirmationSrv
             .confirm(
-                'SALES_GENERATE_INVOICING_CONFIRMATION',
-                'SALES_GENERATE_INVOICING_CONFIRMATION',
+                'SALES_ORDER_INVOICING',
+                'SALES_GENERATE_INVOICE',
             )
             .pipe(
                 switchMap((confirm: boolean) => {

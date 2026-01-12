@@ -35,5 +35,6 @@
     "QUICK_ORDER_DETAIL": "Quick order detail",
     "GENERATE_INVOICE": "Generate invoice",
     "ORDER_INVOICING": "Scheduled invoicing",
-    "CATEGORY_DISCOUNTS": "Category discounts"
+    "CATEGORY_DISCOUNTS": "Category discounts",
+    "WEIGHT_CAPTURE": "Weight capture"
 }
