@@ -20,7 +20,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 export class AppComponent implements OnInit {
     #adId = 'ca-app-pub-8350344729252908/7124743448';
 
-    #deviceSrv: DeviceDetectorService;
+    #deviceSrv = inject(DeviceDetectorService);
     // #snackSrv = inject(SnackBarService);
     #companySelectorSrv = inject(CompanySelectorService);
     // #deviceSrv = inject(DeviceDetectorService);
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
                 next: () => {
                     this.#shellSrv.setSideNavDataSource(cSpaceNavTree);
                     this.loaded.set(true);
-                    if (this.#deviceSrv.isMobile()) {
+                    if (this.#deviceSrv?.isMobile()) {
                         this.#adService.showBanner(this.#adId);
                     }
                 },
