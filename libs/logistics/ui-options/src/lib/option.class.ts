@@ -38,7 +38,6 @@ export class Option {
     severe: boolean;
     evalPrice: number;
     allow_dupl_ref: boolean;
-    service_invoice_only: boolean;
     require_invoice_cost_center: boolean;
     current_year: number;
     hide_purch_price: boolean;
