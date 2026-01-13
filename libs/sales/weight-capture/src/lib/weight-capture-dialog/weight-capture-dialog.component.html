@@ -49,7 +49,7 @@
         </mat-card-content>
         <mat-card-footer>
             <table class="table full-width">
-                <tr>
+                <tr class="b-warn">
                     <th>
                         <div translate>COMMON_LAST_UPDATE_TIME</div>
                     </th>
@@ -57,7 +57,7 @@
                         <div translate>COMMON_MODIFIED_BY</div>
                     </th>
                 </tr>
-                <tr>
+                <tr style="color: green">
                     <td>
                         {{ type == TARE ? form.controls.tareTime.value : form.controls.brutTime.value }}
                     </td>
