@@ -280,6 +280,9 @@ export class ShellService {
         }
     }
 
+    public isEmpty() {
+        return this.navData == null || this.navData.length === 0;
+    }
     public setSideNavDataSource(tree: SideNavNode[]) {
         this.navTree = tree;
         this.filterSideNav();
