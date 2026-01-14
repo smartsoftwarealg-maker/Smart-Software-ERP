@@ -51,7 +51,9 @@ export class AppComponent implements OnInit {
                 next: () => {
                     this.#shellSrv.setSideNavDataSource(cSpaceNavTree);
                     this.loaded.set(true);
-                    if (this.#deviceSrv?.isMobile()) {
+                    if (
+                        !this.#shellSrv.isEmpty() &&
+                        this.#deviceSrv?.isMobile()) {
                         this.#adService.showBanner(this.#adId);
                     }
                 },

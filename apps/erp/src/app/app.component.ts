@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage = homePage;
         this.#langSrv.isSodismac = !!environment['sodismac'];
-        this.shellSrv.setApplicationTitle('Smart ERP 2.8.58');
+        this.shellSrv.setApplicationTitle('Smart ERP 2.8.59');
         this.httpSrv
             .init()
             .pipe(
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
                 next: () => {
                     this.shellSrv.setSideNavDataSource(navBar);
                     this.loaded = true;
-                    if (this.#deviceSrv?.isMobile()) {
+                    if (!this.shellSrv.isEmpty() && this.#deviceSrv?.isMobile()) {
                         this.#adService.showBanner(this.#adId);
                     }
                 },
