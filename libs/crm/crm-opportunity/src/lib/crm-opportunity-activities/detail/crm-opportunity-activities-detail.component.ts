@@ -25,7 +25,7 @@ import {
 } from '@ss/common/ui-auto-complete';
 import {UserListService} from '@ss/common/api-users';
 import {CrmTeamsService} from '@ss/crm/crm-teams';
-import {Editor, Toolbar} from 'ngx-editor';
+import {Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar} from 'ngx-editor';
 import {CRMOpportunityService} from '../../crm-opportunity.service';
 
 @Component({
@@ -45,6 +45,8 @@ import {CRMOpportunityService} from '../../crm-opportunity.service';
         DatePickerComponent,
         MaterialModule,
         UiAutoCompleteComponent,
+        NgxEditorMenuComponent,
+        NgxEditorComponent,
     ],
     standalone: true,
 })
@@ -105,7 +107,7 @@ export class CrmOpportunityActivitiesDetailComponent
         });
     }
 
-    private opportunitySrv= inject(CRMOpportunityService);
+    private opportunitySrv = inject(CRMOpportunityService);
 
     override ngOnInit() {
         super.ngOnInit();

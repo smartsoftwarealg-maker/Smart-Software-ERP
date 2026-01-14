@@ -12,7 +12,10 @@ import {
     ABS_PRODUCTION_ARTICLE_TYPES_URL,
     ABS_PRODUCTION_DOSAGE_UNITS_URL,
     ABS_PRODUCTION_PACKAGING_UNITS_URL,
-    ABS_PRODUCTION_REPORTS_URL, ABS_PRODUCTIONS_TRANSFER_URL
+    ABS_PRODUCTION_REPORTS_URL,
+    ABS_PRODUCTIONS_TRANSFER_URL,
+    ABS_PRODUCTION_CONSUMPTION_URL,
+    ABS_PRODUCTION_TRANSFER_DETAIL_URL,
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -85,6 +88,18 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-brands fa-product-hunt',
             route: ABS_PRODUCTION_URL,
             accessRights: 'Production',
+        },
+        {
+            name: 'PROD_TRANSFERS_DETAIL',
+            icon: 'fa-solid fa-money-bill-transfer',
+            route: ABS_PRODUCTION_TRANSFER_DETAIL_URL,
+            accessRights: 'Transfer',
+        },
+        {
+            name: 'STOCK_CONSUMPTION',
+            icon: 'fas fa-gas-pump',
+            route: ABS_PRODUCTION_CONSUMPTION_URL,
+            accessRights: 'Consumption',
         },
         {
             name: 'PROD_PRODUCTIONS_TRANSFER',
