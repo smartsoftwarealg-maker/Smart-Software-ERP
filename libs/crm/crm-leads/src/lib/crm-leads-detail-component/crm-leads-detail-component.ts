@@ -176,7 +176,13 @@ export class CrmLeadsDetailComponent implements OnInit {
 
     save() {
         this.#entitySrv.save(this.form.getRawValue() as CRMLead).subscribe({
-            next: () => {
+            next: (r) => {
+                if (+this.form?.controls['id'].value == 0) {
+                    this.form?.controls['id'].patchValue(r);
+                    this.#router
+                        .navigate([r], { relativeTo: this.#route.parent })
+                        .then();
+                }
                 this.form.markAsUntouched();
                 // this.#router
                 //     .navigate(['../'], { relativeTo: this.#route })
