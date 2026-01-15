@@ -135,5 +135,15 @@
     "QUOTES":               "الاقتباسات",
     "MY_CRM":               "العلاقات الشخصية",
     "COMPANY_CRM":          "العلاقات العامة",
-    "IS_DECISION_MAKER":    "هو مقرر"
+    "IS_DECISION_MAKER":    "هو مقرر",
+    "TECHNOLOGY":          "التكنولوجيا",
+    "HEALTHCARE":          "الرعاية الصحية",
+    "FINANCE":             "التمويل",
+    "MANUFACTURING":       "التصنيع",
+    "SERVICES":            "الخدمات",
+    "RETAIL":              "التجزئة",
+    "EDUCATION":           "التعليم",
+    "NON-PROFIT":          "غير الربحي",
+    "GOVERNMENT":          "الحكومة",
+    "OTHER":               "أخرى"
 }

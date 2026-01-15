@@ -136,6 +136,15 @@
     "QUOTES":              "Quotes",
     "MY_CRM":              "My CRM",
     "COMPANY_CRM":         "Company CRM",
-    "IS_DECISION_MAKER":   "Is decision maker"
-
+    "IS_DECISION_MAKER":   "Is decision maker",
+    "TECHNOLOGY":          "Technology",
+    "HEALTHCARE":          "Healthcare",
+    "FINANCE":             "Finance",
+    "MANUFACTURING":       "Manufacturing",
+    "SERVICES":            "Services",
+    "RETAIL":              "Retail",
+    "EDUCATION":           "Education",
+    "NON-PROFIT":          "Non profit",
+    "GOVERNMENT":          "Government",
+    "OTHER":               "Other"
 }

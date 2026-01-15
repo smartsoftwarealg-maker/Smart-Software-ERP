@@ -93,5 +93,6 @@
     "NO_PRODUCT_TO_INVOICE":              "Aucun produit à facturer.",
     "MISSING_SHIPPING_INFO":              "Informations d'expédition manquantes.",
     "INVALID_DATE_RANGE":                 "Plage de dates invalide",
-    "SINGLE_ACCOUNTING":                  "La comptabilité du site est enregistrée ailleurs"
+    "SINGLE_ACCOUNTING":                  "La comptabilité du site est enregistrée ailleurs",
+    "LEAD_PROGRESS_REQUIRED":             "Progression du prospect requise"
 }

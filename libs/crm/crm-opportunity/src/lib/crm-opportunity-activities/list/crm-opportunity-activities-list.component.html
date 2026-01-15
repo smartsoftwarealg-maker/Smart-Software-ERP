@@ -49,8 +49,8 @@
 
         <ng-container matColumnDef="status">
             <mat-header-cell *matHeaderCellDef translate>COMMON_STATUS</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.status }}
+            <mat-cell *matCellDef="let e" translate>
+                CRM_{{ e.status }}
             </mat-cell>
         </ng-container>
 
