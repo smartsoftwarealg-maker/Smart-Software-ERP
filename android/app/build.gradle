@@ -7,8 +7,13 @@ android {
         applicationId "smart.software.erp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+<<<<<<< HEAD
         versionCode 27
         versionName "1.27"
+=======
+        versionCode 26
+        versionName "1.26"
+>>>>>>> c5af26e96ba498461c9b8ed32dbd23f2675f559d
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.

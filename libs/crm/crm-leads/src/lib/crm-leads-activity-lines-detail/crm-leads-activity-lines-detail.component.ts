@@ -14,7 +14,14 @@ import { MaterialModule, LoginService } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { UserListService } from '@ss/common/api-users';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { Editor, Toolbar } from 'ngx-editor';
+import {
+    Editor,
+    NgxEditorComponent,
+    NgxEditorMenuComponent,
+    toDoc,
+    toHTML,
+    Toolbar,
+} from 'ngx-editor';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { FurnitureStatusService } from '@ss/common/api-lookup';
 import { CrmLeadActivityService } from '../crm-lead-activity.service';
@@ -41,7 +48,9 @@ import { CRMLeadsService } from '@ss/crm/leads';
         TranslatePipe,
         UiAutoCompleteComponent,
         DatePickerComponent,
-    ]
+        NgxEditorMenuComponent,
+        NgxEditorComponent,
+    ],
 })
 export class CrmLeadsActivityLinesDetailComponent implements OnInit {
     // Dependencies
@@ -53,16 +62,15 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
     private loginSrv = inject(LoginService);
     private confirmationSrv = inject(ConfirmationDialogService);
 
-
     @Input() activityId!: number | null;
     @Input() parentId!: number;
     @Output() closed = new EventEmitter<void>();
 
-
     public form: UntypedFormGroup | null = null;
     public usersLookup = new DefaultAutoCompleteModel(this.usersSrv);
-    public statusAutoCompleteModel = new DefaultAutoCompleteModel(this.statusSrv);
-
+    public statusAutoCompleteModel = new DefaultAutoCompleteModel(
+        this.statusSrv,
+    );
 
     public editor: Editor = new Editor();
     public editorContent!: FormControl;
@@ -74,11 +82,19 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
         [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
         ['link', 'image'],
         ['text_color', 'background_color'],
-        ['align_left', 'align_center', 'align_right', 'align_justify']
+        ['align_left', 'align_center', 'align_right', 'align_justify'],
     ];
 
     protected readonly ACTIVITY_TYPE = ACTIVITY_TYPE;
-    public status = ['SCHEDULED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED', 'FAILED', 'NO_SHOW', 'PENDING'];
+    public status = [
+        'SCHEDULED',
+        'IN_PROGRESS',
+        'COMPLETED',
+        'CANCELLED',
+        'FAILED',
+        'NO_SHOW',
+        'PENDING',
+    ];
     public priority = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
 
     public email: string = '';
@@ -87,20 +103,27 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
 
     ngOnInit() {
         if (this.activityId) {
-            this.entitySrv.get(this.activityId).subscribe(activity => {
+            this.entitySrv.get(this.activityId).subscribe((activity) => {
                 this.form = this.setupForm(activity);
             });
         } else {
-            this.form = this.setupForm({ id: 0, parentId: this.parentId } as CRMLeadActivity);
+            this.form = this.setupForm({
+                id: 0,
+                parentId: this.parentId,
+            } as CRMLeadActivity);
         }
         this.leadSrv.get(this.entitySrv.getParentId()).subscribe({
             next: (crmLead: CRMLead) => {
                 this.email = crmLead.email;
-            }
+            },
         });
     }
 
     public setupForm(e: CRMLeadActivity): UntypedFormGroup {
+        if (e.activityType == 'EMAIL') {
+          // this.editorContent.setValue(toDoc(e.detail as string));
+            //this.editor.setContent(toDoc(e.detail as string));
+        }
         return this.formBuilder.group({
             id: [e.id],
             parentId: [e.parentId || this.entitySrv.getParentId()],
@@ -110,9 +133,18 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
             status: [e.status, Validators.required],
             dueDate: [e.dueDate, Validators.required],
             completionDate: [e.completionDate],
-            createdBy: [{ value: e.createdBy || this.loginSrv.appCtx.id, disabled: true }, Validators.required],
-            ownerId: [e.ownerId || this.loginSrv.appCtx.id, Validators.required],
-            detail: new FormControl(e.detail || '', Validators.required)
+            createdBy: [
+                {
+                    value: e.createdBy || this.loginSrv.appCtx.id,
+                    disabled: true,
+                },
+                Validators.required,
+            ],
+            ownerId: [
+                e.ownerId || this.loginSrv.appCtx.id,
+                Validators.required,
+            ],
+            detail: new FormControl(e.detail || '', Validators.required),
         });
     }
 
@@ -125,7 +157,7 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
             ? this.confirmationSrv.confirm('COMMON_CANCEL', 'COMMON_CANCEL')
             : of(true);
 
-        obs.subscribe(res => {
+        obs.subscribe((res) => {
             if (res) this.closed.emit();
         });
     }
@@ -140,7 +172,7 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
         const val = this.readForm();
 
         this.entitySrv.save(val).subscribe({
-            next: id => {
+            next: (id) => {
                 if (val.id === 0) val.id = id;
                 this.form?.markAsUntouched();
                 this.snackBarSrv.showSuccessMessage();
@@ -149,7 +181,7 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
             error: () => {
                 this.snackBarSrv.showFailureMessage();
                 this.form?.reset(val);
-            }
+            },
         });
 
         if (val.activityType === 'EMAIL') {
@@ -157,26 +189,25 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
                 to: this.email,
                 subject: val.subject,
                 body: val.detail,
-                isHTML: true
+                isHTML: true,
             };
             this.entitySrv.sendEmail(message).subscribe({
                 next: () => this.snackBarSrv.showSuccessMessage(),
-                error: () => this.snackBarSrv.showFailureMessage()
+                error: () => this.snackBarSrv.showFailureMessage(),
             });
         }
     }
 
-
     send() {
         const eMessage: EMessage = {
             to: this.email,
-            body: this.editorContent.value,
+            body: this.form?.controls['detail'].value,
             isHTML: true,
-            subject: this.form?.controls['subject'].value
+            subject: this.form?.controls['subject']?.value,
         };
         this.entitySrv.sendEmail(eMessage).subscribe({
             next: () => this.snackBarSrv.showSuccessMessage(),
-            error: () => this.snackBarSrv.showFailureMessage()
+            error: () => this.snackBarSrv.showFailureMessage(),
         });
     }
 }

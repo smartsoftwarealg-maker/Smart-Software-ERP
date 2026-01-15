@@ -17,7 +17,12 @@ import {
     PRODUCTION_UNLOCKING_LOTS_URL,
     PRODUCTION_ARTICLE_TYPES_URL,
     PRODUCTION_DOSAGE_UNITS_URL,
-    PRODUCTION_PACKAGING_UNITS_URL, COMMON_REPORTS_URL, PRODUCTION_LOT_PRIORITY_URL, PRODUCTIONS_TRANSFER_URL
+    PRODUCTION_PACKAGING_UNITS_URL,
+    COMMON_REPORTS_URL,
+    PRODUCTION_LOT_PRIORITY_URL,
+    PRODUCTIONS_TRANSFER_URL,
+    PRODUCTION_CONSUMPTION_URL,
+    PRODUCTION_TRANSFER_DETAIL_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -62,8 +67,18 @@ import { LotPriorityListComponent } from "@ss/production/lot";
 import {
     ProductionTransferDetailComponent,
     ProductionTransferLinesListComponent,
-    ProductionTransferListComponent
-} from "@ss/production/production-transfer";
+    ProductionTransferListComponent,
+    TransferDetailComponent,
+    TransferLinesDetailComponent,
+    TransferLinesListComponent,
+    TransferListComponent,
+} from '@ss/production/production-transfer';
+import {
+    ProductionConsumptionDetailComponent,
+    ProductionConsumptionLinesDetailComponent,
+    ProductionConsumptionLinesListComponent,
+    ProductionConsumptionListComponent,
+} from '@ss/production/production-consumption';
 
 export const prodRoutes: Routes = [
     {
@@ -94,8 +109,12 @@ export const prodRoutes: Routes = [
                     {
                         path: 'lines-detail',
                         children: [
-                            { path: ':id', component: InterStoreTransferLinesDetailComponent, },
-                        ]
+                            {
+                                path: ':id',
+                                component:
+                                    InterStoreTransferLinesDetailComponent,
+                            },
+                        ],
                     },
                     ...docInfoRoutes,
                 ],
@@ -144,7 +163,13 @@ export const prodRoutes: Routes = [
                     {
                         path: 'lines-list',
                         component: ProductionOrderLinesListComponent,
-                        children: [...docInfoRoutes, { path: 'consumptions', component: ProductionConsumptionComponent}],
+                        children: [
+                            ...docInfoRoutes,
+                            {
+                                path: 'consumptions',
+                                component: ProductionConsumptionComponent,
+                            },
+                        ],
                     },
                     {
                         path: 'lines-detail',
@@ -181,7 +206,13 @@ export const prodRoutes: Routes = [
                     {
                         path: 'lines-list',
                         component: ProductionLinesListComponent,
-                        children: [...docInfoRoutes, { path: 'consumptions', component: ProductionConsumptionComponent}],
+                        children: [
+                            ...docInfoRoutes,
+                            {
+                                path: 'consumptions',
+                                component: ProductionConsumptionComponent,
+                            },
+                        ],
                     },
                     {
                         path: 'lines-detail',
@@ -343,13 +374,92 @@ export const prodRoutes: Routes = [
                     {
                         path: 'lines-list',
                         component: ProductionTransferLinesListComponent,
-                        children: [...docInfoRoutes, { path: 'consumptions', component: ProductionConsumptionComponent}],
+                        children: [
+                            ...docInfoRoutes,
+                            {
+                                path: 'consumptions',
+                                component: ProductionConsumptionComponent,
+                            },
+                        ],
                     },
                     ...docInfoRoutes,
                 ],
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: PRODUCTION_CONSUMPTION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductionConsumptionListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: ProductionConsumptionDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'lines-list',
+                        component: ProductionConsumptionLinesListComponent,
+                        children: docInfoRoutes,
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            {
+                                path: ':id',
+                                component:
+                                    ProductionConsumptionLinesDetailComponent,
+                            },
+                        ],
+                    },
+                    ...docInfoRoutes,
+                ],
+            },
+        ],
+    },
+    {
+        path: PRODUCTION_TRANSFER_DETAIL_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TransferListComponent,
+                canActivate: [loginGuard],
+                canActivateChild: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: TransferDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                canActivateChild: [loginGuard],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'lines-list',
+                        component: TransferLinesListComponent,
+                        children: docInfoRoutes,
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            {
+                                path: ':id',
+                                component: TransferLinesDetailComponent,
+                            },
+                        ],
+                    },
+                    ...docInfoRoutes,
+                ],
+            },
         ],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
