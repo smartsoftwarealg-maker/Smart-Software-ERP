@@ -118,13 +118,13 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_SALES_INJECTION',
             icon: 'fa-solid fa-file-excel',
             route: ABS_SALES_GENERATION_URL,
-            accessRights: 'ACCTransaction'
+            accessRights: 'ACCInjection'
         },
         {
             name: 'COMMON_EXCEL_INJECTION',
             icon: 'fa-solid fa-file-xls',
             route: ABS_GENERAL_GENERATION_URL,
-            accessRights: 'ACCTransaction'
+            accessRights: 'ACCInjection'
         },
         {
             name: 'ACC_DEPRECIATION_GENERATION',
