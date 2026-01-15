@@ -16,10 +16,7 @@ import { UserListService } from '@ss/common/api-users';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {
     Editor,
-    NgxEditorComponent,
-    NgxEditorMenuComponent,
-    toDoc,
-    toHTML,
+    NgxEditorModule,
     Toolbar,
 } from 'ngx-editor';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -48,8 +45,7 @@ import { CRMLeadsService } from '@ss/crm/leads';
         TranslatePipe,
         UiAutoCompleteComponent,
         DatePickerComponent,
-        NgxEditorMenuComponent,
-        NgxEditorComponent,
+        NgxEditorModule,
     ],
 })
 export class CrmLeadsActivityLinesDetailComponent implements OnInit {
@@ -121,7 +117,7 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
 
     public setupForm(e: CRMLeadActivity): UntypedFormGroup {
         if (e.activityType == 'EMAIL') {
-          // this.editorContent.setValue(toDoc(e.detail as string));
+            // this.editorContent.setValue(toDoc(e.detail as string));
             //this.editor.setContent(toDoc(e.detail as string));
         }
         return this.formBuilder.group({

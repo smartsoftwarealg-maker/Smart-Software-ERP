@@ -25,7 +25,7 @@ import {
 } from '@ss/common/ui-auto-complete';
 import {UserListService} from '@ss/common/api-users';
 import {CrmTeamsService} from '@ss/crm/crm-teams';
-import {Editor, NgxEditorComponent, NgxEditorMenuComponent, Toolbar} from 'ngx-editor';
+import {Editor, NgxEditorModule, Toolbar} from 'ngx-editor';
 import {CRMOpportunityService} from '../../crm-opportunity.service';
 
 @Component({
@@ -45,8 +45,7 @@ import {CRMOpportunityService} from '../../crm-opportunity.service';
         DatePickerComponent,
         MaterialModule,
         UiAutoCompleteComponent,
-        NgxEditorMenuComponent,
-        NgxEditorComponent,
+        NgxEditorModule,
     ],
     standalone: true,
 })
