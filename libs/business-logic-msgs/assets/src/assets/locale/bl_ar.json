@@ -93,5 +93,6 @@
     "NO_PRODUCT_TO_INVOICE":         "لا يوجد منتج للفاتورة.",
     "MISSING_SHIPPING_INFO":         "معلومات الشحن مفقودة.",
     "INVALID_DATE_RANGE":            "نطاق التاريخ غير صالح",
-    "SINGLE_ACCOUNTING":             "يتم تسجيل محاسبة الموقع في مكان آخر"
+    "SINGLE_ACCOUNTING":             "يتم تسجيل محاسبة الموقع في مكان آخر",
+    "LEAD_PROGRESS_REQUIRED":        "مطلوب تقدم في العملاء المحتملين"
 }

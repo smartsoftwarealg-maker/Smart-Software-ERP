@@ -135,5 +135,15 @@
     "QUOTES":                "Devis",
     "MY_CRM":                "Mon CRM",
     "COMPANY_CRM":           "CRM de l'entreprise",
-    "IS_DECISION_MAKER":     "Est un décideur"
+    "IS_DECISION_MAKER":     "Est un décideur",
+    "TECHNOLOGY":            "Technologie",
+    "HEALTHCARE":            "Santé",
+    "FINANCE":               "Finance",
+    "MANUFACTURING":         "Fabrication",
+    "SERVICES":              "Services",
+    "RETAIL":                "Commerce de détail",
+    "EDUCATION":             "Éducation",
+    "NON-PROFIT":            "À but non lucratif",
+    "GOVERNMENT":            "Gouvernement",
+    "OTHER":                 "Autre"
 }
