@@ -96,7 +96,7 @@ export const productionNavTree: SideNavNode = {
             accessRights: 'Transfer',
         },
         {
-            name: 'STOCK_CONSUMPTION',
+            name: 'PROD_CONSUMPTION_DETAIL',
             icon: 'fas fa-gas-pump',
             route: ABS_PRODUCTION_CONSUMPTION_URL,
             accessRights: 'Consumption',

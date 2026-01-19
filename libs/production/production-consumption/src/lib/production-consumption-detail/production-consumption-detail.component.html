@@ -10,58 +10,6 @@
                     <mat-label translate>COMMON_DATE</mat-label>
                     <ss-date-picker formControlName="date"></ss-date-picker>
                 </mat-form-field>
-                <mat-form-field id="reference" class="default-50 sm-100">
-                    <mat-label translate>COMMON_REFERENCE</mat-label>
-                    <input matInput formControlName="reference" type="text">
-                </mat-form-field>
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>STOCK_REFERENCE_DOC_DATE</mat-label>
-                    <ss-date-picker formControlName="referenceDocDate"></ss-date-picker>
-                </mat-form-field>
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_CONSUMER</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="consumerLookup"
-                                      formControlName="agent"></ss-auto-complete>
-                    @if (form.controls['agent'].hasError('required')) {
-                        <mat-error
-                            translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
-                    }
-                    @if (form.controls['agent'].hasError('validOption')) {
-                        <mat-error
-                            translate>COMMON_NO_MATCH
-                        </mat-error>
-                    }
-                </mat-form-field>
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_PROJECT</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="salesProjectLookup"
-                                      formControlName="project">
-                    </ss-auto-complete>
-                    @if (form.controls['project']?.hasError('blocked')) {
-                        <mat-error translate>LOGISTICS_PROJECT_BLOCKED</mat-error>
-                    }
-                </mat-form-field>
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>STOCK_DEALER</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="true"
-                                      [model]="dealerAutoCompleteModel"
-                                      formControlName="dealer"></ss-auto-complete>
-                    @if (form.controls['dealer'].hasError('required')) {
-                        <mat-error
-                            translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
-                    }
-                    @if (form.controls['dealer'].hasError('validOption')) {
-                        <mat-error
-                            translate>COMMON_NO_MATCH
-                        </mat-error>
-                    }
-                </mat-form-field>
                 <mat-form-field id="header" class="default-50 sm-100">
                     <mat-label translate>STOCK_HEADER</mat-label>
                     <textarea matInput formControlName="header" cdkTextareaAutosize="true"></textarea>
