@@ -2,20 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { HttpService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
+import { HttpService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {Article, SSArticleService} from '@ss/scheduled-sales/api-scheduled-sales';
-import { CommonModule } from "@angular/common";
-import { ReactiveFormsModule } from "@angular/forms";
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
-    selector: "ss-article-list-ss",
-    templateUrl: "./article-list.component.html",
-    styleUrls: ["./article-list.component.scss"],
+    selector: 'ss-article-list-ss',
+    templateUrl: './article-list.component.html',
+    styleUrls: ['./article-list.component.scss'],
     standalone: true,
     imports: [
         CommonModule,
@@ -26,7 +26,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         PaginationComponent,
         TranslateDirective
     ]
-
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
 

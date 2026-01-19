@@ -1,4 +1,4 @@
-@if (processing) {
+@if (processing()) {
     <mat-progress-bar mode="indeterminate" class="center-div"></mat-progress-bar>
 }
 @if (form !== null) {
@@ -37,17 +37,31 @@
 
         <button mat-raised-button
                 color="warn"
-                [disabled]="!form.valid || processing"
+                [disabled]="!form.valid || processing() || data.length < 1"
                 (click)="generate()"
-                translate>COMMON_GENERATE
+                translate>
+            <i class="fa-solid fa-check"></i>
+            COMMON_GENERATE
         </button>
 
         <button mat-raised-button
                 color="error"
-                [disabled]="processing"
-                (click)="cancel()"
-                translate>COMMON_CANCEL
+                [disabled]="processing()"
+                (click)="goBack()"
+                translate>
+            <i class="fa-solid fa-arrow-left"></i>
+            COMMON_GO_BACK
         </button>
+
+        <button mat-raised-button
+                color="error"
+                [disabled]="processing()||!form.valid"
+                (click)="cancel()"
+                translate>
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+            COMMON_CANCEL
+        </button>
+
     </form>
 }
 @if (showingTransactions()) {

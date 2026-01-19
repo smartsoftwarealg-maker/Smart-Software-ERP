@@ -12,7 +12,7 @@ import {
 } from '@ss/accounting/accounting-api';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { of, Subscription, switchMap } from 'rxjs';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import { HttpParams } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
@@ -77,7 +77,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
 
     form: UntypedFormGroup | null = null;
     journalLookup = new ActiveJournalLookup(this.journalSrv, this.loginSrv);
-    processing = false;
+    processing = signal(false);
     data: TDocument[] = [];
     payrollData: PAYRow[] = [];
     checkData: Check[] = [];
@@ -116,7 +116,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
                         .pipe(
                             debounceTime(300),
                             distinctUntilChanged()
-                        ).subscribe(v => this.showDocuments()));
+                        ).subscribe(() => this.showDocuments()));
             });
     }
 
@@ -177,10 +177,10 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
                 next: res => {
                     this.data = res.body;
                     this.pagination.elementCount = res.itemCount;
-                    this.processing = false;
+                    this.processing.set(false);
                     this.shellSrv.setLoading(false);
                 }, error: err => {
-                    this.processing = false;
+                    this.processing.set(false);
                     this.shellSrv.setLoading(false);
                     throw err;
                 }
@@ -192,7 +192,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             .getPayrollLines()
             .subscribe({
                 next: res => {
-                    this.processing = false;
+                    this.processing.set(false);
                     this.shellSrv.setLoading(false);
                     this.payrollData = res;
                     this.payrollData.forEach(e => {
@@ -207,7 +207,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
                         this.payrollData.push({account: total, amount: 0, debit: debit, credit: credit});
                     }
                 }, error: err => {
-                    this.processing = false;
+                    this.processing.set(false);
                     this.shellSrv.setLoading(false);
                     throw err;
                 }
@@ -219,13 +219,13 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             .getChecks()
             .subscribe({
                 next: res => {
-                    this.processing = false;
+                    this.processing.set(false);
                     this.checkData = res;
                     const bankId = res.length > 0 ? res[0].journal || null : null;
                     this.form?.controls['journal']?.setValue(bankId);
                     this.shellSrv.setLoading(false);
                 }, error: err => {
-                    this.processing = false;
+                    this.processing.set(false);
                     this.shellSrv.setLoading(false);
                     throw err;
                 }
@@ -237,11 +237,11 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
             .getCash()
             .subscribe({
                 next: res => {
-                    this.processing = false;
+                    this.processing.set(false);
                     this.cashData = res;
                     this.shellSrv.setLoading(false);
                 }, error: err => {
-                    this.processing = false;
+                    this.processing.set(false);
                     this.shellSrv.setLoading(false);
                     throw err;
                 }
@@ -249,7 +249,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     }
 
     showDocuments() {
-        this.processing = true;
+        this.processing.set(true);
         this.shellSrv.setLoading(true);
         const key = +this.form?.controls['genType'].value;
         this.showingBank.set( key === this.BANK);
@@ -273,6 +273,10 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
         default:
             this.showTransactions(key);
         }
+    }
+
+    goBack() {
+        this.shellSrv.goBack();
     }
 }
 
