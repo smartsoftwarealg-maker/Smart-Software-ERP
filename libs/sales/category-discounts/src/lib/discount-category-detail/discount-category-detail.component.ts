@@ -16,7 +16,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
 @Component({
-    selector: 'ss-sales-category-detail',
+    selector: 'ss-discount-category-list',
     templateUrl: './discount-category-detail.component.html',
     styleUrls: ['./discount-category-detail.component.scss'],
     standalone: true,
