@@ -89,7 +89,7 @@
                     <mat-form-field id="units" class="default-25 sm-50">
                         <mat-label translate>STOCK_UNITS</mat-label>
                         <mat-select formControlName="units">
-                            @for (u of packagingUnits; track u.units) {
+                            @for (u of packagingUnits; track u.id) {
                                 <mat-option [value]="u.units">
                                     {{ u.description }}
                                 </mat-option>
