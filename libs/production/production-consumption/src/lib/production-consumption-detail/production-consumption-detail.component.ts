@@ -16,11 +16,10 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { MatCard, MatCardContent } from '@angular/material/card';
 
-import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ProductionConsumptionService } from '../production-consumption.service';
 import { ProductionConsumptionLinesService } from '../production-consumption-lines.service';
@@ -41,8 +40,6 @@ import { ProductionConsumptionLinesService } from '../production-consumption-lin
         TranslateDirective,
         MatInput,
         DatePickerComponent,
-        UiAutoCompleteComponent,
-        MatError,
         CdkTextareaAutosize,
         RouterOutlet,
     ],
@@ -80,7 +77,7 @@ export class ProductionConsumptionDetailComponent extends BaseTransactionDetailC
     }
 
     protected requireAgent(): boolean {
-        return true;
+        return false;
     }
 
     protected requireAgentToImportDocument(): boolean {
