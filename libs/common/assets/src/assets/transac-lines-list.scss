@@ -75,7 +75,8 @@ mat-table {
 }
 
 .mat-column-units {
-    flex: 1 1 90px;
+    flex: 1 1 100px;
+    min-width: 100px;
     border-left: white solid 1px;
     justify-content: center;
 }
