@@ -227,5 +227,5 @@
     "VALUE_BETWEEN_0&1000":     "La valeur doit entre 0 et 1000",
     "LICENSE_DATE":             "Date du permis",
     "ALLOW_EXPIRED_PROJECTS":   "Autoriser les projets expirés",
-    "FIXED_DISCOUNT":           "Remise fixe"
+    "FIXED_DISCOUNT_VAT":       "Remise fixe TVA"
 }

@@ -228,5 +228,5 @@
     "VALUE_BETWEEN_0&1000": "Value must be between 0 and 1000",
     "LICENSE_DATE":         "License date",
     "ALLOW_EXPIRED_PROJECTS": "Allow expired projects",
-    "FIXED_DISCOUNT":         "Fixed discount"
+    "FIXED_DISCOUNT_VAT":     "Fixed discount VAT"
 }
