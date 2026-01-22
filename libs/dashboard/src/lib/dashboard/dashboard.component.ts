@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { LookupsService } from '@ss/common/api-lookup';
-import {tap} from 'rxjs';
+import { asapScheduler, of, scheduled, takeWhile, tap, timer } from 'rxjs';
 import {
     APP_DASHBOARD,
     APPLICATIONS,
@@ -22,7 +22,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import { Id, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 
 
@@ -50,12 +50,16 @@ import { AccessRightsService } from '@ss/common/api-access-rights';
 })
 export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     #accessRightsSrv = inject(AccessRightsService);
+    #POLL_INTERVAL_MS = 3000; // Poll every 3 seconds
+
     private agentSrv = inject(AgentService);
     private langSrv = inject(LanguageService);
     private chartComponent: Chart | null = null;
 
     applications = signal(APPLICATIONS);
     showApplications = signal(false);
+    generating = signal(false);
+
     headers: string[] = ['test'];
     dashboardData: any[][] = [['test']];
     detailPagination = PaginationModel.newInstance({
@@ -114,8 +118,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.deleteButton.visible = false;
         super.ngOnInit();
         this.subscriptions.push(
-            this.application
-                .valueChanges
+            this.application.valueChanges
                 .pipe(debounceTime(300), distinctUntilChanged())
                 .subscribe((id) => {
                     this.dashboardSrv.setParentId(id);
@@ -146,8 +149,9 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                     tap((res) => {
                         this.headers = res.headers;
                         this.tableWidth = res.headers.length * 100 + '';
-                    })
-                ).subscribe(() => this.loadData());
+                    }),
+                )
+                .subscribe(() => this.loadData());
         }
     }
 
@@ -188,6 +192,9 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         const from = this.langSrv.formatDate(this.fromDate.value);
         const to = this.langSrv.formatDate(this.toDate.value);
         const consolidated = this.consolidated.value;
+        this.generating.set(true);
+        this.shellSrv.setLoading(true);
+
         this.dashboardSrv
             .getExcel(
                 this.selected,
@@ -198,19 +205,68 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 this.selectedAgentId,
                 consolidated,
             )
-            .subscribe((blob) => {
-                // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
-                if (blob && blob.size > 100) {
-                    const link = document.createElement('a');
-                    link.href = window.URL.createObjectURL(blob);
-                    link.download = this.entitySrv.constructor.name + '.xlsx';
-                    link.click();
-                    setTimeout(
-                        () => window.URL.revokeObjectURL(link.href),
-                        5000,
+            .pipe(
+                switchMap((jobId) => {
+                    return timer(0, this.#POLL_INTERVAL_MS).pipe(
+                        switchMap(() =>
+                            this.dashboardSrv.getStatus(
+                                `/dashboard/${this.selected}/excel`,
+                                jobId,
+                            ),
+                        ),
+                        takeWhile(
+                            (statusRes, index) =>
+                                statusRes.status === 102 && index < 100,
+                            true,
+                        ),
                     );
-                }
+                }),
+                switchMap((res) => of(res.body)),
+                tap((res) => this.doReportGeneration(<Blob>res)),
+            )
+            .subscribe({
+                next: () => {
+                    this.generating.set(false);
+                    this.shellSrv.setLoading(false);
+                },
+                error: (err) => {
+                    this.generating.set(false);
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                },
             });
+        // *****************************
+        // this.dashboardSrv
+        //     .getExcel(
+        //         this.selected,
+        //         this.detailPagination.page,
+        //         this.detailPagination.pageSize,
+        //         from,
+        //         to,
+        //         this.selectedAgentId,
+        //         consolidated,
+        //     )
+        //     .subscribe((blob) => {
+        //         // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
+        //         if (blob && blob.size > 100) {
+        //             const link = document.createElement('a');
+        //             link.href = window.URL.createObjectURL(blob);
+        //             link.download = this.entitySrv.constructor.name + '.xlsx';
+        //             link.click();
+        //             setTimeout(
+        //                 () => window.URL.revokeObjectURL(link.href),
+        //                 5000,
+        //             );
+        //         }
+        //     });
+    }
+    private doReportGeneration(res: Blob | MediaSource): Window | null {
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(res);
+        link.download = `${this.selectedRow?.description||'dashboard'}.xlsx`;
+        link.click();
+        setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+        return null;
     }
 
     public json() {
@@ -345,7 +401,6 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                     if (res.itemCount < 50 && res.itemCount > 0) {
                         const ctx = <ChartItem>document.getElementById('chart');
                         const data = this.chartData();
-                        console.log(data);
                         this.chartComponent = new Chart(ctx, data);
                     }
                     this.smallData.set(res.itemCount <= 50);
@@ -356,7 +411,6 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                     throw err;
                 },
             });
-
     }
 
     sort(event: Sort) {

@@ -95,7 +95,7 @@ export class BalanceQueriesComponent implements OnInit {
         'reference',
         'debit',
         'credit'
-    ]
+    ];
 
     balanceData: Balance[] = [];
     glData: GL[] = [];
@@ -140,7 +140,7 @@ export class BalanceQueriesComponent implements OnInit {
             .subscribe(res => {
                 this.balanceData = res.body;
                 this.balancePaginator.elementCount = res.itemCount;
-            })
+            });
     }
 
     private refreshGL() {
@@ -150,7 +150,7 @@ export class BalanceQueriesComponent implements OnInit {
             .subscribe(res => {
                 this.glData = res.body;
                 this.glPaginator.elementCount = res.itemCount;
-            })
+            });
     }
 
     selectBalance(row: Balance) {
@@ -158,14 +158,14 @@ export class BalanceQueriesComponent implements OnInit {
     }
 
     selectGL(row: GL) {
-        this.detailPaginator.page = 1
+        this.detailPaginator.page = 1;
         this.selectedGL.set(row);
         this.detailSrv.setParentId(row?.id||0);
         this.refreshDetail();
     }
 
     selectDetail(row: ACCTransactionLine) {
-        this.detailPaginator.page = 1
+        this.detailPaginator.page = 1;
         this.selectedDetail.set(row);
     }
 
@@ -196,7 +196,7 @@ export class BalanceQueriesComponent implements OnInit {
                 list.push(id);
             }
             return [...list];
-        })
+        });
 
     }
 
@@ -214,6 +214,6 @@ export class BalanceQueriesComponent implements OnInit {
                     link.click();
                     setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
                 }
-        });
-   }
+            });
+    }
 }

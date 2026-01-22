@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
-import {ACC_ACC_BALANCE_URL, ACC_ACCOUNTING_GL_URL, ACC_ASSET_END_URL, Balance, GL} from './accounting-api';
+import {ACC_ACC_BALANCE_URL, ACC_ACCOUNTING_GL_URL, Balance, GL} from './accounting-api';
 import {HttpService, PaginationModel} from '@ss/common/api-common';
 import {HttpParams} from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
