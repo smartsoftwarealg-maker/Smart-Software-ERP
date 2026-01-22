@@ -4,7 +4,6 @@ import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {NestedTreeControl} from '@angular/cdk/tree';
-import {v6 as uuidv6} from 'uuid';
 
 
 import {
@@ -229,7 +228,8 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         };
 
 
-        this.reportService.put(data)
+        this.reportService
+            .put(data)
             .pipe(switchMap(jobId => {
                 return timer(0, this.POLL_INTERVAL_MS)
                     .pipe(
@@ -247,46 +247,6 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                     throw err;
                 }
             });
-        /*
-        const loop: Observable<unknown> = this.httpSrv
-            .get(`/reports/view?uuid=${this.uuid}`)
-            .pipe(delay(3000),
-                switchMap(res => res['processing'] ? loop : of(res)));
-                obs.pipe(
-                    retry({ delay: (error, retryCount) => {
-                          if (error.status === 500 || retryCount > 15) {
-                              throw error;
-                          }
-                          return timer(10_000);
-                        }}),
-
-                    map(res => {
-                        if (this.form.value.reportType === 'HTML') {
-                            return res;
-                        } else {
-                            const obj: Blob = <Blob>res;
-                            return new Blob([obj], { type: this.getMimeType() });
-                        }
-                    }),
-                    switchMap(res => {
-                        const w = this.doReportGeneration(res, data);
-                        return of(w).pipe(delay(300));
-                    }),
-                ).subscribe({
-                    next: win => {
-                        this.generating.set(false);
-                        if (win) {
-                            try {
-                                win.document.title = `${this.selectedReport.name.replace('.jasper', '')}.pdf`;
-                            } catch (e) {}
-                        }
-                    },
-                    error: err => {
-                        this.generating.set(false);
-                        throw err;
-                    }
-                });
-        */
     }
 
     getMimeType(): string {

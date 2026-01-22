@@ -81,13 +81,13 @@ export class DefaultReportService {
     }
 
     emailReport(app: string,
-                id: number,
-                form: string,
-                from: string,
-                to: string,
-                password: string,
-                subject: string,
-                message: string): Observable<any> {
+        id: number,
+        form: string,
+        from: string,
+        to: string,
+        password: string,
+        subject: string,
+        message: string): Observable<any> {
         const params = new HttpParams()
             .set('app', app)
             .set('id', id)

@@ -44,12 +44,12 @@ export class DashboardService extends BaseEntityExtendedService<Dashboard> {
         from?: string,
         to?: string,
         agent?: any,
-        consolidated?: boolean): Observable<Blob> {
+        consolidated?: boolean): Observable<string> {
         let params = new HttpParams();
         ([['from', from], ['to', to], ['agent', agent], ['consolidated', consolidated]])
             .filter(v => v[1])
             .forEach(v => params = params.set(v[0], v[1]));
-        return this.httpSrv.getBlob(`/dashboard/${queryId}/excel`, params);
+        return this.httpSrv.get(`/dashboard/${queryId}/excel`, params);
     }
 
     getJson(queryId: number,
