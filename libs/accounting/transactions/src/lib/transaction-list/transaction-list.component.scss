@@ -81,17 +81,25 @@
     justify-content: center;
 }
 
-.mat-column-userName,
 .mat-column-updateTime {
     flex: 1 1 90px;
     border-left: white solid thin;
     justify-content: center;
+    min-width: 120px;
+}
+
+.mat-column-userName{
+    flex: 1 1 90px;
+    border-left: white solid thin;
+    justify-content: left;
+    min-width: 120px;
 }
 
 .mat-column-pieceDate,
 .mat-column-projectName {
     flex: 1 1 90px;
     border-left: white solid thin;
+    min-width: 100px;
 }
 
 .mat-column-isBudget {
