@@ -320,7 +320,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             creationTime:    [{ value: a.creationTime, disabled: true }],
             collector:       [a.collector],
             post:            [a.post],
-            starred:         [a.starred]
+            starred:         [a.starred],
+            confidential:    [a.confidential]
         });
     }
 

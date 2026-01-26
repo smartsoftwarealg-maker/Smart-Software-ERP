@@ -309,6 +309,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             costCenter:   [{value: b.costCenter, disabled: !this.isEditable}],
             pprice:       [{value:b.pprice, disabled: !this.isEditable }],
             bomId:        [{ value: b.bomId, disabled: !this.isEditable || ( (this.document == DOC_PRODUCTION || this.document == DOC_PRODUCTION_ORDER) && b.qtySatisfied > 0.00001 )}],
+            roundCount:   [b.roundCount]
         });
     }
     public get id() {
