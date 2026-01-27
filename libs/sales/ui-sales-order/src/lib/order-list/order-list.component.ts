@@ -30,6 +30,7 @@ import { tap } from 'rxjs';
 import { QuickOrderService } from '../../../../ui-quick-order/src/lib/quick-order.service';
 import { MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
+import { WeightCaptureService } from '@ss/sales/weight-capture';
 
 @Component({
     selector: 'ss-ui-order',
@@ -71,7 +72,6 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
         // 'locked',
         'docStatus',
         'invoiceNumber',
-        'option',
     ];
 
     constructor(
@@ -96,6 +96,7 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
             'SALES_ORDER',
         );
     }
+    weightCaptureSrv = inject(WeightCaptureService);
     quickOrderSrv = inject(QuickOrderService);
     invoiceInfo: InvoiceInfo[] = [];
 
@@ -111,8 +112,8 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
                 this.invoiceInfo = res;
             },
             error: (err) => {
-                throw err
-            }
+                throw err;
+            },
         });
     }
 
@@ -130,6 +131,18 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
                 this.snackBarSrv.showFailureMessage();
                 throw err;
             },
+        });
+    }
+
+    override ngOnInit() {
+        super.ngOnInit();
+        this.weightCaptureSrv.hasScaleConfig().subscribe({
+            next: (exists) => {
+                if (exists) {
+                    this.displayedColumns.push('option')
+                }
+            },
+            error: () => {},
         });
     }
 }
