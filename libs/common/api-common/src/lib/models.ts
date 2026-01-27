@@ -45,6 +45,7 @@ export interface User {
     password?: string;
     androidLicense?: string;
     email?: string;
+    confidential?: boolean;
 }
 
 export interface AppContext {

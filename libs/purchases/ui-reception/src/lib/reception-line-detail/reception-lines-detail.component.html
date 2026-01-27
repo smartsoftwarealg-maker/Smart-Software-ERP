@@ -125,12 +125,17 @@
                     <input matInput formControlName="charge" type="number" step="1">
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-25 sm-100">
                     <mat-label translate>COMMON_COST_CENTER</mat-label>
                     <ss-auto-complete matInput
                                       [model]="cCenterLookup"
                                       formControlName="costCenter">
                     </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-100">
+                    <mat-label translate>COMMON_ROUND_COUNT</mat-label>
+                    <input matInput formControlName="roundCount" type="number">
                 </mat-form-field>
 
                 <mat-form-field id="header" class="default-50 sm-100">

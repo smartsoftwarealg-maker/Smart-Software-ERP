@@ -64,8 +64,9 @@ export interface Agent {
     /**
      * @deprecated This field doesn't exist in the backend; it will be removed
      */
-    license?: string // FIXME:: remove this field
+    license?: string; // FIXME:: remove this field
     typeDescription?: string;
+    confidential?: boolean;
 }
 
 export interface AgentCenter {

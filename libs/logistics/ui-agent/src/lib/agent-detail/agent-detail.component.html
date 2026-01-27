@@ -117,7 +117,8 @@
                         <mat-checkbox formControlName="subcontractor" translate>LOGISTICS_SUBCONTRACTOR</mat-checkbox>
                     </div>
                     <div class="default-50 sm-100">
-                        <mat-checkbox formControlName="projectRequired" translate>LOGISTICS_PROJECT_REQUIRED</mat-checkbox>
+                        <mat-checkbox formControlName="projectRequired" translate>LOGISTICS_PROJECT_REQUIRED
+                        </mat-checkbox>
                     </div>
 
 
@@ -365,6 +366,10 @@
                                               [model]="categoryLookup">
                             </ss-auto-complete>
                         </mat-form-field>
+
+                        @if (isSupplier()) {
+                            <mat-checkbox formControlName="confidential" translate>LOGISTICS_CONFIDENTIAL</mat-checkbox>
+                        }
 
                         @if (isCustomer()) {
                             <mat-form-field class="default-50 sm-100">

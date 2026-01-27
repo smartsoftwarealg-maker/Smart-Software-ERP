@@ -227,5 +227,7 @@
     "VALUE_BETWEEN_0&1000": "القيمة يجب أن تكون بين 0 و 1000",
     "LICENSE_DATE":         "تاريخ الرخصة",
     "ALLOW_EXPIRED_PROJECTS": "السماح بالمشاريع المُنتهية",
-    "FIXED_DISCOUNT_VAT":     "الضريبة الثابتة"
+    "FIXED_DISCOUNT_VAT":     "الضريبة الثابتة",
+    "CONFIDENTIAL":           "سري",
+    "PRIVILEGE_CONFIDENTIAL": "سري بامتياز"
 }

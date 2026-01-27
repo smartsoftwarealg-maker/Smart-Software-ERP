@@ -29,4 +29,5 @@ export interface TransactionLine {
     unitsDescription?: string;
     tareWeight?: number;
     brutWeight?: number;
+    roundCount?: number;
 }

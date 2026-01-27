@@ -119,7 +119,8 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
             manager:     [b.manager || false],
             responsible: [b.responsible || false],
             blocked:     [b.blocked || false],
-            email:       [{ value: b.email, disabled: !this.isManager }, Validators.email]
+            email:       [{ value: b.email, disabled: !this.isManager }, Validators.email],
+            confidential:[b.confidential]
         });
     }
 
