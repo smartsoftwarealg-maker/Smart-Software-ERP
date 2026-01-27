@@ -37,7 +37,7 @@
 
         <button mat-raised-button
                 color="warn"
-                [disabled]="!form.valid || processing() || data.length < 1"
+                [disabled]="!form.valid || processing() || (data.length < 1 && payrollData.length < 1)"
                 (click)="generate()"
                 translate>
             <i class="fa-solid fa-check"></i>
