@@ -77,7 +77,7 @@ export const crmNavTree: SideNavNode = {
             name: 'LOGISTICS_CUSTOMERS',
             icon: 'fa-solid fa-users',
             route: ABS_CRM_CUSTOMER_URL,
-            accessRights: 'CRMCustomer',
+            accessRights: 'Customer',
         },
         {
             name: 'CRM_CAMPAIGNS',
