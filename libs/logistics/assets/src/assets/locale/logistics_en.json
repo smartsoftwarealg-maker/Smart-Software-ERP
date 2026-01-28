@@ -229,5 +229,6 @@
     "LICENSE_DATE":         "License date",
     "ALLOW_EXPIRED_PROJECTS": "Allow expired projects",
     "FIXED_DISCOUNT": "Fixed discount",
-    "FIXED_DISCOUNT_VAT": "Fixed discount VAT"
+    "FIXED_DISCOUNT_VAT": "Fixed discount VAT",
+    "PRIVILEGE_CONFIDENTIAL": "Privilege confidential"
 }

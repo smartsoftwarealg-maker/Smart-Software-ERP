@@ -1,6 +1,11 @@
 import { Component, inject, Inject, Input } from '@angular/core';
 import { finalize, Subscription } from 'rxjs';
-import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+    UntypedFormBuilder,
+    Validators,
+    FormsModule,
+    ReactiveFormsModule,
+} from '@angular/forms';
 import { HttpEventType } from '@angular/common/http';
 import { InventoryImportService } from '../inventory-import.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -16,6 +21,8 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { OptionService } from '@ss/logistics/ui-options';
+import { LotAutoCompleteModel } from '@ss/master-data/api-article';
 
 @Component({
     selector: 'ss-inventory-import',
@@ -28,6 +35,12 @@ export class InventoryImportComponent {
     private fb = inject(UntypedFormBuilder);
     private injectSrv = inject(InventoryImportService);
     private storeNameSrv = inject(LotsService);
+    private optionSrv = inject(OptionService);
+    private lotSrv= inject(LotsService);
+
+    lotLookup: LotAutoCompleteModel = new LotAutoCompleteModel(this.lotSrv);
+    isUsesLots = this.optionSrv.options?.usesLots;
+
 
     storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
     columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
@@ -49,7 +62,8 @@ export class InventoryImportComponent {
         store:     [0,  Validators.required],
         reference: ['', Validators.required],
         qty:       [0,  Validators.required],
-        price:     ['', Validators.required]
+        price:     ['', Validators.required],
+        lot:       [0, Validators.required],
     });
 
     constructor(private dialogRef: MatDialogRef<InventoryImportComponent>,
@@ -64,7 +78,7 @@ export class InventoryImportComponent {
             this.fileName = file.name;
             const formData = new FormData();
             formData.append('file', file);
-            Object.entries(this.form.value)
+            Object.entries(this.readForm())
                 .filter(([k, v]) => v != null && v != '' && v != ' ')
                 .forEach(([k, v]) => formData.append(k, v.toString()));
             this.processing = true;
@@ -105,5 +119,13 @@ export class InventoryImportComponent {
 
     onChange(e: any) {
         this.fileName = e[0]?.name;
+    }
+
+    readForm() {
+        const val = { ...this.form.value };
+        if (!this.isUsesLots) {
+            delete val['lot'];
+        }
+        return val;
     }
 }
