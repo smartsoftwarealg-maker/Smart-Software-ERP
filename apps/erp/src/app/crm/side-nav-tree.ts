@@ -65,7 +65,7 @@ export const crmNavTree: SideNavNode = {
             name: 'CRM_TEAMS',
             icon: 'fas fa-people-group',
             route: ABS_CRM_TEAMS_URL,
-            accessRights: 'CRMTeams',
+            accessRights: 'CRMTeam',
         },
         {
             name: 'CRM_EMAIL_TEMPLATES',

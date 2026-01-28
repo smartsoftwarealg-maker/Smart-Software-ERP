@@ -97,7 +97,6 @@ export class TransactionLinesDetailComponent implements OnInit {
     accPolicy: ACCPolicy = null;
     public form: UntypedFormGroup | null = null;
     id = 0;
-    transactionId = 0;
     fileId = 0;
     parentId = 0;
     selectedAccount  = signal<Account|null>(null);
@@ -127,7 +126,7 @@ export class TransactionLinesDetailComponent implements OnInit {
             id:           [e.id || 0],
             parentId:     [e.parentId||this.parentId],
             fileId:       [e.fileId || this.loginSrv.appCtx.accFile],
-            oid:          [e.oid || this.transactionId],
+            oid:          [e.oid || 0],
             accountNo:    [e.accountNo],
             customer:     [e.customer],
             lineNumber:   [e.lineNumber || 1],
@@ -162,7 +161,7 @@ export class TransactionLinesDetailComponent implements OnInit {
         }
         if (id === 0) {
             return this.entitySrv
-                .getPieceSummary(this.transactionId)
+                .getPieceSummary(this.id)
                 .pipe(map(res => {
                     return <ACCTransactionLine> {
                         id: 0,
@@ -193,8 +192,7 @@ export class TransactionLinesDetailComponent implements OnInit {
                 tap(p => {
                     const id = +p['id'] || 0;
                     this.parentId = id;
-                    this.transactionId = id % SCALE;
-                    this.fileId = +(id / SCALE).toFixed(0);
+                    this.fileId = this.loginSrv.appCtx.accFile;
                 }),
                 switchMap(_ => this.route.params),
                 switchMap(p => {

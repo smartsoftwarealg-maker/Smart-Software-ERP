@@ -54,7 +54,6 @@ export class AccTransactionService extends BaseEntityService<ACCTransaction> {
         sortBy?: string,
         extraPrams?: HttpParams,
     ): Observable<ACCTransaction[]> {
-        console.log('*******************************************************get page: ', filter);
         return super.getPage(pageModel, filter, sortBy, extraPrams);
     }
 }
