@@ -35,7 +35,7 @@ export const crmNavTree: SideNavNode = {
             name: 'CRM_CONTACT_METHOD',
             icon: 'fa-solid fa-file-signature',
             route: ABS_CRM_CONTACT_METHODS_URL,
-            accessRights: 'ContractMethod'
+            accessRights: 'CRMContact '
         },
         {
             name: 'COMMON_STATUS',
@@ -71,7 +71,7 @@ export const crmNavTree: SideNavNode = {
             name: 'CRM_EMAIL_TEMPLATES',
             icon: 'fas fa-envelope',
             route: ABS_CRM_EMAIL_TEMPLATE_URL,
-            accessRights: 'CRMEmail',
+            accessRights: 'EmailTemplate',
         },
         {
             name: 'LOGISTICS_CUSTOMERS',
@@ -83,7 +83,7 @@ export const crmNavTree: SideNavNode = {
             name: 'CRM_CAMPAIGNS',
             icon: 'fas fa-bullhorn',
             route: ABS_CRM_CAMPAIGN_URL,
-            accessRights: 'CRMCampaign',
+            accessRights: 'Campaign',
         },
         {
             name: 'CRM_LEADS',

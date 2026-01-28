@@ -1,98 +1,117 @@
 <fieldset>
-  <div class="file-upload">
-    <input type="file" class="file-input"
-      [accept]="requiredFileType"
-      (change)="onChange(fileUpload.files)"
-      #fileUpload>
+    <div class="file-upload">
+        <input type="file" class="file-input"
+               [accept]="requiredFileType"
+               (change)="onChange(fileUpload.files)"
+               #fileUpload>
 
-    <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
+        <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
 
-    @if (!uploadProgress) {
-      <button mat-mini-fab color="primary"
-        class="upload-btn"
-        (click)="fileUpload.click()"
-        >
-        <i class="fas fa-paperclip"></i>
-      </button>
-    }
-  </div>
+        @if (!uploadProgress) {
+            <button mat-mini-fab color="primary"
+                    class="upload-btn"
+                    (click)="fileUpload.click()"
+            >
+                <i class="fas fa-paperclip"></i>
+            </button>
+        }
+    </div>
 </fieldset>
 <div class="progress">
-  @if (processing) {
-    <i class="fas fa-upload"
-      (click)="cancelUpload()"
-      translate> COMMON_CANCEL
-    </i>
-  }
+    @if (processing) {
+        <i class="fas fa-upload"
+           (click)="cancelUpload()"
+           translate> COMMON_CANCEL
+        </i>
+    }
 
 </div>
 
 @if (processing) {
-  <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
 }
 <mat-card>
-  <form novalidate [formGroup]="form">
-    <mat-form-field class="default-50">
-      <mat-label translate>LOGISTICS_MAIN_STORE</mat-label>
-      <ss-auto-complete matInput
-        [required]="true"
-        [model]="storeAutoCompleteModel"
-        formControlName="store">
-      </ss-auto-complete>
-    </mat-form-field>
+    <form novalidate [formGroup]="form">
+        @if (isUsesLots) {
+            <mat-form-field class="default-50">
+                <mat-label translate>LOGISTICS_STORE</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="storeAutoCompleteModel"
+                                  formControlName="store">
+                </ss-auto-complete>
+            </mat-form-field>
 
-
-    <mat-form-field class="default-50" required>
-      <mat-label translate>COMMON_REFERENCE</mat-label>
-      <mat-select formControlName="reference">
-        @for (c of columns; track c) {
-          <mat-option [value]="c">{{ c }}</mat-option>
+            <mat-form-field class="default-50">
+                <mat-label translate>STOCK_LOT</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="lotLookup"
+                                  formControlName="lot">
+                </ss-auto-complete>
+            </mat-form-field>
+        } @else {
+            <mat-form-field class="default-50">
+                <mat-label translate>LOGISTICS_MAIN_STORE</mat-label>
+                <ss-auto-complete matInput
+                                  [required]="true"
+                                  [model]="storeAutoCompleteModel"
+                                  formControlName="store">
+                </ss-auto-complete>
+            </mat-form-field>
         }
-      </mat-select>
-    </mat-form-field>
 
-    <mat-form-field class="default-50" required>
-      <mat-label><span translate>COMMON_QTY</span></mat-label>
-      <mat-select formControlName="qty">
-        @for (c of columns; track c) {
-          <mat-option [value]="c">{{ c }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+        <mat-form-field class="default-50" required>
+            <mat-label translate>COMMON_REFERENCE</mat-label>
+            <mat-select formControlName="reference">
+                @for (c of columns; track c) {
+                    <mat-option [value]="c">{{ c }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="default-50" required>
+            <mat-label><span translate>COMMON_QTY</span></mat-label>
+            <mat-select formControlName="qty">
+                @for (c of columns; track c) {
+                    <mat-option [value]="c">{{ c }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
 
 
-    <mat-form-field  class="default-50" required>
-      <mat-label translate>LOGISTICS_PRICE</mat-label>
-      <mat-select formControlName="price">
-        @for (c of columns; track c) {
-          <mat-option [value]="c">{{ c }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+        <mat-form-field class="default-50" required>
+            <mat-label translate>LOGISTICS_PRICE</mat-label>
+            <mat-select formControlName="price">
+                @for (c of columns; track c) {
+                    <mat-option [value]="c">{{ c }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
 
-  </form>
+    </form>
 </mat-card>
 <!--    <div><pre>{{form?.value | json }}</pre></div>-->
 
 
 <div class="ctrl-div">
-  @if (!uploadProgress) {
-    <div>
-      <button mat-raised-button color="primary"
-        type="button"
-        (click)="onFileSelected(fileUpload.files)"
-        [disabled]="!form.valid || fileName?.length < 4">
-        {{ 'COMMON_UPLOAD' | translate }}
-        <i class="fa-solid fa-upload  icon"></i>
-      </button>
-    </div>
-  }
-  @if (!uploadProgress) {
-    <div>
-      <button mat-raised-button color="warn" type="button" (click)="cancel()">
-        {{ 'COMMON_CANCEL' | translate }}
-        <i class="fa-solid fa-rotate-left icon"></i>
-      </button>
-    </div>
-  }
+    @if (!uploadProgress) {
+        <div>
+            <button mat-raised-button color="primary"
+                    type="button"
+                    (click)="onFileSelected(fileUpload.files)"
+                    [disabled]="!form.valid || fileName?.length < 4">
+                {{ 'COMMON_UPLOAD' | translate }}
+                <i class="fa-solid fa-upload  icon"></i>
+            </button>
+        </div>
+    }
+    @if (!uploadProgress) {
+        <div>
+            <button mat-raised-button color="warn" type="button" (click)="cancel()">
+                {{ 'COMMON_CANCEL' | translate }}
+                <i class="fa-solid fa-rotate-left icon"></i>
+            </button>
+        </div>
+    }
 </div>
