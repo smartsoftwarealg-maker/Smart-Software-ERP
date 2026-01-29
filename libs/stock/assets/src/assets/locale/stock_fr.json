@@ -109,5 +109,6 @@
     "SALABLE":                  "Vendable",
     "PURCHASABLE":              "Achetable",
     "CONSUMABLE":               "Consommable",
-    "NO_ORDER_CONTROL":         "Pas de contrôle des commandes de vente"
+    "NO_ORDER_CONTROL":         "Pas de contrôle des commandes de vente",
+    "CREATE_MISSING_LOTS":      "Créer magasins et lots"
 }
