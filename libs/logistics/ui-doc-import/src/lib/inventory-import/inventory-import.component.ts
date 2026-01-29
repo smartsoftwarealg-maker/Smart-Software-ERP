@@ -1,4 +1,4 @@
-import { Component, inject, Inject, Input } from '@angular/core';
+import { Component, inject, Inject, Input, signal } from '@angular/core';
 import { finalize, Subscription } from 'rxjs';
 import {
     UntypedFormBuilder,
@@ -23,54 +23,123 @@ import { MatOption } from '@angular/material/core';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { OptionService } from '@ss/logistics/ui-options';
 import { LotAutoCompleteModel } from '@ss/master-data/api-article';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
     selector: 'ss-inventory-import',
     templateUrl: './inventory-import.component.html',
     styleUrls: ['./inventory-import.component.scss'],
     standalone: true,
-    imports: [TranslateDirective, MatMiniFabButton, MatProgressBar, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, UiAutoCompleteComponent, MatSelect, MatOption, MatButton, TranslatePipe]
+    imports: [
+        TranslateDirective,
+        MatMiniFabButton,
+        MatProgressBar,
+        MatCard,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        UiAutoCompleteComponent,
+        MatSelect,
+        MatOption,
+        MatButton,
+        TranslatePipe,
+        MatCheckbox,
+    ],
 })
 export class InventoryImportComponent {
     private fb = inject(UntypedFormBuilder);
     private injectSrv = inject(InventoryImportService);
     private storeNameSrv = inject(LotsService);
     private optionSrv = inject(OptionService);
-    private lotSrv= inject(LotsService);
+    private lotSrv = inject(LotsService);
 
     lotLookup: LotAutoCompleteModel = new LotAutoCompleteModel(this.lotSrv);
-    isUsesLots = this.optionSrv.options?.usesLots;
+    readonly isUsesLots = this.optionSrv.options?.usesLots;
 
-
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
-    columns = [' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-        'U', 'V', 'W', 'X', 'Y', 'Z', 'AA', 'AB', 'AC', 'AD', 'AE', 'AF', 'AG', 'AH', 'AI', 'AJ', 'AK', 'AL',
-        'AM', 'AN', 'AO', 'AP', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ'
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> =
+        new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
+    columns = [
+        ' ',
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'I',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+        'O',
+        'P',
+        'Q',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'X',
+        'Y',
+        'Z',
+        'AA',
+        'AB',
+        'AC',
+        'AD',
+        'AE',
+        'AF',
+        'AG',
+        'AH',
+        'AI',
+        'AJ',
+        'AK',
+        'AL',
+        'AM',
+        'AN',
+        'AO',
+        'AP',
+        'AQ',
+        'AR',
+        'AS',
+        'AT',
+        'AU',
+        'AV',
+        'AW',
+        'AX',
+        'AY',
+        'AZ',
     ];
 
-    @Input()
-        requiredFileType = '.xlsx';
+    @Input() requiredFileType = '.xlsx';
     isEditable = false;
 
     fileName = '';
-    uploadProgress = 0;
+    uploadProgress = signal(0);
     uploadSub: Subscription;
-    processing = false;
+    processing = signal(false);
 
     form = this.fb.group({
-        id:        [0,  Validators.required],
-        store:     [0,  Validators.required],
+        id: [0, Validators.required],
+        store: [0, Validators.required],
         reference: ['', Validators.required],
-        qty:       [0,  Validators.required],
-        price:     ['', Validators.required],
-        lot:       [0, Validators.required],
+        qty: [0, Validators.required],
+        price: ['', Validators.required],
+        sstore: ['', Validators.required],
+        lot: ['', Validators.required],
+        createLots: [false],
     });
 
-    constructor(private dialogRef: MatDialogRef<InventoryImportComponent>,
-        @Inject(MAT_DIALOG_DATA) private data: { transactId: number }) {
+    constructor(
+        private dialogRef: MatDialogRef<InventoryImportComponent>,
+        @Inject(MAT_DIALOG_DATA) private data: { transactId: number },
+    ) {
         this.form.controls['id'].setValue(data.transactId);
     }
-
 
     onFileSelected(files: any) {
         const file: File = files[0];
@@ -79,26 +148,29 @@ export class InventoryImportComponent {
             const formData = new FormData();
             formData.append('file', file);
             Object.entries(this.readForm())
-                .filter(([k, v]) => v != null && v != '' && v != ' ')
+                .filter(([k, v]) => v != null)
                 .forEach(([k, v]) => formData.append(k, v.toString()));
-            this.processing = true;
+            this.processing.set(true);
+            console.log('form data', formData);
             this.uploadSub = this.injectSrv
                 .upload(formData)
                 .pipe(finalize(() => this.reset()))
                 .subscribe({
                     next: (res: any) => {
                         if (res.type == HttpEventType.UploadProgress) {
-                            this.uploadProgress = Math.round(100 * (res.loaded / res.total));
+                            this.uploadProgress.set(
+                                Math.round(100 * (res.loaded / res.total)),
+                            );
                         }
                     },
                     error: (err) => {
-                        this.processing = false;
+                        this.processing.set(false);
                         throw err;
                     },
                     complete: () => {
                         this.dialogRef.close({ count: 1 });
-                        this.processing = false;
-                    }
+                        this.processing.set(false);
+                    },
                 });
         }
     }
@@ -109,7 +181,7 @@ export class InventoryImportComponent {
     }
 
     reset() {
-        this.uploadProgress = null;
+        this.uploadProgress.set(0);
         this.uploadSub = null;
     }
 
@@ -123,9 +195,9 @@ export class InventoryImportComponent {
 
     readForm() {
         const val = { ...this.form.value };
-        if (!this.isUsesLots) {
-            delete val['lot'];
-        }
+        // if (!this.isUsesLots) {
+        //     delete val['lot'];
+        // }
         return val;
     }
 }

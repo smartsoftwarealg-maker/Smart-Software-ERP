@@ -132,7 +132,7 @@ export class LeavePlanningCalculatorComponent {
                 res.map((v) => {
                     return this.#fb.group({
                         employee: new FormControl(v.employee),
-                        days: new FormControl(v.toTake),
+                        days: new FormControl(+v.toTake.toFixed(2)),
                     });
                 }),
             );

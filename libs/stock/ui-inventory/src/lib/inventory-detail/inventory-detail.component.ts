@@ -5,7 +5,7 @@ import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule 
 import {Lookup} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {InventoryService} from '@ss/stock/api-inventory';
-import { BaseTransactionDetailComponent, Transaction } from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent, BaseTransactionLinesListComponent, Transaction } from '@ss/logistics/api-transaction';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {InventoryImportComponent} from '@ss/logistics/ui-doc-import';
 import {MatDialog} from '@angular/material/dialog';
@@ -18,6 +18,7 @@ import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { of } from 'rxjs';
 
 @Component({
     selector: 'ss-inventory-detail',
@@ -79,8 +80,8 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
         if (!this.invImportBtn.disabled) {
             const id = this.form.controls['id']?.value;
             const dialogRef = this.dialog.open(InventoryImportComponent, {
-                width: '650px',
-                height: '380px',
+                width: '690px',
+                height: '420px',
                 disableClose: true,
                 data: {
                     transactId: id
@@ -93,6 +94,10 @@ export class InventoryDetailComponent extends BaseTransactionDetailComponent imp
                     if (result && result['count']) {
                         this.snackBarSrv.showMessage('COMMON_SUCCESS');
                         this.executionRef++;
+                        this.detailSrv.executed();
+                        if (this.outlet?.component instanceof BaseTransactionLinesListComponent) {
+                            this.outlet?.component.loadDetailLines().subscribe();
+                        }
                     } else {
                         this.snackBarSrv.showFailureMessage();
                     }

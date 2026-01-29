@@ -109,5 +109,6 @@
     "SALABLE":                  "قابل للبيع",
     "PURCHASABLE":              "قابل للشراء",
     "CONSUMABLE":               "قابل للاستهلاك",
-    "NO_ORDER_CONTROL":         "لا يوجد مراقبة لطلبات البيع"
+    "NO_ORDER_CONTROL":         "لا يوجد مراقبة لطلبات البيع",
+    "CREATE_MISSING_LOTS":      "إنشاء المتاجر والحصص"
 }

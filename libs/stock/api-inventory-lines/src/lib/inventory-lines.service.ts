@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
 import {INVENTORY_LINES_URL} from './inventory-lines-api';
 import {INVENTORY_URL} from '@ss/stock/api-inventory';
@@ -9,9 +9,13 @@ import { TransactionLinesClass } from '@ss/logistics/api-transaction';
     providedIn: 'root'
 })
 export class InventoryLinesService extends TransactionLinesClass {
+    executionCount = signal(0);
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, INVENTORY_LINES_URL, INVENTORY_URL);
     }
 
+    executed() {
+        this.executionCount.update(c => c + 1);
+    }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, effect, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -46,7 +46,6 @@ export class InventoryLinesListComponent extends BaseTransactionLinesListCompone
         'price',
         'total'
     ];
-
 
     constructor(
         public override detailSrv: InventoryLinesService,

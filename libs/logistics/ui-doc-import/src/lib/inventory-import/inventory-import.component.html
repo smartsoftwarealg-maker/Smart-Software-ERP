@@ -5,9 +5,9 @@
                (change)="onChange(fileUpload.files)"
                #fileUpload>
 
-        <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
+        <span translate class="f-primary">{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
 
-        @if (!uploadProgress) {
+        @if (!uploadProgress()) {
             <button mat-mini-fab color="primary"
                     class="upload-btn"
                     (click)="fileUpload.click()"
@@ -18,7 +18,7 @@
     </div>
 </fieldset>
 <div class="progress">
-    @if (processing) {
+    @if (processing()) {
         <i class="fas fa-upload"
            (click)="cancelUpload()"
            translate> COMMON_CANCEL
@@ -27,29 +27,31 @@
 
 </div>
 
-@if (processing) {
+@if (processing()) {
     <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
 }
 <mat-card>
     <form novalidate [formGroup]="form">
         @if (isUsesLots) {
-            <mat-form-field class="default-50">
-                <mat-label translate>LOGISTICS_STORE</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="storeAutoCompleteModel"
-                                  formControlName="store">
-                </ss-auto-complete>
+            <mat-form-field class="default-50" >
+                <mat-label><span translate>LOGISTICS_STORE</span></mat-label>
+                <mat-select formControlName="sstore">
+                    @for (c of columns; track c) {
+                        <mat-option [value]="c">{{ c }}</mat-option>
+                    }
+                </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="default-50">
-                <mat-label translate>STOCK_LOT</mat-label>
-                <ss-auto-complete matInput
-                                  [required]="true"
-                                  [model]="lotLookup"
-                                  formControlName="lot">
-                </ss-auto-complete>
+            <mat-form-field class="default-50" >
+                <mat-label><span translate>STOCK_LOT</span></mat-label>
+                <mat-select formControlName="lot">
+                    @for (c of columns; track c) {
+                        <mat-option [value]="c">{{ c }}</mat-option>
+                    }
+                </mat-select>
             </mat-form-field>
+            <mat-checkbox class="default-50" formControlName="createLots" translate>STOCK_CREATE_MISSING_LOTS</mat-checkbox>
+
         } @else {
             <mat-form-field class="default-50">
                 <mat-label translate>LOGISTICS_MAIN_STORE</mat-label>
@@ -61,7 +63,7 @@
             </mat-form-field>
         }
 
-        <mat-form-field class="default-50" required>
+        <mat-form-field class="default-50">
             <mat-label translate>COMMON_REFERENCE</mat-label>
             <mat-select formControlName="reference">
                 @for (c of columns; track c) {
@@ -70,7 +72,7 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="default-50" required>
+        <mat-form-field class="default-50" >
             <mat-label><span translate>COMMON_QTY</span></mat-label>
             <mat-select formControlName="qty">
                 @for (c of columns; track c) {
@@ -95,7 +97,7 @@
 
 
 <div class="ctrl-div">
-    @if (!uploadProgress) {
+    @if (!uploadProgress()) {
         <div>
             <button mat-raised-button color="primary"
                     type="button"
@@ -106,7 +108,7 @@
             </button>
         </div>
     }
-    @if (!uploadProgress) {
+    @if (!uploadProgress()) {
         <div>
             <button mat-raised-button color="warn" type="button" (click)="cancel()">
                 {{ 'COMMON_CANCEL' | translate }}
