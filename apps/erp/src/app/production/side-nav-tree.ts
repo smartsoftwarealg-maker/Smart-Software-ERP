@@ -15,7 +15,7 @@ import {
     ABS_PRODUCTION_REPORTS_URL,
     ABS_PRODUCTIONS_TRANSFER_URL,
     ABS_PRODUCTION_CONSUMPTION_URL,
-    ABS_PRODUCTION_TRANSFER_DETAIL_URL,
+    ABS_PRODUCTION_TRANSFER_DETAIL_URL, ABS_PRODUCTION_FORMULAS_URL,
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -76,6 +76,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-solid fa-industry',
             route: ABS_PRODUCTION_ORDER_URL,
             accessRights: 'ProductionOrder',
+        },
+        {
+            name: 'PROD_PRODUCTION_FORMULAS',
+            icon: 'fa-solid fa-flask',
+            route: ABS_PRODUCTION_FORMULAS_URL,
+            accessRights: 'Recipe',
         },
         {
             name: 'PROD_PRODUCTION_MRP',

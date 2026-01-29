@@ -1,0 +1,119 @@
+mat-table {
+    min-width: fit-content;
+    height: 100%;
+    min-height: 250px;
+}
+
+mat-header-cell {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.70em;
+    justify-content: center !important;
+    border-left: white solid 1px;
+    font-family: Arial, serif;
+}
+
+.main-container {
+    position: relative;
+    padding-top: 24px;
+    min-height: 30%;
+    width: 90%;
+    max-width: 1200px;
+    margin: 24px auto 0;
+}
+
+.mat-column-position {
+    flex: 1 1 50px;
+    justify-content: center !important;
+    max-width: 50px;
+}
+
+.mat-column-description {
+    flex: 3 1 300px;
+    padding-left: 4px;
+    border-left: white solid 1px;
+    min-width: 220px;
+}
+
+.mat-column-reference,
+.mat-column-storeDescription,
+.mat-column-storeName {
+    flex: 1 0 110px;
+    padding: 0 4px;
+    border-left: ghostwhite solid 1px;
+}
+
+.mat-column-qtySatisfied,
+.mat-column-qtyOrdered,
+.mat-column-price,
+.mat-column-total,
+.mat-column-position {
+    flex: 1 0 100px;
+    justify-content: flex-end;
+    padding: 0 4px;
+    border-left: white solid 1px;
+}
+
+.mat-column-units {
+    flex: 1 0 100px;
+    justify-content: flex-start;
+    padding: 0 4px;
+    border-left: white solid 1px;
+}
+
+.btn--div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5em;
+}
+
+.add-button {
+    position: absolute;
+    z-index: 999;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inherit;
+    gap:4px
+}
+
+.container_div {
+    height: 100%;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.pagination-container {
+    flex: 0 1 1%;
+
+    ss-pagination {
+        left: 0;
+        right: 0;
+        position: sticky;
+        margin: auto;
+    }
+}
+
+.doc-info {
+    flex: 1 1 50%;
+    height: 60%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 150px;
+    max-width: 1400px;
+}
+
+@media (width < 600px) {
+    .add-button {
+        position: absolute;
+        z-index: 999;
+        top: -70px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 255px;
+    }
+}

@@ -7,7 +7,6 @@ import {
 import {
     docInfoRoutes,
     PRODUCTION_ORDER_URL,
-    PRODUCTIONS_URL,
     PRODUCTION_MRP_URL,
     PRODUCTION_BOM_URL,
     PRODUCTION_ARTICLE_URL,
@@ -19,10 +18,9 @@ import {
     PRODUCTION_DOSAGE_UNITS_URL,
     PRODUCTION_PACKAGING_UNITS_URL,
     COMMON_REPORTS_URL,
-    PRODUCTION_LOT_PRIORITY_URL,
     PRODUCTIONS_TRANSFER_URL,
     PRODUCTION_CONSUMPTION_URL,
-    PRODUCTION_TRANSFER_DETAIL_URL,
+    PRODUCTION_TRANSFER_DETAIL_URL, PRODUCTION_FORMULAS_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -32,11 +30,11 @@ import {
 } from '@ss/production/production-order';
 
 import {
-    ProductionDetailComponent,
-    ProductionLinesDetailComponent,
-    ProductionLinesListComponent,
-    ProductionListComponent,
-} from '@ss/production/production';
+    ProductionFormulasDetailComponent,
+    ProductionFormulasLinesDetailComponent,
+    ProductionFormulasLinesListComponent,
+    ProductionFormulasListComponent,
+} from '@ss/production/production-formulas';
 import { loginGuard } from '../erp-guards';
 import { MrpComponent, ProductionConsumptionComponent } from '@ss/production/mrp';
 import { Bom2DetailComponent, Bom2ListComponent } from '@ss/master-data/ui-article';
@@ -63,7 +61,6 @@ import {
     InterStoreTransferLinesDetailComponent,
 } from '@ss/production/production-reception';
 import { ReportViewComponent } from '@ss/common/ui-report-param';
-import { LotPriorityListComponent } from "@ss/production/lot";
 import {
     ProductionTransferDetailComponent,
     ProductionTransferLinesListComponent,
@@ -187,25 +184,27 @@ export const prodRoutes: Routes = [
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
         ],
     },
+
     {
-        path: PRODUCTIONS_URL,
+        path: PRODUCTION_ORDER_URL,
         children: [
             {
                 path: LIST_URL,
-                component: ProductionListComponent,
+                component: ProductionOrderListComponent,
                 canActivate: [loginGuard],
                 children: docInfoRoutes,
             },
+
             {
                 path: ':id',
-                component: ProductionDetailComponent,
+                component: ProductionOrderDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 children: [
                     { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
                     {
                         path: 'lines-list',
-                        component: ProductionLinesListComponent,
+                        component: ProductionOrderLinesListComponent,
                         children: [
                             ...docInfoRoutes,
                             {
@@ -219,7 +218,50 @@ export const prodRoutes: Routes = [
                         children: [
                             {
                                 path: ':id',
-                                component: ProductionLinesDetailComponent,
+                                component: ProductionOrderLinesDetailComponent,
+                            },
+                        ],
+                    },
+                    ...docInfoRoutes,
+                ],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: PRODUCTION_FORMULAS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductionFormulasListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: ProductionFormulasDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'lines-list',
+                        component: ProductionFormulasLinesListComponent,
+                        children: [
+                            ...docInfoRoutes,
+                            {
+                                path: 'consumptions',
+                                component: ProductionConsumptionComponent,
+                            },
+                        ],
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            {
+                                path: ':id',
+                                component: ProductionFormulasLinesDetailComponent,
                             },
                         ],
                     },

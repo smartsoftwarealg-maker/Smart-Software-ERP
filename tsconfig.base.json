@@ -542,6 +542,9 @@
             "@ss/production/production-order": [
                 "libs/production/production-order/src/index.ts"
             ],
+            "@ss/production/production-formulas": [
+                "libs/production/production-formulas/src/index.ts"
+            ],
             "@ss/production/production-reception": [
                 "libs/production/production-reception/src/index.ts"
             ],
@@ -550,6 +553,9 @@
             ],
             "@ss/purchases/api-purchase-order": [
                 "libs/purchases/api-purchase-order/src/index.ts"
+            ],
+            "@ss/purchases/api-purchase-formulas": [
+                "libs/purchases/api-purchase-formulas/src/index.ts"
             ],
             "@ss/purchases/api-reception": [
                 "libs/purchases/api-reception/src/index.ts"

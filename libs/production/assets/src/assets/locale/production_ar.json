@@ -40,5 +40,6 @@
     "PRODUCTION_TRANSFER":    "تحويل المنتج",
     "RELEASE_CONFIRMATION":  "هل أنت متأكد أنك تريد تحرير هذا المنتج",
     "CANCEL_TRANSFER_CONFIRMATION": "هل أنت متأكد أنك تريد إلغاء تحويل هذا المنتج",
-    "CONSUMPTION_DETAIL" :    "تفاصيل الإستهلاك"
+    "CONSUMPTION_DETAIL" :    "تفاصيل الإستهلاك",
+    "PRODUCTION_FORMULAS" :    "الصيغ الإنتاجية"
 }
