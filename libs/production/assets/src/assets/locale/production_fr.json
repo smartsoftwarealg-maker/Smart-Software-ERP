@@ -39,5 +39,6 @@
     "PRODUCTION_TRANSFER":  "Transfert de production",
     "RELEASE_CONFIRMATION": "Êtes-vous sûr de vouloir libérer ce produit",
     "CANCEL_TRANSFER_CONFIRMATION": "Êtes-vous sûr de vouloir annuler le transfert de ce produit",
-    "CONSUMPTION_DETAIL" :  "Détail des consommation"
+    "CONSUMPTION_DETAIL" :  "Détail des consommation",
+    "PRODUCTION_FORMULAS" :    "Formules de Production"
 }

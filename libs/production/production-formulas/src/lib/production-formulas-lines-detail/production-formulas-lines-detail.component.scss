@@ -1,0 +1,22 @@
+:host {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    width: 600px;
+    min-width: 320px;
+}
+
+mat-card {
+    margin-top: 24px;
+
+    mat-card-content {
+        margin-top: 24px;
+    }
+}
+
+.value {
+    width: 260px;
+    display: block;
+    margin: auto;
+}
+
