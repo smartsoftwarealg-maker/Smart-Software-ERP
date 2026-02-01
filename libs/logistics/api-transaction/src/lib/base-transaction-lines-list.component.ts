@@ -67,7 +67,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                             (res.usesLots ||
                                 (e !== 'lotNumber' &&
                                     e !== 'expirationDate' &&
-                                    e !== 'storeName')) &&
+                                    e !== 'storeDescription')) &&
                             (res.usesUnits || e !== 'units') &&
                             (!res.serviceInvoiceOnly || e !== 'store'),
                     );

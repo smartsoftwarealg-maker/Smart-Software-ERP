@@ -31,7 +31,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 import { OptionService } from '@ss/logistics/ui-options';
 
 @Component({
-    selector: 'ss-production-order-lines-list',
+    selector: 'ss-production-formula-lines-list',
     templateUrl: './production-formulas-lines-list.component.html',
     styleUrls: ['./production-formulas-lines-list.component.scss'],
     standalone: true,
@@ -63,8 +63,7 @@ import { OptionService } from '@ss/logistics/ui-options';
 })
 export class ProductionFormulasLinesListComponent
     extends BaseTransactionLinesListComponent
-    implements OnInit
-{
+    implements OnInit {
     #optionSrv = inject(OptionService);
     override displayedColumns = [
         'position',

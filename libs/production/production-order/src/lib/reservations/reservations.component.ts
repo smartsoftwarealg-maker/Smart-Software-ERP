@@ -15,7 +15,7 @@ import {
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { ActivatedRoute } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
-import {TransactionLine} from "@ss/logistics/api-transaction";
+import {TransactionLine} from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-mrp-reservations',

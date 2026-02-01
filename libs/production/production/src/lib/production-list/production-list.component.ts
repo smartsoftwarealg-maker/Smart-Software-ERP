@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
@@ -20,24 +20,24 @@ import { ProductionService } from '../production-services/production.service';
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     standalone: true,
     imports: [
-    MatTable,
-    MatSort,
-    MatColumnDef,
-    MatHeaderCellDef,
-    MatHeaderCell,
-    MatSortHeader,
-    TranslateDirective,
-    MatCellDef,
-    MatCell,
-    MatHeaderRowDef,
-    MatHeaderRow,
-    MatRowDef,
-    MatRow,
-    PaginationComponent,
-    DocInfoComponent,
-    DatePipe,
-    TranslateDirective
-],
+        MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatSortHeader,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DocInfoComponent,
+        DatePipe,
+        TranslateDirective
+    ],
 })
 export class ProductionListComponent extends BaseEntityListComponent<Transaction> {
     // private doubleCheckBtn: ToolbarButton = {

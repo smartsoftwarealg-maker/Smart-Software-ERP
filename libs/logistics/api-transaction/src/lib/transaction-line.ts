@@ -30,4 +30,5 @@ export interface TransactionLine {
     tareWeight?: number;
     brutWeight?: number;
     roundCount?: number;
+    formulaId?: number;
 }

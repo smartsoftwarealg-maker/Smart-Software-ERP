@@ -51,8 +51,7 @@ import {OptionService} from '@ss/logistics/ui-options';
 })
 export class ProductionLinesListComponent
     extends BaseTransactionLinesListComponent
-    implements OnInit
-{
+    implements OnInit {
     #productionSrv = inject(ProductionService);
     #optionSrv = inject(OptionService);
     hasQtyStyle = signal<boolean>(false);
@@ -63,8 +62,7 @@ export class ProductionLinesListComponent
         'qtyOrdered',
         'qtySatisfied',
         'units',
-        'storeDescription',
-        'storeName',
+        'store',
         'price',
         'total',
         'action',
