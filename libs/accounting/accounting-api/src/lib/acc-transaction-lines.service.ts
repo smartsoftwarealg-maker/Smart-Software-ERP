@@ -2,11 +2,10 @@ import { Injectable, signal } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {
     ACC_DETAIL_URL, ACC_PIECE_SUMMARY_URL,
-    ACC_TRANSACTIONS_URL, ACCTransaction,
-    ACCTransactionLine, Anomaly, PieceSummary
+    ACC_TRANSACTIONS_URL, ACCTransactionLine, Anomaly, PieceSummary
 } from './accounting-api';
 import {HttpService} from '@ss/common/api-common';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
 
 @Injectable({

@@ -1,6 +1,9 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent, DOC_PRODUCTION_ORDER, TransactionLine
+    BaseTransactionLinesDetailComponent,
+    DOC_PRODUCTION_ORDER,
+    Transaction,
+    TransactionLine,
 } from '@ss/logistics/api-transaction';
 import { ProductionFormulasLinesService } from '../production-formulas-services/production-formulas-lines.service';
 
@@ -12,19 +15,12 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import {
-    Article,
-    BOM,
-    ManufacturedArticleService,
-} from '@ss/master-data/api-article';
-import { ArticleAutoCompleteModel } from '@ss/master-data/api-article';
-import { BomLookupClass, BomService } from '@ss/master-data/ui-article';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
-import { PRODUCTION_ORDER } from '@ss/workflow';
+import { PRODUCTION_FORMULA } from '@ss/workflow';
 
 @Component({
-    selector: 'ss-production-order-lines-detail',
+    selector: 'ss-production-formula-lines-detail',
     styleUrls: [
         '../../../../../common/assets/src/assets/transac-lines-detail.scss',
     ],
@@ -50,32 +46,14 @@ import { PRODUCTION_ORDER } from '@ss/workflow';
 export class ProductionFormulasLinesDetailComponent
     extends BaseTransactionLinesDetailComponent
     implements OnInit, OnDestroy {
-    #articleSrv = inject(ManufacturedArticleService);
-    #bomSrv = inject(BomService);
-
-    override articleLookup: ArticleAutoCompleteModel =
-        new ArticleAutoCompleteModel(this.#articleSrv);
-    bomLookup: BomLookupClass = new BomLookupClass(this.#bomSrv);
-
     constructor(protected detailSrv: ProductionFormulasLinesService) {
         super(detailSrv, DOC_PRODUCTION_ORDER);
         this.articleLookup.onObjectSelected = (a) => this.onArticleLookup(a);
-        this.bomLookup.onObjectSelected = b => this.onBomLookup(b);
     }
 
     override setupForm(b: TransactionLine): UntypedFormGroup {
-        this.bomLookup.reference = b?.reference;
-        b.document = PRODUCTION_ORDER;
+        b.document = PRODUCTION_FORMULA;
         return super.setupForm(b);
     }
-
-    override onArticle(a: Article) {
-        super.onArticle(a);
-        this.bomLookup.reference = a?.reference;
-    }
-
-
-    onBomLookup(b: BOM) {
-        this.form.get('units')?.setValue(b.units);
-    }
 }
+

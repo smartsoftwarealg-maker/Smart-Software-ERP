@@ -9,7 +9,7 @@ import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
-    selector: 'ss-production-order-lines-detail',
+    selector: 'ss-post-elements-detail',
     styleUrl: './post-elements-detail.component.scss',
     templateUrl: './post-elements-detail.component.html',
     standalone: true,

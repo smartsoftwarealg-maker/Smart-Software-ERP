@@ -25,7 +25,7 @@
                         <span class="fas fa-trash-alt"></span>
                     </button>
                 }
-                @if (selectedId && hasQtyStyle()) {
+                @if (selectedId && hasQtyStyle() && !usesUnits()) {
                     <button mat-mini-fab (click)="transfer()" [matTooltip]="'PROD_TRANSFER' | translate"
                             color="warn">
                         <span class="fas fa-exchange-alt"></span>
@@ -63,10 +63,10 @@
                     </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="storeDescription">
+                <ng-container matColumnDef="store">
                     <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{ e.storeDescription }}
+                        {{ e.storeName }}
                     </mat-cell>
                 </ng-container>
 

@@ -13,8 +13,7 @@ import {
     ACCPolicy,
     ACCTransactionLine,
     AccTransactionLineService,
-    AnnexCodeService,
-    SCALE
+    AnnexCodeService
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -39,13 +38,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./transaction-lines-detail.component.scss'],
     standalone: true,
     imports: [
-    RouterModule,
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    UiAutoCompleteComponent,
-    TranslatePipe
-]
+        RouterModule,
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        UiAutoCompleteComponent,
+        TranslatePipe
+    ]
 })
 export class TransactionLinesDetailComponent implements OnInit {
     private ccSrv = inject(CostCenterService);
@@ -161,7 +160,7 @@ export class TransactionLinesDetailComponent implements OnInit {
         }
         if (id === 0) {
             return this.entitySrv
-                .getPieceSummary(this.id)
+                .getPieceSummary(this.entitySrv.getParentId()||0)
                 .pipe(map(res => {
                     return <ACCTransactionLine> {
                         id: 0,

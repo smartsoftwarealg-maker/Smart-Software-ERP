@@ -1,12 +1,12 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { BaseTransactionLinesDetailComponent, DOC_PRODUCTION, TransactionLine } from '@ss/logistics/api-transaction';
+import { BaseTransactionLinesDetailComponent, DOC_PRODUCTION, Transaction, TransactionLine } from '@ss/logistics/api-transaction';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
-import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ProductionLinesService } from '../production-services/production-lines.service';
 import { Article, ArticleAutoCompleteModel } from '@ss/master-data/api-article';
@@ -15,6 +15,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { BomLookupClass, BomService } from '@ss/master-data/ui-article';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
+import { ProductionFormulasService } from '@ss/production/production-formulas';
 
 @Component({
     selector: 'ss-production-lines-detail',
@@ -42,10 +43,12 @@ import { MatSelect } from '@angular/material/select';
 })
 export class ProductionLinesDetailComponent
     extends BaseTransactionLinesDetailComponent
-    implements OnInit, OnDestroy
-{
+    implements OnInit, OnDestroy {
     #articleSrv = inject(ManufacturedArticleService);
     #bomSrv = inject(BomService);
+    #formulaSrv = inject(ProductionFormulasService);
+
+    formulaLookup = new FormulaLookup(this.#formulaSrv);
 
     override articleLookup: ArticleAutoCompleteModel =
         new ArticleAutoCompleteModel(this.#articleSrv);
@@ -65,4 +68,16 @@ export class ProductionLinesDetailComponent
         super.onArticle(a);
         this.bomLookup.reference = a?.reference;
     }
+}
+
+class FormulaLookup extends DefaultAutoCompleteModel<Transaction> {
+    constructor(private srv: ProductionFormulasService) {
+        super(srv, 'id', 'number');
+    }
+
+    override toString = (x: Transaction) =>
+        x ? `${x.number} ${x.reference || ''}` : null;
+
+    override isPerfectMatch = (obj: Transaction, filter: string) =>
+        !!filter && !!obj && obj.number.toString().indexOf(filter) >= 0;
 }

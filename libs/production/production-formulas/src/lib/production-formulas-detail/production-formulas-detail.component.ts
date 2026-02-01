@@ -1,19 +1,16 @@
 import { Component } from '@angular/core';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { of, switchMap } from 'rxjs';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {
-    BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_SUPPLIER_QUOTATION,
-    Transaction
+    BaseTransactionDetailComponent, Transaction
 } from '@ss/logistics/api-transaction';
 import { ProductionFormulasService } from '../production-formulas-services/production-formulas.service';
 import { MatDialog} from '@angular/material/dialog';
 import { ProductionFormulasLinesService } from '../production-formulas-services/production-formulas-lines.service';
-import { Project } from '@ss/logistics/contracts';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -23,7 +20,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 @Component({
-    selector: 'ss-product-order-detail',
+    selector: 'ss-production-formula-detail',
     templateUrl: './production-formulas-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
@@ -31,14 +28,6 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 })
 export class ProductionFormulasDetailComponent extends BaseTransactionDetailComponent {
 
-    private importContractBtn: ToolbarButton = {
-        disabled: false,
-        icon: 'fa-solid fa-file-arrow-up',
-        keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'LOGISTICS_IMPORT_CONTRACT',
-        visible: true,
-        click: () => this.importContract(),
-    };
 
     constructor(public orderService: ProductionFormulasService,
                 public override detailSrv: ProductionFormulasLinesService,
@@ -52,7 +41,6 @@ export class ProductionFormulasDetailComponent extends BaseTransactionDetailComp
                 protected override loginSrv: LoginService,
                 protected override dialog: MatDialog) {
         super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PROD_PRODUCTION_FORMULAS');
-        this.purchaseProjectLookup.onObjectSelected = e => this.onProject(e);
     }
 
     override setupForm(b: Transaction): FormGroup {
@@ -72,7 +60,7 @@ export class ProductionFormulasDetailComponent extends BaseTransactionDetailComp
 
         this.isEditable = this.isEditable && !b.isValidated;
         this.saveButton.visible = this.saveButton.visible && !b.isValidated;
-         this.detailSrv.editable = this.isEditable;
+        this.detailSrv.editable = this.isEditable;
         return this.formBuilder.group({
             id: [b.id],
             document: [b.document || 0],
@@ -95,35 +83,15 @@ export class ProductionFormulasDetailComponent extends BaseTransactionDetailComp
         });
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.currencySrv.load().subscribe();
-        this.shellSrv.addButton(this.importContractBtn);
-    }
 
-    private importContract() {
-        if (!this.importContractBtn.disabled && this.form.controls['project'].value) {
-            this.orderService
-                .consumeContract(this.id)
-                .pipe(switchMap(() =>
-                    this.outlet?.component instanceof BaseTransactionLinesListComponent?
-                        this.outlet?.component.loadDetailLines() : of(0)))
-                .subscribe(() => {
-                    this.executionRef++;
-                    this.shellSrv.setLoading(false);
-                    this.snackBarSrv.showSuccessMessage();
-                });
-        }
-    }
 
     protected importedDocuments(): Lookup[] {
         return [
-            { id: DOC_SUPPLIER_QUOTATION, description: 'PROD_PRODUCTIONS_QUOTATION'}
         ];
     }
 
     protected requireAgent(): boolean {
-        return true;
+        return false;
     }
 
     protected requireAgentToImportDocument(): boolean {
@@ -132,14 +100,5 @@ export class ProductionFormulasDetailComponent extends BaseTransactionDetailComp
 
     protected showImportButton(): boolean {
         return false;
-    }
-
-    override finishLoading(e: Transaction) {
-        super.finishLoading(e);
-        this.importContractBtn.disabled = !e.project;
-    }
-
-    private onProject(p: Project) {
-        this.importContractBtn.disabled = !p?.id;
     }
 }

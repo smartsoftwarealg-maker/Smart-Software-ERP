@@ -15,7 +15,7 @@ import { DatePipe } from '@angular/common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 
 @Component({
-    selector: 'ss-production-order',
+    selector: 'ss-production-order-list',
     templateUrl: './production-order-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     standalone: true,

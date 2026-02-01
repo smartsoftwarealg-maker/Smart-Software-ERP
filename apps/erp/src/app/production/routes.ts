@@ -20,7 +20,9 @@ import {
     COMMON_REPORTS_URL,
     PRODUCTIONS_TRANSFER_URL,
     PRODUCTION_CONSUMPTION_URL,
-    PRODUCTION_TRANSFER_DETAIL_URL, PRODUCTION_FORMULAS_URL,
+    PRODUCTION_TRANSFER_DETAIL_URL,
+    PRODUCTION_FORMULAS_URL,
+    PRODUCTIONS_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -30,11 +32,11 @@ import {
 } from '@ss/production/production-order';
 
 import {
-    ProductionFormulasDetailComponent,
-    ProductionFormulasLinesDetailComponent,
-    ProductionFormulasLinesListComponent,
-    ProductionFormulasListComponent,
-} from '@ss/production/production-formulas';
+    ProductionDetailComponent,
+    ProductionLinesDetailComponent,
+    ProductionLinesListComponent,
+    ProductionListComponent,
+} from '@ss/production/production';
 import { loginGuard } from '../erp-guards';
 import { MrpComponent, ProductionConsumptionComponent } from '@ss/production/mrp';
 import { Bom2DetailComponent, Bom2ListComponent } from '@ss/master-data/ui-article';
@@ -76,6 +78,12 @@ import {
     ProductionConsumptionLinesListComponent,
     ProductionConsumptionListComponent,
 } from '@ss/production/production-consumption';
+import {
+    ProductionFormulasDetailComponent,
+    ProductionFormulasLinesDetailComponent,
+    ProductionFormulasLinesListComponent,
+    ProductionFormulasListComponent,
+} from '@ss/production/production-formulas';
 
 export const prodRoutes: Routes = [
     {
@@ -261,7 +269,8 @@ export const prodRoutes: Routes = [
                         children: [
                             {
                                 path: ':id',
-                                component: ProductionFormulasLinesDetailComponent,
+                                component:
+                                    ProductionFormulasLinesDetailComponent,
                             },
                         ],
                     },
@@ -381,6 +390,49 @@ export const prodRoutes: Routes = [
                 component: PackagingUnitsDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: PRODUCTIONS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductionListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: ProductionDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'lines-list',
+                        component: ProductionLinesListComponent,
+                        children: [
+                            ...docInfoRoutes,
+                            {
+                                path: 'consumptions',
+                                component: ProductionConsumptionComponent,
+                            },
+                        ],
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            {
+                                path: ':id',
+                                component: ProductionLinesDetailComponent,
+                            },
+                        ],
+                    },
+                    ...docInfoRoutes,
+                ],
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },

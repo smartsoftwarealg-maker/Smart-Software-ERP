@@ -5,6 +5,4 @@ export * from './lib/production-formulas-lines-detail/production-formulas-lines-
 export * from './lib/production-formulas-services/production-formulas-api';
 export * from './lib/production-formulas-services/production-formulas-lines.service';
 export * from './lib/production-formulas-services/production-formulas.service';
-export * from './lib/reservations/reservations.component';
-export * from './lib/transfers/transfers.component';
 
