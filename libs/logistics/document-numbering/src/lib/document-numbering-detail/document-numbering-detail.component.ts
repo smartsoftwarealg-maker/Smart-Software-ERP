@@ -15,6 +15,7 @@ import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatInput } from '@angular/material/input';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
     selector: 'ss-document-numbering-detail',
@@ -46,12 +47,26 @@ export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<
 
     public override setupForm(e: LDocument): UntypedFormGroup {
         return this.formBuilder.group({
-            id: [e.id],
-            centerId: [e.centerId || this.loginSrv.appCtx.center],
-            code: [e.code, Validators.required],
-            startNumber: [e.startNumber, Validators.required],
-            footer: [e.footer],
+            id:            [e.id],
+            centerId:      [e.centerId || this.loginSrv.appCtx.center],
+            code:          [e.code, Validators.required],
+            startNumber:   [e.startNumber, Validators.required],
+            footer:        [e.footer],
             lock_on_print: [e.lock_on_print || false, Validators.required],
+        });
+    }
+
+    updateAll(event: MatCheckboxChange) {
+        console.log('event', event.checked);
+        if (event.checked) {
+            this.form?.controls['code']?.setValue(9999);
+            this.form?.disable({ onlySelf: false, emitEvent: false });
+        } else {
+            this.form?.enable({ onlySelf: false, emitEvent: false });
+        }
+        this.form?.controls['startNumber']?.enable({
+            onlySelf: false,
+            emitEvent: false,
         });
     }
 }

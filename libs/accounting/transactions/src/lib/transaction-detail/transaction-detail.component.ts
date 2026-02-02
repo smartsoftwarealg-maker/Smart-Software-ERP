@@ -1,4 +1,4 @@
-import { Component, computed, HostListener, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import {
     AccFileService,
     AccPoliciesService,
@@ -93,18 +93,6 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
                 this.isOnEdit.set(e.url.indexOf('/detail/') > 1);
             }));
     }
-    // @HostListener('document:keydown', ['$event'])
-    // handleKeyboardEvent(event: KeyboardEvent) {
-    //     if (!this.isOnEdit) {
-    //         if (event.altKey && event.key === 's') {
-    //             this.save();
-    //             event.preventDefault();
-    //         } else if (event.altKey && event.key === 'c') {
-    //             this.cancel();
-    //             event.preventDefault();
-    //         }
-    //     }
-    // }
 
     preload(): Observable<any> {
         this.journalId = this.entitySrv.getParentId();
@@ -148,14 +136,17 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
 
     save() {
         const id = this.form.getRawValue().id;
+        const value = this.form.getRawValue();
         this.entitySrv
-            .save(this.form.getRawValue())
+            .save(value)
             .subscribe(res => {
                 if (res) {
                     this.snackBarSrv.showSuccessMessage();
+                    this.form.markAsPristine();
                     if (id > 0) {
                         this.cancel();
                     } else {
+                        this.form.reset(value);
                         this.router.navigate([`/app/accounting/transactions/${res}/detail`]).then();
                     }
                 }
