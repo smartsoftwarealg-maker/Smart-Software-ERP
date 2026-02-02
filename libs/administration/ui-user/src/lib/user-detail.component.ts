@@ -22,7 +22,7 @@ import {UserListService} from '@ss/common/api-users';
 import { MatCard, MatCardHeader, MatCardContent } from '@angular/material/card';
 import { NgClass } from '@angular/common';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
@@ -37,30 +37,30 @@ import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
     templateUrl: './user-detail.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    MatCard,
-    MatCardHeader,
-    MatCardContent,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    TranslateDirective,
-    MatInput,
-    MatError,
-    MatCheckbox,
-    MatAccordion,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelTitle,
-    MatButton,
-    NgClass,
-    MatSelectionList,
-    MatListOption,
-    MatMiniFabButton,
-    UiAutoCompleteComponent,
-    ImageInputComponent
-]
+        MaterialModule,
+        MatCard,
+        MatCardHeader,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        MatError,
+        MatCheckbox,
+        MatAccordion,
+        MatExpansionPanel,
+        MatExpansionPanelHeader,
+        MatExpansionPanelTitle,
+        MatButton,
+        NgClass,
+        MatSelectionList,
+        MatListOption,
+        MatMiniFabButton,
+        UiAutoCompleteComponent,
+        ImageInputComponent
+    ]
 })
 export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     #httpSrv = inject(HttpService);

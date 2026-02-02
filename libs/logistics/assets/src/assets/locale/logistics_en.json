@@ -231,5 +231,6 @@
     "FIXED_DISCOUNT": "Fixed discount",
     "FIXED_DISCOUNT_VAT": "Fixed discount VAT",
     "PRIVILEGE_CONFIDENTIAL": "Privilege confidential",
-    "CONFIDENTIAL":           "Confidential"
+    "CONFIDENTIAL":           "Confidential",
+    "UPDATE_ALL_DOCUMENTS":   "Update all documents"
 }
