@@ -159,7 +159,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     private setDefaultButtons(isRoot: boolean) {
         this.isRoot.set(isRoot);
         const isRootAndTransactionMode = isRoot && this.transactionMode;
-        this.addButton.visible = isRootAndTransactionMode && this.selectedJournal > 0 && Math.abs(this.journalSummary()?.debit - this.journalSummary()?.credit) < 0.01;
+        this.addButton.visible = isRootAndTransactionMode && this.selectedJournal > 0; // && Math.abs(this.journalSummary()?.debit - this.journalSummary()?.credit) < 0.01;
         this.editButton.visible = isRootAndTransactionMode;
         this.deleteButton.visible = isRootAndTransactionMode;
         this.shellSrv.setVisibleSearch(isRootAndTransactionMode);

@@ -173,8 +173,6 @@ export class TransactionLinesListComponent implements OnInit {
 
         dialogRef
             .afterClosed()
-            .subscribe(result => {
-                this.refresh();
-            });
+            .subscribe(() => this.refresh());
     }
 }
