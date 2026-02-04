@@ -61,6 +61,7 @@ export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent
             consumption: [b.consumption],
             purchase:    [b.purchase],
             supplier:    [b.supplier],
+            pendingSupplier:    [b.supplier],
             sales:       [b.sales],
             production:  [b.production],
             description: [b.description, Validators.required],

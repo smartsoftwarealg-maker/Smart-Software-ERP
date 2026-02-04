@@ -1,6 +1,6 @@
 .content_div {
     width: 96%;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: .5em auto;
 }
 
@@ -19,7 +19,8 @@
 .mat-column-stock,
 .mat-column-production,
 .mat-column-consumption,
-.mat-column-sales {
+.mat-column-sales,
+.mat-column-pendingSupplier{
     flex: 1 1 120px;
     border-left: ghostwhite solid 1px;
     padding-left: 6px;
