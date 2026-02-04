@@ -489,5 +489,6 @@
     "EDIT_FREE_INVOICE":     "Modifier la facture libre",
     "DUPLICATE_FROM_TO":     "Dupliquer De à",
     "DUPLICATE_N_TIMES":     "Dupliquer N fois",
-    "ROUND_COUNT":           "Round count"
+    "ROUND_COUNT":           "Round count",
+    "PENDING_SUPPLIER":      "fournisseur en attente"
 }

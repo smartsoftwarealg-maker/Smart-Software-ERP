@@ -484,5 +484,6 @@
     "EDIT_FREE_INVOICE":     "تعديل الفاتورة الحرة",
     "DUPLICATE_FROM_TO":     "كرر من إلى",
     "DUPLICATE_N_TIMES":     "كرر ن مرة",
-    "ROUND_COUNT":           "عدد الدورات"
+    "ROUND_COUNT":           "عدد الدورات",
+    "PENDING_SUPPLIER":      "مورد معلق"
 }

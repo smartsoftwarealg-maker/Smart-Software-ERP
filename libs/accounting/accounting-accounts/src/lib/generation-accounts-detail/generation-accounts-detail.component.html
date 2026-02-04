@@ -63,6 +63,14 @@
                     </ss-auto-complete>
                 </mat-form-field>
 
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_PENDING_SUPPLIER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="supplierLookup"
+                                      formControlName="pendingSupplier">
+                    </ss-auto-complete>
+                </mat-form-field>
+
                 <!--            <pre>{{form?.value | json }}</pre>-->
             </form>
         }

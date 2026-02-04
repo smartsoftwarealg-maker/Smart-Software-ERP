@@ -493,5 +493,6 @@
     "EDIT_FREE_INVOICE":     "Edit free invoice",
     "DUPLICATE_FROM_TO":     "Duplicate from to",
     "DUPLICATE_N_TIMES":     "Duplicate n times",
-    "ROUND_COUNT":           "Round count"
+    "ROUND_COUNT":           "Round count",
+    "PENDING_SUPPLIER":      "Pending Supplier"
 }

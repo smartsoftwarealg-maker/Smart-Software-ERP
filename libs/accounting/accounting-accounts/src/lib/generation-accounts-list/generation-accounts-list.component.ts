@@ -27,6 +27,7 @@ export class GenerationAccountsListComponent extends BaseEntityListComponent<Gen
         'stock',
         'consumption',
         'production',
+        'pendingSupplier'
         // 'supplier',
     ];
 
