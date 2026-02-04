@@ -490,5 +490,5 @@
     "DUPLICATE_FROM_TO":     "Dupliquer De à",
     "DUPLICATE_N_TIMES":     "Dupliquer N fois",
     "ROUND_COUNT":           "Round count",
-    "PENDING_SUPPLIER":      "fournisseur en attente"
+    "PENDING_SUPPLIER":      "Compte instance reception"
 }
