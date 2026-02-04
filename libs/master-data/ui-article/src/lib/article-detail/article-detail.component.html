@@ -115,7 +115,7 @@
                     <!--                        <mat-option [value]="0"></mat-option>-->
                     <!--                        <mat-option [value]="1"> {{'LOGISTICS_CEMENT'|translate}} </mat-option>-->
                     <!--                        <mat-option [value]="2"> {{'LOGISTICS_PARTS'|translate}} </mat-option>-->
-                    <!--                        <mat-option [value]="3"> {{'FOOD'|translate}} </mat-option>-->
+                    <!--                        <mat-option [value]="3"> {{'FOOD`'|translate}} </mat-option>-->
                     <!--                        <mat-option [value]="4"> {{'LOGISTICS_FURNITURE'|translate}} </mat-option>-->
                     <!--                    </mat-select>-->
                     <!--                </mat-form-field>-->
@@ -172,8 +172,21 @@
 
 <div class="size_container">
     @if (selectedRow && selectedRow.id !== 0) {
-        <ss-article-store
-            [article]="selectedRow">
-        </ss-article-store>
+        <mat-tab-group class="size">
+            <mat-tab label="{{ 'STOCK_STORE' | translate }}">
+
+                <ss-article-store
+                    [article]="selectedRow">
+                </ss-article-store>
+            </mat-tab>
+            <mat-tab label="{{ 'ADMINISTRATION_ATTRIBUTES' | translate }}">
+                <div class="filler"></div>
+                <ss-child-attributes [childAttribute]="'/articles'"
+                                     [attributeId]="id"
+                                     [parentId]="1"
+                                     [editable]="isEditable">
+                </ss-child-attributes>
+            </mat-tab>
+        </mat-tab-group>
     }
 </div>
