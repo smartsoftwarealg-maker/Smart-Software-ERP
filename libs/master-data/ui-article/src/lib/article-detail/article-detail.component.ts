@@ -1,8 +1,8 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { Article, ArticleService } from '@ss/master-data/api-article';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { switchMap, take, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import {
@@ -28,10 +28,9 @@ import {
     MaterialModule,
 } from '@ss/common/api-common';
 
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { WeightCaptureService } from '@ss/sales/weight-capture';
+import { ChildAttributesComponent } from '@ss/custom-attributes';
 
 @Component({
     selector: 'ss-article-detail',
@@ -45,6 +44,8 @@ import { WeightCaptureService } from '@ss/sales/weight-capture';
         ImageInputComponent,
         UiAutoCompleteComponent,
         ArticleStoreComponent,
+        TranslatePipe,
+        ChildAttributesComponent,
     ],
 })
 export class ArticleDetailComponent
@@ -135,7 +136,7 @@ export class ArticleDetailComponent
             salable: [a.salable],
             purchasable: [a.purchasable],
             consumable: [a.consumable],
-            discount:[a.discount || 0]
+            discount: [a.discount || 0],
         });
     }
 

@@ -26,12 +26,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./user-document-list.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    OrgChartModule,
-    PaginationComponent,
-    UiAutoCompleteComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        OrgChartModule,
+        PaginationComponent,
+        UiAutoCompleteComponent
+    ]
 })
 export class UserDocumentListComponent extends BaseEntityListComponent<UserDocument> {
     private usersSrv =  inject(UserListService);

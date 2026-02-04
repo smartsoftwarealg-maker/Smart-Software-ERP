@@ -10,7 +10,7 @@ import {ChildAttributesService} from '../child-attributes.service';
 import {AttributeLookupService} from '../attribute-lookup.service';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { DatePipe } from '@angular/common';
-import { LanguageService, MaterialModule } from '@ss/common/api-common';
+import { MaterialModule } from '@ss/common/api-common';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';

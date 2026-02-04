@@ -73,7 +73,7 @@ import { ReportRightsComponent } from '@ss/administration/reports-rights';
 import { ReportPrivilegesComponent } from '@common/report-privileges';
 import { PassEncodingComponent } from '@ss/administration/pass-encoding';
 import { GlobalValidationComponent } from '@ss/administration/global-validation';
-import {PasswordResetComponent} from "@ss/scheduled-sales/password-reset";
+import {PasswordResetComponent} from '@ss/scheduled-sales/password-reset';
 
 export const mainRoutes: Routes = [
     //    // NOT USED
