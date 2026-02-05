@@ -19,94 +19,152 @@
                         <input matInput formControlName="description2" type="text" required>
                     </mat-form-field>
 
-                    <mat-form-field floatLabel="always" class="default-25 sm-50">
-                        <mat-label translate>LOGISTICS_PRICE</mat-label>
-                        <input matInput formControlName="price1" type="number">
-                    </mat-form-field>
-                    <div class="default-25 sm-hide"></div>
+                    <mat-tab-group>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <span translate>COMMON_DETAIL</span>
+                            </ng-template>
 
-                    <mat-form-field floatLabel="always" class="default-25 sm-100">
-                        <mat-label translate>STOCK_VAT</mat-label>
-                        <mat-select formControlName="vat">
-                            <mat-option [value]="null"></mat-option>
-                            @for (v of vats; track v) {
-                                <mat-option [value]="v.id">
-                                    {{ v.description }}
-                                </mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
+                            <mat-form-field floatLabel="always" class="default-25 sm-50">
+                                <mat-label translate>LOGISTICS_PRICE</mat-label>
+                                <input matInput formControlName="price1" type="number">
+                            </mat-form-field>
+                            <div class="default-25 sm-hide"></div>
 
-                    <mat-form-field floatLabel="always" class="default-25 sm-100">
-                        <mat-label translate>STOCK_VAT2</mat-label>
-                        <mat-select formControlName="vat2">
-                            <mat-option [value]="null"></mat-option>
-                            @for (v of vats; track v) {
-                                <mat-option [value]="v.id">
-                                    {{ v.description }}
-                                </mat-option>
-                            }
-                        </mat-select>
+                            <mat-form-field floatLabel="always" class="default-25 sm-100">
+                                <mat-label translate>STOCK_VAT</mat-label>
+                                <mat-select formControlName="vat">
+                                    <mat-option [value]="null"></mat-option>
+                                    @for (v of vats; track v) {
+                                        <mat-option [value]="v.id">
+                                            {{ v.description }}
+                                        </mat-option>
+                                    }
+                                </mat-select>
+                            </mat-form-field>
 
-                    </mat-form-field>
-                    <mat-form-field floatLabel="always" class="default-25 sm-50">
-                        <mat-label translate>LOGISTICS_IMPORT_TAX</mat-label>
-                        <input matInput formControlName="importTax" type="number" min="0" max="30">
-                    </mat-form-field>
+                            <mat-form-field floatLabel="always" class="default-25 sm-100">
+                                <mat-label translate>STOCK_VAT2</mat-label>
+                                <mat-select formControlName="vat2">
+                                    <mat-option [value]="null"></mat-option>
+                                    @for (v of vats; track v) {
+                                        <mat-option [value]="v.id">
+                                            {{ v.description }}
+                                        </mat-option>
+                                    }
+                                </mat-select>
 
-                    <mat-form-field class="default-25 sm-50">
-                        <mat-label translate>STOCK_CLASS</mat-label>
-                        <ss-auto-complete matInput
-                                          [required]="true"
-                                          [model]="classLookup"
-                                          formControlName="klass">
-                        </ss-auto-complete>
-                        @if (form.controls['klass'].hasError('required')) {
-                            <mat-error
-                                translate>COMMON_FIELD_REQUIRED
-                            </mat-error>
-                        }
-                    </mat-form-field>
+                            </mat-form-field>
+                            <mat-form-field floatLabel="always" class="default-25 sm-50">
+                                <mat-label translate>LOGISTICS_IMPORT_TAX</mat-label>
+                                <input matInput formControlName="importTax" type="number" min="0" max="30">
+                            </mat-form-field>
 
-                    <mat-form-field class="default-50 sm-100">
-                        <mat-label translate>STOCK_SUBCLASS</mat-label>
-                        <ss-auto-complete
-                            [model]="subClassLookup"
-                            formControlName="subClass">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                            <mat-form-field class="default-25 sm-50">
+                                <mat-label translate>STOCK_CLASS</mat-label>
+                                <ss-auto-complete matInput
+                                                  [required]="true"
+                                                  [model]="classLookup"
+                                                  formControlName="klass">
+                                </ss-auto-complete>
+                                @if (form.controls['klass'].hasError('required')) {
+                                    <mat-error
+                                        translate>COMMON_FIELD_REQUIRED
+                                    </mat-error>
+                                }
+                            </mat-form-field>
 
-                    <mat-form-field class="default-25 sm-100">
-                        <mat-label translate>STOCK_MARK</mat-label>
-                        <ss-auto-complete
-                            [model]="markLookup"
-                            formControlName="mark">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                            <mat-form-field class="default-50 sm-100">
+                                <mat-label translate>STOCK_SUBCLASS</mat-label>
+                                <ss-auto-complete
+                                    [model]="subClassLookup"
+                                    formControlName="subClass">
+                                </ss-auto-complete>
+                            </mat-form-field>
 
-                    <mat-form-field class="default-25 sm-100">
-                        <mat-label translate>COMMON_TYPE</mat-label>
-                        <ss-auto-complete
-                            [model]="typeLookup"
-                            formControlName="articleType">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                            <mat-form-field class="default-25 sm-100">
+                                <mat-label translate>STOCK_MARK</mat-label>
+                                <ss-auto-complete
+                                    [model]="markLookup"
+                                    formControlName="mark">
+                                </ss-auto-complete>
+                            </mat-form-field>
+
+                            <mat-form-field class="default-25 sm-100">
+                                <mat-label translate>COMMON_TYPE</mat-label>
+                                <ss-auto-complete
+                                    [model]="typeLookup"
+                                    formControlName="articleType">
+                                </ss-auto-complete>
+                            </mat-form-field>
 
 
-                    <mat-form-field class="default-25 sm-50">
-                        <mat-label translate>STOCK_UNIT</mat-label>
-                        <ss-auto-complete
-                            [model]="unitLookup"
-                            formControlName="salesUnit">
-                        </ss-auto-complete>
-                    </mat-form-field>
-                    <mat-form-field class="default-25 sm-50">
-                        <mat-label translate>STOCK_PURCHASE_UNIT</mat-label>
-                        <ss-auto-complete
-                            [model]="purchaseUnitLookup"
-                            formControlName="purchaseUnit">
-                        </ss-auto-complete>
-                    </mat-form-field>
+                            <mat-form-field class="default-25 sm-50">
+                                <mat-label translate>STOCK_UNIT</mat-label>
+                                <ss-auto-complete
+                                    [model]="unitLookup"
+                                    formControlName="salesUnit">
+                                </ss-auto-complete>
+                            </mat-form-field>
+                            <mat-form-field class="default-25 sm-50">
+                                <mat-label translate>STOCK_PURCHASE_UNIT</mat-label>
+                                <ss-auto-complete
+                                    [model]="purchaseUnitLookup"
+                                    formControlName="purchaseUnit">
+                                </ss-auto-complete>
+                            </mat-form-field>
+
+                            <mat-form-field floatLabel="always" class="default-25 sm-50">
+                                <mat-label translate>STOCK_MIN_QTY</mat-label>
+                                <input matInput formControlName="minQty" type="number">
+                            </mat-form-field>
+
+                            <mat-form-field floatLabel="always" class="default-25 sm-50">
+                                <mat-label translate>STOCK_MAX_QTY</mat-label>
+                                <input matInput formControlName="maxQty" type="number">
+                            </mat-form-field>
+
+                            <mat-form-field floatLabel="always" class="default-25 sm-100">
+                                <mat-label translate>COMMON_DISCOUNT</mat-label>
+                                <input matInput formControlName="discount">
+                            </mat-form-field>
+
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <span translate>COMMON_INFO</span>
+                            </ng-template>
+                            <mat-form-field class="default-100">
+                                <mat-label translate>COMMON_INFO</mat-label>
+                                <textarea matInput formControlName="info" type="text" rows="2"></textarea>
+                            </mat-form-field>
+
+                            <div class="default-25 sm-50">
+                                <mat-checkbox formControlName="notForSale" translate>STOCK_NON_STOCKED</mat-checkbox>
+                            </div>
+
+                            <div class="default-25 sm-50">
+                                <mat-checkbox formControlName="discountable" translate>LOGISTICS_DISCOUNTABLE
+                                </mat-checkbox>
+                            </div>
+
+                            <div class="default-25 sm-50">
+                                <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
+                            </div>
+
+                            <div class="default-25 sm-50">
+                                <mat-checkbox formControlName="salable" translate>STOCK_SALABLE</mat-checkbox>
+                            </div>
+
+                            <div class="default-25 sm-50">
+                                <mat-checkbox formControlName="purchasable" translate>STOCK_PURCHASABLE</mat-checkbox>
+                            </div>
+
+                            <div class="default-25 sm-50">
+                                <mat-checkbox formControlName="consumable" translate>STOCK_CONSUMABLE</mat-checkbox>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
 
                     <!--                <mat-form-field class="default-50 sm-100">-->
                     <!--                    <mat-label translate>LOGISTICS_APPID</mat-label>-->
@@ -119,50 +177,6 @@
                     <!--                        <mat-option [value]="4"> {{'LOGISTICS_FURNITURE'|translate}} </mat-option>-->
                     <!--                    </mat-select>-->
                     <!--                </mat-form-field>-->
-
-                    <mat-form-field floatLabel="always" class="default-25 sm-50">
-                        <mat-label translate>STOCK_MIN_QTY</mat-label>
-                        <input matInput formControlName="minQty" type="number">
-                    </mat-form-field>
-
-                    <mat-form-field floatLabel="always" class="default-25 sm-50">
-                        <mat-label translate>STOCK_MAX_QTY</mat-label>
-                        <input matInput formControlName="maxQty" type="number">
-                    </mat-form-field>
-
-                    <mat-form-field floatLabel="always" class="default-25 sm-100">
-                        <mat-label translate>COMMON_DISCOUNT</mat-label>
-                        <input matInput formControlName="discount">
-                    </mat-form-field>
-
-                    <mat-form-field class="default-100">
-                        <mat-label translate>COMMON_INFO</mat-label>
-                        <textarea matInput formControlName="info" type="text" rows="2"></textarea>
-                    </mat-form-field>
-
-                    <div class="default-25 sm-50">
-                        <mat-checkbox formControlName="notForSale" translate>STOCK_NON_STOCKED</mat-checkbox>
-                    </div>
-
-                    <div class="default-25 sm-50">
-                        <mat-checkbox formControlName="discountable" translate>LOGISTICS_DISCOUNTABLE</mat-checkbox>
-                    </div>
-
-                    <div class="default-25 sm-50">
-                        <mat-checkbox formControlName="blocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
-                    </div>
-
-                    <div class="default-25 sm-50">
-                        <mat-checkbox formControlName="salable" translate>STOCK_SALABLE</mat-checkbox>
-                    </div>
-
-                    <div class="default-25 sm-50">
-                        <mat-checkbox formControlName="purchasable" translate>STOCK_PURCHASABLE</mat-checkbox>
-                    </div>
-
-                    <div class="default-25 sm-50">
-                        <mat-checkbox formControlName="consumable" translate>STOCK_CONSUMABLE</mat-checkbox>
-                    </div>
                 </form>
             }
 
