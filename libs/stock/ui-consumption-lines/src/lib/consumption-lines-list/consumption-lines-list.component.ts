@@ -20,22 +20,50 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-consumption-lines-list',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
+    styleUrls: [
+        '../../../../../common/assets/src/assets/transac-lines-list.scss',
+    ],
     templateUrl: './consumption-lines-list.component.html',
     standalone: true,
-    imports: [MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DecimalPipe, TranslatePipe]
+    imports: [
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        FormsModule,
+        ReactiveFormsModule,
+        MatMiniFabButton,
+        MatTooltip,
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatCellDef,
+        MatCell,
+        MatIconButton,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        DocInfoComponent,
+        DecimalPipe,
+        TranslatePipe,
+    ],
 })
-export class ConsumptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {
+export class ConsumptionLinesListComponent
+    extends BaseTransactionLinesListComponent
+    implements OnInit {
     displayedColumns = [
         'position',
-        'store',
+        'storeDescription',
+        'storeName',
         'reference',
         'description',
         'qtySatisfied',
         'price',
-        'total'
+        'total',
     ];
-
 
     constructor(
         public override detailSrv: ConsumptionLinesService,
@@ -45,7 +73,17 @@ export class ConsumptionLinesListComponent  extends BaseTransactionLinesListComp
         public override router: Router,
         public override articleSrv: ArticleService,
         public override storeNamesSrv: LotsService,
-        public override confirmationSrv: ConfirmationDialogService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
+        public override confirmationSrv: ConfirmationDialogService,
+    ) {
+        super(
+            detailSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            articleSrv,
+            storeNamesSrv,
+            confirmationSrv,
+        );
     }
 }

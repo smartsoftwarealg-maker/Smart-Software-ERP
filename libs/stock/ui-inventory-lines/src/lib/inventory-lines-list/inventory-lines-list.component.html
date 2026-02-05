@@ -34,10 +34,16 @@
             {{e.position}}
           </mat-cell>
         </ng-container>
-        <ng-container matColumnDef="store">
-          <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
+        <ng-container matColumnDef="storeName">
+          <mat-header-cell *matHeaderCellDef translate>STOCK_LOT</mat-header-cell>
           <mat-cell *matCellDef="let e">
             {{ e.storeName }}
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="storeDescription">
+          <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
+          <mat-cell *matCellDef="let e">
+            {{ e.storeDescription }}
           </mat-cell>
         </ng-container>
         <ng-container matColumnDef="reference">

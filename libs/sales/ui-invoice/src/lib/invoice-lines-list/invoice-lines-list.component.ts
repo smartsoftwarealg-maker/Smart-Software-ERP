@@ -71,7 +71,8 @@ export class InvoiceLinesListComponent
 {
     displayedColumns = [
         'position',
-        'store',
+        'storeDescription',
+        'storeName',
         'reference',
         'description',
         'qtyOrdered',

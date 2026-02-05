@@ -51,18 +51,20 @@ import {OptionService} from '@ss/logistics/ui-options';
 })
 export class ProductionLinesListComponent
     extends BaseTransactionLinesListComponent
-    implements OnInit {
+    implements OnInit
+{
     #productionSrv = inject(ProductionService);
     #optionSrv = inject(OptionService);
     hasQtyStyle = signal<boolean>(false);
     override displayedColumns = [
         'position',
+        'storeDescription',
         'reference',
         'description',
         'qtyOrdered',
         'qtySatisfied',
         'units',
-        'store',
+        'storeName',
         'price',
         'total',
         'action',
@@ -179,17 +181,19 @@ export class ProductionLinesListComponent
         super.ngOnInit();
 
         const confidential = ['price', 'total'];
-        this.#optionSrv
-            .get(this.loginSrv.appCtx.center)
-            .subscribe((res) => {
-                this.usesUnits.set(res.usesUnits);
-                console.log(
-                    '________________________responsible',
-                    this.loginSrv.appCtx.manager,
-                );
-                this.displayedColumns = this.displayedColumns
-                    .filter((e) => (res.usesUnits || e !== 'units') &&
-                    (this.loginSrv.appCtx.responsible || this.loginSrv.appCtx.manager || !confidential.includes(e)));
-            });
+        this.#optionSrv.get(this.loginSrv.appCtx.center).subscribe((res) => {
+            this.usesUnits.set(res.usesUnits);
+            console.log(
+                '________________________responsible',
+                this.loginSrv.appCtx.manager,
+            );
+            this.displayedColumns = this.displayedColumns.filter(
+                (e) =>
+                    (res.usesUnits || e !== 'units') &&
+                    (this.loginSrv.appCtx.responsible ||
+                        this.loginSrv.appCtx.manager ||
+                        !confidential.includes(e)),
+            );
+        });
     }
 }
