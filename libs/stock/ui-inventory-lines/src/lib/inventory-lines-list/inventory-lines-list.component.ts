@@ -1,4 +1,4 @@
-import {Component, effect, OnInit,} from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -8,12 +8,7 @@ import {LotsService} from '@ss/common/api-lookup';
 import {BaseTransactionLinesListComponent} from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-
-
 import { ReactiveFormsModule } from '@angular/forms';
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -30,8 +25,6 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         TranslatePipe,
         RouterModule,
         ReactiveFormsModule,
-
-
         DocInfoComponent,
         PaginationComponent
     ]
@@ -39,7 +32,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 export class InventoryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [
         'position',
-        'store',
+        'storeDescription',
+        'storeName',
         'reference',
         'description',
         'qtySatisfied',
