@@ -4,7 +4,7 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Attrib, ATTRIB_TEMPL_URL} from './attributes';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ChildAttributesService extends BaseEntityService<Attrib>{
 

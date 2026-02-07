@@ -24,7 +24,6 @@ import {
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import {
     HttpService,
-    IsParamService,
     MaterialModule,
 } from '@ss/common/api-common';
 
