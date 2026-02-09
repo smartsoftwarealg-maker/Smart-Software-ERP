@@ -42,6 +42,7 @@ export const UNIT_URL = '/lookups/units';
 export const CLASSES_URL = '/classes';
 export const SUBCLASSES_URL = '/subclasses';
 export const LOTS_URL = '/lots';
+export const STORE_NAMES_URL = '/store-names';
 export const STORE_URL = '/stores';
 export const UNITS_URL = '/lookups/units';
 export const AGENT_TYPE_URL = '/lookups/agents';
