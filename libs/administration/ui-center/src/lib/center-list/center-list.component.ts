@@ -31,7 +31,8 @@ export class CenterListComponent extends BaseEntityListComponent<Center> {
 
     displayedColumns = [
         'description',
-        'address'
+        'address',
+        'header_center'
     ];
 
 

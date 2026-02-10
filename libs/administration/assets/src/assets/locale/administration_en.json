@@ -94,5 +94,6 @@
     "VALIDATE_ALL": "Validate all",
     "ADDRESS": "Address",
     "BLOCKING_YEAR": "Block year",
-    "CONSOLIDATION_UNIT": "Consolidation unit"
+    "CONSOLIDATION_UNIT": "Consolidation unit",
+    "HEADER_CENTER" : "Header center"
 }
