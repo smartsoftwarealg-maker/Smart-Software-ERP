@@ -15,6 +15,15 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="header_center">
+            <mat-header-cell *matHeaderCellDef [translate]="{addr:1}">ADMINISTRATION_HEADER_CENTER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [class.mat-checkbox-disabled]="false" disabled="true"
+                              [checked]="e.headCenter">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"

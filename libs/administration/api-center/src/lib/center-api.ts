@@ -30,6 +30,7 @@ export interface Center {
     isPublic: boolean;
     city?: number;
     emailPassword?: string;
+    headCenter:string
 }
 
 

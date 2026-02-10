@@ -94,5 +94,6 @@
     "GLOBAL_VALIDATION": "التحقق الشامل",
     "VALIDATE_ALL": "صادق على الكل",
     "BLOCKING_YEAR": "عام الحظر",
-    "CONSOLIDATION_UNIT": "وحدة التجميع"
+    "CONSOLIDATION_UNIT": "وحدة التجميع",
+    "HEADER_CENTER" : "المركز الرئيسي"
 }

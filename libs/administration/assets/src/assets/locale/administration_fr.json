@@ -94,5 +94,6 @@
     "VALIDATE_ALL": "Tout valider",
     "ADDRESS": "Adresse",
     "BLOCKING_YEAR": "Année de blocage",
-    "CONSOLIDATION_UNIT": "Unite de consolidation"
+    "CONSOLIDATION_UNIT": "Unite de consolidation",
+    "HEADER_CENTER" : "Centre/Depot principal"
 }

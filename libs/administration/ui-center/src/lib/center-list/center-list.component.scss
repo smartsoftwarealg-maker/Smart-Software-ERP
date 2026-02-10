@@ -1,5 +1,5 @@
 .table_div {
-    min-height: calc(100vh - 164px);
+    min-height: calc(100% - 200px);
 }
 
 
@@ -30,6 +30,15 @@
     padding-right: 8px !important;
     padding-left: 8px !important;
     @media (max-width: 830px) {
+        flex: 0 0 50%;
+    }
+}
+
+.mat-column-header_center {
+    flex: 1 1 150px;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+    @media (max-width: 500px) {
         flex: 0 0 50%;
     }
 }

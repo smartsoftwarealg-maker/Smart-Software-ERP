@@ -96,6 +96,7 @@ export class CenterDetailComponent extends BaseEntityDetailComponent<Center> {
             monthValidated: [b.monthValidated],
             city:           [b.city],
             emailPassword:  [b.emailPassword],
+            headCenter:     [b.headCenter]
         });
     }
 
