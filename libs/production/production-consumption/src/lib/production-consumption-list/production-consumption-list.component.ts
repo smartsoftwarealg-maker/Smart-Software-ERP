@@ -53,7 +53,6 @@ export class ProductionConsumptionListComponent extends BaseEntityListComponent<
     displayedColumns = [
         'number',
         'date',
-        'agent',
         'reference',
         'referenceDocDate',
         'dealer',

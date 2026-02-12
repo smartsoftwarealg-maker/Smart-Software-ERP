@@ -53,8 +53,6 @@ export class TransferListComponent extends BaseEntityListComponent<Transaction> 
     displayedColumns = [
         'number',
         'date',
-        'agent',
-        'payMethod',
         'reference',
         'referenceDocDate',
         'docStatus',

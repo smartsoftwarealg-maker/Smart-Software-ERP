@@ -31,13 +31,6 @@
             </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="payMethod">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PAY_METHOD</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.payMethodName }}
-            </mat-cell>
-        </ng-container>
-
 
         <ng-container matColumnDef="referenceDocDate">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_REFERENCE_DOC_DATE</mat-header-cell>
@@ -45,14 +38,6 @@
                 {{ e.referenceDocDate | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
-
-        <ng-container matColumnDef="agent">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_CUSTOMER</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.agentName }}
-            </mat-cell>
-        </ng-container>
-
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
