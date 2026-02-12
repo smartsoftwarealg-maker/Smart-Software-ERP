@@ -35,6 +35,7 @@ export class ProductionConsumptionComponent implements OnInit {
     displayedColumns: string[] = [
         'reference',
         'description',
+        'document',
         'qty',
         'price',
         'value'

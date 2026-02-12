@@ -13,6 +13,7 @@ export interface ProductionConsumption {
     id: number;
     reference: string;
     description: string;
+    transactionReference?: string;
     qty: number;
     price: number;
     value: number;

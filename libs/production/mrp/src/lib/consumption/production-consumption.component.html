@@ -15,6 +15,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="document">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_DOCUMENT</mat-header-cell>
+            <mat-cell *matCellDef="let m">
+                {{ m.transactionReference }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="qty">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>PROD_QTY</mat-header-cell>
             <mat-cell *matCellDef="let m">
