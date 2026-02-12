@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
-import {IsParamService, LanguageService, MainPageService, SideNavNode} from '@ss/common/api-common';
+import {LanguageService, MainPageService, SideNavNode} from '@ss/common/api-common';
 
 
 import { WorkflowInboxService } from '@ss/workflow';
@@ -16,8 +16,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./main-page.component.scss'],
     standalone: true,
     imports: [
-    TranslateDirective,
-    TranslateDirective
+        TranslateDirective,
+        TranslateDirective
 ],
 })
 export class MainPageComponent implements OnInit, OnDestroy {

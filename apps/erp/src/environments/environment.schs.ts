@@ -10,6 +10,7 @@ import {
     SCHEDULED_SALES_APP_URL
 } from '../app/common';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
+import { crmNavTree } from '../app/crm/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -18,6 +19,7 @@ export const environment = {
 export const navBar = [
     administrationNavTree,
     scheduledSalesNavTree,
+    crmNavTree,
     dashboardNavTree
 ];
 
