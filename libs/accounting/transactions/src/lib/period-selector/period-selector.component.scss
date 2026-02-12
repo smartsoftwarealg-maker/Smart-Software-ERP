@@ -40,3 +40,19 @@
 mat-table {
     width: 550px;
 }
+
+mat-radio-group {
+    display: grid;
+    /* Create 6 equal columns */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px 24px;
+    max-width: 900px; /* Adjust based on your label lengths */
+    align-items: center;
+
+    mat-radio-button {
+        /* Ensure the button content is left-aligned or centered within its grid cell */
+        display: flex;
+        justify-content: flex-start;
+        white-space: nowrap;
+    }
+}
