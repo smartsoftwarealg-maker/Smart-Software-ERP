@@ -1,5 +1,5 @@
 .table_div {
-    min-height: calc(100% - 200px);
+    min-height: calc(100% - 100px);
 }
 
 
@@ -7,6 +7,7 @@
     width: 96%;
     max-width: 800px;
     margin: 4px auto;
+    max-height: calc(100% - 120px);
 }
 
 // keep the material design specs
@@ -35,10 +36,11 @@
 }
 
 .mat-column-header_center {
-    flex: 1 1 150px;
+    flex: 1 1 100px;
     padding-right: 8px !important;
     padding-left: 8px !important;
-    @media (max-width: 500px) {
+    justify-content: center;
+    @media (max-width: 200px) {
         flex: 0 0 50%;
     }
 }
