@@ -84,6 +84,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     today: Date = new Date(this.tomorrow.getTime() - 24 * 60 * 60 * 1000);
     paymentId: number;
     agentId: number;
+    blockedProject = signal(false);
 
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
     constructor(
@@ -105,6 +106,12 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
         );
         this.agentLookup.onObjectSelected = (a) =>
             this.#salesProjectSrv.setParentId(a?.id || 0);
+
+        this.salesProjectLookup.onObjectSelected = (p) => {
+            this.blockedProject.set(p?.isBlocked || false);
+            this.form.controls['project'].setErrors(p?.isBlocked? {blocked: true} : null);
+        }
+
     }
     public transporterLookup = new DefaultAutoCompleteModel<Agent>(
         this.#transporterSrv,
@@ -126,7 +133,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             centerId: [q.centerId || this.#loginSrv.appCtx.center],
             document: [q.document || 0],
             number: [q.number || 1],
-            date: [q.date || new Date, Validators.required],
+            date: [q.date || new Date(), Validators.required],
             agent: [q.agent],
             userID: [q.userID],
             dealer: [q.dealer],
