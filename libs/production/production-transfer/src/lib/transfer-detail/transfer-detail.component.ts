@@ -43,9 +43,6 @@ import { TransferDetailService } from '../production-services/transfer-detail.se
         MatError,
         DatePickerComponent,
         UiAutoCompleteComponent,
-        MatTabGroup,
-        MatTab,
-        MatTabLabel,
         CdkTextareaAutosize,
         RouterOutlet,
     ],
@@ -61,8 +58,7 @@ export class TransferDetailComponent extends BaseTransactionDetailComponent {
         public override route: ActivatedRoute,
         public override router: Router,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-    ) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(
             transferService,
             detailSrv,
@@ -74,7 +70,7 @@ export class TransferDetailComponent extends BaseTransactionDetailComponent {
             confirmationSrv,
             loginSrv,
             dialog,
-            'COMMON_TRANSFERS',
+            'PROD_TRANSFERS_DETAIL',
         );
     }
 

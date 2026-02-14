@@ -78,16 +78,14 @@
                         }
                     </mat-form-field>
 
-                    @if (AQS) {
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
-                            <ss-auto-complete matInput
-                                              formControlName="activity"
-                                              [canAdd]="true"
-                                              [model]="activityLookup">
-                            </ss-auto-complete>
-                        </mat-form-field>
-                    }
+                    <mat-form-field class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_ACTIVITY</mat-label>
+                        <ss-auto-complete matInput
+                                          formControlName="activity"
+                                          [canAdd]="true"
+                                          [model]="activityLookup">
+                        </ss-auto-complete>
+                    </mat-form-field>
 
                     @if (!isSales) {
                         <mat-form-field class="default-50 sm-100">
