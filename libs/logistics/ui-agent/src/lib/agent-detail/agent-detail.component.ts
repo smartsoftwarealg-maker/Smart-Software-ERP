@@ -72,7 +72,7 @@ import {
     AccountAutocompleteModel,
     AccountService,
 } from '@ss/accounting/api-accounts';
-import {UserListService} from "@ss/common/api-users";
+import {UserListService} from '@ss/common/api-users';
 
 const PARTNER = 0;
 const SUPPLIER = 1;
@@ -133,7 +133,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     target = 0;
     archiveSrv = inject(AppArchiveService);
     LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
-    AQS = false;
 
 
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
@@ -187,51 +186,48 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     }
 
     public override preload(): Observable<any> {
-        return this.isParamSrv.is('AQS').pipe(
-            tap((res) => (this.AQS = res)),
-            switchMap(() =>
-                this.isSales
-                    ? of(null)
-                    : this.optionSrv.get(this.loginSrv.appCtx.center),
-            ),
-            tap((res) => (this.optionSrv.options = res)),
-            switchMap(() => this.route.data),
-            tap((res) => {
+        return this.isSales
+            ? of(null)
+            : this.optionSrv.get(this.loginSrv.appCtx.center
+            ).pipe(
+                tap((res) => (this.optionSrv.options = res)),
+                switchMap(() => this.route.data),
+                tap((res) => {
                 // const isSupplier = res['supplier'];
                 // const isCustomer = res['customer'];
                 // const isTransporter = res['transporter'];
 
-                const URLs = [CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL, BRANCH_URL, INTERNAL_URL, AGENT_URL];
-                const TTLs = ['LOGISTICS_CUSTOMER', 'LOGISTICS_SUPPLIER', 'LOGISTICS_TRANSPORTER', 'COMMON_UNITS', 'LOGISTICS_INTERNAL_AGENTS', 'COMMON_AGENTS'];
-                const TYPES = [2, 0, 5, 3, 4];
+                    const URLs = [CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL, BRANCH_URL, INTERNAL_URL, AGENT_URL];
+                    const TTLs = ['LOGISTICS_CUSTOMER', 'LOGISTICS_SUPPLIER', 'LOGISTICS_TRANSPORTER', 'COMMON_UNITS', 'LOGISTICS_INTERNAL_AGENTS', 'COMMON_AGENTS'];
+                    const TYPES = [2, 0, 5, 3, 4];
 
-                const idx = res['customer']? 0 :
-                    res['supplier']? 1 :
-                        res['transporter']? 2 :
-                            res['unit']? 3 :
-                                res['internalAgent']? 4 : 5;
-                this.agentType.set(TYPES[idx]||0);
-                this.entitySrv.setURL(URLs[idx]);
-                this.shellSrv.setTitle(TTLs[idx]);
-                switch (idx) {
-                case 0:
-                    this.agentTypeLookup = new CustomerLookup(this.agentTypeSrv);
-                    break;
-                case 1:
-                    this.agentTypeLookup = new SupplierLookup(this.agentTypeSrv);
-                    break;
-                case 2:
-                    this.agentTypeLookup = new TransporterLookup(this.agentTypeSrv);
-                    break;
-                case 3:
-                    this.agentTypeLookup = new BranchLookup(this.agentTypeSrv);
-                    break;
-                case 4:
-                    this.agentTypeLookup = new InternalTypeLookup(this.agentTypeSrv);
-                    break;
-                case 5:
-                    break;
-                }
+                    const idx = res['customer']? 0 :
+                        res['supplier']? 1 :
+                            res['transporter']? 2 :
+                                res['unit']? 3 :
+                                    res['internalAgent']? 4 : 5;
+                    this.agentType.set(TYPES[idx]||0);
+                    this.entitySrv.setURL(URLs[idx]);
+                    this.shellSrv.setTitle(TTLs[idx]);
+                    switch (idx) {
+                    case 0:
+                        this.agentTypeLookup = new CustomerLookup(this.agentTypeSrv);
+                        break;
+                    case 1:
+                        this.agentTypeLookup = new SupplierLookup(this.agentTypeSrv);
+                        break;
+                    case 2:
+                        this.agentTypeLookup = new TransporterLookup(this.agentTypeSrv);
+                        break;
+                    case 3:
+                        this.agentTypeLookup = new BranchLookup(this.agentTypeSrv);
+                        break;
+                    case 4:
+                        this.agentTypeLookup = new InternalTypeLookup(this.agentTypeSrv);
+                        break;
+                    case 5:
+                        break;
+                    }
                 // this.agentTypeLookup = isSupplier
                 //     ? new SupplierLookup(this.agentTypeSrv)
                 //     : isCustomer
@@ -240,8 +236,8 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 //             ? new TransporterLookup(this.agentTypeSrv)
                 //             : this.agentTypeLookup;
                 // this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
-            }),
-        );
+                }),
+            );
     }
 
     override finishLoading(e: Agent) {
