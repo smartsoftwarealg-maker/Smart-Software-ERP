@@ -134,7 +134,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     archiveSrv = inject(AppArchiveService);
     LOCAL_AGENT_ARCHIVES = AGENT_ARCHIVES;
 
-
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
     activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
     bankLookup = new DefaultAutoCompleteModel(this.bankSrv);

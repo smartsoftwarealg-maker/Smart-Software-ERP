@@ -59,6 +59,8 @@ export interface Project {
     multiCenters: boolean;
 }
 
+export interface ProjectCode { id: number; code?: string; }
+
 export interface ProjectArticle {
     id: number;
     parentId: number;

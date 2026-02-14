@@ -77,7 +77,7 @@ export class TransferListComponent extends BaseEntityListComponent<Transaction> 
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'COMMON_TRANSFERS',
+            'PROD_TRANSFERS_DETAIL',
         );
     }
 }

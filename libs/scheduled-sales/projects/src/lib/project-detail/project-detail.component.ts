@@ -32,7 +32,7 @@ export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject>
     private customerSrv  = inject( CustomerService);
     private activitySrv  = inject( ActivityService);
     private sectorSrv  = inject( SectorService);
-    private wilayaSrv  = inject( WilayaService)
+    private wilayaSrv  = inject( WilayaService);
     private workMasterSrv  = inject( WorkMasterService);
     private loginSrv  = inject( LoginService);
 
