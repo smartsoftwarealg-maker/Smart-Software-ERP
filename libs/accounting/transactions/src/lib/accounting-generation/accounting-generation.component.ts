@@ -82,7 +82,7 @@ export class AccountingGenerationComponent implements OnInit, OnDestroy {
     payrollData: PAYRow[] = [];
     checkData: Check[] = [];
     cashData: Check[] = [];
-    displayedColumns = ['description', 'number', 'date'];
+    displayedColumns = ['description', 'number', 'date', 'center'];
     payrollColumns = ['account', 'description', 'employee', 'cCenter', 'debit', 'credit'];
     bankColumns = ['number', 'date', 'bank'];
     cashColumns = ['number', 'date', 'debit', 'credit'];
