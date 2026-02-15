@@ -1,5 +1,6 @@
 <div class="container">
     <mat-radio-group [formControl]="accPeriod" required
+                     (click)="selectPeriod()"
                      class="two-row-radio-group">
         @for (p of periods; track p; let i = $index) {
             <mat-radio-button [value]="i + 1">
@@ -7,8 +8,6 @@
             </mat-radio-button>
         }
     </mat-radio-group>
-
-    <button mat-raised-button color="primary" (click)="selectPeriod()" translate>COMMON_SELECT</button>
 
     <mat-tab-group>
         <mat-tab label="{{ 'COMMON_SUMMARY' | translate }}">

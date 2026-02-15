@@ -3,25 +3,35 @@
     <div translate class="f-warn">ACC_SELECT_ACC_FOLDER</div>
   </div>
 
-  <div class="btn-div">
-    <mat-form-field floatLabel="always" >
-      <mat-label translate>COMMON_PERIOD</mat-label>
-      <mat-select [formControl]="accPeriod" required>
+    <mat-radio-group [formControl]="accPeriod" required
+                     (click)="selectFolder()"
+                     class="two-row-radio-group">
         @for (p of periods; track p; let i = $index) {
-          <mat-option [value]="i + 1">
-            {{ p | translate}}
-          </mat-option>
+            <mat-radio-button [value]="i + 1">
+                {{ p | translate }}
+            </mat-radio-button>
         }
-      </mat-select>
-    </mat-form-field>
+    </mat-radio-group>
 
-    <button mat-raised-button
-      color="primary"
-      (click)="selectFolder()"
-      [disabled]="!selected"
-      translate>COMMON_SELECT
-    </button>
-  </div>
+<!--  <div class="btn-div">-->
+<!--    <mat-form-field floatLabel="always" >-->
+<!--      <mat-label translate>COMMON_PERIOD</mat-label>-->
+<!--      <mat-select [formControl]="accPeriod" required>-->
+<!--        @for (p of periods; track p; let i = $index) {-->
+<!--          <mat-option [value]="i + 1">-->
+<!--            {{ p | translate}}-->
+<!--          </mat-option>-->
+<!--        }-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
+
+<!--    <button mat-raised-button-->
+<!--      color="primary"-->
+<!--      (click)="selectFolder()"-->
+<!--      [disabled]="!selected"-->
+<!--      translate>COMMON_SELECT-->
+<!--    </button>-->
+<!--  </div>-->
 
   <div class="container_div">
     <mat-table mat-table [dataSource]="data" class="main-table">
