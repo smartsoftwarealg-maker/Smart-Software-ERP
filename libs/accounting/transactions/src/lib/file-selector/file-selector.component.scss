@@ -48,3 +48,19 @@
     border-left: white thin solid;
     justify-content: center;
 }
+
+
+mat-radio-group {
+    display: grid;
+    /* Create 6 equal columns */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px 24px;
+    max-width: 900px;
+    align-items: center;
+
+    mat-radio-button {
+        display: flex;
+        justify-content: flex-start;
+        white-space: nowrap;
+    }
+}
