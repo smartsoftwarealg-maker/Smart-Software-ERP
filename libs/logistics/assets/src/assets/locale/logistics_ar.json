@@ -230,5 +230,7 @@
     "FIXED_DISCOUNT_VAT":     "الضريبة الثابتة",
     "CONFIDENTIAL":           "سري",
     "PRIVILEGE_CONFIDENTIAL": "سري بامتياز",
-    "UPDATE_ALL_DOCUMENTS":   "تحديث جميع المستندات"
+    "UPDATE_ALL_DOCUMENTS":   "تحديث جميع المستندات",
+    "ACTIVITY_SEGMENTS":      "تقسيمات النشاط",
+    "PROJECT_SEGMENT":        "قسم المشروع"
 }

@@ -53,4 +53,5 @@ export * from './lib/components/post-elements-detail/post-elements-detail.compon
 export * from './lib/components/delivery-time.component';
 export * from './lib/components/region.component';
 export * from './lib/components/shipment-mode.component';
+export * from './lib/components/project_activity.component';
 

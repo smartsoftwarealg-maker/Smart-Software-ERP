@@ -230,5 +230,7 @@
     "FIXED_DISCOUNT_VAT":     "TVA sur remise fixe",
     "CONFIDENTIAL":           "Confidentiel",
     "PRIVILEGE_CONFIDENTIAL": "Privilège confidentiel",
-    "UPDATE_ALL_DOCUMENTS":   "Mettre à jour tous les documents"
+    "UPDATE_ALL_DOCUMENTS":   "Mettre à jour tous les documents",
+    "ACTIVITY_SEGMENTS":      "Segments d'activité",
+    "PROJECT_SEGMENT":         "Segment de projet"
 }

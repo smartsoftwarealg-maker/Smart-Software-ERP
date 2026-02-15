@@ -12,7 +12,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
     ActivityService,
     AwardProcedureService,
-    LookupsService, SectorService,
+    LookupsService, ProjectActivityService, SectorService,
     WilayaService, WorkMasterService,
 } from '@ss/common/api-lookup';
 import { SalesContractService } from '../sales-contract.service';
@@ -38,15 +38,15 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./cement-contract-detail.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    DatePickerComponent,
-    RouterModule,
-    ContractArticleMainComponent,
-    AppArchiveMainComponent,
-    UiAutoCompleteComponent
-],
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        DatePickerComponent,
+        RouterModule,
+        ContractArticleMainComponent,
+        AppArchiveMainComponent,
+        UiAutoCompleteComponent,
+    ],
 })
 export class CementContractDetailComponent extends BaseEntityDetailComponent<Project> {
     private wilayaSrv = inject(WilayaService);
@@ -57,6 +57,7 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
     private activitySrv = inject(ActivityService);
     private workMasterSrv = inject(WorkMasterService);
     private sectorSrv = inject(SectorService);
+    private projSegmentSrv = inject(ProjectActivityService);
 
     activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
     workMasterLookup = new DefaultAutoCompleteModel(this.workMasterSrv);
@@ -70,6 +71,7 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
     typeLookup = new DefaultAutoCompleteModel(this.typeSrv);
     awardLookup = new DefaultAutoCompleteModel(this.awardSrv);
     wilayaLookup = new DefaultAutoCompleteModel(this.wilayaSrv);
+    projSegmentLookup = new DefaultAutoCompleteModel(this.projSegmentSrv);
     articles: Article[] = [];
 
     constructor(
@@ -137,6 +139,7 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
             odsDate: [b.odsDate],
             representative: [b.representative],
             extendedMode: [true],
+            activity2: [b.activity2],
         });
     }
 
