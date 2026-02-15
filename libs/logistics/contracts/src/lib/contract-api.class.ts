@@ -57,6 +57,7 @@ export interface Project {
     representative?: string;
     extendedMode?: boolean;
     multiCenters: boolean;
+    activity2?: number;
 }
 
 export interface ProjectCode { id: number; code?: string; }

@@ -3,15 +3,20 @@ import {
     CONTRACTS_PROJECT_TYPE_URL,
     CONTRACT_PROJECT_URL,
     CONTRACTS_PROJECT_MOTIVE_URL,
-    CONTRACTS_AWARD_PROCEDURE_URL, CONTRACTS_PURCHASE_CONTRACT_URL, CONTRACT_CEMENT_URL,
-    TRANSPORT_CONTRACT_URL
+    CONTRACTS_AWARD_PROCEDURE_URL,
+    CONTRACTS_PURCHASE_CONTRACT_URL,
+    CONTRACT_CEMENT_URL,
+    TRANSPORT_CONTRACT_URL,
+    CONTRACTS_PROJECT_ACTIVITY_URL,
 } from '../common';
 import {CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {
     AwardProcedureDetailComponent,
     AwardProcedureListComponent,
+    ProjectActivityDetailComponent,
+    ProjectActivityListComponent,
     ProjectTypeDetailComponent,
-    ProjectTypeListComponent
+    ProjectTypeListComponent,
 } from '@ss/common/ui-lookup';
 import {
     CementContractDetailComponent,
@@ -47,10 +52,10 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: AwardProcedureDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: CONTRACTS_PROJECT_MOTIVE_URL,
@@ -66,8 +71,8 @@ export const mainRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -82,10 +87,10 @@ export const mainRoutes: Routes = [
                 path: ':id',
                 component: ProjectTypeDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -105,21 +110,37 @@ export const mainRoutes: Routes = [
                     {
                         path: 'articles',
                         children: [
-                            {path: '', component: ContractArticleListComponent, pathMatch: 'full'},
-                            {path: ':id', component: ContractArticleDetailComponent }
-                        ]
+                            {
+                                path: '',
+                                component: ContractArticleListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: ContractArticleDetailComponent,
+                            },
+                        ],
                     },
                     {
                         path: 'archives',
                         children: [
-                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: PART_ARCHIVES }},
-                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: CONTRACT_ARCHIVES }}
-                        ]
+                            {
+                                path: '',
+                                component: AppArchiveListComponent,
+                                pathMatch: 'full',
+                                data: { appId: PART_ARCHIVES },
+                            },
+                            {
+                                path: ':id',
+                                component: AppArchiveDetailComponent,
+                                data: { appId: CONTRACT_ARCHIVES },
+                            },
+                        ],
                     },
-                ]
+                ],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -139,14 +160,23 @@ export const mainRoutes: Routes = [
                     {
                         path: 'archives',
                         children: [
-                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: PART_ARCHIVES }},
-                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: CONTRACT_ARCHIVES }}
-                        ]
+                            {
+                                path: '',
+                                component: AppArchiveListComponent,
+                                pathMatch: 'full',
+                                data: { appId: PART_ARCHIVES },
+                            },
+                            {
+                                path: ':id',
+                                component: AppArchiveDetailComponent,
+                                data: { appId: CONTRACT_ARCHIVES },
+                            },
+                        ],
                     },
-                ]
+                ],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 
     {
@@ -166,21 +196,37 @@ export const mainRoutes: Routes = [
                     {
                         path: 'articles',
                         children: [
-                            {path: '', component: ContractArticleListComponent, pathMatch: 'full'},
-                            {path: ':id', component: ContractArticleDetailComponent }
-                        ]
+                            {
+                                path: '',
+                                component: ContractArticleListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: ContractArticleDetailComponent,
+                            },
+                        ],
                     },
                     {
                         path: 'archives',
                         children: [
-                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: PART_ARCHIVES }},
-                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: CONTRACT_ARCHIVES }}
-                        ]
+                            {
+                                path: '',
+                                component: AppArchiveListComponent,
+                                pathMatch: 'full',
+                                data: { appId: PART_ARCHIVES },
+                            },
+                            {
+                                path: ':id',
+                                component: AppArchiveDetailComponent,
+                                data: { appId: CONTRACT_ARCHIVES },
+                            },
+                        ],
                     },
-                ]
+                ],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: CONTRACT_CEMENT_URL,
@@ -199,20 +245,54 @@ export const mainRoutes: Routes = [
                     {
                         path: 'articles',
                         children: [
-                            {path: '', component: ContractArticleListComponent, pathMatch: 'full'},
-                            {path: ':id', component: ContractArticleDetailComponent }
-                        ]
+                            {
+                                path: '',
+                                component: ContractArticleListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: ContractArticleDetailComponent,
+                            },
+                        ],
                     },
                     {
                         path: 'archives',
                         children: [
-                            {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: PART_ARCHIVES }},
-                            {path: ':id', component: AppArchiveDetailComponent, data: { appId: CONTRACT_ARCHIVES }}
-                        ]
+                            {
+                                path: '',
+                                component: AppArchiveListComponent,
+                                pathMatch: 'full',
+                                data: { appId: PART_ARCHIVES },
+                            },
+                            {
+                                path: ':id',
+                                component: AppArchiveDetailComponent,
+                                data: { appId: CONTRACT_ARCHIVES },
+                            },
+                        ],
                     },
-                ]
+                ],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
+
+    {
+        path: CONTRACTS_PROJECT_ACTIVITY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProjectActivityListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: ProjectActivityDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
 ];
