@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {
     ACCTransaction,
@@ -7,26 +7,27 @@ import {
     PeriodSummary
 } from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import { ReactiveFormsModule, UntypedFormControl, Validators } from "@angular/forms";
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
+import { ReactiveFormsModule, UntypedFormControl, Validators } from '@angular/forms';
 import {Observable, tap} from 'rxjs';
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
 
 
 
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { sign } from 'chart.js/helpers';
 
 
 @Component({
-  selector: 'ss-period-selector',
-  templateUrl: './period-selector.component.html',
-  styleUrls: ['./period-selector.component.scss'],
+    selector: 'ss-period-selector',
+    templateUrl: './period-selector.component.html',
+    styleUrls: ['./period-selector.component.scss'],
     standalone: true,
     imports: [
         CommonModule,
@@ -34,8 +35,8 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-        ReactiveFormsModule
-    ]
+        ReactiveFormsModule,
+    ],
 })
 export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSummary> {
     #transactionSrv = inject(AccTransactionLineService);
@@ -52,15 +53,21 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
         'SEPTEMBER',
         'OCTOBER',
         'NOVEMBER',
-        'DECEMBER'];
+        'DECEMBER',
+    ];
 
     displayedColumns = ['month', 'debit', 'credit'];
 
     anomalyColumns = ['journal', 'pieceNo', 'date', 'debit', 'credit'];
     anomalyData: Anomaly[] = [];
-    selectedAnomaly: ACCTransaction|null = null;
+    selectedAnomaly: ACCTransaction | null = null;
 
-    accPeriod = new UntypedFormControl(1, [Validators.required, Validators.max(12), Validators.min(1)]);
+    accPeriod = new UntypedFormControl(1, [
+        Validators.required,
+        Validators.max(12),
+        Validators.min(1),
+    ]);
+    selectedFolder = signal(0);
     periods: string[] = [];
     constructor(
         public override entitySrv: PeriodSelectorService,
@@ -71,8 +78,10 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService,
-        private loginSrv: LoginService) {
-        super(entitySrv,
+        private loginSrv: LoginService,
+    ) {
+        super(
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -80,7 +89,9 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ACC_PERIOD_SELECTION');
+            'ACC_PERIOD_SELECTION',
+        );
+        this.selectedFolder.set(loginSrv.appCtx.accPeriod);
     }
 
     override preload(): Observable<any> {
@@ -88,22 +99,23 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
     }
 
     override finishLoading(data: PeriodSummary[]) {
-        const error = data.filter(e => this.imbalance(e));
-        const maxMonth = (error.length > 0)? error[error.length - 1].id - 1 : 11;
+        const error = data.filter((e) => this.imbalance(e));
+        const maxMonth = error.length > 0 ? error[error.length - 1].id - 1 : 11;
         this.periods = this.MONTHS.filter((e, i) => i <= maxMonth);
-        data.forEach(e => e.month = this.MONTHS[e.id - 1]);
+        data.forEach((e) => (e.month = this.MONTHS[e.id - 1]));
         super.finishLoading(data);
     }
 
-    selectPeriod() {
+    selectPeriod(period: number) {
+        this.accPeriod.setValue(period);
         const ctx = this.loginSrv.appCtx;
         this.entitySrv
             .selectFolder(ctx.accFile, ctx.accYear, this.accPeriod.value)
-            .pipe(tap(ctx => this.loginSrv.setContext(ctx)))
-            .subscribe(res => {
+            .pipe(tap((ctx) => this.loginSrv.setContext(ctx)))
+            .subscribe((res) => {
                 this.snackBarSrv.showSuccessMessage();
                 this.shellSrv.goBack();
-            })
+            });
     }
 
     imbalance(row: PeriodSummary): boolean {
@@ -116,7 +128,9 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
         this.addButton.visible = false;
         super.ngOnInit();
         this.shellSrv.updateShell();
-        this.#transactionSrv.getAnomalies().subscribe(res => this.anomalyData = res);
+        this.#transactionSrv
+            .getAnomalies()
+            .subscribe((res) => (this.anomalyData = res));
     }
 
     selectAnomalyRow(row: ACCTransaction) {
