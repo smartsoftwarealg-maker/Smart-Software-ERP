@@ -365,10 +365,6 @@
                             </ss-auto-complete>
                         </mat-form-field>
 
-                        @if (isSupplier() || isCustomer()) {
-                            <mat-checkbox formControlName="confidential" translate>LOGISTICS_CONFIDENTIAL</mat-checkbox>
-                        }
-
                         @if (isCustomer()) {
                             <mat-form-field class="default-50 sm-100">
                                 <mat-label translate>LOGISTICS_COLLECTOR</mat-label>
