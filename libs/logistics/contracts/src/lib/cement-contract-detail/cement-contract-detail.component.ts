@@ -20,7 +20,7 @@ import {
     DefaultAutoCompleteModel,
     UiAutoCompleteComponent,
 } from '@ss/common/ui-auto-complete';
-import { CustomerService } from '@ss/logistics/api-agent';
+import { Agent, CustomerService } from '@ss/logistics/api-agent';
 import { ProjectTypeService } from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatExpansionPanel } from '@angular/material/expansion';
@@ -94,9 +94,7 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
             'LOGISTICS_CEMENT_PROJECT',
         );
         this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
-        this.customerLookupModel.onObjectSelected = (a) =>
-            this.entitySrv.setParentId(a?.id || 0);
-        // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);
+        this.customerLookupModel.onObjectSelected = (a) => this.onAgent(a);
     }
 
     public override setupForm(b: Project) {
@@ -161,5 +159,13 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
         this.shownPanel = panel;
         const next = '/app/contracts/cements/' + this.id + '/' + panel;
         this.router.navigate([next]).then();
+    }
+    onAgent(a: Agent) {
+        this.entitySrv.setParentId(a?.id || 0);
+        this.entitySrv
+            .getProjectCode(a?.id || 0)
+            .subscribe((projectCode) =>
+                this.form?.controls['contractNo'].setValue(projectCode?.code),
+            );
     }
 }

@@ -77,13 +77,13 @@ export const salesNavTree: SideNavNode = {
             name: 'SALES_ORDER',
             icon: 'fas fa-cart-plus',
             route: ABS_SALES_ORDER_URL,
-            accessRights: 'SOrder',
+            accessRights: 'CSOrder',
         },
         {
             name: 'SALES_QUICK_ORDER',
             icon: 'fas fa-rocket',
             route: ABS_SALES_QUICK_ORDER_URL,
-            accessRights: 'SOrder',
+            accessRights: 'QOrder',
         },
         {
             name: 'SALES_WEIGHT_CAPTURE',
