@@ -60,10 +60,7 @@ export class TransferLinesListComponent
         'reference',
         'description',
         'qtySatisfied',
-        'price',
-        'vat',
-        'total',
-    ];
+       ];
 
     constructor(
         public override detailSrv: TransactionLinesService,
