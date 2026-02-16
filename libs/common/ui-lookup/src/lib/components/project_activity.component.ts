@@ -39,7 +39,7 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 
 @Component({
-    selector: 'ss-project-type-list',
+    selector: 'ss-project-activity-list',
     templateUrl: '../base-templates/list-template.html',
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
@@ -88,7 +88,7 @@ export class ProjectActivityListComponent extends BaseEntityListComponent<Lookup
 }
 
 @Component({
-    selector: 'ss-project-type-detail',
+    selector: 'ss-project-activity-detail',
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,

@@ -2,35 +2,31 @@ import {Component, OnInit} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ACCFile, AccFileService, PeriodSelectorService} from '@ss/accounting/accounting-api';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {switchMap, tap} from 'rxjs';
-import { ReactiveFormsModule, UntypedFormControl, Validators } from "@angular/forms";
+import { ReactiveFormsModule, UntypedFormControl, Validators } from '@angular/forms';
 
 
-
-
-
-import { DatePickerComponent } from "@ss/common/ui-datepicker";
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
-  selector: 'ss-file-selector',
-  templateUrl: './file-selector.component.html',
-  styleUrls: ['./file-selector.component.scss'],
+    selector: 'ss-file-selector',
+    templateUrl: './file-selector.component.html',
+    styleUrls: ['./file-selector.component.scss'],
     standalone: true,
     imports: [
-    RouterModule,
-    MaterialModule,
-    TranslateDirective,
-    TranslatePipe,
-    ReactiveFormsModule,
-    PaginationComponent
-]
+        RouterModule,
+        MaterialModule,
+        TranslateDirective,
+        TranslatePipe,
+        ReactiveFormsModule,
+        PaginationComponent
+    ]
 })
 export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> implements OnInit {
     private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
@@ -73,26 +69,26 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
         this.deleteButton.visible = false;
         super.ngOnInit();
 
-        const selectButton: ToolbarButton = {
-            icon: 'fa-solid fa-check',
-            label: 'ACC_SELECT_FOLDER',
-            disabled: false,
-            visible: true,
-            keepOnToolbar: KeepOnToolbar.DYNAMIC,
-            click: () => {
-                this.selectFolder();
-            }
-        };
-        this.shellSrv.addButton(selectButton);
+        // const selectButton: ToolbarButton = {
+        //     icon: 'fa-solid fa-check',
+        //     label: 'ACC_SELECT_FOLDER',
+        //     disabled: false,
+        //     visible: true,
+        //     keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        //     click: () => {
+        //         this.selectFolder();
+        //     }
+        // };
+        // this.shellSrv.addButton(selectButton);
         this.shellSrv.updateShell();
         this.accPeriod.setValue(this.loginSrv.appCtx.accPeriod || 1);
         this.shellSrv.setGoBackPath('..', this.route);
         this.periods = this.MONTHS.filter((e, i) => i <= this.maxPeriod);
     }
 
-    selectFolder() {
+    selectFolder(period: number) {
         this.entitySrv
-            .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, this.accPeriod.value)
+            .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, period)
             .pipe(tap(ctx => this.loginSrv.setContext(ctx)))
             .subscribe(() => {
                 if (this.selectedRow) {
@@ -101,7 +97,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
                 }
                 this.snackBarSrv.showSuccessMessage();
                 this.shellSrv.goBack();
-            })
+            });
     }
 
     override finishLoading(data: ACCFile[]) {

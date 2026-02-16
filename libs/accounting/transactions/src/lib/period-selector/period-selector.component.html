@@ -1,9 +1,11 @@
 <div class="container">
-    <mat-radio-group [formControl]="accPeriod" required
-                     (click)="selectPeriod()"
+    <mat-radio-group [formControl]="accPeriod"
+                     required
                      class="two-row-radio-group">
         @for (p of periods; track p; let i = $index) {
-            <mat-radio-button [value]="i + 1">
+            <mat-radio-button [value]="i + 1"
+                              (click)="selectPeriod(i + 1)"
+                              [disabled]="!selectedFolder()">
                 {{ p | translate }}
             </mat-radio-button>
         }
