@@ -234,5 +234,5 @@
     "CONFIDENTIAL":           "Confidential",
     "UPDATE_ALL_DOCUMENTS":   "Update all documents",
     "ACTIVITY_SEGMENTS":      "Activity segments",
-    "PROJECT_SEGMENT":        "Project segment"
+    "ACTIVITY_SEGMENT":       "Activity segment"
 }

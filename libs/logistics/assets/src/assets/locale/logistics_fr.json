@@ -232,5 +232,5 @@
     "PRIVILEGE_CONFIDENTIAL": "Privilège confidentiel",
     "UPDATE_ALL_DOCUMENTS":   "Mettre à jour tous les documents",
     "ACTIVITY_SEGMENTS":      "Segments d'activité",
-    "PROJECT_SEGMENT":         "Segment de projet"
+    "ACTIVITY_SEGMENT":       "Segment d'activité"
 }

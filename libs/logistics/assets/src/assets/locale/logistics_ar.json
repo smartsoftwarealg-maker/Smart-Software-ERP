@@ -232,5 +232,5 @@
     "PRIVILEGE_CONFIDENTIAL": "سري بامتياز",
     "UPDATE_ALL_DOCUMENTS":   "تحديث جميع المستندات",
     "ACTIVITY_SEGMENTS":      "تقسيمات النشاط",
-    "PROJECT_SEGMENT":        "قسم المشروع"
+    "ACTIVITY_SEGMENT":       "قسم النشاط"
 }

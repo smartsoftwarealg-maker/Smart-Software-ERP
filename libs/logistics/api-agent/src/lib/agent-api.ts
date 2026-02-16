@@ -66,7 +66,6 @@ export interface Agent {
      */
     license?: string; // FIXME:: remove this field
     typeDescription?: string;
-    confidential?: boolean;
 }
 
 export interface AgentCenter {
