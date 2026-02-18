@@ -18,15 +18,14 @@ export class OptionService extends BaseEntityExtendedService<Option> {
         super(httpSrv, OPTION_URL);
     }
 
-    recalculatePrice(since: Date, receptions?: string): Observable<ERR[]> {
+    // recalculatePrice(since: Date, receptions?: string): Observable<ERR[]> {
+    //     const date = isString(since)? since : dateToDmyStr(since);
+    //     const receptionParam = receptions ? `&receptions=${receptions}` : '';
+    //     return this.httpSrv.put(`/recalculate?date=${date}${receptionParam}`);
+    // }
+    recalculatePrice2(since: Date): Observable<string> {
         const date = isString(since)? since : dateToDmyStr(since);
-        const receptionParam = receptions ? `&receptions=${receptions}` : '';
-        return this.httpSrv.put(`/recalculate?date=${date}${receptionParam}`);
-    }
-    recalculatePrice2(since: Date, receptions?: string): Observable<string> {
-        const date = isString(since)? since : dateToDmyStr(since);
-        const receptionParam = receptions ? `&receptions=${receptions}` : '';
-        return this.httpSrv.put(`/recalculate?date=${date}${receptionParam}`);
+        return this.httpSrv.put(`/recalculate?date=${date}`);
     }
 
     recalculateDocument(since: Date, document: number): Observable<ERR[]> {
