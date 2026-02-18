@@ -36,7 +36,7 @@ import {
 } from '@angular/material/table';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import {switchMap, takeWhile, timer} from "rxjs";
+import {switchMap, takeWhile, timer} from 'rxjs';
 
 interface EvalPrice {
     id: number;
@@ -142,30 +142,30 @@ export class PriceRecalculationComponent implements OnInit {
                             .pipe(
                                 switchMap(() => this.optionSrv.getStatus(jobId)),
                                 takeWhile((statusRes, index) => statusRes.status === 102 && index < 100,
-                                true // Include the last emission (when Completed/Failed)
-                            ),
-                        );
+                                    true // Include the last emission (when Completed/Failed)
+                                ),
+                            );
                     }),
                 )
                 .subscribe({
-                next: (res) => {
-                    if (res.status === 200) {
-                        this.data = res.body as ERR[];
-                        this.snackBarSrv.showSuccessMessage();
+                    next: (res) => {
+                        if (res.status === 200) {
+                            this.data = res.body as ERR[];
+                            this.snackBarSrv.showSuccessMessage();
+                            this.shellSrv.setLoading(false);
+                            this.processing.set(false);
+                        }
+                    },
+                    error: (err) => {
                         this.shellSrv.setLoading(false);
                         this.processing.set(false);
-                    }
-                },
-                error: (err) => {
-                    this.shellSrv.setLoading(false);
-                    this.processing.set(false);
-                    if (err.status === 0 || err.status === 502) {
-                        this.snackBarSrv.showSuccessMessage();
-                    } else {
-                        throw err;
-                    }
-                },
-            });
+                        if (err.status === 0 || err.status === 502) {
+                            this.snackBarSrv.showSuccessMessage();
+                        } else {
+                            throw err;
+                        }
+                    },
+                });
         }
     }
 
