@@ -80,7 +80,7 @@ export class ProductionTransferDetailComponent extends BaseTransactionDetailComp
         this.formId = b.id || 0;
 
         this.isEditable = this.isEditable && !b.isValidated;
-        this.saveButton.visible = this.saveButton.visible && !b.isValidated;
+        this.saveButton.visible = false; // this.saveButton.visible && !b.isValidated;
         this.detailSrv.editable = this.isEditable;
         this.importBtn.disabled = b.id === 0;
 
