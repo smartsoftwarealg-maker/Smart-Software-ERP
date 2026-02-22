@@ -1,40 +1,57 @@
-import { Component, ViewChild } from '@angular/core';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {CCGroup, Lookup, LookupsService} from '@ss/common/api-lookup';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Observable, of, switchMap} from 'rxjs';
-import {tap} from 'rxjs/operators';
-import { fillObject, LoginService, MaterialModule } from '@ss/common/api-common';
-import {SalesOrderService} from '@ss/sales/api-sales-order';
+import { Component, inject, ViewChild } from '@angular/core';
 import {
-    BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_QUOTATION, SalesOrderLinesService,
-    Transaction
+    KeepOnToolbar,
+    ShellService,
+    SnackBarService,
+    ToolbarButton,
+} from '@ss/common/ui-shell';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import {
+    UntypedFormBuilder,
+    FormsModule,
+    ReactiveFormsModule,
+} from '@angular/forms';
+import { Lookup, LookupsService } from '@ss/common/api-lookup';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { of, switchMap } from 'rxjs';
+import {
+    fillObject,
+    LoginService,
+    MaterialModule,
+} from '@ss/common/api-common';
+import { SalesOrderService } from '@ss/sales/api-sales-order';
+import {
+    BaseTransactionDetailComponent,
+    BaseTransactionLinesListComponent,
+    DOC_QUOTATION,
+    SalesOrderLinesService,
+    Transaction,
 } from '@ss/logistics/api-transaction';
-import {MatDialog} from '@angular/material/dialog';
-import {OrderLinesListComponent} from '@ss/sales/ui-order-lines';
-import { JsonPipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderLinesListComponent } from '@ss/sales/ui-order-lines';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { PaymentComponent } from '../../../../ui-quick-order/src/lib/payment/payment.component';
+import { WeightCaptureService } from '@ss/sales/weight-capture';
 
 @Component({
     imports: [
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TranslateDirective,
-    DatePickerComponent,
-    UiAutoCompleteComponent,
-    CdkTextareaAutosize,
-    RouterOutlet
-],
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TranslateDirective,
+        DatePickerComponent,
+        UiAutoCompleteComponent,
+        CdkTextareaAutosize,
+        RouterOutlet,
+        PaymentComponent,
+    ],
     selector: 'ss-ui-order-detail',
     standalone: true,
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
-    templateUrl: './order-detail.component.html'
+    templateUrl: './order-detail.component.html',
 })
 export class OrderDetailComponent extends BaseTransactionDetailComponent {
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
@@ -47,31 +64,53 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
         visible: true,
         click: () => this.importContract(),
     };
+    private weightCaptureSrv = inject(WeightCaptureService);
     private order: Transaction = null;
+    protected isScaleExist = false;
 
-    constructor(public orderService: SalesOrderService,
-                public override detailSrv: SalesOrderLinesService,
-                public override shellSrv: ShellService,
-                public override snackBarSrv: SnackBarService,
-                public override route: ActivatedRoute,
-                public override router: Router,
-                public override formBuilder: UntypedFormBuilder,
-                public override confirmationSrv: ConfirmationDialogService,
-                public lookupsSrv: LookupsService,
-                public override loginSrv: LoginService,
-                public override dialog: MatDialog) {
-        super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'SALES_EDIT_ORDER');
-        this.agentLookup.onObjectSelected = e => this.purchaseProjectSrv.setParentId(e?.id || 0);
+    constructor(
+        public orderService: SalesOrderService,
+        public override detailSrv: SalesOrderLinesService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        public lookupsSrv: LookupsService,
+        public override loginSrv: LoginService,
+        public override dialog: MatDialog,
+    ) {
+        super(
+            orderService,
+            detailSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            formBuilder,
+            confirmationSrv,
+            loginSrv,
+            dialog,
+            'SALES_EDIT_ORDER',
+        );
+        this.agentLookup.onObjectSelected = (e) =>
+            this.purchaseProjectSrv.setParentId(e?.id || 0);
     }
 
     override ngOnInit() {
         super.ngOnInit();
         this.shellSrv.addButton(this.importContractBtn);
+        this.weightCaptureSrv.hasScaleConfig().subscribe({
+            next: (exists) => {
+                this.isScaleExist = exists;
+            },
+            error: () => {},
+        });
     }
 
-
     override readForm(): Transaction {
-        const form =  super.readForm();
+        const form = super.readForm();
         fillObject(this.order, form);
         form.dirty = !form.dirty;
         return form;
@@ -81,12 +120,20 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
         if (!this.importContractBtn.disabled) {
             this.orderService
                 .consumeContract(this.id)
-                .pipe(switchMap(_ => this.orderList? this.orderList.loadDetailLines() : of(null)),
+                .pipe(
+                    switchMap((_) =>
+                        this.orderList
+                            ? this.orderList.loadDetailLines()
+                            : of(null),
+                    ),
                     switchMap(() =>
-                        this.outlet?.component instanceof BaseTransactionLinesListComponent?
-                            this.outlet?.component.loadDetailLines() :
-                            of(0)))
-                .subscribe(_ => {
+                        this.outlet?.component instanceof
+                        BaseTransactionLinesListComponent
+                            ? this.outlet?.component.loadDetailLines()
+                            : of(0),
+                    ),
+                )
+                .subscribe((_) => {
                     this.shellSrv.setLoading(false);
                     this.snackBarSrv.showSuccessMessage();
                 });
@@ -110,6 +157,6 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
         return true;
     }
     protected importedDocuments(): Lookup[] {
-        return [{ id: DOC_QUOTATION, description: 'LOGISTICS_PROFORMA'}];
+        return [{ id: DOC_QUOTATION, description: 'LOGISTICS_PROFORMA' }];
     }
 }
