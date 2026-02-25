@@ -16,13 +16,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { DocImportComponent, DocImportService } from '@ss/logistics/ui-doc-import';
 import {Directive, inject, OnInit, signal, ViewChild} from '@angular/core';
 import {
+    ActiveAgentService,
+    ActiveConsumerService,
+    ActiveCustomerService,
+    ActiveSupplierService,
+    ActiveTransporterService,
+    ActiveUnitService,
     CCGroup,
     Currency,
     CurrencyService,
     DeliveryTimeService,
     Lookup,
     LookupsService,
-    PayMethod, ShipmentModeService
+    PayMethod,
+    ShipmentModeService,
 } from '@ss/common/api-lookup';
 import {
     Agent,
@@ -30,7 +37,7 @@ import {
     BranchService,
     ConsumerService,
     CustomerService,
-    SupplierService, TransporterService
+    SupplierService
 } from '@ss/logistics/api-agent';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
 import { UserListService } from '@ss/common/api-users';
@@ -44,7 +51,6 @@ import { OptionService } from '@ss/logistics/ui-options';
 export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
     #deliveryTimeSrv = inject(DeliveryTimeService);
     #shipmentModeSrv = inject(ShipmentModeService);
-    #transporterSrv = inject(TransporterService);
 
     private CONSUMPTION_DOCUMENT = 260;
     private PURCHASE_REQUEST = 10;
@@ -58,6 +64,12 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private docImportService: DocImportService = inject(DocImportService);
     private supplierSrv = inject(SupplierService);
     private customerSrv = inject(CustomerService);
+    private activeCustomerSrv = inject(ActiveCustomerService);
+    private activeSupplierSrv = inject(ActiveSupplierService);
+    private activeTransporterSrv = inject(ActiveTransporterService);
+    private activeUnitSrv = inject(ActiveUnitService);
+    private activeConsumerSrv = inject(ActiveConsumerService);
+    private activeAgentSrv = inject(ActiveAgentService);
 
     protected transaction: Transaction = null;
     protected currencySrv = inject(CurrencyService);
@@ -92,15 +104,15 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
-    public agentLookup = new DefaultAutoCompleteModel<Agent>(this.agentSrv, 'id', 'denomination');
+    public agentLookup = new DefaultAutoCompleteModel<Lookup>(this.activeAgentSrv);
     public purchaseProjectLookup = new ProjectLookupModel(this.purchaseProjectSrv);
     public salesProjectLookup = new ProjectLookupModel(this.salesProjectSrv);
     public currencyLookup = new ForeignCurrencyModel(this.currencySrv);
-    public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
-    public supplierLookup = new DefaultAutoCompleteModel<Agent>(this.supplierSrv, 'id', 'denomination');
-    public transporterLookup = new DefaultAutoCompleteModel<Agent>(this.#transporterSrv, 'id', 'denomination');
-    public consumerLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    public branchLookup = new DefaultAutoCompleteModel(this.branchSrv, 'id', 'denomination');
+    public customerLookup = new DefaultAutoCompleteModel<Lookup>(this.activeCustomerSrv);
+    public supplierLookup = new DefaultAutoCompleteModel<Lookup>(this.activeSupplierSrv);
+    public transporterLookup = new DefaultAutoCompleteModel<Lookup>(this.activeTransporterSrv);
+    public consumerLookup = new DefaultAutoCompleteModel<Lookup>(this.activeConsumerSrv);
+    public branchLookup = new DefaultAutoCompleteModel<Lookup>(this.activeUnitSrv);
     public executionRef = 0;
     public formId = 0;
     public groups: CCGroup[];
@@ -361,14 +373,22 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
             .subscribe(a => this.onAgentSelected(a));
     }
 
-    private onAgentSelected(agent: Agent) {
-        this.isProjectRequired.set(agent?.projectRequired);
-        if (agent?.projectRequired === true) {
-            this.form.controls['project'].setValidators(Validators.required)
-        } else {
-            this.form.controls['project'].removeValidators(Validators.required);
-        }
-        this.updateProjectLookups(agent?.id || 0);
+    private onAgentSelected(l: Lookup) {
+        this.agentSrv
+            .get(l?.id||0)
+            .subscribe(agent => {
+                this.isProjectRequired.set(agent?.projectRequired);
+                if (agent?.projectRequired === true) {
+                    this.form.controls['project'].setValidators(
+                        Validators.required,
+                    );
+                } else {
+                    this.form.controls['project'].removeValidators(
+                        Validators.required,
+                    );
+                }
+                this.updateProjectLookups(agent?.id || 0);
+            });
     }
 
 }

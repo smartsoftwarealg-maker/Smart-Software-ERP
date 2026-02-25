@@ -23,7 +23,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { ExtraCostService } from '@ss/purchases/extra-costs';
 import { Observable, of, switchMap, tap } from 'rxjs';
-import {TransportersService} from "../../../../api-transporters/src";
+import {TransportersService} from '../../../../api-transporters/src';
 
 
 @Component({
@@ -32,13 +32,13 @@ import {TransportersService} from "../../../../api-transporters/src";
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    DatePickerComponent,
-    RouterOutlet,
-    UiAutoCompleteComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        DatePickerComponent,
+        RouterOutlet,
+        UiAutoCompleteComponent
+    ]
 })
 export class TransporterReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private isSrv = inject(IsParamService);
