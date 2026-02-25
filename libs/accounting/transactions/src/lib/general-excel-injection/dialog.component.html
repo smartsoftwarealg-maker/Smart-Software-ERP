@@ -1,0 +1,24 @@
+<table>
+    <thead>
+    <tr>
+        <th translate>COMMON_TOTAL</th>
+        @if (showDebit) {
+            <th translate>COMMON_DEBIT</th>
+        }
+        @if (showCredit) {
+            <th translate>COMMON_CREDIT</th>
+        }
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ (data.credit - data.debit).toFixed(2) }}</td>
+        @if (showDebit) {
+            <td>{{ data.debit.toFixed(2) }}</td>
+        }
+        @if (showCredit) {
+            <td>{{ data.credit.toFixed(2) }}</td>
+        }
+    </tr>
+    </tbody>
+</table>
