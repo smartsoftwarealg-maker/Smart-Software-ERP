@@ -21,6 +21,20 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="qty">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.qty | number : '1.2-4' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PRODUCT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="payMethod">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_PAY_METHOD</mat-header-cell>
             <mat-cell *matCellDef="let e">

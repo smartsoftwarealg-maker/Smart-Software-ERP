@@ -85,10 +85,12 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         'date',
         'agent',
         'payMethod',
-        'docStatus',
         'mode',
+        'description',
+        'qty',
         'invoiceNumber',
         'option',
+        'docStatus',
     ];
     transactionColumns = [
         'position',
@@ -145,7 +147,9 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
                         this.transactionColumns.push('tare', 'brut');
                     }
                 }),
-                switchMap(() => this.#optionSrv.get(this.#loginSrv.appCtx.center))
+                switchMap(() =>
+                    this.#optionSrv.get(this.#loginSrv.appCtx.center),
+                ),
             )
             .subscribe({
                 next: (opt) => {
@@ -204,10 +208,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
 
     generateInvoice(id: number) {
         this.confirmationSrv
-            .confirm(
-                'SALES_ORDER_INVOICING',
-                'SALES_GENERATE_INVOICE',
-            )
+            .confirm('SALES_ORDER_INVOICING', 'SALES_GENERATE_INVOICE')
             .pipe(
                 switchMap((confirm: boolean) => {
                     if (confirm) {
