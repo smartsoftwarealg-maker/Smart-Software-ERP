@@ -1,0 +1,62 @@
+:host {
+    display: block;
+    min-height: fit-content;
+    /* Removed fixed height to prevent clipping when button is added */
+    width: 350px;
+    overflow: hidden;
+    padding: 10px; /* Added some breathing room */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px; /* Space between table and button */
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+.red {
+    color: red;
+}
+
+.button-div {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Ensure container spans full width */
+}
+
+/* Target the material button to make it wide */
+.button-div button {
+    width: 100%;
+    border-radius: 4px; /* Optional: adjust if you prefer square or rounded corners */
+}
+//:host {
+//    display: block;
+//    min-height: fit-content;
+//    height: 200px;
+//    width: 350px;
+//    overflow: hidden;
+//}
+//
+//table {
+//    width: 100%;
+//    border-collapse: collapse;
+//}
+//
+//th, td {
+//    width: 100px;
+//    padding: 10px;
+//    text-align: center;
+//}
+//
+//.red {
+//    color: red;
+//}
+//
+//.button-div {
+//    display: flex;
+//    justify-content: center;
+//}

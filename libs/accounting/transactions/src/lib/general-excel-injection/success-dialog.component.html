@@ -1,0 +1,26 @@
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th translate>COMMON_DEBIT</th>
+        <th translate>COMMON_CREDIT</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td translate>COMMON_TOTAL</td>
+        <td>{{ data.debit.toFixed(2) }}</td>
+        <td>{{ data.credit.toFixed(2) }}</td>
+    </tr>
+        @if (difference != 0) {
+            <tr class="red">
+                <td translate>STOCK_DIFFERENCE</td>
+                <td>{{ difference < 0 ? difference : 0 }}</td>
+                <td>{{ difference > 0 ? difference : 0 }}</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="button-div">
+    <button mat-mini-fab (click)="onCancel()" translate>COMMON_CLOSED</button>
+</div>

@@ -41,8 +41,10 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatAutocompleteActivatedEvent } from '@angular/material/autocomplete';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { DialogComponent } from './dialog.component';
+import { SuccessDialogComponent } from './success-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { LtmEmailSenderComponent } from '../../../../../ltm/ltm/src/lib/email-sender/ltm-email-sender.component';
+import { LTM_NON_CONFORMITY_DOC } from '@ltm/ltm-api';
 
 @Component({
     selector: 'ss-general-excel-injection',
@@ -205,7 +207,7 @@ export class GeneralExcelInjectionComponent implements OnInit {
                                 // );
                                 // this.#snackBarSrv.showSuccessMessage();
                             }
-                            this.cancel();
+                            // this.cancel();
                         }
                     },
                     error: (err) => {
@@ -292,6 +294,13 @@ export class GeneralExcelInjectionComponent implements OnInit {
     }
 
     openSuccessDialog(xiTotal: XITotal) {
-        this.#dialog.open(DialogComponent, { data: xiTotal });
+        this.#dialog.open(SuccessDialogComponent, {
+            data: xiTotal,
+            disableClose: true,
+        }).afterClosed().subscribe((res) => {
+            if (!res) {
+                this.cancel();
+            }
+        });
     }
 }
