@@ -41,5 +41,6 @@
     "RELEASE_CONFIRMATION": "Are you sure you want to release this product",
     "CANCEL_TRANSFER_CONFIRMATION": "Are you sure you want to cancel this product transfer",
     "CONSUMPTION_DETAIL" : "Consumption detail",
-    "PRODUCTION_FORMULAS": "Production Formulas"
+    "PRODUCTION_FORMULAS": "Production Formulas",
+    "PRODUCTION_FORMULA":  "Production Formula"
 }

@@ -75,6 +75,7 @@ export class InterStoreTransferDetailComponent
             center:    [e.center || this.#loginSrv.appCtx.center],
             number:    [{ value: e.number, disabled: true }],
             header:    [e.header],
+            reference: [e.reference],
             date:      [e.date||new Date(), Validators.required],
             storeId:   [e.storeId, Validators.required],
         });
