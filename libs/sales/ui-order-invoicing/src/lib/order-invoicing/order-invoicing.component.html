@@ -22,7 +22,7 @@
         </ng-container>
 
         <ng-container matColumnDef="qty">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_QTY</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_QTY</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.qty | number : '1.2-4' }}
             </mat-cell>
