@@ -6,7 +6,7 @@ import {
     LoginService,
     MaterialModule,
     PaginationModel,
-    PaginatorPersistenceService,
+    PaginatorPersistenceService, UserRightsService,
 } from '@ss/common/api-common';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -42,6 +42,7 @@ import { ScheduledInvoiceService } from './scheduled-invoice.service';
 import { DispatchComponent } from '../dispatch/dispatch.component';
 import { PaymentComponent } from '../../../../ui-quick-order/src/lib/payment/payment.component';
 import { OptionService } from '@ss/logistics/ui-options';
+import {AccessRightsService} from "@ss/common/api-access-rights";
 
 @Component({
     selector: 'ss-ui-order-invoicing',
@@ -105,6 +106,8 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
     ];
     transactions: TransactionLine[];
     salesOrderLinesSrv = inject(SalesOrderLinesService);
+    // public rightsSrv: AccessRightsService
+    #userRightsSrv = inject(UserRightsService);
     constructor(
         public scheduledInvoiceSrv: ScheduledInvoiceService,
         public override shellSrv: ShellService,
@@ -131,7 +134,8 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
     override ngOnInit() {
         this.addButton.visible = false;
         this.deleteButton.visible = false;
-        this.editButton.visible = false;
+        this.editButton.visible = this.shellSrv.getEntityRights('QOrder')?.edit
+        this.#loginSrv.appCtx.rightsCenter;
         this.route.data.subscribe((data) => {
             const invoicing = data['invoicing'] === true;
             this.isInvoicing.set(invoicing);
@@ -183,7 +187,8 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
     }
 
     override select(id: number) {
-        this.selected = id;
+        super.select(id);
+        //this.selected = id;
         if (id > 0) {
             this.salesOrderLinesSrv.setParentId(id);
             this.salesOrderLinesSrv
