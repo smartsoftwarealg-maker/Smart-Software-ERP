@@ -36,8 +36,8 @@ import {
     WeightCaptureDialogButtonComponent,
     WeightCaptureService,
 } from '@ss/sales/weight-capture';
-import { tap } from 'rxjs/operators';
-import { of, switchMap } from 'rxjs';
+import { delay, tap } from 'rxjs/operators';
+import { of, pipe, switchMap, timer } from 'rxjs';
 import { ScheduledInvoiceService } from './scheduled-invoice.service';
 import { DispatchComponent } from '../dispatch/dispatch.component';
 import { PaymentComponent } from '../../../../ui-quick-order/src/lib/payment/payment.component';
@@ -134,7 +134,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
     override ngOnInit() {
         this.addButton.visible = false;
         this.deleteButton.visible = false;
-        this.editButton.visible = this.shellSrv.getEntityRights('QOrder')?.edit
+        this.editButton.visible = this.shellSrv.getEntityRights('QOrder')?.edit;
         this.#loginSrv.appCtx.rightsCenter;
         this.route.data.subscribe((data) => {
             const invoicing = data['invoicing'] === true;
@@ -157,13 +157,14 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
             )
             .subscribe({
                 next: (opt) => {
-                    this.transactionColumns = this.transactionColumns.filter(
+                     this.transactionColumns = this.transactionColumns.filter(
                         (col) => col !== 'store' || !opt.serviceInvoiceOnly,
                     );
                 },
                 error: () => {},
             });
         super.ngOnInit();
+        timer(2000).subscribe(() => this.editButton.visible =  this.shellSrv.getEntityRights('QOrder')?.edit||this.#loginSrv.appCtx.manager);
     }
 
     private weightCaptureSrv = inject(WeightCaptureService);

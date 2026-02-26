@@ -14,12 +14,12 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     templateUrl: './inter-store-transfer-lines-list.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    TranslatePipe,
-    PaginationComponent,
-    DocInfoComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        TranslatePipe,
+        PaginationComponent,
+        DocInfoComponent
+    ]
 })
 export class InterStoreTransferLinesListComponent extends BaseChildEntityListComponent<InterStoreTransferLine> {
     override displayedColumns = [
@@ -31,10 +31,9 @@ export class InterStoreTransferLinesListComponent extends BaseChildEntityListCom
     ];
 
     constructor(protected override detailSrv: InterStoreTransferLinesService) {
-        super(detailSrv, 'PROD_INTER_STORE_TRANSFER');
+        super(detailSrv, 'PInterStore');
     }
 
-    protected readonly console = console;
 
     override showDetail(id: number) {
         this.router.navigate(
