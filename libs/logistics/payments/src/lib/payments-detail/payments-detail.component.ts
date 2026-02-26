@@ -93,7 +93,8 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
             debit:        [{ value: db, disabled: cr > 0.000001}, Validators.required],
             credit:       [{ value: cr, disabled: db > 0.000001}, Validators.required],
             mode:         [a.mode || 2, Validators.required],
-            canceled:     [a.canceled]
+            canceled:     [a.canceled],
+            isAdvancement:[a.isAdvancement]
         });
     }
 

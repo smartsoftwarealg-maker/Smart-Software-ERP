@@ -21,7 +21,7 @@ export interface Payment {
     credit?: number;
     modeDescription?: string;
     denomination?: string;
-    isAdvancements?: boolean;
+    isAdvancement?: boolean;
 }
 
 export interface Accounting {

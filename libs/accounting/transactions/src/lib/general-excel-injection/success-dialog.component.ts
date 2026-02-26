@@ -8,7 +8,7 @@ import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
     selector: 'app-dialog',
     templateUrl: './success-dialog.component.html',
     styleUrls: ['./success-dialog.component.scss'],
-    imports: [TranslateDirective, MatIconButton, MatMiniFabButton],
+    imports: [TranslateDirective, MatMiniFabButton],
 })
 export class SuccessDialogComponent {
     difference: number;
