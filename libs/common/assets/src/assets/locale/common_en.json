@@ -494,5 +494,6 @@
     "DUPLICATE_FROM_TO":     "Duplicate from to",
     "DUPLICATE_N_TIMES":     "Duplicate n times",
     "ROUND_COUNT":           "Round count",
-    "PENDING_SUPPLIER":      "Pending supplier account"
+    "PENDING_SUPPLIER":      "Pending supplier account",
+    "IS_ADVANCE":            "Is advance"
 }
