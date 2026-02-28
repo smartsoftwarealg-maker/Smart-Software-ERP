@@ -16,7 +16,7 @@
         <button mat-mini-fab (click)="delete()"
                 [matTooltip]="'COMMON_DELETE' | translate"
                 color="warn"
-                [disabled]="form?.pristine">
+                [disabled]="!quickOrder?.id">
             <i class="fas fa-trash-alt"></i>
         </button>
     </div>
@@ -25,18 +25,17 @@
             <mat-label translate>COMMON_DATE</mat-label>
             <ss-date-picker formControlName="date"></ss-date-picker>
         </mat-form-field>
-        <div class="default-50 sm-100">
-        </div>
-        <mat-form-field class="default-50">
-            <mat-label translate>COMMON_DEBIT</mat-label>
-            <input matInput
-                   formControlName="debit"
-                   (change)="onDebitChange($event)"
-                   type="number" required>
-            @if (form.controls['debit']?.invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
-        </mat-form-field>
+<!--        <div class="default-50 sm-100"> </div>-->
+<!--        <mat-form-field class="default-50">-->
+<!--            <mat-label translate>COMMON_DEBIT</mat-label>-->
+<!--            <input matInput-->
+<!--                   formControlName="debit"-->
+<!--                   (change)="onDebitChange($event)"-->
+<!--                   type="number" required>-->
+<!--            @if (form.controls['debit']?.invalid) {-->
+<!--                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>-->
+<!--            }-->
+<!--        </mat-form-field>-->
         <mat-form-field class="default-50">
             <mat-label translate>COMMON_CREDIT</mat-label>
             <input matInput

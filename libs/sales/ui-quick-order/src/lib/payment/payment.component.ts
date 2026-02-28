@@ -27,7 +27,8 @@ import { Payment } from '@ss/logistics/api-common';
 import { LoginService } from '@ss/common/api-common';
 import { QuickOrderService } from '../quick-order.service';
 import { QuickOrder } from '../quick-order.api';
-import { catchError, concatMap, of, throwError } from 'rxjs';
+import { catchError, concatMap, of, throwError, switchMap } from 'rxjs';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 @Component({
     selector: 'ss-quick-order-payment',
@@ -49,6 +50,7 @@ import { catchError, concatMap, of, throwError } from 'rxjs';
     ],
 })
 export class PaymentComponent {
+    #confirmationSrv = inject(ConfirmationDialogService);
     #entitySrv = inject(PaymentsDetailService);
     #quickOrderSrv = inject(QuickOrderService);
     #typeSrv = inject(PayModeService);
@@ -102,16 +104,13 @@ export class PaymentComponent {
             id: [p.id],
             center: [p.center || this.#loginSrv.appCtx.center],
             number: [p.number || '0'],
-            bankId: [p.bankId],
+            bankId: [p.bankId||0],
             bank: [p.bank],
             description: [p.description, Validators.required],
             date: [p.date || new Date(), Validators.required],
             dueDays: [p.dueDays || 0, Validators.required],
             agent: [p.agent || this.quickOrder.agent],
-            debit: [
-                { value: db, disabled: cr > 0.000001 },
-                Validators.required,
-            ],
+            debit: [{ value: 0, disabled: true }, Validators.required],
             credit: [
                 { value: cr, disabled: db > 0.000001 },
                 Validators.required,
@@ -136,6 +135,7 @@ export class PaymentComponent {
             .pipe(
                 concatMap((res) => {
                     if (!(this.quickOrder.paymentId > 0)) {
+                        this.quickOrder.paymentId = res;
                         const order = {
                             ...this.quickOrder,
                             paymentId: res,
@@ -149,11 +149,9 @@ export class PaymentComponent {
                     this.#snackBarSrv.showFailureMessage();
                     return throwError(() => error);
                 }),
-            )
-            .subscribe({
+            ).subscribe({
                 next: () => {
                     this.cancel();
-                    this.form?.markAsUntouched();
                     this.#snackBarSrv.showSuccessMessage();
                 },
                 error: (error) => {
@@ -187,11 +185,22 @@ export class PaymentComponent {
 
     cancel() {
         this.refresh(this.quickOrder.paymentId);
+        this.form?.markAsUntouched();
         this.form?.markAsPristine();
     }
 
     delete() {
-        this.refresh(0);
-        this.form?.markAsPristine();
+        if (this.form?.controls['id'].value) {
+            this.#confirmationSrv
+                .confirmDelete()
+                .pipe(switchMap((res) => res ? this.#entitySrv.remove(this.form?.controls['id'].value) : of(null)))
+                .subscribe(res => {
+                    if (res) {
+                        this.quickOrder.paymentId = null;
+                        this.refresh(0);
+                        this.form?.markAsPristine();
+                    }
+                });
+        }
     }
 }

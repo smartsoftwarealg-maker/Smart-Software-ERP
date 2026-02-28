@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {BaseEntityExtendedService, BaseEntityService} from "@ss/common/api-base-entity";
-import {HttpService} from "@ss/common/api-common";
-import {Payment, PAYMENT_URL} from "@ss/logistics/api-common";
+import {BaseEntityExtendedService} from '@ss/common/api-base-entity';
+import {HttpService} from '@ss/common/api-common';
+import {Payment, PAYMENT_URL} from '@ss/logistics/api-common';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PaymentsDetailService extends BaseEntityExtendedService<Payment>{
 
