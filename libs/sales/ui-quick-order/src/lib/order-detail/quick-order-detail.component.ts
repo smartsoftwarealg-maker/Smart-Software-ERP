@@ -30,8 +30,9 @@ import {
 import { UserListService } from '@ss/common/api-users';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
 import { PayMethod, ShipmentModeService } from '@ss/common/api-lookup';
-import { Project, SalesContractService } from '@ss/logistics/contracts';
-import { BaseEntityService } from '@ss/common/api-base-entity';
+import {
+    ActiveSalesContractService,
+} from '@ss/logistics/contracts';
 import {
     ArticleAutoCompleteModel,
     ArticleService,
@@ -66,7 +67,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     #agentSrv = inject(AgentService);
     #userSrv = inject(UserListService);
     #payMethodSrv = inject(PayMethodService);
-    #salesProjectSrv = inject(SalesContractService);
+    #salesProjectSrv = inject(ActiveSalesContractService);
     #transporterSrv = inject(TransporterService);
     #articleSrv = inject(ArticleService);
     #orderLineSrv = inject(SalesOrderLinesService);
@@ -77,7 +78,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(
         this.#payMethodSrv,
     );
-    salesProjectLookup = new ProjectLookupModel(this.#salesProjectSrv);
+    salesProjectLookup = new DefaultAutoCompleteModel(this.#salesProjectSrv);
 
     duplicateMode = signal<DuplicateMode>(DuplicateMode.Count);
     tomorrow: Date = new Date();
@@ -109,9 +110,10 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
 
         this.salesProjectLookup.onObjectSelected = (p) => {
             this.blockedProject.set(p?.isBlocked || false);
-            this.form.controls['project'].setErrors(p?.isBlocked? {blocked: true} : null);
-        }
-
+            this.form.controls['project'].setErrors(
+                p?.isBlocked ? { blocked: true } : null,
+            );
+        };
     }
     public transporterLookup = new DefaultAutoCompleteModel<Agent>(
         this.#transporterSrv,
@@ -196,13 +198,4 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
         this.form?.controls['from'].setValue(null);
         this.form?.controls['to'].setValue(null);
     }
-}
-
-class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {
-    constructor(srv: BaseEntityService<Project>) {
-        super(srv);
-    }
-
-    override toString = (x: Project) =>
-        x ? `${x.contractNo} - ${x.description}` : null;
 }
