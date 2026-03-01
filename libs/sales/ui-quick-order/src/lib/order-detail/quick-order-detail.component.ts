@@ -105,8 +105,10 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             confirmationSrv,
             'SALES_QUICK_ORDER_DETAIL',
         );
-        this.agentLookup.onObjectSelected = (a) =>
+        this.agentLookup.onObjectSelected = (a) => {
             this.#salesProjectSrv.setParentId(a?.id || 0);
+            this.form?.controls['payMethod'].setValue(a?.payMode||0);
+        }
 
         this.salesProjectLookup.onObjectSelected = (p) => {
             this.blockedProject.set(p?.isBlocked || false);
