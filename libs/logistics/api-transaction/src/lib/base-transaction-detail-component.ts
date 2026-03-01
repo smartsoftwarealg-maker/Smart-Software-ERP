@@ -387,6 +387,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                     );
                 }
                 this.updateProjectLookups(agent?.id || 0);
+                this.form.controls['payMethod'].setValue(agent?.payMode||0);
             });
     }
 

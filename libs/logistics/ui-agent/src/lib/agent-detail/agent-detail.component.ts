@@ -26,8 +26,7 @@ import {
     CurrencyService,
     DepartmentService,
     Lookup,
-    LookupsService,
-    PayModeService, PostService,
+    LookupsService, PostService,
     SalesCategoryService,
 } from '@ss/common/api-lookup';
 import {
@@ -73,6 +72,7 @@ import {
     AccountService,
 } from '@ss/accounting/api-accounts';
 import {UserListService} from '@ss/common/api-users';
+import { PayMethodService } from '@ss/logistics/api-logistics-common';
 
 const PARTNER = 0;
 const SUPPLIER = 1;
@@ -91,10 +91,13 @@ const TRANSPORTER = 3;
         ReactiveFormsModule,
         AppArchiveMainComponent,
         UiAutoCompleteComponent,
-        ChildAttributesComponent
+        ChildAttributesComponent,
     ],
 })
-export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> implements OnInit {
+export class AgentDetailComponent
+    extends BaseEntityDetailComponent<Agent>
+    implements OnInit
+{
     #postSrv = inject(PostService);
     #userSrv = inject(UserListService);
     private optionSrv = inject(OptionService);
@@ -108,7 +111,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     private activitySrv = inject(ActivityService);
     private agentCenterSrv = inject(AgentCenterService);
     private centerSrv = inject(CenterService);
-    private payModeSrv = inject(PayModeService);
+    private payMethodSrv = inject(PayMethodService);
     private currencySrv = inject(CurrencyService);
     private agentTypeSrv = inject(AgentTypeService);
     private categorySrv = inject(SalesCategoryService);
@@ -126,7 +129,6 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
         click: () => this.importAgents(),
     };
 
-
     accountLookup = new AccountAutocompleteModel(this.accountSrv);
     userLookup = new DefaultAutoCompleteModel(this.#userSrv);
     postLookup = new DefaultAutoCompleteModel(this.#postSrv);
@@ -137,7 +139,7 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     departmentLookup = new DefaultAutoCompleteModel(this.departmentSrv);
     activityLookup = new DefaultAutoCompleteModel(this.activitySrv);
     bankLookup = new DefaultAutoCompleteModel(this.bankSrv);
-    payModeLookup = new DefaultAutoCompleteModel(this.payModeSrv);
+    payModeLookup = new DefaultAutoCompleteModel(this.payMethodSrv);
     currencyLookup = new DefaultAutoCompleteModel(this.currencySrv);
     agentTypeLookup = new DefaultAutoCompleteModel(this.agentTypeSrv);
     categoryLookup = new DefaultAutoCompleteModel(this.categorySrv);
@@ -156,8 +158,12 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     centerLookup = new DefaultAutoCompleteModel<Lookup>(this.centerSrv);
     centerCtrl = new FormControl<number>(0);
     agentType = signal(0);
-    isSupplier = computed(() => this.agentType() === 0 || this.agentType() === 1);
-    isCustomer = computed(() => this.agentType() === 1 || this.agentType() === 2);
+    isSupplier = computed(
+        () => this.agentType() === 0 || this.agentType() === 1,
+    );
+    isCustomer = computed(
+        () => this.agentType() === 1 || this.agentType() === 2,
+    );
     isUnit = computed(() => this.agentType() === 3);
     isInternal = computed(() => this.agentType() === 4);
     isTransporter = computed(() => this.agentType() === 5);
@@ -187,56 +193,85 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
     public override preload(): Observable<any> {
         return this.isSales
             ? of(null)
-            : this.optionSrv.get(this.loginSrv.appCtx.center
-            ).pipe(
-                tap((res) => (this.optionSrv.options = res)),
-                switchMap(() => this.route.data),
-                tap((res) => {
-                // const isSupplier = res['supplier'];
-                // const isCustomer = res['customer'];
-                // const isTransporter = res['transporter'];
+            : this.optionSrv.get(this.loginSrv.appCtx.center).pipe(
+                  tap((res) => (this.optionSrv.options = res)),
+                  switchMap(() => this.route.data),
+                  tap((res) => {
+                      // const isSupplier = res['supplier'];
+                      // const isCustomer = res['customer'];
+                      // const isTransporter = res['transporter'];
 
-                    const URLs = [CUSTOMER_URL, SUPPLIER_URL, TRANSPORTER_URL, BRANCH_URL, INTERNAL_URL, AGENT_URL];
-                    const TTLs = ['LOGISTICS_CUSTOMER', 'LOGISTICS_SUPPLIER', 'LOGISTICS_TRANSPORTER', 'COMMON_UNITS', 'LOGISTICS_INTERNAL_AGENTS', 'COMMON_AGENTS'];
-                    const TYPES = [2, 0, 5, 3, 4];
+                      const URLs = [
+                          CUSTOMER_URL,
+                          SUPPLIER_URL,
+                          TRANSPORTER_URL,
+                          BRANCH_URL,
+                          INTERNAL_URL,
+                          AGENT_URL,
+                      ];
+                      const TTLs = [
+                          'LOGISTICS_CUSTOMER',
+                          'LOGISTICS_SUPPLIER',
+                          'LOGISTICS_TRANSPORTER',
+                          'COMMON_UNITS',
+                          'LOGISTICS_INTERNAL_AGENTS',
+                          'COMMON_AGENTS',
+                      ];
+                      const TYPES = [2, 0, 5, 3, 4];
 
-                    const idx = res['customer']? 0 :
-                        res['supplier']? 1 :
-                            res['transporter']? 2 :
-                                res['unit']? 3 :
-                                    res['internalAgent']? 4 : 5;
-                    this.agentType.set(TYPES[idx]||0);
-                    this.entitySrv.setURL(URLs[idx]);
-                    this.shellSrv.setTitle(TTLs[idx]);
-                    switch (idx) {
-                    case 0:
-                        this.agentTypeLookup = new CustomerLookup(this.agentTypeSrv);
-                        break;
-                    case 1:
-                        this.agentTypeLookup = new SupplierLookup(this.agentTypeSrv);
-                        break;
-                    case 2:
-                        this.agentTypeLookup = new TransporterLookup(this.agentTypeSrv);
-                        break;
-                    case 3:
-                        this.agentTypeLookup = new BranchLookup(this.agentTypeSrv);
-                        break;
-                    case 4:
-                        this.agentTypeLookup = new InternalTypeLookup(this.agentTypeSrv);
-                        break;
-                    case 5:
-                        break;
-                    }
-                // this.agentTypeLookup = isSupplier
-                //     ? new SupplierLookup(this.agentTypeSrv)
-                //     : isCustomer
-                //         ? new CustomerLookup(this.agentTypeSrv)
-                //         : isTransporter
-                //             ? new TransporterLookup(this.agentTypeSrv)
-                //             : this.agentTypeLookup;
-                // this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
-                }),
-            );
+                      const idx = res['customer']
+                          ? 0
+                          : res['supplier']
+                            ? 1
+                            : res['transporter']
+                              ? 2
+                              : res['unit']
+                                ? 3
+                                : res['internalAgent']
+                                  ? 4
+                                  : 5;
+                      this.agentType.set(TYPES[idx] || 0);
+                      this.entitySrv.setURL(URLs[idx]);
+                      this.shellSrv.setTitle(TTLs[idx]);
+                      switch (idx) {
+                          case 0:
+                              this.agentTypeLookup = new CustomerLookup(
+                                  this.agentTypeSrv,
+                              );
+                              break;
+                          case 1:
+                              this.agentTypeLookup = new SupplierLookup(
+                                  this.agentTypeSrv,
+                              );
+                              break;
+                          case 2:
+                              this.agentTypeLookup = new TransporterLookup(
+                                  this.agentTypeSrv,
+                              );
+                              break;
+                          case 3:
+                              this.agentTypeLookup = new BranchLookup(
+                                  this.agentTypeSrv,
+                              );
+                              break;
+                          case 4:
+                              this.agentTypeLookup = new InternalTypeLookup(
+                                  this.agentTypeSrv,
+                              );
+                              break;
+                          case 5:
+                              break;
+                      }
+                      // this.agentTypeLookup = isSupplier
+                      //     ? new SupplierLookup(this.agentTypeSrv)
+                      //     : isCustomer
+                      //         ? new CustomerLookup(this.agentTypeSrv)
+                      //         : isTransporter
+                      //             ? new TransporterLookup(this.agentTypeSrv)
+                      //             : this.agentTypeLookup;
+                      // this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
+                  }),
+              );
     }
 
     override finishLoading(e: Agent) {
@@ -267,55 +302,60 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
                 a.customerCode,
                 Validators.compose([Validators.maxLength(14)]),
             ],
-            isInternal:      [a.isInternal],
-            denomination:    [a.denomination, Validators.required],
-            address:         [a.address],
-            address2:        [a.address2],
-            city:            [a.city],
-            country:         [a.country],
-            phone:           [a.phone],
-            mobile:          [a.mobile],
-            fax:             [a.fax],
-            contact:         [a.contact],
-            info:            [a.info],
-            currency:        [a.currency || this.optionSrv.options?.defaultCurrency],
-            taxPayable:      [a.taxPayable],
-            commRegister:    [a.commRegister],
-            fiscalID:        [a.fiscalID],
-            articleNo:       [a.articleNo],
-            stampPayable:    [a.stampPayable],
-            price:           [a.price || 0],
-            denominationAr:  [a.denominationAr],
-            addressAr:       [a.addressAr],
-            address2Ar:      [a.address2Ar],
-            capital:         [a.capital],
-            bank:            [a.bank],
-            bankAccount:     [a.bankAccount],
-            swift:           [a.swift],
-            agentType:       [a.agentType || this.defaultAgentType],
-            companyType:     [a.companyType],
-            email:           [a.email, Validators.email],
-            website:         [a.website, Validators.pattern(urlRegExp)],
-            nis:             [a.nis],
-            nif:             [a.nif],
-            debtLimit:       [a.debtLimit || 0],
-            debtTerm:        [a.debtTerm, FormValidators.integerValidator],
-            payMode:         [a.payMode],
-            checkDueDays:    [a.checkDueDays, FormValidators.integerValidator],
-            activity:        [a.activity],
-            recordBlocked:   [a.recordBlocked],
-            blockingReason:  [{ value: a.blockingReason,  disabled: a.recordBlocked }],
-            subcontractor:   [a.subcontractor],
-            postalCode:      [a.postalCode],
-            projectRequired: [a.projectRequired === true || (a.id === 0 && this.isTransporter())],
-            approval:        [a.approval],
-            category:        [a.category],
-            tin:             [a.tin],
-            department:      [a.department],
-            creationTime:    [{ value: a.creationTime, disabled: true }],
-            collector:       [a.collector],
-            post:            [a.post],
-            starred:         [a.starred]
+            isInternal: [a.isInternal],
+            denomination: [a.denomination, Validators.required],
+            address: [a.address],
+            address2: [a.address2],
+            city: [a.city],
+            country: [a.country],
+            phone: [a.phone],
+            mobile: [a.mobile],
+            fax: [a.fax],
+            contact: [a.contact],
+            info: [a.info],
+            currency: [a.currency || this.optionSrv.options?.defaultCurrency],
+            taxPayable: [a.taxPayable],
+            commRegister: [a.commRegister],
+            fiscalID: [a.fiscalID],
+            articleNo: [a.articleNo],
+            stampPayable: [a.stampPayable],
+            price: [a.price || 0],
+            denominationAr: [a.denominationAr],
+            addressAr: [a.addressAr],
+            address2Ar: [a.address2Ar],
+            capital: [a.capital],
+            bank: [a.bank],
+            bankAccount: [a.bankAccount],
+            swift: [a.swift],
+            agentType: [a.agentType || this.defaultAgentType],
+            companyType: [a.companyType],
+            email: [a.email, Validators.email],
+            website: [a.website, Validators.pattern(urlRegExp)],
+            nis: [a.nis],
+            nif: [a.nif],
+            debtLimit: [a.debtLimit || 0],
+            debtTerm: [a.debtTerm, FormValidators.integerValidator],
+            payMode: [a.payMode],
+            checkDueDays: [a.checkDueDays, FormValidators.integerValidator],
+            activity: [a.activity],
+            recordBlocked: [a.recordBlocked],
+            blockingReason: [
+                { value: a.blockingReason, disabled: a.recordBlocked },
+            ],
+            subcontractor: [a.subcontractor],
+            postalCode: [a.postalCode],
+            projectRequired: [
+                a.projectRequired === true ||
+                    (a.id === 0 && this.isTransporter()),
+            ],
+            approval: [a.approval],
+            category: [a.category],
+            tin: [a.tin],
+            department: [a.department],
+            creationTime: [{ value: a.creationTime, disabled: true }],
+            collector: [a.collector],
+            post: [a.post],
+            starred: [a.starred],
         });
     }
 
@@ -350,14 +390,14 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
 
     public isSectionInvalid(section: string): boolean {
         switch (section) {
-        case 'general':
-            return this.isGeneralSectionInvalid();
-        case 'latin':
-            return this.isLatinSectionInvalid();
-        case 'fiscal':
-            return this.isFiscalSectionInvalid();
-        default:
-            return false;
+            case 'general':
+                return this.isGeneralSectionInvalid();
+            case 'latin':
+                return this.isLatinSectionInvalid();
+            case 'fiscal':
+                return this.isFiscalSectionInvalid();
+            default:
+                return false;
         }
     }
 
@@ -419,10 +459,10 @@ export class AgentDetailComponent extends BaseEntityDetailComponent<Agent> imple
             this.router.url.indexOf('agents') > 0
                 ? PARTNER
                 : this.router.url.indexOf('suppliers') > 0
-                    ? SUPPLIER
-                    : this.router.url.indexOf('transporter') > 0
-                        ? TRANSPORTER
-                        : CUSTOMER;
+                  ? SUPPLIER
+                  : this.router.url.indexOf('transporter') > 0
+                    ? TRANSPORTER
+                    : CUSTOMER;
         // const target = this.router.url.indexOf('agents') > 0?
         //     'agents' :
         //     this.router.url.indexOf('suppliers') > 0? 'suppliers' : 'customers';
