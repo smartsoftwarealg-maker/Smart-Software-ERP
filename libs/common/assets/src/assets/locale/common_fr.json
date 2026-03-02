@@ -491,5 +491,6 @@
     "DUPLICATE_N_TIMES":     "Dupliquer N fois",
     "ROUND_COUNT":           "Round count",
     "PENDING_SUPPLIER":      "Compte instance reception",
-    "IS_ADVANCE":            "Est un acompte"
+    "IS_ADVANCE":            "Est un acompte",
+    "CHECK_BANK":            "Cheque de Banque"
 }

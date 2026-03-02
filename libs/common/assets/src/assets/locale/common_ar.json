@@ -486,5 +486,6 @@
     "DUPLICATE_N_TIMES":     "كرر ن مرة",
     "ROUND_COUNT":           "عدد الدورات",
     "PENDING_SUPPLIER":      "مورد معلق",
-    "IS_ADVANCE":            "مدفوع مقدما"
+    "IS_ADVANCE":            "مدفوع مقدما",
+    "CHECK_BANK":            "التحقق من البنك"
 }
