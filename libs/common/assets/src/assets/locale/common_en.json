@@ -495,5 +495,6 @@
     "DUPLICATE_N_TIMES":     "Duplicate n times",
     "ROUND_COUNT":           "Round count",
     "PENDING_SUPPLIER":      "Pending supplier account",
-    "IS_ADVANCE":            "Is advance"
+    "IS_ADVANCE":            "Is advance",
+    "CHECK_BANK":            "Check Bank"
 }

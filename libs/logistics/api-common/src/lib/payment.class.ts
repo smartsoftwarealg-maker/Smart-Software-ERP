@@ -6,6 +6,7 @@ export interface Payment {
     center: number;
     number: string;
     bankId?: number;
+    checkBank?: number;
     bank?: string;
     depositDate?: Date;
     depositNumber?: string;
