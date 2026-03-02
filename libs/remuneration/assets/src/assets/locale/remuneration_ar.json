@@ -90,5 +90,6 @@
     "PAYROLL_LOCK": "تجميد المرتبات",
     "PAYROLL_COMPLETE": "تمت المرتبات",
     "PAYROLL_LOCK_READY": "المرتبات جاهزة للتجميد",
-    "LOCK_PAYROLL": "جمد المرتبات"
+    "LOCK_PAYROLL": "جمد المرتبات",
+    "DEPOSIT_DAY": "يوم الدفع الإلكتروني"
 }

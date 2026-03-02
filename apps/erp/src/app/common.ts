@@ -323,6 +323,7 @@ export const PAY_AMENDMENT_URL        = 'amendments';
 export const PAY_LOANS_URL            = 'loans';
 export const PAY_FIXED_ELEMENTS_URL   = 'fixedelements';
 export const PAY_EDO_URL              = 'edo';
+export const DEPOSIT_DATE_URL         = 'deposit-date';
 export const PAY_DAS_URL              = 'das';
 export const PAY_ARCHIVE_VIEWER_URL   = 'archive-viewer';
 export const PAY_CACO_URL             = 'caco';
@@ -869,6 +870,8 @@ export const ABS_EXCEL_INJECTION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 export const ABS_AMENDMENT_URL       = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_AMENDMENT_URL].join('/');
 export const ABS_LOANS_URL           = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_LOANS_URL].join('/');
 export const ABS_EDO_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_EDO_URL].join('/');
+export const ABS_DEPOSIT_DATE_URL =
+    '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, DEPOSIT_DATE_URL].join('/');
 export const ABS_DAS_URL             = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_DAS_URL].join('/');
 export const ABS_ARCHIVE_VIEWER_URL  = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_ARCHIVE_VIEWER_URL].join('/');
 export const ABS_CACO_URL            = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_CACO_URL].join('/');

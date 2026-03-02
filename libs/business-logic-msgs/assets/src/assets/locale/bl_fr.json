@@ -94,5 +94,6 @@
     "MISSING_SHIPPING_INFO":              "Informations d'expédition manquantes.",
     "INVALID_DATE_RANGE":                 "Plage de dates invalide",
     "SINGLE_ACCOUNTING":                  "La comptabilité du site est enregistrée ailleurs",
-    "LEAD_PROGRESS_REQUIRED":             "Progression du prospect requise"
+    "LEAD_PROGRESS_REQUIRED":             "Progression du prospect requise",
+    "INVALID_DEPOSIT_DATE":               "Le dépôt veriment de la paie n'est pas autorisé ce jour du mois."
 }

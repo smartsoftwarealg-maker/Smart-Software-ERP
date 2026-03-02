@@ -21,18 +21,18 @@ import { PayrollFormulasService } from '@ss/remuneration/payroll-formulas';
     selector: 'ss-payroll-options',
     standalone: true,
     imports: [
-    MatCard,
-    MatCardContent,
-    MatError,
-    MatFormField,
-    MatInput,
-    MatLabel,
-    MaterialModule,
-    ReactiveFormsModule,
-    UiAutoCompleteComponent,
-    UiAutoCompleteComponent,
-    TranslateDirective
-],
+        MatCard,
+        MatCardContent,
+        MatError,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        MaterialModule,
+        ReactiveFormsModule,
+        UiAutoCompleteComponent,
+        UiAutoCompleteComponent,
+        TranslateDirective
+    ],
     templateUrl: './payroll-options.component.html',
     styleUrl: './payroll-options.component.scss'
 })
