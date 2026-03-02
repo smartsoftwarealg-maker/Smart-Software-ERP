@@ -863,7 +863,8 @@
             ],
             "@ss/sales/category-discounts": [
                 "libs/sales/category-discounts/src/index.ts"
-            ]
+            ],
+            "@ss/payroll/deposit-day": ["libs/payroll/deposit-day/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

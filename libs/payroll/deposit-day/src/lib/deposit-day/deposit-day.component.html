@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-content>
+        @defer (when form) {
+            <form novalidate [formGroup]="form">
+                <mat-form-field id="depositDay" class="default-100">
+                    <mat-label translate>REMUN_DEPOSIT_DAY</mat-label>
+                    <input matInput formControlName="depositDay" type="number" autofocus>
+                </mat-form-field>
+
+                <div class="default-100">
+                    <mat-checkbox formControlName="isGlobal" translate>REMUN_UPDATE_ALL</mat-checkbox>
+                </div>
+            </form>
+        }
+    </mat-card-content>
+</mat-card>

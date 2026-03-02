@@ -93,5 +93,6 @@
     "NO_PRODUCT_TO_INVOICE":         "No product to invoice.",
     "INVALID_DATE_RANGE":            "Invalid date range",
     "SINGLE_ACCOUNTING":             "The site's accounting is recorded elsewhere",
-    "LEAD_PROGRESS_REQUIRED":        "Lead progress required"
+    "LEAD_PROGRESS_REQUIRED":        "Lead progress required",
+    "INVALID_DEPOSIT_DATE":          "The electronic deposit of the payroll is not allowed on this day of the month."
 }

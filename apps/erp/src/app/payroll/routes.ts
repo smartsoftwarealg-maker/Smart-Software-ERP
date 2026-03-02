@@ -3,6 +3,7 @@ import {
     ADMINISTRATION_REPORT_PRIVILEGE_URL,
     COMMON_REPORTS_URL,
     DASHBOARD_URL,
+    DEPOSIT_DATE_URL,
     LOOKUPS_URL,
     PAY_AMENDMENT_URL,
     PAY_ARCHIVE_GENERATOR,
@@ -14,19 +15,24 @@ import {
     PAY_ELEMENTS_ENTRY_URL,
     PAY_ELEMENTSINFO_URL,
     PAY_FIXED_ELEMENTS_URL,
-    PAY_FORMULAS_URL, PAY_FUNDS_URL,
+    PAY_FORMULAS_URL,
+    PAY_FUNDS_URL,
     PAY_GRID_UPDATE_URL,
-    PAY_INPUT_FILTERS, PAY_IRG_CALC,
+    PAY_INPUT_FILTERS,
+    PAY_IRG_CALC,
     PAY_LOANS_URL,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
-    PAY_MONTH_SELECTOR, PAY_OPTIONS_URL, PAY_PERIOD_LOCK_URL,
+    PAY_MONTH_SELECTOR,
+    PAY_OPTIONS_URL,
+    PAY_PERIOD_LOCK_URL,
     PAY_SALARY_GRID,
     PAY_SPECIAL_PAYROLL_URL,
     PAY_VACATION_PLANNING,
     PAY_XLS_INJECTION,
     PAYROLL_EMPLOYEES_URL,
-    PAYROLL_INACTIVE_EMPLOYEES_URL, PAYROLL_LOAN_INJECTION_URL
+    PAYROLL_INACTIVE_EMPLOYEES_URL,
+    PAYROLL_LOAN_INJECTION_URL,
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -120,9 +126,15 @@ import { PayrollOptionsComponent } from 'payroll/payroll-options';
 import { FundsListComponent, FundsDetailComponent } from '@ss/payroll/funds';
 import { IrgComponent } from '@ss/payroll/irg';
 import {LoanInjectionComponent} from '@ss/payroll/loan-injection';
-import {PayrollLock} from "@ss/payroll/payroll-lock";
+import {PayrollLock} from '@ss/payroll/payroll-lock';
+import { DepositDayComponent } from '@ss/payroll/deposit-day';
 
 export const mainRoutes: Routes = [
+    {
+        path: DEPOSIT_DATE_URL,
+        component: DepositDayComponent,
+        canActivate: [loginGuard],
+    },
     {
         path: DASHBOARD_URL,
         component: DashboardComponent,
@@ -130,37 +142,40 @@ export const mainRoutes: Routes = [
     },
     {
         path: LOOKUPS_URL,
-        loadChildren: () => import('./payroll-lookups.module').then(m => m.PayrollLookupsModule)
+        loadChildren: () =>
+            import('./payroll-lookups.module').then(
+                (m) => m.PayrollLookupsModule,
+            ),
     },
     {
         path: PAY_EDO_URL,
         component: EdoComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     {
         path: PAY_PERIOD_LOCK_URL,
         component: PayrollLock,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     {
         path: PAY_OPTIONS_URL,
         component: PayrollOptionsComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     {
         path: PAY_DAS_URL,
         component: DasComponent,
-        canActivate: [loginGuard, payrollGuard]
+        canActivate: [loginGuard, payrollGuard],
     },
     {
         path: PAY_ARCHIVE_VIEWER_URL,
         component: ArchiveViewerListComponent,
-        canActivate: [loginGuard, payrollGuard]
+        canActivate: [loginGuard, payrollGuard],
     },
     {
         path: PAY_CACO_URL,
         component: CacoComponent,
-        canActivate: [loginGuard, payrollGuard]
+        canActivate: [loginGuard, payrollGuard],
     },
     {
         path: PAY_ELEMENTSINFO_URL,
@@ -168,16 +183,16 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ElementsInfoComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: ElementsInfoDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAY_SPECIAL_PAYROLL_URL,
@@ -185,16 +200,16 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SpecialPayrollListComponent,
-                canActivate: [loginGuard, payrollGuard]
+                canActivate: [loginGuard, payrollGuard],
             },
             {
                 path: ':id',
                 component: SpecialPayrollDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAY_ELEMENT_TYPES_URL,
@@ -202,16 +217,16 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ElementTypesListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: ElementTypesDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAY_MONTH_CLOSER,
@@ -263,7 +278,8 @@ export const mainRoutes: Routes = [
                             },
                             {
                                 path: ':id',
-                                component: VacationPlanningDetailDetailComponent,
+                                component:
+                                    VacationPlanningDetailDetailComponent,
                             },
                         ],
                     },
@@ -278,16 +294,16 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: FormulaListComponent,
-                canActivate: [loginGuard, payrollGuard]
+                canActivate: [loginGuard, payrollGuard],
             },
             {
                 path: ':id',
                 component: FormulaDetailComponent,
                 canActivate: [loginGuard, payrollGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAY_ELEMENTS_ENTRY_URL,
@@ -303,8 +319,8 @@ export const mainRoutes: Routes = [
                 canActivate: [loginGuard, payrollGuard],
                 canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAY_AMENDMENT_URL,
@@ -320,8 +336,8 @@ export const mainRoutes: Routes = [
                 canActivate: [loginGuard, payrollGuard],
                 canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAY_LOANS_URL,
@@ -337,8 +353,8 @@ export const mainRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAY_FIXED_ELEMENTS_URL,
@@ -346,16 +362,16 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: FixedElementsListComponent,
-                canActivate: [loginGuard, payrollGuard]
+                canActivate: [loginGuard, payrollGuard],
             },
             {
                 path: ':id',
                 component: FixedElementsDetailComponent,
                 canActivate: [loginGuard, payrollGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAY_INPUT_FILTERS,
@@ -363,16 +379,16 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: InputFilterListComponent,
-                canActivate: [loginGuard, payrollGuard]
+                canActivate: [loginGuard, payrollGuard],
             },
             {
                 path: ':id',
                 component: InputFilterDetailComponent,
                 canActivate: [loginGuard, payrollGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAY_SALARY_GRID,
@@ -380,7 +396,7 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: SalaryGridListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
@@ -389,35 +405,45 @@ export const mainRoutes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 children: [
                     {
-                        path: '', redirectTo: 'ranks', pathMatch: 'full'
+                        path: '',
+                        redirectTo: 'ranks',
+                        pathMatch: 'full',
                     },
                     {
                         path: 'ranks',
                         children: [
-                            { path: '', component: SalaryRankListComponent, pathMatch: 'full'},
-                            { path: ':id', component: SalaryRankDetailComponent, canDeactivate: [CanDeactivateService] }
-                        ]
+                            {
+                                path: '',
+                                component: SalaryRankListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component: SalaryRankDetailComponent,
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
                     },
-                ]
+                ],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: COMMON_REPORTS_URL,
         component: ReportViewComponent,
-        data: {reportBase: 'payroll'},
-        canActivate: [loginGuard, payrollGuard]
+        data: { reportBase: 'payroll' },
+        canActivate: [loginGuard, payrollGuard],
     },
     {
         path: PAY_GRID_UPDATE_URL,
         component: SalaryGridUpdateComponent,
-        canActivate: [loginGuard, payrollGuard]
+        canActivate: [loginGuard, payrollGuard],
     },
     {
         path: ADMIN_REPORT_RIGHTS_URL,
         component: ReportRightsComponent,
-        data: {reportBase: 'payroll'},
+        data: { reportBase: 'payroll' },
     },
     {
         path: PAYROLL_EMPLOYEES_URL,
@@ -426,7 +452,7 @@ export const mainRoutes: Routes = [
                 path: LIST_URL,
                 component: EmployeeListComponent,
                 canActivate: [loginGuard],
-                data: { active: true }
+                data: { active: true },
             },
             {
                 path: ':id',
@@ -441,43 +467,86 @@ export const mainRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: EMPLOYEE_ARCHIVES } },
-                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: EMPLOYEE_ARCHIVES }, canDeactivate: [CanDeactivateService]},
-                                ]
+                                    {
+                                        path: '',
+                                        component: AppArchiveListComponent,
+                                        pathMatch: 'full',
+                                        data: { appId: EMPLOYEE_ARCHIVES },
+                                    },
+                                    {
+                                        path: ':id',
+                                        component: AppArchiveDetailComponent,
+                                        data: { appId: EMPLOYEE_ARCHIVES },
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: ACTIVATION_ROUTE_URL,
                                 children: [
-                                    { path: '', component: EmployeeActivationListComponent, pathMatch: 'full'},
-                                    { path: ':id', component: EmployeeActivationDetailComponent, canDeactivate: [CanDeactivateService] }
-                                ]
+                                    {
+                                        path: '',
+                                        component:
+                                            EmployeeActivationListComponent,
+                                        pathMatch: 'full',
+                                    },
+                                    {
+                                        path: ':id',
+                                        component:
+                                            EmployeeActivationDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: CAREER_ROUTE_URL,
                                 children: [
-                                    { path: '', component: EmployeeCareerListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeCareerDetailComponent, canDeactivate: [CanDeactivateService] }
-                                ]
+                                    {
+                                        path: '',
+                                        component: EmployeeCareerListComponent,
+                                        pathMatch: 'full',
+                                    },
+                                    {
+                                        path: ':id',
+                                        component:
+                                            EmployeeCareerDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: OLD_CAREER_ROUTE_URL,
                                 children: [
-                                    { path: '', component: EmployeeOldCareerListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeOldCareerDetailComponent, canDeactivate: [CanDeactivateService] }
-                                ]
+                                    {
+                                        path: '',
+                                        component:
+                                            EmployeeOldCareerListComponent,
+                                        pathMatch: 'full',
+                                    },
+                                    {
+                                        path: ':id',
+                                        component:
+                                            EmployeeOldCareerDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: CONTRACTS_ROUTE_URL,
                                 children: [
                                     {
                                         path: '',
-                                        component: EmployeeContractListComponent,
-                                        pathMatch: 'full'
+                                        component:
+                                            EmployeeContractListComponent,
+                                        pathMatch: 'full',
                                     },
                                     {
-                                        path: ':id', component: EmployeeContractsDetailComponent, canDeactivate: [CanDeactivateService],
-                                    }
-                                ]
+                                        path: ':id',
+                                        component:
+                                            EmployeeContractsDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: WIVES_ROUTE_URL,
@@ -485,64 +554,127 @@ export const mainRoutes: Routes = [
                                     {
                                         path: '',
                                         component: EmployeeWivesListComponent,
-                                        pathMatch: 'full'
+                                        pathMatch: 'full',
                                     },
-                                    { path: ':id', component: EmployeeWifeDetailComponent, canDeactivate: [CanDeactivateService] }
-                                ]
+                                    {
+                                        path: ':id',
+                                        component: EmployeeWifeDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: CHILDREN_ROUTE_URL,
                                 children: [
-                                    { path: '', component: EmployeeChildrenListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeChildDetailComponent, canDeactivate: [CanDeactivateService] }
-                                ]
+                                    {
+                                        path: '',
+                                        component:
+                                            EmployeeChildrenListComponent,
+                                        pathMatch: 'full',
+                                    },
+                                    {
+                                        path: ':id',
+                                        component: EmployeeChildDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: DIPLOMA_ROUTE_URL,
                                 children: [
-                                    { path: '', component: EmployeeDiplomaListComponent, pathMatch: 'full'},
-                                    { path: ':id', component: EmployeeDiplomaDetailComponent, canDeactivate: [CanDeactivateService] }
-                                ]
+                                    {
+                                        path: '',
+                                        component: EmployeeDiplomaListComponent,
+                                        pathMatch: 'full',
+                                    },
+                                    {
+                                        path: ':id',
+                                        component:
+                                            EmployeeDiplomaDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: TRAINING_ROUTE_URL,
                                 children: [
-                                    { path: '', component: EmployeeTrainingListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeTrainingDetailComponent, canDeactivate: [CanDeactivateService] }
-                                ]
+                                    {
+                                        path: '',
+                                        component:
+                                            EmployeeTrainingListComponent,
+                                        pathMatch: 'full',
+                                    },
+                                    {
+                                        path: ':id',
+                                        component:
+                                            EmployeeTrainingDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: PUNISHMENT_ROUTE_URL,
                                 children: [
-                                    { path: '', component: PunishmentListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: PunishmentDetailComponent }
-                                ]
+                                    {
+                                        path: '',
+                                        component: PunishmentListComponent,
+                                        pathMatch: 'full',
+                                    },
+                                    {
+                                        path: ':id',
+                                        component: PunishmentDetailComponent,
+                                    },
+                                ],
                             },
                             {
                                 path: LANGUAGES_ROUTE_URL,
                                 children: [
-                                    { path: '', component: EmployeeLanguagesListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeLanguagesDetailComponent, canDeactivate: [CanDeactivateService] }
-                                ]
+                                    {
+                                        path: '',
+                                        component:
+                                            EmployeeLanguagesListComponent,
+                                        pathMatch: 'full',
+                                    },
+                                    {
+                                        path: ':id',
+                                        component:
+                                            EmployeeLanguagesDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: DECISION_ROUTE_URL,
                                 children: [
-                                    { path: '', component: EmployeeDecisionListComponent, pathMatch: 'full' },
-                                    { path: ':id', component: EmployeeDecisionDetailComponent, canDeactivate: [CanDeactivateService] }
-                                ]
+                                    {
+                                        path: '',
+                                        component:
+                                            EmployeeDecisionListComponent,
+                                        pathMatch: 'full',
+                                    },
+                                    {
+                                        path: ':id',
+                                        component:
+                                            EmployeeDecisionDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
                             {
                                 path: FIXED_ELEMENTS_URL,
                                 children: [
-                                    { path: ':id', component: FixedElementsDetailComponent, canDeactivate: [CanDeactivateService] }
-                                ]
-                            }
-                        ]
+                                    {
+                                        path: ':id',
+                                        component: FixedElementsDetailComponent,
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
+                            },
+                        ],
                     },
-                ]
+                ],
             },
-        ]
+        ],
     },
     {
         path: PAYROLL_INACTIVE_EMPLOYEES_URL,
@@ -551,7 +683,7 @@ export const mainRoutes: Routes = [
                 path: LIST_URL,
                 component: EmployeeListComponent,
                 canActivate: [loginGuard],
-                data: { active: false }
+                data: { active: false },
             },
             {
                 path: ':id',
@@ -568,25 +700,37 @@ export const mainRoutes: Routes = [
                                 children: [
                                     {
                                         path: '',
-                                        component: EmployeeActivationListComponent,
+                                        component:
+                                            EmployeeActivationListComponent,
                                     },
                                     {
                                         path: ':id',
-                                        component: EmployeeActivationDetailComponent,
+                                        component:
+                                            EmployeeActivationDetailComponent,
                                         canActivate: [loginGuard],
-                                        canDeactivate: [CanDeactivateService]
-                                    }
-                                ]
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
                             },
 
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: EMPLOYEE_ARCHIVES } },
-                                    {path: ':id', component: AppArchiveDetailComponent, data: { appId: EMPLOYEE_ARCHIVES }, canDeactivate: [CanDeactivateService]},
-                                ]
-                            }
-                        ]
+                                    {
+                                        path: '',
+                                        component: AppArchiveListComponent,
+                                        pathMatch: 'full',
+                                        data: { appId: EMPLOYEE_ARCHIVES },
+                                    },
+                                    {
+                                        path: ':id',
+                                        component: AppArchiveDetailComponent,
+                                        data: { appId: EMPLOYEE_ARCHIVES },
+                                        canDeactivate: [CanDeactivateService],
+                                    },
+                                ],
+                            },
+                        ],
                     },
                     {
                         path: CAREER_ROUTE_URL,
@@ -599,9 +743,9 @@ export const mainRoutes: Routes = [
                                 path: ':id',
                                 component: EmployeeCareerDetailComponent,
                                 canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
                     },
                     {
                         path: CONTRACTS_ROUTE_URL,
@@ -614,9 +758,9 @@ export const mainRoutes: Routes = [
                                 path: ':id',
                                 component: EmployeeContractsDetailComponent,
                                 canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
                     },
                     {
                         path: WIVES_ROUTE_URL,
@@ -629,9 +773,9 @@ export const mainRoutes: Routes = [
                                 path: ':id',
                                 component: EmployeeWifeDetailComponent,
                                 canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
                     },
                     {
                         path: CHILDREN_ROUTE_URL,
@@ -644,9 +788,9 @@ export const mainRoutes: Routes = [
                                 path: ':id',
                                 component: EmployeeChildDetailComponent,
                                 canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
                     },
                     {
                         path: DIPLOMA_ROUTE_URL,
@@ -659,9 +803,9 @@ export const mainRoutes: Routes = [
                                 path: ':id',
                                 component: EmployeeDiplomaDetailComponent,
                                 canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
                     },
                     {
                         path: TRAINING_ROUTE_URL,
@@ -674,9 +818,9 @@ export const mainRoutes: Routes = [
                                 path: ':id',
                                 component: EmployeeTrainingDetailComponent,
                                 canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
                     },
                     {
                         path: PUNISHMENT_ROUTE_URL,
@@ -689,9 +833,9 @@ export const mainRoutes: Routes = [
                                 path: ':id',
                                 component: PunishmentDetailComponent,
                                 canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
                     },
                     {
                         path: LANGUAGES_ROUTE_URL,
@@ -704,9 +848,9 @@ export const mainRoutes: Routes = [
                                 path: ':id',
                                 component: EmployeeLanguagesDetailComponent,
                                 canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
                     },
                     {
                         path: OLD_CAREER_ROUTE_URL,
@@ -719,9 +863,9 @@ export const mainRoutes: Routes = [
                                 path: ':id',
                                 component: EmployeeOldCareerDetailComponent,
                                 canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
                     },
                     {
                         path: DECISION_ROUTE_URL,
@@ -734,24 +878,24 @@ export const mainRoutes: Routes = [
                                 path: ':id',
                                 component: EmployeeDecisionDetailComponent,
                                 canActivate: [loginGuard],
-                                canDeactivate: [CanDeactivateService]
-                            }
-                        ]
-                    }
-                ]
+                                canDeactivate: [CanDeactivateService],
+                            },
+                        ],
+                    },
+                ],
             },
-        ]
+        ],
     },
     {
         path: PAY_IRG_CALC,
         component: IrgComponent,
-        canActivate: [loginGuard, payrollGuard]
+        canActivate: [loginGuard, payrollGuard],
     },
     {
         path: ADMINISTRATION_REPORT_PRIVILEGE_URL,
         component: ReportPrivilegesComponent,
-        data: {reportBase: 'payroll'},
-        canActivate: [loginGuard]
+        data: { reportBase: 'payroll' },
+        canActivate: [loginGuard],
     },
     {
         path: PAY_FUNDS_URL,
@@ -759,24 +903,24 @@ export const mainRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: FundsListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: FundsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: PAYROLL_LOAN_INJECTION_URL,
         component: LoanInjectionComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: ABS_INDEX_URL }
+    { path: '**', redirectTo: ABS_INDEX_URL },
 ];
 
 export const lookupRoutes: Routes = [];
