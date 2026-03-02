@@ -242,5 +242,7 @@
     "TRN_SUBJECTS":          "Sujets de formation",
     "EDIT_TRN_SUBJECTS":     "Modifier les sujets de formation",
     "VACATION_TYPES":        "Types de congés",
-    "EDIT_VACATION_TYPES":   "Modifier les types de congés "
+    "EDIT_VACATION_TYPES":   "Modifier les types de congés ",
+    "TAX_PAYMENTS":          "Paie des taxes",
+    "TAX_PAYMENT":           "Paie de taxe"
 }

@@ -332,6 +332,7 @@ export const PAY_FUNDS_URL            = 'payroll-funds';
 export const PAY_IRG_CALC             = 'irg-calc';
 export const PAYROLL_LOAN_INJECTION_URL = 'loan-injection';
 export const PAY_PERIOD_LOCK_URL = 'payroll-periods';
+export const PAYROLL_TAX_PAYMENT_URL = 'tax-payment'
 
 // Assets
 export const ASSETS_ASSET_URL            = 'assets';
@@ -884,6 +885,8 @@ export const ABS_PAYROLL_OPTIONS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PA
 export const ABS_PAYROLL_FUNDS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_FUNDS_URL].join('/');
 export const ABS_PAYROLL_IRG_CALC_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_IRG_CALC].join('/');
 export const ABS_PAYROLL_LOAN_INJECTION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_LOAN_INJECTION_URL].join('/');
+export const ABS_PAYROLL_TAX_PAYMENT_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_TAX_PAYMENT_URL].join('/');
+
 // ltm
 export const ABS_LTM_MATTERS_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_MATTER_URL].join('/');
 export const ABS_LTM_PERIODICITIES_URL = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_PERIODICITY_URL].join('/');
