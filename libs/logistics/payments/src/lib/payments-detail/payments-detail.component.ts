@@ -85,6 +85,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
             center:       [a.center || this.loginSrv.appCtx.center],
             number:       [a.number || '0'],
             bankId:       [a.bankId],
+            checkBank:    [a.checkBank],
             bank:         [a.bank],
             description:  [a.description, Validators.required],
             date:         [a.date || new Date(), Validators.required],
