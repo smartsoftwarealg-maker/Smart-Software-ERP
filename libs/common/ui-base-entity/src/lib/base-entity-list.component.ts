@@ -10,20 +10,24 @@ import {BaseEntityService} from '@ss/common/api-base-entity';
 import {Sort} from '@angular/material/sort';
 
 @Directive()
-export class BaseEntityListComponent<T extends { id: number, email?: string }> implements OnInit, OnDestroy {
+export class BaseEntityListComponent<T extends { id: number; email?: string }>
+implements OnInit, OnDestroy {
     private _editable = true;
     private reportForm: string = null;
+
     subscriptions: Subscription[] = [];
 
-    constructor(public entitySrv: BaseEntityService<T>,
-                public shellSrv: ShellService,
-                public snackBarSrv: SnackBarService,
-                public route: ActivatedRoute,
-                public router: Router,
-                public confirmationSrv: ConfirmationDialogService,
-                public defReportSrv: DefaultReportService,
-                public pagPersistSrv: PaginatorPersistenceService,
-                public title: string) {
+    constructor(
+        public entitySrv: BaseEntityService<T>,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public router: Router,
+        public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
+        public pagPersistSrv: PaginatorPersistenceService,
+        public title: string,
+    ) {
         this.pagination.copyModel(pagPersistSrv.get(title));
     }
 
@@ -38,7 +42,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         keepOnToolbar: KeepOnToolbar.ALWAYS,
         click: () => {
             this.refresh();
-        }
+        },
     };
     public addButton: ToolbarButton = {
         icon: 'fas fa-plus',
@@ -46,7 +50,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         disabled: false,
         visible: true,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.showDetail(0)
+        click: () => this.showDetail(0),
     };
     public editButton: ToolbarButton = {
         icon: 'fas fa-pen',
@@ -54,7 +58,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         disabled: true,
         visible: true,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.edit()
+        click: () => this.edit(),
     };
     public deleteButton: ToolbarButton = {
         icon: 'fas fa-trash-alt',
@@ -62,7 +66,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         disabled: true,
         visible: true,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.deleteSelected()
+        click: () => this.deleteSelected(),
     };
 
     public defReportButton: ToolbarButton = {
@@ -71,7 +75,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         disabled: false, // always false
         visible: false,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.selectReport()
+        click: () => this.selectReport(),
     };
 
     public viewReportButton: ToolbarButton = {
@@ -80,7 +84,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         disabled: false,
         visible: true,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.viewReport()
+        click: () => this.viewReport(),
     };
 
     public emailReportButton: ToolbarButton = {
@@ -89,7 +93,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         disabled: true,
         visible: false,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.emailReport()
+        click: () => this.emailReport(),
     };
 
     public excelButton: ToolbarButton = {
@@ -98,21 +102,21 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         disabled: false,
         visible: true,
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        click: () => this.excel()
+        click: () => this.excel(),
     };
     //
     public filter: string;
     public sortBy: string;
     //
     public data: T[] = [];
-    public selected = 0;
     public selectedRow: T = null;
 
     //
 
     public ngOnInit() {
         const node = this.shellSrv.getNavNodeByRouter();
-        this.reportForm = node && node.accessRights != undefined ? node.accessRights : null;
+        this.reportForm =
+            node && node.accessRights != undefined ? node.accessRights : null;
         this.defReportButton.visible = this.reportForm != null;
         this.viewReportButton.visible = this.reportForm != null;
 
@@ -120,25 +124,31 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             read: false,
             write: false,
             edit: false,
-            delete: false
+            delete: false,
         };
 
         const FULL_RIGHTS: Right = {
             read: true,
             write: true,
             edit: true,
-            delete: true
+            delete: true,
         };
 
-
-        const rights = !node ? NO_RIGHTS :
-            !node.customerRights && !node.accessRights ? FULL_RIGHTS: (this.shellSrv.getRights(node)||NO_RIGHTS);
+        const rights = !node
+            ? NO_RIGHTS
+            : !node.customerRights && !node.accessRights
+                ? FULL_RIGHTS
+                : this.shellSrv.getRights(node) || NO_RIGHTS;
 
         // this.editButton.visible = rights.edit;
-        this.addButton.visible &&= rights?.write??false;
-        this.deleteButton.visible &&= rights?.delete??false;
-        this.editButton.icon = rights?.edit ? 'fas fa-pen' : 'fa-solid fa-memo-circle-info';
-        this.editButton.label = rights?.edit ? 'COMMON_EDIT_SELECTED' : 'COMMON_DETAIL';
+        this.addButton.visible &&= rights?.write ?? false;
+        this.deleteButton.visible &&= rights?.delete ?? false;
+        this.editButton.icon = rights?.edit
+            ? 'fas fa-pen'
+            : 'fa-solid fa-memo-circle-info';
+        this.editButton.label = rights?.edit
+            ? 'COMMON_EDIT_SELECTED'
+            : 'COMMON_DETAIL';
         this._editable = rights?.edit;
 
         this.shellSrv.setTitle(this.title);
@@ -152,7 +162,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
             this.viewReportButton,
             this.defReportButton,
             this.excelButton,
-            this.emailReportButton
+            this.emailReportButton,
         ]);
         this.pagination.onChange = () => this.refresh();
         this.filter = this.pagPersistSrv.getSearch(this.title);
@@ -161,7 +171,9 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     }
 
     public enableSearch(): void {
-        this.shellSrv.enableSearch('COMMON_SEARCH', o => o.subscribe((f: string) => this.setFilter(f)));
+        this.shellSrv.enableSearch('COMMON_SEARCH', (o) =>
+            o.subscribe((f: string) => this.setFilter(f)),
+        );
     }
 
     public setFilter(fltr: string): void {
@@ -174,7 +186,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
      * put other http queries here, like lookups and other things, then tap & store the result manually.
      * returns null if nothing is needed
      */
-    public preload(): Observable<any> {
+    public preload(): Observable<T> {
         return of(null);
     }
 
@@ -186,28 +198,30 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.releaseResources();
         this.data = [];
         this.shellSrv.setLoading(this.canShowProcessingStatus());
-        this.select(0);
         (this.preload() || of(null))
             .pipe(switchMap(() => this.getPage()))
             .subscribe({
-                next: data => {
+                next: (data) => {
                     this.finishLoading(data);
                     if (callback) {
                         callback();
                     }
                 },
-                error: err => {
+                error: (err) => {
                     this.data = []; // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
                     throw err;
-                }
-            }
-            );
+                },
+            });
     }
 
     // this is created, so we can override the service call whenever we want
     public getPage(): Observable<T[]> {
-        return this.entitySrv.getPage(this.pagination, this.filter, this.sortBy);
+        return this.entitySrv.getPage(
+            this.pagination,
+            this.filter,
+            this.sortBy,
+        );
     }
 
     public processLoadedData(data: T[]): Observable<T[]> {
@@ -215,11 +229,10 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     }
 
     public finishLoading(data: T[]) {
-        this.processLoadedData(data)
-            .subscribe(x => {
-                this.data = x;
-                this.shellSrv.setLoading(false);
-            });
+        this.processLoadedData(data).subscribe((x) => {
+            this.data = x;
+            this.shellSrv.setLoading(false);
+        });
     }
 
     public ngOnDestroy() {
@@ -227,7 +240,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.shellSrv.reset();
         this.buttonReset();
         this.pagPersistSrv.set(this.title, this.pagination, this.filter);
-        this.subscriptions.forEach(s => s.unsubscribe());
+        this.subscriptions.forEach((s) => s.unsubscribe());
     }
 
     private buttonReset() {
@@ -239,8 +252,7 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.refreshButton.visible = true;
     }
 
-    public releaseResources() {
-    }
+    public releaseResources() {}
 
     public selectRow(row: T) {
         this.selectedRow = row;
@@ -257,7 +269,8 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
         this.editButton.disabled = !itemControlsOn;
         this.deleteButton.disabled = !itemControlsOn;
         this.viewReportButton.disabled = !itemControlsOn;
-        this.emailReportButton.disabled = !this.selectedRow || !itemControlsOn || !this.selectedRow['email'];
+        this.emailReportButton.disabled =
+            !this.selectedRow || !itemControlsOn || !this.selectedRow['email'];
         this.shellSrv.updateShell();
     }
 
@@ -268,17 +281,17 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     }
 
     public showDetail(id: number): void {
-        this.router.navigate([id], {relativeTo: this.route}).then();
+        this.router.navigate([id], { relativeTo: this.route }).then();
     }
 
     public exit() {
-        this.router.navigate(['../..'], {relativeTo: this.route}).then();
+        this.router.navigate(['../..'], { relativeTo: this.route }).then();
     }
 
     private selectReport() {
         this.defReportSrv
             .open(this.shellSrv.getApp(), this.reportForm)
-            .subscribe(resp => {
+            .subscribe((resp) => {
                 if (resp.count > 0) {
                     this.snackBarSrv.showSuccessMessage();
                 }
@@ -288,8 +301,10 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     private viewReport() {
         this.defReportSrv
             .viewReport(this.reportForm, this.selected)
-            .subscribe(res => {
-                const fileURL = URL.createObjectURL(new Blob([res], {type: 'application/pdf'}));
+            .subscribe((res) => {
+                const fileURL = URL.createObjectURL(
+                    new Blob([res], { type: 'application/pdf' }),
+                );
                 const w = window.open(fileURL, '_blank');
                 setTimeout(() => {
                     try {
@@ -302,7 +317,13 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     private emailReport() {
         this.defReportSrv
             .currentCompany()
-            .pipe(switchMap((comp: any) => this.defReportSrv.openEmailDlg(comp['email'], this.selectedRow['email'])),
+            .pipe(
+                switchMap((comp: any) =>
+                    this.defReportSrv.openEmailDlg(
+                        comp['email'],
+                        this.selectedRow['email'],
+                    ),
+                ),
                 switchMap((res: any) => {
                     if (res && res['from'] && res['to']) {
                         const pwd = res['password'] || '';
@@ -316,10 +337,13 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
                             res['to'],
                             pwd,
                             subject,
-                            message);
+                            message,
+                        );
                     }
                     return of([]);
-                })).subscribe(res => {
+                }),
+            )
+            .subscribe((res) => {
                 if (!res) {
                     this.snackBarSrv.showMessage('COMMON_EMAIL_SENT');
                 }
@@ -327,43 +351,41 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
     }
 
     public excel() {
-        this.entitySrv
-            .excel(this.filter)
-            .subscribe(blob => {
-                if (blob && blob.size > 100) {
-                    const link = document.createElement('a');
-                    link.href = window.URL.createObjectURL(blob);
-                    link.download = this.entitySrv.constructor.name + '.xlsx';
-                    link.click();
-                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
-                }
-            });
+        this.entitySrv.excel(this.filter).subscribe((blob) => {
+            if (blob && blob.size > 100) {
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = this.entitySrv.constructor.name + '.xlsx';
+                link.click();
+                setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+            }
+        });
     }
 
     public deleteSelected(): void {
-        this.confirmationSrv.confirmDelete()
-            .subscribe(b => {
-                if (b) {
-                    if (this.selected && this.selected > 0) {
-                        const a = this.data.filter(x => x.id === this.selected)[0];
-                        if (a && a.id) {
-                            this.shellSrv.setLoading(true);
-                            this.entitySrv.remove(a.id)
-                                .subscribe({
-                                    next: () => {
-                                        this.snackBarSrv.showSuccessMessage();
-                                        this.refresh();
-                                    },
-                                    error: err => {
-                                        this.snackBarSrv.showFailureMessage();
-                                        this.shellSrv.setLoading(false);
-                                        throw err;
-                                    }
-                                });
-                        }
+        this.confirmationSrv.confirmDelete().subscribe((b) => {
+            if (b) {
+                if (this.selected && this.selected > 0) {
+                    const a = this.data.filter(
+                        (x) => x.id === this.selected,
+                    )[0];
+                    if (a && a.id) {
+                        this.shellSrv.setLoading(true);
+                        this.entitySrv.remove(a.id).subscribe({
+                            next: () => {
+                                this.snackBarSrv.showSuccessMessage();
+                                this.refresh();
+                            },
+                            error: (err) => {
+                                this.snackBarSrv.showFailureMessage();
+                                this.shellSrv.setLoading(false);
+                                throw err;
+                            },
+                        });
                     }
                 }
-            });
+            }
+        });
     }
 
     sort(event: Sort) {
@@ -381,5 +403,14 @@ export class BaseEntityListComponent<T extends { id: number, email?: string }> i
 
     get formReport(): string {
         return this.reportForm;
+    }
+
+    get selected(): number {
+        return this.entitySrv.selectedId();
+    }
+
+    set selected(id: number) {
+        console.log('______________________________id', id);
+        this.entitySrv.selectedId.set(id);
     }
 }

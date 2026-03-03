@@ -1,12 +1,15 @@
-import {map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {HttpParams, HttpResponse} from '@angular/common/http';
 import {HttpService, isString, PaginationModel} from '@ss/common/api-common';
 import {Sort} from '@angular/material/sort';
+import { signal } from '@angular/core';
 
 export class BaseEntityService<T> {
     private _sortColumn: string = null;
     protected parentId: number;
+
+    selectedId = signal<number>(0);
 
     constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {}
 

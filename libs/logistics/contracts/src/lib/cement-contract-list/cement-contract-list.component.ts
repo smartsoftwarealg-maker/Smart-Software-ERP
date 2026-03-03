@@ -75,14 +75,14 @@ export class CementContractListComponent extends BaseEntityListComponent<Project
     private onCustomer(a: Agent) {
         const id = a?.id | 0;
         this.entitySrv.setParentId(id);
-        this.entitySrv.selectedId = id;
+        this.entitySrv.selectedId.set(id);
         this.refresh();
     }
 
     override ngOnInit() {
         super.ngOnInit();
-        this.agentId.setValue(this.entitySrv.selectedId);
-        this.entitySrv.setParentId(this.entitySrv.selectedId);
+        this.agentId.setValue(this.entitySrv.selectedId());
+        this.entitySrv.setParentId(this.entitySrv.selectedId());
         this.refresh();
     }
 }
