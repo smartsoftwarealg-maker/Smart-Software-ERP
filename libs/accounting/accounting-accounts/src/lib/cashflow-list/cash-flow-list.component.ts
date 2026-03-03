@@ -51,7 +51,6 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     #destroyRef = inject(DestroyRef);
     @ViewChild(CashFlowAccountListComponent) accountList: CashFlowAccountListComponent;
 
-    selectedId = 0;
     selectedCode = '';
     pendingData: PendingTreasury[] = [];
     infoData: TreasuryInfo = { total: 0, located: 0, nonLocated: 0 };
@@ -81,13 +80,13 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
         private cashFlowSrv: CashFlowAccountService,
         private loginSrv: LoginService) {
         super(entitySrv,
-              shellSrv,
-              snackBarSrv,
-              route,
-              router,
-              confirmationSrv,
-              defReportSrv,
-              pagPersistSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
             'ACC_CASH_FLOW');
         this.pagination.pageSize = 20;
     }
@@ -108,24 +107,24 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     }
 
     selectItem(annex: AnnexCode) {
-        this.selectedId = annex?.id;
+        this.selected = annex?.id;
         this.selectedCode = annex?.code;
     }
 
     refreshPending() {
-        this.shellSrv.setLoading(true)
+        this.shellSrv.setLoading(true);
         this.cashFlowSrv
             .info(!!this.consolidated.value)
             .pipe(tap(res => {
-                    this.infoData = res;
-                    this.totalDB.setValue(res.total > 0 ? res.total.toLocaleString() : 0.0);
-                    this.totalCR.setValue(res.total > 0 ? 0.0 : (-res.total).toLocaleString());
-                    this.locatedDB.setValue(res.located > 0? res.located.toLocaleString() : 0.0);
-                    this.locatedCR.setValue(res.located > 0? 0.0 : (-res.located).toLocaleString());
-                    this.nonLocatedDB.setValue(res.nonLocated > 0 ? res.nonLocated.toLocaleString() : 0);
-                    this.nonLocatedCR.setValue(res.nonLocated > 0 ? 0 : (-res.nonLocated).toLocaleString());
-                }),
-                switchMap(_ => this.cashFlowSrv.pending('', false, null)))
+                this.infoData = res;
+                this.totalDB.setValue(res.total > 0 ? res.total.toLocaleString() : 0.0);
+                this.totalCR.setValue(res.total > 0 ? 0.0 : (-res.total).toLocaleString());
+                this.locatedDB.setValue(res.located > 0? res.located.toLocaleString() : 0.0);
+                this.locatedCR.setValue(res.located > 0? 0.0 : (-res.located).toLocaleString());
+                this.nonLocatedDB.setValue(res.nonLocated > 0 ? res.nonLocated.toLocaleString() : 0);
+                this.nonLocatedCR.setValue(res.nonLocated > 0 ? 0 : (-res.nonLocated).toLocaleString());
+            }),
+            switchMap(() => this.cashFlowSrv.pending('', false, null)))
             .subscribe({
                 next: res => {
                     this.pendingData = res;
@@ -136,7 +135,7 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     }
 
     refreshPendingAccounts(event: Sort) {
-        this.shellSrv.setLoading(true)
+        this.shellSrv.setLoading(true);
         const order = event.active? (event.direction === 'desc' ? '-' : '') + event.active : null;
         this.cashFlowSrv
             .pending('', this.consolidated.value === true, order)
@@ -163,11 +162,11 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
                         this.accountList?.refresh();
                         this.snackBarSrv.showSuccessMessage();
                     }
-                })
+                });
         }
     }
 
     override refresh(callback?: () => void) {
-        super.refresh(() => this.filteredData = this.data);
+        super.refresh(callback || (() => this.filteredData = this.data));
     }
 }
