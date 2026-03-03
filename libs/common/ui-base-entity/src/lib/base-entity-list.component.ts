@@ -186,7 +186,7 @@ implements OnInit, OnDestroy {
      * put other http queries here, like lookups and other things, then tap & store the result manually.
      * returns null if nothing is needed
      */
-    public preload(): Observable<any> {
+    public preload(): Observable<T> {
         return of(null);
     }
 
