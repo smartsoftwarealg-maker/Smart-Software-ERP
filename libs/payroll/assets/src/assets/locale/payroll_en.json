@@ -243,5 +243,7 @@
     "TRN_SUBJECTS":          "Training subjects",
     "EDIT_TRN_SUBJECTS":     "Edit training subjects",
     "VACATION_TYPES":        "Vacation Types",
-    "EDIT_VACATION_TYPES":   "Edit Vacation Types"
+    "EDIT_VACATION_TYPES":   "Edit Vacation Types",
+    "TAX_PAYMENTS":          "Tax payments",
+    "TAX_PAYMENT":           "Tax payment"
 }

@@ -244,5 +244,7 @@
     "TRN_SUBJECTS":          "مواضيع التدريب",
     "EDIT_TRN_SUBJECTS":     "تحرير مواضيع التدريب",
     "VACATION_TYPES":        "أنواع العطلات",
-    "EDIT_VACATION_TYPES":   "تعديل أنواع العطلات"
+    "EDIT_VACATION_TYPES":   "تعديل أنواع العطلات",
+    "TAX_PAYMENTS":          "مدفوعات الضرائب",
+    "TAX_PAYMENT":           "دفع ضريبي"
 }

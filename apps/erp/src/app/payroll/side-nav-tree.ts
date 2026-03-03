@@ -19,6 +19,7 @@ import {
     ABS_LOANS_URL,
     ABS_MONTH_CANCELER_URL,
     ABS_MONTH_CLOSER_URL,
+    ABS_MONTH_LOCK_URL,
     ABS_MONTH_SELECTOR_URL,
     ABS_PAYROLL_DASHBOARD_URL,
     ABS_PAYROLL_EMPLOYEES_URL,
@@ -28,6 +29,7 @@ import {
     ABS_PAYROLL_OPTIONS_URL,
     ABS_PAYROLL_REPORT_PRIVILEGE_URL,
     ABS_PAYROLL_REPORT_RIGHT_URL,
+    ABS_PAYROLL_TAX_PAYMENT_URL,
     ABS_SALARY_GRID_UPDATE_URL,
     ABS_SALARY_GRID_URL,
     ABS_SPECIAL_PAYROLL_URL,
@@ -205,6 +207,12 @@ export const payrollNavTree: SideNavNode = {
             icon: 'fas fa-file-excel',
             route: ABS_PAYROLL_LOAN_INJECTION_URL,
             accessRights: 'Loan',
+        },
+        {
+            name: 'PAYROLL_TAX_PAYMENTS',
+            icon: 'fas fa-file-invoice-dollar',
+            route: ABS_PAYROLL_TAX_PAYMENT_URL,
+            accessRights: 'TaxPayment',
         },
         {
             name: 'COMMON_REPORT_RIGHTS',

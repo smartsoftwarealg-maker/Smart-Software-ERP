@@ -33,6 +33,7 @@ import {
     PAYROLL_EMPLOYEES_URL,
     PAYROLL_INACTIVE_EMPLOYEES_URL,
     PAYROLL_LOAN_INJECTION_URL,
+    PAYROLL_TAX_PAYMENT_URL,
 } from '../common';
 import {
     ABS_INDEX_URL,
@@ -126,8 +127,9 @@ import { PayrollOptionsComponent } from 'payroll/payroll-options';
 import { FundsListComponent, FundsDetailComponent } from '@ss/payroll/funds';
 import { IrgComponent } from '@ss/payroll/irg';
 import {LoanInjectionComponent} from '@ss/payroll/loan-injection';
-import {PayrollLock} from '@ss/payroll/payroll-lock';
 import { DepositDayComponent } from '@ss/payroll/deposit-day';
+import {PayrollLock} from "@ss/payroll/payroll-lock";
+import { TaxPaymentDetailComponent, TaxPaymentListComponent } from '@ss/payroll/ui-tax-payment';
 
 export const mainRoutes: Routes = [
     {
@@ -918,6 +920,24 @@ export const mainRoutes: Routes = [
         path: PAYROLL_LOAN_INJECTION_URL,
         component: LoanInjectionComponent,
         canActivate: [loginGuard],
+    },
+    {
+        path: PAYROLL_TAX_PAYMENT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TaxPaymentListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: TaxPaymentDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL },

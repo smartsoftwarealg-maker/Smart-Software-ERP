@@ -1,0 +1,39 @@
+<mat-card>
+    @if (form) {
+        <form novalidate [formGroup]="form">
+<!--            <mat-form-field class="default-50 sm-100">-->
+<!--                <mat-label translate>COMMON_PERIOD</mat-label>-->
+<!--                <input matInput formControlName="period" type="number" required autofocus>-->
+<!--            </mat-form-field>-->
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_DATE</mat-label>
+                <ss-date-picker formControlName="date"></ss-date-picker>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>REMUN_BASE</mat-label>
+                <input matInput formControlName="base" type="number" required autofocus>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>LOGISTICS_VF_GUARANTEE</mat-label>
+                <input matInput formControlName="vf" type="number" required autofocus>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>REMUN_IRG</mat-label>
+                <input matInput formControlName="irg" type="number" required autofocus>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>REMUN_FUND</mat-label>
+                <ss-auto-complete matInput
+                                  formControlName="fund"
+                                  [model]="fundModel">
+                </ss-auto-complete>
+            </mat-form-field>
+
+        </form>
+    }
+</mat-card>
