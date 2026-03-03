@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class SalesContractService extends BaseEntityService<Project> {
-    selectedId = 0;
 
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, PROJECT_URL, PROJECT_AGENT_URL);

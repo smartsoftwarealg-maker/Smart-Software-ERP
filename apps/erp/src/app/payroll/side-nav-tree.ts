@@ -138,7 +138,7 @@ export const payrollNavTree: SideNavNode = {
         },
         {
             name: 'REMUN_DEPOSIT_DAY',
-            icon: 'fa-solid fa-calendar-check',
+            icon: 'fa-solid fa-calendar-day',
             route: ABS_DEPOSIT_DATE_URL,
             accessRights: 'DepositDate',
         },
