@@ -23,7 +23,7 @@ import {
     AUTH_2FA_URL,
     LOGIN_URL, CENTER_SELECT_URL
 } from '@ss/common/api-common';
-import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
+import { ShellComponent } from '@ss/common/ui-shell';
 import { MainPageComponent } from '@ss/common/ui-main-page';
 import { EMPSPACE_APP_URL } from './app/common';
 import {

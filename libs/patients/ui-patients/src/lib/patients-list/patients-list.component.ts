@@ -55,7 +55,7 @@ export class PatientsListComponent extends BaseEntityListComponent<Patient> {
         this.agentTypes = data.reduce(
             (total: { [id: number]: string; }, currentValue) => {
                 total[currentValue.id] = currentValue.description;
-                return total
+                return total;
             }, {}
         );
     }

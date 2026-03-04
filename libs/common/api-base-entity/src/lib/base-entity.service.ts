@@ -10,6 +10,7 @@ export class BaseEntityService<T> {
     protected parentId: number;
 
     selectedId = signal<number>(0);
+    currentPage = 1;
 
     constructor(protected httpSrv: HttpService, protected url: string, protected parentUrl?: string) {}
 

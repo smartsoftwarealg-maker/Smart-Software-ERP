@@ -129,9 +129,9 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         protected dialog: MatDialog,
         public override title: string) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
-        this.agentLookup.onObjectSelected = e => this.onAgentSelected(e);
+        this.agentLookup.onObjectSelected = e => this.onAgentSelected(e, false);
         this.transporterLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
-        this.customerLookup.onObjectSelected = e => this.onAgentSelected(e);
+        this.customerLookup.onObjectSelected = e => this.onAgentSelected(e, false);
         this.salesProjectLookup.onObjectSelected = e => this.updateProjectStatus(e);
         this.purchaseProjectLookup.onObjectSelected = e => this.updateProjectStatus(e);
     }
@@ -324,9 +324,9 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                 }));
     }
 
-    get isManager() {
-        return this._isManager;
-    }
+    // get isManager() {
+    //     return this._isManager;
+    // }
 
     override ngOnInit() {
         super.ngOnInit();
@@ -369,10 +369,10 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.updateProjectLookups(e?.agent || 0);
         this.customerLookup
             .getById(e.agent||0)
-            .subscribe(a => this.onAgentSelected(a));
+            .subscribe(a => this.onAgentSelected(a, true));
     }
 
-    private onAgentSelected(l: Lookup) {
+    private onAgentSelected(l: Lookup, loading: boolean) {
         this.agentSrv
             .get(l?.id||0)
             .subscribe(agent => {
@@ -387,7 +387,9 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                     );
                 }
                 this.updateProjectLookups(agent?.id || 0);
-                this.form.controls['payMethod'].setValue(agent?.payMode||0);
+                if (!loading) {
+                    this.form.controls['payMethod'].setValue(agent?.payMode||0);
+                }
             });
     }
 

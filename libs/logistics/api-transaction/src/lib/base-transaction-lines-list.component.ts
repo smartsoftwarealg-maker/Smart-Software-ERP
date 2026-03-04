@@ -23,12 +23,11 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     protected optionSrv = inject(OptionService);
     protected loginSrv = inject(LoginService);
     protected subscription: Subscription = null;
-    readonly pagination = PaginationModel.newInstance();
-
+    readonly pagination = null;
     searchText = new FormControl<string>('');
     parentId: number;
     data: TransactionLine[];
-    selectedId: number;
+    // selectedId: number;
     selectedRow: TransactionLine = null;
     usesLots = signal(false);
     usesUnits = signal(false);
@@ -45,10 +44,19 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         public storeNamesSrv: LotsService,
         public confirmationSrv: ConfirmationDialogService,
     ) {
-        this.pagination.onChange = () =>
-            this.loadDetailLines().subscribe(() =>
-                this.shellSrv.setLoading(false),
-            );
+        this.pagination = PaginationModel.newInstance({
+            page: this.detailSrv.currentPage || 1,
+            pageSize: 5,
+            elementCount: 0,
+        });
+
+        this.pagination.onChange = () => {
+            this.detailSrv.currentPage = this.pagination.page;
+            this.loadDetailLines()
+                .subscribe(() =>
+                    this.shellSrv.setLoading(false),
+                );
+        };
     }
 
     ngOnInit() {
@@ -115,13 +123,14 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
 
     select(row: TransactionLine) {
         this.selectedRow = row;
-        this.selectedId = row ? row.id : 0;
+        this.detailSrv.selectedId.set(row ? row.id : 0);
     }
 
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete().subscribe((b) => {
-            if (b && this.selectedId && this.selectedId > 0) {
-                const a = this.data.filter((x) => x.id === this.selectedId)[0];
+            if (b && this.detailSrv.selectedId() > 0) {
+                const a = this.data.filter(
+                    (x) => x.id === this.detailSrv.selectedId())[0];
                 if (a && a.id) {
                     this.shellSrv.setLoading(true);
                     this.detailSrv
@@ -144,8 +153,8 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     }
 
     edit() {
-        if (this.selectedId) {
-            this.showDetail(this.selectedId);
+        if (this.detailSrv.selectedId()) {
+            this.showDetail(this.detailSrv.selectedId());
         }
     }
 
@@ -183,4 +192,9 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
             })
             .then();
     }
+
+    get selectedId() {
+        return this.detailSrv.selectedId();
+    }
+
 }

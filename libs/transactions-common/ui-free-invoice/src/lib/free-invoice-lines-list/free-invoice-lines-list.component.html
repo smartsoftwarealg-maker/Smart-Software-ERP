@@ -122,7 +122,7 @@
     </div>
 
     <div class="doc-info">
-        @if (selectedId) {
+        @if (this.detailSrv.selectedId()) {
             <ss-doc-info
                     [displayedGroups]="['article', 'document']"
                     [params]="{

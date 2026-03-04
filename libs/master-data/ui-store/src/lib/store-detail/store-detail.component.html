@@ -44,6 +44,6 @@
     }
   </mat-card-content>
 </mat-card>
-@if (selectedRow && selectedRow.id !== 0) {
+@if (selectedRow && selectedRow?.id !== 0) {
   <ss-article-store [article]="selectedRow"></ss-article-store>
 }
