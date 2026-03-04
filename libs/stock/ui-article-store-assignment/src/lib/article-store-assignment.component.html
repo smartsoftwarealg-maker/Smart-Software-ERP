@@ -44,6 +44,6 @@
 <div class="container b-b-background">
   <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
-@if (selectedRow && selectedRow.id !== 0) {
+@if (selectedRow && selectedRow?.id !== 0) {
   <ss-article-store class="container" [article]="selectedRow"></ss-article-store>
 }

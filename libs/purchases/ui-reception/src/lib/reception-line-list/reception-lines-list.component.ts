@@ -6,16 +6,11 @@ import { ArticleService } from '@ss/master-data/api-article';
 import { LotsService } from '@ss/common/api-lookup';
 import {
     BaseTransactionLinesListComponent,
-    DOC_PRODUCTION,
-    DOC_PRODUCTION_ORDER,
     DOC_RECEPTION,
-    DOC_SEPARATOR_200,
-    DOC_SEPARATOR_800,
-    TransactionLine,
 } from '@ss/logistics/api-transaction';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@ss/common/api-common';
-import { ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { ReceptionLinesService } from '../reception-lines.service';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';

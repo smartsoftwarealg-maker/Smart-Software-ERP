@@ -1,4 +1,4 @@
-import {HttpService, isString} from '@ss/common/api-common';
+import {HttpService} from '@ss/common/api-common';
 import {Observable, of} from 'rxjs';
 import {BaseEntityService} from './base-entity.service';
 import {HttpParams} from '@angular/common/http';

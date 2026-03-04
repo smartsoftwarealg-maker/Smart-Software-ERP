@@ -410,7 +410,6 @@ implements OnInit, OnDestroy {
     }
 
     set selected(id: number) {
-        console.log('______________________________id', id);
         this.entitySrv.selectedId.set(id);
     }
 }
