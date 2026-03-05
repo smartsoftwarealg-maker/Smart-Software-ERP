@@ -19,6 +19,7 @@ import {
     ActiveAgentService,
     ActiveConsumerService,
     ActiveCustomerService,
+    ActiveSupplierAndTransportersService,
     ActiveSupplierService,
     ActiveTransporterService,
     ActiveUnitService,
@@ -43,11 +44,14 @@ import { UserListService } from '@ss/common/api-users';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
-import { Project, PurchaseContractService, SalesContractService } from '@ss/logistics/contracts';
+import { Project, PurchaseContractService, SalesContractService, TransportContractService } from '@ss/logistics/contracts';
 import { OptionService } from '@ss/logistics/ui-options';
 
 @Directive()
-export abstract class BaseTransactionDetailComponent extends BaseEntityDetailComponent<Transaction> implements OnInit {
+export abstract class BaseTransactionDetailComponent
+    extends BaseEntityDetailComponent<Transaction>
+    implements OnInit
+{
     #deliveryTimeSrv = inject(DeliveryTimeService);
     #shipmentModeSrv = inject(ShipmentModeService);
 
@@ -66,6 +70,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     private activeCustomerSrv = inject(ActiveCustomerService);
     private activeSupplierSrv = inject(ActiveSupplierService);
     private activeTransporterSrv = inject(ActiveTransporterService);
+    private activeSupplierAndTransporterSrv = inject(ActiveSupplierAndTransportersService);
     private activeUnitSrv = inject(ActiveUnitService);
     private activeConsumerSrv = inject(ActiveConsumerService);
     private activeAgentSrv = inject(ActiveAgentService);
@@ -73,13 +78,16 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
     protected transaction: Transaction = null;
     protected currencySrv = inject(CurrencyService);
     protected purchaseProjectSrv = inject(PurchaseContractService);
+    protected transportProjectSrv = inject(TransportContractService);
     protected salesProjectSrv = inject(SalesContractService);
-    protected deliveryTimeLookup = new DefaultAutoCompleteModel(this.#deliveryTimeSrv);
-    protected shipmentModeLookup = new DefaultAutoCompleteModel(this.#shipmentModeSrv);
-
+    protected deliveryTimeLookup = new DefaultAutoCompleteModel(
+        this.#deliveryTimeSrv,
+    );
+    protected shipmentModeLookup = new DefaultAutoCompleteModel(
+        this.#shipmentModeSrv,
+    );
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
-
 
     private sendBtn: ToolbarButton = {
         disabled: false,
@@ -87,7 +95,7 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'LOGISTICS_SEND_MESSAGE',
         visible: true,
-        click: () => this.sendMessage()
+        click: () => this.sendMessage(),
     };
 
     protected importBtn: ToolbarButton = {
@@ -96,22 +104,38 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
-        click: () => this.importDocument()
+        click: () => this.importDocument(),
     };
     protected lookupsSrv = inject(LookupsService);
     protected isProjectRequired = signal(false);
 
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
+    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(
+        this.payMethodSrv,
+    );
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(
+        this.usersSrv,
+    );
     public agentLookup = new DefaultAutoCompleteModel<Lookup>(this.activeAgentSrv);
     public purchaseProjectLookup = new ProjectLookupModel(this.purchaseProjectSrv);
+    public transportProjectLookup = new ProjectLookupModel(this.transportProjectSrv);
     public salesProjectLookup = new ProjectLookupModel(this.salesProjectSrv);
     public currencyLookup = new ForeignCurrencyModel(this.currencySrv);
-    public customerLookup = new DefaultAutoCompleteModel<Lookup>(this.activeCustomerSrv);
-    public supplierLookup = new DefaultAutoCompleteModel<Lookup>(this.activeSupplierSrv);
-    public transporterLookup = new DefaultAutoCompleteModel<Lookup>(this.activeTransporterSrv);
-    public consumerLookup = new DefaultAutoCompleteModel<Lookup>(this.activeConsumerSrv);
-    public branchLookup = new DefaultAutoCompleteModel<Lookup>(this.activeUnitSrv);
+    public customerLookup = new DefaultAutoCompleteModel<Lookup>(
+        this.activeCustomerSrv,
+    );
+    public supplierLookup = new DefaultAutoCompleteModel<Lookup>(
+        this.activeSupplierSrv,
+    );
+    public supplierandTransporterLookup = new DefaultAutoCompleteModel(this.activeSupplierAndTransporterSrv);
+    public transporterLookup = new DefaultAutoCompleteModel<Lookup>(
+        this.activeTransporterSrv,
+    );
+    public consumerLookup = new DefaultAutoCompleteModel<Lookup>(
+        this.activeConsumerSrv,
+    );
+    public branchLookup = new DefaultAutoCompleteModel<Lookup>(
+        this.activeUnitSrv,
+    );
     public executionRef = 0;
     public formId = 0;
     public groups: CCGroup[];
@@ -127,19 +151,35 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         public override confirmationSrv: ConfirmationDialogService,
         protected loginSrv: LoginService,
         protected dialog: MatDialog,
-        public override title: string) {
-        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, title);
-        this.agentLookup.onObjectSelected = e => this.onAgentSelected(e, false);
-        this.transporterLookup.onObjectSelected = e => this.updateProjectLookups(e?.id || 0);
-        this.customerLookup.onObjectSelected = e => this.onAgentSelected(e, false);
-        this.salesProjectLookup.onObjectSelected = e => this.updateProjectStatus(e);
-        this.purchaseProjectLookup.onObjectSelected = e => this.updateProjectStatus(e);
+        public override title: string,
+    ) {
+        super(
+            entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            formBuilder,
+            confirmationSrv,
+            title,
+        );
+        this.agentLookup.onObjectSelected = (e) =>
+            this.onAgentSelected(e, false);
+        this.transporterLookup.onObjectSelected = (e) =>
+            this.updateProjectLookups(e?.id || 0);
+        this.customerLookup.onObjectSelected = (e) =>
+            this.onAgentSelected(e, false);
+        this.salesProjectLookup.onObjectSelected = (e) =>
+            this.updateProjectStatus(e);
+        this.purchaseProjectLookup.onObjectSelected = (e) =>
+            this.updateProjectStatus(e);
+        this.transportProjectLookup.onObjectSelected = (e) =>
+            this.updateProjectStatus(e);
     }
 
     private updateProjectStatus(p: Project) {
         const blocked = p?.isBlocked;
         if (blocked) {
-            this.form.controls['project'].setErrors({'blocked': true});
+            this.form.controls['project'].setErrors({ blocked: true });
         } else {
             this.form.controls['project'].setErrors(null);
         }
@@ -147,38 +187,51 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     private updateProjectLookups(id: number) {
         const docValue = this.form.controls['document'].value;
-        if (docValue === this.CONSUMPTION_DOCUMENT || docValue === this.PURCHASE_REQUEST)  {
+        if (
+            docValue === this.CONSUMPTION_DOCUMENT ||
+            docValue === this.PURCHASE_REQUEST
+        ) {
             id = 0;
         }
         this.purchaseProjectSrv.setParentId(id);
+        this.transportProjectSrv.setParentId(id);
         this.salesProjectSrv.setParentId(id);
         if (id) {
             this.salesProjectLookup.filter('').subscribe();
             this.purchaseProjectLookup.filter('').subscribe();
+            this.transportProjectLookup.filter('').subscribe();
         }
     }
 
     public override canDeactivate(): Observable<boolean> {
-        return !this.isEditable ?
-            of(true) :
-            this.form?.dirty?
-                this.confirmationSrv.confirmDontSave() :
-                this.entitySrv
-                    .get(this.id)
-                    .pipe(
-                        map(res => {
-                            if (res) {
-                                res.dirty = res?.dirty && res?.document >= 200 && res?.document <= 800;
-                                if (res?.dirty) {
-                                    this.form.markAsDirty({onlySelf: false});
-                                    this.form.markAsTouched({onlySelf: false});
-                                    this.form.markAsUntouched({onlySelf: false});
-                                    this.snackBarSrv.showFailureMessage('COMMON_SAVE_REQUIRED');
-                                }
+        return !this.isEditable
+            ? of(true)
+            : this.form?.dirty
+                ? this.confirmationSrv.confirmDontSave()
+                : this.entitySrv.get(this.id).pipe(
+                    map((res) => {
+                        if (res) {
+                            res.dirty =
+                                res?.dirty &&
+                                res?.document >= 200 &&
+                                res?.document <= 800;
+                            if (res?.dirty) {
+                                this.form.markAsDirty({ onlySelf: false });
+                                this.form.markAsTouched({ onlySelf: false });
+                                this.form.markAsUntouched({ onlySelf: false });
+                                this.snackBarSrv.showFailureMessage(
+                                    'COMMON_SAVE_REQUIRED',
+                                );
                             }
-                            return res?.dirty === true;
-                        }),
-                        switchMap(dirty => dirty ?  this.confirmationSrv.confirmDontSave() : of(true)));
+                        }
+                        return res?.dirty === true;
+                    }),
+                    switchMap((dirty) =>
+                        dirty
+                            ? this.confirmationSrv.confirmDontSave()
+                            : of(true),
+                    ),
+                );
     }
 
     protected abstract showImportButton(): boolean;
@@ -199,11 +252,11 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                     transacId: id,
                     senderId: this.loginSrv.appCtx.id,
                     validated: this.transaction.isValidated,
-                    documentId: this.form.controls['document'].value
-                }
+                    documentId: this.form.controls['document'].value,
+                },
             });
 
-            dialogRef.afterClosed().subscribe(result => {
+            dialogRef.afterClosed().subscribe((result) => {
                 if (result && result['message']) {
                     this.snackBarSrv.showSuccessMessage();
                 } else {
@@ -220,11 +273,15 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                 width: '80%',
                 height: '80%',
                 maxWidth: '800px',
-                data: { documentList: this.importedDocuments(), agentId: agentId, destination: this.form.controls['document'].value },
-                disableClose: true
+                data: {
+                    documentList: this.importedDocuments(),
+                    agentId: agentId,
+                    destination: this.form.controls['document'].value,
+                },
+                disableClose: true,
             });
 
-            dialogRef.afterClosed().subscribe(result => {
+            dialogRef.afterClosed().subscribe((result) => {
                 if (result && result['document'] && result['number']) {
                     const document = result['document'];
                     const number = result['number'];
@@ -232,20 +289,26 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
                         .importDoc(document, number, this.transaction.id)
                         .pipe(
                             switchMap(() => this.loadEntity(this.queryId)),
-                            tap(ent => this.form = this.setupForm(ent)),
+                            tap((ent) => (this.form = this.setupForm(ent))),
                             switchMap(() =>
-                                this.outlet?.component instanceof BaseTransactionLinesListComponent ?
-                                    this.outlet?.component.loadDetailLines() :
-                                    of(0)))
+                                this.outlet?.component instanceof
+                                BaseTransactionLinesListComponent
+                                    ? this.outlet?.component.loadDetailLines()
+                                    : of(0),
+                            ),
+                        )
                         .subscribe({
                             next: () => {
                                 this.executionRef++;
                                 this.snackBarSrv.showMessage('COMMON_SUCCESS');
                             },
-                            error: err => {
-                                this.snackBarSrv.showMessage('COMMON_FAILURE', false);
+                            error: (err) => {
+                                this.snackBarSrv.showMessage(
+                                    'COMMON_FAILURE',
+                                    false,
+                                );
                                 throw err;
-                            }
+                            },
                         });
                 }
             });
@@ -269,59 +332,71 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         this.isEditable = this.isEditable && !b.isValidated;
         this.saveButton.visible = this.saveButton.visible && !b.isValidated;
         this.importBtn.visible = b.id > 0 && !b.isValidated;
-        this.importBtn.disabled = (this.requireAgentToImportDocument() && (b.agent === null || b.agent === undefined))|| b.id === 0;
+        this.importBtn.disabled =
+            (this.requireAgentToImportDocument() &&
+                (b.agent === null || b.agent === undefined)) ||
+            b.id === 0;
         this.detailSrv.editable = this.isEditable;
         this.transaction = b;
         return this.formBuilder.group({
-            id:                  [b.id],
-            document:            [b.document || 0],
-            centerId:            [this.loginSrv.appCtx.center],
-            date:                [b.date || new Date(), Validators.required],
-            number:              [b.number || 0],
-            reference:           [b.reference],
-            referenceDocDate:    [b.referenceDocDate],
-            payMethod:           [b.payMethod],
-            header:              [b.header],
-            footer:              [b.footer],
-            currency:            [b.currency || this.optionSrv.options?.defaultCurrency||0],
-            currencyRate:        [b.currencyRate || 1],
+            id: [b.id],
+            document: [b.document || 0],
+            centerId: [this.loginSrv.appCtx.center],
+            date: [b.date || new Date(), Validators.required],
+            number: [b.number || 0],
+            reference: [b.reference],
+            referenceDocDate: [b.referenceDocDate],
+            payMethod: [b.payMethod],
+            header: [b.header],
+            footer: [b.footer],
+            currency: [
+                b.currency || this.optionSrv.options?.defaultCurrency || 0,
+            ],
+            currencyRate: [b.currencyRate || 1],
             discountDescription: [b.discountDescription],
-            fixedDiscount:       [b.fixedDiscount || 0.0],
-            discount:            [b.discount || 0.0],
-            fixedDiscountVAT:    [b.fixedDiscountVAT || 0.0],
-            dealer:              [{ value: b.dealer || this.loginSrv.appCtx.id, disabled: !this._isManager }, Validators.required],
-            agent:               [b.agent, this.requireAgent() ? Validators.required : null],
-            altAgent:            [b.altAgent],
-            project:             [b.project],
-            locked:              [!!b.locked, Validators.required],
-            dirty:               [!!b.dirty, Validators.required],
-            driver:              [b.driver],
-            transporter:         [b.transporter],
-            license:             [b.license],
-            licenseDate:         [b.licenseDate],
-            licenseIssuer:       [b.licenseIssuer],
-            plateNumber:         [b.plateNumber],
-            plateNumber2:        [b.plateNumber2],
-            deliveryTime:        [b.deliveryTime],
-            vfGuarantee:         [b.vfGuarantee],
-            ftGuarantee:         [b.ftGuarantee],
-            advancement:         [b.advancement],
-            advancementFT:       [b.advancementFT],
-            receptionType:       [b.receptionType||1],
-            isValidated:         [b.isValidated],
-            shipMode:            [b.shipMode],
-            advancementAmount:   [b.advancementAmount],
+            fixedDiscount: [b.fixedDiscount || 0.0],
+            discount: [b.discount || 0.0],
+            fixedDiscountVAT: [b.fixedDiscountVAT || 0.0],
+            dealer: [
+                {
+                    value: b.dealer || this.loginSrv.appCtx.id,
+                    disabled: !this._isManager,
+                },
+                Validators.required,
+            ],
+            agent: [b.agent, this.requireAgent() ? Validators.required : null],
+            altAgent: [b.altAgent],
+            project: [b.project],
+            locked: [!!b.locked, Validators.required],
+            dirty: [!!b.dirty, Validators.required],
+            driver: [b.driver],
+            transporter: [b.transporter],
+            license: [b.license],
+            licenseDate: [b.licenseDate],
+            licenseIssuer: [b.licenseIssuer],
+            plateNumber: [b.plateNumber],
+            plateNumber2: [b.plateNumber2],
+            deliveryTime: [b.deliveryTime],
+            vfGuarantee: [b.vfGuarantee],
+            ftGuarantee: [b.ftGuarantee],
+            advancement: [b.advancement],
+            advancementFT: [b.advancementFT],
+            receptionType: [b.receptionType || 1],
+            isValidated: [b.isValidated],
+            shipMode: [b.shipMode],
+            advancementAmount: [b.advancementAmount],
         });
     }
 
     preload(): Observable<any> {
-        return this.lookupsSrv.getCCGroups()
-            .pipe(tap(x => this.groups = x),
-                switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
-                tap(res => {
-                    this.optionSrv.options = res;
-                    this.currencyLookup.localCurrency = res.defaultCurrency;
-                }));
+        return this.lookupsSrv.getCCGroups().pipe(
+            tap((x) => (this.groups = x)),
+            switchMap(() => this.optionSrv.get(this.loginSrv.appCtx.center)),
+            tap((res) => {
+                this.optionSrv.options = res;
+                this.currencyLookup.localCurrency = res.defaultCurrency;
+            }),
+        );
     }
 
     // get isManager() {
@@ -330,13 +405,17 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
 
     override ngOnInit() {
         super.ngOnInit();
-        const sub = this.router.events.pipe(
-            filter((e: object): e is RouterEvent => e instanceof RouterEvent)
-        ).subscribe((e: RouterEvent) => {
-            if (e instanceof NavigationEnd) {
-                this.disableControls(e.url);
-            }
-        });
+        const sub = this.router.events
+            .pipe(
+                filter(
+                    (e: object): e is RouterEvent => e instanceof RouterEvent,
+                ),
+            )
+            .subscribe((e: RouterEvent) => {
+                if (e instanceof NavigationEnd) {
+                    this.disableControls(e.url);
+                }
+            });
         this.subscriptions.push(sub);
         this.disableControls(this.router.url);
         this.shellSrv.addButton(this.sendBtn);
@@ -360,7 +439,9 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         if (this.form.controls['id'].value > 0) {
             super.goBack();
         } else {
-            this.router.navigate(['..', this.queryId], { relativeTo: this.route }).then(() => this.saveButton.disabled = false);
+            this.router
+                .navigate(['..', this.queryId], { relativeTo: this.route })
+                .then(() => (this.saveButton.disabled = false));
         }
     }
 
@@ -368,31 +449,28 @@ export abstract class BaseTransactionDetailComponent extends BaseEntityDetailCom
         super.finishLoading(e);
         this.updateProjectLookups(e?.agent || 0);
         this.customerLookup
-            .getById(e.agent||0)
-            .subscribe(a => this.onAgentSelected(a, true));
+            .getById(e.agent || 0)
+            .subscribe((a) => this.onAgentSelected(a, true));
     }
 
     private onAgentSelected(l: Lookup, loading: boolean) {
-        this.agentSrv
-            .get(l?.id||0)
-            .subscribe(agent => {
-                this.isProjectRequired.set(agent?.projectRequired);
-                if (agent?.projectRequired === true) {
-                    this.form.controls['project'].setValidators(
-                        Validators.required,
-                    );
-                } else {
-                    this.form.controls['project'].removeValidators(
-                        Validators.required,
-                    );
-                }
-                this.updateProjectLookups(agent?.id || 0);
-                if (!loading) {
-                    this.form.controls['payMethod'].setValue(agent?.payMode||0);
-                }
-            });
+        this.agentSrv.get(l?.id || 0).subscribe((agent) => {
+            this.isProjectRequired.set(agent?.projectRequired);
+            if (agent?.projectRequired === true) {
+                this.form.controls['project'].setValidators(
+                    Validators.required,
+                );
+            } else {
+                this.form.controls['project'].removeValidators(
+                    Validators.required,
+                );
+            }
+            this.updateProjectLookups(agent?.id || 0);
+            if (!loading) {
+                this.form.controls['payMethod'].setValue(agent?.payMode || 0);
+            }
+        });
     }
-
 }
 
 class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {
@@ -414,7 +492,7 @@ class ForeignCurrencyModel extends DefaultAutoCompleteModel<Currency> {
     filterLoadedData: (x: Currency[]) => Currency[] =
         (x: Currency[]) => x && x.filter(x => x.id !== this.#_localCurrency && !!x.description);
 
-// toString = (x: Currency) => x ? `${x.code} - ${x.description}` : null;
+    // toString = (x: Currency) => x ? `${x.code} - ${x.description}` : null;
 
     get localCurrency() {
         return this.#_localCurrency;

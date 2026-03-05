@@ -79,6 +79,5 @@ export * from './lib/trn-subjects.service';
 export * from './lib/holiday-type.service';
 export * from './lib/region.service';
 export * from './lib/shipment-mode.service';
-
-export class LookupService {
-}
+export * from './lib/active-supplier-and-transporters.service';
+export class LookupService {}
