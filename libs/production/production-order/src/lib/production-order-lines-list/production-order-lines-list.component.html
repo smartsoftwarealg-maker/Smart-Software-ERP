@@ -26,7 +26,7 @@
                         <span class="fas fa-trash-alt"></span>
                     </button>
                 }
-                @if (selectedId && selectedRow.qtySatisfied < selectedRow.qtyOrdered) {
+                @if (selectedId && selectedRow?.qtySatisfied < selectedRow?.qtyOrdered) {
 
                     <button mat-mini-fab (click)="reserve()" [matTooltip]="'PROD_RESERVE' | translate"
                             color="warn">

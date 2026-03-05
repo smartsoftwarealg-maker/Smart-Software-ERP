@@ -6,7 +6,7 @@
                     <mat-label translate>COMMON_SEARCH</mat-label>
                     <input matInput [formControl]="searchText" type="text">
                 </mat-form-field>
-                @if (selectedId && selectedRow.qtySatisfied < 0.1) {
+                @if (selectedId && selectedRow?.qtySatisfied < 0.1) {
                     <button mat-mini-fab (click)="transfer()" [matTooltip]="'PROD_TRANSFER' | translate"
                             color="warn">
                         <span class="fas fa-exchange-alt"></span>
