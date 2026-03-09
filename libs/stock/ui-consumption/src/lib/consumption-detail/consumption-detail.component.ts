@@ -2,15 +2,14 @@ import { Component } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CCGroup, Lookup } from '@ss/common/api-lookup';
+import { Lookup } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ConsumptionService } from '@ss/stock/api-consumption';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {
     BaseTransactionDetailComponent,
-    DOC_RESERVATION
+    DOC_PART_REQUEST,
+    DOC_RESERVATION,
 } from '@ss/logistics/api-transaction';
 import { MatDialog } from '@angular/material/dialog';
 import { ConsumptionLinesService } from '@ss/stock/api-consumption-lines';
@@ -59,7 +58,10 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
 
 
     protected importedDocuments(): Lookup[] {
-        return [{ id: DOC_RESERVATION, description: 'LOGISTICS_RESERVATION'}];
+        return [
+            { id: DOC_RESERVATION, description: 'LOGISTICS_RESERVATION' },
+            { id: DOC_PART_REQUEST, description: 'STOCK_PARTS_REQUEST' },
+        ];
     }
 
     protected requireAgent(): boolean {

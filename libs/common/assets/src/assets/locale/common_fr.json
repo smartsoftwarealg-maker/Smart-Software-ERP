@@ -274,7 +274,7 @@
     "TRANSACTIONS":         "Ecritures",
     "CHECKNO":              "Numéro de chèque",
     "JOURNALS":             "Journaux",
-    "AGENTS":               "Agents",
+    "AGENTS":               "Tiers",
     "EDIT_AGENT":           "Modifier l'agent",
     "COST_CENTER":          "Centre de coûts",
     "ADDRESS":                    "Adresse",
