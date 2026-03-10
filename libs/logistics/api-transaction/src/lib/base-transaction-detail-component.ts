@@ -126,7 +126,7 @@ export abstract class BaseTransactionDetailComponent
     public supplierLookup = new DefaultAutoCompleteModel<Lookup>(
         this.activeSupplierSrv,
     );
-    public supplierandTransporterLookup = new DefaultAutoCompleteModel(this.activeSupplierAndTransporterSrv);
+    public supplierAndTransporterLookup = new DefaultAutoCompleteModel(this.activeSupplierAndTransporterSrv);
     public transporterLookup = new DefaultAutoCompleteModel<Lookup>(
         this.activeTransporterSrv,
     );

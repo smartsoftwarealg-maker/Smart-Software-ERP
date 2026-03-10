@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
-import { CCGroup, Lookup } from '@ss/common/api-lookup';
+import { Lookup } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { PartsRequestService } from '../services/parts-request.service';
 import { PartsRequestLineService } from '../services/parts-request-line.service';
 
