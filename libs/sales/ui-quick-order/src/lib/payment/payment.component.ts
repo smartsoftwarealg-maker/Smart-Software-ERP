@@ -104,7 +104,7 @@ export class PaymentComponent {
             id: [p.id],
             center: [p.center || this.#loginSrv.appCtx.center],
             number: [p.number || '0'],
-            bankId: [p.bankId||0],
+            checkBank: [p.checkBank||0],
             bank: [p.bank],
             description: [p.description, Validators.required],
             date: [p.date || new Date(), Validators.required],
