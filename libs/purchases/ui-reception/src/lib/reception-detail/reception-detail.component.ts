@@ -31,13 +31,13 @@ import { Observable, of, switchMap, tap } from 'rxjs';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    DatePickerComponent,
-    RouterOutlet,
-    UiAutoCompleteComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        DatePickerComponent,
+        RouterOutlet,
+        UiAutoCompleteComponent
+    ]
 })
 export class ReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private isSrv = inject(IsParamService);
