@@ -2,14 +2,6 @@
     <mat-card-content>
         @if (form !== null) {
             <form novalidate [formGroup]="form">
-                <mat-form-field class="default-50">
-                    <mat-label translate>COMMON_BANK</mat-label>
-                    <ss-auto-complete matInput
-                                      [required]="false"
-                                      [model]="bankAutoCompleteModel"
-                                      formControlName="bankId">
-                    </ss-auto-complete>
-                </mat-form-field>
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_DATE</mat-label>
                     <ss-date-picker formControlName="date"></ss-date-picker>
