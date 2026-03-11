@@ -128,7 +128,7 @@ import { FundsListComponent, FundsDetailComponent } from '@ss/payroll/funds';
 import { IrgComponent } from '@ss/payroll/irg';
 import {LoanInjectionComponent} from '@ss/payroll/loan-injection';
 import { DepositDayComponent } from '@ss/payroll/deposit-day';
-import {PayrollLock} from "@ss/payroll/payroll-lock";
+import {PayrollLock} from '@ss/payroll/payroll-lock';
 import { TaxPaymentDetailComponent, TaxPaymentListComponent } from '@ss/payroll/ui-tax-payment';
 
 export const mainRoutes: Routes = [
