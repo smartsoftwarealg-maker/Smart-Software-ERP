@@ -164,6 +164,14 @@ export abstract class BaseTransactionDetailComponent
         );
         this.agentLookup.onObjectSelected = (e) =>
             this.onAgentSelected(e, false);
+        this.supplierLookup.onObjectSelected = (e) =>
+            this.onAgentSelected(e, false);
+        this.customerLookup.onObjectSelected = (e) =>
+            this.onAgentSelected(e, false);
+        this.transporterLookup.onObjectSelected = (e) =>
+            this.onAgentSelected(e, false);
+        this.supplierAndTransporterLookup.onObjectSelected = (e) =>
+            this.onAgentSelected(e, false);
         this.transporterLookup.onObjectSelected = (e) =>
             this.updateProjectLookups(e?.id || 0);
         this.customerLookup.onObjectSelected = (e) =>

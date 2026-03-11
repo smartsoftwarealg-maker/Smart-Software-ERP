@@ -8,7 +8,7 @@ import {
     AppArchiveViewerComponent, AppGenericArchiveComponent,
 } from '@ss/common/app-archive';
 import { AA_GENERIC, AA_RIGHTS, AA_VIEWER } from '../common';
-import {loginGuard} from "../erp-guards";
+import {loginGuard} from '../erp-guards';
 
 export const viewerRoutes: Routes = [
     {

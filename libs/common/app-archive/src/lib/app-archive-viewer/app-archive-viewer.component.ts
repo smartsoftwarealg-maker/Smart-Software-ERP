@@ -21,13 +21,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./app-archive-viewer.component.scss'],
     standalone: true,
     imports: [
-    RouterModule,
-    MaterialModule,
-    TranslateDirective,
-    TranslatePipe,
-    ReactiveFormsModule,
-    DatePickerComponent
-]
+        RouterModule,
+        MaterialModule,
+        TranslateDirective,
+        TranslatePipe,
+        ReactiveFormsModule,
+        DatePickerComponent
+    ]
 })
 export class AppArchiveViewerComponent implements OnInit {
     private loginSrv = inject(LoginService);

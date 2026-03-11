@@ -15,10 +15,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     styleUrls: ['./archive-viewer.component.css'],
     standalone: true,
     imports: [
-    MaterialModule,
-    ReactiveFormsModule,
-    RouterModule
-]
+        MaterialModule,
+        ReactiveFormsModule,
+        RouterModule
+    ]
 })
 export class ArchiveViewerComponent implements OnInit {
     private router  = inject(Router);

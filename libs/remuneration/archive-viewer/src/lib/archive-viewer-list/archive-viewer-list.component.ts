@@ -297,7 +297,7 @@ export class ArchiveViewerListComponent extends BaseEntityListComponent<PAYArchi
             periods.push(from);
             from++;
             if (from % 100 > 12) {
-                from = +(from / 100).toFixed(0) + 101;
+                from = +(from / 100).toFixed(0) * 100 + 101;
             }
         }
 
