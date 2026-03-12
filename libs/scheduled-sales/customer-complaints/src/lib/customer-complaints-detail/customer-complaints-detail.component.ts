@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
     ReactiveFormsModule,
     UntypedFormBuilder,
@@ -29,6 +29,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { Lookup } from '@ss/common/api-lookup';
 import { Agent, AgentService } from '@ss/logistics/api-agent';
 import { ImageModel } from '@ss/common/ui-image-input';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-customer-complaints-detail',
@@ -57,10 +58,12 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
     private complaintTypeSrv = inject(ComplaintTypeService);
 
     protected loginSrv = inject(LoginService);
+    protected router = inject(Router);
 
     public imageModel: ImageModel;
     public fileName = '';
     public uploadUtil: ImageUploaderUtil = new ImageUploaderUtil();
+    public isImageExist = signal(false)
 
     complaintLookup = new DefaultAutoCompleteModel(this.complaintTypeSrv);
     public agentLookup = new DefaultAutoCompleteModel<Agent>(
@@ -93,6 +96,7 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
 
     public override setupForm(b: CustomerComplaint) {
         // Make sure to update the template if you edit the configuration here
+        this.isImageExist.set(b.image?.length > 10 );
         const img: Blob = new Blob([new Uint8Array(b.image)], {
             type: 'image',
         });
@@ -157,6 +161,7 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
                 complete: () => {
                     this.snackBarSrv.showSuccessMessage();
                     this.uploadUtil.imgSrc = null;
+                    this.isImageExist.set(false);
                 }
             });
     }
@@ -182,11 +187,62 @@ export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent
             complete: () => {
                 this.shellSrv.setLoading(false);
                 this.snackBarSrv.showSuccessMessage();
+                this.isImageExist.set(true);
             },
               error: (e) => {
                   this.shellSrv.setLoading(false);
                   throw e;
               }
+        });
+    }
+
+    public override save() {
+        this.form.markAllAsTouched();
+        if (!this.isValidForm()) {
+            this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
+            return;
+        }
+        if (this.saveButton.disabled) {
+            return;
+        }
+        this.saveButton.disabled = true;
+        const val = this.readForm();
+        this.shellSrv.setLoading(true);
+        const obs = val.id === 0 ?
+            this.entitySrv.add2(val).pipe(tap(i => {
+                    if (!val.id) {
+                        this.queryId = i;
+                        val.id = i;
+                    }
+                })) :
+            this.entitySrv.update(val)
+                .pipe(tap(i => {
+                        if (!val.id) {
+                            this.queryId = i;
+                            val.id = i;
+                        }
+                    }),
+                    switchMap(() => this.uploadAttachments(val.id)));
+
+        obs.subscribe({
+            next: () => {
+                this.shellSrv.setLoading(false);
+                if(this.route.snapshot.params['id'] == 0){
+                     this.router.navigate([this.queryId], {relativeTo: this.route.parent}).then();
+                } else {
+                    this.goBack();
+                }
+                this.form.markAsUntouched();
+                this.form.markAsPristine();
+                this.form.markAsUntouched({onlySelf: false});
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: err => {
+                this.snackBarSrv.showFailureMessage();
+                this.shellSrv.setLoading(false);
+                this.saveButton.disabled = false;
+                throw err;
+            }
         });
     }
 
