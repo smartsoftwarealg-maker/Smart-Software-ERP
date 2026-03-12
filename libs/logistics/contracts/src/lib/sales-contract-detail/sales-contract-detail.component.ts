@@ -65,7 +65,9 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
         public override confirmationSrv: ConfirmationDialogService,
         public lookupsSrv: LookupsService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'COMMON_SALES_PROJECTS');
-        this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
+        if (!this.entitySrv.getParentId()) {
+            this.entitySrv.setParentId(0);
+        }
         this.customerLookupModel.onObjectSelected = a => this.onAgent(a);
         // this.articleLookup.onObjectSelected = (a) => this.onArticle(a);
     }
