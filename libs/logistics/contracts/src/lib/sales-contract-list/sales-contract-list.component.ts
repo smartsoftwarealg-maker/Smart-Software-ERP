@@ -81,8 +81,8 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
 
     override ngOnInit() {
         super.ngOnInit();
-        this.agentId.setValue(this.entitySrv.selectedId());
-        this.entitySrv.setParentId(this.entitySrv.selectedId());
+        // this.agentId.setValue(this.entitySrv.selectedId());
+        // this.entitySrv.setParentId(this.entitySrv.selectedId());
         this.refresh();
     }
 }
