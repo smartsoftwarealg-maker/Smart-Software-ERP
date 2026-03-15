@@ -89,6 +89,77 @@
                         <mat-option [value]="2" translate>COMMON_DELIVERY</mat-option>
                     </mat-select>
                 </mat-form-field>
+
+                <mat-tab-group>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <span translate>COMMON_MEMO</span>
+                        </ng-template>
+                        <div class="default-100"></div>
+                        <mat-form-field id="header" class="default-50 sm-100">
+                            <mat-label translate>STOCK_HEADER</mat-label>
+                            <textarea matInput formControlName="header" cdkTextareaAutosize="true"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field id="footer" class="default-50 sm-100">
+                            <mat-label translate>STOCK_FOOTER</mat-label>
+                            <textarea matInput formControlName="footer" cdkTextareaAutosize="true"></textarea>
+                        </mat-form-field>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <span translate>LOGISTICS_DISPATCH</span>
+                        </ng-template>
+                        <div class="default-100"></div>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_SHIPMENT_MODE</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="shipmentModeLookup"
+                                              formControlName="shipMode">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_TRANSPORTER</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="transporterLookup"
+                                              formControlName="transporter">
+                            </ss-auto-complete>
+                        </mat-form-field>
+                        <mat-form-field class="default-25 sm-100">
+                            <mat-label translate>LOGISTICS_DRIVER</mat-label>
+                            <input matInput formControlName="driver" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-25 sm-100">
+                            <mat-label translate>LOGISTICS_DRIVER_LICENSE</mat-label>
+                            <input matInput formControlName="license" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-25 sm-100">
+                            <mat-label translate>COMMON_DATE</mat-label>
+                            <ss-date-picker formControlName="licenseDate"></ss-date-picker>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-25 sm-100">
+                            <mat-label translate>LOGISTICS_LICENSE_ISSUER</mat-label>
+                            <input matInput formControlName="licenseIssuer" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-25 sm-100">
+                            <mat-label translate>LOGISTICS_PLATE_NUMBER</mat-label>
+                            <input matInput formControlName="plateNumber" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-25 sm-100">
+                            <mat-label translate>LOGISTICS_PLATE_NUMBER2</mat-label>
+                            <input matInput formControlName="plateNumber2" type="text">
+                        </mat-form-field>
+
+                    </mat-tab>
+                </mat-tab-group>
             </form>
         }
     </mat-card-content>
