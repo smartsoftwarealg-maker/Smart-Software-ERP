@@ -2,66 +2,185 @@
     <mat-progress-bar mode="indeterminate" class="center-div"></mat-progress-bar>
 }
 @if (form !== null) {
-    <form novalidate [formGroup]="form" class="center-div">
-        <mat-form-field class="number">
+    <form [formGroup]="form" class="center-div">
+        <mat-form-field class="number default-50">
             <mat-label translate>ACC_FILE</mat-label>
             <input matInput formControlName="year" type="number" required>
         </mat-form-field>
 
-        <mat-form-field class="number">
+        <mat-form-field class="number default-50">
             <mat-label translate>COMMON_PERIOD</mat-label>
             <input matInput formControlName="period" type="number" required>
         </mat-form-field>
 
-        <mat-form-field>
-            <mat-label translate>COMMON_TYPE</mat-label>
-            <mat-select formControlName="genType">
-                <mat-option value="1" translate>COMMON_PURCHASE</mat-option>
-                <mat-option value="2" translate>ACC_ENTRY</mat-option>
-                <mat-option value="3" translate>ACC_EXIT</mat-option>
-                <mat-option value="4" translate>COMMON_SALES</mat-option>
-                <mat-option value="8" translate>COMMON_TRANSFERS</mat-option>
-                <mat-option value="9" translate>COMMON_TRANSFER_RECEPTIONS</mat-option>
-                <mat-option value="5" translate>COMMON_PAYROLL</mat-option>
-                <mat-option value="6" translate>COMMON_BANK</mat-option>
-                <mat-option value="7" translate>COMMON_FUND</mat-option>
-            </mat-select>
-        </mat-form-field>
+        <div class="journal__div default-100">
+            <mat-form-field class="journal">
+                <mat-label translate>COMMON_PURCHASE</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="journalLookup"
+                                  formControlName="purchaseJr"></ss-auto-complete>
+            </mat-form-field>
 
-        <mat-form-field>
-            <mat-label translate>COMMON_JOURNALS</mat-label>
-            <ss-auto-complete matInput
-                              [model]="journalLookup"
-                              formControlName="journal"></ss-auto-complete>
-        </mat-form-field>
+            <mat-form-field class="count">
+                <mat-label translate>COMMON_COUNT</mat-label>
+                <input matInput formControlName="purchaseCount" type="number" required>
+            </mat-form-field>
+            @if (processingDocument() == PURCHASE) {
+                <mat-spinner></mat-spinner>
+            }
+            @if (processedDocuments().indexOf(PURCHASE)>=0) {
+                <i class="fa-solid fa-check"></i>
+            }
+        </div>
+        <div class="journal__div default-100">
+            <mat-form-field class="journal">
+                <mat-label translate>ACC_ENTRY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="journalLookup"
+                                  formControlName="inventoryJr"></ss-auto-complete>
+            </mat-form-field>
 
-        <button mat-raised-button
-                color="warn"
-                [disabled]="!form.valid || processing() || (data.length < 1 && payrollData.length < 1)"
-                (click)="generate()"
-                translate>
-            <i class="fa-solid fa-check"></i>
-            COMMON_GENERATE
-        </button>
+            <mat-form-field class="count">
+                <mat-label translate>COMMON_COUNT</mat-label>
+                <input matInput formControlName="inventoryCount" type="number" required>
+            </mat-form-field>
+            @if (processingDocument() == INVENTORY) {
+                <mat-spinner></mat-spinner>
+            }
+            @if (processedDocuments().indexOf(INVENTORY)>=0) {
+                <i class="fa-solid fa-check"></i>
+            }
+        </div>
 
-        <button mat-raised-button
-                color="error"
-                [disabled]="processing()"
-                (click)="goBack()"
-                translate>
-            <i class="fa-solid fa-arrow-left"></i>
-            COMMON_GO_BACK
-        </button>
+        <div class="journal__div default-100">
+            <mat-form-field class="journal">
+                <mat-label translate>ACC_EXIT</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="journalLookup"
+                                  formControlName="consumptionJr"></ss-auto-complete>
+            </mat-form-field>
 
-        <button mat-raised-button
-                color="error"
-                [disabled]="processing()||!form.valid"
-                (click)="cancel()"
-                translate>
-            <i class="fa-solid fa-arrow-rotate-left"></i>
-            COMMON_CANCEL
-        </button>
+            <mat-form-field class="count">
+                <mat-label translate>COMMON_COUNT</mat-label>
+                <input matInput formControlName="consumptionCount" type="number" required>
+            </mat-form-field>
+            @if (processingDocument() == CONSUMPTION) {
+                <mat-spinner></mat-spinner>
+            }
+            @if (processedDocuments().indexOf(CONSUMPTION)>=0) {
+                <i class="fa-solid fa-check"></i>
+            }
+        </div>
 
+        <div class="journal__div default-100">
+            <mat-form-field class="journal">
+                <mat-label translate>COMMON_SALES</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="journalLookup"
+                                  formControlName="salesJr"></ss-auto-complete>
+            </mat-form-field>
+            <mat-form-field class="count">
+                <mat-label translate>COMMON_COUNT</mat-label>
+                <input matInput formControlName="salesCount" type="number" required>
+            </mat-form-field>
+            @if (processingDocument() == SALES) {
+                <mat-spinner></mat-spinner>
+            }
+            @if (processedDocuments().indexOf(SALES)>=0) {
+                <i class="fa-solid fa-check"></i>
+            }
+        </div>
+
+        <div class="journal__div default-100">
+            <mat-form-field class="journal">
+                <mat-label translate>COMMON_TRANSFER_RECEPTIONS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="journalLookup"
+                                  formControlName="transferInJr"></ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="count">
+                <mat-label translate>COMMON_COUNT</mat-label>
+                <input matInput formControlName="transferInCount" type="number" required>
+            </mat-form-field>
+            @if (processingDocument() == TRANSFER_IN) {
+                <mat-spinner></mat-spinner>
+            }
+            @if (processedDocuments().indexOf(TRANSFER_IN)>=0) {
+                <i class="fa-solid fa-check"></i>
+            }
+        </div>
+        <div class="journal__div default-100">
+            <mat-form-field class="journal">
+                <mat-label translate>COMMON_TRANSFERS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="journalLookup"
+                                  formControlName="transferOutJr">
+                </ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="count">
+                <mat-label translate>COMMON_COUNT</mat-label>
+                <input matInput formControlName="transferOutCount" type="number">
+            </mat-form-field>
+            @if (processingDocument() == TRANSFER_OUT) {
+                <mat-spinner></mat-spinner>
+            }
+            @if (processedDocuments().indexOf(TRANSFER_OUT)>=0) {
+                <i class="fa-solid fa-check"></i>
+            }
+        </div>
+
+        <!--        <mat-form-field>-->
+        <!--            <mat-label translate>COMMON_TYPE</mat-label>-->
+        <!--            <mat-select formControlName="genType">-->
+        <!--                <mat-option value="1" translate>COMMON_PURCHASE</mat-option>-->
+        <!--                <mat-option value="2" translate>ACC_ENTRY</mat-option>-->
+        <!--                <mat-option value="3" translate>ACC_EXIT</mat-option>-->
+        <!--                <mat-option value="4" translate>COMMON_SALES</mat-option>-->
+        <!--                <mat-option value="8" translate>COMMON_TRANSFERS</mat-option>-->
+        <!--                <mat-option value="9" translate>COMMON_TRANSFER_RECEPTIONS</mat-option>-->
+        <!--                <mat-option value="5" translate>COMMON_PAYROLL</mat-option>-->
+        <!--                <mat-option value="6" translate>COMMON_BANK</mat-option>-->
+        <!--                <mat-option value="7" translate>COMMON_FUND</mat-option>-->
+        <!--            </mat-select>-->
+        <!--        </mat-form-field>-->
+
+        <!--        <mat-form-field>-->
+        <!--            <mat-label translate>COMMON_JOURNALS</mat-label>-->
+        <!--            <ss-auto-complete matInput-->
+        <!--                              [model]="journalLookup"-->
+        <!--                              formControlName="journal"></ss-auto-complete>-->
+        <!--        </mat-form-field>-->
+
+        <div class="ctrl__div default-100">
+            <button mat-raised-button
+                    color="warn"
+                    [disabled]="processing()"
+                    (click)="generate()"
+                    translate>
+                <i class="fa-solid fa-check"></i>
+                COMMON_GENERATE
+            </button>
+
+<!--            <button mat-raised-button-->
+<!--                    color="error"-->
+<!--                    [disabled]="processing()"-->
+<!--                    (click)="goBack()"-->
+<!--                    translate>-->
+<!--                <i class="fa-solid fa-arrow-left"></i>-->
+<!--                COMMON_GO_BACK-->
+<!--            </button>-->
+
+            <button mat-raised-button
+                    color="error"
+                    [disabled]="processing()"
+                    (click)="cancel()"
+                    translate>
+                <i class="fa-solid fa-arrow-rotate-left"></i>
+                COMMON_CANCEL
+            </button>
+        </div>
     </form>
 }
 @if (showingTransactions()) {
@@ -93,7 +212,7 @@
                 <ng-container matColumnDef="center">
                     <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_CENTER</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{ e.center}}
+                        {{ e.center }}
                     </mat-cell>
                 </ng-container>
 
