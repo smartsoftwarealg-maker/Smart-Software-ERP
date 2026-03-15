@@ -290,7 +290,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             reference:    [{ value: b.reference, disabled: referenceIsDisabled }],
             sourceDoc:    [b.sourceDoc],
             formulaId:    [{ value: b.formulaId, disabled: referenceIsDisabled }],
-            store:        [{ value: b.store, disabled: referenceIsDisabled }],
+            store:        [{ value: b.store, disabled: (referenceIsDisabled && b.store != null) }],
             qtyOrdered:   [{ value: b.qtyOrdered / units || 0, disabled: !this.isEditable || (this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && (b.sourceDoc == undefined || b.qtySatisfied < 0.00001) ))}, Validators.required],
             qtySatisfied: [{ value: b.qtySatisfied / units ||0, disabled: !this.isEditable || (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 || this.document === DOC_PRODUCTION)}, Validators.required],
             qtyInvoiced:  [{ value: b.qtyInvoiced / units ||0, disabled: !this.isEditable || (this.document != DOC_RECEPTION)} , Validators.required],
