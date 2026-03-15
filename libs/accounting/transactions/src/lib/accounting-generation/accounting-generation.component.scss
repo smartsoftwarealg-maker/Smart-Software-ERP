@@ -1,8 +1,5 @@
 form {
-    display: flex;
-    flex-wrap: wrap;
     gap: 16px;
-    align-items: center;
     padding: 8px;
 }
 
@@ -11,14 +8,35 @@ form {
     max-width: 1200px;
     margin: 0 auto;
 }
+.journal__div {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+    .journal {
+        flex-grow: 1;
+    }
+    .count {
+        flex-grow: 0;
+        max-width: 7em;
+    }
+    i {
+        font-weight: bolder;
+        color: green;
+        font-size: 2em;
+        align-self: center;
+    }
+}
+mat-spinner {
+    max-height: 2em;
+}
 .table_div {
     flex-grow: 1;
+    max-height: 300px;
 }
 .pagination-container {
     flex-grow: 0;
 }
 .container_div {
-    min-height: calc(100% - 140px);
     display: flex;
     flex-direction: column;
 }
@@ -38,6 +56,12 @@ button {
     flex: 2 1 200px;
 }
 
+.ctrl__div {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1em;
+}
 .mat-column-cCenter,
 .mat-column-account,
 .mat-column-employee {

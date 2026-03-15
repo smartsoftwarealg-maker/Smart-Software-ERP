@@ -210,7 +210,8 @@ export interface TDocument {
 
 export interface GenerationInfo {
     journal: number;
-    genType: string
+    genType: string;
+    genCode?: number;
 }
 
 

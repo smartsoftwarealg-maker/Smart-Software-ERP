@@ -64,21 +64,21 @@ type ColorRange = {
     styleUrls: ['./ltm-batch-input.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    TranslatePipe,
-    ReactiveFormsModule,
-    DatePickerComponent,
-    RouterOutlet,
-    TranslatePipe,
-    UiAutoCompleteComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        TranslatePipe,
+        ReactiveFormsModule,
+        DatePickerComponent,
+        RouterOutlet,
+        TranslatePipe,
+        UiAutoCompleteComponent
+    ]
 })
 export class LtmBatchInputComponent implements OnInit, OnDestroy {
     #destroyRef = inject(DestroyRef);
     #selectedTest = 0;
 
-    private TITLES = ['LTM_BATCH_TESTINGS', 'LTM_PHYSICAL_TESTINGS', 'LTM_DEPOSIT_TESTINGS', 'LTM_RAW_TESTINGS']
+    private TITLES = ['LTM_BATCH_TESTINGS', 'LTM_PHYSICAL_TESTINGS', 'LTM_DEPOSIT_TESTINGS', 'LTM_RAW_TESTINGS'];
     private activatedRoute = inject(ActivatedRoute);
     private router = inject(Router);
     private siloSrv = inject(LTMSiloService);
@@ -126,7 +126,7 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         { id: 9, color: '#ff9900', range: [-67, -51 ],    description: '' },
         { id: 10, color: '#ff6600', range: [-83, -68 ],   description: '' },
         { id: 11, color: '#FF0000', range: [-99999, -84], description: '' },
-    ]
+    ];
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
 
@@ -309,30 +309,30 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
         this.invalidIndexes = [];
         this.varianceControls
             .forEach(vc => {
-                    const formulas = vc.formula
-                        .split(new RegExp('[+()/]'))
-                        .filter(c => c.startsWith('v'));
+                const formulas = vc.formula
+                    .split(new RegExp('[+()/]'))
+                    .filter(c => c.startsWith('v'));
 
-                    const indexes = formulas.map(f => this.variables.indexOf(f)).filter(i => i >= 0 && this.tests.at(i).value.value > 0);
-                    if (indexes.length > 0) {
-                        const values = indexes.map(i => <number>this.tests.at(i).value.value);
-                        const avg    = Math.round(values.reduce((a, b) => a + b) * 10 / indexes.length) / 10;
-                        const vars   = values.map(v => Math.abs(v - avg) > avg / 10.0);
-                        indexes.forEach(i => (<FormGroup>this.tests.at(i)).controls['value'].setErrors(null));
-                        const vcIndex = this.formulas.indexOf(vc.formula);
-                        (<FormGroup>this.totals.controls.at(vcIndex)).controls['value'].setValue(avg);
-                        vars.forEach((v, i) => {
-                            if (v) {
-                                const idx = indexes[i];
-                                this.invalidIndexes.push(idx);
-                                const fg: FormGroup = <FormGroup>this.tests.at(idx);
-                                fg.controls['value'].setErrors({ 'invalid': true });
-                                fg.controls['value'].markAsTouched();
-                                fg.controls['value'].markAsDirty();
-                            }
-                        });
-                    }
+                const indexes = formulas.map(f => this.variables.indexOf(f)).filter(i => i >= 0 && this.tests.at(i).value.value > 0);
+                if (indexes.length > 0) {
+                    const values = indexes.map(i => <number>this.tests.at(i).value.value);
+                    const avg    = Math.round(values.reduce((a, b) => a + b) * 10 / indexes.length) / 10;
+                    const vars   = values.map(v => Math.abs(v - avg) > avg / 10.0);
+                    indexes.forEach(i => (<FormGroup>this.tests.at(i)).controls['value'].setErrors(null));
+                    const vcIndex = this.formulas.indexOf(vc.formula);
+                    (<FormGroup>this.totals.controls.at(vcIndex)).controls['value'].setValue(avg);
+                    vars.forEach((v, i) => {
+                        if (v) {
+                            const idx = indexes[i];
+                            this.invalidIndexes.push(idx);
+                            const fg: FormGroup = <FormGroup>this.tests.at(idx);
+                            fg.controls['value'].setErrors({ 'invalid': true });
+                            fg.controls['value'].markAsTouched();
+                            fg.controls['value'].markAsDirty();
+                        }
+                    });
                 }
+            }
             );
 
     }
@@ -350,15 +350,15 @@ export class LtmBatchInputComponent implements OnInit, OnDestroy {
 
     private showData(batch: LTMBatch) {
         this.simulatedTotals.clear();
-         this.matterTestSrv
-             .getList(0, 900, null, 'id')
-             .subscribe(res => {
+        this.matterTestSrv
+            .getList(0, 900, null, 'id')
+            .subscribe(res => {
                 const testingId = this.form.controls.id.value;
                 const selectedTests = res.body
                     .filter(t =>
                         (this.periodCtrl.value < 1 || this.periodCtrl.value === t.periodicity) &&
                         (this.#selectedTest === 0 || this.#selectedTest === t.testId) &&
-                        !t.formula)
+                        !t.formula);
 
                 selectedTests
                     .sort((a, b) => a.testId - b.testId)
