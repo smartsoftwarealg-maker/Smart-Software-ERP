@@ -1,6 +1,6 @@
 <div class="container__div">
     <mat-card class="chart__div">
-        <canvas  [id]="'Statistics'" class="chart"></canvas>
+        <canvas #statisticsCanvas class="chart"></canvas>
     </mat-card>
 
     @for (s of satisArr; track s.question; let i=$index) {

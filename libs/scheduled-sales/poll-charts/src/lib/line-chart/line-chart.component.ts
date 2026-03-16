@@ -1,13 +1,14 @@
 import {
-    AfterViewInit,
     Component,
     inject,
     input,
-    Input,
     OnInit,
+    OnDestroy,
+    ViewChild,
+    ElementRef,
+    effect,
 } from '@angular/core';
-
-import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
+import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { LanguageService } from '@ss/common/api-common';
 import { AnswersHistoricCount } from '@ss/scheduleds-sales/poll-charts';
 import { SATISFACTION, YES_NO, COLORS } from '../common';
@@ -19,7 +20,10 @@ import { SATISFACTION, YES_NO, COLORS } from '../common';
     templateUrl: './line-chart.component.html',
     styleUrl: './line-chart.component.scss',
 })
-export class LineChartComponent implements OnInit, AfterViewInit {
+export class LineChartComponent implements OnInit, OnDestroy {
+    @ViewChild('lineCanvas') canvasRef!: ElementRef<HTMLCanvasElement>;
+
+    private chart?: Chart;
     private COLORS = COLORS;
     private langSrv = inject(LanguageService);
     private yesNo = YES_NO;
@@ -29,149 +33,125 @@ export class LineChartComponent implements OnInit, AfterViewInit {
     data = input<AnswersHistoricCount>();
     index = input<number>();
 
+    constructor() {
+        effect(() => {
+            const chartData = this.data();
+            // Only attempt to render if we have data and the canvas exists
+            if (chartData && chartData.question) {
+                // The timeout ensures the DOM is ready for the @for loop
+                setTimeout(() => this.renderChart(), 0);
+            }
+        });
+    }
+
     ngOnInit(): void {
         Chart.register(...registerables);
     }
 
-    ngAfterViewInit() {
-        if (this.type() === 'satisfaction') {
-            this.buildSatisfactionChart(
-                'HQuestion' + this.index,
-                this.data().question,
-                this.data().years,
-                this.data().verySatisfied,
-                this.data().satisfied,
-                this.data().unSatisfied,
-            );
-        } else {
-            this.buildBoolChart(
-                'HQuestion' + this.index,
-                this.data().question,
-                this.data().years,
-                this.data().yes,
-                this.data().no,
-            );
+    private renderChart() {
+        if (!this.canvasRef) return;
+
+        if (this.chart) {
+            this.chart.destroy();
         }
+
+        const ctx = this.canvasRef.nativeElement;
+        const config =
+            this.type() === 'satisfaction'
+                ? this.getSatisfactionConfig()
+                : this.getBoolConfig();
+
+        this.chart = new Chart(ctx, config);
     }
 
-    private buildSatisfactionChart(
-        id: string,
-        question: string,
-        years: string[],
-        verySatisfy: number[],
-        satisfy: number[],
-        unSatisfy: number[],
-    ) {
-        let ctx = <ChartItem>document.getElementById(id);
-        const data = {
+    private getSatisfactionConfig(): ChartConfiguration {
+        const d = this.data()!;
+        return {
             type: 'line',
-            labels: years,
-            datasets: [
-                {
-                    label: this.langSrv.translate(this.satis[0]),
-                    data: verySatisfy,
-                    backgroundColor: [this.COLORS[0]],
-                    borderColor: [this.COLORS[0]],
-                },
-                {
-                    label: this.langSrv.translate(this.satis[1]),
-                    data: satisfy,
-                    backgroundColor: [this.COLORS[1]],
-                    borderColor: [this.COLORS[1]],
-                },
-                {
-                    label: this.langSrv.translate(this.satis[2]),
-                    data: unSatisfy,
-                    backgroundColor: [this.COLORS[2]],
-                    borderColor: [this.COLORS[2]],
-                },
-            ],
-        };
-        const chartConfig: ChartConfiguration = {
-            type: 'line',
-            data: data,
-            options: {
-                indexAxis: 'x',
-                elements: {
-                    bar: {
-                        borderWidth: 2,
+            data: {
+                labels: d.years,
+                datasets: [
+                    {
+                        label: this.langSrv.translate(this.satis[0]),
+                        data: d.verySatisfied,
+                        backgroundColor: this.COLORS[0],
+                        borderColor: this.COLORS[0],
                     },
-                },
+                    {
+                        label: this.langSrv.translate(this.satis[1]),
+                        data: d.satisfied,
+                        backgroundColor: this.COLORS[1],
+                        borderColor: this.COLORS[1],
+                    },
+                    {
+                        label: this.langSrv.translate(this.satis[2]),
+                        data: d.unSatisfied,
+                        backgroundColor: this.COLORS[2],
+                        borderColor: this.COLORS[2],
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
                 scales: {
-                    x: {
-                        ticks: {
-                            autoSkip: true,
-                        },
-                    },
+                    x: { ticks: { autoSkip: true } },
                 },
-                responsive: true,
                 plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
+                    legend: { position: 'bottom' },
                     title: {
                         display: true,
-                        text: question, //this.splitText(question),
-                        font: {
-                            weight: 'bold',
-                            size: 15,
-                        },
-                        fullSize: true,
+                        text: d.question,
+                        font: { weight: 'bold', size: 14 },
                         position: 'bottom',
+                        fullSize: true,
                     },
                 },
             },
         };
-        new Chart(ctx, chartConfig);
     }
 
-    private buildBoolChart(
-        id: string,
-        question: string,
-        years: string[],
-        yes: number[],
-        no: number[],
-    ) {
-        let ctx = <ChartItem>document.getElementById(id);
-        const data = {
-            labels: years,
-            datasets: [
-                {
-                    label: this.langSrv.translate(this.yesNo[0]),
-                    data: yes,
-                    backgroundColor: [this.COLORS[3]],
-                    borderColor: [this.COLORS[3]],
-                },
-                {
-                    label: this.langSrv.translate(this.yesNo[1]),
-                    data: no,
-                    backgroundColor: [this.COLORS[4]],
-                    borderColor: [this.COLORS[4]],
-                },
-            ],
-        };
-        const chartConfig: ChartConfiguration = {
+    private getBoolConfig(): ChartConfiguration {
+        const d = this.data()!;
+        return {
             type: 'line',
-            data: data,
+            data: {
+                labels: d.years,
+                datasets: [
+                    {
+                        label: this.langSrv.translate(this.yesNo[0]),
+                        data: d.yes,
+                        backgroundColor: this.COLORS[3],
+                        borderColor: this.COLORS[3],
+                    },
+                    {
+                        label: this.langSrv.translate(this.yesNo[1]),
+                        data: d.no,
+                        backgroundColor: this.COLORS[4],
+                        borderColor: this.COLORS[4],
+                    },
+                ],
+            },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
+                    legend: { position: 'bottom' },
                     title: {
                         display: true,
-                        text: question,
-                        font: {
-                            weight: 'bold',
-                            size: 15,
-                        },
+                        text: d.question,
+                        font: { weight: 'bold', size: 14 },
                         position: 'bottom',
                         fullSize: true,
                     },
                 },
             },
         };
-        new Chart(ctx, chartConfig);
+    }
+
+    ngOnDestroy(): void {
+        if (this.chart) {
+            this.chart.destroy();
+        }
     }
 }
