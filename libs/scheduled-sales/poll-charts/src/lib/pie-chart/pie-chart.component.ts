@@ -1,5 +1,14 @@
-import { AfterViewInit, Component, inject, input, OnInit } from '@angular/core';
-import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
+import {
+    Component,
+    inject,
+    input,
+    OnInit,
+    OnDestroy,
+    ViewChild,
+    ElementRef,
+    effect,
+} from '@angular/core';
+import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { LanguageService } from '@ss/common/api-common';
 import { AnswersCount } from '@ss/scheduleds-sales/poll-charts';
 import { SATISFACTION, YES_NO, COLORS } from '../common';
@@ -11,10 +20,12 @@ import { SATISFACTION, YES_NO, COLORS } from '../common';
     templateUrl: './pie-chart.component.html',
     styleUrl: './pie-chart.component.scss',
 })
-export class PieChartComponent implements OnInit, AfterViewInit {
+export class PieChartComponent implements OnInit, OnDestroy {
+    @ViewChild('pieCanvas') canvasRef!: ElementRef<HTMLCanvasElement>;
+
+    private chart?: Chart;
     private COLORS = COLORS;
     private langSrv = inject(LanguageService);
-
     private yesNo = YES_NO;
     private satis = SATISFACTION;
 
@@ -22,124 +33,113 @@ export class PieChartComponent implements OnInit, AfterViewInit {
     data = input<AnswersCount>(null);
     index = input<number>(0);
 
+    constructor() {
+        effect(() => {
+            const chartData = this.data();
+            // Added check to ensure data exists before trying to render
+            if (chartData && chartData.question) {
+                // Small delay to ensure the @for loop has finished rendering the canvas
+                setTimeout(() => this.renderChart(), 0);
+            }
+        });
+    }
+
     ngOnInit(): void {
         Chart.register(...registerables);
     }
 
-    ngAfterViewInit() {
-        if (this.type() === 'satisfaction') {
-            this.buildSatisfactionChart(
-                'question' + this.index,
-                this.data().question,
-                this.data().verySatisfied,
-                this.data().satisfied,
-                this.data().unSatisfied,
-            );
-        } else {
-            this.buildBoolChart(
-                'question' + this.index,
-                this.data().question,
-                this.data().yes,
-                this.data().no,
-            );
+    private renderChart() {
+        if (!this.canvasRef) return;
+
+        if (this.chart) {
+            this.chart.destroy();
         }
+
+        const ctx = this.canvasRef.nativeElement;
+        const config =
+            this.type() === 'satisfaction'
+                ? this.getSatisfactionConfig()
+                : this.getBoolConfig();
+
+        this.chart = new Chart(ctx, config);
     }
 
-    private buildSatisfactionChart(
-        id: string,
-        question: string,
-        verySatisfy: number,
-        satisfy: number,
-        unSatisfy: number,
-    ) {
-        let ctx = <ChartItem>document.getElementById(id);
-        const data = {
-            labels: [
-                this.langSrv.translate(this.satis[0]) + ' : ' + verySatisfy,
-                this.langSrv.translate(this.satis[1]) + ' : ' + satisfy,
-                this.langSrv.translate(this.satis[2]) + ' : ' + unSatisfy,
-            ],
-            datasets: [
-                {
-                    label: question,
-                    data: [verySatisfy, satisfy, unSatisfy],
-                    backgroundColor: [
-                        this.COLORS[0],
-                        this.COLORS[1],
-                        this.COLORS[2],
-                    ],
-                },
-            ],
-        };
-        const chartConfig: ChartConfiguration = {
+    private getSatisfactionConfig(): ChartConfiguration {
+        const d = this.data()!;
+        return {
             type: 'pie',
-            data: data,
+            data: {
+                labels: [
+                    this.langSrv.translate(this.satis[0]) +
+                        ' : ' +
+                        d.verySatisfied,
+                    this.langSrv.translate(this.satis[1]) + ' : ' + d.satisfied,
+                    this.langSrv.translate(this.satis[2]) +
+                        ' : ' +
+                        d.unSatisfied,
+                ],
+                datasets: [
+                    {
+                        label: d.question,
+                        data: [d.verySatisfied, d.satisfied, d.unSatisfied],
+                        backgroundColor: [
+                            this.COLORS[0],
+                            this.COLORS[1],
+                            this.COLORS[2],
+                        ],
+                    },
+                ],
+            },
             options: {
                 responsive: true,
+                maintainAspectRatio: false, // Helps with fitting inside mat-card
                 plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
+                    legend: { position: 'bottom' },
                     title: {
                         display: true,
-                        text: question,
-                        font: {
-                            weight: 'bold',
-                            style: 'initial',
-                            size: 20,
-                        },
-                        fullSize: true,
+                        text: d.question,
+                        font: { weight: 'bold', size: 14 },
                         position: 'bottom',
                     },
                 },
             },
         };
-        new Chart(ctx, chartConfig);
     }
 
-    private buildBoolChart(
-        id: string,
-        question: string,
-        yes: number,
-        no: number,
-    ) {
-        const ctx = <ChartItem>document.getElementById(id);
-        const data = {
-            labels: [
-                this.langSrv.translate(this.yesNo[0]) + ' : ' + yes,
-                this.langSrv.translate(this.yesNo[1]) + ' : ' + no,
-            ],
-            datasets: [
-                {
-                    label: this.langSrv.translate(question),
-                    data: [yes, no],
-                    backgroundColor: [this.COLORS[3], this.COLORS[4]],
-                },
-            ],
-        };
-        const chartConfig: ChartConfiguration = {
+    private getBoolConfig(): ChartConfiguration {
+        const d = this.data()!;
+        return {
             type: 'pie',
-            data: data,
+            data: {
+                labels: [
+                    this.langSrv.translate(this.yesNo[0]) + ' : ' + d.yes,
+                    this.langSrv.translate(this.yesNo[1]) + ' : ' + d.no,
+                ],
+                datasets: [
+                    {
+                        label: this.langSrv.translate(d.question),
+                        data: [d.yes, d.no],
+                        backgroundColor: [this.COLORS[3], this.COLORS[4]],
+                    },
+                ],
+            },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        position: 'bottom',
-                    },
+                    legend: { position: 'bottom' },
                     title: {
                         display: true,
-                        text: question,
-                        font: {
-                            weight: 'bold',
-                            style: 'initial',
-                            size: 15,
-                        },
-                        fullSize: true,
+                        text: d.question,
+                        font: { weight: 'bold', size: 14 },
                         position: 'bottom',
                     },
                 },
             },
         };
-        new Chart(ctx, chartConfig);
+    }
+
+    ngOnDestroy(): void {
+        this.chart?.destroy();
     }
 }
