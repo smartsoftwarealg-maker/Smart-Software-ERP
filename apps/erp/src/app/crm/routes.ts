@@ -18,7 +18,7 @@ import {
     CRM_CAMPAIGN_URL,
     CRM_MAILING_LIST_URL,
     CRM_TEAMS_URL,
-    CRM_OPPORTUNITY_URL, CRM_EMAIL_TEMPLATE_URL, CRM_CALENDAR_URL
+    CRM_OPPORTUNITY_URL, CRM_EMAIL_TEMPLATE_URL, CRM_CALENDAR_URL, COMMON_REPORTS_URL
 } from '../common';
 import {
     SalutationsDetailComponent,
@@ -85,6 +85,7 @@ import {
     QuoteLinesDetailComponent,
     CrmQuotesListComponent
 } from '@ss/crm/opportunity';
+import { ReportViewComponent } from '@ss/common/ui-report-param';
 
 export const crmRoutes: Routes = [
     {
@@ -447,6 +448,12 @@ export const crmRoutes: Routes = [
             },
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
         ]
+    },
+    {
+        path: COMMON_REPORTS_URL,
+        data: { reportBase: 'crm' },
+        component: ReportViewComponent,
+        canActivate: [loginGuard],
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL }

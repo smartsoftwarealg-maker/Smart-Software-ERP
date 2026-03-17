@@ -1,12 +1,20 @@
 import { SideNavNode } from '@ss/common/api-common';
 import {
-     ABS_CRM_CALENDAR_URL,
+    ABS_CRM_CALENDAR_URL,
     ABS_CRM_CAMPAIGN_URL,
-    ABS_CRM_CONTACT_METHODS_URL, ABS_CRM_CUSTOMER_URL,
-    ABS_CRM_DEPARTMENTS_URL, ABS_CRM_EMAIL_TEMPLATE_URL,
-    ABS_CRM_JOBS_URL, ABS_CRM_LEADS_URL, ABS_CRM_MAILING_LIST_URL, ABS_CRM_OPPORTUNITY_URL, ABS_CRM_PAYMENT_TERMS_URL,
+    ABS_CRM_CONTACT_METHODS_URL,
+    ABS_CRM_CUSTOMER_URL,
+    ABS_CRM_DEPARTMENTS_URL,
+    ABS_CRM_EMAIL_TEMPLATE_URL,
+    ABS_CRM_JOBS_URL,
+    ABS_CRM_LEADS_URL,
+    ABS_CRM_MAILING_LIST_URL,
+    ABS_CRM_OPPORTUNITY_URL,
+    ABS_CRM_PAYMENT_TERMS_URL,
+    ABS_CRM_REPORTS_URL,
     ABS_CRM_SALUTATIONS_URL,
-    ABS_CRM_STATUS_URL, ABS_CRM_TEAMS_URL
+    ABS_CRM_STATUS_URL,
+    ABS_CRM_TEAMS_URL,
 } from '../common';
 
 export const crmNavTree: SideNavNode = {
@@ -102,6 +110,12 @@ export const crmNavTree: SideNavNode = {
             icon: 'fa-regular fa-calendar',
             route: ABS_CRM_CALENDAR_URL,
             accessRights: 'CRMCalendar',
+        },
+        {
+            name: 'COMMON_REPORTS',
+            icon: 'fa-solid fa-file-chart-column',
+            route: ABS_CRM_REPORTS_URL,
+            accessRights: 'Report',
         },
     ],
     accessRights: 'CRM',
