@@ -100,7 +100,7 @@ export class FinalProductDetailComponent extends BaseEntityDetailComponent<Artic
             notForSale:   [a.notForSale || false, Validators.required],
             vat:          [a.vat],
             routingId:    [a.routingId],
-            blocked:      [a.blocked]
+            blocked:      [a.recordBlocked]
         });
     }
 

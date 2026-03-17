@@ -126,7 +126,7 @@ export class ArticleDetailComponent
             notForSale: [a.notForSale || false, Validators.required],
             vat: [a.vat],
             vat2: [a.vat2],
-            blocked: [a.blocked],
+            recordBlocked: [a.recordBlocked],
             articleType: [a.articleType],
             subClass: [a.subClass],
             info: [a.info],

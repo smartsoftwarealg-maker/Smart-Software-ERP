@@ -69,7 +69,7 @@ export interface Article {
     vatValue?: number;
     vatValue2?: number;
     notForSale: boolean;
-    blocked: boolean;
+    recordBlocked: boolean;
     routingId?: number;
     dosageUnit?: number;
     classDescription?: string;

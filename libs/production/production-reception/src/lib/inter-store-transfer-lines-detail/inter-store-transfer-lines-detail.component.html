@@ -50,6 +50,10 @@
                         @if (form.controls['reference'].hasError('required')) {
                             <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                         }
+                        @if (form.controls['reference']?.hasError('blocked')) {
+                            <mat-error translate>LOGISTICS_ARTICLE_BLOCKED</mat-error>
+                        }
+
                         <mat-hint><span translate>STOCK_STOCK</span>: {{ stock() | number: '1.2-4'}}</mat-hint>
                     </mat-form-field>
                 </div>

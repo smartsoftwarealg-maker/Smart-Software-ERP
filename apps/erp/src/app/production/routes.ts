@@ -22,7 +22,7 @@ import {
     PRODUCTION_CONSUMPTION_URL,
     PRODUCTION_TRANSFER_DETAIL_URL,
     PRODUCTION_FORMULAS_URL,
-    PRODUCTIONS_URL,
+    PRODUCTIONS_URL, STOCK_RESERVATIONS_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -84,6 +84,8 @@ import {
     ProductionFormulasLinesListComponent,
     ProductionFormulasListComponent,
 } from '@ss/production/production-formulas';
+import { PartsReservationDetailComponent,
+    PartsReservationLineDetailComponent, PartsReservationLineListComponent, PartsReservationListComponent } from '@logistics/parts-reservation';
 
 export const prodRoutes: Routes = [
     {
@@ -126,6 +128,44 @@ export const prodRoutes: Routes = [
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+
+    {
+        path: STOCK_RESERVATIONS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: PartsReservationListComponent,
+                canActivate: [loginGuard],
+                canActivateChild: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: PartsReservationDetailComponent,
+                canActivate: [loginGuard],
+                canActivateChild: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'lines-list',
+                        component: PartsReservationLineListComponent,
+                        children: docInfoRoutes,
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            {
+                                path: ':id',
+                                component: PartsReservationLineDetailComponent,
+                            },
+                        ],
+                    },
+                    ...docInfoRoutes,
+                ],
+            },
         ],
     },
 

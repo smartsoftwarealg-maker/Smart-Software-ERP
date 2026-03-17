@@ -7,7 +7,7 @@ import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {MatDialog} from '@angular/material/dialog';
 import {DeliveryCancellationService} from '@ss/sales/api-delivery-cancellation';
-import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
+import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
@@ -22,13 +22,13 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    RouterModule,
-    DatePickerComponent,
-    UiAutoCompleteComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        RouterModule,
+        DatePickerComponent,
+        UiAutoCompleteComponent
+    ]
 
 })
 export class DeliveryCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {
