@@ -34,20 +34,24 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         DocInfoComponent,
         PaginationComponent,
         TranslatePipe,
-        TranslateDirective
+        TranslateDirective,
     ],
-    styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
+    styleUrls: [
+        '../../../../../common/assets/src/assets/transac-lines-list.scss',
+    ],
     templateUrl: './parts-reservation-line-list.component.html',
 })
-export class PartsReservationLineListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+export class PartsReservationLineListComponent
+    extends BaseTransactionLinesListComponent
+    implements OnInit {
+    override displayedColumns = [
         'position',
         'store',
         'reference',
         'description',
         'qtySatisfied',
         'price',
-        'total'
+        'total',
     ];
 
     constructor(
@@ -58,7 +62,17 @@ export class PartsReservationLineListComponent extends BaseTransactionLinesListC
         public override router: Router,
         public override articleSrv: ArticleService,
         public override storeNamesSrv: LotsService,
-        public override confirmationSrv: ConfirmationDialogService) {
-        super(detailSrv, shellSrv, snackBarSrv, route, router, articleSrv, storeNamesSrv, confirmationSrv);
+        public override confirmationSrv: ConfirmationDialogService,
+    ) {
+        super(
+            detailSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            articleSrv,
+            storeNamesSrv,
+            confirmationSrv,
+        );
     }
 }

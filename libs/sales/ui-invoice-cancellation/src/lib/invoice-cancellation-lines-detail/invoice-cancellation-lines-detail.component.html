@@ -48,6 +48,9 @@
                             translate>COMMON_FIELD_REQUIRED
                         </mat-error>
                     }
+                    @if (form.controls['reference']?.hasError('blocked')) {
+                        <mat-error translate>LOGISTICS_ARTICLE_BLOCKED</mat-error>
+                    }
                     @if (form.controls['reference'].hasError('validOption')) {
                         <mat-error
                             translate>COMMON_NO_MATCH

@@ -29,11 +29,12 @@
                         <mat-error
                             translate>COMMON_FIELD_REQUIRED
                         </mat-error>
-                    } @if (form.controls['store'].hasError('validOption')) {
-                    <mat-error
-                        translate>COMMON_NO_MATCH
-                    </mat-error>
-                }
+                    }
+                    @if (form.controls['store'].hasError('validOption')) {
+                        <mat-error
+                            translate>COMMON_NO_MATCH
+                        </mat-error>
+                    }
                 </mat-form-field>
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_ARTICLE</mat-label>
@@ -46,15 +47,20 @@
                         <mat-error
                             translate>COMMON_FIELD_REQUIRED
                         </mat-error>
-                    } @if (form.controls['reference'].hasError('validOption')) {
-                    <mat-error
-                        translate>COMMON_NO_MATCH
-                    </mat-error>
-                } @if (showStock) {
-                    <mat-hint class="info f-warn"><span
-                        translate>STOCK_STOCK</span>: {{ articleStock }}
-                    </mat-hint>
-                }
+                    }
+                    @if (form.controls['reference']?.hasError('blocked')) {
+                        <mat-error translate>LOGISTICS_ARTICLE_BLOCKED</mat-error>
+                    }
+                    @if (form.controls['reference'].hasError('validOption')) {
+                        <mat-error
+                            translate>COMMON_NO_MATCH
+                        </mat-error>
+                    }
+                    @if (showStock) {
+                        <mat-hint class="info f-warn"><span
+                            translate>STOCK_STOCK</span>: {{ articleStock }}
+                        </mat-hint>
+                    }
                 </mat-form-field>
 
 
@@ -83,16 +89,16 @@
                         }
                     </mat-form-field>
                 } @else {
-                <mat-form-field id="qtySatisfied" class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
-                    <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
-                    @if (form.controls['qtySatisfied'].hasError('required')) {
-                        <mat-error
-                            translate>COMMON_FIELD_REQUIRED
-                        </mat-error>
-                    }
-                </mat-form-field>
-            }
+                    <mat-form-field id="qtySatisfied" class="default-50 sm-100">
+                        <mat-label translate>LOGISTICS_QTY_SATISFIED</mat-label>
+                        <input matInput formControlName="qtySatisfied" type="number" step=".01" required>
+                        @if (form.controls['qtySatisfied'].hasError('required')) {
+                            <mat-error
+                                translate>COMMON_FIELD_REQUIRED
+                            </mat-error>
+                        }
+                    </mat-form-field>
+                }
 
 
                 <mat-form-field id="price" class="default-50 sm-100">

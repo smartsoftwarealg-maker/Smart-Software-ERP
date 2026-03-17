@@ -15,7 +15,10 @@ import {
     ABS_PRODUCTION_REPORTS_URL,
     ABS_PRODUCTIONS_TRANSFER_URL,
     ABS_PRODUCTION_CONSUMPTION_URL,
-    ABS_PRODUCTION_TRANSFER_DETAIL_URL, ABS_PRODUCTION_FORMULAS_URL,
+    ABS_PRODUCTION_TRANSFER_DETAIL_URL,
+    ABS_PRODUCTION_FORMULAS_URL,
+    ABS_STOCK_RESERVATION_URL,
+    ABS_PRODUCTION_RESERVATION_URL,
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -89,6 +92,13 @@ export const productionNavTree: SideNavNode = {
             route: ABS_PRODUCTION_MRP_URL,
             accessRights: 'PMrp',
         },
+        {
+            name: 'LOGISTICS_RESERVATION',
+            icon: 'fa-solid fa-lock-hashtag',
+            route: ABS_PRODUCTION_RESERVATION_URL,
+            accessRights: 'Reservation',
+        },
+
         {
             name: 'PROD_PRODUCTIONS',
             icon: 'fa-brands fa-product-hunt',

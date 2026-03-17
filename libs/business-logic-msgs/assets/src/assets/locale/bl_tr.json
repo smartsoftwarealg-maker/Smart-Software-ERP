@@ -83,5 +83,6 @@
     "ALREADY_RESERVED":                     "",
     "ALREADY_TRANSFERRED":                  "",
     "NO_TRANSFER_CREATED":                  "",
-    "NO_RESERVATION_CREATED":               ""
+    "NO_RESERVATION_CREATED":               "",
+    "LOT_EXPIRED":                          "Belirtilen parti süresi dolmuştur."
 }

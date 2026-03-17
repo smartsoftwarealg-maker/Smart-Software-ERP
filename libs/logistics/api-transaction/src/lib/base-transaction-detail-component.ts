@@ -474,8 +474,8 @@ export abstract class BaseTransactionDetailComponent
                 );
             }
             this.updateProjectLookups(agent?.id || 0);
-            if (!loading) {
-                this.form.controls['payMethod'].setValue(agent?.payMode || 0);
+            if (!loading && agent?.payMode) {
+                this.form.controls['payMethod'].setValue(agent?.payMode);
             }
         });
     }

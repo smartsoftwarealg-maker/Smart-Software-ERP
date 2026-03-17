@@ -132,7 +132,7 @@ export class ProductionArticleDetailComponent
             notForSale:   [a.notForSale || false, Validators.required],
             vat:          [a.vat],
             vat2:         [a.vat2],
-            blocked:      [a.blocked],
+            blocked:      [a.recordBlocked],
             articleType:  [a.articleType],
             subClass:     [a.subClass],
             dosageUnit:   [a.dosageUnit],

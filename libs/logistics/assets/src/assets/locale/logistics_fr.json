@@ -232,5 +232,6 @@
     "PRIVILEGE_CONFIDENTIAL": "Privilège confidentiel",
     "UPDATE_ALL_DOCUMENTS":   "Mettre à jour tous les documents",
     "ACTIVITY_SEGMENTS":      "Segments d'activité",
-    "ACTIVITY_SEGMENT":       "Segment d'activité"
+    "ACTIVITY_SEGMENT":       "Segment d'activité",
+    "ARTICLE_BLOCKED":        "Cet article est bloqué"
 }

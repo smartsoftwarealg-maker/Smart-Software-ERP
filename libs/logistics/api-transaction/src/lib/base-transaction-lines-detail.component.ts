@@ -217,6 +217,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 next: res => this.updateStockAndValue(res),
                 error: () => this.resetPrice()
             });
+        if (this.form.controls['id'].value === 0 && a.recordBlocked) {
+            this.form.controls['reference'].setErrors({ blocked: true });
+        }
     }
 
     private setSalesPrice() {
