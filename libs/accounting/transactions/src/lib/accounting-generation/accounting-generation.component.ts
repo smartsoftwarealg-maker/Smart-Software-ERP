@@ -1,6 +1,16 @@
-import {Component, DestroyRef, inject, OnInit, signal} from '@angular/core';
-import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import {LanguageService, LoginService, MaterialModule, PaginationModel} from '@ss/common/api-common';
+import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import {
+    ReactiveFormsModule,
+    UntypedFormBuilder,
+    UntypedFormGroup,
+    Validators,
+} from '@angular/forms';
+import {
+    LanguageService,
+    LoginService,
+    MaterialModule,
+    PaginationModel,
+} from '@ss/common/api-common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {
@@ -12,7 +22,10 @@ import {
     PAYRow,
     TDocument,
 } from '@ss/accounting/accounting-api';
-import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import {
+    DefaultAutoCompleteModel,
+    UiAutoCompleteComponent,
+} from '@ss/common/ui-auto-complete';
 import { concatMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { HttpParams } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -21,7 +34,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
 
 @Component({
     selector: 'ss-accounting-generation',
@@ -68,6 +80,7 @@ export class AccountingGenerationComponent implements OnInit {
         ['inventoryJr', 2],
         ['consumptionJr', 3],
         ['salesJr', 4],
+        ['payrollJr', 5],
         ['transferInJr', 8],
         ['transferOutJr', 9],
     ]);
@@ -88,6 +101,7 @@ export class AccountingGenerationComponent implements OnInit {
         [2, 'inventoryCount'],
         [3, 'consumptionCount'],
         [4, 'salesCount'],
+        [5, 'payrollCount'],
         [8, 'transferInCount'],
         [9, 'transferOutCount'],
     ]);
@@ -144,6 +158,7 @@ export class AccountingGenerationComponent implements OnInit {
                 inventoryJr: [0],
                 consumptionJr: [0],
                 salesJr: [0],
+                payrollJr: [0],
                 transferInJr: [0],
                 transferOutJr: [0],
                 purchaseCount: [{ value: 0, disabled: true }],
@@ -152,6 +167,7 @@ export class AccountingGenerationComponent implements OnInit {
                 salesCount: [{ value: 0, disabled: true }],
                 transferInCount: [{ value: 0, disabled: true }],
                 transferOutCount: [{ value: 0, disabled: true }],
+                payrollCount: [{ value: 0, disabled: true }],
             });
 
             const journals = [
@@ -159,6 +175,7 @@ export class AccountingGenerationComponent implements OnInit {
                 'inventoryJr',
                 'consumptionJr',
                 'salesJr',
+                'payrollJr',
                 'transferInJr',
                 'transferOutJr',
             ];
@@ -180,13 +197,42 @@ export class AccountingGenerationComponent implements OnInit {
 
     generate() {
         const payloads: GenerationInfo[] = [
-            {journal: this.form?.controls['purchaseJr'].value, genType: 'purchase', genCode: this.PURCHASE},
-            {journal: this.form?.controls['inventoryJr'].value, genType: 'inventory', genCode: this.INVENTORY},
-            {journal: this.form?.controls['consumptionJr'].value, genType: 'consumption', genCode: this.CONSUMPTION},
-            {journal: this.form?.controls['salesJr'].value, genType: 'sales', genCode: this.SALES},
-            {journal: this.form?.controls['transferInJr'].value, genType: 'transfer_in', genCode: this.TRANSFER_IN},
-            {journal: this.form?.controls['transferOutJr'].value, genType: 'transfer_out', genCode: this.TRANSFER_OUT},
-        ].filter(j => !!j.journal);
+            {
+                journal: this.form?.controls['purchaseJr'].value,
+                genType: 'purchase',
+                genCode: this.PURCHASE,
+            },
+            {
+                journal: this.form?.controls['inventoryJr'].value,
+                genType: 'inventory',
+                genCode: this.INVENTORY,
+            },
+            {
+                journal: this.form?.controls['consumptionJr'].value,
+                genType: 'consumption',
+                genCode: this.CONSUMPTION,
+            },
+            {
+                journal: this.form?.controls['salesJr'].value,
+                genType: 'sales',
+                genCode: this.SALES,
+            },
+            {
+                journal: this.form?.controls['payrollJr'].value,
+                genType: 'payroll',
+                genCode: this.PAYROLL,
+            },
+            {
+                journal: this.form?.controls['transferInJr'].value,
+                genType: 'transfer_in',
+                genCode: this.TRANSFER_IN,
+            },
+            {
+                journal: this.form?.controls['transferOutJr'].value,
+                genType: 'transfer_out',
+                genCode: this.TRANSFER_OUT,
+            },
+        ].filter((j) => !!j.journal);
 
         this.processedDocuments.set([]);
         from(payloads)
@@ -214,7 +260,6 @@ export class AccountingGenerationComponent implements OnInit {
                     throw err;
                 },
             });
-
     }
 
     cancel() {
@@ -240,6 +285,11 @@ export class AccountingGenerationComponent implements OnInit {
                 genCode: this.SALES,
             },
             {
+                journal: this.form?.controls['payrollJr'].value,
+                genType: 'payroll',
+                genCode: this.PAYROLL,
+            },
+            {
                 journal: this.form?.controls['transferInJr'].value,
                 genType: 'transfer_in',
                 genCode: this.TRANSFER_IN,
@@ -258,17 +308,24 @@ export class AccountingGenerationComponent implements OnInit {
                 'ACC_GENERATION_CANCEL',
                 true,
                 true,
-            ).subscribe({
-                next: (res ) => {
+            )
+            .subscribe({
+                next: (res) => {
                     if (res) {
                         from(payloads)
-                            .pipe(concatMap((p) => {
-                                this.processingDocument.set(p.genCode);
-                                return this.generationSrv.cancel(p).pipe(tap(() => {
-                                    this.processedDocuments.update(v => [...v, p.genCode]);
-                                    this.showDocuments(p.genCode);
-                                }));
-                            }))
+                            .pipe(
+                                concatMap((p) => {
+                                    this.processingDocument.set(p.genCode);
+                                    return this.generationSrv.cancel(p).pipe(
+                                        tap(() => {
+                                            this.processedDocuments.update(
+                                                (v) => [...v, p.genCode],
+                                            );
+                                            this.showDocuments(p.genCode);
+                                        }),
+                                    );
+                                }),
+                            )
                             .subscribe(() => {
                                 this.shellSrv.setLoading(false);
                                 this.processingDocument.set(0);
@@ -320,12 +377,14 @@ export class AccountingGenerationComponent implements OnInit {
         this.generationSrv.getPayrollLines().subscribe({
             next: (res) => {
                 this.processing.set(false);
+
                 this.payrollData = res;
                 this.payrollData.forEach((e) => {
                     e.debit = Math.max(e.amount, 0) || 0;
                     e.credit = Math.max(-e.amount, 0) || 0;
                 });
                 // add total line
+                this.form.controls['payrollCount'].setValue(res.length);
                 if (res.length > 0) {
                     const total = this.langSrv.translate('COMMON_TOTAL');
                     const debit = res
@@ -412,9 +471,15 @@ export class AccountingGenerationComponent implements OnInit {
 }
 
 class ActiveJournalLookup extends DefaultAutoCompleteModel<Journal> {
-    constructor(public srv: AccJournalsService, public loginSrv: LoginService) {
+    constructor(
+        public srv: AccJournalsService,
+        public loginSrv: LoginService,
+    ) {
         super(srv);
     }
 
-    override filterLoadedData =  (x: Journal[]) => x.filter(j => !j.blocked || j.blockYear < this.loginSrv.appCtx.accYear);
+    override filterLoadedData = (x: Journal[]) =>
+        x.filter(
+            (j) => !j.blocked || j.blockYear < this.loginSrv.appCtx.accYear,
+        );
 }
