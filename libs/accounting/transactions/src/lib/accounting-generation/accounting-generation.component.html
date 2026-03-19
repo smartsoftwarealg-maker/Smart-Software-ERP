@@ -131,6 +131,25 @@
             }
         </div>
 
+        <div class="journal__div default-100">
+            <mat-form-field class="journal">
+                <mat-label translate>COMMON_PAYROLL</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="journalLookup"
+                                  formControlName="payrollJr"></ss-auto-complete>
+            </mat-form-field>
+
+            <mat-form-field class="count">
+                <mat-label translate>COMMON_COUNT</mat-label>
+                <input matInput formControlName="payrollCount" type="number" required>
+            </mat-form-field>
+            @if (processingDocument() == PAYROLL) {
+                <mat-spinner></mat-spinner>
+            }
+            @if (processedDocuments().indexOf(PAYROLL)>=0) {
+                <i class="fa-solid fa-check"></i>
+            }
+        </div>
         <!--        <mat-form-field>-->
         <!--            <mat-label translate>COMMON_TYPE</mat-label>-->
         <!--            <mat-select formControlName="genType">-->

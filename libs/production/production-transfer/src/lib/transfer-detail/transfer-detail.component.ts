@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {
     BaseTransactionDetailComponent,
+    DOC_PRODUCTION_ORDER, DOC_RESERVATION,
     TransactionLinesService,
 } from '@ss/logistics/api-transaction';
 import { Lookup } from '@ss/common/api-lookup';
@@ -21,7 +22,6 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { TransferDetailService } from '../production-services/transfer-detail.service';
 
@@ -75,7 +75,7 @@ export class TransferDetailComponent extends BaseTransactionDetailComponent {
     }
 
     protected importedDocuments(): Lookup[] {
-        return [];
+        return [{ id: DOC_RESERVATION, description: 'LOGISTICS_RESERVATION' }];
     }
 
     protected requireAgent(): boolean {
@@ -87,6 +87,6 @@ export class TransferDetailComponent extends BaseTransactionDetailComponent {
     }
 
     protected showImportButton(): boolean {
-        return false;
+        return true;
     }
 }
