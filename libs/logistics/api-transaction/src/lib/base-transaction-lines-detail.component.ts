@@ -19,10 +19,15 @@ import { Directive, HostListener, inject, OnInit, signal } from '@angular/core';
 import {OptionService} from '@ss/logistics/ui-options';
 import {
     DOC_CONSUMPTION,
-    DOC_CORRECTION_OUT, DOC_DELIVERY, DOC_INVOICE, DOC_PRODUCTION, DOC_PRODUCTION_ORDER,
+    DOC_CORRECTION_OUT,
+    DOC_DELIVERY,
+    DOC_INVOICE,
+    DOC_PRODUCTION,
+    DOC_PRODUCTION_ORDER,
+    DOC_PRODUCTION_TRANSFER,
     DOC_RECEPTION,
     DOC_SEPARATOR_200,
-    DOC_SEPARATOR_800
+    DOC_SEPARATOR_800,
 } from './transaction';
 import { AbstractEntityComponent } from '@ss/common/ui-base-entity';
 import { TransactionLinesClass } from './transaction-lines.class';
@@ -52,8 +57,8 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     private locationSrv = inject(StockInfoService);
     private formBuilder = inject(UntypedFormBuilder);
     private articleSrv = inject(ArticleService);
-    private route = inject(ActivatedRoute);
-    private router = inject(Router);
+    protected route = inject(ActivatedRoute);
+    protected router = inject(Router);
 
     protected lotSrv = inject(LotsService);
     protected optionSrv =  inject(OptionService);
@@ -266,7 +271,6 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         }
 
 
-
         const referenceIsDisabled =
             !this.isEditable ||
             ((this.document === INVOICE_CANCELLATION || this.document === DELIVERY_CANCELLATION) && !this.loginSrv.appCtx.manager && !this.loginSrv.appCtx.responsible) ||
@@ -293,13 +297,13 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             reference:    [{ value: b.reference, disabled: referenceIsDisabled }],
             sourceDoc:    [b.sourceDoc],
             formulaId:    [{ value: b.formulaId, disabled: referenceIsDisabled }],
-            store:        [{ value: b.store, disabled: (referenceIsDisabled && b.store != null) }],
+            store:        [{ value: b.store, disabled: (referenceIsDisabled && b.store != null) || b.document == DOC_PRODUCTION_TRANSFER }],
             qtyOrdered:   [{ value: b.qtyOrdered / units || 0, disabled: !this.isEditable || (this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && (b.sourceDoc == undefined || b.qtySatisfied < 0.00001) ))}, Validators.required],
             qtySatisfied: [{ value: b.qtySatisfied / units ||0, disabled: !this.isEditable || (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 || this.document === DOC_PRODUCTION)}, Validators.required],
             qtyInvoiced:  [{ value: b.qtyInvoiced / units ||0, disabled: !this.isEditable || (this.document != DOC_RECEPTION)} , Validators.required],
             qtyReturned:  [{ value: b.qtyReturned / units||0, disabled: true} , Validators.required],
-            price:        [{ value: b.price || 0, disabled: !this.isEditable }, Validators.required],
-            vat:          [{ value: b.vat || 0, disabled: !this.isEditable }, Validators.required],
+            price:        [{ value: b.price || 0, disabled: !this.isEditable || b.document == DOC_PRODUCTION_TRANSFER}, Validators.required],
+            vat:          [{ value: b.vat || 0, disabled: !this.isEditable || b.document == DOC_PRODUCTION_TRANSFER }, Validators.required],
             vat2:         [{ value: b.vat2, disabled: !this.isEditable }],
             observation:  [{ value: b.observation, disabled: !this.isEditable }],
             footerMemo:   [{ value: b.footerMemo, disabled: !this.isEditable }],

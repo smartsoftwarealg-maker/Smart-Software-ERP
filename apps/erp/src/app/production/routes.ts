@@ -22,7 +22,9 @@ import {
     PRODUCTION_CONSUMPTION_URL,
     PRODUCTION_TRANSFER_DETAIL_URL,
     PRODUCTION_FORMULAS_URL,
-    PRODUCTIONS_URL, STOCK_RESERVATIONS_URL,
+    PRODUCTIONS_URL,
+    STOCK_RESERVATIONS_URL,
+    PRODUCTIONS_RESERVATION_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -67,10 +69,8 @@ import {
     ProductionTransferDetailComponent,
     ProductionTransferLinesListComponent,
     ProductionTransferListComponent,
-    TransferDetailComponent,
-    TransferLinesDetailComponent,
-    TransferLinesListComponent,
-    TransferListComponent,
+    ProductionTransferLinesDetailComponent,
+
 } from '@ss/production/production-transfer';
 import {
     ProductionConsumptionDetailComponent,
@@ -86,6 +86,16 @@ import {
 } from '@ss/production/production-formulas';
 import { PartsReservationDetailComponent,
     PartsReservationLineDetailComponent, PartsReservationLineListComponent, PartsReservationListComponent } from '@logistics/parts-reservation';
+import {
+    ProductionReservationLinesDetailComponent,
+    ProductionReservationListComponent,
+} from '@ss/production/production-reservation';
+import {
+    ProductionReservationDetailComponent
+} from '@ss/production/production-reservation';
+import {
+    ProductionReservationLineListComponent
+} from '@ss/production/production-reservation';
 
 export const prodRoutes: Routes = [
     {
@@ -524,6 +534,43 @@ export const prodRoutes: Routes = [
         ],
     },
     {
+        path: PRODUCTIONS_RESERVATION_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductionReservationListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: ProductionReservationDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'lines-list',
+                        component: ProductionReservationLineListComponent,
+                        children: docInfoRoutes,
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            {
+                                path: ':id',
+                                component: ProductionReservationLinesDetailComponent,
+                            },
+                        ],
+                    },
+                    ...docInfoRoutes,
+                ],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+    {
         path: PRODUCTION_CONSUMPTION_URL,
         children: [
             {
@@ -564,14 +611,14 @@ export const prodRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: TransferListComponent,
+                component: ProductionTransferListComponent,
                 canActivate: [loginGuard],
                 canActivateChild: [loginGuard],
                 children: docInfoRoutes,
             },
             {
                 path: ':id',
-                component: TransferDetailComponent,
+                component: ProductionTransferDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 canActivateChild: [loginGuard],
@@ -579,7 +626,7 @@ export const prodRoutes: Routes = [
                     { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
                     {
                         path: 'lines-list',
-                        component: TransferLinesListComponent,
+                        component: ProductionTransferLinesListComponent,
                         children: docInfoRoutes,
                     },
                     {
@@ -587,7 +634,8 @@ export const prodRoutes: Routes = [
                         children: [
                             {
                                 path: ':id',
-                                component: TransferLinesDetailComponent,
+                                component:
+                                    ProductionTransferLinesDetailComponent,
                             },
                         ],
                     },

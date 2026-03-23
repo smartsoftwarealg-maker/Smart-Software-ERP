@@ -3,7 +3,7 @@ import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {ImportInfo} from './import-info';
 import {HttpParams} from '@angular/common/http';
-import {Sort} from "@angular/material/sort";
+import {Sort} from '@angular/material/sort';
 
 @Injectable({
     providedIn: 'root'
@@ -14,12 +14,12 @@ export class DocImportService {
     constructor(private httpService: HttpService) { }
 
     getList(document: number,
-            numb: number,
-            agent: number,
-            destination: number,
-            reference: string,
-            page: number,
-            pageSize: number): Observable<{ body: ImportInfo[], itemCount: number }> {
+        numb: number,
+        agent: number,
+        destination: number,
+        reference: string,
+        page: number,
+        pageSize: number): Observable<{ body: ImportInfo[], itemCount: number }> {
         const params = new HttpParams()
             .set('document', document)
             .set('number', numb)
@@ -38,6 +38,10 @@ export class DocImportService {
             destination: destination
         };
         return this.httpService.put('/imports', data);
+    }
+
+    transferAll(id: number): Observable<number> {
+        return this.httpService.post(`/production/mrp/transfer-all/${id}`);
     }
 
     set sortColumn(s: Sort) {

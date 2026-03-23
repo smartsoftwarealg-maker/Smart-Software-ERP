@@ -96,7 +96,7 @@ export const productionNavTree: SideNavNode = {
             name: 'LOGISTICS_RESERVATION',
             icon: 'fa-solid fa-lock-hashtag',
             route: ABS_PRODUCTION_RESERVATION_URL,
-            accessRights: 'Reservation',
+            accessRights: 'ProductionReservation',
         },
 
         {
@@ -106,23 +106,23 @@ export const productionNavTree: SideNavNode = {
             accessRights: 'Production',
         },
         {
-            name: 'PROD_TRANSFERS_DETAIL',
+            name: 'PROD_PRODUCTIONS_TRANSFER',
             icon: 'fa-solid fa-money-bill-transfer',
             route: ABS_PRODUCTION_TRANSFER_DETAIL_URL,
-            accessRights: 'Transfer',
+            accessRights: 'ProductionTransfer',
         },
         {
-            name: 'PROD_CONSUMPTION_DETAIL',
+            name: 'PROD_PRODUCTION_CONSUMPTION',
             icon: 'fas fa-gas-pump',
             route: ABS_PRODUCTION_CONSUMPTION_URL,
             accessRights: 'Consumption',
         },
-        {
-            name: 'PROD_PRODUCTIONS_TRANSFER',
-            icon: 'fa-solid fa-people-arrows',
-            route: ABS_PRODUCTIONS_TRANSFER_URL,
-            accessRights: 'ProductionTransfer',
-        },
+        // {
+        //     name: 'PROD_PRODUCTIONS_TRANSFER',
+        //     icon: 'fa-solid fa-people-arrows',
+        //     route: ABS_PRODUCTIONS_TRANSFER_URL,
+        //     accessRights: 'ProductionTransfer',
+        // },
         {
             name: 'PROD_INTER_STORE_TRANSFER',
             icon: 'fa-regular fa-store',

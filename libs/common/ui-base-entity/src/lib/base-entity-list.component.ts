@@ -149,6 +149,7 @@ implements OnInit, OnDestroy {
         this.editButton.label = rights?.edit
             ? 'COMMON_EDIT_SELECTED'
             : 'COMMON_DETAIL';
+
         this._editable = rights?.edit;
 
         this.shellSrv.setTitle(this.title);

@@ -21,9 +21,11 @@ import {
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslatePipe } from '@ss/common/ui-lang';
-import { ProductionLinesService } from '../production-services/production-lines.service';
+import { ProductionTransferLinesService } from '../production-services/production-transfer-lines.service';
 import { AccTransactionLineService } from '@ss/accounting/accounting-api';
 import { MaterialModule } from '@ss/common/api-common';
+import { Observable } from 'rxjs';
+import { WeightCaptureDialogButtonComponent } from '@ss/sales/weight-capture';
 
 @Component({
     selector: 'ss-production-transfer-lines-list',
@@ -44,13 +46,13 @@ import { MaterialModule } from '@ss/common/api-common';
         MatCellDef,
         MatHeaderRowDef,
         MatRowDef,
+
     ],
 })
 export class ProductionTransferLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit
 {
-
     override displayedColumns = [
         'position',
         'reference',
@@ -64,7 +66,7 @@ export class ProductionTransferLinesListComponent
     ];
 
     constructor(
-        public override detailSrv: ProductionLinesService,
+        public override detailSrv: ProductionTransferLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -85,14 +87,6 @@ export class ProductionTransferLinesListComponent
         );
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-    }
-
-    override select(row: TransactionLine) {
-        super.select(row);
-    }
-
     entitySrv = inject(AccTransactionLineService);
 
     private refresh() {
@@ -107,8 +101,9 @@ export class ProductionTransferLinesListComponent
     }
 
     transfer() {
-        this.detailSrv.transfer(this.selectedId).subscribe({
+        this.detailSrv.transfer(this.selectedRow?.id || 0).subscribe({
             next: () => {
+                this.refresh();
                 this.snackBarSrv.showSuccessMessage();
             },
             error: (err) => {
@@ -118,13 +113,30 @@ export class ProductionTransferLinesListComponent
         });
     }
 
-    cancelTransfer() {
+    transferAll() {
+        this.detailSrv.transferAll(this.selectedRow?.transacId || 0).subscribe({
+            next: () => {
+                this.refresh();
+                this.snackBarSrv.showSuccessMessage();
+            },
+            error: (err) => {
+                this.snackBarSrv.showFailureMessage();
+                throw err;
+            },
+        });
+    }
+
+    private doCancellation(obs: Observable<{ count: number }>) {
         this.confirmationSrv
-            .confirm('PROD_CANCEL_TRANSFER_CONFIRMATION', 'PROD_CANCEL_TRANSFER_CONFIRMATION')
+            .confirm(
+                'PROD_CANCEL_TRANSFER_CONFIRMATION',
+                'PROD_CANCEL_TRANSFER_CONFIRMATION',
+            )
             .subscribe((res) => {
                 if (res) {
-                    this.detailSrv.cancelTransfer(this.selectedId).subscribe({
+                    obs.subscribe({
                         next: () => {
+                            this.refresh();
                             this.snackBarSrv.showSuccessMessage();
                         },
                         error: (err) => {
@@ -132,6 +144,36 @@ export class ProductionTransferLinesListComponent
                             throw err;
                         },
                     });
+                }
+            });
+    }
+
+    cancelAllTransfers() {
+        this.doCancellation(
+            this.detailSrv.cancelAllTransfers(this.selectedRow?.transacId || 0),
+        );
+    }
+
+    cancelTransfer() {
+        this.confirmationSrv
+            .confirm(
+                'PROD_CANCEL_TRANSFER_CONFIRMATION',
+                'PROD_CANCEL_TRANSFER_CONFIRMATION',
+            )
+            .subscribe((res) => {
+                if (res) {
+                    this.detailSrv
+                        .cancelTransfer(this.selectedRow?.id || 0)
+                        .subscribe({
+                            next: () => {
+                                this.refresh();
+                                this.snackBarSrv.showSuccessMessage();
+                            },
+                            error: (err) => {
+                                this.snackBarSrv.showFailureMessage();
+                                throw err;
+                            },
+                        });
                 }
             });
     }

@@ -6,17 +6,41 @@
                     <mat-label translate>COMMON_SEARCH</mat-label>
                     <input matInput [formControl]="searchText" type="text">
                 </mat-form-field>
-                @if (selectedId && selectedRow?.qtySatisfied < 0.1) {
+                <button mat-mini-fab (click)="edit()"
+                        [matTooltip]="'COMMON_EDIT' | translate"
+                        [disabled]="!selectedId"
+                        color="accent">
+                    <span class="fas fa-pen"></span>
+                </button>
+
                     <button mat-mini-fab (click)="transfer()" [matTooltip]="'PROD_TRANSFER' | translate"
+                            [disabled]="!selectedId"
                             color="warn">
                         <span class="fas fa-exchange-alt"></span>
                     </button>
-
-                    <button mat-mini-fab (click)="cancelTransfer()" [matTooltip]="'PROD_CANCEL_TRANSFER' | translate"
-                            color="warn">
-                        <span class="fas fa-undo-alt"></span>
-                    </button>
-                }
+                <button mat-mini-fab
+                        (click)="cancelTransfer()"
+                        [matTooltip]="'PROD_CANCEL_TRANSFER' | translate"
+                        color="warn">
+                    <span class="fas fa-undo-alt"></span>
+                </button>
+                <button mat-mini-fab
+                        (click)="transferAll()"
+                        [matTooltip]="'PROD_TRANSFER_ALL' | translate"
+                        color="warn">
+                    <span class="fa-solid fa-check-double"></span>
+                </button>
+                <button mat-mini-fab
+                        (click)="cancelAllTransfers()"
+                        [matTooltip]="'PROD_CANCEL_ALL_TRANSFERS' | translate"
+                        color="warn">
+                    <span class="fa-solid fa-broom-wide"></span>
+                </button>
+                <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+                        [disabled]="!selectedId"
+                        color="warn">
+                    <span class="fas fa-trash-alt"></span>
+                </button>
             </div>
         </div>
         <div class="container_div">

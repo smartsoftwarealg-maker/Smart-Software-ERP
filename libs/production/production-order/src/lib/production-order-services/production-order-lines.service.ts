@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {HttpService} from '@ss/common/api-common';
 import {TransactionLinesClass} from '@ss/logistics/api-transaction';
 
@@ -7,16 +7,16 @@ import {TransactionLinesClass} from '@ss/logistics/api-transaction';
 })
 export class ProductionOrderLinesService extends TransactionLinesClass {
 
-    constructor(protected override httpSrv: HttpService) {
-        super(httpSrv,  '/detail', '/production/production-orders');
+    constructor() {
+        super(inject(HttpService), '/detail', '/production/production-orders');
     }
 
     reserve(id: number){
-        return  this.httpSrv.post(`/production/mrp/reserve/${id}`)
+        return  this.httpSrv.post(`/production/mrp/reserve/${id}`);
     }
 
     release(id: number){
-        return  this.httpSrv.post(`/production/mrp/release/${id}`)
+        return  this.httpSrv.post(`/production/mrp/release/${id}`);
     }
 
 }

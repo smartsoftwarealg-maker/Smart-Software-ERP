@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
-import { InventoryLinesService } from "@ss/stock/api-inventory-lines";
+import { InventoryLinesService } from '@ss/stock/api-inventory-lines';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 
@@ -18,13 +18,13 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    RouterModule,
-    ReactiveFormsModule,
-    UiAutoCompleteComponent,
-    TranslatePipe
-]
+        MaterialModule,
+        TranslateDirective,
+        RouterModule,
+        ReactiveFormsModule,
+        UiAutoCompleteComponent,
+        TranslatePipe
+    ]
 })
 export class InventoryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(public inventoryLinesSrv: InventoryLinesService) {

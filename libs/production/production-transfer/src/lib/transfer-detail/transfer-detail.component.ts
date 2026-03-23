@@ -23,7 +23,8 @@ import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { TransferDetailService } from '../production-services/transfer-detail.service';
+import { ProductionTransferLinesService } from '../production-services/production-transfer-lines.service';
+import { ProductionTransferService } from '../production-services/production-transfer.service';
 
 @Component({
     selector: 'ss-product-transfer-detail-detail',
@@ -52,7 +53,7 @@ export class TransferDetailComponent extends BaseTransactionDetailComponent {
         public override detailSrv: TransactionLinesService,
         protected override loginSrv: LoginService,
         protected override dialog: MatDialog,
-        public transferService: TransferDetailService,
+        public transferService: ProductionTransferService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

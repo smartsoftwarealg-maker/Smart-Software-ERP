@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Lookup, LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {
     BaseTransactionDetailComponent,
-    DOC_PRODUCTION_ORDER,
-    Transaction,
+    DOC_PRODUCTION,
+    DOC_PRODUCTION_RESERVATION,
 } from '@ss/logistics/api-transaction';
 import { MatDialog } from '@angular/material/dialog';
 import { MatError } from '@angular/material/form-field';
@@ -16,8 +16,9 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { ProductionService } from '../production-services/production.service';
-import { ProductionLinesService } from '../production-services/production-lines.service';
+import { ProductionTransferLinesService } from '../production-services/production-transfer-lines.service';
+import { ProductionTransferService } from '../production-services/production-transfer.service';
+import { DocImportComponent } from '@ss/logistics/ui-doc-import';
 
 @Component({
     selector: 'ss-product-transfer-detail',
@@ -35,9 +36,17 @@ import { ProductionLinesService } from '../production-services/production-lines.
     ],
 })
 export class ProductionTransferDetailComponent extends BaseTransactionDetailComponent {
+    protected reserveBtn: ToolbarButton = {
+        disabled: false,
+        icon: 'fa-solid fa-lock',
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        visible: true,
+        click: () => this.reserveForProduction(),
+    };
     constructor(
-        public orderService: ProductionService,
-        public override detailSrv: ProductionLinesService,
+        public orderService: ProductionTransferService,
+        public override detailSrv: ProductionTransferLinesService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -63,80 +72,56 @@ export class ProductionTransferDetailComponent extends BaseTransactionDetailComp
         );
     }
 
-    override setupForm(b: Transaction): FormGroup {
-        this.purchaseProjectSrv.setParentId(b?.agent || 0);
-        if (!b.id) {
-            b.id = 0;
-            b.number = 0;
-            b.userID = this.loginSrv.appCtx.id;
-            b.dealer = b.userID;
-            b.date = new Date();
-        }
-
-        this.transaction = b;
-        this.detailSrv.setParentId(b.id || 0);
-        this.purchaseProjectSrv.setParentId(b.agent || 0);
-        //this._isManager = this.loginSrv.appCtx.manager;
-        this.formId = b.id || 0;
-
-        this.isEditable = this.isEditable && !b.isValidated;
-        this.saveButton.visible = false; // this.saveButton.visible && !b.isValidated;
-        this.detailSrv.editable = this.isEditable;
-        this.importBtn.disabled = b.id === 0;
-
-        return this.formBuilder.group({
-            id: [{ value: b.id, disabled: true }],
-            document: [{ value: b.document || 0, disabled: true }],
-            centerId: [
-                { value: 0 || this.loginSrv.appCtx.center, disabled: true },
-            ],
-            date: [
-                { value: b.date || new Date(), disabled: true },
-                Validators.required,
-            ],
-            number: [{ value: b.number || 0, disabled: true }],
-            reference: [{ value: b.reference, disabled: true }],
-            referenceDocDate: [{ value: b.referenceDocDate, disabled: true }],
-            header: [{ value: b.header, disabled: true }],
-            footer: [{ value: b.footer, disabled: true }],
-            dealer: [{ value: b.dealer, disabled: true }, Validators.required],
-            agent: [{ value: b.agent, disabled: true }],
-            altAgent: [{ value: b.altAgent, disabled: true }],
-            project: [{ value: b.project, disabled: true }],
-            locked: [
-                { value: b.locked || false, disabled: true },
-                Validators.required,
-            ],
-            dirty: [
-                { value: !b.dirty || false, disabled: true },
-                Validators.required,
-            ],
-            license: [{ value: b.license, disabled: true }],
-            licenseDate: [{ value: b.licenseDate, disabled: true }],
-            licenseIssuer: [{ value: b.licenseIssuer, disabled: true }],
-        });
-    }
-
-    override ngOnInit() {
-        super.ngOnInit();
-        this.currencySrv.load().subscribe();
-    }
 
     protected importedDocuments(): Lookup[] {
         return [
-            { id: DOC_PRODUCTION_ORDER, description: 'PROD_PRODUCTION_ORDER' },
+            {
+                id: DOC_PRODUCTION,
+                description: 'COMMON_PRODUCTION',
+            },
         ];
     }
 
     protected requireAgent(): boolean {
-        return true;
+        return false;
     }
 
     protected requireAgentToImportDocument(): boolean {
-        return true;
+        return false;
     }
 
     protected showImportButton(): boolean {
         return true;
+    }
+
+    private reserveForProduction() {
+        const dialogRef = this.dialog.open(DocImportComponent, {
+            width: '80%',
+            height: '80%',
+            maxWidth: '800px',
+            data: {
+                documentList: this.importedDocuments(),
+                agentId: 0,
+                destination: this.form.controls['document'].value,
+            },
+            disableClose: true,
+        });
+
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result && result['document'] && result['number']) {
+                const document = result['document'];
+                const number = result['number'];
+                this.docImportService.transferAll(result['id'] || 0).subscribe({
+                    next: () => {
+                        this.executionRef++;
+                        this.snackBarSrv.showMessage('COMMON_SUCCESS');
+                    },
+                    error: (err) => {
+                        this.snackBarSrv.showMessage('COMMON_FAILURE', false);
+                        throw err;
+                    },
+                });
+            }
+        });
     }
 }
