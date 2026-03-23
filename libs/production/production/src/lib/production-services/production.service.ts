@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {HttpService} from '@ss/common/api-common';
 import { PRODUCTION_URL } from './production-api';
@@ -10,8 +10,10 @@ import {Observable} from 'rxjs';
 })
 export class ProductionService extends BaseEntityService<Transaction> {
 
-    constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, PRODUCTION_URL);
+    protected override httpSrv = inject(HttpService);
+
+    constructor() {
+        super(inject(HttpService), PRODUCTION_URL);
     }
 
     produceAll(id: number): Observable<{ count: number }> {

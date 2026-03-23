@@ -864,9 +864,14 @@
             "@ss/sales/category-discounts": [
                 "libs/sales/category-discounts/src/index.ts"
             ],
-            "@ss/payroll/deposit-day": ["libs/payroll/deposit-day/src/index.ts"],
+            "@ss/payroll/deposit-day": [
+                "libs/payroll/deposit-day/src/index.ts"
+            ],
             "@ss/payroll/ui-tax-payment": [
                 "libs/payroll/ui-tax-payment/src/index.ts"
+            ],
+            "@ss/production/production-reservation": [
+                "libs/production/production-reservation/src/index.ts"
             ]
         }
     },

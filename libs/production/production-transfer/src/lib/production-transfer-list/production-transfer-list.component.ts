@@ -12,7 +12,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe } from '@angular/common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
-import { ProductionService } from '../production-services/production.service';
+import { ProductionTransferService } from '../production-services/production-transfer.service';
 
 @Component({
     selector: 'ss-production-transfer-list',
@@ -50,7 +50,7 @@ export class ProductionTransferListComponent extends BaseEntityListComponent<Tra
     ];
 
     constructor(
-        public override entitySrv: ProductionService,
+        public override entitySrv: ProductionTransferService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,

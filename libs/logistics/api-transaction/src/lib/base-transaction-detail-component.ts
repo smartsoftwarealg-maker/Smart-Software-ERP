@@ -34,8 +34,6 @@ import {
 } from '@ss/common/api-lookup';
 import {
     AgentService,
-    BranchService,
-    ConsumerService,
     CustomerService,
     SupplierService
 } from '@ss/logistics/api-agent';
@@ -61,20 +59,22 @@ export abstract class BaseTransactionDetailComponent
     private agentSrv = inject(AgentService);
     private payMethodSrv = inject(PayMethodService);
     private usersSrv = inject(UserListService);
-    private consumerSrv = inject(ConsumerService);
-    private branchSrv = inject(BranchService);
+    // private consumerSrv = inject(ConsumerService);
+    // private branchSrv = inject(BranchService);
     private _isManager = false;
-    private docImportService: DocImportService = inject(DocImportService);
     private supplierSrv = inject(SupplierService);
     private customerSrv = inject(CustomerService);
     private activeCustomerSrv = inject(ActiveCustomerService);
     private activeSupplierSrv = inject(ActiveSupplierService);
     private activeTransporterSrv = inject(ActiveTransporterService);
-    private activeSupplierAndTransporterSrv = inject(ActiveSupplierAndTransportersService);
+    private activeSupplierAndTransporterSrv = inject(
+        ActiveSupplierAndTransportersService,
+    );
     private activeUnitSrv = inject(ActiveUnitService);
     private activeConsumerSrv = inject(ActiveConsumerService);
     private activeAgentSrv = inject(ActiveAgentService);
 
+    protected docImportService: DocImportService = inject(DocImportService);
     protected transaction: Transaction = null;
     protected currencySrv = inject(CurrencyService);
     protected purchaseProjectSrv = inject(PurchaseContractService);
@@ -115,9 +115,15 @@ export abstract class BaseTransactionDetailComponent
     public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(
         this.usersSrv,
     );
-    public agentLookup = new DefaultAutoCompleteModel<Lookup>(this.activeAgentSrv);
-    public purchaseProjectLookup = new ProjectLookupModel(this.purchaseProjectSrv);
-    public transportProjectLookup = new ProjectLookupModel(this.transportProjectSrv);
+    public agentLookup = new DefaultAutoCompleteModel<Lookup>(
+        this.activeAgentSrv,
+    );
+    public purchaseProjectLookup = new ProjectLookupModel(
+        this.purchaseProjectSrv,
+    );
+    public transportProjectLookup = new ProjectLookupModel(
+        this.transportProjectSrv,
+    );
     public salesProjectLookup = new ProjectLookupModel(this.salesProjectSrv);
     public currencyLookup = new ForeignCurrencyModel(this.currencySrv);
     public customerLookup = new DefaultAutoCompleteModel<Lookup>(
@@ -126,7 +132,9 @@ export abstract class BaseTransactionDetailComponent
     public supplierLookup = new DefaultAutoCompleteModel<Lookup>(
         this.activeSupplierSrv,
     );
-    public supplierAndTransporterLookup = new DefaultAutoCompleteModel(this.activeSupplierAndTransporterSrv);
+    public supplierAndTransporterLookup = new DefaultAutoCompleteModel(
+        this.activeSupplierAndTransporterSrv,
+    );
     public transporterLookup = new DefaultAutoCompleteModel<Lookup>(
         this.activeTransporterSrv,
     );

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import {
-    BaseTransactionLinesDetailComponent, DOC_TRANSFER
-} from "@ss/logistics/api-transaction";
+    BaseTransactionLinesDetailComponent,
+    DOC_PRODUCTION_RESERVATION,
+    DOC_TRANSFER,
+} from '@ss/logistics/api-transaction';
 import {TransactionLinesService} from '@ss/logistics/api-transaction';
 
 import { MatMiniFabButton } from '@angular/material/button';
@@ -15,8 +17,8 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import {MaterialModule} from '@ss/common/api-common';
 
 @Component({
-    selector: 'ss-product-transfer-detail-detail',
-    templateUrl: './transfer-lines-detail.component.html',
+    selector: 'ss-product-reservation-detail-detail',
+    templateUrl: './production-reservation-lines-detail.component.html',
     styleUrls: [
         '../../../../../common/assets/src/assets/transac-lines-detail.scss',
     ],
@@ -38,8 +40,8 @@ import {MaterialModule} from '@ss/common/api-common';
         CdkTextareaAutosize,
     ],
 })
-export class TransferLinesDetailComponent extends BaseTransactionLinesDetailComponent {
+export class ProductionReservationLinesDetailComponent extends BaseTransactionLinesDetailComponent {
     constructor(public inventoryLinesService: TransactionLinesService) {
-        super(inventoryLinesService, DOC_TRANSFER);
+        super(inventoryLinesService, DOC_PRODUCTION_RESERVATION);
     }
 }
