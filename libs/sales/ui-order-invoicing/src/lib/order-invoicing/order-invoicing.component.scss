@@ -5,9 +5,11 @@
     margin: 8px auto;
     flex: 1 0 60%;
     overflow-x: auto;
-    min-height: 300px;
 }
-
+.child__table {
+    min-height: 300px;
+    overflow: auto;
+}
 .mat-column-agent {
     flex: 1 1 200px;
     border-left: gray solid 1px;
@@ -83,16 +85,16 @@
     justify-content: center;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-
-    > * { /* Target direct children */
-        max-width: 1200px; /* Or any desired max width */
-        width: 100%;
-    }
-}
+//.container {
+//    display: flex;
+//    justify-content: center;
+//    width: 100%;
+//
+//    > * { /* Target direct children */
+//        max-width: 1200px; /* Or any desired max width */
+//        width: 100%;
+//    }
+//}
 
 .sub-container {
     display: flex;
@@ -105,3 +107,10 @@
     }
 }
 
+mat-table {
+    height: 100%;
+    min-height: 350px;
+}
+mat-tab-group {
+    min-height: 45%;
+}
