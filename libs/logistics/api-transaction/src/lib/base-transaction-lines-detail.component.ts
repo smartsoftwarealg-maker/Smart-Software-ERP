@@ -23,7 +23,7 @@ import {
     DOC_DELIVERY,
     DOC_INVOICE,
     DOC_PRODUCTION,
-    DOC_PRODUCTION_ORDER,
+    DOC_PRODUCTION_ORDER, DOC_PRODUCTION_RESERVATION,
     DOC_PRODUCTION_TRANSFER,
     DOC_RECEPTION,
     DOC_SEPARATOR_200,
@@ -275,6 +275,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             !this.isEditable ||
             ((this.document === INVOICE_CANCELLATION || this.document === DELIVERY_CANCELLATION) && !this.loginSrv.appCtx.manager && !this.loginSrv.appCtx.responsible) ||
             ( b.qtySatisfied > 0.0001 || !!b.sourceDoc || (this.document >= 200 && this.document <= 800 && b.qtyOrdered > 0.0001));
+
         this.referenceIsDisabled.set(referenceIsDisabled);
 
         const unitsIsDisabled =
@@ -291,6 +292,15 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             b.document == PRODUCTION;
         const units = b.units || 1;
 
+        const qtyOrderedDisabled = this.document !== DOC_PRODUCTION_RESERVATION &&
+            (!this.isEditable ||
+            (this.document > DOC_SEPARATOR_200 &&
+                this.document < DOC_SEPARATOR_800 &&
+                !(
+                    this.document === DOC_PRODUCTION &&
+                    (b.sourceDoc == undefined || b.qtySatisfied < 0.00001)
+                )));
+
         return this.formBuilder.group({
             id:           [b.id],
             transacId:    [this.parentId],
@@ -298,7 +308,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             sourceDoc:    [b.sourceDoc],
             formulaId:    [{ value: b.formulaId, disabled: referenceIsDisabled }],
             store:        [{ value: b.store, disabled: (referenceIsDisabled && b.store != null) || b.document == DOC_PRODUCTION_TRANSFER }],
-            qtyOrdered:   [{ value: b.qtyOrdered / units || 0, disabled: !this.isEditable || (this.document > DOC_SEPARATOR_200 && this.document < DOC_SEPARATOR_800 && !(this.document === DOC_PRODUCTION && (b.sourceDoc == undefined || b.qtySatisfied < 0.00001) ))}, Validators.required],
+            qtyOrdered:   [{ value: b.qtyOrdered / units || 0, disabled: qtyOrderedDisabled }, Validators.required],
             qtySatisfied: [{ value: b.qtySatisfied / units ||0, disabled: !this.isEditable || (this.document < DOC_SEPARATOR_200 || this.document > DOC_SEPARATOR_800 || this.document === DOC_PRODUCTION)}, Validators.required],
             qtyInvoiced:  [{ value: b.qtyInvoiced / units ||0, disabled: !this.isEditable || (this.document != DOC_RECEPTION)} , Validators.required],
             qtyReturned:  [{ value: b.qtyReturned / units||0, disabled: true} , Validators.required],

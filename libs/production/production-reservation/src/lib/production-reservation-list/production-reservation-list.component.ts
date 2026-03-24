@@ -77,7 +77,7 @@ export class ProductionReservationListComponent extends BaseEntityListComponent<
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'PROD_PRODUCTION_RESERVATION',
+            'LOGISTICS_RESERVATION',
         );
     }
 }
