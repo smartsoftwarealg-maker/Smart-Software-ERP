@@ -301,8 +301,9 @@ export abstract class BaseTransactionDetailComponent
                 if (result && result['document'] && result['number']) {
                     const document = result['document'];
                     const number = result['number'];
+                    const info = result['info'];
                     this.docImportService
-                        .importDoc(document, number, this.transaction.id)
+                        .importDoc(document, number, this.transaction.id, info)
                         .pipe(
                             switchMap(() => this.loadEntity(this.queryId)),
                             tap((ent) => (this.form = this.setupForm(ent))),

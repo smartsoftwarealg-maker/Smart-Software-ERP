@@ -235,5 +235,6 @@
     "UPDATE_ALL_DOCUMENTS": "Update all documents",
     "ACTIVITY_SEGMENTS": "Activity segments",
     "ACTIVITY_SEGMENT": "Activity segment",
-    "ARTICLE_BLOCKED": "This article is blocked"
+    "ARTICLE_BLOCKED": "This article is blocked",
+    "IMPORT_REFERENCE": "Import reference"
 }
