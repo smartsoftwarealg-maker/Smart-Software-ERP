@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent,
     DOC_PRODUCTION_RESERVATION,
-    DOC_TRANSFER,
 } from '@ss/logistics/api-transaction';
 import {TransactionLinesService} from '@ss/logistics/api-transaction';
 

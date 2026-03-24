@@ -71,7 +71,7 @@ export class ProductionReservationDetailComponent extends BaseTransactionDetailC
             confirmationSrv,
             loginSrv,
             dialog,
-            'PROD_PRODUCTION_RESERVATION',
+            'LOGISTICS_RESERVATION',
         );
     }
 
