@@ -31,11 +31,12 @@ export class DocImportService {
         return this.httpService.getData('/imports', page, pageSize, this._sortColumn, null, params1);
     }
 
-    importDoc(document: number, numb: number, destination: number): Observable<number> {
+    importDoc(document: number, numb: number, destination: number, info?: boolean): Observable<number> {
         const data = {
             document:    document,
             number:      numb,
-            destination: destination
+            destination: destination,
+            info: info,
         };
         return this.httpService.put('/imports', data);
     }

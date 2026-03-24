@@ -233,5 +233,6 @@
     "UPDATE_ALL_DOCUMENTS":   "تحديث جميع المستندات",
     "ACTIVITY_SEGMENTS":      "تقسيمات النشاط",
     "ACTIVITY_SEGMENT":       "قسم النشاط",
-    "ARTICLE_BLOCKED":        "هذا الصنف محظور"
+    "ARTICLE_BLOCKED":        "هذا الصنف محظور",
+    "IMPORT_REFERENCE":       "مرجع الاستيراد"
 }
