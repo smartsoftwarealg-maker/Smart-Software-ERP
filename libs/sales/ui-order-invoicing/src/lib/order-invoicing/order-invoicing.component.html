@@ -119,13 +119,12 @@
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 @if (selected) {
-    <div class="container">
         <mat-tab-group>
             <mat-tab>
                 <ng-template mat-tab-label>
                     <span translate>COMMON_DETAIL</span>
                 </ng-template>
-                <div class="table-container">
+                <div class="child__table">
                     <div class="scale-btn-div">
                         <ss-weight-capture-dialog-button-dialog class="scale-btn"
                                                                 [transactionId]="transacLineId"
@@ -256,5 +255,4 @@
             </mat-tab>
             }
         </mat-tab-group>
-    </div>
 }
