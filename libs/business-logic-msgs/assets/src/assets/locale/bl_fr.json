@@ -98,5 +98,6 @@
     "INVALID_DEPOSIT_DATE":               "Le dépôt veriment de la paie n'est pas autorisé ce jour du mois.",
     "INVALID_STORE":                      "Magasin invalide spécifié pour la livraison sur la facture",
     "LOT_EXPIRED":                        "Le lot spécifié a expiré.",
-    "MISSING_WEIGHT":                     "Soit le poids à vide, soit le poids brut, soit les deux sont manquants."
+    "MISSING_WEIGHT":                     "Soit le poids à vide, soit le poids brut, soit les deux sont manquants.",
+    "NO_CASH_MODE":                       "La méthode de paiement en espèces n'existe pas dans ce système."
 }

@@ -86,5 +86,6 @@
     "NO_RESERVATION_CREATED":               "",
     "INVALID_STORE":                        "Fatura üzerindeki teslimat için belirtilen mağaza geçersiz.",
     "LOT_EXPIRED":                          "Belirtilen parti süresi dolmuştur.",
-    "MISSING_WEIGHT":                       "Tara ağırlığı, brüt ağırlığı veya her ikisi eksik."
+    "MISSING_WEIGHT":                       "Tara ağırlığı, brüt ağırlığı veya her ikisi eksik.",
+    "NO_CASH_MODE":                         "Nakit ödeme yöntemi bu sistemde mevcut değil."
 }

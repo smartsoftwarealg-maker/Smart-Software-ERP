@@ -97,5 +97,6 @@
     "INVALID_DEPOSIT_DATE":          "The electronic deposit of the payroll is not allowed on this day of the month.",
     "LOT_EXPIRED":                   "The specified lot has expired.",
     "INVALID_STORE":                 "Invalid store specified for delivery on invoice",
-    "MISSING_WEIGHT":                "Either the tare weight, the gross weight, or both is missing."
+    "MISSING_WEIGHT":                "Either the tare weight, the gross weight, or both is missing.",
+    "NO_CASH_MODE":                  "The cash pay method does not exists in this system."
 }
