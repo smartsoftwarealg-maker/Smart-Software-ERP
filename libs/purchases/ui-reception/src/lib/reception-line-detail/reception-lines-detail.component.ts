@@ -33,12 +33,6 @@ export class ReceptionLinesDetailComponent
         super(receptionLinesSrv, DOC_RECEPTION);
     }
 
-    readForm(): TransactionLine {
-        const value = super.readForm();
-        value.qtyInvoiced = value.qtySatisfied;
-        return value;
-    }
-
     setupForm(b: TransactionLine): UntypedFormGroup {
         const fg = super.setupForm(b);
         fg.controls['charge']?.setValue(

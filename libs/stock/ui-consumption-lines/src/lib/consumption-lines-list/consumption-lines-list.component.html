@@ -39,6 +39,12 @@
                 {{ e.storeDescription }}
             </mat-cell>
         </ng-container>
+        <ng-container matColumnDef="ccDescription">
+            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_COST_CENTER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.ccDescription }}
+            </mat-cell>
+        </ng-container>
       <ng-container matColumnDef="reference">
         <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
         <mat-cell *matCellDef="let e">

@@ -84,5 +84,7 @@
     "ALREADY_TRANSFERRED":                  "",
     "NO_TRANSFER_CREATED":                  "",
     "NO_RESERVATION_CREATED":               "",
-    "LOT_EXPIRED":                          "Belirtilen parti süresi dolmuştur."
+    "INVALID_STORE":                        "Fatura üzerindeki teslimat için belirtilen mağaza geçersiz.",
+    "LOT_EXPIRED":                          "Belirtilen parti süresi dolmuştur.",
+    "MISSING_WEIGHT":                       "Tara ağırlığı, brüt ağırlığı veya her ikisi eksik."
 }

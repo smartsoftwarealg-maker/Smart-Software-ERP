@@ -9,6 +9,13 @@
         </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="qty">
+        <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_QTY</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          {{ +e.plateNumber2 | number: '1.2-2' }}
+        </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>
         <mat-cell *matCellDef="let e">
