@@ -62,6 +62,12 @@ mat-header-cell {
     flex: 1 1 100px;
     border-left: gray solid 1px;
 }
+.mat-column-qty {
+    flex: 1 1 100px;
+    border-left: gray solid 1px;
+    justify-content: end;
+}
+
 .mat-column-docStatus {
     border-right: gray solid 1px;
 }

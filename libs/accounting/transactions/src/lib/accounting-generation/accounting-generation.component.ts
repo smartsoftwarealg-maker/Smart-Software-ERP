@@ -257,6 +257,8 @@ export class AccountingGenerationComponent implements OnInit {
                 },
                 error: (err) => {
                     this.shellSrv.setLoading(false);
+                    this.processing.set(false);
+                    this.processingDocument.set(0);
                     throw err;
                 },
             });

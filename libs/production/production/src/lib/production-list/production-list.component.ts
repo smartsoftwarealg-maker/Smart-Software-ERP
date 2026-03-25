@@ -10,7 +10,7 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { DatePipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { ProductionService } from '../production-services/production.service';
 
@@ -36,7 +36,8 @@ import { ProductionService } from '../production-services/production.service';
         PaginationComponent,
         DocInfoComponent,
         DatePipe,
-        TranslateDirective
+        TranslateDirective,
+        DecimalPipe,
     ],
 })
 export class ProductionListComponent extends BaseEntityListComponent<Transaction> {
@@ -64,7 +65,8 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
         'dealer',
         'reference',
         'referenceDocDate',
-        'docStatus'
+        'qty',
+        'docStatus',
     ];
 
     constructor(
@@ -75,8 +77,19 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
         public override router: Router,
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PROD_PRODUCTIONS');
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'PROD_PRODUCTIONS',
+        );
     }
 
     // override ngOnInit() {

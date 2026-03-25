@@ -63,6 +63,7 @@ export class ConsumptionLinesListComponent
         'qtySatisfied',
         'price',
         'total',
+        'ccDescription'
     ];
 
     constructor(
