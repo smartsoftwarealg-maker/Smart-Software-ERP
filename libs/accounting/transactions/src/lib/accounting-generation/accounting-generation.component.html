@@ -21,6 +21,8 @@
                                   formControlName="purchaseJr"></ss-auto-complete>
             </mat-form-field>
 
+            <mat-checkbox [formControl]="includePurchase" (click)="syncPurchaseJournal()"></mat-checkbox>
+
             <mat-form-field class="count">
                 <mat-label translate>COMMON_COUNT</mat-label>
                 <input matInput formControlName="purchaseCount" type="number" required>
@@ -28,7 +30,7 @@
             @if (processingDocument() == PURCHASE) {
                 <mat-spinner></mat-spinner>
             }
-            @if (processedDocuments().indexOf(PURCHASE)>=0) {
+            @if (processedDocuments().indexOf(PURCHASE) >= 0) {
                 <i class="fa-solid fa-check"></i>
             }
         </div>
@@ -40,6 +42,8 @@
                                   formControlName="inventoryJr"></ss-auto-complete>
             </mat-form-field>
 
+            <mat-checkbox [formControl]="includeInventory" (click)="syncStockInJournal()"></mat-checkbox>
+
             <mat-form-field class="count">
                 <mat-label translate>COMMON_COUNT</mat-label>
                 <input matInput formControlName="inventoryCount" type="number" required>
@@ -47,7 +51,7 @@
             @if (processingDocument() == INVENTORY) {
                 <mat-spinner></mat-spinner>
             }
-            @if (processedDocuments().indexOf(INVENTORY)>=0) {
+            @if (processedDocuments().indexOf(INVENTORY) >= 0) {
                 <i class="fa-solid fa-check"></i>
             }
         </div>
@@ -60,6 +64,8 @@
                                   formControlName="consumptionJr"></ss-auto-complete>
             </mat-form-field>
 
+            <mat-checkbox [formControl]="includeConsumption" (click)="syncStockOutJournal()"></mat-checkbox>
+
             <mat-form-field class="count">
                 <mat-label translate>COMMON_COUNT</mat-label>
                 <input matInput formControlName="consumptionCount" type="number" required>
@@ -67,7 +73,7 @@
             @if (processingDocument() == CONSUMPTION) {
                 <mat-spinner></mat-spinner>
             }
-            @if (processedDocuments().indexOf(CONSUMPTION)>=0) {
+            @if (processedDocuments().indexOf(CONSUMPTION) >= 0) {
                 <i class="fa-solid fa-check"></i>
             }
         </div>
@@ -79,6 +85,9 @@
                                   [model]="journalLookup"
                                   formControlName="salesJr"></ss-auto-complete>
             </mat-form-field>
+
+            <mat-checkbox [formControl]="includeSales" (click)="syncSalesJournal()"></mat-checkbox>
+
             <mat-form-field class="count">
                 <mat-label translate>COMMON_COUNT</mat-label>
                 <input matInput formControlName="salesCount" type="number" required>
@@ -86,7 +95,7 @@
             @if (processingDocument() == SALES) {
                 <mat-spinner></mat-spinner>
             }
-            @if (processedDocuments().indexOf(SALES)>=0) {
+            @if (processedDocuments().indexOf(SALES) >= 0) {
                 <i class="fa-solid fa-check"></i>
             }
         </div>
@@ -99,6 +108,8 @@
                                   formControlName="transferInJr"></ss-auto-complete>
             </mat-form-field>
 
+            <mat-checkbox [formControl]="includeTransferIn" (click)="syncTransferInJournal()"></mat-checkbox>
+
             <mat-form-field class="count">
                 <mat-label translate>COMMON_COUNT</mat-label>
                 <input matInput formControlName="transferInCount" type="number" required>
@@ -106,7 +117,7 @@
             @if (processingDocument() == TRANSFER_IN) {
                 <mat-spinner></mat-spinner>
             }
-            @if (processedDocuments().indexOf(TRANSFER_IN)>=0) {
+            @if (processedDocuments().indexOf(TRANSFER_IN) >= 0) {
                 <i class="fa-solid fa-check"></i>
             }
         </div>
@@ -119,6 +130,8 @@
                 </ss-auto-complete>
             </mat-form-field>
 
+            <mat-checkbox [formControl]="refreshTransferOut" (click)="syncTransferOutJournal()"></mat-checkbox>
+
             <mat-form-field class="count">
                 <mat-label translate>COMMON_COUNT</mat-label>
                 <input matInput formControlName="transferOutCount" type="number">
@@ -126,7 +139,7 @@
             @if (processingDocument() == TRANSFER_OUT) {
                 <mat-spinner></mat-spinner>
             }
-            @if (processedDocuments().indexOf(TRANSFER_OUT)>=0) {
+            @if (processedDocuments().indexOf(TRANSFER_OUT) >= 0) {
                 <i class="fa-solid fa-check"></i>
             }
         </div>
@@ -139,6 +152,8 @@
                                   formControlName="payrollJr"></ss-auto-complete>
             </mat-form-field>
 
+            <mat-checkbox [formControl]="includePayroll" (click)="syncPayrollJournal()"></mat-checkbox>
+
             <mat-form-field class="count">
                 <mat-label translate>COMMON_COUNT</mat-label>
                 <input matInput formControlName="payrollCount" type="number" required>
@@ -146,7 +161,7 @@
             @if (processingDocument() == PAYROLL) {
                 <mat-spinner></mat-spinner>
             }
-            @if (processedDocuments().indexOf(PAYROLL)>=0) {
+            @if (processedDocuments().indexOf(PAYROLL) >= 0) {
                 <i class="fa-solid fa-check"></i>
             }
         </div>
@@ -175,7 +190,7 @@
         <div class="ctrl__div default-100">
             <button mat-raised-button
                     color="warn"
-                    [disabled]="processing() || processingDocument() > 0"
+                    [disabled]="processing() || processingDocument() > 0 || !canGenerate()"
                     (click)="generate()"
                     type="button"
                     translate>
@@ -183,18 +198,25 @@
                 COMMON_GENERATE
             </button>
 
-<!--            <button mat-raised-button-->
-<!--                    color="error"-->
-<!--                    [disabled]="processing()"-->
-<!--                    (click)="goBack()"-->
-<!--                    translate>-->
-<!--                <i class="fa-solid fa-arrow-left"></i>-->
-<!--                COMMON_GO_BACK-->
-<!--            </button>-->
+            <button mat-raised-button color="primary"
+                    type="button"
+                    (click)="syncJournals()">
+                <i class="fa-sync-alt fas"></i>
+            </button>
+
+
+            <!--            <button mat-raised-button-->
+            <!--                    color="error"-->
+            <!--                    [disabled]="processing()"-->
+            <!--                    (click)="goBack()"-->
+            <!--                    translate>-->
+            <!--                <i class="fa-solid fa-arrow-left"></i>-->
+            <!--                COMMON_GO_BACK-->
+            <!--            </button>-->
 
             <button mat-raised-button
                     color="error"
-                    [disabled]="processing()  || processingDocument() > 0"
+                    [disabled]="processing()  || processingDocument() > 0 || !canGenerate()"
                     (click)="cancel()"
                     translate>
                 <i class="fa-solid fa-arrow-rotate-left"></i>
