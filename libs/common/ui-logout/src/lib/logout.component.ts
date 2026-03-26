@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {LoginService, UserRightsService} from '@ss/common/api-common';
 import { MatIconButton } from '@angular/material/button';
 
@@ -10,13 +10,14 @@ import { MatIconButton } from '@angular/material/button';
     imports: [MatIconButton]
 })
 export class LogoutComponent {
-    constructor(private loginSrv: LoginService, private rightsSrv: UserRightsService) {
-    }
+    #loginSrv = inject(LoginService);
+    #rightsSrv = inject( UserRightsService);
+
 
     logout() {
-        this.loginSrv
+        this.#loginSrv
             .logout()
-            .then(() => this.rightsSrv.clear());
+            .then(() => this.#rightsSrv.clear());
     }
 
     public click(): void {

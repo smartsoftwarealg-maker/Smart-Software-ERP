@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -14,17 +14,17 @@ import { CustomerPollService } from '../customer-poll.service';
     selector: 'sch-customer-pools-list',
     standalone: true,
     imports: [
-    TranslateDirective,
-    MatStep,
-    MatStepper,
-    MatStepLabel,
-    MatButton,
-    MaterialModule
-],
+        TranslateDirective,
+        MatStep,
+        MatStepper,
+        MatStepLabel,
+        MatButton,
+        MaterialModule
+    ],
     templateUrl: './customer-poll.component.html',
     styleUrl: './customer-poll.component.scss',
 })
-export class CustomerPollComponent {
+export class CustomerPollComponent implements OnInit {
     #_DATA_ = '_DATA_';
     public satisfactionAnswers = [
         'SCH_VERY_SATISFIED',
@@ -47,7 +47,7 @@ export class CustomerPollComponent {
     public completeState = signal(false);
 
     ngOnInit() {
-        this.shellSrv.setTitle("SCH_CUSTOMER_POLL")
+        this.shellSrv.setTitle('SCH_CUSTOMER_POLL');
         this.shellSrv.setGoBackPath('../..', this.route);
         this.showThanksMessage = false;
         const storage = localStorage.getItem(this.#_DATA_);

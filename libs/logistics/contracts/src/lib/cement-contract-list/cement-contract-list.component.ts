@@ -55,8 +55,7 @@ export class CementContractListComponent extends BaseEntityListComponent<Project
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-    ) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(
             entitySrv,
             shellSrv,
@@ -68,7 +67,9 @@ export class CementContractListComponent extends BaseEntityListComponent<Project
             pagPersistSrv,
             'LOGISTICS_CEMENT_PROJECTS',
         );
-        this.entitySrv.setParentId(0);
+        if (!this.entitySrv.getParentId()) {
+            this.entitySrv.setParentId(0);
+        }
         this.agentLookup.onObjectSelected = (a) => this.onCustomer(a);
     }
 
@@ -81,8 +82,9 @@ export class CementContractListComponent extends BaseEntityListComponent<Project
 
     override ngOnInit() {
         super.ngOnInit();
-        this.agentId.setValue(this.entitySrv.selectedId());
-        this.entitySrv.setParentId(this.entitySrv.selectedId());
+        if (this.entitySrv.getParentId()) {
+            this.agentId.setValue(this.entitySrv.getParentId());
+        }
         this.refresh();
     }
 }

@@ -18,17 +18,13 @@ export class HttpService {
     }
 
     static getHeaders() {
-        return new HttpHeaders({})
-            .set('Authorization', this.getAuthToken() || '');
+        return new HttpHeaders({}).set('Authorization', this.getAuthToken() || '');
     }
 
     static getAuthToken(): string {
         return localStorage.getItem(AUTH_TOKEN);
     }
 
-    // static setAuthToken(token: string) {
-    //     return localStorage.setItem(AUTH_TOKEN, token);
-    // }
 
     public init(company?: string): Observable<boolean> {
         if (this.baseUrl) {
@@ -358,10 +354,6 @@ export class HttpService {
     // noinspection JSUnusedGlobalSymbols
     // noinspection JSMethodCanBeStatic
     public updateAuthToken(token: string): void {
-        localStorage.setItem(AUTH_TOKEN, token);
-    }
-
-    public removeAuthToken(token: string): void {
         localStorage.setItem(AUTH_TOKEN, token);
     }
 

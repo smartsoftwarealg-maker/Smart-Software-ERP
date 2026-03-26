@@ -61,40 +61,16 @@ export class LoginService {
                 catchError(() => of(null)));
     }
 
-    // todo: fix auto login
-    // public reLogin(): Observable<boolean> {
-    //     return this.#httpSrv
-    //         .init()
-    //         .pipe(switchMap(_ => this.#httpSrv.get<LoginInfo>('/relogin')),
-    //             tap((info: LoginInfo) => this.setContext(info)),
-    //             catchError(err => of(false)),
-    //             map(_ => {
-    //                 const failure: boolean = !this.appCtx || (this.appCtx.id == null && this.appCtx.agentId == null);
-    //                 if (failure) {
-    //                     this.#router.navigate(['/login']);
-    //                 }
-    //                 return !failure;
-    //             }));
-    // }
-
-    // public isUserLogin(): boolean {
-    //     return this.appCtx != null;
-    // }
-    //
-    // public isAgentLogin(): boolean {
-    //     return this.appCtx && this.appCtx.agentId !== null;
-    // }
-    //
 
     public reload(): Observable<AppContext> {
         this.#httpSrv.init();
-        return (this.appCtx) ? of(this.appCtx) :
+        return this.appCtx ? of(this.appCtx) :
             this.#httpSrv.getAuthToken() ?
                 this.#httpSrv
                     .init()
                     .pipe(switchMap(() => this.#httpSrv.get<LoginInfo>('/ctx')),
                         tap((info: LoginInfo) => this.setContext(info)),
-                        map(() => this.appCtx),
+                        map(info => info.ctx),
                         catchError(err => {
                             if (err.status !== 401) {
                                 throw err;
@@ -113,24 +89,25 @@ export class LoginService {
 
     public async logout(): Promise<any> {
         const promise = this.#router && !this.#companySelectorSrv.homePage ? this.#router.navigate(['/' + LOGIN_URL]).then() : Promise.resolve(true).then();
-        const fulfilled = await promise;
-        if (fulfilled) {
-            this.errorMessage = null;
-            this.#mainPageSrv.clear();
-            this.appCtx = null;
-            localStorage.removeItem(AUTH_TOKEN);
-            if (this.#companySelectorSrv.homePage) {
-                window.location.href = this.#companySelectorSrv.homePage;
-            }
+        // const fulfilled =
+        await promise;
+        // if (true) {
+        // }
+        localStorage.removeItem(AUTH_TOKEN);
+        this.appCtx = null;
+        this.errorMessage = null;
+        this.#mainPageSrv.clear();
+        if (this.#companySelectorSrv.homePage) {
+            window.location.href = this.#companySelectorSrv.homePage;
         }
     }
 
-    public clear() {
-        this.#mainPageSrv.clear();
-        this.appCtx = null;
-        localStorage.removeItem(AUTH_TOKEN);
-        this.#companySelectorSrv.clear();
-    }
+    // public clear() {
+    //     this.#mainPageSrv.clear();
+    //     this.appCtx = null;
+    //     localStorage.removeItem(AUTH_TOKEN);
+    //     this.#companySelectorSrv.clear();
+    // }
 
     public setLanguage(lang: string): Observable<any> {
         return this.appCtx ?
@@ -141,14 +118,12 @@ export class LoginService {
     public userLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
         this.wrongData = false;
         this.licenseErrorType = null;
-        this
-            .#httpSrv
+        this.#httpSrv
             .doLogin('/login', user)
             .subscribe({
                 next: (info: LoginInfo) => {
                     this.setContext(info);
                     if (!this.licenseErrorType) {
-                        // const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
                         this.#router.navigate(['/' + CENTER_SELECT_URL]).then();
                     }
                 },
@@ -265,7 +240,7 @@ export class LoginService {
                     }
                 }
             }
-        );
+            );
     }
 
 
