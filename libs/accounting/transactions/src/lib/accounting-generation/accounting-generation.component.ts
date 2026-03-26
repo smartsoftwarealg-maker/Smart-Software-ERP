@@ -1,5 +1,6 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import {
+    FormControl,
     ReactiveFormsModule,
     UntypedFormBuilder,
     UntypedFormGroup,
@@ -30,7 +31,7 @@ import { concatMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { HttpParams } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { from, tap } from 'rxjs';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -61,6 +62,7 @@ export class AccountingGenerationComponent implements OnInit {
     private journalSrv = inject(AccJournalsService);
     private fb = inject(UntypedFormBuilder);
     private langSrv = inject(LanguageService);
+    private journals: Journal[] = [];
 
     readonly PURCHASE = 1;
     readonly INVENTORY = 2;
@@ -114,6 +116,8 @@ export class AccountingGenerationComponent implements OnInit {
     processedDocuments = signal<number[]>([]);
     processingDocument = signal(0);
 
+    canGenerate = signal(false);
+
     form: UntypedFormGroup | null = null;
     journalLookup = new ActiveJournalLookup(this.journalSrv, this.loginSrv);
     processing = signal(false);
@@ -132,6 +136,14 @@ export class AccountingGenerationComponent implements OnInit {
     ];
     bankColumns = ['number', 'date', 'bank'];
     cashColumns = ['number', 'date', 'debit', 'credit'];
+
+    includePurchase = new FormControl(false);
+    includeInventory = new FormControl(false);
+    includeConsumption = new FormControl(false);
+    includeSales = new FormControl(false);
+    includeTransferIn = new FormControl(false);
+    refreshTransferOut = new FormControl(false);
+    includePayroll = new FormControl(false);
 
     public pagination = PaginationModel.newInstance();
 
@@ -190,9 +202,11 @@ export class AccountingGenerationComponent implements OnInit {
                         if (val) {
                             this.showDocuments(this.journalMap.get(journal));
                         }
+                        this.canGenerate.set(this.validateJournals(journals));
                     }),
             );
         });
+        this.loadJournals();
     }
 
     generate() {
@@ -450,25 +464,105 @@ export class AccountingGenerationComponent implements OnInit {
         );
 
         switch (key) {
-        case this.BANK:
-            this.showBankPayments();
-            break;
+            case this.BANK:
+                this.showBankPayments();
+                break;
 
-        case this.CASH:
-            this.showCashPayments();
-            break;
+            case this.CASH:
+                this.showCashPayments();
+                break;
 
-        case this.PAYROLL:
-            this.showPayrollLines();
-            break;
+            case this.PAYROLL:
+                this.showPayrollLines();
+                break;
 
-        default:
-            this.showTransactions(key);
+            default:
+                this.showTransactions(key);
         }
     }
 
     goBack() {
         this.shellSrv.goBack();
+    }
+
+    loadJournals() {
+        this.journalSrv.getListSimple().subscribe({
+            next: (res) => {
+                this.journals = res;
+            },
+        });
+    }
+
+    getJournal(jType: number) {
+        return this.journals?.find((j) => j.jType === jType)?.id || 0;
+    }
+
+    syncPurchaseJournal() {
+        const journal = this.includePurchase.value
+            ? this.getJournal(this.PURCHASE)
+            : 0;
+        this.form?.controls['purchaseJr'].setValue(journal);
+    }
+
+    syncStockInJournal() {
+        const journal = this.includeInventory.value
+            ? this.getJournal(this.INVENTORY)
+            : 0;
+        this.form?.controls['inventoryJr'].setValue(journal);
+    }
+
+    syncStockOutJournal() {
+        const journal = this.includeConsumption.value
+            ? this.getJournal(this.CONSUMPTION)
+            : 0;
+        this.form?.controls['consumptionJr'].setValue(journal);
+    }
+
+    syncSalesJournal() {
+        const journal = this.includeSales.value
+            ? this.getJournal(this.SALES)
+            : 0;
+        this.form?.controls['salesJr'].setValue(journal);
+    }
+
+    syncPayrollJournal() {
+        const journal = this.includePayroll.value
+            ? this.getJournal(this.PAYROLL)
+            : 0;
+        this.form?.controls['payrollJr'].setValue(journal);
+    }
+
+    syncTransferInJournal() {
+        const journal = this.includeTransferIn.value
+            ? this.getJournal(this.TRANSFER_IN)
+            : 0;
+        this.form?.controls['transferInJr'].setValue(journal);
+    }
+
+    syncTransferOutJournal() {
+        const journal = this.includeTransferIn.value
+            ? this.getJournal(this.TRANSFER_OUT)
+            : 0;
+        this.form?.controls['transferOutJr'].setValue(journal);
+    }
+
+    syncJournals() {
+        this.loadJournals();
+        this.syncStockInJournal();
+        this.syncStockOutJournal();
+        this.syncSalesJournal();
+        this.syncPayrollJournal();
+        this.syncTransferInJournal();
+        this.syncTransferOutJournal();
+    }
+
+    validateJournals(controlNames: string[]): boolean {
+        if (!this.form) return false;
+
+        return !controlNames.every((name) => {
+            const value = this.form.get(name)?.value || 0;
+            return value < 1;
+        });
     }
 }
 
