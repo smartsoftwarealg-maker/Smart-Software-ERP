@@ -64,20 +64,19 @@ export class LoginService {
 
     public reload(): Observable<AppContext> {
         this.#httpSrv.init();
-        return this.appCtx ? of(this.appCtx) :
-            this.#httpSrv.getAuthToken() ?
-                this.#httpSrv
-                    .init()
-                    .pipe(switchMap(() => this.#httpSrv.get<LoginInfo>('/ctx')),
-                        tap((info: LoginInfo) => this.setContext(info)),
-                        map(info => info.ctx),
-                        catchError(err => {
-                            if (err.status !== 401) {
-                                throw err;
-                            }
-                            return of(null);
-                        })
-                    ) : of(null);
+        return this.#httpSrv.getAuthToken() ?
+            this.#httpSrv
+                .init()
+                .pipe(switchMap(() => this.#httpSrv.get<LoginInfo>('/ctx')),
+                    tap((info: LoginInfo) => this.setContext(info)),
+                    map(info => info.ctx),
+                    catchError(err => {
+                        if (err.status !== 401) {
+                            throw err;
+                        }
+                        return of(null);
+                    })
+                ) : of(null);
     }
 
     public centerLogin(center: number): Observable<LoginInfo> {
@@ -174,34 +173,6 @@ export class LoginService {
                     throw err;
                 }));
     }
-
-    // public userOrCustomerLogin(user: {
-    //     username: string,
-    //     password: string
-    // }, isAndroid: boolean, onFinish?: () => void) {
-    //     this.wrongData = false;
-    //     this.licenseErrorType = null;
-    //     this
-    //         .#httpSrv
-    //         .doLogin('/login', user)
-    //         .subscribe({
-    //             next: (info: LoginInfo) => {
-    //                 this.#httpSrv.updateAuthToken(info.jwt);
-    //                 this.appCtx = info.ctx;
-    //                 if (!this.licenseErrorType) {
-    //                     const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
-    //                     this.#router.navigate(['/' + CENTER_SELECT_URL]);
-    //                 }
-    //             },
-    //             error: err => this.agentLogin('/customers/login', user, isAndroid, onFinish),
-    //             complete: () => {
-    //                 if (onFinish != null) {
-    //                     onFinish();
-    //                 }
-    //             }
-    //         });
-    // }
-
 
     public agentLogin(url: string, credential: {
         username: string,

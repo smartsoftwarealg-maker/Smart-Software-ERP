@@ -66,6 +66,6 @@ export class CashFlowAccountListComponent implements OnInit {
                     this.itemDeleted.emit(true);
                     this.snackBarSrv.showSuccessMessage();
                 }
-            })
+            });
     }
 }

@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
     #time = 0;
     #formBuilder = inject(FormBuilder);
     #router = inject(Router);
-    readonly #USER_DATA = 'USER_DATA';
     protected deviceSrv = inject(DeviceDetectorService);
     protected multiCompany = signal(false);
 
@@ -76,14 +75,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const storage = localStorage.getItem(this.#USER_DATA);
-        if (storage) {
-            try {
-                this.user = JSON.parse(storage);
-            } catch (e) {
-                this.user = { username: '', password: '' };
-            }
-        }
         if (this.loginSrv.isLoggedIn) {
             this.loading.set(true);
             this.#router.navigate([ABS_INDEX_URL]).then();
@@ -147,7 +138,6 @@ export class LoginComponent implements OnInit {
                 );
             }
         }
-        localStorage.setItem(this.#USER_DATA, JSON.stringify(this.user));
     }
 
     private resetTimer() {
