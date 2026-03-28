@@ -21,6 +21,7 @@ import { ScheduledInvoiceService } from '../order-invoicing/scheduled-invoice.se
 import { QuickOrder } from '@ss/sales/ui-quick-order';
 import { ShipmentModeService } from '@ss/common/api-lookup';
 import { Agent, TransporterService } from '@ss/logistics/api-agent';
+import { DriverService } from '@ss/sales/drivers';
 
 @Component({
     selector: 'ss-quick-order-dispatch',
@@ -48,8 +49,10 @@ export class DispatchComponent implements OnInit {
     #loginSrv = inject(LoginService);
     #shipmentModeSrv = inject(ShipmentModeService);
     #transporterSrv = inject(TransporterService);
+    #driverSrv = inject(DriverService);
 
     shipmentModeLookup = new DefaultAutoCompleteModel(this.#shipmentModeSrv);
+    driverLookup = new DefaultAutoCompleteModel(this.#driverSrv);
     public transporterLookup = new DefaultAutoCompleteModel<Agent>(
         this.#transporterSrv,
         'id',
@@ -127,6 +130,7 @@ export class DispatchComponent implements OnInit {
             discount: [{ value: q.discount || 0, disabled: true }],
             fixedDiscountVAT: [q.fixedDiscountVAT || 0],
             paymentId: [q.paymentId],
+            driverId: [q.driverId]
         });
     }
 
