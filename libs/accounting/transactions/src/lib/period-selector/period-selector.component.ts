@@ -111,8 +111,8 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
         const ctx = this.loginSrv.appCtx;
         this.entitySrv
             .selectFolder(ctx.accFile, ctx.accYear, this.accPeriod.value)
-            .pipe(tap((ctx) => this.loginSrv.setContext(ctx)))
-            .subscribe((res) => {
+            .pipe(tap((ctx) => this.loginSrv.setCurrentContext(ctx)))
+            .subscribe(() => {
                 this.snackBarSrv.showSuccessMessage();
                 this.shellSrv.goBack();
             });

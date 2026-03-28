@@ -192,7 +192,7 @@
     align-items: center;
     width: 100%;
     color: #4C489D;
-    box-shadow: 0px 2px 2px #5C5696;
+    box-shadow: 0 2px 2px #5C5696;
     cursor: pointer;
     transition: .2s;
 }
@@ -274,4 +274,10 @@
     font-size: 0.85em;
     color: navy;
     font-weight: bolder;
+}
+
+.private__session {
+    background-color: green;
+    color: white;
+
 }

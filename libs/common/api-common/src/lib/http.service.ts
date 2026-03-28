@@ -22,7 +22,7 @@ export class HttpService {
     }
 
     static getAuthToken(): string {
-        return localStorage.getItem(AUTH_TOKEN);
+        return sessionStorage.getItem(AUTH_TOKEN) || localStorage.getItem(AUTH_TOKEN);
     }
 
 
@@ -354,8 +354,20 @@ export class HttpService {
     // noinspection JSUnusedGlobalSymbols
     // noinspection JSMethodCanBeStatic
     public updateAuthToken(token: string): void {
-        localStorage.setItem(AUTH_TOKEN, token);
+        if (sessionStorage.getItem(AUTH_TOKEN) == null) {
+            localStorage.setItem(AUTH_TOKEN, token);
+        } else {
+            sessionStorage.setItem(AUTH_TOKEN, token);
+        }
     }
+
+    public isPrivate() {
+        return sessionStorage.getItem(AUTH_TOKEN) !== null;
+    }
+    public updatePrivateAuthToken(token: string) {
+        sessionStorage.setItem(AUTH_TOKEN, token);
+    }
+
 
     // noinspection JSUnusedGlobalSymbols
     // noinspection JSMethodCanBeStatic

@@ -29,13 +29,13 @@ import { ActivatedRoute, Router } from '@angular/router';
     ],
 })
 export class BudgetSelectorDlgComponent implements OnInit {
-    #accFileSrv = inject(AccFileService)
+    #accFileSrv = inject(AccFileService);
     #budgetSrv = inject( BudgetService);
     #shellSrv = inject( ShellService);
-    #loginSrv = inject(LoginService)
+    #loginSrv = inject(LoginService);
     #snackBarSrv = inject(SnackBarService);
     #route = inject(ActivatedRoute);
-    #router = inject(Router);
+    // #router = inject(Router);
 
     data: Budget[] = [];
     selectedBudget: Budget = null;
@@ -59,17 +59,17 @@ export class BudgetSelectorDlgComponent implements OnInit {
 
     selectBudget() {
         this.#budgetSrv.budget = this.selectedBudget;
-        this.#shellSrv.setLabels([ { title: this.selectedBudget.description}])
+        this.#shellSrv.setLabels([ { title: this.selectedBudget.description}]);
         this.#accFileSrv
             .selectFolder(this.selectedBudget?.id || 0, this.selectedBudget?.year || 0, 1)
-            .pipe(tap(ctx => this.#loginSrv.setContext(ctx)))
+            .pipe(tap(ctx => this.#loginSrv.setContext(ctx, this.#loginSrv.isPrivate())))
             .subscribe(() => {
                 if (this.selectedBudget) {
                     this.#shellSrv.setLabels([{ title: `${this.selectedBudget.description}` }]);
                 }
                 this.#snackBarSrv.showSuccessMessage();
                 this.#shellSrv.goBack();
-            })
+            });
 
         // this.#router.navigate(['../'], { relativeTo: this.#activatedRoute }).then();
     }
