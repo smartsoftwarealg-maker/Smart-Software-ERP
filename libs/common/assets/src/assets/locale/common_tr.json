@@ -246,5 +246,6 @@
     "ADDRESS_AR":          "Addressar",
     "KEEP_ME_SIGNED":             "",
     "SUGGESTION":                  "Öneri",
-    "SUGGESTIONS":                 "Öneriler"
+    "SUGGESTIONS":                 "Öneriler",
+    "FULL_NAME": "Ad Soyad"
 }

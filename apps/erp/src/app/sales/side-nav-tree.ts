@@ -11,6 +11,7 @@ import {
     ABS_SALES_DELIVERY_URL,
     ABS_SALES_DISCOUNT_SCALE_URL,
     ABS_SALES_DISCOUNTS_URL,
+    ABS_SALES_DRIVERS_URL,
     ABS_SALES_EXPORT_INVOICE_URL,
     ABS_SALES_FREE_INVOICE_URL,
     ABS_SALES_INVOICE_CANCEL_URL,
@@ -48,6 +49,12 @@ export const salesNavTree: SideNavNode = {
             icon: 'fa-solid fa-cart-shopping',
             route: ABS_SALES_CUSTOMER_URL,
             accessRights: 'Customer',
+        },
+        {
+            name: 'LOGISTICS_DRIVERS',
+            icon: 'fa-solid fa-id-card',
+            route: ABS_SALES_DRIVERS_URL,
+            accessRights: 'SalesDriver',
         },
         {
             name: 'STOCK_PRICE_LIST',

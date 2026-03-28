@@ -12,6 +12,7 @@ import {
     DeliveryLinesDetailComponent,
     DeliveryLinesListComponent,
 } from '@ss/sales/ui-delivery-lines';
+import { DriverListComponent, DriverDetailComponent } from '@ss/sales/drivers';
 import {
     ADMINISTRATION_REPORT_PRIVILEGE_URL,
     COMMON_REPORTS_URL,
@@ -32,6 +33,7 @@ import {
     SALES_ORDER_INVOICING_URL,
     SALES_CATEGORY_DISCOUNT_URL,
     SALES_ORDER_WEIGHT_CAPTURE_URL,
+    SALES_DRIVERS,
 } from '../common';
 import { OrderListComponent } from '@ss/sales/ui-sales-order';
 import { OrderDetailComponent } from '@ss/sales/ui-sales-order';
@@ -119,6 +121,7 @@ import {
     DiscountCategoryDetailComponent,
     DiscountCategoryListComponent,
 } from '@ss/sales/category-discounts';
+import { SocialActivitiesDetailComponent, SocialActivitiesListComponent } from '@social/social-lookups';
 
 export const lookupRoutes: Routes = [];
 
@@ -472,6 +475,22 @@ export const mainRoutes: Routes = [
                 children: docInfoRoutes,
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: SALES_DRIVERS,
+        children: [
+            {
+                path: LIST_URL,
+                component: DriverListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: DriverDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
         ],
     },
     {

@@ -83,7 +83,6 @@
     "USERS": "المستعملون",
     "RIGHTS": "قيود الاستعمال",
     "MANAGER": "مدير",
-    "FULL_NAME": "الاسم الكامل",
     "CLOSE": "إغلاق",
     "ADD": "إضافة سجل جديد",
     "SERVICES": "مصالح",
@@ -96,7 +95,6 @@
     "AGENT": "الشريك",
     "TAGS": "العناصر",
     "UPDATES_CANCELED": "تم إلغاء التحديث",
-    "UPDATES_CANCELED": "Mises à jour annulées",
     "FILENAME": "اسم الملف",
     "SERVICE": "مصلحة",
     "DOWNLOAD": "تحميل"
