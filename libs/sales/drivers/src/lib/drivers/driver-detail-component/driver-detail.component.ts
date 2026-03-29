@@ -7,6 +7,7 @@ import { SalesDriver, DriverService } from '@ss/sales/drivers';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 @Component({
     selector: 'ss-sales-driver-detail',
@@ -15,6 +16,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
+        DatePickerComponent,
     ],
     styleUrls: ['./driver-detail.component.scss'],
     templateUrl: './driver-detail.component.html',

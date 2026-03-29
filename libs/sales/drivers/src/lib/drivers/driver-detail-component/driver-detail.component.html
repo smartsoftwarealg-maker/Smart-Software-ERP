@@ -16,10 +16,10 @@
           <input matInput formControlName="licenceNumber" type="text" maxlength="20">
         </mat-form-field>
 
-        <mat-form-field id="licenceDate" class="default-50">
-          <mat-label translate>LOGISTICS_LICENSE_DATE</mat-label>
-          <input matInput formControlName="licenceDate" type="date">
-        </mat-form-field>
+          <mat-form-field class="default-50 sm-50">
+              <mat-label translate>LOGISTICS_LICENSE_DATE</mat-label>
+              <ss-date-picker formControlName="licenceDate" type="date"></ss-date-picker>
+          </mat-form-field>
 
         <mat-form-field id="issuedBy" class="default-100">
           <mat-label translate>LOGISTICS_LICENSE_ISSUER</mat-label>

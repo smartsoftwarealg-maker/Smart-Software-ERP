@@ -21,7 +21,7 @@ import { ScheduledInvoiceService } from '../order-invoicing/scheduled-invoice.se
 import { QuickOrder } from '@ss/sales/ui-quick-order';
 import { ShipmentModeService } from '@ss/common/api-lookup';
 import { Agent, TransporterService } from '@ss/logistics/api-agent';
-import { DriverService } from '@ss/sales/drivers';
+import { DriverService, SalesDriver } from '@ss/sales/drivers';
 
 @Component({
     selector: 'ss-quick-order-dispatch',
@@ -70,6 +70,7 @@ export class DispatchComponent implements OnInit {
                 this.refresh();
             }
         });
+        this.driverLookup.onObjectSelected = d => this.onDriver(d);
     }
 
     ngOnInit(): void {
@@ -156,6 +157,13 @@ export class DispatchComponent implements OnInit {
     cancel() {
         this.refresh();
         this.form?.markAsPristine();
+    }
+
+    private onDriver(d: SalesDriver) {
+        this.form?.get('driver')?.setValue(d.description);
+        this.form?.get('license')?.setValue(d.licenceNumber);
+        this.form?.get('licenseDate')?.setValue(d.licenceDate);
+        this.form?.get('licenseIssuer')?.setValue(d.issuedBy);
     }
 
 }
