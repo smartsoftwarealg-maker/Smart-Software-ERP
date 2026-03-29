@@ -3,7 +3,14 @@ import { environment, appRoutes } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { provideRouter, Routes, withComponentInputBinding } from '@angular/router';
-import { MAIN_PAGE_URL, UPDATE_PASSWORD_URL, AUTH_2FA_URL, LOGIN_URL, CENTER_SELECT_URL } from '@ss/common/api-common';
+import {
+    MAIN_PAGE_URL,
+    UPDATE_PASSWORD_URL,
+    AUTH_2FA_URL,
+    LOGIN_URL,
+    CENTER_SELECT_URL,
+    PLOGIN_URL,
+} from '@ss/common/api-common';
 import { ShellComponent } from '@ss/common/ui-shell';
 import { PasswordUpdateComponent, Auth2FAConfirmationComponent } from '@ss/auth-2fa';
 import { AppComponent } from './app/app.component';
@@ -11,20 +18,26 @@ import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/c
 import { LoginComponent } from '@ss/common/ui-login';
 import { CenterSelectComponent } from '@ss/common/ui-center-select';
 import { CustomErrorHandler } from '@ss/common/ui-error-handler';
-import {provideAnimationsAsync} from "@angular/platform-browser/animations/async";
+import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 
 const routes: Routes = [
     {
         path: MAIN_PAGE_URL,
         component: ShellComponent,
-        children: appRoutes
+        children: appRoutes,
     },
-    { path: LOGIN_URL, component: LoginComponent },
+    {
+        path: LOGIN_URL,
+        component: LoginComponent,
+        data: { privateSession: true },
+    },
+    {
+        path: PLOGIN_URL, component: LoginComponent, data: { privateSession: true }},
     { path: CENTER_SELECT_URL, component: CenterSelectComponent },
     { path: UPDATE_PASSWORD_URL, component: PasswordUpdateComponent },
     { path: AUTH_2FA_URL, component: Auth2FAConfirmationComponent },
     { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' }
+    { path: '**', redirectTo: LOGIN_URL, pathMatch: 'full' },
 ];
 
 if (environment.production) {

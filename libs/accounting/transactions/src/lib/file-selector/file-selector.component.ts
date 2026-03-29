@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ACCFile, AccFileService, PeriodSelectorService} from '@ss/accounting/accounting-api';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -88,12 +88,18 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
 
     selectFolder(period: number) {
         this.entitySrv
-            .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, period)
-            .pipe(tap(ctx => this.loginSrv.setContext(ctx)))
+            .selectFolder(
+                this.selectedRow?.id || 0,
+                this.selectedRow?.fileYear || 0,
+                period,
+            )
+            .pipe(tap((ctx) => this.loginSrv.setCurrentContext(ctx)))
             .subscribe(() => {
                 if (this.selectedRow) {
                     this.entitySrv.accFile = this.selectedRow;
-                    this.shellSrv.setLabels([{ title: `${this.selectedRow.description}` }]);
+                    this.shellSrv.setLabels([
+                        { title: `${this.selectedRow.description}` },
+                    ]);
                 }
                 this.snackBarSrv.showSuccessMessage();
                 this.shellSrv.goBack();
@@ -108,13 +114,22 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
     override select(id: number) {
         super.select(id);
         this.entitySrv
-            .selectFolder(this.selectedRow?.id || 0, this.selectedRow?.fileYear || 0, 1)
-            .pipe(tap(ctx => this.loginSrv.setContext(ctx)),
-                switchMap(_ => this.periodSrv.getList(0, 50)))
-            .subscribe(res => {
+            .selectFolder(
+                this.selectedRow?.id || 0,
+                this.selectedRow?.fileYear || 0,
+                1,
+            )
+            .pipe(
+                tap((ctx) => this.loginSrv.setCurrentContext(ctx)),
+                switchMap((_) => this.periodSrv.getList(0, 50)),
+            )
+            .subscribe((res) => {
                 const data = res.body;
-                const error = data.filter(e => Math.abs(e.debit - e.credit) >= 0);
-                const maxMonth = (error.length > 0)? error[error.length - 1].id - 1 : 11;
+                const error = data.filter(
+                    (e) => Math.abs(e.debit - e.credit) >= 0,
+                );
+                const maxMonth =
+                    error.length > 0 ? error[error.length - 1].id - 1 : 11;
                 this.periods = this.MONTHS.filter((e, i) => i <= maxMonth);
                 this.maxPeriod = maxMonth;
             });

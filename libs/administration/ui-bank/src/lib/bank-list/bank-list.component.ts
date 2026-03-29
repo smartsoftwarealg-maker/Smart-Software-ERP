@@ -17,11 +17,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-bank-list',
     standalone: true,
     imports: [
-    MaterialModule,
-    ReactiveFormsModule,
-    PaginationComponent,
-    TranslateDirective
-],
+        MaterialModule,
+        ReactiveFormsModule,
+        PaginationComponent,
+        TranslateDirective
+    ],
     styleUrls: ['./bank-list.component.scss'],
     templateUrl: './bank-list.component.html'
 })

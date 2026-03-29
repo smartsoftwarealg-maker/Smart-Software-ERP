@@ -49,106 +49,92 @@ export class LoginService {
         return this.appCtx != null && (this.appCtx.id !== null || this.appCtx.agentId != null || this.appCtx.personId != null);
     }
 
-    public setContext(info: LoginInfo) {
+    public setCurrentContext(info: LoginInfo) {
+        this.setContext(info, this.isPrivate());
+    }
+
+    public setContext(info: LoginInfo, isPrivate: boolean) {
         this.appCtx = info.ctx;
-        this.#httpSrv.updateAuthToken(info.jwt);
+        if (isPrivate) {
+            this.#httpSrv.updatePrivateAuthToken(info.jwt);
+        } else {
+            this.#httpSrv.updateAuthToken(info.jwt);
+        }
+    }
+
+    public isPrivate() {
+        return this.#httpSrv.isPrivate();
     }
 
     public loadContext(): Observable<LoginInfo> {
         return this.#httpSrv.get<LoginInfo>('/relogin')
             .pipe(
-                tap((info: LoginInfo) => this.setContext(info)),
+                tap((info: LoginInfo) => this.setContext(info, this.isPrivate())),
                 catchError(() => of(null)));
     }
 
-    // todo: fix auto login
-    // public reLogin(): Observable<boolean> {
-    //     return this.#httpSrv
-    //         .init()
-    //         .pipe(switchMap(_ => this.#httpSrv.get<LoginInfo>('/relogin')),
-    //             tap((info: LoginInfo) => this.setContext(info)),
-    //             catchError(err => of(false)),
-    //             map(_ => {
-    //                 const failure: boolean = !this.appCtx || (this.appCtx.id == null && this.appCtx.agentId == null);
-    //                 if (failure) {
-    //                     this.#router.navigate(['/login']);
-    //                 }
-    //                 return !failure;
-    //             }));
-    // }
-
-    // public isUserLogin(): boolean {
-    //     return this.appCtx != null;
-    // }
-    //
-    // public isAgentLogin(): boolean {
-    //     return this.appCtx && this.appCtx.agentId !== null;
-    // }
-    //
 
     public reload(): Observable<AppContext> {
         this.#httpSrv.init();
-        return (this.appCtx) ? of(this.appCtx) :
-            this.#httpSrv.getAuthToken() ?
-                this.#httpSrv
-                    .init()
-                    .pipe(switchMap(() => this.#httpSrv.get<LoginInfo>('/ctx')),
-                        tap((info: LoginInfo) => this.setContext(info)),
-                        map(() => this.appCtx),
-                        catchError(err => {
-                            if (err.status !== 401) {
-                                throw err;
-                            }
-                            return of(null);
-                        })
-                    ) : of(null);
+        return this.#httpSrv.getAuthToken() ?
+            this.#httpSrv
+                .init()
+                .pipe(switchMap(() => this.#httpSrv.get<LoginInfo>('/ctx')),
+                    tap((info: LoginInfo) => this.setContext(info, this.isPrivate())),
+                    map(info => info.ctx),
+                    catchError(err => {
+                        if (err.status !== 401) {
+                            throw err;
+                        }
+                        return of(null);
+                    })
+                ) : of(null);
     }
 
     public centerLogin(center: number): Observable<LoginInfo> {
         return this
             .#httpSrv
             .put('/clogin/' + center)
-            .pipe(tap<LoginInfo>(info => this.setContext(info)));
+            .pipe(tap<LoginInfo>(info => this.setContext(info, this.isPrivate())));
     }
 
     public async logout(): Promise<any> {
         const promise = this.#router && !this.#companySelectorSrv.homePage ? this.#router.navigate(['/' + LOGIN_URL]).then() : Promise.resolve(true).then();
-        const fulfilled = await promise;
-        if (fulfilled) {
-            this.errorMessage = null;
-            this.#mainPageSrv.clear();
-            this.appCtx = null;
-            localStorage.removeItem(AUTH_TOKEN);
-            if (this.#companySelectorSrv.homePage) {
-                window.location.href = this.#companySelectorSrv.homePage;
-            }
+        // const fulfilled =
+        await promise;
+        // if (true) {
+        // }
+        localStorage.removeItem(AUTH_TOKEN);
+        this.appCtx = null;
+        this.errorMessage = null;
+        this.#mainPageSrv.clear();
+        if (this.#companySelectorSrv.homePage) {
+            window.location.href = this.#companySelectorSrv.homePage;
         }
     }
 
-    public clear() {
-        this.#mainPageSrv.clear();
-        this.appCtx = null;
-        localStorage.removeItem(AUTH_TOKEN);
-        this.#companySelectorSrv.clear();
-    }
+    // public clear() {
+    //     this.#mainPageSrv.clear();
+    //     this.appCtx = null;
+    //     localStorage.removeItem(AUTH_TOKEN);
+    //     this.#companySelectorSrv.clear();
+    // }
 
     public setLanguage(lang: string): Observable<any> {
         return this.appCtx ?
             this.#httpSrv.put('/lang?lang=' + lang)
-                .pipe(tap((info: LoginInfo) => this.setContext(info))) : of(null);
+                .pipe(tap((info: LoginInfo) => this.setContext(info, this.isPrivate()))) : of(null);
     }
 
-    public userLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
+    public userLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void, isPrivate: boolean = false) {
         this.wrongData = false;
         this.licenseErrorType = null;
-        this
-            .#httpSrv
+        this.#httpSrv
             .doLogin('/login', user)
             .subscribe({
                 next: (info: LoginInfo) => {
-                    this.setContext(info);
+                    this.setContext(info, isPrivate);
                     if (!this.licenseErrorType) {
-                        // const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
                         this.#router.navigate(['/' + CENTER_SELECT_URL]).then();
                     }
                 },
@@ -200,38 +186,14 @@ export class LoginService {
                 }));
     }
 
-    // public userOrCustomerLogin(user: {
-    //     username: string,
-    //     password: string
-    // }, isAndroid: boolean, onFinish?: () => void) {
-    //     this.wrongData = false;
-    //     this.licenseErrorType = null;
-    //     this
-    //         .#httpSrv
-    //         .doLogin('/login', user)
-    //         .subscribe({
-    //             next: (info: LoginInfo) => {
-    //                 this.#httpSrv.updateAuthToken(info.jwt);
-    //                 this.appCtx = info.ctx;
-    //                 if (!this.licenseErrorType) {
-    //                     const url = this.appCtx.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
-    //                     this.#router.navigate(['/' + CENTER_SELECT_URL]);
-    //                 }
-    //             },
-    //             error: err => this.agentLogin('/customers/login', user, isAndroid, onFinish),
-    //             complete: () => {
-    //                 if (onFinish != null) {
-    //                     onFinish();
-    //                 }
-    //             }
-    //         });
-    // }
-
-
-    public agentLogin(url: string, credential: {
-        username: string,
-        password: string
-    }, isAndroid: boolean, onFinish?: () => void) {
+    public agentLogin(url: string,
+        credential: {
+            username: string,
+            password: string
+        },
+        isAndroid: boolean,
+        onFinish?: () => void,
+        isPrivate: boolean = false) {
         this.baseURL = this.#httpSrv.baseUrl;
         this.licenseErrorType = null;
         this.wrongData = false;
@@ -240,10 +202,12 @@ export class LoginService {
             .subscribe({
                 next:
                     (info: LoginInfo) => {
-                        this.#httpSrv.updateAuthToken(info.jwt);
+                        if (isPrivate) {
+                            this.#httpSrv.updatePrivateAuthToken(info.jwt);
+                        } else {
+                            this.#httpSrv.updateAuthToken(info.jwt);
+                        }
                         this.appCtx = info.ctx;
-                        //const url = this.appCtx?.center ? INDEX_PAGE_URL : CENTER_SELECT_URL;
-                        //this.#router.navigate(['/' + CENTER_SELECT_URL]);
                         this.resetCode(info.ctx.agentId).subscribe((res) => {
                             const url = res.code != '' ? UPDATE_PASSWORD_URL : CENTER_SELECT_URL;
                             this.#router.navigate(['/' + url]).then();
@@ -265,7 +229,7 @@ export class LoginService {
                     }
                 }
             }
-        );
+            );
     }
 
 

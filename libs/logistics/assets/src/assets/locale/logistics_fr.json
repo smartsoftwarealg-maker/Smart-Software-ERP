@@ -234,5 +234,6 @@
     "ACTIVITY_SEGMENTS":      "Segments d'activité",
     "ACTIVITY_SEGMENT":       "Segment d'activité",
     "ARTICLE_BLOCKED":        "Cet article est bloqué",
-    "IMPORT_REFERENCE":       "Référence import"
+    "IMPORT_REFERENCE":       "Référence import",
+    "DRIVERS":                "Conducteurs"
 }

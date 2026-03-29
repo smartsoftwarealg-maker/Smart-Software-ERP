@@ -234,5 +234,6 @@
     "ACTIVITY_SEGMENTS":      "تقسيمات النشاط",
     "ACTIVITY_SEGMENT":       "قسم النشاط",
     "ARTICLE_BLOCKED":        "هذا الصنف محظور",
-    "IMPORT_REFERENCE":       "مرجع الاستيراد"
+    "IMPORT_REFERENCE":       "مرجع الاستيراد",
+    "DRIVERS":                "السائقين"
 }

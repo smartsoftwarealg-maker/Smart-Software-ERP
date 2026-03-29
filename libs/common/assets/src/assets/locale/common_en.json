@@ -496,5 +496,6 @@
     "ROUND_COUNT":           "Round count",
     "PENDING_SUPPLIER":      "Pending supplier account",
     "IS_ADVANCE":            "Is advance",
-    "CHECK_BANK":            "Check Bank"
+    "CHECK_BANK":            "Check Bank",
+    "FULL_NAME": "Full name"
 }

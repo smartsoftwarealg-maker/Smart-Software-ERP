@@ -107,6 +107,7 @@ export interface Transaction {
     shipMode?: number;
     invoiceNumber?: number;
     paymentId?: number;
+    driverId?: number;
 }
 
 export interface ExtraCost {

@@ -1,4 +1,11 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import {
+    Component,
+    computed,
+    inject,
+    input,
+    OnInit,
+    signal,
+} from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     ABS_INDEX_URL,
@@ -36,7 +43,7 @@ type User = {
         LoadingSpinnerComponent,
         BackendSelectComponent,
         MatIconButton,
-    ]
+    ],
 })
 export class LoginComponent implements OnInit {
     #DEFAULT_COMPANY = 'DEFAULT_COMPANY';
@@ -46,17 +53,19 @@ export class LoginComponent implements OnInit {
     #time = 0;
     #formBuilder = inject(FormBuilder);
     #router = inject(Router);
-    readonly #USER_DATA = 'USER_DATA';
     protected deviceSrv = inject(DeviceDetectorService);
     protected multiCompany = signal(false);
 
+    readonly privateSession = input<boolean>();
     protected loginSrv = inject(LoginService);
     public user: User = { username: '', password: '' };
 
     public license: string = null;
     readonly isPhone: boolean;
     readonly cSpace = signal(this.#companySelectorSrv.spaceCompany);
-    readonly missingBackend = computed(() => this.#companySelectorSrv.missingBackend() );
+    readonly missingBackend = computed(() =>
+        this.#companySelectorSrv.missingBackend(),
+    );
 
     form = this.#formBuilder.group({
         user: ['', [Validators.required, Validators.min(3)]],
@@ -76,14 +85,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        const storage = localStorage.getItem(this.#USER_DATA);
-        if (storage) {
-            try {
-                this.user = JSON.parse(storage);
-            } catch (e) {
-                this.user = { username: '', password: '' };
-            }
-        }
         if (this.loginSrv.isLoggedIn) {
             this.loading.set(true);
             this.#router.navigate([ABS_INDEX_URL]).then();
@@ -93,7 +94,9 @@ export class LoginComponent implements OnInit {
         }
         if (this.#companySelectorSrv.multiCompany) {
             this.multiCompany.set(true);
-            this.#companySelectorSrv.spaceCompany = localStorage.getItem(this.#DEFAULT_COMPANY);
+            this.#companySelectorSrv.spaceCompany = localStorage.getItem(
+                this.#DEFAULT_COMPANY,
+            );
             if (!this.deviceSrv.isDesktop()) {
                 const checkName = async () => {
                     const { value } = await Preferences.get({
@@ -130,6 +133,7 @@ export class LoginComponent implements OnInit {
                 this.user,
                 this.isPhone,
                 this.onLoadingFinished,
+                this.privateSession(),
             );
         } else {
             if (this.loginSrv.customerLogin === LoginType.USER) {
@@ -137,6 +141,7 @@ export class LoginComponent implements OnInit {
                     this.user,
                     this.isPhone,
                     this.onLoadingFinished,
+                    this.privateSession(),
                 );
             } else {
                 this.loginSrv.agentLogin(
@@ -144,10 +149,10 @@ export class LoginComponent implements OnInit {
                     this.user,
                     this.isPhone,
                     this.onLoadingFinished,
+                    this.privateSession(),
                 );
             }
         }
-        localStorage.setItem(this.#USER_DATA, JSON.stringify(this.user));
     }
 
     private resetTimer() {

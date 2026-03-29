@@ -32,7 +32,8 @@
                     </div>
 
 
-                    <button class="button login-submit" (click)="onSubmit()">
+                    <button class="login-submit" (click)="onSubmit()"
+                            [class.private__session]="privateSession()">
                         <span class="button-text" translate>COMMON_LOGIN</span>
                         <i class="button-icon fas fa-chevron-right"></i>
                     </button>

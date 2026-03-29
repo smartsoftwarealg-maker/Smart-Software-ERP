@@ -10,7 +10,6 @@ import {
     ABS_SOCIAL_MEDICAL_AIDS_URL, ABS_SOCIAL_MUTUAL_TYPES_URL, ABS_SOCIAL_REPORTS_URL,
     ABS_SOCIAL_WORKS_URL
 } from './constants';
-import { ABS_LOANS_URL, ABS_SALES_REPORTS_URL } from '../common';
 
 export const socialNavTree: SideNavNode = {
     name: 'SOCIAL_APP',

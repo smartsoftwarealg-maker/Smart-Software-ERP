@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {AppContext, HttpService, LanguageService, LoginInfo, LoginService} from '@ss/common/api-common';
-import { catchError, map, Observable, of, switchMap, tap } from "rxjs";
-import { ShellService, ToolbarLabel } from "@ss/common/ui-shell";
-import {HttpParams, HttpResponse} from "@angular/common/http";
+import { catchError, map, Observable, of, switchMap, tap } from 'rxjs';
+import { ShellService, ToolbarLabel } from '@ss/common/ui-shell';
+import {HttpParams, HttpResponse} from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -23,10 +23,10 @@ export class PayrollMonthService {
         return this.httpSrv
             .get<{ month: number }>('/payroll/max-month')
             .pipe(map(res => {
-                    this._maxMonth = res.month;
-                    return this.getLabel();
-                }),
-                catchError(err => of({ title: '', text: '' })));
+                this._maxMonth = res.month;
+                return this.getLabel();
+            }),
+            catchError(err => of({ title: '', text: '' })));
     }
 
     getLabel() {
@@ -46,7 +46,7 @@ export class PayrollMonthService {
         return this.httpSrv
             .put('/payroll/month', { month: month })
             .pipe(
-                tap(ctx => this.loginSrv.setContext(ctx)),
+                tap(ctx => this.loginSrv.setContext(ctx, this.loginSrv.isPrivate())),
                 switchMap(_ => this.curMonthLabel()),
                 tap(title => this.shellSrv.setLabels([title])),
                 map(_ => true));
@@ -66,7 +66,7 @@ export class PayrollMonthService {
     }
 
     isUpdatableMonth(): Observable<boolean> {
-        return this.maxMonth().pipe(map(res => res.month === this.loginSrv.appCtx.payMonth % 1000000))
+        return this.maxMonth().pipe(map(res => res.month === this.loginSrv.appCtx.payMonth % 1000000));
     }
 
     ctx(): Observable<AppContext> {
@@ -76,7 +76,7 @@ export class PayrollMonthService {
             .pipe(map(res => res.ctx));
     }
 
-    public getStatus(uuid: string): Observable<HttpResponse<Object>> {
+    public getStatus(uuid: string): Observable<HttpResponse<object>> {
         return this.httpSrv.getFullResponse(`/payroll/close?uuid=${uuid}`);
     }
 }
