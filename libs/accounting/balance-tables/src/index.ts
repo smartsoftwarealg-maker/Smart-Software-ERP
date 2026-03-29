@@ -6,3 +6,4 @@ export * from './lib/f12-list/f12-list.component';
 export * from './lib/f12-detail/f12-detail.component';
 export * from './lib/f13-list/f13-list.component';
 export * from './lib/f13-detail/f13-detail.component';
+export * from './lib/f09-10-detail/f09-10-detail.component';

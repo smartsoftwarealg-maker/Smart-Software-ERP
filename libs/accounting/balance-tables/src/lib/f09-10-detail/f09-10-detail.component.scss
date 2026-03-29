@@ -1,0 +1,39 @@
+:host {
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center (optional) */
+    width: 100%;
+}
+
+mat-card {
+    //width: 90%;
+    //max-width: 900px;
+    margin: 1em auto;
+    border-radius: 1.4em;
+    //padding: 1em;
+
+    display: flex;          /* Make card a flexbox to center its content */
+    flex-direction: column;
+    align-items: center;    /* Centers the 'elements' div inside the card */
+    padding: 20px;
+}
+
+.elements {
+    display: flex;
+    gap: 10px;
+    flex-flow: row;
+    flex-wrap: wrap;
+    width: 98%;
+    padding: 5px;
+    margin: 0 auto;
+    grid-area: elements;
+    justify-content: center;
+
+    //mat-form-field {
+    //    width: 350px !important; /* !important ensures it overrides Material defaults */
+    //    min-width: 350px;
+    //    display: inline-block; /* Helps the browser calculate width more strictly */
+    //}
+}
+
+
