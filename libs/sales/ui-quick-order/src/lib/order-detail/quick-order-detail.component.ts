@@ -39,6 +39,7 @@ import {
 } from '@ss/master-data/api-article';
 import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
 import { PaymentComponent } from '../payment/payment.component';
+import { DriverService } from '@ss/sales/drivers';
 
 export enum DuplicateMode {
     Count = 0,
@@ -72,8 +73,10 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     #articleSrv = inject(ArticleService);
     #orderLineSrv = inject(SalesOrderLinesService);
     #shipmentModeSrv = inject(ShipmentModeService);
+    #driverSrv = inject(DriverService);
 
     agentLookup = new AgentLookupModel(this.#agentSrv);
+    driverLookup = new DefaultAutoCompleteModel(this.#driverSrv);
     userLookup = new UserLookup(this.#userSrv);
     payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(
         this.#payMethodSrv,
@@ -107,8 +110,8 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
         );
         this.agentLookup.onObjectSelected = (a) => {
             this.#salesProjectSrv.setParentId(a?.id || 0);
-            this.form?.controls['payMethod'].setValue(a?.payMode||0);
-        }
+            this.form?.controls['payMethod'].setValue(a?.payMode || 0);
+        };
 
         this.salesProjectLookup.onObjectSelected = (p) => {
             this.blockedProject.set(p?.isBlocked || false);
@@ -172,6 +175,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             discount: [{ value: q.discount || 0, disabled: true }],
             fixedDiscountVAT: [q.fixedDiscountVAT || 0],
             paymentId: [q.paymentId],
+            driverId: [q.driverId],
         });
 
         this.paymentId = q.paymentId || 0;
