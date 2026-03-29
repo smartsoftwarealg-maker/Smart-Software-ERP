@@ -22,7 +22,7 @@ import {
 } from '@ss/common/ui-auto-complete';
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
 import { ProjectTypeService } from '@ss/common/api-lookup';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { AppConfigService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { Article } from '@ss/master-data/api-article';
 
@@ -31,6 +31,7 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { ContractArticleMainComponent } from '../contract-article-main/contract-article-main.component';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { map, Observable, zip } from 'rxjs';
 
 @Component({
     selector: 'ss-cement-contract-detail',
@@ -49,6 +50,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ],
 })
 export class CementContractDetailComponent extends BaseEntityDetailComponent<Project> {
+    private appConfigSrv = inject(AppConfigService);
     private wilayaSrv = inject(WilayaService);
     private loginSrv = inject(LoginService);
     private customerSrv = inject(CustomerService);
@@ -95,6 +97,7 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
         );
         this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
         this.customerLookupModel.onObjectSelected = (a) => this.onAgent(a);
+        this.projSegmentLookup.onObjectSelected = s => this.encodeProjectNumber();
     }
 
     public override setupForm(b: Project) {
@@ -157,15 +160,53 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
 
     panelOpened(panel: string) {
         this.shownPanel = panel;
-        const next = '/app/contracts/cements/' + this.id + '/' + panel;
+        const next = `/app/contracts/cements/${this.id}/${panel}`;
         this.router.navigate([next]).then();
     }
+
     onAgent(a: Agent) {
         this.entitySrv.setParentId(a?.id || 0);
-        this.entitySrv
-            .getProjectCode(a?.id || 0)
-            .subscribe((projectCode) =>
-                this.form?.controls['contractNo'].setValue(projectCode?.code),
+        this.encodeProjectNumber();
+        // zip(this.entitySrv.getProjectCode(a?.id || 0), this.isSCHB())
+        //     .subscribe((res) => {
+        //         const code = res[1]? this.schbEncoded(res[0]?.code) : res[0].code;
+        //         this.form?.controls['contractNo'].setValue(code);
+        //     });
+    }
+
+    private encodeProjectNumber() {
+        const id = this.customerLookupModel.cache?.id||0;
+        zip(this.entitySrv.getProjectCode(id || 0), this.isSCHB()).subscribe(
+            (res) => {
+                const code = res[1]
+                    ? this.schbEncoded(res[0]?.code)
+                    : res[0].code;
+                this.form?.controls['contractNo'].setValue(code);
+            },
+        );
+    }
+    private isSCHB(): Observable<boolean> {
+        return this.appConfigSrv
+            .getConfig()
+            .pipe(map((conf) => {
+                return conf?.['schb'] === true;
+            }));
+    }
+
+    private schbEncoded(code: string) {
+        const idx = code.indexOf('_');
+        if (idx > 1 && this.projSegmentLookup.cache) {
+            return (
+                code.substring(0, idx) +
+                (this.projSegmentLookup.cache ? '_' : '') +
+                (this.projSegmentLookup.cache?.descriptionAr || '') +
+                '_ ' +
+                code.substring(idx + 3)
             );
+        }
+        return code;
+    }
+    private getSCHBCode() {
+        return `${this.customerLookupModel.cache.customerCode}_${this.projSegmentLookup.cache.descriptionAr}`;
     }
 }

@@ -33,8 +33,6 @@ export class WeightCaptureService {
     }
 
     hasScaleConfig(): Observable<boolean>{
-        return this.getScalesConfig().pipe(map(
-          x => x != null
-        ))
+        return this.getScalesConfig().pipe(map(x => x !== null));
     }
 }
