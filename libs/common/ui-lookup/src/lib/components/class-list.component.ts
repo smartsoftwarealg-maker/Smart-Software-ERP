@@ -16,7 +16,6 @@ import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {toSignal} from "@angular/core/rxjs-interop";
 
 @Component({
     selector: 'ss-class-list',

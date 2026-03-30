@@ -1,5 +1,5 @@
-<mat-card>
-    @defer (when !isLoading()) {
+@defer (when !isLoading() && form !== null) {
+    <mat-card>
         <form [formGroup]="form">
             <mat-form-field class="default-100">
                 <mat-label translate>COMMON_DESCRIPTION</mat-label>
@@ -12,5 +12,5 @@
             </mat-form-field>
 
         </form>
-    }
-</mat-card>
+    </mat-card>
+}

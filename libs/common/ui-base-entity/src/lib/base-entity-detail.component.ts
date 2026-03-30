@@ -25,7 +25,6 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
     }
 
     public override ngOnInit() {
-        this.form = null;
         super.ngOnInit();
         this.shellSrv.setTitle(this.title); // set title save as list
         this.shellSrv.setGoBackPath('..', this.route);

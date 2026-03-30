@@ -16,17 +16,17 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
-  selector: 'ss-project-detail',
-  templateUrl: './project-detail.component.html',
-  styleUrls: ['./project-detail.component.scss'],
+    selector: 'ss-project-detail',
+    templateUrl: './project-detail.component.html',
+    styleUrls: ['./project-detail.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    DatePickerComponent,
-    UiAutoCompleteComponent
-],
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        DatePickerComponent,
+        UiAutoCompleteComponent
+    ],
 })
 export class ProjectDetailComponent extends BaseEntityDetailComponent<SSProject> {
     private customerSrv  = inject( CustomerService);

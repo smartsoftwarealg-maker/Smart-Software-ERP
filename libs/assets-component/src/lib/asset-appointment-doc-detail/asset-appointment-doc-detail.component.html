@@ -91,7 +91,7 @@
   }
 </mat-card-content>
 </mat-card>
-@if (id > 0) {
+@if (id > 0  && !isLoading()) {
   <div class="item table_div">
     <mat-table mat-table [dataSource]="detailData" class="main-table">
 
