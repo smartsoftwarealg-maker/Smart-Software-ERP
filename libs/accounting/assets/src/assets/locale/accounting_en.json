@@ -104,5 +104,6 @@
     "SINGLE_ACCOUNTING":        "Unique accounting for all centers",
     "DELETE_EXISTING":          "Delete existing transactions",
     "ENTRY":                    "Stock in",
-    "EXIT":                     "Stock out"
+    "EXIT":                     "Stock out",
+    "F9_F10" :                  "T9/T10"
 }
