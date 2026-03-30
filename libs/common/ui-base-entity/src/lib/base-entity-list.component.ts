@@ -199,6 +199,7 @@ implements OnInit, OnDestroy {
         this.releaseResources();
         this.data = [];
         this.shellSrv.setLoading(this.canShowProcessingStatus());
+        this.shellSrv.setFetching(true);
         (this.preload() || of(null))
             .pipe(switchMap(() => this.getPage()))
             .subscribe({
@@ -211,10 +212,12 @@ implements OnInit, OnDestroy {
                 error: (err) => {
                     this.data = []; // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
+                    this.shellSrv.setFetching(true);
                     throw err;
                 },
             });
     }
+
 
     // this is created, so we can override the service call whenever we want
     public getPage(): Observable<T[]> {
@@ -233,6 +236,7 @@ implements OnInit, OnDestroy {
         this.processLoadedData(data).subscribe((x) => {
             this.data = x;
             this.shellSrv.setLoading(false);
+            this.shellSrv.setFetching(false);
         });
     }
 
@@ -412,5 +416,9 @@ implements OnInit, OnDestroy {
 
     set selected(id: number) {
         this.entitySrv.selectedId.set(id);
+    }
+
+    isFetching() {
+        return this.shellSrv.isFetching();
     }
 }

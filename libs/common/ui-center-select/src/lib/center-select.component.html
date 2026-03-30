@@ -1,77 +1,80 @@
-<div class="cc-container">
-    <mat-vertical-stepper [ngClass]="{'hidden-stepper': loading}" (selectionChange)="onStepSelectionChanged($event)" [linear]="true" class="stepper locale-dir" #stepper>
-        <ng-template matStepperIcon="edit" let-index="index">
-            {{index + 1}}
-        </ng-template>
-        <ng-template matStepperIcon="done" let-index="index">
-            {{index + 1}}
-        </ng-template>
-        <ng-template matStepperIcon="number" let-index="index">
-            {{index + 1}}
-        </ng-template>
-        <mat-step [optional]="false" [completed]="selectedCompany > 0">
-            <ng-template matStepLabel>
-                @if (!selectedCompany || selectedCompany < 1) {
-                    <span style="user-select: none" translate>COMMON_SELECT_COMPANY</span>
-                }
-                @if (selectedCompany > 0) {
-                    <span style="user-select: none">{{selectedCompanyName}}</span>
-                }
+@if (companyLoaded()) {
+    <div class="cc-container">
+        <mat-vertical-stepper (selectionChange)="onStepSelectionChanged($event)"
+                              [linear]="true"
+                              class="stepper locale-dir" #stepper>
+            <ng-template matStepperIcon="edit" let-index="index">
+                {{ index + 1 }}
             </ng-template>
-            <mat-form-field style="width: 90%">
-                <mat-select (selectionChange)="selectCompany($event.value)" [value]="selectedCompany">
-                    @for (company of companyList; track company.id) {
-                        <mat-option [value]="company.id">
-                            {{ company.description }}
-                        </mat-option>
+            <ng-template matStepperIcon="done" let-index="index">
+                {{ index + 1 }}
+            </ng-template>
+            <ng-template matStepperIcon="number" let-index="index">
+                {{ index + 1 }}
+            </ng-template>
+            <mat-step [optional]="false"
+                      [completed]="selectedCompany > 0">
+                <ng-template matStepLabel>
+                    @if (!selectedCompany || selectedCompany < 1) {
+                        <span style="user-select: none" translate>COMMON_SELECT_COMPANY</span>
+                    } @else {
+                        <span style="user-select: none">{{ selectedCompanyName }}</span>
                     }
-                </mat-select>
-            </mat-form-field>
-        </mat-step>
-        <mat-step [optional]="false" [completed]="false">
-            <ng-template matStepLabel>
-                <span style="user-select: none" translate>COMMON_SELECT_CENTER</span>
-            </ng-template>
-            @if (!loadingCenters) {
-                @if (centerList.length <= 5) {
-                    <mat-form-field style="width: 90%">
-                        <mat-select (selectionChange)="selectCenter($event.value)" [value]="selectedCenter">
-                            @for (center of centerList; track center.id) {
-                                <mat-option [value]="center.id">
-                                    {{ center.description }}
-                                </mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
+                </ng-template>
+                <mat-form-field style="width: 90%">
+                    <mat-select (selectionChange)="selectCompany($event.value)" [value]="selectedCompany">
+                        @for (company of companyList; track company.id) {
+                            <mat-option [value]="company.id">
+                                {{ company.description }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </mat-step>
+            <mat-step [optional]="false" [completed]="false">
+                <ng-template matStepLabel>
+                    <span style="user-select: none" translate>COMMON_SELECT_CENTER</span>
+                </ng-template>
+                @if (!loadingCenters) {
+                    @if (centerList.length <= 5) {
+                        <mat-form-field style="width: 90%">
+                            <mat-select (selectionChange)="selectCenter($event.value)" [value]="selectedCenter">
+                                @for (center of centerList; track center.id) {
+                                    <mat-option [value]="center.id">
+                                        {{ center.description }}
+                                    </mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                    } @else {
+                        <mat-form-field style="width: 90%">
+                            <mat-label translate>ADMINISTRATION_CENTER</mat-label>
+                            <input type="text"
+                                   [placeholder]="'COMMON_TYPE_TO_SELECT'|translate"
+                                   aria-label="Number"
+                                   matInput
+                                   [formControl]="centerControl"
+                                   [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
+                                @for (center of filteredCenters | async; track center.id) {
+                                    <mat-option [value]="center.description">
+                                        {{ center.description }}
+                                    </mat-option>
+                                }
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    }
+                    <div style="height: 36px; margin-top: 8px">
+                        <button mat-raised-button
+                                color="primary"
+                                class="margin-end-8 float-end"
+                                (click)="onDone()"
+                                [disabled]="selectedCenter < 1"
+                                translate>COMMON_SELECT
+                        </button>
+                    </div>
                 }
-                @if (centerList.length > 5) {
-                    <mat-form-field style="width: 90%">
-                        <mat-label translate>ADMINISTRATION_CENTER</mat-label>
-                        <input type="text"
-                               [placeholder]="'COMMON_TYPE_TO_SELECT'|translate"
-                               aria-label="Number"
-                               matInput
-                               [formControl]="centerControl"
-                               [matAutocomplete]="auto">
-                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
-                            @for (center of filteredCenters | async; track center.id) {
-                                <mat-option [value]="center.description">
-                                    {{center.description}}
-                                </mat-option>
-                            }
-                        </mat-autocomplete>
-                    </mat-form-field>
-                }
-                <div style="height: 36px; margin-top: 8px">
-                    <button mat-raised-button
-                            color="primary"
-							class="margin-end-8 float-end"
-                            (click)="onDone()"
-                            [disabled]="selectedCenter < 1"
-                            translate>COMMON_SELECT
-                    </button>
-                </div>
-            }
-        </mat-step>
-    </mat-vertical-stepper>
-</div>
+            </mat-step>
+        </mat-vertical-stepper>
+    </div>
+}

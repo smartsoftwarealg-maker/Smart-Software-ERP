@@ -1,5 +1,5 @@
 <mat-card>
-    @if (form !== null) {
+    @defer (when !isLoading()) {
         <form novalidate [formGroup]="form">
             <mat-form-field class="default-100">
                 <mat-label translate>COMMON_DESCRIPTION</mat-label>
@@ -13,16 +13,14 @@
 
             <mat-form-field class="default-100">
                 <mat-label translate>COMMON_ACCOUNT_MAP</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="accountLookupModel"
+                <ss-auto-complete [model]="accountLookupModel"
                                   formControlName="accountId">
                 </ss-auto-complete>
             </mat-form-field>
 
             <mat-form-field class="default-100">
                 <mat-label translate>COMMON_SUBCLASS</mat-label>
-                <ss-auto-complete matInput
-                                  [model]="subclassLookupModel"
+                <ss-auto-complete [model]="subclassLookupModel"
                                   formControlName="subclassId">
                 </ss-auto-complete>
             </mat-form-field>

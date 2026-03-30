@@ -11,7 +11,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     public shellSrv = inject(ShellService);
     public snackBarSrv = inject(SnackBarService);
     public confirmationSrv = inject(ConfirmationDialogService);
-
     protected queryId: number;
     protected subscriptions: Subscription[] = [];
     public form: UntypedFormGroup|null = null;
@@ -121,9 +120,10 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         return of(true);
     }
 
-    get isLoading() {
+    isLoading() {
         return this.shellSrv.getLoading();
     }
+
 
     public loadEntity(id: number): Observable<T> {
         this.id = id || 0;

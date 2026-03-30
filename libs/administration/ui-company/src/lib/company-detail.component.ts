@@ -22,8 +22,6 @@ import { MatCheckbox } from '@angular/material/checkbox';
     imports: [FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatFormField, MatLabel, MatInput, MatError, MatCheckbox]
 })
 export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
-
-
     constructor(
         public companyService: CompanyService,
         public override shellSrv: ShellService,
@@ -89,12 +87,12 @@ export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
 
     public isSectionInvalid(section: string): boolean {
         switch (section) {
-            case 'main':
-                return this.isMainSectionInvalid();
-            case 'contact':
-                return this.isContactSectionInvalid();
-            default:
-                return false;
+        case 'main':
+            return this.isMainSectionInvalid();
+        case 'contact':
+            return this.isContactSectionInvalid();
+        default:
+            return false;
         }
     }
 
@@ -106,7 +104,7 @@ export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
 
         // if expanded return primary background class
         if (panel.expanded)
-            return 'b-primary-expansion-panel'
+            return 'b-primary-expansion-panel';
         else
             return '';
     }

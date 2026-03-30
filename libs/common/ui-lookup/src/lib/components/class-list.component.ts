@@ -55,7 +55,6 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
     selector: 'ss-class-detail',
     templateUrl: '../base-templates/class-detail-template.html',
     styles: [`
-
         mat-card {
             width: 90%;
             max-width: 600px;

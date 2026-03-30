@@ -1,6 +1,6 @@
-import { Directive, OnDestroy, OnInit, signal } from "@angular/core";
+import { Directive, OnDestroy, OnInit, signal } from '@angular/core';
 import {UntypedFormBuilder} from '@angular/forms';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
@@ -25,6 +25,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
     }
 
     public override ngOnInit() {
+        this.form = null;
         super.ngOnInit();
         this.shellSrv.setTitle(this.title); // set title save as list
         this.shellSrv.setGoBackPath('..', this.route);
@@ -45,18 +46,17 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
     }
 
     public load() {
-        this.form = null;
         this.shellSrv.setLoading(true);
 
         this.preload()
             .pipe(
-                switchMap(_ => this.shellSrv.loadUserRights()),
-                tap(_ => {
+                switchMap(() => this.shellSrv.loadUserRights()),
+                tap(() => {
                     const rights = this.shellSrv.getCurrentNodeRights();
                     this.saveButton.visible &&= rights.edit || rights.write;
                     this.isEditable = rights.edit || rights.write;
                 }),
-                switchMap(_ => this.getRouteParam()),
+                switchMap(() => this.getRouteParam()),
                 tap(p => this.queryId = +p['id'] || 0),
                 switchMap(() => this.loadEntity(this.queryId || 0)))
             .subscribe({

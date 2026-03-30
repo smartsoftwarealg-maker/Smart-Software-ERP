@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
-import {Chart, ChartItem, registerables} from 'chart.js';
+import {Chart, ChartConfiguration, ChartItem, registerables} from 'chart.js';
 import {ChartService} from '../chart.service';
 import {LanguageService, MaterialModule} from '@ss/common/api-common';
 import {
@@ -14,7 +14,6 @@ import {
 } from '../chart-api';
 import {forkJoin, switchMap, tap} from 'rxjs';
 
-import {ChartConfiguration} from 'chart.js/dist/types';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({

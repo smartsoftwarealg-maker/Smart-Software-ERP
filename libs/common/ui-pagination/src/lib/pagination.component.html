@@ -1,7 +1,8 @@
-<div class="container" [ngStyle]="{ display: lastPage > 1 || model.elementCount >= 5? 'block' : 'none'}">
-    <div class="row">
-        <div class="pagination-buttons b-b-background f-f-text">
 
+<div class="container" [ngStyle]="{ display: lastPage > 1 || model.elementCount >= 5 || isFetching()? 'block' : 'none'}">
+    <div class="row">
+        @if (!isFetching()) {
+        <div class="pagination-buttons b-b-background f-f-text">
             <button mat-icon-button class="nav-btn" type="button" style="float: right"
                     (click)="onRightPlusButtonClick()"
                     [disabled]="isRightButtonDisabled()">
@@ -9,7 +10,7 @@
             </button>
 
             <button mat-icon-button class="nav-btn" type="button" style="float: left" (click)="onLeftPlusButtonClick()"
-                    [disabled]="isLeftButtonDisabled()">
+                    [disabled]="isLeftButtonDisabled() || isFetching()">
                 <i class="fas fa-chevron-double-left"></i>
             </button>
 
@@ -24,16 +25,16 @@
                     [disabled]="isLeftButtonDisabled()">
                 <i class="fas fa-chevron-left"></i>
             </button>
-
         </div>
         <div class="page-size-button-container">
             <button mat-mini-fab color="primary" class="nav-btn" [matMenuTriggerFor]="perPageMenu" type="button">
                 {{model.pageSize}}
             </button>
         </div>
+        }
         <div class="go-to-page">
 
-            <input #pageInput matInput type="text" type="number" class="page-input margin-start-4 b-b-background f-f-text"
+            <input #pageInput matInput type="number" class="page-input margin-start-4 b-b-background f-f-text"
                    (keyup.enter)="onGoToPage()">
 
             <button mat-mini-fab type="button" color="primary"
