@@ -44,5 +44,7 @@
     "PRODUCTION_FORMULAS":    "صيغ الإنتاج",
     "PRODUCTION_FORMULA":     "صيغة الإنتاج",
     "TRANSFER_ALL":           "تحويل جميع المواد",
-    "CANCEL_ALL_TRANSFERS":   "إلغاء كافة التحويلات"
+    "CANCEL_ALL_TRANSFERS":   "إلغاء كافة التحويلات",
+    "IN_ORDER":               "الطلب الحالي",
+    "MAX_QTY":                "أقصى كمية يمكن إنتاجها"
 }
