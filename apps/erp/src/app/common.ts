@@ -552,8 +552,7 @@ export const ACC_CLOSED_PERIODS_URL   = 'closed-periods';
 export const ACC_CATEGORY_ACCOUNTS_URL   = 'category-accounts';
 export const ACC_CLASS_ACCOUNTS_URL   = 'class-accounts';
 export const ACC_F09_10_URL   = 't-09-10';
-
-// park
+export const ACC_ERA_REPORT_URL   = 'era-report';
 export const PARK_DRIVER_URL = 'drivers';
 export const PARK_MISSION_URL = 'missions';
 export const PARK_VEHICLE_URL = 'vehicles';
@@ -725,6 +724,7 @@ export const ABS_ACC_CLOSED_PERIODS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_U
 export const ABS_ACC_CATEGORY_ACCOUNTS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_CATEGORY_ACCOUNTS_URL].join('/');
 export const ABS_ACC_CLASS_ACCOUNTS_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_CLASS_ACCOUNTS_URL].join('/');
 export const ABS_ACC_F09_10_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_F09_10_URL].join('/');
+export const ABS_ERA_REPORT_URL = '/' + [MAIN_PAGE_URL, ACCOUNTING_APP_URL, ACC_ERA_REPORT_URL].join('/');
 
 //Budget
 export const ABS_BUDGET_BUDGET_URL = '/' + [MAIN_PAGE_URL, BUDGET_APP_URL, BUDGET_BUDGET_URL].join('/');

@@ -24,7 +24,7 @@ import {
     ABS_ACC_TRANSACTIONS_URL,
     ABS_BALANCE_QUERIES_URL,
     ABS_CONSOLIDATION_CENTERS_URL,
-    ABS_DEPRECIATION_GENERATION_URL,
+    ABS_DEPRECIATION_GENERATION_URL, ABS_ERA_REPORT_URL,
     ABS_GENERAL_GENERATION_URL,
     ABS_GENERATION_URL,
     ABS_POLICIES_URL,
@@ -219,6 +219,12 @@ export const accountingNavTree: SideNavNode = {
             icon: 'fa-solid fa-gauge-min',
             route: ABS_ACC_DASHBOARD_URL,
             accessRights: 'Dashboard'
+        },
+        {
+            name: 'ACC_ERA_REPORT',
+            icon: 'fa-solid fa-chart-line',
+            route: ABS_ERA_REPORT_URL,
+            accessRights: 'Report'
         },
     ]
 };

@@ -20,6 +20,7 @@ export const ACC_ACCOUNTING_GL_URL  = '/accounting/gl';
 export const TRANSAC_ACCOUNT_URL    = '/accounting/transac-accounts';
 export const CASH_FLOW_ACCOUNTS_URL = '/cash-accounts';
 export const SCALE                  = 100_000;
+export const ACC_ERA_REPORT_URL     ='/accounting/era-report';
 
 export interface ACCPolicy {
     id: number;
@@ -286,3 +287,11 @@ export interface XLSInjectionFormat {
 }
 
 export interface XITotal{debit: number; credit: number;}
+
+export interface ERAReport {
+    id: number;
+    description: string;
+    accountList?: string;
+    descriptionAr?: string;
+    sign: number;
+}
