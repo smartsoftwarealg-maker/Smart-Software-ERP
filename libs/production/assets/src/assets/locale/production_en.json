@@ -9,7 +9,7 @@
     "QTY": "Qty",
     "PURCHASE_ORDER": "Purchase order",
     "INVENTORY": "Inventory",
-    "TO_ORDER": "Order",
+    "TO_ORDER": "To be ordered",
     "BOM": "Bill of material",
     "PRODUCE": "Produce",
     "CANCEL": "Cancel",
@@ -44,5 +44,7 @@
     "PRODUCTION_FORMULAS": "Production Formulas",
     "PRODUCTION_FORMULA":  "Production Formula",
     "TRANSFER_ALL":        "Transfer all articles",
-    "CANCEL_ALL_TRANSFERS": "Cancel all transfers"
+    "CANCEL_ALL_TRANSFERS": "Cancel all transfers",
+    "IN_ORDER":             "Current order",
+    "MAX_QTY":              "Max producible quantity"
 }
