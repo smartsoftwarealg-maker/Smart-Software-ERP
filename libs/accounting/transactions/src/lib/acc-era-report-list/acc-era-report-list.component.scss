@@ -1,0 +1,23 @@
+.container {
+    width: 96%;
+    max-width: 1200px;
+    margin: 4px auto;
+}
+
+.container_div {
+    height: calc(100% - 72px);
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.content-div {
+    width: 100%;
+}
+
+.pagination-container {
+    flex-grow: 0;
+}
+
+.mat-column-accountList{
+    justify-content: flex-end;
+}

@@ -106,6 +106,8 @@
     "DELETE_EXISTING":          "Supprimer les ecritures existantes",
     "ENTRY":                    "Entrée",
     "EXIT":                     "Sortie",
-    "F9_F10":                   "T9/T10"
+    "F9_F10":                   "T9/T10",
+    "ERA_REPORT":               "Etat de rapprochement automatique",
+    "ACCOUNT_LIST":             "Liste des comptes"
 }
 

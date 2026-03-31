@@ -31,6 +31,7 @@ import {
     ACC_CATEGORY_ACCOUNTS_URL,
     ACC_CLASS_ACCOUNTS_URL,
     ACC_F09_10_URL,
+    ACC_ERA_REPORT_URL
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AccPoliciesComponent} from '@ss/accounting/acc-policies';
@@ -89,6 +90,12 @@ import {
     ClassAccountsLineListComponent,
     ClassAccountsListComponent
 } from "@ss/accounting/class-accounts";
+import {
+    EraReportListComponent
+} from "../../../../../libs/accounting/transactions/src/lib/acc-era-report-list/acc-era-report-list.component";
+import {
+    EraReportDetailComponent
+} from "../../../../../libs/accounting/transactions/src/lib/acc-era-report-detail/acc-era-report-detail.component";
 
 export const accRoutes: Routes = [
     {
@@ -529,4 +536,25 @@ export const accRoutes: Routes = [
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    {
+        path: ACC_ERA_REPORT_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: EraReportListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: EraReportDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
+            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+        ]
+    },
+    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
+    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+
 ];
