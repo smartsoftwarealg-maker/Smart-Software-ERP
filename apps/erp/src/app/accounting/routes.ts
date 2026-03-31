@@ -29,7 +29,8 @@ import {
     ACC_CLOSED_PERIODS_URL,
     ACC_GENERAL_INJECTION_URL,
     ACC_CATEGORY_ACCOUNTS_URL,
-    ACC_CLASS_ACCOUNTS_URL
+    ACC_CLASS_ACCOUNTS_URL,
+    ACC_F09_10_URL,
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {AccPoliciesComponent} from '@ss/accounting/acc-policies';
@@ -69,10 +70,15 @@ import {
     AppArchiveListComponent
 } from '@ss/common/app-archive';
 import {
+    F0910DetailComponent,
     F12DetailComponent,
-    F12ListComponent, F13DetailComponent, F13ListComponent, F82DetailComponent, F82ListComponent,
+    F12ListComponent,
+    F13DetailComponent,
+    F13ListComponent,
+    F82DetailComponent,
+    F82ListComponent,
     F8DetailComponent,
-    F8ListComponent
+    F8ListComponent,
 } from '@ss/accounting/balance-tables';
 import { DashboardComponent } from '@ss/dashboard';
 import { ConsolidationCentersDetailComponent, ConsolidationCentersListComponent } from '@ss/accounting/consolidation';
@@ -88,66 +94,66 @@ export const accRoutes: Routes = [
     {
         path: ACC_FILE_SELECTOR_URL,
         component: FileSelectorComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     {
         path: ACC_GENERATION_URL,
         component: AccountingGenerationComponent,
-        canActivate: [loginGuard, accountingGuard]
+        canActivate: [loginGuard, accountingGuard],
     },
     {
         path: ACC_TRANSACTION_MATCHING_URL,
         component: TransactionMatchingComponent,
-        canActivate: [loginGuard, accountingGuard]
+        canActivate: [loginGuard, accountingGuard],
     },
     {
         path: ACC_DEPRECIATION_GEN_URL,
         component: DepreciationGenerationComponent,
-        canActivate: [loginGuard, accountingGuard]
+        canActivate: [loginGuard, accountingGuard],
     },
     {
         path: ACC_SALES_INJECTION_URL,
         component: SalesExcelInjectionComponent,
-        canActivate: [loginGuard, accountingGuard]
+        canActivate: [loginGuard, accountingGuard],
     },
     {
         path: ACC_GENERAL_INJECTION_URL,
         component: GeneralExcelInjectionComponent,
-        canActivate: [loginGuard, accountingGuard]
+        canActivate: [loginGuard, accountingGuard],
     },
     {
         path: ACC_REOPEN_URL,
         component: AccountingReopenComponent,
         canActivate: [loginGuard, accountingGuard],
-        canDeactivate: [CanCloseOpener]
+        canDeactivate: [CanCloseOpener],
     },
     {
         path: COMMON_REPORTS_URL,
         children: [
             {
                 path: LIST_URL,
-                data: { reportBase: 'accounting'},
+                data: { reportBase: 'accounting' },
                 component: ReportViewComponent,
-                canActivate: [loginGuard, accountingGuard]
+                canActivate: [loginGuard, accountingGuard],
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
-        ]
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: ACC_PERIOD_SELECTOR_URL,
         component: PeriodSelectorComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     {
         path: ACC_PERIOD_SELECTOR_URL,
         component: PeriodSelectorComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     {
         path: ACC_POLICIES_URL,
         component: AccPoliciesComponent,
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
     },
     {
         path: ASSET_ACCOUNT_URL,
@@ -155,17 +161,17 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AssetAccountsListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: AssetAccountsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: TRANSAC_ACCOUNT_URL,
@@ -173,17 +179,17 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: TransacAccountsListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: TransacAccountsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: GENERATION_ACCOUNT_URL,
@@ -191,17 +197,17 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: GenerationAccountsListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: GenerationAccountsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: CASHFLOW_ACCOUNTS_URL,
@@ -209,17 +215,17 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CashFlowListComponent,
-                canActivate: [loginGuard, accountingGuard]
+                canActivate: [loginGuard, accountingGuard],
             },
             {
                 path: ':id',
                 component: CashFlowDetailComponent,
                 canActivate: [loginGuard, accountingGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: COMMON_ACCOUNT_URL,
@@ -227,17 +233,17 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AccountListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: AccountDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: ACC_FILES_URL,
@@ -245,17 +251,17 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AccFileListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: AccFileDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: ACC_PROJECTS_URL,
@@ -263,17 +269,17 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: AccProjectListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: AccProjectDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: ACC_JOURNALS_URL,
@@ -281,17 +287,17 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: JournalListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: JournalDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: ACC_TRANSACTIONS_URL,
@@ -307,38 +313,58 @@ export const accRoutes: Routes = [
                             {
                                 path: 'archive',
                                 children: [
-                                    { path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: ACC_TRANSACTION_ARCHIVES, showBackButton: 'true' } },
-                                    { path: ':id', component: AppArchiveDetailComponent, data: { appId: ACC_TRANSACTION_ARCHIVES }},
-                                ]
+                                    {
+                                        path: '',
+                                        component: AppArchiveListComponent,
+                                        pathMatch: 'full',
+                                        data: {
+                                            appId: ACC_TRANSACTION_ARCHIVES,
+                                            showBackButton: 'true',
+                                        },
+                                    },
+                                    {
+                                        path: ':id',
+                                        component: AppArchiveDetailComponent,
+                                        data: {
+                                            appId: ACC_TRANSACTION_ARCHIVES,
+                                        },
+                                    },
+                                ],
                             },
                             {
                                 path: '',
                                 component: TransactionDetailComponent,
                                 canDeactivate: [CanDeactivateService],
                                 children: [
-                                    { path: '', redirectTo: 'detail', pathMatch: 'full'},
+                                    {
+                                        path: '',
+                                        redirectTo: 'detail',
+                                        pathMatch: 'full',
+                                    },
                                     {
                                         path: 'detail',
                                         children: [
                                             {
                                                 path: ':id',
-                                                component: TransactionLinesDetailComponent,
+                                                component:
+                                                    TransactionLinesDetailComponent,
                                             },
                                             {
                                                 path: '',
-                                                component: TransactionLinesListComponent,
+                                                component:
+                                                    TransactionLinesListComponent,
                                             },
-                                        ]
+                                        ],
                                     },
-                                ]
+                                ],
                             },
-                        ]
+                        ],
                     },
                 ],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: ACC_F8_URL,
@@ -346,15 +372,15 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: F8ListComponent,
-                canActivate: [loginGuard, accountingGuard]
+                canActivate: [loginGuard, accountingGuard],
             },
             {
                 path: ':id',
                 component: F8DetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-        ]
+        ],
     },
     {
         path: ACC_F82_URL,
@@ -362,15 +388,15 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: F82ListComponent,
-                canActivate: [loginGuard, accountingGuard]
+                canActivate: [loginGuard, accountingGuard],
             },
             {
                 path: ':id',
                 component: F82DetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-        ]
+        ],
     },
     {
         path: ACC_F12_URL,
@@ -378,15 +404,15 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: F12ListComponent,
-                canActivate: [loginGuard, accountingGuard]
+                canActivate: [loginGuard, accountingGuard],
             },
             {
                 path: ':id',
                 component: F12DetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-        ]
+        ],
     },
     {
         path: ACC_F13_URL,
@@ -394,20 +420,20 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: F13ListComponent,
-                canActivate: [loginGuard, accountingGuard]
+                canActivate: [loginGuard, accountingGuard],
             },
             {
                 path: ':id',
                 component: F13DetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-        ]
+        ],
     },
     {
         path: ACC_BALANCE_QUERIES_URL,
         component: BalanceQueriesComponent,
-        canActivate: [loginGuard, accountingGuard]
+        canActivate: [loginGuard, accountingGuard],
     },
 
     {
@@ -422,22 +448,22 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: ConsolidationCentersListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: ConsolidationCentersDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: ACC_CLOSED_PERIODS_URL,
         component: AccClosedPeriodsComponent,
-        canActivate: [loginGuard, accountingGuard]
+        canActivate: [loginGuard, accountingGuard],
     },
     {
         path: ACC_CATEGORY_ACCOUNTS_URL,
@@ -445,17 +471,17 @@ export const accRoutes: Routes = [
             {
                 path: LIST_URL,
                 component: CategoryAccountsListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard],
             },
             {
                 path: ':id',
                 component: CategoryAccountsDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
     {
         path: ACC_CLASS_ACCOUNTS_URL,
@@ -491,6 +517,16 @@ export const accRoutes: Routes = [
             { path: '**', redirectTo: LIST_URL, pathMatch: 'full' },
         ],
     },
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
+    {
+        path: ACC_F09_10_URL,
+        children: [
+            {
+                path: '',
+                component: F0910DetailComponent,
+                canActivate: [loginGuard, accountingGuard],
+            }
+        ],
+    },
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
 ];
