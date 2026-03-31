@@ -15,8 +15,9 @@ export * from './lib/transac-account.service';
 export * from './lib/asset-account.service';
 export * from './lib/cash-flow-account.service';
 export * from './lib/accounting-period.guard';
-export * from './lib/acc-project.service'
+export * from './lib/acc-project.service';
 export * from './lib/accounting-generation.service';
 export * from './lib/balance-queries.service';
 export * from './lib/scheduled-sales-excel-injection.service';
 export * from './lib/excel-injection-format.service';
+export * from './lib/acc-era-report.service';

@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 
 
 import { ERAReport } from '@ss/accounting/accounting-api';
-import {AccEraReportService} from "../../../../accounting-api/src/lib/acc-era-report.service";
+import {AccEraReportService} from '@ss/accounting/accounting-api';
 
 @Component({
     selector: 'ss-era-report-list',
