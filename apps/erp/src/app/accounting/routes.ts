@@ -84,18 +84,18 @@ import {
 import { DashboardComponent } from '@ss/dashboard';
 import { ConsolidationCentersDetailComponent, ConsolidationCentersListComponent } from '@ss/accounting/consolidation';
 import { AccClosedPeriodsComponent } from '@ss/accounting/acc-closed-periods';
-import {CategoryAccountsDetailComponent, CategoryAccountsListComponent} from "@ss/accounting/category-accounts";
+import {CategoryAccountsDetailComponent, CategoryAccountsListComponent} from '@ss/accounting/category-accounts';
 import {
     ClassAccountsDetailComponent, ClassAccountsLineDetailComponent,
     ClassAccountsLineListComponent,
     ClassAccountsListComponent
-} from "@ss/accounting/class-accounts";
+} from '@ss/accounting/class-accounts';
 import {
     EraReportListComponent
-} from "../../../../../libs/accounting/transactions/src/lib/acc-era-report-list/acc-era-report-list.component";
+} from '@ss/accounting/transactions';
 import {
     EraReportDetailComponent
-} from "../../../../../libs/accounting/transactions/src/lib/acc-era-report-detail/acc-era-report-detail.component";
+} from '@ss/accounting/transactions';
 
 export const accRoutes: Routes = [
     {
@@ -531,30 +531,28 @@ export const accRoutes: Routes = [
                 path: '',
                 component: F0910DetailComponent,
                 canActivate: [loginGuard, accountingGuard],
-            }
+            },
         ],
     },
-    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+
     {
         path: ACC_ERA_REPORT_URL,
         children: [
             {
                 path: LIST_URL,
                 component: EraReportListComponent,
-                canActivate: [loginGuard]
+                canActivate: [loginGuard, accountingGuard],
             },
             {
                 path: ':id',
                 component: EraReportDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService]
+                canActivate: [loginGuard, accountingGuard],
+                canDeactivate: [CanDeactivateService],
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-        ]
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
     },
-    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
-    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
-
+    { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+    { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
 ];
