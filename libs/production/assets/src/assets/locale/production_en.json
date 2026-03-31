@@ -46,5 +46,5 @@
     "TRANSFER_ALL":        "Transfer all articles",
     "CANCEL_ALL_TRANSFERS": "Cancel all transfers",
     "IN_ORDER":             "Current order",
-    "MAX_QTY":              "Max producible quantity",
+    "MAX_QTY":              "Max producible quantity"
 }
