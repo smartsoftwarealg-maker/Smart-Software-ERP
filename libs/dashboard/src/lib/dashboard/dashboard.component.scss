@@ -35,15 +35,22 @@
     .data__div {
         flex: 1 1 69%;
         overflow: hidden;
+        min-height: 25em;
+        max-height: 32em;
     }
 
-    .list__div,
-    .table___div {
+    .list__div {
         overflow: auto;
         flex-grow: 1;
         height: 100%;
         min-height: 30em;
         max-height: 32em;
+    }
+
+    .table___div {
+        overflow: auto;
+        //flex-grow: 1;
+        max-height: calc(100% - 50px);
     }
 
     mat-table {
