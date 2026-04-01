@@ -169,7 +169,7 @@ export const accountingNavTree: SideNavNode = {
             name: 'ACC_F9_F10',
             icon: 'fa-solid fa-table',
             route: ABS_ACC_F09_10_URL,
-            accessRights: 'F9_F10',
+            accessRights: 'F0910',
         },
         {
             name: 'ACC_F12',
