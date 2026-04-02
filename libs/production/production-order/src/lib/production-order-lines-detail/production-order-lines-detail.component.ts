@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_PRODUCTION_ORDER, TransactionLine
 } from '@ss/logistics/api-transaction';
@@ -7,7 +7,7 @@ import { ProductionOrderLinesService } from '../production-order-services/produc
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
-import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatFormField, MatLabel, MatError, MatHint } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -22,6 +22,7 @@ import { BomLookupClass, BomService } from '@ss/master-data/ui-article';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { PRODUCTION_ORDER } from '@ss/workflow';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-production-order-lines-detail',
@@ -45,27 +46,35 @@ import { PRODUCTION_ORDER } from '@ss/workflow';
         CdkTextareaAutosize,
         MatOption,
         MatSelect,
+        MatHint,
+        DecimalPipe,
     ],
 })
 export class ProductionOrderLinesDetailComponent
     extends BaseTransactionLinesDetailComponent
-    implements OnInit, OnDestroy {
+    implements OnInit, OnDestroy
+{
     #articleSrv = inject(ManufacturedArticleService);
     #bomSrv = inject(BomService);
 
     override articleLookup: ArticleAutoCompleteModel =
         new ArticleAutoCompleteModel(this.#articleSrv);
     bomLookup: BomLookupClass = new BomLookupClass(this.#bomSrv);
+    maxQty = signal(0);
 
     constructor(protected detailSrv: ProductionOrderLinesService) {
         super(detailSrv, DOC_PRODUCTION_ORDER);
         this.articleLookup.onObjectSelected = (a) => this.onArticleLookup(a);
-        this.bomLookup.onObjectSelected = b => this.onBomLookup(b);
+        this.bomLookup.onObjectSelected = (b) => this.onBomLookup(b);
     }
 
     override setupForm(b: TransactionLine): UntypedFormGroup {
         this.bomLookup.reference = b?.reference;
         b.document = PRODUCTION_ORDER;
+        this.detailSrv
+            .maxQty(b.id)
+            .subscribe((res) => this.maxQty.set(res?.qty || 0));
+
         return super.setupForm(b);
     }
 
@@ -74,8 +83,10 @@ export class ProductionOrderLinesDetailComponent
         this.bomLookup.reference = a?.reference;
     }
 
-
     onBomLookup(b: BOM) {
         this.form.get('units')?.setValue(b.units);
+        this.detailSrv
+            .maxQty(this.id)
+            .subscribe((res) => this.maxQty.set(res?.qty || 0));
     }
 }
