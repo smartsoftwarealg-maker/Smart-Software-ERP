@@ -1,11 +1,16 @@
 import { Component, inject, signal } from '@angular/core';
-import {DashboardService} from '../services/dashboard.service';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Dashboard} from '../dashboard';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { DashboardService } from '../services/dashboard.service';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { Dashboard } from '../dashboard';
+import {
+    KeepOnToolbar,
+    ShellService,
+    SnackBarService,
+    ToolbarButton,
+} from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { LookupsService } from '@ss/common/api-lookup';
 import { asapScheduler, of, scheduled, takeWhile, tap, timer } from 'rxjs';
 import {
@@ -19,12 +24,11 @@ import {
     PaginatorPersistenceService,
 } from '@ss/common/api-common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
+import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
 import { Id, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -81,6 +85,15 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     smallData = signal(true);
     validData = signal(false);
 
+    public csvButton: ToolbarButton = {
+        icon: 'fa-solid fa-file-csv',
+        label: 'COMMON_CSV_EXPORT',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.csv(),
+    };
+
     constructor(
         public dashboardSrv: DashboardService,
         public override shellSrv: ShellService,
@@ -117,6 +130,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.addButton.visible = false;
         this.deleteButton.visible = false;
         super.ngOnInit();
+        this.shellSrv.addButton(this.csvButton);
         this.subscriptions.push(
             this.application.valueChanges
                 .pipe(debounceTime(300), distinctUntilChanged())
@@ -260,10 +274,69 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         //         }
         //     });
     }
+
+    csv() {
+        const from = this.langSrv.formatDate(this.fromDate.value);
+        const to = this.langSrv.formatDate(this.toDate.value);
+        const consolidated = this.consolidated.value;
+        this.generating.set(true);
+        this.shellSrv.setLoading(true);
+
+        this.dashboardSrv
+            .getCsv(
+                this.selected,
+                this.detailPagination.page,
+                this.detailPagination.pageSize,
+                from,
+                to,
+                this.selectedAgentId,
+                consolidated,
+            )
+            .pipe(
+                switchMap((jobId) => {
+                    return timer(0, this.#POLL_INTERVAL_MS).pipe(
+                        switchMap(() =>
+                            this.dashboardSrv.getStatus(
+                                `/dashboard/${this.selected}/csv`,
+                                jobId,
+                            ),
+                        ),
+                        takeWhile(
+                            (statusRes, index) =>
+                                statusRes.status === 102 && index < 100,
+                            true,
+                        ),
+                    );
+                }),
+                switchMap((res) => of(res.body)),
+                tap((res) => this.doReportGenerationCsv(<Blob>res)),
+            )
+            .subscribe({
+                next: () => {
+                    this.generating.set(false);
+                    this.shellSrv.setLoading(false);
+                },
+                error: (err) => {
+                    this.generating.set(false);
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                },
+            });
+    }
+
     private doReportGeneration(res: Blob | MediaSource): Window | null {
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(res);
-        link.download = `${this.selectedRow?.description||'dashboard'}.xlsx`;
+        link.download = `${this.selectedRow?.description || 'dashboard'}.xlsx`;
+        link.click();
+        setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+        return null;
+    }
+
+    private doReportGenerationCsv(res: Blob | MediaSource): Window | null {
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(res);
+        link.download = `${this.selectedRow?.description || 'dashboard'}.csv`;
         link.click();
         setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
         return null;

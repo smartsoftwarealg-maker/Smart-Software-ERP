@@ -497,5 +497,6 @@
     "PENDING_SUPPLIER":      "Pending supplier account",
     "IS_ADVANCE":            "Is advance",
     "CHECK_BANK":            "Check Bank",
-    "FULL_NAME": "Full name"
+    "FULL_NAME":             "Full name",
+    "CSV_EXPORT":            "Export to csv file"
 }

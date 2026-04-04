@@ -487,5 +487,6 @@
     "ROUND_COUNT":           "عدد الدورات",
     "PENDING_SUPPLIER":      "مورد معلق",
     "IS_ADVANCE":            "مدفوع مقدما",
-    "CHECK_BANK":            "التحقق من البنك"
+    "CHECK_BANK":            "التحقق من البنك",
+    "CSV_EXPORT":            "تصدير إلى csv"
 }
