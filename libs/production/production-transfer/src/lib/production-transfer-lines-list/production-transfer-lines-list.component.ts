@@ -101,29 +101,35 @@ export class ProductionTransferLinesListComponent
     }
 
     transfer() {
-        this.detailSrv.transfer(this.selectedRow?.id || 0).subscribe({
-            next: () => {
-                this.refresh();
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: (err) => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            },
-        });
+        if (this.selectedRow?.id) {
+            this.detailSrv.transfer(this.selectedRow?.id || 0).subscribe({
+                next: () => {
+                    this.refresh();
+                    this.snackBarSrv.showSuccessMessage();
+                },
+                error: (err) => {
+                    this.snackBarSrv.showFailureMessage();
+                    throw err;
+                },
+            });
+        }
     }
 
     transferAll() {
-        this.detailSrv.transferAll(this.selectedRow?.transacId || 0).subscribe({
-            next: () => {
-                this.refresh();
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: (err) => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            },
-        });
+        if (this.selectedRow?.transacId) {
+            this.detailSrv
+                .transferAll(this.selectedRow?.transacId || 0)
+                .subscribe({
+                    next: () => {
+                        this.refresh();
+                        this.snackBarSrv.showSuccessMessage();
+                    },
+                    error: (err) => {
+                        this.snackBarSrv.showFailureMessage();
+                        throw err;
+                    },
+                });
+        }
     }
 
     private doCancellation(obs: Observable<{ count: number }>) {
