@@ -8,13 +8,17 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class SalesContractService extends BaseEntityService<Project> {
-
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, PROJECT_URL, PROJECT_AGENT_URL);
     }
 
     getProjectCode(id: number): Observable<ProjectCode> {
-        return this.httpSrv.get<ProjectCode>(`/logistics/project-code?id=${id}`);
+        return this.httpSrv.get<ProjectCode>(
+            `/logistics/project-code?id=${id}`,
+        );
     }
 
+    getLast(): Observable<{ itemCount: number; body: Project[] }> {
+        return this.httpSrv.getData<Project>('/agents/0/projects', 0, 1, null, '-id'    );
+    }
 }
