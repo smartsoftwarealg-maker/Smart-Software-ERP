@@ -81,6 +81,7 @@ export class F12DetailComponent extends BaseEntityDetailComponent<F12> {
     public override setupForm(e: F12): UntypedFormGroup {
         return this.formBuilder.group({
             id: [e.id],
+            vat:[e.vat],
             fileId: [e.fileId || this.entitySrv.getParentId()],
             agent: [e.agent],
             reference: [e.reference, Validators.required],
