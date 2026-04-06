@@ -11,19 +11,6 @@
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_DATE</mat-label>
-                    <ss-date-picker formControlName="projDate"></ss-date-picker>
-                </mat-form-field>
-
-                <mat-form-field id="description" class="default-50 sm-100">
-                    <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-                    <input matInput formControlName="description" type="text" required>
-                    @if (form.controls['description'].invalid) {
-                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-                    }
-                </mat-form-field>
-
-                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_CUSTOMER</mat-label>
                     <ss-auto-complete matInput
                                       [model]="customerLookupModel"
@@ -32,16 +19,6 @@
                     @if (form.controls['customer'].invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
-                </mat-form-field>
-
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_FROM</mat-label>
-                    <ss-date-picker formControlName="fromDate"></ss-date-picker>
-                </mat-form-field>
-
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>COMMON_TO</mat-label>
-                    <ss-date-picker formControlName="toDate"></ss-date-picker>
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
@@ -54,6 +31,40 @@
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_ACTIVITY_SEGMENT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="projSegmentLookup"
+                                      formControlName="activity2">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_DATE</mat-label>
+                    <ss-date-picker formControlName="projDate"></ss-date-picker>
+                </mat-form-field>
+
+
+                <mat-form-field id="description" class="default-50 sm-100">
+                    <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text" required>
+                    @if (form.controls['description'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_FROM</mat-label>
+                    <ss-date-picker formControlName="fromDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_TO</mat-label>
+                    <ss-date-picker formControlName="toDate"></ss-date-picker>
+                </mat-form-field>
+
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_TYPE</mat-label>
@@ -71,13 +82,6 @@
                     <input matInput formControlName="projMotive" type="text" maxlength="70">
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
-                    <mat-label translate>LOGISTICS_ACTIVITY_SEGMENT</mat-label>
-                    <ss-auto-complete matInput
-                                      [model]="projSegmentLookup"
-                                      formControlName="activity2">
-                    </ss-auto-complete>
-                </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_AWARD_PROCEDURE</mat-label>
