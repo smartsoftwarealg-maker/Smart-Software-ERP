@@ -37,6 +37,14 @@
                 </mat-form-field>
 
                 <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_VAT</mat-label>
+                    <input matInput formControlName="vat" type="number" required>
+                    @if (form.controls['vat'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>ACC_REF_AMOUNT</mat-label>
                     <input matInput formControlName="refAmount" type="number" required>
                     @if (form.controls['refAmount'].invalid) {
