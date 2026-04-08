@@ -205,9 +205,10 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
             .pipe(
                 map((res) => {
                     const max = res.body.length > 0 ? res.body[0].id : 1;
-                    const wilaya = '00' + (this.wilayaLookup.cache?.id || 0);
+                    const wCode = this.wilayaLookup.cache?.id || 0;
+                    const wilaya = (wCode < 10 ? '0' : '') + wCode;
                     const seq = this.projSegmentLookup.cache?.descriptionAr || '00';
-                    return `${max}_${wilaya.substring(0, 2)}_${seq}`;
+                    return `${max}_${wilaya}_${seq}`;
                 })
             );
     }
