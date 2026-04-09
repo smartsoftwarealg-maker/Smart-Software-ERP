@@ -23,6 +23,13 @@
         </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="altAgent">
+        <mat-header-cell *matHeaderCellDef mat-sort-header translate>PROD_PALLET_COUNT</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          {{ e.altAgent }}
+        </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="reference">
         <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>
         <mat-cell *matCellDef="let e">

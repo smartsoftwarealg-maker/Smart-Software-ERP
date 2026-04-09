@@ -81,6 +81,12 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
     #loginSrv = inject(LoginService);
     isInvoicing = signal(false);
 
+    // initialize with translation keys for invoice types
+    readonly invoiceTypes: Map<number, string> = new Map<number, string>([
+        [1, 'COMMON_INVOICE'],
+        [2, 'COMMON_DELIVERY'],
+    ]);
+
     displayedColumns = [
         'number',
         'date',
@@ -170,15 +176,6 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
     private weightCaptureSrv = inject(WeightCaptureService);
     public readonly transacPagination = PaginationModel.newInstance();
 
-    getInvoiceType(n: number) {
-        if (n === 1) {
-            return 'COMMON_INVOICE';
-        }
-        if (n === 2) {
-            return 'COMMON_DELIVERY';
-        }
-        return '';
-    }
 
     transacLineId: number;
     invoiceInfo: InvoiceInfo[] = [];

@@ -183,10 +183,6 @@ export class ProductionLinesListComponent
         const confidential = ['price', 'total'];
         this.#optionSrv.get(this.loginSrv.appCtx.center).subscribe((res) => {
             this.usesUnits.set(res.usesUnits);
-            console.log(
-                '________________________responsible',
-                this.loginSrv.appCtx.manager,
-            );
             this.displayedColumns = this.displayedColumns.filter(
                 (e) =>
                     (res.usesUnits || e !== 'units') &&

@@ -70,7 +70,7 @@
         <ng-container matColumnDef="mode">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_MODE</mat-header-cell>
             <mat-cell *matCellDef="let e" translate>
-                {{ getInvoiceType(e.invoiceType) }}
+                {{ invoiceTypes.get(e.invoiceType) }}
             </mat-cell>
         </ng-container>
 

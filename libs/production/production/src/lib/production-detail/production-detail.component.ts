@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Lookup, LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { AppConfigService, LoginService, MaterialModule } from '@ss/common/api-common';
 import { BaseTransactionDetailComponent, DOC_PRODUCTION_ORDER, Transaction } from '@ss/logistics/api-transaction';
 import { MatDialog} from '@angular/material/dialog';
 import { MatError } from '@angular/material/form-field';
@@ -14,6 +14,9 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ProductionService } from '../production-services/production.service';
 import { ProductionLinesService } from '../production-services/production-lines.service';
+import { concatMap, map, Observable, tap } from 'rxjs';
+import { sign } from 'chart.js/helpers';
+import { signalGetFn } from '@angular/core/primitives/signals';
 
 @Component({
     selector: 'ss-product-detail',
@@ -27,22 +30,40 @@ import { ProductionLinesService } from '../production-services/production-lines.
         MatError,
         TranslateDirective,
         CdkTextareaAutosize,
-        RouterOutlet]
+        RouterOutlet,
+    ],
 })
 export class ProductionDetailComponent extends BaseTransactionDetailComponent {
+    #appConfigSrv = inject(AppConfigService);
 
-    constructor(public orderService: ProductionService,
-                public override detailSrv: ProductionLinesService,
-                public override shellSrv: ShellService,
-                public override snackBarSrv: SnackBarService,
-                public override route: ActivatedRoute,
-                public override router: Router,
-                public override formBuilder: UntypedFormBuilder,
-                public override confirmationSrv: ConfirmationDialogService,
-                public override lookupsSrv: LookupsService,
-                protected override loginSrv: LoginService,
-                protected override dialog: MatDialog) {
-        super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'COMMON_PRODUCTION');
+    showPallet = signal(false);
+
+    constructor(
+        public orderService: ProductionService,
+        public override detailSrv: ProductionLinesService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override router: Router,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService,
+        public override lookupsSrv: LookupsService,
+        protected override loginSrv: LoginService,
+        protected override dialog: MatDialog,
+    ) {
+        super(
+            orderService,
+            detailSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            formBuilder,
+            confirmationSrv,
+            loginSrv,
+            dialog,
+            'COMMON_PRODUCTION',
+        );
     }
 
     override setupForm(b: Transaction): FormGroup {
@@ -69,7 +90,7 @@ export class ProductionDetailComponent extends BaseTransactionDetailComponent {
         return this.formBuilder.group({
             id: [b.id],
             document: [b.document || 0],
-            centerId: [0 || this.loginSrv.appCtx.center],
+            centerId: [this.loginSrv.appCtx.center || 0],
             date: [b.date || new Date(), Validators.required],
             number: [b.number || 0],
             reference: [b.reference],
@@ -88,15 +109,19 @@ export class ProductionDetailComponent extends BaseTransactionDetailComponent {
         });
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.currencySrv.load().subscribe();
+    override preload(): Observable<any> {
+        return super
+            .preload()
+            .pipe(concatMap(() => this.#appConfigSrv.getConfig()),
+                tap(res => {
+                    console.log(res?.['manufacturing']);
+                    this.showPallet.set(res?.['manufacturing']?.['showPallet'] === true);
+                }));
     }
-
 
     protected importedDocuments(): Lookup[] {
         return [
-            { id: DOC_PRODUCTION_ORDER, description: 'PROD_PRODUCTION_ORDER'}
+            { id: DOC_PRODUCTION_ORDER, description: 'PROD_PRODUCTION_ORDER' },
         ];
     }
 
