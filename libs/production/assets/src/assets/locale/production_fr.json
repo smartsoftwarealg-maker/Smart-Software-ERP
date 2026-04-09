@@ -45,5 +45,6 @@
     "TRANSFER_ALL":           "Transférer tous les articles",
     "CANCEL_ALL_TRANSFERS":   "Annuler tous les transferts",
     "IN_ORDER":               "Commande actuelle",
-    "MAX_QTY":                "Quantité maximale produisible"
+    "MAX_QTY":                "Quantité maximale produisible",
+    "PALLET_COUNT":           "Nombre de palettes"
 }

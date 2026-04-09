@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, inject } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {PaginatorPersistenceService} from '@ss/common/api-common';
+import { AppConfigService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { Transaction } from '@ss/logistics/api-transaction';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -13,11 +13,15 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { ProductionService } from '../production-services/production.service';
+import { Observable, switchMap, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-production-list',
     templateUrl: './production-list.component.html',
-    styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
+    styleUrls: [
+        '../../../../../common/assets/src/assets/transac-list.scss',
+        './production-list.component.scss',
+    ],
     standalone: true,
     imports: [
         MatTable,
@@ -41,6 +45,8 @@ import { ProductionService } from '../production-services/production.service';
     ],
 })
 export class ProductionListComponent extends BaseEntityListComponent<Transaction> {
+    #appConfigSrv = inject(AppConfigService);
+
     // private doubleCheckBtn: ToolbarButton = {
     //     disabled: true,
     //     icon: 'fa-solid fa-check-double',
@@ -66,6 +72,7 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
         'reference',
         'referenceDocDate',
         'qty',
+        'altAgent',
         'docStatus',
     ];
 
@@ -92,34 +99,13 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
         );
     }
 
-    // override ngOnInit() {
-    //     super.ngOnInit();
-    //     this.shellSrv.addButton(this.doubleCheckBtn)
-    //     this.shellSrv.addButton(this.doubleCancelBtn)
-    // }
-
-    // private produceAll() {
-    //     this.entitySrv
-    //         .produceAll(this.selected)
-    //         .subscribe(res => {
-    //             if (res.count > 0) {
-    //                 this.snackBarSrv.showSuccessMessage();
-    //             }
-    //         });
-    // }
-    //
-    // private cancelAll() {
-    //     this.entitySrv
-    //         .cancelAll(this.selected)
-    //         .subscribe(res => {
-    //             if (res.count > 0) {
-    //                 this.snackBarSrv.showSuccessMessage();
-    //             }
-    //         });
-    // }
-
-    // override selectRow(row: Transaction) {
-    //     super.selectRow(row);
-    //     this.doubleCancelBtn.disabled = this.doubleCheckBtn.disabled = row?.id == null;
-    // }
+    override preload(): Observable<Transaction> {
+        return this.#appConfigSrv
+            .getConfig()
+            .pipe(tap((conf) => {
+                const showAltAgent = conf?.['manufacturing']?.showPallet;
+                this.displayedColumns = this.displayedColumns.filter(e => e !== 'altAgent' || showAltAgent);
+            }),
+            switchMap(() => super.preload()));
+    }
 }
