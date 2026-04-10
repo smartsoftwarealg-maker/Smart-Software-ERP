@@ -21,10 +21,26 @@ import { ArticleStoreComponent } from '../../../article-store/src/lib/article-st
     styleUrls: ['./article-store-assignment.component.scss'],
     templateUrl: './article-store-assignment.component.html',
     standalone: true,
-    imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, ArticleStoreComponent]
+    imports: [
+        MatTable,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        TranslateDirective,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+        ArticleStoreComponent,
+    ],
 })
-export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Article> implements OnInit {
-
+export class ArticleStoreAssignmentComponent
+    extends BaseEntityListComponent<Article>
+    implements OnInit
+{
     displayedColumns = [
         'reference',
         'description2',
@@ -33,8 +49,8 @@ export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Art
         'mark',
     ];
 
-    marks: { [id: number]: string; };
-    vats: { [id: number]: number; };
+    marks: { [id: number]: string };
+    vats: { [id: number]: number };
 
     constructor(
         public articleSrv: ArticleService,
@@ -45,34 +61,45 @@ export class ArticleStoreAssignmentComponent extends BaseEntityListComponent<Art
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_STORE_ASSIGNMENT');
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            articleSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'STOCK_STORE_ASSIGNMENT',
+        );
     }
 
     override preload(): Observable<any> {
-        return this.lookupsSrv.getMarks()
-            .pipe(
-                tap(x => this.onMarksLoaded(x)),
-                // switchMap(() => this.lookupsSrv.getVats()),
-                // tap(x => this.onVatsLoaded(x))
-            );
+        return this.lookupsSrv.getMarks().pipe(
+            tap((x) => this.onMarksLoaded(x)),
+            // switchMap(() => this.lookupsSrv.getVats()),
+            // tap(x => this.onVatsLoaded(x))
+        );
     }
 
     onMarksLoaded(data: Mark[]) {
         this.marks = {};
-        data.forEach(m => this.marks[m.id] = m.description);
+        data.forEach((m) => (this.marks[m.id] = m.description));
     }
 
-    override ngOnInit() {
-        this.deleteButton.visible = false;
-        this.addButton.visible = false;
-        this.editButton.visible = false;
-        super.ngOnInit();
+    protected preInit(): Observable<any> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.deleteButton.visible = false;
+                this.addButton.visible = false;
+                this.editButton.visible = false;
+            }));
     }
 
     // onVatsLoaded(data: Vat[]) {
     //     this.vats = {};
     //     data.forEach(m => this.vats[m.id] = m.value);
     // }
-
 }

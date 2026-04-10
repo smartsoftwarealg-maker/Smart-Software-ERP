@@ -13,8 +13,8 @@ import {AccessRightsService} from '@ss/common/api-access-rights';
 import {LookupsService, RoleService} from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import { FormControl, FormGroup, UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {switchMap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import { concatMap, switchMap } from 'rxjs/operators';
+import {Observable, tap} from 'rxjs';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -65,8 +65,8 @@ interface APP {
         MatRow,
         PaginationComponent,
         TranslatePipe,
-        MatCheckbox
-    ]
+        MatCheckbox,
+    ],
 })
 export class AccessRightsListComponent extends BaseEntityListComponent<AccessRight> {
     private langSrv = inject(LanguageService);
@@ -81,12 +81,12 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     menuItems: string[] = [];
     roleList: Role[] = [];
     selectedItem = '';
-    form =    new FormGroup({
-        roles:     new FormControl(0),
-        canRead:   new FormControl(false),
-        canWrite:  new FormControl(false),
-        canEdit:   new FormControl(false),
-        canDelete: new FormControl(false)
+    form = new FormGroup({
+        roles: new FormControl(0),
+        canRead: new FormControl(false),
+        canWrite: new FormControl(false),
+        canEdit: new FormControl(false),
+        canDelete: new FormControl(false),
     });
     displayedColumns = ['roleId', 'read', 'write', 'edit', 'delete'];
     hasCenterRights = signal(false);
@@ -102,8 +102,10 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         public override router: Router,
         private lookupSrv: LookupsService,
         public formBuilder: UntypedFormBuilder,
-        public override pagPersistSrv: PaginatorPersistenceService ) {
-        super(rightsSrv,
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            rightsSrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -111,31 +113,69 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'COMMON_ACCESS_RIGHTS');
+            'COMMON_ACCESS_RIGHTS',
+        );
         this.pagination.pageSize = 15;
-        this.hasCenterRights.set((this.loginSrv.appCtx.rightsCenter||0) !== this.loginSrv.appCtx.center);
+        this.hasCenterRights.set(
+            (this.loginSrv.appCtx.rightsCenter || 0) !==
+                this.loginSrv.appCtx.center,
+        );
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.editButton.icon = 'fas fa-save';
-        this.editButton.label = 'COMMON_SAVE';
-        this.editButton.disabled = !this.selectedItem;
-        this.shellSrv.updateShell();
-        this.lookupSrv.getRoles()
+    // override ngOnInit() {
+    //     super.ngOnInit();
+    //
+    //     this.lookupSrv
+    //         .getRoles()
+    //         .pipe(
+    //             switchMap((res) => {
+    //                 this.roleList = res;
+    //                 return this.rightsSrv.getApps();
+    //             }),
+    //         ).subscribe((res) => {
+    //             this.apps =
+    //                 res['apps'].sort((a, b) => a.localeCompare(b)) || [];
+    //             // this.apps.unshift('APPLICATIONS');
+    //             this.sortedApps = this.apps
+    //                 .map((e) => ({
+    //                     key: e,
+    //                     description: this.langSrv.translate('COMMON_' + e),
+    //                 }))
+    //                 .sort((a, b) => a.description.localeCompare(b.description));
+    //             this.apps = this.sortedApps.map((e) => e.key);
+    //         });
+    // }
+
+    protected preInit(): Observable<any> {
+        return super.preInit()
             .pipe(
-                switchMap(res => {
+                tap(() => {
+                    this.editButton.icon = 'fas fa-save';
+                    this.editButton.label = 'COMMON_SAVE';
+                    this.editButton.disabled = !this.selectedItem;
+                }),
+                concatMap(() => this.lookupSrv.getRoles()),
+                concatMap((res) => {
                     this.roleList = res;
                     return this.rightsSrv.getApps();
-                }))
-            .subscribe(res => {
-                this.apps = (res['apps'].sort((a, b) => a.localeCompare(b)) || []);
-                // this.apps.unshift('APPLICATIONS');
-                this.sortedApps = this.apps
-                    .map(e => ({key: e, description: this.langSrv.translate('COMMON_' + e) }))
-                    .sort((a, b) => a.description.localeCompare(b.description));
-                this.apps = this.sortedApps.map(e => e.key);
-            });
+                }),
+                tap((res) => {
+                    this.apps = res['apps'].sort((a, b) => a.localeCompare(b)) || [];
+                    // this.apps.unshift('APPLICATIONS');
+                    this.sortedApps = this.apps
+                        .map((e) => ({
+                            key: e,
+                            description: this.langSrv.translate('COMMON_' + e),
+                        }))
+                        .sort((a, b) => a.description.localeCompare(b.description));
+                    this.apps = this.sortedApps.map((e) => e.key);
+                }),
+            );
+    }
+
+    protected postInit(): Observable<any> {
+        return super.postInit()
+            .pipe(tap(() => this.shellSrv.updateShell()));
     }
 
     override edit() {
@@ -145,29 +185,30 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                 centerId: this.loginSrv.appCtx.center,
                 roleId: this.form.controls['roles'].value || 0,
                 document: 0,
-                rights: (this.form.controls['canRead'].value === true? 1 : 0) +
-                        (this.form.controls['canWrite'].value === true? 1 : 0) * 2 +
-                        (this.form.controls['canEdit'].value  === true? 1 : 0) * 4 +
-                        (this.form.controls['canDelete'].value  === true? 1 : 0) * 8,
+                rights:
+                    (this.form.controls['canRead'].value === true ? 1 : 0) +
+                    (this.form.controls['canWrite'].value === true ? 1 : 0) *
+                        2 +
+                    (this.form.controls['canEdit'].value === true ? 1 : 0) * 4 +
+                    (this.form.controls['canDelete'].value === true ? 1 : 0) *
+                        8,
             };
             this.processing.set(true);
             this.editButton.disabled = true;
             this.form.disable();
-            this.rightsSrv
-                .saveRights(r, this.selectedItem)
-                .subscribe(res => {
-                    if (res['count'] || res['id']) {
-                        r['read'] = ((r.rights || 0) & 1) === 1;
-                        r['write'] = ((r.rights || 0) & 2) === 2;
-                        r['edit'] = ((r.rights || 0) & 4) === 4;
-                        r['delete'] = ((r.rights || 0) & 1) === 8;
-                        this.refresh();
-                    }
-                    this.snackBarSrv.showSuccessMessage();
-                    this.processing.set(false);
-                    this.editButton.disabled = false;
-                    this.form.enable();
-                });
+            this.rightsSrv.saveRights(r, this.selectedItem).subscribe((res) => {
+                if (res['count'] || res['id']) {
+                    r['read'] = ((r.rights || 0) & 1) === 1;
+                    r['write'] = ((r.rights || 0) & 2) === 2;
+                    r['edit'] = ((r.rights || 0) & 4) === 4;
+                    r['delete'] = ((r.rights || 0) & 1) === 8;
+                    this.refresh();
+                }
+                this.snackBarSrv.showSuccessMessage();
+                this.processing.set(false);
+                this.editButton.disabled = false;
+                this.form.enable();
+            });
         } else {
             this.snackBarSrv.showMessage('COMMON_NO_ITEM_SELECTED');
         }
@@ -216,10 +257,11 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         return this.selectedRow && (this.selectedRow.rights & 8) === 8;
     }
 
-
     override processLoadedData(data: AccessRight[]): Observable<AccessRight[]> {
-        data.forEach(d => {
-            d.roleName = this.roleList.find(r => r.id === d.roleId)?.description;
+        data.forEach((d) => {
+            d.roleName = this.roleList.find(
+                (r) => r.id === d.roleId,
+            )?.description;
             d.read = ((d.rights || 0) & 1) === 1;
             d.write = ((d.rights || 0) & 2) === 2;
             d.edit = ((d.rights || 0) & 4) === 4;
@@ -230,13 +272,14 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
 
     setApp(app: { value: string }) {
         this.application = app['value'];
-        this.rightsSrv
-            .getEntities(this.application)
-            .subscribe(res => {
-                const sorted = res
-                    .map(e => ({key: e, description: this.langSrv.translate(e) }))
-                    .sort((a, b) => a.description.localeCompare(b.description));
-                this.menuItems = sorted.map(e => e.key);
-            });
+        this.rightsSrv.getEntities(this.application).subscribe((res) => {
+            const sorted = res
+                .map((e) => ({
+                    key: e,
+                    description: this.langSrv.translate(e),
+                }))
+                .sort((a, b) => a.description.localeCompare(b.description));
+            this.menuItems = sorted.map((e) => e.key);
+        });
     }
 }
