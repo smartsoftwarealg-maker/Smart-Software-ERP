@@ -75,6 +75,8 @@ export class AssetReadingListComponent extends BaseEntityListComponent<AssetRead
         this.editButton.visible = id > 0;
     }
 
+
+
     override ngOnInit() {
         this.addButton.visible = false;
         this.editButton.visible = false;
