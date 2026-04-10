@@ -191,11 +191,11 @@ implements OnInit, OnDestroy
             });
     }
 
-    protected preInit(): Observable<any> {
+    protected preInit(): Observable<unknown> {
         return of(null);
     }
 
-    protected postInit(): Observable<any> {
+    protected postInit(): Observable<unknown> {
         return of(null);
     }
 

@@ -8,16 +8,17 @@ import { PaginatorPersistenceService } from '@ss/common/api-common';
 import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { AssetsService } from '@ss/assets-component';
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AssetReading } from '@ss/cmms/cmms-api';
-import { CommonModule } from "@angular/common";
-import { MatSortModule } from "@angular/material/sort";
-import { MatTableModule } from "@angular/material/table";
-import { MatCardModule } from "@angular/material/card";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
+import { CommonModule } from '@angular/common';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-asset-reading-list',
@@ -34,20 +35,19 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         ReactiveFormsModule,
         PaginationComponent,
         UiAutoCompleteComponent,
-        TranslateDirective
-    ]
+        TranslateDirective,
+    ],
 })
-export class AssetReadingListComponent extends BaseEntityListComponent<AssetReading> implements OnInit {
+export class AssetReadingListComponent
+    extends BaseEntityListComponent<AssetReading>
+    implements OnInit
+{
     private assetSrv = inject(AssetsService);
 
     assetLookup = new DefaultAutoCompleteModel(this.assetSrv);
     assetCtrl = new FormControl<number>(0);
 
-    displayedColumns = [
-        'meterDescription',
-        'date',
-        'amount'
-    ];
+    displayedColumns = ['meterDescription', 'date', 'amount'];
 
     constructor(
         public override entitySrv: CMMSAssetReadingService,
@@ -57,8 +57,10 @@ export class AssetReadingListComponent extends BaseEntityListComponent<AssetRead
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv,
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -66,7 +68,8 @@ export class AssetReadingListComponent extends BaseEntityListComponent<AssetRead
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'CMMS_READINGS');
+            'CMMS_READINGS',
+        );
         this.pagination.pageSize = 15;
     }
 
@@ -75,22 +78,25 @@ export class AssetReadingListComponent extends BaseEntityListComponent<AssetRead
         this.editButton.visible = id > 0;
     }
 
-
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.editButton.visible = false;
+            })) as Observable<unknown>;
+    }
 
     override ngOnInit() {
-        this.addButton.visible = false;
-        this.editButton.visible = false;
         super.ngOnInit();
         this.assetCtrl.setValue(this.entitySrv.getParentId());
-        this.subscriptions
-            .push(
-                this.assetCtrl
-                    .valueChanges
-                    .subscribe(value => {
-                        this.entitySrv.setParentId(value || 0);
-                        this.addButton.visible = value > 0;
-                        this.entitySrv.getPage(this.pagination).subscribe(res => this.data = res);
-                    })
-            );
+        this.subscriptions.push(
+            this.assetCtrl.valueChanges.subscribe((value) => {
+                this.entitySrv.setParentId(value || 0);
+                this.addButton.visible = value > 0;
+                this.entitySrv
+                    .getPage(this.pagination)
+                    .subscribe((res) => (this.data = res));
+            }),
+        );
     }
 }
