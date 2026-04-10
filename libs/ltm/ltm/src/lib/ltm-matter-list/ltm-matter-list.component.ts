@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LTMMatter} from '@ltm/ltm-api';
-import { ShellService, SnackBarService } from "@ss/common/ui-shell";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ShellService, SnackBarService } from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
-import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {LtmMatterService} from '@ltm/ltm-api';
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatDialog } from "@angular/material/dialog";
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
@@ -20,11 +20,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./ltm-matter-list.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    PaginationComponent,
-    ReactiveFormsModule,
-    TranslateDirective
-],
+        MaterialModule,
+        PaginationComponent,
+        ReactiveFormsModule,
+        TranslateDirective
+    ],
 })
 export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> implements OnInit {
     // public duplicateButton: ToolbarButton = {
@@ -64,35 +64,4 @@ export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> 
             'LTM_MATTERS');
         this.pagination.pageSize = 15;
     }
-
-    // override ngOnInit() {
-    //     super.ngOnInit();
-    //     if (this.editButton.visible) {
-    //         this.shellSrv.addButton(this.duplicateButton);
-    //     }
-    // }
-
-    // private duplicate() {
-    //     if (!!this.selected) {
-    //         const dialogRef = this.dialog.open(LtmMatterDuplicateComponent, {
-    //             disableClose: true,
-    //             width: '450px',
-    //             height: '160px',
-    //             data: this.selectedRow
-    //         });
-    //         dialogRef
-    //             .afterClosed()
-    //             .subscribe(res => {
-    //                 if (res['success'] === true) {
-    //                     this.snackBarSrv.showSuccessMessage();
-    //                     this.refresh();
-    //                 }
-    //             });
-    //     }
-    // }
-    //
-    // override selectRow(row: LTMMatter) {
-    //     super.selectRow(row);
-    //     this.duplicateButton.disabled = this.editButton.disabled;
-    // }
 }

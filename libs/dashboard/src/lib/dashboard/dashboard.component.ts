@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { LookupsService } from '@ss/common/api-lookup';
-import { asapScheduler, of, scheduled, takeWhile, tap, timer } from 'rxjs';
+import { Observable, of, takeWhile, tap, timer } from 'rxjs';
 import {
     APP_DASHBOARD,
     APPLICATIONS,
@@ -122,13 +122,19 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         Chart.register(...registerables);
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.editButton.visible = false;
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
+    }
+
     override ngOnInit() {
         const appId = getApplicationId(this.router);
         this.dashboardSrv.setParentId(appId);
         this.showApplications.set(appId === APP_DASHBOARD);
-        this.editButton.visible = false;
-        this.addButton.visible = false;
-        this.deleteButton.visible = false;
         super.ngOnInit();
         this.shellSrv.addButton(this.csvButton);
         this.subscriptions.push(

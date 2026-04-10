@@ -122,10 +122,16 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
         return Math.abs(row?.debit - row?.credit) >= 0.01;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.editButton.visible = false;
+                this.deleteButton.visible = false;
+                this.addButton.visible = false;
+            }));
+    }
+
     override ngOnInit() {
-        this.editButton.visible = false;
-        this.deleteButton.visible = false;
-        this.addButton.visible = false;
         super.ngOnInit();
         this.shellSrv.updateShell();
         this.#transactionSrv

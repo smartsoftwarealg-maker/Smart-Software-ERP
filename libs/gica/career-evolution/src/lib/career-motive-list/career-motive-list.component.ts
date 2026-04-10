@@ -21,6 +21,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { CareerMotiveService } from '../services/career-motive.service';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 
 @Component({
@@ -57,10 +58,14 @@ export class CareerMotiveListComponent extends BaseEntityListComponent<CareerMot
         this.pagination.pageSize = 15;
     }
 
-    override ngOnInit() {
-        this.deleteButton.visible = this.addButton.visible =this.editButton.visible = false;
-        super.ngOnInit();
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.deleteButton.visible = this.addButton.visible = this.editButton.visible = false;
+            }));
     }
+
+
 
     updateMotive(m: CareerMotive) {
         m.isPromotion = !m.isPromotion;

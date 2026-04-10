@@ -83,11 +83,17 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
         this.deleteButton.disabled = !e || !e.id || e.isTransfer;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                const validUser = this.loginSrv.appCtx?.id > 0;
+                this.editButton.visible   = validUser;
+                this.addButton.visible    = validUser;
+                this.deleteButton.visible = validUser;
+            }));
+    }
+
     ngOnInit() {
-        const validUser = this.loginSrv.appCtx?.id > 0;
-        this.editButton.visible   = validUser;
-        this.addButton.visible    = validUser;
-        this.deleteButton.visible = validUser;
         super.ngOnInit();
     }
 }

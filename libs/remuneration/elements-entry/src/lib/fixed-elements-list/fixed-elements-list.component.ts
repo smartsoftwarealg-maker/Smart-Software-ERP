@@ -60,6 +60,13 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
         this.pagination.pageSize = 5;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+            }));
+    }
+
     override getPage(): Observable<ELine[]> {
         const extraPrams = new HttpParams().set('input', -1).set('fixed', true);
         return this.infoSrv.getPage(this.pagination, this.filter, this.sortBy, extraPrams);
@@ -88,7 +95,6 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
             .subscribe(upd => {
                 this.editButton.visible = upd;
                 this.deleteButton.visible = upd;
-                this.addButton.visible = false;
                 this.shellSrv.updateShell();
             });
     }

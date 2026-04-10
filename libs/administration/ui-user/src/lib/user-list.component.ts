@@ -10,6 +10,7 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-bank-list',
@@ -38,11 +39,13 @@ export class UserListComponent extends BaseEntityListComponent<User> implements 
         this.pagination.pageSize = 15;
     }
 
-    override ngOnInit() {
-        if (!this.isManager) {
-            this.addButton.visible = false;
-            this.deleteButton.visible = false;
-        }
-        super.ngOnInit();
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                if (!this.isManager) {
+                    this.addButton.visible = false;
+                    this.deleteButton.visible = false;
+                }
+            }));
     }
 }

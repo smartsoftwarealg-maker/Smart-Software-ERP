@@ -10,7 +10,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { LTM_NON_CONFORMITY_DOC, LTMAbnormalTest } from '@ltm/ltm-api';
 import { LtmAbnormalTestService } from '@ltm/ltm-api';
-import { filter } from 'rxjs';
+import { filter, Observable, tap } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -66,6 +66,15 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         this.pagination.pageSize = 15;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                // this.editButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
+    }
+
     override refresh(callback?: () => void) {
         const formValue = this.form.value;
         this.data = [];
@@ -90,9 +99,6 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
 
 
     override ngOnInit() {
-        this.addButton.visible = false;
-        // this.editButton.visible = false;
-        this.deleteButton.visible = false;
         super.ngOnInit();
         this.shellSrv.addButton(this.#emailBtn);
 

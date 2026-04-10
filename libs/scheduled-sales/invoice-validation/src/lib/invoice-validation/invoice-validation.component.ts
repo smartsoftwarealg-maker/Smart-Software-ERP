@@ -24,7 +24,7 @@ import { MatCard } from '@angular/material/card';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-invoice-validation',
@@ -119,8 +119,14 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
           });
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.deleteButton.visible = this.addButton.visible = this.editButton.visible = false;
+            }));
+    }
+
     override ngOnInit() {
-        this.deleteButton.visible = this.addButton.visible = this.editButton.visible = false;
         super.ngOnInit();
 
         const today = dateToYmdStr(new Date());

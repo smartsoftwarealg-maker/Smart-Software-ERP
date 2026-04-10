@@ -19,6 +19,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-vacation-planning-list',
@@ -72,17 +73,21 @@ export class VacationPlanningListComponent extends BaseEntityListComponent<Vacat
         this.refresh();
     }
 
-    override ngOnInit() {
-        this.addButton.visible = false;
-        this.deleteButton.visible = false;
-        super.ngOnInit();
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
     }
+
+
 
     updatePlanning() {
         this.shellSrv.setLoading(true);
         this.infoSrv
             .updatePlanning(this.period.value, this.rate.value)
-            .subscribe(res => {
+            .subscribe(() => {
                 this.shellSrv.setLoading(false);
                 this.snackBarSrv.showSuccessMessage();
             });

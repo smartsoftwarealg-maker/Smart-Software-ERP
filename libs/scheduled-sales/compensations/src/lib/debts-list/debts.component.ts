@@ -23,6 +23,7 @@ import { CompensationService } from '../services/compensation.service';
 import { InvoicePaymentService } from '../services/invoice-payment.service';
 import { CompensationDetailService } from '../services/compensation-detail.service';
 import { MatRadioButton, MatRadioChange, MatRadioGroup } from '@angular/material/radio';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-sales-debts',
@@ -59,10 +60,14 @@ export class DebtsComponent extends BaseEntityListComponent<Debt> {
         this.pagination.pageSize = 5;
     }
 
-    override ngOnInit() {
-        this.deleteButton.visible = this.editButton.visible = this.addButton.visible = false;
-        super.ngOnInit();
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.deleteButton.visible = this.editButton.visible = this.addButton.visible = false;
+            }));
     }
+
+
 
     override selectRow(d: Debt) {
         if (!this.isEditInProgress()) {

@@ -3,7 +3,7 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '@ss/employee-services/employee-services';
-import { Observable, of } from 'rxjs';
+import { concatMap, Observable, of, tap } from 'rxjs';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
@@ -23,9 +23,31 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./employee-list.component.scss'],
     templateUrl: './employee-list.component.html',
     standalone: true,
-    imports: [MatTabGroup, MatTab, MatTabLabel, TranslateDirective, ImageInputComponent, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
+    imports: [
+        MatTabGroup,
+        MatTab,
+        MatTabLabel,
+        TranslateDirective,
+        ImageInputComponent,
+        MatTable,
+        MatSort,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatHeaderCell,
+        MatSortHeader,
+        MatCellDef,
+        MatCell,
+        MatHeaderRowDef,
+        MatHeaderRow,
+        MatRowDef,
+        MatRow,
+        PaginationComponent,
+    ],
 })
-export class EmployeeListComponent extends BaseEntityListComponent<Employee> implements OnInit {
+export class EmployeeListComponent
+    extends BaseEntityListComponent<Employee>
+    implements OnInit
+{
     activePersonnel = true;
     public displayedColumns = [
         'id',
@@ -33,7 +55,7 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         'birth',
         'address',
         'msDescription',
-        'post'
+        'post',
     ];
 
     constructor(
@@ -47,8 +69,19 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public httpSrv: HttpService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(employeeSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'PAYROLL_EMPLOYEES_LIST');
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            employeeSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'PAYROLL_EMPLOYEES_LIST',
+        );
         this.pagination.pageSize = 15;
     }
 
@@ -56,28 +89,54 @@ export class EmployeeListComponent extends BaseEntityListComponent<Employee> imp
         this.select(id);
         this.edit();
     }
-    override ngOnInit(): void {
-        this.addButton.visible = this.activePersonnel;
-        super.ngOnInit();
-        this.shellSrv.setGoBackPath('..', this.route);
-        this.route.data.subscribe(data => {
-            this.activePersonnel = !!data['active'];
-            this.employeeSrv.setMode(this.activePersonnel);
-            this.shellSrv.setTitle(this.activePersonnel? 'PAYROLL_EMPLOYEES_LIST' : 'PAYROLL_INACTIVE_EMPLOYEES_LIST');
-        });
+
+    protected override preInit(): Observable<unknown> {
+        return super.preInit().pipe(
+            tap(() => {
+                this.addButton.visible = this.activePersonnel;
+            }),
+        );
     }
 
+    protected postInit(): Observable<unknown> {
+        return super.postInit().pipe(
+            concatMap(() => this.route.data),
+            tap((data) => {
+                this.activePersonnel = !!data['active'];
+                this.employeeSrv.setMode(this.activePersonnel);
+                this.shellSrv.setTitle(
+                    this.activePersonnel
+                        ? 'PAYROLL_EMPLOYEES_LIST'
+                        : 'PAYROLL_INACTIVE_EMPLOYEES_LIST',
+                );
+            }),
+        );
+    }
+    override ngOnInit(): void {
+        super.ngOnInit();
+        this.shellSrv.setGoBackPath('..', this.route);
+    }
 
-    public override processLoadedData(data: Employee[]): Observable<Employee[]> {
-        return of(data.map(p => {
-            // note: formatting the date here means it will not change when the language
-            // is changed until the page is refreshed
-            p.birthDate = this.langSrv.formatDate(p.birthDate);
-            p.fullName = this.langSrv.formatFullName(p.firstName, p.lastName);
-            p.imageModel = new ImageModel(this.httpSrv);
-            p.imageModel.readOnly = true;
-            p.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(p.id), false);
-            return p;
-        }));
+    public override processLoadedData(
+        data: Employee[],
+    ): Observable<Employee[]> {
+        return of(
+            data.map((p) => {
+                // note: formatting the date here means it will not change when the language
+                // is changed until the page is refreshed
+                p.birthDate = this.langSrv.formatDate(p.birthDate);
+                p.fullName = this.langSrv.formatFullName(
+                    p.firstName,
+                    p.lastName,
+                );
+                p.imageModel = new ImageModel(this.httpSrv);
+                p.imageModel.readOnly = true;
+                p.imageModel.setImageUrl(
+                    this.employeeSrv.getPhotoUrl(p.id),
+                    false,
+                );
+                return p;
+            }),
+        );
     }
 }

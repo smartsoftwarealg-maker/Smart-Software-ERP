@@ -58,7 +58,7 @@ export class AttributesListComponent extends BaseEntityListComponent<AttribTempl
 
     override ngOnInit() {
         super.ngOnInit();
-        this.subscription =
+        this.subscriptions.push(
             this.moduleId
                 .valueChanges
                 .pipe(
@@ -67,11 +67,6 @@ export class AttributesListComponent extends BaseEntityListComponent<AttribTempl
                 ).subscribe(id => {
                     this.entitySrv.setParentId(id);
                     this.refresh();
-                });
-    }
-
-    override ngOnDestroy() {
-        super.ngOnDestroy();
-        this.subscription?.unsubscribe();
+                }));
     }
 }

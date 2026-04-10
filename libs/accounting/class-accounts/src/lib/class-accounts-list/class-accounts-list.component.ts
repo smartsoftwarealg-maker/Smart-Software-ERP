@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { PaginatorPersistenceService } from '@ss/common/api-common';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import {
     MatCell,
     MatCellDef,
@@ -67,11 +67,15 @@ export class ClassAccountsListComponent extends BaseEntityListComponent<Class> {
         this.pagination.pageSize = 10;
     }
 
-    override ngOnInit() {
-        this.addButton.visible = false;
-        this.deleteButton.visible = false;
-        super.ngOnInit();
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
     }
+
+
 
     override processLoadedData(data: Class[]): Observable<Class[]> {
         return this.classSrv.reload(data);

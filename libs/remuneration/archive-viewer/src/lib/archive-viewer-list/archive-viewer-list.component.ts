@@ -228,7 +228,7 @@ export class ArchiveViewerListComponent
         );
     }
 
-    protected override preInit(): Observable<any> {
+    protected override preInit(): Observable<unknown> {
         return super.preInit().pipe(
             tap(() => {
                 this.editButton.visible = false;
@@ -238,7 +238,7 @@ export class ArchiveViewerListComponent
         );
     }
 
-    protected override postInit(): Observable<any> {
+    protected override postInit(): Observable<unknown> {
         return super.postInit().pipe(
             concatMap(() =>
                 zip(

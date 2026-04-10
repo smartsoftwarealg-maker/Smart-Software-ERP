@@ -51,7 +51,5 @@ export class EraReportDetailComponent extends BaseEntityDetailComponent<ERARepor
         });
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-    }
+
 }

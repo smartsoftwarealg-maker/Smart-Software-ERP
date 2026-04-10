@@ -26,7 +26,7 @@ import { MatRadioButton, MatRadioChange, MatRadioGroup } from '@angular/material
 import { SsDirectPaymentService } from '@ss/scheduled-sales/api-scheduled-sales';
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
-import {takeUntil} from "rxjs";
+import {Observable, takeUntil, tap} from "rxjs";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 
@@ -97,6 +97,15 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
             'COMMON_PAYMENTS');
         this.pagination.pageSize = 5;
         this.childPaginator.onChange = () => this.refreshChild();
+    }
+
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.editButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
     }
 
     override selectRow(row: Payment) {
@@ -170,9 +179,6 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
     }
 
     override ngOnInit() {
-        this.addButton.visible = false;
-        this.editButton.visible = false;
-        this.deleteButton.visible = false;
         super.ngOnInit();
         this.searchField
             .valueChanges

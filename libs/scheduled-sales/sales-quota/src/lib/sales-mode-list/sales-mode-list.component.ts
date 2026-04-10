@@ -14,6 +14,7 @@ import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-sales-mode-list',
@@ -55,9 +56,15 @@ export class SalesModeListComponent extends BaseEntityListComponent<SalesMode> {
             'SCH_SALES_MODES');
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.deleteButton.visible = false;
+                this.addButton.visible = false;
+            }));
+    }
+
     override ngOnInit() {
-        this.deleteButton.visible = false;
-        this.addButton.visible = false;
         super.ngOnInit();
     }
 }
