@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject } from '@angular/core';
 import { BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { Quota } from '@ss/scheduled-sales/api-scheduled-sales';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -10,13 +10,12 @@ import { SSQuotaService } from '@ss/scheduled-sales/api-scheduled-sales';
 import { CommonModule } from '@angular/common';
 
 
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Agent, CustomerService } from '@ss/logistics/api-agent';
-import { callback } from 'chart.js/helpers';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-sales-quota-list',
@@ -41,7 +40,7 @@ export class SalesQuotaListComponent extends BaseEntityListComponent<Quota> {
 
     agentId = this.loginSrv.appCtx.agentId;
     agentFC = new FormControl<number>(this.loginSrv.appCtx.agentId || 0);
-    public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
+    public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
 
     displayedColumns = [
         'salesDate',
@@ -74,8 +73,14 @@ export class SalesQuotaListComponent extends BaseEntityListComponent<Quota> {
         this.customerLookup.onObjectSelected = (a) => this.onAgent(a?.id);
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.editButton.visible = this.deleteButton.visible = this.addButton.visible = !this.agentId && this.entitySrv.getParentId() > 0;
+            }));
+    }
+
     override ngOnInit() {
-        this.editButton.visible = this.deleteButton.visible = this.addButton.visible = !this.agentId && this.entitySrv.getParentId() > 0;
         if (!this.entitySrv.getParentId()) {
             this.entitySrv.setParentId(0);
         }

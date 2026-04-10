@@ -12,6 +12,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 
 import { OrgChartModule } from 'angular13-organization-chart';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-workflow-inbox-list',
@@ -24,10 +25,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         OrgChartModule,
         PaginationComponent,
         TranslatePipe,
-        TranslateDirective
-    ]
+        TranslateDirective,
+    ],
 })
-export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> implements OnInit {
+export class WorkflowInboxListComponent
+    extends BaseEntityListComponent<Inbox>
+    implements OnInit
+{
     displayedColumns = [
         'document',
         'number',
@@ -35,7 +39,7 @@ export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> i
         'message',
         'sender',
         'time',
-        'key'
+        'key',
     ];
     constructor(
         public override entitySrv: WorkflowInboxService,
@@ -45,8 +49,10 @@ export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> i
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv,
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -54,13 +60,19 @@ export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> i
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ADMINISTRATION_WORKFLOW_INBOX');
+            'ADMINISTRATION_WORKFLOW_INBOX',
+        );
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.editButton.visible = false;
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
+    }
     override ngOnInit(): void {
-        this.editButton.visible = false;
-        this.addButton.visible = false;
-        this.deleteButton.visible = false;
         super.ngOnInit();
     }
 
@@ -71,21 +83,36 @@ export class WorkflowInboxListComponent extends BaseEntityListComponent<Inbox> i
 
     private getURL(documentId: number, targetId: number) {
         switch (documentId) {
-        case 2:    return `/app/purchases/porders/${targetId}`;
-        case 10:   return `/app/purchases/prequests/${targetId}`;
-        case 257:  return `/app/sales/delivery/${targetId}`;
-        case 258:  return `/app/sales/invoice/${targetId}`;
-        case 259:  return `/app/purchases/transfers/${targetId}`;
-        case 260:  return `/app/purchases/consumptions/${targetId}`;
-        case 262:  return `/app/purchases/creceptions/${targetId}`;
-        case 514:  return `/app/purchases/receptions/${targetId}`;
-        case 516:  return `/app/purchases/transfer-reception/${targetId}`;
-        case 519:  return `/app/purchases/inventory/${targetId}`;
-        case 531:  return `/app/assets-app/asset-receptions/${targetId}`;
-        case 767:  return `/app/assets-app/inventory-entries/${targetId}`;
-        case 1010: return `/app/assets-app/asset-appointments/${targetId}`;
-        case 3000: return `/app/hr/holiday-requests/${targetId}`;
-        default:   return '.';
+        case 2:
+            return `/app/purchases/porders/${targetId}`;
+        case 10:
+            return `/app/purchases/prequests/${targetId}`;
+        case 257:
+            return `/app/sales/delivery/${targetId}`;
+        case 258:
+            return `/app/sales/invoice/${targetId}`;
+        case 259:
+            return `/app/purchases/transfers/${targetId}`;
+        case 260:
+            return `/app/purchases/consumptions/${targetId}`;
+        case 262:
+            return `/app/purchases/creceptions/${targetId}`;
+        case 514:
+            return `/app/purchases/receptions/${targetId}`;
+        case 516:
+            return `/app/purchases/transfer-reception/${targetId}`;
+        case 519:
+            return `/app/purchases/inventory/${targetId}`;
+        case 531:
+            return `/app/assets-app/asset-receptions/${targetId}`;
+        case 767:
+            return `/app/assets-app/inventory-entries/${targetId}`;
+        case 1010:
+            return `/app/assets-app/asset-appointments/${targetId}`;
+        case 3000:
+            return `/app/hr/holiday-requests/${targetId}`;
+        default:
+            return '.';
         }
     }
     open(documentId: number, targetId: number) {

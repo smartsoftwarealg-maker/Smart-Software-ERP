@@ -6,7 +6,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { AnomalyService } from './anomaly.service';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { CommonModule } from '@angular/common';
 
@@ -84,11 +84,17 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
             });
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.deleteButton.visible = false;
+                this.editButton.visible = false;
+                this.addButton.visible = false;
+                this.excelButton.visible = false;
+            }));
+    }
+
     override ngOnInit() {
-        this.deleteButton.visible = false;
-        this.editButton.visible = false;
-        this.addButton.visible = false;
-        this.excelButton.visible = false;
         super.ngOnInit();
         this.shellSrv.addButton(this.fixButton);
     }
