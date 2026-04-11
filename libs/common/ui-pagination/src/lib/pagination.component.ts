@@ -37,7 +37,6 @@ export class PaginationComponent implements OnInit {
     model: ExtendedPaginationModel = new ExtendedPaginationModel(1, 5, 5);
     // lastModel: ExtendedPaginationModel = this.model.copy() as ExtendedPaginationModel;
     lastPage = 0;
-    @ViewChild('container', { static: true }) container: ElementRef;
     @ViewChild('pageInput', { static: true }) pageInput: ElementRef;
 
     readonly pageSizes = [5, 10, 15, 20, 30, 40, 50];

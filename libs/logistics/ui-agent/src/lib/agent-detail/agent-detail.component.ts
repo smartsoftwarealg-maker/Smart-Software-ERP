@@ -194,84 +194,84 @@ export class AgentDetailComponent
         return this.isSales
             ? of(null)
             : this.optionSrv.get(this.loginSrv.appCtx.center).pipe(
-                  tap((res) => (this.optionSrv.options = res)),
-                  switchMap(() => this.route.data),
-                  tap((res) => {
-                      // const isSupplier = res['supplier'];
-                      // const isCustomer = res['customer'];
-                      // const isTransporter = res['transporter'];
+                tap((res) => (this.optionSrv.options = res)),
+                switchMap(() => this.route.data),
+                tap((res) => {
+                    // const isSupplier = res['supplier'];
+                    // const isCustomer = res['customer'];
+                    // const isTransporter = res['transporter'];
 
-                      const URLs = [
-                          CUSTOMER_URL,
-                          SUPPLIER_URL,
-                          TRANSPORTER_URL,
-                          BRANCH_URL,
-                          INTERNAL_URL,
-                          AGENT_URL,
-                      ];
-                      const TTLs = [
-                          'LOGISTICS_CUSTOMER',
-                          'LOGISTICS_SUPPLIER',
-                          'LOGISTICS_TRANSPORTER',
-                          'COMMON_UNITS',
-                          'LOGISTICS_INTERNAL_AGENTS',
-                          'COMMON_AGENTS',
-                      ];
-                      const TYPES = [2, 0, 5, 3, 4];
+                    const URLs = [
+                        CUSTOMER_URL,
+                        SUPPLIER_URL,
+                        TRANSPORTER_URL,
+                        BRANCH_URL,
+                        INTERNAL_URL,
+                        AGENT_URL,
+                    ];
+                    const TTLs = [
+                        'LOGISTICS_CUSTOMER',
+                        'LOGISTICS_SUPPLIER',
+                        'LOGISTICS_TRANSPORTER',
+                        'COMMON_UNITS',
+                        'LOGISTICS_INTERNAL_AGENTS',
+                        'COMMON_AGENTS',
+                    ];
+                    const TYPES = [2, 0, 5, 3, 4];
 
-                      const idx = res['customer']
-                          ? 0
-                          : res['supplier']
+                    const idx = res['customer']
+                        ? 0
+                        : res['supplier']
                             ? 1
                             : res['transporter']
-                              ? 2
-                              : res['unit']
-                                ? 3
-                                : res['internalAgent']
-                                  ? 4
-                                  : 5;
-                      this.agentType.set(TYPES[idx] || 0);
-                      this.entitySrv.setURL(URLs[idx]);
-                      this.shellSrv.setTitle(TTLs[idx]);
-                      switch (idx) {
-                          case 0:
-                              this.agentTypeLookup = new CustomerLookup(
-                                  this.agentTypeSrv,
-                              );
-                              break;
-                          case 1:
-                              this.agentTypeLookup = new SupplierLookup(
-                                  this.agentTypeSrv,
-                              );
-                              break;
-                          case 2:
-                              this.agentTypeLookup = new TransporterLookup(
-                                  this.agentTypeSrv,
-                              );
-                              break;
-                          case 3:
-                              this.agentTypeLookup = new BranchLookup(
-                                  this.agentTypeSrv,
-                              );
-                              break;
-                          case 4:
-                              this.agentTypeLookup = new InternalTypeLookup(
-                                  this.agentTypeSrv,
-                              );
-                              break;
-                          case 5:
-                              break;
-                      }
-                      // this.agentTypeLookup = isSupplier
-                      //     ? new SupplierLookup(this.agentTypeSrv)
-                      //     : isCustomer
-                      //         ? new CustomerLookup(this.agentTypeSrv)
-                      //         : isTransporter
-                      //             ? new TransporterLookup(this.agentTypeSrv)
-                      //             : this.agentTypeLookup;
-                      // this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
-                  }),
-              );
+                                ? 2
+                                : res['unit']
+                                    ? 3
+                                    : res['internalAgent']
+                                        ? 4
+                                        : 5;
+                    this.agentType.set(TYPES[idx] || 0);
+                    this.entitySrv.setURL(URLs[idx]);
+                    this.shellSrv.setTitle(TTLs[idx]);
+                    switch (idx) {
+                    case 0:
+                        this.agentTypeLookup = new CustomerLookup(
+                            this.agentTypeSrv,
+                        );
+                        break;
+                    case 1:
+                        this.agentTypeLookup = new SupplierLookup(
+                            this.agentTypeSrv,
+                        );
+                        break;
+                    case 2:
+                        this.agentTypeLookup = new TransporterLookup(
+                            this.agentTypeSrv,
+                        );
+                        break;
+                    case 3:
+                        this.agentTypeLookup = new BranchLookup(
+                            this.agentTypeSrv,
+                        );
+                        break;
+                    case 4:
+                        this.agentTypeLookup = new InternalTypeLookup(
+                            this.agentTypeSrv,
+                        );
+                        break;
+                    case 5:
+                        break;
+                    }
+                    // this.agentTypeLookup = isSupplier
+                    //     ? new SupplierLookup(this.agentTypeSrv)
+                    //     : isCustomer
+                    //         ? new CustomerLookup(this.agentTypeSrv)
+                    //         : isTransporter
+                    //             ? new TransporterLookup(this.agentTypeSrv)
+                    //             : this.agentTypeLookup;
+                    // this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
+                }),
+            );
     }
 
     override finishLoading(e: Agent) {
@@ -390,14 +390,14 @@ export class AgentDetailComponent
 
     public isSectionInvalid(section: string): boolean {
         switch (section) {
-            case 'general':
-                return this.isGeneralSectionInvalid();
-            case 'latin':
-                return this.isLatinSectionInvalid();
-            case 'fiscal':
-                return this.isFiscalSectionInvalid();
-            default:
-                return false;
+        case 'general':
+            return this.isGeneralSectionInvalid();
+        case 'latin':
+            return this.isLatinSectionInvalid();
+        case 'fiscal':
+            return this.isFiscalSectionInvalid();
+        default:
+            return false;
         }
     }
 
@@ -459,15 +459,10 @@ export class AgentDetailComponent
             this.router.url.indexOf('agents') > 0
                 ? PARTNER
                 : this.router.url.indexOf('suppliers') > 0
-                  ? SUPPLIER
-                  : this.router.url.indexOf('transporter') > 0
-                    ? TRANSPORTER
-                    : CUSTOMER;
-        // const target = this.router.url.indexOf('agents') > 0?
-        //     'agents' :
-        //     this.router.url.indexOf('suppliers') > 0? 'suppliers' : 'customers';
-        // const idx = this.router.url.indexOf(target);
-        // const url = this.router.url.substring(0, idx) + target;
+                    ? SUPPLIER
+                    : this.router.url.indexOf('transporter') > 0
+                        ? TRANSPORTER
+                        : CUSTOMER;
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.addButton(this.invImportBtn);
     }
