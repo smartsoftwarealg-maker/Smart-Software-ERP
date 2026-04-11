@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -75,11 +75,12 @@ export class CrmLeadsActivityListComponent extends BaseChildEntityListComponent<
         this.onEdit.emit(0);
     }
 
-    @Input() parentId!: number;
+    readonly parentId = input.required<number>();
 
     override ngOnInit() {
-        if (this.parentId) {
-            this.detailSrv.setParentId(this.parentId);
+        const parentId = this.parentId();
+        if (parentId) {
+            this.detailSrv.setParentId(parentId);
         }
         super.ngOnInit();
     }

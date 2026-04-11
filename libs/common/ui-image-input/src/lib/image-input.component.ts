@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild, input } from '@angular/core';
 import { ImageModel } from './image-model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
@@ -32,8 +32,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
                 private renderer: Renderer2) {
     }
 
-    @Input()
-        alt = '';
+    readonly alt = input('');
 
     @Input()
     set width(w: string) {

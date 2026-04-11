@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, Input, OnInit, ViewChild, input } from '@angular/core';
 import {ExtendedPaginationModel, isString, LanguageService, PaginationModel} from '@ss/common/api-common';
 import { NgStyle } from '@angular/common';
 import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
@@ -41,8 +41,7 @@ export class PaginationComponent implements OnInit {
 
     readonly pageSizes = [5, 10, 15, 20, 30, 40, 50];
 
-    @Input()
-        minContainerWidth: number = null;
+    readonly minContainerWidth = input<number|null>(null);
 
     ngOnInit(): void {
         const f = (evt: KeyboardEvent) => {

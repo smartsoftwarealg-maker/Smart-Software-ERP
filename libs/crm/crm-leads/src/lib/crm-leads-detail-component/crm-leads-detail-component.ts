@@ -1,10 +1,11 @@
 import {
-    Component,
-    computed,
-    inject,
-    Input,
-    OnInit,
-    signal,
+  Component,
+  computed,
+  inject,
+  Input,
+  OnInit,
+  signal,
+  input
 } from '@angular/core';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CRMLeadsService } from '../crm-lead.service';
@@ -251,7 +252,7 @@ export class CrmLeadsDetailComponent implements OnInit {
         this.selectedPanel.set(idx);
     }
 
-    @Input() isEditable = false;
+    readonly isEditable = input(false);
     protected readonly Panels = Panels;
 
     leadId: number;

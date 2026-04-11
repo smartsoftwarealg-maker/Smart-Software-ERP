@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, Input, OnDestroy, OnInit, input } from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {of, Subscription} from 'rxjs';
@@ -42,7 +42,7 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
     private _parentId: 1 | 2 | 3 | 4 = 2;
     private subscriptions: Subscription[] = [];
 
-    @Input() editable = true;
+    readonly editable = input(true);
     attributeCtrl = new UntypedFormControl();
     childAttributes: Attrib[] = [];
     selectedAttributeCtrl = new UntypedFormControl();

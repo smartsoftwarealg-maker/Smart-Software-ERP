@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit, input} from '@angular/core';
 import {ExcelInjectionService} from './excel-injection.service';
 import {finalize, Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
@@ -22,8 +22,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 export class ExcelInjectionComponent implements OnInit {
     updatable = false;
 
-    @Input()
-        requiredFileType = '.xlsx';
+    readonly requiredFileType = input('.xlsx');
     processing = false;
 
     fileName = '';
