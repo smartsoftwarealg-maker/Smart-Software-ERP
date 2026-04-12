@@ -207,6 +207,14 @@
                     </mat-tab>
                     <mat-tab label="{{'COMMON_DIVERSE'|translate}}">
                         <mat-form-field floatLabel="always" class="default-50 sm-100">
+                            <mat-label translate>PAYROLL_NIN</mat-label>
+                            <input matInput formControlName="nin" type="text" maxlength="32">
+                            @if (form.controls['nin'].hasError('maxlength')) {
+                                <mat-error [translate]="{maxLen: 32}">COMMON_FIELD_MAX_LENGTH</mat-error>
+                            }
+                        </mat-form-field>
+
+                        <mat-form-field floatLabel="always" class="default-50 sm-100">
                             <mat-label translate>COMMON_BLOOD_GROUPS</mat-label>
                             <mat-select formControlName="blood_group">
                                 @for (v of bloodGroups$ | async; track v.id) {
