@@ -84,12 +84,6 @@ export const hrLookupNavTree: SideNavNode = {
             accessRights: 'EducationLevel'
         },
         {
-            name: 'COMMON_MARITAL_STATUS',
-            icon: 'fas fa-rings-wedding',
-            route: ABS_HR_MARITAL_STATUS_URL,
-            accessRights: 'MaritalStatus'
-        },
-        {
             name: 'COMMON_CATEGORIES',
             icon: 'fas fa-shapes',
             route: ABS_HR_CATEGORIES_URL,

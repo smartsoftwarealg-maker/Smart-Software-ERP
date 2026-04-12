@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { MatFormField, MatError } from '@angular/material/form-field';
+import {MatFormField, MatError, MatLabel} from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { PostElement, PostElementsService } from '@ss/common/api-lookup';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -22,6 +22,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MatMiniFabButton,
         MatError,
         TranslateDirective,
+        MatLabel,
     ],
 })
 export class PostElementsDetailComponent

@@ -3,7 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, Reactive
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {SnackBarService} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {LanguageService} from '@ss/common/api-common';
 import { catchError, delay, Observable, of, switchMap, tap } from "rxjs";
 
@@ -33,7 +33,9 @@ export class MonthCancelerComponent implements OnInit {
                 private activatedRoute: ActivatedRoute,
                 private confirmationSrv: ConfirmationDialogService,
                 private snackBarSrv: SnackBarService,
+                private shellSrv: ShellService,
                 private langSrv: LanguageService) {
+        this.shellSrv.setTitle("REMUN_MONTH_CANCELLATION");
     }
 
     ngOnInit(): void {

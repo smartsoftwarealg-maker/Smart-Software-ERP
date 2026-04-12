@@ -247,5 +247,7 @@
     "EDIT_VACATION_TYPES": "تعديل أنواع العطلات",
     "TAX_PAYMENTS": "مدفوعات الضرائب",
     "TAX_PAYMENT": "دفع ضريبي",
-    "NIN": "الرقم الوطني"
+    "NIN": "الرقم الوطني",
+    "ELECTRONIC_DEPOSIT_ORDER": "أمر إيداع إلكتروني"
 }
+

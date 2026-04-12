@@ -246,5 +246,6 @@
     "EDIT_VACATION_TYPES":   "Edit Vacation Types",
     "TAX_PAYMENTS":          "Tax payments",
     "TAX_PAYMENT":           "Tax payment",
-    "NIN":                   "NIN"
+    "NIN":                   "NIN",
+    "ELECTRONIC_DEPOSIT_ORDER": "Electronic Deposit Order"
 }

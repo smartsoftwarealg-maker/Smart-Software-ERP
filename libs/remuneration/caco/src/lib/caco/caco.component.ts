@@ -48,7 +48,7 @@ export class CacoComponent implements OnInit {
                 private elementInfoSrv: ElementsInfoService,
                 private formulaSrv: PayrollFormulasService,
                 private fundSrv: LookupsService) {
-
+        this.shellSrv.setTitle("REMUN_CACO");
     }
 
     ngOnInit(): void {
