@@ -161,6 +161,7 @@ export interface Person {
     ssNumber: string;
     mutualNumber: string;
     license?: string;
+    nin?: string;
 }
 
 
