@@ -34,18 +34,24 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
 
     readonly alt = input('');
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set width(w: string) {
         this.cachedWidth = w;
         this.updateSize();
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set height(h: string) {
         this.cachedHeight = h;
         this.updateSize();
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set enabled(e: boolean) {
         if (this.model) {
@@ -58,6 +64,8 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
         this.updateSize();
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set imageModel(model: ImageModel|null) {
         if (this.model) {

@@ -54,6 +54,8 @@ export class AssetAppointmentListComponent extends BaseChildEntityListComponent<
         super(entitySrv, 'ASSAppointment');
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set assetId(id: number) {
         this.entitySrv.setParentId(id);

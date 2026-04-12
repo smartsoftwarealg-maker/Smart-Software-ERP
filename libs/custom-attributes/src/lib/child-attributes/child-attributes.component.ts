@@ -53,16 +53,22 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
     attributeLookup = new DefaultAutoCompleteModel(this.attribLookupSrv);
 
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set parentId(pId: 1 | 2 | 3 | 4) {
         this._parentId = pId;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set childAttribute(child: string) {
         this.childAttribSrv.setParentURL(child);
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set attributeId(id: number) {
         this.childAttribSrv.setParentId(id || 0);

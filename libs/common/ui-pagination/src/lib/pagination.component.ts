@@ -18,6 +18,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 export class PaginationComponent implements OnInit {
     public langSrv = inject(LanguageService);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set paginationModel(model: PaginationModel) {
         this.unbindModel();

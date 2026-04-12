@@ -133,6 +133,8 @@ export class ArticleStoreComponent implements OnInit {
             });
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set article(article: Article) {
         this.article_ = article;
         this.selectStore(null);

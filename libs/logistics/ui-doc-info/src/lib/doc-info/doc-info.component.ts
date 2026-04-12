@@ -188,6 +188,8 @@ export class DocInfoComponent {
     public selectedEntry: Entry = null;
     readonly displayedGroups = input<string[]>([]);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set params(params: any) {
         this.params_ = { ...params, appId: DOCUMENT_ARCHIVES, editable: true };
         this.navigate();
@@ -198,6 +200,8 @@ export class DocInfoComponent {
     }
 
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set showAssets(show: boolean) {
         if (show) {
             if (this.entries_[1].entries.filter(e => e.name === this.AGENT_ASSETS).length < 1) {

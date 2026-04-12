@@ -50,6 +50,8 @@ export class PaymentInfoComponent {
         return this._activePersonnel;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set activePersonnel(active: boolean) {
         this._activePersonnel = active;
@@ -61,6 +63,8 @@ export class PaymentInfoComponent {
         return this._hrMode;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set hrMode(mode: boolean) {
         this._hrMode = mode;
@@ -68,6 +72,8 @@ export class PaymentInfoComponent {
 
     private _personId = 0;
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set personId(id: number) {
         this._personId = id;
