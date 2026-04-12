@@ -3,14 +3,14 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ArticleService, Article } from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Observable, of} from 'rxjs';
+import { concatMap, Observable, of } from 'rxjs';
 import {LookupsService} from '@ss/common/api-lookup';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {FormControl} from '@angular/forms';
-import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -30,13 +30,33 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         DocInfoComponent,
         PaginationComponent,
         TranslateDirective,
-        ImageInputComponent
-    ]
+        ImageInputComponent,
+    ],
 })
-export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
+export class ArticleListComponent
+    extends BaseEntityListComponent<Article>
+    implements OnInit
+{
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
-    private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'subClassDescription', 'unitDescription'];
-    private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'classDescription', 'unitDescription', 'price1', 'discount'];
+    private STOCK_COLS = [
+        'image',
+        'reference',
+        'description2',
+        'markDescription',
+        'classDescription',
+        'subClassDescription',
+        'unitDescription',
+    ];
+    private SALES_COLS = [
+        'image',
+        'reference',
+        'description2',
+        'markDescription',
+        'classDescription',
+        'unitDescription',
+        'price1',
+        'discount',
+    ];
     displayedColumns = this.STOCK_COLS;
 
     constructor(
@@ -49,12 +69,23 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
         public override defReportSrv: DefaultReportService,
         public lookupsSrv: LookupsService,
         public httpSrv: HttpService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(articleSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'STOCK_ARTICLES');
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            articleSrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'STOCK_ARTICLES',
+        );
     }
 
     override processLoadedData(data: Article[]): Observable<Article[]> {
-        data?.forEach(p => {
+        data?.forEach((p) => {
             p.imageModel = new ImageModel(this.httpSrv);
             p.imageModel.readOnly = true;
             p.imageModel.setImageUrl(this.articleSrv.getPhotoUrl(p.id), false);
@@ -62,22 +93,30 @@ export class ArticleListComponent extends BaseEntityListComponent<Article> imple
         return of(data);
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.route
-            .data
-            .subscribe(res => {
-                this.displayedColumns = res['price'] === 'price1'? this.SALES_COLS : this.STOCK_COLS;
-            });
-        this.subscriptions.push(
-            this.filterCtrl
-                .valueChanges
-                .pipe(
-                    debounceTime(300),
-                    distinctUntilChanged()
-                ).subscribe(id => {
-                    this.articleSrv.setParentId(id);
-                    this.refresh();
-                }));
+    protected preInit(): Observable<any> {
+        return super.preInit().pipe(
+            concatMap(() => this.route.data),
+            tap((res) => {
+                this.displayedColumns =
+                    res['price'] === 'price1'
+                        ? this.SALES_COLS
+                        : this.STOCK_COLS;
+            }),
+        );
     }
+
+    protected postInit(): Observable<any> {
+        return super.postInit().pipe(
+            tap(() => this.subscriptions.push(
+                this.filterCtrl.valueChanges
+                    .pipe(debounceTime(300), distinctUntilChanged())
+                    .subscribe((id) => {
+                        this.articleSrv.setParentId(id);
+                        this.refresh();
+                    }),
+            ),
+            ),
+        );
+    }
+
 }

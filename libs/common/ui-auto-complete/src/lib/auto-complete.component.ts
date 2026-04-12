@@ -77,11 +77,15 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     //     this.allowAdd.set(b);
     // }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set value(selected: Id) {
         this.setValue(selected, true);
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set placeholder(t: string) {
         this.pPlaceholder = t;
@@ -108,6 +112,8 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         return this.isRequired;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set required(b: boolean | string) {
         this.isRequired = b === true || b === 'true';
@@ -128,6 +134,8 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         this.stateChanges.next();
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set inactive(b: boolean) {
         this.#_inactive = b;
@@ -153,11 +161,17 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     counter = 0; // identifies the query, used to order queries and discard delayed result if they expire
 
     //Covert to signal
+    // TODO: Skipped for migration because:
+    //  This input is used in a control flow expression (e.g. `@if` or `*ngIf`)
+    //  and migrating would break narrowing currently.
     @Input()
     model: AutoCompleteModel<any>;
 
     lastFilterValue: string;
 
+    // TODO: Skipped for migration because:
+    //  This input overrides a field from a superclass, while the superclass field
+    //  is not migrated.
     @Input('aria-describedby') userAriaDescribedBy: string;
 
     setAutoControlValue(a: Object): void {

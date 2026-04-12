@@ -1,35 +1,32 @@
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {PaginationModel, PaginatorPersistenceService, Right} from '@ss/common/api-common';
-import {Directive, OnDestroy, OnInit} from '@angular/core';
-import {Observable, of, Subscription} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
-import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import {BaseEntityService} from '@ss/common/api-base-entity';
-import {Sort} from '@angular/material/sort';
+import {
+    KeepOnToolbar,
+    ShellService,
+    SnackBarService,
+    ToolbarButton,
+} from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+    PaginationModel,
+    PaginatorPersistenceService,
+    Right,
+} from '@ss/common/api-common';
+import { Directive, OnDestroy, OnInit, signal } from '@angular/core';
+import { concatMap, Observable, of, Subscription } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { BaseEntityService } from '@ss/common/api-base-entity';
+import { Sort } from '@angular/material/sort';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number; email?: string }>
-implements OnInit, OnDestroy {
+implements OnInit, OnDestroy
+{
     private _editable = true;
     private reportForm: string = null;
 
     subscriptions: Subscription[] = [];
-
-    constructor(
-        public entitySrv: BaseEntityService<T>,
-        public shellSrv: ShellService,
-        public snackBarSrv: SnackBarService,
-        public route: ActivatedRoute,
-        public router: Router,
-        public confirmationSrv: ConfirmationDialogService,
-        public defReportSrv: DefaultReportService,
-        public pagPersistSrv: PaginatorPersistenceService,
-        public title: string,
-    ) {
-        this.pagination.copyModel(pagPersistSrv.get(title));
-    }
+    loading = signal(true);
 
     //
     public readonly pagination = PaginationModel.newInstance();
@@ -113,12 +110,26 @@ implements OnInit, OnDestroy {
 
     //
 
+    constructor(
+        public entitySrv: BaseEntityService<T>,
+        public shellSrv: ShellService,
+        public snackBarSrv: SnackBarService,
+        public route: ActivatedRoute,
+        public router: Router,
+        public confirmationSrv: ConfirmationDialogService,
+        public defReportSrv: DefaultReportService,
+        public pagPersistSrv: PaginatorPersistenceService,
+        public title: string,
+    ) {
+        this.pagination.copyModel(pagPersistSrv.get(title));
+    }
+
     public ngOnInit() {
+        this.loading.set(true);
         const node = this.shellSrv.getNavNodeByRouter();
-        this.reportForm =
-            node && node.accessRights != undefined ? node.accessRights : null;
-        this.defReportButton.visible = this.reportForm != null;
-        this.viewReportButton.visible = this.reportForm != null;
+        this.reportForm = node && node.accessRights !== undefined ? node.accessRights : null;
+        this.defReportButton.visible = this.reportForm !== null;
+        this.viewReportButton.visible = this.reportForm !== null;
 
         const NO_RIGHTS: Right = {
             read: false,
@@ -155,20 +166,37 @@ implements OnInit, OnDestroy {
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
         this.enableSearch();
-        this.shellSrv.setButtons([
-            this.refreshButton,
-            this.addButton,
-            this.editButton,
-            this.deleteButton,
-            this.viewReportButton,
-            this.defReportButton,
-            this.excelButton,
-            this.emailReportButton,
-        ]);
         this.pagination.onChange = () => this.refresh();
         this.filter = this.pagPersistSrv.getSearch(this.title);
         this.shellSrv.searchFormControl.setValue(this.filter);
         // this.refresh();
+        this.preInit()
+            .pipe(
+                tap(() => {
+                    this.shellSrv.setButtons([
+                        this.refreshButton,
+                        this.addButton,
+                        this.editButton,
+                        this.deleteButton,
+                        this.viewReportButton,
+                        this.defReportButton,
+                        this.excelButton,
+                        this.emailReportButton,
+                    ]);
+                }),
+                concatMap(() => this.postInit()),
+            )
+            .subscribe(() => {
+                this.loading.set(false);
+            });
+    }
+
+    protected preInit(): Observable<unknown> {
+        return of(null);
+    }
+
+    protected postInit(): Observable<unknown> {
+        return of(null);
     }
 
     public enableSearch(): void {

@@ -55,10 +55,10 @@ export class BaseTreasuryTransactionService extends BaseEntityExtendedService<TT
     }
 
     override getList(page: number,
-                     pageSize: number,
-                     filter?: string,
-                     sortBy?: string,
-                     extraPrams?: HttpParams): Observable<{ itemCount: number; body: TTransaction[] }> {
+        pageSize: number,
+        filter?: string,
+        sortBy?: string,
+        extraPrams?: HttpParams): Observable<{ itemCount: number; body: TTransaction[] }> {
         extraPrams = new HttpParams()
             .set('journal', this._journal?.id || 0)
             .set('bankExpenses', this._bankExpenses)

@@ -34,6 +34,8 @@ export class CashFlowAccountListComponent implements OnInit {
         this.pagination.onChange = () => this.refresh();
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set account(code: string) {
         this.filter = code;

@@ -132,6 +132,14 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
         this.listSrv.activeOnly = false;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.editButton.visible = false;
+                this.addButton.visible = false;
+            }));
+    }
+
     override preload(): Observable<any> {
         return this.isParamSrv
             .is('AQS')
@@ -139,8 +147,6 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
     }
 
     override ngOnInit() {
-        this.editButton.visible = false;
-        this.addButton.visible = false;
         super.ngOnInit();
         this.shellSrv.disableSearch(true);
         this.subscriptions.push(

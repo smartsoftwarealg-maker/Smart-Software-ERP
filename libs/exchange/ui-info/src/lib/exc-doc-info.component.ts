@@ -26,6 +26,8 @@ export class ExcDocInfoComponent {
     constructor(private router: Router, private route: ActivatedRoute) {
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set selectedId(id: number) {
         this._selectedId = id;
         this.router.navigate(['history'], { relativeTo: this.route, queryParams: { id: id }});

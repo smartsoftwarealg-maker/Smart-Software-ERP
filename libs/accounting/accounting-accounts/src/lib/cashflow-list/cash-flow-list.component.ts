@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import { debounceTime, switchMap, tap } from 'rxjs';
+import { debounceTime, Observable, switchMap, tap } from 'rxjs';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
 import {CashFlowAccountListComponent} from '../cash-flow-account-list/cash-flow-account-list.component';
 import { MatList, MatListItem } from '@angular/material/list';
@@ -91,10 +91,16 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
         this.pagination.pageSize = 20;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.deleteButton.visible = false;
+                this.addButton.visible = false;
+                this.editButton.visible = false;
+            }));
+    }
+
     override ngOnInit() {
-        this.deleteButton.visible = false;
-        this.addButton.visible = false;
-        this.editButton.visible = false;
         this.itemSearch
             .valueChanges
             .pipe(

@@ -14,6 +14,8 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'ss-asset-building-list',
@@ -21,13 +23,12 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./asset-building-list.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    RouterModule,
-    PaginationComponent,
-    UiAutoCompleteComponent
-]
-
+        MaterialModule,
+        TranslateDirective,
+        RouterModule,
+        PaginationComponent,
+        UiAutoCompleteComponent,
+    ],
 })
 export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBuilding> {
     private locationSrv = inject(AssetLocationService);
@@ -38,7 +39,7 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
     displayedColumns = [
         // 'location',
         'code',
-        'description'
+        'description',
     ];
 
     constructor(
@@ -49,8 +50,10 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv,
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -58,12 +61,13 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ASSET_BUILDINGS');
+            'ASSET_BUILDINGS',
+        );
         this.title = this.route.snapshot?.data['title'] || this.title;
         if (!this.entitySrv.getParentId()) {
             this.entitySrv.setParentId(0);
         }
-        this.locationLookup.onObjectSelected = e => this.onLocation(e);
+        this.locationLookup.onObjectSelected = (e) => this.onLocation(e);
     }
 
     onLocation(location: AssetLocation) {
@@ -71,8 +75,8 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
         this.refresh();
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.locationCtrl.setValue(this.entitySrv.getParentId());
+    protected override postInit(): Observable<any> {
+        return super.postInit()
+            .pipe(tap(() => this.locationCtrl.setValue(this.entitySrv.getParentId())));
     }
 }

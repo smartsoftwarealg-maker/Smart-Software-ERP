@@ -99,9 +99,13 @@ export class DatePickerComponent
     // @Input()
     // public time: boolean = false;
 
+    // TODO: Skipped for migration because:
+    //  Class of this input is referenced in the signature of another class.
     @Input('type')
     public _type: MatCalendarType = 'date';
 
+    // TODO: Skipped for migration because:
+    //  Class of this input is referenced in the signature of another class.
     @Input()
     public matDatepickerFilter: (d: Date | null) => boolean = (d) => true;
 
@@ -109,6 +113,8 @@ export class DatePickerComponent
         return this.toOutputFormat(this.date);
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set value(obj: Date) {
         this.writeValue(obj);
@@ -119,6 +125,8 @@ export class DatePickerComponent
         // }
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set placeholder(t: string) {
         this.pPlaceholder = t;
@@ -148,6 +156,8 @@ export class DatePickerComponent
         return this.isRequired;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set required(b: boolean | string) {
         this.isRequired = b == true || b === 'true';
@@ -160,6 +170,8 @@ export class DatePickerComponent
         return this.isDisabled;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set disabled(value: boolean) {
         this.isDisabled = coerceBooleanProperty(value);
@@ -183,6 +195,8 @@ export class DatePickerComponent
     errorState = false;
     lastErrorState = false;
 
+    // TODO: Skipped for migration because:
+    //  Class of this input is referenced in the signature of another class.
     @Input()
     outputFormat: 'dateObject' | 'dateStr' = 'dateStr'; // todo: add 'datetime'
 
@@ -193,11 +207,15 @@ export class DatePickerComponent
     minValue: Date;
     maxValue: Date;
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set minDate(d: Date) {
         this.minValue = d;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set maxDate(d: Date) {
         this.maxValue = d;

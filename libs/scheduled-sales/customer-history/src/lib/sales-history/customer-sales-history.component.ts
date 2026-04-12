@@ -10,9 +10,10 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { SalesRecord } from '@ss/scheduled-sales/api-scheduled-sales';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { SalesHistoryService } from './sales-history.service';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'ss-customer-history',
@@ -76,8 +77,14 @@ export class CustomerSalesHistoryComponent extends BaseEntityListComponent<Sales
         return false;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.editButton.visible = this.addButton.visible = this.deleteButton.visible = false;
+            }));
+    }
+
     override ngOnInit() {
-        this.editButton.visible = this.addButton.visible = this.deleteButton.visible = false;
         super.ngOnInit();
         this.shellSrv.disableSearch();
         this.entitySrv.setParentId(this.loginSrv.appCtx.agentId || 0);

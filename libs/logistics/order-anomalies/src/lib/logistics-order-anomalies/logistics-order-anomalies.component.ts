@@ -12,7 +12,8 @@ import { OrderAnomaliesService } from './order-anomalies.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-logistics-order-anomalies',
@@ -21,25 +22,32 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
-        ReactiveFormsModule,
-        PaginationComponent
 
+        ReactiveFormsModule,
+        PaginationComponent,
     ],
     templateUrl: './logistics-order-anomalies.component.html',
     styleUrl: './logistics-order-anomalies.component.css',
 })
-export class LogisticsOrderAnomaliesComponent extends BaseEntityListComponent<OrderAnomaly> implements OnInit {
+export class LogisticsOrderAnomaliesComponent
+    extends BaseEntityListComponent<OrderAnomaly>
+    implements OnInit
+{
     public fixButton: ToolbarButton = {
         icon: 'fa-solid fa-check-double',
         label: 'STOCK_FIX',
         disabled: false,
         visible: false,
         keepOnToolbar: KeepOnToolbar.ALWAYS,
-        click: () => this.fix()
+        click: () => this.fix(),
     };
 
-    displayedColumns = ['reference', 'description', 'qtyOrdered', 'qtySatisfied'];
+    displayedColumns = [
+        'reference',
+        'description',
+        'qtyOrdered',
+        'qtySatisfied',
+    ];
 
     constructor(
         public override entitySrv: OrderAnomaliesService,
@@ -49,31 +57,47 @@ export class LogisticsOrderAnomaliesComponent extends BaseEntityListComponent<Or
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
         public override router: Router,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'LOGISTICS_ORDER_ANOMALIES');
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            entitySrv,
+            shellSrv,
+            snackBarSrv,
+            route,
+            router,
+            confirmationSrv,
+            defReportSrv,
+            pagPersistSrv,
+            'LOGISTICS_ORDER_ANOMALIES',
+        );
     }
 
-    override ngOnInit() {
-        this.addButton.visible = false;
-        this.editButton.visible = false;
-        this.deleteButton.visible = false;
-        super.ngOnInit();
-        this.shellSrv.addButton(this.fixButton);
+    protected override preInit(): Observable<unknown> {
+        return super.preInit().pipe(
+            tap(() => {
+                this.addButton.visible = false;
+                this.editButton.visible = false;
+                this.deleteButton.visible = false;
+            }),
+        );
+    }
+
+    protected override postInit(): Observable<unknown> {
+        return super
+            .postInit()
+            .pipe(tap(() => this.shellSrv.addButton(this.fixButton)));
     }
 
     private fix() {
-        this.entitySrv
-            .fix()
-            .subscribe(res => {
-                if (res.count) {
-                    this.snackBarSrv.showSuccessMessage();
-                    this.refresh();
-                }
-            });
-
+        this.entitySrv.fix().subscribe((res) => {
+            if (res.count) {
+                this.snackBarSrv.showSuccessMessage();
+                this.refresh();
+            }
+        });
     }
 
     override refresh() {
-        super.refresh(() => this.fixButton.visible = this.data.length > 0);
+        super.refresh(() => (this.fixButton.visible = this.data.length > 0));
     }
 }

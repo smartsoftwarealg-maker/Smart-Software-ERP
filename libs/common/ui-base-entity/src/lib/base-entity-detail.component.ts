@@ -1,6 +1,6 @@
-import { Directive, OnDestroy, OnInit, signal } from "@angular/core";
+import { Directive, OnDestroy, OnInit, signal } from '@angular/core';
 import {UntypedFormBuilder} from '@angular/forms';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
@@ -40,7 +40,11 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
     /**
      * Overload this to load your own things. and tap to save your results
      */
-    public preload(): Observable<any> {
+    public preload(): Observable<unknown> {
+        return of(null);
+    }
+
+    public postLod(): Observable<unknown> {
         return of(null);
     }
 

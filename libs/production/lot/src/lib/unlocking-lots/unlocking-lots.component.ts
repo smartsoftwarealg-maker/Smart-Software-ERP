@@ -13,6 +13,7 @@ import { LocationService } from '@ss/master-data/api-article';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-production-unlocking-lots',
@@ -39,16 +40,18 @@ export class UnlockingLotsComponent
         'blocked'
     ];
 
-    override ngOnInit() {
-        this.addButton.visible = false;
-        this.editButton.visible = false;
-        this.deleteButton.visible = false;
-        this.emailReportButton.visible = false;
-        this.excelButton.visible = false;
-        super.ngOnInit();
-        // this.defReportButton.visible = false;
-        // this.viewReportButton.visible = false;
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.editButton.visible = false;
+                this.deleteButton.visible = false;
+                this.emailReportButton.visible = false;
+                this.excelButton.visible = false;
+            }));
     }
+
+
 
     constructor(
         public override entitySrv: LocationService,

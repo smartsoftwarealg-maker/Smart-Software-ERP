@@ -3,7 +3,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import {AgentPrice, AgentPriceService} from "@ss/logistics/api-agent-price";
+import {AgentPrice, AgentPriceService} from '@ss/logistics/api-agent-price';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 
@@ -11,6 +11,7 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-agent-price-list',
@@ -18,10 +19,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './agent-price-list.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule
-],
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule
+    ],
 })
 export class AgentPriceListComponent extends BaseEntityListComponent<AgentPrice> implements OnInit {
 
@@ -44,9 +45,11 @@ export class AgentPriceListComponent extends BaseEntityListComponent<AgentPrice>
         super(agentPriceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'LOGISTICS_AGENT_PRICE');
     }
 
-    public override ngOnInit() {
-        this.addButton.visible = false;
-        this.deleteButton.visible = false;
-        super.ngOnInit();
+    protected override preInit(): Observable<any> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
     }
 }

@@ -1,4 +1,4 @@
-import { Component, inject, Inject, Input, signal } from '@angular/core';
+import { Component, inject, Inject, signal, input } from '@angular/core';
 import { finalize, Subscription } from 'rxjs';
 import {
     UntypedFormBuilder,
@@ -115,7 +115,7 @@ export class InventoryImportComponent {
         'AZ',
     ];
 
-    @Input() requiredFileType = '.xlsx';
+    readonly requiredFileType = input('.xlsx');
     isEditable = false;
 
     fileName = '';

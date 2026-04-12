@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, Input, OnInit, ViewChild, input } from '@angular/core';
 import {ExtendedPaginationModel, isString, LanguageService, PaginationModel} from '@ss/common/api-common';
 import { NgStyle } from '@angular/common';
 import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
@@ -18,6 +18,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 export class PaginationComponent implements OnInit {
     public langSrv = inject(LanguageService);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set paginationModel(model: PaginationModel) {
         this.unbindModel();
@@ -37,13 +39,11 @@ export class PaginationComponent implements OnInit {
     model: ExtendedPaginationModel = new ExtendedPaginationModel(1, 5, 5);
     // lastModel: ExtendedPaginationModel = this.model.copy() as ExtendedPaginationModel;
     lastPage = 0;
-    @ViewChild('container', { static: true }) container: ElementRef;
     @ViewChild('pageInput', { static: true }) pageInput: ElementRef;
 
     readonly pageSizes = [5, 10, 15, 20, 30, 40, 50];
 
-    @Input()
-        minContainerWidth: number = null;
+    readonly minContainerWidth = input<number|null>(null);
 
     ngOnInit(): void {
         const f = (evt: KeyboardEvent) => {

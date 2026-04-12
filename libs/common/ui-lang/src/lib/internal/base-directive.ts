@@ -1,11 +1,11 @@
 import {
-    ElementRef,
-    Input,
-    Renderer2,
-    AfterViewInit,
-    OnChanges,
-    SimpleChanges,
-    OnDestroy, OnInit, Injectable, Directive
+  ElementRef,
+  Renderer2,
+  AfterViewInit,
+  OnChanges,
+  SimpleChanges,
+  OnDestroy, OnInit, Injectable, Directive,
+  input
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -15,10 +15,10 @@ import { BFS } from './bfs';
 export abstract class BaseDirective implements OnInit, AfterViewInit, OnChanges, OnDestroy {
 
     // tslint:disable-next-line:no-input-rename
-    @Input('value') public valueAttribute: string;
+    public readonly valueAttribute = input<string>(undefined, { alias: "value" });
 
     // tslint:disable-next-line:no-input-rename
-    @Input('innerHTML') public innerHTMLProperty: string;
+    public readonly innerHTMLProperty = input<string>(undefined, { alias: "innerHTML" });
 
     protected key: string;
     protected attributes: any[] = [];
@@ -55,10 +55,12 @@ export abstract class BaseDirective implements OnInit, AfterViewInit, OnChanges,
     public ngOnChanges(changes: SimpleChanges): void {
         if (!!this.key) {
             if (this.nodeValue == null || this.nodeValue === '') {
-                if (!!this.valueAttribute) {
-                    this.key = this.valueAttribute;
-                } else if (!!this.innerHTMLProperty) {
-                    this.key = this.innerHTMLProperty;
+                const valueAttribute = this.valueAttribute();
+                const innerHTMLProperty = this.innerHTMLProperty();
+                if (!!valueAttribute) {
+                    this.key = valueAttribute;
+                } else if (!!innerHTMLProperty) {
+                    this.key = innerHTMLProperty;
                 }
             }
             this.replaceText();
@@ -102,9 +104,9 @@ export abstract class BaseDirective implements OnInit, AfterViewInit, OnChanges,
                 this.removeTextListener();
                 this.renderer.setValue(this.renderNode, this.nodeValue.replace(this.key, value));
                 this.addTextListener();
-            } else if (!!this.valueAttribute) {
+            } else if (!!this.valueAttribute()) {
                 this.renderer.setAttribute(this.element, 'value', value);
-            } else if (!!this.innerHTMLProperty) {
+            } else if (!!this.innerHTMLProperty()) {
                 this.renderer.setProperty(this.element, 'innerHTML', value);
             }
         }
@@ -139,12 +141,14 @@ export abstract class BaseDirective implements OnInit, AfterViewInit, OnChanges,
     }
 
     private getKey(): void {
+        const valueAttribute = this.valueAttribute();
+        const innerHTMLProperty = this.innerHTMLProperty();
         if (this.element.childNodes.length > 0) {
             this.key = this.getText();
-        } else if (!!this.valueAttribute) {
-            this.key = this.valueAttribute;
-        } else if (!!this.innerHTMLProperty) {
-            this.key = this.innerHTMLProperty;
+        } else if (!!valueAttribute) {
+            this.key = valueAttribute;
+        } else if (!!innerHTMLProperty) {
+            this.key = innerHTMLProperty;
         }
     }
 

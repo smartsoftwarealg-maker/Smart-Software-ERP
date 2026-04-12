@@ -6,7 +6,7 @@ import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { LanguageService, LoginService, MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
-import {Observable} from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { ReactiveFormsModule, UntypedFormControl, Validators } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 
@@ -18,9 +18,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 @Component({
-  selector: 'ss-accounting-reopen',
-  templateUrl: './accounting-reopen.component.html',
-  styleUrls: ['./accounting-reopen.component.scss'],
+    selector: 'ss-accounting-reopen',
+    templateUrl: './accounting-reopen.component.html',
+    styleUrls: ['./accounting-reopen.component.scss'],
     standalone: true,
     imports: [
         CommonModule,
@@ -29,27 +29,34 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
         ReactiveFormsModule,
-
-
-       
-
-
     ],
 })
 export class AccountingReopenComponent extends BaseEntityListComponent<PeriodSummary> {
-    private loginSrv  = inject(LoginService);
-    private langSrv  = inject(LanguageService);
+    private loginSrv = inject(LoginService);
+    private langSrv = inject(LanguageService);
 
-    private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
+    private MONTHS = [
+        'JANUARY',
+        'FEBRUARY',
+        'MARCH',
+        'APRIL',
+        'MAY',
+        'JUNE',
+        'JULY',
+        'AUGUST',
+        'SEPTEMBER',
+        'OCTOBER',
+        'NOVEMBER',
+        'DECEMBER',
+    ];
     private label = `${this.langSrv.translate('ACC_REOPENING')} ${this.loginSrv.appCtx.accYear}`;
     generating = false;
     balancedFolder = false;
-    description = new UntypedFormControl(this.label,[Validators.required, Validators.maxLength(50)]);
-    displayedColumns = [
-        'month',
-        'debit',
-        'credit'
-    ];
+    description = new UntypedFormControl(this.label, [
+        Validators.required,
+        Validators.maxLength(50),
+    ]);
+    displayedColumns = ['month', 'debit', 'credit'];
     constructor(
         public override entitySrv: PeriodSelectorService,
         public override shellSrv: ShellService,
@@ -58,8 +65,10 @@ export class AccountingReopenComponent extends BaseEntityListComponent<PeriodSum
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv,
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -67,7 +76,8 @@ export class AccountingReopenComponent extends BaseEntityListComponent<PeriodSum
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ACC_REOPENING');
+            'ACC_REOPENING',
+        );
         entitySrv.offset = -1;
     }
 
@@ -76,37 +86,42 @@ export class AccountingReopenComponent extends BaseEntityListComponent<PeriodSum
     }
 
     override finishLoading(data: PeriodSummary[]) {
-        data.forEach(e => e.month = this.MONTHS[e.id - 1]);
-        this.balancedFolder = data.find(e => Math.abs(e.debit - e.credit) >= 0.01) == undefined;
+        data.forEach((e) => (e.month = this.MONTHS[e.id - 1]));
+        this.balancedFolder =
+            data.find((e) => Math.abs(e.debit - e.credit) >= 0.01) == undefined;
         super.finishLoading(data);
     }
-
 
     balance(row: PeriodSummary) {
         return Math.abs(row?.debit - row?.credit) >= 0.01;
     }
 
-    override ngOnInit() {
-        this.editButton.visible = false;
-        this.deleteButton.visible = false;
-        this.addButton.visible = false;
-        super.ngOnInit();
+
+    protected override preInit(): Observable<any> {
+        return super
+            .preInit()
+            .pipe(tap(() => {
+                this.editButton.visible = false;
+                this.deleteButton.visible = false;
+                this.addButton.visible = false;
+            }));
     }
 
     reopen() {
-        const params: ReopenInfo = {description: this.description.value, detail: false};
+        const params: ReopenInfo = {
+            description: this.description.value,
+            detail: false,
+        };
         this.generating = true;
-        this.entitySrv
-            .reopen(params)
-            .subscribe({
-                next: res => {
-                    this.snackBarSrv.showSuccessMessage();
-                    this.generating = false;
-                },
-                error: err => {
-                    this.generating = false;
-                    throw err;
-                }
-            });
+        this.entitySrv.reopen(params).subscribe({
+            next: (res) => {
+                this.snackBarSrv.showSuccessMessage();
+                this.generating = false;
+            },
+            error: (err) => {
+                this.generating = false;
+                throw err;
+            },
+        });
     }
 }

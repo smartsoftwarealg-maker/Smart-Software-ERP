@@ -28,26 +28,27 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         RouterModule,
-        PaginationComponent
-    ]
-
+        PaginationComponent,
+    ],
 })
-export class AssetInventoryListComponent extends BaseEntityListComponent<AssetInventory> implements OnInit {
+export class AssetInventoryListComponent
+    extends BaseEntityListComponent<AssetInventory>
+    implements OnInit
+{
     private importBtn: ToolbarButton = {
         disabled: false,
         icon: 'fa-solid fa-syringe',
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
         label: 'LOGISTICS_IMPORT_DOCUMENT',
         visible: true,
-        click: () => this.importDocument()
+        click: () => this.importDocument(),
     };
-
 
     displayedColumns = [
         'officeDescription',
         'assetDescription',
         'date',
-        'statusDescription'
+        'statusDescription',
     ];
 
     constructor(
@@ -61,8 +62,10 @@ export class AssetInventoryListComponent extends BaseEntityListComponent<AssetIn
         public override pagPersistSrv: PaginatorPersistenceService,
         private loginSrv: LoginService,
         private policySrv: AccPoliciesService,
-        private dialog: MatDialog) {
-        super(entitySrv,
+        private dialog: MatDialog,
+    ) {
+        super(
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -70,14 +73,15 @@ export class AssetInventoryListComponent extends BaseEntityListComponent<AssetIn
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'INVENTORY');
+            'INVENTORY',
+        );
     }
 
     override preload(): Observable<any> {
-        return this.loginSrv
-            .loadContext()
-            .pipe(switchMap(_ => this.policySrv.get(this.loginSrv.appCtx.center)),
-                tap(res => this.entitySrv.setParentId(res.inventoryYear)));
+        return this.loginSrv.loadContext().pipe(
+            switchMap((_) => this.policySrv.get(this.loginSrv.appCtx.center)),
+            tap((res) => this.entitySrv.setParentId(res.inventoryYear)),
+        );
     }
 
     private importDocument() {
@@ -85,26 +89,25 @@ export class AssetInventoryListComponent extends BaseEntityListComponent<AssetIn
             const dialogRef = this.dialog.open(InventoryImportComponent, {
                 width: '680px',
                 height: '420px',
-                disableClose: true
+                disableClose: true,
             });
 
-            dialogRef
-                .afterClosed()
-                .subscribe(result => {
-                    if (result && result['count']) {
-                        this.refresh();
-                        this.snackBarSrv.showMessage('COMMON_SUCCESS');
-                    } else {
-                        this.snackBarSrv.showFailureMessage();
-                    }
+            dialogRef.afterClosed().subscribe((result) => {
+                if (result && result['count']) {
+                    this.refresh();
+                    this.snackBarSrv.showMessage('COMMON_SUCCESS');
+                } else {
+                    this.snackBarSrv.showFailureMessage();
+                }
 
-                    this.shellSrv.setLoading(false);
-                });
+                this.shellSrv.setLoading(false);
+            });
         }
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.addButton(this.importBtn);
+    protected override postInit(): Observable<any> {
+        return super
+            .postInit()
+            .pipe(tap(() => this.shellSrv.addButton(this.importBtn)));
     }
 }

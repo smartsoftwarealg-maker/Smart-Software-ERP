@@ -1,7 +1,7 @@
 <fieldset>
     <div class="file-upload">
         <input type="file" class="file-input"
-               [accept]="requiredFileType"
+               [accept]="requiredFileType()"
                (change)="onChange(fileUpload.files)"
                #fileUpload>
 

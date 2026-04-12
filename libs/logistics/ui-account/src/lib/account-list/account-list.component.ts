@@ -18,11 +18,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './account-list.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    ReactiveFormsModule,
-    PaginationComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        ReactiveFormsModule,
+        PaginationComponent,
+    ]
 })
 export class AccountListComponent extends BaseEntityListComponent<Account> {
     displayedColumns = [

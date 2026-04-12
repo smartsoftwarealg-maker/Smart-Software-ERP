@@ -6,7 +6,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
-import {switchMap, tap} from 'rxjs';
+import {Observable, switchMap, tap} from 'rxjs';
 import { ReactiveFormsModule, UntypedFormControl, Validators } from '@angular/forms';
 
 
@@ -63,10 +63,16 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
         this.pagination.pageSize = 10;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.editButton.visible = false;
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
+    }
+
     override ngOnInit() {
-        this.editButton.visible = false;
-        this.addButton.visible = false;
-        this.deleteButton.visible = false;
         super.ngOnInit();
 
         // const selectButton: ToolbarButton = {

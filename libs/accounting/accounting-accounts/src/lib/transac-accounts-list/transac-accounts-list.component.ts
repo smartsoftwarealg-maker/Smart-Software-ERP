@@ -9,6 +9,7 @@ import {TransacAccount, TransacAccountService} from '@ss/accounting/accounting-a
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-transac-accounts-list',
@@ -46,9 +47,13 @@ export class TransacAccountsListComponent extends BaseEntityListComponent<Transa
         this.pagination.pageSize = 10;
     }
 
-    override ngOnInit() {
-        this.addButton.visible = false;
-        this.deleteButton.visible  = false;
-        super.ngOnInit();
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
     }
+
+
 }

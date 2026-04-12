@@ -37,7 +37,7 @@ import {
     WeightCaptureService,
 } from '@ss/sales/weight-capture';
 import { delay, tap } from 'rxjs/operators';
-import { of, pipe, switchMap, timer } from 'rxjs';
+import { Observable, of, pipe, switchMap, timer } from 'rxjs';
 import { ScheduledInvoiceService } from './scheduled-invoice.service';
 import { DispatchComponent } from '../dispatch/dispatch.component';
 import { PaymentComponent } from '../../../../ui-quick-order/src/lib/payment/payment.component';
@@ -137,11 +137,15 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         );
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+                this.editButton.visible = this.shellSrv.getEntityRights('QOrder')?.edit;
+            }));
+    }
     override ngOnInit() {
-        this.addButton.visible = false;
-        this.deleteButton.visible = false;
-        this.editButton.visible = this.shellSrv.getEntityRights('QOrder')?.edit;
-        this.#loginSrv.appCtx.rightsCenter;
         this.route.data.subscribe((data) => {
             const invoicing = data['invoicing'] === true;
             this.isInvoicing.set(invoicing);
@@ -163,19 +167,23 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
             )
             .subscribe({
                 next: (opt) => {
-                     this.transactionColumns = this.transactionColumns.filter(
+                    this.transactionColumns = this.transactionColumns.filter(
                         (col) => col !== 'store' || !opt.serviceInvoiceOnly,
                     );
                 },
                 error: () => {},
             });
         super.ngOnInit();
-        timer(2000).subscribe(() => this.editButton.visible =  this.shellSrv.getEntityRights('QOrder')?.edit||this.#loginSrv.appCtx.manager);
+        timer(2000).subscribe(
+            () =>
+                (this.editButton.visible =
+                    this.shellSrv.getEntityRights('QOrder')?.edit ||
+                    this.#loginSrv.appCtx.manager),
+        );
     }
 
     private weightCaptureSrv = inject(WeightCaptureService);
     public readonly transacPagination = PaginationModel.newInstance();
-
 
     transacLineId: number;
     invoiceInfo: InvoiceInfo[] = [];

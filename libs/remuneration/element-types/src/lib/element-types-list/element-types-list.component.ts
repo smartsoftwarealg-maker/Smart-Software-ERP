@@ -15,6 +15,7 @@ import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-element-types-list',
@@ -39,16 +40,20 @@ export class ElementTypesListComponent extends BaseEntityListComponent<ElementTy
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
-        public override confirmationSrv: ConfirmationDialogService,
-        public override defReportSrv: DefaultReportService,
         public override router: Router,
+        public override defReportSrv: DefaultReportService,
+        public override confirmationSrv: ConfirmationDialogService,
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(infoSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv,'REMUN_ELEMENT_TYPES');
         this.pagination.pageSize = 10;
     }
 
-    ngOnInit() {
-        this.addButton.visible = false;
-        super.ngOnInit();
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+            }));
     }
+
+
 }

@@ -11,6 +11,7 @@ import { LtmNormTreeService } from '@ltm/ltm-api';
 import { NormTree } from '@ltm/ltm-api';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-ltm-norm-tree',
@@ -52,12 +53,16 @@ export class LtmNormTreeComponent extends BaseEntityListComponent<NormTree> impl
         this.pagination.pageSize = 15;
     }
 
-    override ngOnInit() {
-        this.deleteButton.visible = false;
-        this.addButton.visible = false;
-        this.editButton.visible = false;
-        super.ngOnInit();
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.deleteButton.visible = false;
+                this.addButton.visible = false;
+                this.editButton.visible = false;
+            }));
     }
+
+
 
     toggle(e: NormTree) {
         e.expanded = !e.expanded;

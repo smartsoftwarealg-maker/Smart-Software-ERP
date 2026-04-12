@@ -26,6 +26,7 @@ import {
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-customer-suggestion-list',
@@ -79,17 +80,23 @@ export class CustomerSuggestionsListComponent extends BaseEntityListComponent<Cu
         this.pagination.pageSize = 15;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.deleteButton.visible = this.addButton.visible =
+                    (this.loginSrv.appCtx.agentId || 0) > 0;
+                if ((this.loginSrv.appCtx.agentId || 0) == 0) {
+                    this.displayedColumns.splice(1, 0, 'agentDescription');
+                }
+            }));
+    }
+
     override selectRow(row: CustomerSuggestion) {
         super.selectRow(row);
         this.editable = this.editable && (row?.answer?.length || 0) == 0;
     }
 
     override ngOnInit() {
-        this.deleteButton.visible = this.addButton.visible =
-            (this.loginSrv.appCtx.agentId || 0) > 0;
-        if ((this.loginSrv.appCtx.agentId || 0) == 0) {
-            this.displayedColumns.splice(1, 0, 'agentDescription');
-        }
         super.ngOnInit();
     }
 }

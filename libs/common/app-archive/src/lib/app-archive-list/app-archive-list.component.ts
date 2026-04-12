@@ -101,6 +101,8 @@ export class AppArchiveListComponent implements OnInit {
         this.router.navigate(['../../'], {relativeTo: this.route}).then();
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set id(id: number) {
         this._id = id || 0;

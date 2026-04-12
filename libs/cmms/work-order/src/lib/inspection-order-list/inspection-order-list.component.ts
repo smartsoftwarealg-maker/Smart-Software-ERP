@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CMMSInspectionOrderService } from '../services/c-m-m-s-inspection-order.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-inspection-list',
@@ -74,12 +75,16 @@ export class InspectionOrderListComponent extends BaseEntityListComponent<Work> 
         this.pagination.pageSize = 15;
     }
 
-    override ngOnInit() {
-        const notInspection = !this.route
-            .snapshot
-            .data['inspection'];
-        this.addButton.visible = notInspection;
-        this.deleteButton.visible = notInspection;
-        super.ngOnInit();
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                const notInspection = !this.route
+                    .snapshot
+                    .data['inspection'];
+                this.addButton.visible = notInspection;
+                this.deleteButton.visible = notInspection;
+            }));
     }
+
+
 }
