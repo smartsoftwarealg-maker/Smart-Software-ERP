@@ -256,12 +256,10 @@ export class CrmLeadsDetailComponent implements OnInit {
     protected readonly Panels = Panels;
 
     leadId: number;
-    // TODO: Skipped for migration because:
-    //  Your application code writes to the input. This prevents migration.
-    @Input() activityId: number | null = null;
+    activityId = input<number | null> (null);
 
     onEditActivity(id: number) {
-        this.activityId = id;
+        // this.activityId = id;
         this.select(Panels.ACTIVITY_LINE_DETAIL);
     }
 

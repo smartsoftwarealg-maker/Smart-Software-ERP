@@ -149,12 +149,12 @@ export const hrLookupNavTree: SideNavNode = {
             route: ABS_PROFESSIONAL_FAULTS_URL,
             accessRights: 'ProfFault'
         },
-        {
-            name: 'PAYROLL_ACTIVITIES',
-            icon: 'fa-solid fa-cake-candles',
-            route: ABS_ACTIVITIES_URL,
-            accessRights: 'Activity'
-        },
+        // {
+        //     name: 'PAYROLL_ACTIVITIES',
+        //     icon: 'fa-solid fa-cake-candles',
+        //     route: ABS_ACTIVITIES_URL,
+        //     accessRights: 'Activity'
+        // },
         {
             name: 'PAYROLL_PHYSICIANS',
             icon: 'fa-solid fa-user-doctor-hair',

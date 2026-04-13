@@ -167,7 +167,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                             key: e,
                             description: this.langSrv.translate('COMMON_' + e),
                         }))
-                        .sort((a, b) => a.description.localeCompare(b.description));
+                        .sort((a, b) => a?.description?.localeCompare(b.description));
                     this.apps = this.sortedApps.map((e) => e.key);
                 }),
             );
@@ -278,7 +278,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                     key: e,
                     description: this.langSrv.translate(e),
                 }))
-                .sort((a, b) => a.description.localeCompare(b.description));
+                .sort((a, b) => a?.description?.localeCompare(b.description));
             this.menuItems = sorted.map((e) => e.key);
         });
     }

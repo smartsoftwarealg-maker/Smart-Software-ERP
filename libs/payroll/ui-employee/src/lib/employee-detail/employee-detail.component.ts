@@ -452,6 +452,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
             .pipe(switchMap(res =>
                 res ? code === this.PAYROLL_IEP ?
                     this.infoSrv.generateFromIEP(id) :
+
                     code === this.PAYROLL_OLD_ELEMENTS ? this.infoSrv.generateFromOldElements(id) :
                         code === this.PAYROLL_RANK ? this.infoSrv.generateFromRank(id) :
                             code === this.COMMON_POST ? this.infoSrv.generateFromPost(id) : of({ count: -1 }) : of({ count: -1 })

@@ -260,7 +260,7 @@ export class ArchiveViewerListComponent
                                 f.description != undefined,
                         )
                         .sort((a, b) =>
-                            a.description.localeCompare(b.description),
+                            a?.description?.localeCompare(b.description),
                         ),
                 );
 
