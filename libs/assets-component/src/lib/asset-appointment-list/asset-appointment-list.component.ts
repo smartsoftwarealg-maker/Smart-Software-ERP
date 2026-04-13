@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, effect, input, Input, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -30,41 +30,36 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-
-       
         RouterModule,
-
-
-
-        PaginationComponent
-    ]})
+        PaginationComponent,
+    ],
+})
 export class AssetAppointmentListComponent extends BaseChildEntityListComponent<ASSAppointment> {
+    assetId = input<number>(0);
+    onAssetIdChange = effect(() => {
+        this.entitySrv.setParentId(this.assetId());
+        this.refresh();
+    });
     override displayedColumns = [
         'date',
         'number',
         'location',
         'beneficiary',
-        'key'
+        'key',
     ];
 
-
-
-    constructor(
-        public entitySrv: AssetAppointmentService) {
+    constructor(public entitySrv: AssetAppointmentService) {
         super(entitySrv, 'ASSAppointment');
     }
 
-    // TODO: Skipped for migration because:
-    //  Accessor inputs cannot be migrated as they are too complex.
-    @Input()
-    set assetId(id: number) {
-        this.entitySrv.setParentId(id);
-        this.refresh();
-    }
 
     openAppointment(id: number) {
         if (id > 0) {
-            this.router.navigate(['../../asset-appointments', id], { relativeTo: this.route }).then();
+            this.router
+                .navigate(['../../asset-appointments', id], {
+                    relativeTo: this.route,
+                })
+                .then();
         }
     }
 }

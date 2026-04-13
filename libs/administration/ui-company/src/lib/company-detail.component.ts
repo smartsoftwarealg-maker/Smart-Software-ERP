@@ -89,12 +89,12 @@ export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
 
     public isSectionInvalid(section: string): boolean {
         switch (section) {
-            case 'main':
-                return this.isMainSectionInvalid();
-            case 'contact':
-                return this.isContactSectionInvalid();
-            default:
-                return false;
+        case 'main':
+            return this.isMainSectionInvalid();
+        case 'contact':
+            return this.isContactSectionInvalid();
+        default:
+            return false;
         }
     }
 
@@ -106,7 +106,7 @@ export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
 
         // if expanded return primary background class
         if (panel.expanded)
-            return 'b-primary-expansion-panel'
+            return 'b-primary-expansion-panel';
         else
             return '';
     }

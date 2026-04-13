@@ -17,7 +17,7 @@
           }
         </mat-form-field>
         <mat-form-field id="address1" class="default-50 sm-100">
-          <mat-label [translate]="{addr:1}">COMMON_ADDRESS</mat-label>
+          <mat-label ><span translate>COMMON_ADDRESS</span> 1</mat-label>
           <input matInput formControlName="address1" type="text" required>
           @if (form.controls['address1'].invalid) {
             <mat-error translate>COMMON_FIELD_REQUIRED
@@ -25,7 +25,7 @@
           }
         </mat-form-field>
         <mat-form-field id="address2" class="default-50 sm-100">
-          <mat-label [translate]="{addr:2}">COMMON_ADDRESS</mat-label>
+            <mat-label ><span translate>COMMON_ADDRESS</span> 2</mat-label>
           <input matInput formControlName="address2" type="text">
         </mat-form-field>
         <mat-form-field id="company2" class="default-50 sm-100">

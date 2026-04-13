@@ -1,4 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+    Component, effect,
+    EventEmitter,
+    input,
+    Input,
+    OnInit,
+    Output,
+} from '@angular/core';
 import {CashFlowAcc, CashFlowAccountService} from '@ss/accounting/accounting-api';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
@@ -22,7 +29,12 @@ export class CashFlowAccountListComponent implements OnInit {
     data: CashFlowAcc[] = [];
     selected = 0;
     pagination = PaginationModel.newInstance();
-    @Output() itemDeleted =  new EventEmitter<Boolean>();
+    @Output() itemDeleted =  new EventEmitter<boolean>();
+    account = input<string>('');
+    onAccountChange = effect(() => {
+        this.filter = this.account();
+        this.refresh();
+    });
 
     constructor(
         private entitySrv: CashFlowAccountService,
@@ -32,14 +44,7 @@ export class CashFlowAccountListComponent implements OnInit {
         private loginSrv: LoginService) {
         this.entitySrv.setParentId(this.loginSrv?.appCtx.accYear);
         this.pagination.onChange = () => this.refresh();
-    }
 
-    // TODO: Skipped for migration because:
-    //  Accessor inputs cannot be migrated as they are too complex.
-    @Input()
-    set account(code: string) {
-        this.filter = code;
-        this.refresh();
     }
 
 

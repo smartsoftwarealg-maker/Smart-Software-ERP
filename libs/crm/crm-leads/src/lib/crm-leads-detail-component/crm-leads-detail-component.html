@@ -267,7 +267,7 @@
                 <span translate>CRM_ACTIVITIES</span>
             </mat-toolbar>
             <ss-crm-leads-activity-lines-detail
-                [activityId]="activityId"
+                [activityId]="activityId()"
                 [parentId]="leadId"
                 (closed)="select(Panels.ACTIVITY)">
             </ss-crm-leads-activity-lines-detail>

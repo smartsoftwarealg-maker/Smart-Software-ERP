@@ -56,7 +56,8 @@
         "url": "http://127.0.0.1:9998/api/scale/list?api-key=737800"
     },
     "schb": false,
+
     "manufacturing": {
-        "showPallet": false
+        "showPallet": true
     }
 }
