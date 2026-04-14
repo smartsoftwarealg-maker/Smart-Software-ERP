@@ -5,9 +5,9 @@ export interface TaxPayment {
     id: number;
     centerId: number;
     parentId: number;
+    month: number;
     date?: Date;
     base: number;
-    vf: number;
     irg: number;
     fund?: number;
 }
