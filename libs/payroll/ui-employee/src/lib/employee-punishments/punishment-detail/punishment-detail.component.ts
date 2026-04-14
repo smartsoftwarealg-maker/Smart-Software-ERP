@@ -47,7 +47,7 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
         { id: 10, description: 'OCTOBER' },
         { id: 11, description: 'NOVEMBER' },
         { id: 12, description: 'DECEMBER' }
-    ]
+    ];
     constructor(protected detailSrv: PunishmentService) {
         super(detailSrv, 'Punishment');
     }

@@ -28,6 +28,7 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { debounceTime } from 'rxjs/operators';
+import { DatePipe, DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-tax-payment-list',
@@ -50,14 +51,19 @@ import { debounceTime } from 'rxjs/operators';
         PaginationComponent,
         MatHeaderCellDef,
         MatInput,
+        DatePipe,
+        DecimalPipe,
     ],
     templateUrl: './tax-payment-list.component.html',
     styleUrl: './tax-payment-list.component.scss',
+    standalone: true,
 })
 export class TaxPaymentListComponent extends BaseEntityListComponent<TaxPayment> {
-    yearCtrl = new FormControl<number>(null);
     private loginSrv = inject(LoginService);
-    displayedColumns = ['date', 'base', 'irg'];
+
+    yearCtrl = new FormControl<number>(null);
+
+    displayedColumns = ['date', 'month', 'base', 'irg'];
     constructor(
         public override entitySrv: TaxPaymentService,
         public override shellSrv: ShellService,
@@ -82,7 +88,8 @@ export class TaxPaymentListComponent extends BaseEntityListComponent<TaxPayment>
     }
 
     override ngOnInit() {
-        const year = new Date().getFullYear();
+        const year =
+            this.entitySrv.getParentId() || new Date().getFullYear() - 1;
         this.yearCtrl.setValue(year);
         this.entitySrv.setParentId(year);
         super.ngOnInit();

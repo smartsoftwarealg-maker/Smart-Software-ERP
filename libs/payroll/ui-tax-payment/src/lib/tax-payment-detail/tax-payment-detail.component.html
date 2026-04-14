@@ -8,22 +8,28 @@
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>COMMON_DATE</mat-label>
-                <ss-date-picker formControlName="date"></ss-date-picker>
+                <ss-date-picker formControlName="date" autofocus></ss-date-picker>
             </mat-form-field>
+
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>COMMON_MONTH</mat-label>
+                <mat-select formControlName="month">
+                    @for (m of MONTHS; track m.id) {
+                        <mat-option [value]=m.id translate>{{ m.description }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>REMUN_BASE</mat-label>
-                <input matInput formControlName="base" type="number" required autofocus>
-            </mat-form-field>
-
-            <mat-form-field class="default-50 sm-100">
-                <mat-label translate>LOGISTICS_VF_GUARANTEE</mat-label>
-                <input matInput formControlName="vf" type="number" required autofocus>
+                <input matInput formControlName="base" type="number" required >
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate>REMUN_IRG</mat-label>
-                <input matInput formControlName="irg" type="number" required autofocus>
+                <input matInput formControlName="irg" type="number" required>
             </mat-form-field>
 
             <mat-form-field class="default-50 sm-100">
