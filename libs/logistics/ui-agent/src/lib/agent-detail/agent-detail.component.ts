@@ -161,8 +161,9 @@ export class AgentDetailComponent
     isSupplier = computed(
         () => this.agentType() === 0 || this.agentType() === 1,
     );
+    AQS = signal(false);
     isCustomer = computed(
-        () => this.agentType() === 1 || this.agentType() === 2,
+        () => this.agentType() === 0,
     );
     isUnit = computed(() => this.agentType() === 3);
     isInternal = computed(() => this.agentType() === 4);
@@ -217,20 +218,20 @@ export class AgentDetailComponent
                         'LOGISTICS_INTERNAL_AGENTS',
                         'COMMON_AGENTS',
                     ];
-                    const TYPES = [2, 0, 5, 3, 4];
+                    const TYPES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
                     const idx = res['customer']
-                        ? 0
+                        ? 2
                         : res['supplier']
-                            ? 1
+                            ? 0
                             : res['transporter']
-                                ? 2
+                                ? 5
                                 : res['unit']
                                     ? 3
                                     : res['internalAgent']
                                         ? 4
-                                        : 5;
-                    this.agentType.set(TYPES[idx] || 0);
+                                        : 6;
+                    this.agentType.set(TYPES[idx]);
                     this.entitySrv.setURL(URLs[idx]);
                     this.shellSrv.setTitle(TTLs[idx]);
                     switch (idx) {
@@ -239,27 +240,25 @@ export class AgentDetailComponent
                             this.agentTypeSrv,
                         );
                         break;
-                    case 1:
+                    case 2:
                         this.agentTypeLookup = new SupplierLookup(
                             this.agentTypeSrv,
                         );
                         break;
-                    case 2:
+                    case 5:
                         this.agentTypeLookup = new TransporterLookup(
                             this.agentTypeSrv,
                         );
                         break;
-                    case 3:
+                    case 4:
                         this.agentTypeLookup = new BranchLookup(
                             this.agentTypeSrv,
                         );
                         break;
-                    case 4:
+                    case 3:
                         this.agentTypeLookup = new InternalTypeLookup(
                             this.agentTypeSrv,
                         );
-                        break;
-                    case 5:
                         break;
                     }
                     // this.agentTypeLookup = isSupplier
