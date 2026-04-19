@@ -212,21 +212,6 @@
             }
         </mat-expansion-panel>
 
-        <mat-expansion-panel #articles
-                             expanded="false"
-                             [class]="getPanelHeaderClass('articles', articles)"
-                             class="width-div"
-                             (opened)="panelOpened('articles')">
-            <mat-expansion-panel-header>
-                <mat-panel-title translate>
-                    STOCK_ARTICLES
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            @if (shownPanel === 'articles') {
-                <ss-contract-article-main></ss-contract-article-main>
-            }
-        </mat-expansion-panel>
-
         <mat-expansion-panel #archivePanel
                              [class]="getPanelHeaderClass('archives', archivePanel)"
                              class="width-div"

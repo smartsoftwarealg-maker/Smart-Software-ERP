@@ -3,7 +3,7 @@
         <button mat-mini-fab color="primary"
                 [matTooltip]="'COMMON_SAVE' | translate"
                 (click)="save()"
-                [disabled]="!form?.valid || form.pristine" >
+                [disabled]="!form?.valid || form.pristine">
             <i class="fas fa-save"></i>
         </button>
         <button mat-mini-fab
@@ -25,17 +25,17 @@
             <mat-label translate>COMMON_DATE</mat-label>
             <ss-date-picker formControlName="date"></ss-date-picker>
         </mat-form-field>
-<!--        <div class="default-50 sm-100"> </div>-->
-<!--        <mat-form-field class="default-50">-->
-<!--            <mat-label translate>COMMON_DEBIT</mat-label>-->
-<!--            <input matInput-->
-<!--                   formControlName="debit"-->
-<!--                   (change)="onDebitChange($event)"-->
-<!--                   type="number" required>-->
-<!--            @if (form.controls['debit']?.invalid) {-->
-<!--                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>-->
-<!--            }-->
-<!--        </mat-form-field>-->
+        <!--        <div class="default-50 sm-100"> </div>-->
+        <!--        <mat-form-field class="default-50">-->
+        <!--            <mat-label translate>COMMON_DEBIT</mat-label>-->
+        <!--            <input matInput-->
+        <!--                   formControlName="debit"-->
+        <!--                   (change)="onDebitChange($event)"-->
+        <!--                   type="number" required>-->
+        <!--            @if (form.controls['debit']?.invalid) {-->
+        <!--                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>-->
+        <!--            }-->
+        <!--        </mat-form-field>-->
         <mat-form-field class="default-50">
             <mat-label translate>COMMON_CREDIT</mat-label>
             <input matInput
@@ -47,19 +47,13 @@
                 <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
             }
         </mat-form-field>
-        <mat-form-field class="default-50 sm-100">
-            <mat-label translate>COMMON_DESCRIPTION</mat-label>
-            <input matInput formControlName="description" type="text" required>
-            @if (form.controls['description']?.invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
-        </mat-form-field>
         <mat-form-field class="default-50">
-            <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
-            <input matInput formControlName="dueDays" type="number" step="1" required>
-            @if (form.controls['dueDays']?.invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-            }
+            <mat-label translate>LOGISTICS_MODE</mat-label>
+            <ss-auto-complete matInput
+                              [required]="true"
+                              [model]="modeAutoCompleteModel"
+                              formControlName="mode">
+            </ss-auto-complete>
         </mat-form-field>
         <mat-form-field id="number" class="default-50">
             <mat-label translate>COMMON_NUMBER</mat-label>
@@ -68,14 +62,6 @@
                 <mat-error translate>COMMON_FIELD_REQUIRED
                 </mat-error>
             }
-        </mat-form-field>
-        <mat-form-field class="default-50">
-            <mat-label translate>LOGISTICS_MODE</mat-label>
-            <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="modeAutoCompleteModel"
-                              formControlName="mode">
-            </ss-auto-complete>
         </mat-form-field>
         <mat-form-field class="default-50">
             <mat-label translate>COMMON_CHECK_BANK</mat-label>
@@ -90,6 +76,14 @@
             @if (form.controls['bank'].invalid) {
                 <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
             }
+        </mat-form-field>
+        <mat-form-field class="default-50">
+            <mat-label translate>LOGISTICS_CHECK_DUE_DAYS</mat-label>
+            <input matInput formControlName="dueDays" type="number" step="1">
+        </mat-form-field>
+        <mat-form-field class="default-50 sm-100">
+            <mat-label translate>COMMON_DESCRIPTION</mat-label>
+            <input matInput formControlName="description" type="text">
         </mat-form-field>
     </form>
 }

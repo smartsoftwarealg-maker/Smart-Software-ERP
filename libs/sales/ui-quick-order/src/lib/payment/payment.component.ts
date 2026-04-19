@@ -10,7 +10,7 @@ import {
     DefaultAutoCompleteModel,
     UiAutoCompleteComponent,
 } from '@ss/common/ui-auto-complete';
-import { PayModeService } from '@ss/common/api-lookup';
+import { PayMode, PayModeService } from '@ss/common/api-lookup';
 import { BankService } from '@ss/administration/api-bank';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {
@@ -64,6 +64,7 @@ export class PaymentComponent {
 
     quickOrder: QuickOrder;
     id = input(0);
+    isDisabled = input(true);
     public form: UntypedFormGroup | null = null;
 
     constructor() {
@@ -72,6 +73,11 @@ export class PaymentComponent {
                 this.loadPayment();
             }
         });
+        this.modeAutoCompleteModel.onObjectSelected = m => {
+            if(this.form?.controls['id'].value == 0) {
+                this.onModeChange(m)
+            }
+        };
     }
 
     loadPayment() {
@@ -100,15 +106,16 @@ export class PaymentComponent {
     private setupForm(p: Payment): UntypedFormGroup {
         const db = p.amount > 0.0 ? p.amount : 0.0;
         const cr = p.amount < 0.0 ? -p.amount : 0.0;
-        return this.#formBuilder.group({
+
+        const form =  this.#formBuilder.group({
             id: [p.id],
             center: [p.center || this.#loginSrv.appCtx.center],
             number: [p.number || '0'],
-            checkBank: [p.checkBank||0],
+            checkBank: [p.checkBank || 0],
             bank: [p.bank],
-            description: [p.description, Validators.required],
+            description: [p.description],
             date: [p.date || new Date(), Validators.required],
-            dueDays: [p.dueDays || 0, Validators.required],
+            dueDays: [p.dueDays || 0],
             agent: [p.agent || this.quickOrder.agent],
             debit: [{ value: 0, disabled: true }, Validators.required],
             credit: [
@@ -118,6 +125,12 @@ export class PaymentComponent {
             mode: [p.mode || 2, Validators.required],
             canceled: [p.canceled || false],
         });
+
+        if (this.isDisabled()) {
+            form.disable();
+        }
+
+        return form
     }
 
     readForm(): Payment {
@@ -149,7 +162,8 @@ export class PaymentComponent {
                     this.#snackBarSrv.showFailureMessage();
                     return throwError(() => error);
                 }),
-            ).subscribe({
+            )
+            .subscribe({
                 next: () => {
                     this.cancel();
                     this.#snackBarSrv.showSuccessMessage();
@@ -193,8 +207,16 @@ export class PaymentComponent {
         if (this.form?.controls['id'].value) {
             this.#confirmationSrv
                 .confirmDelete()
-                .pipe(switchMap((res) => res ? this.#entitySrv.remove(this.form?.controls['id'].value) : of(null)))
-                .subscribe(res => {
+                .pipe(
+                    switchMap((res) =>
+                        res
+                            ? this.#entitySrv.remove(
+                                  this.form?.controls['id'].value,
+                              )
+                            : of(null),
+                    ),
+                )
+                .subscribe((res) => {
                     if (res) {
                         this.quickOrder.paymentId = null;
                         this.refresh(0);
@@ -202,5 +224,10 @@ export class PaymentComponent {
                     }
                 });
         }
+    }
+
+    onModeChange(mode: PayMode) {
+        this.form?.get('description')?.setValue(mode.id + ' ' + mode.description);
+        this.form?.get('number')?.setValue(mode.id);
     }
 }
