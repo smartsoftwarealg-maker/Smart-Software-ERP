@@ -186,7 +186,7 @@
                                 <span translate>COMMON_PAYMENTS</span>
                             </ng-template>
                             <div class="header__div">
-                                <ss-quick-order-payment [id]="id" [isDisabled]="isDisabled()"></ss-quick-order-payment>
+                                <ss-quick-order-payment [id]="id" [isDisabled]="isDisabled() || isInvoice()"></ss-quick-order-payment>
                             </div>
                         </mat-tab>
                     }

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -22,6 +22,7 @@ import {
 } from '@ss/sales/weight-capture';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { QuickOrderService } from '@ss/sales/ui-quick-order';
 
 @Component({
     selector: 'ss-order-lines-list',
@@ -48,6 +49,7 @@ export class OrderLinesListComponent
     implements OnInit
 {
     private weightCaptureSrv = inject(WeightCaptureService);
+    private quickOrderSrv = inject(QuickOrderService);
 
     displayedColumns = [
         'position',
@@ -60,6 +62,7 @@ export class OrderLinesListComponent
         'vat',
         'total',
     ];
+    protected isInvoice = signal(false);
 
     constructor(
         public override detailSrv: SalesOrderLinesService,
@@ -97,6 +100,11 @@ export class OrderLinesListComponent
             },
             error: () => {},
         });
+        this.quickOrderSrv
+            .getInvoiceInfo(this.detailSrv.getParentId() + '')
+            .subscribe({
+                next: (invoiceInfo) => this.isInvoice.set(invoiceInfo[0].invoiceNumber > 0),
+            });
         super.ngOnInit();
     }
 
