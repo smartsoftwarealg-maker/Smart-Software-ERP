@@ -24,7 +24,7 @@ import {
     PRODUCTION_FORMULAS_URL,
     PRODUCTIONS_URL,
     STOCK_RESERVATIONS_URL,
-    PRODUCTIONS_RESERVATION_URL,
+    PRODUCTIONS_RESERVATION_URL, PRODUCTION_UNITS_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -96,6 +96,12 @@ import {
 import {
     ProductionReservationLineListComponent
 } from '@ss/production/production-reservation';
+import {
+    UnitsListComponent
+} from "../../../../../libs/production/production-article/src/lib/production-units-list/production-units-list.component";
+import {
+    UnitsDetailComponent
+} from "../../../../../libs/production/production-article/src/lib/production-units-detail/production-units-detail.component";
 
 export const prodRoutes: Routes = [
     {
@@ -419,6 +425,25 @@ export const prodRoutes: Routes = [
             {
                 path: ':id',
                 component: DosageUnitsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+    {
+        path: PRODUCTION_UNITS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: UnitsListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: UnitsDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
