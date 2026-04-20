@@ -49,5 +49,6 @@
     "MAX_QTY": "Maksimum üretilebilir miktar",
     "PALLET_COUNT": "Palet sayısı",
     "QTY_RESERVED": "Rezerve edilen miktar",
-    "QTY_TO_TRANSFER": "Transfer edilecek miktar"
+    "QTY_TO_TRANSFER": "Transfer edilecek miktar",
+    "QTY_TRANSFERRED": "Transfer edilen miktar"
 }
