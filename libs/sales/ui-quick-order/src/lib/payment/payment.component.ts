@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { Component, effect, inject, input } from '@angular/core';
 import { SnackBarService } from '@ss/common/ui-shell';
 import {
     UntypedFormGroup,
@@ -29,6 +29,7 @@ import { QuickOrderService } from '../quick-order.service';
 import { QuickOrder } from '../quick-order.api';
 import { catchError, concatMap, of, throwError, switchMap } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
 
 @Component({
     selector: 'ss-quick-order-payment',
@@ -58,6 +59,7 @@ export class PaymentComponent {
     #snackBarSrv = inject(SnackBarService);
     #formBuilder = inject(FormBuilder);
     #loginSrv = inject(LoginService);
+    #orderLineSrv = inject(SalesOrderLinesService);
 
     bankAutoCompleteModel = new DefaultAutoCompleteModel(this.#bankSrv);
     modeAutoCompleteModel = new DefaultAutoCompleteModel(this.#typeSrv);
@@ -73,9 +75,9 @@ export class PaymentComponent {
                 this.loadPayment();
             }
         });
-        this.modeAutoCompleteModel.onObjectSelected = m => {
-            if(this.form?.controls['id'].value == 0) {
-                this.onModeChange(m)
+        this.modeAutoCompleteModel.onObjectSelected = (m) => {
+            if (this.form?.controls['id'].value == 0) {
+                this.onModeChange(m);
             }
         };
     }
@@ -100,6 +102,7 @@ export class PaymentComponent {
             });
         } else {
             this.form = this.setupForm({ id: 0 } as Payment);
+            this.getCredit();
         }
     }
 
@@ -107,7 +110,7 @@ export class PaymentComponent {
         const db = p.amount > 0.0 ? p.amount : 0.0;
         const cr = p.amount < 0.0 ? -p.amount : 0.0;
 
-        const form =  this.#formBuilder.group({
+        const form = this.#formBuilder.group({
             id: [p.id],
             center: [p.center || this.#loginSrv.appCtx.center],
             number: [p.number || '0'],
@@ -130,7 +133,7 @@ export class PaymentComponent {
             form.disable();
         }
 
-        return form
+        return form;
     }
 
     readForm(): Payment {
@@ -227,7 +230,19 @@ export class PaymentComponent {
     }
 
     onModeChange(mode: PayMode) {
-        this.form?.get('description')?.setValue(mode.id + ' ' + mode.description);
+        this.form
+            ?.get('description')
+            ?.setValue(mode.id + ' ' + mode.description);
         this.form?.get('number')?.setValue(mode.id);
+    }
+
+    getCredit() {
+        this.#entitySrv.getTotal(this.#orderLineSrv.getParentId()).subscribe({
+            next: (t) => {
+                const fft = t.find((t) => (t.description = 'LOGISTICS_FTT'));
+                const vf = t.find((t) => (t.description = 'LOGISTICS_VF'));
+                this.form?.controls['credit']?.setValue(fft?.value | vf?.value | 0);
+            },
+        });
     }
 }
