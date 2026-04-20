@@ -24,12 +24,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MatTooltip } from '@angular/material/tooltip';
 import { PaymentsDetailService } from '@ss/logistics/payments';
 import { Payment } from '@ss/logistics/api-common';
-import { LoginService } from '@ss/common/api-common';
+import { LanguageService, LoginService } from '@ss/common/api-common';
 import { QuickOrderService } from '../quick-order.service';
 import { QuickOrder } from '../quick-order.api';
-import { catchError, concatMap, of, throwError, switchMap } from 'rxjs';
+import { catchError, concatMap, of, throwError, switchMap, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
+import { JsonPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-quick-order-payment',
@@ -51,6 +52,7 @@ import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
     ],
 })
 export class PaymentComponent {
+    #langSrv = inject(LanguageService);
     #confirmationSrv = inject(ConfirmationDialogService);
     #entitySrv = inject(PaymentsDetailService);
     #quickOrderSrv = inject(QuickOrderService);
@@ -60,6 +62,8 @@ export class PaymentComponent {
     #formBuilder = inject(FormBuilder);
     #loginSrv = inject(LoginService);
     #orderLineSrv = inject(SalesOrderLinesService);
+    readonly #check = this.#langSrv.translate('COMMON_CHECK');
+    readonly #CHECK = 2;
 
     bankAutoCompleteModel = new DefaultAutoCompleteModel(this.#bankSrv);
     modeAutoCompleteModel = new DefaultAutoCompleteModel(this.#typeSrv);
@@ -109,12 +113,14 @@ export class PaymentComponent {
     private setupForm(p: Payment): UntypedFormGroup {
         const db = p.amount > 0.0 ? p.amount : 0.0;
         const cr = p.amount < 0.0 ? -p.amount : 0.0;
+        p.mode = p.mode || 2;
+        p.description = p.description || this.#check;
 
         const form = this.#formBuilder.group({
             id: [p.id],
             center: [p.center || this.#loginSrv.appCtx.center],
-            number: [p.number || '0'],
-            checkBank: [p.checkBank || 0],
+            number: [p.number || ''],
+            checkBank: [p.checkBank],
             bank: [p.bank],
             description: [p.description],
             date: [p.date || new Date(), Validators.required],
@@ -133,6 +139,16 @@ export class PaymentComponent {
             form.disable();
         }
 
+        form.controls['number']?.valueChanges
+            .pipe(debounceTime(300), distinctUntilChanged())
+            .subscribe((res) => {
+                const mode = this.modeAutoCompleteModel.cache;
+                this.form
+                    ?.get('description')
+                    .setValue((mode?.description || '') + ' ' + (res || ''));
+            });
+        this.form = form;
+        this.onModeChange({ id: p.mode, description: '' });
         return form;
     }
 
@@ -146,6 +162,11 @@ export class PaymentComponent {
 
     save() {
         const val = this.readForm();
+        if (val.mode !== this.#CHECK) {
+            val.number = '';
+            val.checkBank = null;
+            val.bank = null;
+        }
         this.#entitySrv
             .save(val)
             .pipe(
@@ -230,10 +251,16 @@ export class PaymentComponent {
     }
 
     onModeChange(mode: PayMode) {
-        this.form
-            ?.get('description')
-            ?.setValue(mode.id + ' ' + mode.description);
-        this.form?.get('number')?.setValue(mode.id);
+        this.form?.get('description')?.setValue(mode.description);
+        if (mode.id === 2) {
+            this.form?.get('number')?.setValidators(Validators.required);
+            this.form?.get('checkBank')?.setValidators(Validators.required);
+        } else {
+            this.form?.get('number')?.clearValidators();
+            this.form?.get('checkBank')?.clearValidators();
+        }
+        this.form?.get('number')?.updateValueAndValidity();
+        this.form?.get('checkBank')?.updateValueAndValidity();
     }
 
     getCredit() {
@@ -241,7 +268,9 @@ export class PaymentComponent {
             next: (t) => {
                 const fft = t.find((t) => (t.description = 'LOGISTICS_FTT'));
                 const vf = t.find((t) => (t.description = 'LOGISTICS_VF'));
-                this.form?.controls['credit']?.setValue(fft?.value | vf?.value | 0);
+                this.form?.controls['credit']?.setValue(
+                    fft?.value | vf?.value | 0,
+                );
             },
         });
     }

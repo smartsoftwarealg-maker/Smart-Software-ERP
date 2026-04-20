@@ -48,7 +48,6 @@ import { map, Observable, of, zip, switchMap } from 'rxjs';
         ReactiveFormsModule,
         DatePickerComponent,
         RouterModule,
-        ContractArticleMainComponent,
         AppArchiveMainComponent,
         UiAutoCompleteComponent,
     ],
