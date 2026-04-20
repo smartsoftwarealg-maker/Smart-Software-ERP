@@ -30,7 +30,6 @@ import { QuickOrder } from '../quick-order.api';
 import { catchError, concatMap, of, throwError, switchMap, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
-import { JsonPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-quick-order-payment',
@@ -70,7 +69,7 @@ export class PaymentComponent {
 
     quickOrder: QuickOrder;
     id = input(0);
-    isDisabled = input(true);
+    isDisabled = input(false);
     public form: UntypedFormGroup | null = null;
 
     constructor() {

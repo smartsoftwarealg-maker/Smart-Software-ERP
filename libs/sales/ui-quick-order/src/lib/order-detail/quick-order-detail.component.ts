@@ -95,6 +95,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     blockedProject = signal(false);
     protected schb = signal(false);
     protected isDisabled = signal(false);
+    protected isInvoice = signal(false);
 
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
     constructor(
@@ -204,6 +205,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
                         'payMethod',
                         'date',
                     ].forEach((c) => form?.controls[c].disable());
+                    this.isInvoice.set(true);
                 }
             });
         }
