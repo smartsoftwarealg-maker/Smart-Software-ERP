@@ -34,7 +34,6 @@
     "VACATION": "Leave",
     "ACQUIRED": "Acquired",
     "TAKEN": "Taken",
-    "REST": "Remaining",
     "REFERENCE": "Reference",
     "EDO": "Electronic deposit order (EDO)",
     "SELECTED_BANKS": "Selected banks",
@@ -91,5 +90,6 @@
     "PAYROLL_COMPLETE": "Payroll complete",
     "PAYROLL_LOCK_READY": "Payroll lock ready",
     "LOCK_PAYROLL": "Lock payroll",
-    "DEPOSIT_DAY": "Electronic payment day"
+    "DEPOSIT_DAY": "Electronic payment day",
+    "REST": "Rest"
 }

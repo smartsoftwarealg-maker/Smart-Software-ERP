@@ -25,7 +25,6 @@ import { ProductionTransferLinesService } from '../production-services/productio
 import { AccTransactionLineService } from '@ss/accounting/accounting-api';
 import { MaterialModule } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
-import { WeightCaptureDialogButtonComponent } from '@ss/sales/weight-capture';
 
 @Component({
     selector: 'ss-production-transfer-lines-list',
@@ -58,6 +57,7 @@ export class ProductionTransferLinesListComponent
         'reference',
         'description',
         'qtyOrdered',
+        'charge4',
         'qtySatisfied',
         'storeDescription',
         'storeName',

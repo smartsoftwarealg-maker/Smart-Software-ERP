@@ -38,6 +38,7 @@ export const navBar = [
 
 export const langAssets = [
     ['assets/locale/', ''],
+    ['assets/locale/bl_', 'BL_'],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
     ['assets/locale/payroll_', 'PAYROLL_'],
     ['assets/locale/common_', 'COMMON_'],

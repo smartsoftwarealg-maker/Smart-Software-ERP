@@ -47,5 +47,7 @@
     "CANCEL_ALL_TRANSFERS": "Cancel all transfers",
     "IN_ORDER":             "Current order",
     "MAX_QTY":              "Max producible quantity",
-    "PALLET_COUNT":        "Number of pallets"
+    "PALLET_COUNT":        "Number of pallets",
+    "QTY_RESERVED":         "Qty reserved",
+    "QTY_TO_TRANSFER":      "Qty to transfer"
 }

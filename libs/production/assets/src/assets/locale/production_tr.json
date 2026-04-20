@@ -47,5 +47,7 @@
     "CANCEL_ALL_TRANSFERS": "Tüm transferleri iptal et",
     "IN_ORDER": "Mevcut sipariş",
     "MAX_QTY": "Maksimum üretilebilir miktar",
-    "PALLET_COUNT": "Palet sayısı"
+    "PALLET_COUNT": "Palet sayısı",
+    "QTY_RESERVED": "Rezerve edilen miktar",
+    "QTY_TO_TRANSFER": "Transfer edilecek miktar"
 }
