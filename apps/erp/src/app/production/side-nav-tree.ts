@@ -16,7 +16,7 @@ import {
     ABS_PRODUCTION_CONSUMPTION_URL,
     ABS_PRODUCTION_TRANSFER_DETAIL_URL,
     ABS_PRODUCTION_FORMULAS_URL,
-    ABS_PRODUCTION_RESERVATION_URL,
+    ABS_PRODUCTION_RESERVATION_URL, ABS_PRODUCTION_UNITS_URL,
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -29,6 +29,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-solid fa-cars',
             route: ABS_PRODUCTION_ARTICLE_TYPES_URL,
             accessRights: 'ArticleType',
+        },
+        {
+            name: 'STOCK_UNITS',
+            icon: 'fa-solid fa-ruler',
+            route: ABS_PRODUCTION_UNITS_URL,
+            accessRights: 'Unit',
         },
         {
             name: 'STOCK_DOSAGE_UNITS',

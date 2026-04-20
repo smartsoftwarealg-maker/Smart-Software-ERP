@@ -165,3 +165,20 @@ export interface AvailableStock {
     classDescription: string;
     articles: AvailableArticle[];
 }
+
+export interface UnitsOfMeasure {
+    id: number;
+    code?: string;
+    name: string;
+    description?: string;
+    unitType: string;
+    baseUnitId?: number;
+    conversionFactor?: number;
+    value?: number;
+    isActive?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+    createdBy?: number;
+    updatedBy?: number;
+}
+

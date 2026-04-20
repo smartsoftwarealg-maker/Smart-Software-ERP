@@ -50,5 +50,6 @@
     "PALLET_COUNT":           "عدد المنصات",
     "QTY_RESERVED":           "الكمية المحجوزة",
     "QTY_TO_TRANSFER":        "الكمية المراد تحويلها",
-    "QTY_TRANSFERRED":        "الكمية المحولة"
+    "QTY_TRANSFERRED":        "الكمية المحولة",
+    "UNITS_OF_MEASURE":       "وحدات القياس"
 }
