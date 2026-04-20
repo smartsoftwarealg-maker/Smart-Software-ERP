@@ -494,5 +494,6 @@
     "IS_ADVANCE":            "Est un acompte",
     "CHECK_BANK":            "Cheque de Banque",
     "FULL_NAME": "Nom complet",
-    "CSV_EXPORT":            "Exporter vers csv"
+    "CSV_EXPORT":            "Exporter vers csv",
+    "DELETED_AT":            "Supprimé le"
 }

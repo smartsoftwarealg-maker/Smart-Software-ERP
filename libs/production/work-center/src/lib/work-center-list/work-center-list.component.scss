@@ -1,0 +1,50 @@
+mat-table {
+    min-width: 1200px;
+}
+
+mat-header-cell {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.75em;
+    font-family: Arial, serif;
+}
+
+.table-container {
+    width: 96%;
+    height: 45%;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex: 1 0 60%;
+    overflow-x: auto;
+    min-height: 350px;
+}
+
+
+.pagination-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.mat-column-code {
+    flex: 1 1 100px;
+    border-left: gray solid 1px;
+    padding-left: 4px;
+}
+
+.mat-column-name {
+    flex: 1 1 150px;
+    border-left: gray solid 1px;
+    padding-left: 4px;
+}
+
+.mat-column-description,
+.mat-column-ccDescription {
+    flex: 1 1 200px;
+    border-left: gray solid 1px;
+    padding-left: 4px;
+}
+
+.mat-column-workCenterType {
+    flex: 1 1 120px;
+    border-left: gray solid 1px;
+}
