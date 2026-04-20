@@ -49,5 +49,6 @@
     "MAX_QTY":                "أقصى كمية يمكن إنتاجها",
     "PALLET_COUNT":           "عدد المنصات",
     "QTY_RESERVED":           "الكمية المحجوزة",
-    "QTY_TO_TRANSFER":        "الكمية المراد تحويلها"
+    "QTY_TO_TRANSFER":        "الكمية المراد تحويلها",
+    "QTY_TRANSFERRED":        "الكمية المحولة"
 }

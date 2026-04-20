@@ -48,5 +48,6 @@
     "MAX_QTY":                "Quantité maximale produisible",
     "PALLET_COUNT":           "Nombre de palettes",
     "QTY_RESERVED":           "Quantité réservée",
-    "QTY_TO_TRANSFER":        "Quantité à transférer"
+    "QTY_TO_TRANSFER":        "Quantité à transférer",
+    "QTY_TRANSFERRED":        "Quantité transférée"
 }

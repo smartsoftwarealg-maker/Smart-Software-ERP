@@ -49,5 +49,6 @@
     "MAX_QTY":              "Max producible quantity",
     "PALLET_COUNT":        "Number of pallets",
     "QTY_RESERVED":         "Qty reserved",
-    "QTY_TO_TRANSFER":      "Qty to transfer"
+    "QTY_TO_TRANSFER":      "Qty to transfer",
+    "QTY_TRANSFERRED":      "Qty transferred"
 }
