@@ -63,6 +63,7 @@ export class OrderLinesListComponent
         'total',
     ];
     protected isInvoice = signal(false);
+    protected isManager = signal(false);
 
     constructor(
         public override detailSrv: SalesOrderLinesService,
@@ -103,7 +104,11 @@ export class OrderLinesListComponent
         this.quickOrderSrv
             .getInvoiceInfo(this.detailSrv.getParentId() + '')
             .subscribe({
-                next: (invoiceInfo) => this.isInvoice.set(invoiceInfo[0].invoiceNumber > 0),
+                next: (invoiceInfo) =>
+                    this.isInvoice.set(
+                        invoiceInfo[0].invoiceNumber > 0 &&
+                            !this.loginSrv.appCtx.manager,
+                    ),
             });
         super.ngOnInit();
     }
