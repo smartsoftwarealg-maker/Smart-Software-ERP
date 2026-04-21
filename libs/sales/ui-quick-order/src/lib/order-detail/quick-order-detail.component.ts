@@ -195,10 +195,12 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             );
             this.entitySrv.getInvoiceInfo(q.id + '').subscribe({
                 next: (invoiceInfo) => {
-                    const isInv = invoiceInfo[0].invoiceNumber > 0;
-                    this.isInvoice.set(isInv);
-                    if (isInv && !this.isManager()) {
-                        form.disable();
+                    if (invoiceInfo?.length > 0) {
+                        const isInv = invoiceInfo[0].invoiceNumber > 0;
+                        this.isInvoice.set(isInv);
+                        if (isInv && !this.isManager()) {
+                            form.disable();
+                        }
                     }
                 },
             });
