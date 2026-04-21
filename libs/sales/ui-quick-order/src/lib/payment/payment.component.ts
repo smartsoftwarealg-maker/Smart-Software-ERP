@@ -69,7 +69,7 @@ export class PaymentComponent {
 
     quickOrder: QuickOrder;
     id = input(0);
-    isDisabled = input(false);
+    isInvoice = input(false);
     public form: UntypedFormGroup | null = null;
 
     constructor() {
@@ -134,7 +134,7 @@ export class PaymentComponent {
             canceled: [p.canceled || false],
         });
 
-        if (this.isDisabled()) {
+        if (this.isInvoice()) {
             form.disable();
         }
 

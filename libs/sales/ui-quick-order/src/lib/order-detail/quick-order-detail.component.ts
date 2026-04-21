@@ -93,8 +93,8 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     paymentId: number;
     agentId: number;
     blockedProject = signal(false);
-    protected schb = signal(false);
-    protected isDisabled = signal(false);
+    protected isSchb = signal(false);
+    protected isManager = signal(false);
     protected isInvoice = signal(false);
 
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
@@ -189,10 +189,19 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
         this.paymentId = q.paymentId || 0;
         this.agentId = q.agent;
 
-        if (this.schb()) {
+        if (this.isSchb()) {
             ['license', 'licenseDate', 'licenseIssuer'].forEach((c) =>
                 form?.controls[c].disable(),
             );
+            this.entitySrv.getInvoiceInfo(q.id + '').subscribe({
+                next: (invoiceInfo) => {
+                    const isInv = invoiceInfo[0].invoiceNumber > 0;
+                    this.isInvoice.set(isInv);
+                    if (isInv && !this.isManager()) {
+                        form.disable();
+                    }
+                },
+            });
         }
 
         if (q.id > 0) {
@@ -208,10 +217,6 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
                     this.isInvoice.set(true);
                 }
             });
-        }
-
-        if (this.isDisabled()) {
-            form.disable();
         }
 
         return form;
@@ -234,11 +239,8 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     override preload(): Observable<unknown> {
         return this.#appConfigSrv.getConfig().pipe(
             tap((conf: { schb: boolean }) => {
-                this.schb.set(conf?.schb === true);
-                this.isDisabled.set(
-                    conf?.schb && !this.#loginSrv.appCtx.manager,
-                );
-            }),
+                this.isSchb.set(conf?.schb === true);
+                this.isManager.set(this.#loginSrv.appCtx.manager)}),
             switchMap((_) => super.preload()),
         );
     }

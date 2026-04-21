@@ -143,7 +143,7 @@
                                 </ss-auto-complete>
                             </mat-form-field>
 
-                            @if (!schb()) {
+                            @if (!isSchb()) {
                                 <mat-form-field class="default-50 sm-100">
                                     <mat-label><span translate>LOGISTICS_DRIVER</span> 2</mat-label>
                                     <input matInput formControlName="driver" type="text">
@@ -186,7 +186,7 @@
                                 <span translate>COMMON_PAYMENTS</span>
                             </ng-template>
                             <div class="header__div">
-                                <ss-quick-order-payment [id]="id" [isDisabled]="isDisabled() || isInvoice()"></ss-quick-order-payment>
+                                <ss-quick-order-payment [id]="id" [isInvoice]="isInvoice() && !isManager()"></ss-quick-order-payment>
                             </div>
                         </mat-tab>
                     }
