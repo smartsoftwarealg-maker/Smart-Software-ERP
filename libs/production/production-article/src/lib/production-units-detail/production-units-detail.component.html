@@ -21,13 +21,19 @@
 
                 <mat-form-field class="default-50">
                     <mat-label>Unit Type</mat-label>
-                    <input matInput formControlName="unitType">
+                    <mat-select formControlName="unitType">
+                        <mat-option [value]="null"></mat-option>
+                        @for (t of UNIT_TYPES; track t) {
+                            <mat-option [value]="t">{{ `PROD_${t}` | translate}}</mat-option>
+                        }
+                    </mat-select>
+
                 </mat-form-field>
 
-                <mat-form-field class="default-50">
-                    <mat-label>Conversion Factor</mat-label>
-                    <input matInput formControlName="conversionFactor" type="number">
-                </mat-form-field>
+<!--                <mat-form-field class="default-50">-->
+<!--                    <mat-label>Conversion Factor</mat-label>-->
+<!--                    <input matInput formControlName="conversionFactor" type="number">-->
+<!--                </mat-form-field>-->
 
                 <mat-form-field class="default-50">
                     <mat-label>Value</mat-label>

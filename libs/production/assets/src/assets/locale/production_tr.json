@@ -50,5 +50,13 @@
     "PALLET_COUNT": "Palet sayısı",
     "QTY_RESERVED": "Rezerve edilen miktar",
     "QTY_TO_TRANSFER": "Transfer edilecek miktar",
-    "QTY_TRANSFERRED": "Transfer edilen miktar"
+    "QTY_TRANSFERRED": "Transfer edilen miktar",
+    "UNITS_OF_MEASURE": "Birimler",
+    "TIME": "Zaman",
+    "LENGTH": "Uzunluk",
+    "WEIGHT": "Ağırlık",
+    "VOLUME": "Hacim",
+    "AREA": "Alan",
+    "ENERGY": "Enerji",
+    "QUANTITY": "Miktar"
 }

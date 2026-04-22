@@ -5,10 +5,11 @@ import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {MaterialModule, PaginatorPersistenceService} from '@ss/common/api-common';
 import {CommonModule} from '@angular/common';
 import {PaginationComponent} from '@ss/common/ui-pagination';
-import {UnitsService} from "../services/units.service";
-import {ShellService, SnackBarService} from "@ss/common/ui-shell";
-import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
-import {DefaultReportService} from "@ss/common/ui-default-report-component";
+import {UnitsService} from '../services/units.service';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
+import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
+import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-production-units-list',
@@ -19,19 +20,22 @@ import {DefaultReportService} from "@ss/common/ui-default-report-component";
         CommonModule,
         MaterialModule,
         RouterModule,
-        PaginationComponent
-    ]
+        PaginationComponent,
+        TranslatePipe,
+    ],
 })
-export class UnitsListComponent extends BaseEntityListComponent<UnitsOfMeasure> implements OnInit {
-
+export class UnitsListComponent
+    extends BaseEntityListComponent<UnitsOfMeasure>
+    implements OnInit
+{
     displayedColumns = [
         'code',
         'name',
         'description',
         'unitType',
-        'conversionFactor',
+        // 'conversionFactor',
         'value',
-        'isActive'
+        'isActive',
     ];
 
     constructor(
@@ -42,7 +46,7 @@ export class UnitsListComponent extends BaseEntityListComponent<UnitsOfMeasure> 
         public override router: Router,
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
-        public override pagPersistSrv: PaginatorPersistenceService
+        public override pagPersistSrv: PaginatorPersistenceService,
     ) {
         super(
             unitsSrv,
@@ -53,7 +57,7 @@ export class UnitsListComponent extends BaseEntityListComponent<UnitsOfMeasure> 
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'PROD_UNITS_OF_MEASURE'
+            'PROD_UNITS_OF_MEASURE',
         );
     }
 

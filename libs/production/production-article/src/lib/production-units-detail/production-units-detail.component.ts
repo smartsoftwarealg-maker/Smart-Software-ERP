@@ -33,21 +33,21 @@ import { DosageUnitService } from '../services/dosage-unit.service';
 import { PackagingUnitService } from '../services/packaging-unit.service';
 import { ProductTypeService } from '../services/product-type.service';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
-import {UnitsService} from "../services/units.service";
+import {UnitsService} from '../services/units.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-production-units-detail',
     styleUrls: ['./production-units-detail.component.scss'],
     templateUrl: './production-units-detail.component.html',
     standalone: true,
-    imports: [
-    MaterialModule,
-    RouterModule
-]
+    imports: [MaterialModule, RouterModule, TranslatePipe],
 })
 export class UnitsDetailComponent
     extends BaseEntityDetailComponent<UnitsOfMeasure>
-    implements OnInit {
+    implements OnInit
+{
+    protected UNIT_TYPES = ['TIME', 'LENGTH', 'QUANTITY', 'WEIGHT', 'VOLUME', 'AREA', 'ENERGY'];
 
     constructor(
         public override entitySrv: UnitsService,
@@ -64,20 +64,20 @@ export class UnitsDetailComponent
             route,
             formBuilder,
             confirmationSrv,
-            'PROD_UNITS_OF_MEASURE'
+            'PROD_UNITS_OF_MEASURE',
         );
     }
 
     override setupForm(u: UnitsOfMeasure) {
         return this.formBuilder.group({
             id: [u.id],
-            code: [u.code],
-            name: [u.name, Validators.required],
-            description: [u.description],
-            unitType: [u.unitType],
-            conversionFactor: [u.conversionFactor],
-            value: [u.value],
-            isActive: [u.isActive ?? 1],
+            code: [u.code, Validators.required],
+            name:             [u.name, Validators.required],
+            description:      [u.description],
+            unitType:         [u.unitType, Validators.required],
+            conversionFactor: [u.conversionFactor, Validators.required],
+            value:            [u.value, Validators.required],
+            isActive:         [u.isActive ?? 1],
         });
     }
 }
