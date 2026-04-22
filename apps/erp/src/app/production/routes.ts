@@ -25,6 +25,7 @@ import {
     PRODUCTIONS_URL,
     STOCK_RESERVATIONS_URL,
     PRODUCTIONS_RESERVATION_URL, PRODUCTION_UNITS_URL,
+    PRODUCTION_WORK_CENTER_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -98,10 +99,11 @@ import {
 } from '@ss/production/production-reservation';
 import {
     UnitsListComponent
-} from "../../../../../libs/production/production-article/src/lib/production-units-list/production-units-list.component";
+} from '@ss/production/production-article';
 import {
     UnitsDetailComponent
-} from "../../../../../libs/production/production-article/src/lib/production-units-detail/production-units-detail.component";
+} from '@ss/production/production-article';
+import {WorkCenterDetailComponent, WorkCenterListComponent} from '@ss/production/work-center';
 
 export const prodRoutes: Routes = [
     {
@@ -666,6 +668,25 @@ export const prodRoutes: Routes = [
                     },
                     ...docInfoRoutes,
                 ],
+            },
+        ],
+    },
+    {
+        path: PRODUCTION_WORK_CENTER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: WorkCenterListComponent,
+                canActivate: [loginGuard],
+                canActivateChild: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: WorkCenterDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                canActivateChild: [loginGuard],
             },
         ],
     },

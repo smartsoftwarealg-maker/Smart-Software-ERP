@@ -499,5 +499,6 @@
     "CHECK_BANK":            "Check Bank",
     "FULL_NAME":             "Full name",
     "CSV_EXPORT":            "Export to csv file",
-    "CHECK":                 "Check"
+    "CHECK":                 "Check",
+    "DELETED_AT":            "Deleted at"
 }

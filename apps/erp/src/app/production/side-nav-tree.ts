@@ -17,6 +17,7 @@ import {
     ABS_PRODUCTION_TRANSFER_DETAIL_URL,
     ABS_PRODUCTION_FORMULAS_URL,
     ABS_PRODUCTION_RESERVATION_URL, ABS_PRODUCTION_UNITS_URL,
+    ABS_PRODUCTION_WORK_CENTER_URL_URL,
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -47,6 +48,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-solid fa-box-open-full',
             route: ABS_PRODUCTION_PACKAGING_UNITS_URL,
             accessRights: 'PackagingUnit',
+        },
+        {
+            name: 'PROD_WORK_CENTERS',
+            icon: 'fas fa-box',
+            route: ABS_PRODUCTION_WORK_CENTER_URL_URL,
+            accessRights: 'WorkCenter',
         },
         {
             name: 'STOCK_ARTICLES',
