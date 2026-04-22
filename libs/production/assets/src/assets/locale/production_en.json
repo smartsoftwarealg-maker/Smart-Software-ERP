@@ -51,5 +51,12 @@
     "QTY_RESERVED":         "Qty reserved",
     "QTY_TO_TRANSFER":      "Qty to transfer",
     "QTY_TRANSFERRED":      "Qty transferred",
-    "UNITS_OF_MEASURE":    "Units of Measure"
+    "UNITS_OF_MEASURE":    "Units of Measure",
+    "TIME":            "Time",
+    "LENGTH":          "Length",
+    "WEIGHT":          "Weight",
+    "VOLUME":          "Volume",
+    "AREA":            "Area",
+    "ENERGY":          "Energy",
+    "QUANTITY":        "Quantity"
 }

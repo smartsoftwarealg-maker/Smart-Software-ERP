@@ -51,5 +51,12 @@
     "QTY_RESERVED":           "الكمية المحجوزة",
     "QTY_TO_TRANSFER":        "الكمية المراد تحويلها",
     "QTY_TRANSFERRED":        "الكمية المحولة",
-    "UNITS_OF_MEASURE":       "وحدات القياس"
+    "UNITS_OF_MEASURE":       "وحدات القياس",
+    "TIME":                   "الوقت",
+    "LENGTH":                 "الطول",
+    "WEIGHT":                 "الوزن",
+    "VOLUME":                 "الحجم",
+    "AREA":                   "المساحة",
+    "ENERGY":                 "الطاقة",
+    "QUANTITY":               "الكمية"
 }

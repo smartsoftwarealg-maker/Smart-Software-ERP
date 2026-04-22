@@ -58,7 +58,7 @@ mat-table {
 
 .mat-column-value {
     flex: 0 0 100px;
-    text-align: center;
+    justify-content: end;
 }
 
 .mat-column-isActive {

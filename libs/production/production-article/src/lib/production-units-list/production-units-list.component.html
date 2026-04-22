@@ -18,7 +18,7 @@
 
         <ng-container matColumnDef="unitType">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
-            <mat-cell *matCellDef="let e">{{ e.unitType }}</mat-cell>
+            <mat-cell *matCellDef="let e">{{ `PROD_${e.unitType}` | translate}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="conversionFactor">
@@ -31,7 +31,7 @@
         <ng-container matColumnDef="value">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Value</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ e.value || '-' }}
+                {{ e.value | number: '1.2-4' }}
             </mat-cell>
         </ng-container>
 
