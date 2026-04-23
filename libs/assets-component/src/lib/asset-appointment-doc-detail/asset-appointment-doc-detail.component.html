@@ -137,13 +137,18 @@
           [model]="assetLookupModel"
           [formControl]="inputControl">
         </ss-auto-complete>
-        <mat-hint class="activity f-warn">{{ geoLocation }}</mat-hint>
+          @if (inexistentAssets()) {
+                <mat-hint class="activity f-warn" translate>ASSET_INEXISTENT_ASSET</mat-hint>
+          } @else {
+            <mat-hint class="activity f-warn">{{ geoLocation }}</mat-hint>
+          }
       </mat-form-field>
 
       <div class="btn_div">
         <button mat-mini-fab color="primary"
           matTooltip="{{'COMMON_ADD' | translate}}"
-          (click)="saveAsset(); lookup.setAutoControlValue(null)">
+          (click)="saveAsset(); lookup.setAutoControlValue(null)"
+        [disabled]="inexistentAssets()">
           <i class="fas fa-add"></i>
         </button>
         <button mat-mini-fab

@@ -24,19 +24,19 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./furniture-assignment-detail.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    MatCardContent,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    TranslateDirective,
-    MatInput,
-    MatError,
-    DatePickerComponent,
-    UiAutoCompleteComponent,
-    RouterOutlet
-],
+        MaterialModule,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        MatError,
+        DatePickerComponent,
+        UiAutoCompleteComponent,
+        RouterOutlet
+    ],
 })
 export class FurnitureAssignmentDetailComponent extends BaseEntityDetailComponent<FurnitureTransaction> implements OnInit {
     private router = inject(Router);
@@ -78,7 +78,7 @@ export class FurnitureAssignmentDetailComponent extends BaseEntityDetailComponen
     }
 
     override ngOnInit() {
-        this.saveButton.visible = this.router.url.indexOf("/detail") < 0;
+        this.saveButton.visible = this.router.url.indexOf('/detail') < 0;
         super.ngOnInit();
     }
 }

@@ -88,5 +88,6 @@
     "LOT_EXPIRED":                          "Belirtilen parti süresi dolmuştur.",
     "MISSING_WEIGHT":                       "Tara ağırlığı, brüt ağırlığı veya her ikisi eksik.",
     "NO_CASH_MODE":                         "Nakit ödeme yöntemi bu sistemde mevcut değil.",
-    "OUT_OF_TOLERANCE":                     "Gerçek ağırlıklar tolerans dışındadır. Lütfen ağırlıkları doğrulayın ve tekrar deneyin."
+    "OUT_OF_TOLERANCE":                     "Gerçek ağırlıklar tolerans dışındadır. Lütfen ağırlıkları doğrulayın ve tekrar deneyin.",
+    "INEXISTENT_ASSET":                     "Belirtilen varlık artık mevcut değil."
 }
