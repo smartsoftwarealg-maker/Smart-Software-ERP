@@ -86,11 +86,11 @@ export class WorkCenterDetailComponent extends BaseEntityDetailComponent<WorkCen
             requiresSetup: [w.requiresSetup],
             allowsParallel: [w.allowsParallel],
             currencyId: [w.currencyId],
-            createdAt: [w.createdAt || new Date()],
-            updatedAt: [w.updatedAt || new Date()],
-            createdBy: [w.createdBy || this.#loginSrv.appCtx.id],
-            updatedBy: [w.updatedBy || this.#loginSrv.appCtx.id],
-            deletedAt: [w.deletedAt || new Date()],
+            createdAt: [{ value: w.createdAt || new Date(), disabled: true }],
+            updatedAt: [{ value: w.updatedAt || new Date(), disabled: true }],
+            createdBy: [{ value: w.createdBy || this.#loginSrv.appCtx.id, disabled: true }],
+            updatedBy: [{ value: w.updatedBy || this.#loginSrv.appCtx.id, disabled: true }],
+            deletedAt: [{ value: w.deletedAt || new Date(), disabled: true }],
             ccDescription: [w.ccDescription],
         });
     }

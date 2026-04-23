@@ -69,7 +69,6 @@
     "QUEUE_TIME":           "Queue time",
     "MOVE_TIME":            "Move time",
     "WAIT_TIME":            "Wait time",
-    "CC_DESCRIPTION":       "CC description",
     "ACTIVE":               "Active",
     "IS_BOTTLENECK":        "Is bottleneck",
     "REQUIRES_SETUP":       "Requires setup",
