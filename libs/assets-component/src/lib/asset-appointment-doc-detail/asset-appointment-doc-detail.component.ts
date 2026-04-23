@@ -92,7 +92,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
         this.assetLookupModel.onObjectSelected = o => {
             this.geoLocation = o?.geolocation;
-            this.inexistentAssets.set(o?.dateOut !== null);
+            this.inexistentAssets.set(o?.dateOut !== null && o?.dateOut !== undefined);
         };
         this.assetSrv.activeOnly = false;
     }

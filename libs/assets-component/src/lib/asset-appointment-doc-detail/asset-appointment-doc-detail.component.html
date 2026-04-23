@@ -129,7 +129,6 @@
   </div>
   @if (isEditable) {
     <div class="item ctrl_div">
-
       <mat-form-field class="input_div">
         <mat-label translate>ASSETS</mat-label>
         <ss-auto-complete matInput
@@ -138,7 +137,7 @@
           [formControl]="inputControl">
         </ss-auto-complete>
           @if (inexistentAssets()) {
-                <mat-hint class="activity f-warn" translate>ASSET_INEXISTENT_ASSET</mat-hint>
+                <mat-hint class="activity f-warn" translate>BL_INEXISTENT_ASSET</mat-hint>
           } @else {
             <mat-hint class="activity f-warn">{{ geoLocation }}</mat-hint>
           }
