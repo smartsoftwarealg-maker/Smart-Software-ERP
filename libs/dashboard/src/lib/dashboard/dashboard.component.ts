@@ -123,12 +123,13 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     protected override preInit(): Observable<unknown> {
-        return super.preInit()
-            .pipe(tap(() => {
+        return super.preInit().pipe(
+            tap(() => {
                 this.editButton.visible = false;
                 this.addButton.visible = false;
                 this.deleteButton.visible = false;
-            }));
+            }),
+        );
     }
 
     override ngOnInit() {
@@ -377,20 +378,40 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     private chartData(): ChartConfiguration {
+        const { indices, matrix } = this.extractNumericMatrix();
+
+        const colors = [
+            { bg: 'rgba(54, 162, 235, 0.5)', border: 'rgb(54, 162, 235)' },
+            { bg: 'rgba(255, 99, 132, 0.5)', border: 'rgb(255, 99, 132)' },
+            { bg: 'rgba(75, 192, 192, 0.5)', border: 'rgb(75, 192, 192)' },
+            { bg: 'rgba(255, 206, 86, 0.5)', border: 'rgb(255, 206, 86)' },
+            { bg: 'rgba(153, 102, 255, 0.5)', border: 'rgb(153, 102, 255)' },
+            { bg: 'rgba(255, 159, 64, 0.5)', border: 'rgb(255, 159, 64)' },
+        ];
+
+        // Build datasets for each numeric column (skip column 0 if it's the label column)
+        const datasets = indices
+            .map((colIndex, i) => {
+                if (colIndex === 0) return null; // skip the first column (labels)
+
+                const color = colors[i % colors.length];
+                return {
+                    label: this.headers[colIndex] || `Column ${colIndex + 1}`,
+                    data: matrix[i], // already parsed numbers
+                    backgroundColor: color.bg,
+                    borderColor: color.border,
+                    borderWidth: 1,
+                };
+            })
+            .filter((ds): ds is NonNullable<typeof ds> => ds !== null);
         return {
             type: 'bar',
             data: {
                 labels: this.dashboardData.map((a) => a[0]?.toString()),
-                datasets: [
-                    {
-                        label: this.selectedRow?.description || '',
-                        data: this.dashboardData.map((a) =>
-                            this.asNumber(a[1]),
-                        ),
-                        backgroundColor: ['blue'],
-                        borderColor: ['blue'],
-                    },
-                ],
+                // labels: this.dashboardData.map(
+                //     (row) => row[0]?.toString() || '',
+                // ),
+                datasets: datasets,
             },
             options: {
                 plugins: {
@@ -502,5 +523,64 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
 
     override canShowProcessingStatus() {
         return false;
+    }
+
+    /**
+     * Extracts numeric values from all rows for columns that are suitable for charting.
+     *
+     * A column is considered "chart‑ready" if **every** cell:
+     *   - Contains only digits, dots, commas, spaces, or a percent sign.
+     *   - Parses to a finite number via `asNumber()`.
+     *   - Does not look like an identifier (e.g., pure digits with leading zeros or excessive length).
+     *
+     * @param maxColumns - Maximum number of columns to evaluate (default = 6).
+     * @returns Object containing:
+     *          - indices: Original column indices that passed all checks.
+     *          - matrix:  2D array of parsed numbers (rows = data rows, cols = numeric columns).
+     */
+    private extractNumericMatrix(maxColumns: number = 6): {
+        indices: number[];
+        matrix: number[][];
+    } {
+        const indices: number[] = [];
+        const matrix: number[][] = [];
+
+        if (!this.dashboardData?.length || !this.dashboardData[0]?.length) {
+            return { indices, matrix };
+        }
+
+        const totalRows = this.dashboardData.length;
+        const totalCols = Math.min(maxColumns, this.dashboardData[0].length);
+
+        for (let col = 0; col < totalCols; col++) {
+            const tempValues: number[] = new Array(totalRows);
+            let columnIsValid = false;
+
+            for (let row = 0; row < totalRows; row++) {
+                const rawValue = this.dashboardData[row][col];
+                // Quick rejection: any forbidden character (letters, symbols except those allowed)
+                if (/[^\d,.% -]/.test(rawValue)) {
+                    columnIsValid = false;
+                    break;
+                }
+                const parsed = this.asNumber(rawValue);
+
+                if (
+                    Number.isFinite(parsed) &&
+                    parsed !== 0 &&
+                    parsed <= 1000000000 // More than 10 numbers are likely to be an identifier
+                ) {
+                    columnIsValid = true;
+                }
+                tempValues[row] = parsed;
+            }
+
+            if (columnIsValid) {
+                indices.push(col);
+                matrix.push(tempValues);
+            }
+        }
+
+        return { indices, matrix };
     }
 }
