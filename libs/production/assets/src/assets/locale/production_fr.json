@@ -79,5 +79,14 @@
     "STORAGE":                "Stockage",
     "CAPACITY_PLANNING":      "Planification de la capacité",
     "CONTROL":                "Contrôle",
-    "AUDITING":               "Audit"
+    "AUDITING":               "Audit",
+    "DL-REG":               "Main d'œuvre directe - Régulier",
+    "DL-OT":                "Main d'œuvre directe - Heures supplémentaires",
+    "DL-SETUP":             "Main d'œuvre directe - Configuration",
+    "MCH-RUN":              "Machine - En fonctionnement",
+    "MCH-DEPR":             "Machine - Amortissement",
+    "MCH-MAINT":            "Machine - Maintenance",
+    "OH-LABOR":             "Frais généraux - Main d'œuvre",
+    "OH-MACH":              "Frais généraux - Machine",
+    "OH-UTIL":              "Frais généraux - Services publics"
 }

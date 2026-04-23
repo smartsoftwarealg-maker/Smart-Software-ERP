@@ -1,33 +1,24 @@
-import { Component, inject } from '@angular/core';
-import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {ASSAppointmentHeader, AssetAppointmentLine} from '../assets-api';
-import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
+import { Component, inject, signal } from '@angular/core';
+import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
+import { ASSAppointmentHeader, AssetAppointmentLine } from '../assets-api';
+import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import {UntypedFormBuilder, UntypedFormControl, Validators} from '@angular/forms';
-import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import {LookupsService, Office, OfficeService} from '@ss/common/api-lookup';
-import {AssetAppointmentDocService} from '../services/asset-appointment-doc.service';
+import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { LookupsService, Office, OfficeService } from '@ss/common/api-lookup';
+import { AssetAppointmentDocService } from '../services/asset-appointment-doc.service';
 import { LoginService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {
-    ASSET_MODULE,
-    ATTRIB_TYPE_LOOKUP,
-    AttribTempl,
-    AttributesService,
-} from '@ss/custom-attributes';
-import {switchMap} from 'rxjs/operators';
-import {tap} from 'rxjs/operators';
-import {Observable, of} from 'rxjs';
-import {AssetAppointmentLineService} from '../services/asset-appointment-line.service';
-import {AssetLookupModel} from '../asset-lookup-model';
-import {AssetsService} from '../services/assets.service';
-import {Agent, ConsumerService} from '@ss/logistics/api-agent';
-import {OfficeSearchComponent} from '../office-search/office-search.component';
-import {MatDialog} from '@angular/material/dialog';
-import {WorkflowDialogComponent} from '@ss/workflow';
-import { ASSET_APPOINTMENT } from '@ss/workflow';
-
-
+import { ASSET_MODULE, ATTRIB_TYPE_LOOKUP, AttribTempl, AttributesService } from '@ss/custom-attributes';
+import { switchMap, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { AssetAppointmentLineService } from '../services/asset-appointment-line.service';
+import { AssetLookupModel } from '../asset-lookup-model';
+import { AssetsService } from '../services/assets.service';
+import { Agent, ConsumerService } from '@ss/logistics/api-agent';
+import { OfficeSearchComponent } from '../office-search/office-search.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ASSET_APPOINTMENT, WorkflowDialogComponent } from '@ss/workflow';
 
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -42,14 +33,14 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./asset-appointment-doc-detail.component.scss'],
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    TranslatePipe,
-    DatePickerComponent,
-    RouterModule,
-    UiAutoCompleteComponent,
-    PaginationComponent
-]})
+        MaterialModule,
+        TranslateDirective,
+        TranslatePipe,
+        DatePickerComponent,
+        RouterModule,
+        UiAutoCompleteComponent,
+        PaginationComponent
+    ]})
 export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponent<ASSAppointmentHeader>{
     private officeSrv = inject(OfficeService);
     private attributeSrv = inject(AttributesService);
@@ -82,6 +73,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     pagination       = PaginationModel.newInstance();
     displayedColumns        = ['reference', 'description', 'key'];
     geoLocation = '';
+    inexistentAssets = signal(false);
 
     constructor(
         public override entitySrv: AssetAppointmentDocService,
@@ -98,7 +90,10 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.pagination.onChange = () => this.refresh();
         this.beneficiaryLookup.onObjectSelected = e => this.activity = e.activityDescription;
         this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
-        this.assetLookupModel.onObjectSelected = o => this.geoLocation = o?.geolocation;
+        this.assetLookupModel.onObjectSelected = o => {
+            this.geoLocation = o?.geolocation;
+            this.inexistentAssets.set(o?.dateOut !== null && o?.dateOut !== undefined);
+        };
         this.assetSrv.activeOnly = false;
     }
 
@@ -109,35 +104,37 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.attributeSrv.setParentId(ASSET_MODULE);
         this.detailSrv.setParentId(b.id || 0);
         this.shellSrv.addButton(this.sendBtn);
-        this.isEditable = this.saveButton.visible = this.isEditable && (!b.validated || this.loginSrv.appCtx.manager);
+        this.isEditable = this.saveButton.visible =
+            this.isEditable && (!b.validated || this.loginSrv.appCtx.manager);
         this.attributeSrv
             .attributeList(ASSET_MODULE, ATTRIB_TYPE_LOOKUP)
-            .pipe(tap(res => this.childAttributes = res),
-                switchMap(_ => this.loginSrv.loadContext()),
-                switchMap(_ => this.detailSrv.getList(0, 5)))
-            .subscribe(res => {
+            .pipe(
+                tap((res) => (this.childAttributes = res)),
+                switchMap((_) => this.loginSrv.loadContext()),
+                switchMap((_) => this.detailSrv.getList(0, 5)),
+            )
+            .subscribe((res) => {
                 this.detailData = res.body;
                 this.pagination.elementCount = res.itemCount;
                 this.updateLocationStatus();
             });
 
-        const form = this.formBuilder.group({
-            id:            [b.id],
-            center:        [b.center || this.loginSrv.appCtx.center],
-            serialNumber:  [{ value: b.serialNumber || 1, disabled: false }],
-            date:          [b.date || new Date(), Validators.required],
-            officeId:      [b.officeId, Validators.required],
-            requesterId:   [b.requesterId],
-            requestDate:   [b.requestDate || new Date()],
+        return this.formBuilder.group({
+            id: [b.id],
+            center: [b.center || this.loginSrv.appCtx.center],
+            serialNumber: [{ value: b.serialNumber || 1, disabled: false }],
+            date: [b.date || new Date(), Validators.required],
+            officeId: [b.officeId, Validators.required],
+            requesterId: [b.requesterId],
+            requestDate: [b.requestDate || new Date()],
             requestNumber: [b.requestNumber],
             beneficiaryId: [b.beneficiaryId],
             reappointment: [b.reappointment || false, Validators.required],
-            site:          [{ value: b.site, disabled: true }],
-            building:      [{ value: b.building, disabled: true }],
-            creatorName:   [{ value: b.creatorName, disabled: true }],
-            modifierName:  [{ value: b.modifierName, disabled: true }],
+            site: [{ value: b.site, disabled: true }],
+            building: [{ value: b.building, disabled: true }],
+            creatorName: [{ value: b.creatorName, disabled: true }],
+            modifierName: [{ value: b.modifierName, disabled: true }],
         });
-        return form;
     }
 
     private updateLocationStatus() {
@@ -151,6 +148,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
             beneficiary.enable({ onlySelf: true });
         }
     }
+
     override readForm(): ASSAppointmentHeader {
         const value = super.readForm();
         value.serialNumber = value.serialNumber || 1;
@@ -161,7 +159,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     select(row: AssetAppointmentLine) {
         this.selectedId = row?.id || null;
         this.selectedRow = row;
-        // this.inputControl.setValue(row?.assetId || 0);
+        this.inputControl.setValue(row?.assetId || 0);
     }
 
     deleteAsset() {

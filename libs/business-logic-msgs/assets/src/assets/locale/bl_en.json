@@ -99,5 +99,6 @@
     "INVALID_STORE":                 "Invalid store specified for delivery on invoice",
     "MISSING_WEIGHT":                "Either the tare weight, the gross weight, or both is missing.",
     "NO_CASH_MODE":                  "The cash pay method does not exists in this system.",
-    "OUT_OF_TOLERANCE":              "The actual weights are out of tolerance. Please, verify the weights and try again."
+    "OUT_OF_TOLERANCE":              "The actual weights are out of tolerance. Please, verify the weights and try again.",
+    "INEXISTENT_ASSET":              "The specified asset no longer exists."
 }
