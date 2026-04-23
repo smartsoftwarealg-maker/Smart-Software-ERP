@@ -105,6 +105,13 @@ export class ElementsEntryListComponent
         });
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+            }));
+    }
+
     override getPage(): Observable<ELine[]> {
         const mode = this.infoSrv.selectionMode === 1 ? 'false' : 'true';
         const extraPrams = new HttpParams()
@@ -141,7 +148,6 @@ export class ElementsEntryListComponent
             this.shellSrv.getEntityRights('FixedElement')?.write ||
                 this.loginSrv.appCtx.manager,
         );
-        this.addButton.visible = false;
         super.ngOnInit();
         this.infoSrv.load();
         this.monthSelectorSrv.isUpdatableMonth().subscribe((upd) => {

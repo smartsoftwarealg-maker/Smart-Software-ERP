@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, input } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DOCUMENT_ARCHIVES } from '@ss/common/app-archive';
 
@@ -186,8 +186,10 @@ export class DocInfoComponent {
         },
     ];
     public selectedEntry: Entry = null;
-    @Input() displayedGroups: string[] = [];
+    readonly displayedGroups = input<string[]>([]);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set params(params: any) {
         this.params_ = { ...params, appId: DOCUMENT_ARCHIVES, editable: true };
         this.navigate();
@@ -198,6 +200,8 @@ export class DocInfoComponent {
     }
 
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set showAssets(show: boolean) {
         if (show) {
             if (this.entries_[1].entries.filter(e => e.name === this.AGENT_ASSETS).length < 1) {
@@ -212,7 +216,7 @@ export class DocInfoComponent {
 
     getDisplayedEntries(): GroupEntry[] {
         return this.entries_
-            .filter(x => this.displayedGroups.includes(x.group))
+            .filter(x => this.displayedGroups().includes(x.group))
             .map(e => {
                 e.entries = e.entries.filter(ee => ee.paramsProvided(Object.keys(this.params_)));
                 return e;

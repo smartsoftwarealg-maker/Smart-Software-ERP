@@ -24,6 +24,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DatePipe } from '@angular/common';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { ProductionConsumptionService } from '../production-consumption.service';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-consumption-list',
@@ -82,8 +83,12 @@ export class ProductionConsumptionListComponent extends BaseEntityListComponent<
         );
     }
 
-    override ngOnInit() {
-        this.addButton.visible = false;
-        super.ngOnInit();
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+            }));
     }
+
+
 }

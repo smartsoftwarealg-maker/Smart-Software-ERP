@@ -74,9 +74,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ASSET_RECEPTIONS');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-    }
+
 
     public override setupForm(b: AssetReception) {
         // Make sure to update the template if you edit the configuration here

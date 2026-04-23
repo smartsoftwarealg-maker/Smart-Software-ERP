@@ -17,9 +17,10 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
 import { AccRecordService } from "../acc-record.service";
 import { callback } from "chart.js/helpers";
-import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
+import { debounceTime, distinctUntilChanged, switchMap, tap } from "rxjs/operators";
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { Observable } from "rxjs";
 
 @Component({
   selector: "ss-costing-item-list",
@@ -70,10 +71,16 @@ export class CostItemAccountingRecords extends BaseEntityListComponent<ACCRecord
     this.entitySrv.year = this.currentYear();
   }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.editButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
+    }
+
     override ngOnInit() {
-        this.addButton.visible = false;
-        this.editButton.visible = false;
-        this.deleteButton.visible = false;
         super.ngOnInit();
         this.subscriptions.push(
             this.year

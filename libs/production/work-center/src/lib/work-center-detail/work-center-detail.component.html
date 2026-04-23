@@ -1,0 +1,191 @@
+<mat-card>
+    <mat-card-content>
+        @if (form !== null) {
+            <form [formGroup]="form">
+
+                <mat-accordion>
+                    <mat-expansion-panel #detailPanel
+                                         [class.b-primary-expansion-panel]="detailPanel.expanded" expanded="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title translate>
+                                COMMON_DETAIL
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>LOGISTICS_CODE</mat-label>
+                            <input matInput formControlName="code" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_NAME</mat-label>
+                            <input matInput formControlName="name" type="text" required>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                            <textarea matInput formControlName="description" cdkTextareaAutosize="true"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_COST_CENTER</mat-label>
+                            <ss-auto-complete matInput
+                                              [model]="cCenterLookup"
+                                              formControlName="costCenterId">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_TYPE</mat-label>
+                            <mat-select formControlName="workCenterType">
+                                @for (w of WORK_CENTER_TYPES; track w) {
+                                    <mat-option [value]="w" translate>PROD_{{ w }}</mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_LOCATION</mat-label>
+                            <input matInput formControlName="location" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>ASSET_NEW_BUILDING</mat-label>
+                            <input matInput formControlName="building" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_FLOOR</mat-label>
+                            <input matInput formControlName="floor" type="text">
+                        </mat-form-field>
+
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel #capacityPanel
+                                         [class.b-primary-expansion-panel]="capacityPanel.expanded">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title translate>
+                                PROD_CAPACITY_PLANNING
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_CAPACITY</mat-label>
+                            <input matInput formControlName="capacityCapacity" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_CAPACITY_USED</mat-label>
+                            <input matInput formControlName="capacityUsed" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_EFFICIENCY_FACTOR</mat-label>
+                            <input matInput formControlName="efficiencyFactor" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_UTILIZATION_FACTOR</mat-label>
+                            <input matInput formControlName="utilizationFactor" type="number">
+                        </mat-form-field>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel #schedulingPanel
+                                         [class.b-primary-expansion-panel]="schedulingPanel.expanded">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title translate>
+                                CMMS_SCHEDULING
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_QUEUE_TIME</mat-label>
+                            <input matInput formControlName="queueTime" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_MOVE_TIME</mat-label>
+                            <input matInput formControlName="moveTime" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_WAIT_TIME</mat-label>
+                            <input matInput formControlName="waitTime" type="number">
+                        </mat-form-field>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel #controlPanel
+                                         [class.b-primary-expansion-panel]="controlPanel.expanded">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title translate>
+                                PROD_CONTROL
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-checkbox formControlName="isActive" class="default-50 sm-100">
+                            <span translate>PROD_ACTIVE</span>
+                        </mat-checkbox>
+
+                        <mat-checkbox formControlName="isBottleneck" class="default-50 sm-100">
+                            <span translate>PROD_IS_BOTTLENECK</span>
+                        </mat-checkbox>
+
+                        <mat-checkbox formControlName="requiresSetup" class="default-50 sm-100">
+                            <span translate>PROD_REQUIRES_SETUP</span>
+                        </mat-checkbox>
+
+                        <mat-checkbox formControlName="allowsParallel" class="default-50 sm-100">
+                            <span translate>PROD_ALLOWS_PARALLEL</span>
+                        </mat-checkbox>
+                    </mat-expansion-panel>
+
+                    <mat-expansion-panel #auditingPanel
+                                         [class.b-primary-expansion-panel]="auditingPanel.expanded">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title translate>
+                                PROD_AUDITING
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_CREATED_AT</mat-label>
+                            <ss-date-picker formControlName="createdAt"
+                                            [type]="'date'"
+                                            [disabled]="true">
+                            </ss-date-picker>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_UPDATED_AT</mat-label>
+                            <ss-date-picker formControlName="updatedAt"
+                                            [type]="'date'"
+                                            [disabled]="true">
+                            </ss-date-picker>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_CREATED_BY</mat-label>
+                            <ss-auto-complete formControlName="createdBy"
+                                              [model]="userLookup"
+                                              [disabled]="true">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_UPDATED_BY</mat-label>
+                            <ss-auto-complete formControlName="updatedBy"
+                                              [model]="userLookup"
+                                              [disabled]="true">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_DELETED_AT</mat-label>
+                            <ss-date-picker formControlName="deletedAt"
+                                            [type]="'date'"
+                                            [disabled]="true">
+                            </ss-date-picker>
+                        </mat-form-field>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </form>
+        }
+    </mat-card-content>
+</mat-card>

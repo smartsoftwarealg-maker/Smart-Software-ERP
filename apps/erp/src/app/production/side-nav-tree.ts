@@ -16,7 +16,8 @@ import {
     ABS_PRODUCTION_CONSUMPTION_URL,
     ABS_PRODUCTION_TRANSFER_DETAIL_URL,
     ABS_PRODUCTION_FORMULAS_URL,
-    ABS_PRODUCTION_RESERVATION_URL,
+    ABS_PRODUCTION_RESERVATION_URL, ABS_PRODUCTION_UNITS_URL,
+    ABS_PRODUCTION_WORK_CENTER_URL_URL,
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -31,6 +32,12 @@ export const productionNavTree: SideNavNode = {
             accessRights: 'ArticleType',
         },
         {
+            name: 'STOCK_UNITS',
+            icon: 'fa-solid fa-ruler',
+            route: ABS_PRODUCTION_UNITS_URL,
+            accessRights: 'Unit',
+        },
+        {
             name: 'STOCK_DOSAGE_UNITS',
             icon: 'fa-solid fa-eye-dropper-half',
             route: ABS_PRODUCTION_DOSAGE_UNITS_URL,
@@ -41,6 +48,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-solid fa-box-open-full',
             route: ABS_PRODUCTION_PACKAGING_UNITS_URL,
             accessRights: 'PackagingUnit',
+        },
+        {
+            name: 'PROD_WORK_CENTERS',
+            icon: 'fas fa-box',
+            route: ABS_PRODUCTION_WORK_CENTER_URL_URL,
+            accessRights: 'WorkCenter',
         },
         {
             name: 'STOCK_ARTICLES',

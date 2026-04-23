@@ -1,0 +1,53 @@
+<mat-card class="size_container">
+    <mat-card-content>
+
+        @defer (when form) {
+            <form [formGroup]="form">
+
+                <mat-form-field class="default-50">
+                    <mat-label>Code</mat-label>
+                    <input matInput formControlName="code">
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" required>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="description">
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label>Unit Type</mat-label>
+                    <mat-select formControlName="unitType">
+                        <mat-option [value]="null"></mat-option>
+                        @for (t of UNIT_TYPES; track t) {
+                            <mat-option [value]="t">{{ `PROD_${t}` | translate}}</mat-option>
+                        }
+                    </mat-select>
+
+                </mat-form-field>
+
+<!--                <mat-form-field class="default-50">-->
+<!--                    <mat-label>Conversion Factor</mat-label>-->
+<!--                    <input matInput formControlName="conversionFactor" type="number">-->
+<!--                </mat-form-field>-->
+
+                <mat-form-field class="default-50">
+                    <mat-label>Value</mat-label>
+                    <input matInput formControlName="value" type="number">
+                </mat-form-field>
+
+                <div class="default-50">
+                    <mat-checkbox formControlName="isActive">
+                        Active
+                    </mat-checkbox>
+                </div>
+
+            </form>
+        }
+
+    </mat-card-content>
+</mat-card>

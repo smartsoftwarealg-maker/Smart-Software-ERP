@@ -18,6 +18,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { OptionService } from '@ss/logistics/ui-options';
 import {DecimalPipe} from "@angular/common";
+import { of, switchMap } from 'rxjs';
 
 interface StoreForm {
     id: FormControl<number>;
@@ -132,6 +133,8 @@ export class ArticleStoreComponent implements OnInit {
             });
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set article(article: Article) {
         this.article_ = article;
         this.selectStore(null);
@@ -176,11 +179,16 @@ export class ArticleStoreComponent implements OnInit {
 
     removeStore() {
         if (this.selectedStore) {
-            this.articleStoreSrv
-                .remove(this.selectedStore.id)
-                .subscribe(() => {
-                    this.snackBarSrv.showSuccessMessage();
-                    this.data = this.data.filter(e => e.id !== this.selectedStore.id);
+            this.confirmationSrv
+                .confirmDelete()
+                .pipe(switchMap(res => res? this.articleStoreSrv.remove(this.selectedStore.id) : of({count: 0})))
+                .subscribe(res => {
+                    if (res?.count > 0) {
+                        this.snackBarSrv.showSuccessMessage();
+                        this.data = this.data.filter(
+                            (e) => e.id !== this.selectedStore.id,
+                        );
+                    }
                 });
         }
     }

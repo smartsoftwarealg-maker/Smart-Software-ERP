@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 
-import { HttpService } from '@ss/common/api-common';
+import { HttpService, LanguageService } from '@ss/common/api-common';
 import {
     MatCell,
     MatCellDef,
@@ -23,7 +23,11 @@ import { ActivatedRoute } from '@angular/router';
     standalone: true
 })
 export class MrpComponent implements OnInit {
+    private http = inject(HttpService);
+    private shellSrv =  inject(ShellService);
     private route = inject(ActivatedRoute);
+
+    protected langSrv = inject(LanguageService);
     public data: MRP[] = [];
     displayedColumns: string[] = [
         'reference',
@@ -34,7 +38,6 @@ export class MrpComponent implements OnInit {
         'toOrder'
     ];
 
-    constructor(private http: HttpService, private shellSrv: ShellService) { }
 
     getData(): Observable<MRP[]> {
         return this.http.get<MRP[]>(MRP_URL);

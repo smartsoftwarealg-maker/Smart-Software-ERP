@@ -9,7 +9,11 @@ import {
     Validators,
 } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import {
+    AppConfigService,
+    LoginService,
+    MaterialModule,
+} from '@ss/common/api-common';
 import { OrderLinesListComponent } from '@ss/sales/ui-order-lines';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -30,16 +34,15 @@ import {
 import { UserListService } from '@ss/common/api-users';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
 import { PayMethod, ShipmentModeService } from '@ss/common/api-lookup';
-import {
-    ActiveSalesContractService,
-} from '@ss/logistics/contracts';
+import { ActiveSalesContractService } from '@ss/logistics/contracts';
 import {
     ArticleAutoCompleteModel,
     ArticleService,
 } from '@ss/master-data/api-article';
 import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
 import { PaymentComponent } from '../payment/payment.component';
-import { DriverService } from '@ss/sales/drivers';
+import { DriverService, SalesDriver } from '@ss/sales/drivers';
+import { Observable, switchMap, tap } from 'rxjs';
 
 export enum DuplicateMode {
     Count = 0,
@@ -74,6 +77,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     #orderLineSrv = inject(SalesOrderLinesService);
     #shipmentModeSrv = inject(ShipmentModeService);
     #driverSrv = inject(DriverService);
+    #appConfigSrv = inject(AppConfigService);
 
     agentLookup = new AgentLookupModel(this.#agentSrv);
     driverLookup = new DefaultAutoCompleteModel(this.#driverSrv);
@@ -89,6 +93,9 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     paymentId: number;
     agentId: number;
     blockedProject = signal(false);
+    protected isSchb = signal(false);
+    protected isManager = signal(false);
+    protected isInvoice = signal(false);
 
     @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
     constructor(
@@ -112,6 +119,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             this.#salesProjectSrv.setParentId(a?.id || 0);
             this.form?.controls['payMethod'].setValue(a?.payMode || 0);
         };
+        this.driverLookup.onObjectSelected = (d) => this.onDriver(d);
 
         this.salesProjectLookup.onObjectSelected = (p) => {
             this.blockedProject.set(p?.isBlocked || false);
@@ -181,6 +189,23 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
         this.paymentId = q.paymentId || 0;
         this.agentId = q.agent;
 
+        if (this.isSchb()) {
+            ['license', 'licenseDate', 'licenseIssuer'].forEach((c) =>
+                form?.controls[c].disable(),
+            );
+            this.entitySrv.getInvoiceInfo(q.id + '').subscribe({
+                next: (invoiceInfo) => {
+                    if (invoiceInfo?.length > 0) {
+                        const isInv = invoiceInfo[0].invoiceNumber > 0;
+                        this.isInvoice.set(isInv);
+                        if (isInv && !this.isManager()) {
+                            form.disable();
+                        }
+                    }
+                },
+            });
+        }
+
         if (q.id > 0) {
             this.entitySrv.getInvoiceInfo(q.id + '').subscribe((res) => {
                 if (res[0].invoiceNumber) {
@@ -191,6 +216,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
                         'payMethod',
                         'date',
                     ].forEach((c) => form?.controls[c].disable());
+                    this.isInvoice.set(true);
                 }
             });
         }
@@ -203,5 +229,21 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
         this.form?.controls['duplicateCount'].setValue(0);
         this.form?.controls['from'].setValue(null);
         this.form?.controls['to'].setValue(null);
+    }
+
+    private onDriver(d: SalesDriver) {
+        this.form?.get('driver')?.setValue(d.description);
+        this.form?.get('license')?.setValue(d.licenceNumber);
+        this.form?.get('licenseDate')?.setValue(d.licenceDate);
+        this.form?.get('licenseIssuer')?.setValue(d.issuedBy);
+    }
+
+    override preload(): Observable<unknown> {
+        return this.#appConfigSrv.getConfig().pipe(
+            tap((conf: { schb: boolean }) => {
+                this.isSchb.set(conf?.schb === true);
+                this.isManager.set(this.#loginSrv.appCtx.manager)}),
+            switchMap((_) => super.preload()),
+        );
     }
 }

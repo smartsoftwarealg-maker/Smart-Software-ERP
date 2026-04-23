@@ -1,7 +1,7 @@
 <fieldset>
     <div class="file-upload">
         <input type="file" class="file-input"
-               [accept]="requiredFileType"
+               [accept]="requiredFileType()"
                (change)="onChange(fileUpload.files)"
                #fileUpload>
 
@@ -10,8 +10,7 @@
         @if (!uploadProgress()) {
             <button mat-mini-fab color="primary"
                     class="upload-btn"
-                    (click)="fileUpload.click()"
-            >
+                    (click)="fileUpload.click()" >
                 <i class="fas fa-paperclip"></i>
             </button>
         }
@@ -82,7 +81,7 @@
         </mat-form-field>
 
 
-        <mat-form-field class="default-50" required>
+        <mat-form-field class="default-50">
             <mat-label translate>LOGISTICS_PRICE</mat-label>
             <mat-select formControlName="price">
                 @for (c of columns; track c) {
@@ -90,6 +89,7 @@
                 }
             </mat-select>
         </mat-form-field>
+
 
     </form>
 </mat-card>
@@ -102,7 +102,7 @@
             <button mat-raised-button color="primary"
                     type="button"
                     (click)="onFileSelected(fileUpload.files)"
-                    [disabled]="!form.valid || fileName?.length < 4">
+                    [disabled]="!form.valid || fileName?.length < 3 ">
                 {{ 'COMMON_UPLOAD' | translate }}
                 <i class="fa-solid fa-upload  icon"></i>
             </button>

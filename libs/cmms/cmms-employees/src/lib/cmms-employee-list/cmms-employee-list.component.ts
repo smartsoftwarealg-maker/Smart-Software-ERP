@@ -8,7 +8,7 @@ import { LookupsService } from '@ss/common/api-lookup';
 import { HttpService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
 import { CmmsEmployeeService } from '../services/cmms-employee.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -66,9 +66,15 @@ export class CmmsEmployeeListComponent extends BaseEntityListComponent<Employee>
         return item.id;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
+    }
+
     override ngOnInit(): void {
-        this.addButton.visible = false;
-        this.deleteButton.visible = false;
         super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
     }

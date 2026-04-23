@@ -84,12 +84,6 @@ export const hrLookupNavTree: SideNavNode = {
             accessRights: 'EducationLevel'
         },
         {
-            name: 'COMMON_MARITAL_STATUS',
-            icon: 'fas fa-rings-wedding',
-            route: ABS_HR_MARITAL_STATUS_URL,
-            accessRights: 'MaritalStatus'
-        },
-        {
             name: 'COMMON_CATEGORIES',
             icon: 'fas fa-shapes',
             route: ABS_HR_CATEGORIES_URL,
@@ -155,12 +149,12 @@ export const hrLookupNavTree: SideNavNode = {
             route: ABS_PROFESSIONAL_FAULTS_URL,
             accessRights: 'ProfFault'
         },
-        {
-            name: 'PAYROLL_ACTIVITIES',
-            icon: 'fa-solid fa-cake-candles',
-            route: ABS_ACTIVITIES_URL,
-            accessRights: 'Activity'
-        },
+        // {
+        //     name: 'PAYROLL_ACTIVITIES',
+        //     icon: 'fa-solid fa-cake-candles',
+        //     route: ABS_ACTIVITIES_URL,
+        //     accessRights: 'Activity'
+        // },
         {
             name: 'PAYROLL_PHYSICIANS',
             icon: 'fa-solid fa-user-doctor-hair',

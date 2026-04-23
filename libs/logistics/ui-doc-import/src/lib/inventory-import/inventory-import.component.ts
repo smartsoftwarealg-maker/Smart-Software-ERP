@@ -1,4 +1,4 @@
-import { Component, inject, Inject, Input, signal } from '@angular/core';
+import { Component, inject, Inject, signal, input } from '@angular/core';
 import { finalize, Subscription } from 'rxjs';
 import {
     UntypedFormBuilder,
@@ -57,8 +57,7 @@ export class InventoryImportComponent {
     lotLookup: LotAutoCompleteModel = new LotAutoCompleteModel(this.lotSrv);
     readonly isUsesLots = this.optionSrv.options?.usesLots;
 
-    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> =
-        new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
+    storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.storeNameSrv);
     columns = [
         ' ',
         'A',
@@ -115,7 +114,7 @@ export class InventoryImportComponent {
         'AZ',
     ];
 
-    @Input() requiredFileType = '.xlsx';
+    readonly requiredFileType = input('.xlsx');
     isEditable = false;
 
     fileName = '';
@@ -124,13 +123,13 @@ export class InventoryImportComponent {
     processing = signal(false);
 
     form = this.fb.group({
-        id: [0, Validators.required],
+        id: [0],
         store: [0, Validators.required],
         reference: ['', Validators.required],
         qty: [0, Validators.required],
-        price: ['', Validators.required],
-        sstore: ['', Validators.required],
-        lot: ['', Validators.required],
+        price:      ['', Validators.required],
+        sstore:     [this.isUsesLots ? '' : 'z', Validators.required],
+        lot:        [this.isUsesLots ? '' : 'z', Validators.required],
         createLots: [false],
     });
 
@@ -141,7 +140,8 @@ export class InventoryImportComponent {
         this.form.controls['id'].setValue(data.transactId);
     }
 
-    onFileSelected(files: any) {
+    onFileSelected(files: unknown) {
+        console.log(this.form.valid);
         const file: File = files[0];
         if (file) {
             this.fileName = file.name;
@@ -189,7 +189,8 @@ export class InventoryImportComponent {
         this.dialogRef.close();
     }
 
-    onChange(e: any) {
+    onChange(e: unknown) {
+        console.log(this.form);
         this.fileName = e[0]?.name;
     }
 

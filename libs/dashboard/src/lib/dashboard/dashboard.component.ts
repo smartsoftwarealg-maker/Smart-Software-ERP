@@ -1,13 +1,18 @@
 import { Component, inject, signal } from '@angular/core';
-import {DashboardService} from '../services/dashboard.service';
-import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
-import {Dashboard} from '../dashboard';
-import {ShellService, SnackBarService} from '@ss/common/ui-shell';
-import {ActivatedRoute, Router} from '@angular/router';
-import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
+import { DashboardService } from '../services/dashboard.service';
+import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
+import { Dashboard } from '../dashboard';
+import {
+    KeepOnToolbar,
+    ShellService,
+    SnackBarService,
+    ToolbarButton,
+} from '@ss/common/ui-shell';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import { LookupsService } from '@ss/common/api-lookup';
-import { asapScheduler, of, scheduled, takeWhile, tap, timer } from 'rxjs';
+import { Observable, of, takeWhile, tap, timer } from 'rxjs';
 import {
     APP_DASHBOARD,
     APPLICATIONS,
@@ -19,12 +24,11 @@ import {
     PaginatorPersistenceService,
 } from '@ss/common/api-common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
+import { AgentLookupModel, AgentService } from '@ss/logistics/api-agent';
 import { Id, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { PaginationComponent } from '@ss/common/ui-pagination';
@@ -81,6 +85,15 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     smallData = signal(true);
     validData = signal(false);
 
+    public csvButton: ToolbarButton = {
+        icon: 'fa-solid fa-file-csv',
+        label: 'COMMON_CSV_EXPORT',
+        disabled: false,
+        visible: true,
+        keepOnToolbar: KeepOnToolbar.DYNAMIC,
+        click: () => this.csv(),
+    };
+
     constructor(
         public dashboardSrv: DashboardService,
         public override shellSrv: ShellService,
@@ -109,14 +122,22 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         Chart.register(...registerables);
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit().pipe(
+            tap(() => {
+                this.editButton.visible = false;
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+            }),
+        );
+    }
+
     override ngOnInit() {
         const appId = getApplicationId(this.router);
         this.dashboardSrv.setParentId(appId);
         this.showApplications.set(appId === APP_DASHBOARD);
-        this.editButton.visible = false;
-        this.addButton.visible = false;
-        this.deleteButton.visible = false;
         super.ngOnInit();
+        this.shellSrv.addButton(this.csvButton);
         this.subscriptions.push(
             this.application.valueChanges
                 .pipe(debounceTime(300), distinctUntilChanged())
@@ -260,10 +281,69 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         //         }
         //     });
     }
+
+    csv() {
+        const from = this.langSrv.formatDate(this.fromDate.value);
+        const to = this.langSrv.formatDate(this.toDate.value);
+        const consolidated = this.consolidated.value;
+        this.generating.set(true);
+        this.shellSrv.setLoading(true);
+
+        this.dashboardSrv
+            .getCsv(
+                this.selected,
+                this.detailPagination.page,
+                this.detailPagination.pageSize,
+                from,
+                to,
+                this.selectedAgentId,
+                consolidated,
+            )
+            .pipe(
+                switchMap((jobId) => {
+                    return timer(0, this.#POLL_INTERVAL_MS).pipe(
+                        switchMap(() =>
+                            this.dashboardSrv.getStatus(
+                                `/dashboard/${this.selected}/csv`,
+                                jobId,
+                            ),
+                        ),
+                        takeWhile(
+                            (statusRes, index) =>
+                                statusRes.status === 102 && index < 100,
+                            true,
+                        ),
+                    );
+                }),
+                switchMap((res) => of(res.body)),
+                tap((res) => this.doReportGenerationCsv(<Blob>res)),
+            )
+            .subscribe({
+                next: () => {
+                    this.generating.set(false);
+                    this.shellSrv.setLoading(false);
+                },
+                error: (err) => {
+                    this.generating.set(false);
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                },
+            });
+    }
+
     private doReportGeneration(res: Blob | MediaSource): Window | null {
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(res);
-        link.download = `${this.selectedRow?.description||'dashboard'}.xlsx`;
+        link.download = `${this.selectedRow?.description || 'dashboard'}.xlsx`;
+        link.click();
+        setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+        return null;
+    }
+
+    private doReportGenerationCsv(res: Blob | MediaSource): Window | null {
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(res);
+        link.download = `${this.selectedRow?.description || 'dashboard'}.csv`;
         link.click();
         setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
         return null;
@@ -298,20 +378,40 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     private chartData(): ChartConfiguration {
+        const { indices, matrix } = this.extractNumericMatrix();
+
+        const colors = [
+            { bg: 'rgba(54, 162, 235, 0.5)', border: 'rgb(54, 162, 235)' },
+            { bg: 'rgba(255, 99, 132, 0.5)', border: 'rgb(255, 99, 132)' },
+            { bg: 'rgba(75, 192, 192, 0.5)', border: 'rgb(75, 192, 192)' },
+            { bg: 'rgba(255, 206, 86, 0.5)', border: 'rgb(255, 206, 86)' },
+            { bg: 'rgba(153, 102, 255, 0.5)', border: 'rgb(153, 102, 255)' },
+            { bg: 'rgba(255, 159, 64, 0.5)', border: 'rgb(255, 159, 64)' },
+        ];
+
+        // Build datasets for each numeric column (skip column 0 if it's the label column)
+        const datasets = indices
+            .map((colIndex, i) => {
+                if (colIndex === 0) return null; // skip the first column (labels)
+
+                const color = colors[i % colors.length];
+                return {
+                    label: this.headers[colIndex] || `Column ${colIndex + 1}`,
+                    data: matrix[i], // already parsed numbers
+                    backgroundColor: color.bg,
+                    borderColor: color.border,
+                    borderWidth: 1,
+                };
+            })
+            .filter((ds): ds is NonNullable<typeof ds> => ds !== null);
         return {
             type: 'bar',
             data: {
                 labels: this.dashboardData.map((a) => a[0]?.toString()),
-                datasets: [
-                    {
-                        label: this.selectedRow?.description || '',
-                        data: this.dashboardData.map((a) =>
-                            this.asNumber(a[1]),
-                        ),
-                        backgroundColor: ['blue'],
-                        borderColor: ['blue'],
-                    },
-                ],
+                // labels: this.dashboardData.map(
+                //     (row) => row[0]?.toString() || '',
+                // ),
+                datasets: datasets,
             },
             options: {
                 plugins: {
@@ -423,5 +523,66 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
 
     override canShowProcessingStatus() {
         return false;
+    }
+
+    /**
+     * Extracts numeric values from all rows for columns that are suitable for charting.
+     *
+     * A column is considered "chart‑ready" if **every** cell:
+     *   - Contains only digits, dots, commas, spaces, or a percent sign.
+     *   - Parses to a finite number via `asNumber()`.
+     *   - Does not look like an identifier (e.g., pure digits with leading zeros or excessive length).
+     *
+     * @param maxColumns - Maximum number of columns to evaluate (default = 6).
+     * @returns Object containing:
+     *          - indices: Original column indices that passed all checks.
+     *          - matrix:  2D array of parsed numbers (rows = data rows, cols = numeric columns).
+     */
+    private extractNumericMatrix(maxColumns: number = 6): {
+        indices: number[];
+        matrix: number[][];
+    } {
+        const indices: number[] = [];
+        const matrix: number[][] = [];
+
+        if (!this.dashboardData?.length || !this.dashboardData[0]?.length) {
+            return { indices, matrix };
+        }
+
+        const totalRows = this.dashboardData.length;
+        const totalCols = Math.min(maxColumns, this.dashboardData[0].length);
+
+        for (let col = 0; col < totalCols; col++) {
+            const tempValues: number[] = new Array(totalRows);
+            let columnIsValid = false;
+
+            for (let row = 0; row < totalRows; row++) {
+                const rawValue = this.dashboardData[row][col];
+                // Quick rejection: any forbidden character (letters, symbols except those allowed)
+                if (/[^\d,.% -]/.test(rawValue)) {
+                    columnIsValid = false;
+                    break;
+                }
+                const parsed = this.asNumber(rawValue);
+
+                if (!Number.isFinite(parsed)) {
+                    break;
+                }
+                if (
+                    parsed !== 0 &&
+                    parsed <= 1000000000 // More than 10 numbers are likely to be an identifier
+                ) {
+                    columnIsValid = true;
+                }
+                tempValues[row] = parsed;
+            }
+
+            if (columnIsValid) {
+                indices.push(col);
+                matrix.push(tempValues);
+            }
+        }
+
+        return { indices, matrix };
     }
 }

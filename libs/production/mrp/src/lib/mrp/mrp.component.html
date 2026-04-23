@@ -4,7 +4,7 @@
         <ng-container matColumnDef="reference">
             <mat-header-cell *matHeaderCellDef translate>PROD_REFERENCE</mat-header-cell>
             <mat-cell *matCellDef="let m">
-                {{ m.reference }}
+                {{ m.reference === "PRODUCTION_MAX_QTY"? langSrv.translate("PRODUCTION_MAX_QTY") : m.reference }}
             </mat-cell>
         </ng-container>
 
@@ -23,7 +23,7 @@
         </ng-container>
 
         <ng-container matColumnDef="purchaseOrder">
-            <mat-header-cell *matHeaderCellDef translate>PROD_PURCHASE_ORDER</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef translate>PROD_IN_ORDER</mat-header-cell>
             <mat-cell *matCellDef="let m">
                 {{ m.purchaseOrder.toFixed(2) }}
             </mat-cell>

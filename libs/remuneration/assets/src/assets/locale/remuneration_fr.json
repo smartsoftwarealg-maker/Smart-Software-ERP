@@ -34,7 +34,6 @@
     "VACATION": "Congé",
     "ACQUIRED": "Acquis",
     "TAKEN": "Pris",
-    "REST": "Restant",
     "REFERENCE": "Référence",
     "EDO": "Ordre de dépôt électronique (EDO)",
     "SELECTED_BANKS": "Banques sélectionnées",
@@ -45,7 +44,7 @@
     "GENERATE_ONE": "Générer pour l'employé sélectionné",
     "DELETE_SELECTED": "Supprimer pour l'employé sélectionné",
     "DELETE_ALL": "Tout supprimer",
-    "AMENDMENTS": "Avenants",
+    "AMENDMENTS": "Rappels",
     "DIFFERENCE": "Différence",
     "DESTINATION": "Destination",
     "NEW": "Nouveau",
@@ -91,5 +90,6 @@
     "PAYROLL_COMPLETE": "Paie complète",
     "PAYROLL_LOCK_READY": "La paie est prête à être verrouillée",
     "LOCK_PAYROLL": "Verrouiller la paie",
-    "DEPOSIT_DAY": "Jour de virement EDI"
+    "DEPOSIT_DAY": "Jour de virement EDI",
+    "REST": "Restant"
 }

@@ -27,6 +27,8 @@ import { AssetOpenInventoryDocService } from '../services/asset-open-inventory-d
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-asset-list-inventory',
@@ -40,52 +42,59 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
         RouterModule,
         PaginationComponent,
         UiAutoCompleteComponent,
-        DatePickerComponent
-    ]
+        DatePickerComponent,
+    ],
 })
-export class AssetQRInventoryListComponent extends BaseEntityListComponent<InventoryAsset> implements OnInit {
-    #loginSrv      = inject(LoginService);
-    #documentId   = 0;
-    #fb           = inject(FormBuilder);
-    #buildingSrv  = inject(AssetsBuildingService);
-    #accountSrv   = inject(AccountService);
-    #locationSrv  = inject(AssetLocationService);
-    #classSrv     = inject(AssetClassService);
-    #consumerSrv  = inject(ConsumerService);
+export class AssetQRInventoryListComponent
+    extends BaseEntityListComponent<InventoryAsset>
+    implements OnInit
+{
+    #loginSrv = inject(LoginService);
+    #documentId = 0;
+    #fb = inject(FormBuilder);
+    #buildingSrv = inject(AssetsBuildingService);
+    #accountSrv = inject(AccountService);
+    #locationSrv = inject(AssetLocationService);
+    #classSrv = inject(AssetClassService);
+    #consumerSrv = inject(ConsumerService);
     #receptionSrv = inject(AssetReceptionService);
 
     // private dialog = inject(MatDialog);
-    private officeSrv       = inject(OfficeService);
+    private officeSrv = inject(OfficeService);
     private inventoryDocSrv = inject(AssetOpenInventoryDocService);
 
-    officeLookup       = new DefaultAutoCompleteModel(this.officeSrv);
+    officeLookup = new DefaultAutoCompleteModel(this.officeSrv);
     inventoryDocLookup = new DefaultAutoCompleteModel(this.inventoryDocSrv);
 
-    inventoryDoc   = new FormControl<number>(0);
+    inventoryDoc = new FormControl<number>(0);
     inventoryDocDate = new FormControl<Date | null>(null);
-    accountLookup     = new AccountStringAutocompleteModel(this.#accountSrv);
-    locationLookup    = new DefaultAutoCompleteModel(this.#locationSrv);
-    buildingLookup    = new DefaultAutoCompleteModel(this.#buildingSrv);
-    classLookup       = new DefaultAutoCompleteModel(this.#classSrv);
-    beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.#consumerSrv, 'id', 'denomination');
-    receptionLookup   = new DefaultAutoCompleteModel(this.#receptionSrv);
+    accountLookup = new AccountStringAutocompleteModel(this.#accountSrv);
+    locationLookup = new DefaultAutoCompleteModel(this.#locationSrv);
+    buildingLookup = new DefaultAutoCompleteModel(this.#buildingSrv);
+    classLookup = new DefaultAutoCompleteModel(this.#classSrv);
+    beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(
+        this.#consumerSrv,
+        'id',
+        'denomination',
+    );
+    receptionLookup = new DefaultAutoCompleteModel(this.#receptionSrv);
 
     readonly currentUser = this.#loginSrv.appCtx.id;
     readonly isResponsible = this.#loginSrv.appCtx.responsible;
     isEditable = signal(false);
 
-    formGroup   = this.#fb.group({
-        id:           [0],
-        documentId:   [0],
-        officeId:     [0],
-        accountNo:    [''],
-        buildingId:   [0],
-        beneficiary:  [0],
-        locationId:   [0],
-        classId:      [0],
-        receptionNo:  [0],
-        minValue:     [0],
-        maxValue:     [99999999],
+    formGroup = this.#fb.group({
+        id: [0],
+        documentId: [0],
+        officeId: [0],
+        accountNo: [''],
+        buildingId: [0],
+        beneficiary: [0],
+        locationId: [0],
+        classId: [0],
+        receptionNo: [0],
+        minValue: [0],
+        maxValue: [99999999],
     });
 
     displayedColumns = [
@@ -115,8 +124,10 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
         public override router: Router,
         public override defReportSrv: DefaultReportService,
         public override confirmationSrv: ConfirmationDialogService,
-        public override pagPersistSrv: PaginatorPersistenceService) {
-        super(entitySrv,
+        public override pagPersistSrv: PaginatorPersistenceService,
+    ) {
+        super(
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -124,31 +135,36 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'INVENTORY');
+            'INVENTORY',
+        );
         this.pagination.pageSize = 5;
-        this.inventoryDocLookup.onObjectSelected = d => this.onDocument(d);
-        this.officeLookup.onObjectSelected = e => this.onOffice(e);
-        this.buildingLookup.onObjectSelected = b => this.onBuilding(b);
-        this.classLookup.onObjectSelected = c => this.formGroup.controls.classId.setValue(c?.id||0);
-        this.beneficiaryLookup.onObjectSelected = b => this.formGroup.controls.beneficiary.setValue(b?.id||0);
-        this.receptionLookup.onObjectSelected = r => this.formGroup.controls.receptionNo.setValue(r?.id||0);
-        this.accountLookup.onObjectSelected = a => this.formGroup.controls.accountNo.setValue(a?.accountNo||'');
-        this.locationLookup.onObjectSelected = l => this.onLocation(l);
+        this.inventoryDocLookup.onObjectSelected = (d) => this.onDocument(d);
+        this.officeLookup.onObjectSelected = (e) => this.onOffice(e);
+        this.buildingLookup.onObjectSelected = (b) => this.onBuilding(b);
+        this.classLookup.onObjectSelected = (c) =>
+            this.formGroup.controls.classId.setValue(c?.id || 0);
+        this.beneficiaryLookup.onObjectSelected = (b) =>
+            this.formGroup.controls.beneficiary.setValue(b?.id || 0);
+        this.receptionLookup.onObjectSelected = (r) =>
+            this.formGroup.controls.receptionNo.setValue(r?.id || 0);
+        this.accountLookup.onObjectSelected = (a) =>
+            this.formGroup.controls.accountNo.setValue(a?.accountNo || '');
+        this.locationLookup.onObjectSelected = (l) => this.onLocation(l);
         this.pagination.pageSize = 5;
     }
 
     private onLocation(l: AssetLocation) {
-        this.#buildingSrv.setParentId(l.id||0);
-        this.formGroup.controls.locationId.setValue(l.id||0);
+        this.#buildingSrv.setParentId(l.id || 0);
+        this.formGroup.controls.locationId.setValue(l.id || 0);
     }
 
     private onOffice(o: Office) {
-        this.formGroup.controls.officeId.setValue(o.id||0);
+        this.formGroup.controls.officeId.setValue(o.id || 0);
     }
 
     private onBuilding(b: AssetBuilding) {
-        this.officeSrv.setParentId(b.id||0);
-        this.formGroup.controls.buildingId.setValue(b.id||0);
+        this.officeSrv.setParentId(b.id || 0);
+        this.formGroup.controls.buildingId.setValue(b.id || 0);
     }
 
     private onDocument(d: AssetInventoryDoc) {
@@ -157,30 +173,30 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
         this.#documentId = d?.id || 0;
         this.formGroup.controls.documentId.setValue(this.#documentId);
         this.isEditable.set(!d?.closed);
-        this.#buildingSrv.setParentId(d.locationId||0);
-        this.officeSrv.setParentId(d.buildingId||0);
+        this.#buildingSrv.setParentId(d.locationId || 0);
+        this.officeSrv.setParentId(d.buildingId || 0);
         this.entitySrv.document = {
-            id:          d.id,
-            officeId:    d.officeId,
-            accountNo:   d.accountNo,
-            buildingId:  d.buildingId,
+            id: d.id,
+            officeId: d.officeId,
+            accountNo: d.accountNo,
+            buildingId: d.buildingId,
             beneficiary: d.beneficiary,
-            locationId:  d.locationId,
-            classId:     d.classId,
+            locationId: d.locationId,
+            classId: d.classId,
             receptionNo: d.receptionNo,
-            minValue:    d.minValue,
-            maxValue:    d.maxValue
+            minValue: d.minValue,
+            maxValue: d.maxValue,
         };
-        this.formGroup.controls.officeId.setValue(d.officeId||0);
-        this.formGroup.controls.accountNo.setValue(d.accountNo||'');
-        this.formGroup.controls.buildingId.setValue(d.buildingId||0);
-        this.formGroup.controls.beneficiary.setValue(d.beneficiary||0);
-        this.formGroup.controls.locationId.setValue(d.locationId||0);
-        this.formGroup.controls.classId.setValue(d.classId||0);
-        this.formGroup.controls.receptionNo.setValue(d.receptionNo||0);
-        this.formGroup.controls.minValue.setValue(d.minValue||0);
-        this.formGroup.controls.maxValue.setValue(d.maxValue||0);
-        this.formGroup.controls.receptionNo.setValue(d.receptionNo||0);
+        this.formGroup.controls.officeId.setValue(d.officeId || 0);
+        this.formGroup.controls.accountNo.setValue(d.accountNo || '');
+        this.formGroup.controls.buildingId.setValue(d.buildingId || 0);
+        this.formGroup.controls.beneficiary.setValue(d.beneficiary || 0);
+        this.formGroup.controls.locationId.setValue(d.locationId || 0);
+        this.formGroup.controls.classId.setValue(d.classId || 0);
+        this.formGroup.controls.receptionNo.setValue(d.receptionNo || 0);
+        this.formGroup.controls.minValue.setValue(d.minValue || 0);
+        this.formGroup.controls.maxValue.setValue(d.maxValue || 0);
+        this.formGroup.controls.receptionNo.setValue(d.receptionNo || 0);
 
         if (d.officeId > 0) {
             this.formGroup.controls.officeId.disable();
@@ -230,31 +246,37 @@ export class AssetQRInventoryListComponent extends BaseEntityListComponent<Inven
 
     update(e: InventoryAsset) {
         e.documentId = this.#documentId;
-        this.entitySrv
-            .update(e)
-            .subscribe(res =>  {
-                e.inventoryId = e.inventoryId? null : res;
-                this.selectRow(e);
-            }  );
+        this.entitySrv.update(e).subscribe((res) => {
+            e.inventoryId = e.inventoryId ? null : res;
+            this.selectRow(e);
+        });
     }
 
+    protected override preInit(): Observable<any> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
+    }
     override ngOnInit() {
-        this.addButton.visible    = false;
-        this.deleteButton.visible = false;
         super.ngOnInit();
         if (this.entitySrv.lastDoc?.id) {
             this.onDocument(this.entitySrv.lastDoc);
-            this.inventoryDoc.setValue(this.entitySrv.lastDoc?.id, {onlySelf: true, emitEvent: false});
+            this.inventoryDoc.setValue(this.entitySrv.lastDoc?.id, {
+                onlySelf: true,
+                emitEvent: false,
+            });
         }
     }
 
     override selectRow(row: InventoryAsset) {
         super.selectRow(row);
-        this.editButton.visible = (row?.inventoryId||0) > 0;
+        this.editButton.visible = (row?.inventoryId || 0) > 0;
     }
 
     override showDetail(id: number) {
-        super.showDetail(this.selectedRow.inventoryId||0);
+        super.showDetail(this.selectedRow.inventoryId || 0);
     }
 }
 

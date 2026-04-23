@@ -1,0 +1,68 @@
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.main-container,
+.doc-info,
+.pagination-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 4px auto;
+}
+
+mat-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.mat-row, .mat-header-row {
+    padding: 0 16px;
+    min-height: 48px;
+}
+
+.mat-cell, .mat-header-cell {
+    padding: 0 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.mat-column-code {
+    flex: 0 0 100px;
+}
+
+.mat-column-name {
+    flex: 1 1 200px;
+    text-align: end;
+}
+
+.mat-column-description {
+    flex: 2 1 250px;
+    text-align: end;
+}
+
+.mat-column-unitType {
+    flex: 0 0 120px;
+}
+
+.mat-column-baseUnit {
+    flex: 0 0 120px;
+}
+
+.mat-column-conversionFactor {
+    flex: 0 0 120px;
+    text-align: center;
+}
+
+.mat-column-value {
+    flex: 0 0 100px;
+    justify-content: end;
+}
+
+.mat-column-isActive {
+    flex: 0 0 80px;
+    justify-content: center;
+    text-align: center;
+}

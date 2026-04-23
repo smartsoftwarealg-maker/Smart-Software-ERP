@@ -387,8 +387,8 @@ export class HttpService {
         } else if (company === 'SCH_CAPA') {
             this.baseUrl = 'http://localhost:8080';
         } else {
-            this.baseUrl = 'https://demo.smartsoftware-dz.com:4430';
-            // this.baseUrl = 'http://localhost:8080'; // default to local development
+            // this.baseUrl = 'https://demo.smartsoftware-dz.com:4430';
+            this.baseUrl = 'http://localhost:8080'; // default to local development
         }
     }
 }

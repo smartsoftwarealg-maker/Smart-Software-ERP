@@ -11,4 +11,9 @@ export class PaymentsDetailService extends BaseEntityExtendedService<Payment>{
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, PAYMENT_URL);
     }
+
+    getTotal(documentId: number) {
+        return this.httpSrv.get<any[]>(`/transactions/${documentId}/total?page=0-5`);
+    }
+
 }

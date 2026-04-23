@@ -20,6 +20,7 @@ import { MatButton } from '@angular/material/button';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { MaterialModule } from '@ss/common/api-common';
 
+
 interface Lookup {
     id: number;
     description: string;
@@ -34,6 +35,7 @@ interface Lookup {
 })
 export class EdoComponent implements OnInit {
     @ViewChild('blist') blist: MatSelectionList
+
     form: UntypedFormGroup = null;
     curYear = new Date().getFullYear();
     curMonth = new Date().getFullYear();
@@ -48,7 +50,7 @@ export class EdoComponent implements OnInit {
                 private formBuilder: UntypedFormBuilder,
                 private monthSrv: PayrollMonthService,
                 private bankSrv: BankService) {
-
+        this.shellSrv.setTitle('PAYROLL_ELECTRONIC_DEPOSIT_ORDER');
     }
 
     ngOnInit(): void {
@@ -67,6 +69,7 @@ export class EdoComponent implements OnInit {
                 tap(res => this.receivingBanks = this.bankList.filter(e => e.id == res)))
             .subscribe(res => this.buildForm(res));
         this.shellSrv.setGoBackPath('../', this.route);
+
     }
 
     generate() {

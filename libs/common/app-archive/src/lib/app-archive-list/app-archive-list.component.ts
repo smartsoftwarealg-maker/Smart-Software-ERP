@@ -1,4 +1,11 @@
-import { Component, inject, Input, OnInit, signal } from '@angular/core';
+import {
+    Component,
+    effect,
+    inject,
+    input,
+    OnInit,
+    signal,
+} from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -29,7 +36,6 @@ import { ActivePersonnelService } from '@ss/payroll/ui-employee';
     ]
 })
 export class AppArchiveListComponent implements OnInit {
-    private _id = 0;
     private shellSrv = inject(ShellService);
     public activePersonnelSrv = inject(ActivePersonnelService);
     public showBackButton = signal(false);
@@ -42,6 +48,14 @@ export class AppArchiveListComponent implements OnInit {
     paginator = PaginationModel.newInstance();
     displayedColumns = ['docDescription', 'filename'];
     isEditable = true;
+    id = input<number>(0);
+    onIdChange = effect(() => {
+        this.entitySrv.setParentId(this.id() || this.entitySrv.id);
+        this.entitySrv.getList(0, 50).subscribe((res) => {
+            this.data = res.body || [];
+            this.paginator.elementCount = res.itemCount;
+        });
+    });
 
     constructor(public entitySrv: AppArchiveService,
                 private snackBarSrv: SnackBarService,
@@ -81,7 +95,7 @@ export class AppArchiveListComponent implements OnInit {
                                 this.entitySrv.setParentId(id);
                             }
                         }))
-                    .subscribe(res => {
+                    .subscribe(() => {
                     });
                 this.refresh();
             });
@@ -101,21 +115,6 @@ export class AppArchiveListComponent implements OnInit {
         this.router.navigate(['../../'], {relativeTo: this.route}).then();
     }
 
-    @Input()
-    set id(id: number) {
-        this._id = id || 0;
-        this.entitySrv.setParentId(this._id||this.entitySrv.id);
-        this.entitySrv
-            .getList(0, 50)
-            .subscribe(res => {
-                this.data = res.body || [];
-                this.paginator.elementCount = res.itemCount;
-            });
-    }
-
-    get id() {
-        return this._id;
-    }
 
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete()

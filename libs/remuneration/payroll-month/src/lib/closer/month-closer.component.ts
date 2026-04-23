@@ -17,7 +17,7 @@ import {
     tap,
     throwError, timer
 } from "rxjs";
-import {SnackBarService} from '@ss/common/ui-shell';
+import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { LanguageService, LoginService } from "@ss/common/api-common";
 
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -50,8 +50,10 @@ export class MonthCloserComponent implements OnInit {
               private confirmationSrv: ConfirmationDialogService,
               private snackBarSrv: SnackBarService,
               private langSrv: LanguageService,
+              private shellSrv: ShellService,
               private loginSrv: LoginService) {
       this.maxMonth = this.loginSrv.appCtx.payMonth;
+      this.shellSrv.setTitle("REMUN_MONTH_CLOSURE");
   }
 
   ngOnInit(): void {

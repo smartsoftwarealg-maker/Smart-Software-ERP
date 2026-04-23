@@ -40,7 +40,11 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
     /**
      * Overload this to load your own things. and tap to save your results
      */
-    public preload(): Observable<any> {
+    public preload(): Observable<unknown> {
+        return of(null);
+    }
+
+    public postLod(): Observable<unknown> {
         return of(null);
     }
 

@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal, input} from '@angular/core';
 import {finalize, Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -25,8 +25,7 @@ export class ExcelInjectionComponent implements OnInit {
     #formBuilder = inject(FormBuilder);
     updatable = false;
 
-    @Input()
-    requiredFileType = '.xlsx';
+    readonly requiredFileType = input('.xlsx');
     processing = signal(false);
 
     file: File = null;

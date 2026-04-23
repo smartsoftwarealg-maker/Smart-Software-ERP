@@ -22,6 +22,8 @@ import { MatCheckbox } from '@angular/material/checkbox';
     imports: [FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatFormField, MatLabel, MatInput, MatError, MatCheckbox]
 })
 export class CompanyDetailComponent extends BaseEntityDetailComponent<Company> {
+
+
     constructor(
         public companyService: CompanyService,
         public override shellSrv: ShellService,

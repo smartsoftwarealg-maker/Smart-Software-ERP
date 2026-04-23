@@ -12,8 +12,12 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import {
     ActivityService,
     AwardProcedureService,
-    LookupsService, ProjectActivityService, SectorService,
-    WilayaService, WorkMasterService,
+    LookupsService,
+    ProjectActivityService,
+    SectorService,
+    Wilaya,
+    WilayaService,
+    WorkMasterService,
 } from '@ss/common/api-lookup';
 import { SalesContractService } from '../sales-contract.service';
 import {
@@ -31,7 +35,7 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { ContractArticleMainComponent } from '../contract-article-main/contract-article-main.component';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { map, Observable, zip } from 'rxjs';
+import { map, Observable, of, zip, switchMap } from 'rxjs';
 
 @Component({
     selector: 'ss-cement-contract-detail',
@@ -44,7 +48,6 @@ import { map, Observable, zip } from 'rxjs';
         ReactiveFormsModule,
         DatePickerComponent,
         RouterModule,
-        ContractArticleMainComponent,
         AppArchiveMainComponent,
         UiAutoCompleteComponent,
     ],
@@ -74,6 +77,7 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
     awardLookup = new DefaultAutoCompleteModel(this.awardSrv);
     wilayaLookup = new DefaultAutoCompleteModel(this.wilayaSrv);
     projSegmentLookup = new DefaultAutoCompleteModel(this.projSegmentSrv);
+
     articles: Article[] = [];
 
     constructor(
@@ -98,6 +102,7 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
         this.entitySrv.setParentId(this.entitySrv.getParentId() || 0);
         this.customerLookupModel.onObjectSelected = (a) => this.onAgent(a);
         this.projSegmentLookup.onObjectSelected = s => this.encodeProjectNumber();
+        this.wilayaLookup.onObjectSelected = w => this.onWilaya(w);
     }
 
     public override setupForm(b: Project) {
@@ -131,8 +136,8 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
             qty: [b.qty || 0, Validators.required],
             monthlyRate: [b.monthlyRate || 0, Validators.required],
             dailyRate: [b.dailyRate],
-            scheduledQty: [b.scheduledQty || 0, Validators.required],
-            dueDays: [b.dueDays || 0, Validators.required],
+            scheduledQty: [{ value: b.scheduledQty || 0, disabled: true }, Validators.required],
+            dueDays: [b.dueDays || 0],
             activity: [b.activity],
             sector: [b.sector],
             masterWork: [b.masterWork],
@@ -167,24 +172,18 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
     onAgent(a: Agent) {
         this.entitySrv.setParentId(a?.id || 0);
         this.encodeProjectNumber();
-        // zip(this.entitySrv.getProjectCode(a?.id || 0), this.isSCHB())
-        //     .subscribe((res) => {
-        //         const code = res[1]? this.schbEncoded(res[0]?.code) : res[0].code;
-        //         this.form?.controls['contractNo'].setValue(code);
-        //     });
     }
 
     private encodeProjectNumber() {
         const id = this.customerLookupModel.cache?.id||0;
-        zip(this.entitySrv.getProjectCode(id || 0), this.isSCHB()).subscribe(
-            (res) => {
-                const code = res[1]
-                    ? this.schbEncoded(res[0]?.code)
-                    : res[0].code;
-                this.form?.controls['contractNo'].setValue(code);
+        zip(this.entitySrv.getProjectCode(id || 0), this.isSCHB())
+            .pipe(switchMap(res => res[1]? this.schbEncoded() : of(res[0].code)))
+            .subscribe((res) => {
+                this.form?.controls['contractNo'].setValue(res);
             },
-        );
+            );
     }
+
     private isSCHB(): Observable<boolean> {
         return this.appConfigSrv
             .getConfig()
@@ -193,20 +192,23 @@ export class CementContractDetailComponent extends BaseEntityDetailComponent<Pro
             }));
     }
 
-    private schbEncoded(code: string) {
-        const idx = code.indexOf('_');
-        if (idx > 1 && this.projSegmentLookup.cache) {
-            return (
-                code.substring(0, idx) +
-                (this.projSegmentLookup.cache ? '_' : '') +
-                (this.projSegmentLookup.cache?.descriptionAr || '') +
-                '_ ' +
-                code.substring(idx + 3)
-            );
-        }
-        return code;
+    onWilaya(w: Wilaya) {
+        this.isSCHB()
+            .pipe(switchMap(res => of(res? this.encodeProjectNumber(): null)))
+            .subscribe();
     }
-    private getSCHBCode() {
-        return `${this.customerLookupModel.cache.customerCode}_${this.projSegmentLookup.cache.descriptionAr}`;
+
+    private schbEncoded(): Observable<string> {
+        return this.entitySrv
+            .getLast()
+            .pipe(
+                map((res) => {
+                    const max = res.body.length > 0 ? res.body[0].id : 1;
+                    const wCode = this.wilayaLookup.cache?.id || 0;
+                    const wilaya = (wCode < 10 ? '0' : '') + wCode;
+                    const seg = this.projSegmentLookup.cache?.descriptionAr || '00';
+                    return `${max}_${seg}_${wilaya}`;
+                })
+            );
     }
 }

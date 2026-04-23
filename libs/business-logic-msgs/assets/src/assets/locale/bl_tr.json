@@ -17,7 +17,7 @@
     "QTY_STILL_SATISFIED":                  "Miktar hala tatmin edici. Güncellemeye izin verilmiyor.",
     "REPORT_NOT_FOUND":                     "Rapor bulunamadı.",
     "MISSING_SMTP_CONFIGURATION":           "Eksik smtp yapılandırması",
-    "MISSING_COMPANY_EMAIL":                "Eksik şirket e-postası.",
+    "MISSING_COMPANY_EMAIL":                "Eksik şirket epostası.",
     "MISSING_ACCOUNT":                      "",
     "STOCKED_ITEM":                         "",
     "NON_STOCKED_ITEM":                     "",
@@ -87,5 +87,7 @@
     "INVALID_STORE":                        "Fatura üzerindeki teslimat için belirtilen mağaza geçersiz.",
     "LOT_EXPIRED":                          "Belirtilen parti süresi dolmuştur.",
     "MISSING_WEIGHT":                       "Tara ağırlığı, brüt ağırlığı veya her ikisi eksik.",
-    "NO_CASH_MODE":                         "Nakit ödeme yöntemi bu sistemde mevcut değil."
+    "NO_CASH_MODE":                         "Nakit ödeme yöntemi bu sistemde mevcut değil.",
+    "OUT_OF_TOLERANCE":                     "Gerçek ağırlıklar tolerans dışındadır. Lütfen ağırlıkları doğrulayın ve tekrar deneyin.",
+    "INEXISTENT_ASSET":                     "Belirtilen varlık artık mevcut değil."
 }

@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, inject, OnInit, Output, EventEmitter, input } from '@angular/core';
 import {
     FormBuilder,
     FormControl,
@@ -58,8 +58,8 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
     private loginSrv = inject(LoginService);
     private confirmationSrv = inject(ConfirmationDialogService);
 
-    @Input() activityId!: number | null;
-    @Input() parentId!: number;
+    readonly activityId = input.required<number | null>();
+    readonly parentId = input.required<number>();
     @Output() closed = new EventEmitter<void>();
 
     public form: UntypedFormGroup | null = null;
@@ -98,14 +98,15 @@ export class CrmLeadsActivityLinesDetailComponent implements OnInit {
     private leadSrv = inject(CRMLeadsService);
 
     ngOnInit() {
-        if (this.activityId) {
-            this.entitySrv.get(this.activityId).subscribe((activity) => {
+        const activityId = this.activityId();
+        if (activityId) {
+            this.entitySrv.get(activityId).subscribe((activity) => {
                 this.form = this.setupForm(activity);
             });
         } else {
             this.form = this.setupForm({
                 id: 0,
-                parentId: this.parentId,
+                parentId: this.parentId(),
             } as CRMLeadActivity);
         }
         this.leadSrv.get(this.entitySrv.getParentId()).subscribe({

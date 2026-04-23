@@ -3,7 +3,7 @@ import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonListService } from '@ss/payroll/api-employee';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
@@ -111,19 +111,24 @@ export class PersonListComponent
             'PAYROLL_EMPLOYEE_SUMMARY',
         );
         this.pagination.pageSize = 15;
-        this.deleteButton.visible = false;
-        this.editButton.visible = false;
-        this.addButton.visible = false;
     }
 
     trackByFn(index: number, item: PersonSummary) {
         return item.id;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.deleteButton.visible = false;
+                this.editButton.visible = false;
+                this.addButton.visible = false;
+            }));
+    }
+
     override ngOnInit(): void {
         super.ngOnInit();
         this.shellSrv.setGoBackPath('..', this.route);
-        this.addButton.visible = false;
     }
 
     //

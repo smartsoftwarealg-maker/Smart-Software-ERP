@@ -125,7 +125,7 @@ body {
     .f-accent { color: var(--mat-sys-outline); }
 
     .b-primary {
-        background-color: var(--mat-sys-primary);
+        background-color: var(--mat-sys-primary) !important;
         color: var(--mat-sys-on-primary);
 
         // override mat-tree background to fix a bug

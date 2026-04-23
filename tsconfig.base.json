@@ -873,7 +873,10 @@
             "@ss/production/production-reservation": [
                 "libs/production/production-reservation/src/index.ts"
             ],
-            "@ss/sales/drivers": ["libs/sales/drivers/src/index.ts"]
+            "@ss/sales/drivers": ["libs/sales/drivers/src/index.ts"],
+            "@ss/production/work-center": [
+                "libs/production/work-center/src/index.ts"
+            ]
         }
     },
     "exclude": ["node_modules", "tmp"]

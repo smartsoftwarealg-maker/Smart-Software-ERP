@@ -13,6 +13,9 @@ export * from './lib/accounting-generation/accounting-generation.component';
 export * from './lib/accounting-reopen/accounting-reopen.component';
 export * from './lib/accounting-reopen/can-close-opener';
 export * from './lib/balance-queries/balance-queries.component';
-export * from './lib/sales-excel-injection/sales-excel-injection.component'
+export * from './lib/sales-excel-injection/sales-excel-injection.component';
 export * from './lib/transaction-matching.component/transaction-matching.component';
 export * from './lib/general-excel-injection/general-excel-injection.component';
+export * from './lib/acc-era-report-detail/acc-era-report-detail.component';
+export * from './lib/acc-era-report-list/acc-era-report-list.component';
+

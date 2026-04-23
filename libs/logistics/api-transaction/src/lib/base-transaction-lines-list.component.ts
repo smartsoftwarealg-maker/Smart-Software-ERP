@@ -179,6 +179,8 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         return this.#_isEditable_;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set parentExecutionRef(ref: number) {
         if (this.parentId > 0) {

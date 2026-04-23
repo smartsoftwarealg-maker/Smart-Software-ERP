@@ -1,0 +1,38 @@
+<div class="container_div container">
+    <mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="descriptionAr">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION_AR</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.descriptionAr }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="accountList">
+            <mat-header-cell *matHeaderCellDef translate>ACC_ACCOUNT_LIST</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.accountList }}
+            </mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable"
+                 [class.selected]="row.id == selected"
+                 (click)="select(row.id)"
+                 *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+
+    </mat-table>
+</div>
+
+<div class="container pagination-container b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

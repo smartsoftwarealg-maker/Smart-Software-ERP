@@ -14,6 +14,7 @@ import { ConsolidatedLoansService } from '../consolidated-loans.service';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaymonthPipe } from '@ss/payroll-common';
+import { Observable, tap } from 'rxjs';
 
 @Component({
     selector: 'ss-consolidated-loan-list',
@@ -54,9 +55,9 @@ export class ConsolidatedLoanListComponent extends BaseEntityListComponent<Loan>
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
+        public override router: Router,
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
-        public override router: Router,
         public override pagPersistSrv: PaginatorPersistenceService,
         private consumptionSrv: LoansConsumptionService) {
         super(infoSrv,
@@ -88,10 +89,16 @@ export class ConsolidatedLoanListComponent extends BaseEntityListComponent<Loan>
         this.refreshDetail();
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.addButton.visible = false;
+                this.editButton.visible = false;
+                this.deleteButton.visible = false;
+            }));
+    }
+
     override ngOnInit() {
-        this.addButton.visible = false;
-        this.editButton.visible = false;
-        this.deleteButton.visible = false;
         super.ngOnInit();
     }
 }

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 
 import { MRP, MRP_URL } from '../../../../../production/mrp/src/lib/api/mrp-api';
-import { HttpService } from '@ss/common/api-common';
+import { HttpService, LanguageService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
 import { Observable, of, switchMap } from 'rxjs';
 import {
@@ -16,18 +16,33 @@ import {
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { ActivatedRoute } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-ui-mrp',
-    imports: [MatTable, MatHeaderCell, MatColumnDef, MatHeaderCellDef, MatCellDef, MatCell, MatHeaderRow, MatRow, MatHeaderRowDef, MatRowDef, TranslateDirective],
+    imports: [
+        MatTable,
+        MatHeaderCell,
+        MatColumnDef,
+        MatHeaderCellDef,
+        MatCellDef,
+        MatCell,
+        MatHeaderRow,
+        MatRow,
+        MatHeaderRowDef,
+        MatRowDef,
+        TranslateDirective,
+        DecimalPipe,
+    ],
     templateUrl: './ui-mrp.component.html',
     styleUrl: './ui-mrp.component.scss',
-    standalone: true
+    standalone: true,
 })
 export class UiMrpComponent implements OnInit {
     private http = inject(HttpService);
     private shellSrv = inject(ShellService);
     private route = inject(ActivatedRoute);
+    protected langSrv = inject(LanguageService);
 
     public data: MRP[] = [];
     displayedColumns: string[] = [
@@ -36,44 +51,48 @@ export class UiMrpComponent implements OnInit {
         'qty',
         'purchaseOrder',
         'inventory',
-        'toOrder'
+        'toOrder',
     ];
 
-
-    getData(id:number |null, lineId?:number): Observable<MRP[]> {
-        let p = new HttpParams() ;
-        if (id){p = p.set('id', id);}
-        if (lineId){p = p.set('lineId', lineId);}
+    getData(id: number | null, lineId?: number): Observable<MRP[]> {
+        let p = new HttpParams();
+        if (id) {
+            p = p.set('id', id);
+        }
+        if (lineId) {
+            p = p.set('lineId', lineId);
+        }
         return this.http.get<MRP[]>(MRP_URL, p);
     }
 
     ngOnInit(): void {
         this.data = [];
         this.shellSrv.setLoading(true);
-        this.route.queryParams.pipe(
-            switchMap(param => {
-                const prodId = +param['prodId'];
-                const prodDetail = +param['prodDetail'];
+        this.route.queryParams
+            .pipe(
+                switchMap((param) => {
+                    const prodId = +param['prodId'];
+                    const prodDetail = +param['prodDetail'];
 
-                if (prodId) {
-                    return this.getData(prodId);
-                } else if (prodDetail) {
-                    return this.getData(null, prodDetail);
-                }
-                return of([]);
-            })
-        ).subscribe({
-            next: (data) => {
-                this.data = data;
-                this.shellSrv.setLoading(false);
-            },
-            error: err => {
-                this.shellSrv.setLoading(false);
-                throw err;
-            }
-        });
+                    if (prodId) {
+                        return this.getData(prodId);
+                    } else if (prodDetail) {
+                        return this.getData(null, prodDetail);
+                    }
+                    return of([]);
+                }),
+            )
+            .subscribe({
+                next: (data) => {
+                    this.data = data;
+                    this.shellSrv.setLoading(false);
+                },
+                error: (err) => {
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                },
+            });
     }
-
 
     protected readonly Math = Math;
 }

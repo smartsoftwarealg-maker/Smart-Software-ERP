@@ -99,5 +99,7 @@
     "INVALID_STORE":                      "Magasin invalide spécifié pour la livraison sur la facture",
     "LOT_EXPIRED":                        "Le lot spécifié a expiré.",
     "MISSING_WEIGHT":                     "Soit le poids à vide, soit le poids brut, soit les deux sont manquants.",
-    "NO_CASH_MODE":                       "La méthode de paiement en espèces n'existe pas dans ce système."
+    "NO_CASH_MODE":                       "La méthode de paiement en espèces n'existe pas dans ce système.",
+    "OUT_OF_TOLERANCE":                   "Les poids réels sont hors tolérance. Veuillez vérifier les poids et réessayer.",
+    "INEXISTENT_ASSET":                    "L'actif spécifié n'existe plus."
 }

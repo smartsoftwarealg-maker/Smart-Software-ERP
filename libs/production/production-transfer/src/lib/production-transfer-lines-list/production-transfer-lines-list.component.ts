@@ -25,7 +25,6 @@ import { ProductionTransferLinesService } from '../production-services/productio
 import { AccTransactionLineService } from '@ss/accounting/accounting-api';
 import { MaterialModule } from '@ss/common/api-common';
 import { Observable } from 'rxjs';
-import { WeightCaptureDialogButtonComponent } from '@ss/sales/weight-capture';
 
 @Component({
     selector: 'ss-production-transfer-lines-list',
@@ -58,6 +57,7 @@ export class ProductionTransferLinesListComponent
         'reference',
         'description',
         'qtyOrdered',
+        'charge4',
         'qtySatisfied',
         'storeDescription',
         'storeName',
@@ -101,29 +101,35 @@ export class ProductionTransferLinesListComponent
     }
 
     transfer() {
-        this.detailSrv.transfer(this.selectedRow?.id || 0).subscribe({
-            next: () => {
-                this.refresh();
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: (err) => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            },
-        });
+        if (this.selectedRow?.id) {
+            this.detailSrv.transfer(this.selectedRow?.id || 0).subscribe({
+                next: () => {
+                    this.refresh();
+                    this.snackBarSrv.showSuccessMessage();
+                },
+                error: (err) => {
+                    this.snackBarSrv.showFailureMessage();
+                    throw err;
+                },
+            });
+        }
     }
 
     transferAll() {
-        this.detailSrv.transferAll(this.selectedRow?.transacId || 0).subscribe({
-            next: () => {
-                this.refresh();
-                this.snackBarSrv.showSuccessMessage();
-            },
-            error: (err) => {
-                this.snackBarSrv.showFailureMessage();
-                throw err;
-            },
-        });
+        if (this.selectedRow?.transacId) {
+            this.detailSrv
+                .transferAll(this.selectedRow?.transacId || 0)
+                .subscribe({
+                    next: () => {
+                        this.refresh();
+                        this.snackBarSrv.showSuccessMessage();
+                    },
+                    error: (err) => {
+                        this.snackBarSrv.showFailureMessage();
+                        throw err;
+                    },
+                });
+        }
     }
 
     private doCancellation(obs: Observable<{ count: number }>) {

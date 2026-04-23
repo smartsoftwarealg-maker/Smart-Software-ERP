@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 import { HttpService, LanguageService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -18,6 +18,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiStockInfoComponent } from '@ss/logistics/ui-stock-info';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-archive-list',
@@ -35,6 +36,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocument> implements OnInit {
     rights = {create: true, del: true, edit: true};
+
 
     constructor(
         public service: ArchiveService,
@@ -82,19 +84,22 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
             });
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        const downloadButton: ToolbarButton = {
-            icon: 'fas fa-download',
-            label: 'WAR_DOWNLOAD',
-            disabled: false,
-            visible: true,
-            keepOnToolbar: KeepOnToolbar.DYNAMIC,
-            click: () => {
-                this.download(this.selectedRow?._id);
-            }
-        };
-        this.shellSrv.addButton(downloadButton);
+
+    protected override postInit(): Observable<any> {
+        return super.postInit()
+            .pipe(tap(() => {
+                const downloadButton: ToolbarButton = {
+                    icon: 'fas fa-download',
+                    label: 'WAR_DOWNLOAD',
+                    disabled: false,
+                    visible: true,
+                    keepOnToolbar: KeepOnToolbar.DYNAMIC,
+                    click: () => {
+                        this.download(this.selectedRow?._id);
+                    },
+                };
+                this.shellSrv.addButton(downloadButton);
+            }));
     }
 
     download(id: string) {

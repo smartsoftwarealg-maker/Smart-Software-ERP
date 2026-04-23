@@ -22,8 +22,8 @@ export class CurrencyService extends BaseEntityService<Currency> {
 
     load(): Observable<Currency[]> {
         return this.httpSrv
-                .get<Currency[]>(CURRENCY_URL)
-                .pipe(tap((res: Currency[]) => this.currencies = res),
-                      shareReplay());
+            .get<Currency[]>(CURRENCY_URL)
+            .pipe(tap((res: Currency[]) => this.currencies = res),
+                shareReplay());
     }
 }

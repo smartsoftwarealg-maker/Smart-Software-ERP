@@ -28,6 +28,9 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
     controlType = 'ss-paymonth-input';
     autofilled?: boolean;
     onTouched = () => {};
+    // TODO: Skipped for migration because:
+    //  This input overrides a field from a superclass, while the superclass field
+    //  is not migrated.
     @Input('aria-describedby') userAriaDescribedBy: string;
     @HostBinding() id = `ss-paymonth-editor-${PaymonthEditorComponent.nextId++}`;
 
@@ -64,6 +67,8 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
 
 
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     get value(): number {
         const v = this.form.value;
@@ -75,6 +80,8 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
         this.form.controls['year'].setValue(+(paymonth / 100).toFixed(0));
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     get placeholder() {
         return this._placeholder;
@@ -117,6 +124,8 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
         return this.focused || !this.empty;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     get required() {
         return this._required;
@@ -126,6 +135,8 @@ export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnD
         this.stateChanges.next();
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     get disabled(): boolean { return this._disabled; }
     set disabled(value: boolean) {

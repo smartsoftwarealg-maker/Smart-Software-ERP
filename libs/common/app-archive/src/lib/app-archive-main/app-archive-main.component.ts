@@ -33,11 +33,15 @@ export class AppArchiveMainComponent {
         }
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set editable(value: boolean) {
         this.archiveSrv.editable = value;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set id(objectId: number) {
         this.archiveSrv.setParentId(objectId);
@@ -47,6 +51,8 @@ export class AppArchiveMainComponent {
         return this.archiveSrv.getParentId();
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set appId(id: number) {
         this.archiveSrv.appId = id || 0;

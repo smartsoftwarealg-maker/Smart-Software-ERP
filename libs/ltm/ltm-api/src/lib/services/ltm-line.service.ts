@@ -12,6 +12,8 @@ export class LtmLineService extends BaseEntityService<LTMLine> {
         super(httpSrv, LTM_LINE_URL);
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input()
     set line(l: LTMLine) {
         this._line = l;

@@ -32,7 +32,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { callback } from 'chart.js/helpers';
-import { Observable, takeUntil } from 'rxjs';
+import { Observable, takeUntil, tap } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -102,8 +102,14 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
         this.pagination.pageSize = 15;
     }
 
+    protected override preInit(): Observable<unknown> {
+        return super.preInit()
+            .pipe(tap(() => {
+                this.editButton.visible = this.addButton.visible = this.deleteButton.visible = !this.loginSrv.appCtx.agentId;
+            }));
+    }
+
     override ngOnInit() {
-         this.editButton.visible = this.addButton.visible = this.deleteButton.visible = !this.loginSrv.appCtx.agentId;
          super.ngOnInit();
          this.refresh();
          this.from

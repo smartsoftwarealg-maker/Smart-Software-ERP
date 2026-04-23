@@ -51,9 +51,13 @@
             "personFullNameFormat": "fr"
         }
     ],
-    "scales": {
+    "scales_disabled": {
         "comment": "Remove .disabled from the name above to enable the use of scales",
         "url": "http://127.0.0.1:9998/api/scale/list?api-key=737800"
     },
-    "schb": true
+    "schb": true,
+
+    "manufacturing": {
+        "showPallet": true
+    }
 }

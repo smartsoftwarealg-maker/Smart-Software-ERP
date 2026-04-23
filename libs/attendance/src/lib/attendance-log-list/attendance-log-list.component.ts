@@ -78,7 +78,6 @@ export class AttendanceLogListComponent extends BaseEntityListComponent<ATTSigna
                 debounceTime(300),
                 distinctUntilChanged(),
                 takeUntilDestroyed(this.#destroyRef)
-            )
-            .subscribe(res => this.entitySrv.date = res);
+            ).subscribe(res => this.entitySrv.date = res);
     }
 }

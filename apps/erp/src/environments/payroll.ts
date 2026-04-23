@@ -18,7 +18,6 @@ import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
-import { costingNavTree } from '../app/costing/side-nav-tree';
 
 export const environment = {
     production: true,
@@ -31,13 +30,12 @@ export const navBar = [
     hrNavTree,
     payrollNavTree,
     gicaNavTree,
-    workflowNavTree,
-    costingNavTree,
     aaNavTree
 ];
 
 export const langAssets = [
     ['assets/locale/', ''],
+    ['assets/locale/bl_', 'BL_'],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
     ['assets/locale/payroll_', 'PAYROLL_'],
     ['assets/locale/common_', 'COMMON_'],

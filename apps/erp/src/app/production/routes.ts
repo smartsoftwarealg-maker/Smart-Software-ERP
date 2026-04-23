@@ -24,7 +24,8 @@ import {
     PRODUCTION_FORMULAS_URL,
     PRODUCTIONS_URL,
     STOCK_RESERVATIONS_URL,
-    PRODUCTIONS_RESERVATION_URL,
+    PRODUCTIONS_RESERVATION_URL, PRODUCTION_UNITS_URL,
+    PRODUCTION_WORK_CENTER_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -96,6 +97,13 @@ import {
 import {
     ProductionReservationLineListComponent
 } from '@ss/production/production-reservation';
+import {
+    UnitsListComponent
+} from '@ss/production/production-article';
+import {
+    UnitsDetailComponent
+} from '@ss/production/production-article';
+import {WorkCenterDetailComponent, WorkCenterListComponent} from '@ss/production/work-center';
 
 export const prodRoutes: Routes = [
     {
@@ -427,6 +435,25 @@ export const prodRoutes: Routes = [
         ],
     },
     {
+        path: PRODUCTION_UNITS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: UnitsListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: UnitsDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+    {
         path: PRODUCTION_PACKAGING_UNITS_URL,
         children: [
             {
@@ -641,6 +668,25 @@ export const prodRoutes: Routes = [
                     },
                     ...docInfoRoutes,
                 ],
+            },
+        ],
+    },
+    {
+        path: PRODUCTION_WORK_CENTER_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: WorkCenterListComponent,
+                canActivate: [loginGuard],
+                canActivateChild: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: WorkCenterDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                canActivateChild: [loginGuard],
             },
         ],
     },

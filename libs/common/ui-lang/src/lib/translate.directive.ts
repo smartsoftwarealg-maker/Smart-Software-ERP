@@ -10,14 +10,20 @@ import {LanguageService} from '@ss/common/api-common';
 })
 export class TranslateDirective extends BaseDirective implements OnInit { //1
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set l10nTranslate(params: any) {
         this.params = params;
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set translate(params: any) {
         this.params = params;
     }
 
+    // TODO: Skipped for migration because:
+    //  Your application code writes to the input. This prevents migration.
     @Input() public params: any;
 
     constructor(protected languageService: LanguageService, protected override el: ElementRef, protected override renderer: Renderer2) {

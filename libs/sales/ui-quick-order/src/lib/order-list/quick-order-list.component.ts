@@ -58,6 +58,10 @@ import { MatTooltip } from '@angular/material/tooltip';
     ],
 })
 export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder> {
+    readonly invoiceTypes: Map<number, string> = new Map<number, string>([
+        [1, 'COMMON_INVOICE'],
+        [2, 'COMMON_DELIVERY'],
+    ]);
     displayedColumns = [
         'number',
         'date',
@@ -145,15 +149,5 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
 
     override refresh() {
         super.refresh(this.getInvoices.bind(this));
-    }
-
-    getInvoiceType(n: number) {
-        if (n === 1) {
-            return 'COMMON_INVOICE';
-        }
-        if (n === 2) {
-            return 'COMMON_DELIVERY';
-        }
-        return '';
     }
 }
