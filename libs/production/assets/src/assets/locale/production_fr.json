@@ -68,7 +68,6 @@
     "QUEUE_TIME":             "Temps d'attente en file",
     "MOVE_TIME":              "Temps de déplacement",
     "WAIT_TIME":              "Temps d'attente",
-    "CC_DESCRIPTION":         "Description du centre de coût",
     "ACTIVE":                 "Actif",
     "IS_BOTTLENECK":          "Goulot d'étranglement",
     "REQUIRES_SETUP":         "Nécessite un réglage",

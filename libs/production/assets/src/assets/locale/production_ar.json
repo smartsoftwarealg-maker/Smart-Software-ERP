@@ -69,7 +69,6 @@
     "QUEUE_TIME":             "وقت الإنتظار في الطابور",
     "MOVE_TIME":              "وقت الإنتقال",
     "WAIT_TIME":              "وقت الإنتظار",
-    "CC_DESCRIPTION":         "الوصف",
     "ACTIVE":                 "نشط",
     "IS_BOTTLENECK":          "عنق زجاجة",
     "REQUIRES_SETUP":         "يتطلب الإعداد",
