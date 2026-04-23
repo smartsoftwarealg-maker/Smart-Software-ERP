@@ -565,8 +565,10 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 }
                 const parsed = this.asNumber(rawValue);
 
+                if (!Number.isFinite(parsed)) {
+                    break;
+                }
                 if (
-                    Number.isFinite(parsed) &&
                     parsed !== 0 &&
                     parsed <= 1000000000 // More than 10 numbers are likely to be an identifier
                 ) {
