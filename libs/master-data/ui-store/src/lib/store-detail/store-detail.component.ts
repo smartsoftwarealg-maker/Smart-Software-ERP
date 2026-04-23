@@ -1,16 +1,16 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Article, ArticleService} from '@ss/master-data/api-article';
-import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import {LookupsService, Mark, Vat} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
-import { MaterialModule } from "@ss/common/api-common";
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { MaterialModule } from '@ss/common/api-common';
+import { TranslateDirective } from '@ss/common/ui-lang';
 import { ArticleStoreComponent } from '@ss/stock/article-store';
 
 @Component({
@@ -19,12 +19,12 @@ import { ArticleStoreComponent } from '@ss/stock/article-store';
     templateUrl: './store-detail.component.html',
     standalone: true,
     imports: [
-    MaterialModule,
-    TranslateDirective,
-    RouterModule,
-    ReactiveFormsModule,
-    ArticleStoreComponent
-]
+        MaterialModule,
+        TranslateDirective,
+        RouterModule,
+        ReactiveFormsModule,
+        ArticleStoreComponent
+    ]
 })
 export class StoreDetailComponent extends BaseEntityDetailComponent<Article> implements OnInit {
 

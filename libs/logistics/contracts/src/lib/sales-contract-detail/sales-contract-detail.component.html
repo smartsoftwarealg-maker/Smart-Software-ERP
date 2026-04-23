@@ -1,6 +1,6 @@
-<mat-card>
+@defer (when form !== null && !isLoading()) {
+    <mat-card>
     <mat-card-content>
-        @if (form !== null) {
             <form novalidate [formGroup]="form">
                 <mat-form-field id="contractNo" class="default-50 sm-100">
                     <mat-label translate>COMMON_NUMBER</mat-label>
@@ -104,11 +104,11 @@
                 </div>
 
             </form>
-        }
     </mat-card-content>
 </mat-card>
+}
 
-@if (id) {
+@if (id  && !isLoading()) {
     <mat-accordion>
         <mat-expansion-panel #articles
                              expanded="false"

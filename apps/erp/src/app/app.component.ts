@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CompanySelectorService, HttpService, LoginService } from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
@@ -21,7 +21,7 @@ import { AdService } from '@ss/common/api-admob';
     imports: [Dir, RouterOutlet, MatProgressSpinner, MessageComponent],
 })
 export class AppComponent implements OnInit {
-    #adId: 'ca-app-pub-8350344729252908~3197940877'; //'ca-app-pub-8350344729252908/7124743448';
+    #adId = 'ca-app-pub-8350344729252908~3197940877'; //'ca-app-pub-8350344729252908/7124743448';
     #adService = inject(AdService);
     #deviceSrv = inject(DeviceDetectorService);
 
@@ -35,9 +35,10 @@ export class AppComponent implements OnInit {
     private themeSrv = inject(ThemeService);
 
     public langSrv = inject(LanguageService);
-    loaded = false;
+    loaded = signal(false);
 
     ngOnInit() {
+        console.log('AppComponent initialized');
         this.themeSrv.load();
         const multiCompany = environment['multiCompany'] === true;
         const company = environment['company'];
@@ -56,12 +57,15 @@ export class AppComponent implements OnInit {
             .subscribe({
                 next: () => {
                     this.shellSrv.setSideNavDataSource(navBar);
-                    this.loaded = true;
+                    this.loaded.set(true);
                     if (!this.shellSrv.isEmpty() && this.#deviceSrv?.isMobile()) {
                         this.#adService.showBanner(this.#adId);
                     }
                 },
-                error: () => this.loginSrv.logout().then(),
+                error: (e) => {
+                    console.error('Error initializing app', e);
+                    this.loginSrv.logout().then()
+                },
             });
 
         // console.log('Main app....................................')

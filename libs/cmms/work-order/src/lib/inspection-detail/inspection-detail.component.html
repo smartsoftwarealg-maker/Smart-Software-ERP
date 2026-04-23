@@ -91,6 +91,6 @@
 </form>
 }
 </mat-card-content>
-@if (id > 0) {
+@if (id > 0 && !isLoading()) {
   <ss-inspection-detail-list></ss-inspection-detail-list>
 }

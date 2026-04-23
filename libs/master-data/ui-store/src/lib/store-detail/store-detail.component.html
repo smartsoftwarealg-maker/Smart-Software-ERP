@@ -1,49 +1,49 @@
-<mat-card>
-  <mat-card-content>
-    @if (form) {
-      <form novalidate [formGroup]="form">
-        <div style="height: 16px"></div>
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-          <mat-label translate>COMMON_REFERENCE</mat-label>
-          <input matInput formControlName="reference" type="text" required>
-        </mat-form-field>
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-          <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
-          <input matInput formControlName="description2" type="text" required>
-        </mat-form-field>
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-          <mat-label translate>LOGISTICS_PRICE</mat-label>
-          <input matInput formControlName="price1" type="number" min="0.01" required>
-        </mat-form-field>
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-          <mat-label translate>STOCK_VAT</mat-label>
-          <mat-select formControlName="vat">
-            <mat-option [value]="null"></mat-option>
-            @for (v of vats; track v) {
-              <mat-option [value]="v.id">
-                {{v.value == null ? '0.00' : v.value.toFixed(2)}}
-              </mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-          <mat-label translate>STOCK_MARK</mat-label>
-          <mat-select formControlName="mark">
-            @for (m of marks; track m) {
-              <mat-option [value]="m.id">
-                {{m.description}}
-              </mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field floatLabel="always" class="default-50 sm-100">
-          <mat-label translate>COMMON_ACCOUNTNO</mat-label>
-          <input matInput formControlName="accountno">
-        </mat-form-field>
-      </form>
+@if (form && !isLoading()) {
+    <mat-card>
+        <mat-card-content>
+            <form novalidate [formGroup]="form">
+                <div style="height: 16px"></div>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_REFERENCE</mat-label>
+                    <input matInput formControlName="reference" type="text" required>
+                </mat-form-field>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description2" type="text" required>
+                </mat-form-field>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_PRICE</mat-label>
+                    <input matInput formControlName="price1" type="number" min="0.01" required>
+                </mat-form-field>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>STOCK_VAT</mat-label>
+                    <mat-select formControlName="vat">
+                        <mat-option [value]="null"></mat-option>
+                        @for (v of vats; track v) {
+                            <mat-option [value]="v.id">
+                                {{ v.value == null ? '0.00' : v.value.toFixed(2) }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>STOCK_MARK</mat-label>
+                    <mat-select formControlName="mark">
+                        @for (m of marks; track m) {
+                            <mat-option [value]="m.id">
+                                {{ m.description }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>COMMON_ACCOUNTNO</mat-label>
+                    <input matInput formControlName="accountno">
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+    </mat-card>
+    @if (selectedRow && selectedRow?.id !== 0) {
+        <ss-article-store [article]="selectedRow"></ss-article-store>
     }
-  </mat-card-content>
-</mat-card>
-@if (selectedRow && selectedRow?.id !== 0) {
-  <ss-article-store [article]="selectedRow"></ss-article-store>
 }

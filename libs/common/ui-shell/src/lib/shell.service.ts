@@ -62,6 +62,7 @@ export interface MenuItem {
     providedIn: 'root'
 })
 export class ShellService {
+    #fetching = signal(false);
 
     #badgeButtonSrv = inject(BadgeButtonService);
     private _application = '';
@@ -110,6 +111,7 @@ export class ShellService {
     protected isError = false;
     protected retryCallback: () => void;
 
+
     public goBackEnabled = true;
     // side nav data
     public navData: SideNavNode[] = [];
@@ -129,6 +131,13 @@ export class ShellService {
 
     public getLoading() {
         return this.isLoading;
+    }
+
+    public setFetching(fetching: boolean) {
+        this.#fetching.set(fetching);
+    }
+    public isFetching() {
+        return this.#fetching;
     }
 
     public showRetry(retryCallback: () => void) {

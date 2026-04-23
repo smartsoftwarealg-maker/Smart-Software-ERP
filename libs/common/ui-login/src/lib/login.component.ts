@@ -85,6 +85,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console
         if (this.loginSrv.isLoggedIn) {
             this.loading.set(true);
             this.#router.navigate([ABS_INDEX_URL]).then();

@@ -5,6 +5,7 @@ import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
 import { MatInput } from '@angular/material/input';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import { ShellService } from '@ss/common/ui-shell';
 
 
 
@@ -16,6 +17,8 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     imports: [NgStyle, MatIconButton, MatMiniFabButton, MatMenuTrigger, MatInput, TranslateDirective, MatMenu, MatMenuItem]
 })
 export class PaginationComponent implements OnInit {
+    #shellSrv = inject(ShellService);
+
     public langSrv = inject(LanguageService);
 
     // TODO: Skipped for migration because:
@@ -196,6 +199,9 @@ export class PaginationComponent implements OnInit {
     // }
 
     onGoToPage(): void {
+        if (this.isFetching()) {
+            return;
+        }
         let val = this.pageInput.nativeElement.value;
         if (isString(val)) {
             val = +val;
@@ -214,4 +220,7 @@ export class PaginationComponent implements OnInit {
         }
     }
 
+    get isFetching() {
+        return this.#shellSrv.isFetching();
+    }
 }

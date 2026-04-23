@@ -1,5 +1,3 @@
-import _default from 'chart.js/dist/plugins/plugin.tooltip';
-import numbers = _default.defaults.animations.numbers;
 
 export interface MBalanace {
     fileId: number;
