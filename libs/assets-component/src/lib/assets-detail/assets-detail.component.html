@@ -1,441 +1,451 @@
 @if (form !== null) {
-  <form [formGroup]="form">
-    <mat-form-field id="reference" class="default-25 sm-50">
-      <mat-label translate>COMMON_REFERENCE</mat-label>
-      <input matInput formControlName="reference" type="text" autofocus maxlength="32" required>
-      @if (form.controls['reference']?.hasError('maxlength')) {
-        <mat-error [translate]="{maxLen: 32}">
-          COMMON_FIELD_MAX_LENGTH
-        </mat-error>
-      }
-      @if (form.controls['reference']?.hasError('minlength')) {
-        <mat-error [translate]="{minLen: minLength}">
-          COMMON_FIELD_MIN_LENGTH
-        </mat-error>
-      }
-    </mat-form-field>
-    <mat-form-field id="reference2" class="default-25 sm-50">
-      <mat-label>
-        <span translate>COMMON_REFERENCE</span>
-        2
-      </mat-label>
-      <input matInput formControlName="reference2" type="text" maxlength="20">
-      @if (form.controls['reference2'].invalid) {
-        <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
-      }
-    </mat-form-field>
+    <form [formGroup]="form">
+        <mat-form-field id="reference" class="default-25 sm-50">
+            <mat-label translate>COMMON_REFERENCE</mat-label>
+            <input matInput formControlName="reference" type="text" autofocus maxlength="32" required>
+            @if (form.controls['reference']?.hasError('maxlength')) {
+                <mat-error [translate]="{maxLen: 32}">
+                    COMMON_FIELD_MAX_LENGTH
+                </mat-error>
+            }
+            @if (form.controls['reference']?.hasError('minlength')) {
+                <mat-error [translate]="{minLen: minLength}">
+                    COMMON_FIELD_MIN_LENGTH
+                </mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field id="reference2" class="default-25 sm-50">
+            <mat-label>
+                <span translate>COMMON_REFERENCE</span>
+                2
+            </mat-label>
+            <input matInput formControlName="reference2" type="text" maxlength="20">
+            @if (form.controls['reference2'].invalid) {
+                <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+            }
+        </mat-form-field>
 
-    <mat-form-field id="description" class="default-50 sm-100">
-      <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-      <input matInput formControlName="description" type="text" required>
-      @if (form.controls['description'].invalid) {
-        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-      }
-    </mat-form-field>
+        <mat-form-field id="description" class="default-50 sm-100">
+            <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+            <input matInput formControlName="description" type="text" required>
+            @if (form.controls['description'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
+        </mat-form-field>
 
-    <mat-form-field id="serial_no" class="default-50 sm-100">
-      <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
-      <input matInput formControlName="serial_no" type="text" maxlength="50">
-      @if (form.controls['serial_no'].invalid) {
-        <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
-      }
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-100">
-      <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
-      <ss-auto-complete matInput
-        [model]="accountAutoCompleteModel"
-        required
-        formControlName="accountId">
-      </ss-auto-complete>
-      @if (form.controls['accountId'].invalid) {
-        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-      }
-    </mat-form-field>
-
-    <div class="default-50 sm-100">
-      <mat-form-field style="width: calc(100% - 48px); margin-right: .5em">
-        <mat-label translate>ASSET_LOCATIONS</mat-label>
-        <ss-auto-complete matInput
-          [model]="officeAutoCompleteModel"
-          formControlName="office">
-        </ss-auto-complete>
-      </mat-form-field>
-      <button mat-mini-fab (click)="openSearchDlg()" type="button">
-        <i class="fa-solid fa-file-magnifying-glass"></i>
-      </button>
-    </div>
-
-    @if (isAQS) {
-      <mat-form-field class="default-50 sm-50">
-        <mat-label translate>ASSET_SITE</mat-label>
-        <input matInput formControlName="site" type="text" readonly>
-      </mat-form-field>
-
-      <mat-form-field class="default-50 sm-50">
-        <mat-label translate>ASSET_BUILDINGS</mat-label>
-        <input matInput formControlName="building" type="text" readonly>
-      </mat-form-field>
+        <mat-form-field id="serial_no" class="default-50 sm-100">
+            <mat-label translate>ASSET_SERIAL_NUMBER</mat-label>
+            <input matInput formControlName="serial_no" type="text" maxlength="50">
+            @if (form.controls['serial_no'].invalid) {
+                <mat-error translate>COMMON_FIELD_MAX_LENGTH</mat-error>
+            }
+        </mat-form-field>
 
         <mat-form-field class="default-50 sm-100">
-          <mat-label translate>ASSET_BENEFICIARY</mat-label>
-          <ss-auto-complete matInput
-            [model]="beneficiaryLookup"
-            formControlName="beneficiaryId">
-          </ss-auto-complete>
-        </mat-form-field>
-    }
-
-    <mat-form-field class="default-50 sm-50">
-      <mat-label translate>COMMON_COST_CENTER</mat-label>
-      <ss-auto-complete matInput
-        [model]="ccAutoCompleteModel"
-      formControlName="costCenter"></ss-auto-complete>
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-50">
-      <mat-label translate>COMMON_CLASS</mat-label>
-      <ss-auto-complete matInput
-        [model]="classAutoCompleteModel"
-        [required]="isAQS"
-        formControlName="assetClass">
-      </ss-auto-complete>
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-50">
-      <mat-label translate>COMMON_MARK</mat-label>
-      <ss-auto-complete matInput
-        [model]="markAutoCompleteModel"
-        [canAdd]="isAQS"
-        formControlName="mark">
-      </ss-auto-complete>
-    </mat-form-field>
-
-    <mat-form-field class="default-50 sm-50">
-      <mat-label translate>COMMON_STATUS</mat-label>
-      <ss-auto-complete matInput
-        [model]="statusAutoCompleteModel"
-      formControlName="status"></ss-auto-complete>
-      @if (form.controls['status'].invalid) {
-        <mat-error translate>COMMON_STATUS</mat-error>
-      }
-    </mat-form-field>
-
-    <mat-form-field id="comment" class="default-50 sm-100">
-      <mat-label translate>COMMON_MEMO</mat-label>
-      <input matInput formControlName="comment" type="text">
-    </mat-form-field>
-
-    @if (!isAQS) {
-      <div class="default-50 sm-100 qr">
-        <mat-form-field class="count_div">
-          <mat-label translate>ASSET_ITEM_COUNT</mat-label>
-          <input matInput formControlName="itemCount" type="number">
-        </mat-form-field>
-      </div>
-    }
-
-    <mat-tab-group (selectedIndexChange)="showPanel($event)" [dynamicHeight]="true">
-      <mat-tab label="{{ 'ASSET_DEPRECIATION' | translate }}" >
-        <div class="filler"></div>
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_ACQUISITION_DATE</mat-label>
-          <ss-date-picker formControlName="acquisitionDate"></ss-date-picker>
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_SERVICE_DATE</mat-label>
-          <ss-date-picker formControlName="serviceDate"></ss-date-picker>
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_ACQUISITION_VALUE</mat-label>
-          <input matInput formControlName="acquisitionValue" type="number" required>
-          @if (form.controls['acquisitionValue'].invalid) {
-            <mat-error translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-          }
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_HISTORIC_VALUE</mat-label>
-          <input matInput formControlName="historicValue" type="number">
-          @if (form.controls['historicValue'].invalid) {
-            <mat-error translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-          }
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>LOGISTICS_VAT</mat-label>
-          <input matInput formControlName="vat" type="number" required>
-          @if (form.controls['vat'].invalid) {
-            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-          }
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>COMMON_TYPE</mat-label>
-          <mat-select formControlName="depreciationType">
-            @for (v of depreciationTypes; track v) {
-              <mat-option [value]="v.id">
-                {{ v?.description | translate }}
-              </mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
-          <input matInput formControlName="depreciationRate" type="number" required>
-          @if (form.controls['depreciationRate'].invalid) {
-            <mat-error translate>COMMON_FIELD_REQUIRED
-            </mat-error>
-          }
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_OLD_DEPRECIATION</mat-label>
-          <input matInput formControlName="old_depreciation" type="number">
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_START_YEAR</mat-label>
-          <input matInput formControlName="startYear" type="number">
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_RESIDUAL_VALUE</mat-label>
-          <input matInput formControlName="residualValue" type="number" required>
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ACC_USEFUL_LIFE</mat-label>
-          <input matInput formControlName="useful_life" type="number" required>
-          @if (form.controls['useful_life'].invalid) {
-            <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
-          }
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_RESERVICE_DATE</mat-label>
-          <ss-date-picker formControlName="reserviceDate"></ss-date-picker>
-        </mat-form-field>
-      </mat-tab>
-      <mat-tab label="{{ 'COMMON_PURCHASE' | translate }}">
-        <div class="filler"></div>
-        <div class="default-25 sm-50 purchase_div">
-          <mat-form-field>
-            <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
+            <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
             <ss-auto-complete matInput
-              [model]="receptionLookup"
-              formControlName="receptionId">
+                              [model]="accountAutoCompleteModel"
+                              required
+                              formControlName="accountId">
             </ss-auto-complete>
-          </mat-form-field>
-          <i class="fa-solid fa-book-open open-icon" (click)="openReception()"
-          matTooltip="{{ 'COMMON_GOTO_DETAIL' | translate }}"></i>
-        </div>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_RECEPTION_DATE</mat-label>
-          <ss-date-picker formControlName="receptionDate"></ss-date-picker>
+            @if (form.controls['accountId'].invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+            }
         </mat-form-field>
 
         <div class="default-50 sm-100">
-          <mat-form-field style="width: 100%">
-            <mat-label translate>COMMON_REQUESTER</mat-label>
-            <ss-auto-complete matInput
-              [model]="requesterLookup"
-              formControlName="requester">
-            </ss-auto-complete>
-          </mat-form-field>
+            <mat-form-field style="width: calc(100% - 48px); margin-right: .5em">
+                <mat-label translate>ASSET_LOCATIONS</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="officeAutoCompleteModel"
+                                  formControlName="office">
+                </ss-auto-complete>
+            </mat-form-field>
+            <button mat-mini-fab (click)="openSearchDlg()" type="button">
+                <i class="fa-solid fa-file-magnifying-glass"></i>
+            </button>
         </div>
 
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_REQUEST_NUMBER</mat-label>
-          <input matInput formControlName="requestNumber" type="text">
+        @if (isAQS) {
+            <mat-form-field class="default-50 sm-50">
+                <mat-label translate>ASSET_SITE</mat-label>
+                <input matInput formControlName="site" type="text" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-50">
+                <mat-label translate>ASSET_BUILDINGS</mat-label>
+                <input matInput formControlName="building" type="text" readonly>
+            </mat-form-field>
+
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>ASSET_BENEFICIARY</mat-label>
+                <ss-auto-complete matInput
+                                  [model]="beneficiaryLookup"
+                                  formControlName="beneficiaryId">
+                </ss-auto-complete>
+            </mat-form-field>
+        }
+
+        <mat-form-field class="default-50 sm-50">
+            <mat-label translate>COMMON_COST_CENTER</mat-label>
+            <ss-auto-complete matInput
+                              [model]="ccAutoCompleteModel"
+                              formControlName="costCenter"></ss-auto-complete>
         </mat-form-field>
 
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_REQUEST_DATE</mat-label>
-          <ss-date-picker formControlName="requestDate"></ss-date-picker>
+        <mat-form-field class="default-50 sm-50">
+            <mat-label translate>COMMON_CLASS</mat-label>
+            <ss-auto-complete matInput
+                              [model]="classAutoCompleteModel"
+                              [required]="isAQS"
+                              formControlName="assetClass">
+            </ss-auto-complete>
         </mat-form-field>
 
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>LOGISTICS_ORDER_NO</mat-label>
-          <input matInput formControlName="orderNumber" type="text">
-        </mat-form-field>
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>COMMON_ORDER_DATE</mat-label>
-          <ss-date-picker formControlName="orderDate"></ss-date-picker>
-        </mat-form-field>
-
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_DELIVERY_NUMBER</mat-label>
-          <input matInput formControlName="deliveryNumber" type="text">
-        </mat-form-field>
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_DELIVERY_DATE</mat-label>
-          <ss-date-picker formControlName="deliveryDate"></ss-date-picker>
+        <mat-form-field class="default-50 sm-50">
+            <mat-label translate>COMMON_MARK</mat-label>
+            <ss-auto-complete matInput
+                              [model]="markAutoCompleteModel"
+                              [canAdd]="isAQS"
+                              formControlName="mark">
+            </ss-auto-complete>
         </mat-form-field>
 
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
-          <input matInput formControlName="invoiceNumber" type="text">
-        </mat-form-field>
-        <mat-form-field class="default-25 sm-50">
-          <mat-label translate>ASSET_INVOICE_DATE</mat-label>
-          <ss-date-picker formControlName="invoiceDate"></ss-date-picker>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-          <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
-          <input matInput formControlName="supplier" type="text">
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-          <mat-label translate>ASSET_ORIGINAL_SUPPLIER</mat-label>
-          <input matInput formControlName="originalSupplier" type="text">
-        </mat-form-field>
-      </mat-tab>
-      <mat-tab label="{{ 'ASSET_EXIT' | translate }}">
-        <div class="filler"></div>
-        <mat-form-field class="default-50 sm-100">
-          <mat-label translate>ASSET_DATE_OUT</mat-label>
-          <ss-date-picker formControlName="dateOut"></ss-date-picker>
-        </mat-form-field>
-
-        <mat-form-field class="default-50 sm-100">
-          <mat-label translate>COMMON_TYPE</mat-label>
-          <mat-select formControlName="investEnd">
-            <mat-option [value]="null"></mat-option>
-            @for (v of assetEnds; track v) {
-              <mat-option [value]="v.id">
-                {{ v ? v.description : '' }}
-              </mat-option>
+        <mat-form-field class="default-50 sm-50">
+            <mat-label translate>COMMON_STATUS</mat-label>
+            <ss-auto-complete matInput
+                              [model]="statusAutoCompleteModel"
+                              formControlName="status"></ss-auto-complete>
+            @if (form.controls['status'].invalid) {
+                <mat-error translate>COMMON_STATUS</mat-error>
             }
-          </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="default-50 sm-100">
-          <mat-label translate>ASSET_BENEFICIARY</mat-label>
-          <ss-auto-complete matInput
-            [model]="customerAutoCompleteModel"
-          formControlName="customer"></ss-auto-complete>
+        <mat-form-field id="comment" class="default-50 sm-100">
+            <mat-label translate>COMMON_MEMO</mat-label>
+            <input matInput formControlName="comment" type="text">
         </mat-form-field>
-        <mat-form-field class="default-50 sm-100">
-          <mat-label translate>ASSET_SALES_PRICE</mat-label>
-          <input matInput formControlName="sales_price" type="number">
-        </mat-form-field>
-      </mat-tab>
-      @if (!isCMMS) {
-        <mat-tab label="{{ 'ASSET_DEPRECIATION' | translate }}">
-          <div class="filler"></div>
-          <div class="depreciation-div">
-            <div class="accountant-div ">
-              <mat-table mat-table [dataSource]="accountantDepreciation" class="accountant-table">
-                <ng-container matColumnDef="year">
-                  <mat-header-cell *matHeaderCellDef translate>COMMON_YEAR</mat-header-cell>
-                  <mat-cell *matCellDef="let e">
-                    {{ e.year }}
-                  </mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="depreciation">
-                  <mat-header-cell *matHeaderCellDef translate>ASSET_DEPRECIATION</mat-header-cell>
-                  <mat-cell *matCellDef="let e">
-                    {{ e.depreciation | number: '1.2-2' }}
-                  </mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="totalDepreciation">
-                  <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
-                  <mat-cell *matCellDef="let e">
-                    {{ e.totalDepreciation | number: '1.2-2' }}
-                  </mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="remaining">
-                  <mat-header-cell *matHeaderCellDef translate>ASSET_NAC</mat-header-cell>
-                  <mat-cell *matCellDef="let e">
-                    {{ e.remaining | number: '1.2-2' }}
-                  </mat-cell>
-                </ng-container>
-                <mat-header-row *matHeaderRowDef="depreciationColumns; sticky: true"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: depreciationColumns;"></mat-row>
-              </mat-table>
+
+        @if (!isAQS) {
+            <div class="default-50 sm-100 qr">
+                <mat-form-field class="count_div">
+                    <mat-label translate>ASSET_ITEM_COUNT</mat-label>
+                    <input matInput formControlName="itemCount" type="number">
+                </mat-form-field>
             </div>
-            <div class="fiscal-div">
-              <div class="filler"></div>
-              <mat-table mat-table [dataSource]="fiscalDepreciation" class="accountant-table">
-                <ng-container matColumnDef="year">
-                  <mat-header-cell *matHeaderCellDef translate>COMMON_YEAR</mat-header-cell>
-                  <mat-cell *matCellDef="let e">
-                    {{ e.year }}
-                  </mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="depreciation">
-                  <mat-header-cell *matHeaderCellDef translate>ASSET_DEPRECIATION</mat-header-cell>
-                  <mat-cell *matCellDef="let e">
-                    {{ e.depreciation | number: '1.2-2' }}
-                  </mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="totalDepreciation">
-                  <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
-                  <mat-cell *matCellDef="let e">
-                    {{ e.totalDepreciation | number: '1.2-2' }}
-                  </mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="remaining">
-                  <mat-header-cell *matHeaderCellDef translate>ASSET_NAC</mat-header-cell>
-                  <mat-cell *matCellDef="let e">
-                    {{ e.remaining | number: '1.2-2' }}
-                  </mat-cell>
-                </ng-container>
-                <mat-header-row *matHeaderRowDef="depreciationColumns; sticky: true"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: depreciationColumns;"></mat-row>
-              </mat-table>
-            </div>
-          </div>
-        </mat-tab>
-      }
-      <mat-tab label="{{ 'ASSET_COSTS' | translate }}" >
-        @if (id && activePanel === COSTS_ROUT) {
-          <div class="filler"></div>
-          <router-outlet></router-outlet>
         }
-      </mat-tab>
-      @if (!isCMMS) {
-        <mat-tab label="{{ 'ASSET_REVALUATIONS' | translate }}" >
-          @if (id && activePanel === REVALUATIONS_ROUT) {
-            <div class="filler"></div>
-            <router-outlet></router-outlet>
-          }
-        </mat-tab>
-        <mat-tab label="{{ 'ASSET_BLOCKINGS' | translate }}" >
-          @if (id && activePanel === BLOCKINGS_ROUT) {
-            <div class="filler"></div>
-            <router-outlet></router-outlet>
-          }
-        </mat-tab>
-        <mat-tab label="{{ 'ASSET_APPOINTMENTS' | translate }}" >
-          <div class="filler"></div>
-          <ss-asset-appointment-list [assetId]="id"></ss-asset-appointment-list>
-        </mat-tab>
-        <mat-tab label="{{ 'ADMINISTRATION_ATTRIBUTES' | translate }}" >
-          <div class="filler"></div>
-          <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2"
-            [editable]="isEditable">
-          </ss-child-attributes>
-        </mat-tab>
-        <mat-tab label="{{ 'ASSET_DEPRECIATION_RATES' | translate }}" >
-          @if (id && activePanel === DEPRECIATION_RATE_ROUT) {
-            <router-outlet></router-outlet>
-          }
-        </mat-tab>
-      }
-      <mat-tab label="{{ 'COMMON_ARCHIVE' | translate }}" >
-        @if (id && activePanel === ARCHIVE_ROUT) {
-          <router-outlet></router-outlet>
-        }
-      </mat-tab>
-    </mat-tab-group>
-  </form>
+
+        <mat-tab-group (selectedIndexChange)="showPanel($event)" [dynamicHeight]="true">
+            <mat-tab label="{{ 'ASSET_DEPRECIATION' | translate }}">
+                <div class="filler"></div>
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_ACQUISITION_DATE</mat-label>
+                    <ss-date-picker formControlName="acquisitionDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_SERVICE_DATE</mat-label>
+                    <ss-date-picker formControlName="serviceDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_ACQUISITION_VALUE</mat-label>
+                    <input matInput formControlName="acquisitionValue" type="number" required>
+                    @if (form.controls['acquisitionValue'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_HISTORIC_VALUE</mat-label>
+                    <input matInput formControlName="historicValue" type="number">
+                    @if (form.controls['historicValue'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>LOGISTICS_VAT</mat-label>
+                    <input matInput formControlName="vat" type="number" required>
+                    @if (form.controls['vat'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>COMMON_TYPE</mat-label>
+                    <mat-select formControlName="depreciationType">
+                        @for (v of depreciationTypes; track v) {
+                            <mat-option [value]="v.id">
+                                {{ v?.description | translate }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ACC_DEPRECIATION_RATE</mat-label>
+                    <input matInput formControlName="depreciationRate" type="number" required>
+                    @if (form.controls['depreciationRate'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_OLD_DEPRECIATION</mat-label>
+                    <input matInput formControlName="old_depreciation" type="number">
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_START_YEAR</mat-label>
+                    <input matInput formControlName="startYear" type="number">
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_RESIDUAL_VALUE</mat-label>
+                    <input matInput formControlName="residualValue" type="number" required>
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ACC_USEFUL_LIFE</mat-label>
+                    <input matInput formControlName="useful_life" type="number" required>
+                    @if (form.controls['useful_life'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_RESERVICE_DATE</mat-label>
+                    <ss-date-picker formControlName="reserviceDate"></ss-date-picker>
+                </mat-form-field>
+            </mat-tab>
+            <mat-tab label="{{ 'COMMON_PURCHASE' | translate }}">
+                <div class="filler"></div>
+                <div class="default-25 sm-50 purchase_div">
+                    <mat-form-field>
+                        <mat-label translate>ASSET_RECEPTION_NUMBER</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="receptionLookup"
+                                          formControlName="receptionId">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                    <i class="fa-solid fa-book-open open-icon" (click)="openReception()"
+                       matTooltip="{{ 'COMMON_GOTO_DETAIL' | translate }}"></i>
+                </div>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_RECEPTION_DATE</mat-label>
+                    <ss-date-picker formControlName="receptionDate"></ss-date-picker>
+                </mat-form-field>
+
+                <div class="default-50 sm-100">
+                    <mat-form-field style="width: 100%">
+                        <mat-label translate>COMMON_REQUESTER</mat-label>
+                        <ss-auto-complete matInput
+                                          [model]="requesterLookup"
+                                          formControlName="requester">
+                        </ss-auto-complete>
+                    </mat-form-field>
+                </div>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_REQUEST_NUMBER</mat-label>
+                    <input matInput formControlName="requestNumber" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_REQUEST_DATE</mat-label>
+                    <ss-date-picker formControlName="requestDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>LOGISTICS_ORDER_NO</mat-label>
+                    <input matInput formControlName="orderNumber" type="text">
+                </mat-form-field>
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>COMMON_ORDER_DATE</mat-label>
+                    <ss-date-picker formControlName="orderDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_DELIVERY_NUMBER</mat-label>
+                    <input matInput formControlName="deliveryNumber" type="text">
+                </mat-form-field>
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_DELIVERY_DATE</mat-label>
+                    <ss-date-picker formControlName="deliveryDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_INVOICE_NUMBER</mat-label>
+                    <input matInput formControlName="invoiceNumber" type="text">
+                </mat-form-field>
+                <mat-form-field class="default-25 sm-50">
+                    <mat-label translate>ASSET_INVOICE_DATE</mat-label>
+                    <ss-date-picker formControlName="invoiceDate"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>LOGISTICS_SUPPLIER</mat-label>
+                    <input matInput formControlName="supplier" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ASSET_ORIGINAL_SUPPLIER</mat-label>
+                    <input matInput formControlName="originalSupplier" type="text">
+                </mat-form-field>
+            </mat-tab>
+            <mat-tab label="{{ 'ASSET_EXIT' | translate }}">
+                <div class="filler"></div>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ASSET_DATE_OUT</mat-label>
+                    <ss-date-picker formControlName="dateOut"></ss-date-picker>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_TYPE</mat-label>
+                    <mat-select formControlName="investEnd">
+                        <mat-option [value]="null"></mat-option>
+                        @for (v of assetEnds; track v) {
+                            <mat-option [value]="v.id">
+                                {{ v ? v.description : '' }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ASSET_BENEFICIARY</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="customerAutoCompleteModel"
+                                      formControlName="customer"></ss-auto-complete>
+                </mat-form-field>
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>ASSET_SALES_PRICE</mat-label>
+                    <input matInput formControlName="sales_price" type="number">
+                </mat-form-field>
+            </mat-tab>
+            @if (!isCMMS) {
+                <mat-tab label="{{ 'ASSET_DEPRECIATION' | translate }}">
+                    <div class="filler"></div>
+                    <div class="depreciation-div">
+                        <div class="accountant-div ">
+                            @if (accountantDepreciation().length > 0) {
+                                <mat-table mat-table [dataSource]="accountantDepreciation()" class="accountant-table">
+                                    <ng-container matColumnDef="year">
+                                        <mat-header-cell *matHeaderCellDef translate>COMMON_YEAR</mat-header-cell>
+                                        <mat-cell *matCellDef="let e">
+                                            {{ e.year }}
+                                        </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="depreciation">
+                                        <mat-header-cell *matHeaderCellDef translate>ASSET_DEPRECIATION
+                                        </mat-header-cell>
+                                        <mat-cell *matCellDef="let e">
+                                            {{ e.depreciation | number: '1.2-2' }}
+                                        </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="totalDepreciation">
+                                        <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
+                                        <mat-cell *matCellDef="let e">
+                                            {{ e.totalDepreciation | number: '1.2-2' }}
+                                        </mat-cell>
+                                    </ng-container>
+                                    <ng-container matColumnDef="remaining">
+                                        <mat-header-cell *matHeaderCellDef translate>ASSET_NAC</mat-header-cell>
+                                        <mat-cell *matCellDef="let e">
+                                            {{ e.remaining | number: '1.2-2' }}
+                                        </mat-cell>
+                                    </ng-container>
+                                    <mat-header-row
+                                        *matHeaderRowDef="depreciationColumns; sticky: true"></mat-header-row>
+                                    <mat-row *matRowDef="let row; columns: depreciationColumns;"></mat-row>
+                                </mat-table>
+                            } @else {
+                                <div class="no-data">
+                                    <span>{{ accountantDepreciation().length }}</span>
+                                </div>
+                            }
+                        </div>
+                        <div class="fiscal-div">
+                            <div class="filler"></div>
+                            @if (fiscalDepreciation().length > 0) {
+                                <mat-table mat-table [dataSource]="fiscalDepreciation()" class="accountant-table">
+                                <ng-container matColumnDef="year">
+                                    <mat-header-cell *matHeaderCellDef translate>COMMON_YEAR</mat-header-cell>
+                                    <mat-cell *matCellDef="let e">
+                                        {{ e.year }}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="depreciation">
+                                    <mat-header-cell *matHeaderCellDef translate>ASSET_DEPRECIATION</mat-header-cell>
+                                    <mat-cell *matCellDef="let e">
+                                        {{ e.depreciation | number: '1.2-2' }}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="totalDepreciation">
+                                    <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
+                                    <mat-cell *matCellDef="let e">
+                                        {{ e.totalDepreciation | number: '1.2-2' }}
+                                    </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="remaining">
+                                    <mat-header-cell *matHeaderCellDef translate>ASSET_NAC</mat-header-cell>
+                                    <mat-cell *matCellDef="let e">
+                                        {{ e.remaining | number: '1.2-2' }}
+                                    </mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="depreciationColumns; sticky: true"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: depreciationColumns;"></mat-row>
+                            </mat-table>
+                            }
+                        </div>
+                    </div>
+                </mat-tab>
+            }
+            <mat-tab label="{{ 'ASSET_COSTS' | translate }}">
+                @if (id && activePanel === COSTS_ROUT) {
+                    <div class="filler"></div>
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+            @if (!isCMMS) {
+                <mat-tab label="{{ 'ASSET_REVALUATIONS' | translate }}">
+                    @if (id && activePanel === REVALUATIONS_ROUT) {
+                        <div class="filler"></div>
+                        <router-outlet></router-outlet>
+                    }
+                </mat-tab>
+                <mat-tab label="{{ 'ASSET_BLOCKINGS' | translate }}">
+                    @if (id && activePanel === BLOCKINGS_ROUT) {
+                        <div class="filler"></div>
+                        <router-outlet></router-outlet>
+                    }
+                </mat-tab>
+                <mat-tab label="{{ 'ASSET_APPOINTMENTS' | translate }}">
+                    <div class="filler"></div>
+                    <ss-asset-appointment-list [assetId]="id"></ss-asset-appointment-list>
+                </mat-tab>
+                <mat-tab label="{{ 'ADMINISTRATION_ATTRIBUTES' | translate }}">
+                    <div class="filler"></div>
+                    <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2"
+                                         [editable]="isEditable">
+                    </ss-child-attributes>
+                </mat-tab>
+                <mat-tab label="{{ 'ASSET_DEPRECIATION_RATES' | translate }}">
+                    @if (id && activePanel === DEPRECIATION_RATE_ROUT) {
+                        <router-outlet></router-outlet>
+                    }
+                </mat-tab>
+            }
+            <mat-tab label="{{ 'COMMON_ARCHIVE' | translate }}">
+                @if (id && activePanel === ARCHIVE_ROUT) {
+                    <router-outlet></router-outlet>
+                }
+            </mat-tab>
+        </mat-tab-group>
+    </form>
 }
