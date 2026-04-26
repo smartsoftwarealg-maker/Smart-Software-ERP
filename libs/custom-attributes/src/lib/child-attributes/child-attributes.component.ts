@@ -84,7 +84,7 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
                     .forEach(e => e.value = e.stringVal ||
                         e.numericVal?.toLocaleString() ||
                         e.valueName ||
-                        (e.dateVal? this.datePipe.transform(e.dateVal, 'dd/MM/YYYY') : ''));
+                        (e.dateVal? this.datePipe.transform(e.dateVal, 'dd/MM/yyyy') : ''));
             });
     }
     ngOnInit(): void {

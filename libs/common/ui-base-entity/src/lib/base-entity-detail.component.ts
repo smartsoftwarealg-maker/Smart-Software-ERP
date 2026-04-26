@@ -48,6 +48,10 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
         return of(null);
     }
 
+    isLoading() {
+        return this.shellSrv.getLoading();
+    }
+
     public load() {
         this.shellSrv.setLoading(true);
 
