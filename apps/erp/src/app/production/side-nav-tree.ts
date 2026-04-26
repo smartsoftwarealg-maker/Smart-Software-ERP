@@ -16,9 +16,13 @@ import {
     ABS_PRODUCTION_CONSUMPTION_URL,
     ABS_PRODUCTION_TRANSFER_DETAIL_URL,
     ABS_PRODUCTION_FORMULAS_URL,
-    ABS_PRODUCTION_RESERVATION_URL, ABS_PRODUCTION_UNITS_URL,
-    ABS_PRODUCTION_WORK_CENTER_URL_URL,
-} from '../common';
+    ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL,
+    ABS_PRODUCTION_RESERVATION_URL,
+    ABS_PRODUCTION_UNITS_URL,
+    ABS_PRODUCTION_WORK_CENTER_URL_URL
+} from "../common";
+
+
 
 export const productionNavTree: SideNavNode = {
     name: 'COMMON_PRODUCTION',
@@ -139,6 +143,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-regular fa-store',
             route: ABS_PRODUCTION_INTER_STORE_TRANSFER_URL,
             accessRights: 'PInterStore',
+        },
+        {
+            name: 'PROD_ACTIVITY_CATEGORIES',
+            icon: 'fa-solid fa-layer-group',
+            route: ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL,
+            accessRights: 'ActivityCategory',
         },
         {
             name: 'COMMON_REPORTS',

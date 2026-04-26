@@ -1,0 +1,70 @@
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.main-container,
+.pagination-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 6px auto;
+}
+
+mat-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.mat-row,
+.mat-header-row {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.mat-cell,
+.mat-header-cell {
+    padding: 0 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.mat-column-code {
+    flex: 0 0 150px;
+}
+
+.mat-column-name {
+    flex: 1 1 200px;
+    text-align: end;
+}
+.mat-column-description {
+    flex: 1 1 200px;
+    text-align: end;
+}
+
+.mat-column-costElementGroup {
+    flex: 0 0 200px;
+}
+
+.mat-column-isActive {
+    flex: 0 0 90px;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.selectable {
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.selectable:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.selected {
+    background: rgba(0, 0, 0, 0.06);
+}

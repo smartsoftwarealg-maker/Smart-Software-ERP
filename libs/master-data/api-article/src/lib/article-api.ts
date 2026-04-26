@@ -182,3 +182,21 @@ export interface UnitsOfMeasure {
     updatedBy?: number;
 }
 
+export interface ActivityCategory {
+    id: number;
+    code: string;
+    name: string;
+    description?: string;
+    parentId?: number;
+    glAccountId?: number;
+    costElementGroup?: string;
+    isOverhead?: boolean;
+    isVariable?: boolean;
+    colorCode?: string;
+    isActive?: boolean;
+    createdAt?: string;
+    updatedAt?: string;
+    createdBy?: number;
+    updatedBy?: number;
+    deletedAt?: string;
+}

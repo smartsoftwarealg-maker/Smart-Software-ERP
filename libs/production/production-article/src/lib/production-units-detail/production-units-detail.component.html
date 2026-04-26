@@ -4,21 +4,22 @@
         @defer (when form) {
             <form [formGroup]="form">
 
-                <mat-form-field class="default-50">
-                    <mat-label>Code</mat-label>
+                <mat-form-field floatLabel="always" class="default-25">
+                    <mat-label translate>PROD_ACTIVITY_CODE</mat-label>
                     <input matInput formControlName="code">
                 </mat-form-field>
 
-                <mat-form-field class="default-50">
-                    <mat-label>Name</mat-label>
+                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                    <mat-label translate>PROD_ACTIVITY_NAME</mat-label>
                     <input matInput formControlName="name" required>
                 </mat-form-field>
 
-                <mat-form-field class="default-50">
-                    <mat-label>Description</mat-label>
+                <mat-form-field floatLabel="always" class="default-100">
+                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
                     <input matInput formControlName="description">
                 </mat-form-field>
 
+<<<<<<< HEAD
                 <mat-form-field class="default-50">
                     <mat-label>Unit Type</mat-label>
                     <mat-select formControlName="unitType">
@@ -34,17 +35,40 @@
 <!--                    <mat-label>Conversion Factor</mat-label>-->
 <!--                    <input matInput formControlName="conversionFactor" type="number">-->
 <!--                </mat-form-field>-->
-
-                <mat-form-field class="default-50">
-                    <mat-label>Value</mat-label>
-                    <input matInput formControlName="value" type="number">
+=======
+                <mat-form-field floatLabel="always" class="default-25 sm-50">
+                    <mat-label translate>PROD_COST_GROUP</mat-label>
+                    <input matInput formControlName="costElementGroup">
                 </mat-form-field>
 
-                <div class="default-50">
-                    <mat-checkbox formControlName="isActive">
-                        Active
+                <mat-form-field floatLabel="always" class="default-25 sm-50">
+                    <mat-label translate>COMMON_SORT_ORDER</mat-label>
+                    <input matInput type="number" formControlName="sortOrder">
+                </mat-form-field>
+>>>>>>> d34be96a9 (activity categories ui created)
+
+                <div class="default-25 sm-50">
+                    <mat-checkbox formControlName="isOverhead" translate>
+                        PROD_OVERHEAD
                     </mat-checkbox>
                 </div>
+
+                <div class="default-25 sm-50">
+                    <mat-checkbox formControlName="isVariable" translate>
+                        PROD_VARIABLE
+                    </mat-checkbox>
+                </div>
+
+                <div class="default-25 sm-50">
+                    <mat-checkbox formControlName="isActive" translate>
+                        COMMON_ACTIVE
+                    </mat-checkbox>
+                </div>
+
+                <mat-form-field floatLabel="always" class="default-25 sm-50">
+                    <mat-label translate>COMMON_COLOR</mat-label>
+                    <input matInput formControlName="colorCode" placeholder="#4caf50">
+                </mat-form-field>
 
             </form>
         }

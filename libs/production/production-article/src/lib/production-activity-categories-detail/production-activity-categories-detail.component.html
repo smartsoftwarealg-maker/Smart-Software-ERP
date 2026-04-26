@@ -1,0 +1,44 @@
+<mat-card class="size_container">
+    <mat-card-content>
+
+        @defer (when form) {
+            <form [formGroup]="form">
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>ADMINISTRATION_ACTIVITY_CODE</mat-label>
+                    <input matInput formControlName="code" type="text" required autofocus>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_NAME</mat-label>
+                    <input matInput formControlName="name" type="text" required autofocus>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text" required autofocus>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>PROD_COST_GROUP</mat-label>
+                    <mat-select formControlName="costElementGroup">
+                        @for (c of costElementGroups; track c) {
+                            <mat-option [value]="c">{{ c | translate }}</mat-option>
+                        }
+                    </mat-select>
+                    @if (form.controls['costElementGroup'].invalid) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <div class="default-25">
+                    <mat-checkbox formControlName="isActive">
+                        {{ 'COMMON_ACTIVE' | translate }}
+                    </mat-checkbox>
+                </div>
+
+            </form>
+        }
+
+    </mat-card-content>
+</mat-card>

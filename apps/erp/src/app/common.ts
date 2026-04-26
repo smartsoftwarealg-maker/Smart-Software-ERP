@@ -584,6 +584,8 @@ export const PRODUCTION_TRANSFER_DETAIL_URL = 'production-inventory-transfer';
 export const PRODUCTIONS_RESERVATION_URL = 'production-reservations';
 export const PRODUCTION_UNITS_URL='production-units';
 export const PRODUCTION_WORK_CENTER_URL = 'work-space';
+export const ACTIVITY_CATEGORIES_URL='activity-categories';
+
 
 // crm
 export const CRM_SALUTATIONS_URL = 'salutations';
@@ -1140,6 +1142,7 @@ export const ABS_PRODUCTION_TRANSFER_DETAIL_URL = '/' + [MAIN_PAGE_URL, PRODUCTI
 export const ABS_PRODUCTION_RESERVATION_URL =   '/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, PRODUCTIONS_RESERVATION_URL].join('/');
 export const ABS_PRODUCTION_UNITS_URL = '/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, PRODUCTION_UNITS_URL].join('/');
 export const ABS_PRODUCTION_WORK_CENTER_URL_URL =   '/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, PRODUCTION_WORK_CENTER_URL].join('/');
+export const ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL= '/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, ACTIVITY_CATEGORIES_URL].join('/');
 
 // CRM
 

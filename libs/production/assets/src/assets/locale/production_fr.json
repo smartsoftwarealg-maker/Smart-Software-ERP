@@ -88,5 +88,7 @@
     "MCH-MAINT":            "Machine - Maintenance",
     "OH-LABOR":             "Frais généraux - Main d'œuvre",
     "OH-MACH":              "Frais généraux - Machine",
-    "OH-UTIL":              "Frais généraux - Services publics"
+    "OH-UTIL":              "Frais généraux - Services publics",
+    "ACTIVITY_CATEGORIES":  "Categories d’activite",
+    "COST_GROUP":           "Groupe de couts"
 }

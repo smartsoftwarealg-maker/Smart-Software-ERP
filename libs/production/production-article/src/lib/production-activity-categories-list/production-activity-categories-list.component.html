@@ -1,0 +1,56 @@
+<div class="table-container main-container">
+    <mat-table [dataSource]="data" class="main-table" matSort>
+
+        <ng-container matColumnDef="code">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                {{ 'ADMINISTRATION_ACTIVITY_CODE' | translate }}
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">{{ e.code }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                {{ 'COMMON_NAME' | translate }}
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">{{ e.name }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                {{ 'COMMON_DESCRIPTION' | translate }}
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">{{ e.description }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="costElementGroup">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                {{ 'PROD_COST_GROUP' | translate }}
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.costElementGroup || '-' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="isActive">
+            <mat-header-cell *matHeaderCellDef>
+                {{ 'COMMON_ACTIVE' | translate }}
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                <mat-checkbox [checked]="e.isActive" disabled></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row
+            class="selectable"
+            [class.selected]="row.id == selected"
+            (click)="selectRow(row)"
+            *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+
+    </mat-table>
+</div>
+
+<div class="pagination-container">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>
