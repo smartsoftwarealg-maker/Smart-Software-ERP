@@ -124,14 +124,10 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         return of(true);
     }
 
-<<<<<<< HEAD
     isLoading() {
         return this.shellSrv.getLoading();
     }
 
-
-=======
->>>>>>> a7cc9983e (Fixed depreciation problem)
     public loadEntity(id: number): Observable<T> {
         this.id = id || 0;
         if (id == null) {

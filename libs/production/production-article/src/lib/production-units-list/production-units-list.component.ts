@@ -20,7 +20,6 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         RouterModule,
-        PaginationComponent,
         TranslatePipe,
     ],
 })
