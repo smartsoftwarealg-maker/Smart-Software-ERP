@@ -9,28 +9,24 @@ mat-card {
     padding: 0;
 }
 
-.form_container {
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    width: 100%;
-    max-width: 1400px;
-}
-
-@media (max-width: 600px) {
-    .form_container {
-        flex-wrap: wrap;
-    }
-}
-.image {
-    flex: 1 1 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 8px;
-}
-
 form {
-    flex: 2 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.default-25 {
+    flex: 1 1 23%;
+}
+
+.default-50 {
+    flex: 1 1 48%;
+}
+
+.default-100 {
+    flex: 1 1 100%;
+}
+
+mat-checkbox {
+    margin-top: 18px;
 }

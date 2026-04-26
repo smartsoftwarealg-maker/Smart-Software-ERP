@@ -24,8 +24,9 @@ import {
     PRODUCTION_FORMULAS_URL,
     PRODUCTIONS_URL,
     STOCK_RESERVATIONS_URL,
-    PRODUCTIONS_RESERVATION_URL, PRODUCTION_UNITS_URL,
+    PRODUCTIONS_RESERVATION_URL,
     PRODUCTION_WORK_CENTER_URL,
+    PRODUCTION_UNITS_URL, ACTIVITY_CATEGORIES_URL
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -44,6 +45,7 @@ import { loginGuard } from '../erp-guards';
 import { MrpComponent, ProductionConsumptionComponent } from '@ss/production/mrp';
 import { Bom2DetailComponent, Bom2ListComponent } from '@ss/master-data/ui-article';
 import {
+    ActivityCategoriesListComponent,
     ArticleTypeDetailComponent,
     ArticleTypeListComponent,
     DosageUnitsDetailComponent,
@@ -104,6 +106,10 @@ import {
     UnitsDetailComponent
 } from '@ss/production/production-article';
 import {WorkCenterDetailComponent, WorkCenterListComponent} from '@ss/production/work-center';
+import {
+    ActivityCategoriesDetailComponent
+} from "../../../../../libs/production/production-article/src/lib/production-activity-categories-detail/production-activity-categories-detail.component";
+
 
 export const prodRoutes: Routes = [
     {
@@ -631,6 +637,25 @@ export const prodRoutes: Routes = [
                     ...docInfoRoutes,
                 ],
             },
+        ],
+    },
+    {
+        path: ACTIVITY_CATEGORIES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ActivityCategoriesListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: ActivityCategoriesDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
         ],
     },
     {

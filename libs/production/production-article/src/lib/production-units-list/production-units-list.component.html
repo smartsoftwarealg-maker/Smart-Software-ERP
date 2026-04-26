@@ -11,48 +11,52 @@
             <mat-cell *matCellDef="let e">{{ e.name }}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-            <mat-cell *matCellDef="let e">{{ e.description }}</mat-cell>
+        <ng-container matColumnDef="costElementGroup">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Cost Group</mat-header-cell>
+            <mat-cell *matCellDef="let e">{{ e.costElementGroup || '-' }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="unitType">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
             <mat-cell *matCellDef="let e">{{ `PROD_${e.unitType}` | translate}}</mat-cell>
         </ng-container>
-
+        
+        <!--
         <ng-container matColumnDef="conversionFactor">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Conversion</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.conversionFactor || '-' }}
-            </mat-cell>
-        </ng-container>
+             <mat-header-cell *matHeaderCellDef mat-sort-header>Conversion</mat-header-cell>
+         </ng-container>
+         -->
 
-        <ng-container matColumnDef="value">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Value</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.value | number: '1.2-4' }}
-            </mat-cell>
-        </ng-container>
+         <ng-container matColumnDef="isOverhead">
+             <mat-header-cell *matHeaderCellDef>Overhead</mat-header-cell>
+             <mat-cell *matCellDef="let e">
+                 <mat-checkbox [checked]="e.isOverhead === 1" disabled></mat-checkbox>
+             </mat-cell>
+         </ng-container>
 
-        <ng-container matColumnDef="isActive">
-            <mat-header-cell *matHeaderCellDef>Active</mat-header-cell>
+         <ng-container matColumnDef="isVariable">
+             <mat-header-cell *matHeaderCellDef>Variable</mat-header-cell>
+             <mat-cell *matCellDef="let e">
+                 {{ e.value | number: '1.2-4' }}
+                 <mat-checkbox [checked]="e.isVariable === 1" disabled></mat-checkbox>
+             </mat-cell>
+         </ng-container>
 
-            <mat-cell *matCellDef="let e">
-                <mat-checkbox
-                    [checked]="e.isActive === 1"
-                    disabled>
-                </mat-checkbox>
-            </mat-cell>
-        </ng-container>
+         <ng-container matColumnDef="isActive">
+             <mat-header-cell *matHeaderCellDef>Active</mat-header-cell>
+             <mat-cell *matCellDef="let e">
+                 <mat-checkbox [checked]="e.isActive === 1" disabled></mat-checkbox>
+             </mat-cell>
+         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
 
-    </mat-table>
-</div>
+         <mat-row
+             class="selectable"
+             [class.selected]="row.id == selected"
+             (click)="selectRow(row)"
+             *matRowDef="let row; columns: displayedColumns;">
+         </mat-row>
 
-<div class="pagination-container">
-    <ss-pagination [paginationModel]="pagination"></ss-pagination>
-</div>
+     </mat-table>
+ </div>

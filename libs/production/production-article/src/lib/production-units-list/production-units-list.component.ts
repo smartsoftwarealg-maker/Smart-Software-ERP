@@ -35,8 +35,8 @@ export class UnitsListComponent
         'unitType',
         // 'conversionFactor',
         'value',
-        'isActive',
-    ];
+        'isActive'
+        ]
 
     constructor(
         public unitsSrv: UnitsService,
