@@ -91,5 +91,20 @@
     "QTY_TRANSFERRED":      "Qty transferred",
     "UNITS_OF_MEASURE":    "Units of Measure",
     "ACTIVITY_CATEGORIES": "Activity Categories",
-    "COST_GROUP":          "Cost Element Group"
+    "COST_GROUP":          "Cost Element Group",
+    "PRODUCTION_ROUTING":  "Production routing",
+    "PRODUCTIONS_ROUTING": "Productions routing",
+    "ROUTING_NUMBER":      "Routing number",
+    "REVISION":            "Revision",
+    "VALID_FROM":          "Valid from",
+    "VALID_TO":            "Valid to",
+    "LOT_SIZE_FROM":       "Lot size from",
+    "LOT_SIZE_TO":         "Lot size to",
+    "PREVIOUS_VERSION":    "Previous version",
+    "SUPERSEDED_BY":       "Superseded by",
+    "IS_DEFAULT":          "Is default",
+    "DRAFT":               "Draft",
+    "APPROVED":            "Approved",
+    "OBSOLETE":            "Obsolete",
+    "CANCELLED":           "Cancelled"
 }
