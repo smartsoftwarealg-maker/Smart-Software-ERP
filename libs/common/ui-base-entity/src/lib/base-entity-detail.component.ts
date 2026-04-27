@@ -26,9 +26,6 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
 
     public override ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.setTitle(this.title); // set title save as list
-        this.shellSrv.setGoBackPath('..', this.route);
-        this.shellSrv.setButtons([this.saveButton]);
         this.load();
     }
 
@@ -41,7 +38,12 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
      * Overload this to load your own things. and tap to save your results
      */
     public preload(): Observable<unknown> {
-        return of(null);
+        return of(null)
+            .pipe( tap(() => {
+                this.shellSrv.setTitle(this.title); // set title save as list
+                this.shellSrv.setGoBackPath('..', this.route);
+                this.shellSrv.setButtons([this.saveButton]);
+            }));
     }
 
     public postLod(): Observable<unknown> {
@@ -60,6 +62,7 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                 switchMap(() => this.shellSrv.loadUserRights()),
                 tap(() => {
                     const rights = this.shellSrv.getCurrentNodeRights();
+                    console.log('riggts_____________________', rights);
                     this.saveButton.visible &&= rights.edit || rights.write;
                     this.isEditable = rights.edit || rights.write;
                 }),

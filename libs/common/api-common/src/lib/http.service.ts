@@ -61,7 +61,7 @@ export class HttpService {
         }
         let httpParams = (params == null ? new HttpParams() : params)
             .set('page', `${page}-${size}`);
-        if (this.baseUrl == null || url == null) {
+        if (!this.baseUrl || url == null) {
             throw new Error('Invalid URL');
         }
         if (filterStr) {
@@ -85,7 +85,7 @@ export class HttpService {
     }
 
     public getBlob(url: string, httpParams?: HttpParams): Observable<Blob> {
-        if (this.baseUrl == null || url == null) {
+        if (!this.baseUrl || url == null || !url) {
             throw new Error('Invalid URL');
         }
         return this
@@ -105,7 +105,7 @@ export class HttpService {
             //    this.baseUrl = '';
             throw new Error('HTTP SERVICE NOT READY');
         }
-        if (this.baseUrl == null || url == null) {
+        if (!this.baseUrl || url == null || !url) {
             throw new Error('Invalid URL: ' + this.baseUrl + url);
         }
         const fullURL = this.baseUrl + url;
@@ -129,7 +129,7 @@ export class HttpService {
             //    this.baseUrl = '';
             throw new Error('HTTP SERVICE NOT READY');
         }
-        if (this.baseUrl == null || url == null) {
+        if (!this.baseUrl || url == null || !url) {
             throw new Error('Invalid URL: ' + this.baseUrl + url);
         }
         const fullURL = this.baseUrl + url;
@@ -151,7 +151,7 @@ export class HttpService {
             //    this.baseUrl = '';
             throw new Error('HTTP SERVICE NOT READY');
         }
-        if (this.baseUrl == null || url == null) {
+        if (!this.baseUrl || !this.baseUrl || url == null || !url) {
             throw new Error('Invalid URL: ' + this.baseUrl + url);
         }
         const fullURL = this.baseUrl + url;

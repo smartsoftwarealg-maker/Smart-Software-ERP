@@ -125,6 +125,7 @@ export class ShellService {
     /* LOADING */
 
     public setLoading(isLoading: boolean) {
+        // console.log('________________________set', isLoading);
         this.isLoading = isLoading;
         this.updateShell();
     }

@@ -124,7 +124,7 @@ export class AgentDetailComponent
         disabled: false,
         icon: 'fas fa-file-import',
         keepOnToolbar: KeepOnToolbar.DYNAMIC,
-        label: 'LOGISTICS_IMPORT_DOCUMENT',
+        label: 'LOGISTICS_IMPORT_AGENTS',
         visible: true,
         click: () => this.importAgents(),
     };
@@ -188,49 +188,47 @@ export class AgentDetailComponent
             'COMMON_AGENT',
         );
         this.isSales = this.route.snapshot.data['sales'];
-        this.centerSrv.setParentId(this.loginSrv.appCtx.company);
+        this.centerSrv.setParentId(this.loginSrv.appCtx.company||0);
     }
 
     public override preload(): Observable<any> {
-        return this.isSales
-            ? of(null)
-            : this.optionSrv.get(this.loginSrv.appCtx.center).pipe(
-                tap((res) => (this.optionSrv.options = res)),
-                switchMap(() => this.route.data),
-                tap((res) => {
-                    // const isSupplier = res['supplier'];
-                    // const isCustomer = res['customer'];
-                    // const isTransporter = res['transporter'];
-
-                    const URLs = [
-                        CUSTOMER_URL,
-                        SUPPLIER_URL,
-                        TRANSPORTER_URL,
-                        BRANCH_URL,
-                        INTERNAL_URL,
-                        AGENT_URL,
-                    ];
-                    const TTLs = [
-                        'LOGISTICS_CUSTOMER',
-                        'LOGISTICS_SUPPLIER',
-                        'LOGISTICS_TRANSPORTER',
-                        'COMMON_UNITS',
-                        'LOGISTICS_INTERNAL_AGENTS',
-                        'COMMON_AGENTS',
-                    ];
-                    const TYPES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        const obs =  this.isSales
+           ? of(null)
+            : this.optionSrv
+                .get(this.loginSrv.appCtx.center)
+                .pipe(
+                    tap((res) => (this.optionSrv.options = res)),
+                    switchMap(() => this.route.data),
+                    tap((res) => {
+                        const URLs = [
+                            CUSTOMER_URL,
+                            SUPPLIER_URL,
+                            TRANSPORTER_URL,
+                            BRANCH_URL,
+                            INTERNAL_URL,
+                            AGENT_URL,
+                        ];
+                        const TTLs = [
+                            'LOGISTICS_CUSTOMER',
+                            'LOGISTICS_SUPPLIER',
+                            'LOGISTICS_TRANSPORTER',
+                            'COMMON_UNITS',
+                            'LOGISTICS_INTERNAL_AGENTS',
+                            'COMMON_AGENTS',
+                        ];
+                        const TYPES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
                     const idx = res['customer']
-                        ? 2
+                        ? 0
                         : res['supplier']
-                            ? 0
+                            ? 1
                             : res['transporter']
-                                ? 5
+                                ? 2
                                 : res['unit']
                                     ? 3
                                     : res['internalAgent']
                                         ? 4
-                                        : 6;
+                                        : 5;
                     this.agentType.set(TYPES[idx]);
                     this.entitySrv.setURL(URLs[idx]);
                     this.shellSrv.setTitle(TTLs[idx]);
@@ -261,16 +259,22 @@ export class AgentDetailComponent
                         );
                         break;
                     }
-                    // this.agentTypeLookup = isSupplier
-                    //     ? new SupplierLookup(this.agentTypeSrv)
-                    //     : isCustomer
-                    //         ? new CustomerLookup(this.agentTypeSrv)
-                    //         : isTransporter
-                    //             ? new TransporterLookup(this.agentTypeSrv)
-                    //             : this.agentTypeLookup;
-                    // this.defaultAgentType = isSupplier ? 2 : isTransporter ? 5 : 0;
                 }),
             );
+        return obs.pipe(
+            tap(() => {
+                this.target =
+                    this.router.url.indexOf('agents') > 0
+                        ? PARTNER
+                        : this.router.url.indexOf('suppliers') > 0
+                            ? SUPPLIER
+                            : this.router.url.indexOf('transporter') > 0
+                                ? TRANSPORTER
+                                : CUSTOMER;
+                this.shellSrv.setGoBackPath('..', this.route);
+                this.shellSrv.addButton(this.invImportBtn);
+            })
+        );
     }
 
     override finishLoading(e: Agent) {
@@ -451,20 +455,20 @@ export class AgentDetailComponent
         }
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-
-        this.target =
-            this.router.url.indexOf('agents') > 0
-                ? PARTNER
-                : this.router.url.indexOf('suppliers') > 0
-                    ? SUPPLIER
-                    : this.router.url.indexOf('transporter') > 0
-                        ? TRANSPORTER
-                        : CUSTOMER;
-        this.shellSrv.setGoBackPath('..', this.route);
-        this.shellSrv.addButton(this.invImportBtn);
-    }
+    // override ngOnInit() {
+    //     super.ngOnInit();
+    //
+    //     this.target =
+    //         this.router.url.indexOf('agents') > 0
+    //             ? PARTNER
+    //             : this.router.url.indexOf('suppliers') > 0
+    //                 ? SUPPLIER
+    //                 : this.router.url.indexOf('transporter') > 0
+    //                     ? TRANSPORTER
+    //                     : CUSTOMER;
+    //     this.shellSrv.setGoBackPath('..', this.route);
+    //     this.shellSrv.addButton(this.invImportBtn);
+    // }
 
     override loadEntity(id: number): Observable<Agent> {
         this.archiveSrv.appId = AGENT_ARCHIVES;

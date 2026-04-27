@@ -548,7 +548,7 @@ export const mainRoutes: Routes = [
                         component: AgentDetailComponent,
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
-                        data: { sales: true },
+                        data: { sales: false },
                         children: [
                             { path: '', redirectTo: 'archive', pathMatch: 'full'},
                             {
