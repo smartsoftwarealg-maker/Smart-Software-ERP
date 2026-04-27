@@ -26,7 +26,8 @@ import {
     STOCK_RESERVATIONS_URL,
     PRODUCTIONS_RESERVATION_URL,
     PRODUCTION_WORK_CENTER_URL,
-    PRODUCTION_UNITS_URL, ACTIVITY_CATEGORIES_URL
+    PRODUCTION_UNITS_URL, ACTIVITY_CATEGORIES_URL,
+    PRODUCTION_ROUTING_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -106,10 +107,12 @@ import {
     UnitsDetailComponent
 } from '@ss/production/production-article';
 import {WorkCenterDetailComponent, WorkCenterListComponent} from '@ss/production/work-center';
+
 import {
     ActivityCategoriesDetailComponent
 } from "../../../../../libs/production/production-article/src/lib/production-activity-categories-detail/production-activity-categories-detail.component";
 
+import {ProductionRoutingListComponent, ProductionRoutingDetailComponent} from '@ss/production/production-routing';
 
 export const prodRoutes: Routes = [
     {
@@ -709,6 +712,25 @@ export const prodRoutes: Routes = [
             {
                 path: ':id',
                 component: WorkCenterDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                canActivateChild: [loginGuard],
+            },
+        ],
+    },
+    {
+        path: PRODUCTION_ROUTING_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductionRoutingListComponent,
+                canActivate: [loginGuard],
+                canActivateChild: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: ProductionRoutingDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 canActivateChild: [loginGuard],

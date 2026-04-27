@@ -91,5 +91,21 @@
     "OH-MACH":              "النفقات العامة - آلات",
     "OH-UTIL":              "النفقات العامة - خدمات",
     "ACTIVITY_CATEGORIES":    "فئات أنشطة الإنتاج",
-    "COST_GROUP":             "مجموعة التكاليف"
+    "COST_GROUP":             "مجموعة التكاليف",
+    "PRODUCTION_ROUTING":   "التوجيه الإنتاجي",
+    "PRODUCTIONS_ROUTING":  "التوجيهات الإنتاجية",
+    "ROUTING_NUMBER":       "رقم التوجيه",
+    "REVISION":             "مراجعة",
+    "VALID_FROM":           "صالح من",
+    "VALID_TO":             "صالح إلى",
+    "LOT_SIZE_FROM":        "حجم الحصة من",
+    "LOT_SIZE_TO":          "حجم الحصة إلى",
+    "PREVIOUS_VERSION":     "الإصدار السابق",
+    "SUPERSEDED_BY":        "تم استبداله بواسطة",
+    "IS_DEFAULT":           "الافتراضي",
+    "DRAFT":                "مسودة",
+    "APPROVED":             "معتمد",
+    "OBSOLETE":             "مهمل",
+    "CANCELLED":            "ملغى"
+
 }
