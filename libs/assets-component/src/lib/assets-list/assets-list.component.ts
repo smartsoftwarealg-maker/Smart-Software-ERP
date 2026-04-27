@@ -117,11 +117,14 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
             .pipe(tap(res => res? this.displayedColumns = this.AQS_COLS : this.DEF_COLS));
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.addButton(this.duplicateBtn);
-        this.shellSrv.addButton(this.activeOnlyBtn);
+    protected override postInit():any{
+        return  super.postInit().
+            pipe(tap(() => {
+            this.shellSrv.addButton(this.duplicateBtn);
+            this.shellSrv.addButton(this.activeOnlyBtn);
+        }));
     }
+
 
     private duplicate() {
         if (!!this.selected) {

@@ -126,6 +126,7 @@
             <input matInput formControlName="comment" type="text">
         </mat-form-field>
 
+
         @if (!isAQS) {
             <div class="default-50 sm-100 qr">
                 <mat-form-field class="count_div">
@@ -134,7 +135,9 @@
                 </mat-form-field>
             </div>
         }
-
+        <div class="default-50">
+            AQS: {{ isAQS}} !!
+        </div>
         <mat-tab-group (selectedIndexChange)="showPanel($event)" [dynamicHeight]="true">
             <mat-tab label="{{ 'ASSET_DEPRECIATION' | translate }}">
                 <div class="filler"></div>

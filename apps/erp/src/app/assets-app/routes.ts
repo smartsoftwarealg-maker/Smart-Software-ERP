@@ -537,7 +537,7 @@ export const mainRoutes: Routes = [
                 path: LIST_URL,
                 component: AgentListComponent,
                 canActivate: [loginGuard],
-                data: {sales: true, assets: true},
+                data: {sales: true},
                 children: docInfoRoutes
             },
             {
@@ -548,13 +548,13 @@ export const mainRoutes: Routes = [
                         component: AgentDetailComponent,
                         canActivate: [loginGuard],
                         canDeactivate: [CanDeactivateService],
-                        data: {sales: false},
+                        data: { sales: true },
                         children: [
-                            {path: '', redirectTo: 'archive', pathMatch: 'full'},
+                            { path: '', redirectTo: 'archive', pathMatch: 'full'},
                             {
                                 path: 'archive',
                                 children: [
-                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES }},
+                                    {path: '', component: AppArchiveListComponent, pathMatch: 'full', data: { appId: AGENT_ARCHIVES } },
                                     {path: ':id', component: AppArchiveDetailComponent, data: { appId: AGENT_ARCHIVES }},
                                 ]
                             }
@@ -562,8 +562,6 @@ export const mainRoutes: Routes = [
                     }
                 ]
             },
-            {path: '', redirectTo: LIST_URL, pathMatch: 'full'},
-            {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
         ]
     },
 
