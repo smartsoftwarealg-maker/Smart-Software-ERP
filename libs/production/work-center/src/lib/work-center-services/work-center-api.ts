@@ -30,10 +30,10 @@ export interface WorkCenter {
     requiresSetup?: number;
     allowsParallel?: number;
     currencyId?: number;
-    createdAt?: string; // ISO date string
-    updatedAt?: string;
+    createdAt?: Date; // ISO date string
+    updatedAt?: Date;
     createdBy?: number;
     updatedBy?: number;
-    deletedAt?: string;
+    deletedAt?: Date;
     ccDescription?: string;
 }

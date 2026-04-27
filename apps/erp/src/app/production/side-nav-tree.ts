@@ -19,10 +19,9 @@ import {
     ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL,
     ABS_PRODUCTION_RESERVATION_URL,
     ABS_PRODUCTION_UNITS_URL,
-    ABS_PRODUCTION_WORK_CENTER_URL_URL
-} from "../common";
-
-
+    ABS_PRODUCTION_WORK_CENTER_URL,
+    ABS_PRODUCTION_ROUTING_URL,
+} from '../common';
 
 export const productionNavTree: SideNavNode = {
     name: 'COMMON_PRODUCTION',
@@ -55,8 +54,8 @@ export const productionNavTree: SideNavNode = {
         },
         {
             name: 'PROD_WORK_CENTERS',
-            icon: 'fas fa-box',
-            route: ABS_PRODUCTION_WORK_CENTER_URL_URL,
+            icon: 'fas fa-gears',
+            route: ABS_PRODUCTION_WORK_CENTER_URL,
             accessRights: 'WorkCenter',
         },
         {
@@ -70,6 +69,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-solid fa-list-tree',
             route: ABS_PRODUCTION_BOM_PRODUCTS,
             accessRights: 'BOM',
+        },
+        {
+            name: 'PROD_PRODUCTIONS_ROUTING',
+            icon: 'fa-solid fa-route',
+            route: ABS_PRODUCTION_ROUTING_URL,
+            accessRights: 'Routing',
         },
         {
             name: 'STOCK_LOT_MANAGEMENT',

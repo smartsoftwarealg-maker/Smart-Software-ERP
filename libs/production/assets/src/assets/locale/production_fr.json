@@ -90,5 +90,20 @@
     "OH-MACH":              "Frais généraux - Machine",
     "OH-UTIL":              "Frais généraux - Services publics",
     "ACTIVITY_CATEGORIES":  "Categories d’activite",
-    "COST_GROUP":           "Groupe de couts"
+    "COST_GROUP":           "Groupe de couts",
+    "PRODUCTION_ROUTING":   "Parcours de production",
+    "PRODUCTIONS_ROUTING":  "Parcours de productions",
+    "ROUTING_NUMBER":       "Numéro d'itinéraire",
+    "REVISION":             "Révision",
+    "VALID_FROM":           "Valide à partir du",
+    "VALID_TO":             "Valide jusqu'au",
+    "LOT_SIZE_FROM":        "Taille de lot à partir de",
+    "LOT_SIZE_TO":          "Taille de lot jusqu'à",
+    "PREVIOUS_VERSION":     "Version précédente",
+    "SUPERSEDED_BY":        "Remplacé par",
+    "IS_DEFAULT":           "Est par défaut",
+    "DRAFT":                "Brouillon",
+    "APPROVED":             "Approuvé",
+    "OBSOLETE":             "Obsolète",
+    "CANCELLED":            "Annulé"
 }
