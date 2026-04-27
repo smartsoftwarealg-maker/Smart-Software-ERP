@@ -128,7 +128,7 @@ export class AppArchiveListComponent implements OnInit {
                                     next: () => {
                                         this.snackBarSrv.showSuccessMessage();
                                         this.data.set(this.data().filter(e => e.id !== a.id));
-                                        this.imgSrc = null;
+                                        this.imgSrc.set(null);
                                     },
                                     error: err => {
                                         this.snackBarSrv.showFailureMessage();
@@ -142,7 +142,7 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     refresh() {
-        this.imgSrc = null;
+        this.imgSrc.set(null);
         if (this.entitySrv.getParentId() > 0) {
             this.entitySrv.getList(0, 50)
                 .subscribe(res => {
@@ -156,7 +156,7 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     select(a: AppArchive) {
-        this.imgSrc = null;
+        this.imgSrc.set(null);
         this.selectedArchive = a;
         if (a) {
             this.selectedId = a.id || 0;

@@ -63,15 +63,15 @@
         </div>
     </div>
 
-    @if (imgSrc?.length > 10 || filename) {
+    @if (imgSrc()?.length > 10 || filename()) {
         <div class="imj">
-            <img [src]="imgSrc"
-                 [alt]="'image'"
+            <img [src]="imgSrc()"
+                 [alt]="'image'"[ariaColIndexText]=""
                  class="clickable"
                  (dblclick)="onClick($event)"
                  [matTooltip]="'COMMON_DOUBLE_CLICK_OPEN' | translate" />
         </div>
     } @else {
-        <h1>src: {{ imgSrc?.length }}</h1>
+        <h1>src: {{ imgSrc()?.length }}</h1>
     }
 </div>
