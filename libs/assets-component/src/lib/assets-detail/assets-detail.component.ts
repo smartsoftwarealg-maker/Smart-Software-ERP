@@ -359,7 +359,7 @@ export class AssetsDetailComponent
                 this.importBtn.visible = this.isANSEJ;
             }),
             switchMap(() => this.isParamSrv.is('AQS')),
-            tap((res) => (this.isAQS = res)),
+            tap((res) => this.isAQS = res),
             switchMap(() => this.endSrv.getList(0, 50)),
             tap((res) => (this.assetEnds = res.body)),
             switchMap(() => this.route.data),

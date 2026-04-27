@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal} from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -80,7 +80,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         'creatorName',
         'status'
     ];
-    detail: Asset[] = [];
+    detail = signal<Asset[]> ([]);
     detailPagination = PaginationModel.newInstance();
 
     constructor(
@@ -119,7 +119,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
     override select(id: number) {
         super.select(id);
         this.duplicateButton.visible = (id||0) > 0;
-        this.entitySrv.getAssets(id || 0).subscribe(res => this.detail = res);
+        this.entitySrv.getAssets(id || 0).subscribe(res => this.detail.set([...res]));
     }
 
     override selectRow(ar: AssetReception) {

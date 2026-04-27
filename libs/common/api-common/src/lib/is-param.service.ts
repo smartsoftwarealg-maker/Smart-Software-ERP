@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpService} from '@ss/common/api-common';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 
 @Injectable({
@@ -14,6 +14,6 @@ export class IsParamService {
         return this
             .#http
             .get<{param: boolean}>(`/is?param=${param}`)
-            .pipe(map(res => res.param));
+            .pipe( map(res => res[param]));
     }
 }

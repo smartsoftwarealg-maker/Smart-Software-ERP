@@ -185,9 +185,9 @@ implements OnInit, OnDestroy
                     ]);
                 }),
                 concatMap(() => this.postInit()),
-            )
-            .subscribe(() => {
+            ).subscribe(() => {
                 this.loading.set(false);
+                this.shellSrv.setFetching(false);
             });
     }
 
@@ -447,6 +447,6 @@ implements OnInit, OnDestroy
     }
 
     isFetching() {
-        return this.shellSrv.isFetching();
+        return this.shellSrv.isFetching()();
     }
 }
