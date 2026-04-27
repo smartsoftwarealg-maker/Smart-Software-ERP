@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ImageUploaderUtil, LoginService, MaterialModule } from '@ss/common/api-common';
@@ -8,12 +8,7 @@ import { concatMap, from, of, switchMap, tap, zip } from 'rxjs';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import {AppArchiveDocumentService} from '@ss/common/api-lookup';
 import {AppArchive} from '../app-archive-api';
-
-
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import { TranslateDirective } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-agent-archive-detail',
@@ -41,6 +36,7 @@ export class AppArchiveDetailComponent implements OnInit {
     documentAutoCompleteModel     = new DefaultAutoCompleteModel(this.documentSrv);
     uploadUtil: ImageUploaderUtil = new ImageUploaderUtil();
     form: UntypedFormGroup        = null;
+    loaded = signal(false);
 
 
     ngOnInit(): void {
@@ -54,6 +50,7 @@ export class AppArchiveDetailComponent implements OnInit {
                     documentId: [{ value: res?.documentId, disabled: !!res?.id}, Validators.required],
                     objId:      [res?.objId || this.service.id, Validators.required]
                 });
+                this.loaded.set(this.service.appId > 0);
             });
     }
 
