@@ -40,10 +40,10 @@ export class AppArchiveListComponent implements OnInit {
     public activePersonnelSrv = inject(ActivePersonnelService);
     public showBackButton = signal(false);
 
-    imgSrc: string | null = null;
     selectedArchive: AppArchive | null = null;
     selectedId = 0;
-    filename: string|null = null;
+    imgSrc = signal<string | null>(null);
+    filename= signal<string|null>(null);
     data =signal<AppArchive[]> ([]);
     paginator = PaginationModel.newInstance();
     displayedColumns = ['docDescription', 'filename'];
@@ -156,20 +156,23 @@ export class AppArchiveListComponent implements OnInit {
     }
 
     select(a: AppArchive) {
+        this.imgSrc = null;
         this.selectedArchive = a;
         if (a) {
             this.selectedId = a.id || 0;
             if (a.filename?.indexOf('.pdf') > 1) {
-                this.filename = a.filename;
-                this.imgSrc = './assets/img/pdf.png';
+                this.filename.set(a.filename);
+                this.imgSrc.set('./assets/img/pdf.png');
             } else if (a.filename?.indexOf('.doc') > 1) {
-                this.filename = a.filename;
-                this.imgSrc = ('./assets/img/word.png');
+                this.filename.set(a.filename);
+                this.imgSrc.set('./assets/img/word.png');
             } else {
-
                 this.entitySrv
                     .thumbNail(this.selectedId)
-                    .subscribe(res => ImageUploaderUtil.toBase64(res, (s: string) => this.imgSrc = s));
+                    .subscribe(res => ImageUploaderUtil.toBase64(res, (s: string) => {
+                        this.imgSrc.set(s);
+                        this.filename.set(a.filename);
+                    }));
             }
         }
     }
