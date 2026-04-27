@@ -43,8 +43,8 @@ export class AppArchiveListComponent implements OnInit {
     imgSrc: string | null = null;
     selectedArchive: AppArchive | null = null;
     selectedId = 0;
-    filename: string = null;
-    data: AppArchive[] = [];
+    filename: string|null = null;
+    data =signal<AppArchive[]> ([]);
     paginator = PaginationModel.newInstance();
     displayedColumns = ['docDescription', 'filename'];
     isEditable = true;
@@ -52,7 +52,7 @@ export class AppArchiveListComponent implements OnInit {
     onIdChange = effect(() => {
         this.entitySrv.setParentId(this.id() || this.entitySrv.id);
         this.entitySrv.getList(0, 50).subscribe((res) => {
-            this.data = res.body || [];
+            this.data.set(res.body || []);
             this.paginator.elementCount = res.itemCount;
         });
     });
@@ -81,7 +81,7 @@ export class AppArchiveListComponent implements OnInit {
                         this.entitySrv.setParentId(id);
                     }
                     const editable = param.get('editable');
-                    this.entitySrv.editable = editable && editable.toLowerCase() === 'true';
+                    this.entitySrv.editable = editable !== null && editable.toLowerCase() === 'true';
                 }
 
                 this.route
@@ -121,13 +121,13 @@ export class AppArchiveListComponent implements OnInit {
             .subscribe(b => {
                 if (b) {
                     if (this.selectedId && this.selectedId > 0) {
-                        const a = this.data.filter(x => x.id === this.selectedId)[0];
+                        const a = this.data().filter(x => x.id === this.selectedId)[0];
                         if (a && a.id) {
                             this.entitySrv.remove(a.id)
                                 .subscribe({
                                     next: () => {
                                         this.snackBarSrv.showSuccessMessage();
-                                        this.data = this.data.filter(e => e.id !== a.id);
+                                        this.data.set(this.data().filter(e => e.id !== a.id));
                                         this.imgSrc = null;
                                     },
                                     error: err => {
@@ -146,11 +146,11 @@ export class AppArchiveListComponent implements OnInit {
         if (this.entitySrv.getParentId() > 0) {
             this.entitySrv.getList(0, 50)
                 .subscribe(res => {
-                    this.data = res.body || [];
+                    this.data.set(res.body || []);
                     this.paginator.elementCount = res.itemCount;
                 });
         } else {
-            this.data = [];
+            this.data.set([]);
             this.paginator.elementCount = 0;
         }
     }
@@ -178,10 +178,33 @@ export class AppArchiveListComponent implements OnInit {
         this.entitySrv
             .image(this.selectedId)
             .subscribe(res => {
-                const pdfSrc = window.URL.createObjectURL(res);
-                const w = window.open(pdfSrc);
-                setTimeout(() => w.document.title = this.selectedArchive?.filename||'' + this.selectedId, 200);
-                window.URL.revokeObjectURL(pdfSrc);
+                // Use globalThis to be safe in different environments and
+                // handle legacy webkitURL as fallback.
+                const urlCtor: any = (globalThis as any).URL ?? (globalThis as any).webkitURL;
+
+                const openWithSrc = (src: string) => {
+                    const w = window.open(src);
+                    if (w) {
+                        setTimeout(() => (w.document.title = `${this.selectedArchive?.filename || ''}${this.selectedId}`), 200);
+                    }
+                };
+
+                if (!urlCtor || typeof urlCtor.createObjectURL !== 'function') {
+                    // Fallback: convert blob to data URL using FileReader
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        const dataUrl = reader.result as string;
+                        openWithSrc(dataUrl);
+                    };
+                    reader.readAsDataURL(res);
+                } else {
+                    const pdfSrc = urlCtor.createObjectURL(res);
+                    openWithSrc(pdfSrc);
+                    // Revoke after a small delay so the opened window can load the blob URL
+                    setTimeout(() => {
+                        try { urlCtor.revokeObjectURL(pdfSrc); } catch (err) { /* ignore */ }
+                    }, 2000);
+                }
             });
     }
 

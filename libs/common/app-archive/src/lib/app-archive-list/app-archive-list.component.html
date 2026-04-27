@@ -38,7 +38,7 @@
         </div>
 
         <div class="list_div">
-            <mat-table mat-table [dataSource]="data" class="main-table">
+            <mat-table mat-table [dataSource]="data()" class="main-table">
 
                 <ng-container matColumnDef="filename">
                     <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_FILENAME</mat-header-cell>
