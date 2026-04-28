@@ -199,9 +199,6 @@ export class PaginationComponent implements OnInit {
     // }
 
     onGoToPage(): void {
-        if (this.isFetching()) {
-            return;
-        }
         let val = this.pageInput.nativeElement.value;
         if (isString(val)) {
             val = +val;
@@ -220,7 +217,4 @@ export class PaginationComponent implements OnInit {
         }
     }
 
-    get isFetching() {
-        return this.#shellSrv.isFetching();
-    }
 }

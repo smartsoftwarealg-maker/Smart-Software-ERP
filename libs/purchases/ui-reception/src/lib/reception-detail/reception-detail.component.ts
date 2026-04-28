@@ -88,11 +88,6 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
         return true;
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.addButton(this.importContractBtn);
-        this.currencySrv.load().subscribe();
-    }
 
     protected requireAgentToImportDocument(): boolean {
         return true;
@@ -139,5 +134,11 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
             .pipe(
                 tap(res => this.showAccTab.set(true)),
                 switchMap(() => super.preload()));
+    }
+
+    postLod():any{
+        return  super.postLod()
+            .pipe(tap(() =>this.shellSrv.addButton(this.importContractBtn)),
+                switchMap(() => this.currencySrv.load()));
     }
 }

@@ -157,9 +157,6 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
         this.#router.navigate(['/' + CENTER_SELECT_URL]).then();
     }
 
-    get isFetching () {
-        return this.shellSrv.isFetching();
-    }
 
     protected readonly LoginType = LoginType;
 }

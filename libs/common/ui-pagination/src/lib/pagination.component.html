@@ -1,7 +1,6 @@
 
-<div class="container" [ngStyle]="{ display: lastPage > 1 || model.elementCount >= 5 || isFetching()? 'block' : 'none'}">
+<div class="container" [ngStyle]="{ display: lastPage > 1 || model.elementCount >= 5? 'block' : 'none'}">
     <div class="row">
-        @if (!isFetching()) {
         <div class="pagination-buttons b-b-background f-f-text">
             <button mat-icon-button class="nav-btn" type="button" style="float: right"
                     (click)="onRightPlusButtonClick()"
@@ -10,7 +9,7 @@
             </button>
 
             <button mat-icon-button class="nav-btn" type="button" style="float: left" (click)="onLeftPlusButtonClick()"
-                    [disabled]="isLeftButtonDisabled() || isFetching()">
+                    [disabled]="isLeftButtonDisabled()">
                 <i class="fas fa-chevron-double-left"></i>
             </button>
 
@@ -31,7 +30,6 @@
                 {{model.pageSize}}
             </button>
         </div>
-        }
         <div class="go-to-page">
 
             <input #pageInput matInput type="number" class="page-input margin-start-4 b-b-background f-f-text"

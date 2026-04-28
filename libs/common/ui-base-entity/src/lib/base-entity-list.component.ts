@@ -186,7 +186,6 @@ implements OnInit, OnDestroy {
                 concatMap(() => this.postInit()),
             ).subscribe(() => {
                 this.loading.set(false);
-                this.shellSrv.setFetching(false);
             });
     }
 
@@ -227,7 +226,6 @@ implements OnInit, OnDestroy {
         this.releaseResources();
         this.data = [];
         this.shellSrv.setLoading(this.canShowProcessingStatus());
-        this.shellSrv.setFetching(true);
         (this.preload() || of(null))
             .pipe(switchMap(() => this.getPage()))
             .subscribe({
@@ -240,7 +238,6 @@ implements OnInit, OnDestroy {
                 error: (err) => {
                     this.data = []; // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
-                    this.shellSrv.setFetching(true);
                     throw err;
                 },
             });
@@ -264,7 +261,6 @@ implements OnInit, OnDestroy {
         this.processLoadedData(data).subscribe((x) => {
             this.data = x;
             this.shellSrv.setLoading(false);
-            this.shellSrv.setFetching(false);
             this.setLoading(false);
         });
     }
@@ -447,9 +443,6 @@ implements OnInit, OnDestroy {
         this.entitySrv.selectedId.set(id);
     }
 
-    isFetching() {
-        return this.shellSrv.isFetching()();
-    }
 
     setLoading(b: boolean) {
         this.loading.set(b);

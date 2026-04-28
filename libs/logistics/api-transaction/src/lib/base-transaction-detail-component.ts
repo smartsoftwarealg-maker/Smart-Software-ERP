@@ -47,8 +47,7 @@ import { OptionService } from '@ss/logistics/ui-options';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent
-    extends BaseEntityDetailComponent<Transaction>
-    implements OnInit
+    extends BaseEntityDetailComponent<Transaction> implements OnInit
 {
     #deliveryTimeSrv = inject(DeliveryTimeService);
     #shipmentModeSrv = inject(ShipmentModeService);
@@ -193,11 +192,15 @@ export abstract class BaseTransactionDetailComponent
     }
 
     private updateProjectStatus(p: Project) {
-        const blocked = p?.isBlocked;
-        if (blocked) {
-            this.form.controls['project'].setErrors({ blocked: true });
-        } else {
-            this.form.controls['project'].setErrors(null);
+        debugger;
+        if (!this.loading()) {
+            console.log('_________________________________loading', this.loading());
+            const blocked = p?.isBlocked;
+            if (blocked) {
+                this.form.controls['project'].setErrors({ blocked: true });
+            } else {
+                this.form.controls['project'].setErrors(null);
+            }
         }
     }
 

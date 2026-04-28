@@ -72,13 +72,15 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
         this.selectedRow = row;
         const id = row ? row.id || 0 : 0;
         this.select(id);
-        this.agentSrv.get(row.agent).subscribe((agent) => {
-            const itemControlsOn =
-                this.selected != null &&
-                this.selected > 0 &&
-                agent.agentType != TRANSPORTER;
-            this.editButton.disabled = !itemControlsOn;
-            this.deleteButton.disabled = !itemControlsOn;
+        this.agentSrv
+            .get(row.agent)
+            .subscribe((agent) => {
+                            const itemControlsOn =
+                                this.selected !== null &&
+                                this.selected > 0 &&
+                                agent.agentType != TRANSPORTER;
+                            this.editButton.disabled = !itemControlsOn;
+                            this.deleteButton.disabled = !itemControlsOn;
         });
     }
 
@@ -87,7 +89,7 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
         if (id) {
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }
-        const itemControlsOn = this.selected != null && this.selected > 0;
+        const itemControlsOn = this.selected !== null && this.selected > 0;
         this.viewReportButton.disabled = !itemControlsOn;
         this.emailReportButton.disabled =
             !this.selectedRow || !itemControlsOn || !this.selectedRow['email'];

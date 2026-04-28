@@ -62,7 +62,6 @@ export interface MenuItem {
     providedIn: 'root'
 })
 export class ShellService {
-    #fetching = signal(false);
 
     #badgeButtonSrv = inject(BadgeButtonService);
     private _application = '';
@@ -103,7 +102,7 @@ export class ShellService {
     public visibleSearchField = signal(true);
     //
 
-    buttons: ToolbarButton[] = [];
+    buttons = signal<ToolbarButton[]> ([]);
     labels: ToolbarLabel[] = [this._companyName];
     appButtons: ToolbarButton[] = [];
     //
@@ -134,12 +133,6 @@ export class ShellService {
         return this.isLoading;
     }
 
-    public setFetching(fetching: boolean) {
-        this.#fetching.set(fetching);
-    }
-    public isFetching() {
-        return this.#fetching;
-    }
 
     public showRetry(retryCallback: () => void) {
         this.isError = true;

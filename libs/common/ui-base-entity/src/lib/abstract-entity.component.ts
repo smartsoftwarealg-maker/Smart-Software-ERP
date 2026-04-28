@@ -40,7 +40,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         const val = this.readForm();
         // val.id = this.queryId || val.id;
         this.shellSrv.setLoading(true);
-        this.shellSrv.setFetching(true);
         const obs = val.id === 0 ?
             this.entitySrv
                 .add2(val) // REMOVED `.add` TO SOLVE IDIOTS' PROBLEM
@@ -68,14 +67,12 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                 this.form.markAsPristine();
                 this.form.markAsUntouched({onlySelf: false});
                 this.snackBarSrv.showSuccessMessage();
-                this.shellSrv.setFetching(false);
                 this.loading.set(false);
             },
             error: err => {
                 console.log(err);
                 this.snackBarSrv.showFailureMessage();
                 this.shellSrv.setLoading(false);
-                this.shellSrv.setFetching(false);
                 this.saveButton.disabled = false;
                 this.loading.set(false);
                 throw err;

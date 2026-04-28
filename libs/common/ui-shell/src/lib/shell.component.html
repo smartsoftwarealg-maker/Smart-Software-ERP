@@ -134,7 +134,7 @@
                     }
                   </mat-menu>
                 }
-                @if (!b.menuItems && b.visible && !isFetching()) {
+                @if (!b.menuItems && b.visible) {
                   <button mat-icon-button matTooltip="{{b.label | translate}}"
                     (click)="b.click()"
                     [disabled]="b.disabled"
