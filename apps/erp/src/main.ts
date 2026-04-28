@@ -1,4 +1,4 @@
-import { enableProdMode, ErrorHandler, importProvidersFrom } from '@angular/core';
+import { enableProdMode, ErrorHandler, importProvidersFrom, provideBrowserGlobalErrorListeners} from '@angular/core';
 import { environment, appRoutes } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -45,7 +45,8 @@ bootstrapApplication(AppComponent, {
         provideAnimationsAsync(),
         provideHttpClient(withInterceptorsFromDi(), withFetch()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
-        { provide: ErrorHandler, useClass: CustomErrorHandler }
+        { provide: ErrorHandler, useClass: CustomErrorHandler },
+        provideBrowserGlobalErrorListeners()
     ]
 }).catch((err) => {
     console.error('main.ts (line 45): ', err);

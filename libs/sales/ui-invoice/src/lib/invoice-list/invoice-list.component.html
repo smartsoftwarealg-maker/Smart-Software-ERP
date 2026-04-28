@@ -1,4 +1,6 @@
 @if (loading()) {
+    <div> loading....</div>
+} @else {
     <div class="table-container">
         <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 

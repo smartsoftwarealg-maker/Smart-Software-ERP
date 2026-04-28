@@ -20,8 +20,7 @@ import { Sort } from '@angular/material/sort';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number; email?: string }>
-implements OnInit, OnDestroy
-{
+implements OnInit, OnDestroy {
     private _editable = true;
     private reportForm: string = null;
 

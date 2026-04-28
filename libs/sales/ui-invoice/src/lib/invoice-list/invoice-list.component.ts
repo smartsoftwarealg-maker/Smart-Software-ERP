@@ -53,7 +53,6 @@ export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {
     }
 
     preload():any{
-        this.loading.set(true);
         return this.showCurrency()?
             super.preload()
                 .pipe(switchMap(() => this.#currencySrv.getList(0, 50)),
