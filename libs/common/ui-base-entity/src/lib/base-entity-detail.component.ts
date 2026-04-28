@@ -10,9 +10,6 @@ import { AbstractEntityComponent } from './abstract-entity.component';
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> extends AbstractEntityComponent<T> implements OnInit, OnDestroy {
-    public loaded = signal(false);
-
-
     protected constructor(
         public override entitySrv: BaseEntityService<T>,
         public override shellSrv: ShellService,
@@ -45,12 +42,10 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
         return of(null);
     }
 
-    isLoading() {
-        return this.shellSrv.getLoading();
-    }
 
     public load() {
         this.shellSrv.setLoading(true);
+        this.loading.set(true);
 
         this.preload()
             .pipe(
@@ -75,10 +70,11 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                     } else {
                         throw new Error('BaseEntityDetail: Entity is null');
                     }
-                    this.loaded.set(true);
+                    this.loading.set(false);
                 },
                 error: error => {
                     this.shellSrv.showRetry(() => this.load());
+                    this.loading.set(false);
                     throw error;
                 }
             });

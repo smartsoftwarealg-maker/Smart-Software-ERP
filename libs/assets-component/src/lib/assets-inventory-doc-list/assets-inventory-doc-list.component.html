@@ -55,11 +55,13 @@
 </div>
 
 <div class="container">
-    <mat-tab-group (selectedIndexChange)="onTab($event)" [dynamicHeight]="true">
+    @if (!loading()) {
+        <mat-tab-group (selectedIndexChange)="onTab($event)" [dynamicHeight]="true">
         <mat-tab>
             <ng-template mat-tab-label>
                 <span translate>ASSET_RECORDED_ARTICLES</span>
             </ng-template>
+
             <ss-asset-recorded-inventory-report [documentId]="selectedRow"
                                                 [recorded]="selectedTab() === 0"></ss-asset-recorded-inventory-report>
         </mat-tab>
@@ -83,42 +85,44 @@
             <ng-template mat-tab-label>
                 <span translate>COMMON_SUMMARY</span>
             </ng-template>
+            @if (!loading()) {
+                <div class="summary__div">
+                    <mat-table mat-table [dataSource]="summaryData" class="main-table">
 
-            <div class="summary__div">
-                <mat-table mat-table [dataSource]="summaryData" class="main-table" >
+                        <ng-container matColumnDef="total">
+                            <mat-header-cell *matHeaderCellDef translate>COMMON_TOTAL</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e?.total }}
+                            </mat-cell>
+                        </ng-container>
 
-                    <ng-container matColumnDef="total">
-                        <mat-header-cell *matHeaderCellDef  translate>COMMON_TOTAL</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{ e?.total }}
-                        </mat-cell>
-                    </ng-container>
+                        <ng-container matColumnDef="counted">
+                            <mat-header-cell *matHeaderCellDef translate>ASSET_RECORDED_ARTICLES</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e?.counted }}
+                            </mat-cell>
+                        </ng-container>
 
-                    <ng-container matColumnDef="counted">
-                        <mat-header-cell *matHeaderCellDef  translate>ASSET_RECORDED_ARTICLES</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{ e?.counted }}
-                        </mat-cell>
-                    </ng-container>
+                        <ng-container matColumnDef="missing">
+                            <mat-header-cell *matHeaderCellDef translate>ASSET_MISSING_ARTICLES</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e?.missing }}
+                            </mat-cell>
+                        </ng-container>
 
-                    <ng-container matColumnDef="missing">
-                        <mat-header-cell *matHeaderCellDef  translate>ASSET_MISSING_ARTICLES</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{ e?.missing }}
-                        </mat-cell>
-                    </ng-container>
+                        <ng-container matColumnDef="unidentified">
+                            <mat-header-cell *matHeaderCellDef translate>ASSET_UNIDENTIFIED_INVENTORY</mat-header-cell>
+                            <mat-cell *matCellDef="let e">
+                                {{ e?.unidentified }}
+                            </mat-cell>
+                        </ng-container>
 
-                    <ng-container matColumnDef="unidentified">
-                        <mat-header-cell *matHeaderCellDef  translate>ASSET_UNIDENTIFIED_INVENTORY</mat-header-cell>
-                        <mat-cell *matCellDef="let e">
-                            {{ e?.unidentified }}
-                        </mat-cell>
-                    </ng-container>
-
-                    <mat-header-row *matHeaderRowDef="summaryColumns; sticky: true"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: summaryColumns;"></mat-row>
-                </mat-table>
-            </div>
+                        <mat-header-row *matHeaderRowDef="summaryColumns; sticky: true"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: summaryColumns;"></mat-row>
+                    </mat-table>
+                </div>
+            }
         </mat-tab>
     </mat-tab-group>
+    }
 </div>

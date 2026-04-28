@@ -47,7 +47,6 @@ import { MatTooltip } from '@angular/material/tooltip';
 export class CategoryDiscountsListComponent extends BaseChildEntityListComponent<CategoryDiscount> {
     private updated = effect(() => {
         if (this.detailSrv.curParentId() >= 0) {
-            console.log('parentId', this.detailSrv.curParentId());
             this.refresh();
         }
     })

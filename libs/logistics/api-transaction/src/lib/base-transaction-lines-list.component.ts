@@ -31,6 +31,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     selectedRow: TransactionLine = null;
     usesLots = signal(false);
     usesUnits = signal(false);
+    loading = signal(true);
 
     displayedColumns: string[] = [];
 
@@ -52,9 +53,12 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
 
         this.pagination.onChange = () => {
             this.detailSrv.currentPage = this.pagination.page;
+            this.loading.set(true);
             this.loadDetailLines()
-                .subscribe(() =>
-                    this.shellSrv.setLoading(false),
+                .subscribe(() => {
+                    this.shellSrv.setLoading(false);
+                    this.loading.set(false);
+                    }
                 );
         };
     }
@@ -93,7 +97,10 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 }),
                 switchMap(() => this.loadDetailLines()),
             )
-            .subscribe(() => this.shellSrv.setLoading(false));
+            .subscribe(() => {
+                this.shellSrv.setLoading(false);
+                this.loading.set(false);
+            });
 
         this.subscription = this.searchText.valueChanges
             .pipe(debounceTime(300), distinctUntilChanged())
@@ -127,28 +134,32 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     }
 
     public deleteSelected(): void {
-        this.confirmationSrv.confirmDelete().subscribe((b) => {
-            if (b && this.detailSrv.selectedId() > 0) {
-                const a = this.data.filter(
-                    (x) => x.id === this.detailSrv.selectedId())[0];
-                if (a && a.id) {
-                    this.shellSrv.setLoading(true);
-                    this.detailSrv
-                        .remove(a.id)
-                        .pipe(switchMap(() => this.loadDetailLines()))
-                        .subscribe({
-                            next: () => {
-                                this.shellSrv.setLoading(false);
-                                this.snackBarSrv.showSuccessMessage();
-                            },
-                            error: (err) => {
-                                this.snackBarSrv.showFailureMessage();
-                                this.shellSrv.setLoading(false);
-                                throw err;
-                            },
-                        });
+        this.confirmationSrv
+            .confirmDelete()
+            .subscribe((b) => {
+                if (b && this.detailSrv.selectedId() > 0) {
+                    const a = this.data.filter(
+                        (x) => x.id === this.detailSrv.selectedId())[0];
+                    if (a && a.id) {
+                        this.shellSrv.setLoading(true);
+                        this.detailSrv
+                            .remove(a.id)
+                            .pipe(switchMap(() => this.loadDetailLines()))
+                            .subscribe({
+                                next: () => {
+                                    this.shellSrv.setLoading(false);
+                                    this.loading.set(false);
+                                    this.snackBarSrv.showSuccessMessage();
+                                },
+                                error: (err) => {
+                                    this.snackBarSrv.showFailureMessage();
+                                    this.shellSrv.setLoading(false);
+                                    this.loading.set(false);
+                                    throw err;
+                                },
+                            });
+                    }
                 }
-            }
         });
     }
 

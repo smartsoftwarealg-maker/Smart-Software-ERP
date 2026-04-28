@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit, signal} from '@angular/core';
+import {Component, effect, inject, input, Input, OnInit, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -18,7 +18,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { OptionService } from '@ss/logistics/ui-options';
 import {DecimalPipe} from "@angular/common";
-import { of, switchMap } from 'rxjs';
+import { of, switchMap, tap } from 'rxjs';
 
 interface StoreForm {
     id: FormControl<number>;
@@ -64,17 +64,20 @@ export class ArticleStoreComponent implements OnInit {
 
     editMode = signal(false);
     usesLots = signal(false);
-    article_!: Article;
+    loading  = signal(true);
+    article = input<Article|null>(null);
+
+    articleEffect = effect(() => this.articleUpdate(this.article()))
 
     storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.#lotsService);
     storeForm: FormGroup<StoreForm> = new FormGroup({
-        id: new FormControl(0, {nonNullable: true}),
-        storeId: new FormControl(0),
-        referenceId: new FormControl(0),
-        reference: new FormControl(null),
+        id: new FormControl<number|null>(0, { nonNullable: true }),
+        storeId: new FormControl<number>(0),
+        referenceId: new FormControl<number>(0),
+        reference: new FormControl<string|null>(null),
         location: new FormControl<string|null>(null),
         locSector: new FormControl<string|null>(null),
-        stock: new FormControl(0),
+        stock: new FormControl<number>(0),
         price1: new FormControl<number>(0),
         price2: new FormControl<number>(0),
         price3: new FormControl<number>(0),
@@ -108,11 +111,12 @@ export class ArticleStoreComponent implements OnInit {
 
 
     ngOnInit() {
-        this.articleStoreSrv.setParentId(this.article_?.id);
+        this.loading.set(true);
+        this.articleStoreSrv.setParentId(this.article().id);
         this.storeForm.setValue({
             storeId: 0,
-            referenceId: this.article_.id,
-            reference: this.article_.reference,
+            referenceId: this.article().id,
+            reference: this.article().reference,
             location: null,
             locSector: null,
             id: 0,
@@ -125,29 +129,28 @@ export class ArticleStoreComponent implements OnInit {
             blockedLot: false
         });
         this.loadArticleStore();
-        this.#optionsSrv
-            .get(this.#loginSrv.appCtx.center)
-            .subscribe(res => {
-                this.usesLots.set(res.usesLots);
-                this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'storeName');
-            });
     }
 
-    // TODO: Skipped for migration because:
-    //  Accessor inputs cannot be migrated as they are too complex.
-    @Input() set article(article: Article) {
-        this.article_ = article;
+    articleUpdate(article: Article) {
         this.selectStore(null);
         this.ngOnInit();
     }
 
     loadArticleStore() {
-        this.articleStoreSrv
-            .getList(this.pagination.page - 1, this.pagination.pageSize)
-            .subscribe((x) => {
+        this.loading.set(true);
+        this.#optionsSrv
+            .get(this.#loginSrv.appCtx.center)
+            .pipe(
+                tap(res => {
+                    this.usesLots.set(res.usesLots);
+                    this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'storeName');
+                }),
+                switchMap(() => this.articleStoreSrv.getList(this.pagination.page - 1, this.pagination.pageSize)))
+        .subscribe((x) => {
                 this.pagination.elementCount = x.itemCount;
                 // const ids = x.body.map(_ => _.id);
                 this.data = x.body;
+                this.loading.set(false);
             });
 
     }
@@ -194,8 +197,8 @@ export class ArticleStoreComponent implements OnInit {
     }
 
     editStore() {
-        this.#emptyValue.referenceId = this.article_?.id;
-        this.#emptyValue.reference = this.article_?.reference;
+        this.#emptyValue.referenceId = this.article()?.id;
+        this.#emptyValue.reference = this.article()?.reference;
         this.storeForm.reset(this.selectedStore||this.#emptyValue);
         if (this.selectedStore?.id) {
             this.storeForm.get('id').disable();

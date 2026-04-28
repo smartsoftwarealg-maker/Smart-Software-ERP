@@ -1,4 +1,4 @@
-import { Directive, inject, OnDestroy, OnInit } from '@angular/core';
+import { Directive, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import { switchMap, tap } from 'rxjs/operators';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { Observable, of, Subscription } from 'rxjs';
@@ -8,6 +8,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 @Directive()
 export abstract class AbstractEntityComponent<T extends { id: number }> implements OnInit, OnDestroy {
+    public loading = signal(true);
     public shellSrv = inject(ShellService);
     public snackBarSrv = inject(SnackBarService);
     public confirmationSrv = inject(ConfirmationDialogService);
@@ -68,7 +69,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                 this.form.markAsUntouched({onlySelf: false});
                 this.snackBarSrv.showSuccessMessage();
                 this.shellSrv.setFetching(false);
-                // this.saveButton.disabled = false;
+                this.loading.set(false);
             },
             error: err => {
                 console.log(err);
@@ -76,6 +77,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                 this.shellSrv.setLoading(false);
                 this.shellSrv.setFetching(false);
                 this.saveButton.disabled = false;
+                this.loading.set(false);
                 throw err;
             }
         });
@@ -123,7 +125,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     }
 
     isLoading() {
-        return this.shellSrv.getLoading();
+        return this.loading();
     }
 
     public loadEntity(id: number): Observable<T> {
@@ -149,6 +151,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
             this.form.disable();
         }
         this.shellSrv.setLoading(false);
+        this.loading.set(false);
     }
 
     cancel() {

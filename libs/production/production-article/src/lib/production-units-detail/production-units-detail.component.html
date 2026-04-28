@@ -18,24 +18,6 @@
                     <mat-label translate>COMMON_DESCRIPTION</mat-label>
                     <input matInput formControlName="description">
                 </mat-form-field>
-
-<<<<<<< HEAD
-                <mat-form-field class="default-50">
-                    <mat-label>Unit Type</mat-label>
-                    <mat-select formControlName="unitType">
-                        <mat-option [value]="null"></mat-option>
-                        @for (t of UNIT_TYPES; track t) {
-                            <mat-option [value]="t">{{ `PROD_${t}` | translate}}</mat-option>
-                        }
-                    </mat-select>
-
-                </mat-form-field>
-
-<!--                <mat-form-field class="default-50">-->
-<!--                    <mat-label>Conversion Factor</mat-label>-->
-<!--                    <input matInput formControlName="conversionFactor" type="number">-->
-<!--                </mat-form-field>-->
-=======
                 <mat-form-field floatLabel="always" class="default-25 sm-50">
                     <mat-label translate>PROD_COST_GROUP</mat-label>
                     <input matInput formControlName="costElementGroup">
@@ -45,7 +27,6 @@
                     <mat-label translate>COMMON_SORT_ORDER</mat-label>
                     <input matInput type="number" formControlName="sortOrder">
                 </mat-form-field>
->>>>>>> d34be96a9 (activity categories ui created)
 
                 <div class="default-25 sm-50">
                     <mat-checkbox formControlName="isOverhead" translate>

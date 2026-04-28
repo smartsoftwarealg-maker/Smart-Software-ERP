@@ -1,9 +1,9 @@
 @if (!disabled && !readOnly) {
     <div class="img-container mat-elevation-z6" [matMenuTriggerFor]="menu">
-        @if (!safeUrl) {
+        @if (!safeUrl()) {
             <i style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>
         } @else {
-            <img [src]="safeUrl" [alt]="alt()">
+            <img [src]="safeUrl()" [alt]="alt()">
         }
     </div>
 } @else {
@@ -11,7 +11,7 @@
 <!--        @if (!safeUrl) {-->
 <!--           <i style="font-size: 32px" class="fas fa-image f-b-disabled-btn"></i>-->
 <!--        }-->
-        <img [src]="safeUrl" [alt]="alt()">
+        <img [src]="safeUrl()" [alt]="alt()">
         @if (disabled) {
             <div class="disable-panel"></div>
         }

@@ -7,6 +7,7 @@ import { CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL, UPDATE_PASSWORD_URL } fro
 import { HttpService } from './http.service';
 import { MainPageService } from './main-page.service';
 import { CompanySelectorService } from './company-selector.service';
+import {AppConfigService} from "./app-config.service";
 
 export enum LicenseErrorType {
     UserLicense = 1000,
@@ -126,9 +127,10 @@ export class LoginService {
                 .pipe(tap((info: LoginInfo) => this.setContext(info, this.isPrivate()))) : of(null);
     }
 
-    public userLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void, isPrivate: boolean = false) {
+    public userLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
         this.wrongData = false;
         this.licenseErrorType = null;
+        const isPrivate = this.#httpSrv.isPrivate();
         this.#httpSrv
             .doLogin('/login', user)
             .subscribe({
@@ -192,11 +194,13 @@ export class LoginService {
             password: string
         },
         isAndroid: boolean,
-        onFinish?: () => void,
-        isPrivate: boolean = false) {
+        onFinish?: () => void) {
         this.baseURL = this.#httpSrv.baseUrl;
         this.licenseErrorType = null;
         this.wrongData = false;
+
+        const isPrivate = this.#httpSrv.isPrivate();
+
         this.#httpSrv
             .doLogin(url, credential)
             .subscribe({

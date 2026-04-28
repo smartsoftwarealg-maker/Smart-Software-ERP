@@ -19,7 +19,14 @@ mat-header-cell {
     min-height: 350px;
 }
 
-
+.spinner__div {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
 .pagination-container {
     max-width: 1400px;
     margin: 0 auto;

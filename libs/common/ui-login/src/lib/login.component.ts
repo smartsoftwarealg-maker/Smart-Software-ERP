@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     protected deviceSrv = inject(DeviceDetectorService);
     protected multiCompany = signal(false);
 
-    readonly privateSession = input<boolean>();
+    privateSession = signal<boolean>(true);
     protected loginSrv = inject(LoginService);
     public user: User = { username: '', password: '' };
 
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
     loading = signal(false);
 
     constructor() {
-        const os = this.deviceSrv.getDeviceInfo().os.toLocaleLowerCase();
+        const os = this.deviceSrv.deviceInfo().os.toLocaleLowerCase();
         this.isPhone =
             this.deviceSrv.isMobile() ||
             this.deviceSrv.isTablet() ||
@@ -85,7 +85,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console
         if (this.loginSrv.isLoggedIn) {
             this.loading.set(true);
             this.#router.navigate([ABS_INDEX_URL]).then();
@@ -116,6 +115,7 @@ export class LoginComponent implements OnInit {
             }
         }
         this.cSpace.set(this.#companySelectorSrv.spaceCompany);
+        this.privateSession.set(this.#httpSrv.isPrivate());
     }
 
     public onSubmit() {
@@ -133,24 +133,21 @@ export class LoginComponent implements OnInit {
                 '/customers/login',
                 this.user,
                 this.isPhone,
-                this.onLoadingFinished,
-                this.privateSession(),
+                this.onLoadingFinished
             );
         } else {
             if (this.loginSrv.customerLogin === LoginType.USER) {
                 this.loginSrv.userLogin(
                     this.user,
                     this.isPhone,
-                    this.onLoadingFinished,
-                    this.privateSession(),
+                    this.onLoadingFinished
                 );
             } else {
                 this.loginSrv.agentLogin(
                     '/persons/login',
                     this.user,
                     this.isPhone,
-                    this.onLoadingFinished,
-                    this.privateSession(),
+                    this.onLoadingFinished
                 );
             }
         }

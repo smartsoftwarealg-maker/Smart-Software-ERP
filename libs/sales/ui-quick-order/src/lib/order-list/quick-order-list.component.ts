@@ -29,6 +29,7 @@ import { InvoiceService } from '@ss/sales/api-invoice';
 import { catchError, EMPTY, filter, forkJoin, of, switchMap, tap } from 'rxjs';
 import { MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
     selector: 'ss-ui-quick-order',
@@ -55,6 +56,7 @@ import { MatTooltip } from '@angular/material/tooltip';
         DatePipe,
         MatIconButton,
         MatTooltip,
+        MatProgressSpinner,
     ],
 })
 export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder> {
@@ -99,6 +101,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
     invoiceInfo: InvoiceInfo[] = [];
 
     getInvoices(): void {
+        this.setLoading(true);
         const ids = this.data.map((d) => d.id).join(',');
 
         this.quickOrderSrv
@@ -126,8 +129,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
                             ),
                     ),
                 ),
-            )
-            .subscribe();
+            ).subscribe(() => this.setLoading(false));
     }
 
     getInvoiceNumber(id: number) {

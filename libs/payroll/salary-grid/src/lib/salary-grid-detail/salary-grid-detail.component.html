@@ -42,6 +42,6 @@
   </mat-card-content>
 </mat-card>
 
-@if (loaded() && id > 0) {
+@if (!loading() && id > 0) {
   <router-outlet></router-outlet>
 }

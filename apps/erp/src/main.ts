@@ -26,13 +26,8 @@ const routes: Routes = [
         component: ShellComponent,
         children: appRoutes,
     },
-    {
-        path: LOGIN_URL,
-        component: LoginComponent,
-        data: { privateSession: true },
-    },
-    {
-        path: PLOGIN_URL, component: LoginComponent, data: { privateSession: true }},
+    { path: LOGIN_URL, component: LoginComponent },
+    { path: PLOGIN_URL, component: LoginComponent},
     { path: CENTER_SELECT_URL, component: CenterSelectComponent },
     { path: UPDATE_PASSWORD_URL, component: PasswordUpdateComponent },
     { path: AUTH_2FA_URL, component: Auth2FAConfirmationComponent },

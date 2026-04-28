@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, OnInit } from '@angular/core';
+import { Component, effect, inject, input, OnInit, signal} from '@angular/core';
 import { UnidentifiedInventory } from '../assets-api';
 import { RouterModule } from '@angular/router';
 
@@ -32,12 +32,12 @@ import {debounceTime, distinctUntilChanged} from "rxjs/operators";
     ]
 })
 export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
+    loading = signal(true);
     pagination = PaginationModel.newInstance({
         page: 1,
         pageSize: 5,
         elementCount: 0
-    });
-    entitySrv = inject(AssetUnidentifiedInventoryService);
+    });    entitySrv = inject(AssetUnidentifiedInventoryService);
     filter = new FormControl('');
 
     displayedColumns = [
@@ -75,9 +75,13 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
     }
 
     refresh() {
+        this.loading.set(true);
         this.entitySrv
             .getPage(this.pagination, this.filter.getRawValue())
-            .subscribe(res => this.data = res);
+            .subscribe(res => {
+                this.data = res;
+                this.loading.set(false);
+            });
     }
 
     select(id: number) {

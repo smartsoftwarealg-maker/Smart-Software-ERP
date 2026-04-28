@@ -58,6 +58,7 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
     pagination = PaginationModel.newInstance({pageSize: 5, page: 1, elementCount: 0});
 
     filter = new FormControl('');
+    loading = signal(true);
 
     constructor() {
         effect(() => {
@@ -79,9 +80,13 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
     }
 
     private refresh() {
+        this.loading.set(true);
         this.listSrv
             .getPage(this.pagination, this.filter.getRawValue())
-            .subscribe(res => this.data = res);
+            .subscribe(res => {
+                this.data = res;
+                this.loading.set(false);
+            });
     }
 
     sort(event: Sort) {

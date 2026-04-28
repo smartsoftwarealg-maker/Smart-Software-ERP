@@ -67,8 +67,7 @@ import {WeightCaptureDialogButtonComponent} from '@ss/sales/weight-capture';
 })
 export class InvoiceLinesListComponent
     extends BaseTransactionLinesListComponent
-    implements OnInit
-{
+    implements OnInit {
     displayedColumns = [
         'position',
         'storeDescription',

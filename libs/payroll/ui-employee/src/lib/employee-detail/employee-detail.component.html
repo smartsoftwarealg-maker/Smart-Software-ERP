@@ -260,7 +260,7 @@
 
     </form>
 }
-@if (id) {
+@if (id && !isLoading()) {
     <mat-tab-group (selectedIndexChange)="showPanel($event)" class="container">
         <mat-tab label="{{'PAYROLL_EMPLOYEE_ACTIVATION_SUSPENSION'|translate}}" [disabled]="!noEdit">
             @if (activePanel === ACTIVATION_ROUTE) {

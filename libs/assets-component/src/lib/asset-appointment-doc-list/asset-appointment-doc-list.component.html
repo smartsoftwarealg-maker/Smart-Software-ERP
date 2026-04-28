@@ -77,86 +77,88 @@
 
 
 <div class="child_table content__div">
-    <mat-table mat-table [dataSource]="detailData" class="detail-table">
+    @if (!loading()) {
+        <mat-table mat-table [dataSource]="detailData" class="detail-table">
 
 
-        <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.description }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="description">
+                <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.description }}
+                </mat-cell>
+            </ng-container>
 
 
-        <ng-container matColumnDef="reference">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.reference }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="reference">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.reference }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="accountno">
-            <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.accountno }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="accountno">
+                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.accountno }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="serial_no">
-            <mat-header-cell *matHeaderCellDef translate>ASSET_SERIAL_NUMBER</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.serial_no }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="serial_no">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_SERIAL_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.serial_no }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="geolocation">
-            <mat-header-cell *matHeaderCellDef translate>ASSET_LOCATIONS</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.geolocation }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="geolocation">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_LOCATIONS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.geolocation }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="beneficiary">
-            <mat-header-cell *matHeaderCellDef translate>ASSET_BENEFICIARY</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.beneficiary }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="beneficiary">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_BENEFICIARY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.beneficiary }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="acquisitionDate">
-            <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_DATE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.acquisitionDate | date: 'dd/MM/yyyy' }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="acquisitionDate">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.acquisitionDate | date: 'dd/MM/yyyy' }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="serviceDate">
-            <mat-header-cell *matHeaderCellDef translate>ASSET_SERVICE_DATE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.serviceDate | date: 'dd/MM/yyyy' }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="serviceDate">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_SERVICE_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.serviceDate | date: 'dd/MM/yyyy' }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="acquisitionValue">
-            <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_VALUE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.acquisitionValue | number: '1.2-2' }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="acquisitionValue">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_ACQUISITION_VALUE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.acquisitionValue | number: '1.2-2' }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="key">
-            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                <i class="fa-solid fa-book-open" (click)="openAsset(e.assetId)"
-                   matTooltip="{{ 'COMMON_GOTO_DETAIL' | translate }}"></i>
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="key">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    <i class="fa-solid fa-book-open" (click)="openAsset(e.assetId)"
+                       matTooltip="{{ 'COMMON_GOTO_DETAIL' | translate }}"></i>
+                </mat-cell>
+            </ng-container>
 
 
-        <mat-header-row *matHeaderRowDef="detailColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable"
-                 *matRowDef="let row; columns: detailColumns;"></mat-row>
-    </mat-table>
+            <mat-header-row *matHeaderRowDef="detailColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable"
+                     *matRowDef="let row; columns: detailColumns;"></mat-row>
+        </mat-table>
+    }
 </div>
 
 

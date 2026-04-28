@@ -14,6 +14,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { CurrencyService, Lookup } from '@ss/common/api-lookup';
+import {switchMap, tap} from 'rxjs';
 
 @Component({
     selector: 'ss-INVOICE-list',
@@ -26,7 +27,7 @@ export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {
     #currencySrv = inject(CurrencyService);
     currencyMap: Map<number, string> = new Map<number, string>();
 
-    showCurrency = input(false);
+    showCurrency = input<boolean>(false);
 
     displayedColumns = [
         'number',
@@ -51,19 +52,19 @@ export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {
         super(invoiceSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_INVOICE');
     }
 
-    ngOnInit() {
-        super.ngOnInit();
-        if (this.showCurrency()) {
-            this.#currencySrv
-                .getList(0, 50)
-                .subscribe((currencies) => {
-                currencies.body.forEach(c => this.currencyMap.set(c.id, c.description))
-                const chunk1 = this.displayedColumns.slice(0, 5);
-                const chunk2 = this.displayedColumns.slice(5);
-                chunk1.push('currency');
-                chunk1.push('currencyRate');
-                this.displayedColumns = chunk1.concat(chunk2);
-            });
-        }
+    preload():any{
+        this.loading.set(true);
+        return this.showCurrency()?
+            super.preload()
+                .pipe(switchMap(() => this.#currencySrv.getList(0, 50)),
+                    tap((currencies) => {
+                        currencies.body.forEach(c => this.currencyMap.set(c.id, c.description))
+                        const chunk1 = this.displayedColumns.slice(0, 5);
+                        const chunk2 = this.displayedColumns.slice(5);
+                        chunk1.push('currency');
+                        chunk1.push('currencyRate');
+                        this.displayedColumns = chunk1.concat(chunk2);
+                    })):
+            super.preload();
     }
 }

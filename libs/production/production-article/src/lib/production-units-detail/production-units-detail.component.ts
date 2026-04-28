@@ -41,7 +41,7 @@ import { AsyncPipe } from '@angular/common';
     styleUrls: ['./production-units-detail.component.scss'],
     templateUrl: './production-units-detail.component.html',
     standalone: true,
-    imports: [MaterialModule, RouterModule, TranslatePipe],
+    imports: [MaterialModule, RouterModule],
 })
 export class UnitsDetailComponent
     extends BaseEntityDetailComponent<UnitsOfMeasure>

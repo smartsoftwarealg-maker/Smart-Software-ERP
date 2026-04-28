@@ -33,7 +33,7 @@ export const salesNavTree: SideNavNode = {
     icon: 'fas fa-truck',
     children: [
         {
-            name: 'COMMON_PRODUCTS',
+            name: 'STOCK_ARTICLES',
             icon: 'fa-solid fa-conveyor-belt-arm',
             route: ABS_SALES_ARTICLE_URL,
             accessRights: 'Article',

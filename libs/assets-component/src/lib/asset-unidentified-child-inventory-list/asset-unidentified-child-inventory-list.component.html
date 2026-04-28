@@ -1,76 +1,81 @@
+@if (loading()) {
+    <div class="spinner__div">
+        <mat-progress-spinner [diameter]="500"></mat-progress-spinner>
+    </div>
+} @else {
+    <div class="button__div">
+        <mat-form-field>
+            <mat-label translate>COMMON_SEARCH</mat-label>
+            <input matInput [formControl]="filter" type="text">
+        </mat-form-field>
+    </div>
 
-<div class="button__div">
-    <mat-form-field>
-        <mat-label translate>COMMON_SEARCH</mat-label>
-        <input matInput [formControl]="filter" type="text">
-    </mat-form-field>
-</div>
+    <div class="main-table content-div">
+        <mat-table mat-table [dataSource]="data">
 
-<div class="main-table content-div">
-    <mat-table mat-table [dataSource]="data">
+            <ng-container matColumnDef="buildingDescription">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_SITE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.buildingDescription }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="buildingDescription">
-            <mat-header-cell *matHeaderCellDef translate>ASSET_SITE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.buildingDescription }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="classDescription">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_CLASS</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.classDescription }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="classDescription">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_CLASS</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.classDescription }}
-            </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="count">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_COUNT</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.count }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="count">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_COUNT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.count }}
+                </mat-cell>
+            </ng-container>
 
 
-        <ng-container matColumnDef="creationDate">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.creationDate | date: 'dd/MM/yyyy' }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="creationDate">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.creationDate | date: 'dd/MM/yyyy' }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="serialNo">
-            <mat-header-cell *matHeaderCellDef translate>ASSET_SERIAL_NUMBER</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.serialNo }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="serialNo">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_SERIAL_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.serialNo }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="officeDescription">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_OFFICE</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.officeDescription }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="officeDescription">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_OFFICE</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.officeDescription }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="beneficiaryDescription">
-            <mat-header-cell *matHeaderCellDef translate>ASSET_BENEFICIARY</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.beneficiaryDescription }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="beneficiaryDescription">
+                <mat-header-cell *matHeaderCellDef translate>ASSET_BENEFICIARY</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.beneficiaryDescription }}
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="memo">
-            <mat-header-cell *matHeaderCellDef translate>COMMON_MEMO</mat-header-cell>
-            <mat-cell *matCellDef="let e">
-                {{ e.memo }}
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="memo">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_MEMO</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.memo }}
+                </mat-cell>
+            </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-</div>
-<div class="pagination-container b-b-background">
-    <ss-pagination [paginationModel]="pagination"></ss-pagination>
-</div>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="pagination"></ss-pagination>
+    </div>
+}

@@ -31,7 +31,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
 
-       
+
         RouterModule,
 
 
@@ -117,11 +117,13 @@ export class AssetAppointmentDocListComponent extends BaseEntityListComponent<AS
     }
 
     private refreshDetail() {
+        this.setLoading(true);
         this.detailSrv
             .getList(this.detailPagination.page - 1, this.detailPagination.pageSize)
             .subscribe(res => {
                 this.detailData = res.body;
                 this.detailPagination.elementCount = res.itemCount;
+                this.setLoading(false);
             });
     }
 }

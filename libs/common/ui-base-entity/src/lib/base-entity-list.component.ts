@@ -224,6 +224,7 @@ implements OnInit, OnDestroy
     }
 
     public refresh(callback?: () => void) {
+        this.setLoading(true);
         this.releaseResources();
         this.data = [];
         this.shellSrv.setLoading(this.canShowProcessingStatus());
@@ -265,6 +266,7 @@ implements OnInit, OnDestroy
             this.data = x;
             this.shellSrv.setLoading(false);
             this.shellSrv.setFetching(false);
+            this.setLoading(false);
         });
     }
 
@@ -448,5 +450,9 @@ implements OnInit, OnDestroy
 
     isFetching() {
         return this.shellSrv.isFetching()();
+    }
+
+    setLoading(b: boolean) {
+        this.loading.set(b);
     }
 }

@@ -1,5 +1,5 @@
 <mat-card>
-  @if (loaded()) {
+  @if (!loading()) {
     <form novalidate [formGroup]="form" >
 
       <mat-form-field id="code" class="default-50">
