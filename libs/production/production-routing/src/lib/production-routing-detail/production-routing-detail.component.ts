@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
@@ -25,6 +25,7 @@ import {
     ArticleAutoCompleteModel,
     ArticleService,
 } from '@ss/master-data/api-article';
+import { ProductionRoutingOperationService } from '../production-routing-services/production-routing-operation.service';
 
 @Component({
     selector: 'ss-product-detail',
@@ -37,6 +38,7 @@ import {
         CdkTextareaAutosize,
         UiAutoCompleteComponent,
         DatePickerComponent,
+        RouterOutlet,
     ],
 })
 export class ProductionRoutingDetailComponent extends BaseEntityDetailComponent<Routing> {
@@ -69,6 +71,7 @@ export class ProductionRoutingDetailComponent extends BaseEntityDetailComponent<
     #userSrv = inject(UserListService);
     #loginSrv = inject(LoginService);
     #articleSrv = inject(ArticleService);
+    #routingOperationSrv = inject(ProductionRoutingOperationService);
 
     cCenterLookup = new DefaultAutoCompleteModel(this.#costCenterSrv);
     currencyLookup = new DefaultAutoCompleteModel(this.#currencySrv);
@@ -77,12 +80,13 @@ export class ProductionRoutingDetailComponent extends BaseEntityDetailComponent<
         'id',
         'description2',
     );
-    routingLookup: DefaultAutoCompleteModel<Routing>
+    routingLookup: DefaultAutoCompleteModel<Routing>;
     userLookup = new UserLookup(this.#userSrv);
     override setupForm(r: Routing): FormGroup {
+        this.#routingOperationSrv.setParentId(r.id || 0);
         return this.formBuilder.group({
             id: [r.id],
-            productId: [r.productId],
+            productId: [r.productId, Validators.required],
             routingNumber: [r.routingNumber, Validators.required],
             revision: [r.revision || '1.0', Validators.required],
             description: [r.description],

@@ -106,6 +106,24 @@
     "DRAFT":                "مسودة",
     "APPROVED":             "معتمد",
     "OBSOLETE":             "مهمل",
-    "CANCELLED":            "ملغى"
+    "CANCELLED":            "ملغى",
+    "OPERATION_SEQUENCE":   "تسلسل التشغيل",
+    "OPERATION_NUMBER":     "رقم العملية",
+    "OPERATION_NAME":       "اسم العملية",
+    "SETUP_TIME":           "وقت الإعداد",
+    "RUN_TIME_PER_UNIT":    "وقت التشغيل لكل وحدة",
+    "TEAR_DOWN_TIME":       "وقت الفك",
+    "OPERATION_TYPE":       "نوع العملية",
+    "REQUIRES_INSPECTION":  "يتطلب فحصًا",
+    "ALLOWS_BACKFLUSH":     "يسمح بالتدفق العكسي",
+    "LABOR_CREW_SIZE":      "حجم طاقم العمل",
+    "MACHINE_COUNT":        "عدد الآلات",
+    "INSTRUCTION_TEXT":     "نص التعليمات",
+    "SETUP_INSTRUCTION":    "تعليمات الإعداد",
+    "IS_MILESTONE":         "معلم رئيسي",
+    "IS_CRITICAL":          "حرج",
+    "PROCESS":              "عملية",
+    "SHIPPING":             "شحن",
+    "SUBCONTRACT":          "تعاقد خارجي"
 
 }

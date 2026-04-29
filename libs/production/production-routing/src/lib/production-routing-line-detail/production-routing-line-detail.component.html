@@ -1,0 +1,181 @@
+<div class="ctrl_div default-100">
+    <button mat-mini-fab color="primary"
+            [matTooltip]="'COMMON_SAVE' | translate"
+            (click)="save()"
+            [disabled]="!form?.valid">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab
+            color="warn"
+            [matTooltip]="'COMMON_CANCEL' | translate"
+            translate (click)="cancel()">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+<mat-card>
+    <mat-card-content>
+        @if (form !== null) {
+            <form [formGroup]="form">
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PROD_OPERATION_SEQUENCE</mat-label>
+                    <input matInput formControlName="operationSequence" type="number" required>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PROD_WORK_CENTER</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="workCenterLookup"
+                                      formControlName="workCenterId"
+                                      required="true">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-accordion>
+                    <mat-expansion-panel #detailPanel
+                                         [class.b-primary-expansion-panel]="detailPanel.expanded" expanded="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title translate>
+                                COMMON_DETAIL
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_OPERATION_NUMBER</mat-label>
+                            <input matInput formControlName="operationNumber" type="text">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_OPERATION_NAME</mat-label>
+                            <input matInput formControlName="operationName" type="text">
+                        </mat-form-field>
+
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_SETUP_TIME</mat-label>
+                            <input matInput formControlName="setupTime" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_RUN_TIME_PER_UNIT</mat-label>
+                            <input matInput formControlName="runTimePerUnit" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_TEAR_DOWN_TIME</mat-label>
+                            <input matInput formControlName="teardownTime" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_QUEUE_TIME</mat-label>
+                            <input matInput formControlName="queueTime" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_MOVE_TIME</mat-label>
+                            <input matInput formControlName="moveTime" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_WAIT_TIME</mat-label>
+                            <input matInput formControlName="waitTime" type="number">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_OPERATION_TYPE</mat-label>
+                            <mat-select formControlName="operationType">
+                                @for (o of OPERATION_TYPE; track o) {
+                                    <mat-option [value]="o" translate>PROD_{{ o }}</mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_REQUIRES_INSPECTION</mat-label>
+                            <input matInput formControlName="requiresInspection">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_ALLOWS_BACKFLUSH</mat-label>
+                            <input matInput formControlName="allowsBackflush">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_LABOR_CREW_SIZE</mat-label>
+                            <input matInput formControlName="laborCrewSize">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_MACHINE_COUNT</mat-label>
+                            <input matInput formControlName="machineCount">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_INSTRUCTION_TEXT</mat-label>
+                            <input matInput formControlName="instructionText">
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>PROD_SETUP_INSTRUCTION</mat-label>
+                            <input matInput formControlName="setupInstruction">
+                        </mat-form-field>
+
+                        <mat-checkbox formControlName="isMilestone" class="default-50 sm-100">
+                            <span translate>PROD_IS_MILESTONE</span>
+                        </mat-checkbox>
+
+                        <mat-checkbox formControlName="isCritical" class="default-50 sm-100">
+                            <span translate>PROD_IS_CRITICAL</span>
+                        </mat-checkbox>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel #auditingPanel
+                                         [class.b-primary-expansion-panel]="auditingPanel.expanded">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title translate>
+                                PROD_AUDITING
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_CREATED_AT</mat-label>
+                            <ss-date-picker formControlName="createdAt"
+                                            [type]="'date'">
+                            </ss-date-picker>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_UPDATED_AT</mat-label>
+                            <ss-date-picker formControlName="updatedAt"
+                                            [type]="'date'">
+                            </ss-date-picker>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_CREATED_BY</mat-label>
+                            <ss-auto-complete formControlName="createdBy"
+                                              [model]="userLookup">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-25 sm-50">
+                            <mat-label translate>COMMON_UPDATED_BY</mat-label>
+                            <ss-auto-complete formControlName="updatedBy"
+                                              [model]="userLookup">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-25 sm-50">
+                            <mat-label translate>COMMON_DELETED_AT</mat-label>
+                            <ss-date-picker formControlName="deletedAt"
+                                            [type]="'date'">
+                            </ss-date-picker>
+                        </mat-form-field>
+                    </mat-expansion-panel>
+
+                </mat-accordion>
+
+
+            </form>
+        }
+    </mat-card-content>
+</mat-card>

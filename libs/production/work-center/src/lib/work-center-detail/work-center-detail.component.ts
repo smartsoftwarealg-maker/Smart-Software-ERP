@@ -21,6 +21,9 @@ import { WorkCenterService } from '../work-center-services/work-center.service';
 import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { CurrencyService } from '@ss/common/api-lookup';
 import { UserListService } from '@ss/common/api-users';
+import {
+    RoutingOperation
+} from '../../../../production-routing/src/lib/production-routing-services/production-routing-api';
 
 @Component({
     selector: 'ss-product-detail',
@@ -88,11 +91,30 @@ export class WorkCenterDetailComponent extends BaseEntityDetailComponent<WorkCen
             currencyId: [w.currencyId],
             createdAt: [{ value: w.createdAt || new Date(), disabled: true }],
             updatedAt: [{ value: w.updatedAt || new Date(), disabled: true }],
-            createdBy: [{ value: w.createdBy || this.#loginSrv.appCtx.id, disabled: true }],
-            updatedBy: [{ value: w.updatedBy || this.#loginSrv.appCtx.id, disabled: true }],
+            createdBy: [
+                {
+                    value: w.createdBy || this.#loginSrv.appCtx.id,
+                    disabled: true,
+                },
+            ],
+            updatedBy: [
+                {
+                    value: w.updatedBy || this.#loginSrv.appCtx.id,
+                    disabled: true,
+                },
+            ],
             deletedAt: [{ value: w.deletedAt || new Date(), disabled: true }],
             ccDescription: [w.ccDescription],
         });
+    }
+
+    override readForm(): WorkCenter {
+        const formValue = this.form.getRawValue();
+        formValue.isActive = formValue.isActive ? 1 : 0;
+        formValue.isBottleneck = formValue.isBottleneck ? 1 : 0;
+        formValue.requiresSetup = formValue.requiresSetup ? 1 : 0;
+        formValue.allowsParallel = formValue.allowsParallel ? 1 : 0;
+        return formValue;
     }
 
     protected readonly WORK_CENTER_TYPES = WORK_CENTER_TYPES;

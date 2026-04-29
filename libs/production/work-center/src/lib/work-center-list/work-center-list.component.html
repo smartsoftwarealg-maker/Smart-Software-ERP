@@ -26,7 +26,9 @@
             <ng-container matColumnDef="workCenterType">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>PROD_WORK_CENTER</mat-header-cell>
                 <mat-cell *matCellDef="let e" translate>
-                    PROD_{{ e.workCenterType }}
+                    @if (e.workCenterType != null) {
+                        PROD_{{ e.workCenterType }}
+                    }
                 </mat-cell>
             </ng-container>
 

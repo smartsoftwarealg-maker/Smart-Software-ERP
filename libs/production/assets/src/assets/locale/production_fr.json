@@ -105,5 +105,9 @@
     "DRAFT":                "Brouillon",
     "APPROVED":             "Approuvé",
     "OBSOLETE":             "Obsolète",
-    "CANCELLED":            "Annulé"
+    "CANCELLED":            "Annulé",
+    "PROCESS":              "Processus",
+    "SHIPPING":             "Expédition",
+    "SUBCONTRACT":          "Sous-traitance"
+
 }
