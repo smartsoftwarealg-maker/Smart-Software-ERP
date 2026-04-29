@@ -100,11 +100,9 @@ export class ShellService {
     protected searchInputLabel: string;
     public focusSearchField: boolean;
     public visibleSearchField = signal(true);
-    //
-
     buttons = signal<ToolbarButton[]> ([]);
-    labels: ToolbarLabel[] = [this._companyName];
-    appButtons: ToolbarButton[] = [];
+    labels = signal<ToolbarLabel[]>([this._companyName]);
+    appButtons = signal<ToolbarButton[]>([]);
     //
     protected isLoading = false;
     protected isError = false;
@@ -473,7 +471,7 @@ export class ShellService {
         this.title = null;
         this.goBackFn = null;
         this.disableSearch(false);
-        this.buttons = this.#badgeButtonSrv.getButtons();
+        this.buttons.set(this.#badgeButtonSrv.getButtons());
         this.isLoading = false;
         this.isError = false;
         // this.#badgeButtonSrv
@@ -486,20 +484,17 @@ export class ShellService {
      * Custom buttons
      */
     public setAppButtons(buttons: ToolbarButton[]): void {
-        this.appButtons = buttons;
+        this.appButtons.set(buttons);
         this.updateShell();
     }
 
     public setButtons(buttons: ToolbarButton[]): void {
-        this.buttons = buttons;
+        this.buttons.set(buttons);
         this.updateShell();
     }
 
     public addButton(btn: ToolbarButton): void {
-        if (this.buttons == null) {
-            this.buttons = [];
-        }
-        this.buttons.push(btn);
+        this.buttons.update(v =>[...v, btn ]);
         this.updateShell();
     }
     public addBadgeButton(btn: BadgeButton) {
@@ -508,9 +503,7 @@ export class ShellService {
     }
 
     public removeButton(buttonLabel: string): void {
-        this.buttons = this.buttons == null
-            ? null
-            : this.buttons.filter(b => b.label !== buttonLabel);
+        this.buttons.update(v => v.filter(b => b.label !== buttonLabel));
         this.updateShell();
     }
 
@@ -520,7 +513,7 @@ export class ShellService {
     }
 
     public setLabels(labels: ToolbarLabel[]): void {
-        this.labels = [this._companyName, ...labels];
+        this.labels.set([this._companyName, ...labels]);
         this.updateShell();
     }
 

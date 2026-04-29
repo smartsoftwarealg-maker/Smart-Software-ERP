@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import {PaginationComponent} from "@ss/common/ui-pagination";
 
 
 @Component({
@@ -22,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
         CommonModule,
         MatSortModule,
         MatTableModule,
+        PaginationComponent,
 
     ],
 })

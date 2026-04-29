@@ -6,7 +6,7 @@ import {Sort} from '@angular/material/sort';
 import { signal } from '@angular/core';
 
 export class BaseEntityService<T> {
-    private _sortColumn: string = null;
+    private _sortColumn: string|null = null;
     protected parentId: number;
 
     selectedId = signal<number>(0);

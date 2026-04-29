@@ -110,7 +110,7 @@
               </div>
             }
 
-            @for (b of shellSrv.buttons; track $index) {
+            @for (b of shellSrv.buttons(); track $index) {
               @if (b.keepOnToolbar != 2) {
                 @if (b.menuItems) {
                   @if (b.visible) {
@@ -162,7 +162,7 @@
         </div>
         <div class="b-primary mat-elevation-z6 shell-toolbar-2">
           <div class="toolbar-inner">
-            @for (n of shellSrv.labels; track $index) {
+            @for (n of shellSrv.labels(); track $index) {
               <div class="shell-label margin-end-8 large-only">
                 @if (n.icon) {
                   <div class="label-icon"><i [class]="n.icon"></i></div>
@@ -205,7 +205,7 @@
 
     <mat-menu #menu="matMenu" style="overflow: hidden">
       <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
-        @for (b of shellSrv.buttons; track $index) {
+        @for (b of shellSrv.buttons(); track $index) {
           @if (b.visible) {
             @if (b.menuItems) {
               <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()"
@@ -239,11 +239,11 @@
           }
         }
 
-        @if (shellSrv.buttons.length) {
+        @if (shellSrv.buttons().length) {
           <mat-divider></mat-divider>
         }
 
-        @for (b of shellSrv.appButtons; track $index) {
+        @for (b of shellSrv.appButtons(); track $index) {
           @if (b.menuItems) {
             <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()">
               <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
@@ -277,7 +277,7 @@
           }
         }
 
-        @if (shellSrv.appButtons.length) {
+        @if (shellSrv.appButtons().length) {
           <mat-divider></mat-divider>
         }
 
