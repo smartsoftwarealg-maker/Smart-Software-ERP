@@ -291,7 +291,7 @@ implements OnInit, OnDestroy {
     }
 
     public select(id: number): void {
-        this.selected = id;
+        this.entitySrv.selectedId.set(id);
         if (id) {
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }

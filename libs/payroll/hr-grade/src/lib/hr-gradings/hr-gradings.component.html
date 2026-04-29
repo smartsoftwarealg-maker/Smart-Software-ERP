@@ -55,7 +55,7 @@
                     </ng-container>
 
                     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                    <mat-row class="selectable" [class.selected]="row.id == selectedId" (click)="selectEmployee(row)"
+                    <mat-row class="selectable" [class.selected]="row.id === selectedId()" (click)="selectEmployee(row)"
                              *matRowDef="let row; columns: displayedColumns;">
                     </mat-row>
                 </mat-table>
