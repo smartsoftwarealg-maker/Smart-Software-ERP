@@ -58,7 +58,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         if (this.detailSrv.updateCounter() > 0) {
             if (this.selectedRow) {
                 this.entitySrv
-                    .get(this.selectedRow?.id)
+                    .get(this.selectedId())
                     .subscribe(res => {
                         this.entitySrv.select(res);
                         this.selectedRow.debit = res.debit;

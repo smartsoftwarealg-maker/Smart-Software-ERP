@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, computed, inject, OnDestroy, OnInit, signal} from "@angular/core";
 
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from "@ss/common/ui-shell";
 import { ActivatedRoute } from "@angular/router";
@@ -45,7 +45,9 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
     data: ASSTree[] = [];
     listData: Asset[] = [];
     selectedNode: ASSTree | null = null;
-    selectedAsset: Asset | null = null;
+    selectedAsset = signal<Asset | null>(null);
+    selectedId = computed(() => this.selectedAsset()?.id || 0);
+    loading = signal(false);
     nodeLevel = 0;
 
     pagingModel = PaginationModel.newInstance({ page: 1, pageSize: 10, elementCount: 0 });
@@ -82,26 +84,34 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
     }
 
     selectAsset(asset: Asset) {
-        this.selectedAsset = asset;
+        this.selectedAsset.set(asset);
     }
 
     refreshList() {
+        this.loading.set(true);
         this.assetSrv
-            .getList(this.listModel.page-1, this.listModel.pageSize, this.searchText.value)
-            .subscribe(res => {
-                this.listData = res.body;
-                this.listModel.elementCount = res.itemCount;
+            .getList(this.listModel.page-1, this.listModel.pageSize, this.searchText.value||undefined)
+            .subscribe({
+                next: res => {
+                    this.listData = res.body;
+                    this.listModel.elementCount = res.itemCount;
+                    this.loading.set(false);
+                },
+                error: err => {
+                    this.loading.set(false);
+                    throw err;
+                }
             });
     }
 
     removeNode() {
         if (this.selectedNode) {
             const asset: TAsset = {
-                id: this.selectedNode.ent?.id,
-                centerId: this.selectedNode.ent?.centerId,
-                parentId: null,
-                reference: this.selectedNode.ent?.reference,
-                description: this.selectedNode.ent?.description
+                id: this.selectedNode.ent?.id||0,
+                centerId: this.selectedNode.ent?.centerId||0,
+                parentId: 0,
+                reference: this.selectedNode.ent?.reference||'',
+                description: this.selectedNode.ent?.description||''
             };
             this.confirmationSrv
                 .confirmDelete()
@@ -119,11 +129,11 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
     addNode() {
         if (this.selectedNode && this.selectedAsset) {
             const asset: TAsset = {
-                id: this.selectedAsset?.id,
-                centerId: this.selectedAsset?.centerId,
-                parentId: this.selectedNode?.ent?.id,
-                reference: this.selectedAsset?.reference,
-                description: this.selectedAsset?.description
+                id: this.selectedAsset()?.id||0,
+                centerId: this.selectedAsset()?.centerId||0,
+                parentId: this.selectedNode?.ent?.id||0,
+                reference: this.selectedAsset()?.reference||'',
+                description: this.selectedAsset()?.description||''
             };
             this.treeSrv
                 .save(asset)

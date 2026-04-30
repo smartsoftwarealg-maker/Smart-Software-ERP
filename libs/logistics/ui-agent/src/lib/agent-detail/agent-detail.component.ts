@@ -33,7 +33,7 @@ import {
     Agent,
     AGENT_URL,
     AgentCenter,
-    AgentCenterService,
+    AgentCenterService, AgentLookupModel,
     AgentService, BRANCH_URL,
     CUSTOMER_URL, INTERNAL_URL,
     SUPPLIER_URL,
@@ -238,25 +238,24 @@ export class AgentDetailComponent
                             this.agentTypeSrv,
                         );
                         break;
-                    case 2:
+                    case 1:
                         this.agentTypeLookup = new SupplierLookup(
                             this.agentTypeSrv,
                         );
                         break;
-                    case 5:
-                        this.agentTypeLookup = new TransporterLookup(
-                            this.agentTypeSrv,
-                        );
-                        break;
-                    case 4:
-                        this.agentTypeLookup = new BranchLookup(
-                            this.agentTypeSrv,
-                        );
+                    case 2:
+                        this.agentTypeLookup = new TransporterLookup(this.agentTypeSrv);
                         break;
                     case 3:
-                        this.agentTypeLookup = new InternalTypeLookup(
-                            this.agentTypeSrv,
-                        );
+                        this.agentTypeLookup = new BranchLookup(this.agentTypeSrv);
+                        break;
+                    case 4:
+                            this.agentTypeLookup = new InternalTypeLookup(
+                                this.agentTypeSrv,
+                            );
+                            break;
+                    case 5:
+                        this.agentTypeLookup = new DefaultAutoCompleteModel(this.agentTypeSrv);
                         break;
                     }
                 }),

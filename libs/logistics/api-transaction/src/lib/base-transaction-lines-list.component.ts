@@ -23,7 +23,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     protected optionSrv = inject(OptionService);
     protected loginSrv = inject(LoginService);
     protected subscription: Subscription = null;
-    readonly pagination = null;
+    readonly pagination: PaginationModel = null;
     searchText = new FormControl<string>('');
     parentId: number;
     data: TransactionLine[];
@@ -63,12 +63,8 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         };
     }
 
-    ngOnInit() {
-        this.parentId = this.detailSrv.getParentId();
-        this.#_isEditable_ = this.detailSrv.editable;
-        // this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
-
-        this.optionSrv
+    init(): Observable<unknown> {
+        return this.optionSrv
             .get(this.loginSrv.appCtx.center)
             .pipe(
                 tap((res) => {
@@ -96,18 +92,29 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                     );
                 }),
                 switchMap(() => this.loadDetailLines()),
-            )
+            );
+    }
+
+    ngOnInit() {
+        this.loading.set(true);
+        this.parentId = this.detailSrv.getParentId();
+        this.#_isEditable_ = this.detailSrv.editable;
+        // this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
+
+        this.init()
             .subscribe(() => {
                 this.shellSrv.setLoading(false);
                 this.loading.set(false);
             });
 
-        this.subscription = this.searchText.valueChanges
+        this.subscription = this.searchText
+            .valueChanges
             .pipe(debounceTime(300), distinctUntilChanged())
             .subscribe(() => this.loadDetailLines().subscribe());
     }
 
     public loadDetailLines(): Observable<TransactionLine[]> {
+        this.loading.set(true);
         return (
             this.detailSrv.getParentId()
                 ? this.detailSrv.getPage(
@@ -119,11 +126,8 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         ).pipe(
             tap((data) => {
                 this.data = data;
-                this.data.forEach(
-                    (d) =>
-                        (d.unitsDescription =
-                            this.#_unitsMap.get(d.units) || d.units + ''),
-                );
+                this.data.forEach((d) => (d.unitsDescription = this.#_unitsMap.get(d.units) || d.units + ''));
+                this.loading.set(false);
             }),
         );
     }

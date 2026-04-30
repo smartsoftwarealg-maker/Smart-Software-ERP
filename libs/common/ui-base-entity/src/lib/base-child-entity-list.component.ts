@@ -1,4 +1,4 @@
-import { Directive, inject, OnInit } from "@angular/core";
+import { Directive, inject, OnInit, signal} from "@angular/core";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
@@ -21,7 +21,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
 
     rights: Right = {read: false, edit: false, write: false, delete: false};
     paginator = PaginationModel.newInstance( );
-    selectedId = 0;
+    selectedId = signal(0);
     selectedRow: T|null = null;
     data$: Observable<T[]> = of([]);
     emptyData$ = this.data$.pipe(map(res => res.length === 0));
@@ -48,26 +48,26 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
     }
 
     edit() {
-        if (this.selectedId) {
-            this.showDetail(this.selectedId);
+        if (this.selectedId()) {
+            this.showDetail(this.selectedId());
         }
     }
 
     public deleteSelected(): void {
-        if (this.selectedId > 0) {
+        if (this.selectedId() > 0) {
             this.confirmationSrv.confirmDelete()
                 .subscribe(b => {
                     if (b) {
                         this.shellSrv.setLoading(true);
                         this.detailSrv
-                            .remove(this.selectedId)
+                            .remove(this.selectedId())
                             .subscribe({
                                 next: () => {
-                                    this.data$ = this.data$.pipe(map(res => res.filter(e => e.id !== this.selectedId)));
+                                    this.data$ = this.data$.pipe(map(res => res.filter(e => e.id !== this.selectedId())));
                                     this.emptyData$ = this.data$.pipe(map(res => res.length === 0));
                                     this.shellSrv.setLoading(false);
                                     this.snackBarSrv.showSuccessMessage();
-                                    this.selectedId = 0;
+                                    this.selectedId.set(0);
                                 },
                                 error: err => {
                                     this.snackBarSrv.showFailureMessage();
@@ -87,11 +87,11 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
 
     selectRow(row: T) {
         this.selectedRow = row;
-        this.selectedId = row?.id;
+        this.selectedId.set(row?.id||0);
     }
 
     select(id: number) {
-        this.selectedId = id;
+        this.selectedId.set(id||0);
     }
 
     sort(event: Sort) {
@@ -112,7 +112,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
 
     public viewReport() {
         this.defReportSrv
-            .viewReport(this.reportForm, this.selectedId)
+            .viewReport(this.reportForm, this.selectedId())
             .subscribe(res => {
                 const fileURL = URL.createObjectURL(new Blob([res], { type: 'application/pdf' }));
                 window.open(fileURL, '_blank');

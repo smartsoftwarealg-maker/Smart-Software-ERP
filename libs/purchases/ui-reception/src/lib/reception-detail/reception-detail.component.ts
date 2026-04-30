@@ -109,6 +109,7 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
     }
 
     private importContract() {
+        this.loading.set(true);
         if (!this.importContractBtn.disabled && this.form.controls['project'].value) {
             this.entitySrv
                 .consumeContract(this.id)
@@ -119,13 +120,19 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
                     this.executionRef++;
                     this.shellSrv.setLoading(false);
                     this.snackBarSrv.showSuccessMessage();
+                    this.loading.set(false);
                 });
         }
     }
 
     loadEntity(id: number): Observable<Transaction> {
         this.extraCostSrv.setParentId(id||0);
-        return super.loadEntity(id);
+        return this.currencySrv
+            .load()
+            .pipe(
+                tap(() => this.shellSrv.addButton(this.importContractBtn)),
+                switchMap(() => super.loadEntity(id))
+                )
     }
 
     preload(): Observable<any> {
@@ -136,9 +143,4 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
                 switchMap(() => super.preload()));
     }
 
-    postLod():any{
-        return  super.postLod()
-            .pipe(tap(() =>this.shellSrv.addButton(this.importContractBtn)),
-                switchMap(() => this.currencySrv.load()));
-    }
 }

@@ -38,9 +38,6 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
         return of(null);
     }
 
-    public postLod(): Observable<unknown> {
-        return of(null);
-    }
 
 
     public load() {

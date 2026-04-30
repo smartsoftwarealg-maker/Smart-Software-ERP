@@ -41,7 +41,7 @@ export class AppArchiveListComponent implements OnInit {
     public showBackButton = signal(false);
 
     selectedArchive: AppArchive | null = null;
-    selectedId = 0;
+    selectedId = signal(0);
     imgSrc = signal<string | null>(null);
     filename= signal<string|null>(null);
     data =signal<AppArchive[]> ([]);
@@ -120,8 +120,8 @@ export class AppArchiveListComponent implements OnInit {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {
                 if (b) {
-                    if (this.selectedId && this.selectedId > 0) {
-                        const a = this.data().filter(x => x.id === this.selectedId)[0];
+                    if (this.selectedId && this.selectedId() > 0) {
+                        const a = this.data().filter(x => x.id === this.selectedId())[0];
                         if (a && a.id) {
                             this.entitySrv.remove(a.id)
                                 .subscribe({
@@ -159,19 +159,19 @@ export class AppArchiveListComponent implements OnInit {
         this.imgSrc.set(null);
         this.selectedArchive = a;
         if (a) {
-            this.selectedId = a.id || 0;
+            this.selectedId.set(a?.id || 0);
             if (a.filename?.indexOf('.pdf') > 1) {
-                this.filename.set(a.filename);
+                this.filename.set(a.filename||'');
                 this.imgSrc.set('./assets/img/pdf.png');
             } else if (a.filename?.indexOf('.doc') > 1) {
-                this.filename.set(a.filename);
+                this.filename.set(a.filename||'');
                 this.imgSrc.set('./assets/img/word.png');
             } else {
                 this.entitySrv
-                    .thumbNail(this.selectedId)
+                    .thumbNail(this.selectedId())
                     .subscribe(res => ImageUploaderUtil.toBase64(res, (s: string) => {
                         this.imgSrc.set(s);
-                        this.filename.set(a.filename);
+                        this.filename.set(a.filename||'');
                     }));
             }
         }
@@ -179,7 +179,7 @@ export class AppArchiveListComponent implements OnInit {
 
     onClick(e: MouseEvent) {
         this.entitySrv
-            .image(this.selectedId)
+            .image(this.selectedId())
             .subscribe(res => {
                 // Use globalThis to be safe in different environments and
                 // handle legacy webkitURL as fallback.

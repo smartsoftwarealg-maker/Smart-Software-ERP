@@ -1,5 +1,5 @@
 
-<div class="container" [ngStyle]="{ display: lastPage > 1 || model.elementCount >= 5? 'block' : 'none'}">
+<div class="container" [ngStyle]="{ display: lastPage() > 1 || model.elementCount >= 5? 'block' : 'none'}">
     <div class="row">
         <div class="pagination-buttons b-b-background f-f-text">
             <button mat-icon-button class="nav-btn" type="button" style="float: right"
@@ -13,7 +13,7 @@
                 <i class="fas fa-chevron-double-left"></i>
             </button>
 
-            <span class="margin-start-8 conf-text">{{model.page + ' / ' + lastPage}}</span>
+            <span class="margin-start-8 conf-text">{{model.page + ' / ' + lastPage()}}</span>
 
             <button mat-icon-button class="nav-btn" type="button" style="float: right" (click)="onRightButtonClick()"
                     [disabled]="isRightButtonDisabled()">

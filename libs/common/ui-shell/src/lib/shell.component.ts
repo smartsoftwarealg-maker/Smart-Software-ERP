@@ -29,6 +29,7 @@ import { catchError, of, switchMap, tap } from 'rxjs';
 import { LanguageSelectComponent } from '@ss/common/ui-lang';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ThemeSelectComponent } from '@ss/common/ui-theme';
+import {swcLoaderVersion} from "@nx/web/src/utils/versions";
 
 @Component({
     selector: 'ss-shell',
@@ -159,4 +160,5 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
 
 
     protected readonly LoginType = LoginType;
+    protected readonly swcLoaderVersion = swcLoaderVersion;
 }

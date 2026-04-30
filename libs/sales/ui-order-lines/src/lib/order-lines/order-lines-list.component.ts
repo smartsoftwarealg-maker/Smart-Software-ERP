@@ -20,7 +20,7 @@ import {
     WeightCaptureDialogButtonComponent,
     WeightCaptureService,
 } from '@ss/sales/weight-capture';
-import { Observable } from 'rxjs';
+import { Observable, switchMap} from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { QuickOrderService } from '@ss/sales/ui-quick-order';
 
@@ -85,34 +85,56 @@ export class OrderLinesListComponent
             confirmationSrv,
         );
     }
-    override ngOnInit() {
-        this.route.data.subscribe(({ source }) => {
-            this.displayedColumns = this.displayedColumns.filter(
-                (col) => col !== 'store' || source !== 'quick',
-            );
-        });
 
-        this.weightCaptureSrv.hasScaleConfig().subscribe({
-            next: (exists) => {
-                if (exists) {
-                    this.displayedColumns.push('tare', 'brut');
-                }
-            },
-            error: () => {},
-        });
-        this.quickOrderSrv
-            .getInvoiceInfo(this.detailSrv.getParentId() + '')
-            .subscribe({
-                next: (invoiceInfo) =>
-                    this.isInvoice.set(
-                        invoiceInfo[0].invoiceNumber > 0,
-                    ),
-            });
-        super.ngOnInit();
+
+    override init():Observable<unknown>{
+        return  super.init()
+            .pipe(
+                switchMap(() => this.route.data),
+                tap(({ source }) => {
+                    this.displayedColumns = this.displayedColumns.filter(
+                        (col) => col !== 'store' || source !== 'quick',
+                    );
+                }),
+                switchMap(() => this.weightCaptureSrv.hasScaleConfig()),
+                tap((exists) => {
+                    if (exists) {
+                        this.displayedColumns.push('tare', 'brut');
+                    }
+                }),
+                switchMap(() => this.quickOrderSrv.getInvoiceInfo(this.detailSrv.getParentId() + '')),
+                tap((invoiceInfo) => this.isInvoice.set(invoiceInfo[0]?.invoiceNumber > 0) )
+            );
     }
 
+    // override ngOnInit() {
+    //     this.route.data.subscribe(({ source }) => {
+    //         this.displayedColumns = this.displayedColumns.filter(
+    //             (col) => col !== 'store' || source !== 'quick',
+    //         );
+    //     });
+    //
+    //     this.weightCaptureSrv.hasScaleConfig().subscribe({
+    //         next: (exists) => {
+    //             if (exists) {
+    //                 this.displayedColumns.push('tare', 'brut');
+    //             }
+    //         },
+    //         error: () => {},
+    //     });
+    //     this.quickOrderSrv
+    //         .getInvoiceInfo(this.detailSrv.getParentId() + '')
+    //         .subscribe({
+    //             next: (invoiceInfo) =>
+    //                 this.isInvoice.set(invoiceInfo[0].invoiceNumber > 0),
+    //         });
+    //     super.ngOnInit();
+    // }
+
     public override loadDetailLines(): Observable<TransactionLine[]> {
-        return super.loadDetailLines().pipe(
+        this.loading.set(true);
+        return super.loadDetailLines()
+            .pipe(
             tap((data) => {
                 data.forEach((line) => {
                     this.weightCaptureSrv
@@ -120,6 +142,7 @@ export class OrderLinesListComponent
                         .subscribe((captures) => {
                             line.tareWeight = captures.tare;
                             line.brutWeight = captures.brut;
+                            this.loading.set(false);
                         });
                 });
             }),
@@ -128,9 +151,12 @@ export class OrderLinesListComponent
 
     refresh(bool: boolean) {
         if (bool) {
-            this.loadDetailLines().subscribe({
+            this.loading.set(true);
+            this.loadDetailLines()
+                .subscribe({
                 next: (data) => {
                     this.data = data;
+                    this.loading.set(false);
                 },
             });
         }

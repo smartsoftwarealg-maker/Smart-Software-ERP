@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, Input, OnInit, ViewChild, input } from '@angular/core';
+import { Component, ElementRef, inject, Input, OnInit, ViewChild, input, signal} from '@angular/core';
 import {ExtendedPaginationModel, isString, LanguageService, PaginationModel} from '@ss/common/api-common';
 import { NgStyle } from '@angular/common';
 import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
@@ -41,7 +41,7 @@ export class PaginationComponent implements OnInit {
 
     model: ExtendedPaginationModel = new ExtendedPaginationModel(1, 5, 5);
     // lastModel: ExtendedPaginationModel = this.model.copy() as ExtendedPaginationModel;
-    lastPage = 0;
+    lastPage = signal(0);
     @ViewChild('pageInput', { static: true }) pageInput: ElementRef;
 
     readonly pageSizes = [5, 10, 15, 20, 30, 40, 50];
@@ -112,7 +112,7 @@ export class PaginationComponent implements OnInit {
         if (pageCount * this.model.pageSize < this.model.elementCount) {
             pageCount++;
         }
-        this.lastPage = pageCount;
+        this.lastPage.set(pageCount);
         if (pageCount > 0) {
             if (this.model.page > pageCount) {
                 return pageCount; // go to this page
@@ -138,17 +138,17 @@ export class PaginationComponent implements OnInit {
     isRightButtonDisabled(): boolean {
         return this.langSrv.rtl
             ? this.model.page <= 1
-            : this.model.page >= this.lastPage;
+            : this.model.page >= this.lastPage();
     }
 
     isLeftButtonDisabled(): boolean {
         return this.langSrv.rtl
-            ? this.model.page >= this.lastPage
+            ? this.model.page >= this.lastPage()
             : this.model.page <= 1;
     }
 
     nextPage(): void {
-        if (this.model.page < this.lastPage) {
+        if (this.model.page < this.lastPage()) {
             this.model.page++;
         }
     }
@@ -165,7 +165,7 @@ export class PaginationComponent implements OnInit {
         if (this.langSrv.rtl) {
             this.model.page = 1;
         } else {
-            this.model.page = this.lastPage;
+            this.model.page = this.lastPage();
         }
     }
 
@@ -179,7 +179,7 @@ export class PaginationComponent implements OnInit {
 
     onLeftPlusButtonClick() {
         if (this.langSrv.rtl) {
-            this.model.page = this.lastPage;
+            this.model.page = this.lastPage();
         } else {
             this.model.page = 1;
         }
@@ -205,12 +205,12 @@ export class PaginationComponent implements OnInit {
         }
         if (Number.isNaN(val) || !Number.isFinite(val)) {
             this.pageInput.nativeElement.value = '';
-        } else if (this.lastPage > 0) {
+        } else if (this.lastPage() > 0) {
             if (val < 1) {
                 val = 1;
                 this.pageInput.nativeElement.value = val;
-            } else if (val > this.lastPage) {
-                val = this.lastPage;
+            } else if (val > this.lastPage()) {
+                val = this.lastPage();
                 this.pageInput.nativeElement.value = val;
             }
             this.model.page = val;

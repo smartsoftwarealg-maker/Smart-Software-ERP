@@ -13,14 +13,14 @@
       </button>
     </div>
 
-    @if (isAQS) {
+    @if (isAQS()) {
       <mat-form-field class="default-50 sm-50">
         <mat-label translate>ASSET_SITE</mat-label>
         <input matInput formControlName="sourceSite" type="text" readonly>
       </mat-form-field>
     }
 
-    @if (isAQS) {
+    @if (isAQS()) {
       <mat-form-field class="default-50 sm-50">
         <mat-label translate>ASSET_BUILDINGS</mat-label>
         <input matInput formControlName="sourceBuilding" type="text" readonly>
@@ -40,21 +40,21 @@
       </button>
     </div>
 
-    @if (isAQS) {
+    @if (isAQS()) {
       <mat-form-field class="default-50 sm-50">
         <mat-label translate>ASSET_SITE</mat-label>
         <input matInput formControlName="destinationSite" type="text" readonly>
       </mat-form-field>
     }
 
-    @if (isAQS) {
+    @if (isAQS()) {
       <mat-form-field class="default-50 sm-50">
         <mat-label translate>ASSET_BUILDINGS</mat-label>
         <input matInput formControlName="destinationBuilding" type="text" readonly>
       </mat-form-field>
     }
 
-    @if (editable) {
+    @if (editable()) {
       <div class="btn-div">
         <button mat-raised-button
           type="button"

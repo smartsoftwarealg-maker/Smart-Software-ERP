@@ -419,10 +419,6 @@ export abstract class BaseTransactionDetailComponent
         );
     }
 
-    // get isManager() {
-    //     return this._isManager;
-    // }
-
     override ngOnInit() {
         super.ngOnInit();
         const sub = this.router.events
@@ -437,17 +433,24 @@ export abstract class BaseTransactionDetailComponent
                 }
             });
         this.subscriptions.push(sub);
-        this.disableControls(this.router.url);
-        this.shellSrv.addButton(this.sendBtn);
-        if (this.showImportButton()) {
-            this.shellSrv.addButton(this.importBtn);
-        }
-
-        this.customerSrv.activeOnly = true;
-        this.agentSrv.activeOnly = true;
-        this.supplierSrv.activeOnly = true;
     }
 
+    loadEntity(id:number):Observable<Transaction>{
+        return of([]).pipe(
+            tap(() => {
+                this.shellSrv.addButton(this.sendBtn);
+                if (this.showImportButton()) {
+                    this.shellSrv.addButton(this.importBtn);
+                }
+
+                this.customerSrv.activeOnly = true;
+                this.agentSrv.activeOnly = true;
+                this.supplierSrv.activeOnly = true;
+                this.disableControls(this.router.url);
+            }),
+            switchMap(() => super.loadEntity(id))
+        )
+    }
     protected disableControls(url: string) {
         const enabled = url.indexOf('-detail') < 0;
         const validated = !!this.form?.controls['isValidated']?.value;

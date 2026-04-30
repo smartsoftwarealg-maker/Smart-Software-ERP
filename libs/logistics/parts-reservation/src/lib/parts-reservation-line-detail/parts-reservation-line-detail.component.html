@@ -39,7 +39,7 @@
                             translate>COMMON_NO_MATCH
                         </mat-error>
                     }
-                    @if (showStock) {
+                    @if (showStock()) {
                         <mat-hint class="info f-warn"><span translate>STOCK_STOCK</span>: {{ articleStock }}</mat-hint>
                     }
                 </mat-form-field>

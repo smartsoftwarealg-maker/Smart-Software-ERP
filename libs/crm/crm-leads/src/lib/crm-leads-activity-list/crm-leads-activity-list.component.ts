@@ -67,7 +67,7 @@ export class CrmLeadsActivityListComponent extends BaseChildEntityListComponent<
 
     override edit() {
         if (this.selectedId) {
-            this.onEdit.emit(this.selectedId);
+            this.onEdit.emit(this.selectedId());
         }
     }
 

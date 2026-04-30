@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, Signal, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
@@ -104,7 +104,7 @@ export class ShellService {
     labels = signal<ToolbarLabel[]>([this._companyName]);
     appButtons = signal<ToolbarButton[]>([]);
     //
-    protected isLoading = false;
+    protected isLoading = signal(false);
     protected isError = false;
     protected retryCallback: () => void;
 
@@ -123,14 +123,13 @@ export class ShellService {
 
     public setLoading(isLoading: boolean) {
         // console.log('________________________set', isLoading);
-        this.isLoading = isLoading;
+        this.isLoading.set(isLoading);
         this.updateShell();
     }
 
     public getLoading() {
-        return this.isLoading;
+        return this.isLoading();
     }
-
 
     public showRetry(retryCallback: () => void) {
         this.isError = true;
@@ -145,7 +144,7 @@ export class ShellService {
     }
 
     public get loading(): boolean {
-        return !this.isError && this.isLoading;
+        return !this.isError && this.isLoading();
     }
 
     public get error(): boolean {
@@ -378,7 +377,7 @@ export class ShellService {
     public goBack(): void {
         if (this.hasGoBackFn) {
             this.isError = false;
-            this.isLoading = false;
+            this.isLoading.set(false);
             this.goBackFn();
         }
     }
@@ -472,7 +471,7 @@ export class ShellService {
         this.goBackFn = null;
         this.disableSearch(false);
         this.buttons.set(this.#badgeButtonSrv.getButtons());
-        this.isLoading = false;
+        this.isLoading.set(false);
         this.isError = false;
         // this.#badgeButtonSrv
         //     .getButtons()

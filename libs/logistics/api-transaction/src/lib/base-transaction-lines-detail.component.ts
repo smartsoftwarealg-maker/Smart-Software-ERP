@@ -68,7 +68,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     public confirmationSrv = inject(ConfirmationDialogService);
     public snackBarSrv = inject(SnackBarService);
     public shellSrv = inject(ShellService);
-    public showStock = true;
+    public showStock = signal(true);
 
     usesLots = signal(false);
     usesUnits = signal(false);

@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal} from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -44,6 +44,7 @@ export class LoginService {
     public errorCode = 0;
     public licenseErrorType: LicenseErrorType = null;
     public baseURL: string = 'test';
+    public fullUserName = signal('');
 
 
     get isLoggedIn(): boolean {
@@ -56,6 +57,7 @@ export class LoginService {
 
     public setContext(info: LoginInfo, isPrivate: boolean) {
         this.appCtx = info.ctx;
+        this.fullUserName.set(info?.ctx?.fullName||'');
         if (isPrivate) {
             this.#httpSrv.updatePrivateAuthToken(info.jwt);
         } else {

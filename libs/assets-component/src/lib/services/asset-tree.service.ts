@@ -11,7 +11,7 @@ import { HttpParams } from "@angular/common/http";
 
 export class AssetInventoryService extends BaseEntityService<TAsset> {
     constructor(protected override httpSrv: HttpService) {
-        super(httpSrv, '/tassets');
+        super(httpSrv, '/assets');
         this.setParentId(0);
     }
 

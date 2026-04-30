@@ -22,7 +22,7 @@ import { Sort } from '@angular/material/sort';
 export class BaseEntityListComponent<T extends { id: number; email?: string }>
 implements OnInit, OnDestroy {
     private _editable = true;
-    private reportForm: string = null;
+    private reportForm: string|null = null;
 
     subscriptions: Subscription[] = [];
     loading = signal(true);
@@ -160,7 +160,7 @@ implements OnInit, OnDestroy {
             ? 'COMMON_EDIT_SELECTED'
             : 'COMMON_DETAIL';
 
-        this._editable = rights?.edit;
+        this._editable = rights?.edit||true;
 
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
