@@ -1,0 +1,71 @@
+<div class="size button__div">
+    <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
+        <span class="fas fa-plus"></span>
+    </button>
+    <button mat-mini-fab (click)="edit()"
+            [disabled]="!selectedId"
+            [matTooltip]="'COMMON_EDIT' | translate"
+            color="accent">
+        <span class="fas fa-pen"></span>
+    </button>
+    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+            [disabled]="!selectedId"
+            color="warn">
+        <span class="fas fa-trash-alt"></span>
+    </button>
+</div>
+
+<div class="main-container">
+    <div class="table-container">
+        <mat-table mat-table [dataSource]="data$" class="main-table" matSort (matSortChange)="sort($event)">
+
+            <ng-container matColumnDef="operationName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NAME</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.operationName }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="operationNumber">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NUMBER</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.operationNumber }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="operationType">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TYPE</mat-header-cell>
+                <mat-cell *matCellDef="let e" translate>
+                    @if (e.operationType != null) {
+                        PROD_{{ e.operationType }}
+                    }
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="instructionText">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PROD_INSTRUCTION_TEXT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.instructionText }}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="setupInstruction">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PROD_SETUP_INSTRUCTION</mat-header-cell>
+                <mat-cell *matCellDef="let e" translate>
+                    {{ e.setupInstruction }}
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-row class="selectable"
+                     [class.selected]="row.id == selectedId"
+                     [class.dirty]="row.dirty"
+                     (click)="selectRow(row)"
+                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+    <div class="pagination-container b-b-background">
+        <ss-pagination [paginationModel]="paginator"></ss-pagination>
+    </div>
+
+</div>

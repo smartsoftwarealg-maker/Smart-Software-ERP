@@ -108,11 +108,14 @@ import {
 } from '@ss/production/production-article';
 import {WorkCenterDetailComponent, WorkCenterListComponent} from '@ss/production/work-center';
 
-import {
-    ActivityCategoriesDetailComponent
-} from "../../../../../libs/production/production-article/src/lib/production-activity-categories-detail/production-activity-categories-detail.component";
+import { ActivityCategoriesDetailComponent } from '../../../../../libs/production/production-article/src/lib/production-activity-categories-detail/production-activity-categories-detail.component';
 
-import {ProductionRoutingListComponent, ProductionRoutingDetailComponent} from '@ss/production/production-routing';
+import {
+    ProductionRoutingListComponent,
+    ProductionRoutingDetailComponent,
+    ProductionRoutingLineListComponent,
+    ProductionRoutingLineDetailComponent,
+} from '@ss/production/production-routing';
 
 export const prodRoutes: Routes = [
     {
@@ -734,6 +737,24 @@ export const prodRoutes: Routes = [
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 canActivateChild: [loginGuard],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    {
+                        path: 'lines-list',
+                        children:[
+                            {
+                                path: '',
+                                component: ProductionRoutingLineListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component:
+                                    ProductionRoutingLineDetailComponent,
+                            }
+                        ]
+                    },
+                ],
             },
         ],
     },

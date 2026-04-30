@@ -2,6 +2,18 @@
     <mat-card-content>
         @if (form !== null) {
             <form [formGroup]="form">
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>STOCK_ARTICLE</mat-label>
+                    <ss-auto-complete matInput
+                                      [required]="true"
+                                      [model]="articleLookup"
+                                      formControlName="productId"></ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PROD_ROUTING_NUMBER</mat-label>
+                    <input matInput formControlName="routingNumber" type="text">
+                </mat-form-field>
 
                 <mat-accordion>
                     <mat-expansion-panel #detailPanel
@@ -11,18 +23,6 @@
                                 COMMON_DETAIL
                             </mat-panel-title>
                         </mat-expansion-panel-header>
-
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>STOCK_ARTICLE</mat-label>
-                            <ss-auto-complete matInput
-                                              [required]="true"
-                                              [model]="articleLookup"
-                                              formControlName="productId"></ss-auto-complete>
-                        </mat-form-field>
-                        <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>PROD_ROUTING_NUMBER</mat-label>
-                            <input matInput formControlName="routingNumber" type="text">
-                        </mat-form-field>
 
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>PROD_REVISION</mat-label>
@@ -37,16 +37,14 @@
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>PROD_VALID_FROM</mat-label>
                             <ss-date-picker formControlName="validFrom"
-                                            [type]="'date'"
-                                            [disabled]="true">
+                                            [type]="'date'">
                             </ss-date-picker>
                         </mat-form-field>
 
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>PROD_VALID_TO</mat-label>
                             <ss-date-picker formControlName="validTo"
-                                            [type]="'date'"
-                                            [disabled]="true">
+                                            [type]="'date'">
                             </ss-date-picker>
                         </mat-form-field>
 
@@ -68,8 +66,7 @@
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>PROD_SUPERSEDED_BY</mat-label>
                             <ss-auto-complete formControlName="supersededById"
-                                              [model]="routingLookup"
-                                              [disabled]="true">
+                                              [model]="routingLookup">
                             </ss-auto-complete>
                         </mat-form-field>
 
@@ -102,40 +99,35 @@
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>COMMON_CREATED_AT</mat-label>
                             <ss-date-picker formControlName="createdAt"
-                                            [type]="'date'"
-                                            [disabled]="true">
+                                            [type]="'date'">
                             </ss-date-picker>
                         </mat-form-field>
 
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>COMMON_UPDATED_AT</mat-label>
                             <ss-date-picker formControlName="updatedAt"
-                                            [type]="'date'"
-                                            [disabled]="true">
+                                            [type]="'date'">
                             </ss-date-picker>
                         </mat-form-field>
 
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>COMMON_CREATED_BY</mat-label>
                             <ss-auto-complete formControlName="createdBy"
-                                              [model]="userLookup"
-                                              [disabled]="true">
+                                              [model]="userLookup">
                             </ss-auto-complete>
                         </mat-form-field>
 
                         <mat-form-field class="default-25 sm-50">
                             <mat-label translate>COMMON_UPDATED_BY</mat-label>
                             <ss-auto-complete formControlName="updatedBy"
-                                              [model]="userLookup"
-                                              [disabled]="true">
+                                              [model]="userLookup">
                             </ss-auto-complete>
                         </mat-form-field>
 
                         <mat-form-field class="default-25 sm-50">
                             <mat-label translate>COMMON_DELETED_AT</mat-label>
                             <ss-date-picker formControlName="deletedAt"
-                                            [type]="'date'"
-                                            [disabled]="true">
+                                            [type]="'date'">
                             </ss-date-picker>
                         </mat-form-field>
                     </mat-expansion-panel>
@@ -144,3 +136,7 @@
         }
     </mat-card-content>
 </mat-card>
+
+@if (id && loaded()) {
+    <router-outlet></router-outlet>
+}
