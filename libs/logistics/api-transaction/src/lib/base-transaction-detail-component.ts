@@ -47,8 +47,7 @@ import { OptionService } from '@ss/logistics/ui-options';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent
-    extends BaseEntityDetailComponent<Transaction> implements OnInit
-{
+    extends BaseEntityDetailComponent<Transaction> implements OnInit {
     #deliveryTimeSrv = inject(DeliveryTimeService);
     #shipmentModeSrv = inject(ShipmentModeService);
 
@@ -350,8 +349,6 @@ export abstract class BaseTransactionDetailComponent
         this.formId = b.id || 0;
 
         this.isEditable = this.isEditable && !b.isValidated;
-        this.saveButton.visible = this.saveButton.visible && !b.isValidated;
-        this.importBtn.visible = b.id > 0 && !b.isValidated;
         this.importBtn.disabled =
             (this.requireAgentToImportDocument() &&
                 (b.agent === null || b.agent === undefined)) ||
@@ -448,7 +445,11 @@ export abstract class BaseTransactionDetailComponent
                 this.supplierSrv.activeOnly = true;
                 this.disableControls(this.router.url);
             }),
-            switchMap(() => super.loadEntity(id))
+            switchMap(() => super.loadEntity(id)),
+            tap(b => {
+                this.saveButton.visible = this.saveButton.visible && !b.isValidated;
+                this.importBtn.visible = b.id > 0 && !b.isValidated;
+            })
         )
     }
     protected disableControls(url: string) {
@@ -464,7 +465,7 @@ export abstract class BaseTransactionDetailComponent
         } else {
             this.router
                 .navigate(['..', this.queryId], { relativeTo: this.route })
-                .then(() => (this.saveButton.disabled = false));
+                .then(() => {});
         }
     }
 

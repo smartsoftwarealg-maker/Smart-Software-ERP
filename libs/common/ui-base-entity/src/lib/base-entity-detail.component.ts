@@ -59,8 +59,9 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                 }),
                 switchMap(() => this.getRouteParam()),
                 tap(p => this.queryId = +p['id'] || 0),
-                switchMap(() => this.loadEntity(this.queryId || 0)))
-            .subscribe({
+                switchMap(() => this.loadEntity(this.queryId || 0)),
+                tap(() =>       this.saveButton.disabled = false)
+            ).subscribe({
                 next: entity => {
                     if (entity) {
                         this.finishLoading(entity);
@@ -68,10 +69,12 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                         throw new Error('BaseEntityDetail: Entity is null');
                     }
                     this.loading.set(false);
+                    this.shellSrv.setLoading(false); // stop the animation
                 },
                 error: error => {
                     this.shellSrv.showRetry(() => this.load());
                     this.loading.set(false);
+                    this.shellSrv.setLoading(false); // stop the animation
                     throw error;
                 }
             });

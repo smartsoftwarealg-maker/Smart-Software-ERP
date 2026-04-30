@@ -28,7 +28,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     protected constructor(public entitySrv: BaseEntityService<T>) {}
 
     public save() {
-        this.form.markAllAsTouched();
+        this.form?.markAllAsTouched();
         if (!this.isValidForm()) {
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
             return;
@@ -66,7 +66,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                 this.form.markAsPristine();
                 this.form.markAsUntouched({onlySelf: false});
                 this.snackBarSrv.showSuccessMessage();
-                this.shellSrv.setLoading(false);
+                // this.shellSrv.setLoading(false);
                 // this.loading.set(false);
             },
             error: err => {
@@ -85,7 +85,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     }
 
     protected isValidForm() {
-        return this.form.valid;
+        return this.form?.valid;
     }
 
     public get id() {
@@ -142,13 +142,12 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
 
     public finishLoading(e: T) {
         this.form = this.setupForm(e);
-        this.shellSrv.setLoading(false);
-        this.saveButton.disabled = false;
         if (!this.isEditable && this.form) {
             this.form.disable();
         }
-        this.shellSrv.setLoading(false);
-        this.loading.set(false);
+        // this.shellSrv.setLoading(false);
+        // this.shellSrv.setLoading(false);
+        // this.loading.set(false);
     }
 
     cancel() {

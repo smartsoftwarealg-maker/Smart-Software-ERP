@@ -234,10 +234,13 @@ implements OnInit, OnDestroy {
                     if (callback) {
                         callback();
                     }
+                    this.shellSrv.setLoading(false);
+                    this.loading.set(false);
                 },
                 error: (err) => {
                     this.data = []; // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
+                    this.loading.set(false);
                     throw err;
                 },
             });
