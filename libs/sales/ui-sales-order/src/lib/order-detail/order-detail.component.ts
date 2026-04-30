@@ -140,10 +140,10 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
         }
     }
 
-    finishLoading(e: Transaction) {
-        super.finishLoading(e);
-        this.importContractBtn.visible = !e.isValidated;
-    }
+    // finishLoading(e: Transaction) {
+    //     super.finishLoading(e);
+    //     this.importContractBtn.visible = !e.isValidated;
+    // }
 
     protected requireAgent(): boolean {
         return true;

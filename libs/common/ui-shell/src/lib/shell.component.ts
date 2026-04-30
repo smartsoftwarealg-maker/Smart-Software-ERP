@@ -8,7 +8,7 @@ import {
     AfterViewInit,
     ChangeDetectorRef,
     AfterViewChecked,
-    inject
+    inject, Signal, computed
 } from '@angular/core';
 import { ShellService } from './shell.service';
 import { CdkTree } from '@angular/cdk/tree';
@@ -55,6 +55,8 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     protected loginSrv = inject(LoginService);
     protected cdRef = inject(ChangeDetectorRef);
     protected langSrv = inject(LanguageService);
+
+    isLoading = computed(() => this.shellSrv.isLoading());
 
     @ViewChild(CdkTree)
     tree!: CdkTree<SideNavNode>;

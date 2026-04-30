@@ -1,5 +1,5 @@
-import { Component, effect, inject, input } from '@angular/core';
-import { SnackBarService } from '@ss/common/ui-shell';
+import { Component, computed, effect, inject, input } from '@angular/core';
+import {ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {
     UntypedFormGroup,
     FormBuilder,
@@ -51,6 +51,7 @@ import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
     ],
 })
 export class PaymentComponent {
+    #shellSrv = inject(ShellService);
     #langSrv = inject(LanguageService);
     #confirmationSrv = inject(ConfirmationDialogService);
     #entitySrv = inject(PaymentsDetailService);
@@ -66,6 +67,8 @@ export class PaymentComponent {
 
     bankAutoCompleteModel = new DefaultAutoCompleteModel(this.#bankSrv);
     modeAutoCompleteModel = new DefaultAutoCompleteModel(this.#typeSrv);
+
+    isLoading = computed(() => this.#shellSrv.isLoading());
 
     quickOrder: QuickOrder;
     id = input(0);

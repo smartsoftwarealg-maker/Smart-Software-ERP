@@ -104,10 +104,10 @@ export class ShellService {
     labels = signal<ToolbarLabel[]>([this._companyName]);
     appButtons = signal<ToolbarButton[]>([]);
     //
-    protected isLoading = signal(false);
     protected isError = false;
     protected retryCallback: () => void;
 
+    isLoading = signal(false);
 
     public goBackEnabled = true;
     // side nav data
@@ -122,7 +122,7 @@ export class ShellService {
     /* LOADING */
 
     public setLoading(isLoading: boolean) {
-        // console.log('________________________set', isLoading);
+        console.log('____________________________________loading: ', isLoading);
         this.isLoading.set(isLoading);
         this.updateShell();
     }

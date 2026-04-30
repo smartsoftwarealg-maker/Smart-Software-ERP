@@ -61,13 +61,13 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
 
         obs.subscribe({
             next: () => {
-                this.shellSrv.setLoading(false);
                 this.goBack();
                 this.form.markAsUntouched();
                 this.form.markAsPristine();
                 this.form.markAsUntouched({onlySelf: false});
                 this.snackBarSrv.showSuccessMessage();
-                this.loading.set(false);
+                this.shellSrv.setLoading(false);
+                // this.loading.set(false);
             },
             error: err => {
                 console.log(err);

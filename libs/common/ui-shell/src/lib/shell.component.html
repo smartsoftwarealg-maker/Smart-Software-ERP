@@ -1,305 +1,309 @@
 <div #shellDiv class="sidenav-container">
 
-  <mat-sidenav-container [hasBackdrop]="!showSideNav" [dir]="langSrv.dir" class="sidenav-container">
-    <mat-sidenav #navBar [mode]="showSideNav ? 'side' : 'over'" [opened]="showSideNav" class="z-side-bar b-primary">
-      <div [dir]="langSrv.dir" class="shell-side-nav">
+    <mat-sidenav-container [hasBackdrop]="!showSideNav" [dir]="langSrv.dir" class="sidenav-container">
+        <mat-sidenav #navBar [mode]="showSideNav ? 'side' : 'over'" [opened]="showSideNav" class="z-side-bar b-primary">
+            <div [dir]="langSrv.dir" class="shell-side-nav">
 
-        <div class="brand mat-elevation-z6">
-          <img class="brand-icon" width="56px" height="56px" src="./assets/logo.png">
-          <div class="app-name">
-            {{ shellSrv.applicationTitle }}
-          </div>
-        </div>
-
-        <div class="side-nav-tree-container">
-          <cdk-tree #tree [dataSource]="shellSrv.sideNavDataSource" [childrenAccessor]="childrenAccessor"
-            class="side-nav-tree">
-            <!-- This is the tree node template for leaf nodes -->
-            <cdk-tree-node *cdkTreeNodeDef="let node" cdkTreeNodePadding class="tree-node"
-              (click)="navBar.toggle()">
-              <li class="tree-node b-primary selectable-tree-item" [routerLink]="node.route"
-                (click)="scrollTo($event)">
-                <button mat-icon-button disabled></button>
-                <div class="nav-tree-icon" [style.background-color]="node.backgroundColor">
-                  @if (node.icon) {
-                    <i [class]="node.icon"></i>
-                  }
+                <div class="brand mat-elevation-z6">
+                    <img class="brand-icon" width="56px" height="56px" src="./assets/logo.png">
+                    <div class="app-name">
+                        {{ shellSrv.applicationTitle }}
+                    </div>
                 </div>
-                <span class="margin-start-8 nav-tree-text" translate>{{ node.name }}</span>
-              </li>
-            </cdk-tree-node>
-            <!-- This is the tree node template for expandable nodes -->
-            <cdk-tree-node *cdkTreeNodeDef="let node; when: hasChild" cdkTreeNodePadding
-              cdkTreeNodeToggle class="tree-node"
-              [cdkTreeNodeTypeaheadLabel]="node.name"
-              [isExpandable]="true">
-              <li>
-                <div class="tree-node b-primary selectable-tree-item" matTreeNodeToggle
-                  (click)="scrollTo($event)">
-                  <button mat-icon-button>
-                    <i class="{{tree.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
-                  </button>
-                  <div class="nav-tree-icon" [style.background-color]="node.backgroundColor">
-                    @if (node.icon) {
-                      <i [class]="node.icon"></i>
-                    }
-                  </div>
-                  <span class="margin-start-8 nav-tree-text" translate>{{ node.name }}</span>
+
+                <div class="side-nav-tree-container">
+                    <cdk-tree #tree [dataSource]="shellSrv.sideNavDataSource" [childrenAccessor]="childrenAccessor"
+                              class="side-nav-tree">
+                        <!-- This is the tree node template for leaf nodes -->
+                        <cdk-tree-node *cdkTreeNodeDef="let node" cdkTreeNodePadding class="tree-node"
+                                       (click)="navBar.toggle()">
+                            <li class="tree-node b-primary selectable-tree-item" [routerLink]="node.route"
+                                (click)="scrollTo($event)">
+                                <button mat-icon-button disabled></button>
+                                <div class="nav-tree-icon" [style.background-color]="node.backgroundColor">
+                                    @if (node.icon) {
+                                        <i [class]="node.icon"></i>
+                                    }
+                                </div>
+                                <span class="margin-start-8 nav-tree-text" translate>{{ node.name }}</span>
+                            </li>
+                        </cdk-tree-node>
+                        <!-- This is the tree node template for expandable nodes -->
+                        <cdk-tree-node *cdkTreeNodeDef="let node; when: hasChild" cdkTreeNodePadding
+                                       cdkTreeNodeToggle class="tree-node"
+                                       [cdkTreeNodeTypeaheadLabel]="node.name"
+                                       [isExpandable]="true">
+                            <li>
+                                <div class="tree-node b-primary selectable-tree-item" matTreeNodeToggle
+                                     (click)="scrollTo($event)">
+                                    <button mat-icon-button>
+                                        <i class="{{tree.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
+                                    </button>
+                                    <div class="nav-tree-icon" [style.background-color]="node.backgroundColor">
+                                        @if (node.icon) {
+                                            <i [class]="node.icon"></i>
+                                        }
+                                    </div>
+                                    <span class="margin-start-8 nav-tree-text" translate>{{ node.name }}</span>
+                                </div>
+                                <ul [class.side-nav-tree-invisible]="!tree.isExpanded(node)" class="b-primary">
+                                    <ng-container matTreeNodeOutlet></ng-container>
+                                </ul>
+                            </li>
+                        </cdk-tree-node>
+                    </cdk-tree>
                 </div>
-                <ul [class.side-nav-tree-invisible]="!tree.isExpanded(node)" class="b-primary">
-                  <ng-container matTreeNodeOutlet></ng-container>
-                </ul>
-              </li>
-            </cdk-tree-node>
-          </cdk-tree>
-        </div>
 
-      </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div #toolbar class="b-primary mat-elevation-z6 shell-toolbar" [dir]="langSrv.dir">
-
-        <div class="toolbar-inner">
-          <button mat-icon-button (click)="navBar.toggle()">
-            <i class="far fa-bars"></i>
-          </button>
-
-          <button mat-icon-button
-            (click)="toolbar.classList.remove('smll-search-mode')" class="exit-search-btn">
-            @if (langSrv.rtl) {
-              <i class="fas fa-arrow-right"></i>
-            }
-            @if (!langSrv.rtl) {
-              <i class="fas fa-arrow-left"></i>
-            }
-          </button>
-
-          @if (shellSrv.hasGoBackFn) {
-            <button
-              [matTooltip]="'COMMON_GO_BACK' | translate"
-              mat-icon-button
-              (click)="shellSrv.goBack()"
-              [disabled]="shellSrv.loading || !shellSrv.goBackEnabled"
-              class="hidden-during-search">
-              @if (langSrv.rtl) {
-                <i class="fas fa-arrow-right"></i>
-              } @else {
-                <i class="fas fa-arrow-left"></i>
-              }
-            </button>
-          }
-
-          <div class="shell-title" translate>{{ shellSrv.shellTitle }}</div>
-
-          @if (shellSrv.hasSearch) {
-            <button mat-icon-button class="small-only smll-search-button"
-              (click)="toolbar.classList.add('smll-search-mode')"
-              matTooltip="{{shellSrv.searchInputTitle | translate}}">
-              <i class="far fa-search"></i>
-            </button>
-          }
-
-          @if (shellSrv.hasSearch && shellSrv.visibleSearchField()) {
-            <div class="ss-form-field large-only">
-              <mat-form-field floatLabel="always">
-                <mat-label translate>{{ shellSrv.searchInputTitle }}</mat-label>
-                <input [formControl]="shellSrv.searchFormControl"
-                  matInput type="text"
-                  id="shellSearchField">
-                </mat-form-field>
-              </div>
-            }
-
-            @for (b of shellSrv.buttons(); track $index) {
-              @if (b.keepOnToolbar != 2) {
-                @if (b.menuItems) {
-                  @if (b.visible) {
-                    <button mat-icon-button matTooltip="{{b.label | translate}}"
-                      [matMenuTriggerFor]="menu"
-                      [disabled]="b.disabled"
-                      class="hidden-during-search"
-                      [class.large-only]="b.disabled || b.keepOnToolbar != 1">
-                      <i [class]="b.icon"></i>
-                    </button>
-                  }
-                  <mat-menu #menu>
-                    @for (mt of b.menuItems; track $index) {
-                      @if (mt.visible) {
-                        <button mat-menu-item (click)="mt.click()"
-                          [disabled]="mt.disabled">
-                          <i [class]="mt.icon"></i>
-                          {{ mt.label | translate }}
-                        </button>
-                      }
-                    }
-                  </mat-menu>
-                }
-                @if (!b.menuItems && b.visible) {
-                  <button mat-icon-button matTooltip="{{b.label | translate}}"
-                    (click)="b.click()"
-                    [disabled]="b.disabled"
-                    class="hidden-during-search"
-                    [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
-                    @if (b.badgeCount > 0) {
-                      <i [class]="b.icon"
-                        matBadge="{{ b.badgeCount }}"
-                        matBadgeColor="warn">
-                      </i>
-                    } @else {
-                      <i [class]="b.icon"></i>
-                    }
-                  </button>
-                }
-              }
-            }
-
-            <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
-              <i class="fas fa-caret-down"></i>
-            </button>
-
-          </div>
-
-        </div>
-        <div class="b-primary mat-elevation-z6 shell-toolbar-2">
-          <div class="toolbar-inner">
-            @for (n of shellSrv.labels(); track $index) {
-              <div class="shell-label margin-end-8 large-only">
-                @if (n.icon) {
-                  <div class="label-icon"><i [class]="n.icon"></i></div>
-                }
-                @if (n.title) {
-                  <div class="label-title margin-start-4">{{ n.title }}</div>
-                }
-                @if (n.text) {
-                  <div class="label-text margin-start-4">{{ n.text }}</div>
-                }
-              </div>
-            }
-
-            <div class="toolbar-username margin-end-8">
-              <div class="user-icon">
-                <i class="fas fa-user-alt"></i>
-              </div>
-              <div class="user-name margin-start-4">{{ loginSrv.fullUserName() }}</div>
             </div>
-          </div>
-        </div>
-        <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading || shellSrv.error"
-          #routerContainer>
-          <router-outlet></router-outlet>
-          <div class="b-b-app-bar static-container-bottom-padding"></div>
-        </div>
-        @if (shellSrv.loading) {
-          <div class="b-b-app-bar loading-spinner-container">
-            <mat-spinner></mat-spinner>
-          </div>
-        }
-        @if (shellSrv.error) {
-          <div class="b-b-app-bar loading-spinner-container">
-            <i class="fas fa-exclamation-circle fa-10x f-warn x_large"></i>
-            <button mat-raised-button (click)="shellSrv.retry()" translate>RETRY</button>
-          </div>
-        }
-      </mat-sidenav-content>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div #toolbar class="b-primary mat-elevation-z6 shell-toolbar" [dir]="langSrv.dir">
+
+                @if (!isLoading()) {
+                    <div class="toolbar-inner">
+                        <button mat-icon-button (click)="navBar.toggle()">
+                            <i class="far fa-bars"></i>
+                        </button>
+
+                        <button mat-icon-button
+                                (click)="toolbar.classList.remove('smll-search-mode')" class="exit-search-btn">
+                            @if (langSrv.rtl) {
+                                <i class="fas fa-arrow-right"></i>
+                            }
+                            @if (!langSrv.rtl) {
+                                <i class="fas fa-arrow-left"></i>
+                            }
+                        </button>
+
+                        @if (shellSrv.hasGoBackFn) {
+                            <button
+                                [matTooltip]="'COMMON_GO_BACK' | translate"
+                                mat-icon-button
+                                (click)="shellSrv.goBack()"
+                                [disabled]="shellSrv.loading || !shellSrv.goBackEnabled"
+                                class="hidden-during-search">
+                                @if (langSrv.rtl) {
+                                    <i class="fas fa-arrow-right"></i>
+                                } @else {
+                                    <i class="fas fa-arrow-left"></i>
+                                }
+                            </button>
+                        }
+
+                        <div class="shell-title" translate>{{ shellSrv.shellTitle }}</div>
+
+                        @if (shellSrv.hasSearch) {
+                            <button mat-icon-button class="small-only smll-search-button"
+                                    (click)="toolbar.classList.add('smll-search-mode')"
+                                    matTooltip="{{shellSrv.searchInputTitle | translate}}">
+                                <i class="far fa-search"></i>
+                            </button>
+                        }
+
+                        @if (shellSrv.hasSearch && shellSrv.visibleSearchField()) {
+                            <div class="ss-form-field large-only">
+                                <mat-form-field floatLabel="always">
+                                    <mat-label translate>{{ shellSrv.searchInputTitle }}</mat-label>
+                                    <input [formControl]="shellSrv.searchFormControl"
+                                           matInput type="text"
+                                           id="shellSearchField">
+                                </mat-form-field>
+                            </div>
+                        }
+
+                        @for (b of shellSrv.buttons(); track $index) {
+                            @if (b.keepOnToolbar != 2) {
+                                @if (b.menuItems) {
+                                    @if (b.visible) {
+                                        <button mat-icon-button matTooltip="{{b.label | translate}}"
+                                                [matMenuTriggerFor]="menu"
+                                                [disabled]="b.disabled"
+                                                class="hidden-during-search"
+                                                [class.large-only]="b.disabled || b.keepOnToolbar != 1">
+                                            <i [class]="b.icon"></i>
+                                        </button>
+                                    }
+                                    <mat-menu #menu>
+                                        @for (mt of b.menuItems; track $index) {
+                                            @if (mt.visible) {
+                                                <button mat-menu-item (click)="mt.click()"
+                                                        [disabled]="mt.disabled">
+                                                    <i [class]="mt.icon"></i>
+                                                    {{ mt.label | translate }}
+                                                </button>
+                                            }
+                                        }
+                                    </mat-menu>
+                                }
+                                @if (!b.menuItems && b.visible) {
+                                    <button mat-icon-button matTooltip="{{b.label | translate}}"
+                                            (click)="b.click()"
+                                            [disabled]="b.disabled"
+                                            class="hidden-during-search"
+                                            [class.large-only]="b.disabled || (b.keepOnToolbar != 1)">
+                                        @if (b.badgeCount > 0) {
+                                            <i [class]="b.icon"
+                                               matBadge="{{ b.badgeCount }}"
+                                               matBadgeColor="warn">
+                                            </i>
+                                        } @else {
+                                            <i [class]="b.icon"></i>
+                                        }
+                                    </button>
+                                }
+                            }
+                        }
+
+                        <button mat-icon-button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="menu">
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+
+                    </div>
+                }
+
+            </div>
+            <div class="b-primary mat-elevation-z6 shell-toolbar-2">
+                <div class="toolbar-inner">
+                    @for (n of shellSrv.labels(); track $index) {
+                        <div class="shell-label margin-end-8 large-only">
+                            @if (n.icon) {
+                                <div class="label-icon"><i [class]="n.icon"></i></div>
+                            }
+                            @if (n.title) {
+                                <div class="label-title margin-start-4">{{ n.title }}</div>
+                            }
+                            @if (n.text) {
+                                <div class="label-text margin-start-4">{{ n.text }}</div>
+                            }
+                        </div>
+                    }
+
+                    <div class="toolbar-username margin-end-8">
+                        <div class="user-icon">
+                            <i class="fas fa-user-alt"></i>
+                        </div>
+                        <div class="user-name margin-start-4">{{ loginSrv.fullUserName() }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading || shellSrv.error"
+                 #routerContainer>
+                <router-outlet></router-outlet>
+                <div class="b-b-app-bar static-container-bottom-padding"></div>
+            </div>
+            @if (shellSrv.loading) {
+                <div class="b-b-app-bar loading-spinner-container">
+                    <mat-spinner></mat-spinner>
+                </div>
+            }
+            @if (shellSrv.error) {
+                <div class="b-b-app-bar loading-spinner-container">
+                    <i class="fas fa-exclamation-circle fa-10x f-warn x_large"></i>
+                    <button mat-raised-button (click)="shellSrv.retry()" translate>RETRY</button>
+                </div>
+            }
+        </mat-sidenav-content>
     </mat-sidenav-container>
 
-    <mat-menu #menu="matMenu" style="overflow: hidden">
-      <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
-        @for (b of shellSrv.buttons(); track $index) {
-          @if (b.visible) {
-            @if (b.menuItems) {
-              <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()"
-                style="background-color: red"
-                [class.small-only]="b.keepOnToolbar != 2">
-                <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
-                  #trigger="matMenuTrigger">
-                  <i [class]="b.icon"></i>
-                </div>
-                <span class="text" translate>{{ b.label }}</span>
-              </div>
-              <mat-menu #menu>
-                @for (mt of b.menuItems; track $index) {
-                  @if (mt.visible) {
-                    <button mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
-                      [disabled]="mt.disabled">
-                      <i [class]="mt.icon"></i>
-                      {{ mt.label | translate }}
-                    </button>
-                  }
+    @if (!isLoading()) {
+        <mat-menu #menu="matMenu" style="overflow: hidden">
+            <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
+                @for (b of shellSrv.buttons(); track $index) {
+                    @if (b.visible) {
+                        @if (b.menuItems) {
+                            <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()"
+                                 style="background-color: red"
+                                 [class.small-only]="b.keepOnToolbar != 2">
+                                <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
+                                     #trigger="matMenuTrigger">
+                                    <i [class]="b.icon"></i>
+                                </div>
+                                <span class="text" translate>{{ b.label }}</span>
+                            </div>
+                            <mat-menu #menu>
+                                @for (mt of b.menuItems; track $index) {
+                                    @if (mt.visible) {
+                                        <button mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
+                                                [disabled]="mt.disabled">
+                                            <i [class]="mt.icon"></i>
+                                            {{ mt.label | translate }}
+                                        </button>
+                                    }
+                                }
+                            </mat-menu>
+                        } @else {
+                            <div type="button" mat-menu-item class="settings-item"
+                                 [class.small-only]="b.keepOnToolbar != 2"
+                                 [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
+                                 (click)="b.click(); menuTrigger.closeMenu();">
+                                <div class="icon"><i [class]="b.icon"></i></div>
+                                <span class="text" translate>{{ b.label }}</span>
+                            </div>
+                        }
+                    }
                 }
-              </mat-menu>
-            } @else {
-              <div type="button" mat-menu-item class="settings-item" [class.small-only]="b.keepOnToolbar != 2"
-                [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
-                (click)="b.click(); menuTrigger.closeMenu();">
-                <div class="icon"><i [class]="b.icon"></i></div>
-                <span class="text" translate>{{ b.label }}</span>
-              </div>
-            }
-          }
-        }
 
-        @if (shellSrv.buttons().length) {
-          <mat-divider></mat-divider>
-        }
+                @if (shellSrv.buttons().length) {
+                    <mat-divider></mat-divider>
+                }
 
-        @for (b of shellSrv.appButtons(); track $index) {
-          @if (b.menuItems) {
-            <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()">
-              <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
-                #trigger="matMenuTrigger">
-                <i [class]="b.icon"></i>
-              </div>
-              <span class="text" translate>{{ b.label }}</span>
+                @for (b of shellSrv.appButtons(); track $index) {
+                    @if (b.menuItems) {
+                        <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()">
+                            <div class="icon" (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu"
+                                 #trigger="matMenuTrigger">
+                                <i [class]="b.icon"></i>
+                            </div>
+                            <span class="text" translate>{{ b.label }}</span>
+                        </div>
+                        <mat-menu #menu>
+                            @for (mt of b.menuItems; track $index) {
+                                @if (mt.visible) {
+                                    <button mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
+                                            [disabled]="mt.disabled">
+                                        <i [class]="mt.icon"></i>
+                                        {{ mt.label | translate }}
+                                    </button>
+                                }
+                            }
+                        </mat-menu>
+                    } @else {
+                        @if (b.visible) {
+                            <div type="button" mat-menu-item class="settings-item"
+                                 [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
+                                 (click)="b.click(); menuTrigger.closeMenu();">
+                                <div class="icon">
+                                    <i [class]="b.icon"></i>
+                                </div>
+                                <span class="text" translate>{{ b.label }}</span>
+                            </div>
+                        }
+                    }
+                }
+
+                @if (shellSrv.appButtons().length) {
+                    <mat-divider></mat-divider>
+                }
+
+                <div type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
+                    <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>
+                    <span class="text" translate>COMMON_LANGUAGE_SETTINGS</span>
+                </div>
+                <div type="button" mat-menu-item class="settings-item" (click)="themeBtn.click()">
+                    <ss-theme-select class="icon" (click)="$event.stopPropagation()" #themeBtn></ss-theme-select>
+                    <span class="text" translate>COMMON_THEME_SETTINGS</span>
+                </div>
+                @if (loginSrv.customerLogin !== LoginType.CUSTOMER) {
+                    <div type="button" mat-menu-item class="settings-item" (click)="centerSelect()">
+                        <i class="fa-solid fa-door-open simple-btn icon"></i>
+                        <span class="text" translate>COMMON_CENTER_CHANGE</span>
+                    </div>
+                }
+                <div type="button" mat-menu-item class="settings-item" (click)="logoutBtn.click()">
+                    <ss-logout class="icon" (click)="$event.stopPropagation()" #logoutBtn></ss-logout>
+                    <span class="text" translate>COMMON_LOGOUT</span>
+                </div>
             </div>
-            <mat-menu #menu>
-              @for (mt of b.menuItems; track $index) {
-                @if (mt.visible) {
-                  <button mat-menu-item (click)="mt.click(); menuTrigger.closeMenu();"
-                    [disabled]="mt.disabled">
-                    <i [class]="mt.icon"></i>
-                    {{ mt.label | translate }}
-                  </button>
-                }
-              }
-            </mat-menu>
-          } @else {
-            @if (b.visible) {
-              <div type="button" mat-menu-item class="settings-item"
-                [class]="{'f-b-disabled-btn': b.disabled, 'disable-events': b.disabled}"
-                (click)="b.click(); menuTrigger.closeMenu();">
-                <div class="icon">
-                  <i [class]="b.icon"></i>
-                </div>
-                <span class="text" translate>{{ b.label }}</span>
-              </div>
-            }
-          }
-        }
-
-        @if (shellSrv.appButtons().length) {
-          <mat-divider></mat-divider>
-        }
-
-        <div type="button" mat-menu-item class="settings-item" (click)="langBtn.click()">
-          <ss-language-select class="icon" (click)="$event.stopPropagation()" #langBtn></ss-language-select>
-          <span class="text" translate>COMMON_LANGUAGE_SETTINGS</span>
-        </div>
-        <div type="button" mat-menu-item class="settings-item" (click)="themeBtn.click()">
-          <ss-theme-select class="icon" (click)="$event.stopPropagation()" #themeBtn></ss-theme-select>
-          <span class="text" translate>COMMON_THEME_SETTINGS</span>
-        </div>
-        @if (loginSrv.customerLogin !== LoginType.CUSTOMER) {
-          <div type="button" mat-menu-item class="settings-item" (click)="centerSelect()">
-            <i class="fa-solid fa-door-open simple-btn icon"></i>
-            <span class="text" translate>COMMON_CENTER_CHANGE</span>
-          </div>
-        }
-        <div type="button" mat-menu-item class="settings-item" (click)="logoutBtn.click()">
-          <ss-logout class="icon" (click)="$event.stopPropagation()" #logoutBtn></ss-logout>
-          <span class="text" translate>COMMON_LOGOUT</span>
-        </div>
-      </div>
-    </mat-menu>
-
-  </div>
+        </mat-menu>
+    }
+</div>
