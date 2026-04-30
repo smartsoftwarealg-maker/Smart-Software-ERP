@@ -8,7 +8,7 @@ import {
     AfterViewInit,
     ChangeDetectorRef,
     AfterViewChecked,
-    inject, Signal, computed
+    inject
 } from '@angular/core';
 import { ShellService } from './shell.service';
 import { CdkTree } from '@angular/cdk/tree';
@@ -29,7 +29,6 @@ import { catchError, of, switchMap, tap } from 'rxjs';
 import { LanguageSelectComponent } from '@ss/common/ui-lang';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ThemeSelectComponent } from '@ss/common/ui-theme';
-import {swcLoaderVersion} from "@nx/web/src/utils/versions";
 
 @Component({
     selector: 'ss-shell',
@@ -55,8 +54,6 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
     protected loginSrv = inject(LoginService);
     protected cdRef = inject(ChangeDetectorRef);
     protected langSrv = inject(LanguageService);
-
-    isLoading = computed(() => this.shellSrv.isLoading());
 
     @ViewChild(CdkTree)
     tree!: CdkTree<SideNavNode>;
@@ -160,7 +157,5 @@ export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterVi
         this.#router.navigate(['/' + CENTER_SELECT_URL]).then();
     }
 
-
     protected readonly LoginType = LoginType;
-    protected readonly swcLoaderVersion = swcLoaderVersion;
 }

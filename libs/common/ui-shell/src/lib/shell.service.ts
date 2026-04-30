@@ -1,4 +1,4 @@
-import { inject, Injectable, Signal, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
@@ -100,14 +100,15 @@ export class ShellService {
     protected searchInputLabel: string;
     public focusSearchField: boolean;
     public visibleSearchField = signal(true);
-    buttons = signal<ToolbarButton[]> ([]);
-    labels = signal<ToolbarLabel[]>([this._companyName]);
-    appButtons = signal<ToolbarButton[]>([]);
     //
+
+    buttons: ToolbarButton[] = [];
+    labels: ToolbarLabel[] = [this._companyName];
+    appButtons: ToolbarButton[] = [];
+    //
+    protected isLoading = false;
     protected isError = false;
     protected retryCallback: () => void;
-
-    isLoading = signal(false);
 
     public goBackEnabled = true;
     // side nav data
@@ -122,13 +123,12 @@ export class ShellService {
     /* LOADING */
 
     public setLoading(isLoading: boolean) {
-        console.log('____________________________________loading: ', isLoading);
-        this.isLoading.set(isLoading);
+        this.isLoading = isLoading;
         this.updateShell();
     }
 
     public getLoading() {
-        return this.isLoading();
+        return this.isLoading;
     }
 
     public showRetry(retryCallback: () => void) {
@@ -144,7 +144,7 @@ export class ShellService {
     }
 
     public get loading(): boolean {
-        return !this.isError && this.isLoading();
+        return !this.isError && this.isLoading;
     }
 
     public get error(): boolean {
@@ -377,7 +377,7 @@ export class ShellService {
     public goBack(): void {
         if (this.hasGoBackFn) {
             this.isError = false;
-            this.isLoading.set(false);
+            this.isLoading = false;
             this.goBackFn();
         }
     }
@@ -470,8 +470,8 @@ export class ShellService {
         this.title = null;
         this.goBackFn = null;
         this.disableSearch(false);
-        this.buttons.set(this.#badgeButtonSrv.getButtons());
-        this.isLoading.set(false);
+        this.buttons = this.#badgeButtonSrv.getButtons();
+        this.isLoading = false;
         this.isError = false;
         // this.#badgeButtonSrv
         //     .getButtons()
@@ -483,17 +483,20 @@ export class ShellService {
      * Custom buttons
      */
     public setAppButtons(buttons: ToolbarButton[]): void {
-        this.appButtons.set(buttons);
+        this.appButtons = buttons;
         this.updateShell();
     }
 
     public setButtons(buttons: ToolbarButton[]): void {
-        this.buttons.set(buttons);
+        this.buttons = buttons;
         this.updateShell();
     }
 
     public addButton(btn: ToolbarButton): void {
-        this.buttons.update(v =>[...v, btn ]);
+        if (this.buttons == null) {
+            this.buttons = [];
+        }
+        this.buttons.push(btn);
         this.updateShell();
     }
     public addBadgeButton(btn: BadgeButton) {
@@ -502,7 +505,9 @@ export class ShellService {
     }
 
     public removeButton(buttonLabel: string): void {
-        this.buttons.update(v => v.filter(b => b.label !== buttonLabel));
+        this.buttons = this.buttons == null
+            ? null
+            : this.buttons.filter(b => b.label !== buttonLabel);
         this.updateShell();
     }
 
@@ -512,7 +517,7 @@ export class ShellService {
     }
 
     public setLabels(labels: ToolbarLabel[]): void {
-        this.labels.set([this._companyName, ...labels]);
+        this.labels = [this._companyName, ...labels];
         this.updateShell();
     }
 
