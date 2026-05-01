@@ -75,7 +75,9 @@
     </div>
 </mat-card>
 @if (loading()) {
-    <mat-spinner></mat-spinner>
+    <div class="spinner__div">
+        <mat-spinner [diameter]="100"></mat-spinner>
+    </div>
 } @else {
     <div class="table__div">
         <mat-table mat-table [dataSource]="data" matSort (matSortChange)="sort($event)">

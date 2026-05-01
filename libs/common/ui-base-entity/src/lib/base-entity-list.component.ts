@@ -105,7 +105,7 @@ implements OnInit, OnDestroy {
     public sortBy: string;
     //
     public data: T[] = [];
-    public selectedRow: T = null;
+    public selectedRow: T|null = null;
 
     //
 
@@ -261,10 +261,11 @@ implements OnInit, OnDestroy {
     }
 
     public finishLoading(data: T[]) {
-        this.processLoadedData(data).subscribe((x) => {
-            this.data = x;
-            this.shellSrv.setLoading(false);
-            this.setLoading(false);
+        this.processLoadedData(data)
+            .subscribe((x) => {
+                this.data = x;
+                this.shellSrv.setLoading(false);
+                this.setLoading(false);
         });
     }
 

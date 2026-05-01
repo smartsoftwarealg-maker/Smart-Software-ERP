@@ -79,7 +79,7 @@
               [matTooltip]="'COMMON_GO_BACK' | translate"
               mat-icon-button
               (click)="shellSrv.goBack()"
-              [disabled]="shellSrv.loading || !shellSrv.goBackEnabled"
+              [disabled]="shellSrv.loading() || !shellSrv.goBackEnabled"
               class="hidden-during-search">
               @if (langSrv.rtl) {
                 <i class="fas fa-arrow-right"></i>
@@ -89,7 +89,7 @@
             </button>
           }
 
-          <div class="shell-title" translate>{{ shellSrv.shellTitle }}</div>
+          <div class="shell-title" >{{ shellSrv.shellTitle() | translate}}</div>
 
           @if (shellSrv.hasSearch) {
             <button mat-icon-button class="small-only smll-search-button"
@@ -184,17 +184,17 @@
             </div>
           </div>
         </div>
-        <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading || shellSrv.error"
+        <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading() || shellSrv.error()"
           #routerContainer>
           <router-outlet></router-outlet>
           <div class="b-b-app-bar static-container-bottom-padding"></div>
         </div>
-        @if (shellSrv.loading) {
+        @if (shellSrv.loading()) {
           <div class="b-b-app-bar loading-spinner-container">
             <mat-spinner></mat-spinner>
           </div>
         }
-        @if (shellSrv.error) {
+        @if (shellSrv.error()) {
           <div class="b-b-app-bar loading-spinner-container">
             <i class="fas fa-exclamation-circle fa-10x f-warn x_large"></i>
             <button mat-raised-button (click)="shellSrv.retry()" translate>RETRY</button>

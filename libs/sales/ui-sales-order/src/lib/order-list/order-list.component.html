@@ -76,7 +76,7 @@
             <ng-container matColumnDef="invoiceNumber">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_INVOICE_NUMBER</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ getInvoiceNumber(e.id) }}
+                    {{ e.invoiceNumber }}
                 </mat-cell>
             </ng-container>
 
@@ -85,7 +85,7 @@
                                                       matTooltip="SALES_GENERATE_INVOICE"></i>
                 </mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    @if (!getInvoiceNumber(e.id)) {
+                    @if (!e.invoiceNumber) {
                         <button matIconButton (click)="generateInvoice(e.id)">
                             <i class="fa-solid fa-check"></i>
                         </button>
@@ -97,7 +97,7 @@
             <mat-row class="selectable"
                      [class.selected]="selected && row.id === selected"
                      [class.dirty]="row.dirty"
-                     [class.invoice]="getInvoiceNumber(row.id) > 0"
+                     [class.invoice]="row.invoiceNumber > 0"
                      (click)="selectRow(row)"
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>

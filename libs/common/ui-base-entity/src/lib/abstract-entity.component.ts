@@ -70,10 +70,9 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                 // this.loading.set(false);
             },
             error: err => {
-                console.log(err);
                 this.snackBarSrv.showFailureMessage();
-                this.shellSrv.setLoading(false);
                 this.saveButton.disabled = false;
+                this.shellSrv.setLoading(false);
                 this.loading.set(false);
                 throw err;
             }

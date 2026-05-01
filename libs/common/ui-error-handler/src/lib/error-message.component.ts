@@ -16,7 +16,7 @@ export class MessageComponent {
     protected errorSrv = inject(CustomErrorHandlerService);
 
     constructor() {
-        this.errorSrv.onUpdate = () => this.cdRef.detectChanges();
+        // this.errorSrv.onUpdate = () => this.cdRef.detectChanges();
     }
 
     public onCloseClick(): void {

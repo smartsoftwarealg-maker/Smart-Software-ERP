@@ -112,6 +112,11 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
     ];
     transactions: TransactionLine[];
     salesOrderLinesSrv = inject(SalesOrderLinesService);
+    private weightCaptureSrv = inject(WeightCaptureService);
+    public readonly transacPagination = PaginationModel.newInstance();
+
+    transacLineId: number;
+    invoiceInfo: InvoiceInfo[] = [];
     // public rightsSrv: AccessRightsService
     #userRightsSrv = inject(UserRightsService);
     constructor(
@@ -139,56 +144,75 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
 
     protected override preInit(): Observable<unknown> {
         return super.preInit()
-            .pipe(tap(() => {
-                this.addButton.visible = false;
-                this.deleteButton.visible = false;
-                this.editButton.visible = this.shellSrv.getEntityRights('QOrder')?.edit;
-            }));
-    }
-    override ngOnInit() {
-        this.route.data.subscribe((data) => {
-            const invoicing = data['invoicing'] === true;
-            this.isInvoicing.set(invoicing);
-            this.displayedColumns = this.displayedColumns.filter(
-                (col) => col !== 'option' || invoicing,
-            );
-        });
-        this.weightCaptureSrv
-            .hasScaleConfig()
             .pipe(
+                switchMap(() => this.route.data),
+                tap((data) => {
+                    const invoicing = data['invoicing'] === true;
+                    this.isInvoicing.set(invoicing);
+                    this.displayedColumns = this.displayedColumns.filter(
+                        (col) => col !== 'option' || invoicing,
+                    );
+                }),
+                tap(() => {
+                        this.addButton.visible = false;
+                        this.deleteButton.visible = false;
+                        this.editButton.visible = this.shellSrv.getEntityRights('QOrder')?.edit === true;
+                    }),
+                switchMap(() => this.weightCaptureSrv.hasScaleConfig()),
                 tap((exists) => {
                     if (exists) {
                         this.transactionColumns.push('tare', 'brut');
                     }
                 }),
-                switchMap(() =>
-                    this.#optionSrv.get(this.#loginSrv.appCtx.center),
-                ),
-            )
-            .subscribe({
-                next: (opt) => {
+                switchMap(() =>this.#optionSrv.get(this.#loginSrv.appCtx.center)),
+                tap((opt) => {
                     this.transactionColumns = this.transactionColumns.filter(
                         (col) => col !== 'store' || !opt.serviceInvoiceOnly,
                     );
-                },
-                error: () => {},
-            });
-        super.ngOnInit();
-        timer(2000).subscribe(
-            () =>
-                (this.editButton.visible =
-                    this.shellSrv.getEntityRights('QOrder')?.edit ||
-                    this.#loginSrv.appCtx.manager),
-        );
+                }),
+                tap(() => this.editButton.visible = this.shellSrv.getEntityRights('QOrder')?.edit || this.#loginSrv.appCtx.manager)
+                );
     }
 
-    private weightCaptureSrv = inject(WeightCaptureService);
-    public readonly transacPagination = PaginationModel.newInstance();
+    // override ngOnInit() {
+    //     this.route.data.subscribe((data) => {
+    //         const invoicing = data['invoicing'] === true;
+    //         this.isInvoicing.set(invoicing);
+    //         this.displayedColumns = this.displayedColumns.filter(
+    //             (col) => col !== 'option' || invoicing,
+    //         );
+    //     });
+    //     this.weightCaptureSrv
+    //         .hasScaleConfig()
+    //         .pipe(
+    //             tap((exists) => {
+    //                 if (exists) {
+    //                     this.transactionColumns.push('tare', 'brut');
+    //                 }
+    //             }),
+    //             switchMap(() =>
+    //                 this.#optionSrv.get(this.#loginSrv.appCtx.center),
+    //             ),
+    //         )
+    //         .subscribe({
+    //             next: (opt) => {
+    //                 this.transactionColumns = this.transactionColumns.filter(
+    //                     (col) => col !== 'store' || !opt.serviceInvoiceOnly,
+    //                 );
+    //             },
+    //             error: () => {},
+    //         });
+    //     super.ngOnInit();
+    //     timer(2000).subscribe(
+    //         () =>
+    //             (this.editButton.visible =
+    //                 this.shellSrv.getEntityRights('QOrder')?.edit ||
+    //                 this.#loginSrv.appCtx.manager),
+    //     );
+    // }
 
-    transacLineId: number;
-    invoiceInfo: InvoiceInfo[] = [];
 
-    getInvoiceNumber(id: number) {
+    private getInvoiceNumber(id: number) {
         return this.invoiceInfo.find((inv) => inv.id === id)?.invoiceNumber;
     }
 
@@ -210,8 +234,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
                                 });
                         });
                     }),
-                )
-                .subscribe((res) => {
+                ).subscribe((res) => {
                     this.transactions = res;
                 });
         }
@@ -241,17 +264,34 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
             });
     }
 
-    getInvoices(): void {
-        const ids = this.data.map((d) => d.id).join(',');
-        this.scheduledInvoiceSrv
-            .getInvoiceInfo(ids)
-            .pipe(tap((res) => (this.invoiceInfo = res)))
-            .subscribe();
+    override processLoadedData(data:QuickOrder[]):Observable<QuickOrder[]>{
+        return  super.processLoadedData(data)
+            .pipe(
+                switchMap(() => {
+                    const ids = this.data.map((d) => d.id).join(',');
+                    return this.scheduledInvoiceSrv.getInvoiceInfo(ids);
+                }),
+                tap((res: InvoiceInfo[]) => {
+                    this.invoiceInfo = res;
+                    data.forEach((d) => {
+                        d.invoiceNumber = this.getInvoiceNumber(d.id);
+                    });
+                }),
+                switchMap(() => of(data))
+            );
     }
 
-    override refresh() {
-        super.refresh(this.getInvoices.bind(this));
-    }
+    // getInvoices(): void {
+    //     const ids = this.data.map((d) => d.id).join(',');
+    //     this.scheduledInvoiceSrv
+    //         .getInvoiceInfo(ids)
+    //         .pipe(tap((res) => (this.invoiceInfo = res)))
+    //         .subscribe();
+    // }
+    //
+    // override refresh() {
+    //     super.refresh(this.getInvoices.bind(this));
+    // }
 
     reloadTransaction(bool: boolean) {
         if (bool) {

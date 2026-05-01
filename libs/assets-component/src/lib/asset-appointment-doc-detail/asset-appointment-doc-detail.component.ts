@@ -62,9 +62,9 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     editMode = false;
     activity = 'todo';
     // public beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
-    selectedId = 0;
-    selectedRow: AssetAppointmentLine = null;
-    detailData: AssetAppointmentLine[] = [];
+    selectedId = signal(0);
+    selectedRow: AssetAppointmentLine|null = null;
+    detailData = signal<AssetAppointmentLine[]> ([]);
     childAttributes: AttribTempl[] = [];
     inputControl = new UntypedFormControl();
     officeAutoCompleteModel  = new DefaultAutoCompleteModel(this.officeSrv);
@@ -91,33 +91,37 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.beneficiaryLookup.onObjectSelected = e => this.activity = e.activityDescription;
         this.officeAutoCompleteModel.onObjectSelected = o => this.onOfficeChange(o);
         this.assetLookupModel.onObjectSelected = o => {
-            this.geoLocation = o?.geolocation;
+            this.geoLocation = o?.geolocation||'';
             this.inexistentAssets.set(o?.dateOut !== null && o?.dateOut !== undefined);
         };
         this.assetSrv.activeOnly = false;
     }
 
-    public override setupForm(b: ASSAppointmentHeader) {
-        this.validated = b?.validated || false;
-        this.editMode = b.id != 0;
-        this.activity = b?.activity;
+    override loadEntity(id:number):Observable<ASSAppointmentHeader>{
         this.attributeSrv.setParentId(ASSET_MODULE);
-        this.detailSrv.setParentId(b.id || 0);
-        this.shellSrv.addButton(this.sendBtn);
-        this.isEditable = this.saveButton.visible =
-            this.isEditable && (!b.validated || this.loginSrv.appCtx.manager);
-        this.attributeSrv
+        this.detailSrv.setParentId(id || 0);
+        return this.attributeSrv
             .attributeList(ASSET_MODULE, ATTRIB_TYPE_LOOKUP)
             .pipe(
                 tap((res) => (this.childAttributes = res)),
                 switchMap((_) => this.loginSrv.loadContext()),
                 switchMap((_) => this.detailSrv.getList(0, 5)),
+                tap((res) => {
+                    this.detailData.set(res.body||[]);
+                    this.pagination.elementCount = res.itemCount;
+                    this.updateLocationStatus();
+                }),
+                switchMap(() => super.loadEntity(id))
             )
-            .subscribe((res) => {
-                this.detailData = res.body;
-                this.pagination.elementCount = res.itemCount;
-                this.updateLocationStatus();
-            });
+    }
+
+    public override setupForm(b: ASSAppointmentHeader) {
+        this.validated = b?.validated || false;
+        this.editMode = b.id != 0;
+        this.activity = b?.activity || '';
+        this.shellSrv.addButton(this.sendBtn);
+        this.isEditable = this.saveButton.visible =
+            this.isEditable && (!b.validated || this.loginSrv.appCtx.manager);
 
         return this.formBuilder.group({
             id: [b.id],
@@ -138,14 +142,16 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     }
 
     private updateLocationStatus() {
-        const site = this.form.controls['officeId'];
-        const beneficiary = this.form.controls['beneficiaryId'];
-        if (this.pagination.elementCount > 0) {
-            site.disable({ onlySelf: true });
-            beneficiary.disable({ onlySelf: true });
-        } else {
-            site.enable({ onlySelf: true });
-            beneficiary.enable({ onlySelf: true });
+        if (this.form) {
+            const site = this.form?.controls['officeId'];
+            const beneficiary = this.form?.controls['beneficiaryId'];
+            if (this.pagination.elementCount > 0) {
+                site?.disable({ onlySelf: true });
+                beneficiary?.disable({ onlySelf: true });
+            } else {
+                site?.enable({ onlySelf: true });
+                beneficiary.enable({ onlySelf: true });
+            }
         }
     }
 
@@ -157,7 +163,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
 
 
     select(row: AssetAppointmentLine) {
-        this.selectedId = row?.id || null;
+        this.selectedId.set(row?.id || 0);
         this.selectedRow = row;
         this.inputControl.setValue(row?.assetId || 0);
     }
@@ -167,11 +173,11 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         if (row) {
             this.confirmationSrv
                 .confirmDelete()
-                .pipe(switchMap(b => b? this.detailSrv.remove(this.selectedId): of(b)),
+                .pipe(switchMap(b => b? this.detailSrv.remove(this.selectedId()): of(b)),
                     switchMap(b => typeof b === 'boolean'? of(b): this.detailSrv.getList(this.pagination.page - 1, this.pagination.pageSize)),
                     tap(res => {
                         if (typeof res !== 'boolean') {
-                            this.detailData = res.body;
+                            this.detailData.set(res.body||[]);
                             this.pagination.elementCount = res.itemCount;
                             this.updateLocationStatus();
                         }
@@ -189,11 +195,11 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                 .save({ id: 0, assetId: assetId, appointmentId: this.id})
                 .pipe(switchMap(res => this.detailSrv.getList(this.pagination.page - 1, this.pagination.pageSize)))
                 .subscribe(res => {
-                    this.detailData = res.body;
+                    this.detailData.set(res.body||[]);
                     this.pagination.elementCount = res.itemCount;
                     this.inputControl.setValue(null, {onlySelf: true});
                     this.inputControl.reset();
-                    this.selectedId = 0;
+                    this.selectedId.set(0);
                     this.updateLocationStatus();
                     this.snackBarSrv.showSuccessMessage();
                 });
@@ -201,11 +207,13 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     }
 
     private refresh() {
+        this.loading.set(true);
         this.detailSrv
             .getList(this.pagination.page - 1, this.pagination.pageSize)
             .subscribe(res => {
-                this.detailData = res.body;
+                this.detailData.set(res.body||[]);
                 this.pagination.elementCount = res.itemCount;
+                this.loading.set(false);
             });
     }
 

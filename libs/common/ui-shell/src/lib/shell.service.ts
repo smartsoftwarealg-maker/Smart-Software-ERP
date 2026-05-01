@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import {computed, inject, Injectable, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
@@ -92,7 +92,7 @@ export class ShellService {
     protected updateShellFn: () => void = null;
     protected subscription: Subscription;
     //
-    protected title: string;
+    protected _title = signal<string|null>(null);
     protected appName: string;
     //
     protected goBackFn: () => void = null;
@@ -106,9 +106,13 @@ export class ShellService {
     labels: ToolbarLabel[] = [this._companyName];
     appButtons: ToolbarButton[] = [];
     //
-    protected isLoading = false;
-    protected isError = false;
+    protected isLoading = signal(false);
+    protected isError = signal(false);
     protected retryCallback: () => void;
+
+    public loading = computed(() => this.isLoading());
+    public error   = computed(() => this.isError());
+    public shellTitle = computed(() => this._title());
 
     public goBackEnabled = true;
     // side nav data
@@ -123,16 +127,13 @@ export class ShellService {
     /* LOADING */
 
     public setLoading(isLoading: boolean) {
-        this.isLoading = isLoading;
+        this.isLoading.set(isLoading);
         this.updateShell();
     }
 
-    public getLoading() {
-        return this.isLoading;
-    }
 
     public showRetry(retryCallback: () => void) {
-        this.isError = true;
+        this.isError.set(true);
         this.retryCallback = retryCallback;
     }
 
@@ -140,16 +141,16 @@ export class ShellService {
         if (this.retryCallback) {
             this.retryCallback();
         }
-        this.isError = false;
+        this.isError.set(false);
     }
 
-    public get loading(): boolean {
-        return !this.isError && this.isLoading;
-    }
-
-    public get error(): boolean {
-        return this.isError;
-    }
+    // public get loading(): boolean {
+    //     return !this.isError && this.isLoading;
+    // }
+    //
+    // public get error(): boolean {
+    //     return this.isError;
+    // }
 
     /* SIDE NAV */
 
@@ -376,8 +377,8 @@ export class ShellService {
 
     public goBack(): void {
         if (this.hasGoBackFn) {
-            this.isError = false;
-            this.isLoading = false;
+            this.isError.set(false);
+            this.isLoading.set(false);
             this.goBackFn();
         }
     }
@@ -387,14 +388,15 @@ export class ShellService {
     }
 
     /* TITLE */
-
-    public get shellTitle(): string {
-        return this.title;
-    }
+    //
+    // public get shellTitle(): string {
+    //     return this._title();
+    // }
 
     public setTitle(t: string): void {
-        this.title = t;
-        this.updateShell();
+        console.log('Shell title set to: ' + t);
+        this._title.set(t);
+        // this.updateShell();
     }
 
     public get applicationTitle(): string {
@@ -467,12 +469,12 @@ export class ShellService {
      * to clear things set by other components
      */
     public reset(): void {
-        this.title = null;
+        this._title.set(null);
         this.goBackFn = null;
         this.disableSearch(false);
         this.buttons = this.#badgeButtonSrv.getButtons();
-        this.isLoading = false;
-        this.isError = false;
+        this.isLoading.set(false);
+        this.isError.set(false);
         // this.#badgeButtonSrv
         //     .getButtons()
         //     .forEach(b => this.addBadgeButton(b));
