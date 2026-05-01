@@ -140,6 +140,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
 
     public load() {
         this.form = null;
+        console.log('++++++++++++++++++++++++++++++++++++++++++++++loading', this.shellSrv.isLoading());
         this.preload()
             .pipe(
                 switchMap(() => this.shellSrv.loadUserRights()),
@@ -160,6 +161,9 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                     } else {
                         throw new Error('BaseEntityDetail: Entity is null');
                     }
+                    this.shellSrv.setLoading(false);
+                    this.shellSrv.setLoading(false);
+                    this.loading.set(false);
                 },
                 error: error => {
                     this.shellSrv.showRetry(() => this.load());

@@ -93,17 +93,18 @@ export class ShellService {
     protected subscription: Subscription;
     //
     protected _title = signal<string|null>(null);
-    protected appName: string;
+    protected appName = signal<string|null>(null);
     //
     protected goBackFn: () => void = null;
     protected searchControl: UntypedFormControl;
     protected searchInputLabel: string;
     public focusSearchField: boolean;
     public visibleSearchField = signal(true);
+    public applicationTitle = computed(() => this.appName());
     //
 
-    buttons: ToolbarButton[] = [];
-    labels: ToolbarLabel[] = [this._companyName];
+    buttons = signal<ToolbarButton[]>([]);
+    labels = signal<ToolbarLabel[]>([this._companyName]);
     appButtons: ToolbarButton[] = [];
     //
     protected isLoading = signal(false);
@@ -127,6 +128,7 @@ export class ShellService {
     /* LOADING */
 
     public setLoading(isLoading: boolean) {
+        console.log('0000000000000000000000000000000000000000000000000000000000000000000loading', isLoading);
         this.isLoading.set(isLoading);
         this.updateShell();
     }
@@ -399,12 +401,12 @@ export class ShellService {
         // this.updateShell();
     }
 
-    public get applicationTitle(): string {
-        return this.appName;
-    }
+    // public get applicationTitle(): string {
+    //     return this.appName;
+    // }
 
     public setApplicationTitle(t: string): void {
-        this.appName = t;
+        this.appName.set(t);
     }
 
     /* SEARCH */
@@ -472,7 +474,7 @@ export class ShellService {
         this._title.set(null);
         this.goBackFn = null;
         this.disableSearch(false);
-        this.buttons = this.#badgeButtonSrv.getButtons();
+        this.buttons.set(this.#badgeButtonSrv.getButtons());
         this.isLoading.set(false);
         this.isError.set(false);
         // this.#badgeButtonSrv
@@ -490,26 +492,24 @@ export class ShellService {
     }
 
     public setButtons(buttons: ToolbarButton[]): void {
-        this.buttons = buttons;
+        this.buttons.set(buttons);
         this.updateShell();
     }
 
     public addButton(btn: ToolbarButton): void {
-        if (this.buttons == null) {
-            this.buttons = [];
-        }
-        this.buttons.push(btn);
+        this.buttons.update(v => [...v, btn]);
         this.updateShell();
     }
+
     public addBadgeButton(btn: BadgeButton) {
         // btn.visible = false;
         this.addButton(btn);
     }
 
     public removeButton(buttonLabel: string): void {
-        this.buttons = this.buttons == null
-            ? null
-            : this.buttons.filter(b => b.label !== buttonLabel);
+        this.buttons.set(this.buttons().length == 0
+            ? []
+            : this.buttons().filter(b => b.label !== buttonLabel));
         this.updateShell();
     }
 
@@ -519,7 +519,7 @@ export class ShellService {
     }
 
     public setLabels(labels: ToolbarLabel[]): void {
-        this.labels = [this._companyName, ...labels];
+        this.labels.set([this._companyName, ...labels]);
         this.updateShell();
     }
 

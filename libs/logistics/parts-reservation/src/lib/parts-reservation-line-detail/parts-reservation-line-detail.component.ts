@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { TextFieldModule } from "@angular/cdk/text-field";
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { TranslateDirective } from '@ss/common/ui-lang';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
     selector: 'ss-parts-reservation-line-detail',
@@ -25,7 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     TextFieldModule,
     UiAutoCompleteComponent,
     TranslateDirective
-],
+    ],
     templateUrl: './parts-reservation-line-detail.component.html',
     styleUrl: '../../../../../common/assets/src/assets/transac-lines-detail.scss',
 })

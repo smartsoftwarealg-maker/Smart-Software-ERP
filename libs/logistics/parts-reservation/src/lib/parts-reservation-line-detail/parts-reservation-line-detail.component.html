@@ -1,3 +1,11 @@
+<!--@if (loading()) {-->
+<!--    <div class="spinner__div">-->
+<!--        <mat-spinner [diameter]="100"></mat-spinner>-->
+<!--    </div>-->
+<!--} @else {-->
+<!--}-->
+
+
 <div class="button_div">
     @if (isEditable) {
         <button mat-mini-fab (click)="save()"
@@ -11,9 +19,9 @@
     </button>
 </div>
 
-<mat-card>
-    <mat-card-content>
-        @if (form) {
+@if (form) {
+    <mat-card>
+        <mat-card-content>
             <form novalidate [formGroup]="form">
                 <mat-form-field id="position" class="default-50 sm-100">
                     <mat-label translate>COMMON_POSITION</mat-label>
@@ -40,7 +48,8 @@
                         </mat-error>
                     }
                     @if (showStock()) {
-                        <mat-hint class="info f-warn"><span translate>STOCK_STOCK</span>: {{ articleStock }}</mat-hint>
+                        <mat-hint class="info f-warn"><span translate>STOCK_STOCK</span>: {{ articleStock }}
+                        </mat-hint>
                     }
                 </mat-form-field>
                 <mat-form-field class="default-50 sm-100">
@@ -76,7 +85,7 @@
                     <textarea matInput formControlName="footerMemo" cdkTextareaAutosize="true"></textarea>
                 </mat-form-field>
             </form>
-        }
-        <!--                <div><pre>{{form?.value | json }}</pre></div>-->
-    </mat-card-content>
-</mat-card>
+            <!--                <div><pre>{{form?.value | json }}</pre></div>-->
+        </mat-card-content>
+    </mat-card>
+}

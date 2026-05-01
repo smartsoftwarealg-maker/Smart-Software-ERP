@@ -120,9 +120,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         return of(true);
     }
 
-    isLoading() {
-        return this.loading();
-    }
 
     public loadEntity(id: number): Observable<T> {
         this.id = id || 0;
