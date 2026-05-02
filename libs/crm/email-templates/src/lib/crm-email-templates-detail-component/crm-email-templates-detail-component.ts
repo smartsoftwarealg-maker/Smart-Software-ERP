@@ -104,7 +104,6 @@ export class CrmEmailTemplatesDetailComponent implements OnInit {
         value.createdBy = null;
         value.updatedBy = null;
         const content = toHTML(value.htmlContent);
-        console.log( value.htmlContent, content );
         value.htmlContent = content;
         this.#entitySrv
             .save(value)

@@ -140,7 +140,6 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
 
     public load() {
         this.form = null;
-        console.log('++++++++++++++++++++++++++++++++++++++++++++++loading', this.shellSrv.isLoading());
         this.preload()
             .pipe(
                 switchMap(() => this.shellSrv.loadUserRights()),

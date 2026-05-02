@@ -57,7 +57,6 @@ export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<
     }
 
     updateAll(event: MatCheckboxChange) {
-        console.log('event', event.checked);
         if (event.checked) {
             this.form?.controls['code']?.setValue(99_999);
             this.form?.disable({ onlySelf: false, emitEvent: false });

@@ -128,7 +128,6 @@ export class ShellService {
     /* LOADING */
 
     public setLoading(isLoading: boolean) {
-        console.log('0000000000000000000000000000000000000000000000000000000000000000000loading', isLoading);
         this.isLoading.set(isLoading);
         this.updateShell();
     }
@@ -396,9 +395,7 @@ export class ShellService {
     // }
 
     public setTitle(t: string): void {
-        console.log('Shell title set to: ' + t);
         this._title.set(t);
-        // this.updateShell();
     }
 
     // public get applicationTitle(): string {

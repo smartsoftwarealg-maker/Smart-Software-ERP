@@ -73,7 +73,6 @@ export class SalesContractDetailComponent extends BaseEntityDetailComponent<Proj
     }
 
     public override setupForm(b: Project) {
-        console.log('111111111111111111111111111111111111111111111111111111111111')
         const today = new Date();
         this.entitySrv.setParentId(b.customer || 0);
         return this.formBuilder.group({

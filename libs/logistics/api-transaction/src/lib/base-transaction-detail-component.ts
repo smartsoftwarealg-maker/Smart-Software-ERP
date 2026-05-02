@@ -193,7 +193,6 @@ export abstract class BaseTransactionDetailComponent
     private updateProjectStatus(p: Project) {
         debugger;
         if (!this.loading()) {
-            console.log('_________________________________loading', this.loading());
             const blocked = p?.isBlocked;
             if (blocked) {
                 this.form.controls['project'].setErrors({ blocked: true });

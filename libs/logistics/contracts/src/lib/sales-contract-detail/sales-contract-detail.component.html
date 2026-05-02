@@ -1,4 +1,4 @@
-@defer (when form !== null && !isLoading()) {
+@defer (when form !== null && !loading()) {
     <mat-card>
     <mat-card-content>
             <form novalidate [formGroup]="form">
@@ -108,7 +108,7 @@
 </mat-card>
 }
 
-@if (id  && !isLoading()) {
+@if (id  && !loading()) {
     <mat-accordion>
         <mat-expansion-panel #articles
                              expanded="false"

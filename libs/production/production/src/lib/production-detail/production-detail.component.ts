@@ -114,7 +114,6 @@ export class ProductionDetailComponent extends BaseTransactionDetailComponent {
             .preload()
             .pipe(concatMap(() => this.#appConfigSrv.getConfig()),
                 tap(res => {
-                    console.log(res?.['manufacturing']);
                     this.showPallet.set(res?.['manufacturing']?.['showPallet'] === true);
                 }));
     }

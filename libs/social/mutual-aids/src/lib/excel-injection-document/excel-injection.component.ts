@@ -56,7 +56,6 @@ export class ExcelInjectionComponent implements OnInit {
 
     onChange(e: FileList) {
         this.file = e[0];
-        console.log('file', e);
     }
 
     uploadFile() {
@@ -93,8 +92,6 @@ export class ExcelInjectionComponent implements OnInit {
                         throw err;
                     }
                 });
-        } else {
-            console.log('**************************file is empty')
         }
     }
 
