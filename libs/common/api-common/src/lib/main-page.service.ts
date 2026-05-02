@@ -1,4 +1,4 @@
-import {Injectable, signal} from '@angular/core';
+import {Injectable, signal, Signal} from '@angular/core';
 import { SideNavNode } from './models';
 
 
@@ -8,11 +8,11 @@ import { SideNavNode } from './models';
 export class MainPageService {
 
     public display = signal<SideNavNode[] | null>(null);
-    public historyStack: SideNavNode[] = [];
+    public historyStack = signal<SideNavNode[]>([]);
 
     public clear(): void {
         this.display.set(null);
-        this.historyStack = [];
+        this.historyStack.set([]);
     }
 
 }

@@ -81,7 +81,8 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
     onClick(node: SideNavNode): void {
         if (node.children) {
-            this.srv.historyStack.push(node);
+            // push node onto history signal
+            this.srv.historyStack.update(s => [...s, node]);
             this.srv.display.set(node.children||[]);
             this.updateGoBackButton();
         } else if (node.route) {
@@ -91,17 +92,18 @@ export class MainPageComponent implements OnInit, OnDestroy {
     }
 
     updateGoBackButton() {
-        this.shellSrv.setGoBackFn(this.srv.historyStack.length > 0 ? () => this.goUp() : null);
+        this.shellSrv.setGoBackFn(this.srv.historyStack().length > 0 ? () => this.goUp() : null);
     }
 
     goUp(): void {
-        if (this.srv.historyStack.length > 1) {
-            this.srv.display.set(this.srv.historyStack[this.srv.historyStack.length - 2].children);
+        if (this.srv.historyStack().length > 1) {
+            this.srv.display.set(this.srv.historyStack()[this.srv.historyStack().length - 2].children);
         } else {
             this.srv.display.set(this.shellSrv.navData);
         }
-        this.srv.historyStack.splice(this.srv.historyStack.length - 1);
-        if (!this.srv.historyStack.length) {
+        // remove last element from history
+        this.srv.historyStack.set(this.srv.historyStack().slice(0, -1));
+        if (!this.srv.historyStack().length) {
             this.shellSrv.setGoBackFn(null);
             this.shellSrv.setLabels([]);
         }

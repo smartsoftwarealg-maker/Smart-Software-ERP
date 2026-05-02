@@ -65,7 +65,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     });
 
     public readonly pagination = PaginationModel.newInstance({ page: 1, pageSize: 20, elementCount: 0 });
-    apps: string[] = [];
+    apps = signal<string[]>([]);
     treeControl = new FlatTreeControl<LogFlatNode>(
         node => node.level,
         node => node.expandable
@@ -94,7 +94,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.traceSrv
             .getApps()
-            .subscribe(res => this.apps = (res['apps'] || []).filter(e => e));
+            .subscribe(res => this.apps.set((res['apps'] || []).filter(e => e)));
 
         this.pagination.onChange = () => this.refresh();
         this.shellSrv.setTitle('COMMON_TRACEABILITY');
@@ -124,7 +124,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     }
 
     public refresh() {
-        //this.processing.set(true);
+        this.processing.set(true);
         const value = this.form.value;
         this.traceSrv.getDetails(
             value.fromDate,
