@@ -247,5 +247,8 @@
     "KEEP_ME_SIGNED":             "",
     "SUGGESTION":                  "Öneri",
     "SUGGESTIONS":                 "Öneriler",
-    "FULL_NAME": "Ad Soyad"
+    "FULL_NAME": "Ad Soyad",
+    "WRITES": "Oluşturmalar",
+    "EDITS": "Düzenlemeler",
+    "DELETES": "Silinmeler"
 }

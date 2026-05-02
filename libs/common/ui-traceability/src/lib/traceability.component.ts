@@ -92,9 +92,14 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
     ngOnInit(): void {
+        this.processing.set(true);
         this.traceSrv
             .getApps()
-            .subscribe(res => this.apps.set((res['apps'] || []).filter(e => e)));
+            .subscribe(res => {
+                this.processing.set(false);
+                this.apps.set((res['apps'] || []).filter(e => e));
+                this.processing.set(false);
+            });
 
         this.pagination.onChange = () => this.refresh();
         this.shellSrv.setTitle('COMMON_TRACEABILITY');

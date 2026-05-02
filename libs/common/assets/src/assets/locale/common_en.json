@@ -500,5 +500,8 @@
     "FULL_NAME":             "Full name",
     "CSV_EXPORT":            "Export to csv file",
     "CHECK":                 "Check",
-    "DELETED_AT":            "Deleted at"
+    "DELETED_AT":            "Deleted at",
+    "WRITES":         "Writes",
+    "EDITS":          "Edits",
+    "DELETES":        "Deletes"
 }
