@@ -39,7 +39,6 @@ export class MainPageComponent implements OnInit, OnDestroy {
     public srv = inject(MainPageService);
     public shellSrv = inject(ShellService);
     public langSrv = inject(LanguageService);
-
     public searchResult = signal<SideNavNode[]>([]);
 
 
