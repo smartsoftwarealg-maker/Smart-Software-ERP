@@ -10,7 +10,7 @@
 <div class="main-view">
   <div class=" mat-elevation-z6" style="width: 90%; margin: auto; height: 3px;"></div>
   @if (searchResult().length == 0) {
-    @for (l of srv.display; track l) {
+    @for (l of srv.display(); track l) {
       @if (l.visible) {
         <div class="app-card" (click)="onClick(l)">
           <div class="img" [style.background-color]="l.backgroundColor">

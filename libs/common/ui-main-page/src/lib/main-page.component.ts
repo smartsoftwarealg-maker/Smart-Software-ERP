@@ -54,7 +54,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
                     if (f && f.length) {
                         this.searchResult.set([]);
                         const words = lowF.split(' ');
-                        this.srv.display.forEach(t => this.searchTree(t, words, this.searchResult()));
+                        this.srv.display().forEach(t => this.searchTree(t, words, this.searchResult()));
                     } else {
                         this.searchResult.set([]);
                     }
@@ -82,7 +82,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
     onClick(node: SideNavNode): void {
         if (node.children) {
             this.srv.historyStack.push(node);
-            this.srv.display = node.children;
+            this.srv.display.set(node.children||[]);
             this.updateGoBackButton();
         } else if (node.route) {
             this.#router.navigateByUrl(node.route).then();
@@ -96,9 +96,9 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
     goUp(): void {
         if (this.srv.historyStack.length > 1) {
-            this.srv.display = this.srv.historyStack[this.srv.historyStack.length - 2].children;
+            this.srv.display.set(this.srv.historyStack[this.srv.historyStack.length - 2].children);
         } else {
-            this.srv.display = this.shellSrv.navData;
+            this.srv.display.set(this.shellSrv.navData);
         }
         this.srv.historyStack.splice(this.srv.historyStack.length - 1);
         if (!this.srv.historyStack.length) {
