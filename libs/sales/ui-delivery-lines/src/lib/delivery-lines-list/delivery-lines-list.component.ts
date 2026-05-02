@@ -29,6 +29,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { WeightCaptureDialogButtonComponent } from '@ss/sales/weight-capture';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
     selector: 'ss-delivery-lines-list',
@@ -62,10 +63,10 @@ import { WeightCaptureDialogButtonComponent } from '@ss/sales/weight-capture';
         DecimalPipe,
         TranslatePipe,
         WeightCaptureDialogButtonComponent,
+        MatProgressSpinner,
     ],
 })
-export class DeliveryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit
-{
+export class DeliveryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     displayedColumns = [
         'position',
         'store',

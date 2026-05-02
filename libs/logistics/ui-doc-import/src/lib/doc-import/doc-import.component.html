@@ -21,7 +21,7 @@
     </div>
 
     <div class="list">
-        <mat-table mat-table [dataSource]="importList" class="content-div" matSort (matSortChange)="sort($event)">
+        <mat-table mat-table [dataSource]="importList()" class="content-div" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="number">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_NUMBER</mat-header-cell>

@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild, input } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild, input, inject, signal} from '@angular/core';
 import { ImageModel } from './image-model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
@@ -14,6 +14,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     imports: [MaterialModule, TranslateDirective]
 })
 export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit {
+    public langSrv = inject(LanguageService);
 
     // @ViewChild('container', {static: true}) container: ElementRef;
     @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
@@ -24,15 +25,15 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
     public model: ImageModel;
 
     public url: string;
-    public safeUrl: SafeUrl;
+    public safeUrl = signal<SafeUrl|null>(null);
 
     constructor(private ref: ElementRef,
-                public langSrv: LanguageService,
                 private sanitizer: DomSanitizer,
                 private renderer: Renderer2) {
     }
 
-    readonly alt = input('');
+    readonly alt = input<string>('');
+
 
     // TODO: Skipped for migration because:
     //  Accessor inputs cannot be migrated as they are too complex.
@@ -112,7 +113,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
             URL.revokeObjectURL(this.url);
         }
         this.url = null;
-        this.safeUrl = null;
+        this.safeUrl.set(null);
     }
 
     public updateSize(): void {
@@ -133,7 +134,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
         const blob = this.model.getBlob();
         if (blob && blob.size > 0) {
             this.url = URL.createObjectURL(blob);
-            this.safeUrl = this.sanitizer.bypassSecurityTrustUrl(this.url);
+            this.safeUrl.set(this.sanitizer.bypassSecurityTrustUrl(this.url));
         }
     };
 
@@ -142,7 +143,7 @@ export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit 
             this.model.deleteImage();
         }
         this.url = null;
-        this.safeUrl = null;
+        this.safeUrl.set(null);
     }
 
     onFileSelect(e: File): void {

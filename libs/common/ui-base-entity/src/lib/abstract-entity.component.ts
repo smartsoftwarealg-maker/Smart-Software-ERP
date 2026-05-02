@@ -1,4 +1,4 @@
-import { Directive, inject, OnDestroy, OnInit } from '@angular/core';
+import { Directive, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import { switchMap, tap } from 'rxjs/operators';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { Observable, of, Subscription } from 'rxjs';
@@ -8,6 +8,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 @Directive()
 export abstract class AbstractEntityComponent<T extends { id: number }> implements OnInit, OnDestroy {
+    public loading = signal(true);
     public shellSrv = inject(ShellService);
     public snackBarSrv = inject(SnackBarService);
     public confirmationSrv = inject(ConfirmationDialogService);
@@ -27,7 +28,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     protected constructor(public entitySrv: BaseEntityService<T>) {}
 
     public save() {
-        this.form.markAllAsTouched();
+        this.form?.markAllAsTouched();
         if (!this.isValidForm()) {
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
             return;
@@ -39,7 +40,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         const val = this.readForm();
         // val.id = this.queryId || val.id;
         this.shellSrv.setLoading(true);
-        this.shellSrv.setFetching(true);
         const obs = val.id === 0 ?
             this.entitySrv
                 .add2(val) // REMOVED `.add` TO SOLVE IDIOTS' PROBLEM
@@ -61,21 +61,19 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
 
         obs.subscribe({
             next: () => {
-                this.shellSrv.setLoading(false);
                 this.goBack();
                 this.form.markAsUntouched();
                 this.form.markAsPristine();
                 this.form.markAsUntouched({onlySelf: false});
                 this.snackBarSrv.showSuccessMessage();
-                this.shellSrv.setFetching(false);
-                // this.saveButton.disabled = false;
+                // this.shellSrv.setLoading(false);
+                // this.loading.set(false);
             },
             error: err => {
-                console.log(err);
                 this.snackBarSrv.showFailureMessage();
-                this.shellSrv.setLoading(false);
-                this.shellSrv.setFetching(false);
                 this.saveButton.disabled = false;
+                this.shellSrv.setLoading(false);
+                this.loading.set(false);
                 throw err;
             }
         });
@@ -86,7 +84,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     }
 
     protected isValidForm() {
-        return this.form.valid;
+        return this.form?.valid;
     }
 
     public get id() {
@@ -106,8 +104,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     }
 
     ngOnInit() {
-        const rights = this.shellSrv.getCurrentNodeRights();
-        this.isEditable = rights.edit || rights.write;
     }
 
     ngOnDestroy() {
@@ -124,9 +120,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         return of(true);
     }
 
-    isLoading() {
-        return this.shellSrv.getLoading();
-    }
 
     public loadEntity(id: number): Observable<T> {
         this.id = id || 0;
@@ -145,12 +138,12 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
 
     public finishLoading(e: T) {
         this.form = this.setupForm(e);
-        this.shellSrv.setLoading(false);
-        this.saveButton.disabled = false;
         if (!this.isEditable && this.form) {
             this.form.disable();
         }
-        this.shellSrv.setLoading(false);
+        // this.shellSrv.setLoading(false);
+        // this.shellSrv.setLoading(false);
+        // this.loading.set(false);
     }
 
     cancel() {

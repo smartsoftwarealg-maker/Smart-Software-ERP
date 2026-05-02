@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal} from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -7,6 +7,7 @@ import { CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL, UPDATE_PASSWORD_URL } fro
 import { HttpService } from './http.service';
 import { MainPageService } from './main-page.service';
 import { CompanySelectorService } from './company-selector.service';
+import {AppConfigService} from "./app-config.service";
 
 export enum LicenseErrorType {
     UserLicense = 1000,
@@ -43,6 +44,7 @@ export class LoginService {
     public errorCode = 0;
     public licenseErrorType: LicenseErrorType = null;
     public baseURL: string = 'test';
+    public fullUserName = signal('');
 
 
     get isLoggedIn(): boolean {
@@ -55,6 +57,7 @@ export class LoginService {
 
     public setContext(info: LoginInfo, isPrivate: boolean) {
         this.appCtx = info.ctx;
+        this.fullUserName.set(info?.ctx?.fullName||'');
         if (isPrivate) {
             this.#httpSrv.updatePrivateAuthToken(info.jwt);
         } else {
@@ -126,9 +129,10 @@ export class LoginService {
                 .pipe(tap((info: LoginInfo) => this.setContext(info, this.isPrivate()))) : of(null);
     }
 
-    public userLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void, isPrivate: boolean = false) {
+    public userLogin(user: { username: string, password: string }, isAndroid: boolean, onFinish?: () => void) {
         this.wrongData = false;
         this.licenseErrorType = null;
+        const isPrivate = this.#httpSrv.isPrivate();
         this.#httpSrv
             .doLogin('/login', user)
             .subscribe({
@@ -192,11 +196,13 @@ export class LoginService {
             password: string
         },
         isAndroid: boolean,
-        onFinish?: () => void,
-        isPrivate: boolean = false) {
+        onFinish?: () => void) {
         this.baseURL = this.#httpSrv.baseUrl;
         this.licenseErrorType = null;
         this.wrongData = false;
+
+        const isPrivate = this.#httpSrv.isPrivate();
+
         this.#httpSrv
             .doLogin(url, credential)
             .subscribe({

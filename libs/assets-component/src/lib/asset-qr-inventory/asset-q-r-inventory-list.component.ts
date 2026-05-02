@@ -245,10 +245,15 @@ export class AssetQRInventoryListComponent
     }
 
     update(e: InventoryAsset) {
+        this.loading.set(true);
         e.documentId = this.#documentId;
-        this.entitySrv.update(e).subscribe((res) => {
-            e.inventoryId = e.inventoryId ? null : res;
-            this.selectRow(e);
+        this.entitySrv
+            .update(e)
+            .pipe(
+                tap((res) => this.selectRow(e))
+            ).subscribe((res) => {
+                e.inventoryId = e.inventoryId ? null : res;
+                this.loading.set(false);
         });
     }
 

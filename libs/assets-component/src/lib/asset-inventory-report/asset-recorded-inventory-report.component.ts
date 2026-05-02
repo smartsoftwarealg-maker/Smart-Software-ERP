@@ -33,11 +33,11 @@ import {debounceTime, distinctUntilChanged} from "rxjs/operators";
 export class AssetRecordedInventoryReportComponent implements OnInit {
     private listSrv = inject(AssetRecordedInventoryService);
     isEditable = true;
-    documentId = input<AssetInventoryDoc>(null);
-    recorded   = input<boolean>(false);
-    selectedRow: InventoryAsset|null = null;
-    selected = 0;
-    data: InventoryAsset[] = [];
+    documentId  = input<AssetInventoryDoc|null>(null);
+    recorded    = input<boolean>(false);
+    selectedRow = signal<InventoryAsset|null>(null);
+    selected    = signal(0);
+    data = signal<InventoryAsset[]>([]);
     displayedColumns = [
         'reference',
         'description',
@@ -58,6 +58,7 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
     pagination = PaginationModel.newInstance({pageSize: 5, page: 1, elementCount: 0});
 
     filter = new FormControl('');
+    loading = signal(true);
 
     constructor() {
         effect(() => {
@@ -79,9 +80,13 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
     }
 
     private refresh() {
+        this.loading.set(true);
         this.listSrv
-            .getPage(this.pagination, this.filter.getRawValue())
-            .subscribe(res => this.data = res);
+            .getPage(this.pagination, this.filter.getRawValue()||undefined)
+            .subscribe(res => {
+                this.data.set(res);
+                this.loading.set(false);
+            });
     }
 
     sort(event: Sort) {
@@ -90,13 +95,14 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
     }
 
     selectRow(row: InventoryAsset) {
-        this.selectedRow = row;
-        this.selected = row?.id;
+        this.selectedRow.set(row);
+        this.selected.set(row?.id||0);
     }
 
     ngOnInit() {
-        this.data = [];
-        this.filter.valueChanges
+        this.data.set([]);
+        this.filter
+            .valueChanges
             .pipe(
                 debounceTime(300),         // wait 300ms after the user stops typing
                 distinctUntilChanged()      // only refresh if the value actually changed

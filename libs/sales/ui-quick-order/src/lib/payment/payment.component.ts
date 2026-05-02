@@ -1,4 +1,4 @@
-import { Component, effect, inject, input } from '@angular/core';
+import { Component, effect, inject, input, signal} from '@angular/core';
 import { SnackBarService } from '@ss/common/ui-shell';
 import {
     UntypedFormGroup,
@@ -68,6 +68,7 @@ export class PaymentComponent {
     modeAutoCompleteModel = new DefaultAutoCompleteModel(this.#typeSrv);
 
     quickOrder: QuickOrder;
+    isLoading = signal(true);
     id = input(0);
     isInvoice = input(false);
     public form: UntypedFormGroup | null = null;
@@ -87,6 +88,7 @@ export class PaymentComponent {
 
     loadPayment() {
         if (this.id()) {
+            this.isLoading.set(true);
             this.#quickOrderSrv.get(this.id()).subscribe({
                 next: (quickOrder) => {
                     this.quickOrder = quickOrder;
@@ -101,6 +103,7 @@ export class PaymentComponent {
             this.#entitySrv.get(id).subscribe({
                 next: (payment) => {
                     this.form = this.setupForm(payment);
+                    this.isLoading.set(false);
                 },
             });
         } else {
@@ -270,6 +273,7 @@ export class PaymentComponent {
                 this.form?.controls['credit']?.setValue(
                     fft?.value | vf?.value | 0,
                 );
+                this.isLoading.set(false);
             },
         });
     }

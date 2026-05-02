@@ -84,7 +84,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         click: () => this.toggleActivity(),
     }
 
-    displayedColumns = this.DEF_COLS;
+    displayedColumns = signal(this.DEF_COLS);
     activeOnly = signal(false);
 
 
@@ -114,7 +114,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
     override preload(): Observable<any> {
         return this.isParamSrv
             .is('AQS')
-            .pipe(tap(res => res? this.displayedColumns = this.AQS_COLS : this.DEF_COLS));
+            .pipe(tap(res => this.displayedColumns.set(res?  this.AQS_COLS : this.DEF_COLS)));
     }
 
     protected override postInit():any{
@@ -147,7 +147,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
     override selectRow(row: Asset) {
         super.selectRow(row);
         this.duplicateBtn.disabled = !row?.id;
-        this.deleteButton.disabled = row.isFinal;
+        this.deleteButton.disabled = row.isFinal||false;
     }
 
     private toggleActivity() {

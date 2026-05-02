@@ -64,44 +64,44 @@ export class CenterSelectComponent implements OnInit {
     private router = inject(Router);
     private rightsSrv = inject(UserRightsService);
     private shellSrv = inject(ShellService);
-    companyList: Company[] = [];
-    centerList: Center[] = [];
 
+    companyList = signal<Company[]>([]);
+    centerList = signal<Center[] >([]);
     companyLoaded = signal(false);
-
-    selectedCompany = 0;
-    selectedCenter = 0;
-
-    selectedCompanyName: string;
-
-    loadingCenters = true;
+    selectedCompany = signal(0);
+    selectedCenter = signal(0);
+    selectedCompanyName = signal<string>('');
+    loadingCenters = signal(true);
 
     centerControl = new FormControl<string>('');
-    filteredCenters: Observable<Center[]>;
+    filteredCenters = signal<Observable<Center[]>|null>(null);
 
     @ViewChild('stepper', { static: false }) stepper: MatStepper;
 
     ngOnInit() {
-        this.companyList = [];
+        this.companyList.set([]);
         this.mainPageSrv.clear();
-        this.filteredCenters = this.centerControl.valueChanges.pipe(
+        const tmp = this.centerControl.valueChanges.pipe(
             startWith(''),
             debounceTime(300),
             distinctUntilChanged(),
             map((value) =>
-                this.centerList.filter((c) =>
+                this.centerList().filter((c) =>
                     c.description
                         ?.toLocaleLowerCase()
                         .includes(value.toLocaleLowerCase()),
                 ),
             ),
         );
+        this.filteredCenters.set(tmp);
 
-        this.ccListSrv.getCompanyList().subscribe({
+        this.ccListSrv
+            .getCompanyList()
+            .subscribe({
             next: (r) => {
-                this.companyList = r;
-                if (this.companyList.length === 1) {
-                    this.selectCompany(this.companyList[0].id);
+                this.companyList.set(r);
+                if (r.length === 1) {
+                    this.selectCompany(r[0].id);
                 } else {
                     this.companyLoaded.set(r.length > 0);
                 }
@@ -114,25 +114,26 @@ export class CenterSelectComponent implements OnInit {
     }
 
     selectCompany(company: number) {
-        this.selectedCompany = company;
-        this.centerList = [];
+        this.selectedCompany.set(company);
+        this.centerList .set([]);
         if (company > 0) {
-            this.selectedCompanyName = this.companyList
+            this.selectedCompanyName.set(this.companyList()
                 .filter((c) => c.id === company)
-                .map((c) => c.description)[0];
+                .map((c) => c.description)[0]);
             setTimeout(() => {
                 if (this.stepper) {
                     this.stepper.next();
                 }
             });
             // this.loading = true;
-            this.loadingCenters = true;
-            this.ccListSrv.getCenterList(company).subscribe({
+            this.loadingCenters.set(true);
+            this.ccListSrv
+                .getCenterList(company)
+                .subscribe({
                 next: (r) => {
-                    this.centerList = r;
-                    this.loadingCenters = false;
-                    if (this.centerList.length === 1) {
-                        this.selectCenter(this.centerList[0].id);
+                    this.centerList.set(r);
+                    if (r.length === 1) {
+                        this.selectCenter(r[0].id);
                         this.onDone();
                     } else {
                         setTimeout(() => {
@@ -142,25 +143,26 @@ export class CenterSelectComponent implements OnInit {
                         }, 200);
                         this.companyLoaded.set(r.length > 0);
                     }
+                    this.loadingCenters.set(false);
                 },
                 error: (err) => {
-                    this.loadingCenters = false;
+                    this.loadingCenters.set(false);
                     throw err;
                 },
             });
         } else {
-            this.selectedCompanyName = null;
+            this.selectedCompanyName.set('');
         }
     }
 
     selectCenter(center: number) {
-        this.selectedCenter = center;
+        this.selectedCenter.set(center);
     }
 
     onDone() {
-        if (this.selectedCenter > 0) {
+        if (this.selectedCenter() > 0) {
             this.loginSrv
-                .centerLogin(this.selectedCenter)
+                .centerLogin(this.selectedCenter())
                 .pipe(
                     switchMap((_) => this.rightsSrv.load()),
                     tap((res) => this.rightsSrv.loadMap(res)),
@@ -172,10 +174,8 @@ export class CenterSelectComponent implements OnInit {
                             ? PROFILE_PAGE_URL
                             : INDEX_PAGE_URL;
                         this.shellSrv.setCompanyName(
-                            this.centerList.filter(
-                                (c) => c.id === this.selectedCenter,
-                            )[0]?.description,
-                        );
+                            this.centerList()
+                                .filter((c) => c.id === this.selectedCenter())[0]?.description);
                         this.loginSrv.appCtx.accPeriod =
                             this.loginSrv.appCtx.accFile = 0;
                         this.shellSrv.setLabels([]);
@@ -213,15 +213,15 @@ export class CenterSelectComponent implements OnInit {
 
     onStepSelectionChanged(e: { selectedIndex: number} ) {
         if (e.selectedIndex === 0) {
-            this.selectedCompany = 0;
-            this.selectedCompanyName = null;
-            this.centerList = [];
+            this.selectedCompany.set(0);
+            this.selectedCompanyName.set('');
+            this.centerList.set([]);
         }
     }
 
     select(e: MatAutocompleteSelectedEvent) {
         const search = e.option.value;
-        const selection = this.centerList.find((c) => c.description === search);
-        this.selectedCenter = selection?.id || 0;
+        const selection = this.centerList().find((c) => c.description === search);
+        this.selectedCenter.set(selection?.id || 0);
     }
 }

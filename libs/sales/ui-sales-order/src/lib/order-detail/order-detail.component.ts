@@ -11,9 +11,9 @@ import {
     FormsModule,
     ReactiveFormsModule,
 } from '@angular/forms';
-import { Lookup, LookupsService } from '@ss/common/api-lookup';
+import {DeliveryTimeService, Lookup, LookupsService, ShipmentModeService} from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { of, switchMap } from 'rxjs';
+import {Observable, of, switchMap, tap} from 'rxjs';
 import {
     fillObject,
     LoginService,
@@ -35,6 +35,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { PaymentComponent } from '../../../../ui-quick-order/src/lib/payment/payment.component';
 import { WeightCaptureService } from '@ss/sales/weight-capture';
+import {form} from "@angular/forms/signals";
 
 @Component({
     imports: [
@@ -97,17 +98,15 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
         this.agentLookup.onObjectSelected = (e) =>
             this.purchaseProjectSrv.setParentId(e?.id || 0);
     }
-
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.addButton(this.importContractBtn);
-        this.weightCaptureSrv.hasScaleConfig().subscribe({
-            next: (exists) => {
-                this.isScaleExist = exists;
-            },
-            error: () => {},
-        });
+    preload():Observable<any>{
+        return  super.preload()
+            .pipe(
+                tap(() => this.shellSrv.addButton(this.importContractBtn)),
+                switchMap(() => this.weightCaptureSrv.hasScaleConfig()),
+                tap((exists) => this.isScaleExist = exists)
+            );
     }
+
 
     override readForm(): Transaction {
         const form = super.readForm();
@@ -140,10 +139,10 @@ export class OrderDetailComponent extends BaseTransactionDetailComponent {
         }
     }
 
-    finishLoading(e: Transaction) {
-        super.finishLoading(e);
-        this.importContractBtn.visible = !e.isValidated;
-    }
+    // finishLoading(e: Transaction) {
+    //     super.finishLoading(e);
+    //     this.importContractBtn.visible = !e.isValidated;
+    // }
 
     protected requireAgent(): boolean {
         return true;

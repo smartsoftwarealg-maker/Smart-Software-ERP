@@ -141,7 +141,6 @@ export class InventoryImportComponent {
     }
 
     onFileSelected(files: unknown) {
-        console.log(this.form.valid);
         const file: File = files[0];
         if (file) {
             this.fileName = file.name;
@@ -151,7 +150,6 @@ export class InventoryImportComponent {
                 .filter(([k, v]) => v != null)
                 .forEach(([k, v]) => formData.append(k, v.toString()));
             this.processing.set(true);
-            console.log('form data', formData);
             this.uploadSub = this.injectSrv
                 .upload(formData)
                 .pipe(finalize(() => this.reset()))
@@ -190,7 +188,6 @@ export class InventoryImportComponent {
     }
 
     onChange(e: unknown) {
-        console.log(this.form);
         this.fileName = e[0]?.name;
     }
 

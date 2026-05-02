@@ -1,4 +1,4 @@
-@if (form && form.value['appId'] > 0) {
+@if (loaded()) {
   <form novalidate [formGroup]="form">
     <div class="input__div">
       <mat-form-field class="default-50 sm-100">

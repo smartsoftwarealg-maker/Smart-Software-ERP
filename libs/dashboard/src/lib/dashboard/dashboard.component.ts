@@ -65,7 +65,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     generating = signal(false);
 
     headers: string[] = ['test'];
-    dashboardData: any[][] = [['test']];
+    dashboardData= signal<any[][]>([['']]);
     detailPagination = PaginationModel.newInstance({
         page: 1,
         pageSize: 50,
@@ -161,8 +161,9 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.validData.set(false);
         super.select(id || getApplicationId(this.router));
         this.headers = [];
-        this.dashboardData = [];
+        this.dashboardData.set([[]]);
         if (id) {
+            this.setLoading(true);
             this.shellSrv.setLoading(true);
             this.dashboardSrv
                 .getHeaders(id)
@@ -180,6 +181,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         const from = this.langSrv.formatDate(this.fromDate.value);
         const to = this.langSrv.formatDate(this.toDate.value);
         this.shellSrv.setLoading(true);
+        this.setLoading(true);
         this.dashboardSrv
             .getData(
                 this.selected,
@@ -193,12 +195,14 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
             )
             .subscribe({
                 next: (res) => {
-                    this.dashboardData = res.body;
+                    this.dashboardData.set(res.body);
                     this.detailPagination.elementCount = res.itemCount;
                     this.shellSrv.setLoading(false);
+                    this.setLoading(false);
                 },
                 error: (err) => {
                     this.shellSrv.setLoading(false);
+                    this.setLoading(false);
                     throw err;
                 },
             });
@@ -215,6 +219,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         const consolidated = this.consolidated.value;
         this.generating.set(true);
         this.shellSrv.setLoading(true);
+        this.setLoading(true);
 
         this.dashboardSrv
             .getExcel(
@@ -249,6 +254,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 next: () => {
                     this.generating.set(false);
                     this.shellSrv.setLoading(false);
+                    this.setLoading(false);
                 },
                 error: (err) => {
                     this.generating.set(false);
@@ -407,7 +413,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         return {
             type: 'bar',
             data: {
-                labels: this.dashboardData.map((a) => a[0]?.toString()),
+                labels: this.dashboardData().map((a) => a[0]?.toString()),
                 // labels: this.dashboardData.map(
                 //     (row) => row[0]?.toString() || '',
                 // ),
@@ -495,7 +501,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
             )
             .subscribe({
                 next: (res) => {
-                    this.dashboardData = res.body;
+                    this.dashboardData.set(res.body);
                     this.detailPagination.elementCount = res.itemCount;
                     this.chartComponent?.destroy();
                     if (res.itemCount < 50 && res.itemCount > 0) {
@@ -505,6 +511,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                     }
                     this.smallData.set(res.itemCount <= 50);
                     this.validData.set(res.itemCount > 0);
+                    this.setLoading(false);
                     this.shellSrv.setLoading(false);
                 },
                 error: (err) => {
@@ -545,19 +552,19 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         const indices: number[] = [];
         const matrix: number[][] = [];
 
-        if (!this.dashboardData?.length || !this.dashboardData[0]?.length) {
+        if (!this.dashboardData()?.length || !this.dashboardData()[0]?.length) {
             return { indices, matrix };
         }
 
-        const totalRows = this.dashboardData.length;
-        const totalCols = Math.min(maxColumns, this.dashboardData[0].length);
+        const totalRows = this.dashboardData().length;
+        const totalCols = Math.min(maxColumns, this.dashboardData()[0].length);
 
         for (let col = 0; col < totalCols; col++) {
             const tempValues: number[] = new Array(totalRows);
             let columnIsValid = false;
 
             for (let row = 0; row < totalRows; row++) {
-                const rawValue = this.dashboardData[row][col];
+                const rawValue = this.dashboardData()[row][col];
                 // Quick rejection: any forbidden character (letters, symbols except those allowed)
                 if (/[^\d,.% -]/.test(rawValue)) {
                     columnIsValid = false;

@@ -2,7 +2,7 @@
 
 <div class="main-div">
   <div class="class__list">
-    <mat-list role="mat-list">
+    <mat-list role="list">
       @for (c of classes$ | async; track c) {
         <mat-list-item role="listitem"
           [class.selected]="c.id === selectedClass"
@@ -19,8 +19,7 @@
       <div>
         <div class="imj">
           @if (uploadUtil.imgSrc !== './assets/img/Dummy.png') {
-            <img [src]="uploadUtil.imgSrc"
-              />
+            <img [src]="uploadUtil.imgSrc" alt=""  />
           }
         </div>
       </div>

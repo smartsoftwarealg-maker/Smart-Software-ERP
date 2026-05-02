@@ -10,9 +10,6 @@ import { AbstractEntityComponent } from './abstract-entity.component';
 
 @Directive()
 export abstract class BaseEntityDetailComponent<T extends { id: number }> extends AbstractEntityComponent<T> implements OnInit, OnDestroy {
-    public loaded = signal(false);
-
-
     protected constructor(
         public override entitySrv: BaseEntityService<T>,
         public override shellSrv: ShellService,
@@ -26,9 +23,6 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
 
     public override ngOnInit() {
         super.ngOnInit();
-        this.shellSrv.setTitle(this.title); // set title save as list
-        this.shellSrv.setGoBackPath('..', this.route);
-        this.shellSrv.setButtons([this.saveButton]);
         this.load();
     }
 
@@ -44,19 +38,19 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
         return of(null);
     }
 
-    public postLod(): Observable<unknown> {
-        return of(null);
-    }
 
-    isLoading() {
-        return this.shellSrv.getLoading();
-    }
 
     public load() {
         this.shellSrv.setLoading(true);
+        this.loading.set(true);
 
         this.preload()
             .pipe(
+                tap(() => {
+                        this.shellSrv.setTitle(this.title); // set title save as list
+                        this.shellSrv.setGoBackPath('..', this.route);
+                        this.shellSrv.setButtons([this.saveButton]);
+                }),
                 switchMap(() => this.shellSrv.loadUserRights()),
                 tap(() => {
                     const rights = this.shellSrv.getCurrentNodeRights();
@@ -65,18 +59,22 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                 }),
                 switchMap(() => this.getRouteParam()),
                 tap(p => this.queryId = +p['id'] || 0),
-                switchMap(() => this.loadEntity(this.queryId || 0)))
-            .subscribe({
+                switchMap(() => this.loadEntity(this.queryId || 0)),
+                tap(() =>       this.saveButton.disabled = false)
+            ).subscribe({
                 next: entity => {
                     if (entity) {
                         this.finishLoading(entity);
                     } else {
                         throw new Error('BaseEntityDetail: Entity is null');
                     }
-                    this.loaded.set(true);
+                    this.loading.set(false);
+                    this.shellSrv.setLoading(false); // stop the animation
                 },
                 error: error => {
                     this.shellSrv.showRetry(() => this.load());
+                    this.loading.set(false);
+                    this.shellSrv.setLoading(false); // stop the animation
                     throw error;
                 }
             });

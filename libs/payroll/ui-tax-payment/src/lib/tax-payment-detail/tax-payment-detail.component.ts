@@ -102,7 +102,6 @@ export class TaxPaymentDetailComponent extends BaseEntityDetailComponent<TaxPaym
             this.router.navigate(['../'], { relativeTo: this.route }).then();
             console.warn('Parent id is not set');
         }
-        console.log(this.entitySrv.getParentId());
         super.ngOnInit();
     }
 }

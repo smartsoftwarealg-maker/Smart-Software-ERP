@@ -75,6 +75,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
 
     showParameterSaveButton = signal(false);
     isResponsible = signal(false);
+    isReady = signal(false);
 
     @ViewChild('tree', {static: false}) tree: MatTree<unknown>;
 
@@ -88,6 +89,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     pdfSrc: string | null = null;
     htmlSrc: SafeHtml = null;
     generating = signal(false);
+    loading = signal(false);
     // leftPaneHidden = false;
     isAndroid = false;
     form: UntypedFormGroup = null;
@@ -159,12 +161,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
                 .set('app', this.app)) : of([]);
     }
 
-    isReady(): boolean {
-        return this.form != null && !this.shellSrv.loading;
-    }
 
     reportSelect(reportNode: ReportNode) {
         this.form = null;
+        this.isReady.set(false);
         this.selectedReport = reportNode;
         super.refresh(() => {
             const cc = {reportType: new FormControl<string>(''), name: new FormControl<string>('')};
@@ -182,6 +182,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
             });
             cc['reportType'] = new FormControl(this.isLTM() ? 'HTML' : 'PDF');
             this.form = new FormGroup(cc);
+            this.isReady.set(true);
         });
     }
 

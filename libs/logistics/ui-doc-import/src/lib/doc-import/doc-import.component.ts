@@ -1,4 +1,4 @@
-import {Component, DestroyRef, inject, Inject, OnInit} from "@angular/core";
+import {Component, DestroyRef, inject, Inject, OnInit, signal} from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup} from '../lookup';
 import {ImportInfo} from '../import-info';
@@ -61,7 +61,7 @@ export class DocImportComponent implements OnInit {
     private agentId = 0;
     private destination = 0;
     public documentList: Lookup[];
-    public importList: ImportInfo[] = [];
+    public importList = signal<ImportInfo[]>([]);
     readonly displayedColumns = ['number', 'date', 'reference', 'refDate'];
 
     public document = new FormControl<number>(0);
@@ -106,7 +106,7 @@ export class DocImportComponent implements OnInit {
                     ),
                 )
                 .subscribe((res) => {
-                    this.importList = res.body;
+                    this.importList.set(res.body);
                     this.paginator.elementCount = res.itemCount;
                 }),
         );
@@ -127,7 +127,7 @@ export class DocImportComponent implements OnInit {
                     ),
                 )
                 .subscribe((res) => {
-                    this.importList = res.body;
+                    this.importList.set(res.body);
                     this.paginator.elementCount = res.itemCount;
                 }),
         );
@@ -148,7 +148,7 @@ export class DocImportComponent implements OnInit {
                     ),
                 )
                 .subscribe((res) => {
-                    this.importList = res.body;
+                    this.importList.set(res.body);
                     this.paginator.elementCount = res.itemCount;
                 }),
         );
@@ -185,7 +185,7 @@ export class DocImportComponent implements OnInit {
                 this.paginator.pageSize,
             )
             .subscribe((res) => {
-                this.importList = res.body;
+                this.importList.set(res.body);
                 this.paginator.elementCount = res.itemCount;
             });
     }

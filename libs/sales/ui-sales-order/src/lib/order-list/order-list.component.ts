@@ -25,12 +25,13 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { DatePipe } from '@angular/common';
-import { InvoiceInfo } from '../../../../ui-quick-order/src/lib/quick-order.api';
+import { InvoiceInfo } from '@ss/sales/ui-quick-order';
 import { tap } from 'rxjs';
-import { QuickOrderService } from '../../../../ui-quick-order/src/lib/quick-order.service';
+import { QuickOrderService } from '@ss/sales/ui-quick-order';
 import { MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { WeightCaptureService } from '@ss/sales/weight-capture';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
     selector: 'ss-ui-order',
@@ -60,6 +61,7 @@ import { WeightCaptureService } from '@ss/sales/weight-capture';
         DatePipe,
         MatIconButton,
         MatTooltip,
+        MatProgressSpinner,
     ],
 })
 export class OrderListComponent extends BaseEntityListComponent<Transaction> {
@@ -105,13 +107,17 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
     }
 
     getInvoices(): void {
+        this.setLoading(true);
         const ids = this.data.map((d) => d.id).join(',');
 
-        this.quickOrderSrv.getInvoiceInfo(ids).subscribe({
+        this.quickOrderSrv
+            .getInvoiceInfo(ids).subscribe({
             next: (res) => {
                 this.invoiceInfo = res;
+                this.setLoading(false);
             },
             error: (err) => {
+                this.setLoading(false);
                 throw err;
             },
         });

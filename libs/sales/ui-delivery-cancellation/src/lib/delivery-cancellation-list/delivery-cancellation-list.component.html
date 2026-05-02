@@ -1,12 +1,12 @@
-
+@defer (when !loading()) {
     <div class="table-container">
-        <mat-table mat-table [dataSource]="data" class="main-table"  matSort (matSortChange)="sort($event)">
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
 
             <ng-container matColumnDef="number">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_NUMBER</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{e.number}}
+                    {{ e.number }}
                 </mat-cell>
             </ng-container>
 
@@ -76,3 +76,4 @@
         }">
         </ss-doc-info>
     </div>
+}

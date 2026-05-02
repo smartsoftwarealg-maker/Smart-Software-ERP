@@ -10,7 +10,7 @@ import {
     PaginatorPersistenceService,
     Right,
 } from '@ss/common/api-common';
-import { Directive, OnDestroy, OnInit, signal } from '@angular/core';
+import { Directive, OnDestroy, OnInit, Signal, signal } from '@angular/core';
 import { concatMap, Observable, of, Subscription } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -20,10 +20,9 @@ import { Sort } from '@angular/material/sort';
 
 @Directive()
 export class BaseEntityListComponent<T extends { id: number; email?: string }>
-implements OnInit, OnDestroy
-{
+implements OnInit, OnDestroy {
     private _editable = true;
-    private reportForm: string = null;
+    private reportForm: string|null = null;
 
     subscriptions: Subscription[] = [];
     loading = signal(true);
@@ -106,7 +105,7 @@ implements OnInit, OnDestroy
     public sortBy: string;
     //
     public data: T[] = [];
-    public selectedRow: T = null;
+    public selectedRow: T|null = null;
 
     //
 
@@ -161,7 +160,7 @@ implements OnInit, OnDestroy
             ? 'COMMON_EDIT_SELECTED'
             : 'COMMON_DETAIL';
 
-        this._editable = rights?.edit;
+        this._editable = rights?.edit||true;
 
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
@@ -187,7 +186,6 @@ implements OnInit, OnDestroy
                 concatMap(() => this.postInit()),
             ).subscribe(() => {
                 this.loading.set(false);
-                this.shellSrv.setFetching(false);
             });
     }
 
@@ -224,10 +222,10 @@ implements OnInit, OnDestroy
     }
 
     public refresh(callback?: () => void) {
+        this.setLoading(true);
         this.releaseResources();
         this.data = [];
         this.shellSrv.setLoading(this.canShowProcessingStatus());
-        this.shellSrv.setFetching(true);
         (this.preload() || of(null))
             .pipe(switchMap(() => this.getPage()))
             .subscribe({
@@ -236,11 +234,13 @@ implements OnInit, OnDestroy
                     if (callback) {
                         callback();
                     }
+                    this.shellSrv.setLoading(false);
+                    this.loading.set(false);
                 },
                 error: (err) => {
                     this.data = []; // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
-                    this.shellSrv.setFetching(true);
+                    this.loading.set(false);
                     throw err;
                 },
             });
@@ -261,10 +261,11 @@ implements OnInit, OnDestroy
     }
 
     public finishLoading(data: T[]) {
-        this.processLoadedData(data).subscribe((x) => {
-            this.data = x;
-            this.shellSrv.setLoading(false);
-            this.shellSrv.setFetching(false);
+        this.processLoadedData(data)
+            .subscribe((x) => {
+                this.data = x;
+                this.shellSrv.setLoading(false);
+                this.setLoading(false);
         });
     }
 
@@ -294,7 +295,7 @@ implements OnInit, OnDestroy
     }
 
     public select(id: number): void {
-        this.selected = id;
+        this.entitySrv.selectedId.set(id);
         if (id) {
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }
@@ -442,11 +443,16 @@ implements OnInit, OnDestroy
         return this.entitySrv.selectedId();
     }
 
+    get selectedId(): Signal<number> {
+        return this.entitySrv.selectedId;
+    }
+
     set selected(id: number) {
         this.entitySrv.selectedId.set(id);
     }
 
-    isFetching() {
-        return this.shellSrv.isFetching()();
+
+    setLoading(b: boolean) {
+        this.loading.set(b);
     }
 }

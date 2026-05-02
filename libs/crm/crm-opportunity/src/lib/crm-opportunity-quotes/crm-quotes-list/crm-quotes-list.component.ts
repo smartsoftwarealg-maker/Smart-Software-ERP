@@ -94,7 +94,6 @@ export class CrmQuotesListComponent extends BaseChildEntityListComponent<CRMQuot
             return;
         }
 
-        console.log('selectedReport =', this.selectedReport);
 
         this.dialog.open(CrmEmailSenderComponent, {
             width: '350px',

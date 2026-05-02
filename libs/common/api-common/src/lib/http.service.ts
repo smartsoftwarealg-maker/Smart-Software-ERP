@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import { HttpResponse} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpEventType, HttpHeaders, HttpParams, HttpProgressEvent} from '@angular/common/http';
@@ -12,10 +12,11 @@ const AUTH_TOKEN = 'auth_token';
     providedIn: 'root'
 })
 export class HttpService {
-    public baseUrl: string;
+    #appConfigSrv = inject(AppConfigService);
+    #privateSession = true;
+    public httpClient = inject(HttpClient);
+    public baseUrl: string|null = null;
 
-    constructor(public appConfigSrv: AppConfigService, public httpClient: HttpClient) {
-    }
 
     static getHeaders() {
         return new HttpHeaders({}).set('Authorization', this.getAuthToken() || '');
@@ -35,7 +36,7 @@ export class HttpService {
             this.selectCompany(company);
             return of(true);
         }
-        return this.appConfigSrv.getConfig()
+        return this.#appConfigSrv.getConfig()
             .pipe(
                 // removed share(), as it was a resource leak.
                 map(conf => {
@@ -61,7 +62,7 @@ export class HttpService {
         }
         let httpParams = (params == null ? new HttpParams() : params)
             .set('page', `${page}-${size}`);
-        if (this.baseUrl == null || url == null) {
+        if (!this.baseUrl || url == null) {
             throw new Error('Invalid URL');
         }
         if (filterStr) {
@@ -85,7 +86,7 @@ export class HttpService {
     }
 
     public getBlob(url: string, httpParams?: HttpParams): Observable<Blob> {
-        if (this.baseUrl == null || url == null) {
+        if (!this.baseUrl || url == null || !url) {
             throw new Error('Invalid URL');
         }
         return this
@@ -105,7 +106,7 @@ export class HttpService {
             //    this.baseUrl = '';
             throw new Error('HTTP SERVICE NOT READY');
         }
-        if (this.baseUrl == null || url == null) {
+        if (!this.baseUrl || url == null || !url) {
             throw new Error('Invalid URL: ' + this.baseUrl + url);
         }
         const fullURL = this.baseUrl + url;
@@ -129,7 +130,7 @@ export class HttpService {
             //    this.baseUrl = '';
             throw new Error('HTTP SERVICE NOT READY');
         }
-        if (this.baseUrl == null || url == null) {
+        if (!this.baseUrl || url == null || !url) {
             throw new Error('Invalid URL: ' + this.baseUrl + url);
         }
         const fullURL = this.baseUrl + url;
@@ -151,7 +152,7 @@ export class HttpService {
             //    this.baseUrl = '';
             throw new Error('HTTP SERVICE NOT READY');
         }
-        if (this.baseUrl == null || url == null) {
+        if (!this.baseUrl || !this.baseUrl || url == null || !url) {
             throw new Error('Invalid URL: ' + this.baseUrl + url);
         }
         const fullURL = this.baseUrl + url;
@@ -206,6 +207,7 @@ export class HttpService {
                 data,
                 {responseType: 'text', headers: HttpService.getHeaders()});
     }
+
     public putHTML(url: string, data?: any | null, timeout = 0): Observable<any> {
         if (this.baseUrl === undefined) {
             throw new Error('HTTP SERVICE NOT READY');
@@ -324,6 +326,8 @@ export class HttpService {
         const hostUrl = host + ':' + port;
         let ruleFound = false;
         const rules = conf.urlRules;
+        this.#privateSession = !((conf?.privateSession||false) !== false);
+
         if (rules) {
             const ruleCount = rules.length;
             for (let i = 0; i < ruleCount; i++) {
@@ -362,7 +366,7 @@ export class HttpService {
     }
 
     public isPrivate() {
-        return sessionStorage.getItem(AUTH_TOKEN) !== null;
+        return this.#privateSession; // && sessionStorage.getItem(AUTH_TOKEN) !== null;
     }
     public updatePrivateAuthToken(token: string) {
         sessionStorage.setItem(AUTH_TOKEN, token);

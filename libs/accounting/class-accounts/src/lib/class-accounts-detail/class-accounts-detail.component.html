@@ -21,6 +21,6 @@
     }
 </mat-card>
 
-@if (id && loaded()){
+@if (id && !loading()){
     <router-outlet></router-outlet>
 }

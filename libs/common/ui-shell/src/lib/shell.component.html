@@ -7,7 +7,7 @@
         <div class="brand mat-elevation-z6">
           <img class="brand-icon" width="56px" height="56px" src="./assets/logo.png">
           <div class="app-name">
-            {{ shellSrv.applicationTitle }}
+            {{ shellSrv.applicationTitle() }}
           </div>
         </div>
 
@@ -79,7 +79,7 @@
               [matTooltip]="'COMMON_GO_BACK' | translate"
               mat-icon-button
               (click)="shellSrv.goBack()"
-              [disabled]="shellSrv.loading || !shellSrv.goBackEnabled"
+              [disabled]="shellSrv.loading() || !shellSrv.goBackEnabled"
               class="hidden-during-search">
               @if (langSrv.rtl) {
                 <i class="fas fa-arrow-right"></i>
@@ -89,7 +89,7 @@
             </button>
           }
 
-          <div class="shell-title" translate>{{ shellSrv.shellTitle }}</div>
+          <div class="shell-title" >{{ shellSrv.shellTitle() | translate}}</div>
 
           @if (shellSrv.hasSearch) {
             <button mat-icon-button class="small-only smll-search-button"
@@ -110,7 +110,7 @@
               </div>
             }
 
-            @for (b of shellSrv.buttons; track $index) {
+            @for (b of shellSrv.buttons().filter(e => e.visible && !shellSrv.loading()); track $index) {
               @if (b.keepOnToolbar != 2) {
                 @if (b.menuItems) {
                   @if (b.visible) {
@@ -134,7 +134,7 @@
                     }
                   </mat-menu>
                 }
-                @if (!b.menuItems && b.visible && !isFetching()) {
+                @if (!b.menuItems?.length > 0 && b.visible === true && !shellSrv.loading()) {
                   <button mat-icon-button matTooltip="{{b.label | translate}}"
                     (click)="b.click()"
                     [disabled]="b.disabled"
@@ -162,7 +162,7 @@
         </div>
         <div class="b-primary mat-elevation-z6 shell-toolbar-2">
           <div class="toolbar-inner">
-            @for (n of shellSrv.labels; track $index) {
+            @for (n of shellSrv.labels(); track $index) {
               <div class="shell-label margin-end-8 large-only">
                 @if (n.icon) {
                   <div class="label-icon"><i [class]="n.icon"></i></div>
@@ -184,17 +184,17 @@
             </div>
           </div>
         </div>
-        <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading || shellSrv.error"
+        <div class="b-b-app-bar static-container" [class.hidden]="shellSrv.loading() || shellSrv.error()"
           #routerContainer>
           <router-outlet></router-outlet>
           <div class="b-b-app-bar static-container-bottom-padding"></div>
         </div>
-        @if (shellSrv.loading) {
+        @if (shellSrv.loading()) {
           <div class="b-b-app-bar loading-spinner-container">
             <mat-spinner></mat-spinner>
           </div>
         }
-        @if (shellSrv.error) {
+        @if (shellSrv.error()) {
           <div class="b-b-app-bar loading-spinner-container">
             <i class="fas fa-exclamation-circle fa-10x f-warn x_large"></i>
             <button mat-raised-button (click)="shellSrv.retry()" translate>RETRY</button>
@@ -205,7 +205,7 @@
 
     <mat-menu #menu="matMenu" style="overflow: hidden">
       <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
-        @for (b of shellSrv.buttons; track $index) {
+        @for (b of shellSrv.buttons().filter(b => !shellSrv.loading()); track $index) {
           @if (b.visible) {
             @if (b.menuItems) {
               <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()"
@@ -239,7 +239,7 @@
           }
         }
 
-        @if (shellSrv.buttons.length) {
+        @if (shellSrv.buttons().length) {
           <mat-divider></mat-divider>
         }
 

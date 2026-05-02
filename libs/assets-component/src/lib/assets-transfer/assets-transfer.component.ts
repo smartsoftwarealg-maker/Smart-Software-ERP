@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, signal} from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {OfficeService} from '@ss/common/api-lookup';
@@ -46,8 +46,8 @@ export class AssetsTransferComponent implements OnInit {
     private activatedRoute =  inject(ActivatedRoute);
 
     private ASSET_TRANSFER = 'AssetTransfer';
-    editable = false;
-    isAQS   = false;
+    editable = signal(false);
+    isAQS   = signal(false);
     srcLookup  = new OfficeAutoComplete(this.officeSrv);
     dstLookup  = new OfficeAutoComplete(this.officeSrv);
     form = this.fb.group({
@@ -63,9 +63,9 @@ export class AssetsTransferComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
-        this.isParamSrv.is('AQS').subscribe(res => this.isAQS = res);
+        this.isParamSrv.is('AQS').subscribe(res => this.isAQS.set(res));
         this.shellSrv.setTitle('ASSET_TRANSFER');
-        this.editable = this.rightsSrv.getUserRights(this.ASSET_TRANSFER)?.write;
+        this.editable.set(this.rightsSrv.getUserRights(this.ASSET_TRANSFER)?.write|| true);
     }
 
     openSourceDlg() {
@@ -80,8 +80,8 @@ export class AssetsTransferComponent implements OnInit {
             .afterClosed()
             .subscribe(off => {
                 this.form.controls.source?.setValue(off?.id);
-                this.form.get('sourceSite').setValue(off?.locationDescription, {onlySelf: true});
-                this.form.get('sourceBuilding').setValue(off?.buildingDescription, {onlySelf: true});
+                this.form.get('sourceSite').setValue(off?.locationDescription||'', {onlySelf: true});
+                this.form.get('sourceBuilding').setValue(off?.buildingDescription||'', {onlySelf: true});
             });
     }
 
@@ -96,8 +96,8 @@ export class AssetsTransferComponent implements OnInit {
             .afterClosed()
             .subscribe(off => {
                 this.form.controls.destination?.setValue(off?.id);
-                this.form.get('destinationSite').setValue(off?.locationDescription, {onlySelf: true});
-                this.form.get('destinationBuilding').setValue(off?.buildingDescription, {onlySelf: true});
+                this.form.get('destinationSite').setValue(off?.locationDescription??'', {onlySelf: true});
+                this.form.get('destinationBuilding').setValue(off?.buildingDescription??'', {onlySelf: true});
             });
     }
 

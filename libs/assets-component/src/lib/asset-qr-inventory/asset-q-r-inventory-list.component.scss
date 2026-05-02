@@ -1,10 +1,16 @@
 .table__div,
 .container,
+.spinner__div,
 mat-card {
     width: min(96%, 1400px);
     margin: 1em auto;
 }
-
+.spinner__div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
 mat-table {
    width: 100%;
    min-width: 2000px;

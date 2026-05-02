@@ -13,17 +13,17 @@
                 {{ index + 1 }}
             </ng-template>
             <mat-step [optional]="false"
-                      [completed]="selectedCompany > 0">
+                      [completed]="selectedCompany() > 0">
                 <ng-template matStepLabel>
-                    @if (!selectedCompany || selectedCompany < 1) {
+                    @if (!selectedCompany() || selectedCompany() < 1) {
                         <span style="user-select: none" translate>COMMON_SELECT_COMPANY</span>
                     } @else {
-                        <span style="user-select: none">{{ selectedCompanyName }}</span>
+                        <span style="user-select: none">{{ selectedCompanyName() }}</span>
                     }
                 </ng-template>
                 <mat-form-field style="width: 90%">
                     <mat-select (selectionChange)="selectCompany($event.value)" [value]="selectedCompany">
-                        @for (company of companyList; track company.id) {
+                        @for (company of companyList(); track company.id) {
                             <mat-option [value]="company.id">
                                 {{ company.description }}
                             </mat-option>
@@ -35,11 +35,11 @@
                 <ng-template matStepLabel>
                     <span style="user-select: none" translate>COMMON_SELECT_CENTER</span>
                 </ng-template>
-                @if (!loadingCenters) {
-                    @if (centerList.length <= 5) {
+                @if (!loadingCenters()) {
+                    @if (centerList().length <= 5) {
                         <mat-form-field style="width: 90%">
-                            <mat-select (selectionChange)="selectCenter($event.value)" [value]="selectedCenter">
-                                @for (center of centerList; track center.id) {
+                            <mat-select (selectionChange)="selectCenter($event.value)" [value]="selectedCenter()">
+                                @for (center of centerList(); track center.id) {
                                     <mat-option [value]="center.id">
                                         {{ center.description }}
                                     </mat-option>
@@ -56,7 +56,7 @@
                                    [formControl]="centerControl"
                                    [matAutocomplete]="auto">
                             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event)">
-                                @for (center of filteredCenters | async; track center.id) {
+                                @for (center of filteredCenters() | async; track center.id) {
                                     <mat-option [value]="center.description">
                                         {{ center.description }}
                                     </mat-option>
@@ -69,7 +69,7 @@
                                 color="primary"
                                 class="margin-end-8 float-end"
                                 (click)="onDone()"
-                                [disabled]="selectedCenter < 1"
+                                [disabled]="selectedCenter() < 1"
                                 translate>COMMON_SELECT
                         </button>
                     </div>

@@ -90,7 +90,7 @@
         <ng-container matColumnDef="invoiceNumber">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_INVOICE_NUMBER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{ getInvoiceNumber(e.id) }}
+                {{ e.invoiceNumber }}
             </mat-cell>
         </ng-container>
 
@@ -110,7 +110,7 @@
         <mat-row class="selectable"
                  [class.selected]="row.id == selected"
                  [class.dirty]="row.dirty"
-                 [class.invoice]="getInvoiceNumber(row.id) > 0"
+                 [class.invoice]="row.invoiceNumber > 0"
                  (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>

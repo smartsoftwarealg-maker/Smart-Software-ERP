@@ -47,9 +47,7 @@ import { OptionService } from '@ss/logistics/ui-options';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent
-    extends BaseEntityDetailComponent<Transaction>
-    implements OnInit
-{
+    extends BaseEntityDetailComponent<Transaction> implements OnInit {
     #deliveryTimeSrv = inject(DeliveryTimeService);
     #shipmentModeSrv = inject(ShipmentModeService);
 
@@ -193,11 +191,14 @@ export abstract class BaseTransactionDetailComponent
     }
 
     private updateProjectStatus(p: Project) {
-        const blocked = p?.isBlocked;
-        if (blocked) {
-            this.form.controls['project'].setErrors({ blocked: true });
-        } else {
-            this.form.controls['project'].setErrors(null);
+        debugger;
+        if (!this.loading()) {
+            const blocked = p?.isBlocked;
+            if (blocked) {
+                this.form.controls['project'].setErrors({ blocked: true });
+            } else {
+                this.form.controls['project'].setErrors(null);
+            }
         }
     }
 
@@ -347,8 +348,6 @@ export abstract class BaseTransactionDetailComponent
         this.formId = b.id || 0;
 
         this.isEditable = this.isEditable && !b.isValidated;
-        this.saveButton.visible = this.saveButton.visible && !b.isValidated;
-        this.importBtn.visible = b.id > 0 && !b.isValidated;
         this.importBtn.disabled =
             (this.requireAgentToImportDocument() &&
                 (b.agent === null || b.agent === undefined)) ||
@@ -416,10 +415,6 @@ export abstract class BaseTransactionDetailComponent
         );
     }
 
-    // get isManager() {
-    //     return this._isManager;
-    // }
-
     override ngOnInit() {
         super.ngOnInit();
         const sub = this.router.events
@@ -434,17 +429,28 @@ export abstract class BaseTransactionDetailComponent
                 }
             });
         this.subscriptions.push(sub);
-        this.disableControls(this.router.url);
-        this.shellSrv.addButton(this.sendBtn);
-        if (this.showImportButton()) {
-            this.shellSrv.addButton(this.importBtn);
-        }
-
-        this.customerSrv.activeOnly = true;
-        this.agentSrv.activeOnly = true;
-        this.supplierSrv.activeOnly = true;
     }
 
+    loadEntity(id:number):Observable<Transaction>{
+        return of([]).pipe(
+            tap(() => {
+                this.shellSrv.addButton(this.sendBtn);
+                if (this.showImportButton()) {
+                    this.shellSrv.addButton(this.importBtn);
+                }
+
+                this.customerSrv.activeOnly = true;
+                this.agentSrv.activeOnly = true;
+                this.supplierSrv.activeOnly = true;
+                this.disableControls(this.router.url);
+            }),
+            switchMap(() => super.loadEntity(id)),
+            tap(b => {
+                this.saveButton.visible = this.saveButton.visible && !b.isValidated;
+                this.importBtn.visible = b.id > 0 && !b.isValidated;
+            })
+        )
+    }
     protected disableControls(url: string) {
         const enabled = url.indexOf('-detail') < 0;
         const validated = !!this.form?.controls['isValidated']?.value;
@@ -458,7 +464,7 @@ export abstract class BaseTransactionDetailComponent
         } else {
             this.router
                 .navigate(['..', this.queryId], { relativeTo: this.route })
-                .then(() => (this.saveButton.disabled = false));
+                .then(() => {});
         }
     }
 

@@ -26,9 +26,10 @@ import { DatePipe } from '@angular/common';
 import { InvoiceInfo, QuickOrder } from '../quick-order.api';
 import { QuickOrderService } from '../quick-order.service';
 import { InvoiceService } from '@ss/sales/api-invoice';
-import { catchError, EMPTY, filter, forkJoin, of, switchMap, tap } from 'rxjs';
+import { catchError, EMPTY, filter, forkJoin, Observable, of, switchMap, tap } from 'rxjs';
 import { MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
     selector: 'ss-ui-quick-order',
@@ -55,6 +56,7 @@ import { MatTooltip } from '@angular/material/tooltip';
         DatePipe,
         MatIconButton,
         MatTooltip,
+        MatProgressSpinner,
     ],
 })
 export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder> {
@@ -72,6 +74,9 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         'invoiceNumber',
         // 'option',
     ];
+
+    invoiceSrv = inject(InvoiceService);
+    invoiceInfo: InvoiceInfo[] = [];
 
     constructor(
         public quickOrderSrv: QuickOrderService,
@@ -95,10 +100,9 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
             'SALES_QUICK_ORDER',
         );
     }
-    invoiceSrv = inject(InvoiceService);
-    invoiceInfo: InvoiceInfo[] = [];
 
     getInvoices(): void {
+        this.setLoading(true);
         const ids = this.data.map((d) => d.id).join(',');
 
         this.quickOrderSrv
@@ -126,11 +130,10 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
                             ),
                     ),
                 ),
-            )
-            .subscribe();
+            ).subscribe(() => this.setLoading(false));
     }
 
-    getInvoiceNumber(id: number) {
+    private getInvoiceNumber(id: number) {
         return this.invoiceInfo.find((inv) => inv.id === id)?.invoiceNumber;
     }
 
@@ -147,7 +150,20 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         });
     }
 
-    override refresh() {
-        super.refresh(this.getInvoices.bind(this));
+    override processLoadedData(data:QuickOrder[]):Observable<QuickOrder[]>{
+        return  super.processLoadedData(data)
+            .pipe(
+                switchMap(() => {
+                    const ids = this.data.map((d) => d.id).join(',');
+                    return this.quickOrderSrv.getInvoiceInfo(ids);
+                }),
+                tap((res: InvoiceInfo[]) => {
+                    this.invoiceInfo = res;
+                    data.forEach((d) => {
+                        d.invoiceNumber = this.getInvoiceNumber(d.id);
+                    });
+                }),
+                switchMap(() => of(data))
+            );
     }
 }

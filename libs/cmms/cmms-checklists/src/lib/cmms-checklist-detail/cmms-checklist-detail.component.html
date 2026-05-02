@@ -17,6 +17,6 @@
   <mat-tab label="{{ 'COMMON_DETAIL' | translate }}" [disabled]="isOnEdit"></mat-tab>
   <mat-tab label="{{ 'COMMON_ARCHIVE' | translate }}" [disabled]="isOnEdit"></mat-tab>
 </mat-tab-group>
-@if (id > 0  && !isLoading()) {
+@if (id > 0  && !loading()) {
   <router-outlet> </router-outlet>
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, signal} from '@angular/core';
 import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
 import {LanguageService, MainPageService, SideNavNode} from '@ss/common/api-common';
@@ -35,16 +35,17 @@ export class MainPageComponent implements OnInit, OnDestroy {
         keepOnToolbar: KeepOnToolbar.ALWAYS,
         click: () => this.#router.navigate(['/app/administration/workflow-inbox']).then(() => this.#badgeBtn.visible = false)
     };
+
     public srv = inject(MainPageService);
     public shellSrv = inject(ShellService);
     public langSrv = inject(LanguageService);
 
-    public searchResult: SideNavNode[] = null;
+    public searchResult = signal<SideNavNode[]>([]);
 
 
     ngOnInit(): void {
         this.updateGoBackButton();
-        this.shellSrv.setTitle(this.shellSrv.applicationTitle);
+        this.shellSrv.setTitle(this.shellSrv.applicationTitle());
 
         this.shellSrv.enableSearch(
             'SEARCH_APP',
@@ -52,11 +53,11 @@ export class MainPageComponent implements OnInit, OnDestroy {
                 (f: string) => {
                     const lowF = f ? f.toLowerCase().trim() : null;
                     if (f && f.length) {
-                        this.searchResult = [];
+                        this.searchResult.set([]);
                         const words = lowF.split(' ');
-                        this.srv.display.forEach(t => this.searchTree(t, words, this.searchResult));
+                        this.srv.display.forEach(t => this.searchTree(t, words, this.searchResult()));
                     } else {
-                        this.searchResult = null;
+                        this.searchResult.set([]);
                     }
                 }
             ),
@@ -113,7 +114,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
         if (this.shellSrv.searchFormControl) {
             this.shellSrv.searchFormControl.setValue(null);
         }
-        this.searchResult = null;
+        this.searchResult.set([]);
     }
 
     ngOnDestroy(): void {

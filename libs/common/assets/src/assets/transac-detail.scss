@@ -21,6 +21,15 @@ mat-card,
     padding: 4px 0;
 }
 
+.spinner__div {
+    width: 90%;
+    height: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .filler__div {
     height: .5em;
 }

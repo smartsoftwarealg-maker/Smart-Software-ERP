@@ -1,4 +1,4 @@
-import { enableProdMode, ErrorHandler, importProvidersFrom } from '@angular/core';
+import { enableProdMode, ErrorHandler, importProvidersFrom, provideBrowserGlobalErrorListeners} from '@angular/core';
 import { environment, appRoutes } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -26,13 +26,8 @@ const routes: Routes = [
         component: ShellComponent,
         children: appRoutes,
     },
-    {
-        path: LOGIN_URL,
-        component: LoginComponent,
-        data: { privateSession: true },
-    },
-    {
-        path: PLOGIN_URL, component: LoginComponent, data: { privateSession: true }},
+    { path: LOGIN_URL, component: LoginComponent },
+    { path: PLOGIN_URL, component: LoginComponent},
     { path: CENTER_SELECT_URL, component: CenterSelectComponent },
     { path: UPDATE_PASSWORD_URL, component: PasswordUpdateComponent },
     { path: AUTH_2FA_URL, component: Auth2FAConfirmationComponent },
@@ -50,7 +45,8 @@ bootstrapApplication(AppComponent, {
         provideAnimationsAsync(),
         provideHttpClient(withInterceptorsFromDi(), withFetch()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
-        { provide: ErrorHandler, useClass: CustomErrorHandler }
+        { provide: ErrorHandler, useClass: CustomErrorHandler },
+        provideBrowserGlobalErrorListeners()
     ]
 }).catch((err) => {
     console.error('main.ts (line 45): ', err);

@@ -4,14 +4,15 @@ mat-card {
     margin: 4px auto;
     padding: 16px;
     border-radius: 1.4em;
-    max-height: 40%;
 }
 .btn_container {
     display: flex;
+    max-width: calc(100% - 1em);
     flex-direction: row;
     gap: 8px;
     justify-content: flex-end;
     margin-bottom: 4px;
+    margin-right: 0;
 }
 
 

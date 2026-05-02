@@ -38,7 +38,7 @@
         </div>
 
         <div class="list_div">
-            <mat-table mat-table [dataSource]="data" class="main-table">
+            <mat-table mat-table [dataSource]="data()" class="main-table">
 
                 <ng-container matColumnDef="filename">
                     <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_FILENAME</mat-header-cell>
@@ -55,7 +55,7 @@
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                <mat-row class="selectable" [class.selected]="row.id == selectedId"
+                <mat-row class="selectable" [class.selected]="row.id === selectedId()"
                          (click)="select(row)"
                          *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
@@ -63,10 +63,11 @@
         </div>
     </div>
 
-    @if (imgSrc?.length > 100 || filename) {
+    @if (imgSrc()?.length > 10 || filename()) {
         <div class="imj">
-            <img [src]="imgSrc"
+            <img [src]="imgSrc()"
                  [alt]="'image'"
+                 [ariaColIndexText]=""
                  class="clickable"
                  (dblclick)="onClick($event)"
                  [matTooltip]="'COMMON_DOUBLE_CLICK_OPEN' | translate" />

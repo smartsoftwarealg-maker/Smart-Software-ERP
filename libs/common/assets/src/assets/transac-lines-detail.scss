@@ -24,6 +24,14 @@ mat-card {
     margin: 0 auto;
 }
 
+.spinner__div {
+    width: 90%;
+    height: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .info {
     font-size: .75em;

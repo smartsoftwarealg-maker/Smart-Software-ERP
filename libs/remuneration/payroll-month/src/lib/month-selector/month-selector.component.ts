@@ -57,7 +57,6 @@ export class MonthSelectorComponent implements OnInit {
                     this.maxMonth.set(res[1].month);
                     const min = this.minMonth();
                     const max = this.maxMonth();
-                    console.log(res[0], res[1], res[2]);
                     const curYear = (+((res[2]['payMonth'] || this.maxMonth()) / 100) % 10000).toFixed(0);
                     const curMonth = +((res[2]['payMonth'] || this.maxMonth()) % 100).toFixed(0);
                     this.specialList = res[3].body;

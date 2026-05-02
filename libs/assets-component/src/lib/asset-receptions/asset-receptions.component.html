@@ -58,7 +58,7 @@
 <div class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
-@if (!isFetching()) {
+@if (!loading()) {
     <div class="container_div">
         <mat-table mat-table [dataSource]="detail()" class="detail-table">
 

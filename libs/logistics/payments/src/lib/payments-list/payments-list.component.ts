@@ -85,9 +85,6 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
         this.route.data.subscribe((data) => {
             if (data['url']) {
                 this.paymentSrv.setURL(data['url']);
-                console.log(
-                    this.titleMap.get(data['url']) ?? 'COMMON_PAYMENTS',
-                );
                 this.shellSrv.setTitle(
                     this.titleMap.get(data['url']) ?? 'COMMON_PAYMENTS',
                 );

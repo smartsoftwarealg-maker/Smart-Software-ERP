@@ -25,6 +25,15 @@ mat-table {
     min-height: 300px;
 }
 
+.spinner__div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
 .mat-column-memo,
 .mat-column-serialNo,
 .mat-column-classDescription,

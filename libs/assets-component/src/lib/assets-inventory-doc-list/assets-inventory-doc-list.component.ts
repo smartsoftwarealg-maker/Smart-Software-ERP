@@ -76,9 +76,19 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
 
     override selectRow(row: AssetInventoryDoc) {
         super.selectRow(row);
+        this.setLoading(true);
         this.#summarySrv
             .get(row?.id||0)
-            .subscribe(data => this.summaryData = data? [data] : []);
+            .subscribe( {
+                next: data => {
+                this.summaryData = data? [data] : [];
+                this.setLoading(false);
+            },
+                error: err => {
+                    this.setLoading(false);
+                    throw err;
+                }
+            });
     }
 
     override excel() {

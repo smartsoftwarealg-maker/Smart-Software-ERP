@@ -59,7 +59,6 @@ export class CategoryDiscountsDetailComponent extends BaseChildEntityDetailCompo
         const parentId = this.entitySrv.getParentId();
         super.ngOnInit();
         this.entitySrv.setParentId(parentId);
-        console.log(this.entitySrv.getParentId(), this.entitySrv.curParentId());
         if (parentId === 0) {
             this.router.navigate(['..'], { relativeTo: this.route }).then();
         }
