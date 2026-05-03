@@ -6,7 +6,7 @@
     <div class="content">
       @for (emp of data; track emp.id) {
         <div class="employee-card selectable mat-elevation-z6"
-          [class.selected]="emp.id == selected" (click)="select(emp.id)">
+          [class.selected]="emp.id == selectedId()" (click)="select(emp.id)">
 
           <div class="person-photo">
             <ss-image-input width="120px" height="120px" [imageModel]="emp.imageModel"
@@ -79,7 +79,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="select(row.id)"
+        <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"
         *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>

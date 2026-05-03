@@ -277,7 +277,7 @@ export class ShellService {
         if (this.loginSrv.appCtx) {
             this.navData = this.filterSideNavByVisibility(this.filterNavTree(this.navTree));
             this.generateNavColors(this.navData);
-            this.mainPageSrv.display = this.navData;
+            this.mainPageSrv.display.set(this.navData);
             this.updateShell();
         }
     }

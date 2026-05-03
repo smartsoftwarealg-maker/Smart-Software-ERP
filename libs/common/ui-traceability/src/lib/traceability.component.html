@@ -19,13 +19,10 @@
     <div id="manager">
       <mat-checkbox formControlName="consolidated" translate>COMMON_CONSOLIDATED</mat-checkbox>
     </div>
-    <mat-radio-group formControlName="options">
-      <mat-radio-button value="1" [checked]="form.controls['options']?.value ===  1" translate> COMMON_WRITE
-      </mat-radio-button>
-      <mat-radio-button value="2" [checked]="form.controls['options']?.value ===  2" translate>COMMON_EDIT
-      </mat-radio-button>
-      <mat-radio-button value="3" [checked]="form.controls['options']?.value ===  3" translate>COMMON_DELETE
-      </mat-radio-button>
+    <mat-radio-group formControlName="options" >
+      <mat-radio-button value="1" [checked]="form.controls['options']?.value ===  1" translate>COMMON_WRITES</mat-radio-button>
+      <mat-radio-button value="2" [checked]="form.controls['options']?.value ===  2" translate>COMMON_EDITS</mat-radio-button>
+      <mat-radio-button value="3" [checked]="form.controls['options']?.value ===  3" translate>COMMON_DELETES</mat-radio-button>
     </mat-radio-group>
 
   </div>
@@ -96,7 +93,7 @@
     <mat-form-field appearance="fill">
       <mat-label><span translate>ADMINISTRATION_SELECT_APP</span></mat-label>
       <mat-select (selectionChange)="setApp($event)">
-        @for (app of apps; track app) {
+        @for (app of apps().filter(e => !processing()); track app) {
           <mat-option [value]="app">
             {{ langSrv.translate('COMMON_' + app) }}
           </mat-option>

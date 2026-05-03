@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ACCFile, AccFileService, PeriodSelectorService} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -30,8 +30,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> implements OnInit {
     private MONTHS = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
-    accPeriod = new UntypedFormControl(1, [Validators.required, Validators.max(12), Validators.min(1)]);
-    periods: string[] = [];
+    readonly accPeriod = new UntypedFormControl(1, [Validators.required, Validators.max(12), Validators.min(1)]);
+    periods = signal<string[]>([]);
     maxPeriod = 1;
 
     displayedColumns = [
@@ -89,7 +89,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
         this.shellSrv.updateShell();
         this.accPeriod.setValue(this.loginSrv.appCtx.accPeriod || 1);
         this.shellSrv.setGoBackPath('..', this.route);
-        this.periods = this.MONTHS.filter((e, i) => i <= this.maxPeriod);
+        this.periods.set(this.MONTHS.filter((e, i) => i <= this.maxPeriod));
     }
 
     selectFolder(period: number) {
@@ -136,7 +136,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
                 );
                 const maxMonth =
                     error.length > 0 ? error[error.length - 1].id - 1 : 11;
-                this.periods = this.MONTHS.filter((e, i) => i <= maxMonth);
+                this.periods.set(this.MONTHS.filter((e, i) => i <= maxMonth));
                 this.maxPeriod = maxMonth;
             });
     }

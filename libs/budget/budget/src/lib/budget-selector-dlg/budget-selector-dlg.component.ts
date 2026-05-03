@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 import {BudgetService} from '../budget.service';
 import {Budget} from '../budget-api';
 import { LoginService, PaginationModel } from '@ss/common/api-common';
@@ -35,9 +35,10 @@ export class BudgetSelectorDlgComponent implements OnInit {
     #loginSrv = inject(LoginService);
     #snackBarSrv = inject(SnackBarService);
     #route = inject(ActivatedRoute);
+    loading = signal(true);
     // #router = inject(Router);
 
-    data: Budget[] = [];
+    data = signal<Budget[]>([]);
     selectedBudget: Budget = null;
 
     private paginator: PaginationModel = PaginationModel.newInstance({ page: 0, pageSize: 50, elementCount: 0});
@@ -48,8 +49,9 @@ export class BudgetSelectorDlgComponent implements OnInit {
         this.#budgetSrv
             .getList(0, 49)
             .subscribe(res => {
-                this.data = res.body.sort((a, b) => b.year - a.year);
+                this.data.set(res.body.sort((a, b) => b.year - a.year));
                 this.paginator.elementCount = res.itemCount;
+                this.loading.set(false);
             });
     }
 

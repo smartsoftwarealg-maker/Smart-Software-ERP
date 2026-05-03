@@ -11,7 +11,7 @@ import {BudgetPlanningService} from '../budget-planning.service';
 import { MatRadioChange, MatRadioGroup, MatRadioButton } from '@angular/material/radio';
 import {BudgetPlanningTree, FlatBudgetPlanningTree} from '../budget-planning-api';
 import {BudgetService} from '@ss/budget/budget';
-import {of, switchMap} from 'rxjs';
+import {of, switchMap, tap} from 'rxjs';
 import {BudgetPlanningAddDlgComponent} from '../budget-planning-add-dlg/budget-planning-add-dlg.component';
 import {BudgetAccountService} from '@ss/budget/budget-groups';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -94,8 +94,8 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
         };
     }
 
-    treeControl = new FlatTreeControl<FlatBudgetPlanningTree>(
-        node => node.level, node => node.expandable);
+    childrenAccessor = (node: BudgetPlanningTree) => node.children ?? [];
+    treeControl = new FlatTreeControl<FlatBudgetPlanningTree>(node => node.level, node => node.expandable);
 
     treeFlattener = new MatTreeFlattener(
         this.transformer, node => node.level,
@@ -149,11 +149,23 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
 
             dialogRef
                 .afterClosed()
-                .pipe(switchMap(res => res? this.entitySrv.save(res) : of(null)))
-                .subscribe(res => {
+                .pipe(
+                    tap(res => {
+                        if (res) {
+                            this.selectedPlanning.reqAmount = res.reqAmount;
+                            this.selectedPlanning.amount = res.amount;
+                            this.selectedPlanning.acceptAmount = res.acceptAmount;
+                            this.selectedPlanning.reqQty = res.reqQty;
+                            this.selectedPlanning.acceptQty = res.acceptQty;
+                            this.selectedPlanning.complement = res.complement;
+                        }
+                    }),
+                    switchMap(res => res? this.entitySrv.save(res) : of(null)),
+
+                ).subscribe(res => {
                     if (res) {
                         this.snackBarSrv.showSuccessMessage();
-                        this.refresh(this.currentType);
+                        // this.refresh(this.currentType);
                     }
                 });
         }

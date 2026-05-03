@@ -1,8 +1,8 @@
 <h2 class="f-primary">
-  @if (srv.historyStack.length == 0) {
+  @if (srv.historyStack().length == 0) {
     <span translate>{{shellSrv.applicationTitle()}}</span>
   }
-  @for (n of srv.historyStack; track n) {
+  @for (n of srv.historyStack(); track n) {
     <i [class]="langSrv.rtl ? 'fas fa-caret-left margin-end-8' : 'fas fa-caret-right margin-end-8'"></i>
     <span class="margin-end-16" translate>{{n.name}}</span>
   }
@@ -10,7 +10,7 @@
 <div class="main-view">
   <div class=" mat-elevation-z6" style="width: 90%; margin: auto; height: 3px;"></div>
   @if (searchResult().length == 0) {
-    @for (l of srv.display; track l) {
+    @for (l of srv.display(); track l) {
       @if (l.visible) {
         <div class="app-card" (click)="onClick(l)">
           <div class="img" [style.background-color]="l.backgroundColor">

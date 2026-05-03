@@ -10,7 +10,7 @@ import {
     PaginatorPersistenceService,
     Right,
 } from '@ss/common/api-common';
-import { Directive, OnDestroy, OnInit, Signal, signal } from '@angular/core';
+import {computed, Directive, OnDestroy, OnInit, Signal, signal } from '@angular/core';
 import { concatMap, Observable, of, Subscription } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -26,6 +26,7 @@ implements OnInit, OnDestroy {
 
     subscriptions: Subscription[] = [];
     loading = signal(true);
+    selectedId = computed(() => this.entitySrv.selectedId());
 
     //
     public readonly pagination = PaginationModel.newInstance();
@@ -299,7 +300,7 @@ implements OnInit, OnDestroy {
         if (id) {
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }
-        const itemControlsOn = this.selected != null && this.selected > 0;
+        const itemControlsOn = this.selectedId() != null && this.selectedId() > 0;
         this.editButton.disabled = !itemControlsOn;
         this.deleteButton.disabled = !itemControlsOn;
         this.viewReportButton.disabled = !itemControlsOn;
@@ -309,8 +310,8 @@ implements OnInit, OnDestroy {
     }
 
     public edit() {
-        if (this.selected) {
-            this.showDetail(this.selected);
+        if (this.selectedId()) {
+            this.showDetail(this.selectedId());
         }
     }
 
@@ -324,7 +325,7 @@ implements OnInit, OnDestroy {
 
     private selectReport() {
         this.defReportSrv
-            .open(this.shellSrv.getApp(), this.reportForm)
+            .open(this.shellSrv.getApp(), this.reportForm||'')
             .subscribe((resp) => {
                 if (resp.count > 0) {
                     this.snackBarSrv.showSuccessMessage();
@@ -334,7 +335,7 @@ implements OnInit, OnDestroy {
 
     private viewReport() {
         this.defReportSrv
-            .viewReport(this.reportForm, this.selected)
+            .viewReport(this.reportForm||'', this.selectedId())
             .subscribe((res) => {
                 const fileURL = URL.createObjectURL(
                     new Blob([res], { type: 'application/pdf' }),
@@ -342,7 +343,9 @@ implements OnInit, OnDestroy {
                 const w = window.open(fileURL, '_blank');
                 setTimeout(() => {
                     try {
-                        w.document.title = `${this.formReport}_${this.selected}.pdf`;
+                        if (w?.document) {
+                             w.document.title = `${this.formReport}_${this.selectedId()}.pdf`;
+                        }
                     } catch (e: any) {}
                 }, 200);
             });
@@ -435,17 +438,10 @@ implements OnInit, OnDestroy {
         this._editable = b;
     }
 
-    get formReport(): string {
+    get formReport(): string|null {
         return this.reportForm;
     }
 
-    get selected(): number {
-        return this.entitySrv.selectedId();
-    }
-
-    get selectedId(): Signal<number> {
-        return this.entitySrv.selectedId;
-    }
 
     set selected(id: number) {
         this.entitySrv.selectedId.set(id);
