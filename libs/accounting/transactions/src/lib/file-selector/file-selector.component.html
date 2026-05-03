@@ -3,10 +3,10 @@
         <div translate class="f-warn">ACC_SELECT_ACC_FOLDER</div>
     </div>
 
-    @if (selected) {
+    @if (selectedId()) {
         <mat-radio-group [formControl]="accPeriod" required
                          class="two-row-radio-group">
-            @for (p of periods; track p; let i = $index) {
+            @for (p of periods(); track p; let i = $index) {
                 <mat-radio-button [value]="i + 1" (click)="selectFolder(i + 1)">
                     {{ p | translate }}
                 </mat-radio-button>

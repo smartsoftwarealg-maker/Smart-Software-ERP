@@ -10,7 +10,7 @@ import {
     PaginatorPersistenceService,
     Right,
 } from '@ss/common/api-common';
-import { Directive, OnDestroy, OnInit, Signal, signal } from '@angular/core';
+import {computed, Directive, OnDestroy, OnInit, Signal, signal } from '@angular/core';
 import { concatMap, Observable, of, Subscription } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -26,6 +26,7 @@ implements OnInit, OnDestroy {
 
     subscriptions: Subscription[] = [];
     loading = signal(true);
+    selectedId = computed(() => this.entitySrv.selectedId());
 
     //
     public readonly pagination = PaginationModel.newInstance();
@@ -439,13 +440,13 @@ implements OnInit, OnDestroy {
         return this.reportForm;
     }
 
-    get selected(): number {
-        return this.entitySrv.selectedId();
-    }
+    // get selected(): number {
+    //     return this.entitySrv.selectedId();
+    // }
 
-    get selectedId(): Signal<number> {
-        return this.entitySrv.selectedId;
-    }
+    // get selectedId(): Signal<number> {
+    //     return this.entitySrv.selectedId;
+    // }
 
     set selected(id: number) {
         this.entitySrv.selectedId.set(id);
