@@ -1,7 +1,7 @@
 <mat-card class="content_div">
     <mat-card-title> <span translate class="title">BUD_SELECT_BUDGET</span></mat-card-title>
     <mat-list>
-        @for (b of data; track b.id) {
+        @for (b of data().filter(b => !loading()); track b.id) {
         <mat-list-item [class.selected]="b.id === selectedBudget?.id"
                        (click)="select(b)"
                        class="selectable" >
@@ -14,7 +14,7 @@
     <button mat-raised-button color="primary"
             type="button"
             (click)="selectBudget()"
-            [disabled]="!selectedBudget">
+            [disabled]="!selectedBudget || loading()">
         <i class="fa-solid fa-check"></i>
         {{ 'BUD_SELECT_BUDGET' | translate }}
     </button>
