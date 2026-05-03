@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, signal} from "@angular/core";
 import { LoginService, MaterialModule, PaginationModel, User } from "@ss/common/api-common";
 import {UserListService} from '@ss/common/api-users';
 import {UserStoresService} from './user-stores.service';
@@ -18,6 +18,7 @@ import { DatePickerComponent } from "@ss/common/ui-datepicker";
 
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
+import {sign} from "chart.js/helpers";
 
 @Component({
     selector: 'ss-user-stores',
@@ -38,7 +39,7 @@ export class UserStoresComponent implements OnInit, OnDestroy {
     private lotsService =  inject(LotsService);
 
     readonly isManager = this.loginSrv.appCtx.manager;
-    private filter: string = null;
+    private filter: string|undefined;
     private refreshButton: ToolbarButton = {
         icon: 'fas fa-sync-alt',
         label: 'COMMON_REFRESH',
@@ -53,9 +54,9 @@ export class UserStoresComponent implements OnInit, OnDestroy {
     storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> = new DefaultAutoCompleteModel<Lot>(this.lotsService);
     userPagination = PaginationModel.newInstance();
     storePagination = PaginationModel.newInstance();
-    users: User[] = [];
-    stores: UserStore[] = [];
-    selectedStore: UserStore = null;
+    users = signal<User[]>([]);
+    stores = signal<UserStore[]>([]);
+    selectedStore = signal<UserStore|null>(null);
     selectedUserId = 0;
     existingStore = false;
     storeForm = new FormGroup({
@@ -87,15 +88,15 @@ export class UserStoresComponent implements OnInit, OnDestroy {
         this.storeSrv
             .getList(this.storePagination.page - 1, this.storePagination.pageSize)
             .subscribe(res => {
-                this.stores = res.body;
+                this.stores.set(res.body);
                 this.storePagination.elementCount = res.itemCount;
             });
     }
 
     selectStore(s: UserStore) {
-        this.selectedStore = s;
+        this.selectedStore.set(s);
         this.storeForm.setValue({ id: s?.storeId || 0 });
-        this.existingStore = this.stores.length > 0 && this.stores.filter(e => e.userId === s?.storeId) !== null;
+        this.existingStore = this.stores().length > 0 && this.stores().filter(e => e.userId === s?.storeId) !== null;
     }
 
     addStore() {
@@ -105,7 +106,7 @@ export class UserStoresComponent implements OnInit, OnDestroy {
             .save(entity)
             .subscribe(id => {
                 entity.id = id;
-                this.stores.push(entity);
+                this.stores.update(v => [...v, entity]);
                 this.snackBarSrv.showSuccessMessage();
             });
     }
@@ -113,10 +114,10 @@ export class UserStoresComponent implements OnInit, OnDestroy {
     removeStore() {
         this.confirmationSrv
             .confirmDelete()
-            .pipe(switchMap(res => res? this.storeSrv.remove(this.selectedStore?.id) : of(false)))
+            .pipe(switchMap(res => res? this.storeSrv.remove(this.selectedStore()?.id||0) : of(false)))
             .subscribe(res => {
                 if (typeof res !== 'boolean') {
-                    this.stores = this.stores.filter(e => e.id !== this.selectedStore?.id);
+                    this.stores.update(v => v.filter(e => e.id !== this.selectedStore()?.id));
                     this.snackBarSrv.showSuccessMessage();
                 }
             });
@@ -126,10 +127,10 @@ export class UserStoresComponent implements OnInit, OnDestroy {
         this.userSrv
             .getList(this.userPagination.page - 1, this.userPagination.pageSize, this.filter)
             .subscribe(res => {
-                this.users = res.body;
+                this.users.set(res.body);
                 this.userPagination.elementCount = res.itemCount;
                 this.selectedUserId = 0;
-                this.stores = [];
+                this.stores.set([]);
                 this.existingStore = false;
             });
     }
@@ -138,7 +139,7 @@ export class UserStoresComponent implements OnInit, OnDestroy {
         this.storeSrv
             .getList(this.storePagination.page - 1, this.storePagination.pageSize)
             .subscribe(res => {
-                this.stores = res.body;
+                this.stores.set(res.body);
                 this.storePagination.elementCount = res.itemCount;
             });
     }

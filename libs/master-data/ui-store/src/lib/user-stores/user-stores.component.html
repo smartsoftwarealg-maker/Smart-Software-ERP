@@ -1,7 +1,7 @@
 <div class="container">
   <mat-card class="user-list-div">
     <mat-list role="list" class="user-list-div">
-      @for (u of users; track u) {
+      @for (u of users(); track u) {
         <mat-list-item class="selectable"
           [class.selected]="u.id === selectedUserId"
           role="listitem"
@@ -52,9 +52,9 @@
     }
     <mat-card class="store-list-div">
       <mat-list role="list">
-        @for (s of stores; track s) {
+        @for (s of stores(); track s) {
           <mat-list-item class="selectable"
-            [class.selected]="s.id === selectedStore?.id"
+            [class.selected]="s.id === selectedStore()?.id"
             role="listitem"
             (click)="selectStore(s)">
             {{ s.storeDescription }}
