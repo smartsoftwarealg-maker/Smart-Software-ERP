@@ -13,14 +13,14 @@
                             <span class="fas fa-plus"></span>
                         </button>
                         <button mat-mini-fab (click)="edit()"
-                                [disabled]="!selectedId"
+                                [disabled]="!selectedId()"
                                 [matTooltip]="'COMMON_EDIT' | translate"
                                 type="button"
                                 color="accent">
                             <span class="fas fa-pen"></span>
                         </button>
                         <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-                                [disabled]="!selectedId"
+                                [disabled]="!selectedId()"
                                 type="button"
                                 color="warn">
                             <span class="fas fa-trash-alt"></span>

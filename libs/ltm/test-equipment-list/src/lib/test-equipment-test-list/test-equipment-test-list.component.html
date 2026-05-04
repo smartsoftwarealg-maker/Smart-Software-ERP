@@ -9,14 +9,14 @@
         <button mat-mini-fab
                 type="button"
                 (click)="edit()"
-                [disabled]="!selectedId"
+                [disabled]="!selectedId()"
                 color="accent">
             <span class="fas fa-pen"></span>
         </button>
         <button mat-mini-fab
                 type="button"
                 (click)="deleteSelected()"
-                [disabled]="!selectedId"
+                [disabled]="!selectedId()"
                 color="warn">
             <span class="fas fa-trash-alt"></span>
         </button>

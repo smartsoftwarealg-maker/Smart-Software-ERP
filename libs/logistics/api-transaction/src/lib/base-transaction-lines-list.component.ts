@@ -33,6 +33,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     usesLots = signal(false);
     usesUnits = signal(false);
     loading = signal(true);
+    selectedId = computed(() => this.detailSrv.selectedId());
 
     displayedColumns: string[] = [];
 
@@ -209,10 +210,6 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 relativeTo: this.route.parent,
             })
             .then();
-    }
-
-    get selectedId() {
-        return this.detailSrv.selectedId();
     }
 
 }

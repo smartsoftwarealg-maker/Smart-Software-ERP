@@ -6,14 +6,14 @@
         </button>
 
         <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-                [disabled]="!selectedId"
+                [disabled]="!selectedId()"
                 color="warn">
             <span class="fas fa-trash-alt"></span>
         </button>
 
         <button mat-mini-fab (click)="edit()"
                 [matTooltip]="'COMMON_EDIT' | translate"
-                [disabled]="!selectedId"
+                [disabled]="!selectedId()"
                 color="accent">
             <span class="fas fa-pen"></span>
         </button>
@@ -73,7 +73,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id === selectedId"
+        <mat-row class="selectable" [class.selected]="row.id === selectedId()"
                  (click)="select(row.id)"
                  *matRowDef="let row; columns: displayedColumns;">
         </mat-row>
