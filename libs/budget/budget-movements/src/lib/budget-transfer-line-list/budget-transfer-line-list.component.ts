@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {BudgetTransferService} from '../budget-transfer.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {of, switchMap} from 'rxjs';
@@ -34,7 +34,7 @@ import { DecimalPipe } from '@angular/common';
 })
 export class BudgetTransferLineListComponent implements OnInit {
     parentId = 0;
-    selected = 0;
+    selectedId = signal(0);
     pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
     data: BudgetTransferDetail[] = [];
     displayedColumns = ['description', 'amount']
@@ -57,7 +57,7 @@ export class BudgetTransferLineListComponent implements OnInit {
     }
 
     select(id: number) {
-        this.selected = id;
+        this.selectedId.set(id);
     }
 
     showDetail(id: number) {
@@ -65,19 +65,19 @@ export class BudgetTransferLineListComponent implements OnInit {
     }
 
     edit() {
-        if (this.selected > 0) {
-            this.showDetail(this.selected || 0);
+        if (this.selectedId() > 0) {
+            this.showDetail(this.selectedId());
         }
     }
 
     deleteSelected() {
         this.confirmationSrv
             .confirmDelete()
-            .pipe(switchMap(res => res ? this.detailSrv.remove(this.selected) : of({count: -1})),
+            .pipe(switchMap(res => res ? this.detailSrv.remove(this.selectedId()) : of({count: -1})),
                   switchMap(res => res.count > 0 ? this.entitySrv.getDetailLines(this.parentId) : of(this.data)))
             .subscribe(res => {
                 this.data = res;
-                this.selected = null;
+                this.selectedId.set(0);
             });
     }
 
