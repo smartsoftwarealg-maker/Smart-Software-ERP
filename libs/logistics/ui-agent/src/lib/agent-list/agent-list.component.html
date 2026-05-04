@@ -140,7 +140,7 @@
     </div>
     @if (isSales) {
         <div class="size_98">
-            @if (selected) {
+            @if (selectedId()) {
                 <ss-doc-info
                     [displayedGroups]="['agent']"
                     [showAssets]="isAsset"

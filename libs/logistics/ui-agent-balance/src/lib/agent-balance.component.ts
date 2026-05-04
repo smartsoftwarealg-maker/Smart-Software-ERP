@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -22,7 +22,7 @@ export class AgentBalanceComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
 
-    data: AgentBalance[];
+    data = signal<AgentBalance[]>([]);
 
     displayedColumns = [
         'totalDebit',
@@ -55,6 +55,6 @@ export class AgentBalanceComponent implements OnInit {
 
     loadAgentBalance() {
         this.agentBalanceService.getPage(this.pagination)
-            .subscribe((x: AgentBalance[]) => this.data = x);
+            .subscribe((x: AgentBalance[]) => this.data.set(x));
     }
 }

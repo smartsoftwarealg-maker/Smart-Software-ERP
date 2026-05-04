@@ -1,4 +1,4 @@
-import {Component, inject, OnInit,} from '@angular/core';
+import {Component, inject, OnInit, signal,} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PaginationModel} from '@ss/common/api-common';
 import {AgentDebts, AgentDebtsService} from '@ss/logistics/api-agent-debts';
@@ -23,7 +23,7 @@ export class AgentDebtsComponent implements OnInit {
     public readonly pagination = PaginationModel.newInstance();
 
 
-    data: AgentDebts[];
+    data = signal<AgentDebts[]>([]);
 
     displayedColumns = [
         'document',
@@ -49,6 +49,6 @@ export class AgentDebtsComponent implements OnInit {
             .set('limit', this.pagination.pageSize);
         this.agentDebtsSrv
             .getPage(this.pagination, null, null, params)
-            .subscribe((x: AgentDebts[]) => this.data = x);
+            .subscribe((x: AgentDebts[]) => this.data.set(x));
     }
 }
