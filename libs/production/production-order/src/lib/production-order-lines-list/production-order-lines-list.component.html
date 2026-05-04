@@ -1,4 +1,8 @@
-@if (parentId) {
+@if (loading()) {
+    <div class="spinner__div">
+        <mat-spinner [diameter]="100"></mat-spinner>
+    </div>
+} @else {
     <div class="main-container">
         <div class="btn--div">
             <div class="add-button">

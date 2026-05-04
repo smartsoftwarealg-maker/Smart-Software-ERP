@@ -108,7 +108,7 @@
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable"
-                 [class.selected]="row.id == selected"
+                 [class.selected]="row.id == selectedId()"
                  [class.dirty]="row.dirty"
                  [class.invoice]="row.invoiceNumber > 0"
                  (click)="selectRow(row)"
@@ -118,7 +118,7 @@
 <div class="pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
-@if (selected) {
+@if (selectedId()) {
         <mat-tab-group class="table-container">
             <mat-tab>
                 <ng-template mat-tab-label>

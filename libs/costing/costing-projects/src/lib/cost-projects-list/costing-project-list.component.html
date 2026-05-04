@@ -33,7 +33,7 @@
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
 </div>
 
-@if (selected) {
+@if (selectedId()) {
     <div class="size chart_div">
         <ss-costing-reports></ss-costing-reports>
     </div>

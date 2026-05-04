@@ -402,9 +402,9 @@ implements OnInit, OnDestroy {
     public deleteSelected(): void {
         this.confirmationSrv.confirmDelete().subscribe((b) => {
             if (b) {
-                if (this.selected && this.selected > 0) {
+                if (this.selectedId() && this.selectedId() > 0) {
                     const a = this.data.filter(
-                        (x) => x.id === this.selected,
+                        (x) => x.id === this.selectedId(),
                     )[0];
                     if (a && a.id) {
                         this.shellSrv.setLoading(true);

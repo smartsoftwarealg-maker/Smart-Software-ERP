@@ -34,7 +34,7 @@ export class UiTotalStockComponent implements OnInit {
     private loginSrv = inject(LoginService);
     articleReference: string;
     readonly pagination = PaginationModel.newInstance();
-    data: TotalStock[] = [];
+    data = signal<TotalStock[]>([]);
     displayedColumns = ['reference', 'description', 'stock'];
 
     ngOnInit(): void {
@@ -48,7 +48,7 @@ export class UiTotalStockComponent implements OnInit {
     load(): void {
         this.stockSrv.load(this.pagination, null, null, this.articleReference)
             .subscribe((x: TotalStock[]) =>  {
-                this.data = x;
+                this.data.set(x);
             });
     }
 }

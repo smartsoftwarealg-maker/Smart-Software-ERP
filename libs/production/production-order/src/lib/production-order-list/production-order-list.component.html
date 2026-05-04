@@ -55,7 +55,7 @@
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="pagination"></ss-pagination>
     </div>
-    @if (selected) {
+    @if (selectedId()) {
         <div class="doc-info">
             <ss-doc-info
                 [displayedGroups]="['document','agent']"

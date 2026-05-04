@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -36,7 +36,7 @@ export class TotalComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
-    data: Total[];
+    data = signal<Total[]>([]);
 
     displayedColumns = [
         'description',
@@ -70,11 +70,12 @@ export class TotalComponent implements OnInit {
     loadTotal() {
         this.totalSrv.getPage(this.pagination)
             .subscribe((list: Total[]) => {
-                this.data = list.map(e => ({ description: this.langSrv.translate(e.description), value: e.value }));
                 if (list.length > 1 && list[1].description?.startsWith('LOGISTICS_DISCOUNT')) {
-                    const tmp =  ((+this.data[1].value / (+this.data[0].value)) * 100).toFixed(2);
-                    this.data[1].description = this.data[1].description + ' ' + tmp + '%';
+                    const tmp =  ((+list[1].value / (+list[0].value)) * 100).toFixed(2);
+                    list[1].description = this.langSrv.translate('LOGISTICS_DISCOUNT') + ' ' + tmp + '%';
                 }
+                const tmp = list.map(e => (<Total>{ description: this.langSrv.translate(e.description), value: e.value }));
+                this.data.set(tmp);
             });
     }
 }

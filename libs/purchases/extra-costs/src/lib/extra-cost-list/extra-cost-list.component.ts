@@ -64,7 +64,7 @@ export class ExtraCostListComponent implements OnInit {
     private entitySrv = inject(ExtraCostService);
     private shellSrv = inject(ShellService);
 
-    selected = 0;
+    selectedId = signal(0);
     paginator = PaginationModel.newInstance();
     data: ExtraCost[] = [];
     isEditable = signal(true);
@@ -105,7 +105,7 @@ export class ExtraCostListComponent implements OnInit {
     }
 
     select(id: number) {
-        this.selected = id;
+        this.selectedId.set(id);
     }
 
     sort(event: Sort) {
@@ -114,13 +114,13 @@ export class ExtraCostListComponent implements OnInit {
     }
 
     edit() {
-        this.showDetail(this.selected);
+        this.showDetail(this.selectedId());
     }
 
     deleteSelected() {
         this.confirmationSrv.confirmDelete().subscribe((b) => {
-            if (b && this.selected > 0) {
-                const a = this.data.filter((x) => x.id === this.selected)[0];
+            if (b && this.selectedId() > 0) {
+                const a = this.data.filter((x) => x.id === this.selectedId())[0];
                 if (a && a.id) {
                     this.shellSrv.setLoading(true);
                     this.entitySrv.remove(a.id).subscribe({
