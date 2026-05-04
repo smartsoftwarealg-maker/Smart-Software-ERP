@@ -1,4 +1,4 @@
-import { Component, DestroyRef, HostListener, inject, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, HostListener, inject, OnInit, WritableSignal, signal } from '@angular/core';
 import {
     AccFileService,
     AccPoliciesService, ACCPolicy,
@@ -38,8 +38,8 @@ export class TransactionLinesListComponent implements OnInit {
     private selectedRow: ACCTransactionLine|null = null;
     private dialog = inject(MatDialog);
     private fileSrv = inject(AccFileService);
-    private subscription: Subscription = null;
-    private accPolicy: ACCPolicy = null;
+    private subscription: Subscription|null = null;
+    private accPolicy: ACCPolicy|null = null;
 
     private COLUMNS = [
         'lineNumber',
@@ -52,8 +52,9 @@ export class TransactionLinesListComponent implements OnInit {
         'credit'];
     displayedColumns = this.COLUMNS;
 
-    selected = 0;
-    parentId: number = null;
+    // replaced primitive selected:number with a writable Signal
+    selectedId: WritableSignal<number> = signal(0);
+    parentId = signal(0);
     data: ACCTransactionLine[] = [];
     pagination = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0 });
     searchText = new FormControl<string>('');
@@ -78,14 +79,14 @@ export class TransactionLinesListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.parentId = this.entitySrv.getParentId();
+        this.parentId.set(this.entitySrv.getParentId()||0);
         this.route
             .parent
             .parent
             .params
             .pipe(tap(params => {
-                this.parentId = +params['id'];
-                this.entitySrv.setParentId(this.parentId);
+                this.parentId.set(+params['id']||0);
+                this.entitySrv.setParentId(this.parentId());
             }),
             switchMap(() => this.entitySrv.getList(0, 5)))
             .subscribe(res => {
@@ -113,31 +114,31 @@ export class TransactionLinesListComponent implements OnInit {
         if (event.altKey && event.key === 'n') {
             this.showDetail(0);
             event.preventDefault();
-        } else if (event.altKey && event.key === 'e' && this.selected) {
-            this.showDetail(this.selected);
+        } else if (event.altKey && event.key === 'e' && this.selectedId()) {
+            this.showDetail(this.selectedId());
             event.preventDefault();
-        } else if (event.altKey && event.key === 'd' && this.selected) {
+        } else if (event.altKey && event.key === 'd' && this.selectedId()) {
             this.delete();
             event.preventDefault();
         }
     }
     selectRow(row: ACCTransactionLine) {
         this.selectedRow = row;
-        this.selected = row?.id || 0;
+        this.selectedId.set(row?.id || 0);
     }
 
 
     delete() {
         this.confirmationSrv
             .confirmDelete()
-            .pipe(switchMap(res => res ? this.entitySrv.remove(this.selected) : of({ count: -1 })),
+                .pipe(switchMap(res => res ? this.entitySrv.remove(this.selectedId()) : of({ count: -1 })),
                 switchMap(res => res.count > 0 ? this.entitySrv.getList(this.pagination.page - 1, this.pagination.pageSize) : of(null)))
             .subscribe(res => {
                 if (res && res.itemCount != null) {
                     this.data = res.body;
                     this.pagination.elementCount = res.itemCount;
                     this.snackBarSrv.showSuccessMessage();
-                    this.selected = null;
+                    this.selectedId.set(0);
                 }
                 this.entitySrv.updateStatus();
             });
@@ -150,7 +151,7 @@ export class TransactionLinesListComponent implements OnInit {
 
     refresh() {
         this.entitySrv
-            .getList(this.pagination.page - 1, this.pagination.pageSize, this.searchText.value)
+            .getList(this.pagination.page - 1, this.pagination.pageSize, this.searchText.value||'')
             .subscribe(res => {
                 this.data = res.body;
                 this.pagination.elementCount = res.itemCount;

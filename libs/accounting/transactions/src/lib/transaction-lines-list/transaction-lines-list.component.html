@@ -1,4 +1,4 @@
-@if (parentId) {
+@if (parentId()) {
     <div class="ctrl-div" >
         <mat-form-field>
             <mat-label translate>COMMON_SEARCH</mat-label>
@@ -21,19 +21,19 @@
                 <span class="fa-solid fa-layer-plus"></span>
             </button>
         }
-        @if (selected > 0) {
+        @if (selectedId() > 0) {
             @if (isClosed()) {
                 <button mat-mini-fab
-                        (click)="showDetail(selected)"
-                        [disabled]="!selected"
+                        (click)="showDetail(selectedId())"
+                        [disabled]="!selectedId()"
                         [matTooltip]="('ACC_SHOW_DETAIL' | translate)  + ' (ALT+e)'"
                         color="accent">
                     <span class="fa-solid fa-memo-circle-info"></span>
                 </button>
             } @else {
                 <button mat-mini-fab
-                        (click)="showDetail(selected)"
-                        [disabled]="!selected"
+                        (click)="showDetail(selectedId())"
+                        [disabled]="!selectedId()"
                         [matTooltip]="('COMMON_EDIT' | translate)  + ' (ALT+e)'"
                         color="accent">
                     <span class="fas fa-pen"></span>
@@ -41,14 +41,14 @@
             }
 
         }
-@if (!isClosed()) {
+  @if (!isClosed()) {
     <button mat-mini-fab (click)="delete()"
-            [disabled]="!selected"
+            [disabled]="!selectedId()"
             [matTooltip]="('COMMON_DELETE' | translate)  + ' (ALT+d)'"
             color="warn">
         <span class="fas fa-trash-alt"></span>
     </button>
-}
+  }
 </div>
 }
 <div class="container_div">
@@ -111,7 +111,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selected" (click)="selectRow(row)"
+        <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 </div>
