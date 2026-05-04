@@ -577,7 +577,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 }
                 if (
                     parsed !== 0 &&
-                    parsed <= 1000000000 // More than 10 numbers are likely to be an identifier
+                    parsed <= 1000000000000000 // More than 16 numbers are likely to be an identifier
                 ) {
                     columnIsValid = true;
                 }

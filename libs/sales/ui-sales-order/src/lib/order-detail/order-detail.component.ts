@@ -35,7 +35,6 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { PaymentComponent } from '../../../../ui-quick-order/src/lib/payment/payment.component';
 import { WeightCaptureService } from '@ss/sales/weight-capture';
-import {form} from "@angular/forms/signals";
 
 @Component({
     imports: [
