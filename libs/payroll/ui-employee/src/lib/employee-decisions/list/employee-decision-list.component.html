@@ -21,7 +21,7 @@
     </button>
   }
   @if (selectedId() > 0 && rights?.edit) {
-    @if (isEditable) {
+    @if (isEditable()) {
       <button mat-mini-fab
         color="accent"
         [matTooltip]="'COMMON_REORDER' | translate">

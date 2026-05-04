@@ -66,7 +66,7 @@ export class EmployeeContractsDetailComponent extends BaseChildEntityDetailCompo
 
     override ngOnInit() {
         super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
 
     setupForm(a: Contract): UntypedFormGroup {

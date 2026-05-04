@@ -76,7 +76,7 @@ export class LineMatterDetailComponent extends BaseEntityDetailComponent<LTMLine
         });
         this.subscriptions.push(sub);
         this.disableControls(this.router.url);
-        this.entitySrv.editable = this.isEditable;
+        this.entitySrv.editable = this.isEditable();
     }
 
     private disableControls(url: string) {

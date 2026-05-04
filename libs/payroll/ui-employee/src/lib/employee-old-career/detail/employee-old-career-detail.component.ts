@@ -28,9 +28,8 @@ export class EmployeeOldCareerDetailComponent extends BaseChildEntityDetailCompo
         super(employeeOldCareerSrv, 'OldCareer');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+    override process(t: OldCareer) {
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
 
     override setupForm(a: OldCareer): UntypedFormGroup {

@@ -65,9 +65,8 @@ export class EmployeeReintegrationDetailComponent extends BaseChildEntityDetailC
         super(employeeReintegrationSrv, 'Reintegration');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+    override process(t: Reintegration) {
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
 
     override setupForm(a: Reintegration): UntypedFormGroup {

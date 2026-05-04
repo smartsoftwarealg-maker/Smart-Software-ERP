@@ -5,6 +5,7 @@ import { Observable, of, Subscription } from 'rxjs';
 import { UntypedFormGroup } from '@angular/forms';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
+import {sign} from "chart.js/helpers";
 
 @Directive()
 export abstract class AbstractEntityComponent<T extends { id: number }> implements OnInit, OnDestroy {
@@ -15,7 +16,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     protected queryId: number;
     protected subscriptions: Subscription[] = [];
     public form: UntypedFormGroup|null = null;
-    public isEditable = true;
+    public isEditable = signal(true);
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
         label: 'COMMON_SAVE',
@@ -62,9 +63,9 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         obs.subscribe({
             next: () => {
                 this.goBack();
-                this.form.markAsUntouched();
-                this.form.markAsPristine();
-                this.form.markAsUntouched({onlySelf: false});
+                this.form?.markAsUntouched();
+                this.form?.markAsPristine();
+                this.form?.markAsUntouched({onlySelf: false});
                 this.snackBarSrv.showSuccessMessage();
                 // this.shellSrv.setLoading(false);
                 // this.loading.set(false);
@@ -100,7 +101,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     }
 
     public readForm(): T {
-        return this.form.getRawValue();
+        return this.form?.getRawValue();
     }
 
     ngOnInit() {
@@ -121,7 +122,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     }
 
 
-    public loadEntity(id: number): Observable<T> {
+    public loadEntity(id: number): Observable<T|null> {
         this.id = id || 0;
         if (id == null) {
             this.shellSrv.goBack();
@@ -138,7 +139,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
 
     public finishLoading(e: T) {
         this.form = this.setupForm(e);
-        if (!this.isEditable && this.form) {
+        if (!this.isEditable() && this.form) {
             this.form.disable();
         }
         // this.shellSrv.setLoading(false);

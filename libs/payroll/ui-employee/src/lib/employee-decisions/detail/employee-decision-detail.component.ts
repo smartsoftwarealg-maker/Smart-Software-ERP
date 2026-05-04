@@ -32,10 +32,10 @@ export class EmployeeDecisionDetailComponent extends BaseChildEntityDetailCompon
         super(employeeDecisionSrv, 'Decision');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+    override process(t: Decision) {
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
+
     override setupForm(a: Decision): UntypedFormGroup {
         // this.entity = a;
         return this.form = this.formBuilder.group({

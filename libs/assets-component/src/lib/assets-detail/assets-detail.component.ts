@@ -211,7 +211,7 @@ export class AssetsDetailComponent
                         ) {
                             (<AssetCostsListComponent>(
                                 this.outlet?.component
-                            )).isEditable = this.isEditable;
+                            )).isEditable = this.isEditable();
                         }
                     });
             }

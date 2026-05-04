@@ -51,9 +51,8 @@ export class EmployeeQuestioningDetailComponent extends BaseChildEntityDetailCom
         super(employeeQuestioningSrv, 'Questioning');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+    override process(t: Questioning) {
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
 
     override setupForm(a: Questioning): UntypedFormGroup {

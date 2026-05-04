@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 import { ExtraCostService } from '../services/extra-cost.service';
 import { PaginationModel } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -67,7 +67,7 @@ export class ExtraCostListComponent implements OnInit {
     selected = 0;
     paginator = PaginationModel.newInstance();
     data: ExtraCost[] = [];
-    isEditable = true;
+    isEditable = signal(true);
 
     displayedColumns = [
         'reference',
@@ -81,7 +81,7 @@ export class ExtraCostListComponent implements OnInit {
 
     constructor() {
         this.paginator.onChange = () => this.refresh();
-        this.isEditable = this.shellSrv.getCurrentNodeRights().edit;
+        this.isEditable.set(this.shellSrv.getCurrentNodeRights().edit);
     }
 
     refresh() {

@@ -43,6 +43,11 @@ export class ProductionFormulasDetailComponent extends BaseTransactionDetailComp
         super(orderService, detailSrv, shellSrv, snackBarSrv, route, router, formBuilder, confirmationSrv, loginSrv, dialog, 'PROD_PRODUCTION_FORMULAS');
     }
 
+    override finishLoading(e:Transaction){
+        this.saveButton.visible = this.saveButton.visible && !e.isValidated;
+        this.detailSrv.editable = this.isEditable();
+        super.finishLoading(e);
+    }
     override setupForm(b: Transaction): FormGroup {
         this.purchaseProjectSrv.setParentId(b?.agent || 0);
         if (!b.id) {
@@ -58,9 +63,7 @@ export class ProductionFormulasDetailComponent extends BaseTransactionDetailComp
         //this._isManager = this.loginSrv.appCtx.manager;
         this.formId = b.id || 0;
 
-        this.isEditable = this.isEditable && !b.isValidated;
-        this.saveButton.visible = this.saveButton.visible && !b.isValidated;
-        this.detailSrv.editable = this.isEditable;
+        this.isEditable.update(v => v && !b.isValidated);
         return this.formBuilder.group({
             id: [b.id],
             document: [b.document || 0],

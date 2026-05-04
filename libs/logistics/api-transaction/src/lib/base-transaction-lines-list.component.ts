@@ -8,7 +8,7 @@ import {debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators
 import { LoginService, PaginationModel } from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import {FormControl} from '@angular/forms';
-import { Directive, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
+import {computed, Directive, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { OptionService } from '@ss/logistics/ui-options';
 import {PackagingUnitsService} from '@ss/logistics/packaging-units';
@@ -17,7 +17,7 @@ import {PackagingUnit} from '@ss/logistics/packaging-units';
 @Directive()
 export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     #packagingUnitSrv = inject(PackagingUnitsService);
-    #_isEditable_ = true;
+    #_isEditable_  = signal(true);
     #_unitsMap = new Map<number, string>();
 
     protected optionSrv = inject(OptionService);
@@ -29,6 +29,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     data: TransactionLine[];
     // selectedId: number;
     selectedRow: TransactionLine = null;
+    isEditable = computed(() => this.#_isEditable_);
     usesLots = signal(false);
     usesUnits = signal(false);
     loading = signal(true);
@@ -98,7 +99,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.loading.set(true);
         this.parentId = this.detailSrv.getParentId();
-        this.#_isEditable_ = this.detailSrv.editable;
+        this.#_isEditable_.set(this.detailSrv.editable);
         // this.loadDetailLines().subscribe(() => this.shellSrv.setLoading(false));
 
         this.init()
@@ -190,9 +191,9 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     //     this.#_isEditable_ = e;
     // }
 
-    get isEditable() {
-        return this.#_isEditable_;
-    }
+    // get isEditable() {
+    //     return this.#_isEditable_;
+    // }
 
     // TODO: Skipped for migration because:
     //  Accessor inputs cannot be migrated as they are too complex.

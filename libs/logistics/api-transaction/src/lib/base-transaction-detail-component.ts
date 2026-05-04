@@ -347,12 +347,12 @@ export abstract class BaseTransactionDetailComponent
         this._isManager = this.loginSrv.appCtx.manager;
         this.formId = b.id || 0;
 
-        this.isEditable = this.isEditable && !b.isValidated;
+        this.isEditable.update(v => v && !b.isValidated);
         this.importBtn.disabled =
             (this.requireAgentToImportDocument() &&
                 (b.agent === null || b.agent === undefined)) ||
             b.id === 0;
-        this.detailSrv.editable = this.isEditable;
+        this.detailSrv.editable = this.isEditable();
         this.transaction = b;
         return this.formBuilder.group({
             id: [b.id],
