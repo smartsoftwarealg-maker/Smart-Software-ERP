@@ -29,6 +29,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import { OptionService } from '@ss/logistics/ui-options';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
     selector: 'ss-production-order-lines-list',
@@ -59,6 +60,7 @@ import { OptionService } from '@ss/logistics/ui-options';
         MatCellDef,
         MatHeaderRowDef,
         MatRowDef,
+        MatProgressSpinner,
     ],
 })
 export class ProductionOrderLinesListComponent

@@ -74,8 +74,8 @@ export class TransporterReceptionListComponent extends BaseEntityListComponent<T
         this.select(id);
         this.agentSrv.get(row.agent).subscribe((agent) => {
             const itemControlsOn =
-                this.selected != null &&
-                this.selected > 0 &&
+                this.selectedId() != null &&
+                this.selectedId() > 0 &&
                 agent.agentType == TRANSPORTER;
             this.editButton.disabled = !itemControlsOn;
             this.deleteButton.disabled = !itemControlsOn;
@@ -87,7 +87,7 @@ export class TransporterReceptionListComponent extends BaseEntityListComponent<T
         if (id) {
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }
-        const itemControlsOn = this.selected != null && this.selected > 0;
+        const itemControlsOn = this.selectedId() != null && this.selectedId() > 0;
         this.viewReportButton.disabled = !itemControlsOn;
         this.emailReportButton.disabled =
             !this.selectedRow || !itemControlsOn || !this.selectedRow['email'];

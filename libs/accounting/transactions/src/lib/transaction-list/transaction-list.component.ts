@@ -179,7 +179,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     // }
 
     private navigate() {
-        if (this.selected) {
+        if (this.selectedId()) {
             this.processing.set(true);
             const commands = this.transactionMode ? [this.selected] : [this.selected, 'archive'];
             this.router.navigate(commands, { relativeTo: this.route })

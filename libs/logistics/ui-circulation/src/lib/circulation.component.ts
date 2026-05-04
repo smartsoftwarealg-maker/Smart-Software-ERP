@@ -33,7 +33,7 @@ export class CirculationComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
-    data: Circulation[];
+    data = signal<Circulation[]>([]);
     articleReference: string;
     articleId: number;
     storeName = signal('STOCK_STORE');
@@ -87,6 +87,6 @@ export class CirculationComponent implements OnInit {
     }
 
     load(observable: Observable<Circulation[]>) {
-        observable.subscribe((x: Circulation[]) => this.data = x);
+        observable.subscribe((x: Circulation[]) => this.data.set(x));
     }
 }

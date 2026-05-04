@@ -34,7 +34,8 @@ export class UiStockInfoComponent implements OnInit {
     #optionsSrv = inject(OptionService);
 
     readonly pagination = PaginationModel.newInstance();
-    data: StockInfo[] = [];
+    data = signal<StockInfo[]>([]);
+    loading = signal(false);
     articleReference: string;
     usesLots = signal(false);
 
@@ -61,19 +62,23 @@ export class UiStockInfoComponent implements OnInit {
         });
 
         this.pagination.onChange = () => this.loadStockInfo();
+        this.loading.set(true);
         this.#optionsSrv
             .get(this.#loginSrv.appCtx.center)
             .subscribe(res => {
                 this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'store');
                 this.usesLots.set(res.usesLots);
+                this.loading.set(false);
             });
     }
 
     loadStockInfo() {
+        this.loading.set(true);
         this.stockSrv
             .load(this.pagination, null, null, this.articleReference || '')
             .subscribe((x: StockInfo[]) =>  {
-                this.data = x;
+                this.data.set(x);
+                this.loading.set(false);
             });
     }
 }
