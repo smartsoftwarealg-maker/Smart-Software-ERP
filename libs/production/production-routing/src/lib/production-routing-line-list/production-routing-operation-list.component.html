@@ -45,7 +45,7 @@
             <ng-container matColumnDef="instructionText">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>PROD_INSTRUCTION_TEXT</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.instructionText }}
+                    {{ e.instructionText }}a
                 </mat-cell>
             </ng-container>
 
@@ -58,7 +58,7 @@
 
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row class="selectable"
-                     [class.selected]="row.id == selectedId"
+                     [class.selected]="row.id == selectedId()"
                      [class.dirty]="row.dirty"
                      (click)="selectRow(row)"
                      *matRowDef="let row; columns: displayedColumns;"></mat-row>

@@ -1,5 +1,7 @@
 export const PRODUCTION_ROUTING_URL = '/production/routing';
 export const ROUTING_OPERATION_URL = '/operations';
+export const ROUTING_MATERIAL_URL = '/materials';
+export const PRODUCTION_OPERATION_URL = '/production/operations';
 
 export const ROUTING_STATUS = ['DRAFT', 'APPROVED', 'OBSOLETE', 'CANCELLED'];
 export const OPERATION_TYPE = [
@@ -10,6 +12,9 @@ export const OPERATION_TYPE = [
     'SHIPPING',
     'SUBCONTRACT',
 ];
+
+export const CONSUMPTION_TYPE = ['FIXED', 'VARIABLE', 'PHANTOM'];
+    export const CONSUMPTION_POINT = ['START', 'END', 'REPORTING_POINT'];
 
 export interface Routing {
     id: number;
@@ -60,4 +65,18 @@ export interface RoutingOperation {
     createdBy?: number;
     updatedBy?: number;
     deletedAt?: Date;
+}
+
+export interface RoutingMaterial {
+    id: number;
+    parentId: number;
+    bomItemId: number;
+    consumptionType: string;
+    quantityPer: number;
+    scrapPercentage?: number;
+    consumptionPoint: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    createdBy?: number;
+    updatedBy?: number;
 }

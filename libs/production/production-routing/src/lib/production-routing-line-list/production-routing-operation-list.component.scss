@@ -21,27 +21,28 @@ mat-header-cell {
     margin: 0 auto;
 }
 
-.mat-column-routingNumber {
-    flex: 1 1 100px;
-    border-left: gray solid 1px;
-    padding-left: 4px;
-}
-
-.mat-column-revision {
+.mat-column-operationName {
     flex: 1 1 150px;
     border-left: gray solid 1px;
     padding-left: 4px;
 }
 
-.mat-column-description {
-    flex: 1 1 200px;
+.mat-column-operationNumber {
+    flex: 1 1 100px;
     border-left: gray solid 1px;
     padding-left: 4px;
 }
 
-.mat-column-status {
+.mat-column-operationType {
     flex: 1 1 120px;
     border-left: gray solid 1px;
+    padding-left: 4px;
+}
+
+.mat-column-instructionText {
+    flex: 1 1 150px;
+    border-left: gray solid 1px;
+    padding-left: 4px;
 }
 
 .ctrl_div {

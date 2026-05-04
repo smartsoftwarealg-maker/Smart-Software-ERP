@@ -1,0 +1,69 @@
+<div class="ctrl_div default-100">
+    <button mat-mini-fab color="primary"
+            [matTooltip]="'COMMON_SAVE' | translate"
+            (click)="save()"
+            [disabled]="!form?.valid">
+        <i class="fas fa-save"></i>
+    </button>
+    <button mat-mini-fab
+            color="warn"
+            [matTooltip]="'COMMON_CANCEL' | translate"
+            translate (click)="cancel()">
+        <i class="fas fa-redo"></i>
+    </button>
+</div>
+<mat-card>
+    <mat-card-content>
+        @if (form !== null) {
+            <form [formGroup]="form">
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PROD_BOM</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="bomLookup"
+                                      formControlName="bomItemId"
+                                      required="true">
+                    </ss-auto-complete>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PROD_CONSUMPTION_TYPE</mat-label>
+                    <mat-select formControlName="consumptionType">
+                        @for (c of CONSUMPTION_TYPE; track c) {
+                            <mat-option [value]="c" translate>PROD_{{ c }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PROD_QUANTITY_PER</mat-label>
+                    <input matInput formControlName="quantityPer" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PROD_SCRAP_PERCENTAGE</mat-label>
+                    <input matInput formControlName="scrapPercentage" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PROD_CONSUMPTION_TYPE</mat-label>
+                    <mat-select formControlName="consumptionPoint">
+                        @for (p of CONSUMPTION_POINT; track p) {
+                            <mat-option [value]="p" translate>PROD_{{ p }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <!--                <mat-form-field class="default-50 sm-100">-->
+                <!--                    <mat-label translate>PROD_WORK_CENTER</mat-label>-->
+                <!--                    <ss-auto-complete matInput-->
+                <!--                                      [model]="bomLookup"-->
+                <!--                                      formControlName="workCenterId"-->
+                <!--                                      required="true">-->
+                <!--                    </ss-auto-complete>-->
+                <!--                </mat-form-field>-->
+
+            </form>
+        }
+    </mat-card-content>
+</mat-card>

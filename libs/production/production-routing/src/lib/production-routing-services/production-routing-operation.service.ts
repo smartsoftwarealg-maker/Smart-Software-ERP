@@ -3,7 +3,6 @@ import { BaseEntityService } from '@ss/common/api-base-entity';
 import { HttpService } from '@ss/common/api-common';
 import {
     PRODUCTION_ROUTING_URL,
-    Routing,
     ROUTING_OPERATION_URL,
     RoutingOperation,
 } from './production-routing-api';
