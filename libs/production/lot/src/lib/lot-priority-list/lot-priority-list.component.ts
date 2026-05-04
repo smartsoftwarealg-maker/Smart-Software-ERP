@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, WritableSignal, signal } from '@angular/core';
 import {
     KeepOnToolbar,
     ShellService,
@@ -50,7 +50,8 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
     private clickEdit = false;
     public filter: string;
     public sortBy: string;
-    public selected = 0;
+    // replaced primitive selected:number with an Angular WritableSignal
+    public selectedId: WritableSignal<number> = signal(0);
     public selectedRow: Lot;
     public data: Location[] = [];
     public readonly pagination = PaginationModel.newInstance();
@@ -97,11 +98,11 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
     ];
 
     public edit() {
-        if (this.selected) {
+        if (this.selectedId()) {
             this.lotsSrv.setReference(this.ref);
             this.clickEdit = true;
             this.router
-                .navigate([this.selected], {
+                .navigate([this.selectedId()], {
                     relativeTo: this.route,
                     replaceUrl: true,
                 })
@@ -111,7 +112,8 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
 
     search(): void {
         if (this.refFC.getRawValue()) {
-            this.ref = this.refFC.getRawValue();
+            // FormControl.getRawValue() can return string | null — normalize to empty string when null
+            this.ref = this.refFC.getRawValue() || '';
             this.refFC.setValue(null);
             this.refresh();
         }
@@ -120,7 +122,7 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
     public refresh() {
         this.data = [];
         this.shellSrv.setLoading(true);
-        this.selected = 0;
+        this.selectedId.set(0);
         this.locationSrv
             .getLots(
                 this.ref,
@@ -169,11 +171,11 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
     }
 
     public select(id: number): void {
-        this.selected = id;
+        this.selectedId.set(id);
         if (id) {
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }
-        const itemControlsOn = this.selected != null && this.selected > 0;
+        const itemControlsOn = this.selectedId() != null && this.selectedId() > 0;
         this.editButton.disabled = !itemControlsOn;
         this.shellSrv.updateShell();
     }
@@ -182,7 +184,7 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
         this.shellSrv.reset();
         this.pagPersistSrv.set('', this.pagination, this.filter);
         if (!this.clickEdit) {
-            this.lotsSrv.setReference(null);
+            this.lotsSrv.setReference('');
         }
     }
 }
