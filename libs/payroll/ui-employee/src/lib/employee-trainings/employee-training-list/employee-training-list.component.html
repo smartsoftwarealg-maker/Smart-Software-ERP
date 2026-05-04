@@ -1,4 +1,4 @@
-@if (isEditable) {
+@if (isEditable()) {
     <div class="buttons">
         @if (activePersonnelSrv.val) {
             <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">

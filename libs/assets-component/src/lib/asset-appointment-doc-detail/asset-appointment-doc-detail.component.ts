@@ -120,8 +120,8 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.editMode = b.id != 0;
         this.activity = b?.activity || '';
         this.shellSrv.addButton(this.sendBtn);
-        this.isEditable = this.saveButton.visible =
-            this.isEditable && (!b.validated || this.loginSrv.appCtx.manager);
+        this.saveButton.visible = this.isEditable() && (!b.validated || this.loginSrv.appCtx.manager);
+        this.isEditable.set(this.isEditable() && (!b.validated || this.loginSrv.appCtx.manager));
 
         return this.formBuilder.group({
             id: [b.id],

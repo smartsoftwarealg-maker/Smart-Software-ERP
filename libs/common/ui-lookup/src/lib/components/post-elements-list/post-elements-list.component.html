@@ -1,7 +1,7 @@
 @if (detailSrv.getParentId()) {
     <div class="main-container">
         <div class="add-button">
-            @if (isEditable) {
+            @if (isEditable()) {
                 <button
                     mat-mini-fab
                     color="primary"
@@ -20,7 +20,7 @@
             >
                 <span class="fas fa-pen"></span>
             </button>
-            @if (isEditable) {
+            @if (isEditable()) {
                 <button mat-mini-fab (click)="deleteSelected()"
                         [matTooltip]="'COMMON_DELETE' | translate"
                         [disabled]="!selectedId"

@@ -45,7 +45,7 @@ export class EmployeeDiplomaDetailComponent extends BaseChildEntityDetailCompone
 
     override ngOnInit() {
         super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
 
     override setupForm(a: PersonDiploma): UntypedFormGroup {

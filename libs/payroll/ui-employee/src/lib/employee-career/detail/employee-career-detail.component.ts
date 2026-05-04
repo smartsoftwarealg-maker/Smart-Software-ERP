@@ -108,9 +108,8 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
         this.postLookup.onObjectSelected = e => this.onPost(e);
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+    override process(t: Career) {
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
 
     private onPost(p: Post) {

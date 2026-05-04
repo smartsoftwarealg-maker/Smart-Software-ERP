@@ -32,9 +32,8 @@ export class EmployeeLanguagesDetailComponent extends BaseChildEntityDetailCompo
         super(employeeLanguagesSrv, 'PAYROLL_LANGUAGES');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+    override process(t: PersonLanguage) {
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
 
     override setupForm(a: PersonLanguage): UntypedFormGroup {

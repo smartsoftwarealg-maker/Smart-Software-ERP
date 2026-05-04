@@ -52,10 +52,10 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
         super(detailSrv, 'Punishment');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+    override process(t: Punishment) {
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
+
     override setupForm(a: Punishment): UntypedFormGroup {
         return this.form = this.formBuilder.group({
             id:             [a.id],

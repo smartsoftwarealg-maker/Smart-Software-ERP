@@ -66,6 +66,6 @@ export class AssetPmArticleDetailComponent extends BaseChildEntityDetailComponen
             ).subscribe(ent => {
                 this.form = this.setupForm(ent);
             });
-        this.isEditable = this.shellSrv.getCurrentNodeRights()?.edit || false;
+        this.isEditable.set(this.shellSrv.getCurrentNodeRights()?.edit || false);
     }
 }

@@ -1,4 +1,4 @@
-import { Directive, inject } from '@angular/core';
+import { Directive, inject, signal} from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -20,7 +20,7 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
 
     public id = 0;
     public form: UntypedFormGroup | null = null;
-    public isEditable = true;
+    public isEditable = signal(true);
     rights: Right = {edit: false, write: false, read: false, delete: false};
 
 
@@ -32,15 +32,16 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
         return this.route.parent.parent.paramMap;
     }
 
+    protected process(t: T): void { }
+
     ngOnInit() {
         this.route
             .paramMap
             .pipe(
                 tap(map => this.id = +map.get('id') || 0),
                 switchMap(() => this.idParamMap()),
-                switchMap(map => {
-                    return this.id? this.entitySrv.get(this.id) : of(this.EMPTY_RECORD);
-                })
+                switchMap(() =>  this.id? this.entitySrv.get(this.id) : of(this.EMPTY_RECORD)),
+                tap(ent => this.process(ent))
             ).subscribe(ent => {
                 this.form = this.setupForm(ent);
             });
@@ -52,20 +53,20 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
 
         obs.subscribe(ent => this.form = this.setupForm(ent));
 
-        this.isEditable = this.shellSrv.getCurrentNodeRights()?.edit || false;
+        // this.isEditable = this.shellSrv.getCurrentNodeRights()?.edit || false;
         const isManager = this.loginSrv?.appCtx?.manager || false;
         const rights = this.shellSrv.getEntityRights(this.entity);
         this.rights = rights || {write: isManager, edit: isManager, read: isManager, delete: isManager};
-        this.isEditable = this.rights.edit;
+        this.isEditable.set(this.rights.edit);
     }
 
     readForm(): T {
-        return this.form.getRawValue();
+        return this.form?.getRawValue();
     }
 
     save() {
-        this.form.markAllAsTouched();
-        if (!this.form.valid) {
+        this.form?.markAllAsTouched();
+        if (!this.form?.valid) {
             this.snackBarSrv.showFailureMessage('COMMON_FORM_NOT_VALID');
             return;
         }
@@ -87,14 +88,14 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
                 next: () => {
                     this.shellSrv.setLoading(false);
                     this.router.navigate(['../'], { relativeTo: this.route }).then();
-                    this.form.markAsUntouched();
+                    this.form?.markAsUntouched();
                     this.snackBarSrv.showSuccessMessage();
                 }
             });
     }
 
     cancel() {
-        const obs = this.form.dirty ?
+        const obs = this.form?.dirty ?
             this.confirmationSrv.confirm('COMMON_CANCEL', 'COMMON_CANCEL') :
             of(true);
         obs.subscribe(res => {

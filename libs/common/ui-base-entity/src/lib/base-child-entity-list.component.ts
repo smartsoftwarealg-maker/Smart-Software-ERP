@@ -26,7 +26,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
     data$: Observable<T[]> = of([]);
     emptyData$ = this.data$.pipe(map(res => res.length === 0));
     displayedColumns = ['id'];
-    isEditable = false;
+    isEditable = signal(false);
 
     constructor(protected detailSrv: BaseEntityService<T>, protected entity: string) {
         this.paginator.onChange = () => this.refresh();
@@ -38,7 +38,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
         const rights = this.shellSrv.getEntityRights(this.entity);
         const isManager = this.loginSrv.appCtx.manager;
         this.rights = rights || {write: isManager, edit: isManager, delete: isManager, read: isManager};
-        this.isEditable = this.rights.edit;
+        this.isEditable.set(this.rights.edit);
     }
 
     showDetail(id: number) {

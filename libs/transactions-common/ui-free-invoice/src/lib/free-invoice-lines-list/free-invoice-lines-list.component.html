@@ -4,7 +4,7 @@
             <mat-label translate>COMMON_SEARCH</mat-label>
             <input matInput [formControl]="searchText" type="text">
         </mat-form-field>
-        @if (isEditable) {
+        @if (isEditable()) {
             <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
                 <span class="fas fa-plus"></span>
             </button>
@@ -15,7 +15,7 @@
                     color="accent">
                 <span class="fas fa-pen"></span>
             </button>
-        @if (isEditable) {
+        @if (isEditable()) {
             <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
                     [disabled]="!selectedId"
                     color="warn">

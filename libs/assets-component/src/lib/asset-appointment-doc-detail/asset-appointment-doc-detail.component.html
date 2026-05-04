@@ -127,7 +127,7 @@
   <div class="item pagination-container b-b-background">
     <ss-pagination [paginationModel]="pagination"></ss-pagination>
   </div>
-  @if (isEditable) {
+  @if (isEditable()) {
     <div class="item ctrl_div">
       <mat-form-field class="input_div">
         <mat-label translate>ASSETS</mat-label>

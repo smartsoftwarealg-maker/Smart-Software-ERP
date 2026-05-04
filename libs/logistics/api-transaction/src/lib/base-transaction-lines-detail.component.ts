@@ -146,7 +146,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 tap(() => {
                     const rights = this.shellSrv.getCurrentNodeRights();
                     this.saveDisabled &&= rights.edit;
-                    this.isEditable = rights.edit && this.entitySrv.editable;
+                    this.isEditable.set(rights.edit && this.entitySrv.editable);
                 }),
                 switchMap(() => this.route.params),
                 tap(p => {

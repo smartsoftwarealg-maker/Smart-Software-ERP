@@ -484,7 +484,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     private loadData() {
-        const id = this.selected || 0;
+        const id = this.selectedId();
         const from = dateToYmdStr(this.fromDate.value);
         const to = dateToYmdStr(this.toDate.value);
         const consolidated = this.consolidated.value;

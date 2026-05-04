@@ -50,9 +50,8 @@ export class EmployeeUnpaidLeaveDetailComponent extends BaseChildEntityDetailCom
         super(employeeUnpaidLeaveSrv, 'UnpaidLeave');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+    protected process(t: UnpaidLeave) {
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
 
     override setupForm(a: UnpaidLeave): UntypedFormGroup {

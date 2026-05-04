@@ -86,9 +86,10 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
             b.serialNumber = 0;
         }
         this.shellSrv.addButton(this.sendBtn);
-        this.saveButton.visible = this.isEditable = this.isEditable && !b.validated;
+        this.saveButton.visible = this.isEditable && !b.validated;
+        this.isEditable.set(this.saveButton.visible);
         this.sendBtn.visible = b.id > 0; //this.isEditable &&
-        this.validated = b.validated;
+        this.validated = b.validated||false;
         return this.formBuilder.group({
             id:             [b.id],
             centerId:       [b.centerId || this.loginSrv.appCtx.center],
@@ -114,7 +115,7 @@ export class AssetReceptionsDetailComponent extends BaseEntityDetailComponent<As
 
     override readForm(): AssetReception {
         const rights = this.shellSrv.getCurrentNodeRights();
-        this.isEditable = rights.edit;
+        this.isEditable.set(rights.edit);
         const value = super.readForm();
         value.serialNumber = 0;
         return value;

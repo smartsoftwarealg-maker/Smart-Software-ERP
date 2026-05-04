@@ -46,9 +46,8 @@ export class EmployeeInvitationDetailComponent extends BaseChildEntityDetailComp
         super(employeeInvitationSrv, 'Invitation');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+    override process(t: Invitation) {
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
 
     override setupForm(a: Invitation): UntypedFormGroup {

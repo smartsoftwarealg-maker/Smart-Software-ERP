@@ -36,9 +36,9 @@ export class EmployeeWifeDetailComponent extends BaseChildEntityDetailComponent<
         super(employeeWivesSrv, 'Wife');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable = this.activePersonnelSrv.val;
+
+    protected process(t:Wife){
+        this.isEditable.set(this.activePersonnelSrv.val);
     }
 
     override setupForm(a: Wife): UntypedFormGroup {

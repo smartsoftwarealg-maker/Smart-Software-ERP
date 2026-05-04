@@ -70,9 +70,9 @@ export class ProductionOrderDetailComponent extends BaseTransactionDetailCompone
         //this._isManager = this.loginSrv.appCtx.manager;
         this.formId = b.id || 0;
 
-        this.isEditable = this.isEditable && !b.isValidated;
+        this.isEditable.update(v => v && !b.isValidated);
         this.saveButton.visible = this.saveButton.visible && !b.isValidated;
-         this.detailSrv.editable = this.isEditable;
+         this.detailSrv.editable = this.isEditable();
         return this.formBuilder.group({
             id: [b.id],
             document: [b.document || 0],

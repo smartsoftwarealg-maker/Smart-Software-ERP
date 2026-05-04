@@ -93,8 +93,6 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
         }
         this.personSrv.setParentId(e?.id || 0);
         this.validated = e.validated;
-        // this.isEditable = this.isEditable && !e.actualDue;
-        // this.saveButton.visible = this.isEditable;
         return this.formBuilder.group({
             id:                   [e.id],
             document:             [e.document || this.document],
