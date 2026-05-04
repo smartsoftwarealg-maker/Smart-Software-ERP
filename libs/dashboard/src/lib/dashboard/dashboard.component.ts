@@ -434,7 +434,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                         title: {
                             display: true,
                             text: this.data
-                                .filter((e) => e.id === this.selected)
+                                .filter((e) => e.id === this.selectedId())
                                 .map((e) => e.description)[0],
                         },
                         ticks: {
@@ -485,8 +485,8 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
 
     private loadData() {
         const id = this.selectedId();
-        const from = dateToYmdStr(this.fromDate.value);
-        const to = dateToYmdStr(this.toDate.value);
+        const from = dateToYmdStr(this.fromDate.value||new Date());
+        const to = dateToYmdStr(this.toDate.value||new Date());
         const consolidated = this.consolidated.value;
         this.dashboardSrv
             .getData(
@@ -496,10 +496,9 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 from,
                 to,
                 this.selectedAgentId,
-                consolidated,
-                this.filterCtrl.value,
-            )
-            .subscribe({
+                consolidated||false,
+                this.filterCtrl.value||'',
+            ).subscribe({
                 next: (res) => {
                     this.dashboardData.set(res.body);
                     this.detailPagination.elementCount = res.itemCount;
@@ -552,6 +551,8 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         const indices: number[] = [];
         const matrix: number[][] = [];
 
+        const normalizedData = this.dashboardData().map(row => row.map((v, i) => v.toString().replaceAll(' ', '').replace(',', '.')));
+
         if (!this.dashboardData()?.length || !this.dashboardData()[0]?.length) {
             return { indices, matrix };
         }
@@ -564,7 +565,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
             let columnIsValid = false;
 
             for (let row = 0; row < totalRows; row++) {
-                const rawValue = this.dashboardData()[row][col];
+                const rawValue = normalizedData[row][col];
                 // Quick rejection: any forbidden character (letters, symbols except those allowed)
                 if (/[^\d,.% -]/.test(rawValue)) {
                     columnIsValid = false;
