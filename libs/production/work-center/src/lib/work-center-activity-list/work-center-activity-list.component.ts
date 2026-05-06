@@ -23,7 +23,7 @@ import {DocInfoComponent} from "@ss/logistics/ui-doc-info";
     standalone: true,
     imports: [
         MatTooltip, TranslatePipe,
-        MatMiniFabButton, MatIconButton,
+        MatMiniFabButton,
         MatTable, MatColumnDef,
         MatHeaderCell, MatCell,
         MatCellDef, MatHeaderCellDef,
