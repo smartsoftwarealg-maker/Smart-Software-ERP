@@ -124,5 +124,7 @@
     "IS_CRITICAL":         "Is critical",
     "PROCESS":             "Process",
     "SHIPPING":            "Shipping",
-    "SUBCONTRACT":         "Subcontract"
+    "SUBCONTRACT":         "Subcontract",
+    "FORMULA_FACTOR":       "Formula Factor",
+    "BASE_UNIT":            "Base Unit"
 }

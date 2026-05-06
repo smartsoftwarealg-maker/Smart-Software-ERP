@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import {
     ABS_INDEX_URL,
     LIST_URL,
-    CanDeactivateService,
+    CanDeactivateService, RedirectToParentComponent,
 } from '@ss/common/api-common';
 import {
     docInfoRoutes,
@@ -27,7 +27,7 @@ import {
     PRODUCTIONS_RESERVATION_URL,
     PRODUCTION_WORK_CENTER_URL,
     PRODUCTION_UNITS_URL, ACTIVITY_CATEGORIES_URL,
-    PRODUCTION_ROUTING_URL,
+    PRODUCTION_ROUTING_URL, PRODUCTION_ACTIVITY_TYPE_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -116,6 +116,20 @@ import {
     ProductionRoutingLineListComponent,
     ProductionRoutingLineDetailComponent,
 } from '@ss/production/production-routing';
+
+import {
+    WorkCenterActivityListComponent
+} from "../../../../../libs/production/work-center/src/lib/work-center-activity-list/work-center-activity-list.component";
+import {
+    WorkCenterActivityDetailComponent
+} from "../../../../../libs/production/work-center/src/lib/work-center-activity-detail/work-center-activity-detail.component";
+import {
+    ActivityTypesDetailComponent
+} from "../../../../../libs/production/production-article/src/lib/production-activity-types-detail/production-activity-types-detail.component";
+import {
+    ActivityTypesListComponent
+} from "../../../../../libs/production/production-article/src/lib/production-activity-types-list/production-activity-types-list.component";
+
 
 export const prodRoutes: Routes = [
     {
@@ -212,51 +226,6 @@ export const prodRoutes: Routes = [
                 component: Bom2DetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-            },
-            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
-            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
-        ],
-    },
-
-    {
-        path: PRODUCTION_ORDER_URL,
-        children: [
-            {
-                path: LIST_URL,
-                component: ProductionOrderListComponent,
-                canActivate: [loginGuard],
-                children: docInfoRoutes,
-            },
-
-            {
-                path: ':id',
-                component: ProductionOrderDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: [
-                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
-                    {
-                        path: 'lines-list',
-                        component: ProductionOrderLinesListComponent,
-                        children: [
-                            ...docInfoRoutes,
-                            {
-                                path: 'consumptions',
-                                component: ProductionConsumptionComponent,
-                            },
-                        ],
-                    },
-                    {
-                        path: 'lines-detail',
-                        children: [
-                            {
-                                path: ':id',
-                                component: ProductionOrderLinesDetailComponent,
-                            },
-                        ],
-                    },
-                    ...docInfoRoutes,
-                ],
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
@@ -665,6 +634,25 @@ export const prodRoutes: Routes = [
         ],
     },
     {
+        path: PRODUCTION_ACTIVITY_TYPE_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ActivityTypesListComponent,
+                canActivate: [loginGuard],
+                children: docInfoRoutes,
+            },
+            {
+                path: ':id',
+                component: ActivityTypesDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
+        ],
+    },
+    {
         path: PRODUCTION_TRANSFER_DETAIL_URL,
         children: [
             {
@@ -709,18 +697,35 @@ export const prodRoutes: Routes = [
                 path: LIST_URL,
                 component: WorkCenterListComponent,
                 canActivate: [loginGuard],
-                canActivateChild: [loginGuard],
-                children: docInfoRoutes,
             },
             {
                 path: ':id',
                 component: WorkCenterDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
-                canActivateChild: [loginGuard],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'activity-list' },
+
+                    {
+                        path: 'activity-list',
+                        component: WorkCenterActivityListComponent
+                    },
+
+                    {
+                        path: 'activity-detail',
+                        children: [
+                            { path: '', component: RedirectToParentComponent }, // مهم
+                            {
+                                path: ':id',
+                                component: WorkCenterActivityDetailComponent,
+                            },
+                        ],
+                    }
+                ],
             },
         ],
     },
+
     {
         path: PRODUCTION_ROUTING_URL,
         children: [

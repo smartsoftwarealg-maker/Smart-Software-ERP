@@ -4,7 +4,6 @@ import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import {
@@ -21,9 +20,7 @@ import { WorkCenterService } from '../work-center-services/work-center.service';
 import { CostCenterService } from '@ss/logistics/api-cost-center';
 import { CurrencyService } from '@ss/common/api-lookup';
 import { UserListService } from '@ss/common/api-users';
-import {
-    RoutingOperation
-} from '../../../../production-routing/src/lib/production-routing-services/production-routing-api';
+import {WorkCenterActivityService} from "../work-center-services/work-center-activity.service";
 
 @Component({
     selector: 'ss-product-detail',
@@ -36,6 +33,7 @@ import {
         CdkTextareaAutosize,
         UiAutoCompleteComponent,
         DatePickerComponent,
+        RouterOutlet,
     ],
 })
 export class WorkCenterDetailComponent extends BaseEntityDetailComponent<WorkCenter> {
@@ -57,7 +55,7 @@ export class WorkCenterDetailComponent extends BaseEntityDetailComponent<WorkCen
             'PROD_WORK_CENTER',
         );
     }
-
+    #activitySrv = inject(WorkCenterActivityService);
     #costCenterSrv = inject(CostCenterService);
     #currencySrv = inject(CurrencyService);
     #userSrv = inject(UserListService);
@@ -67,6 +65,7 @@ export class WorkCenterDetailComponent extends BaseEntityDetailComponent<WorkCen
     currencyLookup = new DefaultAutoCompleteModel(this.#currencySrv);
     userLookup = new UserLookup(this.#userSrv);
     override setupForm(w: WorkCenter): FormGroup {
+        this.#activitySrv.setParentId(w.id || 0);
         return this.formBuilder.group({
             id: [w.id],
             code: [w.code],

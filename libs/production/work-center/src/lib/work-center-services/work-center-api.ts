@@ -37,3 +37,18 @@ export interface WorkCenter {
     deletedAt?: Date;
     ccDescription?: string;
 }
+
+
+export interface WorkCenterActivity {
+    id: number;
+    parentId: number;
+    activityTypeId: number;
+    formulaFactor?: number;
+    baseUnit?: string;
+    isActive?: boolean;
+    priority?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+    createdBy?: number;
+    updatedBy?: number;
+}

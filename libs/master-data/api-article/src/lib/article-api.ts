@@ -200,3 +200,18 @@ export interface ActivityCategory {
     updatedBy?: number;
     deletedAt?: string;
 }
+
+export interface ActivityType {
+    id: number;
+    code: string;
+    name: string;
+    description?: string;
+    activityCategory?: number;
+    activityCategoryName?: string
+    unitOfMeasureId: number;
+    unitOfMeasureName?: string;
+    defaultBaseUnit?: string;
+    isCostRelevant?: number;
+    isCapacityRelevant?: number;
+    isActive?: number;
+}
