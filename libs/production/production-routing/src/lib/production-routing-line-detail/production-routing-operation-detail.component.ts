@@ -23,8 +23,8 @@ import { WorkCenterService } from '@ss/production/work-center';
 
 @Component({
     selector: 'ss-product-line-detail',
-    templateUrl: './production-routing-line-detail.component.html',
-    styleUrl: './production-routing-line-detail.component.scss',
+    templateUrl: './production-routing-operation-detail.component.html',
+    styleUrl: './production-routing-operation-detail.component.scss',
     standalone: true,
     imports: [
         MaterialModule,
@@ -34,7 +34,7 @@ import { WorkCenterService } from '@ss/production/work-center';
         TranslatePipe,
     ],
 })
-export class ProductionRoutingLineDetailComponent extends BaseChildEntityDetailComponent<RoutingOperation> {
+export class ProductionRoutingOperationDetailComponent extends BaseChildEntityDetailComponent<RoutingOperation> {
     private fb = inject(FormBuilder);
 
     constructor(

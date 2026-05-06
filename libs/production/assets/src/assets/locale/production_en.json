@@ -126,5 +126,19 @@
     "SHIPPING":            "Shipping",
     "SUBCONTRACT":         "Subcontract",
     "FORMULA_FACTOR":       "Formula Factor",
-    "BASE_UNIT":            "Base Unit"
+    "BASE_UNIT":            "Base Unit",
+    "PRODUCTION_OPERATION": "Production operation",
+    "OPERATION_MATERIAL":  "Operation material",
+    "CONSUMPTION_TYPE":    "Consumption type",
+    "QUANTITY_PER":        "Quantity per",
+    "SCRAP_PERCENTAGE":    "Scrap percentage",
+    "CONSUMPTION_POINT":   "Consumption point",
+    "FIXED":               "Fixed",
+    "VARIABLE":              "Variable",
+    "PHANTOM":             "Phantom",
+    "START":               "Start",
+    "END":                 "End",
+    "REPORTING_POINT":     "Reporting point",
+    "OPERATIONS":          "Operations"
+
 }

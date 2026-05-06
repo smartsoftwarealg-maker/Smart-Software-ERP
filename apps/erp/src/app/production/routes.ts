@@ -113,8 +113,9 @@ import { ActivityCategoriesDetailComponent } from '../../../../../libs/productio
 import {
     ProductionRoutingListComponent,
     ProductionRoutingDetailComponent,
-    ProductionRoutingLineListComponent,
-    ProductionRoutingLineDetailComponent,
+    ProductionRoutingOperationListComponent,
+    ProductionRoutingOperationDetailComponent,
+    RoutingMaterialLineListComponent, RoutingMaterialLineDetailComponent,
 } from '@ss/production/production-routing';
 
 import {
@@ -743,19 +744,34 @@ export const prodRoutes: Routes = [
                 canDeactivate: [CanDeactivateService],
                 canActivateChild: [loginGuard],
                 children: [
-                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: '', pathMatch: 'full', redirectTo: 'operations' },
                     {
-                        path: 'lines-list',
+                        path: 'operations',
                         children:[
                             {
                                 path: '',
-                                component: ProductionRoutingLineListComponent,
+                                component: ProductionRoutingOperationListComponent,
                                 pathMatch: 'full',
                             },
                             {
                                 path: ':id',
                                 component:
-                                    ProductionRoutingLineDetailComponent,
+                                    ProductionRoutingOperationDetailComponent,
+                            }
+                        ]
+                    },
+                    {
+                        path: 'materials',
+                        children:[
+                            {
+                                path: '',
+                                component: RoutingMaterialLineListComponent,
+                                pathMatch: 'full',
+                            },
+                            {
+                                path: ':id',
+                                component:
+                                    RoutingMaterialLineDetailComponent,
                             }
                         ]
                     },

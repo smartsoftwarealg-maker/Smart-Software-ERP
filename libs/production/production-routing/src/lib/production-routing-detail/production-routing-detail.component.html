@@ -143,6 +143,25 @@
     </mat-card>
 
     @if (id) {
-        <router-outlet></router-outlet>
+        <div class="size">
+            <mat-tab-group [selectedIndex]="selectedTab()" (selectedTabChange)="navigateTab($event)">
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <span translate>PROD_PRODUCTION_OPERATION</span>
+                    </ng-template>
+                    @if (selectedTab() == 0) {
+                        <router-outlet></router-outlet>
+                    }
+                </mat-tab>
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        <span translate>PROD_OPERATION_MATERIAL</span>
+                    </ng-template>
+                    @if (selectedTab() == 1) {
+                        <router-outlet></router-outlet>
+                    }
+                </mat-tab>
+            </mat-tab-group>
+        </div>
     }
 }

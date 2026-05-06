@@ -110,5 +110,18 @@
     "SHIPPING":             "Expédition",
     "SUBCONTRACT":          "Sous-traitance",
     "FORMULA_FACTOR":       "Facteur de formule",
-    "BASE_UNIT":            "Unité de base"
+    "BASE_UNIT":            "Unité de base",
+    "PRODUCTION_OPERATION": "Opération de production",
+    "OPERATION_MATERIAL":   "Matériel d'opération",
+    "CONSUMPTION_TYPE":     "Type de consommation",
+    "QUANTITY_PER":         "Quantité par",
+    "SCRAP_PERCENTAGE":     "Pourcentage d'effet",
+    "CONSUMPTION_POINT":    "Point de consommation",
+    "FIXED":                "Fixe",
+    "VARIABLE":             "Variable",
+    "PHANTOM":              "Phantom",
+    "START":                "Début",
+    "END":                  "Fin",
+    "REPORTING_POINT":      "Point de reporting",
+    "OPERATIONS":           "Opérations"
 }

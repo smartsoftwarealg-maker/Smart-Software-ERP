@@ -22,8 +22,8 @@ import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
     selector: 'ss-production-line-list',
-    templateUrl: './production-routing-line-list.component.html',
-    styleUrls: ['./production-routing-line-list.component.scss'],
+    templateUrl: './production-routing-operation-list.component.html',
+    styleUrls: ['./production-routing-operation-list.component.scss'],
     standalone: true,
     imports: [
         MatTable,
@@ -46,7 +46,7 @@ import { MatTooltip } from '@angular/material/tooltip';
         MatTooltip,
     ],
 })
-export class ProductionRoutingLineListComponent extends BaseChildEntityListComponent<RoutingOperation> {
+export class ProductionRoutingOperationListComponent extends BaseChildEntityListComponent<RoutingOperation> {
     override displayedColumns = [
         'operationName',
         'operationNumber',

@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
@@ -21,11 +21,9 @@ import {
     ROUTING_STATUS,
 } from '../production-routing-services/production-routing-api';
 import { ProductionRoutingService } from '../production-routing-services/production-routing.service';
-import {
-    ArticleAutoCompleteModel,
-    ArticleService,
-} from '@ss/master-data/api-article';
+import { ArticleService } from '@ss/master-data/api-article';
 import { ProductionRoutingOperationService } from '../production-routing-services/production-routing-operation.service';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
     selector: 'ss-product-detail',
@@ -42,6 +40,8 @@ import { ProductionRoutingOperationService } from '../production-routing-service
     ],
 })
 export class ProductionRoutingDetailComponent extends BaseEntityDetailComponent<Routing> {
+    private router = inject(Router);
+
     constructor(
         public override entitySrv: ProductionRoutingService,
         public override shellSrv: ShellService,
@@ -124,5 +124,14 @@ export class ProductionRoutingDetailComponent extends BaseEntityDetailComponent<
         formValue.isActive = formValue.isActive ? 1 : 0;
         formValue.isDefault = formValue.isDefault ? 1 : 0;
         return formValue;
+    }
+
+    selectedTab = signal(0);
+    navigateTab(event: MatTabChangeEvent) {
+        // event.index 0 → "operations", 1 → "materials"
+        this.selectedTab.set(event.index)
+        const target = this.selectedTab() === 0 ? 'operations' : 'materials';
+         // Navigate relative to the current activated route (the detail component)
+        this.router.navigate([target], { relativeTo: this.route }).then();
     }
 }

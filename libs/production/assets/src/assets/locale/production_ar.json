@@ -126,5 +126,19 @@
     "SHIPPING":             "شحن",
     "SUBCONTRACT":          "تعاقد خارجي",
     "FORMULA_FACTOR":       "معامل الصيغة",
-    "BASE_UNIT":            "وحدة الأساس"
+    "BASE_UNIT":            "وحدة الأساس",
+    "PRODUCTION_OPERATION": "عملية الإنتاج",
+    "OPERATION_MATERIAL":   "مواد العملية",
+    "CONSUMPTION_TYPE":     "نوع الاستهلاك",
+    "QUANTITY_PER":         "الكمية لكل",
+    "SCRAP_PERCENTAGE":     "نسبة الهدر",
+    "CONSUMPTION_POINT":    "نقطة الاستهلاك",
+    "FIXED":                "ثابت",
+    "VARIABLE":             "متغير",
+    "PHANTOM":              "خفي",
+    "START":                "ابدأ",
+    "END":                  "أنهِ",
+    "REPORTING_POINT":      "نقطة التقارير",
+    "OPERATIONS":           "العمليات"
+
 }
