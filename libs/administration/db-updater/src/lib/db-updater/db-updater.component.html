@@ -2,6 +2,9 @@
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 }
 <div class="container">
+    @if (loading()) {
+        <mat-spinner [diameter]="100"></mat-spinner>
+    } @else {
     <div class="ctrl_div">
         <mat-form-field class="search_field">
             <mat-label translate>COMMON_SEARCH</mat-label>
@@ -26,6 +29,7 @@
             {{ 'COMMON_UPDATE' | translate }}
         </button>
     </div>
+    }
     <div class="out_div">
             <textarea
                 rows="25"

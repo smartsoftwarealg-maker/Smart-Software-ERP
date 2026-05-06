@@ -95,16 +95,16 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
     selectFolder(period: number) {
         this.entitySrv
             .selectFolder(
-                this.selectedRow?.id || 0,
-                this.selectedRow?.fileYear || 0,
+                this.selectedRow()?.id || 0,
+                this.selectedRow()?.fileYear || 0,
                 period,
             )
             .pipe(tap((ctx) => this.loginSrv.setCurrentContext(ctx)))
             .subscribe(() => {
-                if (this.selectedRow) {
-                    this.entitySrv.accFile = this.selectedRow;
+                if (this.selectedRow()) {
+                    this.entitySrv.accFile = this.selectedRow();
                     this.shellSrv.setLabels([
-                        { title: `${this.selectedRow.description}` },
+                        { title: `${this.selectedRow().description}` },
                     ]);
                 }
                 this.snackBarSrv.showSuccessMessage();
@@ -121,8 +121,8 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
         super.select(id);
         this.entitySrv
             .selectFolder(
-                this.selectedRow?.id || 0,
-                this.selectedRow?.fileYear || 0,
+                this.selectedRow()?.id || 0,
+                this.selectedRow()?.fileYear || 0,
                 1,
             )
             .pipe(

@@ -414,7 +414,7 @@
                         <div class="list-container">
                             <mat-selection-list color="primary" multiple="false"
                                                 (selectionChange)="centerSelectionChanged($event)">
-                                @for (c of agentCenters; track c) {
+                                @for (c of agentCenters(); track c) {
                                     <mat-list-option
                                         [value]="c.id"> {{ c.centerDescription }}
                                     </mat-list-option>

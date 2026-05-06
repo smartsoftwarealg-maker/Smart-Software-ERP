@@ -134,11 +134,11 @@
                 <ss-doc-info
                     [displayedGroups]="['article', 'document']"
                     [params]="{
-                    documentId: selectedRow?.transacId,
+                    documentId: selectedRow()?.transacId,
                     documentURL:'/inventory',
                     detailId: selectedId,
-                    articleReference: selectedRow?.reference,
-                    articleStoreId: selectedRow?.store
+                    articleReference: selectedRow()?.reference,
+                    articleStoreId: selectedRow()?.store
             }">
                 </ss-doc-info>
             }

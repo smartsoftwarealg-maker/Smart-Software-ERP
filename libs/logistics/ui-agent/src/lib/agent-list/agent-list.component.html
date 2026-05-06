@@ -144,11 +144,11 @@
                 <ss-doc-info
                     [displayedGroups]="['agent']"
                     [showAssets]="isAsset"
-                    [params]="{
-                documentId: 0,
-                documentURL:'/agents',
-                agentId : selectedRow?.id
-            }">
+                        [params]="{
+                        documentId: 0,
+                        documentURL:'/agents',
+                        agentId : selectedRow()?.id
+                    }">
                 </ss-doc-info>
             }
         </div>

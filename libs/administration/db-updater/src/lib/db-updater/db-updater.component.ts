@@ -14,37 +14,42 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
     selector: 'ss-db-updater',
     templateUrl: './db-updater.component.html',
     styleUrls: ['./db-updater.component.scss'],
     standalone: true,
-    imports: [MatProgressBar, MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, MatSelectionList, MatListOption, MatButton, TranslatePipe]
+    imports: [MatProgressBar, MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, MatSelectionList, MatListOption, MatButton, TranslatePipe, MatProgressSpinner]
 })
 export class DbUpdaterComponent implements OnInit {
     #destroyRef = inject(DestroyRef);
     #fileList: string[] = [];
+    #updateSrv = inject(DbUpdaterService);
+    #shellSrv = inject(ShellService);
+    #route = inject(ActivatedRoute);
 
-    processing = signal(false);
+    processing = signal(true);
+    loading = signal(true);
 
     files =  signal<string[]>([]);
     output: string = '';
 
     searchText = new FormControl<string>('');
 
-    constructor(private updateSrv: DbUpdaterService,
-                private shellSrv: ShellService,
-                private route: ActivatedRoute) {
-    }
 
     ngOnInit(): void {
-        this.updateSrv.getChangeFiles().subscribe(res => {
-            this.#fileList = res;
-            this.files.set(res);
-        });
-        this.shellSrv.setGoBackPath('../', this.route);
-        this.shellSrv.setTitle('COMMON_DB_UPDATER');
+        this.#updateSrv
+            .getChangeFiles()
+            .subscribe(res => {
+                this.#fileList = res;
+                this.files.set(res);
+                this.loading.set(false);
+                this.processing.set(false);
+            });
+        this.#shellSrv.setGoBackPath('../', this.#route);
+        this.#shellSrv.setTitle('COMMON_DB_UPDATER');
 
         this.searchText
             .valueChanges
@@ -52,7 +57,10 @@ export class DbUpdaterComponent implements OnInit {
                 debounceTime(300),
                 distinctUntilChanged(),
                 map(res => res.trim()),
-            ).subscribe(res => this.files.set(this.#fileList.filter(e => res.length === 0 || e.toLowerCase().includes(res.toLowerCase()))));
+            ).subscribe(res => {
+                this.files.set(this.#fileList.filter(e => res.length === 0 || e.toLowerCase().includes(res.toLowerCase())));
+                this.loading.set(false);
+            });
     }
 
     update(selection: MatListOption[]) {
@@ -61,7 +69,7 @@ export class DbUpdaterComponent implements OnInit {
         this.searchText.disable({ emitEvent: false, onlySelf: true });
         const list: string[] = selection.map(e => e.value.toString());
         let freshOut = '';
-        const loop: Observable<DBResponse> = this.updateSrv
+        const loop: Observable<DBResponse> = this.#updateSrv
             .info()
             .pipe(delay(3000),
                 tap(res => {
@@ -73,7 +81,7 @@ export class DbUpdaterComponent implements OnInit {
                 switchMap(res => res.processing? loop : of(res)));
 
         from(list)
-            .pipe(concatMap(file => this.updateSrv
+            .pipe(concatMap(file => this.#updateSrv
                 .updateDatabase(file)
                 .pipe(tap(res => {
                     freshOut +=  `*****************************${file}*******************************\n`;

@@ -153,7 +153,7 @@ export class AgentDetailComponent
     pwd2 = new UntypedFormControl();
 
     selectedCenter = 0;
-    agentCenters: AgentCenter[] = [];
+    agentCenters = signal<AgentCenter[]>([]);
 
     centerLookup = new DefaultAutoCompleteModel<Lookup>(this.centerSrv);
     centerCtrl = new FormControl<number>(0);
@@ -272,9 +272,12 @@ export class AgentDetailComponent
                                 : CUSTOMER;
                 this.shellSrv.setGoBackPath('..', this.route);
                 this.shellSrv.addButton(this.invImportBtn);
-            })
+            }),
+            switchMap(() => this.isParamSrv.is('AQS')),
+            tap(res => this.AQS.set(res))
         );
     }
+
 
     override finishLoading(e: Agent) {
         super.finishLoading(e);
@@ -293,10 +296,6 @@ export class AgentDetailComponent
             /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi,
         );
 
-        this.agentCenterSrv.setParentId(a?.id || 0);
-        this.agentCenterSrv
-            .getList(0, 1000)
-            .subscribe((res) => (this.agentCenters = res.body));
         // Make sure to update the template if you edit the configuration here
         return this.formBuilder.group({
             id: [a.id],
@@ -472,7 +471,13 @@ export class AgentDetailComponent
     override loadEntity(id: number): Observable<Agent> {
         this.archiveSrv.appId = AGENT_ARCHIVES;
         this.archiveSrv.setParentId(id);
-        return super.loadEntity(id);
+        this.agentCenterSrv.setParentId(id || 0);
+        return this
+            .agentCenterSrv
+            .getList(0, 1000)
+            .pipe(
+                tap((res) => (this.agentCenters.set(res.body))),
+                switchMap(() => super.loadEntity(id)));
     }
 
     centerSelectionChanged(ev: MatSelectionListChange) {
@@ -486,7 +491,7 @@ export class AgentDetailComponent
                 .pipe(switchMap(() => this.agentCenterSrv.getList(0, 1000)))
                 .subscribe((res) => {
                     this.selectedCenter = 0;
-                    this.agentCenters = res.body;
+                    this.agentCenters.set(res.body);
                     this.snackBarSrv.showSuccessMessage();
                 });
         }
@@ -502,7 +507,7 @@ export class AgentDetailComponent
                 })
                 .pipe(switchMap((res) => this.agentCenterSrv.getList(0, 1000)))
                 .subscribe((res) => {
-                    this.agentCenters = res.body;
+                    this.agentCenters.set(res.body);
                     this.snackBarSrv.showSuccessMessage();
                 });
         }

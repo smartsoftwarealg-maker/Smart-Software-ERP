@@ -99,7 +99,7 @@ export class CrmQuotesListComponent extends BaseChildEntityListComponent<CRMQuot
             width: '350px',
             height: '370px',
             data: {
-                id: this.selectedRow.id,
+                id: this.selectedRow()?.id,
                 form: this.selectedReport
             },
             disableClose: true

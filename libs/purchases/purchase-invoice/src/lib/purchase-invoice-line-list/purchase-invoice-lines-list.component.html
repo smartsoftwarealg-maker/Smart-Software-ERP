@@ -128,7 +128,7 @@
                         documentURL:'/correctionIn',
                         articleReference: selectedRow?.reference,
                         articleStoreId: selectedRow?.store,
-                        detailId: selectedRow?.id||0
+                        detailId: selectedRow()?.id||0
                }">
         </ss-doc-info>
       }

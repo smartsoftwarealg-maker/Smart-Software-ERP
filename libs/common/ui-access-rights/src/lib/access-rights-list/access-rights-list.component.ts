@@ -181,7 +181,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     override edit() {
         if (this.selectedItem) {
             const r: AccessRight = {
-                id: this.selectedRow?.id || 0,
+                id: this.selectedRow()?.id || 0,
                 centerId: this.loginSrv.appCtx.center,
                 roleId: this.form.controls['roles'].value || 0,
                 document: 0,
@@ -218,7 +218,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         if (!id) {
             this.form.controls['roles'].setValue(0);
             this.form.reset();
-            this.selectedRow = null;
+            this.selectedRow.set(null);
         }
         this.editButton.disabled = false;
     }
@@ -242,19 +242,19 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     }
 
     canRead() {
-        return this.selectedRow && (this.selectedRow.rights & 1) === 1;
+        return this.selectedRow && (this.selectedRow().rights & 1) === 1;
     }
 
     canWrite() {
-        return this.selectedRow && (this.selectedRow.rights & 2) === 2;
+        return this.selectedRow && (this.selectedRow().rights & 2) === 2;
     }
 
     canEdit() {
-        return this.selectedRow && (this.selectedRow.rights & 4) === 4;
+        return this.selectedRow && (this.selectedRow().rights & 4) === 4;
     }
 
     canDelete() {
-        return this.selectedRow && (this.selectedRow.rights & 8) === 8;
+        return this.selectedRow && (this.selectedRow().rights & 8) === 8;
     }
 
     override processLoadedData(data: AccessRight[]): Observable<AccessRight[]> {

@@ -67,7 +67,7 @@ export class LineMatterListComponent extends BaseEntityListComponent<LTMLineMatt
                 disableClose: true,
                 width: '450px',
                 height: '160px',
-                data: this.selectedRow
+                data: this.selectedRow()
             });
             dialogRef
                 .afterClosed()

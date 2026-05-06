@@ -154,3 +154,9 @@ mat-header-cell {
     margin: 0 auto;
     min-height: 2.5em;
 }
+
+.inverted {
+    filter: invert(40%);
+    font-weight: bolder;
+    font-size: 1.2em;
+}

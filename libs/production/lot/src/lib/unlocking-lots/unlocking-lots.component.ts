@@ -78,17 +78,19 @@ export class UnlockingLotsComponent
     }
 
     block() {
-        if (this.selected && this.selectedRow.analysisDate != undefined) {
-            this.selectedRow.blockedLot = !this.selectedRow.blockedLot;
-            this.entitySrv.update(this.selectedRow).subscribe({
-                next: () => {
-                    this.snackBarSrv.showSuccessMessage();
-                    this.refresh();
-                },
-                error: (err) => {
-                    this.snackBarSrv.showFailureMessage();
-                    throw err;
-                },
+        if (this.selectedRow() && this.selectedRow()?.analysisDate != undefined) {
+            this.selectedRow().blockedLot = !this.selectedRow()?.blockedLot;
+            this.entitySrv
+                .update(this.selectedRow())
+                .subscribe({
+                    next: () => {
+                        this.snackBarSrv.showSuccessMessage();
+                        this.refresh();
+                    },
+                    error: (err) => {
+                        this.snackBarSrv.showFailureMessage();
+                        throw err;
+                    },
             });
         }
     }

@@ -99,21 +99,21 @@
             <mat-card class="slip__image">
                 <ss-image-input width="160px"
                                 height="200px"
-                                [imageModel]="selectedRow?.imageModel || null"
+                                [imageModel]="selectedRow()?.imageModel || null"
                                 style="display: inline-block; justify-self: center">
                 </ss-image-input>
                 <div class="slip-info">
                     <div>
                         <span translate>PAYROLL_ID</span>
-                        <span class="bold-element">: {{ selectedRow?.id }} </span>
+                        <span class="bold-element">: {{ selectedRow()?.id }} </span>
                     </div>
                     <div>
                         <span translate>COMMON_LAST_NAME</span>
-                        <span class="bold-element">: {{ selectedRow?.lastName }}</span>
+                        <span class="bold-element">: {{ selectedRow()?.lastName }}</span>
                     </div>
                     <div>
                         <span translate>COMMON_FIRST_NAME</span>
-                        <span class="bold-element">: {{ selectedRow?.firstName }}</span>
+                        <span class="bold-element">: {{ selectedRow()?.firstName }}</span>
                     </div>
                 </div>
             </mat-card>

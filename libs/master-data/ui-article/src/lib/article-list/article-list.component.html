@@ -115,9 +115,9 @@
   @if (selectedId()) {
     <ss-doc-info
       [displayedGroups]="['article']"
-        [params]="{ articleId: selectedRow?.id,
+        [params]="{ articleId: selectedRow()?.id,
                     articleUseStoreSearch : true,
-                    articleReference: selectedRow?.reference
+                    articleReference: selectedRow()?.reference
                   }">
     </ss-doc-info>
   }

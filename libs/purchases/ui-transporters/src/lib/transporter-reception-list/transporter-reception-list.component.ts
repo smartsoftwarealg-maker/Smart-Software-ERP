@@ -69,7 +69,7 @@ export class TransporterReceptionListComponent extends BaseEntityListComponent<T
     }
 
     override selectRow(row: Transaction) {
-        this.selectedRow = row;
+        this.selectedRow.set(row);
         const id = row ? row.id || 0 : 0;
         this.select(id);
         this.agentSrv.get(row.agent).subscribe((agent) => {
@@ -89,8 +89,7 @@ export class TransporterReceptionListComponent extends BaseEntityListComponent<T
         }
         const itemControlsOn = this.selectedId() != null && this.selectedId() > 0;
         this.viewReportButton.disabled = !itemControlsOn;
-        this.emailReportButton.disabled =
-            !this.selectedRow || !itemControlsOn || !this.selectedRow['email'];
+        this.emailReportButton.disabled = !this.selectedRow() || !itemControlsOn;
         this.shellSrv.updateShell();
     }
 }

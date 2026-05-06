@@ -12,7 +12,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { ReactiveFormsModule, UntypedFormControl, Validators } from '@angular/forms';
-import {Observable, tap} from 'rxjs';
+import {Observable, tap, switchMap} from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 
@@ -59,7 +59,7 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
     displayedColumns = ['month', 'debit', 'credit'];
 
     anomalyColumns = ['journal', 'pieceNo', 'date', 'debit', 'credit'];
-    anomalyData: Anomaly[] = [];
+    anomalyData = signal<Anomaly[]>([]);
     selectedAnomaly: ACCTransaction | null = null;
 
     accPeriod = new UntypedFormControl(1, [
@@ -131,12 +131,11 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
             }));
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.updateShell();
-        this.#transactionSrv
+    protected override postInit():Observable<unknown>{
+        return this.#transactionSrv
             .getAnomalies()
-            .subscribe((res) => (this.anomalyData = res));
+            .pipe(tap((res) => (this.anomalyData.set(res))),
+                switchMap(() => super.postInit()));
     }
 
     selectAnomalyRow(row: ACCTransaction) {

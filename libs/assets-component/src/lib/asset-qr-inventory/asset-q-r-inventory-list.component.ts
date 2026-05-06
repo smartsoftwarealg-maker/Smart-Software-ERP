@@ -281,7 +281,7 @@ export class AssetQRInventoryListComponent
     }
 
     override showDetail(id: number) {
-        super.showDetail(this.selectedRow.inventoryId || 0);
+        super.showDetail(this.selectedRow()?.inventoryId || 0);
     }
 }
 

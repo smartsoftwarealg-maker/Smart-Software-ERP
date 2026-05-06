@@ -207,7 +207,7 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
 
     override selectRow(row: TTransaction) {
         super.selectRow(row);
-        this.selectedRow = row;
+        this.selectedRow.set(row);
 
     }
 
