@@ -124,6 +124,7 @@
     "IS_CRITICAL":          "حرج",
     "PROCESS":              "عملية",
     "SHIPPING":             "شحن",
-    "SUBCONTRACT":          "تعاقد خارجي"
-
+    "SUBCONTRACT":          "تعاقد خارجي",
+    "FORMULA_FACTOR":       "معامل الصيغة",
+    "BASE_UNIT":            "وحدة الأساس"
 }

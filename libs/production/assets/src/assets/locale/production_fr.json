@@ -108,6 +108,7 @@
     "CANCELLED":            "Annulé",
     "PROCESS":              "Processus",
     "SHIPPING":             "Expédition",
-    "SUBCONTRACT":          "Sous-traitance"
-
+    "SUBCONTRACT":          "Sous-traitance",
+    "FORMULA_FACTOR":       "Facteur de formule",
+    "BASE_UNIT":            "Unité de base"
 }

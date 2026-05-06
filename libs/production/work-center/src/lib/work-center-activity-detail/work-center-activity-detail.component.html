@@ -1,0 +1,59 @@
+@if (form) {
+    <div class="button_div">
+        @if (isEditable) {
+            <button mat-mini-fab (click)="save()" color="primary">
+                <i class="fas fa-save"></i>
+            </button>
+        }
+        <button mat-mini-fab (click)="cancel()" color="warn">
+            <i class="fas fa-redo"></i>
+        </button>
+    </div>
+}
+
+<mat-card>
+    <mat-card-content>
+        @if (form !== null) {
+            <form novalidate [formGroup]="form">
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>CRM_ACTIVITY_TYPE</mat-label>
+
+                    <mat-select formControlName="activityTypeId" required>
+                        @for (type of activityTypes; track type.id) {
+                            <mat-option [value]="type.id">
+                                {{ type.name }}
+                            </mat-option>
+                        }
+                    </mat-select>
+
+                    @if (form.controls['activityTypeId'].hasError('required')) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PROD_FORMULA_FACTOR</mat-label>
+                    <input matInput formControlName="formulaFactor" type="number">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>PROD_BASE_UNIT</mat-label>
+                    <input matInput formControlName="baseUnit">
+                </mat-form-field>
+
+                <mat-form-field class="default-50 sm-100">
+                    <mat-label translate>COMMON_PRIORITY</mat-label>
+                    <input matInput formControlName="priority" type="number">
+                </mat-form-field>
+
+                <div class="default-25">
+                    <mat-checkbox formControlName="isActive">
+                        {{ 'COMMON_ACTIVE' | translate }}
+                    </mat-checkbox>
+                </div>
+
+            </form>
+        }
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,59 @@
+<mat-card class="size_container">
+    <mat-card-content>
+
+        @defer (when form) {
+            <form [formGroup]="form">
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>ADMINISTRATION_ACTIVITY_CODE</mat-label>
+                    <input matInput formControlName="code" type="text" required autofocus>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_NAME</mat-label>
+                    <input matInput formControlName="name" type="text" required>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description" type="text">
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_CATEGORY</mat-label>
+                    <mat-select formControlName="activityCategory">
+                        @for (c of categories; track c.id) {
+                            <mat-option [value]="c.id">
+                                {{ c.name }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>COMMON_UNIT</mat-label>
+                    <mat-select formControlName="unitOfMeasureId">
+                        @for (u of units; track u) {
+                            <mat-option [value]="u.id">
+                                {{ u.name }}
+                            </mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="default-50">
+                    <mat-label translate>PROD_BASE_UNIT</mat-label>
+                    <input matInput formControlName="defaultBaseUnit" type="text">
+                </mat-form-field>
+
+                <div class="default-25">
+                    <mat-checkbox formControlName="isActive">
+                        {{ 'COMMON_ACTIVE' | translate }}
+                    </mat-checkbox>
+                </div>
+
+            </form>
+        }
+
+    </mat-card-content>
+</mat-card>

@@ -20,7 +20,7 @@ import {
     ABS_PRODUCTION_RESERVATION_URL,
     ABS_PRODUCTION_UNITS_URL,
     ABS_PRODUCTION_WORK_CENTER_URL,
-    ABS_PRODUCTION_ROUTING_URL,
+    ABS_PRODUCTION_ROUTING_URL, ABS_PRODUCTION_ACTIVITY_TYPES_URL,
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -154,6 +154,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-solid fa-layer-group',
             route: ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL,
             accessRights: 'ActivityCategory',
+        },
+        {
+            name: 'CRM_ACTIVITY_TYPE',
+            icon: 'fa-solid fa-sitemap',
+            route: ABS_PRODUCTION_ACTIVITY_TYPES_URL,
+            accessRights: 'ActivityType',
         },
         {
             name: 'COMMON_REPORTS',
