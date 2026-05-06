@@ -16,6 +16,7 @@
                                 #option
                                 value="{{ j.id }}"
                                 [selected]="selectedJournal() == j.id"
+                                [class.selected] = "selectedJournal() == j.id"
                                 (click)="selectAndScroll(option)"
                                 [class.inverted]="selectedJournal() == j.id">
                                 {{ j.description }}
@@ -40,7 +41,7 @@
 
             <div class="transactions">
                 <div class="container_div">
-                    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)"
+                    <mat-table mat-table [dataSource]="data.filter(e => !loading())" class="main-table" matSort (matSortChange)="sort($event)"
                                [class.disabled]="!isRoot() || loading()">
 
                         <ng-container matColumnDef="pieceNo">
