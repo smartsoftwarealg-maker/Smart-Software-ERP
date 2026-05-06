@@ -61,10 +61,10 @@
       <ss-doc-info
         [displayedGroups]="['document','agent']"
             [params]="{
-            documentId: selectedRow?.id,
+            documentId: selectedRow()?.id,
             documentURL:'/production',
             agentId : selectedRow?.agent,
-            detailId: selectedRow?.id,
+            detailId: selectedRow()?.id,
             prodId: selectedRow?.id,
             transfersId: selectedRow?.id,
             appId: 5

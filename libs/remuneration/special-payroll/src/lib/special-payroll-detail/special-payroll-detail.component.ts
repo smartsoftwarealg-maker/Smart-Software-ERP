@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, WritableSignal, signal } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from "@angular/router";
@@ -45,8 +45,9 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
     processing = false;
     displayedColumns = ['id', 'lastName', 'firstName', 'post']
     data: ELine[] = [];
-    selected = 0;
-    payrollId = 0;
+    // replaced primitive selected:number with a writable Signal
+    selectedId: WritableSignal<number> = signal(0);
+    payrollId = signal(0);
     paymonth = 0;
     pagingModel = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0});
     public employeeAutoCompleteModel = new DefaultAutoCompleteModel<Lookup>(this.employeeSrv);
@@ -73,10 +74,10 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
     }
 
     setupForm(e: Special): UntypedFormGroup {
-        this.payrollId = e?.id;
+        this.payrollId.set(e?.id||0);
         this.paymonth = e?.paymonth || 0;
         this.selectorSrv
-            .selectMonth(e.paymonth || this.loginSrv.appCtx.payMonth)
+            .selectMonth(e.paymonth || this.loginSrv.appCtx.payMonth || 0)
             .subscribe();
         this.refresh();
         return this.formBuilder.group({
@@ -88,7 +89,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
     }
 
     selectRow(row: ELine) {
-        this.selected = row.id;
+        this.selectedId.set(row.id || 0);
     }
 
     override ngOnDestroy() {
@@ -169,7 +170,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
         type Result =  Response | boolean;
         this.confirmationSrv
             .confirmDelete()
-            .pipe(switchMap(res => res ? this.detailSrv.deleteOne(this.selected) : of(res)),
+            .pipe(switchMap(res => res ? this.detailSrv.deleteOne(this.selectedId()) : of(res)),
                 tap(res => this.processing = res !== false),
                 switchMap(_ => this.processing? this.entrySrv.getList(this.pagingModel.page - 1, this.pagingModel.pageSize) : of(false))
             ).subscribe({

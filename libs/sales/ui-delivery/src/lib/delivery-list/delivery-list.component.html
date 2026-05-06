@@ -70,8 +70,8 @@
     <ss-doc-info
         [displayedGroups]="['agent','document']"
         [params]="{
-            agentId: selectedRow?.agent,
-            documentId: selectedRow?.id,
+            agentId: selectedRow()?.agent,
+            documentId: selectedRow()?.id,
             documentURL:'/proforma'
         }">
     </ss-doc-info>

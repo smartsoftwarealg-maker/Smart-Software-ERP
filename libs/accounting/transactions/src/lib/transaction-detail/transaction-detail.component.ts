@@ -65,12 +65,14 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     debitBalance = computed(() => this.debit() > this.credit() ? this.debit() - this.credit() : 0);
     creditBalance = computed(() => this.debit() > this.credit() ? 0.0 : this.credit() - this.debit());
     warning = computed(() => Math.abs(this.debit() - this.credit()) >= 0.01);
+    loading = signal(true);
 
     ngOnDestroy(): void {
         this.subscriptions.forEach(s => s.unsubscribe());
     }
 
     ngOnInit() {
+        this.loading.set(true);
         this.route
             .params
             .pipe(tap(params => this.id = +params['id']),
@@ -84,7 +86,10 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
                         journalno: this.journalId,
                         pieceNo: 1,
                         isBudget: false})))
-            .subscribe(ent => this.setupForm(ent));
+            .subscribe(ent => {
+                this.setupForm(ent);
+                this.loading.set(false);
+            });
 
         this.subscriptions.push(
             this.router.events.pipe(

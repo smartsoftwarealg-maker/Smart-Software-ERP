@@ -145,7 +145,7 @@ export class ProductionLinesListComponent
     }
 
     transfer() {
-        this.detailSrv.transfer(this.selectedId).subscribe({
+        this.detailSrv.transfer(this.selectedId()).subscribe({
             next: () => {
                 this.snackBarSrv.showSuccessMessage();
             },
@@ -164,7 +164,7 @@ export class ProductionLinesListComponent
             )
             .subscribe((res) => {
                 if (res) {
-                    this.detailSrv.cancelTransfer(this.selectedId).subscribe({
+                    this.detailSrv.cancelTransfer(this.selectedId()).subscribe({
                         next: () => {
                             this.snackBarSrv.showSuccessMessage();
                         },

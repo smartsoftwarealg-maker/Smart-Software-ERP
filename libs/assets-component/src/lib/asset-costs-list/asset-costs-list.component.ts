@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, signal } from '@angular/core';
+import { Component, Input, OnInit, WritableSignal, signal } from '@angular/core';
 import {SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
@@ -34,7 +34,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]})
 export class AssetCostsListComponent implements OnInit {
     editable = signal(true);
-    selected = 0;
+    // replaced primitive selected:number with a writable Signal
+    selectedId: WritableSignal<number> = signal(0);
     fiscalCosts: AssetCost[] = [];
     accountantCosts: AssetCost[] = [];
     public readonly fiscalPagination = PaginationModel.newInstance();
@@ -63,7 +64,7 @@ export class AssetCostsListComponent implements OnInit {
     // }
 
     public select(id: number): void {
-        this.selected = id;
+        this.selectedId.set(id);
     }
 
     set isEditable(b: boolean) {
@@ -71,12 +72,12 @@ export class AssetCostsListComponent implements OnInit {
     }
 
     public deleteSelected(): void {
-        if (this.selected && this.selected > 0) {
+        if (this.selectedId() && this.selectedId() > 0) {
             this.confirmationSrv
                 .confirmDelete()
                 .pipe(switchMap(answer => {
-                    const a = this.fiscalCosts.filter(x => x.id === this.selected)[0];
-                    const b = this.accountantCosts.filter(x => x.id === this.selected)[0];
+                    const a = this.fiscalCosts.filter(x => x.id === this.selectedId())[0];
+                    const b = this.accountantCosts.filter(x => x.id === this.selectedId())[0];
                     const c = a || b;
                     return answer && c != null && c.id != null ? this.entitySrv.remove(c.id) : of({count: 0});
                 }))
@@ -97,7 +98,7 @@ export class AssetCostsListComponent implements OnInit {
     }
 
     public edit() {
-        this.showDetail(this.selected);
+        this.showDetail(this.selectedId());
     }
 
     public showDetail(id: number) {
@@ -109,7 +110,7 @@ export class AssetCostsListComponent implements OnInit {
     }
 
     public refresh() {
-        this.selected = 0;
+        this.selectedId.set(0);
         this.entitySrv
             .getList(this.fiscalPagination.page - 1, this.fiscalPagination.pageSize)
             .subscribe(res => {

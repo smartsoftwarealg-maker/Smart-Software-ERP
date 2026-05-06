@@ -185,12 +185,12 @@
 </mat-card>
 
 <div class="size_container">
-    @if (selectedRow && selectedRow?.id !== 0) {
+    @if (selectedRow() && selectedRow()?.id !== 0) {
         <mat-tab-group class="size">
             <mat-tab label="{{ 'STOCK_STORE' | translate }}">
 
                 <ss-article-store
-                    [article]="selectedRow">
+                    [article]="selectedRow()">
                 </ss-article-store>
             </mat-tab>
             <mat-tab label="{{ 'ADMINISTRATION_ATTRIBUTES' | translate }}">

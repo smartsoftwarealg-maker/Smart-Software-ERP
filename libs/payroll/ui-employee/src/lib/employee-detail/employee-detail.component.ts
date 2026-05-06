@@ -278,6 +278,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
     }
 
     private loadFixedElements(): Observable<ELine> {
+        this.loading.set(true);
+        this.shellSrv.setLoading(true);
         return this.infoSrv
             .load()
             .pipe(
@@ -293,6 +295,8 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
                     });
                     this.elementsForm.disable();
                     this.fixedElementEditInProgress = false;
+                    this.loading.set(false);
+                    this.shellSrv.setLoading(false);
                 }));
     }
 

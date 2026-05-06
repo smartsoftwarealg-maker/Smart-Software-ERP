@@ -59,9 +59,9 @@
     <ss-doc-info
         [displayedGroups]="['agent','document']"
         [params]="{
-            agentId: selectedRow?.agent,
-            documentId: selectedRow?.id,
-            detailId: selectedRow?.id,
+            agentId: selectedRow()?.agent,
+            documentId: selectedRow()?.id,
+            detailId: selectedRow()?.id,
             documentURL:'/transactions'
         }">
     </ss-doc-info>

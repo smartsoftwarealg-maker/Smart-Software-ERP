@@ -40,9 +40,9 @@
         <div class="editor-container">
           <mat-form-field>
             <mat-label translate>ADMINISTRATION_ROLES</mat-label>
-            <ss-auto-complete matInput
+              <ss-auto-complete matInput
               formControlName="roles"
-              [value]="selectedRow?.roleId"
+              [value]="selectedRow()?.roleId"
               [model]="agentAutoCompleteModel">
             </ss-auto-complete>
           </mat-form-field>

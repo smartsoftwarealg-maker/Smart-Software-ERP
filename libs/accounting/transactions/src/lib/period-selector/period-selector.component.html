@@ -48,7 +48,7 @@
         <mat-tab label="{{ 'COMMON_ANOMALIES' | translate }}">
             <div class="transactions">
                 <div class="container_div">
-                    <mat-table mat-table [dataSource]="anomalyData" class="main-table" matSort
+                    <mat-table mat-table [dataSource]="anomalyData()" class="main-table" matSort
                                (matSortChange)="sort($event)">
 
                         <ng-container matColumnDef="journal">

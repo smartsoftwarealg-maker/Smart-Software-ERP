@@ -1,10 +1,13 @@
 import {
-    Component, effect,
+    Component,
+    effect,
     EventEmitter,
     input,
     Input,
     OnInit,
     Output,
+    WritableSignal,
+    signal,
 } from '@angular/core';
 import {CashFlowAcc, CashFlowAccountService} from '@ss/accounting/accounting-api';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -27,7 +30,8 @@ export class CashFlowAccountListComponent implements OnInit {
     SIGNS = ['DEBIT', 'CREDIT', 'BALANCE'];
     displayedColumns = ['ctrl', 'accountno', 'description'];
     data: CashFlowAcc[] = [];
-    selected = 0;
+    // replaced primitive selected:number with a writable Signal
+    selectedId: WritableSignal<number> = signal(0);
     pagination = PaginationModel.newInstance();
     @Output() itemDeleted =  new EventEmitter<boolean>();
     account = input<string>('');
@@ -42,20 +46,22 @@ export class CashFlowAccountListComponent implements OnInit {
         private router: Router,
         private snackBarSrv: SnackBarService,
         private loginSrv: LoginService) {
-        this.entitySrv.setParentId(this.loginSrv?.appCtx.accYear);
+        this.entitySrv.setParentId(this.loginSrv?.appCtx.accYear||0);
         this.pagination.onChange = () => this.refresh();
 
     }
 
 
-    select(cfa: CashFlowAcc) {
-        this.selected = cfa?.id;
+    // accept either the entity or an id for compatibility with templates
+    select(cfaOrId: CashFlowAcc | number) {
+        const id = typeof cfaOrId === 'number' ? (cfaOrId || 0) : (cfaOrId?.id || 0);
+        this.selectedId.set(id);
     }
 
     ngOnInit() {
         this.loginSrv
             .loadContext()
-            .subscribe(_ => this.entitySrv.setParentId(this.loginSrv?.appCtx.accYear));
+            .subscribe(_ => this.entitySrv.setParentId(this.loginSrv?.appCtx.accYear||0));
     }
 
     refresh() {

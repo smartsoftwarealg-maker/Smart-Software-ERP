@@ -62,8 +62,8 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
     // }
 
     public override edit() {
-        if (this.selectedRow._id) {
-            this.router.navigate(['detail', {id: this.selectedRow._id}], {relativeTo: this.route}).then();
+        if (this.selectedRow()._id) {
+            this.router.navigate(['detail', {id: this.selectedRow()._id}], {relativeTo: this.route}).then();
         }
     }
 
@@ -95,7 +95,7 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
                     visible: true,
                     keepOnToolbar: KeepOnToolbar.DYNAMIC,
                     click: () => {
-                        this.download(this.selectedRow?._id);
+                        this.download(this.selectedRow()?._id);
                     },
                 };
                 this.shellSrv.addButton(downloadButton);

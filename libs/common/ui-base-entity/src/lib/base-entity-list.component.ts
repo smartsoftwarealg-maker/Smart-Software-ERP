@@ -10,7 +10,7 @@ import {
     PaginatorPersistenceService,
     Right,
 } from '@ss/common/api-common';
-import {computed, Directive, OnDestroy, OnInit, Signal, signal } from '@angular/core';
+import {computed, Directive, OnDestroy, OnInit, WritableSignal, signal } from '@angular/core';
 import { concatMap, Observable, of, Subscription } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -27,6 +27,7 @@ implements OnInit, OnDestroy {
     subscriptions: Subscription[] = [];
     loading = signal(true);
     selectedId = computed(() => this.entitySrv.selectedId());
+    public selectedRow: WritableSignal<T|null> = signal<T|null>(null);
 
     //
     public readonly pagination = PaginationModel.newInstance();
@@ -106,7 +107,6 @@ implements OnInit, OnDestroy {
     public sortBy: string;
     //
     public data: T[] = [];
-    public selectedRow: T|null = null;
 
     //
 
@@ -290,7 +290,7 @@ implements OnInit, OnDestroy {
     public releaseResources() {}
 
     public selectRow(row: T) {
-        this.selectedRow = row;
+        this.selectedRow.set(row);
         const id = row ? row.id || 0 : 0;
         this.select(id);
     }
@@ -305,7 +305,7 @@ implements OnInit, OnDestroy {
         this.deleteButton.disabled = !itemControlsOn;
         this.viewReportButton.disabled = !itemControlsOn;
         this.emailReportButton.disabled =
-            !this.selectedRow || !itemControlsOn || !this.selectedRow['email'];
+            !this.selectedRow() || !itemControlsOn || !this.selectedRow()?.email;
         this.shellSrv.updateShell();
     }
 
@@ -358,7 +358,7 @@ implements OnInit, OnDestroy {
                 switchMap((comp: any) =>
                     this.defReportSrv.openEmailDlg(
                         comp['email'],
-                        this.selectedRow['email'],
+                        this.selectedRow()?.email,
                     ),
                 ),
                 switchMap((res: any) => {
@@ -368,7 +368,7 @@ implements OnInit, OnDestroy {
                         const message = res['message'] || '';
                         return this.defReportSrv.emailReport(
                             'exchange',
-                            this.selected,
+                            this.selectedId(),
                             this.reportForm,
                             res['from'],
                             res['to'],

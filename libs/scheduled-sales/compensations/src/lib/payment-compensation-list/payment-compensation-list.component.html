@@ -136,7 +136,7 @@
         <ng-container matColumnDef="paid">
             <mat-header-cell *matHeaderCellDef mat-sort-header> </mat-header-cell>
             <mat-cell *matCellDef="let e">
-                <mat-checkbox [class.mat-checkbox-disabled]="selectedRow?.document === 1"
+                <mat-checkbox [class.mat-checkbox-disabled]="selectedRow()?.document === 1"
                               (click)="joinOrFree(e)"
                               [checked]="e.ftt - e.payment < 1">
                 </mat-checkbox>

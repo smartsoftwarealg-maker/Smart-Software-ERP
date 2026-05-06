@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, WritableSignal, signal} from '@angular/core';
 import {Asset} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -21,7 +21,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]})
 export class AgentAssetsListComponent implements OnInit {
     agentId = 0;
-    selected = 0;
+    // replaced primitive selected:number with a writable Signal
+    selectedId: WritableSignal<number> = signal(0);
     data: Asset[] = [];
     displayedColumns = [
             'reference',
@@ -51,7 +52,7 @@ export class AgentAssetsListComponent implements OnInit {
     }
 
     select(id: number) {
-        this.selected = id || 0;
+        this.selectedId.set(id || 0);
     }
 
     private refresh() {

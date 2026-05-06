@@ -101,7 +101,7 @@ export class ProductionFormulasLinesListComponent
     }
 
     reserve() {
-        this.detailSrv.reserve(this.selectedId).subscribe({
+        this.detailSrv.reserve(this.selectedId()).subscribe({
             next: () => {
                 this.snackBarSrv.showSuccessMessage();
             },
@@ -117,7 +117,7 @@ export class ProductionFormulasLinesListComponent
             .confirm('PROD_RELEASE_CONFIRMATION', 'PROD_RELEASE_CONFIRMATION')
             .subscribe((res) => {
                 if (res) {
-                    this.detailSrv.release(this.selectedId).subscribe({
+                    this.detailSrv.release(this.selectedId()).subscribe({
                         next: () => {
                             this.snackBarSrv.showSuccessMessage();
                         },

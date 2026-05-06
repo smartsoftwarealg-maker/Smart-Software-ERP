@@ -340,7 +340,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     private doReportGeneration(res: Blob | MediaSource): Window | null {
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(res);
-        link.download = `${this.selectedRow?.description || 'dashboard'}.xlsx`;
+        link.download = `${this.selectedRow()?.description || 'dashboard'}.xlsx`;
         link.click();
         setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
         return null;
@@ -349,7 +349,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     private doReportGenerationCsv(res: Blob | MediaSource): Window | null {
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(res);
-        link.download = `${this.selectedRow?.description || 'dashboard'}.csv`;
+        link.download = `${this.selectedRow()?.description || 'dashboard'}.csv`;
         link.click();
         setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
         return null;

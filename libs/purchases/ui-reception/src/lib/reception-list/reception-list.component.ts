@@ -69,7 +69,7 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
     }
 
     override selectRow(row: Transaction) {
-        this.selectedRow = row;
+        this.selectedRow.set(row);
         this.agentSrv
             .get(row.agent)
             .subscribe((agent) => {

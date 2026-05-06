@@ -68,7 +68,7 @@
             <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row
                 class="selectable"
-                [class.selected]="row.agentId === selectedRow?.agentId"
+                [class.selected]="row.agentId === selectedRow()?.agentId"
                 *matRowDef="let row; columns: displayedColumns;">
             </mat-row>
 

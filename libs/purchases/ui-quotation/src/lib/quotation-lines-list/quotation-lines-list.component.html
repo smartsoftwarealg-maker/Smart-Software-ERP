@@ -119,7 +119,7 @@
             documentId: selectedRow?.transacId,
             documentURL:'/proforma',
             articleReference: selectedRow?.reference,
-            detailId: selectedRow?.id,
+            detailId: selectedRow()?.id,
             articleStoreId: selectedRow?.store
         }">
       </ss-doc-info>

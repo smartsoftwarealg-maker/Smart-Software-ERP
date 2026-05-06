@@ -2,11 +2,11 @@
     <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
         <span class="fas fa-plus"></span>
     </button>
-    <button mat-mini-fab (click)="edit()" [disabled]="!selectedId" [matTooltip]="'COMMON_EDIT' | translate"
+    <button mat-mini-fab (click)="edit()" [disabled]="!selectedId()" [matTooltip]="'COMMON_EDIT' | translate"
             color="accent">
         <span class="fas fa-pen"></span>
     </button>
-    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate" [disabled]="!selectedId"
+    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate" [disabled]="!selectedId()"
             color="warn">
         <span class="fas fa-trash-alt"></span>
     </button>
@@ -14,7 +14,7 @@
             color="accent">
         <span class="fas fa-folders"></span>
     </button>
-    <button mat-mini-fab color="accent" (click)="emailQuote()" [disabled]="!selectedRow"
+    <button mat-mini-fab color="accent" (click)="emailQuote()" [disabled]="!selectedRow()"
             [matTooltip]="'COMMON_EMAIL_REPORT' | translate">
         <span class="fas fa-at"></span>
     </button>
@@ -35,7 +35,7 @@
             <mat-cell *matCellDef="let e">{{ e.userId }}</mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-        <mat-row class="selectable" [class.selected]="row.id == selectedRow?.id" (click)="selectRow(row)"
+        <mat-row class="selectable" [class.selected]="row.id == selectedRow()?.id" (click)="selectRow(row)"
                  *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <div class="pagination-container b-b-background">

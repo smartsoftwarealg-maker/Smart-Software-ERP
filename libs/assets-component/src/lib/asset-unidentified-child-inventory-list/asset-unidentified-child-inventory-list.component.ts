@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, OnInit, signal} from '@angular/core';
+import { Component, effect, inject, input, OnInit, WritableSignal, signal } from '@angular/core';
 import { UnidentifiedInventory } from '../assets-api';
 import { RouterModule } from '@angular/router';
 
@@ -50,7 +50,8 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
         'beneficiaryDescription',
         'memo'
     ];
-    selected = 0;
+    // replaced primitive selected:number with a writable Signal
+    selectedId: WritableSignal<number> = signal(0);
     data: UnidentifiedInventory[] = [];
     documentId = input(0);
 
@@ -85,6 +86,6 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
     }
 
     select(id: number) {
-        this.selected = id;
+        this.selectedId.set(id || 0);
     }
 }

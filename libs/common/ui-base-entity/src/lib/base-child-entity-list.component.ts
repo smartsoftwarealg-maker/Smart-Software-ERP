@@ -22,7 +22,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
     rights: Right = {read: false, edit: false, write: false, delete: false};
     paginator = PaginationModel.newInstance( );
     selectedId = signal(0);
-    selectedRow: T|null = null;
+    selectedRow = signal<T|null>(null);
     data$: Observable<T[]> = of([]);
     emptyData$ = this.data$.pipe(map(res => res.length === 0));
     displayedColumns = ['id'];
@@ -86,7 +86,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
     }
 
     selectRow(row: T) {
-        this.selectedRow = row;
+        this.selectedRow.set(row);
         this.selectedId.set(row?.id||0);
     }
 

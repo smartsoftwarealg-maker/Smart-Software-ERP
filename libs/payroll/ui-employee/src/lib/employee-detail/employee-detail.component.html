@@ -1,4 +1,4 @@
-@if (form !== null) {
+@if (!loading() && form !== null) {
     <form [formGroup]="form" class="container">
 
         <div class="info__div">

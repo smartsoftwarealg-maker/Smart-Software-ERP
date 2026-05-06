@@ -117,7 +117,7 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
         const params = new HttpParams();
         const params1 =
             ((this.#selectionMode() === SelectionMode.Debt)?
-            params.set('agent', this.selectedRow?.agentId || -1) :
+            params.set('agent', this.selectedRow()?.agentId || -1) :
             params.set('payment', this.selected)).set('filter', this.searchField.value);
         this.#debtsSrv
             .getList(this.childPaginator.page - 1, this.childPaginator.pageSize, null, null, params1)
@@ -142,7 +142,7 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
 
     private join(row: Debt) {
         const joint: Joint = { salesId: row.id, paymentId: this.selected, agentId: row.agentId };
-        const selectedRow = this.selectedRow;
+        const selectedRow = this.selectedRow();
         this.entitySrv.join(joint)
             .subscribe(() => {
                 this.refreshChild();
@@ -151,7 +151,7 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
     }
     private free(row: Debt) {
         const joint: Joint = { salesId: row.id, paymentId: this.selected, agentId: row.agentId };
-        const selectedRow = this.selectedRow;
+        const selectedRow = this.selectedRow();
         this.entitySrv.free(joint)
             .subscribe(() => {
                 this.refreshChild();

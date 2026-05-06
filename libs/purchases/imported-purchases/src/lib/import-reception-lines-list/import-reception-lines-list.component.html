@@ -115,7 +115,7 @@
                         [params]="{
                     documentId: selectedRow?.transacId,
                     documentURL:'/reception',
-                    detailId: selectedRow?.id,
+                    detailId: selectedRow()?.id,
                     articleReference: selectedRow?.reference,
                     articleStoreId: selectedRow?.store
         }">

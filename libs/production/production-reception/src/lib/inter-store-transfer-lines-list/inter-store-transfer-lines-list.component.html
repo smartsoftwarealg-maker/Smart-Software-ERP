@@ -83,14 +83,14 @@
     <ss-pagination [paginationModel]="paginator"></ss-pagination>
 </div>
 
-@if (selectedRow?.id) {
+@if (selectedRow()?.id) {
     <div class="doc-info">
         <ss-doc-info
             [displayedGroups]="['article', 'document']"
             [params]="{
-                    documentId: selectedRow?.id,
+                    documentId: selectedRow()?.id,
                     documentURL:'/inter-store-transfer',
-                    detailId: selectedRow?.id,
+                    detailId: selectedRow()?.id,
                     articleReference: selectedRow?.reference,
                     articleStoreId: selectedRow?.storeId
         }">
