@@ -104,18 +104,13 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
 
     removeNode() {
         if (this.selectedNode()) {
-            const asset: TAsset = {
-                id: this.selectedNode()?.ent?.id||0,
-                centerId: this.selectedNode()?.ent?.centerId||0,
-                parentId: 0,
-                reference: this.selectedNode()?.ent?.reference||'',
-                description: this.selectedNode()?.ent?.description||''
-            };
+
             this.confirmationSrv
                 .confirmDelete()
-                .pipe(switchMap(res => res? this.treeSrv.save(asset) : of(0)))
+                .pipe(switchMap(res => res? this.assetSrv.get(this.selectedNode()?.ent?.id||0) : of(null)),
+                      switchMap(res => res? this.assetSrv.update(({...res, parentId: null})) : of(null)))
                 .subscribe(res => {
-                    if (res > 0) {
+                    if (res) {
                         this.selectedNode.set(null);
                         this.snackBarSrv.showSuccessMessage();
                         this.refreshTree();

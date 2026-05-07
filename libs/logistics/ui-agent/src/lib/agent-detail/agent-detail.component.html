@@ -109,6 +109,21 @@
                             </mat-panel-title>
                         </mat-expansion-panel-header>
 
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_DEPARTMENT</mat-label>
+                            <ss-auto-complete matInput
+                                              formControlName="department"
+                                              [model]="departmentLookup">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_POST</mat-label>
+                            <ss-auto-complete matInput
+                                              formControlName="post"
+                                              [model]="postLookup">
+                            </ss-auto-complete>
+                        </mat-form-field>
 
                         <div class="default-50 sm-100">
                             <mat-checkbox formControlName="isInternal" translate>LOGISTICS_IS_INTERNAL</mat-checkbox>
@@ -133,22 +148,6 @@
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>LOGISTICS_BLOCKING_REASON</mat-label>
                             <input matInput formControlName="blockingReason" type="text">
-                        </mat-form-field>
-
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>COMMON_DEPARTMENT</mat-label>
-                            <ss-auto-complete matInput
-                                              formControlName="department"
-                                              [model]="departmentLookup">
-                            </ss-auto-complete>
-                        </mat-form-field>
-
-                        <mat-form-field class="default-50 sm-100">
-                            <mat-label translate>COMMON_POST</mat-label>
-                            <ss-auto-complete matInput
-                                              formControlName="post"
-                                              [model]="postLookup">
-                            </ss-auto-complete>
                         </mat-form-field>
 
                         <mat-form-field floatLabel="always" class="default-50 sm-100">
