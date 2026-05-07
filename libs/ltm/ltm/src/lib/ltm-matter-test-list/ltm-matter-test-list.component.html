@@ -26,7 +26,7 @@
   </div>
 }
 <div class="table_div content_div">
-  <mat-table mat-table matSort [dataSource]="data" class="main-table" (matSortChange)="sortData($event)">
+  <mat-table mat-table matSort [dataSource]="data()" class="main-table" (matSortChange)="sortData($event)">
 
     <ng-container matColumnDef="testDescription">
       <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_TEST</mat-header-cell>

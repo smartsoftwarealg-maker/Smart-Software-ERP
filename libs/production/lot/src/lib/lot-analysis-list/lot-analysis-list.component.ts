@@ -52,7 +52,7 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
     public sortBy: string;
     public selectedId: Signal<number> = signal(0);
     public selectedRow: Lot;
-    public data: Location[] = [];
+    public data = signal<Location[]>([]);
     public readonly pagination = PaginationModel.newInstance();
 
     public refreshButton: ToolbarButton = {
@@ -118,19 +118,18 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
     }
 
     public refresh() {
-        this.data = [];
         this.shellSrv.setLoading(true);
         (this.selectedId as WritableSignal<number>).set(0);
         this.locationSrv
             .getLots(this.ref, this.pagination, this.filter, undefined, undefined, undefined, undefined, this.sortBy)
             .subscribe({
                 next: (res) => {
-                    this.data = res.body;
+                    this.data.set(res.body);
                     this.pagination.elementCount = res.itemCount;
                     this.shellSrv.setLoading(false);
                 },
                 error: (err) => {
-                    this.data = []; // clear everything;
+                    this.data.set([]); // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
                     throw err;
                 },

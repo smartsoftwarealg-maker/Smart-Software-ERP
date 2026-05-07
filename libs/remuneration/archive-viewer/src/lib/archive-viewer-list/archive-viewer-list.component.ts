@@ -335,7 +335,7 @@ export class ArchiveViewerListComponent
                 this.displayedColumns = this.displayedColumns.concat(
                     this._formulaVariables,
                 );
-                this.data = res.body;
+                this.data.set(res.body);
             });
         this.minTableWidth =
             900 +

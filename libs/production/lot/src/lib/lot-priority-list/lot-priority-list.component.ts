@@ -53,7 +53,7 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
     // replaced primitive selected:number with an Angular WritableSignal
     public selectedId: WritableSignal<number> = signal(0);
     public selectedRow: Lot;
-    public data: Location[] = [];
+    public data = signal<Location[]>([]);
     public readonly pagination = PaginationModel.newInstance();
 
     public refreshButton: ToolbarButton = {
@@ -120,7 +120,6 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
     }
 
     public refresh() {
-        this.data = [];
         this.shellSrv.setLoading(true);
         this.selectedId.set(0);
         this.locationSrv
@@ -136,12 +135,12 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
             )
             .subscribe({
                 next: (res) => {
-                    this.data = res.body;
+                    this.data.set(res.body);
                     this.pagination.elementCount = res.itemCount;
                     this.shellSrv.setLoading(false);
                 },
                 error: (err) => {
-                    this.data = []; // clear everything;
+                    this.data.set([]); // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
                     throw err;
                 },

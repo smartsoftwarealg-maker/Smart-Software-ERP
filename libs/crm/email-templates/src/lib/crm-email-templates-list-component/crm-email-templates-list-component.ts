@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginationModel } from '@ss/common/api-common';
 import {
@@ -71,7 +71,7 @@ export class CrmEmailTemplatesListComponent implements OnInit, OnDestroy {
         'ownerDescription',
         'createdAt',
     ];
-    data: EmailTemplate[] = [];
+    data = signal<EmailTemplate[]>([]);
     loading = false;
 
     constructor() {
@@ -96,7 +96,7 @@ export class CrmEmailTemplatesListComponent implements OnInit, OnDestroy {
     private refresh(): void {
         this.loading = true;
         this.#entitySrv.getPage(this.pagination).subscribe((res) => {
-            this.data = res;
+            this.data.set(res);
             this.loading = false;
         });
     }

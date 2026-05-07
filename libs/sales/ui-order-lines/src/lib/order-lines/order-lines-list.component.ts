@@ -155,7 +155,7 @@ export class OrderLinesListComponent
             this.loadDetailLines()
                 .subscribe({
                 next: (data) => {
-                    this.data = data;
+                    this.data.set(data);
                     this.loading.set(false);
                 },
             });

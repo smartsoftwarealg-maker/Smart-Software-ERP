@@ -106,7 +106,7 @@ implements OnInit, OnDestroy {
     public filter: string;
     public sortBy: string;
     //
-    public data: T[] = [];
+    public data: WritableSignal<T[]> = signal<T[]>([]);
 
     //
 
@@ -126,6 +126,7 @@ implements OnInit, OnDestroy {
 
     public ngOnInit() {
         this.loading.set(true);
+        this.shellSrv.setLoading(true);
         const node = this.shellSrv.getNavNodeByRouter();
         this.reportForm = node && node.accessRights !== undefined ? node.accessRights : null;
         this.defReportButton.visible = this.reportForm !== null;
@@ -165,10 +166,6 @@ implements OnInit, OnDestroy {
 
         this.shellSrv.setTitle(this.title);
         this.shellSrv.setGoBackPath('../..', this.route);
-        this.enableSearch();
-        this.pagination.onChange = () => this.refresh();
-        this.filter = this.pagPersistSrv.getSearch(this.title);
-        this.shellSrv.searchFormControl.setValue(this.filter);
         // this.refresh();
         this.preInit()
             .pipe(
@@ -186,7 +183,12 @@ implements OnInit, OnDestroy {
                 }),
                 concatMap(() => this.postInit()),
             ).subscribe(() => {
+                this.enableSearch();
+                this.pagination.onChange = () => this.refresh();
+                this.filter = this.pagPersistSrv.getSearch(this.title);
+                this.shellSrv.searchFormControl.setValue(this.filter);
                 this.loading.set(false);
+                this.shellSrv.setLoading(false);
             });
     }
 
@@ -214,7 +216,7 @@ implements OnInit, OnDestroy {
      * put other http queries here, like lookups and other things, then tap & store the result manually.
      * returns null if nothing is needed
      */
-    public preload(): Observable<T> {
+    public preload(): Observable<T|null> {
         return of(null);
     }
 
@@ -224,9 +226,9 @@ implements OnInit, OnDestroy {
 
     public refresh(callback?: () => void) {
         this.setLoading(true);
-        this.releaseResources();
-        this.data = [];
         this.shellSrv.setLoading(this.canShowProcessingStatus());
+        this.releaseResources();
+        this.data.set([]);
         (this.preload() || of(null))
             .pipe(switchMap(() => this.getPage()))
             .subscribe({
@@ -239,7 +241,7 @@ implements OnInit, OnDestroy {
                     this.loading.set(false);
                 },
                 error: (err) => {
-                    this.data = []; // clear everything;
+                    this.data.set([]); // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
                     this.loading.set(false);
                     throw err;
@@ -264,7 +266,7 @@ implements OnInit, OnDestroy {
     public finishLoading(data: T[]) {
         this.processLoadedData(data)
             .subscribe((x) => {
-                this.data = x;
+                this.data.set(x);
                 this.shellSrv.setLoading(false);
                 this.setLoading(false);
         });
@@ -304,8 +306,7 @@ implements OnInit, OnDestroy {
         this.editButton.disabled = !itemControlsOn;
         this.deleteButton.disabled = !itemControlsOn;
         this.viewReportButton.disabled = !itemControlsOn;
-        this.emailReportButton.disabled =
-            !this.selectedRow() || !itemControlsOn || !this.selectedRow()?.email;
+        this.emailReportButton.disabled = !this.selectedRow() || !itemControlsOn || !this.selectedRow()?.email;
         this.shellSrv.updateShell();
     }
 
@@ -403,7 +404,7 @@ implements OnInit, OnDestroy {
         this.confirmationSrv.confirmDelete().subscribe((b) => {
             if (b) {
                 if (this.selectedId() && this.selectedId() > 0) {
-                    const a = this.data.filter(
+                    const a = this.data().filter(
                         (x) => x.id === this.selectedId(),
                     )[0];
                     if (a && a.id) {

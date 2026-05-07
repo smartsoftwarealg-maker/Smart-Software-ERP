@@ -83,7 +83,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         'status',
         'score',
     ];
-    data: CRMLead[] = [];
+    data = signal<CRMLead[]>([]);
     loading = false;
 
     constructor() {
@@ -111,7 +111,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
     private refresh(): void {
         this.loading = true;
         this.#entitySrv.getPage(this.pagination).subscribe((res) => {
-            this.data = res;
+            this.data.set(res);
             this.loading = false;
         });
     }

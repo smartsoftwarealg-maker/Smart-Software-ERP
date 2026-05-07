@@ -23,7 +23,7 @@ export class AgentAssetsListComponent implements OnInit {
     agentId = 0;
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);
-    data: Asset[] = [];
+    data = signal<Asset[]>([]);
     displayedColumns = [
             'reference',
             'description',
@@ -58,7 +58,7 @@ export class AgentAssetsListComponent implements OnInit {
     private refresh() {
         this.assetSrv
             .getAgentAssets(this.agentId)
-            .subscribe(res => this.data = res);
+            .subscribe(res => this.data.set(res));
     }
 
     sort(event: Sort) {

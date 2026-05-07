@@ -55,7 +55,7 @@ export class CardComponent implements OnInit {
     storeId: number;
     articleReference: string;
     useStoreForm = false;
-    data: Card[];
+    data = signal<Card[]>([]);
 
     displayedColumns = [
         'document',
@@ -114,7 +114,7 @@ export class CardComponent implements OnInit {
 
 
         loadObserver.subscribe((x: Card[]) => {
-            this.data = x;
+            this.data.set(x);
             this.shellSrv.setLoading(false);
         });
 

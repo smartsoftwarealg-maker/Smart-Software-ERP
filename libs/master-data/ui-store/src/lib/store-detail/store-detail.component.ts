@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {Article, ArticleService} from '@ss/master-data/api-article';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -30,7 +30,7 @@ export class StoreDetailComponent extends BaseEntityDetailComponent<Article> imp
 
     marks: Mark[];
     vats: Vat[];
-    selectedRow: Article;
+    selectedRow = signal<Article|null>(null);
 
     constructor(
         public articleSrv: ArticleService,
@@ -57,7 +57,7 @@ export class StoreDetailComponent extends BaseEntityDetailComponent<Article> imp
 
     override finishLoading(e: Article) {
         super.finishLoading(e);
-        this.selectedRow = e;
+        this.selectedRow.set(e);
     }
 
     public override setupForm(a: Article) {

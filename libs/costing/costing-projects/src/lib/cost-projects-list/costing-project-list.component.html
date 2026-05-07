@@ -1,5 +1,5 @@
 <div class="table__container">
-    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+    <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="code">
             <mat-header-cell *matHeaderCellDef mat-sort-header >{{ 'ADMINISTRATION_CODE' | translate }}</mat-header-cell>

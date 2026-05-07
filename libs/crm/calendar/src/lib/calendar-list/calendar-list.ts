@@ -70,7 +70,7 @@ export class CalendarList implements OnInit {
         this.pagination.onChange = () => this.refresh();
     }
 
-    data: CRMCalendar[] = [];
+    data = signal<CRMCalendar[]>([]);
 
     pagination = PaginationModel.newInstance({
         page: 1,
@@ -100,7 +100,7 @@ export class CalendarList implements OnInit {
         this.#entitySrv
             .getPage(this.pagination, null, null, params)
             .subscribe((res) => {
-            this.data = res;
+            this.data.set(res);
             this.loading = false;
         });
     }

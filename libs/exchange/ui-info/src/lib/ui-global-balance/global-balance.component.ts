@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -25,7 +25,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance> {
     agentId = 0;
-    data: GBalance[] = [];
+    // data = signal<GBalance[]>([]);
 
     public readonly pagination = PaginationModel.newInstance();
 

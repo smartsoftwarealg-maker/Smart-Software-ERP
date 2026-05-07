@@ -1,6 +1,6 @@
 <div class="container">
     <div class="main-table">
-        <mat-table mat-table [dataSource]="data" matSort (matSortChange)="sort($event)">
+        <mat-table mat-table [dataSource]="data()" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="field">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>REMUN_FIELD</mat-header-cell>

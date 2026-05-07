@@ -66,7 +66,7 @@ export class ExtraCostListComponent implements OnInit {
 
     selectedId = signal(0);
     paginator = PaginationModel.newInstance();
-    data: ExtraCost[] = [];
+    data = signal<ExtraCost[]>([]);
     isEditable = signal(true);
 
     displayedColumns = [
@@ -88,8 +88,8 @@ export class ExtraCostListComponent implements OnInit {
         this.entitySrv
             .getPage(this.paginator, this.shellSrv.getSearchText())
             .subscribe((next) => {
-                this.data = next;
-                this.data.forEach((d) => {
+                this.data.set(next);
+                next.forEach((d) => {
                     d.costName = COST_TYPES.find(
                         (t) => t.id === d.costType,
                     )?.description;
@@ -120,7 +120,7 @@ export class ExtraCostListComponent implements OnInit {
     deleteSelected() {
         this.confirmationSrv.confirmDelete().subscribe((b) => {
             if (b && this.selectedId() > 0) {
-                const a = this.data.filter((x) => x.id === this.selectedId())[0];
+                const a = this.data().filter((x) => x.id === this.selectedId())[0];
                 if (a && a.id) {
                     this.shellSrv.setLoading(true);
                     this.entitySrv.remove(a.id).subscribe({

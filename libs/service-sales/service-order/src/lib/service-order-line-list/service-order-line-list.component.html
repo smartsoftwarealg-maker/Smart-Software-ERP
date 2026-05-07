@@ -22,7 +22,7 @@
   </div>
 
   <div class="main-table">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data()" class="main-table">
 
       <ng-container matColumnDef="position">
         <mat-header-cell *matHeaderCellDef translate>COMMON_POSITION</mat-header-cell>
@@ -104,7 +104,7 @@
 
 
       <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-      <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
+      <mat-row class="selectable" [class.selected]="row.id === selectedId()" (click)="select(row)"
       *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
   </div>
@@ -113,7 +113,7 @@
   </div>
 
   <div class="doc-info">
-    @if (selectedId) {
+    @if (selectedId()) {
       <ss-doc-info
         [displayedGroups]="['article', 'document']"
                 [params]="{

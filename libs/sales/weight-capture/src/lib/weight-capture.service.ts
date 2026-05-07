@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import {AppConfigService, HttpService} from '@ss/common/api-common';
-import {map, Observable} from 'rxjs';
+import {map, Observable, tap} from 'rxjs';
 import {ScaleConfig, WeightCapture} from './weight-capture-api';
 
 @Injectable({
@@ -24,15 +24,18 @@ export class WeightCaptureService {
         return this.httpSrv.put('/logistics/weight-capture/update-brut', w);
     }
 
-    getScalesConfig(): Observable<ScaleConfig> {
-        return this.appConfigSrv.getConfig().pipe(
-            map(conf => {
-                return conf.scales as ScaleConfig;
-            })
+    getScalesConfig(): Observable<ScaleConfig|null> {
+        return this.appConfigSrv
+            .getConfig()
+            .pipe(
+                map(conf => {
+                    return (conf.scales||null) as ScaleConfig;
+                })
         );
     }
 
     hasScaleConfig(): Observable<boolean>{
-        return this.getScalesConfig().pipe(map(x => x?.url !== null));
+        return this.getScalesConfig()
+            .pipe(map(x => x !== null && x?.url !== null || x?.url !== undefined));
     }
 }

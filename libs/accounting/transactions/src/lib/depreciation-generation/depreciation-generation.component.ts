@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, signal} from "@angular/core";
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
 import {DepreciationGenerationService} from './depreciation-generation.service';
@@ -49,7 +49,7 @@ export class DepreciationGenerationComponent implements OnInit {
     journalLookup = new DefaultAutoCompleteModel<Journal>(this.journalSrv);
 
     public form: UntypedFormGroup | null = null;
-    data: DepreciationRow[] = [];
+    data = signal<DepreciationRow[]>([]);
     displayedColumns = ['acc', 'description', 'cCenter', 'debit', 'credit'];
     processing = false;
 
@@ -80,7 +80,7 @@ export class DepreciationGenerationComponent implements OnInit {
     refresh() {
         this.deprecSrv
             .getDepreciation(this.form?.value)
-            .subscribe(res => this.data = res);
+            .subscribe(res => this.data.set(res));
     }
 
     generate() {

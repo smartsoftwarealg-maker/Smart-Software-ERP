@@ -1,6 +1,6 @@
 @defer (when !loading()) {
     <div class="table-container">
-        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+        <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
 
 
             <ng-container matColumnDef="number">

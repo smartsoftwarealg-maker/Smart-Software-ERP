@@ -101,7 +101,7 @@ export class ProductionLinesListComponent
     private refresh() {
         this.detailSrv.getPage(this.pagination).subscribe({
             next: (data) => {
-                this.data = data;
+                this.data.set(data);
             },
             error: () => {
                 this.snackBarSrv.showFailureMessage('refresh failed');

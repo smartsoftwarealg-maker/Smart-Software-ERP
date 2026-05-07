@@ -7,7 +7,7 @@
         </ss-auto-complete>
     </mat-form-field>
 
-    <mat-table mat-table [dataSource]="data">
+    <mat-table mat-table [dataSource]="data()">
 
         <ng-container matColumnDef="documentDescription">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DOCUMENT</mat-header-cell>

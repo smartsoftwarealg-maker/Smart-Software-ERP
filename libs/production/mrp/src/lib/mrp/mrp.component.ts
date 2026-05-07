@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 
 import { HttpService, LanguageService } from '@ss/common/api-common';
 import {
@@ -28,7 +28,7 @@ export class MrpComponent implements OnInit {
     private route = inject(ActivatedRoute);
 
     protected langSrv = inject(LanguageService);
-    public data: MRP[] = [];
+    public data = signal<MRP[]>([]);
     displayedColumns: string[] = [
         'reference',
         'description',
@@ -46,11 +46,11 @@ export class MrpComponent implements OnInit {
     ngOnInit(): void {
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setTitle('PROD_PRODUCTION_MRP');
-        this.data = [];
+        this.data.set([]);
         this.shellSrv.setLoading(true);
         this.getData().subscribe({
             next: (data) => {
-                this.data = data;
+                this.data.set(data);
                 this.shellSrv.setLoading(false);
             },
             error: err => {

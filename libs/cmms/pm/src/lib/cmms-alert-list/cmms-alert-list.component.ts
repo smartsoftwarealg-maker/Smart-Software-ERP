@@ -122,13 +122,13 @@ export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implemen
         this.confirmationSrv
             .confirm('CMMS_WORK_GENERATION', 'COMMON_GENERATE')
             .pipe(switchMap(answer => answer?
-                this.entitySrv.generate(this.dateControl.value, this.shellSrv.getSearchText()):
+                this.entitySrv.generate(this.dateControl.value||new Date(), this.shellSrv.getSearchText()):
                 of({count: 0}))
             ).subscribe({
                 next: res => {
                     if (res?.count) {
                         this.snackBarSrv.showSuccessMessage();
-                        this.data = [];
+                        this.data.set([]);
                     }
                     this.shellSrv.setLoading(false);
                 },

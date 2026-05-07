@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -23,7 +23,7 @@ import { DecimalPipe } from '@angular/common';
 })
 export class BalanceComponent implements OnInit {
     agentId = 0;
-    data: Balance[] = [];
+    data = signal<Balance[]>([]);
 
     public readonly pagination = PaginationModel.newInstance();
 
@@ -45,6 +45,6 @@ export class BalanceComponent implements OnInit {
             .pipe(switchMap(params => {
                 this.agentId = +params.id || 0;
                 return this.exchangeSrv.getBalance(this.agentId, this.pagination.page - 1, this.pagination.pageSize);
-            })).subscribe( res => this.data = res);
+            })).subscribe( res => this.data.set(res));
     }
 }

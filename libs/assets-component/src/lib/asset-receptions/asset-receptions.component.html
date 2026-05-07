@@ -1,5 +1,5 @@
 <div class="container_div">
-    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+    <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="receptionDate">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DATE</mat-header-cell>

@@ -26,9 +26,9 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     readonly pagination: PaginationModel = null;
     searchText = new FormControl<string>('');
     parentId: number;
-    data: TransactionLine[];
+    data = signal<TransactionLine[]>([]);
     // selectedId: number;
-    selectedRow: TransactionLine = null;
+    selectedRow = signal<TransactionLine|null> (null);
     isEditable = computed(() => this.#_isEditable_);
     usesLots = signal(false);
     usesUnits = signal(false);
@@ -127,15 +127,15 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 : of([])
         ).pipe(
             tap((data) => {
-                this.data = data;
-                this.data.forEach((d) => (d.unitsDescription = this.#_unitsMap.get(d.units) || d.units + ''));
+                this.data.set(data);
+                this.data().forEach((d) => (d.unitsDescription = this.#_unitsMap.get(d.units) || d.units + ''));
                 this.loading.set(false);
             }),
         );
     }
 
     select(row: TransactionLine) {
-        this.selectedRow = row;
+        this.selectedRow.set(row);
         this.detailSrv.selectedId.set(row ? row.id : 0);
     }
 
@@ -144,7 +144,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
             .confirmDelete()
             .subscribe((b) => {
                 if (b && this.detailSrv.selectedId() > 0) {
-                    const a = this.data.filter(
+                    const a = this.data().filter(
                         (x) => x.id === this.detailSrv.selectedId())[0];
                     if (a && a.id) {
                         this.shellSrv.setLoading(true);

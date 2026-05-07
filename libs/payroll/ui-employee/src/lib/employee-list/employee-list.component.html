@@ -4,7 +4,7 @@
             <span translate>COMMON_CARDS</span>
         </ng-template>
         <div class="content">
-            @for (emp of data; track emp.id) {
+            @for (emp of data(); track emp.id) {
                 <div class="employee-card selectable mat-elevation-z6"
                      [class.selected]="emp.id == selectedId()" (click)="selectAndEdit(emp.id)">
 
@@ -33,7 +33,7 @@
             <span translate>COMMON_LIST</span>
         </ng-template>
         <div class="main-table-scroll">
-            <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+            <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
 
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_ID</mat-header-cell>

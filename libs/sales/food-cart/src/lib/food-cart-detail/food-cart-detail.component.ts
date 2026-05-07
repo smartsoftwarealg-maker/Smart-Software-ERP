@@ -160,7 +160,7 @@ class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
 
     removeFromCart(item: Cartline) {
         if (item) {
-            this.data = this.data.filter(e => e.partId !== item.partId);
+            this.data.update(v => v.filter(e => e.partId !== item.partId));
             this.selectedPartId = null;
             // this.cartSrv
             //     .removeItem(item)
@@ -259,11 +259,11 @@ class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
             validated: false
         };
         if (this.cartTotal + article.price1 <= 1000000) {
-            const existing = this.data.find(e => e.partId === article.id);
+            const existing = this.data().find(e => e.partId === article.id);
             if (existing) {
                 existing.qty += qty;
             } else {
-                this.data = this.data.concat([this.lastItem]);
+                this.data.update(v => v.concat([this.lastItem]));
                 this.pagination.elementCount += 1;
             }
             this.shellSrv.setLoading(false);
@@ -286,7 +286,7 @@ class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
 
 
     private updateTotal() {
-        this.cartTotal = this.data.map(e => e.price * e.qty).reduce((p, c) => p + c);
+        this.cartTotal = this.data().map(e => e.price * e.qty).reduce((p, c) => p + c);
     }
 
     override selectRow(row: Cartline) {

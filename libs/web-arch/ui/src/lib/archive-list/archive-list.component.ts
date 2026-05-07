@@ -77,7 +77,7 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
                         .service
                         .deleteById(id)
                         .subscribe(res => {
-                            this.data = this.data.filter(e => e._id !== id);
+                            this.data.set(this.data().filter(e => e._id !== id));
                             this.snackBarSrv.showSuccessMessage();
                         });
                 }
@@ -103,7 +103,7 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
     }
 
     download(id: string) {
-        this.data
+        this.data()
             .filter(e => e.filename && e._id === id)
             .forEach(e => this.viewDocument(e));
     }
@@ -128,7 +128,7 @@ export class ArchiveListComponent extends BaseEntityListComponent<ArchiveDocumen
             .subscribe(b => {
                 if (b) {
                     if (this.selectedId() && this.selectedId() > 0) {
-                        const a = this.data.filter(x => x.id === this.selectedId())[0];
+                        const a = this.data().filter(x => x.id === this.selectedId())[0];
                         if (a && a.id) {
                             this.shellSrv.setLoading(true);
                             this.service.deleteById(a._id)

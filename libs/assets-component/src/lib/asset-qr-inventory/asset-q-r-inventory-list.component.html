@@ -80,7 +80,7 @@
     </div>
 } @else {
     <div class="table__div">
-        <mat-table mat-table [dataSource]="data" matSort (matSortChange)="sort($event)">
+        <mat-table mat-table [dataSource]="data()" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="description">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION

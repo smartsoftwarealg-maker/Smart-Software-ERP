@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Lookup } from '@ss/common/api-lookup';
@@ -66,7 +66,7 @@ export class AppArchiveViewerComponent implements OnInit {
     transactionDocs = [5, 52, 53, 54, 55];
     displayedColumns = ['info1', 'info2', 'info3', 'docDescription']; //, 'filename'
     columnHeaders = this.EMPLOYEE_COLS;
-    data: AppArchive[] = [];
+    data = signal<AppArchive[]>([]);
 
     applications: Lookup[] = [];
 
@@ -90,7 +90,7 @@ export class AppArchiveViewerComponent implements OnInit {
         this.paginator.page = 0;
         this.paginator.elementCount = 0;
         this.archiveSrv.setParentId(a?.id || 0);
-        this.data = [];
+        this.data.set([]);
         this.imgSrc = null;
     }
 
@@ -183,7 +183,7 @@ export class AppArchiveViewerComponent implements OnInit {
 
     view() {
         this.getArchiveObserver().subscribe(res => {
-            this.data = res.body;
+            this.data.set(res.body);
             this.paginator.elementCount = res.itemCount;
         });
     }
@@ -193,11 +193,11 @@ export class AppArchiveViewerComponent implements OnInit {
         if (this.archiveSrv.getParentId() > 0) {
             this.archiveSrv.getList(0, 50)
                 .subscribe(res => {
-                    this.data = res.body || [];
+                    this.data.set(res.body || []);
                     this.paginator.elementCount = res.itemCount;
                 });
         } else {
-            this.data = [];
+            this.data.set([]);
             this.paginator.elementCount = 0;
         }
     }

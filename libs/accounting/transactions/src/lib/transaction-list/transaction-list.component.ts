@@ -225,7 +225,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 tap(res => this.journalSummary.set(res)),
                 switchMap(() => this.entitySrv.findByJournal(this.entitySrv.getParentId(), this.pagination.page, this.pagination.pageSize, this.filter))
             ).subscribe(res => {
-                this.data = res.body;
+                this.data.set(res.body);
                 this.pagination.elementCount = res.itemCount;
                 this.loading.set(false);
             });
@@ -236,7 +236,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         this.entitySrv
             .findByJournal(this.selectedJournal(), this.pagination.page, this.pagination.pageSize, this.filter)
             .subscribe(res => {
-                this.data = res.body;
+                this.data.set(res.body);
                 this.pagination.elementCount = res.itemCount;
                 this.loading.set(false);
             });
@@ -253,7 +253,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .findByJournal(this.selectedJournal(), this.pagination.page, this.pagination.pageSize, this.filter)
             .pipe(
                 tap(res => {
-                    this.data = res.body;
+                    this.data.set(res.body);
                     this.pagination.elementCount = res.itemCount;
                 }),
                 switchMap(() => this.entitySrv.journalSummary()),

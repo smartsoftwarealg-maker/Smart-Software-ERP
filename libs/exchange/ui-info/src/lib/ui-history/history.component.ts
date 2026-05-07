@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal,} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationModel} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
@@ -18,7 +18,7 @@ import { DecimalPipe, DatePipe } from '@angular/common';
 export class HistoryComponent implements OnInit {
 
     agentId = 0;
-    data: History[] = [];
+    data = signal<History[]>([]);
 
     public readonly pagination = PaginationModel.newInstance();
 
@@ -49,7 +49,7 @@ export class HistoryComponent implements OnInit {
                 this.agentId = +params.id || 0;
                 return this.exchangeSrv.getHistory(this.agentId, this.pagination.page - 1, this.pagination.pageSize);
             })).subscribe( res => {
-            this.data = res.body;
+            this.data.set(res.body);
             this.pagination.elementCount = res.itemCount;
         });
     }

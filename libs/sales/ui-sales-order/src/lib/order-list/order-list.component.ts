@@ -108,7 +108,7 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
 
     getInvoices(): void {
         this.setLoading(true);
-        const ids = this.data.map((d) => d.id).join(',');
+        const ids = this.data().map((d) => d.id).join(',');
 
         this.quickOrderSrv
             .getInvoiceInfo(ids).subscribe({

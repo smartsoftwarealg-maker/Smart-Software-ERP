@@ -103,7 +103,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
 
     getInvoices(): void {
         this.setLoading(true);
-        const ids = this.data.map((d) => d.id).join(',');
+        const ids = this.data().map((d) => d.id).join(',');
 
         this.quickOrderSrv
             .getInvoiceInfo(ids)
@@ -154,7 +154,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         return  super.processLoadedData(data)
             .pipe(
                 switchMap(() => {
-                    const ids = this.data.map((d) => d.id).join(',');
+                    const ids = this.data().map((d) => d.id).join(',');
                     return this.quickOrderSrv.getInvoiceInfo(ids);
                 }),
                 tap((res: InvoiceInfo[]) => {

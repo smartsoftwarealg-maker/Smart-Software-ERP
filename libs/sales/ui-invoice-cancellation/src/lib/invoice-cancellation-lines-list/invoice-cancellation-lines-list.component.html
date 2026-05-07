@@ -29,7 +29,7 @@
 
         <div class="container_div">
             <div class="main-table">
-                <mat-table mat-table [dataSource]="data">
+                <mat-table mat-table [dataSource]="data()">
 
                     <ng-container matColumnDef="position">
                         <mat-header-cell *matHeaderCellDef translate>COMMON_POSITION</mat-header-cell>
@@ -117,7 +117,7 @@
 
 
                     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                    <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
+                    <mat-row class="selectable" [class.selected]="row.id === selectedId()" (click)="select(row)"
                              *matRowDef="let row; columns: displayedColumns;"></mat-row>
                 </mat-table>
             </div>
@@ -127,15 +127,15 @@
             <ss-pagination [paginationModel]="pagination"></ss-pagination>
         </div>
         <div class="doc-info">
-            @if (selectedId) {
+            @if (selectedId()) {
                 <ss-doc-info
                         [displayedGroups]="['article', 'document']"
                         [params]="{
-            documentId: selectedRow?.transacId,
+            documentId: selectedRow()?.transacId,
             documentURL:'/inventory',
-            articleReference: selectedRow?.reference,
-            detailId: selectedRow?.id,
-            articleStoreId: selectedRow?.store
+            articleReference: selectedRow()?.reference,
+            detailId: selectedRow()?.id,
+            articleStoreId: selectedRow()?.store
         }">
                 </ss-doc-info>
             }

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 
 import { HttpService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
@@ -29,7 +29,7 @@ export class TransfersComponent implements OnInit {
     private shellSrv = inject(ShellService);
     private route = inject(ActivatedRoute);
 
-    public data: TransactionLine[] = [];
+    public data = signal<TransactionLine[]>([]);
     displayedColumns: string[] = [
         'reference',
         'description',
@@ -47,8 +47,8 @@ export class TransfersComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.data = [];
         this.shellSrv.setLoading(true);
+        this.data.set([]);
         this.route.queryParams.pipe(
             switchMap(param => {
                 const prodId = +param['prodId'];
@@ -63,7 +63,7 @@ export class TransfersComponent implements OnInit {
             })
         ).subscribe({
             next: (data) => {
-                this.data = data;
+                this.data.set(data);
                 this.shellSrv.setLoading(false);
             },
             error: err => {

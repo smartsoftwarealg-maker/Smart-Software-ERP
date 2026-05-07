@@ -34,7 +34,7 @@
     <mat-tab label="{{'REMUN_ELEMENTS_ENTRY'|translate}}">
 
         <div class="emp__div size_div">
-            <mat-table mat-table [dataSource]="data"
+            <mat-table mat-table [dataSource]="data()"
                        [ngStyle]="{ 'width.px': mainTableWidth }">
 
                 <ng-container matColumnDef="photo">

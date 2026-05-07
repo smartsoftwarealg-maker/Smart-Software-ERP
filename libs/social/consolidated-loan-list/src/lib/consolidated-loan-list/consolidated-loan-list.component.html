@@ -1,6 +1,6 @@
 <div class="right_div container">
     <div class="main-table">
-        <mat-table mat-table [dataSource]="data" class="master"  matSort (matSortChange)="sort($event)">
+        <mat-table mat-table [dataSource]="data()" class="master"  matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="employee">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_ID</mat-header-cell>

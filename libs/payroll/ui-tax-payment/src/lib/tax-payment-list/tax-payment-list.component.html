@@ -6,7 +6,7 @@
         </mat-form-field>
     </div>
     <div class="table__container">
-    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+    <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
 <!--        <ng-container matColumnDef="month">-->
 <!--            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_MONTH</mat-header-cell>-->
 <!--            <mat-cell *matCellDef="let e" translate>-->

@@ -9,7 +9,7 @@
 
 <div class="table__div size">
     <mat-table mat-table
-               [dataSource]="data"
+               [dataSource]="data()"
                class="main-table"
                matSort
                (matSortChange)="sort($event)">

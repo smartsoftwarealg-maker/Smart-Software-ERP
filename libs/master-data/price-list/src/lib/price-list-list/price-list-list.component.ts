@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Location, LocationService } from '@ss/master-data/api-article';
@@ -19,7 +19,7 @@ import {
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { TranslateDirective } from '@ss/common/ui-lang';
-import { switchMap } from 'rxjs';
+import {Observable, switchMap } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { DOC_RECEPTION } from '@ss/logistics/api-transaction';
 import { OptionService } from '@ss/logistics/ui-options';
@@ -34,7 +34,7 @@ export class PriceListListComponent extends BaseEntityListComponent<Location> {
     #loginSrv = inject(LoginService);
     #optionSrv = inject(OptionService);
 
-    displayedColumns = ['storeName', 'lotNumber', 'reference', 'description', 'price1', 'price2', 'price3'];
+    displayedColumns = signal(['storeName', 'lotNumber', 'reference', 'description', 'price1', 'price2', 'price3']);
     constructor(
         public override entitySrv: LocationService,
         public override shellSrv: ShellService,
@@ -56,12 +56,12 @@ export class PriceListListComponent extends BaseEntityListComponent<Location> {
         this.pagination.pageSize = 15;
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.#optionSrv
+    override preload():Observable<Location>{
+        return this.#optionSrv
             .get(this.#loginSrv.appCtx.center)
-            .subscribe(res => this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'lotNumber'));
+            .pipe(
+                tap(res => this.displayedColumns.update(v => v.filter(c => res.usesLots || c !== 'lotNumber'))),
+                switchMap(() => super.preload()));
     }
-
 
 }

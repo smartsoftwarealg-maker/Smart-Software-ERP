@@ -6,7 +6,7 @@
   </div>
 
   <div class="shop-btn">
-    @if (this.data.length > 0) {
+    @if (data().length > 0) {
       <div class="confirmation f-accent">
         <button mat-raised-button
           color="warn"
@@ -20,7 +20,7 @@
   </div>
 
 
-  <!--div class="shop-btn confirmation" *ngIf="selectedRow && data.length > 0">
+  <!--div class="shop-btn confirmation" *ngIf="selectedRow && data().length > 0">
   <span *ngIf="selectedRow?.validated; else notConfirmedStatus" class="confirmation fa-primary" translate>
     COMMON_CONFIRMED
   </span>
@@ -51,8 +51,8 @@
     </button>
   </div>
 }
-<div class="width-96 layout">
-  <mat-table mat-table [dataSource]="data" class="main-table">
+  <div class="width-96 layout">
+  <mat-table mat-table [dataSource]="data()" class="main-table">
 
     <ng-container matColumnDef="image">
       <mat-header-cell *matHeaderCellDef style="justify-content: center" translate>LOGISTICS_IMAGE

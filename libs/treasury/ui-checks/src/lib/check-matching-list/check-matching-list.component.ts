@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, signal} from "@angular/core";
 import {Match, ProcessedCheckService} from '@ss/treasury/api-checks';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -53,7 +53,7 @@ export class CheckMatchingListComponent implements OnInit, OnDestroy {
     bankCtrl   = new FormControl<number>(0);
 
     match = true;
-    data: Match[] = [];
+    data = signal<Match[]>([]);
 
     pagination = PaginationModel.newInstance();
     displayedColumns = [
@@ -96,7 +96,7 @@ export class CheckMatchingListComponent implements OnInit, OnDestroy {
             this.checkSrv.nonMatched(this.bankCtrl.value, this.pagination.page, this.pagination.pageSize, this.filter);
 
         obs.subscribe(res => {
-                this.data = res.body;
+                this.data.set(res.body);
                 this.pagination.elementCount = res.itemCount;
             });
     }

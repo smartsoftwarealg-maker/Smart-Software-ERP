@@ -268,7 +268,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         return  super.processLoadedData(data)
             .pipe(
                 switchMap(() => {
-                    const ids = this.data.map((d) => d.id).join(',');
+                    const ids = this.data().map((d) => d.id).join(',');
                     return this.scheduledInvoiceSrv.getInvoiceInfo(ids);
                 }),
                 tap((res: InvoiceInfo[]) => {

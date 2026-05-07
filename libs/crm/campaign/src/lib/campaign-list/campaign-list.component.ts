@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaginationModel } from '@ss/common/api-common';
@@ -21,6 +21,7 @@ import { CampaignService } from '../campaign.service';
 import { Campaign, STATUS, CTYPES } from '../campaign.api';
 import { DatePipe } from '@angular/common';
 import {MatButton} from "@angular/material/button";
+import {sign} from "chart.js/helpers";
 
 @Component({
     selector: 'ss-campaign-list',
@@ -71,7 +72,7 @@ export class CampaignListComponent implements OnInit, OnDestroy {
         'budget',
     ];
 
-    data: Campaign[] = [];
+    data = signal<Campaign[]> ([]);
     loading = false;
 
     constructor() {
@@ -96,7 +97,7 @@ export class CampaignListComponent implements OnInit, OnDestroy {
     private refresh(): void {
         this.loading = true;
         this.#entitySrv.getPage(this.pagination).subscribe((res) => {
-            this.data = res;
+            this.data.set(res);
             this.loading = false;
         });
     }
@@ -126,11 +127,11 @@ export class CampaignListComponent implements OnInit, OnDestroy {
     }
 
     getStatus(status: string) {
-        return this.STATUS.find((x) => x.value == status).description;
+        return this.STATUS.find((x) => x.value == status)?.description;
     }
 
     getCType(type: string) {
-        return this.CTYPES.find((x) => x.value == type).description;
+        return this.CTYPES.find((x) => x.value == type)?.description;
     }
 
     protected readonly CTYPES = CTYPES;

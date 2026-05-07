@@ -228,7 +228,7 @@
 @if (showingTransactions()) {
     <div class="container_div center-div">
         <div class="table_div">
-            <mat-table mat-table [dataSource]="data" class="content-div">
+            <mat-table mat-table [dataSource]="data()" class="content-div">
 
                 <ng-container matColumnDef="description">
                     <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DOCUMENT</mat-header-cell>

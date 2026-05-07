@@ -77,7 +77,7 @@
 </div>
 
 <div class="table_div">
-    <mat-table mat-table [dataSource]="data" class="main-table" [ngStyle]="{ 'min-width.px': minTableWidth }">
+    <mat-table mat-table [dataSource]="data()" class="main-table" [ngStyle]="{ 'min-width.px': minTableWidth }">
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
             <mat-cell *matCellDef="let e">

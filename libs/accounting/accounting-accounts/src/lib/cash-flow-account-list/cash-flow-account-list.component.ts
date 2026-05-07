@@ -29,7 +29,7 @@ export class CashFlowAccountListComponent implements OnInit {
     private filter: string = '';
     SIGNS = ['DEBIT', 'CREDIT', 'BALANCE'];
     displayedColumns = ['ctrl', 'accountno', 'description'];
-    data: CashFlowAcc[] = [];
+    data = signal<CashFlowAcc[]>([]);
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);
     pagination = PaginationModel.newInstance();
@@ -67,7 +67,7 @@ export class CashFlowAccountListComponent implements OnInit {
     refresh() {
         this.entitySrv
             .getPage(this.pagination, this.filter)
-            .subscribe(res => this.data = res);
+            .subscribe(res => this.data.set(res));
     }
 
     delete(e: CashFlowAcc) {
@@ -75,7 +75,7 @@ export class CashFlowAccountListComponent implements OnInit {
             .remove(e.id)
             .subscribe(res => {
                 if (res.count > 0) {
-                    this.data = this.data.filter(x => x.id !== e.id);
+                    this.data.update(v => v.filter(x => x.id !== e.id));
                     this.itemDeleted.emit(true);
                     this.snackBarSrv.showSuccessMessage();
                 }

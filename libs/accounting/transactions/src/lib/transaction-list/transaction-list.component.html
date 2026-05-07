@@ -41,7 +41,7 @@
 
             <div class="transactions">
                 <div class="container_div">
-                    <mat-table mat-table [dataSource]="data.filter(e => !loading())" class="main-table" matSort (matSortChange)="sort($event)"
+                    <mat-table mat-table [dataSource]="data().filter(e => !loading())" class="main-table" matSort (matSortChange)="sort($event)"
                                [class.disabled]="!isRoot() || loading()">
 
                         <ng-container matColumnDef="pieceNo">
