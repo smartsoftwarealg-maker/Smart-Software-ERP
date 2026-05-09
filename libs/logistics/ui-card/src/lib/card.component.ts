@@ -57,7 +57,7 @@ export class CardComponent implements OnInit {
     useStoreForm = false;
     data = signal<Card[]>([]);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'document',
         'number',
         'date',
@@ -66,7 +66,7 @@ export class CardComponent implements OnInit {
         'stock',
         'price',
         'value'
-    ];
+    ]);
 
 
     constructor(public cardSrv: CardService,

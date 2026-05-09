@@ -56,12 +56,12 @@ export class CheckMatchingListComponent implements OnInit, OnDestroy {
     data = signal<Match[]>([]);
 
     pagination = PaginationModel.newInstance();
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'bank',
         'number',
         'date',
         'amount',
-    ];
+    ]);
 
     constructor(
         private route: ActivatedRoute,

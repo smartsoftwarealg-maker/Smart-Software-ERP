@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {
     BaseTransactionLinesListComponent,
     TransactionLine,
@@ -53,7 +53,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     ],
 })
 export class ImportReceptionLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+    displayedColumns = signal([
         'position',
         'store',
         'reference',
@@ -62,7 +62,7 @@ export class ImportReceptionLinesListComponent extends BaseTransactionLinesListC
         'price',
         'vat',
         'total'
-    ];
+    ]);
 
     constructor(
         public override detailSrv: TransactionLinesService,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { Inspection, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { MaterialModule } from '@ss/common/api-common';
@@ -38,11 +38,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 })
 export class InspectionDetailListComponent extends BaseChildEntityListComponent<Inspection> {
     public types = WORK_TYPES;
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'description',
         'fail',
         'pass'
-    ];
+    ]);
 
     constructor(public override detailSrv: CMMSInspectionService) {
         super(detailSrv, 'CMMSInspection');

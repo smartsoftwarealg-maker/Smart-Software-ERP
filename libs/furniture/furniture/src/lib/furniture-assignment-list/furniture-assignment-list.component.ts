@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {FurnitureTransaction} from '../furniture-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -35,11 +35,11 @@ import { DatePipe } from '@angular/common';
 })
 export class FurnitureAssignmentListComponent extends BaseEntityListComponent<FurnitureTransaction> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'supplierDescription'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: FurnitureAssignmentsService,

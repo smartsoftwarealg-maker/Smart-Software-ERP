@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { VehicleInsurance } from '../vehicle-api';
@@ -27,12 +27,12 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./vehicle-insurance-list.component.css'],
 })
 export class VehicleInsuranceListComponent extends BaseChildEntityListComponent<VehicleInsurance> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'date',
         'policyDescription',
         'agencyDescription',
         'amount',
-    ];
+    ]);
 
     constructor(protected override detailSrv: VehicleInsuranceService) {
         super(detailSrv, 'VehicleInsurance');

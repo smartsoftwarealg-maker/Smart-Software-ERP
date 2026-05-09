@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {
     MatCell,
     MatCellDef,
@@ -45,7 +45,7 @@ import { PaginatorPersistenceService } from '@ss/common/api-common';
     ],
 })
 export class TrnSubjectsListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
 
     constructor(
         public override entitySrv: TrnSubjectsService,

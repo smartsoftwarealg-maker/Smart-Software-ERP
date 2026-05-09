@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatTableModule } from '@angular/material/table';
@@ -38,7 +38,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrl: './work-permit-list.component.css',
 })
 export class WorkPermitListComponent extends BaseChildEntityListComponent<WorkPermit> {
-    override displayedColumns = ['number', 'date', 'typeDescription', 'startDate', 'dueDate'];
+    override displayedColumns = signal<string[]>(['number', 'date', 'typeDescription', 'startDate', 'dueDate']);
 
     constructor(protected override detailSrv: CMMSWorkPermitService) {
         super(detailSrv, 'WorkPermit');

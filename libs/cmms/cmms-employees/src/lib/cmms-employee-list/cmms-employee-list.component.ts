@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Employee } from '@ss/employee-services/employee-services';
@@ -30,14 +30,14 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./cmms-employee-list.component.scss'],
 })
 export class CmmsEmployeeListComponent extends BaseEntityListComponent<Employee> implements OnInit {
-    public displayedColumns = [
+    public displayedColumns = signal<string[]>([
         'id',
         'fullName',
         'birth',
         'address',
         'msDescription',
         'post'
-    ];
+    ]);
 
     constructor(
         public employeeSrv: CmmsEmployeeService,

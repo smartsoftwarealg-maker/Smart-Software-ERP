@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -20,11 +20,11 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 export class CompanyListComponent extends BaseEntityListComponent<Company> {
 
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'company2',
         'address'
-    ];
+    ]);
 
 
     constructor(

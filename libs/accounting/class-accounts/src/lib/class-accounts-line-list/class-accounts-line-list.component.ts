@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -45,7 +45,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     ],
 })
 export class ClassAccountsLineListComponent extends BaseChildEntityListComponent<SodismacSupplierAccount> {
-    override displayedColumns: string[] = ['category', 'accountNo'];
+    override displayedColumns = signal<string[]>(['category', 'accountNo']);
 
     constructor(protected override detailSrv: ClassAccountsLineService) {
         super(detailSrv, 'CLASS_ACCOUNTS');

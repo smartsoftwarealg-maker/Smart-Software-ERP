@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {Class, ClassService, SubclassService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -27,7 +27,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 export class ClassListComponent extends BaseEntityListComponent<Class> {
     #langSrv = inject(LanguageService);
 
-    displayedColumns = ['description', 'descriptionAr', 'accountno'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr', 'accountno']);
 
     constructor(
         public classSrv: ClassService,
@@ -41,7 +41,7 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
         super(classSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_CLASSES');
         this.pagination.pageSize = 10;
         if (this.#langSrv.isSodismac) {
-            this.displayedColumns = ['descriptionAr', 'description', 'accountno', 'subclassDescription'];
+            this.displayedColumns.set(['descriptionAr', 'description', 'accountno', 'subclassDescription']);
         }
     }
 

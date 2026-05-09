@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {HolidayRequest} from '@ss/payroll/api-employee';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -71,7 +71,7 @@ export class HolidayRequestListComponent extends BaseEntityListComponent<Holiday
         'to',
         'docDescription'
     ];
-    displayedColumns = this.loginSrv.appCtx.id? this.userColumns : this.personColumns;
+    displayedColumns = signal<string[]>(this.loginSrv.appCtx.id? this.userColumns : this.personColumns);
 
     constructor(
         public override entitySrv: HolidayRequestService,

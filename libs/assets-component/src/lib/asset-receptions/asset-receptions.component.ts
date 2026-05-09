@@ -71,7 +71,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
 
     detailColumns = this.DEF_COLS;
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'serialNumber',
         'receptionDate',
         'supplierName',
@@ -79,7 +79,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
         'amount',
         'creatorName',
         'status'
-    ];
+    ]);
     detail = signal<Asset[]> ([]);
     detailPagination = PaginationModel.newInstance();
 

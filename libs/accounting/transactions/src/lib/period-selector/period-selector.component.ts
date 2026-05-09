@@ -56,7 +56,7 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
         'DECEMBER',
     ];
 
-    displayedColumns = ['month', 'debit', 'credit'];
+    displayedColumns = signal<string[]>(['month', 'debit', 'credit']);
 
     anomalyColumns = ['journal', 'pieceNo', 'date', 'debit', 'credit'];
     anomalyData = signal<Anomaly[]>([]);

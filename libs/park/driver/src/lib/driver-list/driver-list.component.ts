@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Driver } from '../driver-api';
@@ -38,14 +38,14 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./driver-list.component.scss'],
 })
 export class DriverListComponent extends BaseEntityListComponent<Driver> {
-    public displayedColumns = [
+    public displayedColumns = signal<string[]>([
         'id',
         'fullname',
         'birth',
         'address',
         'msDescription',
         'post',
-    ];
+    ]);
 
     constructor(
         public driverSrv: DriverService,

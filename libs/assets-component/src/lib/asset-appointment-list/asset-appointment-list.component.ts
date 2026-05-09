@@ -1,4 +1,4 @@
-import { Component, effect, input, Input, OnInit } from '@angular/core';
+import { Component, effect, input, Input, OnInit, signal } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -40,13 +40,13 @@ export class AssetAppointmentListComponent extends BaseChildEntityListComponent<
         this.entitySrv.setParentId(this.assetId());
         this.refresh();
     });
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'date',
         'number',
         'location',
         'beneficiary',
         'key',
-    ];
+    ]);
 
     constructor(public entitySrv: AssetAppointmentService) {
         super(entitySrv, 'ASSAppointment');

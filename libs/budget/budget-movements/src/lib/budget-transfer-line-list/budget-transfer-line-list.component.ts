@@ -37,7 +37,7 @@ export class BudgetTransferLineListComponent implements OnInit {
     selectedId = signal(0);
     pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
     data = signal<BudgetTransferDetail[]>([]);
-    displayedColumns = ['description', 'amount']
+    displayedColumns = signal(['description', 'amount'])
 
     constructor(private entitySrv: BudgetTransferService,
                 private detailSrv: BudgetTransferDetailService,

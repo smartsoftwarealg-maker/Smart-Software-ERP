@@ -22,13 +22,13 @@ export class CommissionComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'currency',
         'description',
         'withdrawal',
         'commission',
         'rate'
-    ];
+    ]);
 
 
     constructor(public exchangeSrv: CurrencyDepositService, public  route: ActivatedRoute) {}

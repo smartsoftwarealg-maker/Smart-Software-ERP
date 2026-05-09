@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PersonShift} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -55,12 +55,12 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
     employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
     serviceLookup  = new DefaultAutoCompleteModel(this.serviceSrv);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'firstName',
         'lastName',
         'shiftDescription',
         'date',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: PersonShiftService,

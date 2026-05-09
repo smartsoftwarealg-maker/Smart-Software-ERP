@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -28,7 +28,7 @@ export class FreeInvoiceListComponent extends BaseEntityListComponent<Transactio
 
     showCurrency = input(false);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -36,7 +36,7 @@ export class FreeInvoiceListComponent extends BaseEntityListComponent<Transactio
         'reference',
         'referenceDocDate',
         'docStatus'
-    ];
+    ]);
 
 
     constructor(
@@ -58,11 +58,11 @@ export class FreeInvoiceListComponent extends BaseEntityListComponent<Transactio
                 .getList(0, 50)
                 .subscribe((currencies) => {
                 currencies.body.forEach(c => this.currencyMap.set(c.id, c.description))
-                const chunk1 = this.displayedColumns.slice(0, 5);
-                const chunk2 = this.displayedColumns.slice(5);
+                const chunk1 = this.displayedColumns().slice(0, 5);
+                const chunk2 = this.displayedColumns().slice(5);
                 chunk1.push('currency');
                 chunk1.push('currencyRate');
-                this.displayedColumns = chunk1.concat(chunk2);
+                this.displayedColumns.set(chunk1.concat(chunk2));
             });
         }
     }

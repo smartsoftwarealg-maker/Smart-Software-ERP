@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {BudgetCommitment, BudgetTransfer} from '../budget-movement-api';
 import {PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
@@ -44,12 +44,12 @@ export class BudgetTransferListComponent extends BaseEntityListComponent<BudgetT
     selectedPlanningId = 0;
     planningPaginator = PaginationModel.newInstance({ page: 0, pageSize: 10, elementCount: 0});
     plannings: BudgetPlanningTree[] = [];
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'decisionInfo',
         'transferDate',
         'description',
         'amount'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: BudgetTransferService,

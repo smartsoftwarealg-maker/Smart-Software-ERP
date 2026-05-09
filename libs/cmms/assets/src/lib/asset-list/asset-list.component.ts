@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Asset } from '@ss/assets-component';
 import { AssetsService } from '@ss/assets-component';
@@ -28,7 +28,7 @@ import {PaginationComponent} from "@ss/common/ui-pagination";
     ],
 })
 export class AssetListComponent extends BaseEntityListComponent<Asset> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'accountno',
@@ -37,7 +37,7 @@ export class AssetListComponent extends BaseEntityListComponent<Asset> {
         'acquisitionValue',
         'serial_no',
         'officeDescription'
-    ];
+    ]);
     constructor(public listSrv: AssetsService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,

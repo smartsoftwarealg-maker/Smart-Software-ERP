@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, signal } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Asset } from '../assets-api';
 import { AssetsService } from '../services/assets.service';
@@ -43,7 +43,7 @@ export class AssetSearchDialogComponent implements OnInit {
         outOfService: false,
         isVehicle: false
     };
-    displayedColumns = ['reference', 'description'];
+    displayedColumns = signal<string[]>(['reference', 'description']);
     searchText = new UntypedFormControl();
 
     constructor(public dialogRef: MatDialogRef<AssetSearchDialogComponent>,

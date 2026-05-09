@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -22,7 +22,7 @@ import {CategoryAccountsService} from '../category-accounts.service';
     ],
 })
 export class CategoryAccountsListComponent extends BaseEntityListComponent<SalesCategory> {
-    displayedColumns = ['description', 'cashAccount', 'deferredAccounts'];
+    displayedColumns = signal<string[]>(['description', 'cashAccount', 'deferredAccounts']);
 
     constructor(
         public listSrv: CategoryAccountsService,

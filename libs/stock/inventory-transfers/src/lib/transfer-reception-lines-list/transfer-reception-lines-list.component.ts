@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseTransactionLinesListComponent, TransactionLinesService} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -50,7 +50,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class TransferReceptionLinesListComponent  extends BaseTransactionLinesListComponent implements OnInit {
 
-    override displayedColumns = [
+    override displayedColumns = signal([
         'position',
         'store',
         'reference',
@@ -59,7 +59,7 @@ export class TransferReceptionLinesListComponent  extends BaseTransactionLinesLi
         'price',
         'vat',
         'total'
-    ];
+    ]);
 
     constructor(
         public override detailSrv: TransactionLinesService,

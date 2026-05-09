@@ -69,7 +69,7 @@ export class ExtraCostListComponent implements OnInit {
     data = signal<ExtraCost[]>([]);
     isEditable = signal(true);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'amount',
@@ -77,7 +77,7 @@ export class ExtraCostListComponent implements OnInit {
         'supplierName',
         'costName',
         'valueName',
-    ];
+    ]);
 
     constructor() {
         this.paginator.onChange = () => this.refresh();

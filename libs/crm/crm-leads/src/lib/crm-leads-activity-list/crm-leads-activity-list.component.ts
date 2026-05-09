@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, input } from '@angular/core';
+import { Component, EventEmitter, Output, input, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -47,7 +47,7 @@ import { DatePipe } from '@angular/common';
 })
 export class CrmLeadsActivityListComponent extends BaseChildEntityListComponent<CRMLeadActivity> {
 
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'subject',
         'activityType',
         'priority',
@@ -55,7 +55,7 @@ export class CrmLeadsActivityListComponent extends BaseChildEntityListComponent<
         'dueDate',
         'completionDate',
         'ownerDescription'
-    ];
+    ]);
 
     constructor(protected override detailSrv: CrmLeadActivityService) {
         super(detailSrv, 'CRM_TEAMS');

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
@@ -27,14 +27,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./vehicle-mission-list.component.css'],
 })
 export class VehicleMissionListComponent extends BaseChildEntityListComponent<VehicleMission> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'number',
         'firstName',
         'lastName',
         'missionTime',
         'returnTime',
         'destinationDescription',
-    ];
+    ]);
 
     constructor(protected override detailSrv: VehicleMissionService) {
         super(detailSrv, 'VehicleMission');

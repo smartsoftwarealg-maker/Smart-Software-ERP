@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CareerMotive } from '../gica-careers-api';
@@ -32,10 +32,10 @@ import { Observable, tap } from 'rxjs';
     styleUrl: './career-motive-list.component.css',
 })
 export class CareerMotiveListComponent extends BaseEntityListComponent<CareerMotive> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'isPromotion'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: CareerMotiveService,

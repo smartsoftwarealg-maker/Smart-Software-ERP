@@ -1,4 +1,4 @@
-import {Component, inject } from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -65,7 +65,7 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
     //     click: () => this.cancelAll()
     // };
     //
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'dealer',
@@ -74,7 +74,7 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
         'qty',
         'altAgent',
         'docStatus',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: ProductionService,
@@ -104,7 +104,7 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
             .getConfig()
             .pipe(tap((conf) => {
                 const showAltAgent = conf?.['manufacturing']?.showPallet;
-                this.displayedColumns = this.displayedColumns.filter(e => e !== 'altAgent' || showAltAgent);
+                this.displayedColumns.update(cols => cols.filter(e => e !== 'altAgent' || showAltAgent));
             }),
             switchMap(() => super.preload()));
     }

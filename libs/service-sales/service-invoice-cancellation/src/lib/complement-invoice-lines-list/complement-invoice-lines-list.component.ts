@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -37,7 +37,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class ComplementInvoiceLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     abs = Math.abs;
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'position',
         'store',
         'reference',
@@ -46,7 +46,7 @@ export class ComplementInvoiceLinesListComponent extends BaseTransactionLinesLis
         'price',
         'vat',
         'total'
-    ];
+    ]);
 
     constructor(
         public override detailSrv: TransactionLinesService,

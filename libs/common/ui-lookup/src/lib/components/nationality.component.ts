@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Nationality, NationalityService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,7 +25,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class NationalityListComponent extends BaseEntityListComponent<Nationality> {
 
-    displayedColumns = ['description'];
+    displayedColumns = signal<string[]>(['description']);
 
     constructor(
         public nationalitySrv: NationalityService,

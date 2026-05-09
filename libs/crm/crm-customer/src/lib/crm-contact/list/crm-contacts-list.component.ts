@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -45,14 +45,14 @@ import { LanguageService } from '@ss/common/api-common';
     standalone: true,
 })
 export class CrmContactsListComponent extends BaseChildEntityListComponent<CRMContact> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'lastName',
         'firstName',
         'primaryEmail',
         'primaryPhone',
         'preferredContactMethod',
         'preferredLanguage',
-    ];
+    ]);
 
     private langSrv = inject(LanguageService);
 

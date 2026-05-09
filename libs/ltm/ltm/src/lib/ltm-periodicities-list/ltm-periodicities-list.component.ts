@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Lookup} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -26,7 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class LtmPeriodicitiesListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
 
     constructor(
         public override entitySrv: LtmPeriodicityService,

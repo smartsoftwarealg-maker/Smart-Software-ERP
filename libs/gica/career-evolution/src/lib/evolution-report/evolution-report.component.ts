@@ -68,7 +68,7 @@ export class EvolutionReportComponent implements OnInit {
     #deductionSrv = inject(DeductionService);
 
     paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'id',
         'firstName',
         'lastName',
@@ -77,7 +77,7 @@ export class EvolutionReportComponent implements OnInit {
         'oldRate',
         'rate',
         'hireDate'
-    ];
+    ]);
     selectedReport: Report | null = null;
 
     processing = signal(false);

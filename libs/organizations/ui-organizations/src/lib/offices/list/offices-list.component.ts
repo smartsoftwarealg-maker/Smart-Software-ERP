@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -54,11 +54,11 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
     locationCtrl = new FormControl<number>(this.buildingSrv.getParentId() || 0);
     buildingCtrl = new FormControl<number>(0);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'code',
         'description',
         'floorNo'
-    ];
+    ]);
 
     constructor(
         public officeSrv: OfficeService,
@@ -74,7 +74,7 @@ export class OfficesListComponent extends BaseEntityListComponent<Office> {
         const title = this.route.snapshot?.data['title'];
         if (title) {
             this.buidlingLabel = title;
-            this.displayedColumns = this.displayedColumns.slice(0, 2);
+            this.displayedColumns.set(this.displayedColumns().slice(0, 2));
         }
         this.locationLookup.onObjectSelected = e => this.onLocation(e);
         this.buildingLookup.onObjectSelected = b => this.onBuilding(b);

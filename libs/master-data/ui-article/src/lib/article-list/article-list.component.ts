@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ArticleService, Article } from '@ss/master-data/api-article';
@@ -57,7 +57,7 @@ export class ArticleListComponent
         'price1',
         'discount',
     ];
-    displayedColumns = this.STOCK_COLS;
+    displayedColumns = signal<string[]>(this.STOCK_COLS);
 
     constructor(
         public articleSrv: ArticleService,
@@ -97,10 +97,10 @@ export class ArticleListComponent
         return super.preInit().pipe(
             concatMap(() => this.route.data),
             tap((res) => {
-                this.displayedColumns =
+                this.displayedColumns.set(
                     res['price'] === 'price1'
                         ? this.SALES_COLS
-                        : this.STOCK_COLS;
+                        : this.STOCK_COLS);
             }),
         );
     }

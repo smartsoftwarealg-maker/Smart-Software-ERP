@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -44,12 +44,12 @@ import { CrmQuoteItemsService } from '../crm-quote-item.service';
     styleUrl: './crm-quotes-lines-list.component.scss'
 })
 export class CrmQuotesLinesListComponent extends BaseChildEntityListComponent<CRMQuoteItem> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'reference',
         'quantity',
         'listPrice',
         'unitPrice'
-    ];
+    ]);
 
     constructor(protected override detailSrv: CrmQuoteItemsService) {
         super(detailSrv, 'CrmQuoteItemListLine');

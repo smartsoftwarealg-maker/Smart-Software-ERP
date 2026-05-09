@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { EmployeeWivesService, Wife } from '@ss/payroll/api-employee';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -20,14 +20,14 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeWivesListComponent extends BaseChildEntityListComponent<Wife> {
     //@Input() editable = true;
 
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         //        'notDivorced',
         'name',
         'birthdate',
         'birthPlace',
         'father',
         'mother'
-    ];
+    ]);
 
     activePersonnelSrv = inject(ActivePersonnelService);
 

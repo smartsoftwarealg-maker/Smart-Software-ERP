@@ -70,7 +70,7 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
     #debtsSrv = inject(DebtService);
     #selectionMode = signal<SelectionMode>(SelectionMode.Debt);
 
-    displayedColumns = ['customerCode', 'agentDescription', 'payment', 'amount', 'date', 'chkNumber', 'bankDescription', 'document'];
+    displayedColumns = signal<string[]>(['customerCode', 'agentDescription', 'payment', 'amount', 'date', 'chkNumber', 'bankDescription', 'document']);
     childColumns = ['date', 'invoiceNumber', 'customerCode', 'customerName', 'ftt', 'payment', 'paid'];
     childPaginator = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0 });
     childData: Debt[] = [];

@@ -30,13 +30,13 @@ export class TransfersComponent implements OnInit {
     private route = inject(ActivatedRoute);
 
     public data = signal<TransactionLine[]>([]);
-    displayedColumns: string[] = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'qtySatisfied',
         'storeName',
         'unitsDescription'
-    ];
+    ]);
 
 
     getData(id:number |null, lineId?:number): Observable<any[]> {

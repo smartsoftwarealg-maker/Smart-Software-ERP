@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -72,7 +72,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
     isSales = false;
     isAsset = false;
 
-    displayedColumns = this.DEF_COLUMNS;
+    displayedColumns = signal<string[]>(this.DEF_COLUMNS);
 
     constructor(
         public agentService: AgentService,
@@ -113,9 +113,9 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         return this.isParamSrv.is('AQS').pipe(
             tap((b: boolean) => {
                 this.isAQS = b;
-                this.displayedColumns = this.isAQS
+                this.displayedColumns.set(this.isAQS
                     ? this.AQS_COLUMNS
-                    : this.DEF_COLUMNS;
+                    : this.DEF_COLUMNS);
             }),
             switchMap(() => this.route.data),
             tap((res) => {

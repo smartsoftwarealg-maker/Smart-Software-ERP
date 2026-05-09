@@ -54,12 +54,12 @@ import { AsyncPipe } from '@angular/common';
     ],
 })
 export class RoutingMaterialLineListComponent extends BaseChildEntityListComponent<RoutingMaterial> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'consumptionType',
         'quantityPer',
         'scrapPercentage',
         'consumptionPoint',
-    ];
+    ]);
 
     // Reactive data source
     private dataSubject = new BehaviorSubject<RoutingMaterial[]>([]);

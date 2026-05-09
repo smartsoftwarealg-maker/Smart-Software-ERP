@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, signal,} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -25,14 +25,14 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ]
 })
 export class AccountListComponent extends BaseEntityListComponent<Account> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'accountNo',
         'description',
         'budgetAccount',
         'analyzed',
         'customerCode',
         'ccRequired'
-    ];
+    ]);
 
     constructor(
         public accountService: AccountService,

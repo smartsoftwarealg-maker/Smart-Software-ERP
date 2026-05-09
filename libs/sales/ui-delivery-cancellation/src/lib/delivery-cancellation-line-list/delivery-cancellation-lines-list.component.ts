@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {ArticleService} from '@ss/master-data/api-article';
@@ -35,7 +35,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ]
 })
 export class DeliveryCancellationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+    displayedColumns = signal([
         'position',
         'store',
         'reference',
@@ -46,7 +46,7 @@ export class DeliveryCancellationLinesListComponent extends BaseTransactionLines
         'price',
         'vat',
         'total'
-    ];
+    ]);
 
     constructor(
         public override detailSrv: DeliveryCancellationLinesService,

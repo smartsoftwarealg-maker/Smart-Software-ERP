@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
 import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -46,11 +46,11 @@ export class AssetChildReadingListComponent extends BaseChildEntityListComponent
     assetLookup = new DefaultAutoCompleteModel(this.assetSrv);
     // assetCtrl = new FormControl<number>(0);
 
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'meterDescription',
         'date',
         'amount'
-    ];
+    ]);
 
     constructor(
         public override detailSrv: CMMSAssetReadingService) {

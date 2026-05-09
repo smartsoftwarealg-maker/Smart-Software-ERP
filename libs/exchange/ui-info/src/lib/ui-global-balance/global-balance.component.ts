@@ -29,12 +29,12 @@ export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance> {
 
     public readonly pagination = PaginationModel.newInstance();
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'denomination',
         'code',
         'currency',
         'amount',
-    ];
+    ]);
 
     constructor(public exchangeSrv: GlobalBalanceService,
                 public agentService: AgentService,

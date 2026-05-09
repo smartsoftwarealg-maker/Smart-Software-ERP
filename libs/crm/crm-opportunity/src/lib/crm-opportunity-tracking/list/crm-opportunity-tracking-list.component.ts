@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -40,7 +40,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     standalone: true,
 })
 export class CrmOpportunityTrackingListComponent extends BaseChildEntityListComponent<CRMOpportunityProgressLogger> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'ownerDescription',
         'status',
         'stage',
@@ -49,7 +49,7 @@ export class CrmOpportunityTrackingListComponent extends BaseChildEntityListComp
         'closedBy',
         'memo',
         'teamDescription',
-    ];
+    ]);
 
     constructor(protected override detailSrv: CrmOpportunityTrackingService) {
         super(detailSrv, 'CrmOpportunityActiveListLine');

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -47,7 +47,7 @@ import {SectorsService} from "../sectors.service";
     ],
 })
 export class SectorsListComponent extends BaseEntityListComponent<Sector> {
-    displayedColumns = ['description','descriptionAr'];
+    displayedColumns = signal<string[]>(['description','descriptionAr']);
 
     constructor(
         public override entitySrv: SectorsService,

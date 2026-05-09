@@ -64,7 +64,7 @@ export class AppArchiveViewerComponent implements OnInit {
 
     numberDateDocs = [2, 5, 7, 52, 53, 54, 55];
     transactionDocs = [5, 52, 53, 54, 55];
-    displayedColumns = ['info1', 'info2', 'info3', 'docDescription']; //, 'filename'
+    displayedColumns = signal(['info1', 'info2', 'info3', 'docDescription']); //, 'filename'
     columnHeaders = this.EMPLOYEE_COLS;
     data = signal<AppArchive[]>([]);
 

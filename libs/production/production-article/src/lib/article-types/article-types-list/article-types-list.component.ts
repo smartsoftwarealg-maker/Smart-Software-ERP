@@ -1,4 +1,4 @@
-import {Component, effect, inject} from '@angular/core';
+import {Component, effect, inject, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityDetailComponent, BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -44,7 +44,7 @@ export class ArticleTypeListComponent extends BaseEntityListComponent<Lookup> {
         }
     });
 
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
 
     constructor(
         public markSrv: ArticleTypeService,

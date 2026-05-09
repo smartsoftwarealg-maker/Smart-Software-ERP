@@ -28,7 +28,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 export class CashFlowAccountListComponent implements OnInit {
     private filter: string = '';
     SIGNS = ['DEBIT', 'CREDIT', 'BALANCE'];
-    displayedColumns = ['ctrl', 'accountno', 'description'];
+    displayedColumns = signal<string[]>(['ctrl', 'accountno', 'description']);
     data = signal<CashFlowAcc[]>([]);
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);

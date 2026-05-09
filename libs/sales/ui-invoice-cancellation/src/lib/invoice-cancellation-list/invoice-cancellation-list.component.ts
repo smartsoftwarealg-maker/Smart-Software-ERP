@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -34,7 +34,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 })
 export class InvoiceCancellationListComponent extends BaseEntityListComponent<Transaction> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -42,7 +42,7 @@ export class InvoiceCancellationListComponent extends BaseEntityListComponent<Tr
         'reference',
         'referenceDocDate',
         'docStatus',
-    ];
+    ]);
 
 
     constructor(

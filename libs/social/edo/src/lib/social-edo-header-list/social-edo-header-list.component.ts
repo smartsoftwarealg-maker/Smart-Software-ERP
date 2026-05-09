@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { EDOHeader } from '@social/social-api';
@@ -42,11 +42,11 @@ export class SocialEdoHeaderListComponent extends BaseEntityListComponent<EDOHea
         click: () => this.openEDO()
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'description'
-    ];
+    ]);
     constructor(
         public override entitySrv: EdoHeaderService,
         public override shellSrv: ShellService,

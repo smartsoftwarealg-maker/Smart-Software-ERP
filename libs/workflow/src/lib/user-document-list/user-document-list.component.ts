@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {UserDocument} from '../workflow-api';
 import {FormControl} from '@angular/forms';
@@ -37,9 +37,9 @@ export class UserDocumentListComponent extends BaseEntityListComponent<UserDocum
     private usersSrv =  inject(UserListService);
     userCtrl = new FormControl<number>(0);
     userAutoComplete = new UserLookup(this.usersSrv);
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'documentDescription',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: UserDocumentService,

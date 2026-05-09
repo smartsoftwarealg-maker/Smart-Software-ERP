@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ProcessedCheck, ProcessedCheckService} from '@ss/treasury/api-checks';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -50,12 +50,12 @@ export class ProcessedCheckListComponent extends BaseEntityListComponent<Process
         click: () => this.inject()
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'bankName',
         'number',
         'checkDate',
         'amount',
-    ];
+    ]);
 
     constructor(
         private dialog: MatDialog,

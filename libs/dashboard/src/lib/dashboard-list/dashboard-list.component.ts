@@ -51,9 +51,9 @@ export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
 
     applications = signal(APPLICATIONS);
     applicationCtrl = new FormControl();
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
-    ];
+    ]);
 
     constructor(public dashboardSrv: DashboardService,
               public override shellSrv: ShellService,

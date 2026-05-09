@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RoutingPart } from 'libs/cmms/cmms-api/src';
 import { BaseChildEntityListComponent } from 'libs/common/ui-base-entity/src';
 import { CMMSRoutingPartService } from '@ss/cmms/lookups';
@@ -37,7 +37,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ]
 })
 export class CMMSRoutingPartsListComponent extends BaseChildEntityListComponent<RoutingPart>{
-    override displayedColumns = ['reference', 'description', 'qty'];
+    override displayedColumns = signal<string[]>(['reference', 'description', 'qty']);
 
     constructor(protected override detailSrv: CMMSRoutingPartService) {
         super(detailSrv, 'RoutingPart');

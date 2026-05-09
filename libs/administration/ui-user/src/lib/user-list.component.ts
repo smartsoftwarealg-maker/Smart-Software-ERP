@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -22,9 +22,9 @@ import { Observable, tap } from 'rxjs';
 export class UserListComponent extends BaseEntityListComponent<User> implements OnInit {
     private loginSrv = inject(LoginService);
     isManager = this.loginSrv.appCtx.manager;
-    displayedColumns = this.loginSrv.appCtx.manager?
+    displayedColumns = signal<string[]>(this.loginSrv.appCtx.manager?
         ['description', 'fullName', 'manager', 'responsible',  'blocked'] :
-        ['description', 'fullName',];
+        ['description', 'fullName',]);
 
     constructor(
         public userSrv: UserListService,

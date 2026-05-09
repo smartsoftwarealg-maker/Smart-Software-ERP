@@ -50,7 +50,7 @@ export class DepreciationGenerationComponent implements OnInit {
 
     public form: UntypedFormGroup | null = null;
     data = signal<DepreciationRow[]>([]);
-    displayedColumns = ['acc', 'description', 'cCenter', 'debit', 'credit'];
+    displayedColumns = signal<string[]>(['acc', 'description', 'cCenter', 'debit', 'credit']);
     processing = false;
 
 

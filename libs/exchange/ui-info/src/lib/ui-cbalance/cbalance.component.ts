@@ -21,10 +21,10 @@ export class CbalanceComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'currency',
         'amount',
-    ];
+    ]);
 
 
     constructor(public exchangeSrv: CurrencyDepositService, public route: ActivatedRoute) {}

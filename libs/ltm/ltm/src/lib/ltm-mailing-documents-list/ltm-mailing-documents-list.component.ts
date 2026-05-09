@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { MaterialModule } from "@ss/common/api-common";
 import { LTMMailingDocument } from '@ltm/ltm-api';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -23,7 +23,7 @@ import { LtmMailingDocumentService } from '@ltm/ltm-api';
     ]
 })
 export class LtmMailingDocumentsListComponent extends BaseChildEntityListComponent<LTMMailingDocument> {
-    override displayedColumns = ['document'];
+    override displayedColumns = signal<string[]>(['document']);
 
     readonly documents = ['LTM_PRODUCT_LIBERATION', 'LTM_NON_CONFORMITY', 'LTM_QUALITY_CERTIFICATE'];
 

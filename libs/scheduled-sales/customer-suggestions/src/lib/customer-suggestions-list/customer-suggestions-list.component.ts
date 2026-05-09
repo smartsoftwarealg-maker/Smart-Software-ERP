@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CustomerSuggestion } from '../customer-suggestion.class';
@@ -54,7 +54,7 @@ import { Observable, tap } from 'rxjs';
 export class CustomerSuggestionsListComponent extends BaseEntityListComponent<CustomerSuggestion> {
     private loginSrv = inject(LoginService);
 
-    displayedColumns = ['date', 'suggestionDescription', 'suggestion', 'answer'];
+    displayedColumns = signal<string[]>(['date', 'suggestionDescription', 'suggestion', 'answer']);
 
     constructor(
         public override entitySrv: CustomerSuggestionsService,
@@ -86,7 +86,7 @@ export class CustomerSuggestionsListComponent extends BaseEntityListComponent<Cu
                 this.deleteButton.visible = this.addButton.visible =
                     (this.loginSrv.appCtx.agentId || 0) > 0;
                 if ((this.loginSrv.appCtx.agentId || 0) == 0) {
-                    this.displayedColumns.splice(1, 0, 'agentDescription');
+                    this.displayedColumns.update(v => v.splice(1, 0, 'agentDescription'));
                 }
             }));
     }

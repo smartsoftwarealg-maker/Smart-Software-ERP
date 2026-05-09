@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ACCFile, AccFileService} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -31,11 +31,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 ]
 })
 export class AccFileListComponent extends BaseEntityListComponent<ACCFile> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'fileYear',
         'closed'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AccFileService,

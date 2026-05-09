@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import { Currency, CurrencyService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
 
-    displayedColumns = ['description'];
+    displayedColumns = signal<string[]>(['description']);
 
     constructor(
         public currencySrv: CurrencyService,

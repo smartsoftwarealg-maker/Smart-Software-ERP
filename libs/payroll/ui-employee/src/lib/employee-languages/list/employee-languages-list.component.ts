@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal} from '@angular/core';
 import { EmployeeLanguagesService, PersonLanguage } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { AsyncPipe } from '@angular/common';
@@ -21,11 +21,11 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeLanguagesListComponent extends BaseChildEntityListComponent<PersonLanguage>{
     // @Input() editable = true;
 
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         'languageId',
         'readLevel',
         'writeLevel'
-    ];
+    ]);
 
     activePersonnelSrv = inject(ActivePersonnelService);
 

@@ -86,14 +86,14 @@ export class LotAnalysisListComponent implements OnInit, OnDestroy {
         this.shellSrv.searchFormControl.setValue(null);
     }
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'storeName',
         'reference',
         'description',
         'analysisDate',
         'blockedLot',
         'isCompliant',
-    ];
+    ]);
 
     public edit() {
         if (this.selectedId()) {

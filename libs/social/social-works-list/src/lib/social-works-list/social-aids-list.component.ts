@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { SocialAid, SocialWorksService } from '@social/social-api';
@@ -29,7 +29,7 @@ import { MatSort } from '@angular/material/sort';
     styleUrl: '../../../../social-api/src/lib/aids.styles.scss',
 })
 export class SocialAidsListComponent extends BaseEntityListComponent<SocialAid> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'typeDescription',
         'number',
         'date',
@@ -37,7 +37,7 @@ export class SocialAidsListComponent extends BaseEntityListComponent<SocialAid> 
         'lastName',
         'amount',
         'installmentCount'
-    ]
+    ])
     constructor(
         public override entitySrv: SocialWorksService,
         public override shellSrv: ShellService,

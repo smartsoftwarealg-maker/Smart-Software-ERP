@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -32,14 +32,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ComplementInvoiceListComponent extends BaseEntityListComponent<Transaction> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
         'payMethod',
         'reference',
-        'referenceDocDate',
-    ];
+        'referenceDocDate'
+    ]);
 
 
     constructor(

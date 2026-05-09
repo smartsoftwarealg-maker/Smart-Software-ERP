@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {
     MatCell,
     MatCellDef,
@@ -46,7 +46,7 @@ import { HolidayTypeService } from '@ss/common/api-lookup';
     ],
 })
 export class VacationTypesListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
 
     constructor(
         public override entitySrv: HolidayTypeService,

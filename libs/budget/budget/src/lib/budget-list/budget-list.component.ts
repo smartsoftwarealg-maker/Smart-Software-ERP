@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Budget} from '../budget-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -32,9 +32,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ],
 })
 export class BudgetListComponent extends BaseEntityListComponent<Budget> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
-    ];
+    ]);
 
 
     constructor(

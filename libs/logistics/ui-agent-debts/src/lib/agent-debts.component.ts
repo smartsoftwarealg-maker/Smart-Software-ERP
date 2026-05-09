@@ -25,11 +25,11 @@ export class AgentDebtsComponent implements OnInit {
 
     data = signal<AgentDebts[]>([]);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'document',
         'debit',
         'credit'
-    ];
+    ]);
 
 
     ngOnInit() {

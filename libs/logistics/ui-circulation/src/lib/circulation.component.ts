@@ -39,7 +39,7 @@ export class CirculationComponent implements OnInit {
     storeName = signal('STOCK_STORE');
 
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'document',
         'number',
         'date',
@@ -50,14 +50,14 @@ export class CirculationComponent implements OnInit {
         'customer',
         'storeName',
         'store'
-    ];
+    ]);
 
 
     ngOnInit() {
         this.#optionSrv
             .get(this.#loginSrv.appCtx.center)
             .pipe(tap(res => {
-                this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'storeName');
+                this.displayedColumns.update(v => v.filter(c => res.usesLots || c !== 'storeName'));
                 this.storeName.set(res.usesLots? 'STOCK_LOT' : 'STOCK_STORE');
             }),
             switchMap(() => this.#route.queryParams))

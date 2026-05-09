@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, signal} from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {AccountService} from '@ss/accounting/api-accounts';
@@ -60,7 +60,7 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
 
     private currentType = 1;
     selectedPlanning: BudgetPlanningTree = null;
-    displayedColumns: string[] = this.AMOUNT_COLS;
+    displayedColumns = signal<string[]>(this.AMOUNT_COLS);
 
     constructor(private entitySrv: BudgetPlanningService,
                 private budgetSrv: BudgetService,
@@ -122,7 +122,7 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
     }
 
     onMode(e: MatRadioChange) {
-        this.displayedColumns = +e.value === 1? this.AMOUNT_COLS : this.QTY_COLS;
+        this.displayedColumns.set(+e.value === 1? this.AMOUNT_COLS : this.QTY_COLS);
         this.refresh(this.currentType);
     }
 

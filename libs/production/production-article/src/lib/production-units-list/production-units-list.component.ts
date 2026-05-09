@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {UnitsOfMeasure} from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -27,7 +27,7 @@ export class UnitsListComponent
     extends BaseEntityListComponent<UnitsOfMeasure>
     implements OnInit
 {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'code',
         'name',
         'description',
@@ -35,7 +35,7 @@ export class UnitsListComponent
         // 'conversionFactor',
         'value',
         'isActive'
-        ]
+        ])
 
     constructor(
         public unitsSrv: UnitsService,

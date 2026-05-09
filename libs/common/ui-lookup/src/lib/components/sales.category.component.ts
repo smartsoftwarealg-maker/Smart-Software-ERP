@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {Activity, Category, SalesCategoryService} from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,7 +24,7 @@ import { MatInput } from '@angular/material/input';
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class SalesCategoryListComponent extends BaseEntityListComponent<Category> {
-    displayedColumns = ['description'];
+    displayedColumns = signal<string[]>(['description']);
 
     constructor(
         public listSrv: SalesCategoryService,

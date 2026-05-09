@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -20,11 +20,11 @@ import { DecimalPipe } from '@angular/common';
 })
 export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'code',
         'description',
         'exchangeRate'
-    ];
+    ]);
 
     constructor(
         public currencySrv: CurrencyService,

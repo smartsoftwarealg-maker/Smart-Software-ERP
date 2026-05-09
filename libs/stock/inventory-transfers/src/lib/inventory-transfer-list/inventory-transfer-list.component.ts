@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Transaction } from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -39,7 +39,7 @@ import { DatePipe } from '@angular/common';
     ],
 })
 export class InventoryTransferListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -47,7 +47,7 @@ export class InventoryTransferListComponent extends BaseEntityListComponent<Tran
         'reference',
         'referenceDocDate',
         'docStatus'
-    ];
+    ]);
 
     constructor(
         public transferSrv: TransferService,

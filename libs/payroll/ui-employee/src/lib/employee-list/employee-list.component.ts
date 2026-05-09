@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -49,14 +49,14 @@ export class EmployeeListComponent
     implements OnInit
 {
     activePersonnel = true;
-    public displayedColumns = [
+    public displayedColumns = signal<string[]>([
         'id',
         'fullname',
         'birth',
         'address',
         'msDescription',
         'post',
-    ];
+    ]);
 
     constructor(
         public employeeSrv: EmployeeService,

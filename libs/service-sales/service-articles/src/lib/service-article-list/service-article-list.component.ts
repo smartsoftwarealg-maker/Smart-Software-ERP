@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Service } from '../service-article-api';
@@ -33,7 +33,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./service-article-list.component.css']
 })
 export class ServiceArticleListComponent extends BaseEntityListComponent<Service> {
-    displayedColumns = ['reference', 'description2', 'klassName', 'price1', 'vatValue'];
+    displayedColumns = signal<string[]>(['reference', 'description2', 'klassName', 'price1', 'vatValue']);
 
     constructor(
         public articleSrv: ServiceArticleService,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -65,7 +65,7 @@ export class HrCriteriaListComponent extends BaseEntityListComponent<HrCriterion
     categoryLookup = new DefaultAutoCompleteModel(this.categorySrv);
     employee = new FormControl<number>(0);
 
-    displayedColumns = ['description', 'grade'];
+    displayedColumns = signal<string[]>(['description', 'grade']);
 
     constructor(
         public override entitySrv: HrCriterionService,

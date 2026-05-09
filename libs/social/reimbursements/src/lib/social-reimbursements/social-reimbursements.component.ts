@@ -47,13 +47,13 @@ export class SocialReimbursementsComponent implements OnInit {
 
     data$ =  signal<Observable<SocialAid[]>>( of([]));
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'typeDescription',
         'number',
         'date',
         'amount',
         'installmentCount'
-    ];
+    ]);
 
     form = this.fb.group({
         employee: [0],

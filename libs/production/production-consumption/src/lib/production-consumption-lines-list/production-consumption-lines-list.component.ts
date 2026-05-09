@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -66,7 +66,7 @@ export class ProductionConsumptionLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit
 {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'position',
         'store',
         'reference',
@@ -74,7 +74,7 @@ export class ProductionConsumptionLinesListComponent
         'qtySatisfied',
         'price',
         'total',
-    ];
+    ]);
 
     constructor(
         public override detailSrv: ProductionConsumptionLinesService,

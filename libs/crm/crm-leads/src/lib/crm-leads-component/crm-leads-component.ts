@@ -68,7 +68,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         elementCount: 0,
     });
     selectedRow: CRMLead | null = null;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'addressLine1',
         'email',
@@ -82,7 +82,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         'estimatedValue',
         'status',
         'score',
-    ];
+    ]);
     data = signal<CRMLead[]>([]);
     loading = false;
 

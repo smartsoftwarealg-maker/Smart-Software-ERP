@@ -87,7 +87,7 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
         this.shellSrv.searchFormControl.setValue(null);
     }
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'storeName',
         'reference',
         'description',
@@ -95,7 +95,7 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
         'analysisDate',
         'stock',
         'priority',
-    ];
+    ]);
 
     public edit() {
         if (this.selectedId()) {

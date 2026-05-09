@@ -60,7 +60,7 @@ export class CrmEmailTemplatesListComponent implements OnInit, OnDestroy {
         elementCount: 0,
     });
     selectedRow: EmailTemplate | null = null;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'name',
         'subject',
         // 'thumbnail',
@@ -70,7 +70,7 @@ export class CrmEmailTemplatesListComponent implements OnInit, OnDestroy {
         'status',
         'ownerDescription',
         'createdAt',
-    ];
+    ]);
     data = signal<EmailTemplate[]>([]);
     loading = false;
 

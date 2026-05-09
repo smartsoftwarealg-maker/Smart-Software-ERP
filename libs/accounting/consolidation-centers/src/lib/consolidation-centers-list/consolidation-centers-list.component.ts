@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConsolidationCenterService } from '../services/consolidation-center.service';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -63,7 +63,7 @@ export class ConsolidationCentersListComponent extends BaseEntityListComponent<C
         click: () => this.deleteAll()
     };
 
-    displayedColumns = ['centerDescription', 'percentage', 'headquarter'];
+    displayedColumns = signal<string[]>(['centerDescription', 'percentage', 'headquarter']);
 
 
     constructor(

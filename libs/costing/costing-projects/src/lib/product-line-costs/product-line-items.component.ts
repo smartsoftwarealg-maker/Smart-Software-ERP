@@ -44,7 +44,7 @@ export class CProductLineCostComponent extends BaseChildEntityListComponent<CLin
     });
     itemLookup = new DefaultAutoCompleteModel(this.itemSrv);
 
-    override displayedColumns = ['itemDescription', 'value'];
+    override displayedColumns = signal<string[]>(['itemDescription', 'value']);
 
     constructor(protected override detailSrv: ProductLineCostsService) {
         super(detailSrv, 'CPoolDetail');

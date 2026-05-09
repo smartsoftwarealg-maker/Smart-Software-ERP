@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Holiday} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -36,10 +36,10 @@ import { DatePipe } from '@angular/common';
     ],
 })
 export class HolidayListComponent extends BaseEntityListComponent<Holiday> {
-    displayedColumns = [
+    displayedColumns = signal([
         'date',
         'description',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: HolidayService,

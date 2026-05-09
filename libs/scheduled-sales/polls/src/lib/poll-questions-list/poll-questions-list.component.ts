@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -47,14 +47,14 @@ import { AnswerTypes } from '@ss/scheduleds-sales/polls';
 
 export class PollQuestionsListComponent extends BaseEntityListComponent<PollQuestion> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'descriptionAr',
         'descriptionEn',
         'answerType',
         'showMemo',
         'isBlocked'
-    ];
+    ]);
 
     public AnswerTypes = AnswerTypes
 

@@ -40,7 +40,7 @@ export class AssetCostsListComponent implements OnInit {
     accountantCosts: AssetCost[] = [];
     public readonly fiscalPagination = PaginationModel.newInstance();
     public readonly accountantPagination = PaginationModel.newInstance();
-    public displayedColumns = ['typeDescription', 'amount'];
+    public displayedColumns = signal<string[]>(['typeDescription', 'amount']);
 
 
     constructor(public entitySrv: AssetCostsService,

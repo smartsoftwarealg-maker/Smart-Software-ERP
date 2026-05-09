@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { AssetInventory, AssetInventoryDoc, UnidentifiedInventory } from '../assets-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -48,7 +48,7 @@ export class AssetUnidentifiedInventoryListComponent extends BaseEntityListCompo
     inventoryDocLookup = new DefaultAutoCompleteModel(this.#inventoryDocSrv);
     inventoryDocCtrl = new FormControl<number>(0);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'creationDate',
         'buildingDescription',
         'count',
@@ -57,7 +57,7 @@ export class AssetUnidentifiedInventoryListComponent extends BaseEntityListCompo
         'officeDescription',
         'beneficiaryDescription',
         'memo'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AssetUnidentifiedInventoryService,

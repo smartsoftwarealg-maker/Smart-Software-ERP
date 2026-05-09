@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {VacationPlanning} from '../vacation-planning-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -46,14 +46,14 @@ export class VacationPlanningListComponent extends BaseEntityListComponent<Vacat
         this.THIS_YEAR - 1,
         this.THIS_YEAR];
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'employee',
         'lastName',
         'firstName',
         'acquired',
         'taken',
         'rest'
-    ];
+    ]);
 
     constructor(
         public infoSrv: VacationPlanningService,

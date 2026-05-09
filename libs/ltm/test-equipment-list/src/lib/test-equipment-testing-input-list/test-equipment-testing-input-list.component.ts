@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 
@@ -46,7 +46,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './test-equipment-testing-input-list.component.scss',
 })
 export class TestEquipmentTestingInputListComponent extends BaseEntityListComponent<LTMEquipmentTesting> {
-    displayedColumns = ['equipmentDescription', 'time'];
+    displayedColumns = signal<string[]>(['equipmentDescription', 'time']);
 
     constructor(
         public override entitySrv: LtmEquipmentTestingService,

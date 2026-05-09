@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaxPayment } from '../tax-payment.api';
@@ -63,7 +63,7 @@ export class TaxPaymentListComponent extends BaseEntityListComponent<TaxPayment>
 
     yearCtrl = new FormControl<number>(null);
 
-    displayedColumns = ['date', 'month', 'base', 'irg'];
+    displayedColumns = signal<string[]>(['date', 'month', 'base', 'irg']);
     constructor(
         public override entitySrv: TaxPaymentService,
         public override shellSrv: ShellService,

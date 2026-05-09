@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { PersonFault } from '../employee-api';
@@ -18,7 +18,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./person-fault-list.component.css'],
 })
 export class PersonFaultListComponent extends BaseChildEntityListComponent<PersonFault> {
-    override displayedColumns = ['faultDescription'];
+    override displayedColumns = signal<string[]>(['faultDescription']);
 
     constructor(protected override detailSrv: PersonFaultService) {
         super(detailSrv, 'PersonFault');

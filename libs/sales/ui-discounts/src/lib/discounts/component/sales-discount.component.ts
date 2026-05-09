@@ -77,7 +77,7 @@ export class SalesDiscountComponent extends BaseEntityListComponent<Turnover> {
     #destroyRef = inject(DestroyRef);
     #fb = inject(FormBuilder);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'year',
         'customerCode',
         'customerName',
@@ -85,7 +85,7 @@ export class SalesDiscountComponent extends BaseEntityListComponent<Turnover> {
         'rate',
         'generated',
         'select',
-    ];
+    ]);
     filterForm = this.#fb.group({
         from: new FormControl<Date>(new Date()),
         to: new FormControl<Date>(new Date()),

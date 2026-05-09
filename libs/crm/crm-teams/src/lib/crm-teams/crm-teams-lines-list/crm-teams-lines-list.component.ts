@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -43,7 +43,7 @@ import { TeamsLineService } from '../teams-line.service';
     ],
 })
 export class CrmTeamsLinesListComponent extends BaseChildEntityListComponent<CRMTeamMember> {
-    override displayedColumns = ['userDescription'];
+    override displayedColumns = signal<string[]>(['userDescription']);
 
     constructor(protected override detailSrv: TeamsLineService) {
         super(detailSrv, 'CRM_TEAMS');

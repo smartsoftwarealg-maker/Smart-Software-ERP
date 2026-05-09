@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Project} from '../contract-api.class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -7,7 +7,7 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
 import { MaterialModule, PaginatorPersistenceService } from "@ss/common/api-common";
 import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { Agent, AgentLookupModel, AgentService, SupplierService } from "@ss/logistics/api-agent";
+import { Agent, SupplierService } from "@ss/logistics/api-agent";
 import { CommonModule } from '@angular/common';
 
 
@@ -38,7 +38,7 @@ export class PurchaseContractListComponent extends BaseEntityListComponent<Proje
 
     agentId     = new FormControl<number>(0);
     agentLookup = new DefaultAutoCompleteModel(this.#agentSrv, 'id', 'denomination');
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'contractNo',
         'projDate',
         'description',
@@ -46,7 +46,7 @@ export class PurchaseContractListComponent extends BaseEntityListComponent<Proje
         'fromDate',
         'toDate',
         'wilaya'
-    ];
+    ]);
     constructor(
         public override entitySrv: PurchaseContractService,
         public override shellSrv: ShellService,

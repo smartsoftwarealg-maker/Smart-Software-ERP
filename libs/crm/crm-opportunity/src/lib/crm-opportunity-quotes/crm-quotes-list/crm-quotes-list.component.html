@@ -34,9 +34,9 @@
             <mat-header-cell *matHeaderCellDef translate>COMMON_USER</mat-header-cell>
             <mat-cell *matCellDef="let e">{{ e.userId }}</mat-cell>
         </ng-container>
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selectedRow()?.id" (click)="selectRow(row)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                 *matRowDef="let row; columns: displayedColumns();"></mat-row>
     </mat-table>
     <div class="pagination-container b-b-background">
         <ss-pagination [paginationModel]="paginator">

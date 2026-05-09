@@ -60,7 +60,7 @@ export class CampaignListComponent implements OnInit, OnDestroy {
         elementCount: 0,
     });
     selectedRow: Campaign | null = null;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'name',
         'cType',
         'status',
@@ -70,7 +70,7 @@ export class CampaignListComponent implements OnInit, OnDestroy {
         'endDate',
         'owner',
         'budget',
-    ];
+    ]);
 
     data = signal<Campaign[]> ([]);
     loading = false;

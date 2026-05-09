@@ -94,10 +94,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     isAndroid = false;
     form: UntypedFormGroup = null;
     params: unknown = null;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'valueString'
-    ];
+    ]);
 
     reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
     treeControl = new NestedTreeControl<ReportNode>(node => node.list);

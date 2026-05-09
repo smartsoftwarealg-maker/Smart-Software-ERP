@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from "@angular/core";
+import { Component, HostBinding, OnInit, signal } from "@angular/core";
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import { CItem } from '@ss/costing/costing-utils';
 import { slideToRight } from '@ss/costing/costing-utils';
@@ -36,7 +36,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class CostingItemListComponent extends BaseEntityListComponent<CItem> implements OnInit {
   @HostBinding("@routeAnimation") routeAnimation = true;
 
-  public displayedColumns = ['code', 'description', 'accountNo', 'accountDescription'];
+  public displayedColumns = signal<string[]>(['code', 'description', 'accountNo', 'accountDescription']);
 
   constructor(
     public override entitySrv: CostingItemService,

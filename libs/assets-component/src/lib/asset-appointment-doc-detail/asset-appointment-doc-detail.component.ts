@@ -71,7 +71,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     assetLookupModel         = new AssetLookupModel(this.assetSrv);
     // attributeLookup          = new DefaultAutoCompleteModel(this.attribLookupSrv);
     pagination       = PaginationModel.newInstance();
-    displayedColumns        = ['reference', 'description', 'key'];
+    displayedColumns        = signal<string[]>(['reference', 'description', 'key']);
     geoLocation = '';
     inexistentAssets = signal(false);
 

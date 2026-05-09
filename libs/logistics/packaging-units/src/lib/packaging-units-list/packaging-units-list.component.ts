@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {
     MatCell,
     MatCellDef,
@@ -40,7 +40,7 @@ import {PackagingUnitsService} from "../packaging-units.service";
     styleUrl: './packaging-units-list.component.scss',
 })
 export class PackagingUnitsListComponent extends BaseEntityListComponent<PackagingUnit> {
-    displayedColumns = ['description',  'units'];
+    displayedColumns = signal<string[]>(['description',  'units']);
 
     constructor(
         public override entitySrv: PackagingUnitsService,

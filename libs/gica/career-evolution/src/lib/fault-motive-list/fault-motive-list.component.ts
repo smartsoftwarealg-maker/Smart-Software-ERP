@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Motive } from '../gica-careers-api';
@@ -29,10 +29,10 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrl: './fault-motive-list.component.css',
 })
 export class FaultMotiveListComponent extends BaseEntityListComponent<Motive> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'dailyGrade'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: MotiveService,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Lot } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -68,7 +68,7 @@ export class StoreNameListComponent
     extends BaseEntityListComponent<Lot>
     implements OnInit
 {
-    displayedColumns = ['description'];
+    displayedColumns = signal<string[]>(['description']);
 
     constructor(
         public storeNameSrv: StoreNamesService,

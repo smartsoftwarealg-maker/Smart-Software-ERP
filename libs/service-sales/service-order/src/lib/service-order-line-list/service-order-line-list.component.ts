@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseTransactionLinesListComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -40,7 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./service-order-line-list.component.scss']
 })
 export class ServiceOrderLineListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',
@@ -49,7 +49,7 @@ export class ServiceOrderLineListComponent extends BaseTransactionLinesListCompo
         'price',
         'vat',
         'total'
-    ];
+    ]);
 
     constructor(
         public override detailSrv: TransactionLinesService,

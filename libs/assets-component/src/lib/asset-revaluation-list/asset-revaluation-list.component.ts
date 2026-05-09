@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { AssetCost, AssetRevaluation } from '../assets-api';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { AssetCostsService } from '../services/asset-costs.service';
@@ -31,7 +31,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MaterialModule,
         TranslateDirective,
         TranslatePipe,
-       
+
         RouterModule,
 
 
@@ -41,7 +41,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 })
 export class AssetRevaluationListComponent extends BaseChildEntityListComponent<AssetRevaluation>{
-    override displayedColumns = ['typeDescription', 'deprec_year', 'useful_life', 'amount'];
+    override displayedColumns = signal<string[]>(['typeDescription', 'deprec_year', 'useful_life', 'amount']);
 
     constructor(public entitySrv: AssetRevaluationService) {
         super(entitySrv, 'AssetRevaluation');

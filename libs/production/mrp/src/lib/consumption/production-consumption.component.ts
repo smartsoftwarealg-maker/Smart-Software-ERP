@@ -32,14 +32,14 @@ export class ProductionConsumptionComponent implements OnInit {
     public pagination = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0 });
     public data = signal<ProductionConsumption[]>([]);
 
-    displayedColumns: string[] = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'document',
         'qty',
         'price',
         'value'
-    ];
+    ]);
 
     constructor() {
         this.pagination.onChange = () => this.refresh();

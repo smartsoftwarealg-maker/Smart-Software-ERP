@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { SocialAid } from '@social/social-api';
@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: '../../../../social-api/src/lib/aids.styles.scss',
 })
 export class MedicalAidsListComponent extends BaseEntityListComponent<SocialAid> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'medicalTypeDescription',
         'number',
         'date',
@@ -38,7 +38,7 @@ export class MedicalAidsListComponent extends BaseEntityListComponent<SocialAid>
         'mutualno',
         'amount',
         'installmentCount'
-    ];
+    ]);
     constructor(
         public override entitySrv: MedicalAidService,
         public override shellSrv: ShellService,

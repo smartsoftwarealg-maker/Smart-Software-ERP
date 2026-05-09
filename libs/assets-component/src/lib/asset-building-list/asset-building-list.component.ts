@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -36,11 +36,11 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
     locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
     locationCtrl = new FormControl<number>(0);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         // 'location',
         'code',
         'description',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AssetsBuildingService,

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {CompanyType, CompanyTypeService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class CompanyTypeListComponent extends BaseEntityListComponent<CompanyType> {
 
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
 
     constructor(
         public companyTypeSrv: CompanyTypeService,

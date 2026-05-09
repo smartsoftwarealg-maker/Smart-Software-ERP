@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -67,7 +67,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     ],
 })
 export class DeliveryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+    displayedColumns = signal([
         'position',
         'store',
         'reference',
@@ -78,7 +78,7 @@ export class DeliveryLinesListComponent extends BaseTransactionLinesListComponen
         'price',
         'vat',
         'total',
-    ];
+    ]);
 
     constructor(
         public override detailSrv: DeliveryLinesService,

@@ -125,7 +125,7 @@ export class AccountingGenerationComponent implements OnInit {
     payrollData: PAYRow[] = [];
     checkData: Check[] = [];
     cashData: Check[] = [];
-    displayedColumns = ['description', 'number', 'date', 'center'];
+    displayedColumns = signal<string[]>(['description', 'number', 'date', 'center']);
     payrollColumns = [
         'account',
         'description',

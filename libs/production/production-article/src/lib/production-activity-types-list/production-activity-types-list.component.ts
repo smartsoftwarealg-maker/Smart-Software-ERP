@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {MaterialModule, PaginatorPersistenceService} from '@ss/common/api-common';
@@ -26,14 +26,14 @@ import {ActivityTypesService} from "../services/types.service";
 })
 export class ActivityTypesListComponent extends BaseEntityListComponent<ActivityType> implements OnInit {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'code',
         'name',
         'description',
         'activityCategory',
         'unitOfMeasure',
         'isActive'
-    ];
+    ]);
 
     constructor(
         public srv: ActivityTypesService,

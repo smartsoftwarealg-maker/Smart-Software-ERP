@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
@@ -34,7 +34,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 export class LtmPhysicalTestingListComponent extends LtmBaseTestingListComponent {
     #_destroyRef = inject(DestroyRef);
 
-    displayedColumns = ['sampleNo', 'matterDescription',  'timeStamp', 'equipmentDescription', 'pickupDescription', 'siloDescription'];
+    displayedColumns = signal<string[]>(['sampleNo', 'matterDescription',  'timeStamp', 'equipmentDescription', 'pickupDescription', 'siloDescription']);
     constructor(
         public override entitySrv: LtmPhysicalTestingService,
         public override shellSrv: ShellService,

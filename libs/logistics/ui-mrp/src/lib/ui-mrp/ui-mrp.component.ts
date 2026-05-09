@@ -45,14 +45,14 @@ export class UiMrpComponent implements OnInit {
     protected langSrv = inject(LanguageService);
 
     public data = signal<MRP[]>([]);
-    displayedColumns: string[] = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'qty',
         'purchaseOrder',
         'inventory',
         'toOrder',
-    ];
+    ]);
 
     getData(id: number | null, lineId?: number): Observable<MRP[]> {
         let p = new HttpParams();

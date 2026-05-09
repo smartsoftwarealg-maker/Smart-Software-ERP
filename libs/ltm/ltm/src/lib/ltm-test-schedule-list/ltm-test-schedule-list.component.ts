@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { MaterialModule } from "@ss/common/api-common";
 import { LTMTestSchedule } from '@ltm/ltm-api';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -23,7 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ],
 })
 export class LtmTestScheduleListComponent extends BaseChildEntityListComponent<LTMTestSchedule> {
-    override displayedColumns = ['startDate', 'dueDay', 'nextDate', 'testDate'];
+    override displayedColumns = signal<string[]>(['startDate', 'dueDay', 'nextDate', 'testDate']);
 
     constructor(protected override detailSrv: LtmTestScheduleService) {
         super(detailSrv, 'LTMTestSchedule');

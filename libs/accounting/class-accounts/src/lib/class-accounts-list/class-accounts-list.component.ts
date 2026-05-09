@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Class, ClassService } from '@ss/common/api-lookup';
@@ -41,7 +41,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
     standalone: true,
 })
 export class ClassAccountsListComponent extends BaseEntityListComponent<Class> {
-    displayedColumns = ['description', 'accountno'];
+    displayedColumns = signal<string[]>(['description', 'accountno']);
 
     constructor(
         public classSrv: ClassService,

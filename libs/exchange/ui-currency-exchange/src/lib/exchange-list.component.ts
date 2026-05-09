@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -28,7 +28,7 @@ export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
     agents = new Map<number, string>();
     selectedAgent = 0;
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'exchDate',
         'agentId',
         'purchCurrency',
@@ -37,7 +37,7 @@ export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
         'exchRate',
         'soldAmount',
         'memo'
-    ];
+    ]);
 
     constructor(
         public exchangeSrv: CurrencyExchangeService,

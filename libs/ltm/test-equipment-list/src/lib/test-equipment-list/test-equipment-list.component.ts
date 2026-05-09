@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -30,7 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './test-equipment-list.component.scss',
 })
 export class TestEquipmentListComponent extends BaseEntityListComponent<LTMTestingEquipment> {
-    displayedColumns = ['description'];
+    displayedColumns = signal<string[]>(['description']);
 
 
     constructor(

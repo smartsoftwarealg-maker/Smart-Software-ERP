@@ -24,7 +24,7 @@ export class AgentAssetsListComponent implements OnInit {
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);
     data = signal<Asset[]>([]);
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
             'reference',
             'description',
             'accountno',
@@ -34,7 +34,7 @@ export class AgentAssetsListComponent implements OnInit {
             'depreciationRate',
             'useful_life',
             'residualValue',
-        ];
+        ]);
 
     constructor(private shellSrv: ShellService,
                 private snackBarSrv: SnackBarService,

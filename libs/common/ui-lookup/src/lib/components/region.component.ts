@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {RegionService, Lookup, LookupService} from '@ss/common/api-lookup';
@@ -25,7 +25,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class RegionListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = ['description'];
+    displayedColumns = signal<string[]>(['description']);
 
     constructor(
         public override entitySrv: RegionService,

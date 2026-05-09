@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import {
     MatCell,
@@ -44,7 +44,7 @@ import { MissionsElementService } from '../mission-element.service';
     standalone: true,
 })
 export class MissionElementsListComponent extends BaseEntityListComponent<MissionElement> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'fromHour',
         'fromMin',
@@ -53,7 +53,7 @@ export class MissionElementsListComponent extends BaseEntityListComponent<Missio
         'elemType',
         'functionOf',
         'typeDescription',
-    ];
+    ]);
 
     constructor(
         public missionSrv: MissionsElementService,

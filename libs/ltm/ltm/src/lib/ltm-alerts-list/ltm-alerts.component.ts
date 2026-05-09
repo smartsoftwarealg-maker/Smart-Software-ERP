@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -45,7 +45,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
 
     #destroyRef = inject(DestroyRef);
 
-    displayedColumns = ['matter', 'test',  'time', 'value', 'min', 'max', 'pickupPoint'];
+    displayedColumns = signal<string[]>(['matter', 'test',  'time', 'value', 'min', 'max', 'pickupPoint']);
     formBuilder = inject(FormBuilder);
     form = this.formBuilder.group({
         from: [new Date(new Date().getTime() - 24 * 3600 * 1000 * 30 )],

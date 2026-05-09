@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ATTSignature} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -34,14 +34,14 @@ export class AttendanceLogListComponent extends BaseEntityListComponent<ATTSigna
 
     dateCtrl = new FormControl<Date>(this.#lastMonth);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'personId',
         'firstName',
         'lastName',
         'dateTime',
         'typeDescription',
         'updaterName',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: SignatureService,

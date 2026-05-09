@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { LTMTestingAnomaly } from '@ltm/ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -35,7 +35,7 @@ export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMT
     #TODAY = new Date();
 
 
-    displayedColumns = ['date', 'matterDescription', 'anomalyDescription', 'memo', 'pickupPointDescription', 'userDescription'];
+    displayedColumns = signal<string[]>(['date', 'matterDescription', 'anomalyDescription', 'memo', 'pickupPointDescription', 'userDescription']);
     from = new FormControl<Date>(this.#TODAY);
     to   = new FormControl<Date>(this.#TODAY);
 

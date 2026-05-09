@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Transaction } from '@ss/logistics/api-transaction';
@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class PartsReservationListComponent  extends BaseEntityListComponent<Transaction> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -37,7 +37,7 @@ export class PartsReservationListComponent  extends BaseEntityListComponent<Tran
         'referenceDocDate',
         'dealer',
         'docStatus'
-    ];
+    ]);
 
 
     constructor(

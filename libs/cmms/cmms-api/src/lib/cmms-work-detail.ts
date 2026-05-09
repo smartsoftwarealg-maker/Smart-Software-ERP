@@ -1,6 +1,6 @@
 import { AssetLookup, INSPECTION, RoutingDetail, RoutingPart, Work } from './cmms-api';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { Directive, inject } from '@angular/core';
+import { Directive, inject, signal } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import {
@@ -67,7 +67,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
 
     data$: Observable<RoutingDetail[]> = of([]);
     partData$: Observable<RoutingPart[]> = of([]);
-    displayedColumns = ['order', 'description', 'teamSize', 'hours', 'cost'];
+    displayedColumns = signal<string[]>(['order', 'description', 'teamSize', 'hours', 'cost']);
     partColumns = ['reference', 'description', 'qty'];
     selectedId = 0;
     selectedPartId = 0;

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { EmployeeContractService, Contract } from '@ss/payroll/api-employee';
 import { PaginationModel } from '@ss/common/api-common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -22,7 +22,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeContractListComponent extends BaseChildEntityListComponent<Contract> {
     editable = true;
 
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         'number',
         'recordNumber',
         'date',
@@ -41,7 +41,7 @@ export class EmployeeContractListComponent extends BaseChildEntityListComponent<
         'cost_center', // todo: add lookup
         'confirmed',
         'trial_period'
-    ];
+    ]);
 
     public readonly pagination = PaginationModel.newInstance();
     public data: Contract[] = [];

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, signal} from '@angular/core';
 import {
     HttpService,
     LanguageService,
@@ -59,7 +59,7 @@ class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
     public openOrderExists = false;
     public selectedPartId = 0;
 
-    private LONG = [
+    private LONG = signal([
         'image',
         'reference',
         'description2',
@@ -67,15 +67,15 @@ class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
         'price',
         'total',
         'actions'
-    ];
+    ]);
 
 
-    private SHORT = [
+    private SHORT = signal([
         'description2',
         'qty',
         'price'
-    ];
-    displayedColumns = this.LONG;
+    ]);
+    displayedColumns = signal(this.LONG());
 
     constructor(
         private cartSrv: FoodCartService,
@@ -127,7 +127,7 @@ class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
         this.shellSrv.setButtons([this.viewReportButton]);
         this.isHandset.subscribe(state => {
             this.isSmallScreen = state.matches;
-            this.displayedColumns = this.isSmallScreen ? this.SHORT : this.LONG;
+            this.displayedColumns.set(this.isSmallScreen ? this.SHORT() : this.LONG());
         });
         this.subscriptions
             .push(

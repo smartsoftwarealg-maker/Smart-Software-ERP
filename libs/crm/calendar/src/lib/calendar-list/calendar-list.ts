@@ -56,7 +56,7 @@ export class CalendarList implements OnInit {
     isResponsible = signal(this.#loginSrv.appCtx.responsible);
 
     selectedRow: CRMCalendar | null = null;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'subject',
         'activityType',
         'priority',
@@ -64,7 +64,7 @@ export class CalendarList implements OnInit {
         'dueDate',
         'completionDate',
         'ownerDescription'
-    ];
+    ]);
 
     constructor() {
         this.pagination.onChange = () => this.refresh();

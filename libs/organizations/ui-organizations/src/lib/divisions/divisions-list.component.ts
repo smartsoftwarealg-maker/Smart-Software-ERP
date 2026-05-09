@@ -1,4 +1,4 @@
-import { Component, } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -37,10 +37,10 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class DivisionsListComponent extends BaseEntityListComponent<Division> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'responsible'
-    ];
+    ]);
 
     constructor(
         public divisionsSrv: DivisionService,

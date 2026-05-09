@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {City, CityService, WilayaService} from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,7 +28,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 })
 export class CityListComponent extends BaseEntityListComponent<City> {
 
-    displayedColumns = ['description', 'descriptionAr', 'dairaDescription', 'wilayaDescription'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr', 'dairaDescription', 'wilayaDescription']);
 
     constructor(
         public citySrv: CityService,

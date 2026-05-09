@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { VehicleOilChangeService } from '../services/vehicle-oil-change.service';
@@ -27,12 +27,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./vehicle-oil-change-list.component.css'],
 })
 export class VehicleOilChangeListComponent extends BaseChildEntityListComponent<OilChange> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'date',
         'odometer',
         'nextDate',
         'nextOdometer',
-    ];
+    ]);
 
     constructor(protected override detailSrv: VehicleOilChangeService) {
         super(detailSrv, 'OilChange');

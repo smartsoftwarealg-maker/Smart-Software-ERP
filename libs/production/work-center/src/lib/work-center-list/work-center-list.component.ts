@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -47,13 +47,13 @@ import { WorkCenter } from '../work-center-services/work-center-api';
     ],
 })
 export class WorkCenterListComponent extends BaseEntityListComponent<WorkCenter> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'code',
         'name',
         'description',
         'workCenterType',
         'ccDescription',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: WorkCenterService,

@@ -29,14 +29,14 @@ export class MrpComponent implements OnInit {
 
     protected langSrv = inject(LanguageService);
     public data = signal<MRP[]>([]);
-    displayedColumns: string[] = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'qty',
         'purchaseOrder',
         'inventory',
         'toOrder'
-    ];
+    ]);
 
 
     getData(): Observable<MRP[]> {

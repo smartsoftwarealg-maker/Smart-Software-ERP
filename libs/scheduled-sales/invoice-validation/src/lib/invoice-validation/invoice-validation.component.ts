@@ -68,7 +68,7 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
 
     @ViewChild('number') inputEl!: ElementRef;
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'serialNumber',
         'date',
         'customerCode',
@@ -78,7 +78,7 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
         'quantity',
         'validationTime',
         'receiverDescription'
-    ];
+    ]);
 
     constructor(
       public override entitySrv: InvoiceValidationService,

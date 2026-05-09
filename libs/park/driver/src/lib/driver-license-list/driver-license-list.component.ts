@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { DriverLicense } from '../driver-api';
@@ -27,7 +27,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./driver-license-list.component.css'],
 })
 export class DriverLicenseListComponent extends BaseChildEntityListComponent<DriverLicense> {
-    override displayedColumns = ['licenseType', 'from', 'to'];
+    override displayedColumns = signal<string[]>(['licenseType', 'from', 'to']);
 
     constructor(protected override detailSrv: DriverLicenseService) {
         super(detailSrv, 'DriverLicense');

@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CheckBookService, CheckBook } from '@ss/treasury/api-check-books';
@@ -23,12 +23,12 @@ import { BankDescriptionPipe } from '@ss/administration/api-bank';
 })
 export class CheckBookListComponent extends BaseEntityListComponent<CheckBook> implements OnInit {
 
-    displayedColumns = [
+    displayedColumns = signal([
         'bank',
         'bookYear',
         'fromNumber',
         'toNumber'
-    ];
+    ]);
 
     constructor(
         public checkBookSrv: CheckBookService,

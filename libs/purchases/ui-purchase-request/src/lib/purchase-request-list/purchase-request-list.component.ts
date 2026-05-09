@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
@@ -39,14 +39,14 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 ],
 })
 export class PurchaseRequestListComponent  extends BaseEntityListComponent<Transaction> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'reference',
         'referenceDocDate',
         'dealerName',
         'docStatus'
-    ];
+    ]);
 
     constructor(
         public orderSrv: PurchaseRequestService,

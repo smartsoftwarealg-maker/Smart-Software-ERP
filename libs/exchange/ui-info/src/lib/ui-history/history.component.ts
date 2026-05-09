@@ -22,7 +22,7 @@ export class HistoryComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'customer',
         'excDate',
         'excType',
@@ -30,7 +30,7 @@ export class HistoryComponent implements OnInit {
         'credit',
         'debit',
         'currency',
-    ];
+    ]);
 
 
     constructor(public exchangeSrv: CurrencyDepositService, public route: ActivatedRoute) {

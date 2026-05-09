@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -42,7 +42,7 @@ import {Mission, MissionsService} from "@ss/hr-missions";
     ],
 })
 export class MissionExpensesListComponent extends BaseEntityListComponent<Mission> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'lastName',
         'firstName',
@@ -51,7 +51,7 @@ export class MissionExpensesListComponent extends BaseEntityListComponent<Missio
         'duration',
         'departure',
         'returnback',
-    ];
+    ]);
 
     constructor(
         public missionSrv: MissionsService,

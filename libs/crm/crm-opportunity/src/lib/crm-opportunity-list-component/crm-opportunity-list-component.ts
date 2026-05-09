@@ -66,7 +66,7 @@ export class CrmOpportunityListComponent implements OnInit, OnDestroy {
         elementCount: 0,
     });
     selectedRow: CRMOpportunity | null = null;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'name',
         'owner',
         'partner',
@@ -75,7 +75,7 @@ export class CrmOpportunityListComponent implements OnInit, OnDestroy {
         'description',
         'amount',
         'closeDate',
-    ];
+    ]);
     data = signal<CRMOpportunity[]>([]);
     loading = false;
 

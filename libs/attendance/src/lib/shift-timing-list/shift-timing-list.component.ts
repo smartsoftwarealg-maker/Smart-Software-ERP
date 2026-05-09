@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -42,13 +42,13 @@ export class ShiftTimingListComponent extends BaseChildEntityListComponent<Timin
 
     periodExhausted = toSignal(this.data$.pipe(map(res => res.length)));
 
-    override displayedColumns = [
+    override displayedColumns = signal([
         'date',
         'from',
         'to',
         'breakFrom',
         'breakTo'
-    ];
+    ]);
 
     constructor(public entitySrv: ShiftTimingService) {
         super(entitySrv, 'Timing');

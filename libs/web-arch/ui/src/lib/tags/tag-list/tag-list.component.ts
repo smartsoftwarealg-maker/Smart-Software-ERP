@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostBinding, OnDestroy, OnInit, signal} from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {TagService} from './tag.service';
 import {Tag} from '../tag';
@@ -31,7 +31,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 
 export class TagListComponent extends BaseEntityListComponent<Tag>  {
 
-  public displayedColumns = ['description'];
+  public displayedColumns = signal(['description']);
 
     constructor(
         public tagSrv: TagService,

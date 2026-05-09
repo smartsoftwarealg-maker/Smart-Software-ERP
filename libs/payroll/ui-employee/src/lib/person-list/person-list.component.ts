@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -66,7 +66,7 @@ export class PersonListComponent
     implements OnInit
 {
     activePersonnel = true;
-    public displayedColumns = [
+    public displayedColumns = signal<string[]>([
         'photo',
         'id',
         'fullname',
@@ -81,7 +81,7 @@ export class PersonListComponent
         'contractType',
         'categSection',
         'rank',
-    ];
+    ]);
 
     maritalStatus: { [id: number]: string };
     nationalities: { [id: number]: string };

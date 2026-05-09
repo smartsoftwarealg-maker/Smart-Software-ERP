@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -47,7 +47,7 @@ import { ProductionRoutingService } from '../production-routing-services/product
     ],
 })
 export class ProductionRoutingListComponent extends BaseEntityListComponent<Routing> {
-    displayedColumns = ['routingNumber', 'revision', 'description', 'status'];
+    displayedColumns = signal<string[]>(['routingNumber', 'revision', 'description', 'status']);
 
     constructor(
         public override entitySrv: ProductionRoutingService,

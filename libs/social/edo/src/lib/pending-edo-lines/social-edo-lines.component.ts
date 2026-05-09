@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, output, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {EDOLine} from '@social/social-api';
@@ -21,12 +21,12 @@ import { MaterialModule } from '@ss/common/api-common';
 })
 export class SocialEdoLinesComponent extends BaseChildEntityListComponent<EDOLine> {
     lineRemoved = output<number>();
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'action',
         'firstName',
         'lastName',
         'amount',
-    ];
+    ]);
 
     constructor(public entitySrv: EdoLineService) {
         super(entitySrv, 'SocialAid');

@@ -1,4 +1,4 @@
-import { Component, effect, input } from '@angular/core';
+import { Component, effect, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { EmployeeAidService, SocialAid } from '@social/social-api';
@@ -30,13 +30,13 @@ export class EmployeeAidsListComponent extends BaseEntityListComponent<SocialAid
     #_effect = effect(() => this.refreshData());
     employeeId = input(0);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'typeDescription',
         'number',
         'date',
         'amount',
         'installmentCount'
-    ];
+    ]);
     constructor(
         public override entitySrv: EmployeeAidService,
         public override shellSrv: ShellService,

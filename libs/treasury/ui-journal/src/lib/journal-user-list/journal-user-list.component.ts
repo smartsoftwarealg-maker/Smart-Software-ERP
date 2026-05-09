@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
 import { JournalUser, JournalUserService } from "@ss/treasury/api-journal";
@@ -17,7 +17,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ["./journal-user-list.component.css"]
 })
 export class JournalUserListComponent extends  BaseChildEntityListComponent <JournalUser> {
-    override displayedColumns = ['fullName'];
+    override displayedColumns = signal<string[]>(['fullName']);
 
     constructor(protected override detailSrv: JournalUserService) {
         super(detailSrv, 'JournalUser');

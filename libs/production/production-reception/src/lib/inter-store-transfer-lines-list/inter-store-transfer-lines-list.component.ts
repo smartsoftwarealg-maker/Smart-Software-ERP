@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MaterialModule } from '@ss/common/api-common';
 import { InterStoreTransferLine } from '@ss/logistics/api-transaction';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -22,13 +22,13 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     ]
 })
 export class InterStoreTransferLinesListComponent extends BaseChildEntityListComponent<InterStoreTransferLine> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'storeDescription',
         'lotDescription',
         'reference',
         'referenceDescription',
         'qty',
-    ];
+    ]);
 
     constructor(protected override detailSrv: InterStoreTransferLinesService) {
         super(detailSrv, 'PInterStore');

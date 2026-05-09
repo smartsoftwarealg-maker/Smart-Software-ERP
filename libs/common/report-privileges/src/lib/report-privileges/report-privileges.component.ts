@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RPrivilege } from './report-privilege.api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -38,10 +38,10 @@ export class ReportPrivilegesComponent implements OnInit, OnDestroy {
     };
 
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'folder',
         'manager'
-    ];
+    ]);
     data$: Observable<RPrivilege[]> = null;
     selectedRow: RPrivilege = null;
 

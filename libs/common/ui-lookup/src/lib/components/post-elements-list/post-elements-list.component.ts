@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
     PostElement,
     PostElementsService,
@@ -50,7 +50,7 @@ export class PostElementsListComponent
     extends BaseChildEntityListComponent<PostElement>
     implements OnInit
 {
-    public override displayedColumns = ['description', 'amount'];
+    public override displayedColumns = signal<string[]>(['description', 'amount']);
     entitySrv = inject(PostService);
 
     constructor(public override detailSrv: PostElementsService) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Lookup } from '@ss/common/api-lookup';
@@ -29,11 +29,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './medical-aid-types-list.component.scss',
 })
 export class MedicalAidTypesListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'descriptionAr',
         'value'
-    ]
+    ])
     constructor(
         public override entitySrv: MedicalAidTypesService,
         public override shellSrv: ShellService,

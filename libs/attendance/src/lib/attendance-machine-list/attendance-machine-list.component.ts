@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AttendanceMachine} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -34,11 +34,11 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ],
 })
 export class AttendanceMachineListComponent extends BaseEntityListComponent<AttendanceMachine> {
-    displayedColumns = [
+    displayedColumns = signal([
         'description',
         'ipAddress',
         'port'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AttendanceMachineService,

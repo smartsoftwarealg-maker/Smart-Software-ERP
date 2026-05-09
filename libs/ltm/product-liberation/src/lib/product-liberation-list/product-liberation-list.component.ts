@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -59,12 +59,12 @@ export class ProductLiberationListComponent extends BaseEntityListComponent<LTMP
         click: () => this.emailTheReport()
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'date',
         'from',
         'to',
         'description'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: LtmProductLiberationService,

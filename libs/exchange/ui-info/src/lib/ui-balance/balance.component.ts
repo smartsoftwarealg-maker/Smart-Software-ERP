@@ -27,12 +27,12 @@ export class BalanceComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'currency',
         'credit',
         'debit',
         'balance',
-    ];
+    ]);
 
 
     constructor(public exchangeSrv: CurrencyDepositService, public route: ActivatedRoute) {}

@@ -40,7 +40,7 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
     });    entitySrv = inject(AssetUnidentifiedInventoryService);
     filter = new FormControl('');
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'creationDate',
         'buildingDescription',
         'classDescription',
@@ -49,7 +49,7 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
         'officeDescription',
         'beneficiaryDescription',
         'memo'
-    ];
+    ]);
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);
     data = signal<UnidentifiedInventory[]> ([]);

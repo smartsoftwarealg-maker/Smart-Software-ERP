@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { SocialAid } from '@social/social-api';
@@ -26,13 +26,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrl: './aid-history.component.scss',
 })
 export class AidHistoryComponent extends BaseChildEntityListComponent<SocialAid> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'medicalTypeDescription',
         'number',
         'date',
         'amount',
         'installmentCount'
-    ];
+    ]);
 
     constructor(public entitySrv: PersonAidHistoryService) {
         super(entitySrv, 'SocialAid');

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseChildEntityListComponent} from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -46,12 +46,12 @@ import { MailingLineListService } from '../mailing-line-list.service';
 })
 export class MailingLinesListComponent extends BaseChildEntityListComponent<MailingListLine> {
 
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'fullName',
         'email',
         'mobile',
         'isUnsubscribed'
-    ];
+    ]);
 
     constructor(protected override detailSrv: MailingLineListService) {
         super(detailSrv, 'COMMON_MAILING_LIST');

@@ -38,14 +38,14 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
     #summarySrv = inject(AssetCountSummaryService);
 
     selectedTab = signal(0);
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'creationDate',
         'locationDescription',
         'buildingDescription',
         'officeDescription',
         'closed'
-    ];
+    ]);
 
     summaryData: CountSummary[] = [];
     summaryColumns = ['total', 'counted', 'missing', 'unidentified'];

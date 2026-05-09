@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     BaseTransactionLinesListComponent
@@ -39,13 +39,13 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './parts-request-line-list.component.html'
 })
 export class PartsRequestLineListComponent extends  BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+    displayedColumns = signal([
         'position',
         'reference',
         'description',
         'qtyOrdered',
         // 'qtySatisfied',
-    ];
+    ]);
 
     constructor(
         public override detailSrv: PartsRequestLineService,

@@ -91,13 +91,13 @@ export class ArticleStoreComponent implements OnInit {
 
     data: ArticleStore[];
     selectedStore: ArticleStore = null;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'storeName',
         'lotNumber',
         'locSector',
         'location',
         'stock'
-    ];
+    ]);
 
 
     constructor(public shellSrv: ShellService,
@@ -143,7 +143,7 @@ export class ArticleStoreComponent implements OnInit {
             .pipe(
                 tap(res => {
                     this.usesLots.set(res.usesLots);
-                    this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'storeName');
+                    this.displayedColumns.update(cols => cols.filter(c => res.usesLots || c !== 'storeName'));
                 }),
                 switchMap(() => this.articleStoreSrv.getList(this.pagination.page - 1, this.pagination.pageSize)))
         .subscribe((x) => {

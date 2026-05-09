@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -37,13 +37,13 @@ export class Bom2ListComponent extends BaseEntityListComponent<BOM> {
         click: () => this.duplicate(),
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'productDescription',
         'description',
         'from',
         'to',
         'version',
-    ];
+    ]);
 
     constructor(
         public entitySrv: Bom2Service,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Lookup } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
@@ -40,7 +40,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     ],
 })
 export class CMMSStatusListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
     constructor(
         public override entitySrv: CMMSStatusService,
         public override shellSrv: ShellService,

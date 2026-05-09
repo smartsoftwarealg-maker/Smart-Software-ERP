@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Consumption, Loan } from '../loans-class';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -48,7 +48,7 @@ export class LoansListComponent extends BaseEntityListComponent<Loan> {
         'remaining'
     ];
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'employee',
         'lastName',
         'firstName',
@@ -60,7 +60,7 @@ export class LoansListComponent extends BaseEntityListComponent<Loan> {
         'monthConsumed',
         "memo",
         "paidAmount"
-    ];
+    ]);
 
     constructor(
         public override entitySrv: LoansService,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {
     MatCell,
     MatCellDef,
@@ -47,7 +47,7 @@ import {TransferReintegrationService} from "../services/transfer-reintegration.s
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class TransferReintegrationListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -55,7 +55,7 @@ export class TransferReintegrationListComponent extends BaseEntityListComponent<
         'reference',
         'referenceDocDate',
         'docStatus'
-    ];
+    ]);
 
     constructor(
         public transferSrv: TransferReintegrationService,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
 
@@ -43,7 +43,7 @@ import { MatMiniFabButton } from '@angular/material/button';
     styleUrl: './product-liberation-line-list.component.scss',
 })
 export class ProductLiberationLineListComponent extends BaseChildEntityListComponent<LTMProductLiberationLine> {
-    override displayedColumns = ['product', 'silo', 'type'];
+    override displayedColumns = signal<string[]>(['product', 'silo', 'type']);
 
     constructor(public entitySrv: LtmProductLiberationLineService) {
         super(entitySrv, 'LTMProductLiberation');

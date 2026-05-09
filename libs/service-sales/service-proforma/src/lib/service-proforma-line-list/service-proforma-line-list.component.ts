@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     BaseTransactionLinesListComponent,
@@ -44,7 +44,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./service-proforma-line-list.component.scss']
 })
 export class ServiceProformaLineListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+    displayedColumns = signal([
         'position',
         'reference',
         'description',
@@ -52,7 +52,7 @@ export class ServiceProformaLineListComponent extends BaseTransactionLinesListCo
         'price',
         'vat',
         'total'
-    ];
+    ]);
 
     constructor(
         public override detailSrv: OfferLinesService,

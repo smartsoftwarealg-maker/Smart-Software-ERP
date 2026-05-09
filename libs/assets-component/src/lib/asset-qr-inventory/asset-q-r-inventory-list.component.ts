@@ -97,7 +97,7 @@ export class AssetQRInventoryListComponent
         maxValue: [99999999],
     });
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'recorded',
         'reference',
         'description',
@@ -114,7 +114,7 @@ export class AssetQRInventoryListComponent
         'newOfficeDescription',
         'newBeneficiaryDescription',
         'comment',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AssetListInventoryService,

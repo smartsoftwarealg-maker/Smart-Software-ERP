@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -32,7 +32,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 export class InterStoreTransferListComponent extends BaseEntityListComponent<InterStoreTransfer> {
     #interStoreTransferLinesSrv = inject(InterStoreTransferLinesService);
 
-    displayedColumns = ['number', 'date', 'storeDescription', 'reference'];
+    displayedColumns = signal<string[]>(['number', 'date', 'storeDescription', 'reference']);
 
     constructor(
         public override entitySrv: InterStoreTransferService,

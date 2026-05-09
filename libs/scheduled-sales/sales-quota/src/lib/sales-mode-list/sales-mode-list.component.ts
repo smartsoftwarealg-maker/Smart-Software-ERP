@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {SalesMode, SalesModeService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -30,11 +30,11 @@ import { Observable, tap } from 'rxjs';
 })
 export class SalesModeListComponent extends BaseEntityListComponent<SalesMode> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'id',
         'description',
         'daysAhead',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: SalesModeService,

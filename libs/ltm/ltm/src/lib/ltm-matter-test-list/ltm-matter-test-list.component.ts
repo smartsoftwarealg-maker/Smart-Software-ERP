@@ -40,14 +40,14 @@ export class LtmMatterTestListComponent implements OnInit {
     readonly searchText = new FormControl<string>('');
     selection = signal<number[]>([]);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'orderNo',
         'testDescription',
         'periodDescription',
         'minValue',
         'maxValue',
         'selection'
-    ];
+    ]);
 
     constructor(
         private entitySrv: LtmMatterTestService,

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, signal} from '@angular/core';
 import {Blocking} from '../assets-api';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -38,7 +38,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe
     ]})
 export class AssetBlockingListComponent extends BaseChildEntityListComponent<Blocking> {
-    override displayedColumns = ['decision', 'date', 'fromDate', 'toDate', 'typeDescription'];
+    override displayedColumns = signal<string[]>(['decision', 'date', 'fromDate', 'toDate', 'typeDescription']);
 
 
     constructor(protected entitySrv: AssetBlockingService) {

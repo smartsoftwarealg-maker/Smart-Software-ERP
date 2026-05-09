@@ -1,4 +1,4 @@
-import {Component, computed, inject} from '@angular/core';
+import {Component, computed, inject, signal} from '@angular/core';
 import {ClassService, Subclass, SubclassService} from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -45,9 +45,9 @@ import {AssetClassService} from "@ss/assets-component";
                 </mat-cell>
             </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+            <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
             <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                     *matRowDef="let row; columns: displayedColumns();"></mat-row>
         </mat-table>
     </div>
     <div class="size b-b-background">
@@ -61,7 +61,7 @@ import {AssetClassService} from "@ss/assets-component";
 export class SubclassListComponent extends BaseEntityListComponent<Subclass> {
     #isSodismac = toSignal(inject(IsParamService).is('SODISMAC'));
 
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
     descriptionAr = computed(() => this.#isSodismac()? 'ADMINISTRATION_CODE' : 'ADMINISTRATION_DESCRIPTION_AR');
 
     constructor(
