@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Accident } from '../api-work-stoppage';
@@ -33,7 +33,7 @@ export class WorkStoppageListComponent extends BaseEntityListComponent<Accident>
     ];
 
     absenceType = new FormControl<number>(0);
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'firstName',
         'lastName',
         'motiveDescription',
@@ -43,7 +43,7 @@ export class WorkStoppageListComponent extends BaseEntityListComponent<Accident>
         'pickDate',
         'certificationNumber',
         'certificationRef'
-    ];
+    ]);
 
     constructor(
     public override entitySrv: WorkStoppageService,

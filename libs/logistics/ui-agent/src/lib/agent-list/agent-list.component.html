@@ -3,7 +3,7 @@
 } @else {
     @if (isSales) {
         <div class="table_div size_98">
-            <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+            <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
 
                 <ng-container matColumnDef="customerCode">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>
@@ -62,14 +62,14 @@
                 </ng-container>
 
 
-                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
                 <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="selectRow(row)"
-                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                         *matRowDef="let row; columns: displayedColumns();"></mat-row>
             </mat-table>
         </div>
     } @else {
         <div class="full__height size_98">
-            <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+            <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
 
                 <ng-container matColumnDef="starred">
                     <mat-header-cell *matHeaderCellDef mat-sort-header><i class="fa-regular fa-star"></i>
@@ -128,9 +128,9 @@
                 </ng-container>
 
 
-                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
                 <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="selectRow(row)"
-                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                         *matRowDef="let row; columns: displayedColumns();"></mat-row>
             </mat-table>
         </div>
 

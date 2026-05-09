@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { AssetTrigger } from '@ss/cmms/cmms-api';
 
@@ -28,10 +28,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class AssetTriggerListComponent extends BaseChildEntityListComponent<AssetTrigger> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'description',
         'amount'
-    ];
+    ]);
 
     constructor(protected override detailSrv: CMMSAssetTriggerService) {
         super(detailSrv, 'AssetTrigger');

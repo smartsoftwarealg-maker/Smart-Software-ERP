@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {SupplierTruck, SupplierTruckService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -32,11 +32,11 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class SupplierTrucksListComponent extends BaseEntityListComponent<SupplierTruck> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'supplierCode',
         'supplierName',
         'plateNumber'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: SupplierTruckService,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CPool } from '@ss/costing/costing-utils';
@@ -24,7 +24,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrl: './costing-pool-list.component.css',
 })
 export class CostingPoolListComponent extends BaseChildEntityListComponent<CPool> {
-    override displayedColumns = ['ccDescription', 'keyDescription', 'isSupport'];
+    override displayedColumns = signal<string[]>(['ccDescription', 'keyDescription', 'isSupport']);
 
     constructor(protected override detailSrv: CostingPoolService) {
         super(detailSrv, 'CPool');

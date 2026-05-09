@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -65,7 +65,7 @@ export class ProductionFormulasLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit {
     #optionSrv = inject(OptionService);
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',
@@ -76,7 +76,7 @@ export class ProductionFormulasLinesListComponent
         'storeName',
         // 'price',
         // 'total',
-    ];
+    ]);
 
     constructor(
         public override detailSrv: ProductionFormulasLinesService,
@@ -135,9 +135,9 @@ export class ProductionFormulasLinesListComponent
 
         this.#optionSrv.get(this.loginSrv.appCtx.center).subscribe((res) => {
             this.usesUnits.set(res.usesUnits);
-            this.displayedColumns = this.displayedColumns.filter(
+            this.displayedColumns.update(cols => cols.filter(
                 (e) => res.usesUnits || e !== 'units',
-            );
+            ));
         });
     }
 }

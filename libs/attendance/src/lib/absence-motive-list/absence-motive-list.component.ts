@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseEntityDetailComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -37,7 +37,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class AbsenceMotiveListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal(['description', 'descriptionAr']);
 
     constructor(
         public classSrv: AbsenceMotiveService,

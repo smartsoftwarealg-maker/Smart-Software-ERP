@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, signal} from '@angular/core';
 import { ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router} from '@angular/router';
 import { ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -57,7 +57,7 @@ import { PriceRequestLinesService } from '../services/price-request-lines.servic
     ]
 })
 export class PriceRequestLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',
@@ -66,7 +66,7 @@ export class PriceRequestLinesListComponent extends  BaseTransactionLinesListCom
         'price',
         'vat',
         'total'
-    ];
+    ]);
 
     constructor(
         public override detailSrv: PriceRequestLinesService,

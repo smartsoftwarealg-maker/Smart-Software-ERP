@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -33,11 +33,11 @@ export class CostCenterListComponent extends BaseEntityListComponent<CostCenter>
 
     public ccGroups: { [id: number]: string; };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'code',
         'description',
         'groupId'
-    ];
+    ]);
 
 
     constructor(

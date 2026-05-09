@@ -71,7 +71,7 @@ export class ArchiveViewerListComponent
     implements OnInit
 {
     private langSrv = inject(LanguageService);
-    private INFO_COLUMNS = [
+    private INFO_COLUMNS: string[] = [
         'id',
         'lastname',
         'firstname',
@@ -201,7 +201,7 @@ export class ArchiveViewerListComponent
             .sort((a, b) => a.variable.localeCompare(b.variable)),
     );
 
-    displayedColumns = this.FIXED_INFO;
+    displayedColumns = signal(this.FIXED_INFO);
 
     constructor(
         public override entitySrv: ArchiveViewerService,
@@ -329,13 +329,11 @@ export class ArchiveViewerListComponent
             )
             .subscribe((res) => {
                 this.pagination.elementCount = res.itemCount;
-                this.displayedColumns = this.INFO_COLUMNS.filter(
+                this.displayedColumns.set(this.INFO_COLUMNS.filter(
                     (e) => personalInfo.indexOf(e) >= 0,
-                );
-                this.displayedColumns = this.displayedColumns.concat(
-                    this._formulaVariables,
-                );
-                this.data = res.body;
+                ));
+                this.displayedColumns.update(v => [...v, ...this._formulaVariables]);
+                this.data.set(res.body);
             });
         this.minTableWidth =
             900 +

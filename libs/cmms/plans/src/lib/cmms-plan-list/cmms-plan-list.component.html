@@ -1,5 +1,5 @@
 <div class="div_table size">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data()" class="main-table">
 
         <ng-container matColumnDef="repeatMonths">
             <mat-header-cell *matHeaderCellDef translate>CMMS_REPEAT_MONTHS</mat-header-cell>
@@ -22,9 +22,9 @@
             </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                 *matRowDef="let row; columns: displayedColumns();"></mat-row>
     </mat-table>
 </div>
 <div class="size b-b-background">

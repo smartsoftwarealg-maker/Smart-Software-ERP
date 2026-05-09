@@ -24,12 +24,12 @@ export class AgentBalanceComponent implements OnInit {
 
     data = signal<AgentBalance[]>([]);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'totalDebit',
         'totalCredit',
         'debit',
         'credit'
-    ];
+    ]);
 
 
     constructor(public shellSrv: ShellService,

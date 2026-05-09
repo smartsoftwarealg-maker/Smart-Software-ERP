@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     EmployeeSuspensionService,
@@ -52,13 +52,13 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeSuspensionListComponent extends BaseChildEntityListComponent<Suspension> {
     // @Input() editable = true;
 
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         'reference',
         'refDate',
         'fromDate',
         'toDate',
         'motive',
-    ];
+    ]);
 
     activePersonnelSrv = inject(ActivePersonnelService);
 

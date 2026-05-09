@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -41,7 +41,7 @@ import {AdvancementsService} from "../services/advancements.service";
 export class AdvancementsListComponent extends BaseEntityListComponent<Payment> {
     private agentSrv = inject(AgentService);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'date',
         'number',
         'denomination',
@@ -49,7 +49,7 @@ export class AdvancementsListComponent extends BaseEntityListComponent<Payment> 
         // 'modeDescription',
         'debit',
         'credit'
-    ];
+    ]);
 
     constructor(
         public paymentSrv: AdvancementsService,

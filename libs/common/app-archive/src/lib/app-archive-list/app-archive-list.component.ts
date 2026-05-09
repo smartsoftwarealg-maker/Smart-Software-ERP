@@ -46,7 +46,7 @@ export class AppArchiveListComponent implements OnInit {
     filename= signal<string|null>(null);
     data =signal<AppArchive[]> ([]);
     paginator = PaginationModel.newInstance();
-    displayedColumns = ['docDescription', 'filename'];
+    displayedColumns = signal(['docDescription', 'filename']);
     isEditable = true;
     id = input<number>(0);
     onIdChange = effect(() => {

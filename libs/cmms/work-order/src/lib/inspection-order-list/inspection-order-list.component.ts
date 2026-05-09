@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, signal } from "@angular/core";
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Work, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -43,7 +43,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class InspectionOrderListComponent extends BaseEntityListComponent<Work> implements OnInit {
     public types = WORK_TYPES;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'description',
@@ -52,7 +52,7 @@ export class InspectionOrderListComponent extends BaseEntityListComponent<Work> 
         'typeDescription',
         'faultDescription',
         'statusDescription',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: CMMSInspectionOrderService,

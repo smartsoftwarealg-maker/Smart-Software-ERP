@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {ActivityCategory, UnitsOfMeasure} from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -27,13 +27,13 @@ import {TranslatePipe} from "@ss/common/ui-lang";
 })
 export class ActivityCategoriesListComponent extends BaseEntityListComponent<ActivityCategory> implements OnInit {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'code',
         'name',
         'description',
         'costElementGroup',
         'isActive'
-    ];
+    ]);
 
     constructor(
         public unitsSrv: CategoriesService,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -58,7 +58,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implements OnInit {
     dateControl = new FormControl<Date>(new Date());
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         // 'reference',
         'selection',
         'description',
@@ -67,7 +67,7 @@ export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implemen
         'lastReleased',
         'nextDue',
         'daysAhead'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: CMMSAlertService,
@@ -122,13 +122,13 @@ export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implemen
         this.confirmationSrv
             .confirm('CMMS_WORK_GENERATION', 'COMMON_GENERATE')
             .pipe(switchMap(answer => answer?
-                this.entitySrv.generate(this.dateControl.value, this.shellSrv.getSearchText()):
+                this.entitySrv.generate(this.dateControl.value||new Date(), this.shellSrv.getSearchText()):
                 of({count: 0}))
             ).subscribe({
                 next: res => {
                     if (res?.count) {
                         this.snackBarSrv.showSuccessMessage();
-                        this.data = [];
+                        this.data.set([]);
                     }
                     this.shellSrv.setLoading(false);
                 },

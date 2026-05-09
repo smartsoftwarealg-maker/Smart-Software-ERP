@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {CRMQuote} from '../quotes-api';
 import {CrmQuotesService} from '../crm-quotes.service';
 import {BaseChildEntityListComponent} from '@ss/common/ui-base-entity';
@@ -57,11 +57,11 @@ export class CrmQuotesListComponent extends BaseChildEntityListComponent<CRMQuot
     private reportFormName = 'WorkPermit';
     private defaultReportSrv = inject(DefaultReportService);
 
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'number',
         'date',
         'user'
-    ];
+    ]);
 
     constructor(
         protected override detailSrv: CrmQuotesService,

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -51,7 +51,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
     selectedUser = 0;
     userCtrl = new UntypedFormControl();
     userAutoComplete = new DefaultAutoCompleteModel<User>(this.usersSrv, 'id', 'fullName');
-    displayedColumns = ['userName'];
+    displayedColumns = signal<string[]>(['userName']);
 
     constructor(
         public override entitySrv: AccJournalsService,

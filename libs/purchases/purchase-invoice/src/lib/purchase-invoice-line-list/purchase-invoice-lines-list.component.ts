@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -29,7 +29,7 @@ import {PurchaseInvoiceLineService} from "../purchase-invoice-line.service";
     ]
 })
 export class PurchaseInvoiceLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    override displayedColumns = [
+    override displayedColumns = signal([
         'position',
         'storeDescription',
         'storeName',
@@ -39,7 +39,7 @@ export class PurchaseInvoiceLinesListComponent extends BaseTransactionLinesListC
         'price',
         'vat',
         'total'
-    ];
+    ]);
 
     constructor(
         public override detailSrv: PurchaseInvoiceLineService,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ELine} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -41,7 +41,7 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
     private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post'];
 
     mainTableWidth = 600;
-    displayedColumns = ['photo', 'id', 'firstName', 'lastName', 'post'];
+    displayedColumns = signal<string[]>(['photo', 'id', 'firstName', 'lastName', 'post']);
 
 
     constructor(
@@ -76,7 +76,7 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
         this.infoSrv.loadDataCols();
         const colList = this.infoSrv.colsList();
         this.mainTableWidth = 600 + 120 * colList.length;
-        this.displayedColumns = this.FIXED_COLS.concat(colList);
+        this.displayedColumns.set(this.FIXED_COLS.concat(colList));
 
         const res = data.map(e => {
             e.imageModel = new ImageModel(this.httpSrv);

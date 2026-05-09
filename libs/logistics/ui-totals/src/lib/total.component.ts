@@ -38,10 +38,10 @@ export class TotalComponent implements OnInit {
 
     data = signal<Total[]>([]);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'value',
-    ];
+    ]);
 
 
     constructor(public totalSrv: TotalService,

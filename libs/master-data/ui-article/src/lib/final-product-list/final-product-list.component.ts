@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Article, BOMTree } from '@ss/master-data/api-article';
@@ -48,7 +48,7 @@ export class FinalProductListComponent extends BaseEntityListComponent<Article> 
     private bomSrv = inject(BomService);
     private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'laborHours', 'routingValue', 'bomValue'];
     private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'laborHours', 'routingValue', 'bomValue'];
-    displayedColumns = this.STOCK_COLS;
+    displayedColumns = signal<string[]>(this.STOCK_COLS);
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
 
     constructor(
@@ -93,7 +93,7 @@ export class FinalProductListComponent extends BaseEntityListComponent<Article> 
         this.route
             .paramMap
             .subscribe(res => {
-                this.displayedColumns = res.get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS;
+                this.displayedColumns.set(res.get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS);
             });
         this.subscriptions.push(
             this.filterCtrl

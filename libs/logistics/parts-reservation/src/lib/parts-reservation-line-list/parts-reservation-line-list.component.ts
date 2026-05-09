@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseTransactionLinesListComponent } from '@ss/logistics/api-transaction';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -44,7 +44,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class PartsReservationLineListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'position',
         'store',
         'reference',
@@ -52,7 +52,7 @@ export class PartsReservationLineListComponent
         'qtySatisfied',
         'price',
         'total',
-    ];
+    ]);
 
     constructor(
         public override detailSrv: ReservationLinesService,

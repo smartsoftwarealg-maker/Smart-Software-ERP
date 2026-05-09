@@ -1,5 +1,5 @@
 <div class="container content-div">
-  <mat-table mat-table [dataSource]="data"
+  <mat-table mat-table [dataSource]="data()"
     [ngStyle]="{ 'width.px': mainTableWidth }">
 
     <ng-container matColumnDef="photo">
@@ -53,9 +53,9 @@
       </ng-container>
     }
 
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
     <mat-row class="selectable" [class.selected]="row.id === selectedId()" (click)="selectRow(row)"
-    *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    *matRowDef="let row; columns: displayedColumns();"></mat-row>
   </mat-table>
 </div>
 <ss-pagination class="container b-b-background" [paginationModel]="pagination"></ss-pagination>

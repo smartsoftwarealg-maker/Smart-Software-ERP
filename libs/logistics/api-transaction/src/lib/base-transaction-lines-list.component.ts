@@ -26,16 +26,16 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     readonly pagination: PaginationModel = null;
     searchText = new FormControl<string>('');
     parentId: number;
-    data: TransactionLine[];
+    data = signal<TransactionLine[]>([]);
     // selectedId: number;
-    selectedRow: TransactionLine = null;
+    selectedRow = signal<TransactionLine|null> (null);
     isEditable = computed(() => this.#_isEditable_);
     usesLots = signal(false);
     usesUnits = signal(false);
     loading = signal(true);
     selectedId = computed(() => this.detailSrv.selectedId());
 
-    displayedColumns: string[] = [];
+    displayedColumns = signal<string[]>([]);
 
     constructor(
         public detailSrv: TransactionLinesClass,
@@ -72,7 +72,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 tap((res) => {
                     this.usesLots.set(res.usesLots);
                     this.usesUnits.set(res.usesUnits);
-                    this.displayedColumns = this.displayedColumns.filter(
+                    this.displayedColumns.set(this.displayedColumns().filter(
                         (e) =>
                             (res.usesLots ||
                                 (e !== 'lotNumber' &&
@@ -80,7 +80,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                                     e !== 'storeDescription')) &&
                             (res.usesUnits || e !== 'units') &&
                             (!res.serviceInvoiceOnly || e !== 'store'),
-                    );
+                    ));
                 }),
                 switchMap((res) =>
                     res.usesUnits
@@ -127,15 +127,15 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 : of([])
         ).pipe(
             tap((data) => {
-                this.data = data;
-                this.data.forEach((d) => (d.unitsDescription = this.#_unitsMap.get(d.units) || d.units + ''));
+                this.data.set(data);
+                this.data().forEach((d) => (d.unitsDescription = this.#_unitsMap.get(d.units) || d.units + ''));
                 this.loading.set(false);
             }),
         );
     }
 
     select(row: TransactionLine) {
-        this.selectedRow = row;
+        this.selectedRow.set(row);
         this.detailSrv.selectedId.set(row ? row.id : 0);
     }
 
@@ -144,7 +144,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
             .confirmDelete()
             .subscribe((b) => {
                 if (b && this.detailSrv.selectedId() > 0) {
-                    const a = this.data.filter(
+                    const a = this.data().filter(
                         (x) => x.id === this.detailSrv.selectedId())[0];
                     if (a && a.id) {
                         this.shellSrv.setLoading(true);

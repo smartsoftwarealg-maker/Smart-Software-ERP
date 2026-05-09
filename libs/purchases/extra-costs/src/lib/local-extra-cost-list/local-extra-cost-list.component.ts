@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal} from '@angular/core';
 import { ExtraCostService } from '@ss/purchases/extra-costs';
 import { ExtraCost } from '@ss/logistics/api-transaction';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
@@ -41,12 +41,12 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 })
 export class LocalExtraCostListComponent extends BaseChildEntityListComponent<ExtraCost> {
 
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'reference',
         'supplierName',
         'amount',
         'vat',
-    ];
+    ]);
 
     constructor(protected override detailSrv: ExtraCostService) {
         super(detailSrv, 'ExtraCost');

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LTMTest} from '@ltm/ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -25,7 +25,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 ],
 })
 export class LtmTestListComponent extends BaseEntityListComponent<LTMTest> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'variable',
         'description',
         'descriptionAr',
@@ -35,7 +35,7 @@ export class LtmTestListComponent extends BaseEntityListComponent<LTMTest> {
         'showKPI',
         'varianceControl',
         'isSimulated'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: LtmTestService,

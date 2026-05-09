@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AccJournalsService, Journal} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -20,7 +20,7 @@ import {MatCheckbox} from "@angular/material/checkbox";
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatCheckbox]
 })
 export class JournalListComponent extends BaseEntityListComponent<Journal> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'abbreviation',
         'defaultLabel',
@@ -28,7 +28,7 @@ export class JournalListComponent extends BaseEntityListComponent<Journal> {
         'centerName',
         'typeName',
         'bankName'
-    ];
+    ]);
 
 
     constructor(

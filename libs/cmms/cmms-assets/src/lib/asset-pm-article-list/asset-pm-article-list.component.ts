@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
@@ -33,7 +33,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         ReactiveFormsModule,
         MatCardModule,
         MatInputModule,
-       
+
         MatButtonModule,
         MaterialModule,
         UiAutoCompleteComponent,
@@ -49,7 +49,7 @@ export class AssetPmArticleListComponent extends BaseChildEntityListComponent<PM
 
     pmLookup = new DefaultAutoCompleteModel(this.pmSrv);
 
-    override displayedColumns = ['reference', 'description', 'qty'];
+    override displayedColumns = signal<string[]>(['reference', 'description', 'qty']);
     parentId = new FormControl<number>(0);
     constructor(protected override detailSrv: CmmsAssetPmArticleService) {
         super(detailSrv, 'PMPart');

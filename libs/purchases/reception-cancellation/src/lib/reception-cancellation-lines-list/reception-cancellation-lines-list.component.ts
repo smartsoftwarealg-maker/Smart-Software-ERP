@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseTransactionLinesListComponent, TransactionLinesService} from '@ss/logistics/api-transaction';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -50,7 +50,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ReceptionCancellationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
 
-    displayedColumns = [
+    displayedColumns = signal([
         'position',
         'store',
         'reference',
@@ -59,7 +59,7 @@ export class ReceptionCancellationLinesListComponent extends BaseTransactionLine
         'price',
         'vat',
         'total'
-    ];
+    ]);
 
 
     constructor(

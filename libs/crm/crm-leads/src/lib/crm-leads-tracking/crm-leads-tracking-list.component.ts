@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -41,7 +41,7 @@ import { CRMLeadsProgressLogger } from './api';
 })
 export class CrmLeadsTrackingListComponent extends BaseChildEntityListComponent<CRMLeadsProgressLogger> {
     readonly parentId = input.required<number>();
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'ownerDescription',
         'status',
         'stage',
@@ -50,7 +50,7 @@ export class CrmLeadsTrackingListComponent extends BaseChildEntityListComponent<
         'closedBy',
         'memo',
         'teamDescription',
-    ];
+    ]);
 
     constructor(protected override detailSrv: CrmLeadsTrackingService) {
         super(detailSrv, 'CrmLeadActiveListLine');

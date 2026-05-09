@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Formula} from './payroll-formulas-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -49,7 +49,7 @@ export class FormulaListComponent extends BaseEntityListComponent<Formula> {
 
     httpSrv = inject(HttpService);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'variable',
         'description',
         'base',
@@ -58,7 +58,7 @@ export class FormulaListComponent extends BaseEntityListComponent<Formula> {
         'accountno',
         'followup_fld',
         'val_sign'
-    ];
+    ]);
 
     constructor(
         public listSrv: PayrollFormulasService,

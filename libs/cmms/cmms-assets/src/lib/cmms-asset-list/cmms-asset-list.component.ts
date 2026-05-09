@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Asset } from '../services/asset-api';
@@ -27,7 +27,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './cmms-asset-list.component.html'
 })
 export class CmmsAssetListComponent extends BaseEntityListComponent<Asset> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'serial_no',
@@ -37,7 +37,7 @@ export class CmmsAssetListComponent extends BaseEntityListComponent<Asset> {
         'officeDescription',
         'statusDescription',
         'functionDescription'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: CmmsAssetService,

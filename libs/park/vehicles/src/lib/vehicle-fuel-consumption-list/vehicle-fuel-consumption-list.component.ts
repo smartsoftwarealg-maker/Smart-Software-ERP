@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { FuelConsumption } from '../vehicle-api';
@@ -27,13 +27,13 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./vehicle-fuel-consumption-list.component.css'],
 })
 export class VehicleFuelConsumptionListComponent extends BaseChildEntityListComponent<FuelConsumption> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'date',
         'driverName',
         'fuelDescription',
         'orderNo',
         'odoMeter',
-    ];
+    ]);
 
     constructor(protected override detailSrv: VehicleFuelConsumptionService) {
         super(detailSrv, 'FuelConsumption');

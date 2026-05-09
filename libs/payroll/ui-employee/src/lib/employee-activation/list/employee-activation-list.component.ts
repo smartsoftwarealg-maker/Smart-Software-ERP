@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -19,7 +19,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class EmployeeActivationListComponent extends BaseChildEntityListComponent<EmployeeActivation> {
     foreignRecord = false;
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         'centerName',
         'hireDate',
         'empTypeDescription',
@@ -28,7 +28,7 @@ export class EmployeeActivationListComponent extends BaseChildEntityListComponen
         'suspendReasonDescription',
         'inConflict',
         'isFinal'
-    ];
+    ]);
     // public readonly pagination = PaginationModel.newInstance();
     // public employmentTypes: { [id: number]: string; };
 

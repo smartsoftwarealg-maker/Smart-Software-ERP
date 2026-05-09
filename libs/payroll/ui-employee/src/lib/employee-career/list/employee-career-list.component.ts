@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {Career, EmployeeCareerService} from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -19,7 +19,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 })
 export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Career> implements OnInit {
 
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         'paymonth',
         'decision',
         'decision_date',
@@ -35,7 +35,7 @@ export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Ca
         'profCategory',
         'trial_period',
         'wrkDescription',
-    ];
+    ]);
 
     activePersonnelSrv = inject(ActivePersonnelService);
 

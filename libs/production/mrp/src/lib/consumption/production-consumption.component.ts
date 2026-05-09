@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { ProductionConsumption } from '../api/mrp-api';
@@ -30,16 +30,16 @@ export class ProductionConsumptionComponent implements OnInit {
     #consumptionSrv = inject(ProductionConsumptionService);
 
     public pagination = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0 });
-    public data: ProductionConsumption[] = [];
+    public data = signal<ProductionConsumption[]>([]);
 
-    displayedColumns: string[] = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'document',
         'qty',
         'price',
         'value'
-    ];
+    ]);
 
     constructor() {
         this.pagination.onChange = () => this.refresh();
@@ -56,7 +56,7 @@ export class ProductionConsumptionComponent implements OnInit {
     }
 
     private refresh() {
-        this.data = [];
+        // this.data.set([]);
         this.#route
             .queryParams
             .pipe(
@@ -67,7 +67,7 @@ export class ProductionConsumptionComponent implements OnInit {
                 })
             ).subscribe({
             next: (data) => {
-                this.data = data;
+                this.data.set(data);
                 this.#shellSrv.setLoading(false);
             },
             error: err => {

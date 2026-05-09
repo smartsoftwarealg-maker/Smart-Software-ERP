@@ -1,4 +1,4 @@
-import { Component, computed, effect, Signal } from '@angular/core';
+import { Component, computed, effect, signal, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { Compensation, InvoicePayment } from '../services/compensation-api';
@@ -40,7 +40,7 @@ import { CompensationService } from '../services/compensation.service';
     standalone: true
 })
 export class SalesCompensationListComponent extends BaseChildEntityListComponent<Compensation> {
-    override displayedColumns = ['description', 'creationTime', 'amount'];
+    override displayedColumns = signal<string[]>(['description', 'creationTime', 'amount']);
 
     constructor(entitySrv: CompensationService) {
         super(entitySrv, 'InvoicePayment');

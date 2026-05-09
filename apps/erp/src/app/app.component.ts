@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
     loaded = signal(false);
 
     ngOnInit() {
-        console.log('AppComponent initialized');
         this.themeSrv.load();
         const multiCompany = environment['multiCompany'] === true;
         const company = environment['company'];
@@ -47,7 +46,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage = homePage;
         this.#langSrv.isSodismac = !!environment['sodismac'];
-        this.shellSrv.setApplicationTitle('Smart ERP 3.0.6');
+        this.shellSrv.setApplicationTitle('Smart ERP 3.0.8');
         this.httpSrv
             .init()
             .pipe(

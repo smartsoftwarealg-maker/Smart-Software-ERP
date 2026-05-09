@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -32,7 +32,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 export class CostingKeyListComponent extends BaseEntityListComponent<CKey> implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
 
-  public displayedColumns = ['code', 'description'];
+  public displayedColumns = signal(['code', 'description']);
 
   constructor(
     public override entitySrv: CostingKeyService,

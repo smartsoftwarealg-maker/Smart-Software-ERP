@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { F13 } from '../services/balance-tables.api';
@@ -51,7 +51,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 })
 export class F13ListComponent extends BaseEntityListComponent<F13> {
     #accFileSrv = inject(AccFileService);
-    displayedColumns = ['municipality', 'turnover', 'exemption', 'taxRate'];
+    displayedColumns = signal<string[]>(['municipality', 'turnover', 'exemption', 'taxRate']);
 
     constructor(
         public override entitySrv: F13Service,

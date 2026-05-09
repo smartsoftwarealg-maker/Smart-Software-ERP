@@ -1,6 +1,6 @@
 <div class="container">
     <div class="img__container">
-        @for (arch of data; track arch.id) {
+        @for (arch of data(); track arch.id) {
         <div class="img__item selectable"
              (click)="selectRow(arch)">
 

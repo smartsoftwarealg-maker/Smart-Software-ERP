@@ -5,8 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { AssetInventoryService } from "../services/asset-tree.service";
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { Asset, ASSTree, TAsset } from '../assets-api';
-import { NestedTreeControl } from "@angular/cdk/tree";
-import { MatTreeModule, MatTreeNestedDataSource } from '@angular/material/tree';
+import { MatTreeModule } from '@angular/material/tree';
 import { AssetsService } from '../services/assets.service';
 
 import { FormControl } from '@angular/forms';
@@ -42,25 +41,24 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
     private snackBarSrv  = inject(SnackBarService);
 
     searchText = new FormControl<string>("");
-    data: ASSTree[] = [];
-    listData: Asset[] = [];
-    selectedNode: ASSTree | null = null;
-    selectedAsset = signal<Asset | null>(null);
-    selectedId = computed(() => this.selectedAsset()?.id || 0);
-    loading = signal(false);
+    data = signal<ASSTree[]>([]);
+    listData = signal<Asset[]>([]);
+    selectedNode = signal<ASSTree | null>(null);
+    selectedAsset = signal<Asset|null>(null);
+    selectedId = computed(() => this.selectedNode()?.ent?.id || 0);
+    loading = signal(true);
     nodeLevel = 0;
+    childrenAccessor = (node: ASSTree) => node.children??[];
+    hasChild = (_: number, node: ASSTree) => !!node.children && node.children.length > 0;
 
     pagingModel = PaginationModel.newInstance({ page: 1, pageSize: 10, elementCount: 0 });
     listModel = PaginationModel.newInstance({ page: 1, pageSize: 10, elementCount: 0 });
-    treeControl = new NestedTreeControl<ASSTree>(node => node.children);
-    dataSource = new MatTreeNestedDataSource<ASSTree>();
 
     constructor() {
         this.pagingModel.onChange = () => this.refreshTree();
         this.listModel.onChange = () => this.refreshList();
     }
 
-    hasChild = (_: number, node: ASSTree) => !!node.children && node.children.length > 0;
 
     ngOnInit(): void {
         this.shellSrv.setButtons([this.refreshButton]);
@@ -70,22 +68,22 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
     }
 
     refreshTree() {
+        this.loading.set(true);
+        this.shellSrv.setLoading(true);
         this.treeSrv
             .tree(this.pagingModel.page - 1, this.pagingModel.pageSize, this.shellSrv.getSearchText())
             .subscribe(res => {
-                this.data = res.body;
-                this.dataSource.data = this.data;
+                this.data.set(res.body);
                 this.pagingModel.elementCount = res.itemCount;
+                this.loading.set(false);
+                this.shellSrv.setLoading(false);
             });
     }
 
     selectNode(node: ASSTree) {
-        this.selectedNode = node;
+        this.selectedNode.set(node);
     }
 
-    selectAsset(asset: Asset) {
-        this.selectedAsset.set(asset);
-    }
 
     refreshList() {
         this.loading.set(true);
@@ -93,7 +91,7 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
             .getList(this.listModel.page-1, this.listModel.pageSize, this.searchText.value||undefined)
             .subscribe({
                 next: res => {
-                    this.listData = res.body;
+                    this.listData.set(res.body);
                     this.listModel.elementCount = res.itemCount;
                     this.loading.set(false);
                 },
@@ -105,20 +103,15 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
     }
 
     removeNode() {
-        if (this.selectedNode) {
-            const asset: TAsset = {
-                id: this.selectedNode.ent?.id||0,
-                centerId: this.selectedNode.ent?.centerId||0,
-                parentId: 0,
-                reference: this.selectedNode.ent?.reference||'',
-                description: this.selectedNode.ent?.description||''
-            };
+        if (this.selectedNode()) {
+
             this.confirmationSrv
                 .confirmDelete()
-                .pipe(switchMap(res => res? this.treeSrv.save(asset) : of(0)))
+                .pipe(switchMap(res => res? this.assetSrv.get(this.selectedNode()?.ent?.id||0) : of(null)),
+                      switchMap(res => res? this.assetSrv.update(({...res, parentId: null})) : of(null)))
                 .subscribe(res => {
-                    if (res > 0) {
-                        this.selectedNode = null;
+                    if (res) {
+                        this.selectedNode.set(null);
                         this.snackBarSrv.showSuccessMessage();
                         this.refreshTree();
                     }
@@ -127,19 +120,21 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
     }
 
     addNode() {
-        if (this.selectedNode && this.selectedAsset) {
+        if (this.selectedNode() && this.selectedAsset()) {
+            const tmp: Asset = this.selectedAsset();
+            tmp.parentId = this.selectedNode()?.ent?.id||0;
             const asset: TAsset = {
                 id: this.selectedAsset()?.id||0,
                 centerId: this.selectedAsset()?.centerId||0,
-                parentId: this.selectedNode?.ent?.id||0,
+                parentId: this.selectedNode()?.ent?.id||0,
                 reference: this.selectedAsset()?.reference||'',
                 description: this.selectedAsset()?.description||''
             };
-            this.treeSrv
-                .save(asset)
+            this.assetSrv
+                .save(tmp)
                 .subscribe(res => {
                     if (res > 0) {
-                        this.selectedNode = null;
+                        this.selectedAsset.set(null);
                         this.snackBarSrv.showSuccessMessage();
                         this.refreshTree();
                     }
@@ -147,6 +142,9 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
         }
     }
 
+    selectAsset(a: Asset) {
+        this.selectedAsset.set(a);
+    }
     ngOnDestroy() {
         this.shellSrv.reset();
     }

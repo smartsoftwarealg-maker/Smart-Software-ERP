@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {TranslateDirective} from "@ss/common/ui-lang";
 import {BaseEntityDetailComponent} from "@ss/common/ui-base-entity";
 import {PackagingUnit} from "../packaging-units.api";
@@ -26,7 +26,7 @@ import {MaterialModule} from "@ss/common/api-common";
     styleUrl: './packaging-units-detail.component.scss',
 })
 export class PackagingUnitsDetailComponent extends BaseEntityDetailComponent<PackagingUnit> {
-    displayedColumns = ['description', 'descriptionAr', 'units'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr', 'units']);
 
     constructor(
         public override entitySrv: PackagingUnitsService,

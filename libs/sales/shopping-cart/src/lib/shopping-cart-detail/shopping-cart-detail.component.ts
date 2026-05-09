@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal} from '@angular/core';
 import {
     HttpService,
     LanguageService,
@@ -51,7 +51,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
     public cartTotal = 0.0;
     public isSmallScreen = false;
 
-    private LONG = [
+    private LONG = signal([
         'image',
         'reference',
         'description2',
@@ -59,13 +59,13 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         'price',
         'total',
         'actions'
-    ];
-    private SHORT = [
+    ]);
+    private SHORT = signal([
         'description2',
         'qty',
         'price'
-    ];
-    displayedColumns = this.LONG;
+    ]);
+    displayedColumns = signal<string[]>([]);
 
     constructor(
         private markSrv: MarkService,
@@ -112,7 +112,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         this.shellSrv.setButtons([this.refreshButton, this.viewReportButton]);
         this.isHandset.subscribe(state => {
             this.isSmallScreen = state.matches;
-            this.displayedColumns = this.isSmallScreen ? this.SHORT : this.LONG;
+            this.displayedColumns.set(this.isSmallScreen ? this.SHORT() : this.LONG());
         });
     }
 
@@ -123,7 +123,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
                 .subscribe(res => {
                     if (res.count > 0) {
                         this.snackBarSrv.showSuccessMessage();
-                        this.data = this.data.filter(e => e.id !== item.id);
+                        this.data.update(v => v.filter(e => e.id !== item.id));
                         this.cartTotal -= item.qty * item.price;
                     } else {
                         this.snackBarSrv.showFailureMessage();
@@ -139,7 +139,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
                 .subscribe(res => {
                     if (res.count > 0) {
                         this.snackBarSrv.showSuccessMessage();
-                        this.data.filter(e => e.id !== item.id);
+                        this.data().filter(e => e.id !== item.id);
                         item.qty += qty;
                         this.cartTotal += qty * item.price;
                     } else {

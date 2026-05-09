@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {GenerationAccount, GenerationAccountService} from '@ss/accounting/api-accounts';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class GenerationAccountsListComponent extends BaseEntityListComponent<GenerationAccount> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'purchase',
         'sales',
@@ -29,7 +29,7 @@ export class GenerationAccountsListComponent extends BaseEntityListComponent<Gen
         'production',
         'pendingSupplier'
         // 'supplier',
-    ];
+    ]);
 
 
     constructor(

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -31,14 +31,14 @@ export class UnlockingLotsComponent
     extends BaseEntityListComponent<Location>
     implements OnInit
 {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'lotNumber',
         'reference',
         'description',
         'analysisDate',
         'isCompliant',
         'blocked'
-    ];
+    ]);
 
     protected override preInit(): Observable<unknown> {
         return super.preInit()

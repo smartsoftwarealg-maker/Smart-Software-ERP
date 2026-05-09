@@ -1,4 +1,4 @@
-import { Component, effect } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { Reimbursement, ReimbursementService } from '@social/social-api';
@@ -30,7 +30,7 @@ export class SocialReimbursementsListComponent extends BaseChildEntityListCompon
         }
     });
 
-    override displayedColumns = ['reference', 'date', 'amount'];
+    override displayedColumns = signal(['reference', 'date', 'amount']);
 
     constructor(protected override detailSrv: ReimbursementService) {
         super(detailSrv, 'Reimbursement');

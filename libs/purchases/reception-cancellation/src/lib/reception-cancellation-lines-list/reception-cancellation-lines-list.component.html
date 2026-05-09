@@ -26,7 +26,7 @@
         </div>
 
         <div class="container_div">
-            <mat-table mat-table [dataSource]="data" class="main-table">
+            <mat-table mat-table [dataSource]="data()" class="main-table">
 
 
                 <ng-container matColumnDef="position">
@@ -98,9 +98,9 @@
                 </ng-container>
 
 
-                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-                <mat-row class="selectable" [class.selected]="row.id === selectedId" (click)="select(row)"
-                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.id === selectedId()" (click)="select(row)"
+                         *matRowDef="let row; columns: displayedColumns();"></mat-row>
             </mat-table>
         </div>
         <div class="pagination-container b-b-background">
@@ -112,11 +112,11 @@
                 <ss-doc-info
                         [displayedGroups]="['article', 'document']"
                         [params]="{
-            documentId: selectedRow?.transacId,
+            documentId: selectedRow()?.transacId,
             detailId: selectedRow()?.id,
             documentURL:'/correctionIn',
-            articleReference: selectedRow?.reference,
-            articleStoreId: selectedRow?.store
+            articleReference: selectedRow()?.reference,
+            articleStoreId: selectedRow()?.store
         }">
                 </ss-doc-info>
             </div>

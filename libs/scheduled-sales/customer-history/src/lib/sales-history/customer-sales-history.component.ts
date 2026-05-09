@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -41,7 +41,7 @@ export class CustomerSalesHistoryComponent extends BaseEntityListComponent<Sales
         to:     [this.TODAY, Validators.required],
     });
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'date',
         'number',
         'product',
@@ -50,7 +50,7 @@ export class CustomerSalesHistoryComponent extends BaseEntityListComponent<Sales
         'transporter',
         'licenseNo',
         'plateNumber'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: SalesHistoryService,

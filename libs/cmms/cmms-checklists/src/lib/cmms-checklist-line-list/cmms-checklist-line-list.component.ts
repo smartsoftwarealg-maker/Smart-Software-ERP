@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { RoutingDetail } from '@ss/cmms/cmms-api';
@@ -19,7 +19,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./cmms-checklist-line-list.component.css'],
 })
 export class CmmsChecklistLineListComponent extends BaseChildEntityListComponent<RoutingDetail> {
-    override displayedColumns = ['order', 'description', 'teamSize', 'hours', 'cost'];
+    override displayedColumns = signal(['order', 'description', 'teamSize', 'hours', 'cost']);
 
     constructor(override detailSrv: CMMSRoutingDetailService) {
         super(detailSrv, 'RoutingDetail');

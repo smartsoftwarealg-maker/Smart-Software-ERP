@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {SocialAid, SocialWorksService} from '@social/social-api';
@@ -42,7 +42,7 @@ export class MutualAidsListComponent extends BaseEntityListComponent<SocialAid> 
         click: () => this.importDocument(),
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         // 'typeDescription',
         'number',
         'date',
@@ -50,7 +50,7 @@ export class MutualAidsListComponent extends BaseEntityListComponent<SocialAid> 
         'lastName',
         'mutualno',
         'amount'
-    ]
+    ])
 
     constructor(
         public override entitySrv: MutualAidService,

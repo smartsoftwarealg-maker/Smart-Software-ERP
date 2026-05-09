@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { OrderAnomaly } from './api-order-anomalies';
@@ -42,12 +42,12 @@ export class LogisticsOrderAnomaliesComponent
         click: () => this.fix(),
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'qtyOrdered',
         'qtySatisfied',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: OrderAnomaliesService,

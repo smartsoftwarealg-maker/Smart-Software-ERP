@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -75,7 +75,7 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
     from = new FormControl<Date>(new Date(this.NOW.getTime() - 365 * 24 * 60 * 60 * 1000));
     to = new FormControl<Date>(this.NOW);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'date',
         'payMethodDescription',
         'chkDate',

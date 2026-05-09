@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import { CostCenterGroupService, Lookup } from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 })
 export class CostCenterGroupListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
 
     constructor(
         public markSrv: CostCenterGroupService,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -44,11 +44,11 @@ import {MatTooltip} from "@angular/material/tooltip";
     standalone: true,
 })
 export class MissionElementsLinesListComponent extends BaseChildEntityListComponent<MissionElementPricing> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'zoneDescription',
         'categoryDescription',
         'amount',
-    ];
+    ]);
 
     constructor(protected override detailSrv: MissionsElementPricingService) {
         super(detailSrv, 'MISSION_MISSION_ELEMENT_DETAIL');

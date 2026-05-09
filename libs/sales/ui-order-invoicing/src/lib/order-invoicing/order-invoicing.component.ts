@@ -87,7 +87,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         [2, 'COMMON_DELIVERY'],
     ]);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -98,7 +98,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         'invoiceNumber',
         'option',
         'docStatus',
-    ];
+    ]);
     transactionColumns = [
         'position',
         'store',
@@ -149,9 +149,9 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
                 tap((data) => {
                     const invoicing = data['invoicing'] === true;
                     this.isInvoicing.set(invoicing);
-                    this.displayedColumns = this.displayedColumns.filter(
+                    this.displayedColumns.set(this.displayedColumns().filter(
                         (col) => col !== 'option' || invoicing,
-                    );
+                    ));
                 }),
                 tap(() => {
                         this.addButton.visible = false;
@@ -268,7 +268,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         return  super.processLoadedData(data)
             .pipe(
                 switchMap(() => {
-                    const ids = this.data.map((d) => d.id).join(',');
+                    const ids = this.data().map((d) => d.id).join(',');
                     return this.scheduledInvoiceSrv.getInvoiceInfo(ids);
                 }),
                 tap((res: InvoiceInfo[]) => {

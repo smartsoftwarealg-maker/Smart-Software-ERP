@@ -73,7 +73,7 @@ export class ProductionArticleDetailComponent
 
 
     vats: Vat[];
-    selectedRow: Article;
+    selectedRow = signal<Article|null>(null);
     hasBoom = signal(false);
 
     constructor(
@@ -106,7 +106,7 @@ export class ProductionArticleDetailComponent
 
     override finishLoading(e: Article) {
         super.finishLoading(e);
-        this.selectedRow = e;
+        this.selectedRow.set(e);
     }
 
     public override setupForm(a: Article) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     BaseTransactionLinesListComponent
@@ -43,7 +43,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./service-invoice-line-list.component.scss']
 })
 export class ServiceInvoiceLineListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',
@@ -52,7 +52,7 @@ export class ServiceInvoiceLineListComponent extends BaseTransactionLinesListCom
         'price',
         'vat',
         'total'
-    ];
+    ]);
 
     constructor(
         public override detailSrv: InvoiceLinesService,

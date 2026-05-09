@@ -51,8 +51,8 @@ export class TransactionMatchingComponent implements OnInit {
 
     UNMATCHED_MODE = 1;
     MATCHED_MODE = 2;
-    displayedColumns = ['customerCode', 'customerName', 'accountNo', 'description',  'matchKey', 'debit', 'credit'];
-    creditColumns = ['customerCode',  'description', 'matchKey', 'debit', 'credit', 'matchBtn'];
+    displayedColumns = signal<string[]>(['customerCode', 'customerName', 'accountNo', 'description',  'matchKey', 'debit', 'credit']);
+    creditColumns = signal<string[]>(['customerCode',  'description', 'matchKey', 'debit', 'credit', 'matchBtn']);
     debits: MBalanace[] = [];
     credits: MBalanace[] = [];
     debitPaginator = PaginationModel.newInstance({ pageSize: 5, page: 1, elementCount: 0 });

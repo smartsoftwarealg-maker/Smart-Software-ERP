@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { OH } from '@ss/costing/costing-utils';
@@ -26,7 +26,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrl: './costing-oh-line.component.scss',
 })
 export class CostingOhLineComponent extends BaseChildEntityListComponent<OH> {
-    override displayedColumns = ['description', 'keyDescription', 'amount'];
+    override displayedColumns = signal<string[]>(['description', 'keyDescription', 'amount']);
 
     constructor(protected override detailSrv: CostingOhService) {
         super(detailSrv, 'COH');

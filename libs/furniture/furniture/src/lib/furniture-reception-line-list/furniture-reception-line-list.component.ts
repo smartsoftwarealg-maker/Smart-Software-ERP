@@ -36,8 +36,8 @@ export class FurnitureReceptionLineListComponent implements OnInit {
     parentId = 0;
     selectedId = signal(0);
     pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
-    data: FurnitureTransactionDetail[] = [];
-    displayedColumns = ['description', 'qty', 'price']
+    data = signal<FurnitureTransactionDetail[]>([]);
+    displayedColumns = signal<string[]>(['description', 'qty', 'price'])
 
     constructor(private entitySrv: FurnitureReceptionService,
                 private detailSrv: FurnitureTransactionLineService,
@@ -53,7 +53,7 @@ export class FurnitureReceptionLineListComponent implements OnInit {
                 this.parentId = +params.get('id') || 0;
                 return this.detailSrv.getDetailLines(this.parentId);
             }) )
-            .subscribe(res => this.data = res);
+            .subscribe(res => this.data.set(res));
     }
 
     select(id: number) {
@@ -74,9 +74,9 @@ export class FurnitureReceptionLineListComponent implements OnInit {
         this.confirmationSrv
             .confirmDelete()
             .pipe(switchMap(res => res ? this.detailSrv.remove(this.selectedId()) : of({count: -1})),
-                switchMap(res => res.count > 0 ? this.detailSrv.getDetailLines(this.parentId) : of(this.data)))
-            .subscribe(res => {
-                this.data = res;
+                  switchMap(res => res.count > 0 ? this.detailSrv.getDetailLines(this.parentId) : of(this.data()))
+            ).subscribe(res => {
+                this.data.set(res);
                 this.selectedId.set(0);
             });
     }

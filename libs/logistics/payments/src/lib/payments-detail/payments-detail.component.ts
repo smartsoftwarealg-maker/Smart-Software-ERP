@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {LookupsService, PayModeService} from '@ss/common/api-lookup';
@@ -39,7 +39,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         ['/transporters', 'LOGISTICS_TRANSPORTERS_PAYMENTS'],
     ]);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'date',
         'denomination',
         'description',
@@ -47,7 +47,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         'number',
         'debit',
         'credit',
-    ];
+    ]);
 
     public agentAutoCompleteModel    = new AgentLookupModel(this.agentService);
     public bankAutoCompleteModel    = new DefaultAutoCompleteModel(this.bankSrv);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -37,11 +37,11 @@ export class EraReportListComponent extends BaseEntityListComponent<ERAReport> {
         click: () => this.showDetail(0),
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'descriptionAr',
         'accountList'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AccEraReportService,

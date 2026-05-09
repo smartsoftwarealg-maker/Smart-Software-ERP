@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { MaterialModule } from "@ss/common/api-common";
 import { LTMMixtureDetail } from '@ltm/ltm-api';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -23,7 +23,7 @@ import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
     ]
 })
 export class LtmMixtureDetailListComponent extends BaseChildEntityListComponent<LTMMixtureDetail> {
-    override displayedColumns = ['matterDescription'];
+    override displayedColumns = signal<string[]>(['matterDescription']);
 
     constructor(protected override detailSrv: LtmMixtureDetailService) {
         super(detailSrv, 'LTMMixtureDetail');

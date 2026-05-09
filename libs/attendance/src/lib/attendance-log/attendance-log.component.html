@@ -108,7 +108,7 @@
     </div>
 } @else {
     <div class="table_div">
-        <mat-table mat-table [dataSource]="data" class="main-table">
+        <mat-table mat-table [dataSource]="data()" class="main-table">
             @for (h of columns; track h; let i = $index) {
                 <ng-container matColumnDef="{{ columns[i] }}">
                     <mat-header-cell *matHeaderCellDef> {{ i <= 3 ? headers[i] : varHeaders[i - 4] }}</mat-header-cell>

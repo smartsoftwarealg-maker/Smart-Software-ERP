@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { F12 } from '../services/balance-tables.api';
@@ -46,7 +46,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
 })
 export class F12ListComponent extends BaseEntityListComponent<F12> {
     #accFileSrv = inject(AccFileService);
-    displayedColumns = ['agentDescription', 'reference', 'refDate', 'amount', 'vat', 'modeDescription'];
+    displayedColumns = signal<string[]>(['agentDescription', 'reference', 'refDate', 'amount', 'vat', 'modeDescription']);
 
     constructor(
         public override entitySrv: F12Service,

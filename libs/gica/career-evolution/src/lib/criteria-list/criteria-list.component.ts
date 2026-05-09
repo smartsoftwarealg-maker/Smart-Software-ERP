@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Criterion } from '../gica-careers-api';
@@ -62,10 +62,10 @@ export class CriteriaListComponent extends BaseEntityListComponent<Criterion> {
     categoryLookup = new DefaultAutoCompleteModel(this.categorySrv);
     employee = new FormControl<number>(0);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'grade',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: CriterionService,

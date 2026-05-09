@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -52,7 +52,7 @@ export class ProductionTransferLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit
 {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',
@@ -63,7 +63,7 @@ export class ProductionTransferLinesListComponent
         'storeName',
         // 'price',
         // 'total',
-    ];
+    ]);
 
     constructor(
         public override detailSrv: ProductionTransferLinesService,
@@ -92,7 +92,7 @@ export class ProductionTransferLinesListComponent
     private refresh() {
         this.detailSrv.getPage(this.pagination).subscribe({
             next: (data) => {
-                this.data = data;
+                this.data.set(data);
             },
             error: () => {
                 this.snackBarSrv.showFailureMessage('refresh failed');
@@ -101,8 +101,8 @@ export class ProductionTransferLinesListComponent
     }
 
     transfer() {
-        if (this.selectedRow?.id) {
-            this.detailSrv.transfer(this.selectedRow?.id || 0).subscribe({
+        if (this.selectedRow()?.id) {
+            this.detailSrv.transfer(this.selectedRow()?.id || 0).subscribe({
                 next: () => {
                     this.refresh();
                     this.snackBarSrv.showSuccessMessage();
@@ -116,9 +116,9 @@ export class ProductionTransferLinesListComponent
     }
 
     transferAll() {
-        if (this.selectedRow?.transacId) {
+        if (this.selectedRow()?.transacId) {
             this.detailSrv
-                .transferAll(this.selectedRow?.transacId || 0)
+                .transferAll(this.selectedRow()?.transacId || 0)
                 .subscribe({
                     next: () => {
                         this.refresh();
@@ -156,7 +156,7 @@ export class ProductionTransferLinesListComponent
 
     cancelAllTransfers() {
         this.doCancellation(
-            this.detailSrv.cancelAllTransfers(this.selectedRow?.transacId || 0),
+            this.detailSrv.cancelAllTransfers(this.selectedRow()?.transacId || 0),
         );
     }
 
@@ -169,7 +169,7 @@ export class ProductionTransferLinesListComponent
             .subscribe((res) => {
                 if (res) {
                     this.detailSrv
-                        .cancelTransfer(this.selectedRow?.id || 0)
+                        .cancelTransfer(this.selectedRow()?.id || 0)
                         .subscribe({
                             next: () => {
                                 this.refresh();

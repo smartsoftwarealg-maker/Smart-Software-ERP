@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -71,7 +71,7 @@ export class AssetAppointmentDocListComponent extends BaseEntityListComponent<AS
 
     detailColumns = this.AQS_COLS;
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'serialNumber',
         'date',
         'officeName',
@@ -81,7 +81,7 @@ export class AssetAppointmentDocListComponent extends BaseEntityListComponent<AS
         'reappointment',
         'status',
         'creatorName',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AssetAppointmentDocService,

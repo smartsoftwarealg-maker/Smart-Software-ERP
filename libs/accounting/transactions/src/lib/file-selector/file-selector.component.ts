@@ -34,11 +34,11 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
     periods = signal<string[]>([]);
     maxPeriod = 1;
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'fileYear',
         'closed'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AccFileService,

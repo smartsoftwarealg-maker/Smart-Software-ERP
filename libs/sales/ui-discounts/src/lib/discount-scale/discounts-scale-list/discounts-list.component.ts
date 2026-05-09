@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -46,7 +46,7 @@ import { SalesDiscountsService } from '../sales-discounts.service';
     ],
 })
 export class DiscountsListComponent extends BaseEntityListComponent<SalesDiscount> {
-    displayedColumns = ['threshold', 'discount'];
+    displayedColumns = signal<string[]>(['threshold', 'discount']);
 
     constructor(
         public override entitySrv: SalesDiscountsService,

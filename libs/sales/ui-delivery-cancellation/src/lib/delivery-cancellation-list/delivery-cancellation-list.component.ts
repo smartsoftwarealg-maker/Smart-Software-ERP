@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -30,7 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 
 })
 export class DeliveryCancellationListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -38,7 +38,7 @@ export class DeliveryCancellationListComponent extends BaseEntityListComponent<T
         'reference',
         'referenceDocDate',
         'docStatus'
-    ];
+    ]);
 
 
     constructor(

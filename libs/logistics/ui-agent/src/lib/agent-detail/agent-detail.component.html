@@ -109,6 +109,21 @@
                             </mat-panel-title>
                         </mat-expansion-panel-header>
 
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_DEPARTMENT</mat-label>
+                            <ss-auto-complete matInput
+                                              formControlName="department"
+                                              [model]="departmentLookup">
+                            </ss-auto-complete>
+                        </mat-form-field>
+
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_POST</mat-label>
+                            <ss-auto-complete matInput
+                                              formControlName="post"
+                                              [model]="postLookup">
+                            </ss-auto-complete>
+                        </mat-form-field>
 
                         <div class="default-50 sm-100">
                             <mat-checkbox formControlName="isInternal" translate>LOGISTICS_IS_INTERNAL</mat-checkbox>
@@ -128,6 +143,7 @@
                             <mat-checkbox formControlName="recordBlocked" translate>LOGISTICS_RECORD_BLOCKED
                             </mat-checkbox>
                         </div>
+
 
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>LOGISTICS_BLOCKING_REASON</mat-label>
@@ -183,7 +199,6 @@
                             @if (form.controls['checkDueDays'].invalid) {
                                 <mat-error translate>COMMON_INTEGER_INVALID</mat-error>
                             }
-
                         </mat-form-field>
 
                         <mat-form-field class="default-50 sm-100">
@@ -210,16 +225,14 @@
                             <input matInput formControlName="capital" type="text">
                         </mat-form-field>
 
-                        @if (AQS) {
-                            <mat-form-field class="default-50 sm-100">
-                                <mat-label translate>LOGISTICS_BANK</mat-label>
-                                <ss-auto-complete matInput
-                                                  formControlName="bank"
-                                                  [model]="bankLookup">
-                                </ss-auto-complete>
-                            </mat-form-field>
-                        }
 
+                        <mat-form-field class="default-50 sm-100">
+                            <mat-label translate>COMMON_BANK</mat-label>
+                            <ss-auto-complete matInput
+                                              formControlName="bank"
+                                              [model]="bankLookup">
+                            </ss-auto-complete>
+                        </mat-form-field>
 
                         <mat-form-field class="default-50 sm-100">
                             <mat-label translate>LOGISTICS_BANK_ACCOUNT</mat-label>
@@ -389,9 +402,6 @@
                                                       [model]="departmentLookup">
                                     </ss-auto-complete>
                                 </mat-form-field>
-                            }
-
-                            @if (isInternal()) {
                                 <mat-form-field class="default-50 sm-100">
                                     <mat-label translate>COMMON_POST</mat-label>
                                     <ss-auto-complete matInput
@@ -455,7 +465,7 @@
                         @if (id && archivePanel.expanded) {
                             <ss-app-archive-main [id]="id"
                                                  [appId]="LOCAL_AGENT_ARCHIVES"
-                                                 [editable]="isEditable">
+                                                 [editable]="isEditable()">
                             </ss-app-archive-main>
                         }
                     </mat-expansion-panel>
@@ -470,7 +480,7 @@
                             </mat-expansion-panel-header>
 
                             <ss-child-attributes [childAttribute]="'/agents'" [attributeId]="id" [parentId]="4"
-                                                 [editable]="isEditable">
+                                                 [editable]="isEditable()">
                             </ss-child-attributes>
                         </mat-expansion-panel>
                     }

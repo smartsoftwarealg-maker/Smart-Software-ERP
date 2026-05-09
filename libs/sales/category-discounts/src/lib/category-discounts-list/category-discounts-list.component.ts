@@ -1,4 +1,4 @@
-import { Component, computed, effect } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CategoryDiscount } from '../api/category-discount';
 import { CMMSAssetReadingService } from '@ss/cmms/asset-readings';
@@ -50,7 +50,7 @@ export class CategoryDiscountsListComponent extends BaseChildEntityListComponent
             this.refresh();
         }
     })
-    override displayedColumns = ['reference', 'description', 'discount'];
+    override displayedColumns = signal<string[]>(['reference', 'description', 'discount']);
 
     constructor(public override detailSrv: CategoryDiscountService) {
         super(detailSrv, 'AssetReading');

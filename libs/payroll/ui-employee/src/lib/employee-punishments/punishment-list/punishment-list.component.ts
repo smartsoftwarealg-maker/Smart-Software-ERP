@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal} from '@angular/core';
 import { Punishment, PUNISHMENTS_NATURE } from '../punishment-api';
 import {PunishmentService} from '../punishment.service';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -19,7 +19,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, DatePipe, TranslatePipe]
 })
 export class PunishmentListComponent extends BaseChildEntityListComponent<Punishment>{
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         'number',
         'date',
         'from',
@@ -27,7 +27,7 @@ export class PunishmentListComponent extends BaseChildEntityListComponent<Punish
         'typeName',
         'faultName',
         'memo',
-    ];
+    ]);
     private readonly Nature = PUNISHMENTS_NATURE;
     activePersonnelSrv = inject(ActivePersonnelService);
 

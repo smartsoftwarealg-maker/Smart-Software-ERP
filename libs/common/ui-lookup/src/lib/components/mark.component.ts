@@ -22,7 +22,7 @@ import {UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
     template: `
         @if (isGICA() !== undefined) {
             <div class="container size">
-                <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
+                <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
 
                     <ng-container matColumnDef="description">
                         <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION
@@ -43,9 +43,9 @@ import {UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
                         </mat-cell>
                     </ng-container>
 
-                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                    <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
                     <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"
-                             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                             *matRowDef="let row; columns: displayedColumns();"></mat-row>
                 </mat-table>
             </div>
             <div class="size b-b-background">
@@ -65,7 +65,7 @@ export class MarkListComponent extends BaseEntityListComponent<Mark> implements 
     description = computed(() => this.isGICA()? 'ADMINISTRATION_CODE' : 'COMMON_DESCRIPTION_AR');
     isSodismac = signal(false);
 
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
 
     constructor(
         public markSrv: MarkService,

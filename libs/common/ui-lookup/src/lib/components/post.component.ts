@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Post, PostElementsService, PostService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -27,7 +27,7 @@ import { Observable } from 'rxjs';
     template: `<div class="container size">
             <mat-table
                 mat-table
-                [dataSource]="data"
+                [dataSource]="data()"
                 class="main-table"
                 matSort
                 (matSortChange)="sort($event)">
@@ -63,13 +63,13 @@ import { Observable } from 'rxjs';
                 </ng-container>
 
                 <mat-header-row
-                    *matHeaderRowDef="displayedColumns; sticky: true"
+                    *matHeaderRowDef="displayedColumns(); sticky: true"
                 ></mat-header-row>
                 <mat-row
                     class="selectable"
                     [class.selected]="row.id == selected"
                     (click)="select(row.id)"
-                    *matRowDef="let row; columns: displayedColumns"
+                    *matRowDef="let row; columns: displayedColumns()"
                 ></mat-row>
             </mat-table>
         </div>
@@ -99,7 +99,7 @@ import { Observable } from 'rxjs';
     ],
 })
 export class PostListComponent extends BaseEntityListComponent<Post> {
-    displayedColumns = ['description', 'descriptionAr', 'blocked'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr', 'blocked']);
 
     constructor(
         public postSrv: PostService,

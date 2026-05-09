@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject, OnDestroy, signal} from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Asset, SearchCriteria } from '../assets-api';
 import { AssetsService } from '../services/assets.service';
@@ -87,7 +87,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     beneficiaryLookup = new DefaultAutoCompleteModel(this.beneficiarySrv, 'id', 'denomination');
 
-    displayedColumns = this.DEF_COLS;
+    displayedColumns = signal<string[]>(this.DEF_COLS);
     form = this.fb.group({
         reference: [''],
         reference2: [''],
@@ -143,7 +143,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
     override preload(): Observable<any> {
         return this.isParamSrv
             .is('AQS')
-            .pipe(tap(res => res ? this.displayedColumns = this.AQS_COLS : this.DEF_COLS));
+            .pipe(tap(res => res ? this.displayedColumns.set(this.AQS_COLS) : this.displayedColumns.set(this.DEF_COLS)));
     }
 
     override ngOnInit() {

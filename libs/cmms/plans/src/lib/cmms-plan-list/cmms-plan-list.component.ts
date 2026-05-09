@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CMMSPlan } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -35,11 +35,11 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class CMMSPlanListComponent extends BaseEntityListComponent<CMMSPlan> {
     readonly TYPES = ['CMMS_TIME', 'CMMS_READING', 'CMMS_EITHER'];
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'repeatMonths',
         'scheduleType'
-    ];
+    ]);
     constructor(
         public override entitySrv: CMMSPlanService,
         public override shellSrv: ShellService,

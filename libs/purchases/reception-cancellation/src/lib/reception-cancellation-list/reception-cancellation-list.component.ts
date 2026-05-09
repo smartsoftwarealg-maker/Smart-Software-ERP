@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Transaction } from "@ss/logistics/api-transaction";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -40,7 +40,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 })
 export class ReceptionCancellationListComponent extends BaseEntityListComponent<Transaction> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -49,7 +49,7 @@ export class ReceptionCancellationListComponent extends BaseEntityListComponent<
         'referenceDocDate',
         'dealer',
         'docStatus'
-    ];
+    ]);
 
     constructor(
         public receptionSrv: ReceptionCancellationService,

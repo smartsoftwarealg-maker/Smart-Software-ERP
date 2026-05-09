@@ -20,8 +20,8 @@
             </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="selectedRow()?.folder === row.folder" (click)="selectRow(row)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                 *matRowDef="let row; columns: displayedColumns();"></mat-row>
     </mat-table>
 </div>

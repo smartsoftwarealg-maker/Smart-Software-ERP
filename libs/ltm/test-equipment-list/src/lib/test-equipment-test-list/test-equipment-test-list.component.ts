@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
@@ -45,7 +45,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrl: './test-equipment-test-list.component.scss',
 })
 export class TestEquipmentTestListComponent extends BaseChildEntityListComponent<LTMTestEquipmentTest> {
-    override displayedColumns = ['testDescription'];
+    override displayedColumns = signal<string[]>(['testDescription']);
 
     constructor(public entitySrv: LtmEquipmentTestService) {
         super(entitySrv, 'LTMTestEquipmentTest');

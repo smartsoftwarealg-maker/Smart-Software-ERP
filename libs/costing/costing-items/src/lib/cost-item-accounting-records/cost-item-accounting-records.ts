@@ -45,7 +45,7 @@ import { Observable } from "rxjs";
 export class CostItemAccountingRecords extends BaseEntityListComponent<ACCRecord> implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
 
-  public displayedColumns = ['accountNo', 'description', 'balance'];
+  public displayedColumns = signal(['accountNo', 'description', 'balance']);
   currentYear = signal(new Date().getFullYear() - 1);
   year = new FormControl<number>(this.currentYear(), [Validators.min(this.currentYear() -5), Validators.max(this.currentYear() + 1)]);
 
@@ -88,8 +88,8 @@ export class CostItemAccountingRecords extends BaseEntityListComponent<ACCRecord
                 .pipe(
                     debounceTime(300),
                     distinctUntilChanged(),
-                    switchMap(() => this.entitySrv.list(this.year.value))
-                ).subscribe(data => this.data = data)
+                    switchMap(() => this.entitySrv.list(this.year.value||0))
+                ).subscribe(data => this.data.set(data))
         );
     }
 }

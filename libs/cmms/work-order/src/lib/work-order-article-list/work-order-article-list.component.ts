@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
@@ -44,7 +44,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 export class WorkOrderArticleListComponent extends BaseChildEntityListComponent<WorkArticle> {
     private dialog = inject(MatDialog);
 
-    override displayedColumns = ['reference', 'description', 'qty', 'price'];
+    override displayedColumns = signal<string[]>(['reference', 'description', 'qty', 'price']);
 
     constructor(protected override detailSrv: CMMSWorkOrderArticleService) {
         super(detailSrv, 'WorkArticle');

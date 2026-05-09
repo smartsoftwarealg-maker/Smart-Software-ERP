@@ -88,13 +88,13 @@ export class PriceRecalculationComponent implements OnInit {
     processing = signal(false);
     data: ERR[] = [];
     selected: ERR = null;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'document',
         'number',
         'date',
         'reference',
         'description',
-    ];
+    ]);
 
     currencies: Currency[] = [];
     storeAutoCompleteModel: DefaultAutoCompleteModel<Lot> =

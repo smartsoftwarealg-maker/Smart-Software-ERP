@@ -40,7 +40,7 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
     });    entitySrv = inject(AssetUnidentifiedInventoryService);
     filter = new FormControl('');
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'creationDate',
         'buildingDescription',
         'classDescription',
@@ -49,10 +49,10 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
         'officeDescription',
         'beneficiaryDescription',
         'memo'
-    ];
+    ]);
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);
-    data: UnidentifiedInventory[] = [];
+    data = signal<UnidentifiedInventory[]> ([]);
     documentId = input(0);
 
     constructor() {
@@ -78,9 +78,9 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
     refresh() {
         this.loading.set(true);
         this.entitySrv
-            .getPage(this.pagination, this.filter.getRawValue())
+            .getPage(this.pagination, this.filter.getRawValue()||'')
             .subscribe(res => {
-                this.data = res;
+                this.data.set(res);
                 this.loading.set(false);
             });
     }

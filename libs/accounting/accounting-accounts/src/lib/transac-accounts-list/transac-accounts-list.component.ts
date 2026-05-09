@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -20,10 +20,10 @@ import { Observable, tap } from 'rxjs';
 })
 export class TransacAccountsListComponent extends BaseEntityListComponent<TransacAccount> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'accountno'
-    ];
+    ]);
 
 
     constructor(

@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnInit } from '@angular/core';
+import { Component, inject, Inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
@@ -29,12 +29,12 @@ export class RequestImportComponent implements OnInit {
 
     pagination = PaginationModel.newInstance();
     workData: Work[] = [];
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'assetDescription',
         'plannedStart',
         'plannedDue',
-    ];
+    ]);
 
     public Types = WORK_TYPES;
     dateControl = new FormControl<Date>(this.LAST_YEAR);

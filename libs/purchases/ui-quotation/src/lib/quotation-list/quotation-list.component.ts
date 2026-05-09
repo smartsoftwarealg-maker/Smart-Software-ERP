@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -29,22 +29,22 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         ReactiveFormsModule,
         RouterModule,
-       
 
-       
+
+
         DocInfoComponent,
         PaginationComponent
     ]
 })
 export class QuotationListComponent  extends BaseEntityListComponent<Transaction> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
         'payMethod',
         'reference',
         'referenceDocDate',
-    ];
+    ]);
 
     constructor(
         public quotationSrv: PurchaseQuotationService,

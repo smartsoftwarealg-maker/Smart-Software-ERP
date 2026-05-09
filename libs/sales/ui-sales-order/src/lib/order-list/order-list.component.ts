@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -65,7 +65,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     ],
 })
 export class OrderListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -74,7 +74,7 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
         // 'locked',
         'docStatus',
         'invoiceNumber',
-    ];
+    ]);
 
     constructor(
         public orderSrv: SalesOrderService,
@@ -108,7 +108,7 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
 
     getInvoices(): void {
         this.setLoading(true);
-        const ids = this.data.map((d) => d.id).join(',');
+        const ids = this.data().map((d) => d.id).join(',');
 
         this.quickOrderSrv
             .getInvoiceInfo(ids).subscribe({
@@ -145,7 +145,7 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
         this.weightCaptureSrv.hasScaleConfig().subscribe({
             next: (exists) => {
                 if (exists) {
-                    this.displayedColumns.push('option')
+                    this.displayedColumns.update(cols => [...cols, 'option'])
                 }
             },
             error: () => {},

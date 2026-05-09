@@ -45,7 +45,7 @@
 
     <div class="list__div">
         <mat-list>
-            @for (row of data; track row.id) {
+            @for (row of data(); track row.id) {
                 <mat-list-item [class.selected]="row.id === selectedId()"
                                (click)="selectRow(row)"
                                class="selectable">

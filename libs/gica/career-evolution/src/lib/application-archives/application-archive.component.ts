@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
@@ -63,14 +63,14 @@ export class ApplicationArchiveComponent implements OnInit {
     private archiveSrv = inject(ArchiveService);
 
     paginator = PaginationModel.newInstance( { page: 1, pageSize: 15, elementCount: 0 });
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'id',
         'firstName',
         'lastName',
         'from',
         'to',
         'rate'
-    ];
+    ]);
     selectedReport: Report | null = null;
 
     data$:Observable<Application[]> | null = null;

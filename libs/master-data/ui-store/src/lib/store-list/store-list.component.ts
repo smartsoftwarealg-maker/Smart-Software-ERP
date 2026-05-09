@@ -1,4 +1,4 @@
-import { Component, } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import { Mark } from '@ss/common/api-lookup';
@@ -34,14 +34,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class StoreListComponent extends BaseEntityListComponent<Article> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description2',
         'price',
         'vat',
         'mark',
         'accountno'
-    ];
+    ]);
 
     marks: { [id: number]: string; };
     vats: { [id: number]: number; };

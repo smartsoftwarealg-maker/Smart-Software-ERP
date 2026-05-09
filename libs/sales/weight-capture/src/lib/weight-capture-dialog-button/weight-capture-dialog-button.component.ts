@@ -37,13 +37,17 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
     scaleExists = signal(false);
 
     ngOnInit() {
-        this.weightCaptureSrv.hasScaleConfig().subscribe({
-            next: (exists) => {
-                if (exists) {
-                    this.scaleExists.set(true);
-                }
+        this.weightCaptureSrv
+            .hasScaleConfig()
+            .subscribe({
+                next: (exists) => {
+                    if (exists) {
+                        this.scaleExists.set(true);
+                    }
             },
-            error: () => {},
+            error: () => {
+                    this.scaleExists.set(false);
+            },
         });
     }
 

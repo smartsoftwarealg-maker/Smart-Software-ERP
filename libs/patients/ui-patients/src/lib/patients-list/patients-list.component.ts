@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AgentType, LookupsService} from '@ss/common/api-lookup';
@@ -23,12 +23,12 @@ export class PatientsListComponent extends BaseEntityListComponent<Patient> {
 
     agentTypes: { [id: number]: string; };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'lastName',
         'firstName',
         'birthDate',
         'birthPlace'
-    ];
+    ]);
 
 
     constructor(

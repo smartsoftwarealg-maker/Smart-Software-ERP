@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -64,7 +64,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         [1, 'COMMON_INVOICE'],
         [2, 'COMMON_DELIVERY'],
     ]);
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -73,7 +73,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         'mode',
         'invoiceNumber',
         // 'option',
-    ];
+    ]);
 
     invoiceSrv = inject(InvoiceService);
     invoiceInfo: InvoiceInfo[] = [];
@@ -103,7 +103,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
 
     getInvoices(): void {
         this.setLoading(true);
-        const ids = this.data.map((d) => d.id).join(',');
+        const ids = this.data().map((d) => d.id).join(',');
 
         this.quickOrderSrv
             .getInvoiceInfo(ids)
@@ -154,7 +154,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         return  super.processLoadedData(data)
             .pipe(
                 switchMap(() => {
-                    const ids = this.data.map((d) => d.id).join(',');
+                    const ids = this.data().map((d) => d.id).join(',');
                     return this.quickOrderSrv.getInvoiceInfo(ids);
                 }),
                 tap((res: InvoiceInfo[]) => {

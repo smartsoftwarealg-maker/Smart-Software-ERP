@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {SalesDriver} from '../driver-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -27,12 +27,12 @@ import {DriverService} from '../driver.service';
 })
 export class DriverListComponent extends BaseEntityListComponent<SalesDriver> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'licenceNumber',
         'licenceDate',
         'issuedBy'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: DriverService,

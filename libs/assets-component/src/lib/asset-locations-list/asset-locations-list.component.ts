@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { AssetLocation } from '../assets-api';
 import { BankService } from '@ss/administration/api-bank';
@@ -35,10 +35,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class AssetLocationsListComponent extends BaseEntityListComponent<AssetLocation> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'code'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AssetLocationService,

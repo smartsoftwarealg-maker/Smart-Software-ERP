@@ -36,8 +36,8 @@ export class BudgetTransferLineListComponent implements OnInit {
     parentId = 0;
     selectedId = signal(0);
     pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
-    data: BudgetTransferDetail[] = [];
-    displayedColumns = ['description', 'amount']
+    data = signal<BudgetTransferDetail[]>([]);
+    displayedColumns = signal(['description', 'amount'])
 
     constructor(private entitySrv: BudgetTransferService,
                 private detailSrv: BudgetTransferDetailService,
@@ -53,7 +53,7 @@ export class BudgetTransferLineListComponent implements OnInit {
                 this.parentId = +params.get('id') || 0;
                 return this.entitySrv.getDetailLines(this.parentId);
             }) )
-            .subscribe(res => this.data = res);
+            .subscribe(res => this.data.set(res));
     }
 
     select(id: number) {
@@ -74,9 +74,9 @@ export class BudgetTransferLineListComponent implements OnInit {
         this.confirmationSrv
             .confirmDelete()
             .pipe(switchMap(res => res ? this.detailSrv.remove(this.selectedId()) : of({count: -1})),
-                  switchMap(res => res.count > 0 ? this.entitySrv.getDetailLines(this.parentId) : of(this.data)))
+                  switchMap(res => res.count > 0 ? this.entitySrv.getDetailLines(this.parentId) : of(this.data())))
             .subscribe(res => {
-                this.data = res;
+                this.data.set(res);
                 this.selectedId.set(0);
             });
     }

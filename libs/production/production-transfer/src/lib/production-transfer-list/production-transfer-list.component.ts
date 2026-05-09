@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -40,14 +40,14 @@ import { ProductionTransferService } from '../production-services/production-tra
 ],
 })
 export class ProductionTransferListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'dealer',
         'reference',
         'referenceDocDate',
         'docStatus'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: ProductionTransferService,

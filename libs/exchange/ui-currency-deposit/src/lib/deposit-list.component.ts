@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -30,7 +30,7 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
     agents = new Map<number, string>();
     selectedAgent = 0;
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'customerCode',
         'denomination',
         'excDate',
@@ -39,7 +39,7 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
         'debit',
         'currency',
         'withdrawn'
-    ];
+    ]);
 
     constructor(
         private loginSrv: LoginService,

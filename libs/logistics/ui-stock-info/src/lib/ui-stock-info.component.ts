@@ -39,7 +39,7 @@ export class UiStockInfoComponent implements OnInit {
     articleReference: string;
     usesLots = signal(false);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'store',
         'lotNumber',
         'stock',
@@ -47,7 +47,7 @@ export class UiStockInfoComponent implements OnInit {
         'price1',
         'price2',
         'price3',
-    ];
+    ]);
 
     constructor(public stockSrv: StockInfoService,
               public snackBarSrv: SnackBarService,
@@ -66,7 +66,7 @@ export class UiStockInfoComponent implements OnInit {
         this.#optionsSrv
             .get(this.#loginSrv.appCtx.center)
             .subscribe(res => {
-                this.displayedColumns = this.displayedColumns.filter(c => res.usesLots || c !== 'store');
+                this.displayedColumns.set(this.displayedColumns().filter(c => res.usesLots || c !== 'store'));
                 this.usesLots.set(res.usesLots);
                 this.loading.set(false);
             });

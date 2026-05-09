@@ -50,14 +50,14 @@ export class ElementGenerationComponent implements OnInit {
     data: Element[] = null;
     loaded = signal(false);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'checkBox',
         'number',
         'lastName',
         'firstName',
         'route',
         'period',
-    ];
+    ]);
 
     ngOnInit() {
         this.shellSrv.setGoBackPath('..', this.route);

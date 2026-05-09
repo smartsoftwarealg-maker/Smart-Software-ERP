@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
 import { GridRank } from "../grid-api";
 import { MaterialModule } from "@ss/common/api-common";
@@ -23,11 +23,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class SalaryRankListComponent extends BaseChildEntityListComponent<GridRank> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         "rank",
         "index",
         "baseSalary",
-    ];
+    ]);
 
     constructor(protected override detailSrv: GridRankService) {
         super(detailSrv, 'GridRank');

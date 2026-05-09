@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -47,13 +47,13 @@ import { MatTooltip } from '@angular/material/tooltip';
     ],
 })
 export class ProductionRoutingOperationListComponent extends BaseChildEntityListComponent<RoutingOperation> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'operationName',
         'operationNumber',
         'operationType',
         'instructionText',
         'setupInstruction',
-    ];
+    ]);
 
     constructor(
         protected override detailSrv: ProductionRoutingOperationService,

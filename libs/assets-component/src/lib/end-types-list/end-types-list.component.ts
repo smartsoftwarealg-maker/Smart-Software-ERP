@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Lookup } from '@ss/common/api-lookup';
 import { AssetBlockingTypeService } from '../services/asset-blocking-type.service';
@@ -33,10 +33,10 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 
 })
 export class EndTypesListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'descriptionAr'
-    ];
+    ]);
 
     constructor(
         public infoSrv: AssetEndTypeService,

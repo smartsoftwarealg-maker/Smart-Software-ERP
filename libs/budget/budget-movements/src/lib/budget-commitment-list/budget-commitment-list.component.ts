@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {BudgetCommitment} from '../budget-movement-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -42,13 +42,13 @@ export class BudgetCommitmentListComponent extends BaseEntityListComponent<Budge
     selectedPlanningId = 0;
     planningPaginator = PaginationModel.newInstance({ page: 0, pageSize: 10, elementCount: 0});
     plannings: BudgetPlanningTree[] = [];
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'decision',
         'description',
         'orderNo',
         'supplierName',
         'amount'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: BudgetCommitmentService,

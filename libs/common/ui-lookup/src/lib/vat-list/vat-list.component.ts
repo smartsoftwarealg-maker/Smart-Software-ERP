@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Vat, VatService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -31,7 +31,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class VatListComponent extends BaseEntityListComponent<Vat> {
 
-    displayedColumns = ['description', 'descriptionAr','value','salesAccount','purchaseAccount'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr','value','salesAccount','purchaseAccount']);
 
     constructor(
         public vatSrv: VatService,

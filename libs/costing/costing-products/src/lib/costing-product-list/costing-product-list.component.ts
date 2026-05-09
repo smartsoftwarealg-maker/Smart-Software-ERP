@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit, signal} from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -34,7 +34,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class CostingProductListComponent extends BaseEntityListComponent<CProduct> implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
-  public displayedColumns = ['code', 'description'];
+  public displayedColumns = signal(['code', 'description']);
 
   constructor(
     public override entitySrv: CostingProductService,

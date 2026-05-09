@@ -66,7 +66,7 @@ export class CrmOpportunityListComponent implements OnInit, OnDestroy {
         elementCount: 0,
     });
     selectedRow: CRMOpportunity | null = null;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'name',
         'owner',
         'partner',
@@ -75,8 +75,8 @@ export class CrmOpportunityListComponent implements OnInit, OnDestroy {
         'description',
         'amount',
         'closeDate',
-    ];
-    data: CRMOpportunity[] = [];
+    ]);
+    data = signal<CRMOpportunity[]>([]);
     loading = false;
 
     constructor() {
@@ -102,7 +102,7 @@ export class CrmOpportunityListComponent implements OnInit, OnDestroy {
     private refresh(): void {
         this.loading = true;
         this.#entitySrv.getPage(this.pagination).subscribe((res) => {
-            this.data = res;
+            this.data.set(res);
             this.loading = false;
         });
     }

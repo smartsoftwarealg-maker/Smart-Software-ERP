@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Scale } from '../gica-careers-api';
@@ -49,11 +49,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './scale-list.component.css',
 })
 export class ScaleListComponent extends BaseEntityListComponent<Scale> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'from',
         'to',
         'rate'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: ScaleService,

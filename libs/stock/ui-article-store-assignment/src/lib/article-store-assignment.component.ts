@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal,} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService, Article } from '@ss/master-data/api-article';
@@ -40,13 +40,13 @@ export class ArticleStoreAssignmentComponent
     extends BaseEntityListComponent<Article>
     implements OnInit
 {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description2',
         // 'price',
         // 'vat',
         'mark',
-    ];
+    ]);
 
     marks: { [id: number]: string };
     vats: { [id: number]: number };

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { DepreciationRate } from '../assets-api';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { SnackBarService } from '@ss/common/ui-shell';
@@ -31,7 +31,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
         TranslatePipe,
 
-       
+
         RouterModule,
 
 
@@ -40,7 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 })
 export class DepreciationRateListComponent extends BaseChildEntityListComponent<DepreciationRate>{
-    override displayedColumns = ['year', 'rate'];
+    override displayedColumns = signal<string[]>(['year', 'rate']);
 
     constructor(public entitySrv: DepreciationRateService) {
         super(entitySrv, 'DepreciationRate');

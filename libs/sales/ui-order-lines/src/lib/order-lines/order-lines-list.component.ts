@@ -51,7 +51,7 @@ export class OrderLinesListComponent
     private weightCaptureSrv = inject(WeightCaptureService);
     private quickOrderSrv = inject(QuickOrderService);
 
-    displayedColumns = [
+    displayedColumns = signal([
         'position',
         'store',
         'reference',
@@ -61,7 +61,7 @@ export class OrderLinesListComponent
         'price',
         'vat',
         'total',
-    ];
+    ]);
     protected isInvoice = signal(false);
 
     constructor(
@@ -92,14 +92,14 @@ export class OrderLinesListComponent
             .pipe(
                 switchMap(() => this.route.data),
                 tap(({ source }) => {
-                    this.displayedColumns = this.displayedColumns.filter(
+                    this.displayedColumns.update (v => v.filter(
                         (col) => col !== 'store' || source !== 'quick',
-                    );
+                    ));
                 }),
                 switchMap(() => this.weightCaptureSrv.hasScaleConfig()),
                 tap((exists) => {
                     if (exists) {
-                        this.displayedColumns.push('tare', 'brut');
+                        this.displayedColumns.update(v => [...v, 'tare', 'brut']);
                     }
                 }),
                 switchMap(() => this.quickOrderSrv.getInvoiceInfo(this.detailSrv.getParentId() + '')),
@@ -155,7 +155,7 @@ export class OrderLinesListComponent
             this.loadDetailLines()
                 .subscribe({
                 next: (data) => {
-                    this.data = data;
+                    this.data.set(data);
                     this.loading.set(false);
                 },
             });

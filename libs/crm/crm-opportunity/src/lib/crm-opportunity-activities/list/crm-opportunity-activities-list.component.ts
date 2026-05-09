@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -46,7 +46,7 @@ import {PaginationComponent} from "@ss/common/ui-pagination";
     standalone: true,
 })
 export class CrmOpportunityActivitiesListComponent extends BaseChildEntityListComponent<CRMOpportunityActivity> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'activityType',
         'subject',
         'detail',
@@ -54,7 +54,7 @@ export class CrmOpportunityActivitiesListComponent extends BaseChildEntityListCo
         'status',
         'ownerDescription',
         'opportunityDescription',
-    ];
+    ]);
 
     constructor(protected override detailSrv: CrmOpportunityActiveService) {
         super(detailSrv, 'CrmOpportunityActiveListLine');

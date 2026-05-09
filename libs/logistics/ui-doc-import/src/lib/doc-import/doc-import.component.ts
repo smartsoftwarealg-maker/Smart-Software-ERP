@@ -62,7 +62,7 @@ export class DocImportComponent implements OnInit {
     private destination = 0;
     public documentList: Lookup[];
     public importList = signal<ImportInfo[]>([]);
-    readonly displayedColumns = ['number', 'date', 'reference', 'refDate'];
+    readonly displayedColumns = signal<string[]>(['number', 'date', 'reference', 'refDate']);
 
     public document = new FormControl<number>(0);
     public searchNumber = new FormControl<number>(0);

@@ -38,7 +38,7 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
     selectedRow = signal<InventoryAsset|null>(null);
     selected    = signal(0);
     data = signal<InventoryAsset[]>([]);
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'serialNo',
@@ -54,7 +54,7 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
         'newOfficeDescription',
         'newBeneficiaryDescription',
         'comment',
-    ];
+    ]);
     pagination = PaginationModel.newInstance({pageSize: 5, page: 1, elementCount: 0});
 
     filter = new FormControl('');

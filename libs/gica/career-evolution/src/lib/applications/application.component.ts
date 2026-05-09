@@ -64,13 +64,13 @@ export class ApplicationComponent implements OnInit {
 
     paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
     dataLength = signal(0);
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'id',
         'firstName',
         'lastName',
         'age',
         'rate',
-    ];
+    ]);
     selectedReport: Report | null = null;
 
     processing = signal(false);

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -34,10 +34,10 @@ export class UserMessageListComponent extends BaseEntityListComponent<UserMessag
     private usersSrv =  inject(UserListService);
     userCtrl = new FormControl<number>(this.loginSrv.appCtx.id);
     userAutoComplete = new UserLookup(this.usersSrv);
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'messageDescription',
         'amount',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: UserMessageService,

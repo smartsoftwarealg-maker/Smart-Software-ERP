@@ -78,7 +78,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     journalSummary = signal<JournalSummary>({ id: 0, debit: 0, credit: 0 });
     journalFilter = new FormControl<string>('');
     journalList = signal<Journal[]>([]);
-    displayedColumns = ['pieceNo', 'pieceDate']; // , 'debit', 'credit'
+    displayedColumns = signal<string[]>(['pieceNo', 'pieceDate']); // , 'debit', 'credit'
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
 
@@ -112,12 +112,12 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                switchMap(() => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
                    tap((policy => {
                        if (policy.showProjects) {
-                           this.displayedColumns.push('projectName');
+                           this.displayedColumns.update(v => [...v, 'projectName']);
                        }
                        if (policy.showBudget) {
-                           this.displayedColumns.push('isBudget');
+                           this.displayedColumns.update(v => [...v, 'isBudget']);
                        }
-                       this.displayedColumns.push('userName', 'updateTime');
+                       this.displayedColumns.update(v => [...v, 'userName', 'updateTime']);
                    })),
                switchMap(() => super.preload())
            );
@@ -225,7 +225,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 tap(res => this.journalSummary.set(res)),
                 switchMap(() => this.entitySrv.findByJournal(this.entitySrv.getParentId(), this.pagination.page, this.pagination.pageSize, this.filter))
             ).subscribe(res => {
-                this.data = res.body;
+                this.data.set(res.body);
                 this.pagination.elementCount = res.itemCount;
                 this.loading.set(false);
             });
@@ -236,7 +236,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         this.entitySrv
             .findByJournal(this.selectedJournal(), this.pagination.page, this.pagination.pageSize, this.filter)
             .subscribe(res => {
-                this.data = res.body;
+                this.data.set(res.body);
                 this.pagination.elementCount = res.itemCount;
                 this.loading.set(false);
             });
@@ -253,7 +253,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
             .findByJournal(this.selectedJournal(), this.pagination.page, this.pagination.pageSize, this.filter)
             .pipe(
                 tap(res => {
-                    this.data = res.body;
+                    this.data.set(res.body);
                     this.pagination.elementCount = res.itemCount;
                 }),
                 switchMap(() => this.entitySrv.journalSummary()),

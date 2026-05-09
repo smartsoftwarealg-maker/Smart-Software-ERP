@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { AssetInventory } from '../assets-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -44,12 +44,12 @@ export class AssetInventoryListComponent
         click: () => this.importDocument(),
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'officeDescription',
         'assetDescription',
         'date',
         'statusDescription',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AssetInventoryService,

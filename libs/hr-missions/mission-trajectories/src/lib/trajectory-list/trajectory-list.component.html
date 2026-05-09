@@ -1,5 +1,5 @@
 <div class="main-table size-800">
-    <mat-table mat-table [dataSource]="data">
+    <mat-table mat-table [dataSource]="data()">
 
 
         <ng-container matColumnDef="description">
@@ -16,9 +16,9 @@
             </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                 *matRowDef="let row; columns: displayedColumns();"></mat-row>
     </mat-table>
 </div>
 <div class="size-800 b-b-background ">

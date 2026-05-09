@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -33,7 +33,7 @@ import { TRANSPORTER } from '../../../../api-reception/src/lib/reception-api';
     ],
 })
 export class TransporterReceptionListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -42,7 +42,7 @@ export class TransporterReceptionListComponent extends BaseEntityListComponent<T
         'referenceDocDate',
         'dealer',
         'docStatus',
-    ];
+    ]);
     private agentSrv = inject(AgentService);
 
     constructor(

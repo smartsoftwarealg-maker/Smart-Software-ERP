@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { LTMLineMatter } from '@ltm/ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -36,10 +36,10 @@ export class LineMatterListComponent extends BaseEntityListComponent<LTMLineMatt
         click: () => this.duplicate()
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'matterDescription',
         'normDescription'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: LtmLineMatterService,

@@ -157,7 +157,7 @@ export const stockNavTree: SideNavNode = {
             name: 'STOCK_PARTS_REQUEST',
             icon: 'fa-solid fa-car-battery',
             route: ABS_STOCK_PARTS_REQUEST_URL,
-            accessRights: 'PartsRequest'
+            accessRights: 'RRequest'
         },
         {
             name: 'STOCK_CONSUMPTION_CANCELLATION',

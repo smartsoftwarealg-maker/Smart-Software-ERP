@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -34,14 +34,14 @@ export class CurrencyTransferListComponent extends BaseEntityListComponent<Depos
     agents = new Map<number, string>();
     selectedAgent = 0;
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'denomination',
         'customerCode',
         'excDate',
         'currency',
         'amount',
         'soldCurrencyId',
-    ];
+    ]);
 
     constructor(
         private depositTypeSrv: DepositTypeService,

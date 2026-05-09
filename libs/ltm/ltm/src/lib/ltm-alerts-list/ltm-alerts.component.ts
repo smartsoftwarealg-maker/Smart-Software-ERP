@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -45,7 +45,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
 
     #destroyRef = inject(DestroyRef);
 
-    displayedColumns = ['matter', 'test',  'time', 'value', 'min', 'max', 'pickupPoint'];
+    displayedColumns = signal<string[]>(['matter', 'test',  'time', 'value', 'min', 'max', 'pickupPoint']);
     formBuilder = inject(FormBuilder);
     form = this.formBuilder.group({
         from: [new Date(new Date().getTime() - 24 * 3600 * 1000 * 30 )],
@@ -77,24 +77,24 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
 
     override refresh(callback?: () => void) {
         const formValue = this.form.value;
-        this.data = [];
+        this.data.set([]);
         this.shellSrv.setLoading(this.canShowProcessingStatus());
         this.select(0);
+        const today = new Date();
         this.entitySrv
-            .refresh(formValue.from, formValue.to, formValue.open, this.pagination.page - 1, this.pagination.pageSize, this.shellSrv.getSearchText())
+            .refresh(formValue.from??today, formValue.to??today, formValue.open||false, this.pagination.page - 1, this.pagination.pageSize, this.shellSrv.getSearchText())
             .subscribe({
                 next: data => {
                     this.shellSrv.setLoading(false); // stop the animation
-                    this.data = data.body;
+                    this.data.set(data.body);
                     this.pagination.elementCount = data.itemCount;
                 },
                 error: err => {
-                    this.data = []; // clear everything;
+                    this.data.set([]); // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
                     throw err;
                 }
-            }
-            );
+            });
     }
 
 

@@ -94,10 +94,10 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     isAndroid = false;
     form: UntypedFormGroup = null;
     params: unknown = null;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'valueString'
-    ];
+    ]);
 
     reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
     treeControl = new NestedTreeControl<ReportNode>(node => node.list);
@@ -169,7 +169,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         super.refresh(() => {
             const cc = {reportType: new FormControl<string>(''), name: new FormControl<string>('')};
 
-            this.data.forEach(e => {
+            this.data().forEach(e => {
                 cc[e.name] = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp' ?
                     e.valueString?.substring(0, 11) + '05:00:00' : e.valueString === 'false' ?
                         false : e.valueString === 'true' ?
@@ -267,7 +267,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     }
 
     createList(): ParamValue[] {
-        return this.data
+        return this.data()
             .filter(p => this.form.controls[p.name] &&
                 this.form.controls[p.name].value !== null &&
                 this.form.controls[p.name].value !== '')

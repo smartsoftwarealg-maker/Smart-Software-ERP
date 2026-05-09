@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ElementsInfo} from './elements-info-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -22,7 +22,7 @@ import { DecimalPipe } from '@angular/common';
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class ElementsInfoComponent extends BaseEntityListComponent<ElementsInfo> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'field',
         'description',
         'fixed',
@@ -32,7 +32,7 @@ export class ElementsInfoComponent extends BaseEntityListComponent<ElementsInfo>
         'postComputed',
         'minValue',
         'maxValue'
-    ];
+    ]);
 
     constructor(
         public infoSrv: ElementsInfoService,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Fault } from '../gica-careers-api';
@@ -42,10 +42,10 @@ export class FaultListComponent extends BaseEntityListComponent<Fault> {
     employeeLookup: PersonAutocompleteClass = new PersonAutocompleteClass(this.employeeSrv);
     employee = new FormControl<number>(0);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'motiveDescription',
         'count'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: FaultService,

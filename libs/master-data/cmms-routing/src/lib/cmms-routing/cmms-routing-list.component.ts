@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -24,7 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['../list-template/cmms-fault-list.component.css'],
 })
 export class CMMSRoutingListComponent extends BaseEntityListComponent<CMMSRouting> {
-    displayedColumns = ['description', 'descriptionAr', 'cost', 'laborHours'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr', 'cost', 'laborHours']);
     constructor(
         public override entitySrv: CMMSRoutingService,
         public override shellSrv: ShellService,

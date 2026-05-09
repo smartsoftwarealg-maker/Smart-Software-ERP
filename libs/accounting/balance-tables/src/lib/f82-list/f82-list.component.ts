@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { F8 } from '../services/balance-tables.api';
@@ -32,7 +32,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
 })
 export class F82ListComponent extends BaseEntityListComponent<F8> {
     #accFileSrv = inject(AccFileService);
-    displayedColumns = ['debtor', 'value1', 'value2'];
+    displayedColumns = signal<string[]>(['debtor', 'value1', 'value2']);
 
     constructor(
         public override entitySrv: F82Service,

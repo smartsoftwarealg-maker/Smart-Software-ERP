@@ -1,5 +1,5 @@
 
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { UserMessage } from '../workflow-api';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -35,9 +35,9 @@ export class UserReceivedMessageListComponent  extends BaseEntityListComponent<U
     private usersSrv =  inject(UserListService);
     userCtrl = new FormControl<number>(this.loginSrv.appCtx.id);
     userAutoComplete = new UserLookup(this.usersSrv);
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'messageDescription',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: UserReceivedMessageService,

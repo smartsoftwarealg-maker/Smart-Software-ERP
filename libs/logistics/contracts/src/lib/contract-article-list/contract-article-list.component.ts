@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {ProjectArticle} from '../contract-api.class';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {map, of, switchMap} from 'rxjs';
@@ -25,9 +25,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
         ReactiveFormsModule,
-       
+
 
         RouterModule,
         PaginationComponent
@@ -37,7 +37,7 @@ export class ContractArticleListComponent implements OnInit {
     selected: ProjectArticle | null = null;
     articles: ProjectArticle[] = [];
     pagination = PaginationModel.newInstance();
-    displayedColumns = ['reference', 'description', 'qty', 'price', 'vat'];
+    displayedColumns = signal<string[]>(['reference', 'description', 'qty', 'price', 'vat']);
 
     constructor(private router: Router,
                 private route: ActivatedRoute,

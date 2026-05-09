@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     Reclassification,
@@ -52,7 +52,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeReclassificationListComponent extends BaseChildEntityListComponent<Reclassification> {
     // @Input() editable = true;
 
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         'reference',
         'refDate',
         'department',
@@ -60,7 +60,7 @@ export class EmployeeReclassificationListComponent extends BaseChildEntityListCo
         'service',
         'decisionDate',
         'motive',
-    ];
+    ]);
 
     activePersonnelSrv = inject(ActivePersonnelService);
 

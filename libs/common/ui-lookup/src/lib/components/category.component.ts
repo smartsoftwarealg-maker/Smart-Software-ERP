@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Category, CategoryService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -42,7 +42,7 @@ import { CategoryDiscountService } from '@ss/sales/category-discounts';
 export class CategoryListComponent extends BaseEntityListComponent<Category> {
     #discountService = inject(CategoryDiscountService);
 
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
 
     constructor(
         public categorySrv: CategoryService,

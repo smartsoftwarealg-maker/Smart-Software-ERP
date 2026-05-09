@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { Quota } from '@ss/scheduled-sales/api-scheduled-sales';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -42,14 +42,14 @@ export class SalesQuotaListComponent extends BaseEntityListComponent<Quota> {
     agentFC = new FormControl<number>(this.loginSrv.appCtx.agentId || 0);
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'salesDate',
         'reference',
         'customerCode',
         'customerName',
         'description',
         'qty',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: SSQuotaService,

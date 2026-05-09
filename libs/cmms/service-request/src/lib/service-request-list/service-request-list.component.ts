@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Work, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -55,7 +55,7 @@ export class ServiceRequestListComponent extends BaseEntityListComponent<Work> i
     };
 
     public Types = WORK_TYPES;
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'description',
@@ -66,7 +66,7 @@ export class ServiceRequestListComponent extends BaseEntityListComponent<Work> i
         'plannedStart',
         'plannedDue',
         'statusDescription'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: CMMSServiceRequestService,

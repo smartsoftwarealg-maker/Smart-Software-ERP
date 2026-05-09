@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input } from '@angular/core';
+import { Component, computed, effect, inject, input, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Compensation, Debt } from '../services/compensation-api';
@@ -36,7 +36,7 @@ export class DebtsComponent extends BaseEntityListComponent<Debt> {
     #compensationSrv = inject(CompensationService);
     #paymentSrv = inject(InvoicePaymentService);
 
-    displayedColumns = ['date', 'invoiceNumber', 'customerCode', 'customerName', 'ftt', 'payment'];
+    displayedColumns = signal<string[]>(['date', 'invoiceNumber', 'customerCode', 'customerName', 'ftt', 'payment']);
     isEditInProgress = this.#compensationDetailSrv.isEditInProgress;
 
     constructor(

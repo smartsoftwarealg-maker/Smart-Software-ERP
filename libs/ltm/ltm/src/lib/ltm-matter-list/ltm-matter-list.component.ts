@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LTMMatter} from '@ltm/ltm-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -36,12 +36,12 @@ export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> 
     //     click: () => this.duplicate()
     // };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'id',
         'description',
         'code',
         'name'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: LtmMatterService,

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, signal } from "@angular/core";
 import { BaseEntityListComponent } from "@ss/common/ui-base-entity";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -21,10 +21,10 @@ import { FundService } from '../funds.service';
 ]
 })
 export class FundsListComponent extends BaseEntityListComponent<Fund> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         "description",
         "accountNo"
-    ];
+    ]);
 
     constructor(
         public gridSrv: FundService,

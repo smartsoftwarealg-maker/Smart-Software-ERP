@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PaymentOrder} from '../payment-order';
 import {BankService} from '@ss/administration/api-bank';
@@ -21,7 +21,7 @@ import { DecimalPipe, DatePipe } from '@angular/common';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, DatePipe]
 })
 export class PaymentOrderListComponent extends BaseEntityListComponent<PaymentOrder> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'ord_number',
         'ord_date',
         'supplierName',
@@ -29,7 +29,7 @@ export class PaymentOrderListComponent extends BaseEntityListComponent<PaymentOr
         'invoice_number',
         'invoice_date',
         'amount'
-    ];
+    ]);
 
     constructor(
         public listSrv: PaymentOrderService,

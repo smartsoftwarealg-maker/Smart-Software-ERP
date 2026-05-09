@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -24,13 +24,13 @@ import { Lot, LotsService } from '@ss/common/api-lookup';
     ],
 })
 export class LotManagementListComponent extends BaseEntityListComponent<Lot> implements OnInit {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'lotNumber',
         'supplier',
         'creationDate',
         'expirationDate',
-    ];
+    ]);
 
     constructor(
       public override entitySrv: LotsService,

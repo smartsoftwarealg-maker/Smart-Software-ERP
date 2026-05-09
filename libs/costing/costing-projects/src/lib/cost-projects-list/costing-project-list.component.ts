@@ -1,4 +1,4 @@
-import { Component, HostBinding, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, HostBinding, inject, OnInit, ViewChild, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { CostingProjectService } from '../services/costing-project.service';
@@ -43,7 +43,7 @@ export class CostingProjectListComponent extends BaseEntityListComponent<CProjec
     @HostBinding('@routeAnimation') routeAnimation = true;
     @ViewChild(CostingReportsComponent) reportView: CostingReportsComponent | null = null;
 
-    public displayedColumns = ['code', 'description', 'from', 'to'];
+    public displayedColumns = signal<string[]>(['code', 'description', 'from', 'to']);
     private projectListId = 'project-list';
     private cloneFormId = 'project-clone-form';
     private maxHeightZeroClass = 'max-height-zero';

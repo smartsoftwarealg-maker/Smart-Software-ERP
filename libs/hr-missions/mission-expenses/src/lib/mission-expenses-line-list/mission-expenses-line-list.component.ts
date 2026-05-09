@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -56,7 +56,7 @@ import {zip} from "rxjs";
     ]
 })
 export class MissionExpensesLineListComponent extends BaseChildEntityListComponent<MissionJourney> {
-    override displayedColumns = ['from', 'to'];
+    override displayedColumns = signal<string[]>(['from', 'to']);
 
     constructor(protected override detailSrv: JourneyLineService) {
         super(detailSrv, 'MISSION_EXPENSES');
@@ -67,8 +67,8 @@ export class MissionExpensesLineListComponent extends BaseChildEntityListCompone
     tabIndex = 0; // first tab
     detailData: Detail[] = [];
     summaryData: Summary[] = [];
-    detailDisplayedColumns = [ 'element','count', 'amount'];
-    summaryDisplayedColumns = ['element', 'date', 'amount'];
+    detailDisplayedColumns = signal<string[]>(['element','count', 'amount']);
+    summaryDisplayedColumns = signal<string[]>(['element', 'date', 'amount']);
 
 
     override ngOnInit() {

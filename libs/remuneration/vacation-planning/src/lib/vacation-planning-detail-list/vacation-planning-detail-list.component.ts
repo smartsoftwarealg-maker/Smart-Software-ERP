@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal} from '@angular/core';
 import { VacationPlanningDetail } from '../vacation-planning-api';
 import { VacationPlanningDetailService } from '@ss/remuneration/vacation-planning';
 import {
@@ -48,13 +48,13 @@ import {MatSort} from "@angular/material/sort";
     ],
 })
 export class VacationPlanningDetailListComponent extends BaseChildEntityListComponent<VacationPlanningDetail> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'description',
         'fromDate',
         'toDate',
         'address',
         'reference',
-    ];
+    ]);
 
     constructor(public entitySrv: VacationPlanningDetailService) {
         super(entitySrv, 'REMUN_VACATION_PLANNING');

@@ -433,7 +433,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                     x: {
                         title: {
                             display: true,
-                            text: this.data
+                            text: this.data()
                                 .filter((e) => e.id === this.selectedId())
                                 .map((e) => e.description)[0],
                         },

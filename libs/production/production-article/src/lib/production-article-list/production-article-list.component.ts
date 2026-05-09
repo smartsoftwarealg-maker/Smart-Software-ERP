@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ArticleService, Article } from '@ss/master-data/api-article';
@@ -46,7 +46,7 @@ export class ProductionArticleListComponent extends BaseEntityListComponent<Arti
 
     typeMap = new Map<number, string>();
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
-    displayedColumns = this.STOCK_COLS;
+    displayedColumns = signal<string[]>(this.STOCK_COLS);
 
 
     constructor(

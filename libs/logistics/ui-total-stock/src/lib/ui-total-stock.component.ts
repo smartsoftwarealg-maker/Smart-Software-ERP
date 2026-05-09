@@ -35,7 +35,7 @@ export class UiTotalStockComponent implements OnInit {
     articleReference: string;
     readonly pagination = PaginationModel.newInstance();
     data = signal<TotalStock[]>([]);
-    displayedColumns = ['reference', 'description', 'stock'];
+    displayedColumns = signal<string[]>(['reference', 'description', 'stock']);
 
     ngOnInit(): void {
         this.pagination.onChange = () => this.load();

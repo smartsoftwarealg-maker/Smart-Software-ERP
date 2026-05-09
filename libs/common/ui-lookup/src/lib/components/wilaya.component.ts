@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {RegionService, Wilaya, WilayaService} from '@ss/common/api-lookup';
@@ -26,7 +26,7 @@ import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from "@ss/common/ui-a
 })
 export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
 
-    displayedColumns = ['description'];
+    displayedColumns = signal<string[]>(['description']);
 
     constructor(
         public wilayaSrv: WilayaService,

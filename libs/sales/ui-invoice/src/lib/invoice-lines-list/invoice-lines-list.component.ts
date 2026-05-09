@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -68,7 +68,7 @@ import {WeightCaptureDialogButtonComponent} from '@ss/sales/weight-capture';
 export class InvoiceLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit {
-    displayedColumns = [
+    displayedColumns = signal([
         'position',
         'storeDescription',
         'storeName',
@@ -80,7 +80,7 @@ export class InvoiceLinesListComponent
         'price',
         'vat',
         'total',
-    ];
+    ]);
 
     constructor(
         public override detailSrv: InvoiceLinesService,

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, signal} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AttribTempl} from '../attributes';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -28,10 +28,10 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class AttributesListComponent extends BaseEntityListComponent<AttribTempl> implements OnInit, OnDestroy {
     moduleId = new UntypedFormControl(1);
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'attType'
-    ];
+    ]);
     subscription: Subscription = null;
 
     constructor(

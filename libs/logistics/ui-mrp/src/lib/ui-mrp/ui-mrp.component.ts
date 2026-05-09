@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 
 import { MRP, MRP_URL } from '../../../../../production/mrp/src/lib/api/mrp-api';
 import { HttpService, LanguageService } from '@ss/common/api-common';
@@ -44,15 +44,15 @@ export class UiMrpComponent implements OnInit {
     private route = inject(ActivatedRoute);
     protected langSrv = inject(LanguageService);
 
-    public data: MRP[] = [];
-    displayedColumns: string[] = [
+    public data = signal<MRP[]>([]);
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'qty',
         'purchaseOrder',
         'inventory',
         'toOrder',
-    ];
+    ]);
 
     getData(id: number | null, lineId?: number): Observable<MRP[]> {
         let p = new HttpParams();
@@ -66,7 +66,6 @@ export class UiMrpComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.data = [];
         this.shellSrv.setLoading(true);
         this.route.queryParams
             .pipe(
@@ -84,10 +83,11 @@ export class UiMrpComponent implements OnInit {
             )
             .subscribe({
                 next: (data) => {
-                    this.data = data;
+                    this.data.set(data);
                     this.shellSrv.setLoading(false);
                 },
                 error: (err) => {
+                    this.data.set([]);
                     this.shellSrv.setLoading(false);
                     throw err;
                 },

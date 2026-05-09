@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CProductLine } from '@ss/costing/costing-utils';
@@ -26,7 +26,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./product-line-list.component.css'],
 })
 export class ProductLineListComponent extends BaseChildEntityListComponent<CProductLine> {
-    override displayedColumns = ['reference', 'description', 'units'];
+    override displayedColumns = signal<string[]>(['reference', 'description', 'units']);
 
     constructor(protected override detailSrv: CProductLineService) {
         super(detailSrv, 'CProductLine');

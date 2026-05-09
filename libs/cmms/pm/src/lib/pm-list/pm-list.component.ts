@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -35,7 +35,7 @@ import { DatePipe } from '@angular/common';
     ],
 })
 export class PmListComponent extends BaseEntityListComponent<PM> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description',
         'assetDescription',
@@ -43,7 +43,7 @@ export class PmListComponent extends BaseEntityListComponent<PM> {
         'lastReleased',
         'nextDue',
         'daysAhead'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: CMMSPMService,

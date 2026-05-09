@@ -24,7 +24,7 @@
 </div>
 
 <div class="container  main-table">
-    <mat-table mat-table [dataSource]="data">
+    <mat-table mat-table [dataSource]="data()">
 
         <ng-container matColumnDef="employee">
             <mat-header-cell *matHeaderCellDef translate>PAYROLL_ID</mat-header-cell>
@@ -68,10 +68,10 @@
             </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
 
         <mat-row class="selectable" [class.selected]="row.id === selectedId()" (click)="select(row.id)"
-                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                 *matRowDef="let row; columns: displayedColumns();"></mat-row>
     </mat-table>
 </div>
 <div class="container  b-b-background">

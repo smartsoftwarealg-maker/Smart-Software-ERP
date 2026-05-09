@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Amendment, Comparison} from '../payroll-amendment.class';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -26,7 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         TranslateDirective,
-       
+
 
 
         PaginationComponent
@@ -60,7 +60,7 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
         click: () => this.generate()
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'employee',
         'lastName',
         'firstName',
@@ -68,16 +68,16 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
         'element',
         'new_value',
         'percentage'
-    ];
+    ]);
     comparisonData: Comparison[] = [];
-    comparisonDisplayedColumns = [
+    comparisonDisplayedColumns = signal<string[]>([
         'paymonth',
         'description',
         'newValue',
         'oldValue',
         'difference',
         'destination'
-    ];
+    ]);
     constructor(public amendSrv: PayrollAmendmentService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {WorkShift} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -34,12 +34,12 @@ import { DatePipe } from '@angular/common';
     ],
 })
 export class WorkShiftListComponent extends BaseEntityListComponent<WorkShift> {
-    displayedColumns = [
+    displayedColumns = signal([
         'description',
         'startDate',
         'graceTime',
         'period'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: WorkshiftService,

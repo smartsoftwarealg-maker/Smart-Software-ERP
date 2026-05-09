@@ -144,7 +144,7 @@ export class GradingsComponent implements OnInit, OnDestroy {
     });
     labels = [''];
     maxima = [0];
-    displayedColumns = ['id', 'lastName', 'firstName'];
+    displayedColumns = signal<string[]>(['id', 'lastName', 'firstName']);
     paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
     data$: Observable<Employee[]> = of([]);
     selectedId = 0;

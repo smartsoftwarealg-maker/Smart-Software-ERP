@@ -1,4 +1,4 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject, input, output, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { SocialActivityService, SocialAid } from '@social/social-api';
@@ -54,7 +54,7 @@ export class PendingEdoComponent extends BaseChildEntityListComponent<SocialAid>
     aidType = new FormControl<number>(0);
     lineAdded = output<number>();
     edoId = input<number>(0);
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'action',
         'number',
         'date',
@@ -63,7 +63,7 @@ export class PendingEdoComponent extends BaseChildEntityListComponent<SocialAid>
         'amount',
         'description',
         'typeDescription'
-    ];
+    ]);
 
     constructor(public entitySrv: PendingEdoService) {
         super(entitySrv, 'SocialAid');

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router } from "@angular/router";
 import {  ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
@@ -30,7 +30,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 })
 
 export class LtmTestingListComponent extends LtmBaseTestingListComponent {
-    displayedColumns = ['matterDescription', 'timeStamp', 'equipmentDescription', 'pickupDescription', 'siloDescription'];
+    displayedColumns = signal<string[]>(['matterDescription', 'timeStamp', 'equipmentDescription', 'pickupDescription', 'siloDescription']);
     constructor(
         public override entitySrv: LtmTestingService,
         public override shellSrv: ShellService,

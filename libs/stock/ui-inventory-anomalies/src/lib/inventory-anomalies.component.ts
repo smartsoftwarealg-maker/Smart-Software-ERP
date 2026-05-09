@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Anomaly } from './anomaly.interface';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -43,14 +43,14 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
         click: () => this.fixAnomalies()
     };
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'store',
         'reference',
         'description',
         'computedStock',
         'actualStock',
         'diff'
-    ];
+    ]);
     selectedReference: string = null;
 
     public constructor(

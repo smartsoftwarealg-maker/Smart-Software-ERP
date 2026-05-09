@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal,} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PaginationModel} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
@@ -18,17 +18,17 @@ import { DecimalPipe } from '@angular/common';
 export class CommissionComponent implements OnInit {
 
     agentId = 0;
-    data: Commission[] = [];
+    data = signal<Commission[]>([]);
 
     public readonly pagination = PaginationModel.newInstance();
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'currency',
         'description',
         'withdrawal',
         'commission',
         'rate'
-    ];
+    ]);
 
 
     constructor(public exchangeSrv: CurrencyDepositService, public  route: ActivatedRoute) {}
@@ -41,6 +41,6 @@ export class CommissionComponent implements OnInit {
             .pipe(switchMap((params: any) => {
                 this.agentId = +params.id || 0;
                 return this.exchangeSrv.getCommissions(this.agentId, this.pagination.page - 1, this.pagination.pageSize);
-            })).subscribe( res => this.data = res);
+            })).subscribe( res => this.data.set(res));
     }
 }

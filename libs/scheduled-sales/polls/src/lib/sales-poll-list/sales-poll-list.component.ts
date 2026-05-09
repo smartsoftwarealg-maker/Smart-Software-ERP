@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -44,10 +44,10 @@ import { SalesPollService } from '../sales-poll.service';
 export class SalesPollListComponent extends BaseEntityListComponent<SalesPoll>{
     private loginSrv = inject(LoginService);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'date',
         'number',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: SalesPollService,

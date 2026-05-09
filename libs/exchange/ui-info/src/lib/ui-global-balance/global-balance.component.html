@@ -1,6 +1,6 @@
 <div class="main-container">
     <div class="table-container max-100">
-        <mat-table mat-table [dataSource]="data" class="main-table">
+        <mat-table mat-table [dataSource]="data()" class="main-table">
             <ng-container matColumnDef="code">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_CUSTOMER_CODE</mat-header-cell>
                 <mat-cell *matCellDef="let e">
@@ -29,8 +29,8 @@
                 </mat-cell>
             </ng-container>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns();"></mat-row>
         </mat-table>
     </div>
     <div class="pagination-container b-b-background">

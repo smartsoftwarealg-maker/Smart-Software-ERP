@@ -1,4 +1,4 @@
-import {Component,} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -29,11 +29,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class CenterListComponent extends BaseEntityListComponent<Center> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'address',
         'header_center'
-    ];
+    ]);
 
 
     constructor(

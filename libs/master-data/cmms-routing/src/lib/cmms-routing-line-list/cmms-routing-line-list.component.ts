@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RoutingDetail } from '@ss/cmms/cmms-api';
 import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -40,7 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class CMMSRoutingLineListComponent extends BaseChildEntityListComponent<RoutingDetail> {
 
-    override displayedColumns = ['order', 'description', 'teamSize', 'hours', 'cost'];
+    override displayedColumns = signal<string[]>(['order', 'description', 'teamSize', 'hours', 'cost']);
 
     constructor(protected override detailSrv: CMMSRoutingDetailService) {
         super(detailSrv, 'RoutingDetail');

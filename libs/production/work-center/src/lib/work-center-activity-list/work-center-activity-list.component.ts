@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {  WorkCenterActivityService } from '../work-center-services/work-center-activity.service';
 import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -23,7 +23,7 @@ import {DocInfoComponent} from "@ss/logistics/ui-doc-info";
     standalone: true,
     imports: [
         MatTooltip, TranslatePipe,
-        MatMiniFabButton, MatIconButton,
+        MatMiniFabButton,
         MatTable, MatColumnDef,
         MatHeaderCell, MatCell,
         MatCellDef, MatHeaderCellDef,
@@ -36,13 +36,13 @@ export class WorkCenterActivityListComponent
     extends BaseChildEntityListComponent<WorkCenterActivity>
     implements OnInit
 {
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         'activityTypeId',
         'formulaFactor',
         'baseUnit',
         'priority',
         'isActive',
-    ];
+    ]);
 
     constructor(public override detailSrv: WorkCenterActivityService) {
         super(detailSrv, 'activitiesList');

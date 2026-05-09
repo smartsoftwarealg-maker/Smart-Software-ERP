@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -34,10 +34,10 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
     applicationsCtrl = new UntypedFormControl();
 
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'filename'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: ReportCatalogService,

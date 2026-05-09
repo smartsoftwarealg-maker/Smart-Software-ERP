@@ -36,7 +36,7 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
     agentId = signal(-1);
     agentFC = new FormControl<number>(this.agentId());
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'serialNumber',
         'salesDate',
         'productRef',
@@ -49,7 +49,7 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
         'isPrinted',
         'canceled',
         // 'is_desktop'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: ScheduleService,

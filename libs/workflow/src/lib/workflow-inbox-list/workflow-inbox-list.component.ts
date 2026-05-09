@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Inbox} from '../workflow-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -32,7 +32,7 @@ export class WorkflowInboxListComponent
     extends BaseEntityListComponent<Inbox>
     implements OnInit
 {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'document',
         'number',
         'date',
@@ -40,7 +40,7 @@ export class WorkflowInboxListComponent
         'sender',
         'time',
         'key',
-    ];
+    ]);
     constructor(
         public override entitySrv: WorkflowInboxService,
         public override shellSrv: ShellService,

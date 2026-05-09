@@ -32,22 +32,22 @@ export class LtmMatterTestListComponent implements OnInit {
     private matterSrv  = inject(LtmMatterService);
     private subscriptions: Subscription | null = null;
 
-    selected: LTMMatterTest = null;
-    data: LTMMatterTest[] = [];
+    selected = signal<LTMMatterTest|null>(null);
+    data = signal<LTMMatterTest[]>([]);
     pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
 
     readonly isEditable = this.matterSrv.editable;
     readonly searchText = new FormControl<string>('');
     selection = signal<number[]>([]);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'orderNo',
         'testDescription',
         'periodDescription',
         'minValue',
         'maxValue',
         'selection'
-    ];
+    ]);
 
     constructor(
         private entitySrv: LtmMatterTestService,
@@ -65,8 +65,8 @@ export class LtmMatterTestListComponent implements OnInit {
     }
 
     edit() {
-        if (this.selected?.id > 0) {
-            this.showDetail(this.selected?.id || 0);
+        if (this.selected()?.id > 0) {
+            this.showDetail(this.selected()?.id || 0);
         }
     }
 
@@ -80,17 +80,17 @@ export class LtmMatterTestListComponent implements OnInit {
                   switchMap(res => res.count > 0 ? this.entitySrv.getList(this.pagination.page - 1, this.pagination.pageSize) : of(null)))
             .subscribe(res => {
                 if (res && res.itemCount != null) {
-                    this.data = res.body;
+                    this.data.set(res.body);
                     this.pagination.elementCount = res.itemCount;
                     this.snackBarSrv.showSuccessMessage();
                     this.selection.set([]);
-                    this.selected = null;
+                    this.selected.set(null);
                 }
             });
     }
 
     select(matter: LTMMatterTest) {
-        this.selected = this.entitySrv.getParentId() > 0? matter : null;
+        this.selected.set(this.entitySrv.getParentId() > 0? matter : null);
     }
 
     ngOnInit(): void {
@@ -107,7 +107,7 @@ export class LtmMatterTestListComponent implements OnInit {
         this.entitySrv
             .getList(this.pagination.page - 1, this.pagination.pageSize, this.searchText.value || '')
             .subscribe(res => {
-                this.data = res.body;
+                this.data.set(res.body);
                 this.pagination.elementCount = res.itemCount;
             });
     }
@@ -126,7 +126,7 @@ export class LtmMatterTestListComponent implements OnInit {
     }
 
     addAll(event: MatCheckboxChange) {
-        this.selection.set(event.checked ? this.data.map(d => d.id) : []);
+        this.selection.set(event.checked ? this.data().map(d => d.id) : []);
     }
 
     isSelected(id: number) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
@@ -28,9 +28,9 @@ import { Observable, tap } from 'rxjs';
 })
 export class LtmNormTreeComponent extends BaseEntityListComponent<NormTree> implements OnInit {
 
-    displayedColumns = [
-        'matter',
-    ];
+    displayedColumns = signal<string[]>([
+        'matter'
+    ]);
 
     constructor(
         public override entitySrv: LtmNormTreeService,

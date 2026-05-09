@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatTableModule } from '@angular/material/table';
@@ -40,7 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./work-persons-list.component.css'],
 })
 export class WorkPersonsListComponent extends BaseChildEntityListComponent<WorkPerson> {
-    override displayedColumns = ['firstName', 'lastName', 'description', 'from', 'to'];
+    override displayedColumns = signal<string[]>(['firstName', 'lastName', 'description', 'from', 'to']);
 
     constructor(protected override detailSrv: CMMSWorkPersonService) {
         super(detailSrv, 'WorkPerson');

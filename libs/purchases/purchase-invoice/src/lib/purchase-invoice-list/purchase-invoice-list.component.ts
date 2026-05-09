@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -32,7 +32,7 @@ import {PurchaseInvoiceService} from "../purchase-invoice.service";
     ],
 })
 export class PurchaseInvoiceListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -41,7 +41,7 @@ export class PurchaseInvoiceListComponent extends BaseEntityListComponent<Transa
         'referenceDocDate',
         'dealer',
         'docStatus',
-    ];
+    ]);
 
     constructor(
         public inventorySrv: PurchaseInvoiceService,

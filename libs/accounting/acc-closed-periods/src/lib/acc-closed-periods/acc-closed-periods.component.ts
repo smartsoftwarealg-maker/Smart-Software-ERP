@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { HttpService, LanguageService } from '@ss/common/api-common';
@@ -51,7 +51,7 @@ export class AccClosedPeriodsComponent implements OnInit {
     public data: ClosedPeriod[];
     private selectedRow: ClosedPeriod;
 
-    public displayedColumns = ['period', 'closed'];
+    public displayedColumns = signal<string[]>(['period', 'closed']);
 
     ngOnInit() {
         this.shellSrv.setTitle('ACC_CLOSED_PERIODS');

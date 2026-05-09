@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
     Activity,
     Category,
@@ -42,7 +42,7 @@ import { CategoryDiscountService } from '../api/category-discount.service';
 })
 export class DiscountCategoryListComponent extends BaseEntityListComponent<Category> {
     #discountSrv = inject(CategoryDiscountService);
-    displayedColumns = ['description'];
+    displayedColumns = signal<string[]>(['description']);
 
     constructor(
         public listSrv: SalesCategoryService,

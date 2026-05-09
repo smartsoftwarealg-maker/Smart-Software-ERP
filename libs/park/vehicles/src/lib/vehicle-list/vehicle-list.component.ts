@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -33,12 +33,12 @@ import {TranslateDirective} from "@ss/common/ui-lang";
     styleUrls: ['./vehicle-list.component.css']
 })
 export class VehicleListComponent extends BaseEntityListComponent<Vehicle> {
-    public displayedColumns = [
+    public displayedColumns = signal<string[]>([
         'description',
         'plateNumber',
         'typeDescription',
         'acquisitionDate'
-    ];
+    ]);
 
     constructor(
         public driverSrv: VehicleService,

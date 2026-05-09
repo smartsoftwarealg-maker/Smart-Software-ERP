@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {Mission} from '../missions-api.class';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MissionsService} from '../missions.service';
@@ -19,7 +19,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class MissionPreparationListComponent extends BaseEntityListComponent<Mission> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'number',
         'lastName',
         'firstName',
@@ -28,7 +28,7 @@ export class MissionPreparationListComponent extends BaseEntityListComponent<Mis
         'duration',
         'departure',
         'returnback'
-    ];
+    ]);
 
     constructor(
         public missionSrv: MissionsService,

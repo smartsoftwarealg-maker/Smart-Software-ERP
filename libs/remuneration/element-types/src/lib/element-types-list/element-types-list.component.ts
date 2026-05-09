@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -30,11 +30,11 @@ import { Observable, tap } from 'rxjs';
 ]
 })
 export class ElementTypesListComponent extends BaseEntityListComponent<ElementType>  {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'field',
         'fieldName'
-    ];
+    ]);
     constructor(
         public infoSrv: ElementTypesService,
         public override shellSrv: ShellService,

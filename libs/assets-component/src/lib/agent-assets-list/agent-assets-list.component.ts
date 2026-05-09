@@ -23,8 +23,8 @@ export class AgentAssetsListComponent implements OnInit {
     agentId = 0;
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);
-    data: Asset[] = [];
-    displayedColumns = [
+    data = signal<Asset[]>([]);
+    displayedColumns = signal<string[]>([
             'reference',
             'description',
             'accountno',
@@ -34,7 +34,7 @@ export class AgentAssetsListComponent implements OnInit {
             'depreciationRate',
             'useful_life',
             'residualValue',
-        ];
+        ]);
 
     constructor(private shellSrv: ShellService,
                 private snackBarSrv: SnackBarService,
@@ -58,7 +58,7 @@ export class AgentAssetsListComponent implements OnInit {
     private refresh() {
         this.assetSrv
             .getAgentAssets(this.agentId)
-            .subscribe(res => this.data = res);
+            .subscribe(res => this.data.set(res));
     }
 
     sort(event: Sort) {

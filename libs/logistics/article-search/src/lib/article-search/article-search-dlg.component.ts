@@ -44,7 +44,7 @@ export class ArticleSearchDlg implements OnInit {
         mark:      [0],
         stock:     [1],
     });
-    displayedColumns = ['reference', 'description', 'storeName', 'lotNumber', 'expirationDate', 'stock', 'markDescription'];
+    displayedColumns = signal<string[]>(['reference', 'description', 'storeName', 'lotNumber', 'expirationDate', 'stock', 'markDescription']);
     pagination = PaginationModel.newInstance({page: 0, pageSize: 5, elementCount: 0});
     data =  signal<Location[]>([]);
 
@@ -55,7 +55,7 @@ export class ArticleSearchDlg implements OnInit {
             .get(this.#loginSrv.appCtx.center)
             .subscribe(res => {
                 this.usesLots.set(res.usesLots||false);
-                this.displayedColumns = this.displayedColumns.filter(e => res.usesLots || (e !== 'storeName' && e !== 'expirationDate'));
+                this.displayedColumns.set(this.displayedColumns().filter(e => res.usesLots || (e !== 'storeName' && e !== 'expirationDate')));
             });
         this.form
             .valueChanges

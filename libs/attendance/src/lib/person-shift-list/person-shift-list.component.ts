@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PersonShift} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -55,12 +55,12 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
     employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
     serviceLookup  = new DefaultAutoCompleteModel(this.serviceSrv);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'firstName',
         'lastName',
         'shiftDescription',
         'date',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: PersonShiftService,
@@ -94,7 +94,7 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
 
     private refreshByService() {
         this.releaseResources();
-        this.data = [];
+        this.data.set([]);
         this.shellSrv.setLoading(this.canShowProcessingStatus());
         this.select(0);
         this.entitySrv
@@ -102,13 +102,13 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
             .subscribe({
                     next:
                         data => {
-                            this.data = data.body;
+                            this.data.set(data.body);
                             this.pagination.elementCount = data.itemCount;
                             this.shellSrv.setLoading(false); // stop the animation
                         },
                     error:
                         err => {
-                            this.data = []; // clear everything;
+                            this.data.set([]); // clear everything;
                             this.shellSrv.setLoading(false); // stop the animation
                             throw err;
                         }

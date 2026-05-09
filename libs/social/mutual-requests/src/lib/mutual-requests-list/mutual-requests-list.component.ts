@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { MutualRequest, MutualRequestService } from '@social/social-api';
@@ -46,11 +46,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './mutual-requests-list.component.html'
 })
 export class MutualRequestsListComponent extends BaseEntityListComponent<MutualRequest> {
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'date',
         'serialNumber',
         'description',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: MutualRequestService,

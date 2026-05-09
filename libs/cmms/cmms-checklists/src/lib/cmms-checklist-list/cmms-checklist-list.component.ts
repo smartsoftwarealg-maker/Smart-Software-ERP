@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -24,7 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./cmms-checklist-list.component.css'],
 })
 export class CmmsChecklistListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = ['description', 'descriptionAr'];
+    displayedColumns = signal(['description', 'descriptionAr']);
     constructor(
       public override entitySrv: CmmsChecklistService,
       public override shellSrv: ShellService,

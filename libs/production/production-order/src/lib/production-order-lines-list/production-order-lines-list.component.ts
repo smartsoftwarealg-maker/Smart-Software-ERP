@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -68,7 +68,7 @@ export class ProductionOrderLinesListComponent
     implements OnInit
 {
     #optionSrv = inject(OptionService);
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',
@@ -79,7 +79,7 @@ export class ProductionOrderLinesListComponent
         'storeName',
         // 'price',
         // 'total',
-    ];
+    ]);
 
     constructor(
         public override detailSrv: ProductionOrderLinesService,
@@ -138,9 +138,9 @@ export class ProductionOrderLinesListComponent
 
         this.#optionSrv.get(this.loginSrv.appCtx.center).subscribe((res) => {
             this.usesUnits.set(res.usesUnits);
-            this.displayedColumns = this.displayedColumns.filter(
+            this.displayedColumns.update(cols => cols.filter(
                 (e) => res.usesUnits || e !== 'units',
-            );
+            ));
         });
     }
 }

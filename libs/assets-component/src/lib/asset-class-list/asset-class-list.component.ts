@@ -1,4 +1,4 @@
-import {  Component} from '@angular/core';
+import {  Component, signal} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AssetClass} from '../assets-api';
 import {AssetClassService} from '../services/asset-class.service';
@@ -25,11 +25,11 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ]})
 export class AssetClassListComponent extends BaseEntityListComponent<AssetClass> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'depreciationRate',
         'usefulLife'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: AssetClassService,

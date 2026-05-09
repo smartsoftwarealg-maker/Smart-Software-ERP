@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MutualRequestLine, MutualRequestLineService } from '@social/social-api';
@@ -42,13 +42,13 @@ import { MaterialModule } from '@ss/common/api-common';
     styleUrl: './mutual-requests-line-list.component.scss',
 })
 export class MutualRequestsLineListComponent extends BaseChildEntityListComponent<MutualRequestLine> {
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         'firstName',
         'lastName',
         'mutualNo',
         'folderCount',
         'rejectionDescription'
-    ];
+    ]);
 
     constructor(protected override detailSrv: MutualRequestLineService) {
         super(detailSrv, 'MutualRequestLine');

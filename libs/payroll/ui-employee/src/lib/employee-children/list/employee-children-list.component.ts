@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { EmployeeChildrenService, Child } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { AsyncPipe } from '@angular/common';
@@ -19,12 +19,12 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     imports: [MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe]
 })
 export class EmployeeChildrenListComponent extends BaseChildEntityListComponent<Child> {
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         'name',
         'birthDate',
         'birthPlace',
         'sex'
-    ];
+    ]);
 
     activePersonnelSrv = inject(ActivePersonnelService);
 

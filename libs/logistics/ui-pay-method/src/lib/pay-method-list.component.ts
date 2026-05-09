@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, signal } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -10,8 +10,8 @@ import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {Observable, switchMap, tap} from 'rxjs';
 import {PaginatorPersistenceService} from '@ss/common/api-common';
 import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
-import { TranslateDirective } from "../../../../common/ui-lang/src/lib/translate.directive";
-import { PaginationComponent } from "../../../../common/ui-pagination/src/lib/pagination.component";
+import { TranslateDirective } from "@ss/common/ui-lang";
+import { PaginationComponent } from "@ss/common/ui-pagination";
 
 @Component({
     selector: 'ss-account-list',
@@ -25,10 +25,10 @@ export class PayMethodListComponent extends BaseEntityListComponent<PayMethod> {
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMode>(this.payModeSrv);
 
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'mode',
-    ];
+    ]);
 
     constructor(
         public payMethodSrv: PayMethodService,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal} from '@angular/core';
 import { EmployeeOldCareerService, OldCareer } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { AsyncPipe, DatePipe } from '@angular/common';
@@ -23,13 +23,13 @@ export class EmployeeOldCareerListComponent extends BaseChildEntityListComponent
     activePersonnel = true;
     editable = true;
 
-    public override displayedColumns = [
+    public override displayedColumns = signal<string[]>([
         'post',
         'rate',
         //        'ctype',
         'from_date',
         'to_date',
-    ];
+    ]);
 
     activePersonnelSrv = inject(ActivePersonnelService);
 

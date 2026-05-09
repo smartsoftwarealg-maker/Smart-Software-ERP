@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -33,9 +33,9 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class FurnitureReceiverListComponent extends BaseEntityListComponent<FurnitureReceiver> {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
-    ];
+    ]);
 
     constructor(
         public override entitySrv: FurnitureReceiverService,

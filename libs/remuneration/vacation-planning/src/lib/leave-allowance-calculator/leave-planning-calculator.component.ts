@@ -103,7 +103,7 @@ export class LeavePlanningCalculatorComponent {
 
     selectedId = 0;
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'employee',
         'name',
         'post',
@@ -117,7 +117,7 @@ export class LeavePlanningCalculatorComponent {
         'days',
         'toTake',
         'selection',
-    ];
+    ]);
 
     get daysFA() {
         return this.daysForm.get('list') as FormArray;

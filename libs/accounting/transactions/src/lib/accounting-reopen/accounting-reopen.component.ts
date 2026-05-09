@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PeriodSelectorService, PeriodSummary, ReopenInfo} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -56,7 +56,7 @@ export class AccountingReopenComponent extends BaseEntityListComponent<PeriodSum
         Validators.required,
         Validators.maxLength(50),
     ]);
-    displayedColumns = ['month', 'debit', 'credit'];
+    displayedColumns = signal<string[]>(['month', 'debit', 'credit']);
     constructor(
         public override entitySrv: PeriodSelectorService,
         public override shellSrv: ShellService,

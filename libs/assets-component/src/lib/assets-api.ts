@@ -29,7 +29,7 @@ export const UNIDENTIFIED_INVENTORY_URL = '/unidentified-inventory';
 
 export interface Asset {
     id: number;
-    parent_id?: number;
+    parentId?: number;
     reference: string;
     reference2?: string;
     centerId: number;

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, signal} from '@angular/core';
 import {TransactionLineService, TTransactionLine} from '@ss/treasury/api-transactions';
 import {ActivatedRoute, Router} from '@angular/router';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
@@ -52,16 +52,16 @@ export class TransactionLineListComponent implements OnInit, OnDestroy {
     searchText = new FormControl<string>('');
     parentId = 0;
     id = 0;
-    data: TTransactionLine[] = [];
+    data = signal<TTransactionLine[]>([]);
     paginator = PaginationModel.newInstance();
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'invoiceNo',
         'description',
         'income',
         'expenses',
         // 'vat',
         'invoiceDate'
-    ];
+    ]);
 
     constructor(private entitySrv: TransactionLineService,
                 private snackBarSrv: SnackBarService,
@@ -80,7 +80,7 @@ export class TransactionLineListComponent implements OnInit, OnDestroy {
                 return this.entitySrv.getList(this.paginator.page - 1, this.paginator.pageSize, this.searchText.value);
             }))
             .subscribe(res => {
-                this.data = res.body;
+                this.data.set(res.body);
                 this.paginator.elementCount = res.itemCount;
             });
 
@@ -91,7 +91,7 @@ export class TransactionLineListComponent implements OnInit, OnDestroy {
                 distinctUntilChanged()
             ).pipe(switchMap(_ => this.entitySrv.getList(this.paginator.page - 1, this.paginator.pageSize, this.searchText.value)))
             .subscribe(res => {
-                this.data = res.body;
+                this.data.set(res.body);
                 this.paginator.elementCount = res.itemCount;
             });
     }
@@ -136,7 +136,7 @@ export class TransactionLineListComponent implements OnInit, OnDestroy {
         this.entitySrv
             .getList(this.paginator.page - 1, this.paginator.pageSize, this.searchText.value)
             .subscribe(res => {
-                this.data = res.body;
+                this.data.set(res.body);
                 this.paginator.elementCount = res.itemCount;
             });
     }

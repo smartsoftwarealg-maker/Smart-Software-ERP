@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Project} from '../contract-api.class';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -41,7 +41,7 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
     private agentSrv = inject(CustomerService);
     agentId     = new FormControl<number>(0);
     agentLookup = new DefaultAutoCompleteModel(this.agentSrv, 'id', 'denomination');
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'contractNo',
         'projDate',
         'description',
@@ -49,7 +49,7 @@ export class SalesContractListComponent extends BaseEntityListComponent<Project>
         'fromDate',
         'toDate',
         'wilaya'
-    ];
+    ]);
     constructor(
         public override entitySrv: SalesContractService,
         public override shellSrv: ShellService,

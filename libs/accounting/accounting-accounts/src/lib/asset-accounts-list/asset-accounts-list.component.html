@@ -1,56 +1,58 @@
-<div class="container">
-    <div class="container_div">
-        <mat-table mat-table [dataSource]="data" class="content-div">
+@defer (when loading() == false) {
+    <div class="container">
+        <div class="container_div">
+            <mat-table mat-table [dataSource]="data()" class="content-div">
 
-            <ng-container matColumnDef="accountNo">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.accountNo}}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="accountNo">
+                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.accountNo }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.description}}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_DESCRIPTION</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.description }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="depreciationAccount">
-                <mat-header-cell *matHeaderCellDef translate>ACC_DEPRECIATION_ACCOUNT</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.depreciationAccount}}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="depreciationAccount">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_DEPRECIATION_ACCOUNT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.depreciationAccount }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="endowmentAccount">
-                <mat-header-cell *matHeaderCellDef translate>ACC_ENDOWMENT_ACCOUNT</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.endowmentAccount}}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="endowmentAccount">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_ENDOWMENT_ACCOUNT</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.endowmentAccount }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="depreciationRate">
-                <mat-header-cell *matHeaderCellDef translate>ACC_DEPRECIATION_RATE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.depreciationRate | number: '1.2-2'}}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="depreciationRate">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_DEPRECIATION_RATE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.depreciationRate | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
-            <ng-container matColumnDef="usefulLife">
-                <mat-header-cell *matHeaderCellDef translate>ACC_USEFUL_LIFE</mat-header-cell>
-                <mat-cell *matCellDef="let e">
-                    {{e.usefulLife | number: '1.2-2'}}
-                </mat-cell>
-            </ng-container>
+                <ng-container matColumnDef="usefulLife">
+                    <mat-header-cell *matHeaderCellDef translate>ACC_USEFUL_LIFE</mat-header-cell>
+                    <mat-cell *matCellDef="let e">
+                        {{ e.usefulLife | number: '1.2-2' }}
+                    </mat-cell>
+                </ng-container>
 
 
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"
-                     *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
+                <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
+                <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"
+                         *matRowDef="let row; columns: displayedColumns();"></mat-row>
+            </mat-table>
+        </div>
+        <div class="pagination-container b-b-background">
+            <ss-pagination [paginationModel]="pagination"></ss-pagination>
+        </div>
     </div>
-    <div class="pagination-container b-b-background">
-        <ss-pagination [paginationModel]="pagination"></ss-pagination>
-    </div>
-</div>
+}

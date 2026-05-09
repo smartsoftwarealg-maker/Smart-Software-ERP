@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -23,12 +23,12 @@ import { LookupDescriptionPipe } from '@ss/common/api-lookup';
 })
 export class JournalListComponent extends BaseEntityListComponent<Journal> implements OnInit {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'jType',
         'bankId',
         'bankAccount'
-    ];
+    ]);
 
     constructor(
         public journalSrv: JournalService,

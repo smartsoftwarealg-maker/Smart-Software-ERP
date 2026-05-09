@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -29,14 +29,14 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'reference',
         'description2',
         'classDescription',
         'typeDescription',
         'price',
         'vatValue',
-    ];
+    ]);
 
     constructor(
         public articleSrv: SSArticleService,

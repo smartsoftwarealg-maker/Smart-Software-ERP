@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./asset-pm-list.component.css'],
 })
 export class AssetPmListComponent extends BaseChildEntityListComponent<PM>{
-    override displayedColumns = [
+    override displayedColumns = signal<string[]>([
         // 'reference',
         'description',
         // 'assetDescription',
@@ -28,7 +28,7 @@ export class AssetPmListComponent extends BaseChildEntityListComponent<PM>{
         'lastReleased',
         'nextDue',
         'daysAhead'
-    ];
+    ]);
 
     constructor(protected override detailSrv: AssetPmService) {
         super(detailSrv, 'PM');

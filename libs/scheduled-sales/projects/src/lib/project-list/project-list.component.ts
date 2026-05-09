@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {SSProject} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -31,13 +31,13 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class ProjectListComponent extends BaseEntityListComponent<SSProject> {
     private customerSrv = inject(CustomerService);
 
-    displayedColumns = [
+    displayedColumns = signal<string[]>([
         'description',
         'project_code',
         'start_date',
         'finish_date',
         'qty'
-    ];
+    ]);
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination')
     agentFC = new FormControl<number>(0);
 
