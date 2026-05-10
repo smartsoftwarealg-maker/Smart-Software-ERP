@@ -52,7 +52,7 @@ export class BalanceQueriesComponent implements OnInit {
     selectedGLIDs = signal<number[]>([]);
     selectionTotal = computed(() => {
         const selection = this.selectedGLIDs();
-        return this.glData
+        return this.glData()
             .filter(d => selection.indexOf(d.oId) >= 0)
             .reduce((a, d) => ({debit: a.debit + d.debit, credit: a.credit + d.credit}), {debit: 0.0, credit: 0});
     });
@@ -97,9 +97,9 @@ export class BalanceQueriesComponent implements OnInit {
         'credit'
     ];
 
-    balanceData: Balance[] = [];
-    glData: GL[] = [];
-    detailData: ACCTransactionLine[] = [];
+    balanceData = signal<Balance[]>([]);
+    glData = signal<GL[]>([]);
+    detailData = signal<ACCTransactionLine[]>([]);
 
     constructor() {
         this.balancePaginator.onChange = () => this.refreshBalance();
@@ -138,17 +138,17 @@ export class BalanceQueriesComponent implements OnInit {
         this.querySrv
             .getList(this.balancePaginator.page - 1, this.balancePaginator.pageSize, null, null, this.getParams())
             .subscribe(res => {
-                this.balanceData = res.body;
+                this.balanceData.set(res.body);
                 this.balancePaginator.elementCount = res.itemCount;
             });
     }
 
     private refreshGL() {
-        this.detailData = [];
+        this.detailData.set([]);
         this.querySrv
             .getGL(this.glPaginator, this.getParams())
             .subscribe(res => {
-                this.glData = res.body;
+                this.glData.set(res.body);
                 this.glPaginator.elementCount = res.itemCount;
             });
     }
@@ -172,7 +172,7 @@ export class BalanceQueriesComponent implements OnInit {
     private refreshDetail() {
         this.detailSrv
             .getPage(this.detailPaginator, null, null)
-            .subscribe(res => this.detailData = res);
+            .subscribe(res => this.detailData.set(res));
     }
 
     sortBalance(event: Sort) {

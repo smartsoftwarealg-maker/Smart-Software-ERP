@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -23,23 +23,24 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ArchiveGeneratorComponent implements OnInit {
     private TITLE = 'REMUN_ARCHIVE_GENERATOR';
+    private selectorSrv =  inject(PayrollMonthService);
+    private formBuilder =  inject(UntypedFormBuilder);
+    private shellSrv =  inject(ShellService);
+    private route =  inject(ActivatedRoute);
+    private router =  inject(Router);
+    private activatedRoute = inject(ActivatedRoute);
+    private confirmationSrv =  inject(ConfirmationDialogService);
+    private snackBarSrv =  inject(SnackBarService);
+    private langSrv =  inject(LanguageService);
+    private generatorSrv =  inject(ArchiveGeneratorService);
 
     form: UntypedFormGroup = null;
-    processing = false;
+    processing = signal(false);
+    loading = signal(true);
 
-    constructor(private selectorSrv: PayrollMonthService,
-                private formBuilder: UntypedFormBuilder,
-                private shellSrv: ShellService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private activatedRoute: ActivatedRoute,
-                private confirmationSrv: ConfirmationDialogService,
-                private snackBarSrv: SnackBarService,
-                private langSrv: LanguageService,
-                private generatorSrv: ArchiveGeneratorService) {
-    }
 
     ngOnInit(): void {
+        this.loading.set(true);
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setTitle(this.langSrv.translate(this.TITLE));
         this.selectorSrv
@@ -50,6 +51,7 @@ export class ArchiveGeneratorComponent implements OnInit {
                         year: [+(res.month / 100).toFixed(0), Validators.required],
                         month: [+(res.month % 100).toFixed(0), Validators.required],
                     });
+                this.loading.set(false);
             });
     }
 
@@ -58,26 +60,29 @@ export class ArchiveGeneratorComponent implements OnInit {
     }
 
     generate() {
-        this.processing = true;
+        this.processing.set(true);
         const period = this.form.value.year * 100 + this.form.value.month;
         this.generatorSrv
             .generate(period)
             .subscribe({
                 next: res => {
-                    this.processing = false;
+                    this.processing .set(false);
                     this.snackBarSrv.showSuccessMessage();
+                    this.loading.set(false);
+                    this.processing.set(false);
                 },
                 error: err => {
-                    this.processing = false;
+                    this.processing.set(false);
+                    this.loading.set(false);
                     throw err;
                 }
             });
     }
 
     public canDeactivate(): boolean {
-        if (this.processing) {
+        if (this.processing()) {
             window.confirm(this.langSrv.translate('COMMON_BUSY'));
         }
-        return !this.processing;
+        return !this.processing();
     }
 }

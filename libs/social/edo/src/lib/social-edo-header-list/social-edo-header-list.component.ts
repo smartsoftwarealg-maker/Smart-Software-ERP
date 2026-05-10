@@ -71,7 +71,7 @@ export class SocialEdoHeaderListComponent extends BaseEntityListComponent<EDOHea
 
     override select(id: number) {
         super.select(id);
-        this.edoButton.disabled = !this.selected;
+        this.edoButton.disabled = !this.selectedId();
     }
 }
 

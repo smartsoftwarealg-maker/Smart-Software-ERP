@@ -43,7 +43,7 @@ export class ReportPrivilegesComponent implements OnInit, OnDestroy {
         'manager'
     ]);
     data$: Observable<RPrivilege[]> = null;
-    selectedRow: RPrivilege = null;
+    selectedRow = signal<RPrivilege|null>(null);
 
     ngOnInit() {
         this.shellSrv.setGoBackPath('..', this.route);
@@ -72,14 +72,14 @@ export class ReportPrivilegesComponent implements OnInit, OnDestroy {
     }
 
     selectRow(row: RPrivilege) {
-        this.selectedRow = row;
+        this.selectedRow.set(row);
     }
 
     updateAdmin(item: RPrivilege, e: boolean) {
-        this.selectedRow = item;
-        this.selectedRow.manager = e;
+        this.selectedRow.set(item);
+        this.selectedRow().manager = e;
         this.entitySrv
-            .updatePrivilege(this.selectedRow)
+            .updatePrivilege(this.selectedRow())
             .subscribe(res => {
                 if (res.count > 0) {
                     this.snackBarSrv.showSuccessMessage();

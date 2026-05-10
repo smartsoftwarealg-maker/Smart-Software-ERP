@@ -7,7 +7,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import {PayrollAmendmentService} from '../payroll-amendment.service';
-import {of, switchMap, tap} from 'rxjs';
+import {Observable, of, switchMap, tap} from 'rxjs';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import { CommonModule } from '@angular/common';
 
@@ -69,7 +69,7 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
         'new_value',
         'percentage'
     ]);
-    comparisonData: Comparison[] = [];
+    comparisonData = signal<Comparison[]>([]);
     comparisonDisplayedColumns = signal<string[]>([
         'paymonth',
         'description',
@@ -99,18 +99,30 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
     }
 
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.addButton(this.deleteAllButton);
-        this.shellSrv.addButton(this.generateButton);
-        this.monthSelectorSrv
+    protected override preInit():Observable<unknown> {
+        return this.monthSelectorSrv
             .isUpdatableMonth()
-            .subscribe(upd => {
-                this.editButton.visible = upd;
-                this.deleteButton.visible = upd;
-                this.addButton.visible = upd;
-            });
+            .pipe(tap(upd => {
+                    this.shellSrv.addButton(this.deleteAllButton);
+                    this.shellSrv.addButton(this.generateButton);
+                    this.editButton.visible = upd;
+                    this.deleteButton.visible = upd;
+                    this.addButton.visible = upd;
+            }),
+                switchMap(() => super.preInit()));
     }
+    // override ngOnInit() {
+    //     super.ngOnInit();
+    //     this.shellSrv.addButton(this.deleteAllButton);
+    //     this.shellSrv.addButton(this.generateButton);
+    //     this.monthSelectorSrv
+    //         .isUpdatableMonth()
+    //         .subscribe(upd => {
+    //             this.editButton.visible = upd;
+    //             this.deleteButton.visible = upd;
+    //             this.addButton.visible = upd;
+    //         });
+    // }
 
     override refresh(callback?: () => void) {
         super.refresh(() => {
@@ -124,6 +136,15 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
         if (row) {
             this.comparison();
         }
+        this.loading.set(true);
+        const obs = row?
+            this.amendSrv
+                .comprison(this.selectedId())
+                .pipe(tap(res => this.comparisonData.set(res))):
+            of(null);
+        obs.pipe(tap(() => this.comparisonButton.disabled = row == null || !row.id))
+            .subscribe(() => this.loading.set(false));
+
         this.comparisonButton.disabled = row == null || !row.id;
     }
 
@@ -150,8 +171,8 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
 
     comparison() {
         this.amendSrv
-            .comprison(this.selected)
-            .subscribe(res => this.comparisonData = res);
+            .comprison(this.selectedId())
+            .subscribe(res => this.comparisonData.set(res));
     }
     generate() {
         this.confirmationSrv

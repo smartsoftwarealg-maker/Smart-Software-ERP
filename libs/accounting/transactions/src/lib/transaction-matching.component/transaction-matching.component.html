@@ -12,7 +12,7 @@
 
 </div>
 <div class="div__table size">
-    <mat-table mat-table [dataSource]="debits" class="main-table" matSort (matSortChange)="sortDebit($event)">
+    <mat-table mat-table [dataSource]="debits()" class="main-table" matSort (matSortChange)="sortDebit($event)">
 
         <ng-container matColumnDef="customerCode">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CUSTOMER_CODE</mat-header-cell>
@@ -81,7 +81,7 @@
 <ss-pagination class="size b-b-background" [paginationModel]="debitPaginator"></ss-pagination>
 
 <div class="div__table size">
-    <mat-table mat-table [dataSource]="credits" class="main-table" matSort (matSortChange)="sortCredit($event)">
+    <mat-table mat-table [dataSource]="credits()" class="main-table" matSort (matSortChange)="sortCredit($event)">
 
         <ng-container matColumnDef="customerCode">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_CUSTOMER_CODE</mat-header-cell>
@@ -144,9 +144,9 @@
             </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="creditColumns; sticky: true"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="creditColumns(); sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id === selectedCredit()?.id && row.lineNumber === selectedDebit()?.lineNumber" (click)="selectCredit(row)"
-                 *matRowDef="let row; columns: creditColumns;">
+                 *matRowDef="let row; columns: creditColumns();">
         </mat-row>
     </mat-table>
 </div>

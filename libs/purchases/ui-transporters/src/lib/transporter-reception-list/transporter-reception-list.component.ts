@@ -46,7 +46,7 @@ export class TransporterReceptionListComponent extends BaseEntityListComponent<T
     private agentSrv = inject(AgentService);
 
     constructor(
-        public inventorySrv: ReceptionService,
+        public entitySrv: ReceptionService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -56,7 +56,7 @@ export class TransporterReceptionListComponent extends BaseEntityListComponent<T
         public override pagPersistSrv: PaginatorPersistenceService,
     ) {
         super(
-            inventorySrv,
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -83,7 +83,7 @@ export class TransporterReceptionListComponent extends BaseEntityListComponent<T
     }
 
     override select(id: number): void {
-        this.selected = id;
+        this.entitySrv.setParentId(id);
         if (id) {
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }

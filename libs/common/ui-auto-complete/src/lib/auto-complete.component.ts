@@ -157,6 +157,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     selected: Id;
     loading = signal(false);
     isInputInvalid = computed(() => !this.loading() && !!this.autoControl.value && this.selected == null);
+    hasNoMatch = computed(() => !this.loading() && this.model.options && this.model.options.length == 0)
 
     counter = 0; // identifies the query, used to order queries and discard delayed result if they expire
 
@@ -396,9 +397,9 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         this.setAutoControlValue(null);
     }
 
-    hasNoMatch(): boolean {
-        return !this.loading() && this.model.options && this.model.options.length == 0;
-    }
+    // hasNoMatch(): boolean {
+    //     return !this.loading() && this.model.options && this.model.options.length == 0;
+    // }
 
     addCurrentText() {
         this.model.addEntry(this.autoControl.value.toString()).subscribe(numb => {

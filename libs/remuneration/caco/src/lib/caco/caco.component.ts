@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,6 +35,7 @@ export class CacoComponent implements OnInit {
     absences: Formula[] = [];
     bases: Formula[] = [];
     edoText: string = '';
+    loading = signal(true);
     modes: Lookup[] = [{ id: 1, description: 'REMUN_EMPLOYER'},
                        { id: 2, description: 'PAYROLL_EMPLOYEE'}];
 
@@ -63,7 +64,8 @@ export class CacoComponent implements OnInit {
                                                         e.description.toLowerCase().indexOf('abs') >= 0)
                 this.bases = res[1].body.filter(e => e.description != null &&
                                                (e.description.toLowerCase().indexOf('base') >= 0 ||
-                                                e.variable == 'a998'))
+                                                e.variable == 'a998'));
+                this.loading.set(false);
                 });
     }
 

@@ -1,4 +1,4 @@
-import {Component, OnInit, input} from '@angular/core';
+import {Component, OnInit, input, signal} from '@angular/core';
 import {ExcelInjectionService} from './excel-injection.service';
 import {finalize, Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
@@ -20,13 +20,13 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [TranslateDirective, MatMiniFabButton, MatCheckbox, MatButton, MatProgressBar, TranslatePipe]
 })
 export class ExcelInjectionComponent implements OnInit {
-    updatable = false;
+    updatable = signal(false);
 
     readonly requiredFileType = input('.xlsx');
-    processing = false;
+    processing = signal(false);
 
     fileName = '';
-    uploadProgress = 0;
+    uploadProgress = signal(0);
     uploadSub: Subscription;
     queryList = '';
 
@@ -40,9 +40,13 @@ export class ExcelInjectionComponent implements OnInit {
 
     ngOnInit(): void {
         this.shellSrv.setTitle('REMUN_EXCEL_INJECTION');
+        this.processing.set(true);
         this.monthSelectorSrv
             .isUpdatableMonth()
-            .subscribe(upd => this.updatable = upd);
+            .subscribe(upd => {
+                this.updatable.set(upd);
+                this.processing.set(false);
+            });
         this.shellSrv.setGoBackPathByRelativeUrl('..');
     }
 
@@ -58,23 +62,23 @@ export class ExcelInjectionComponent implements OnInit {
             formData.append('file', file);
             formData.append('consolidated', consolidated + '');
 
-            this.processing = true;
+            this.processing.set(true);
             this.uploadSub = this.injectSrv
                 .upload(formData)
                 .pipe(finalize(() => {
                     this.reset();
-                    this.processing = false;
+                    this.processing.set(false);
                 }))
                 .subscribe({
                     next: (res: any) => {
                         if (res.type == HttpEventType.UploadProgress) {
-                            this.uploadProgress = Math.round(100 * (res.loaded / res.total));
+                            this.uploadProgress.set(Math.round(100 * (res.loaded / res.total)));
                         } else if (res.type == HttpEventType.Response) {
                             const ret = res.body;
                             if (ret['list']) {
                                 this.snackBarSrv.showSuccessMessage();
                                 this.queryList = ret['list'].join('\n');
-                                this.processing = false;
+                                this.processing.set(false);
                             }
                         }
                     },
@@ -92,7 +96,7 @@ export class ExcelInjectionComponent implements OnInit {
     }
 
     reset() {
-        this.uploadProgress = null;
+        this.uploadProgress.set(0);
         this.uploadSub = null;
     }
 

@@ -87,6 +87,8 @@ export class AccountingGenerationComponent implements OnInit {
         ['transferOutJr', 9],
     ]);
 
+    loading = signal(true);
+
     private documentMap = new Map([
         [1, { code: 514, description: 'purchase', stock: false }],
         [2, { code: 514, description: 'inventory', stock: true }],
@@ -121,21 +123,21 @@ export class AccountingGenerationComponent implements OnInit {
     form: UntypedFormGroup | null = null;
     journalLookup = new ActiveJournalLookup(this.journalSrv, this.loginSrv);
     processing = signal(false);
-    data: TDocument[] = [];
-    payrollData: PAYRow[] = [];
-    checkData: Check[] = [];
-    cashData: Check[] = [];
+    data = signal<TDocument[]>([]);
+    payrollData = signal<PAYRow[]>([]);
+    checkData = signal<Check[]>([]);
+    cashData = signal<Check[]>([]);
     displayedColumns = signal<string[]>(['description', 'number', 'date', 'center']);
-    payrollColumns = [
+    payrollColumns = signal<string[]>([
         'account',
         'description',
         'employee',
         'cCenter',
         'debit',
         'credit',
-    ];
-    bankColumns = ['number', 'date', 'bank'];
-    cashColumns = ['number', 'date', 'debit', 'credit'];
+    ]);
+    bankColumns = signal(['number', 'date', 'bank']);
+    cashColumns = signal(['number', 'date', 'debit', 'credit']);
 
     includePurchase = new FormControl(false);
     includeInventory = new FormControl(false);
@@ -201,10 +203,11 @@ export class AccountingGenerationComponent implements OnInit {
                     .subscribe((val: number | null) => {
                         if (val) {
                             this.showDocuments(this.journalMap.get(journal));
+                            this.canGenerate.set(this.validateJournals(journals));
                         }
-                        this.canGenerate.set(this.validateJournals(journals));
                     }),
             );
+            this.loading.set(false);
         });
         this.loadJournals();
     }
@@ -273,6 +276,7 @@ export class AccountingGenerationComponent implements OnInit {
                     this.shellSrv.setLoading(false);
                     this.processing.set(false);
                     this.processingDocument.set(0);
+                    this.loading.set(false);
                     throw err;
                 },
             });
@@ -345,12 +349,14 @@ export class AccountingGenerationComponent implements OnInit {
                             .subscribe(() => {
                                 this.shellSrv.setLoading(false);
                                 this.processingDocument.set(0);
+                                this.loading.set(false);
                             });
                     }
                 },
                 error: (err) => {
                     this.shellSrv.setLoading(false);
                     this.processingDocument.set(0);
+                    this.loading.set(false);
                     throw err;
                 },
             });
@@ -372,7 +378,7 @@ export class AccountingGenerationComponent implements OnInit {
             )
             .subscribe({
                 next: (res) => {
-                    this.data = res.body;
+                    this.data.set(res.body);
                     this.pagination.elementCount = res.itemCount;
                     this.processing.set(false);
                     if (this.totalsMap.get(key)) {
@@ -380,6 +386,7 @@ export class AccountingGenerationComponent implements OnInit {
                         this.form?.controls[totalKey].setValue(res.itemCount);
                     }
                     this.shellSrv.setLoading(false);
+                    this.loading.set(false);
                 },
                 error: (err) => {
                     this.processing.set(false);
@@ -394,8 +401,8 @@ export class AccountingGenerationComponent implements OnInit {
             next: (res) => {
                 this.processing.set(false);
 
-                this.payrollData = res;
-                this.payrollData.forEach((e) => {
+                this.payrollData.set(res);
+                this.payrollData().forEach((e) => {
                     e.debit = Math.max(e.amount, 0) || 0;
                     e.credit = Math.max(-e.amount, 0) || 0;
                 });
@@ -409,12 +416,13 @@ export class AccountingGenerationComponent implements OnInit {
                     const credit = res
                         .map((e) => Math.max(-e.amount, 0))
                         .reduce((a, b) => a + b);
-                    this.payrollData.push({
+                    this.payrollData.update(v => [...v,
+                        {
                         account: total,
                         amount: 0,
                         debit: debit,
                         credit: credit,
-                    });
+                    }]);
                 }
             },
             error: (err) => {
@@ -428,10 +436,11 @@ export class AccountingGenerationComponent implements OnInit {
         this.generationSrv.getChecks().subscribe({
             next: (res) => {
                 this.processing.set(false);
-                this.checkData = res;
+                this.checkData.set(res);
                 const bankId = res.length > 0 ? res[0].journal || null : null;
                 this.form?.controls['journal']?.setValue(bankId);
                 this.shellSrv.setLoading(false);
+                this.loading.set(false);
             },
             error: (err) => {
                 this.processing.set(false);
@@ -444,7 +453,7 @@ export class AccountingGenerationComponent implements OnInit {
         this.generationSrv.getCash().subscribe({
             next: (res) => {
                 this.processing.set(false);
-                this.cashData = res;
+                this.cashData.set(res);
             },
             error: (err) => {
                 this.processing.set(false);
@@ -455,6 +464,7 @@ export class AccountingGenerationComponent implements OnInit {
 
     showDocuments(key: number) {
         this.processing.set(true);
+        this.loading.set(true);
         this.showingBank.set(key === this.BANK);
         this.showingCash.set(key === this.CASH);
         this.showingPayroll.set(key === this.PAYROLL);

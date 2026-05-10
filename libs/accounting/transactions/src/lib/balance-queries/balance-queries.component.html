@@ -47,7 +47,7 @@
       <span translate>COMMON_BALANCE</span>
     </ng-template>
     <div class="table__div">
-      <mat-table mat-table [dataSource]="balanceData" class="main-table" matSort
+      <mat-table mat-table [dataSource]="balanceData()" class="main-table" matSort
         (matSortChange)="sortBalance($event)">
 
         <ng-container matColumnDef="accountNo">
@@ -175,7 +175,7 @@
       </tr>
     </table>
     <div class="table__div">
-      <mat-table mat-table [dataSource]="glData" class="main-table" matSort (matSortChange)="sortGL($event)">
+      <mat-table mat-table [dataSource]="glData()" class="main-table" matSort (matSortChange)="sortGL($event)">
 
         <ng-container matColumnDef="accountNo">
           <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
@@ -273,7 +273,7 @@
     </ng-template>
 
     <div class="table__div">
-      <mat-table mat-table [dataSource]="detailData" class="main-table" matSort
+      <mat-table mat-table [dataSource]="detailData()" class="main-table" matSort
         (matSortChange)="sortDetail($event)">
 
         <ng-container matColumnDef="pieceNo">

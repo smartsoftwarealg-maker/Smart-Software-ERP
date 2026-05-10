@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, signal, ViewChild} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,12 +35,14 @@ interface Lookup {
 })
 export class EdoComponent implements OnInit {
     @ViewChild('blist') blist: MatSelectionList
+    #_form: UntypedFormGroup|null = null;
 
-    form: UntypedFormGroup = null;
+    form = signal<UntypedFormGroup|null>(null);
+    loading = signal(true);
     curYear = new Date().getFullYear();
     curMonth = new Date().getFullYear();
-    bankList: Lookup[] = [];
-    receivingBanks: Lookup[] = [];
+    bankList = signal<Lookup[]>([]);
+    receivingBanks = signal<Lookup[]>([]);
     selectedBanks = '';
     edoText: string = '';
 
@@ -53,12 +55,13 @@ export class EdoComponent implements OnInit {
         this.shellSrv.setTitle('PAYROLL_ELECTRONIC_DEPOSIT_ORDER');
     }
 
+
     ngOnInit(): void {
         this.bankSrv
             .getList(0, 1000)
             .pipe(tap(res => {
-                    this.bankList = res.body;
-                    this.selectedBanks = this.bankList.map(e => e.id).join(',');
+                    this.bankList.set(res.body);
+                    this.selectedBanks = this.bankList().map(e => e.id).join(',');
                 }),
                 switchMap(_ => this.monthSrv.maxMonth()),
                 tap(res => {
@@ -66,8 +69,11 @@ export class EdoComponent implements OnInit {
                     this.curMonth = +(res.month % 100).toFixed(0);
                 } ),
                 switchMap(_ => this.edoSrv.getCenterBank()),
-                tap(res => this.receivingBanks = this.bankList.filter(e => e.id == res)))
-            .subscribe(res => this.buildForm(res));
+                tap(res => this.receivingBanks.set(this.bankList().filter(e => e.id == res))))
+            .subscribe(res => {
+                this.buildForm(res);
+                this.loading.set(false);
+            });
         this.shellSrv.setGoBackPath('../', this.route);
 
     }
@@ -75,9 +81,9 @@ export class EdoComponent implements OnInit {
     generate() {
         const selection = this.blist.selectedOptions.selected.map(e => e.value);
         this.shellSrv.setLoading(true);
-        this.form.value['bank'] = this.receivingBanks.length > 0? this.receivingBanks[0].id: 0;
+        this.#_form.value['bank'] = this.receivingBanks().length > 0? this.receivingBanks()[0].id: 0;
         this.edoSrv
-            .generate(this.form.value, selection)
+            .generate(this.#_form.value, selection)
             .subscribe({
                 next:
                     res => {
@@ -93,12 +99,12 @@ export class EdoComponent implements OnInit {
     }
 
     save() {
-        const filename = `${this.form.value.month}-${this.form.value.year}.txt`;
-        this.form.value['bank'] = this.receivingBanks.length > 0? this.receivingBanks[0].id: 0;
+        const filename = `${this.#_form.value.month}-${this.#_form.value.year}.txt`;
+        this.#_form.value['bank'] = this.receivingBanks().length > 0? this.receivingBanks()[0].id: 0;
         const selection = this.blist.selectedOptions.selected.map(e => e.value);
         this.shellSrv.setLoading(true);
         this.edoSrv
-            .generate(this.form.value, selection)
+            .generate(this.#_form.value, selection)
             .subscribe({
                 next:
                     res => {
@@ -125,7 +131,7 @@ export class EdoComponent implements OnInit {
     }
 
     private buildForm(bank: number) {
-        this.form = this.formBuilder.group({
+        this.#_form = this.formBuilder.group({
             month:       [this.curMonth,                   Validators.required],
             year:        [this.curYear,                    Validators.required],
             description: ['',                              Validators.required],
@@ -136,5 +142,6 @@ export class EdoComponent implements OnInit {
             special:     ['0',                             [Validators.required, Validators.minLength(1)]],
             all: [false]
         });
+        this.form.set(this.#_form);
     }
 }

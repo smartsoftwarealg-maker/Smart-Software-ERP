@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal} from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -25,7 +25,8 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class MonthCancelerComponent implements OnInit {
     form: UntypedFormGroup = null;
-    processing = false;
+    processing = signal(false);
+    loading = signal(true);
     maxMonth = 0;
     constructor(private selectorSrv: PayrollMonthService,
                 private formBuilder: UntypedFormBuilder,
@@ -47,7 +48,8 @@ export class MonthCancelerComponent implements OnInit {
                     .group({
                         year: [+(res.month / 100).toFixed(0), Validators.required],
                         month: [+(res.month % 100).toFixed(0), Validators.required],
-                    })
+                    });
+                this.loading.set(false);
             })
     }
 
@@ -76,7 +78,7 @@ export class MonthCancelerComponent implements OnInit {
                 false)
             .pipe(
                 switchMap(confirmed => {
-                    this.processing = confirmed;
+                    this.processing.set(confirmed);
                     return confirmed ?
                         this.selectorSrv
                             .cancel()
@@ -102,10 +104,10 @@ export class MonthCancelerComponent implements OnInit {
                         } else {
                             this.snackBarSrv.showFailureMessage();
                         }
-                        this.processing = false;
+                        this.processing.set(false);
                     },
                     error: err => {
-                        this.processing  = false;
+                        this.processing.set(false);
                         throw err;
                     }
                 }
@@ -113,10 +115,10 @@ export class MonthCancelerComponent implements OnInit {
     }
 
     public canDeactivate(): boolean {
-        if (this.processing) {
+        if (this.processing()) {
             window.confirm(this.langSrv.translate('COMMON_BUSY'));
         }
-        return !this.processing;
+        return !this.processing();
     }
 
 }

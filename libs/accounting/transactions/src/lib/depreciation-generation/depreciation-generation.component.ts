@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal} from "@angular/core";
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { LanguageService, LoginService, MaterialModule } from '@ss/common/api-common';
+import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {DepreciationGenerationService} from './depreciation-generation.service';
 import {DepreciationRow} from './depreciation-row';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -26,13 +26,9 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         RouterModule,
         MaterialModule,
         TranslateDirective,
-
         ReactiveFormsModule,
-
         DatePickerComponent,
         UiAutoCompleteComponent
-
-
     ]
 })
 export class DepreciationGenerationComponent implements OnInit {
@@ -50,11 +46,13 @@ export class DepreciationGenerationComponent implements OnInit {
 
     public form: UntypedFormGroup | null = null;
     data = signal<DepreciationRow[]>([]);
+    loading = signal(true);
     displayedColumns = signal<string[]>(['acc', 'description', 'cCenter', 'debit', 'credit']);
-    processing = false;
+    processing = signal(false);
 
 
     ngOnInit(): void {
+        this.loading.set(true);
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setTitle('ACC_DEPRECIATION_GENERATION');
         this.loginSrv
@@ -74,18 +72,27 @@ export class DepreciationGenerationComponent implements OnInit {
                         journal: [null, Validators.required],
                         date:    [new Date(this.loginSrv.appCtx.accYear, this.loginSrv.appCtx.accPeriod - 1, 1), Validators.required],
                     });
+                    this.loading.set(false);
                 });
     }
 
     refresh() {
+        this.processing.set(true);
         this.deprecSrv
             .getDepreciation(this.form?.value)
-            .subscribe(res => this.data.set(res));
+            .subscribe(res => {
+                this.data.set(res);
+                this.processing.set(false);
+            });
     }
 
     generate() {
+        this.processing.set(true);
         this.deprecSrv
             .generateDepreciation(this.form?.value)
-            .subscribe(res => this.snackBarSrv.showSuccessMessage());
+            .subscribe(res => {
+                this.snackBarSrv.showSuccessMessage();
+                this.processing.set(false);
+            });
     }
 }

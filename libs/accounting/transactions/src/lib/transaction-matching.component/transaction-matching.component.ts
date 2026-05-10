@@ -53,8 +53,8 @@ export class TransactionMatchingComponent implements OnInit {
     MATCHED_MODE = 2;
     displayedColumns = signal<string[]>(['customerCode', 'customerName', 'accountNo', 'description',  'matchKey', 'debit', 'credit']);
     creditColumns = signal<string[]>(['customerCode',  'description', 'matchKey', 'debit', 'credit', 'matchBtn']);
-    debits: MBalanace[] = [];
-    credits: MBalanace[] = [];
+    debits = signal< MBalanace[]>([]);
+    credits = signal<MBalanace[]>([]);
     debitPaginator = PaginationModel.newInstance({ pageSize: 5, page: 1, elementCount: 0 });
     creditPaginator = PaginationModel.newInstance({ pageSize: 5, page: 1, elementCount: 0 });
 
@@ -97,7 +97,7 @@ export class TransactionMatchingComponent implements OnInit {
             this.#matchingSrv.creditorMatches(this.creditPaginator.page - 1, this.creditPaginator.pageSize, this.selectedDebit()?.customerCode, null, orderBy) :
             this.#matchingSrv.credits(this.creditPaginator.page - 1, this.creditPaginator.pageSize, this.accountNo.value, this.selectedDebit()?.customerCode, null, orderBy);
         obs.subscribe(res => {
-            this.credits = res.body;
+            this.credits.set(res.body);
             this.creditPaginator.elementCount = res.itemCount;
         });
     }
@@ -111,7 +111,7 @@ export class TransactionMatchingComponent implements OnInit {
             this.#matchingSrv.debits(this.debitPaginator.page - 1, this.debitPaginator.pageSize, this.accountNo.value, this.#searchText, orderBy);
 
         obs.subscribe(res => {
-            this.debits = res.body;
+            this.debits.set(res.body);
             this.debitPaginator.elementCount = res.itemCount;
         });
     }
@@ -171,7 +171,7 @@ export class TransactionMatchingComponent implements OnInit {
 
     private clearCredit() {
         this.selectedDebit.set(null);
-        this.credits = [];
+        this.credits.set([]);
         this.creditPaginator.elementCount = 0;
     }
 

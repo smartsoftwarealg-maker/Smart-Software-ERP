@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {PayrollMonthService} from '../payroll-month.service';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -41,7 +41,8 @@ export class MonthCloserComponent implements OnInit {
     private readonly POLL_INTERVAL_MS = 3000; // Poll every 3 seconds
 
     form: UntypedFormGroup = null;
-    processing = false;
+    processing = signal(false);
+    loading = signal(true);
 
   constructor(private selectorSrv: PayrollMonthService,
               private formBuilder: UntypedFormBuilder,
@@ -65,7 +66,8 @@ export class MonthCloserComponent implements OnInit {
                   .group({
                       year:  [ { value: +(res.month / 100).toFixed(0), disabled: true }, Validators.required],
                       month: [{ value: +(res.month % 100).toFixed(0), disabled: true }, Validators.required],
-                  })
+                  });
+              this.loading.set(false);
           })
   }
 
@@ -91,7 +93,7 @@ export class MonthCloserComponent implements OnInit {
               false,
               false)
           .pipe(
-              tap(confirmed => this.processing = confirmed),
+              tap(confirmed => this.processing.set(confirmed)),
               switchMap(confirmed => {
                   if (confirmed) {
                       return this.selectorSrv
@@ -113,7 +115,7 @@ export class MonthCloserComponent implements OnInit {
               })
             ).subscribe({
                   next: res => {
-                      this.processing = false;
+                      this.processing.set(false);
                       if (res) {
                           this.snackBarSrv.showSuccessMessage();
                           this.router
@@ -124,7 +126,7 @@ export class MonthCloserComponent implements OnInit {
                       }
                   },
                   error: err => {
-                    this.processing = false;
+                    this.processing.set(false);
                     throw err;
                   }
               }
@@ -132,10 +134,10 @@ export class MonthCloserComponent implements OnInit {
   }
 
     public canDeactivate(): boolean {
-        if (this.processing) {
+        if (this.processing()) {
             window.confirm(this.langSrv.translate('COMMON_BUSY'));
         }
-        return !this.processing;
+        return !this.processing();
     }
 
 }

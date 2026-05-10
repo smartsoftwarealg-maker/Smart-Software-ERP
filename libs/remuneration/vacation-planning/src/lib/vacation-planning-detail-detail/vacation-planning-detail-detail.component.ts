@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal} from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { VacationPlanningDetail } from '../vacation-planning-api';
 import {
@@ -19,6 +19,7 @@ import { MatOption } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { LookupsService } from '@ss/common/api-lookup';
+import {switchMap, tap} from "rxjs";
 
 @Component({
     selector: 'ss-vacation-planning-detail-detail',
@@ -42,7 +43,7 @@ import { LookupsService } from '@ss/common/api-lookup';
     ],
 })
 export class VacationPlanningDetailDetailComponent extends BaseChildEntityDetailComponent<VacationPlanningDetail> {
-    vacationTypes: Array<Lookup> = [];
+    vacationTypes = signal<Lookup[]>([]);
     private formBuilder = inject(FormBuilder);
     private planningSrv = inject(VacationPlanningDetailService);
     private lookupsSrv = inject(LookupsService);
@@ -63,14 +64,11 @@ export class VacationPlanningDetailDetailComponent extends BaseChildEntityDetail
         });
     }
 
-    override ngOnInit() {
-        this.lookupsSrv
+    protected load():any{
+        return this.lookupsSrv
             .getTable('/lookups/vacation_types', 'vacation-types')
-            .subscribe({
-                next: (res) => {
-                    this.vacationTypes = res;
-                },
-            });
-        super.ngOnInit();
+            .pipe(
+                tap(res => this.vacationTypes.set(res)),
+                switchMap(_ => super.load()));
     }
 }
