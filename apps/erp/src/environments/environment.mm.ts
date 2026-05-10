@@ -29,6 +29,18 @@ import {
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { cmmsNavTree } from '../app/cmms/side-nav-tree';
 import { productionNavTree } from '../app/production/side-nav-tree';
+import {salesNavTree} from "../app/sales/side-nav-tree";
+import {financeNavTree} from "../app/finance/side-nav-tree";
+import {hrLookupNavTree} from "../app/hr-lookups/side-nav-tree";
+import {hrNavTree} from "../app/hr/side-nav-tree";
+import {payrollNavTree} from "../app/payroll/side-nav-tree";
+import {missionsNavTree} from "../app/missions/side-nav-tree";
+import {accountingNavTree} from "../app/accounting/side-nav-tree";
+import {assetsNavTree} from "../app/assets-app/side-nav-tree";
+import {treasuryNavTree} from "../app/treasury/side-nav-tree";
+import {budgetNavTree} from "../app/budget/side-nav-tree";
+import {dashboardNavTree} from "../app/dashboard/side-nav-tree";
+import {workflowNavTree} from "../app/workflow/side-nav-tree";
 
 export const environment = {
     production: true,
@@ -43,22 +55,41 @@ export const navBar = [
     purchasesNavTree,
     stockNavTree,
     contractsNavTree,
-    aaNavTree,
+    salesNavTree,
+    financeNavTree,
+    hrLookupNavTree,
+    hrNavTree,
+    payrollNavTree,
+    missionsNavTree,
+    accountingNavTree,
+    assetsNavTree,
+    treasuryNavTree,
+    budgetNavTree,
     cmmsNavTree,
     productionNavTree,
+    dashboardNavTree,
+    workflowNavTree,
+    aaNavTree,
 ];
 
 export const langAssets = [
     ['assets/locale/', ''],
     ['assets/locale/administration_', 'ADMINISTRATION_'],
     ['assets/locale/stock_', 'STOCK_'],
+    ['assets/locale/payroll_', 'PAYROLL_'],
     ['assets/locale/common_', 'COMMON_'],
+    ['assets/locale/remuneration_', 'REMUN_'],
     ['assets/locale/sales_', 'SALES_'],
     ['assets/locale/logistics_', 'LOGISTICS_'],
+    ['assets/locale/att_', 'ATT_'],
     ['assets/locale/purchases_', 'PURCHASES_'],
     ['assets/locale/bl_', 'BL_'],
     ['assets/locale/webarch_', 'WAR_'],
+    ['assets/locale/missions_', 'MISSION_'],
+    ['assets/locale/assets_', 'ASSET_'],
+    ['assets/locale/treasury_', 'TRS_'],
     ['assets/locale/accounting_', 'ACC_'],
+    ['assets/locale/att_', 'ATT_'],
     ['assets/locale/cmms_', 'CMMS_'],
     ['assets/locale/production_', 'PROD_'],
 ];

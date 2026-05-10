@@ -9,7 +9,7 @@
                           [displayWith]="displayFn"
                           (optionSelected)="optionSelected($event)"
                           panelWidth="null">
-            @for (option of model.options; track option?.id || option?.reference) {
+            @for (option of model.options(); track option?.id || option?.reference) {
                 <mat-option [value]="option">
                     {{ model.toString(option) }}
                 </mat-option>
