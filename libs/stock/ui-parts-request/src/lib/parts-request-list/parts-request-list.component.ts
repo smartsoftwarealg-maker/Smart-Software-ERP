@@ -29,6 +29,7 @@ export class PartsRequestListComponent extends BaseEntityListComponent<Transacti
         'date',
         'reference',
         'referenceDocDate',
+        'agent',
         'docStatus'
     ]);
 
