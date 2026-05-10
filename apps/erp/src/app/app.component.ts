@@ -27,8 +27,6 @@ export class AppComponent implements OnInit {
 
     #companySelectorSrv = inject(CompanySelectorService);
     #langSrv = inject(LanguageService);
-    // private snackSrv = inject(SnackBarService);
-    // private deviceSrv = inject(DeviceDetectorService);
     private httpSrv = inject(HttpService);
     private shellSrv = inject(ShellService);
     private loginSrv = inject(LoginService);
@@ -46,7 +44,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage = homePage;
         this.#langSrv.isSodismac = !!environment['sodismac'];
-        this.shellSrv.setApplicationTitle('Smart ERP 3.0.9');
+        this.shellSrv.setApplicationTitle('Smart ERP 3.0.10');
         this.httpSrv
             .init()
             .pipe(
@@ -67,13 +65,5 @@ export class AppComponent implements OnInit {
                 },
             });
 
-        // console.log('Main app....................................')
-        // if (this.deviceSrv.isMobile()) {
-        //     initialize().then(() => {});
-        //     // Update CSS variable when ad loads
-        //     document.body.classList.add('has-admob-banner');
-        //     document.body.style.setProperty('--admob-bottom-padding', '64px'); // Adjust based on your ad size
-        //     this.snackSrv.hasAd = true;
-        // }
     }
 }

@@ -107,8 +107,7 @@ export class LoginComponent implements OnInit {
             }
             if (
                 this.loginSrv.customerLogin === LoginType.CUSTOMER &&
-                this.#companySelectorSrv.spaceCompany
-            ) {
+                this.#companySelectorSrv.spaceCompany ) {
                 this.#httpSrv.selectCompany(
                     this.#companySelectorSrv.spaceCompany,
                 );
@@ -119,7 +118,7 @@ export class LoginComponent implements OnInit {
     }
 
     public onSubmit() {
-        // this.loading.set(true);
+        // this.loading.set(t`rue);
         const tmp = this.form.value;
         this.user.username = tmp.user;
         this.user.password = tmp.pass;
@@ -128,7 +127,14 @@ export class LoginComponent implements OnInit {
             document.onmousemove = () => this.resetTimer();
             document.onkeydown = () => this.resetTimer();
         }
-        if (this.loginSrv.customerLogin === LoginType.CUSTOMER) {
+        if (this.loginSrv.customerLogin === LoginType.PERSON) {
+            this.loginSrv.agentLogin(
+                '/persons/login',
+                this.user,
+                this.isPhone,
+                this.onLoadingFinished
+            );
+        } else if (this.loginSrv.customerLogin === LoginType.CUSTOMER) {
             this.loginSrv.agentLogin(
                 '/customers/login',
                 this.user,

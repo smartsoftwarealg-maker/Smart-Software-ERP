@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     loaded = false;
 
     ngOnInit() {
-        this.loginSrv.customerLogin = LoginType.USER;
+        this.loginSrv.customerLogin = LoginType.PERSON;
         this.shellSrv.setApplicationTitle('Employee Space (pre-Alpha)');
         this.shellSrv.setSideNavDataSource(empSpaceNavTree);
         this.httpSrv

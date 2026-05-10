@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
@@ -30,8 +30,8 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<ReportsCatalog> implements OnInit {
     app: string;
-    reportList: string[] = [];
-    applications: string[] = [];
+    reportList = signal<string[]>([]);
+    applications = signal<string[]>([]);
 
     constructor(
         private traceSrv: TraceabilityService,
@@ -51,7 +51,7 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
         this.reportSrv
             .getApps()
             .pipe(switchMap(res => {
-                this.applications = res.map(e => e.toLowerCase());
+                this.applications.set(res.map(e => e.toLowerCase()));
                 return this.getAppName();
             }))
             .subscribe(none => {
@@ -61,15 +61,16 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
     }
 
 
-    override finishLoading(e: ReportsCatalog) {
-        this.reportListsService
-            .getListByApp(this.app)
-            .subscribe((res: string[]) => {
-                this.reportList = res;
-                super.finishLoading(e);
-            });
-    }
+    preload():Observable<unknown>{
 
+        return this.reportListsService
+            .getListByApp(this.reportSrv.base)
+            .pipe(
+                tap(res => this.reportList.set(res.filter(e => e.indexOf('forms') > 0)) ),
+                switchMap(() =>  this.reportListsService.getListByApp(this.app)),
+                tap(res => this.reportList.set(res)),
+                switchMap(() => super.preload()));
+    }
 
     getAppName(): Observable<any> {
         return this.route.queryParams.pipe(tap((p: any) => {
@@ -79,9 +80,6 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
     }
 
     public override setupForm(b: ReportsCatalog) {
-        this.reportListsService
-            .getListByApp(this.reportSrv.base)
-            .subscribe(res => this.reportList = res.filter(e => e.indexOf('forms') > 0));
         return this.formBuilder.group({
             id: [b.id],
             application:[this.reportSrv.base, Validators.required],
@@ -94,7 +92,7 @@ export class ReportCatalogDetailComponent extends BaseEntityDetailComponent<Repo
         this.reportListsService
             .getListByApp(event.value.toLowerCase())
             .subscribe((res: string[]) => {
-                this.reportList = res.filter(e => e.indexOf('forms') > 0);
+                this.reportList.set(res.filter(e => e.indexOf('forms') > 0));
             });
     }
 }

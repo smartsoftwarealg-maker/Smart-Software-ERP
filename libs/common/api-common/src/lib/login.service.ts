@@ -214,10 +214,12 @@ export class LoginService {
                             this.#httpSrv.updateAuthToken(info.jwt);
                         }
                         this.appCtx = info.ctx;
-                        this.resetCode(info.ctx.agentId).subscribe((res) => {
-                            const url = res.code != '' ? UPDATE_PASSWORD_URL : CENTER_SELECT_URL;
-                            this.#router.navigate(['/' + url]).then();
-                        });
+                        if ((info.ctx.agentId||0) > 0) {
+                            this.resetCode(info.ctx.agentId).subscribe((res) => {
+                                const url = res.code != '' ? UPDATE_PASSWORD_URL : CENTER_SELECT_URL;
+                                this.#router.navigate(['/' + url]).then();
+                            });
+                        }
                         if (onFinish != null) {
                             onFinish();
                         }
@@ -261,6 +263,7 @@ export class LoginService {
     }
 
     set customerLogin(value: LoginType) {
+        console.log(value);
         this._customerLogin = value;
     }
 
