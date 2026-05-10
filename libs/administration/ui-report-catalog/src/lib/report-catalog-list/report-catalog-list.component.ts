@@ -30,7 +30,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsCatalog> implements OnInit {
 
-    applications: string[];
+    applications = signal<string[]>([]);
     applicationsCtrl = new UntypedFormControl();
 
 
@@ -56,9 +56,11 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
     override ngOnInit(): void {
         super.ngOnInit();
         this.pagination.onChange = () => this.refresh();
-        this.reportService.getApps().subscribe(x => {
-            this.applications = x;
-        });
+        this.reportService
+            .getApps()
+            .subscribe(x => {
+                this.applications.set(x);
+            });
     }
 
     override processLoadedData(data: ReportsCatalog[]): Observable<ReportsCatalog[]> {

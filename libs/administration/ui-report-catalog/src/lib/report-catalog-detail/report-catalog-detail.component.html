@@ -1,48 +1,48 @@
-@if (reportList) {
-  <mat-card>
-    <mat-card-content>
-      @if (form) {
-        <form novalidate [formGroup]="form">
-  <mat-form-field floatLabel="always" class="default-100 sm-100">
-    <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
-    <input matInput formControlName="description" type="text" required>
-    @if (form.controls['description'].hasError('required')) {
-      <mat-error
-        translate>COMMON_FIELD_REQUIRED
-      </mat-error>
-    }
-  </mat-form-field>
-  <mat-form-field appearance="fill" class="default-100 sm-100">
-    <mat-label translate>ADMINISTRATION_APPLICATION</mat-label>
-    <mat-select formControlName="application" (selectionChange)="selectApp($event)">
-      @for (app of applications; track app) {
-        <mat-option [value]="app">
-          {{ app }}
-        </mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field floatLabel="always" class="default-100 sm-100">
-    <mat-label translate>COMMON_FILENAME</mat-label>
-    <input type="text" matInput formControlName="filename" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      @for (option of reportList; track option) {
-        <mat-option [value]="option">{{option}}</mat-option>
-      }
-    </mat-autocomplete>
-    @if (form.controls['filename'].hasError('required')) {
-      <mat-error
-        translate>COMMON_FIELD_REQUIRED
-      </mat-error>
-    }
-    @if (form.controls['filename'].hasError('validOption')) {
-      <mat-error
-        translate>COMMON_NO_MATCH
-      </mat-error>
-    }
-  </mat-form-field>
-</form>
-}
-</mat-card-content>
-</mat-card>
+@if (reportList()) {
+    <mat-card>
+        <mat-card-content>
+            @if (form) {
+                <form novalidate [formGroup]="form">
+                    <mat-form-field floatLabel="always" class="default-100 sm-100">
+                        <mat-label translate>ADMINISTRATION_DESCRIPTION</mat-label>
+                        <input matInput formControlName="description" type="text" required>
+                        @if (form.controls['description'].hasError('required')) {
+                            <mat-error
+                                translate>COMMON_FIELD_REQUIRED
+                            </mat-error>
+                        }
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="default-100 sm-100">
+                        <mat-label translate>ADMINISTRATION_APPLICATION</mat-label>
+                        <mat-select formControlName="application" (selectionChange)="selectApp($event)">
+                            @for (app of applications(); track app) {
+                                <mat-option [value]="app">
+                                    {{ app }}
+                                </mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field floatLabel="always" class="default-100 sm-100">
+                        <mat-label translate>COMMON_FILENAME</mat-label>
+                        <input type="text" matInput formControlName="filename" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            @for (option of reportList(); track option) {
+                                <mat-option [value]="option">{{ option }}</mat-option>
+                            }
+                        </mat-autocomplete>
+                        @if (form.controls['filename'].hasError('required')) {
+                            <mat-error
+                                translate>COMMON_FIELD_REQUIRED
+                            </mat-error>
+                        }
+                        @if (form.controls['filename'].hasError('validOption')) {
+                            <mat-error
+                                translate>COMMON_NO_MATCH
+                            </mat-error>
+                        }
+                    </mat-form-field>
+                </form>
+            }
+        </mat-card-content>
+    </mat-card>
 }

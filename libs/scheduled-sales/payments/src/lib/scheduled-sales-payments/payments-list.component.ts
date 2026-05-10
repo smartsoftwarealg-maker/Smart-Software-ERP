@@ -84,7 +84,7 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
         'amount',
         'memo',
         'validated'
-    ];
+    ]);
 
     constructor(
         public override entitySrv: SSPaymentService,
