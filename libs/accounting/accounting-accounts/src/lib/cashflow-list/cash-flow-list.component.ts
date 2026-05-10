@@ -113,7 +113,7 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     }
 
     selectItem(annex: AnnexCode) {
-        this.selected = annex?.id||0;
+        this.entitySrv.setParentId(annex?.id||0);
         this.selectedCode = annex?.code||'';
     }
 

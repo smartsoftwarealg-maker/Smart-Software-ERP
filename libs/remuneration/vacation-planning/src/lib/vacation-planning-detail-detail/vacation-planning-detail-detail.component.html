@@ -1,4 +1,4 @@
-@if (form) {
+@if (!loading()) {
     <div class="ctrl_div default-100">
         <button mat-mini-fab color="primary"
                 [matTooltip]="'COMMON_SAVE' | translate"
@@ -19,7 +19,7 @@
                 <mat-form-field appearance="fill" class="default-50 sm-100">
                     <mat-label translate>REMUN_VACATION</mat-label>
                     <mat-select formControlName="vac_type">
-                        @for (g of vacationTypes; track g.id) {
+                        @for (g of vacationTypes(); track g.id) {
                             <mat-option [value]="g.id">
                                 {{ g.description }}
                             </mat-option>

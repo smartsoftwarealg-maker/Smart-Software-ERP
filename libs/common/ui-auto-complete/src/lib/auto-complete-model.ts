@@ -2,6 +2,8 @@ import {Observable, of} from 'rxjs';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {map} from 'rxjs/operators';
 import {Office} from '@ss/common/api-lookup';
+import {signal, Signal, WritableSignal} from "@angular/core";
+import {sign} from "chart.js/helpers";
 
 export type Id = number | string;
 
@@ -12,7 +14,7 @@ export interface AutoCompleteModel<T extends {id: Id}> {
     filter: (a: string) => Observable<T[]>;
     onObjectSelected?: (a: T) => void; // call for changes done by the user only
     onValueChanged?: (a: Id) => void; // called when the value changes
-    options: T[];
+    options: WritableSignal<T[]>;
     cache: T;
     addEntry: (entry: string) => Observable<number>;
 
@@ -22,7 +24,7 @@ export interface AutoCompleteModel<T extends {id: Id}> {
 
 export class DefaultAutoCompleteModel<T extends {id: Id}> implements AutoCompleteModel<T> {
     #searchLength = 49;
-    public options: T[];
+    public options = signal<T[]>([]);
     public cache: T;
     public filterLoadedData =
         (x: T[]) => x.filter(e => e && !!((e as any))[this.descriptionField] );
@@ -46,7 +48,7 @@ export class DefaultAutoCompleteModel<T extends {id: Id}> implements AutoComplet
     isPerfectMatch = (obj: any, filter: string) => !!filter && !!obj && !!obj[this.descriptionField] && obj[this.descriptionField].toUpperCase() === filter.toUpperCase();
 
     clear() {
-        this.options = [];
+        this.options.set([]);
     }
 
     addEntry(entry: string): Observable<number> {
@@ -63,20 +65,6 @@ export class DefaultAutoCompleteModel<T extends {id: Id}> implements AutoComplet
     }
 }
 
-// export class EmptyAutoCompleteModel implements AutoCompleteModel<number> {
-//     options: number[] = [];
-//     cache: null;
-//
-//     valueOf = () => <Id>null;
-//     toString = () => <string>null;
-//     getById = () => of(<number>null);
-//     filter = () => of(<number[]>[]);
-//     isPerfectMatch = (o: number, f: string) => false;
-//
-//     addEntry(entry: string): Observable<number> {
-//         return of(0);
-//     }
-// }
 
 export class CodeDescriptionAutoCompleteModel<T extends {id: Id}> extends DefaultAutoCompleteModel<T> {
     constructor(public override entitySrv: BaseEntityService<T>) {

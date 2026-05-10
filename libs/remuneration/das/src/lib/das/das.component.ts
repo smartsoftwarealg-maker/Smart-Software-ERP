@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,13 +24,14 @@ interface Lookup {
 }
 
 @Component({
-    selector: 'ss-edo',
+    selector: 'ss-das',
     templateUrl: './das.component.html',
     styleUrls: ['./das.component.scss'],
     standalone: true,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, MatOption, MatButton, TranslatePipe]
 })
 export class DasComponent implements OnInit {
+    loading = signal(true);
     form: UntypedFormGroup = null;
     curYear = new Date().getFullYear() - 1;
     funds: Fund[] = [];
@@ -67,6 +68,7 @@ export class DasComponent implements OnInit {
                 this.bases = res[1].body.filter(e => e.description != null &&
                                                (e.description.toLowerCase().indexOf('base') >= 0 ||
                                                 e.variable == 'a998'));
+                this.loading.set(false);
             });
     }
 

@@ -1,11 +1,11 @@
 <div class="container">
   <mat-card>
-    @if (form) {
-      <form novalidate [formGroup]="form">
+    @if (!loading()) {
+      <form novalidate [formGroup]="form()">
         <mat-form-field class="default-25 sm-50">
           <mat-label translate>PAYROLL_MONTH</mat-label>
           <input matInput formControlName="month" type="number" min="1" max="12" step="1" required>
-          @if (form.controls['month']?.hasError('required')) {
+          @if (form().controls['month']?.hasError('required')) {
             <mat-error translate>COMMON_FIELD_REQUIRED
             </mat-error>
           }
@@ -14,7 +14,7 @@
           <mat-label translate>PAYROLL_YEAR</mat-label>
           <input matInput formControlName="year" type="number" [min]="curYear - 1" [max]="curYear" step="1"
             required>
-          @if (form.controls['year']?.hasError('required')) {
+          @if (form().controls['year']?.hasError('required')) {
             <mat-error translate>COMMON_FIELD_REQUIRED
             </mat-error>
           }
@@ -26,7 +26,7 @@
         <mat-form-field class="default-50">
           <mat-label translate>REMUN_REFERENCE</mat-label>
           <input matInput formControlName="reference" type="number" min="1" max="50" required>
-          @if (form.controls['reference']?.hasError('required')) {
+          @if (form().controls['reference']?.hasError('required')) {
             <mat-error translate>COMMON_FIELD_REQUIRED
             </mat-error>
           }
@@ -34,7 +34,7 @@
         <mat-form-field class="default-50 sm-100">
           <mat-label translate>COMMON_DATE</mat-label>
           <ss-date-picker [required]=true formControlName="date"></ss-date-picker>
-          @if (form.controls['date']?.hasError('required')) {
+          @if (form().controls['date']?.hasError('required')) {
             <mat-error translate>
               COMMON_FIELD_REQUIRED
             </mat-error>
@@ -44,7 +44,7 @@
           <mat-form-field>
             <mat-label translate>REMUN_RECEIVING_BANK</mat-label>
             <mat-select formControlName="bank">
-              @for (c of receivingBanks; track c) {
+              @for (c of receivingBanks(); track c.id) {
                 <mat-option [value]="c.id">{{ c.description }}</mat-option>
               }
             </mat-select>
@@ -53,7 +53,7 @@
         <mat-form-field class="default-50 sm-100">
           <mat-label translate>COMMON_DESCRIPTION</mat-label>
           <input matInput formControlName="description" type="text" maxlength="80" required>
-          @if (form.controls['description']?.hasError('required')) {
+          @if (form().controls['description']?.hasError('required')) {
             <mat-error translate>COMMON_FIELD_REQUIRED
             </mat-error>
           }
@@ -61,7 +61,7 @@
         <mat-form-field class="default-50 sm-100">
           <mat-label translate>COMMON_FORMULA</mat-label>
           <input matInput formControlName="formula" type="text" maxlength="4" required>
-          @if (form.controls['formula']?.hasError('required')) {
+          @if (form().controls['formula']?.hasError('required')) {
             <mat-error translate>COMMON_FIELD_REQUIRED
             </mat-error>
           }
@@ -70,7 +70,7 @@
           type="button"
           color="primary"
           class="generate default-25 sm-50"
-          [disabled]="!form.valid"
+          [disabled]="!form().valid"
           (click)="generate()">
           {{ 'COMMON_GENERATE' | translate }}
         </button>
@@ -78,7 +78,7 @@
           type="button"
           color="primary"
           class="save default-25 sm-50"
-          [disabled]="!form.valid"
+          [disabled]="!form().valid"
           (click)="save()">
           {{ 'COMMON_SAVE' | translate }}
         </button>
@@ -89,7 +89,7 @@
     <div mat-subheader class="b-primary subheader" translate> {{ 'REMUN_SELECTED_BANKS' }}</div>
     <div class="llist">
       <mat-selection-list #blist (change)="selectBanks(blist.selectedOptions)">
-        @for (s of bankList; track s) {
+        @for (s of bankList(); track s.id) {
           <mat-list-option [value]="s.id" [selected]="true">
             {{ s.description }}
           </mat-list-option>

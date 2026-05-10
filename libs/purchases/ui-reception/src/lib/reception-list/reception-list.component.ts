@@ -46,7 +46,7 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
     private agentSrv = inject(AgentService);
 
     constructor(
-        public inventorySrv: ReceptionService,
+        public entitySrv: ReceptionService,
         public override shellSrv: ShellService,
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
@@ -56,7 +56,7 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
         public override pagPersistSrv: PaginatorPersistenceService,
     ) {
         super(
-            inventorySrv,
+            entitySrv,
             shellSrv,
             snackBarSrv,
             route,
@@ -85,7 +85,7 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
     }
 
     override select(id: number): void {
-        this.selected = id;
+        this.entitySrv.setParentId(id);
         const itemControlsOn = this.selectedId() !== null && this.selectedId() > 0;
         this.viewReportButton.disabled = !itemControlsOn;
         this.emailReportButton.disabled = !this.selectedRow || !itemControlsOn || !this.selectedRow['email'];

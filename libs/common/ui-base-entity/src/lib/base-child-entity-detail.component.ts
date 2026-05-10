@@ -22,6 +22,7 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
     public form: UntypedFormGroup | null = null;
     public isEditable = signal(true);
     rights: Right = {edit: false, write: false, read: false, delete: false};
+    loading = signal(true);
 
 
     protected constructor(protected entitySrv: BaseEntityService<T>, protected entity: string) {}
@@ -34,30 +35,36 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
 
     protected process(t: T): void { }
 
-    ngOnInit() {
-        this.route
+    protected load(): Observable<T> {
+        return this.route
             .paramMap
             .pipe(
                 tap(map => this.id = +map.get('id') || 0),
                 switchMap(() => this.idParamMap()),
                 switchMap(() =>  this.id? this.entitySrv.get(this.id) : of(this.EMPTY_RECORD)),
                 tap(ent => this.process(ent))
-            ).subscribe(ent => {
+            );
+    }
+    ngOnInit() {
+        this.loading.set(true);
+        this.load()
+            .subscribe(ent => {
                 this.form = this.setupForm(ent);
+                const isManager = this.loginSrv?.appCtx?.manager || false;
+                const rights = this.shellSrv.getEntityRights(this.entity);
+                this.rights = rights || {write: isManager, edit: isManager, read: isManager, delete: isManager};
+                this.isEditable.set(this.rights.edit);
+                this.loading.set(false);
             });
 
-        this.EMPTY_RECORD.parentId = this.entitySrv.getParentId();
-        const obs = this.id
-            ? this.entitySrv.get(this.id)
-            : of(this.EMPTY_RECORD);
-
-        obs.subscribe(ent => this.form = this.setupForm(ent));
+        // this.EMPTY_RECORD.parentId = this.entitySrv.getParentId();
+        // const obs = this.id
+        //     ? this.entitySrv.get(this.id)
+        //     : of(this.EMPTY_RECORD);
+        //
+        // obs.subscribe(ent => this.form = this.setupForm(ent));
 
         // this.isEditable = this.shellSrv.getCurrentNodeRights()?.edit || false;
-        const isManager = this.loginSrv?.appCtx?.manager || false;
-        const rights = this.shellSrv.getEntityRights(this.entity);
-        this.rights = rights || {write: isManager, edit: isManager, read: isManager, delete: isManager};
-        this.isEditable.set(this.rights.edit);
     }
 
     readForm(): T {

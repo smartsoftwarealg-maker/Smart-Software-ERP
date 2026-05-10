@@ -1,4 +1,5 @@
-<div class="main-container">
+@if (!loading()) {
+    <div class="main-container">
 
     <div class="data-table">
         <div class="table__div">
@@ -67,7 +68,7 @@
     </div>
 
     <div class="comparison">
-        <mat-table mat-table [dataSource]="comparisonData">
+        <mat-table mat-table [dataSource]="comparisonData()">
 
             <ng-container matColumnDef="paymonth">
                 <mat-header-cell *matHeaderCellDef translate>PAYROLL_PAYMONTH</mat-header-cell>
@@ -115,10 +116,11 @@
             </ng-container>
 
 
-            <mat-header-row *matHeaderRowDef="comparisonDisplayedColumns; sticky: true"></mat-header-row>
+            <mat-header-row *matHeaderRowDef="comparisonDisplayedColumns(); sticky: true"></mat-header-row>
             <mat-row class="selectable"
-                     *matRowDef="let row; columns: comparisonDisplayedColumns;"></mat-row>
+                     *matRowDef="let row; columns: comparisonDisplayedColumns();"></mat-row>
         </mat-table>
 
     </div>
 </div>
+}

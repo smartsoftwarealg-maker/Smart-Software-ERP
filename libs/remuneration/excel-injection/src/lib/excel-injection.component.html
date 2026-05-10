@@ -1,5 +1,5 @@
 <div class="container">
-  @if (!processing) {
+  @if (!processing()) {
     <div class="ctrl-div">
       <div class="file-upload">
         <input type="file"
@@ -8,7 +8,7 @@
           (change)="onChange(fileUpload.files)"
           #fileUpload>
         <span translate>{{ fileName || "COMMON_NO_FILE_SELECTED" }} </span>
-        @if (!uploadProgress && updatable) {
+        @if (!uploadProgress() && updatable()) {
           <button mat-mini-fab color="primary"
             class="upload-btn"
             (click)="fileUpload.click()"
@@ -32,9 +32,8 @@
         {{ 'COMMON_CANCEL' | translate }}
       </button>
     </div>
-  }
+  } @else {
 
-  @if (processing) {
     <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
   }
 

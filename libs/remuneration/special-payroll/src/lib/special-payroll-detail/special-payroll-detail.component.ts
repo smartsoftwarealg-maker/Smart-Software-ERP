@@ -42,9 +42,8 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
 
     employeeLookup = new FormControl<number>(0);
 
-    processing = false;
     displayedColumns = signal<string[]>(['id', 'lastName', 'firstName', 'post']);
-    data: ELine[] = [];
+    data = signal<ELine[]>([]);
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);
     payrollId = signal(0);
@@ -68,7 +67,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
         this.entrySrv
             .getList(this.pagingModel.page - 1, this.pagingModel.pageSize, null, null, params)
             .subscribe(res => {
-                this.data = res.body;
+                this.data.set(res.body);
                 this.pagingModel.elementCount = res.itemCount;
             });
     }
@@ -102,6 +101,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
 
     generateAll() {
         type Response = {itemCount: number, body: ELine[]};
+        this.loading.set(true);
         this.detailSrv
             .generateAll()
             .pipe(tap(_ => this.snackBarSrv.showSuccessMessage()),
@@ -109,12 +109,12 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
             .subscribe({
                 next:
                     (res: Response) => {
-                        this.data = res.body;
+                        this.data.set(res.body);
                         this.pagingModel.elementCount = res.itemCount;
-                        this.processing = false;
+                        this.loading.set(false);
                     },
                 error: (err: Error) => {
-                    this.processing = false;
+                    this.loading.set(false);
                     throw err
                 }
             });
@@ -123,22 +123,22 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
     deleteAll() {
         type Response = {itemCount: number, body: ELine[]};
         type Result =  Response | boolean;
+        this.loading.set(true);
         this.confirmationSrv
             .confirmDelete()
             .pipe(switchMap(res => res ? this.detailSrv.deleteAll() : of(res)),
-                  tap(res => this.processing = res !== false),
-                  switchMap(_ => this.processing? this.entrySrv.getList(this.pagingModel.page - 1, this.pagingModel.pageSize) : of(false))
+                  switchMap(res => res? this.entrySrv.getList(this.pagingModel.page - 1, this.pagingModel.pageSize) : of(false))
             ).subscribe({
                 next:
                     (res: Result) => {
                         if (typeof res !== 'boolean') {
-                            this.data = res.body;
+                            this.data.set(res.body);
                             this.pagingModel.elementCount = res.itemCount;
                         }
-                        this.processing = false;
+                        this.loading.set(false);
                     },
                 error: err => {
-                    this.processing = false;
+                    this.loading.set(false);
                     throw err
                 }
             });
@@ -146,7 +146,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
 
     generateOne() {
         type Response = {itemCount: number, body: ELine[]};
-        this.processing = true;
+        this.loading.set(true);
         this.detailSrv
             .generateOne(this.employeeLookup.value)
             .pipe(tap(_ => this.snackBarSrv.showSuccessMessage()),
@@ -154,12 +154,12 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
             .subscribe({
                 next:
                     (res: Response) => {
-                        this.data = res.body;
+                        this.data.set(res.body);
                         this.pagingModel.elementCount = res.itemCount;
-                        this.processing = false;
+                        this.loading.set(false);
                     },
                 error: (err: any) => {
-                    this.processing = false;
+                    this.loading.set(false);
                     throw err
                 }
             });
@@ -171,19 +171,18 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
         this.confirmationSrv
             .confirmDelete()
             .pipe(switchMap(res => res ? this.detailSrv.deleteOne(this.selectedId()) : of(res)),
-                tap(res => this.processing = res !== false),
-                switchMap(_ => this.processing? this.entrySrv.getList(this.pagingModel.page - 1, this.pagingModel.pageSize) : of(false))
+                switchMap(res => res? this.entrySrv.getList(this.pagingModel.page - 1, this.pagingModel.pageSize) : of(false))
             ).subscribe({
             next:
                 (res: Result) => {
                     if (typeof res !== 'boolean') {
-                        this.data = res.body;
+                        this.data.set(res.body);
                         this.pagingModel.elementCount = res.itemCount;
                     }
-                    this.processing = false;
+                    this.loading.set(false);
                 },
             error: err => {
-                this.processing = false;
+                this.loading.set(false);
                 throw err
             }
         });

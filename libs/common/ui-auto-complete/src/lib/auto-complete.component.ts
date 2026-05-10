@@ -157,6 +157,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     selected: Id;
     loading = signal(false);
     isInputInvalid = computed(() => !this.loading() && !!this.autoControl.value && this.selected == null);
+    hasNoMatch = computed(() => !this.loading() && this.model.options() && this.model.options().length == 0)
 
     counter = 0; // identifies the query, used to order queries and discard delayed result if they expire
 
@@ -202,7 +203,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 this.selected = v;
                 // this.autoControl.setValue(this.model.cache);
                 this.setAutoControlValue(this.model.cache);
-                this.model.options = [this.model.cache];
+                this.model.options.set([this.model.cache]);
                 if (fireOnChange) {
                     this.onChange(this.selected);
                     this.callModelValueChange(this.selected);
@@ -234,12 +235,11 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
 
     displayValueFromOptions(v: Id): boolean {
         if (this.model && this.model.options) {
-            const e = this.model.options.filter(o => this.model.valueOf(o) === v);
+            const e = this.model.options().filter(o => this.model.valueOf(o) === v);
             if (e.length === 1) {
                 this.model.cache = e[0];
                 this.selected = v;
-                this.model.options = e;
-                // this.autoControl.setValue(e[0]);
+                this.model.options.set(e);
                 this.setAutoControlValue(e[0]);
                 return true;
             }
@@ -255,7 +255,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                 .subscribe({
                     next: e => {
                         this.model.cache = e;
-                        this.model.options = [e];
+                        this.model.options.set([e]);
                         this.selected = value;
                         // this.autoControl.setValue(e);
                         this.setAutoControlValue(e);
@@ -325,7 +325,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
             tap(f => {
                 //this.lastFilterValue = f;
                 this.model.cache = null;
-                this.model.options = [];
+                this.model.options.set([]);
                 this.setValue(null, true);
             }),
             switchMap(txt => {
@@ -340,7 +340,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
                         const curText = this.autoControl.value.toString();
                         this.notFound.set(curText.length > 3 && options.length === 0);
                         if (id == this.counter) {
-                            this.model.options = options;
+                            this.model.options.set(options);
                             if (options.length === 1) {
                                 if (this.model.isPerfectMatch(options[0], txt)) {
                                     this.setValue(this.model.valueOf(options[0]), true);
@@ -355,7 +355,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
             {
                 next: () => this.loading.set(false),
                 error: err => {
-                    this.model.options = [];
+                    this.model.options.set([]);
                     this.loading.set(false);
                     throw err;
                 }
@@ -396,9 +396,9 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
         this.setAutoControlValue(null);
     }
 
-    hasNoMatch(): boolean {
-        return !this.loading() && this.model.options && this.model.options.length == 0;
-    }
+    // hasNoMatch(): boolean {
+    //     return !this.loading() && this.model.options && this.model.options.length == 0;
+    // }
 
     addCurrentText() {
         this.model.addEntry(this.autoControl.value.toString()).subscribe(numb => {

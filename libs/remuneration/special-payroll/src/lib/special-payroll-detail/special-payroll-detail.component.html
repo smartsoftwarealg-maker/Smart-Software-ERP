@@ -11,7 +11,7 @@
     </form>
   </mat-card>
 }
-<div class="container size" [style.display]="processing? 'none': 'flex'">
+<div class="container size">
   @if (payrollId()) {
     <div class="ctrl-div">
       @if (payrollId) {
@@ -103,4 +103,4 @@
     <ss-pagination [paginationModel]="pagingModel"></ss-pagination>
   </div>
 </div>
-<mat-spinner [style.display]="processing? 'block': 'none'"></mat-spinner>
+<mat-spinner></mat-spinner>

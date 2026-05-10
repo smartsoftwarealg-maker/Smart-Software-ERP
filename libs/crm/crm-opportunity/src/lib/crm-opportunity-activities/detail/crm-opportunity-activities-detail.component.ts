@@ -27,6 +27,7 @@ import {UserListService} from '@ss/common/api-users';
 import {CrmTeamsService} from '@ss/crm/crm-teams';
 import {Editor, NgxEditorModule, Toolbar} from 'ngx-editor';
 import {CRMOpportunityService} from '../../crm-opportunity.service';
+import {Observable, switchMap, tap} from "rxjs";
 
 @Component({
     selector: 'ss-crm-contact-line-detail',
@@ -108,13 +109,11 @@ export class CrmOpportunityActivitiesDetailComponent
 
     private opportunitySrv = inject(CRMOpportunityService);
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.opportunitySrv.get(this.detailSrv.getParentId()).subscribe({
-            next: (crmOpportunity) => {
-                this.email = crmOpportunity.contactEmail;
-            },
-        });
+    protected override load():Observable<any>{
+        return this.opportunitySrv
+            .get(this.detailSrv.getParentId())
+            .pipe(tap((crmOpportunity) => this.email = crmOpportunity.contactEmail),
+                switchMap(() => super.load())) ;
     }
 
     send() {

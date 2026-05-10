@@ -218,7 +218,6 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
 
     override select(id: number) {
         super.select(id);
-        //this.selected = id;
         if (id > 0) {
             this.salesOrderLinesSrv.setParentId(id);
             this.salesOrderLinesSrv

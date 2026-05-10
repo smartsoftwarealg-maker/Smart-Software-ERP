@@ -39,7 +39,7 @@ export class LoansListComponent extends BaseEntityListComponent<Loan> {
         click: () => this.toggleActivity(),
     }
 
-    consumptionList: Consumption[] = [];
+    consumptionList = signal<Consumption[]>([]);
     detailPagination = PaginationModel.newInstance({page: 1, pageSize: 5, elementCount: 0});
 
     consumptionColumns = [
@@ -87,7 +87,7 @@ export class LoansListComponent extends BaseEntityListComponent<Loan> {
 
     override selectRow(row: Loan) {
         super.selectRow(row);
-        this.consumptionSrv.setParentId(this.selected);
+        this.consumptionSrv.setParentId(this.selectedId());
         this.refreshDetail();
     }
 
@@ -107,7 +107,7 @@ export class LoansListComponent extends BaseEntityListComponent<Loan> {
         this.consumptionSrv
             .getList(this.detailPagination.page -1 , this.detailPagination.pageSize)
             .subscribe(res => {
-                this.consumptionList = res.body;
+                this.consumptionList.set(res.body);
                 this.detailPagination.elementCount = res.itemCount;
             });
     }
