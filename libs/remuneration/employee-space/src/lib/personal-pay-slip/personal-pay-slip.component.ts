@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, signal} from "@angular/core";
 import { ElementsEntryService, PaymentElement } from '@ss/remuneration/elements-entry';
 import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of, Subscription, switchMap, tap, zip } from 'rxjs';
@@ -64,8 +64,7 @@ export class PersonalPaySlipComponent implements OnInit, OnDestroy {
     private formBuilder = inject(FormBuilder);
     private selectorSrv =  inject(PayrollMonthService);
 
-    processing = false;
-    changing = true;
+    processing = signal(false);
     minMonth = 0;
     maxMonth = 0;
     specialList: Special[] = [];
@@ -104,8 +103,7 @@ export class PersonalPaySlipComponent implements OnInit, OnDestroy {
                             .pipe(debounceTime(300),
                                 distinctUntilChanged())
                             .subscribe(() => {
-                                this.changing = true;
-                                this.specialList = [];
+                                this.select(true);
                             }));
                 this.subscription
                     .push(
@@ -115,14 +113,13 @@ export class PersonalPaySlipComponent implements OnInit, OnDestroy {
                             .pipe(debounceTime(300),
                                 distinctUntilChanged())
                             .subscribe(() => {
-                                this.changing = true;
-                                this.specialList = [];
+                                this.select(true);
                             }));
             });
     }
 
     select(loadSpecial: boolean) {
-        this.processing = true;
+        this.processing.set(true);
         const year  = this.form.controls['year'].value;
         const month = this.form.controls['month'].value;
         let special = this.form.controls['offset'].value;
@@ -149,11 +146,10 @@ export class PersonalPaySlipComponent implements OnInit, OnDestroy {
                             });
                             this.form.controls['offset'].setValue(payMonth);
                         }
-                        this.processing = false;
-                        this.changing = !loadSpecial;
+                        this.processing.set(false);
                     },
                     error: err => {
-                        this.processing = false;
+                        this.processing.set(false);
                         throw err;
                     }
                 }
@@ -164,14 +160,14 @@ export class PersonalPaySlipComponent implements OnInit, OnDestroy {
 
     loadPaySlip() {
         const value = this.form.getRawValue();
-        this.processing = true;
+        this.processing.set(true);
 
         this.selectorSrv
             .selectMonth(value.offset)
             .pipe(switchMap(_ => this.infoSrv.getSlip(this.loginSrv.appCtx.personId)))
             .subscribe(res => {
                 this.paySlip = res || [];
-                this.processing = false;
+                this.processing.set(false);
             });
     }
 

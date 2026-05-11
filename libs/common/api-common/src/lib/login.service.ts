@@ -3,11 +3,10 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AppContext, Credentials, ESender, LoginInfo, UserInfo } from './models';
-import { CENTER_SELECT_URL, INDEX_PAGE_URL, LOGIN_URL, UPDATE_PASSWORD_URL } from './constants';
+import { CENTER_SELECT_URL, LOGIN_URL, UPDATE_PASSWORD_URL } from './constants';
 import { HttpService } from './http.service';
 import { MainPageService } from './main-page.service';
 import { CompanySelectorService } from './company-selector.service';
-import {AppConfigService} from "./app-config.service";
 
 export enum LicenseErrorType {
     UserLicense = 1000,
@@ -240,6 +239,59 @@ export class LoginService {
             );
     }
 
+    public personLogin(url: string,
+        credential: {
+            username: string,
+            password: string
+        },
+        isAndroid: boolean,
+        onFinish?: () => void) {
+        this.baseURL = this.#httpSrv.baseUrl;
+        this.licenseErrorType = null;
+        this.wrongData = false;
+
+        const isPrivate = this.#httpSrv.isPrivate();
+
+        this.#httpSrv
+            .doLogin(url, credential)
+            .subscribe({
+                next:
+                    (info: LoginInfo) => {
+                        if (isPrivate) {
+                            this.#httpSrv.updatePrivateAuthToken(info.jwt);
+                        } else {
+                            this.#httpSrv.updateAuthToken(info.jwt);
+                        }
+                        this.appCtx = info.ctx;
+                        if ((info.ctx.personId||0) > 0) {
+                            const url = CENTER_SELECT_URL;
+                            this.#router.navigate(['/' + url]).then();
+                            // this.resetCode(info.ctx.personId)
+                            //     .subscribe((res) => {
+                            //     const url = res.code !== '' ? UPDATE_PASSWORD_URL : CENTER_SELECT_URL;
+                            //     this.#router.navigate(['/' + url]).then();
+                            // });
+                        }
+                        if (onFinish != null) {
+                            onFinish();
+                        }
+                    },
+                error: () => {
+                    this.wrongData = true;
+                    if (onFinish != null) {
+                        onFinish();
+                    }
+                    // throw err;
+                },
+                complete: () => {
+                    if (onFinish != null) {
+                        onFinish();
+                    }
+                }
+            }
+            );
+    }
+
 
     public updateAgentLicense(license: string): Observable<number> {
         return this.#httpSrv.put('/agents/license', { license });
@@ -263,7 +315,6 @@ export class LoginService {
     }
 
     set customerLogin(value: LoginType) {
-        console.log(value);
         this._customerLogin = value;
     }
 
@@ -291,6 +342,5 @@ export class LoginService {
     public resetCode(agent: number) {
         return this.#httpSrv.get<{ code: string }>(`/agents/${agent}/reset-code`);
     }
-
 
 }

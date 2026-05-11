@@ -15,7 +15,7 @@
             <mat-option [value]="'APPLICATIONS'">
                 <span translate>COMMON_APPLICATIONS</span>
             </mat-option>
-          @for (app of apps; track app) {
+          @for (app of apps(); track app) {
             <mat-option [value]="app">
               <span translate> {{ 'COMMON_' + app }}</span>
             </mat-option>
@@ -23,10 +23,10 @@
         </mat-select>
       </mat-form-field>
     </div>
-    @if (menuItems !== null) {
+    @if (menuItems()) {
       <div class="list-container">
         <mat-list [disabled]="processing()">
-          @for (item of menuItems; track item) {
+          @for (item of menuItems(); track item) {
             <mat-list-item
               [ngClass]="{'b-warn': selectedItem === item }"
               (click)="selectItem(item)"><span

@@ -11,7 +11,7 @@
           <input matInput formControlName="year" type="number" required step="1">
         </mat-form-field>
         <mat-form-field floatLabel="always" class="default-100">
-          <mat-label translate>PAYROLL_EMPLOYMENT_TYPE</mat-label>
+          <mat-label translate>COMMON_TYPE</mat-label>
           <mat-select formControlName="offset" required>
             @for (v of specialList; track v) {
               <mat-option [value]="v.paymonth">
@@ -20,17 +20,15 @@
             }
           </mat-select>
         </mat-form-field>
-        @if (!processing) {
+        @if (!processing()) {
           <div class="default-50">
             <button mat-raised-button color="primary" type="button" (click)="select(true)">
               <i class="fa-solid fa-download"></i>
               {{ 'REMUN_LOAD_SPECIAL' | translate }}
             </button>
           </div>
-        }
-        @if (!processing) {
           <div class="default-50">
-            <button mat-raised-button color="accent" type="button" (click)="loadPaySlip()" [disabled]="changing">
+            <button mat-raised-button color="accent" type="button" (click)="loadPaySlip()">
               <i class="fa-solid fa-arrows-rotate"></i>
               {{ 'COMMON_REFRESH' | translate }}
             </button>
@@ -41,7 +39,7 @@
         <!--            <div class="default-50 sm-50"> <span translate>REMUN_MAX</span>: {{ maxMonth}}</div>-->
         <!--            <span class="default-100 sm-100"></span>-->
       </form>
-      @if (processing) {
+      @if (processing()) {
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
       }
     </mat-card-content>
