@@ -71,14 +71,14 @@ interface APP {
 export class AccessRightsListComponent extends BaseEntityListComponent<AccessRight> {
     private langSrv = inject(LanguageService);
     private roleSrv = inject(RoleService);
+    // private sortedApps: APP[] = [];
     public agentAutoCompleteModel = new DefaultAutoCompleteModel(this.roleSrv);
 
     processing = signal(false);
 
-    apps: string[] = [];
-    sortedApps: APP[] = [];
+    apps = signal<string[]>([]);
     application = '';
-    menuItems: string[] = [];
+    menuItems = signal<string[]>([]);
     roleList: Role[] = [];
     selectedItem = '';
     form = new FormGroup({
@@ -160,15 +160,15 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                     return this.rightsSrv.getApps();
                 }),
                 tap((res) => {
-                    this.apps = res['apps'].sort((a, b) => a.localeCompare(b)) || [];
+                    this.apps.set(res['apps'].sort((a, b) => a.localeCompare(b)) || []);
                     // this.apps.unshift('APPLICATIONS');
-                    this.sortedApps = this.apps
+                    const sortedApps = this.apps()
                         .map((e) => ({
                             key: e,
                             description: this.langSrv.translate('COMMON_' + e),
                         }))
                         .sort((a, b) => a?.description?.localeCompare(b.description));
-                    this.apps = this.sortedApps.map((e) => e.key);
+                    this.apps.set(sortedApps.map((e) => e.key));
                 }),
             );
     }
@@ -242,19 +242,19 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
     }
 
     canRead() {
-        return this.selectedRow && (this.selectedRow().rights & 1) === 1;
+        return (this.selectedRow()?.rights & 1) === 1;
     }
 
     canWrite() {
-        return this.selectedRow && (this.selectedRow().rights & 2) === 2;
+        return (this.selectedRow()?.rights & 2) === 2;
     }
 
     canEdit() {
-        return this.selectedRow && (this.selectedRow().rights & 4) === 4;
+        return (this.selectedRow()?.rights & 4) === 4;
     }
 
     canDelete() {
-        return this.selectedRow && (this.selectedRow().rights & 8) === 8;
+        return (this.selectedRow()?.rights & 8) === 8;
     }
 
     override processLoadedData(data: AccessRight[]): Observable<AccessRight[]> {
@@ -279,7 +279,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
                     description: this.langSrv.translate(e),
                 }))
                 .sort((a, b) => a?.description?.localeCompare(b.description));
-            this.menuItems = sorted.map((e) => e.key);
+            this.menuItems.set(sorted.map((e) => e.key));
         });
     }
 }

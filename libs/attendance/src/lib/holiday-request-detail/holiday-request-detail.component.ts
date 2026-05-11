@@ -6,7 +6,7 @@ import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import {HolidayRequestService} from '../holiday-request.service';
-import {LoginService} from '@ss/common/api-common';
+import {LoginService, MaterialModule} from '@ss/common/api-common';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {HolidayTypeService} from '../holiday-type.service';
 import { HOLIDAY_REQUEST, WorkflowDialogComponent } from '@ss/workflow';
@@ -25,17 +25,18 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     styleUrls: ['./holiday-request-detail.component.scss'],
     standalone: true,
     imports: [
-    MatCard,
-    MatCardContent,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    TranslateDirective,
-    MatInput,
-    UiAutoCompleteComponent,
-    MatError,
-    DatePickerComponent
+        MaterialModule,
+        MatCard,
+        MatCardContent,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        TranslateDirective,
+        MatInput,
+        UiAutoCompleteComponent,
+        MatError,
+        DatePickerComponent
 ],
 })
 export class HolidayRequestDetailComponent extends BaseEntityDetailComponent<HolidayRequest>{

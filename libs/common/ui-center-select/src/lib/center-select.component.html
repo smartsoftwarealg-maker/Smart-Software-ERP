@@ -22,7 +22,7 @@
                     }
                 </ng-template>
                 <mat-form-field style="width: 90%">
-                    <mat-select (selectionChange)="selectCompany($event.value)" [value]="selectedCompany">
+                    <mat-select (selectionChange)="selectCompany($event.value)" [value]="selectedCompany()">
                         @for (company of companyList(); track company.id) {
                             <mat-option [value]="company.id">
                                 {{ company.description }}

@@ -70,6 +70,8 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
 
     override selectRow(row: Transaction) {
         this.selectedRow.set(row);
+        const id = row ? row.id || 0 : 0;
+        this.select(id);
         this.agentSrv
             .get(row.agent)
             .subscribe((agent) => {
@@ -86,6 +88,7 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
 
     override select(id: number): void {
         this.entitySrv.setParentId(id);
+        this.entitySrv.selectedId.set(id);
         const itemControlsOn = this.selectedId() !== null && this.selectedId() > 0;
         this.viewReportButton.disabled = !itemControlsOn;
         this.emailReportButton.disabled = !this.selectedRow || !itemControlsOn || !this.selectedRow['email'];

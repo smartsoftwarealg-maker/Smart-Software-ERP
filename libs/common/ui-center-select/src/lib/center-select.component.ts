@@ -81,35 +81,32 @@ export class CenterSelectComponent implements OnInit {
     ngOnInit() {
         this.companyList.set([]);
         this.mainPageSrv.clear();
-        const tmp = this.centerControl.valueChanges.pipe(
-            startWith(''),
-            debounceTime(300),
-            distinctUntilChanged(),
-            map((value) =>
-                this.centerList().filter((c) =>
-                    c.description
-                        ?.toLocaleLowerCase()
-                        .includes(value.toLocaleLowerCase()),
+        const tmp = this.centerControl
+            .valueChanges
+            .pipe(
+                startWith(''),
+                debounceTime(300),
+                distinctUntilChanged(),
+                map((value) => this.centerList().filter((c) => c.description?.toLocaleLowerCase().includes(value.toLocaleLowerCase()) ),
                 ),
-            ),
         );
         this.filteredCenters.set(tmp);
 
         this.ccListSrv
             .getCompanyList()
             .subscribe({
-            next: (r) => {
-                this.companyList.set(r);
-                if (r.length === 1) {
-                    this.selectCompany(r[0].id);
-                } else {
-                    this.companyLoaded.set(r.length > 0);
-                }
-            },
-            error: (err) => {
-                this.endLoading();
-                throw err;
-            },
+                next: (r) => {
+                    this.companyList.set(r);
+                    if (r.length === 1) {
+                        this.selectCompany(r[0].id);
+                    } else {
+                        this.companyLoaded.set(r.length > 0);
+                    }
+                },
+                error: (err) => {
+                    this.endLoading();
+                    throw err;
+                },
         });
     }
 
@@ -117,9 +114,7 @@ export class CenterSelectComponent implements OnInit {
         this.selectedCompany.set(company);
         this.centerList .set([]);
         if (company > 0) {
-            this.selectedCompanyName.set(this.companyList()
-                .filter((c) => c.id === company)
-                .map((c) => c.description)[0]);
+            this.selectedCompanyName.set(this.companyList().filter((c) => c.id === company).map((c) => c.description)[0]);
             setTimeout(() => {
                 if (this.stepper) {
                     this.stepper.next();
