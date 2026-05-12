@@ -62,7 +62,7 @@ export class LineMatterListComponent extends BaseEntityListComponent<LTMLineMatt
     }
 
     private duplicate() {
-        if (this.selected) {
+        if (this.selectedId()) {
             const dialogRef = this.dialog.open(LtmMatterDuplicateComponent, {
                 disableClose: true,
                 width: '450px',

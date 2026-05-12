@@ -134,6 +134,6 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
     }
 
     duplicate() {
-        this.router.navigate([0], {relativeTo: this.route, queryParams: {sourceId: this.selected } }).then();
+        this.router.navigate([0], {relativeTo: this.route, queryParams: {sourceId: this.selectedId } }).then();
     }
 }

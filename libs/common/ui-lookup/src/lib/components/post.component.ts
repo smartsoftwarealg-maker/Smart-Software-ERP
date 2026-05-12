@@ -67,7 +67,7 @@ import { Observable } from 'rxjs';
                 ></mat-header-row>
                 <mat-row
                     class="selectable"
-                    [class.selected]="row.id == selected"
+                    [class.selected]="row.id == selectedId()"
                     (click)="select(row.id)"
                     *matRowDef="let row; columns: displayedColumns()"
                 ></mat-row>

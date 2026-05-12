@@ -85,7 +85,7 @@ export class ConsolidatedLoanListComponent extends BaseEntityListComponent<Loan>
 
     override selectRow(row: Loan) {
         super.selectRow(row);
-        this.consumptionSrv.setParentId(this.selected);
+        this.consumptionSrv.setParentId(this.selectedId());
         this.refreshDetail();
     }
 

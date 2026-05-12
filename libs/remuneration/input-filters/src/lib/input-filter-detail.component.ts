@@ -86,12 +86,12 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
     }
 
     addElements(sel: SelectionModel<any>) {
-        this.selection = this.form.controls['selection'].value +
+        this.selection = this.form?.controls['selection'].value +
                          sel.selected
                              .map(e => e.value)
                              .filter(e => this.selection?.indexOf(e) < 0)
                              .join('');
-        this.form.controls['selection'].setValue(this.selection);
+        this.form?.controls['selection'].setValue(this.selection);
         this.buildSelectionArray();
     }
 
@@ -100,7 +100,7 @@ export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputF
             .map(e => e.value.substring(0, 4))
             .join('');
         this.selection = this.selection.replace(remove, '');
-        this.form.controls['selection'].setValue(this.selection, {onlySelf: true, emitEvent: true});
+        this.form?.controls['selection'].setValue(this.selection, {onlySelf: true, emitEvent: true});
         this.buildSelectionArray();
     }
 

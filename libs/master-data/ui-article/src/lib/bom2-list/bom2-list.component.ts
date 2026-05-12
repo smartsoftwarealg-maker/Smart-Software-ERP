@@ -79,7 +79,7 @@ export class Bom2ListComponent extends BaseEntityListComponent<BOM> {
             .confirm('PROD_BOM_DUP', 'PROD_BOM_DUP_CONFIRM')
             .pipe(
                 switchMap((res) =>
-                    res ? this.entitySrv.duplicate(this.selected) : of(null),
+                    res ? this.entitySrv.duplicate(this.selectedId()) : of(null),
                 ),
                 switchMap((res) => {
                     if (res) {

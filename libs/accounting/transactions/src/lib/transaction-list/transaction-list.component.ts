@@ -178,12 +178,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         }
     }
 
-    // private showButtons() {
-    //     const itemControlsOn = this.selected != null && this.selected > 0;
-    //     this.editButton.disabled = !itemControlsOn;
-    //     this.deleteButton.disabled = !itemControlsOn;
-    //     this.viewReportButton.disabled = !itemControlsOn;
-    // }
 
     private navigate() {
         if (this.selectedId()) {

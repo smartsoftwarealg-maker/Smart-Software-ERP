@@ -294,7 +294,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
 
     reloadTransaction(bool: boolean) {
         if (bool) {
-            this.select(this.selected);
+            this.select(this.selectedId());
         }
     }
 

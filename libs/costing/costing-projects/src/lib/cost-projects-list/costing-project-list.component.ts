@@ -95,7 +95,7 @@ export class CostingProjectListComponent extends BaseEntityListComponent<CProjec
     }
 
     public onView() {
-        this.router.navigate(['view/' + this.selected], {relativeTo: this.route}).then();
+        this.router.navigate(['view/' + this.selectedId()], {relativeTo: this.route}).then();
     }
 
     override select(id: number) {
@@ -107,7 +107,7 @@ export class CostingProjectListComponent extends BaseEntityListComponent<CProjec
     }
 
     private duplicate() {
-        this.router.navigate(['duplicate', this.selected], {relativeTo: this.route}).then();
+        this.router.navigate(['duplicate', this.selectedId()], {relativeTo: this.route}).then();
     }
 
     override ngOnInit() {

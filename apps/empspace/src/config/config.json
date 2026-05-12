@@ -5,7 +5,8 @@
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "localhost:8080"
+            "backend": "http:192.168.8.161:8080",
+            "backend0": "https://demo.smartsoftware-dz.com:4430"
         }
     ],
     "useBrowserLanguage": true,

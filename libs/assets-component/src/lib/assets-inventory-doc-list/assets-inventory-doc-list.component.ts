@@ -93,7 +93,7 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
 
     override excel() {
         this.entitySrv
-            .workbook(this.selected||0)
+            .workbook(this.selectedId())
             .subscribe(blob => {
                 if (blob && blob.size > 100) {
                     const link = document.createElement('a');

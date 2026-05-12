@@ -66,7 +66,7 @@ export class SocialEdoHeaderListComponent extends BaseEntityListComponent<EDOHea
     }
 
     private openEDO() {
-        this.router.navigate(['/app/social/edo'], { queryParams: { edoId: this.selected||0 } }).then();
+        this.router.navigate(['/app/social/edo'], { queryParams: { edoId: this.selectedId()||0 } }).then();
     }
 
     override select(id: number) {

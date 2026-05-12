@@ -1,7 +1,8 @@
 import {
+    Component,
     enableProdMode,
     ErrorHandler,
-    importProvidersFrom, provideZoneChangeDetection,
+    importProvidersFrom, inject, provideZoneChangeDetection,
 } from '@angular/core';
 import { environment } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
@@ -11,7 +12,9 @@ import {
     provideHttpClient,
 } from '@angular/common/http';
 import {
-    provideRouter,
+    ActivatedRouteSnapshot,
+    CanDeactivateFn,
+    provideRouter, RouterStateSnapshot,
     Routes,
     withComponentInputBinding,
 } from '@angular/router';
@@ -21,7 +24,7 @@ import {
     CanActivateService,
     UPDATE_PASSWORD_URL,
     AUTH_2FA_URL,
-    LOGIN_URL, CENTER_SELECT_URL, BLOCKED_REASON_PAGE_URL
+    LOGIN_URL, CENTER_SELECT_URL, BLOCKED_REASON_PAGE_URL, LoginService
 } from '@ss/common/api-common';
 import { ShellComponent } from '@ss/common/ui-shell';
 import { MainPageComponent } from '@ss/common/ui-main-page';
@@ -36,7 +39,17 @@ import { AppComponent } from './app/app.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginComponent } from '@ss/common/ui-login';
 import {BlockedReasonComponent, CenterSelectComponent } from '@ss/common/ui-center-select';
-import {restCodeGuard} from "../../cspace/customer-guards";
+import {map} from "rxjs";
+
+const resetCodeGuard: CanDeactivateFn<Component> = (
+    component: Component,
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot,
+) => {
+    const loginSrv = inject(LoginService);
+    const id = loginSrv.appCtx?.agentId;
+    return id && loginSrv.resetCode(id).pipe(map((res) => res.code == ''));
+};
 
 const routes: Routes = [
     {
@@ -61,7 +74,7 @@ const routes: Routes = [
     },
     { path: LOGIN_URL, component: LoginComponent},
     { path: CENTER_SELECT_URL, component: CenterSelectComponent },
-    { path: UPDATE_PASSWORD_URL, component: PasswordUpdateComponent, canDeactivate:[restCodeGuard] },
+    { path: UPDATE_PASSWORD_URL, component: PasswordUpdateComponent, canDeactivate:[resetCodeGuard] },
     { path: AUTH_2FA_URL, component: Auth2FAConfirmationComponent },
     { path: BLOCKED_REASON_PAGE_URL, component: BlockedReasonComponent },
     { path: '', redirectTo: LOGIN_URL, pathMatch: 'full' },
