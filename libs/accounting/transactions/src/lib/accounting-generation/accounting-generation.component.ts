@@ -202,7 +202,7 @@ export class AccountingGenerationComponent implements OnInit {
                     )
                     .subscribe((val: number | null) => {
                         if (val) {
-                            this.showDocuments(this.journalMap.get(journal));
+                            this.showDocuments(this.journalMap.get(journal)||0);
                             this.canGenerate.set(this.validateJournals(journals));
                         }
                     }),
@@ -255,10 +255,10 @@ export class AccountingGenerationComponent implements OnInit {
         from(payloads)
             .pipe(
                 concatMap((p) => {
-                    this.processingDocument.set(p.genCode);
+                    this.processingDocument.set(p.genCode||0);
                     return this.generationSrv.generate(p).pipe(
                         tap(() => {
-                            this.showDocuments(p.genCode);
+                            this.showDocuments(p.genCode||0);
                             this.processedDocuments.update((v) => [
                                 ...v,
                                 p.genCode,
