@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, Inject, OnDestroy, OnInit, signal} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Lookup, Office, OfficeService } from '@ss/common/api-lookup';
 import { AssetLocationService, AssetsBuildingService } from '@ss/assets-component';
@@ -40,26 +40,26 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     isCMMS = false;
 
     subscriptions: Subscription[] = [];
-    selectedOffice: Office | null = null;
+    selectedOffice = signal<Office | null>(null);
     locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
     buildingLookup = new DefaultAutoCompleteModel(this.buildingSrv);
     buildings: Lookup[] = [];
-    floors: Lookup[] = [];
+    floors = signal<Lookup[]>([]);
 
     locationFF = new FormControl<number>(0);
     buildingFF = new FormControl<number>(0);
     floorFF = new FormControl<number>(0);
-    list: Office[] = [];
+    list = signal<Office[]>([]);
 
     constructor(public dialogRef: MatDialogRef<OfficeSearchComponent>,
         @Inject(MAT_DIALOG_DATA) public data: Office) {
-        this.isCMMS = data?.cmms;
-        this.locationLookup.onObjectSelected = o => this.buildingSrv.setParentId(o?.id);
+        this.isCMMS = data?.cmms||false;
+        this.locationLookup.onObjectSelected = o => this.buildingSrv.setParentId(o?.id||0);
         this.buildingSrv.setParentId(0);
     }
 
     close() {
-        this.dialogRef.close();
+        this.dialogRef.close(null);
     }
 
     ngOnDestroy(): void {
@@ -112,7 +112,7 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
         this.officeSrv
             .floors(this.locationFF.value || 0, this.buildingFF.value || 0)
             .subscribe(res => {
-                this.floors = res;
+                this.floors.set(res);
                 this.floorFF.setValue(null);
             });
     }
@@ -120,10 +120,10 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     private findOffices() {
         this.officeSrv
             .search(this.locationFF.value || 0, this.buildingFF.value || 0, this.floorFF.value || 0)
-            .subscribe(res => this.list = res);
+            .subscribe(res => this.list.set(res));
     }
 
     onSelect(office: Office) {
-        this.selectedOffice = office;
+        this.selectedOffice.set(office);
     }
 }

@@ -465,9 +465,11 @@ export class AssetsDetailComponent
             height: '540px',
             data: { id: 0, description: null, cmms: this.isCMMS },
         });
-        dialogRef.afterClosed().subscribe((res) => {
-            this.onOfficeChange(res);
-            this.form.controls['office']?.setValue(res?.id);
+        dialogRef.afterClosed()
+            .subscribe((res) => {
+                    console.log(res);
+                    this.onOfficeChange(res);
+                    this.form?.controls['office']?.setValue(res?.id||0);
         });
     }
 
@@ -483,25 +485,21 @@ export class AssetsDetailComponent
 
     onOfficeChange(off: Office) {
         if (off) {
-            this.form
-                .get('site')
-                .setValue(off.locationDescription, { onlySelf: true });
-            this.form
-                .get('building')
-                .setValue(off.buildingDescription, { onlySelf: true });
+            this.form?.controls['site']?.setValue(off.locationDescription, { onlySelf: true });
+            this.form?.controls['building']?.setValue(off.buildingDescription, { onlySelf: true });
         }
     }
 
     onReceptionChange(r: AssetReception) {
         if (r) {
-            const numb = this.form.get('requestNumber').value;
-            const date = this.form.get('requestDate').value;
+            const numb = this.form?.get('requestNumber')?.value;
+            const date = this.form?.get('requestDate')?.value;
             if (!numb || numb.trim() === '') {
-                this.form.get('requestNumber').setValue(r.requestNumber);
-                this.form.get('requester').setValue(r.requester);
+                this.form?.get('requestNumber').setValue(r.requestNumber);
+                this.form?.get('requester').setValue(r.requester);
             }
             if (!date) {
-                this.form.get('requestDate').setValue(r.requestDate);
+                this.form?.get('requestDate').setValue(r.requestDate);
             }
             this.form.get('orderDate').setValue(r.orderDate);
             this.form.get('orderNumber').setValue(r.orderNumber);
