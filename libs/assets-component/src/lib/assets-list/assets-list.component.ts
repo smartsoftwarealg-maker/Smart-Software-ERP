@@ -127,12 +127,12 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
 
 
     private duplicate() {
-        if (!!this.selected) {
+        if (!!this.selectedId()) {
             const dialogRef = this.dialog.open(DuplicateDialogComponent, {
                 disableClose: true,
                 width: '400px',
                 height: '150px',
-                data: { id: this.selected}
+                data: { id: this.selectedId() }
             });
             dialogRef
                 .afterClosed()

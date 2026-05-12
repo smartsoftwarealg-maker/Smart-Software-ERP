@@ -89,7 +89,7 @@ export class ArticleStoreComponent implements OnInit {
     //
     public readonly pagination = PaginationModel.newInstance();
 
-    data: ArticleStore[];
+    data = signal <ArticleStore[]>([]);
     selectedStore: ArticleStore = null;
     displayedColumns = signal<string[]>([
         'storeName',
@@ -149,7 +149,7 @@ export class ArticleStoreComponent implements OnInit {
         .subscribe((x) => {
                 this.pagination.elementCount = x.itemCount;
                 // const ids = x.body.map(_ => _.id);
-                this.data = x.body;
+                this.data.set(x.body);
                 this.loading.set(false);
             });
 
@@ -188,9 +188,7 @@ export class ArticleStoreComponent implements OnInit {
                 .subscribe(res => {
                     if (res?.count > 0) {
                         this.snackBarSrv.showSuccessMessage();
-                        this.data = this.data.filter(
-                            (e) => e.id !== this.selectedStore.id,
-                        );
+                        this.data.update(v => v.filter((e) => e.id !== this.selectedStore.id));
                     }
                 });
         }

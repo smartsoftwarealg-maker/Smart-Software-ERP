@@ -114,7 +114,8 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
 
     override finishLoading(data: ACCFile[]) {
         super.finishLoading(data);
-        this.selected = data.find(e => e.fileYear === this.loginSrv.appCtx.accYear)?.id;
+        this.entitySrv.selectedId.set(data.find(e => e.fileYear === this.loginSrv.appCtx.accYear)?.id);
+        // this.selectedId.set(data.find(e => e.fileYear === this.loginSrv.appCtx.accYear)?.id);
     }
 
     override select(id: number) {

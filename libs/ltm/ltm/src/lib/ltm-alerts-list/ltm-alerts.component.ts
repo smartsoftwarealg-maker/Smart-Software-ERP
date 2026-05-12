@@ -130,7 +130,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
         const dialogRef = this.#dialog.open(LtmEmailSenderComponent,{
             width: '500px',
             height: '30em',
-            data: { id: this.selected||0, document: LTM_NON_CONFORMITY_DOC, form: this.formReport, message: 'test' },
+            data: { id: this.selectedId()||0, document: LTM_NON_CONFORMITY_DOC, form: this.formReport, message: 'test' },
             disableClose: true
         });
         dialogRef.afterClosed().subscribe(res => {

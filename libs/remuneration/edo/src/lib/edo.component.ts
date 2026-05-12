@@ -1,4 +1,4 @@
-import {Component, OnInit, signal, ViewChild} from '@angular/core';
+import {Component, inject, OnInit, signal, ViewChild} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,23 +35,36 @@ interface Lookup {
 })
 export class EdoComponent implements OnInit {
     @ViewChild('blist') blist: MatSelectionList
-    #_form: UntypedFormGroup|null = null;
+    private shellSrv =  inject(ShellService);
+    private edoSrv =  inject(EdoService);
+    private route =  inject(ActivatedRoute);
+    private formBuilder =  inject(UntypedFormBuilder);
+    private monthSrv =  inject(PayrollMonthService);
+    private bankSrv =  inject(BankService);
+    private curYear = new Date().getFullYear();
+    private curMonth = new Date().getMonth();
 
-    form = signal<UntypedFormGroup|null>(null);
+    #_form = this.formBuilder.group({
+        month:       [this.curMonth,                   Validators.required],
+        year:        [this.curYear,                    Validators.required],
+        description: ['',                              Validators.required],
+        formula:     ['c990',                          Validators.required],
+        bank:        [{ value: 0, disabled: true },    Validators.required],
+        date:        [new Date(),                      Validators.required],
+        reference:   [1,                               Validators.required],
+        special:     ['0',                             [Validators.required, Validators.minLength(1)]],
+        all:         [false]
+    });
+;
+
+    form = signal<UntypedFormGroup|null>(this.#_form);
     loading = signal(true);
-    curYear = new Date().getFullYear();
-    curMonth = new Date().getFullYear();
     bankList = signal<Lookup[]>([]);
     receivingBanks = signal<Lookup[]>([]);
     selectedBanks = '';
     edoText: string = '';
 
-    constructor(private shellSrv: ShellService,
-                private edoSrv: EdoService,
-                private route: ActivatedRoute,
-                private formBuilder: UntypedFormBuilder,
-                private monthSrv: PayrollMonthService,
-                private bankSrv: BankService) {
+    constructor() {
         this.shellSrv.setTitle('PAYROLL_ELECTRONIC_DEPOSIT_ORDER');
     }
 
@@ -99,7 +112,7 @@ export class EdoComponent implements OnInit {
     }
 
     save() {
-        const filename = `${this.#_form.value.month}-${this.#_form.value.year}.txt`;
+        const filename = `${this.#_form?.value.month}-${this.#_form.value.year}.txt`;
         this.#_form.value['bank'] = this.receivingBanks().length > 0? this.receivingBanks()[0].id: 0;
         const selection = this.blist.selectedOptions.selected.map(e => e.value);
         this.shellSrv.setLoading(true);
@@ -131,17 +144,18 @@ export class EdoComponent implements OnInit {
     }
 
     private buildForm(bank: number) {
-        this.#_form = this.formBuilder.group({
-            month:       [this.curMonth,                   Validators.required],
-            year:        [this.curYear,                    Validators.required],
-            description: ['',                              Validators.required],
-            formula:     ['c990',                          Validators.required],
-            bank:        [{ value: bank, disabled: true }, Validators.required],
-            date:        [new Date(),                      Validators.required],
-            reference:   [1,                               Validators.required],
-            special:     ['0',                             [Validators.required, Validators.minLength(1)]],
-            all: [false]
-        });
-        this.form.set(this.#_form);
+        this.#_form.controls.bank.setValue(bank);
+        // this.#_form = this.formBuilder.group({
+        //     month:       [this.curMonth,                   Validators.required],
+        //     year:        [this.curYear,                    Validators.required],
+        //     description: ['',                              Validators.required],
+        //     formula:     ['c990',                          Validators.required],
+        //     bank:        [{ value: bank, disabled: true }, Validators.required],
+        //     date:        [new Date(),                      Validators.required],
+        //     reference:   [1,                               Validators.required],
+        //     special:     ['0',                             [Validators.required, Validators.minLength(1)]],
+        //     all: [false]
+        // });
+        // this.form.set(this.#_form);
     }
 }

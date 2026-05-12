@@ -184,7 +184,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.setLoading(true);
         this.dashboardSrv
             .getData(
-                this.selected,
+                this.selectedId(),
                 this.detailPagination.page,
                 this.detailPagination.pageSize,
                 from,
@@ -223,20 +223,20 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
 
         this.dashboardSrv
             .getExcel(
-                this.selected,
+                this.selectedId(),
                 this.detailPagination.page,
                 this.detailPagination.pageSize,
                 from,
                 to,
                 this.selectedAgentId,
-                consolidated,
+                consolidated||false,
             )
             .pipe(
                 switchMap((jobId) => {
                     return timer(0, this.#POLL_INTERVAL_MS).pipe(
                         switchMap(() =>
                             this.dashboardSrv.getStatus(
-                                `/dashboard/${this.selected}/excel`,
+                                `/dashboard/${this.selectedId()}/excel`,
                                 jobId,
                             ),
                         ),
@@ -297,20 +297,20 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
 
         this.dashboardSrv
             .getCsv(
-                this.selected,
+                this.selectedId(),
                 this.detailPagination.page,
                 this.detailPagination.pageSize,
                 from,
                 to,
                 this.selectedAgentId,
-                consolidated,
+                consolidated||false,
             )
             .pipe(
                 switchMap((jobId) => {
                     return timer(0, this.#POLL_INTERVAL_MS).pipe(
                         switchMap(() =>
                             this.dashboardSrv.getStatus(
-                                `/dashboard/${this.selected}/csv`,
+                                `/dashboard/${this.selectedId()}/csv`,
                                 jobId,
                             ),
                         ),
@@ -356,18 +356,19 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     }
 
     public json() {
-        const from = this.langSrv.formatDate(this.fromDate.value);
-        const to = this.langSrv.formatDate(this.toDate.value);
+        const today = new Date();
+        const from = this.langSrv.formatDate(this.fromDate.value||today);
+        const to = this.langSrv.formatDate(this.toDate.value||today);
         const consolidated = this.consolidated.value;
         this.dashboardSrv
             .getJson(
-                this.selected,
+                this.selectedId(),
                 this.detailPagination.page,
                 this.detailPagination.pageSize,
                 from,
                 to,
                 this.selectedAgentId,
-                consolidated,
+                consolidated||false,
             )
             .subscribe((blob) => {
                 if (blob && blob.size > 100) {

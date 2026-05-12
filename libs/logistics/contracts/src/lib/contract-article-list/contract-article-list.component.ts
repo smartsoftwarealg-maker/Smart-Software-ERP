@@ -68,18 +68,18 @@ export class ContractArticleListComponent implements OnInit {
     }
 
     edit() {
-        this.showDetail(this.selected?.id);
+        this.showDetail(this.selected?.id||0);
     }
 
     deleteSelected() {
         if (this.selected && this.selected.id) {
             this.confirmationSrv
                 .confirmDelete()
-                .pipe(switchMap(res => res? this.articleSrv.remove(this.selected.id): of({count: -1})))
+                .pipe(switchMap(res => res? this.articleSrv.remove(this.selected?.id||0): of({count: -1})))
                 .subscribe(res => {
                     if (res.count > 0) {
                         this.snackBar.showSuccessMessage();
-                        this.articles = this.articles.filter(e => e.id !== this.selected.id)
+                        this.articles = this.articles.filter(e => e.id !== this.selected?.id||0)
                     }
                 });
         }

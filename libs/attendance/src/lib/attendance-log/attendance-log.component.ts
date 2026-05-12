@@ -64,7 +64,7 @@ export class AttendanceLogComponent implements OnInit {
     attendanceMachines: AttendanceMachine[] = [];
     tableWidth            = 390;
     types                 = TYPES
-    selected: ATTReport   = null;
+    selected: ATTReport|null   = null;
     data: ATTReport[]     = [];
     form = this.fb.group({
         id:     [0],
@@ -229,7 +229,7 @@ export class AttendanceLogComponent implements OnInit {
             .map(i => {
                 dDay.setDate(dDay.getDate() + 1);
                 dDay.setHours(0, 0, 0);
-                return this.datePipe.transform(dDay, 'EE, dd');
+                return this.datePipe.transform(dDay, 'EE, dd')||'';
             });
     }
 
@@ -248,7 +248,7 @@ export class AttendanceLogComponent implements OnInit {
 
     onChange(e: FileList|null) {
         this.file = e[0] as File;
-        this.fileName = this.file?.name;
+        this.fileName = this.file?.name||'';
     }
 
 
