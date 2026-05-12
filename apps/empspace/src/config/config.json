@@ -1,12 +1,10 @@
 {
-    "version": "3.0",
-    "protocol": "http://",
-    "defaultUrl": "localhost:8080",
+    "version": "3.1",
     "urlRules": [
         {
             "frontend": "?",
-            "backend": "http:192.168.8.161:8080",
-            "backend0": "https://demo.smartsoftware-dz.com:4430"
+            "backend0": "http://192.168.8.160:8080",
+            "backend": "https://demo.smartsoftware-dz.com/backend-api-demo"
         }
     ],
     "useBrowserLanguage": true,
