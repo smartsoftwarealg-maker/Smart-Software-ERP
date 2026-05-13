@@ -46,7 +46,7 @@ export class VatDetailComponent extends BaseEntityDetailComponent<Vat> {
     public override setupForm(e: Vat): UntypedFormGroup {
         return this.formBuilder.group({
             id:              [e.id],
-            value:           [e.value, Validators.compose([Validators.required, Validators.min(0), Validators.max(100)])],
+            value:           [e.value, Validators.compose([Validators.required, Validators.min(0), Validators.max(1000)])],
             description:     [e.description],
             descriptionAr:   [e.descriptionAr],
             salesAccount:    [e.salesAccount, [Validators.minLength(3), Validators.maxLength(10)]],
