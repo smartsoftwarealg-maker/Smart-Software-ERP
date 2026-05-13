@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'smart.software.com',
+  appId: 'com.smartsoftware.empspace',
   appName: 'empspace',
   webDir: '../../dist/apps/empspace/',
   loggingBehavior: 'none',
