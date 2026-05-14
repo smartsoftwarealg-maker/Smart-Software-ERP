@@ -13,7 +13,11 @@ import {
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
-import { ClassService, LookupsService } from '@ss/common/api-lookup';
+import {
+    ClassService,
+    LookupsService,
+    UnitService,
+} from '@ss/common/api-lookup';
 import { ServiceArticleService } from '../service-article.service';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { MatCardModule } from '@angular/material/card';
@@ -47,6 +51,7 @@ export class ServiceArticleDetailComponent extends BaseEntityDetailComponent<Ser
     private lookupsSrv = inject(LookupsService);
     private classSrv =  inject(ClassService);
     private fb = inject(FormBuilder);
+    private unitSrv = inject(UnitService);
 
     classLookup = new DefaultAutoCompleteModel(this.classSrv);
     vats = this.lookupsSrv.getVats();
@@ -61,6 +66,7 @@ export class ServiceArticleDetailComponent extends BaseEntityDetailComponent<Ser
         super(articleSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'STOCK_ARTICLES');
     }
 
+    unitLookup = new DefaultAutoCompleteModel(this.unitSrv);
 
     setupForm(a: Service): UntypedFormGroup {
         return this.fb.group({
@@ -73,7 +79,8 @@ export class ServiceArticleDetailComponent extends BaseEntityDetailComponent<Ser
             price1:         [a.price1],
             vat:            [a.vat],
             recordBlocked:  [a.recordBlocked || false],
-            blockingReason: [a.blockingReason]
+            blockingReason: [a.blockingReason],
+            salesUnit:      [a.salesUnit]
         });
     }
 

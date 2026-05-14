@@ -21,4 +21,5 @@ export interface Service {
     price1?: number;
     price2?: number;
     price3?: number;
+    salesUnit?: number;
 }

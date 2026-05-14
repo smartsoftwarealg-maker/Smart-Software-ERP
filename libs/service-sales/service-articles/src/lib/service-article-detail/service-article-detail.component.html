@@ -39,6 +39,13 @@
               </mat-error>
             }
           </mat-form-field>
+            <mat-form-field class="default-50 sm-100">
+                <mat-label translate>STOCK_UNIT</mat-label>
+                <ss-auto-complete
+                    [model]="unitLookup"
+                    formControlName="salesUnit">
+                </ss-auto-complete>
+            </mat-form-field>
           <div class="default-50 sm-100">
             <mat-checkbox formControlName="recordBlocked" translate>ADMINISTRATION_BLOCKED</mat-checkbox>
           </div>
