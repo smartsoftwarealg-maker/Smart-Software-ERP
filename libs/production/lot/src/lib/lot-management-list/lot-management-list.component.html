@@ -2,9 +2,16 @@
     <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_LOT</mat-header-cell>
             <mat-cell *matCellDef="let e">
                 {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="storeDescription">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>STOCK_STORE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.storeDescription }}
             </mat-cell>
         </ng-container>
 

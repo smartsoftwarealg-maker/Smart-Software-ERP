@@ -31,7 +31,7 @@ export class LocationService extends BaseEntityExtendedService<Location> {
             { key: 'lot', value: lot },
             { key: 'stock', value: stock },
             { key: 'mark', value: mark },
-            { key: 'find', value: reference },
+            { key: 'find', value: reference||'' },
             { key: 'sort', value: sortBy },
 
         ];
