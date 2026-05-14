@@ -3,7 +3,7 @@
         <button mat-mini-fab color="primary"
                 [matTooltip]="'COMMON_SAVE' | translate"
                 (click)="save()"
-                [disabled]="!form.valid">
+                [disabled]="!form?.valid">
             <i class="fas fa-save"></i>
         </button>
         <button mat-mini-fab
@@ -24,7 +24,7 @@
                                           [model]="lotLookup"
                                           formControlName="storeId">
                         </ss-auto-complete>
-                        @if (form.controls['storeId'].hasError('required')) {
+                        @if (form?.controls['storeId'].hasError('required')) {
                             <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                         }
                         <mat-hint> {{ storeName()}}</mat-hint>
@@ -47,10 +47,10 @@
                                           [model]="articleLookup"
                                           formControlName="reference">
                         </ss-auto-complete>
-                        @if (form.controls['reference'].hasError('required')) {
+                        @if (form?.controls['reference'].hasError('required')) {
                             <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                         }
-                        @if (form.controls['reference']?.hasError('blocked')) {
+                        @if (form?.controls['reference']?.hasError('blocked')) {
                             <mat-error translate>LOGISTICS_ARTICLE_BLOCKED</mat-error>
                         }
 
@@ -61,7 +61,7 @@
                 <mat-form-field class="default-50">
                     <mat-label translate>COMMON_QUANTITY</mat-label>
                     <input matInput type="number" formControlName="qty">
-                    @if (form.controls['qty'].hasError('required')) {
+                    @if (form?.controls['qty'].hasError('required')) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
