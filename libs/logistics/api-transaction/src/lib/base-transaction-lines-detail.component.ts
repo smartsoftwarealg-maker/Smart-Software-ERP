@@ -81,7 +81,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     selectedReference: string = null;
     mainStore = 0;
     saveDisabled = false;
-    articleStock = 0.0;
+    articleStock = signal(0.0);
     articleLookup: ArticleAutoCompleteModel = new ArticleAutoCompleteModel(this.articleSrv);
     storeLookup: LotAutoCompleteModel = new LotAutoCompleteModel(this.lotSrv);
     cCenterLookup = new DefaultAutoCompleteModel(this.#costCenterSrv);
@@ -124,7 +124,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
         if (this.document === DOC_CONSUMPTION || this.document === DOC_CORRECTION_OUT || this.document === DOC_PRODUCTION_ORDER) {
             this.form.controls['price'].setValue(res.price);
         }
-        this.articleStock = res.qty;
+        this.articleStock.set(res.qty);
     }
 
     private resetPrice() {
@@ -440,7 +440,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                 if (location) {
                     this.form.controls['reference'].setValue(location.reference);
                     this.form.controls['store'].setValue(location.storeId);
-                    this.articleStock = location.stock;
+                    this.articleStock.set(location.stock||0);
 
                     const priceList = [location.price1, location.price2, location.price3, location.price4, location.price5];
                     this.form.controls['price'].setValue(priceList[this.#priceIndex]);

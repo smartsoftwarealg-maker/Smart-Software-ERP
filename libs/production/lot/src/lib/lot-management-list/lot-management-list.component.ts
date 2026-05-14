@@ -25,6 +25,7 @@ import { Lot, LotsService } from '@ss/common/api-lookup';
 })
 export class LotManagementListComponent extends BaseEntityListComponent<Lot> implements OnInit {
     displayedColumns = signal<string[]>([
+        'storeDescription',
         'description',
         'lotNumber',
         'supplier',
