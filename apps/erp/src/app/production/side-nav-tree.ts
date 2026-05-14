@@ -53,6 +53,18 @@ export const productionNavTree: SideNavNode = {
             accessRights: 'PackagingUnit',
         },
         {
+            name: 'PROD_ACTIVITY_CATEGORIES',
+            icon: 'fa-solid fa-layer-group',
+            route: ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL,
+            accessRights: 'ActivityCategory',
+        },
+        {
+            name: 'CRM_ACTIVITY_TYPE',
+            icon: 'fa-solid fa-sitemap',
+            route: ABS_PRODUCTION_ACTIVITY_TYPES_URL,
+            accessRights: 'ActivityType',
+        },
+        {
             name: 'PROD_WORK_CENTERS',
             icon: 'fas fa-gears',
             route: ABS_PRODUCTION_WORK_CENTER_URL,
@@ -147,19 +159,7 @@ export const productionNavTree: SideNavNode = {
             name: 'PROD_INTER_STORE_TRANSFER',
             icon: 'fa-regular fa-store',
             route: ABS_PRODUCTION_INTER_STORE_TRANSFER_URL,
-            accessRights: 'PInterStore',
-        },
-        {
-            name: 'PROD_ACTIVITY_CATEGORIES',
-            icon: 'fa-solid fa-layer-group',
-            route: ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL,
-            accessRights: 'ActivityCategory',
-        },
-        {
-            name: 'CRM_ACTIVITY_TYPE',
-            icon: 'fa-solid fa-sitemap',
-            route: ABS_PRODUCTION_ACTIVITY_TYPES_URL,
-            accessRights: 'ActivityType',
+            accessRights: 'InterStoreTransfer',
         },
         {
             name: 'COMMON_REPORTS',
