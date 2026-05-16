@@ -24,7 +24,7 @@
             </ng-container>
 
             <ng-container matColumnDef="workCenterType">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PROD_WORK_CENTER</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TYPE</mat-header-cell>
                 <mat-cell *matCellDef="let e" translate>
                     @if (e.workCenterType != null) {
                         PROD_{{ e.workCenterType }}

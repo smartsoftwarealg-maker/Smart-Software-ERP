@@ -1,4 +1,4 @@
-@if (form !== null) {
+@if (!loading()) {
     <mat-card>
         <mat-card-content>
             <form [formGroup]="form">
@@ -75,8 +75,7 @@
 
         </mat-card-content>
     </mat-card>
-}
-
-@if (id) {
-    <ss-bom-children [bomId]="id"/>
+    @if (id) {
+        <ss-bom-children [bomId]="id" />
+    }
 }

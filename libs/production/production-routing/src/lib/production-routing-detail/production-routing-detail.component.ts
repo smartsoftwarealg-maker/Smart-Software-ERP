@@ -48,8 +48,7 @@ export class ProductionRoutingDetailComponent extends BaseEntityDetailComponent<
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override confirmationSrv: ConfirmationDialogService,
-        public override formBuilder: UntypedFormBuilder,
-    ) {
+        public override formBuilder: UntypedFormBuilder ) {
         super(
             entitySrv,
             shellSrv,

@@ -26,7 +26,7 @@
     @if (form?.controls['id'].value > 0) {
         <div class="detail__div">
            <ss-social-edo-lines #lines (lineRemoved)="pending.refresh()"></ss-social-edo-lines>
-           <ss-pending-edo #pending [edoId]="queryId" (lineAdded)="lines?.refresh()"></ss-pending-edo>
+           <ss-pending-edo #pending [edoId]="id_()" (lineAdded)="lines?.refresh()"></ss-pending-edo>
         </div>
     }
 }
