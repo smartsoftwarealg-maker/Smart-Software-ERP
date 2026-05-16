@@ -17,6 +17,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
     protected subscriptions: Subscription[] = [];
     public form: UntypedFormGroup|null = null;
     public isEditable = signal(true);
+    public id_ = signal(0);
     public saveButton: ToolbarButton = {
         icon: 'fas fa-save',
         label: 'COMMON_SAVE',
@@ -39,7 +40,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         }
         this.saveButton.disabled = true;
         const val = this.readForm();
-        // val.id = this.queryId || val.id;
         this.shellSrv.setLoading(true);
         const obs = val.id === 0 ?
             this.entitySrv
@@ -47,6 +47,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                 .pipe(tap(i => {
                     if (!val.id) {
                         this.queryId = i;
+                        this.id_.set(i);
                         val.id = i;
                     }
                 })) :
@@ -56,6 +57,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                     if (!val.id) {
                         this.queryId = i;
                         val.id = i;
+                        this.id_.set(i);
                     }
                 }),
                 switchMap(() => this.uploadAttachments(val.id)));
@@ -94,6 +96,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
 
     public set id(value: number) {
         this.queryId = value;
+        this.id_.set(value);
     }
 
     public uploadAttachments(id?: number): Observable<any> {
