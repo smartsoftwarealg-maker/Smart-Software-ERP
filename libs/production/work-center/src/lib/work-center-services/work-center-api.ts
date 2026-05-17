@@ -52,3 +52,22 @@ export interface WorkCenterActivity {
     createdBy?: number;
     updatedBy?: number;
 }
+
+export interface ActivityRate {
+    id: number;
+    costCenterId: number;
+    activityTypeId: number;
+    rateAmount: number;
+    currencyId: number;
+    validFrom: Date;
+    validTo?: Date;
+    version?: number;
+    isActive?: boolean;
+    approvedBy?: number;
+    approvedAt?: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
+    createdBy?: number;
+    updatedBy?: number;
+    typeDescription?: string;
+}

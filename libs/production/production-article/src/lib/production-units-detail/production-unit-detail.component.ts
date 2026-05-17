@@ -38,12 +38,12 @@ import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'ss-production-units-detail',
-    styleUrls: ['./production-units-detail.component.scss'],
-    templateUrl: './production-units-detail.component.html',
+    styleUrls: ['./production-unit-detail.component.scss'],
+    templateUrl: './production-unit-detail.component.html',
     standalone: true,
     imports: [MaterialModule, RouterModule],
 })
-export class UnitsDetailComponent
+export class ProductionUnitDetailComponent
     extends BaseEntityDetailComponent<UnitsOfMeasure>
     implements OnInit
 {

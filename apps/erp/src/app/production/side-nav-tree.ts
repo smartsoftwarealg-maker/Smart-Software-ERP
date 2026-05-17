@@ -53,24 +53,6 @@ export const productionNavTree: SideNavNode = {
             accessRights: 'PackagingUnit',
         },
         {
-            name: 'PROD_ACTIVITY_CATEGORIES',
-            icon: 'fa-solid fa-layer-group',
-            route: ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL,
-            accessRights: 'ActivityCategory',
-        },
-        {
-            name: 'CRM_ACTIVITY_TYPE',
-            icon: 'fa-solid fa-sitemap',
-            route: ABS_PRODUCTION_ACTIVITY_TYPES_URL,
-            accessRights: 'ActivityType',
-        },
-        {
-            name: 'PROD_WORK_CENTERS',
-            icon: 'fas fa-gears',
-            route: ABS_PRODUCTION_WORK_CENTER_URL,
-            accessRights: 'WorkCenter',
-        },
-        {
             name: 'STOCK_ARTICLES',
             icon: 'fas fa-box',
             route: ABS_PRODUCTION_ARTICLE_URL,
@@ -81,18 +63,6 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-solid fa-list-tree',
             route: ABS_PRODUCTION_BOM_PRODUCTS,
             accessRights: 'BOM',
-        },
-        {
-            name: 'PROD_PRODUCTIONS_ROUTING',
-            icon: 'fa-solid fa-route',
-            route: ABS_PRODUCTION_ROUTING_URL,
-            accessRights: 'Routing',
-        },
-        {
-            name: 'STOCK_LOT_MANAGEMENT',
-            icon: 'fa-solid fa-truck-ramp-box',
-            route: ABS_PRODUCTION_LOT_MANAGEMENT_URL,
-            accessRights: 'LotManagement',
         },
         {
             name: 'STOCK_LOT_ANALYSIS',

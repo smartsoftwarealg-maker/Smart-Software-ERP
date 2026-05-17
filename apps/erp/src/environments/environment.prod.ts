@@ -64,6 +64,7 @@ import { costingNavTree } from '../app/costing/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
 import { socialNavTree } from '../app/social/side-nav-tree';
 import { productionNavTree } from '../app/production/side-nav-tree';
+import {manufacturingNavTree} from "../app/manufacturing/side-nav-tree";
 
 export const environment = {
     production: true,
@@ -104,7 +105,8 @@ export const navBar = [
     foodNavTree,
     costingNavTree,
     socialNavTree,
-    productionNavTree
+    productionNavTree,
+    manufacturingNavTree
 ];
 
 export const langAssets = [

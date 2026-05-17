@@ -1,0 +1,51 @@
+@defer (when !loading()) {
+    <mat-card class="size_container">
+        <mat-card-content>
+
+            @defer (when form) {
+                <form [formGroup]="form">
+
+                    <mat-form-field floatLabel="always" class="default-25">
+                        <mat-label translate>PROD_ACTIVITY_CODE</mat-label>
+                        <input matInput formControlName="code">
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" class="default-50 sm-100">
+                        <mat-label translate>PROD_ACTIVITY_NAME</mat-label>
+                        <input matInput formControlName="name" required>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always" class="default-100">
+                        <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                        <input matInput formControlName="description">
+                    </mat-form-field>
+<!--                    <mat-form-field floatLabel="always" class="default-25 sm-50">-->
+<!--                        <mat-label translate>PROD_COST_GROUP</mat-label>-->
+<!--                        <input matInput formControlName="costElementGroup">-->
+<!--                    </mat-form-field>-->
+
+
+                    <!--                <div class="default-25 sm-50">-->
+                    <!--                    <mat-checkbox formControlName="isOverhead" translate>-->
+                    <!--                        PROD_OVERHEAD-->
+                    <!--                    </mat-checkbox>-->
+                    <!--                </div>-->
+
+                    <!--                <div class="default-25 sm-50">-->
+                    <!--                    <mat-checkbox formControlName="isVariable" translate>-->
+                    <!--                        PROD_VARIABLE-->
+                    <!--                    </mat-checkbox>-->
+                    <!--                </div>-->
+
+                    <div class="default-25 sm-50">
+                        <mat-checkbox formControlName="isActive" translate>
+                            COMMON_ACTIVE
+                        </mat-checkbox>
+                    </div>
+
+                </form>
+            }
+
+        </mat-card-content>
+    </mat-card>
+}
