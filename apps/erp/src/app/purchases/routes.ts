@@ -76,7 +76,7 @@ import {
     TransporterReceptionDetailComponent, TransporterReceptionLinesDetailComponent,
     TransporterReceptionLinesListComponent,
     TransporterReceptionListComponent
-} from "../../../../../libs/purchases/ui-transporters/src";
+} from '@ss/purchases/ui-transporters';
 import {
     FreeInvoiceLinesDetailComponent,
     FreeInvoiceLinesListComponent,

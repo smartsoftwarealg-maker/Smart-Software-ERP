@@ -1,7 +1,7 @@
 export * from './lib/production-article-list/production-article-list.component';
 export * from './lib/production-article-detail/production-article-detail.component';
-export * from './lib/production-units-list/production-units-list.component';
-export * from './lib/production-units-detail/production-units-detail.component';
+export * from './lib/production-units-list/production-unit-list.component';
+export * from './lib/production-units-detail/production-unit-detail.component';
 export * from './lib/production-activity-categories-list/production-activity-categories-list.component';
 export * from './lib/article-types/article-types-detail/article-type-detail.component';
 export * from './lib/article-types/article-types-list/article-types-list.component';
@@ -11,3 +11,6 @@ export * from './lib/packaging-units/packaging-units-detail/packaging-units-deta
 export * from './lib/packaging-units/packaging-units-list/packaging-units-list.component';
 export * from './lib/services/article-type.service';
 export * from './lib/services/dosage-unit.service';
+export * from './lib/services/packaging-unit.service';
+export * from './lib/production-activity-types-list/production-activity-types-list.component';
+export * from './lib/production-activity-types-detail/production-activity-types-detail.component';

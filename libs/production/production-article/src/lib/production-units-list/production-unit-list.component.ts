@@ -23,7 +23,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
     ],
 })
-export class UnitsListComponent
+export class ProductionUnitListComponent
     extends BaseEntityListComponent<UnitsOfMeasure>
     implements OnInit
 {

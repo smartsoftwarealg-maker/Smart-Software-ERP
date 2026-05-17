@@ -101,10 +101,10 @@ import {
     ProductionReservationLineListComponent
 } from '@ss/production/production-reservation';
 import {
-    UnitsListComponent
+    ProductionUnitListComponent
 } from '@ss/production/production-article';
 import {
-    UnitsDetailComponent
+    ProductionUnitDetailComponent
 } from '@ss/production/production-article';
 import {WorkCenterDetailComponent, WorkCenterListComponent} from '@ss/production/work-center';
 
@@ -118,18 +118,21 @@ import {
     RoutingMaterialLineListComponent, RoutingMaterialLineDetailComponent,
 } from '@ss/production/production-routing';
 
+// import {
+//     WorkCenterActivityListComponent
+// } from "../../../../../libs/production/work-center/src/lib/work-center-activity-list/work-center-activity-list.component";
 import {
     WorkCenterActivityListComponent
-} from "../../../../../libs/production/work-center/src/lib/work-center-activity-list/work-center-activity-list.component";
+} from "@ss/production/work-center";
 import {
     WorkCenterActivityDetailComponent
-} from "../../../../../libs/production/work-center/src/lib/work-center-activity-detail/work-center-activity-detail.component";
+} from "@ss/production/work-center";
 import {
     ActivityTypesDetailComponent
-} from "../../../../../libs/production/production-article/src/lib/production-activity-types-detail/production-activity-types-detail.component";
+} from "@ss/production/production-article";
 import {
     ActivityTypesListComponent
-} from "../../../../../libs/production/production-article/src/lib/production-activity-types-list/production-activity-types-list.component";
+} from "@ss/production/production-article";
 
 
 export const prodRoutes: Routes = [
@@ -144,7 +147,7 @@ export const prodRoutes: Routes = [
                 path: LIST_URL,
                 component: InterStoreTransferListComponent,
                 canActivate: [loginGuard],
-                children: docInfoRoutes,
+                children: docInfoRoutes
             },
             {
                 path: ':id',
@@ -421,13 +424,13 @@ export const prodRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: UnitsListComponent,
+                component: ProductionUnitListComponent,
                 canActivate: [loginGuard],
                 children: docInfoRoutes,
             },
             {
                 path: ':id',
-                component: UnitsDetailComponent,
+                component: ProductionUnitDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },
