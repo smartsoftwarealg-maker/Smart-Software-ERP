@@ -139,6 +139,11 @@
     "START":                "ابدأ",
     "END":                  "أنهِ",
     "REPORTING_POINT":      "نقطة التقارير",
-    "OPERATIONS":           "العمليات"
+    "OPERATIONS":           "العمليات",
+    "ACTIVITY_CODE":        "رمز النشاط",
+    "ACTIVITY_NAME":        "اسم النشاط",
+    "UNIT_TYPE":            "نوع الوحدة",
+    "BASED_UNIT":           "الوحدة الأساسية",
+    "CONVERSATION_FACTOR":  "عامل التحويل"
 
 }

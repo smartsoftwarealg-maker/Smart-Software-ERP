@@ -4,10 +4,9 @@
 }
 
 .main-container,
-.doc-info,
 .pagination-container {
     width: 90%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 4px auto;
 }
 
@@ -28,40 +27,31 @@ mat-table {
     white-space: nowrap;
 }
 
-
 .mat-column-code {
-    flex: 0 0 100px;
+    flex: 1 1 100px;
 }
 
 .mat-column-name {
-    flex: 1 1 200px;
+    flex: 1 1 150px;
     text-align: end;
 }
 
 .mat-column-description {
-    flex: 2 1 250px;
+    flex: 3 1 250px;
     text-align: end;
 }
 
-.mat-column-unitType {
-    flex: 0 0 120px;
-}
-
-.mat-column-baseUnit {
-    flex: 0 0 120px;
-}
-
+.mat-column-unitType,
+.mat-column-baseUnit,
+.mat-column-value,
 .mat-column-conversionFactor {
-    flex: 0 0 120px;
-    text-align: center;
+    flex: 1 1 80px;
+    justify-content: center;
 }
 
-.mat-column-value {
-    flex: 0 0 100px;
-    justify-content: end;
-}
-
-.mat-column-isActive {
+.mat-column-isActive,
+.mat-column-isOverhead,
+.mat-column-isVariable {
     flex: 0 0 80px;
     justify-content: center;
     text-align: center;

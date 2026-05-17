@@ -139,6 +139,11 @@
     "START":               "Start",
     "END":                 "End",
     "REPORTING_POINT":     "Reporting point",
-    "OPERATIONS":          "Operations"
+    "OPERATIONS":          "Operations",
+    "ACTIVITY_CODE":       "Activity code",
+    "ACTIVITY_NAME":       "Activity name",
+    "UNIT_TYPE":           "Unit type",
+    "BASED_UNIT":          "Based unit",
+    "CONVERSATION_FACTOR": "Conversation factor"
 
 }
