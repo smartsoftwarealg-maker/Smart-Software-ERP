@@ -8,8 +8,8 @@ import {PaginationComponent} from '@ss/common/ui-pagination';
 import {UnitsService} from '../services/units.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {DefaultReportService} from '@ss/common/ui-default-report-component';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { DefaultReportService } from '@ss/common/ui-default-report-component';
+import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-production-units-list',
@@ -20,7 +20,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         CommonModule,
         MaterialModule,
         RouterModule,
-        TranslatePipe,
+        TranslateDirective,
     ],
 })
 export class ProductionUnitListComponent

@@ -123,5 +123,10 @@
     "START":                "Début",
     "END":                  "Fin",
     "REPORTING_POINT":      "Point de reporting",
-    "OPERATIONS":           "Opérations"
+    "OPERATIONS":           "Opérations",
+    "ACTIVITY_CODE":        "Code d'activité",
+    "ACTIVITY_NAME":        "Nom d'activité",
+    "UNIT_TYPE":            "Type d'unité",
+    "BASED_UNIT":           "Unité de base",
+    "CONVERSION_FACTOR":    "Facteur de conversion"
 }

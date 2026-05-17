@@ -1,32 +1,32 @@
 mat-card {
-    border-radius: 1.4em;
-}
-
-.size_container {
     width: 96%;
     max-width: 900px;
     margin: 8px auto;
     padding: 0;
+    border-radius: 1.4em;
 }
 
-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
+//.size_container {
+//}
 
-.default-25 {
-    flex: 1 1 23%;
-}
+//form {
+//    display: flex;
+//    flex-wrap: wrap;
+//    gap: 10px;
+//}
 
-.default-50 {
-    flex: 1 1 48%;
-}
-
-.default-100 {
-    flex: 1 1 100%;
-}
-
-mat-checkbox {
-    margin-top: 18px;
-}
+//.default-25 {
+//    flex: 1 1 23%;
+//}
+//
+//.default-50 {
+//    flex: 1 1 48%;
+//}
+//
+//.default-100 {
+//    flex: 1 1 100%;
+//}
+//
+//mat-checkbox {
+//    margin-top: 18px;
+//}

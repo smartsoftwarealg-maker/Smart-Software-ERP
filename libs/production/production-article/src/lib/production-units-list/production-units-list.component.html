@@ -3,28 +3,28 @@
         <mat-table [dataSource]="data()" class="main-table" matSort>
 
             <ng-container matColumnDef="code">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>
                 <mat-cell *matCellDef="let e">{{ e.code }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NAME</mat-header-cell>
                 <mat-cell *matCellDef="let e">{{ e.name }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">{{ e.description }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="costElementGroup">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Cost Group</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>PROD_COST_GROUP</mat-header-cell>
                 <mat-cell *matCellDef="let e">{{ e.costElementGroup || '-' }}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="unitType">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Type</mat-header-cell>
-                <mat-cell *matCellDef="let e">{{ `PROD_${e.unitType}` | translate }}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_TYPE</mat-header-cell>
+                <mat-cell *matCellDef="let e" translate>PROD_{{ e.unitType }}</mat-cell>
             </ng-container>
 
             <!--
