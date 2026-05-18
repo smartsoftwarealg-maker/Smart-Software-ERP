@@ -70,7 +70,7 @@ export class InterStoreTransferLinesDetailComponent
 
         return this.#formBuilder.group({
             id: [e.id],
-            parentId: [e.parentId],
+            parentId: [e.parentId||this.entitySrv.getParentId()],
             referenceId: [e.referenceId||0],
             reference: [
                 { value: e.reference, disabled: this.qtyIsNotNull() },
