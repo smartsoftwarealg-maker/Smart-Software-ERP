@@ -7,7 +7,7 @@ import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { of, switchMap } from 'rxjs';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {
-    BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_SUPPLIER_QUOTATION,
+    BaseTransactionDetailComponent, BaseTransactionLinesListComponent, DOC_PURCHASE_REQUEST, DOC_SUPPLIER_QUOTATION,
     Transaction
 } from '@ss/logistics/api-transaction';
 import {PurchaseOrderService} from '@ss/purchases/api-purchase-order';
@@ -91,6 +91,7 @@ export class PurchaseOrderDetailComponent extends BaseTransactionDetailComponent
 
     protected importedDocuments(): Lookup[] {
         return [
+            { id: DOC_PURCHASE_REQUEST, description: 'PURCHASES_RQUEST'},
             { id: DOC_SUPPLIER_QUOTATION, description: 'PURCHASES_QUOTATION'}
         ];
     }

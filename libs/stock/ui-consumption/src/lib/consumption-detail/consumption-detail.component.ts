@@ -59,7 +59,7 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
 
     protected importedDocuments(): Lookup[] {
         return [
-            { id: DOC_RESERVATION, description: 'LOGISTICS_RESERVATION' },
+            // { id: DOC_RESERVATION, description: 'LOGISTICS_RESERVATION' },
             { id: DOC_PART_REQUEST, description: 'STOCK_PARTS_REQUEST' },
         ];
     }
