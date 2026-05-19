@@ -17,7 +17,7 @@ import {
     ABS_PRODUCTION_FORMULAS_URL,
     ABS_PRODUCTION_RESERVATION_URL,
     ABS_PRODUCTION_UNITS_URL,
-
+    ABS_PRODUCTION_RECYCLING_URL,
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -127,6 +127,12 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-regular fa-store',
             route: ABS_PRODUCTION_INTER_STORE_TRANSFER_URL,
             accessRights: 'InterStoreTransfer',
+        },
+        {
+            name: 'PROD_PRODUCTIONS_RECYCLING',
+            icon: 'fa-solid fa-recycle',
+            route: ABS_PRODUCTION_RECYCLING_URL,
+            accessRights: 'Recycling'
         },
         {
             name: 'COMMON_REPORTS',
