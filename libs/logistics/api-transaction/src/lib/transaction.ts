@@ -57,6 +57,7 @@ export const DOC_IMPORT_RECEPTION = 514;
 export const DOC_PRODUCTION_TRANSFER = 533;
 export const DOC_ASSET_APPOINTMENT = 1010;
 export const DOC_ACCOUNTING_OPR = 4096;
+export const DOC_PRODUCTION_RECYCLE = 777;
 
 export interface Transaction {
     id: number;
