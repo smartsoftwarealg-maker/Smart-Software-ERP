@@ -16,16 +16,20 @@ import {tap} from 'rxjs/operators';
 import {LoginService} from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import { Directive, HostListener, inject, OnInit, signal } from '@angular/core';
-import {OptionService} from '@ss/logistics/ui-options';
+import { OptionService } from '@ss/logistics/ui-options';
 import {
     DOC_CONSUMPTION,
+    DOC_CONSUMPTION_CANCELLATION,
+    DOC_CORRECTION_IN,
     DOC_CORRECTION_OUT,
     DOC_DELIVERY,
     DOC_INVOICE,
     DOC_PRODUCTION,
-    DOC_PRODUCTION_ORDER, DOC_PRODUCTION_RESERVATION,
+    DOC_PRODUCTION_ORDER,
+    DOC_PRODUCTION_RESERVATION,
     DOC_PRODUCTION_TRANSFER,
     DOC_RECEPTION,
+    DOC_RESERVATION,
     DOC_SEPARATOR_200,
     DOC_SEPARATOR_800,
 } from './transaction';
@@ -64,7 +68,13 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
     protected optionSrv =  inject(OptionService);
     protected loginSrv  =  inject(LoginService);
     protected packagingUnits: PackagingUnit[] = [];
-
+        private vatList = [
+        DOC_CONSUMPTION,
+        DOC_RESERVATION,
+        DOC_CONSUMPTION_CANCELLATION,
+        DOC_CORRECTION_IN,
+        DOC_CORRECTION_OUT,
+    ];
     public confirmationSrv = inject(ConfirmationDialogService);
     public snackBarSrv = inject(SnackBarService);
     public shellSrv = inject(ShellService);
@@ -304,6 +314,8 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                     (b.sourceDoc == undefined || b.qtySatisfied < 0.00001)
                 )));
 
+        const vat = this.vatList.find(d => d == this.document) ? 0 : b.vat || 0;
+
         return this.formBuilder.group({
             id:           [b.id],
             transacId:    [this.parentId],
@@ -316,7 +328,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
             qtyInvoiced:  [{ value: b.qtyInvoiced / units ||0, disabled: !this.isEditable || (this.document != DOC_RECEPTION)} , Validators.required],
             qtyReturned:  [{ value: b.qtyReturned / units||0, disabled: true} , Validators.required],
             price:        [{ value: b.price || 0, disabled: !this.isEditable || b.document == DOC_PRODUCTION_TRANSFER}, Validators.required],
-            vat:          [{ value: b.vat || 0, disabled: !this.isEditable || b.document == DOC_PRODUCTION_TRANSFER }, Validators.required],
+            vat:          [{ value: vat, disabled: !this.isEditable || b.document == DOC_PRODUCTION_TRANSFER }, Validators.required],
             vat2:         [{ value: b.vat2, disabled: !this.isEditable }],
             observation:  [{ value: b.observation, disabled: !this.isEditable }],
             footerMemo:   [{ value: b.footerMemo, disabled: !this.isEditable }],
