@@ -588,6 +588,7 @@ export const PRODUCTION_WORK_CENTER_URL = 'work-centers';
 export const ACTIVITY_CATEGORIES_URL='activity-categories';
 export const PRODUCTION_ROUTING_URL = 'routing';
 export const PRODUCTION_ACTIVITY_TYPE_URL = 'activity-types';
+export const PRODUCTION_RECYCLING_URL = 'production-recycling';
 
 // crm
 export const CRM_SALUTATIONS_URL = 'salutations';
