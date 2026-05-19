@@ -54,7 +54,7 @@ import {
     PackagingUnitsDetailComponent,
     PackagingUnitsListComponent,
     ProductionArticleDetailComponent,
-    ProductionArticleListComponent,
+    ProductionArticleListComponent, ProductionUnitDetailComponent, ProductionUnitListComponent,
 } from '@ss/production/production-article';
 import {
     LotAnalysisDetailComponent,
@@ -100,12 +100,6 @@ import {
 import {
     ProductionReservationLineListComponent
 } from '@ss/production/production-reservation';
-import {
-    UnitsListComponent
-} from '@ss/production/production-article';
-import {
-    UnitsDetailComponent
-} from '@ss/production/production-article';
 import {WorkCenterDetailComponent, WorkCenterListComponent} from '@ss/production/work-center';
 
 import { ActivityCategoriesDetailComponent } from '../../../../../libs/production/production-article/src/lib/production-activity-categories-detail/production-activity-categories-detail.component';
@@ -130,7 +124,7 @@ import {
 } from '@ss/production/production-article';
 
 
-export const manufactoringRoutes: Routes = [
+export const manufacturingRoutes: Routes = [
     {
         path: PRODUCTION_MRP_URL,
         component: MrpComponent,
@@ -419,13 +413,13 @@ export const manufactoringRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: UnitsListComponent,
+                component: ProductionUnitListComponent,
                 canActivate: [loginGuard],
                 children: docInfoRoutes,
             },
             {
                 path: ':id',
-                component: UnitsDetailComponent,
+                component: ProductionUnitDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
             },

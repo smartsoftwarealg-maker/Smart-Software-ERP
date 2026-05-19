@@ -2,25 +2,20 @@ import { SideNavNode } from '@ss/common/api-common';
 import {
     ABS_PRODUCTION_BOM_PRODUCTS,
     ABS_PRODUCTION_MRP_URL,
-    ABS_PRODUCTION_ORDER_URL,
-    ABS_PRODUCTION_URL,
     ABS_PRODUCTION_ARTICLE_URL,
     ABS_PRODUCTION_LOT_MANAGEMENT_URL,
     ABS_PRODUCTION_LOT_ANALYSIS_URL,
     ABS_PRODUCTION_INTER_STORE_TRANSFER_URL,
     ABS_PRODUCTION_UNLOCKING_LOTS_URL,
     ABS_PRODUCTION_ARTICLE_TYPES_URL,
-    ABS_PRODUCTION_DOSAGE_UNITS_URL,
     ABS_PRODUCTION_PACKAGING_UNITS_URL,
     ABS_PRODUCTION_REPORTS_URL,
-    ABS_PRODUCTION_CONSUMPTION_URL,
-    ABS_PRODUCTION_TRANSFER_DETAIL_URL,
-    ABS_PRODUCTION_FORMULAS_URL,
-    ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL,
     ABS_PRODUCTION_RESERVATION_URL,
-    ABS_PRODUCTION_UNITS_URL,
     ABS_PRODUCTION_WORK_CENTER_URL,
-    ABS_PRODUCTION_ROUTING_URL, ABS_PRODUCTION_ACTIVITY_TYPES_URL,
+    ABS_PRODUCTION_ROUTING_URL,
+    ABS_MANUFACTURING_ACTIVITY_TYPES_URL,
+    ABS_MANUFACTURING_UNITS_URL,
+    ABS_MANUFACTURING_ACTIVITY_CATEGORIES_URL,
 } from '../common';
 
 export const manufacturingNavTree: SideNavNode = {
@@ -28,16 +23,16 @@ export const manufacturingNavTree: SideNavNode = {
     icon: 'fa-solid fa-conveyor-belt-arm',
     accessRights: 'APP_FPRODUCTION',
     children: [
-        {
-            name: 'STOCK_MODELS',
-            icon: 'fa-solid fa-cars',
-            route: ABS_PRODUCTION_ARTICLE_TYPES_URL,
-            accessRights: 'ArticleType',
-        },
+        // {
+        //     name: 'STOCK_MODELS',
+        //     icon: 'fa-solid fa-cars',
+        //     route: ABS_PRODUCTION_ARTICLE_TYPES_URL,
+        //     accessRights: 'ArticleType',
+        // },
         {
             name: 'STOCK_UNITS',
             icon: 'fa-solid fa-ruler',
-            route: ABS_PRODUCTION_UNITS_URL,
+            route: ABS_MANUFACTURING_UNITS_URL,
             accessRights: 'Unit',
         },
         {
@@ -49,13 +44,13 @@ export const manufacturingNavTree: SideNavNode = {
         {
             name: 'PROD_ACTIVITY_CATEGORIES',
             icon: 'fa-solid fa-layer-group',
-            route: ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL,
+            route: ABS_MANUFACTURING_ACTIVITY_CATEGORIES_URL,
             accessRights: 'ActivityCategory',
         },
         {
             name: 'CRM_ACTIVITY_TYPE',
             icon: 'fa-solid fa-sitemap',
-            route: ABS_PRODUCTION_ACTIVITY_TYPES_URL,
+            route: ABS_MANUFACTURING_ACTIVITY_TYPES_URL,
             accessRights: 'ActivityType',
         },
         {

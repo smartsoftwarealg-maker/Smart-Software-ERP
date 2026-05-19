@@ -212,7 +212,7 @@ export const appRoutes: Routes =  [
     },
     {
         path: SOCIAL_APP_URL,
-        loadChildren: () => import('../app/social/social.module').then(m => m.SocialModule)
+        loadChildren: () => import('../app/social/routes').then((m) => m.socialRoutes)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

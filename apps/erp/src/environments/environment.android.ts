@@ -267,11 +267,11 @@ export const appRoutes: Routes =  [
     },
     {
         path: SOCIAL_APP_URL,
-        loadChildren: () => import('../app/social/social.module').then(m => m.SocialModule)
+        loadChildren: () => import('../app/social/routes').then((m) => m.socialRoutes)
     },
     {
         path: PRODUCTION_APP_URL,
-        loadChildren: () => import('../app/production/production.module').then(m => m.ProductionModule)
+                loadChildren: () => import('../app/production/routes').then(m => m.prodRoutes)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

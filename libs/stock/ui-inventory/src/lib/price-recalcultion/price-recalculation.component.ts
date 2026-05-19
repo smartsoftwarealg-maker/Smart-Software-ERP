@@ -83,7 +83,6 @@ export class PriceRecalculationComponent implements OnInit {
         { id: 3, name: 'LOGISTICS_AWP' },
     ];
 
-    form: UntypedFormGroup | null = null;
 
     processing = signal(false);
     data: ERR[] = [];
@@ -113,18 +112,26 @@ export class PriceRecalculationComponent implements OnInit {
         elementCount: 0,
     });
 
+    readonly form = this.formBuilder.group({
+        id:             [this.loginSrv.appCtx.center],
+        eval_price:     [{ value: 2, disabled: true }],
+        inventory_date: [ new Date(new Date().getFullYear(), 0, 1), Validators.required],
+    });
+
     ngOnInit() {
+        this.processing.set(true);
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setTitle('STOCK_PRICE_RECALCULATION');
         this.optionSrv
             .get(this.loginSrv.appCtx.center)
             .subscribe(res => {
-                this.form = this.formBuilder.group({
-                    id: [this.loginSrv.appCtx.center],
-                    eval_price:     [{ value: res?.evalPrice||2, disabled: true }],
-                    inventory_date: [ new Date(new Date().getFullYear(), 0, 1), Validators.required],
-                });
-
+                this.form.controls.eval_price.setValue(res?.evalPrice||2);
+                this.processing.set(false);
+                // this.form = this.formBuilder.group({
+                //     id:             [this.loginSrv.appCtx.center],
+                //     eval_price:     [{ value: res?.evalPrice||2, disabled: true }],
+                //     inventory_date: [ new Date(new Date().getFullYear(), 0, 1), Validators.required],
+                // });
             });
     }
 

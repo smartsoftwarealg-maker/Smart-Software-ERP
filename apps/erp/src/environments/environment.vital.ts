@@ -188,7 +188,7 @@ export const appRoutes: Routes =  [
     },
     {
         path: PRODUCTION_APP_URL,
-        loadChildren: () => import('../app/production/production.module').then(m => m.ProductionModule)
+                loadChildren: () => import('../app/production/routes').then(m => m.prodRoutes)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

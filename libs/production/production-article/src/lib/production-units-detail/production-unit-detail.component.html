@@ -5,12 +5,12 @@
             <form [formGroup]="form">
 
                 <mat-form-field floatLabel="always" class="default-50 sm-100">
-                    <mat-label translate>PROD_ACTIVITY_CODE</mat-label>
+                    <mat-label translate>ADMINISTRATION_CODE</mat-label>
                     <input matInput formControlName="code">
                 </mat-form-field>
 
                 <mat-form-field floatLabel="always" class="default-50 sm-100">
-                    <mat-label translate>PROD_ACTIVITY_NAME</mat-label>
+                    <mat-label translate>COMMON_NAME</mat-label>
                     <input matInput formControlName="name" required>
                     @if (form.controls['name']?.invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
