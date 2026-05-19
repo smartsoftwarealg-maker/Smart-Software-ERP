@@ -4,7 +4,6 @@ import {UnitsOfMeasure} from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {MaterialModule, PaginatorPersistenceService} from '@ss/common/api-common';
 import {CommonModule} from '@angular/common';
-import {PaginationComponent} from '@ss/common/ui-pagination';
 import {UnitsService} from '../services/units.service';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';

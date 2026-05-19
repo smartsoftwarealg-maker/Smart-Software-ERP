@@ -95,18 +95,18 @@ export const socialNavTree: SideNavNode = {
             route: ABS_SOCIAL_EDO_URL,
             accessRights: 'EDO'
         },
+        {
+            name: 'PAYROLL_LOANS',
+            icon: 'fas fa-user-edit',
+            route: ABS_SOCIAL_LOANS_URL,
+            accessRights: 'Loan'
+        },
 
         {
             name: 'COMMON_REPORTS',
             icon: 'fa-solid fa-file-chart-column',
             route: ABS_SOCIAL_REPORTS_URL,
             accessRights: 'Report'
-        },
-        {
-            name: 'PAYROLL_LOANS',
-            icon: 'fas fa-user-edit',
-            route: ABS_SOCIAL_LOANS_URL,
-            accessRights: 'Loan'
         },
     ],
     accessRights: 'SOCIAL'

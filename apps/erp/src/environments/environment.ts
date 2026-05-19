@@ -49,7 +49,7 @@ import {
     COSTING_APP_URL,
     GICA_APP_URL,
     SOCIAL_APP_URL,
-    PRODUCTION_APP_URL
+    PRODUCTION_APP_URL, MANUFACTURING_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
@@ -68,6 +68,7 @@ import { gicaNavTree } from '../app/gica/side-nav-tree';
 import { socialNavTree } from '../app/social/side-nav-tree';
 import { productionNavTree } from '../app/production/side-nav-tree';
 import {manufacturingNavTree} from "../app/manufacturing/side-nav-tree";
+import {prodRoutes} from "../app/production/routes";
 
 
 export const environment = {
@@ -276,11 +277,15 @@ export const appRoutes: Routes =  [
     },
     {
         path: SOCIAL_APP_URL,
-        loadChildren: () => import('../app/social/social.module').then(m => m.SocialModule)
+        loadChildren: () => import('../app/social/routes').then((m) => m.socialRoutes)
     },
     {
         path: PRODUCTION_APP_URL,
-        loadChildren: () => import('../app/production/production.module').then(m => m.ProductionModule)
+        loadChildren: () => import('../app/production/routes').then(m => m.prodRoutes)
+    },
+    {
+        path: MANUFACTURING_APP_URL,
+        loadChildren: () => import('../app/manufacturing/routes').then(m => m.manufacturingRoutes)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

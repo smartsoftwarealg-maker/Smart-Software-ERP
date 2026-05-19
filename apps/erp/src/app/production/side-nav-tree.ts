@@ -5,7 +5,6 @@ import {
     ABS_PRODUCTION_ORDER_URL,
     ABS_PRODUCTION_URL,
     ABS_PRODUCTION_ARTICLE_URL,
-    ABS_PRODUCTION_LOT_MANAGEMENT_URL,
     ABS_PRODUCTION_LOT_ANALYSIS_URL,
     ABS_PRODUCTION_INTER_STORE_TRANSFER_URL,
     ABS_PRODUCTION_UNLOCKING_LOTS_URL,
@@ -16,13 +15,9 @@ import {
     ABS_PRODUCTION_CONSUMPTION_URL,
     ABS_PRODUCTION_TRANSFER_DETAIL_URL,
     ABS_PRODUCTION_FORMULAS_URL,
-    ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL,
     ABS_PRODUCTION_RESERVATION_URL,
     ABS_PRODUCTION_UNITS_URL,
-    ABS_PRODUCTION_WORK_CENTER_URL,
-    ABS_PRODUCTION_ROUTING_URL,
-    ABS_PRODUCTION_ACTIVITY_TYPES_URL,
-    ABS_PRODUCTION_RECYCLING_URL,
+
 } from '../common';
 
 export const productionNavTree: SideNavNode = {
@@ -36,12 +31,12 @@ export const productionNavTree: SideNavNode = {
             route: ABS_PRODUCTION_ARTICLE_TYPES_URL,
             accessRights: 'ArticleType',
         },
-        {
-            name: 'STOCK_UNITS',
-            icon: 'fa-solid fa-ruler',
-            route: ABS_PRODUCTION_UNITS_URL,
-            accessRights: 'Unit',
-        },
+        // {
+        //     name: 'STOCK_UNITS',
+        //     icon: 'fa-solid fa-ruler',
+        //     route: ABS_PRODUCTION_UNITS_URL,
+        //     accessRights: 'Unit',
+        // },
         {
             name: 'STOCK_DOSAGE_UNITS',
             icon: 'fa-solid fa-eye-dropper-half',
@@ -132,12 +127,6 @@ export const productionNavTree: SideNavNode = {
             icon: 'fa-regular fa-store',
             route: ABS_PRODUCTION_INTER_STORE_TRANSFER_URL,
             accessRights: 'InterStoreTransfer',
-        },
-        {
-            name: 'PROD_PRODUCTIONS_RECYCLING',
-            icon: 'fa-solid fa-recycle',
-            route: ABS_PRODUCTION_RECYCLING_URL,
-            accessRights: 'Recycling'
         },
         {
             name: 'COMMON_REPORTS',
