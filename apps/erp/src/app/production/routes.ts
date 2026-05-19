@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import {
     ABS_INDEX_URL,
     LIST_URL,
-    CanDeactivateService, RedirectToParentComponent,
+    CanDeactivateService,
+    RedirectToParentComponent,
 } from '@ss/common/api-common';
 import {
     docInfoRoutes,
@@ -26,8 +27,11 @@ import {
     STOCK_RESERVATIONS_URL,
     PRODUCTIONS_RESERVATION_URL,
     PRODUCTION_WORK_CENTER_URL,
-    PRODUCTION_UNITS_URL, ACTIVITY_CATEGORIES_URL,
-    PRODUCTION_ROUTING_URL, PRODUCTION_ACTIVITY_TYPE_URL,
+    PRODUCTION_UNITS_URL,
+    ACTIVITY_CATEGORIES_URL,
+    PRODUCTION_ROUTING_URL,
+    PRODUCTION_ACTIVITY_TYPE_URL,
+    PRODUCTION_RECYCLING_URL,
 } from '../common';
 import {
     ProductionOrderDetailComponent,
@@ -117,10 +121,12 @@ import {
     ProductionRoutingOperationDetailComponent,
     RoutingMaterialLineListComponent, RoutingMaterialLineDetailComponent,
 } from '@ss/production/production-routing';
-
-// import {
-//     WorkCenterActivityListComponent
-// } from "../../../../../libs/production/work-center/src/lib/work-center-activity-list/work-center-activity-list.component";
+import {
+     ProductionRecyclingListComponent,
+     ProductionRecyclingDetailComponent,
+     ProductionRecyclingLinesListComponent,
+     ProductionRecyclingLinesDetailComponent
+} from "@ss/production/production-recycling";
 import {
     WorkCenterActivityListComponent
 } from "@ss/production/work-center";
@@ -781,6 +787,39 @@ export const prodRoutes: Routes = [
                 ],
             },
         ],
+    },
+    {
+        path: PRODUCTION_RECYCLING_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: ProductionRecyclingListComponent,
+                canActivate: [loginGuard],
+                canActivateChild: [loginGuard],
+                children: docInfoRoutes
+            },
+            {
+                path: ':id',
+                component: ProductionRecyclingDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                canActivateChild: [loginGuard],
+                children: [
+                    { path: '', pathMatch: 'full', redirectTo: 'lines-list' },
+                    { path: 'lines-list',
+                        component: ProductionRecyclingLinesListComponent,
+                        children: docInfoRoutes
+                    },
+                    {
+                        path: 'lines-detail',
+                        children: [
+                            { path: ':id', component: ProductionRecyclingLinesDetailComponent },
+                        ]
+                    },
+                    ...docInfoRoutes
+                ]
+            },
+        ]
     },
     { path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
     { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },

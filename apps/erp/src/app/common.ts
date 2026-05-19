@@ -587,6 +587,7 @@ export const PRODUCTION_WORK_CENTER_URL = 'work-centers';
 export const ACTIVITY_CATEGORIES_URL='activity-categories';
 export const PRODUCTION_ROUTING_URL = 'routing';
 export const PRODUCTION_ACTIVITY_TYPE_URL = 'activity-types';
+export const PRODUCTION_RECYCLING_URL = 'production-recycling';
 
 // crm
 export const CRM_SALUTATIONS_URL = 'salutations';
@@ -1147,6 +1148,7 @@ export const ABS_PRODUCTION_ACTIVITY_CATEGORIES_URL= '/' + [MAIN_PAGE_URL, PRODU
 export const ABS_PRODUCTION_WORK_CENTER_URL =   '/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, PRODUCTION_WORK_CENTER_URL].join('/');
 export const ABS_PRODUCTION_ROUTING_URL =   '/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, PRODUCTION_ROUTING_URL].join('/');
 export const ABS_PRODUCTION_ACTIVITY_TYPES_URL ='/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, PRODUCTION_ACTIVITY_TYPE_URL].join('/');
+export const ABS_PRODUCTION_RECYCLING_URL ='/' + [MAIN_PAGE_URL, PRODUCTION_APP_URL, PRODUCTION_RECYCLING_URL].join('/');
 
 // CRM
 

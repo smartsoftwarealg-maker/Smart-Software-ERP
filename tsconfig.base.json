@@ -882,6 +882,9 @@
             ],
             "@ss/production/production-routing": [
                 "libs/production/production-routing/src/index.ts"
+            ],
+            "@ss/production/production-recycling": [
+                "./libs/production/production-recycling/src/index.ts"
             ]
         }
     },
