@@ -89,7 +89,9 @@ export class PaymentComponent {
     loadPayment() {
         if (this.id()) {
             this.isLoading.set(true);
-            this.#quickOrderSrv.get(this.id()).subscribe({
+            this.#quickOrderSrv
+                .get(this.id())
+                .subscribe({
                 next: (quickOrder) => {
                     this.quickOrder = quickOrder;
                     this.refresh(quickOrder.paymentId);
@@ -99,20 +101,30 @@ export class PaymentComponent {
     }
 
     refresh(id: number) {
+        this.isLoading.set(true);
         if (id) {
-            this.#entitySrv.get(id).subscribe({
+            this.#entitySrv
+                .get(id).subscribe({
                 next: (payment) => {
                     this.form = this.setupForm(payment);
                     this.isLoading.set(false);
                 },
             });
         } else {
-            this.form = this.setupForm({ id: 0 } as Payment);
-            this.getCredit();
+            this.#entitySrv
+                .getTotal(this.#orderLineSrv.getParentId())
+                .subscribe({
+                    next: (t) => {
+                        const fft = t.find((t) => (t.description = 'LOGISTICS_FTT'));
+                        const vf = t.find((t) => (t.description = 'LOGISTICS_VF'));
+                        this.form = this.setupForm({ id: 0, credit:  fft?.value | vf?.value | 0} as Payment);
+                        this.isLoading.set(false);
+                    },
+                });
         }
     }
 
-    private setupForm(p: Payment): UntypedFormGroup {
+    private setupForm(p: Payment) {
         const db = p.amount > 0.0 ? p.amount : 0.0;
         const cr = p.amount < 0.0 ? -p.amount : 0.0;
         p.mode = p.mode || 2;
@@ -265,16 +277,16 @@ export class PaymentComponent {
         this.form?.get('checkBank')?.updateValueAndValidity();
     }
 
-    getCredit() {
-        this.#entitySrv.getTotal(this.#orderLineSrv.getParentId()).subscribe({
-            next: (t) => {
-                const fft = t.find((t) => (t.description = 'LOGISTICS_FTT'));
-                const vf = t.find((t) => (t.description = 'LOGISTICS_VF'));
-                this.form?.controls['credit']?.setValue(
-                    fft?.value | vf?.value | 0,
-                );
-                this.isLoading.set(false);
-            },
-        });
-    }
+    // getCredit() {
+    //     this.#entitySrv
+    //         .getTotal(this.#orderLineSrv.getParentId())
+    //         .subscribe({
+    //         next: (t) => {
+    //             const fft = t.find((t) => (t.description = 'LOGISTICS_FTT'));
+    //             const vf = t.find((t) => (t.description = 'LOGISTICS_VF'));
+    //             this.form = this.setupForm({ id: 0, credit:  fft?.value | vf?.value | 0} as Payment);
+    //             this.isLoading.set(false);
+    //         },
+    //     });
+    // }
 }
