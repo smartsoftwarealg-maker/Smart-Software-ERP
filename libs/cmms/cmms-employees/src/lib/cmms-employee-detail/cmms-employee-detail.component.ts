@@ -99,7 +99,7 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
 
     nationalityModel = new DefaultAutoCompleteModel(this.nationalitySrv);
     public maritalStatuses$: Observable<MaritalStatus[]>;
-    public elementsForm: UntypedFormGroup = null;
+    public elementsForm: UntypedFormGroup|null = null;
     bloodGroups$ = this.bloodGroupSrv.getList(0, 50).pipe(map(res => res.body));
 
     constructor(
@@ -132,7 +132,7 @@ export class CmmsEmployeeDetailComponent extends BaseEntityDetailComponent<Emplo
             .pipe(switchMap(() => this.infoSrv.get(p.id)))
             .subscribe(res => {
                 const elements = res.elements.length === 0 ?
-                    this.infoSrv.loadDataCols().map(() => 0.0) :
+                    this.infoSrv.dataCols().map(() => 0.0) :
                     res.elements;
 
                 this.elementsForm = this.formBuilder.group({

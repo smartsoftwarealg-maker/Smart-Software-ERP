@@ -71,7 +71,8 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         'payMethod',
         'docStatus',
         'mode',
-        'invoiceNumber',
+        'qty'
+        // 'invoiceNumber',
         // 'option',
     ]);
 
@@ -101,41 +102,41 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         );
     }
 
-    getInvoices(): void {
-        this.setLoading(true);
-        const ids = this.data().map((d) => d.id).join(',');
+    // getInvoices(): void {
+    //     this.setLoading(true);
+    //     const ids = this.data().map((d) => d.id).join(',');
+    //
+    //     this.quickOrderSrv
+    //         .getInvoiceInfo(ids)
+    //         .pipe(
+    //             tap((res) => (this.invoiceInfo = res)),
+    //
+    //             switchMap((items) =>
+    //                 forkJoin(
+    //                     items
+    //                         .filter((item) => item.invoiceNumber)
+    //                         .map((item) =>
+    //                             this.invoiceSrv.get(item.id).pipe(
+    //                                 filter((invoice) => !invoice.invoiceNumber),
+    //                                 switchMap((invoice) =>
+    //                                     this.invoiceSrv.update({
+    //                                         ...invoice,
+    //                                         invoiceNumber: item.invoiceNumber,
+    //                                     }),
+    //                                 ),
+    //                                 catchError((err) => {
+    //                                     return EMPTY;
+    //                                 }),
+    //                             ),
+    //                         ),
+    //                 ),
+    //             ),
+    //         ).subscribe(() => this.setLoading(false));
+    // }
 
-        this.quickOrderSrv
-            .getInvoiceInfo(ids)
-            .pipe(
-                tap((res) => (this.invoiceInfo = res)),
-
-                switchMap((items) =>
-                    forkJoin(
-                        items
-                            .filter((item) => item.invoiceNumber)
-                            .map((item) =>
-                                this.invoiceSrv.get(item.id).pipe(
-                                    filter((invoice) => !invoice.invoiceNumber),
-                                    switchMap((invoice) =>
-                                        this.invoiceSrv.update({
-                                            ...invoice,
-                                            invoiceNumber: item.invoiceNumber,
-                                        }),
-                                    ),
-                                    catchError((err) => {
-                                        return EMPTY;
-                                    }),
-                                ),
-                            ),
-                    ),
-                ),
-            ).subscribe(() => this.setLoading(false));
-    }
-
-    private getInvoiceNumber(id: number) {
-        return this.invoiceInfo.find((inv) => inv.id === id)?.invoiceNumber;
-    }
+    // private getRemainingQuantity(id: number) {
+    //     return this.invoiceInfo.find((inv) => inv.id === id)?.quantity||0;
+    // }
 
     generateInvoice(id: number) {
         this.quickOrderSrv.generateInvoice(id).subscribe({
@@ -150,20 +151,20 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         });
     }
 
-    override processLoadedData(data:QuickOrder[]):Observable<QuickOrder[]>{
-        return  super.processLoadedData(data)
-            .pipe(
-                switchMap(() => {
-                    const ids = this.data().map((d) => d.id).join(',');
-                    return this.quickOrderSrv.getInvoiceInfo(ids);
-                }),
-                tap((res: InvoiceInfo[]) => {
-                    this.invoiceInfo = res;
-                    data.forEach((d) => {
-                        d.invoiceNumber = this.getInvoiceNumber(d.id);
-                    });
-                }),
-                switchMap(() => of(data))
-            );
-    }
+    // override processLoadedData(data:QuickOrder[]):Observable<QuickOrder[]>{
+    //     return  super.processLoadedData(data)
+    //         .pipe(
+    //             switchMap(() => {
+    //                 const ids = this.data().map((d) => d.id).join(',');
+    //                 return this.quickOrderSrv.getInvoiceInfo(ids);
+    //             }),
+    //             tap((res: InvoiceInfo[]) => {
+    //                 this.invoiceInfo = res;
+    //                 data.forEach((d) => {
+    //                     d.invoiceNumber = this.getRemainingQuantity(d.id);
+    //                 });
+    //             }),
+    //             switchMap(() => of(data))
+    //         );
+    // }
 }

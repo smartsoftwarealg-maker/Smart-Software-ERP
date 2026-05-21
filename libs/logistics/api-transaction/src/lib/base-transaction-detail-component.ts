@@ -333,6 +333,7 @@ export abstract class BaseTransactionDetailComponent
         }
     }
 
+
     public override setupForm(b: Transaction) {
         if (!b.id) {
             b.id = 0;
@@ -345,7 +346,6 @@ export abstract class BaseTransactionDetailComponent
         this.detailSrv.setParentId(b.id || 0);
         this.purchaseProjectSrv.setParentId(b.agent || 0);
         this._isManager = this.loginSrv.appCtx.manager;
-        this.formId = b.id || 0;
 
         this.isEditable.update(v => v && !b.isValidated);
         this.importBtn.disabled =
@@ -448,6 +448,7 @@ export abstract class BaseTransactionDetailComponent
             tap(b => {
                 this.saveButton.visible = this.saveButton.visible && !b.isValidated;
                 this.importBtn.visible = b.id > 0 && !b.isValidated;
+                this.formId = b.id || 0;
             })
         )
     }

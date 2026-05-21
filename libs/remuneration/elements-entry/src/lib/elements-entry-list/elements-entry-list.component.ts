@@ -72,7 +72,7 @@ export class ElementsEntryListComponent
     displayedColumns = signal<string[]>(['photo', 'id', 'firstName', 'lastName', 'post']);
     journalColumns = this.FIXED_JOURNAL_HEADERS;
 
-    paySlip: PaymentElement[] = [];
+    paySlip = signal<PaymentElement[]>([]);
     journalData: MJournal[] = [];
     headers: string[] = [];
     hasFixedRights = signal(true);
@@ -174,7 +174,7 @@ export class ElementsEntryListComponent
     override select(id: number) {
         super.select(id);
         this.infoSrv.getSlip(id).subscribe((res) => {
-            this.paySlip = res || [];
+            this.paySlip.set(res || []);
         });
     }
 

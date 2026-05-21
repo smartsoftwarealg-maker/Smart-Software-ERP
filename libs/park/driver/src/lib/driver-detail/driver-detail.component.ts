@@ -147,7 +147,7 @@ export class DriverDetailComponent extends BaseEntityDetailComponent<Driver> {
             .subscribe((res) => {
                 const elements =
                     res.elements.length === 0
-                        ? this.infoSrv.loadDataCols().map(() => 0.0)
+                        ? this.infoSrv.dataCols().map(() => 0.0)
                         : res.elements;
 
                 this.elementsForm = this.formBuilder.group({

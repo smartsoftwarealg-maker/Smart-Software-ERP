@@ -38,10 +38,10 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
 
-    private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post'];
+    private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post', 'accountNo'];
 
     mainTableWidth = 600;
-    displayedColumns = signal<string[]>(['photo', 'id', 'firstName', 'lastName', 'post']);
+    displayedColumns = signal<string[]>(['photo', 'id', 'firstName', 'lastName', 'post', 'accountNo']);
 
 
     constructor(

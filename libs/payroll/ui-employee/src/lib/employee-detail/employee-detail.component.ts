@@ -283,11 +283,11 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         return this.infoSrv
             .load()
             .pipe(
-                tap(() => this.elementDescriptions.set(this.infoSrv.loadDataCols().map(e => e.description))),
+                tap(() => this.elementDescriptions.set(this.infoSrv.dataCols().map(e => e.description))),
                 switchMap(() => this.infoSrv.get(this.queryId)),
                 tap(res => {
                     const elements = res.elements.length === 0 ?
-                        this.infoSrv.loadDataCols().map(() => 0.0) :
+                        this.infoSrv.dataCols().map(() => 0.0) :
                         res.elements;
 
                     this.elementsForm = this.formBuilder.group({
@@ -304,7 +304,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.archiveSrv.appId = EMPLOYEE_ARCHIVES;
         this.loadFixedElements().subscribe();
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.id), false);
-        this.elementDescriptions.set(this.infoSrv.loadDataCols().map(e => e.description));
+        this.elementDescriptions.set(this.infoSrv.dataCols().map(e => e.description));
 
         return this.formBuilder.group({
             // birth info

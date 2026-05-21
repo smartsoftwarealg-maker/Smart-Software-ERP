@@ -19,7 +19,7 @@
     <div formGroupName="elements" class="elements">
       @for (g of elementsForm.controls; track g; let i = $index) {
         <mat-form-field>
-          <mat-label translate> {{ infoSrv.loadDataCols()[i]?.description }}</mat-label>
+          <mat-label translate> {{ infoSrv.dataCols()[i]?.description }}</mat-label>
           <input matInput formControlName="{{ i }}" type="number">
         </mat-form-field>
       }

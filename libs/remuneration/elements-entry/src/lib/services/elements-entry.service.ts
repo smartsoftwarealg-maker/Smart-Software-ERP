@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal} from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { ELine, INPUT_ELEMENTS_URL, Journal, PaymentElement, PSpecial } from '../elements-entry-api';
 import { HttpService, PaginationModel } from "@ss/common/api-common";
@@ -14,7 +14,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     readonly VARIABLE_MODE = 1;
     readonly FIXED_MODE = 2;
     readonly INFO_MODE = 3;
-    inputFilter: InputFilter[] = [];
+    inputFilter = signal<InputFilter[]>([]);
     selectedInput = -1;
     selectionMode = 1;
     elements: ElementsInfo[] = [];
@@ -30,7 +30,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     getSlip(id: number): Observable<PaymentElement[]> {
         const params = new HttpParams().set('id', id + '');
         return this.httpSrv
-            .getData<PaymentElement>('/payroll/slip', 0, 1000, null, null, params)
+            .getData<PaymentElement>('/payroll/slip', 0, 1000, undefined, undefined, params)
             .pipe(map(res => res.body));
     }
 
@@ -38,7 +38,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
         zip(this.inputFilterSrv.getList(0, 50),
             this.elementInfoSrv.getList(0, 2000))
             .subscribe(res => {
-                this.inputFilter = res[0].body;
+                this.inputFilter.set(res[0].body);
                 this.elements = res[1].body;
             });
     }
@@ -50,7 +50,7 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     loadDataCols(): ElementsInfo[] {
         const infoMode = (this.selectionMode === this.INFO_MODE);
         const isFixed = (this.selectionMode === this.FIXED_MODE);
-        const selection = this.inputFilter.find(e => e.id == this.selectedInput)?.selection || '';
+        const selection = this.inputFilter().find(e => e.id == this.selectedInput)?.selection || '';
 
         this.dataCols = this.elements
             .filter(e => selection.indexOf(e.field) >= 0 && e.fixed == isFixed && !infoMode)

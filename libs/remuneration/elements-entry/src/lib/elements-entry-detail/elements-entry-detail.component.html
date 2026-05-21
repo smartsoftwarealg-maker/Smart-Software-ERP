@@ -18,7 +18,7 @@
         <mat-form-field class="default-100">
             <mat-label><span translate>REMUN_INPUT_FILTERS</span></mat-label>
             <mat-select (selectionChange)="selectInput($event)" [value]="infoSrv.selectedInput">
-                @for (i of infoSrv.inputFilter; track i) {
+                @for (i of infoSrv.inputFilter(); track i) {
                     <mat-option [value]="i.id">
                         {{ i.description }}
                     </mat-option>

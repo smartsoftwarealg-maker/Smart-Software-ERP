@@ -1,0 +1,17 @@
+<div class="main__div">
+    <mat-form-field class="default-100">
+        <mat-label translate>ADMINISTRATION_DESCRIPTION_AR</mat-label>
+        <input matInput [formControl]="quantity" type="text">
+    </mat-form-field>
+
+    <div class="button__div">
+        <button mat-button (click)="cancel()">
+            <i class="fa-solid fa-cancel"></i>
+            {{'CANCEL' | translate}}
+        </button>
+        <button mat-button (click)="close()">
+            <i class="fa-solid fa-check"></i>
+            {{'OK' | translate}}
+        </button>
+    </div>
+</div>
