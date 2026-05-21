@@ -123,9 +123,9 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
         });
     }
 
-    getInvoiceNumber(id: number) {
-        return this.invoiceInfo.find((inv) => inv.id === id)?.invoiceNumber;
-    }
+    // getInvoiceNumber(id: number) {
+    //     return this.invoiceInfo.find((inv) => inv.id === id)?.invoiceNumber;
+    // }
 
     generateInvoice(id: number) {
         this.quickOrderSrv.generateInvoice(id).subscribe({

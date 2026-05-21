@@ -193,34 +193,34 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             ['license', 'licenseDate', 'licenseIssuer'].forEach((c) =>
                 form?.controls[c].disable(),
             );
-            this.entitySrv.getInvoiceInfo(q.id + '').subscribe({
-                next: (invoiceInfo) => {
-                    if (invoiceInfo?.length > 0) {
-                        const isInv = invoiceInfo[0].invoiceNumber > 0;
-                        this.isInvoice.set(isInv);
-                        if (isInv && !this.isManager()) {
-                            form.disable();
-                        }
-                    }
-                },
-            });
+            // this.entitySrv.getInvoiceInfo(q.id + '').subscribe({
+            //     next: (invoiceInfo) => {
+            //         if (invoiceInfo?.length > 0) {
+            //             const isInv = invoiceInfo[0].invoiceNumber > 0;
+            //             this.isInvoice.set(isInv);
+            //             if (isInv && !this.isManager()) {
+            //                 form.disable();
+            //             }
+            //         }
+            //     },
+            // });
         }
 
-        if (q.id > 0) {
-            this.entitySrv.getInvoiceInfo(q.id + '').subscribe((res) => {
-                if (res[0].invoiceNumber) {
-                    [
-                        'project',
-                        'agent',
-                        'invoiceType',
-                        'payMethod',
-                        'date',
-                    ].forEach((c) => form?.controls[c].disable());
-                    this.isInvoice.set(true);
-                }
-            });
-        }
-
+        // if (q.id > 0) {
+        //     this.entitySrv.getInvoiceInfo(q.id + '').subscribe((res) => {
+        //         if (res[0].qty < 1) {
+        //             [
+        //                 'project',
+        //                 'agent',
+        //                 'invoiceType',
+        //                 'payMethod',
+        //                 'date',
+        //             ].forEach((c) => form?.controls[c].disable());
+        //             this.isInvoice.set(true);
+        //         }
+        //     });
+        // }
+        //
         return form;
     }
 

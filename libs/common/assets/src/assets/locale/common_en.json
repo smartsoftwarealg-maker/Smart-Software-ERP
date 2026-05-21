@@ -504,5 +504,6 @@
     "DELETED_AT":            "Deleted at",
     "WRITES":         "Writes",
     "EDITS":          "Edits",
-    "DELETES":        "Deletes"
+    "DELETES":        "Deletes",
+    "ACCOUNT_NO": "Account No"
 }

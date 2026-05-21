@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {computed, Injectable, signal} from '@angular/core';
 import {BaseEntityService} from '@ss/common/api-base-entity';
 import {ELine, FIXED_ELEMENTS_URL, INPUT_ELEMENTS_URL, Journal, PaymentElement} from '../elements-entry-api';
 import {HttpService} from '@ss/common/api-common';
@@ -11,9 +11,11 @@ import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
   providedIn: 'root'
 })
 export class FixedElementsEntryService extends BaseEntityService<ELine> {
-    inputFilter: InputFilter[] = [];
+    // inputFilter: InputFilter[] = [];
     elements: ElementsInfo[] = [];
-    dataCols: ElementsInfo[] = [];
+    dataCols = signal<ElementsInfo[]>([]);
+    colsList = signal<string[]>([]);
+    colsString = computed(() => this.colsList().join(''));
 
     constructor(protected override httpSrv: HttpService,
                 private inputFilterSrv: InputFiltersService,
@@ -29,25 +31,27 @@ export class FixedElementsEntryService extends BaseEntityService<ELine> {
                 }));
     }
 
-    public colsList(): string[] {
-        return this.loadDataCols().map(e => e.field);
-    }
+    // public colsList(): string[] {
+    //     return this.dataCols().map(e => e.field);
+    // }
 
 
-    loadDataCols(): ElementsInfo[] {
-        if (this.dataCols.length < 2) {
-            this.dataCols = this.elements
+    loadDataCols(): void {
+        if (this.dataCols().length < 2) {
+            const tmp = this.elements
                 .filter(e => e.fixed)
-                .sort((a, b) => a?.description?.localeCompare(b.description))
+                .sort((a, b) => a?.description?.localeCompare(b.description) || 0)
                 .map(e => { e.field = e.field.toLowerCase(); return e; });
+            this.dataCols.set(tmp);
+            this.colsList.set(tmp.map(e => e.field));
         }
-        return this.dataCols;
+        // return this.dataCols;
     }
 
 
-    public colsString(): string {
-        return this.colsList().join('');
-    }
+    // public colsString(): string {
+    //     return this.dataCols().map(e => e.field).join('');
+    // }
 
     override get(id: number | string): Observable<ELine> {
         const params = new HttpParams().set('cols', this.colsString());

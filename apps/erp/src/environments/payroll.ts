@@ -18,6 +18,7 @@ import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
+import {dashboardNavTree} from "../app/dashboard/side-nav-tree";
 
 export const environment = {
     production: true,
@@ -30,6 +31,7 @@ export const navBar = [
     hrNavTree,
     payrollNavTree,
     gicaNavTree,
+    dashboardNavTree,
     aaNavTree
 ];
 

@@ -37,6 +37,13 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="accountNo">
+                <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNT_NO</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.accountNo }}
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="post">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_POST</mat-header-cell>
                 <mat-cell *matCellDef="let e">
@@ -44,10 +51,10 @@
                 </mat-cell>
             </ng-container>
 
-            @for (c of infoSrv.dataCols; track c; let i = $index) {
+            @for (c of infoSrv.dataCols(); track c; let i = $index) {
                 <ng-container
-                    matColumnDef="{{ infoSrv.dataCols[i].field }}">
-                    <mat-header-cell *matHeaderCellDef>{{ infoSrv.loadDataCols()[i].description }}</mat-header-cell>
+                    matColumnDef="{{ infoSrv.dataCols()[i].field }}">
+                    <mat-header-cell *matHeaderCellDef>{{ infoSrv.dataCols()[i].description }}</mat-header-cell>
                     <mat-cell *matCellDef="let e" class="number-cell">
                         {{ e.elements[i] | number: '1.2-2' }}
                     </mat-cell>

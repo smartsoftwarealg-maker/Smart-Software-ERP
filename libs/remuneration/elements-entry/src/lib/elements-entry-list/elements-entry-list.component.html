@@ -4,7 +4,7 @@
             <mat-form-field appearance="fill">
                 <mat-label><span translate>REMUN_INPUT_FILTERS</span></mat-label>
                 <mat-select (selectionChange)="selectInput($event)" [value]="infoSrv.selectedInput">
-                    @for (i of infoSrv.inputFilter; track i.id) {
+                    @for (i of infoSrv.inputFilter(); track i.id) {
                         <mat-option [value]="i.id">
                             {{ i.description }}
                         </mat-option>
@@ -118,7 +118,7 @@
                 </div>
             </mat-card>
             <div class="slip__div">
-                <mat-table mat-table [dataSource]="paySlip" class="slip-table">
+                <mat-table mat-table [dataSource]="paySlip()" class="slip-table">
 
                     <ng-container matColumnDef="formula">
                         <mat-header-cell *matHeaderCellDef translate>COMMON_FORMULA</mat-header-cell>

@@ -42,7 +42,8 @@ import { ScheduledInvoiceService } from './scheduled-invoice.service';
 import { DispatchComponent } from '../dispatch/dispatch.component';
 import { PaymentComponent } from '../../../../ui-quick-order/src/lib/payment/payment.component';
 import { OptionService } from '@ss/logistics/ui-options';
-import {AccessRightsService} from "@ss/common/api-access-rights";
+import {MatDialog} from "@angular/material/dialog";
+import {QuantityInputComponent} from "../quantity-input-component/quantity-input.component";
 
 @Component({
     selector: 'ss-ui-order-invoicing',
@@ -77,9 +78,11 @@ import {AccessRightsService} from "@ss/common/api-access-rights";
     ],
 })
 export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder> {
+    #dialog = inject(MatDialog);
     #optionSrv = inject(OptionService);
     #loginSrv = inject(LoginService);
     isInvoicing = signal(false);
+
 
     // initialize with translation keys for invoice types
     readonly invoiceTypes: Map<number, string> = new Map<number, string>([
@@ -95,11 +98,10 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         'mode',
         'description',
         'qty',
-        'invoiceNumber',
         'option',
         'docStatus',
     ]);
-    transactionColumns = [
+    transactionColumns = signal<string[]>([
         'position',
         'store',
         'reference',
@@ -109,11 +111,12 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         'price',
         'vat',
         'total',
-    ];
-    transactions: TransactionLine[];
+    ]);
+    transactions = signal<TransactionLine[]>([]);
     salesOrderLinesSrv = inject(SalesOrderLinesService);
     private weightCaptureSrv = inject(WeightCaptureService);
     public readonly transacPagination = PaginationModel.newInstance();
+    readonly dialog = inject(MatDialog);
 
     transacLineId: number;
     invoiceInfo: InvoiceInfo[] = [];
@@ -127,8 +130,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         public override router: Router,
         public override confirmationSrv: ConfirmationDialogService,
         public override defReportSrv: DefaultReportService,
-        public override pagPersistSrv: PaginatorPersistenceService,
-    ) {
+        public override pagPersistSrv: PaginatorPersistenceService) {
         super(
             scheduledInvoiceSrv,
             shellSrv,
@@ -161,65 +163,29 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
                 switchMap(() => this.weightCaptureSrv.hasScaleConfig()),
                 tap((exists) => {
                     if (exists) {
-                        this.transactionColumns.push('tare', 'brut');
+                        this.transactionColumns.update(v => [...v, 'tare', 'brut']);
                     }
                 }),
                 switchMap(() =>this.#optionSrv.get(this.#loginSrv.appCtx.center)),
                 tap((opt) => {
-                    this.transactionColumns = this.transactionColumns.filter(
+                    this.transactionColumns.update(v => v.filter(
                         (col) => col !== 'store' || !opt.serviceInvoiceOnly,
-                    );
+                    ));
                 }),
                 tap(() => this.editButton.visible = this.shellSrv.getEntityRights('QOrder')?.edit || this.#loginSrv.appCtx.manager)
                 );
     }
 
-    // override ngOnInit() {
-    //     this.route.data.subscribe((data) => {
-    //         const invoicing = data['invoicing'] === true;
-    //         this.isInvoicing.set(invoicing);
-    //         this.displayedColumns = this.displayedColumns.filter(
-    //             (col) => col !== 'option' || invoicing,
-    //         );
-    //     });
-    //     this.weightCaptureSrv
-    //         .hasScaleConfig()
-    //         .pipe(
-    //             tap((exists) => {
-    //                 if (exists) {
-    //                     this.transactionColumns.push('tare', 'brut');
-    //                 }
-    //             }),
-    //             switchMap(() =>
-    //                 this.#optionSrv.get(this.#loginSrv.appCtx.center),
-    //             ),
-    //         )
-    //         .subscribe({
-    //             next: (opt) => {
-    //                 this.transactionColumns = this.transactionColumns.filter(
-    //                     (col) => col !== 'store' || !opt.serviceInvoiceOnly,
-    //                 );
-    //             },
-    //             error: () => {},
-    //         });
-    //     super.ngOnInit();
-    //     timer(2000).subscribe(
-    //         () =>
-    //             (this.editButton.visible =
-    //                 this.shellSrv.getEntityRights('QOrder')?.edit ||
-    //                 this.#loginSrv.appCtx.manager),
-    //     );
+
+    // protected getInvoiceNumber(id: number) {
+    //     return this.invoiceInfo.find((inv) => inv.id === id)?.invoiceNumber;
     // }
-
-
-    private getInvoiceNumber(id: number) {
-        return this.invoiceInfo.find((inv) => inv.id === id)?.invoiceNumber;
-    }
 
     override select(id: number) {
         super.select(id);
         if (id > 0) {
             this.salesOrderLinesSrv.setParentId(id);
+            this.loading.set(true);
             this.salesOrderLinesSrv
                 .getPage(this.transacPagination)
                 .pipe(
@@ -230,31 +196,33 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
                                 .subscribe((captures) => {
                                     line.tareWeight = captures.tare;
                                     line.brutWeight = captures.brut;
+                                    this.loading.set(true);
                                 });
                         });
                     }),
                 ).subscribe((res) => {
-                    this.transactions = res;
+                    this.transactions.set(res);
                 });
         }
     }
 
     generateInvoice(id: number) {
-        this.confirmationSrv
-            .confirm('SALES_ORDER_INVOICING', 'SALES_GENERATE_INVOICE')
-            .pipe(
-                switchMap((confirm: boolean) => {
-                    if (confirm) {
-                        return this.scheduledInvoiceSrv.generateInvoice(id);
-                    } else {
-                        return of();
+         const dialogRef = this.dialog.open(QuantityInputComponent, {
+                             width: '200px',
+                             height: '10em',
+                             disableClose: true,
+                            data: {
+                                quantity: 20
+                            }
+                        });
+          return dialogRef.afterClosed()
+              .pipe(switchMap((res: number) => res >= 1 ? this.scheduledInvoiceSrv.generateInvoice(id, res) : of(null)))
+              .subscribe({
+                next: res => {
+                    if (res !== null) {
+                        this.snackBarSrv.showSuccessMessage();
+                        this.refresh();
                     }
-                }),
-            )
-            .subscribe({
-                next: () => {
-                    this.snackBarSrv.showSuccessMessage();
-                    this.refresh();
                 },
                 error: (err) => {
                     this.snackBarSrv.showFailureMessage();
@@ -263,23 +231,23 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
             });
     }
 
-    override processLoadedData(data:QuickOrder[]):Observable<QuickOrder[]>{
-        return  super.processLoadedData(data)
-            .pipe(
-                switchMap(() => {
-                    const ids = this.data().map((d) => d.id).join(',');
-                    return this.scheduledInvoiceSrv.getInvoiceInfo(ids);
-                }),
-                tap((res: InvoiceInfo[]) => {
-                    this.invoiceInfo = res;
-                    data.forEach((d) => {
-                        d.invoiceNumber = this.getInvoiceNumber(d.id);
-                    });
-                }),
-                switchMap(() => of(data))
-            );
-    }
-
+    // override processLoadedData(data:QuickOrder[]):Observable<QuickOrder[]>{
+    //     return  super.processLoadedData(data)
+    //         .pipe(
+    //             switchMap(() => {
+    //                 const ids = this.data().map((d) => d.id).join(',');
+    //                 return this.scheduledInvoiceSrv.getInvoiceInfo(ids);
+    //             }),
+    //             tap((res: InvoiceInfo[]) => {
+    //                 this.invoiceInfo = res;
+    //                 data.forEach((d) => {
+    //                     d.invoiceNumber = this.getInvoiceNumber(d.id);
+    //                 });
+    //             }),
+    //             switchMap(() => of(data))
+    //         );
+    // }
+    //
     // getInvoices(): void {
     //     const ids = this.data.map((d) => d.id).join(',');
     //     this.scheduledInvoiceSrv

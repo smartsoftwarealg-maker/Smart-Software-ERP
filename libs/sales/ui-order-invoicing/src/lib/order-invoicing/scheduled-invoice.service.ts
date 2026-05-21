@@ -15,7 +15,7 @@ export class ScheduledInvoiceService extends BaseEntityService<QuickOrder> {
         return this.httpSrv.get<InvoiceInfo[]>('/quick-order/info?id=' + id);
     }
 
-    generateInvoice(id: number) {
-        return this.httpSrv.post(`/quick-order/${id}/invoice`);
+    generateInvoice(id: number, qty: number) {
+        return this.httpSrv.post(`/quick-order/invoice`, { id: id, qty: qty});
     }
 }
