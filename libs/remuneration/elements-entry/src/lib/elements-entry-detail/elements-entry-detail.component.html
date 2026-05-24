@@ -1,5 +1,5 @@
 <mat-card class=size_div>
-    @if (form) {
+    @if (!loading()) {
         <div class="default-20 sm-50 employee-card selectable mat-elevation-z6">
             <div class="person-photo">
                 <ss-image-input width="120px" height="120px" [imageModel]="employee.imageModel"
@@ -58,16 +58,14 @@
                 <mat-label translate><span translate>REMUN_FUND</span>1</mat-label>
                 <ss-auto-complete matInput
                                   [model]="fund1Lookup"
-                                  formControlName="fund1"
-                                  required="true">
+                                  formControlName="fund1">
                 </ss-auto-complete>
             </mat-form-field>
             <mat-form-field class="default-50 sm-100">
                 <mat-label translate><span translate>REMUN_FUND</span>2</mat-label>
                 <ss-auto-complete matInput
                                   [model]="fund2Lookup"
-                                  formControlName="fund2"
-                                  required="true">
+                                  formControlName="fund2">
                 </ss-auto-complete>
             </mat-form-field>
 

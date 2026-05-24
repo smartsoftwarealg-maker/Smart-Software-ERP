@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, OnInit } from '@angular/core';
+import { Component, effect, inject, input, OnInit, signal} from '@angular/core';
 import { SnackBarService } from '@ss/common/ui-shell';
 import {
     FormBuilder,
@@ -61,6 +61,7 @@ export class DispatchComponent implements OnInit {
 
     quickOrder: QuickOrder;
     id = input(0);
+    loading = signal(true);
 
     public form: UntypedFormGroup | null = null;
 
@@ -75,17 +76,19 @@ export class DispatchComponent implements OnInit {
 
     ngOnInit(): void {
         this.refresh();
-        this.id;
     }
 
     refresh() {
         if (this.id()) {
-            this.#scheduledInvoiceSrv.get(this.id()).subscribe({
-                next: (quickOrder) => {
-                    this.quickOrder = quickOrder;
-                    this.form = null
-                    this.form = this.setupForm(quickOrder);
-                },
+            this.loading.set(true);
+            this.#scheduledInvoiceSrv
+                .get(this.id())
+                .subscribe({
+                    next: (quickOrder) => {
+                        this.quickOrder = quickOrder;
+                        this.form = this.setupForm(quickOrder);
+                        this.loading.set(false);
+                    },
             });
         }
     }
@@ -120,10 +123,7 @@ export class DispatchComponent implements OnInit {
             duplicateCount: [q.duplicateCount || 0, Validators.max(50)],
             from: [q.from],
             to: [q.to],
-            invoiceType: [
-                q.invoiceType || 1,
-                [Validators.min(1), Validators.max(2)],
-            ],
+            invoiceType: [q.invoiceType || 1, [Validators.min(1), Validators.max(2)]],
             shipMode: [0],
             altAgent: [q.altAgent],
             footer: [q.footer],

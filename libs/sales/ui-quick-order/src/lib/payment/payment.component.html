@@ -25,17 +25,6 @@
             <mat-label translate>COMMON_DATE</mat-label>
             <ss-date-picker formControlName="date"></ss-date-picker>
         </mat-form-field>
-        <!--        <div class="default-50 sm-100"> </div>-->
-        <!--        <mat-form-field class="default-50">-->
-        <!--            <mat-label translate>COMMON_DEBIT</mat-label>-->
-        <!--            <input matInput-->
-        <!--                   formControlName="debit"-->
-        <!--                   (change)="onDebitChange($event)"-->
-        <!--                   type="number" required>-->
-        <!--            @if (form.controls['debit']?.invalid) {-->
-        <!--                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>-->
-        <!--            }-->
-        <!--        </mat-form-field>-->
         <mat-form-field class="default-50">
             <mat-label translate>COMMON_CREDIT</mat-label>
             <input matInput
@@ -43,30 +32,28 @@
                    (change)="onCreditChange($event)"
                    type="number"
                    step="0.01" required>
-            @if (form.controls['credit']?.invalid) {
+            @if (form?.controls['credit']?.invalid) {
                 <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
             }
         </mat-form-field>
         <mat-form-field class="default-50">
             <mat-label translate>LOGISTICS_MODE</mat-label>
             <ss-auto-complete matInput
-                              [required]="true"
-                              [model]="modeAutoCompleteModel"
+                              [model]="modeLookup"
                               formControlName="mode">
             </ss-auto-complete>
         </mat-form-field>
         <mat-form-field id="number" class="default-50">
             <mat-label translate>COMMON_NUMBER</mat-label>
             <input matInput formControlName="number" type="text">
-            @if (form.controls['number']?.invalid) {
-                <mat-error translate>COMMON_FIELD_REQUIRED
-                </mat-error>
+            @if (form?.controls['number']?.invalid) {
+                <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
             }
         </mat-form-field>
         <mat-form-field class="default-50">
             <mat-label translate>COMMON_CHECK_BANK</mat-label>
             <ss-auto-complete matInput
-                              [model]="bankAutoCompleteModel"
+                              [model]="bankLookup"
                               formControlName="checkBank">
             </ss-auto-complete>
         </mat-form-field>

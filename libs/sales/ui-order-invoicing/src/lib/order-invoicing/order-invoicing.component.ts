@@ -215,7 +215,8 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
                                 quantity: 20
                             }
                         });
-          return dialogRef.afterClosed()
+          return dialogRef
+              .afterClosed()
               .pipe(switchMap((res: number) => res >= 1 ? this.scheduledInvoiceSrv.generateInvoice(id, res) : of(null)))
               .subscribe({
                 next: res => {

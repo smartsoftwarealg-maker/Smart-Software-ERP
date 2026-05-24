@@ -154,7 +154,7 @@ export class UiAutoCompleteComponent implements ControlValueAccessor, MatFormFie
     readonly autofilled = false;
     isFocused = false;
     isDisabled: boolean;
-    selected: Id;
+    selected: Id|null = null;
     loading = signal(false);
     isInputInvalid = computed(() => !this.loading() && !!this.autoControl.value && this.selected == null);
     hasNoMatch = computed(() => !this.loading() && this.model.options() && this.model.options().length == 0)

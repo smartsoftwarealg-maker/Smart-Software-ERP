@@ -27,7 +27,7 @@ import { Payment } from '@ss/logistics/api-common';
 import { LanguageService, LoginService } from '@ss/common/api-common';
 import { QuickOrderService } from '../quick-order.service';
 import { QuickOrder } from '../quick-order.api';
-import { catchError, concatMap, of, throwError, switchMap, debounceTime, distinctUntilChanged } from 'rxjs';
+import { catchError, concatMap, of, throwError, switchMap, debounceTime, distinctUntilChanged, delay} from 'rxjs';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
 
@@ -64,23 +64,23 @@ export class PaymentComponent {
     readonly #check = this.#langSrv.translate('COMMON_CHECK');
     readonly #CHECK = 2;
 
-    bankAutoCompleteModel = new DefaultAutoCompleteModel(this.#bankSrv);
-    modeAutoCompleteModel = new DefaultAutoCompleteModel(this.#typeSrv);
+    bankLookup = new DefaultAutoCompleteModel(this.#bankSrv);
+    modeLookup = new DefaultAutoCompleteModel(this.#typeSrv);
 
     quickOrder: QuickOrder;
     isLoading = signal(true);
-    id = input(0);
-    isInvoice = input(false);
+    id = input<number>(0);
+    isInvoice = input<boolean>(false);
     public form: UntypedFormGroup | null = null;
 
     constructor() {
         effect(() => {
-            if (this.id() > 0) {
+            if (this.id() >= 0) {
                 this.loadPayment();
             }
         });
-        this.modeAutoCompleteModel.onObjectSelected = (m) => {
-            if (this.form?.controls['id'].value == 0) {
+        this.modeLookup.onObjectSelected = (m) => {
+            if (this.form?.controls['id'].value === 0) {
                 this.onModeChange(m);
             }
         };
@@ -89,30 +89,44 @@ export class PaymentComponent {
     loadPayment() {
         if (this.id()) {
             this.isLoading.set(true);
-            this.#quickOrderSrv.get(this.id()).subscribe({
-                next: (quickOrder) => {
-                    this.quickOrder = quickOrder;
-                    this.refresh(quickOrder.paymentId);
-                },
+            this.#quickOrderSrv
+                .get(this.id())
+                .pipe(
+                    delay(1000)
+                ).subscribe({
+                        next: (quickOrder) => {
+                            this.quickOrder = quickOrder;
+                            this.refresh(quickOrder.paymentId||0);
+                        },
             });
         }
     }
 
     refresh(id: number) {
+        this.isLoading.set(true);
         if (id) {
-            this.#entitySrv.get(id).subscribe({
+            this.#entitySrv
+                .get(id).subscribe({
                 next: (payment) => {
                     this.form = this.setupForm(payment);
                     this.isLoading.set(false);
                 },
             });
         } else {
-            this.form = this.setupForm({ id: 0 } as Payment);
-            this.getCredit();
+            this.#entitySrv
+                .getTotal(this.#orderLineSrv.getParentId())
+                .subscribe({
+                    next: (t) => {
+                        const fft = t.find((t) => (t.description = 'LOGISTICS_FTT'));
+                        const vf = t.find((t) => (t.description = 'LOGISTICS_VF'));
+                        this.form = this.setupForm({ id: 0, amount:  -(fft?.value | vf?.value | 0)} as Payment);
+                        this.isLoading.set(false);
+                    },
+                });
         }
     }
 
-    private setupForm(p: Payment): UntypedFormGroup {
+    private setupForm(p: Payment) {
         const db = p.amount > 0.0 ? p.amount : 0.0;
         const cr = p.amount < 0.0 ? -p.amount : 0.0;
         p.mode = p.mode || 2;
@@ -142,9 +156,10 @@ export class PaymentComponent {
         }
 
         form.controls['number']?.valueChanges
-            .pipe(debounceTime(300), distinctUntilChanged())
-            .subscribe((res) => {
-                const mode = this.modeAutoCompleteModel.cache;
+            .pipe(debounceTime(300),
+                  distinctUntilChanged()
+            ).subscribe((res) => {
+                const mode = this.modeLookup.cache;
                 this.form
                     ?.get('description')
                     .setValue((mode?.description || '') + ' ' + (res || ''));
@@ -265,16 +280,16 @@ export class PaymentComponent {
         this.form?.get('checkBank')?.updateValueAndValidity();
     }
 
-    getCredit() {
-        this.#entitySrv.getTotal(this.#orderLineSrv.getParentId()).subscribe({
-            next: (t) => {
-                const fft = t.find((t) => (t.description = 'LOGISTICS_FTT'));
-                const vf = t.find((t) => (t.description = 'LOGISTICS_VF'));
-                this.form?.controls['credit']?.setValue(
-                    fft?.value | vf?.value | 0,
-                );
-                this.isLoading.set(false);
-            },
-        });
-    }
+    // getCredit() {
+    //     this.#entitySrv
+    //         .getTotal(this.#orderLineSrv.getParentId())
+    //         .subscribe({
+    //         next: (t) => {
+    //             const fft = t.find((t) => (t.description = 'LOGISTICS_FTT'));
+    //             const vf = t.find((t) => (t.description = 'LOGISTICS_VF'));
+    //             this.form = this.setupForm({ id: 0, credit:  fft?.value | vf?.value | 0} as Payment);
+    //             this.isLoading.set(false);
+    //         },
+    //     });
+    // }
 }
