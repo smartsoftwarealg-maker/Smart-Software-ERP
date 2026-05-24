@@ -69,7 +69,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         'date',
         'agent',
         'payMethod',
-        'docStatus',
+        // 'docStatus',
         'mode',
         'qty'
         // 'invoiceNumber',

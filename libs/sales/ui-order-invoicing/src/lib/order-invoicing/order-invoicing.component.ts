@@ -36,11 +36,11 @@ import {
     WeightCaptureDialogButtonComponent,
     WeightCaptureService,
 } from '@ss/sales/weight-capture';
-import { delay, tap } from 'rxjs/operators';
+import {tap } from 'rxjs/operators';
 import { Observable, of, pipe, switchMap, timer } from 'rxjs';
 import { ScheduledInvoiceService } from './scheduled-invoice.service';
 import { DispatchComponent } from '../dispatch/dispatch.component';
-import { PaymentComponent } from '../../../../ui-quick-order/src/lib/payment/payment.component';
+import { PaymentComponent } from '@ss/sales/ui-quick-order';
 import { OptionService } from '@ss/logistics/ui-options';
 import {MatDialog} from "@angular/material/dialog";
 import {QuantityInputComponent} from "../quantity-input-component/quantity-input.component";
@@ -188,20 +188,22 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
             this.loading.set(true);
             this.salesOrderLinesSrv
                 .getPage(this.transacPagination)
-                .pipe(
-                    tap((data) => {
-                        data.forEach((line) => {
-                            this.weightCaptureSrv
-                                .getWeightCapture(line.id)
-                                .subscribe((captures) => {
-                                    line.tareWeight = captures.tare;
-                                    line.brutWeight = captures.brut;
-                                    this.loading.set(true);
-                                });
-                        });
-                    }),
-                ).subscribe((res) => {
+                // .pipe(
+                //     tap((data: TransactionLine[]) => {
+                //         data.forEach((line) => {
+                //             this.weightCaptureSrv
+                //                 .getWeightCapture(line.id)
+                //                 .subscribe((captures) => {
+                //                     line.tareWeight = captures.tare;
+                //                     line.brutWeight = captures.brut;
+                //                     this.loading.set(true);
+                //                 });
+                //         });
+                //     }),
+                // )
+                .subscribe((res) => {
                     this.transactions.set(res);
+                    this.loading.set(false);
                 });
         }
     }
