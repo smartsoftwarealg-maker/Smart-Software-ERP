@@ -155,6 +155,11 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
     override readForm(): ELine {
         const data = super.readForm();
         data.cols = this.infoSrv.colsString();
+        if (this.infoSrv.selectionMode !== 3) {
+            data.fund1 = '';
+            data.fund2 = '';
+            data.bank =  '';
+        }
         return data;
     }
 

@@ -11,7 +11,7 @@
                           panelWidth="null">
             @for (option of model.options(); track option?.id || option?.reference) {
                 <mat-option [value]="option">
-                    {{ model.toString(option) }}
+                    {{ model?.toString(option) }}
                 </mat-option>
             }
             @if (hasNoMatch()) {
@@ -21,14 +21,15 @@
     </div>
     @if (loading()) {
         <i class="ss-suffix-button abs-end-0 fa-spin warn-when-invalid far fa-spinner"></i>
-    }
-    @if (isInputInvalid()) {
-        <i (click)="clearInput()" class="ss-suffix-button abs-end-0 f-warn far fa-times-octagon"
-           title="{{'COMMON_CANCEL' | translate}}"></i>
-    }
-    @if (notFound() && allowAdd()) {
-        <i (click)="addCurrentText()"
-           class="ss-suffix-button fa-solid fa-folder-plus margin-30" title="{{'COMMON_ADD' | translate}}"></i>
+    } @else {
+        @if (isInputInvalid()) {
+            <i (click)="clearInput()" class="ss-suffix-button abs-end-0 f-warn far fa-times-octagon"
+               title="{{'COMMON_CANCEL' | translate}}"></i>
+        }
+        @if (notFound() && allowAdd()) {
+            <i (click)="addCurrentText()"
+               class="ss-suffix-button fa-solid fa-folder-plus margin-30" title="{{'COMMON_ADD' | translate}}"></i>
+        }
     }
 }
 

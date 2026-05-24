@@ -97,7 +97,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     protected isManager = signal(false);
     protected isInvoice = signal(false);
 
-    @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
+    // @ViewChild(OrderLinesListComponent) orderList: OrderLinesListComponent;
     constructor(
         public override entitySrv: QuickOrderService,
         public override shellSrv: ShellService,
