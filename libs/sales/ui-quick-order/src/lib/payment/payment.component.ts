@@ -119,7 +119,7 @@ export class PaymentComponent {
                     next: (t) => {
                         const fft = t.find((t) => (t.description = 'LOGISTICS_FTT'));
                         const vf = t.find((t) => (t.description = 'LOGISTICS_VF'));
-                        this.form = this.setupForm({ id: 0, amount:  -(fft?.value | vf?.value | 0)} as Payment);
+                        this.form = this.setupForm({ id: 0, amount: 0} as Payment);
                         this.isLoading.set(false);
                     },
                 });

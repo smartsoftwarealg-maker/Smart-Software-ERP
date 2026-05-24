@@ -78,7 +78,8 @@ export class WeightCaptureDialogButtonComponent implements OnInit {
             disableClose: true,
             data: brut,
         });
-        dialogRef.afterClosed().subscribe((result) => {
+        dialogRef.afterClosed()
+            .subscribe((result) => {
             if (this.document() == DOC_RECEPTION && typeof result == 'number') {
                 this.callback()?.(this.transactionId(), result);
             } else {

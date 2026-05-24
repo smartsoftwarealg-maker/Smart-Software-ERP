@@ -110,14 +110,14 @@
                 <ng-container matColumnDef="tare">
                     <mat-header-cell *matHeaderCellDef translate>SALES_TARE_WEIGHT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{ e.tareWeight }}
+                        {{ e.tareWeight||0 | number : '1.2-4' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="brut">
                     <mat-header-cell *matHeaderCellDef translate>SALES_BRUT_WEIGHT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
-                        {{ e.brutWeight }}
+                        {{ e.brutWeight||0 | number : '1.2-4' }}
                     </mat-cell>
                 </ng-container>
 
