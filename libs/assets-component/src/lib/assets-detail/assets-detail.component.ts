@@ -44,6 +44,8 @@ import { AssetAppointmentListComponent } from '../asset-appointment-list/asset-a
 import { AssetCostsListComponent } from '../asset-costs-list/asset-costs-list.component';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ChildAttributesComponent } from '@ss/custom-attributes';
+import {AssetLocationService} from "../services/asset-location.service";
+import {AssetsBuildingService} from "../services/assets-building.service";
 
 @Component({
     selector: 'ss-assets-detail',
@@ -67,6 +69,8 @@ export class AssetsDetailComponent
     implements OnInit
 {
     // Private
+    private buildingSrv = inject(AssetsBuildingService);
+    private locationSrv = inject(AssetLocationService);
     private archiveSrv = inject(AppArchiveService);
     private router = inject(Router);
     private agentSrv = inject(AgentService);
@@ -89,7 +93,7 @@ export class AssetsDetailComponent
     private rateSrv = inject(DepreciationRateService);
     private isANSEJ = false;
 
-    private importBtn: ToolbarButton = {
+    private readonly importBtn: ToolbarButton = {
         icon: 'fa-solid fa-file-import',
         label: 'ASSET_IMPORT',
         disabled: false,
@@ -119,6 +123,8 @@ export class AssetsDetailComponent
     accountAutoCompleteModel = new AccountAutocompleteModel(this.accountSrv);
     ccAutoCompleteModel = new DefaultAutoCompleteModel(this.costCenterSrv);
     officeAutoCompleteModel = new OfficeAutoComplete(this.officeSrv);
+    locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
+    buildingLookup = new DefaultAutoCompleteModel(this.buildingSrv);
     requesterLookup = new DefaultAutoCompleteModel<Agent>(
         this.consumerSrv,
         'id',
@@ -242,6 +248,7 @@ export class AssetsDetailComponent
     }
 
     setupForm(b: Asset): UntypedFormGroup {
+        this.buildingSrv.setParentId(b.location || 0);
         this.archiveSrv.setParentId(b.id || 0);
         this.assetCostsSrv.setParentId(b.id || 0);
         this.assetRevaluationSrv.setParentId(b.id);
@@ -465,12 +472,7 @@ export class AssetsDetailComponent
             height: '540px',
             data: { id: 0, description: null, cmms: this.isCMMS },
         });
-        dialogRef.afterClosed()
-            .subscribe((res) => {
-                    console.log(res);
-                    this.onOfficeChange(res);
-                    this.form?.controls['office']?.setValue(res?.id||0);
-        });
+        dialogRef.afterClosed().subscribe((res) => this.onOfficeChange(res));
     }
 
     private updateAccountDefaults(a: Account) {
@@ -485,6 +487,7 @@ export class AssetsDetailComponent
 
     onOfficeChange(off: Office) {
         if (off) {
+            this.form?.controls['office']?.setValue(off?.id||0)
             this.form?.controls['site']?.setValue(off.locationDescription, { onlySelf: true });
             this.form?.controls['building']?.setValue(off.buildingDescription, { onlySelf: true });
         }
