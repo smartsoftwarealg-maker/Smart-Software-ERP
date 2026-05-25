@@ -127,7 +127,6 @@ export class LoginComponent implements OnInit {
             document.onmousemove = () => this.resetTimer();
             document.onkeydown = () => this.resetTimer();
         }
-        console.log(this.loginSrv.customerLogin);
         if (this.loginSrv.customerLogin === LoginType.PERSON) {
             this.loginSrv.personLogin(
                 '/persons/login',

@@ -59,8 +59,12 @@ export class OfficeSearchComponent implements OnDestroy, OnInit {
     }
 
     close() {
+        this.dialogRef.close(this.selectedOffice());
+    }
+    cancel() {
         this.dialogRef.close(null);
     }
+
 
     ngOnDestroy(): void {
         this.subscriptions.forEach(s => s.unsubscribe());

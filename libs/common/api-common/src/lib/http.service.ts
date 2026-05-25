@@ -326,7 +326,9 @@ export class HttpService {
         const hostUrl = host + ':' + port;
         let ruleFound = false;
         const rules = conf.urlRules;
-        this.#privateSession = !((conf?.privateSession||false) !== false);
+        this.#privateSession = conf?.privateSession === undefined ||
+                               conf?.privateSession === null ||
+                               conf?.privateSession !== false;
 
         if (rules) {
             const ruleCount = rules.length;
