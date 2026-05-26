@@ -33,7 +33,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./service-article-list.component.css']
 })
 export class ServiceArticleListComponent extends BaseEntityListComponent<Service> {
-    displayedColumns = signal<string[]>(['reference', 'description2', 'klassName', 'price1', 'vatValue']);
+    readonly displayedColumns = (['reference', 'description2', 'klassName', 'price1', 'vatValue']);
 
     constructor(
         public articleSrv: ServiceArticleService,

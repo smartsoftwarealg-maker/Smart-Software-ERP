@@ -57,7 +57,7 @@ export class CrmQuotesListComponent extends BaseChildEntityListComponent<CRMQuot
     private reportFormName = 'WorkPermit';
     private defaultReportSrv = inject(DefaultReportService);
 
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'number',
         'date',
         'user'

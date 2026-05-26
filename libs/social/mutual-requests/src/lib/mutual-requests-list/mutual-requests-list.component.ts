@@ -46,7 +46,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './mutual-requests-list.component.html'
 })
 export class MutualRequestsListComponent extends BaseEntityListComponent<MutualRequest> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'date',
         'serialNumber',
         'description',

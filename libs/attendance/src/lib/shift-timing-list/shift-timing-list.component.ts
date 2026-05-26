@@ -42,7 +42,7 @@ export class ShiftTimingListComponent extends BaseChildEntityListComponent<Timin
 
     periodExhausted = toSignal(this.data$.pipe(map(res => res.length)));
 
-    override displayedColumns = signal([
+    override displayedColumns = ([
         'date',
         'from',
         'to',

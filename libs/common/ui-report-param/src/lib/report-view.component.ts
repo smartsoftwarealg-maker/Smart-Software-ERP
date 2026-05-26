@@ -94,7 +94,7 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     isAndroid = false;
     form: UntypedFormGroup = null;
     params: unknown = null;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'valueString'
     ]);

@@ -32,7 +32,7 @@ export class WorkflowInboxListComponent
     extends BaseEntityListComponent<Inbox>
     implements OnInit
 {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'document',
         'number',
         'date',

@@ -33,7 +33,7 @@ import { AgentService } from '@ss/logistics/api-agent';
     ],
 })
 export class ReceptionListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'agent',

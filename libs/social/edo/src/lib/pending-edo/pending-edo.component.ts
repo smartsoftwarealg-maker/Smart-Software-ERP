@@ -54,7 +54,7 @@ export class PendingEdoComponent extends BaseChildEntityListComponent<SocialAid>
     aidType = new FormControl<number>(0);
     lineAdded = output<number>();
     edoId = input<number>(0);
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'action',
         'number',
         'date',

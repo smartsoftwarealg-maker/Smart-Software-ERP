@@ -66,7 +66,7 @@ export class PersonListComponent
     implements OnInit
 {
     activePersonnel = true;
-    public displayedColumns = signal<string[]>([
+    public readonly displayedColumns = ([
         'photo',
         'id',
         'fullname',

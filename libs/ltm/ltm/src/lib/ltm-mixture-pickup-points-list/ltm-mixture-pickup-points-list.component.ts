@@ -23,7 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class LtmMixturePickupPointsListComponent extends BaseChildEntityListComponent<LTMMixturePickupPoint> {
-    override displayedColumns = signal<string[]>(['matterDescription']);
+    override readonly displayedColumns = (['matterDescription']);
 
     constructor(protected override detailSrv: LtmMixturePickupPointService) {
         super(detailSrv, 'LTMMixturePickupPoint');

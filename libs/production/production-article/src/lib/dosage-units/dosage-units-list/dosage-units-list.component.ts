@@ -35,7 +35,7 @@ import { DosageUnitService } from '../../services/dosage-unit.service';
 })
 export class DosageUnitsListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public markSrv: DosageUnitService,

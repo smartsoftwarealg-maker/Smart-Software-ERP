@@ -29,7 +29,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrl: './fault-motive-list.component.css',
 })
 export class FaultMotiveListComponent extends BaseEntityListComponent<Motive> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'dailyGrade'
     ]);

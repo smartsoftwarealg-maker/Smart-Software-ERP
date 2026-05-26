@@ -40,7 +40,7 @@ import { ProductionTransferService } from '../production-services/production-tra
 ],
 })
 export class ProductionTransferListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'dealer',

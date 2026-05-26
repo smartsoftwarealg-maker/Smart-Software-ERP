@@ -19,7 +19,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./cmms-checklist-line-list.component.css'],
 })
 export class CmmsChecklistLineListComponent extends BaseChildEntityListComponent<RoutingDetail> {
-    override displayedColumns = signal(['order', 'description', 'teamSize', 'hours', 'cost']);
+    override displayedColumns = (['order', 'description', 'teamSize', 'hours', 'cost']);
 
     constructor(override detailSrv: CMMSRoutingDetailService) {
         super(detailSrv, 'RoutingDetail');

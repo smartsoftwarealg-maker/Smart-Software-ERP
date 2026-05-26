@@ -28,7 +28,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class AssetTriggerListComponent extends BaseChildEntityListComponent<AssetTrigger> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'description',
         'amount'
     ]);

@@ -42,7 +42,7 @@ export class FaultListComponent extends BaseEntityListComponent<Fault> {
     employeeLookup: PersonAutocompleteClass = new PersonAutocompleteClass(this.employeeSrv);
     employee = new FormControl<number>(0);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'motiveDescription',
         'count'
     ]);

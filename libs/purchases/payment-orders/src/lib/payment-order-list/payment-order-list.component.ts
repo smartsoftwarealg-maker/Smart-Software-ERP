@@ -21,7 +21,7 @@ import { DecimalPipe, DatePipe } from '@angular/common';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, DatePipe]
 })
 export class PaymentOrderListComponent extends BaseEntityListComponent<PaymentOrder> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'ord_number',
         'ord_date',
         'supplierName',

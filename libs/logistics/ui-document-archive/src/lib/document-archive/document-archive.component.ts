@@ -6,6 +6,9 @@ import {AppArchiveListComponent, AppArchiveMainComponent} from '@ss/common/app-a
     selector: 'ss-document-archive',
     templateUrl: './document-archive.component.html',
     styleUrls: ['./document-archive.component.scss'],
+    imports: [
+        AppArchiveMainComponent
+    ]
 })
 export class DocumentArchiveComponent implements OnInit {
     @ViewChild(AppArchiveMainComponent) archiveDoc: AppArchiveListComponent = null;
@@ -17,9 +20,6 @@ export class DocumentArchiveComponent implements OnInit {
     ngOnInit() {
         this.route.queryParams.subscribe(param => {
             this.documentId = +param['documentId'];
-            if (this.archiveDoc) {
-                this.archiveDoc.id = +param['documentId'] || 0;
-            }
         });
     }
 

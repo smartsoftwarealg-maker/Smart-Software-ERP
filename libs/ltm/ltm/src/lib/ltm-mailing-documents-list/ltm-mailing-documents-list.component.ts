@@ -23,7 +23,7 @@ import { LtmMailingDocumentService } from '@ltm/ltm-api';
     ]
 })
 export class LtmMailingDocumentsListComponent extends BaseChildEntityListComponent<LTMMailingDocument> {
-    override displayedColumns = signal<string[]>(['document']);
+    override readonly displayedColumns = (['document']);
 
     readonly documents = ['LTM_PRODUCT_LIBERATION', 'LTM_NON_CONFORMITY', 'LTM_QUALITY_CERTIFICATE'];
 

@@ -24,7 +24,7 @@ export class AgentAssetsListComponent implements OnInit {
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);
     data = signal<Asset[]>([]);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
             'reference',
             'description',
             'accountno',

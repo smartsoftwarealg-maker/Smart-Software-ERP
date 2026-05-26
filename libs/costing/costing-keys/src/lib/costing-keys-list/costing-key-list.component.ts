@@ -32,7 +32,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 export class CostingKeyListComponent extends BaseEntityListComponent<CKey> implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
 
-  public displayedColumns = signal(['code', 'description']);
+  public displayedColumns = (['code', 'description']);
 
   constructor(
     public override entitySrv: CostingKeyService,

@@ -37,7 +37,7 @@ export class UserDocumentListComponent extends BaseEntityListComponent<UserDocum
     private usersSrv =  inject(UserListService);
     userCtrl = new FormControl<number>(0);
     userAutoComplete = new UserLookup(this.usersSrv);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'documentDescription',
     ]);
 

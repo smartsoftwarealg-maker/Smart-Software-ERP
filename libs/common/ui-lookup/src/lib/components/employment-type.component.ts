@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class EmploymentTypeListComponent extends BaseEntityListComponent<EmploymentType> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public override entitySrv: EmploymentTypeService,

@@ -46,7 +46,7 @@ export class VacationPlanningListComponent extends BaseEntityListComponent<Vacat
         this.THIS_YEAR - 1,
         this.THIS_YEAR];
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'employee',
         'lastName',
         'firstName',

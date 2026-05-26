@@ -60,7 +60,7 @@ export class CrmEmailTemplatesListComponent implements OnInit, OnDestroy {
         elementCount: 0,
     });
     selectedRow: EmailTemplate | null = null;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'name',
         'subject',
         // 'thumbnail',

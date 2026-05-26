@@ -21,7 +21,7 @@ import { MaterialModule } from '@ss/common/api-common';
 })
 export class SocialEdoLinesComponent extends BaseChildEntityListComponent<EDOLine> {
     lineRemoved = output<number>();
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'action',
         'firstName',
         'lastName',

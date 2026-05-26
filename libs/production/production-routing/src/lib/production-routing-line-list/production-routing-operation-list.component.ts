@@ -47,7 +47,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     ],
 })
 export class ProductionRoutingOperationListComponent extends BaseChildEntityListComponent<RoutingOperation> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'operationName',
         'operationNumber',
         'operationType',

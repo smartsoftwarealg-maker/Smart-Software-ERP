@@ -54,7 +54,7 @@ import { AsyncPipe } from '@angular/common';
     ],
 })
 export class RoutingMaterialLineListComponent extends BaseChildEntityListComponent<RoutingMaterial> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'consumptionType',
         'quantityPer',
         'scrapPercentage',

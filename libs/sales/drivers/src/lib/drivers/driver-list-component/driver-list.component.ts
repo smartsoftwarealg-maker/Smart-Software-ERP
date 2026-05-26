@@ -27,7 +27,7 @@ import {DriverService} from '../driver.service';
 })
 export class DriverListComponent extends BaseEntityListComponent<SalesDriver> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'licenceNumber',
         'licenceDate',

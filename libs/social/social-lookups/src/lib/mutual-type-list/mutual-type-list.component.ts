@@ -31,7 +31,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './mutual-type-list.component.scss',
 })
 export class MutualTypeListComponent extends BaseEntityListComponent<SocialActivity> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'descriptionAr',
     ])

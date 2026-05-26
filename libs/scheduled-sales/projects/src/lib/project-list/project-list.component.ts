@@ -31,7 +31,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class ProjectListComponent extends BaseEntityListComponent<SSProject> {
     private customerSrv = inject(CustomerService);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'project_code',
         'start_date',

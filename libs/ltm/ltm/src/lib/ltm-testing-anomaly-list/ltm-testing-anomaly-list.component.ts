@@ -35,7 +35,7 @@ export class LtmTestingAnomalyListComponent extends BaseEntityListComponent<LTMT
     #TODAY = new Date();
 
 
-    displayedColumns = signal<string[]>(['date', 'matterDescription', 'anomalyDescription', 'memo', 'pickupPointDescription', 'userDescription']);
+    readonly displayedColumns = (['date', 'matterDescription', 'anomalyDescription', 'memo', 'pickupPointDescription', 'userDescription']);
     from = new FormControl<Date>(this.#TODAY);
     to   = new FormControl<Date>(this.#TODAY);
 

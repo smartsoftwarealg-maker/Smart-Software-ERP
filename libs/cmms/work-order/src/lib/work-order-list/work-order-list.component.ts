@@ -42,7 +42,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class WorkOrderListComponent extends BaseEntityListComponent<Work> {
     public types = WORK_TYPES;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'description',

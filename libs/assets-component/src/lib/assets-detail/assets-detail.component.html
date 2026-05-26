@@ -433,7 +433,7 @@
                 <mat-tab label="{{ 'ADMINISTRATION_ATTRIBUTES' | translate }}">
                     <div class="filler"></div>
                     <ss-child-attributes [childAttribute]="'/assets'" [attributeId]="id" [parentId]="2"
-                                         [editable]="isEditable">
+                                         [editable]="isEditable()">
                     </ss-child-attributes>
                 </mat-tab>
                 <mat-tab label="{{ 'ASSET_DEPRECIATION_RATES' | translate }}">

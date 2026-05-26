@@ -22,7 +22,7 @@ import { DecimalPipe } from '@angular/common';
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class ElementsInfoComponent extends BaseEntityListComponent<ElementsInfo> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'field',
         'description',
         'fixed',

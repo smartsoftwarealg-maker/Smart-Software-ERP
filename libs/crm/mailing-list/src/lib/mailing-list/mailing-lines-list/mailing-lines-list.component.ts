@@ -46,7 +46,7 @@ import { MailingLineListService } from '../mailing-line-list.service';
 })
 export class MailingLinesListComponent extends BaseChildEntityListComponent<MailingListLine> {
 
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'fullName',
         'email',
         'mobile',

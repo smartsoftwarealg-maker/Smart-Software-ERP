@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class SuspensionReasonListComponent extends BaseEntityListComponent<SuspensionReason> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public suspensionReasonSrv: SuspensionReasonService,

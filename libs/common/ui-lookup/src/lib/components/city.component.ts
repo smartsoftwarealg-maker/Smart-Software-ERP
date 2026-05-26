@@ -28,7 +28,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 })
 export class CityListComponent extends BaseEntityListComponent<City> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr', 'dairaDescription', 'wilayaDescription']);
+    readonly displayedColumns = (['description', 'descriptionAr', 'dairaDescription', 'wilayaDescription']);
 
     constructor(
         public citySrv: CityService,

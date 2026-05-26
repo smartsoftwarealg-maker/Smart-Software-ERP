@@ -30,7 +30,7 @@ import { Observable, tap } from 'rxjs';
 ]
 })
 export class ElementTypesListComponent extends BaseEntityListComponent<ElementType>  {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'field',
         'fieldName'

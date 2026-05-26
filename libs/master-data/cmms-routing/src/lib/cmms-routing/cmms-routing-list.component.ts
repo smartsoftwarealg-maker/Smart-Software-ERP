@@ -24,7 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['../list-template/cmms-fault-list.component.css'],
 })
 export class CMMSRoutingListComponent extends BaseEntityListComponent<CMMSRouting> {
-    displayedColumns = signal<string[]>(['description', 'descriptionAr', 'cost', 'laborHours']);
+    readonly displayedColumns = (['description', 'descriptionAr', 'cost', 'laborHours']);
     constructor(
         public override entitySrv: CMMSRoutingService,
         public override shellSrv: ShellService,

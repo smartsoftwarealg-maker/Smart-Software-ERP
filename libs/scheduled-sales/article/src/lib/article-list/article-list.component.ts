@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 })
 export class ArticleListComponent extends BaseEntityListComponent<Article> implements OnInit {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description2',
         'classDescription',

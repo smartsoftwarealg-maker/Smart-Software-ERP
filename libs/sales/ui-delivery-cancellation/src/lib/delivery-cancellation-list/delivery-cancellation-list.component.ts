@@ -30,7 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 
 })
 export class DeliveryCancellationListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'agent',

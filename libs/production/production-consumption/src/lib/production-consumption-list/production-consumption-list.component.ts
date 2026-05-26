@@ -51,7 +51,7 @@ import { Observable, tap } from 'rxjs';
     ],
 })
 export class ProductionConsumptionListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'reference',

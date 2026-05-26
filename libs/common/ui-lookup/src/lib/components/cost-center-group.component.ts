@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 })
 export class CostCenterGroupListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public markSrv: CostCenterGroupService,

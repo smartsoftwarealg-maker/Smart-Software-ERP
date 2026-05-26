@@ -42,7 +42,7 @@ import {Mission, MissionsService} from "@ss/hr-missions";
     ],
 })
 export class MissionExpensesListComponent extends BaseEntityListComponent<Mission> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'lastName',
         'firstName',

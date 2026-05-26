@@ -37,7 +37,7 @@ export class ConsolidatedLoanListComponent extends BaseEntityListComponent<Loan>
         'remaining'
     ];
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'employee',
         'lastName',
         'firstName',

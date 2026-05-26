@@ -17,7 +17,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ["./journal-user-list.component.css"]
 })
 export class JournalUserListComponent extends  BaseChildEntityListComponent <JournalUser> {
-    override displayedColumns = signal<string[]>(['fullName']);
+    override readonly displayedColumns = (['fullName']);
 
     constructor(protected override detailSrv: JournalUserService) {
         super(detailSrv, 'JournalUser');

@@ -42,7 +42,7 @@ import { CategoryDiscountService } from '../api/category-discount.service';
 })
 export class DiscountCategoryListComponent extends BaseEntityListComponent<Category> {
     #discountSrv = inject(CategoryDiscountService);
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public listSrv: SalesCategoryService,

@@ -38,7 +38,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 
 })
 export class ProformaListComponent  extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'agent',

@@ -40,7 +40,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     standalone: true,
 })
 export class CrmOpportunityTrackingListComponent extends BaseChildEntityListComponent<CRMOpportunityProgressLogger> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'ownerDescription',
         'status',
         'stage',

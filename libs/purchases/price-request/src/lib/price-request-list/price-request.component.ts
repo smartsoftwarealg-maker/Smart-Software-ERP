@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class PriceRequestComponent  extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'agent',

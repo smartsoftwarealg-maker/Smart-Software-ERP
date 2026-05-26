@@ -32,7 +32,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
 })
 export class F8ListComponent extends BaseEntityListComponent<F8> {
     #accFileSrv = inject(AccFileService);
-    displayedColumns = signal<string[]>(['debtor', 'value1', 'value2']);
+    readonly displayedColumns = (['debtor', 'value1', 'value2']);
 
     constructor(
         public override entitySrv: F8Service,

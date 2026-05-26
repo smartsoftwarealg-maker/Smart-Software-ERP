@@ -68,7 +68,7 @@ export class CrmLeadsComponent implements OnInit, OnDestroy {
         elementCount: 0,
     });
     selectedRow: CRMLead | null = null;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'addressLine1',
         'email',

@@ -241,7 +241,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     @if (id && detailPanel === ARCHIVE_PANEL) {
-      <ss-app-archive-main [id]="id" [appId]="4" [editable]="isEditable"></ss-app-archive-main>
+      <ss-app-archive-main [id]="id" [appId]="4" [editable]="isEditable()"></ss-app-archive-main>
     }
   </mat-expansion-panel>
   <mat-expansion-panel #licensePanel

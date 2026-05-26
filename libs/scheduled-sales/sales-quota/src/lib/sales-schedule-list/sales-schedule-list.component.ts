@@ -36,7 +36,7 @@ export class SalesScheduleListComponent extends BaseEntityListComponent<Schedule
     agentId = signal(-1);
     agentFC = new FormControl<number>(this.agentId());
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'serialNumber',
         'salesDate',
         'productRef',

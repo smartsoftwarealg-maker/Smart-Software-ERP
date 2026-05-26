@@ -45,7 +45,7 @@ import { LanguageService } from '@ss/common/api-common';
     standalone: true,
 })
 export class CrmContactsListComponent extends BaseChildEntityListComponent<CRMContact> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'lastName',
         'firstName',
         'primaryEmail',

@@ -24,7 +24,7 @@ import { MatInput } from '@angular/material/input';
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class SalesCategoryListComponent extends BaseEntityListComponent<Category> {
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public listSrv: SalesCategoryService,

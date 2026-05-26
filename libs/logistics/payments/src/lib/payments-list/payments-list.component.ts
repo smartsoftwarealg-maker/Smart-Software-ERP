@@ -44,7 +44,7 @@ export class PaymentsListComponent extends BaseEntityListComponent<Payment> {
         ['/tpayments', 'LOGISTICS_TRANSPORTERS_PAYMENTS'],
     ]);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'date',
         'denomination',
         'description',

@@ -65,11 +65,11 @@
             </ng-container>
 
 
-            <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
             <mat-row
                 class="selectable"
                 [class.selected]="row.agentId === selectedRow()?.agentId"
-                *matRowDef="let row; columns: displayedColumns();">
+                *matRowDef="let row; columns: displayedColumns;">
             </mat-row>
 
 

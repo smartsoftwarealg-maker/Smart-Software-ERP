@@ -51,7 +51,7 @@ export class AccClosedPeriodsComponent implements OnInit {
     public data: ClosedPeriod[];
     private selectedRow: ClosedPeriod;
 
-    public displayedColumns = signal<string[]>(['period', 'closed']);
+    public readonly displayedColumns = (['period', 'closed']);
 
     ngOnInit() {
         this.shellSrv.setTitle('ACC_CLOSED_PERIODS');

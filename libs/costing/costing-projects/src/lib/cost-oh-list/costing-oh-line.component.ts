@@ -26,7 +26,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrl: './costing-oh-line.component.scss',
 })
 export class CostingOhLineComponent extends BaseChildEntityListComponent<OH> {
-    override displayedColumns = signal<string[]>(['description', 'keyDescription', 'amount']);
+    override readonly displayedColumns = (['description', 'keyDescription', 'amount']);
 
     constructor(protected override detailSrv: CostingOhService) {
         super(detailSrv, 'COH');

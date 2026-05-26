@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './social-activities-list.component.scss',
 })
 export class SocialActivitiesListComponent extends BaseEntityListComponent<SocialActivity> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'descriptionAr',
         'value'

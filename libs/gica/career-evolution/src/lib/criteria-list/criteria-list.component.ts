@@ -62,7 +62,7 @@ export class CriteriaListComponent extends BaseEntityListComponent<Criterion> {
     categoryLookup = new DefaultAutoCompleteModel(this.categorySrv);
     employee = new FormControl<number>(0);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'grade',
     ]);

@@ -42,7 +42,7 @@ export class SocialEdoHeaderListComponent extends BaseEntityListComponent<EDOHea
         click: () => this.openEDO()
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'description'

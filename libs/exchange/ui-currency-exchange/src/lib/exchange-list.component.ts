@@ -28,7 +28,7 @@ export class ExchangeListComponent extends BaseEntityListComponent<Exchange> {
     agents = new Map<number, string>();
     selectedAgent = 0;
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'exchDate',
         'agentId',
         'purchCurrency',

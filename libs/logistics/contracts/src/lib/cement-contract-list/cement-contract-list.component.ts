@@ -37,7 +37,7 @@ export class CementContractListComponent extends BaseEntityListComponent<Project
         'id',
         'denomination',
     );
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'contractNo',
         'projDate',
         'description',

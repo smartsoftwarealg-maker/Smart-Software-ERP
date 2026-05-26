@@ -31,7 +31,7 @@ export class UnlockingLotsComponent
     extends BaseEntityListComponent<Location>
     implements OnInit
 {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'lotNumber',
         'reference',
         'description',

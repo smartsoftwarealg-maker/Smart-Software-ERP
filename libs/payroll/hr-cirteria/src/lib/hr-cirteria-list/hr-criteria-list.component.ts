@@ -65,7 +65,7 @@ export class HrCriteriaListComponent extends BaseEntityListComponent<HrCriterion
     categoryLookup = new DefaultAutoCompleteModel(this.categorySrv);
     employee = new FormControl<number>(0);
 
-    displayedColumns = signal<string[]>(['description', 'grade']);
+    readonly displayedColumns = (['description', 'grade']);
 
     constructor(
         public override entitySrv: HrCriterionService,

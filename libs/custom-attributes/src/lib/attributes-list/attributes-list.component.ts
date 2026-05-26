@@ -28,7 +28,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class AttributesListComponent extends BaseEntityListComponent<AttribTempl> implements OnInit, OnDestroy {
     moduleId = new UntypedFormControl(1);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'attType'
     ]);

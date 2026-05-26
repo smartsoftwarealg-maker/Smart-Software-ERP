@@ -44,7 +44,7 @@ export class ArticleTypeListComponent extends BaseEntityListComponent<Lookup> {
         }
     });
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public markSrv: ArticleTypeService,

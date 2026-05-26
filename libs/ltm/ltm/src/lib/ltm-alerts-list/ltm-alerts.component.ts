@@ -45,7 +45,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
 
     #destroyRef = inject(DestroyRef);
 
-    displayedColumns = signal<string[]>(['matter', 'test',  'time', 'value', 'min', 'max', 'pickupPoint']);
+    readonly displayedColumns = (['matter', 'test',  'time', 'value', 'min', 'max', 'pickupPoint']);
     formBuilder = inject(FormBuilder);
     form = this.formBuilder.group({
         from: [new Date(new Date().getTime() - 24 * 3600 * 1000 * 30 )],

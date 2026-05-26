@@ -47,7 +47,7 @@ export class SocialReimbursementsComponent implements OnInit {
 
     data$ =  signal<Observable<SocialAid[]>>( of([]));
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'typeDescription',
         'number',
         'date',

@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 export class CompanyListComponent extends BaseEntityListComponent<Company> {
 
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'company2',
         'address'

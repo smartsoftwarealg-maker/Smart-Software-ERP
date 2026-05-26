@@ -45,7 +45,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrl: './test-equipment-test-list.component.scss',
 })
 export class TestEquipmentTestListComponent extends BaseChildEntityListComponent<LTMTestEquipmentTest> {
-    override displayedColumns = signal<string[]>(['testDescription']);
+    override readonly displayedColumns = (['testDescription']);
 
     constructor(public entitySrv: LtmEquipmentTestService) {
         super(entitySrv, 'LTMTestEquipmentTest');

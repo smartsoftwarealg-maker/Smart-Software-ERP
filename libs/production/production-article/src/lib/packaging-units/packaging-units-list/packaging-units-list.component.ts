@@ -35,7 +35,7 @@ import { PackagingUnitService } from '../../services/packaging-unit.service';
 })
 export class PackagingUnitsListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public markSrv: PackagingUnitService,

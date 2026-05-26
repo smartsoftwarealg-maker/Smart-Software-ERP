@@ -61,7 +61,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ],
 })
 export class ProjectActivityListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public companyTypeSrv: ProjectActivityService,

@@ -71,7 +71,7 @@ export class AssetReceptionsComponent extends BaseEntityListComponent<AssetRecep
 
     detailColumns = this.DEF_COLS;
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'serialNumber',
         'receptionDate',
         'supplierName',

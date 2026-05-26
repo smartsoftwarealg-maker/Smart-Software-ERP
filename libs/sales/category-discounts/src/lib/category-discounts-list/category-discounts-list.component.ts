@@ -50,7 +50,7 @@ export class CategoryDiscountsListComponent extends BaseChildEntityListComponent
             this.refresh();
         }
     })
-    override displayedColumns = signal<string[]>(['reference', 'description', 'discount']);
+    override readonly displayedColumns = (['reference', 'description', 'discount']);
 
     constructor(public override detailSrv: CategoryDiscountService) {
         super(detailSrv, 'AssetReading');

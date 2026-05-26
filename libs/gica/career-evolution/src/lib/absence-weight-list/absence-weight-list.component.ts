@@ -34,7 +34,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './absence-weight-list.component.css',
 })
 export class AbsenceWeightListComponent extends BaseEntityListComponent<AbsenceWeight> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'elementDescription',
         'cType',
         'weight',

@@ -42,7 +42,7 @@ export class MutualAidsListComponent extends BaseEntityListComponent<SocialAid> 
         click: () => this.importDocument(),
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         // 'typeDescription',
         'number',
         'date',

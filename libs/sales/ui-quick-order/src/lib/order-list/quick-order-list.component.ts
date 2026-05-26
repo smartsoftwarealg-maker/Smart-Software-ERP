@@ -64,7 +64,7 @@ export class QuickOrderListComponent extends BaseEntityListComponent<QuickOrder>
         [1, 'COMMON_INVOICE'],
         [2, 'COMMON_DELIVERY'],
     ]);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'agent',

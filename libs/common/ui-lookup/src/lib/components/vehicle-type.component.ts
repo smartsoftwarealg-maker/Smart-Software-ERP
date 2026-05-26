@@ -40,7 +40,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class VehicleTypeListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public wilayaSrv: VehicleTypeService,

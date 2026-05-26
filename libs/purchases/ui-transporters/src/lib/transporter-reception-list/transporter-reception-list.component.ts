@@ -33,7 +33,7 @@ import { TRANSPORTER } from '../../../../api-reception/src/lib/reception-api';
     ],
 })
 export class TransporterReceptionListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'agent',

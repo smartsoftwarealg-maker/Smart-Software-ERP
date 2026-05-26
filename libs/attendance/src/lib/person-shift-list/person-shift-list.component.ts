@@ -55,7 +55,7 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
     employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
     serviceLookup  = new DefaultAutoCompleteModel(this.serviceSrv);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'firstName',
         'lastName',
         'shiftDescription',

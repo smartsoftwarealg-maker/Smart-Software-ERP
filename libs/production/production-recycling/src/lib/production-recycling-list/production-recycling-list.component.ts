@@ -50,7 +50,7 @@ import { ProductionRecyclingService } from '../production-recycling-services/pro
     ],
 })
 export class ProductionRecyclingListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'reference',

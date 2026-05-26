@@ -22,7 +22,7 @@ import {CategoryAccountsService} from '../category-accounts.service';
     ],
 })
 export class CategoryAccountsListComponent extends BaseEntityListComponent<SalesCategory> {
-    displayedColumns = signal<string[]>(['description', 'cashAccount', 'deferredAccounts']);
+    readonly displayedColumns = (['description', 'cashAccount', 'deferredAccounts']);
 
     constructor(
         public listSrv: CategoryAccountsService,

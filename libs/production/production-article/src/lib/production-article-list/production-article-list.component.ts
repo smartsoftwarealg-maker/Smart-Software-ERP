@@ -46,7 +46,7 @@ export class ProductionArticleListComponent extends BaseEntityListComponent<Arti
 
     typeMap = new Map<number, string>();
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
-    displayedColumns = signal<string[]>(this.STOCK_COLS);
+    readonly displayedColumns = (this.STOCK_COLS);
 
 
     constructor(

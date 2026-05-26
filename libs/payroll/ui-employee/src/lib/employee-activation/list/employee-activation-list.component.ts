@@ -19,7 +19,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class EmployeeActivationListComponent extends BaseChildEntityListComponent<EmployeeActivation> {
     foreignRecord = false;
-    public override displayedColumns = signal<string[]>([
+    public override readonly displayedColumns = ([
         'centerName',
         'hireDate',
         'empTypeDescription',

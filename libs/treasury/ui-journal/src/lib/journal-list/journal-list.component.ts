@@ -23,7 +23,7 @@ import { LookupDescriptionPipe } from '@ss/common/api-lookup';
 })
 export class JournalListComponent extends BaseEntityListComponent<Journal> implements OnInit {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'jType',
         'bankId',

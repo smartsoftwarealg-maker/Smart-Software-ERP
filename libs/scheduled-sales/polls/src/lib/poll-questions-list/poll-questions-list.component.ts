@@ -47,7 +47,7 @@ import { AnswerTypes } from '@ss/scheduleds-sales/polls';
 
 export class PollQuestionsListComponent extends BaseEntityListComponent<PollQuestion> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'descriptionAr',
         'descriptionEn',

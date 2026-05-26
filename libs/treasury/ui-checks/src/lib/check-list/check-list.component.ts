@@ -29,7 +29,7 @@ import { DecimalPipe } from '@angular/common';
 })
 export class CheckListComponent extends BaseEntityListComponent<Check> implements OnInit {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'number',
         'debit',

@@ -27,7 +27,7 @@ import {TranslatePipe} from "@ss/common/ui-lang";
 })
 export class ActivityCategoriesListComponent extends BaseEntityListComponent<ActivityCategory> implements OnInit {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'code',
         'name',
         'description',

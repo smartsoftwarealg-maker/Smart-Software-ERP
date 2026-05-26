@@ -40,7 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class CMMSRoutingLineListComponent extends BaseChildEntityListComponent<RoutingDetail> {
 
-    override displayedColumns = signal<string[]>(['order', 'description', 'teamSize', 'hours', 'cost']);
+    override readonly displayedColumns = (['order', 'description', 'teamSize', 'hours', 'cost']);
 
     constructor(protected override detailSrv: CMMSRoutingDetailService) {
         super(detailSrv, 'RoutingDetail');

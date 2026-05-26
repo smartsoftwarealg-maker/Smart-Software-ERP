@@ -29,7 +29,7 @@ export class GlobalBalanceComponent extends BaseEntityListComponent<GBalance> {
 
     public readonly pagination = PaginationModel.newInstance();
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'denomination',
         'code',
         'currency',

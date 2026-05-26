@@ -27,7 +27,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./vehicle-mission-list.component.css'],
 })
 export class VehicleMissionListComponent extends BaseChildEntityListComponent<VehicleMission> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'number',
         'firstName',
         'lastName',

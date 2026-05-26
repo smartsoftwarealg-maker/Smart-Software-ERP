@@ -27,7 +27,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./driver-vehicles-list.component.css'],
 })
 export class DriverVehiclesListComponent extends BaseChildEntityListComponent<DriverVehicle> {
-    override displayedColumns = signal<string[]>(['date', 'plateNo', 'description']);
+    override readonly displayedColumns = (['date', 'plateNo', 'description']);
 
     constructor(protected override detailSrv: DriverVehicleService) {
         super(detailSrv, 'DriverVehicle');

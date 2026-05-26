@@ -25,7 +25,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 ],
 })
 export class LtmBleacherListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public override entitySrv: LtmBleacherService,

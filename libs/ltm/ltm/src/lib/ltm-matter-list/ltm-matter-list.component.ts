@@ -36,7 +36,7 @@ export class LtmMatterListComponent  extends BaseEntityListComponent<LTMMatter> 
     //     click: () => this.duplicate()
     // };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'id',
         'description',
         'code',

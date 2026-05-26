@@ -48,7 +48,7 @@ export class AssetUnidentifiedInventoryListComponent extends BaseEntityListCompo
     inventoryDocLookup = new DefaultAutoCompleteModel(this.#inventoryDocSrv);
     inventoryDocCtrl = new FormControl<number>(0);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'creationDate',
         'buildingDescription',
         'count',

@@ -44,7 +44,7 @@ import {MatTooltip} from "@angular/material/tooltip";
     standalone: true,
 })
 export class MissionElementsLinesListComponent extends BaseChildEntityListComponent<MissionElementPricing> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'zoneDescription',
         'categoryDescription',
         'amount',

@@ -41,7 +41,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 })
 export class AssetRevaluationListComponent extends BaseChildEntityListComponent<AssetRevaluation>{
-    override displayedColumns = signal<string[]>(['typeDescription', 'deprec_year', 'useful_life', 'amount']);
+    override readonly displayedColumns = (['typeDescription', 'deprec_year', 'useful_life', 'amount']);
 
     constructor(public entitySrv: AssetRevaluationService) {
         super(entitySrv, 'AssetRevaluation');

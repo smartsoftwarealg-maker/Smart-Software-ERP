@@ -63,7 +63,7 @@ export class ApplicationArchiveComponent implements OnInit {
     private archiveSrv = inject(ArchiveService);
 
     paginator = PaginationModel.newInstance( { page: 1, pageSize: 15, elementCount: 0 });
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'id',
         'firstName',
         'lastName',

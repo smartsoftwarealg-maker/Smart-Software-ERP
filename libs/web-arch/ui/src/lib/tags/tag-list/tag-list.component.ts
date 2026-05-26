@@ -31,7 +31,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 
 export class TagListComponent extends BaseEntityListComponent<Tag>  {
 
-  public displayedColumns = signal(['description']);
+  public displayedColumns = (['description']);
 
     constructor(
         public tagSrv: TagService,

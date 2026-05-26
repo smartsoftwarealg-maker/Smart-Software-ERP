@@ -34,7 +34,7 @@ export class ReportCatalogListComponent extends BaseEntityListComponent<ReportsC
     applicationsCtrl = new UntypedFormControl();
 
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'filename'
     ]);

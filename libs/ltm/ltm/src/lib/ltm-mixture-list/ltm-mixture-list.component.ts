@@ -27,7 +27,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class LTMMixtureListComponent extends BaseEntityListComponent<LTMMixture> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'orderNo',
         'description'
     ]);

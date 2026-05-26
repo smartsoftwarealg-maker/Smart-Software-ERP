@@ -32,7 +32,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 export class InterStoreTransferListComponent extends BaseEntityListComponent<InterStoreTransfer> {
     #interStoreTransferLinesSrv = inject(InterStoreTransferLinesService);
 
-    displayedColumns = signal<string[]>(['number', 'date', 'storeDescription', 'reference']);
+    readonly displayedColumns = (['number', 'date', 'storeDescription', 'reference']);
 
     constructor(
         public override entitySrv: InterStoreTransferService,

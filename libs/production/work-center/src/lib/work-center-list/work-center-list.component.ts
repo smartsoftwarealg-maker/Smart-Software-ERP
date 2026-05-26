@@ -47,7 +47,7 @@ import { WorkCenter } from '../work-center-services/work-center-api';
     ],
 })
 export class WorkCenterListComponent extends BaseEntityListComponent<WorkCenter> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'code',
         'name',
         'description',

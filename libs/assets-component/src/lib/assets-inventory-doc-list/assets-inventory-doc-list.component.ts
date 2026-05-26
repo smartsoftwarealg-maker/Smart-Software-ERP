@@ -38,7 +38,7 @@ export class AssetsInventoryDocListComponent extends BaseEntityListComponent<Ass
     #summarySrv = inject(AssetCountSummaryService);
 
     selectedTab = signal(0);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'creationDate',
         'locationDescription',

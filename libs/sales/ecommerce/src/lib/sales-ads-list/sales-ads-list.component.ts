@@ -33,7 +33,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class SalesAdsListComponent  extends BaseEntityListComponent<Lookup>{
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
     ]);
 

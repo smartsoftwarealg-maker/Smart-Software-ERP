@@ -50,7 +50,7 @@ export class ElementGenerationComponent implements OnInit {
     data: Element[] = null;
     loaded = signal(false);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'checkBox',
         'number',
         'lastName',

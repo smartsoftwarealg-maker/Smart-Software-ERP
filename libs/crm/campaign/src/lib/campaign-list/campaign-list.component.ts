@@ -60,7 +60,7 @@ export class CampaignListComponent implements OnInit, OnDestroy {
         elementCount: 0,
     });
     selectedRow: Campaign | null = null;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'name',
         'cType',
         'status',

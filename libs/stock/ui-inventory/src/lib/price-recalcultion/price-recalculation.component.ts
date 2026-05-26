@@ -87,7 +87,7 @@ export class PriceRecalculationComponent implements OnInit {
     processing = signal(false);
     data: ERR[] = [];
     selected: ERR = null;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'document',
         'number',
         'date',

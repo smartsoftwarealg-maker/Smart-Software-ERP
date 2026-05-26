@@ -43,7 +43,7 @@ export class AssetSearchDialogComponent implements OnInit {
         outOfService: false,
         isVehicle: false
     };
-    displayedColumns = signal<string[]>(['reference', 'description']);
+    readonly displayedColumns = (['reference', 'description']);
     searchText = new UntypedFormControl();
 
     constructor(public dialogRef: MatDialogRef<AssetSearchDialogComponent>,

@@ -34,7 +34,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ],
 })
 export class AttendanceMachineListComponent extends BaseEntityListComponent<AttendanceMachine> {
-    displayedColumns = signal([
+    displayedColumns = ([
         'description',
         'ipAddress',
         'port'

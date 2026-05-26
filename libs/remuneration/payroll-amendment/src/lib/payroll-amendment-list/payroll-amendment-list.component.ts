@@ -60,7 +60,7 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
         click: () => this.generate()
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'employee',
         'lastName',
         'firstName',
@@ -70,14 +70,14 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
         'percentage'
     ]);
     comparisonData: Comparison[] = [];
-    comparisonDisplayedColumns = signal<string[]>([
+    comparisonDisplayedColumns = [
         'paymonth',
         'description',
         'newValue',
         'oldValue',
         'difference',
         'destination'
-    ]);
+    ];
     constructor(public amendSrv: PayrollAmendmentService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,

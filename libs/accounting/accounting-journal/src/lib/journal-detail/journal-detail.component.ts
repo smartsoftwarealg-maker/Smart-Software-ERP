@@ -51,7 +51,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
     selectedUser = 0;
     userCtrl = new UntypedFormControl();
     userAutoComplete = new DefaultAutoCompleteModel<User>(this.usersSrv, 'id', 'fullName');
-    displayedColumns = signal<string[]>(['userName']);
+    readonly displayedColumns = (['userName']);
 
     constructor(
         public override entitySrv: AccJournalsService,

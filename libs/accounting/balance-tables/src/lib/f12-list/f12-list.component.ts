@@ -46,7 +46,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
 })
 export class F12ListComponent extends BaseEntityListComponent<F12> {
     #accFileSrv = inject(AccFileService);
-    displayedColumns = signal<string[]>(['agentDescription', 'reference', 'refDate', 'amount', 'vat', 'modeDescription']);
+    readonly displayedColumns = (['agentDescription', 'reference', 'refDate', 'amount', 'vat', 'modeDescription']);
 
     constructor(
         public override entitySrv: F12Service,

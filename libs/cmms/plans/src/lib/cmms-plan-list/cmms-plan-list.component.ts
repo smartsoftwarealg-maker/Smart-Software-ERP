@@ -35,7 +35,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class CMMSPlanListComponent extends BaseEntityListComponent<CMMSPlan> {
     readonly TYPES = ['CMMS_TIME', 'CMMS_READING', 'CMMS_EITHER'];
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'repeatMonths',
         'scheduleType'

@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class TrajectoryListComponent extends BaseEntityListComponent<Trajectory> {
-    displayedColumns = signal<string[]>(['description', 'distance']);
+    readonly displayedColumns = (['description', 'distance']);
 
     constructor(
         public listSrv: TrajectoryService,

@@ -46,7 +46,7 @@ import {PaginationComponent} from "@ss/common/ui-pagination";
     standalone: true,
 })
 export class CrmOpportunityActivitiesListComponent extends BaseChildEntityListComponent<CRMOpportunityActivity> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'activityType',
         'subject',
         'detail',

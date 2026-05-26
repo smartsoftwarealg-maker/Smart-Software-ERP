@@ -39,7 +39,7 @@ import { DecimalPipe, DatePipe } from '@angular/common';
 })
 export class FurnitureListComponent  extends BaseEntityListComponent<Furniture> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description',
         'acquisitionDate',

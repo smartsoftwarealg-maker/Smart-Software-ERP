@@ -27,7 +27,7 @@ export class BalanceComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'currency',
         'credit',
         'debit',

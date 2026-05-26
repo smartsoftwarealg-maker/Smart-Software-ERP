@@ -25,7 +25,7 @@ export class BaseChildEntityListComponent<T extends { id: number }> implements O
     selectedRow = signal<T|null>(null);
     data$: Observable<T[]> = of([]);
     emptyData$ = this.data$.pipe(map(res => res.length === 0));
-    displayedColumns = signal(['id']);
+    displayedColumns = (['id']);
     isEditable = signal(false);
 
     constructor(protected detailSrv: BaseEntityService<T>, protected entity: string) {

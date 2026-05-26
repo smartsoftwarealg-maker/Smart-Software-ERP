@@ -42,7 +42,7 @@ import { MaterialModule } from '@ss/common/api-common';
     styleUrl: './mutual-requests-line-list.component.scss',
 })
 export class MutualRequestsLineListComponent extends BaseChildEntityListComponent<MutualRequestLine> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'firstName',
         'lastName',
         'mutualNo',

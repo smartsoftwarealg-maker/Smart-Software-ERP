@@ -32,7 +32,7 @@ export class ProductionConsumptionComponent implements OnInit {
     public pagination = PaginationModel.newInstance({ page: 1, pageSize: 5, elementCount: 0 });
     public data = signal<ProductionConsumption[]>([]);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description',
         'document',

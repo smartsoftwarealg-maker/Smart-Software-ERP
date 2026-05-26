@@ -28,7 +28,7 @@ import {PaginationComponent} from "@ss/common/ui-pagination";
     ],
 })
 export class AssetListComponent extends BaseEntityListComponent<Asset> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description',
         'accountno',

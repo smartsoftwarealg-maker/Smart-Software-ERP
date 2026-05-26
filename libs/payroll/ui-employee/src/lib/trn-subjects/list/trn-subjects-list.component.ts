@@ -45,7 +45,7 @@ import { PaginatorPersistenceService } from '@ss/common/api-common';
     ],
 })
 export class TrnSubjectsListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public override entitySrv: TrnSubjectsService,

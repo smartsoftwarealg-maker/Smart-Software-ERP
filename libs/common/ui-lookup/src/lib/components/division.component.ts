@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class DivisionListComponent extends BaseEntityListComponent<Division> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public divisionSrv: DivisionService,

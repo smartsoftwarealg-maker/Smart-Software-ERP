@@ -26,7 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class LtmNormListComponent extends BaseEntityListComponent<Lookup> implements OnInit {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description'
     ]);
 

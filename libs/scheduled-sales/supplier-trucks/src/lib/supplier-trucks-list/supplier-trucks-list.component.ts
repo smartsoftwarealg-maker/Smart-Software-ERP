@@ -32,7 +32,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class SupplierTrucksListComponent extends BaseEntityListComponent<SupplierTruck> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'supplierCode',
         'supplierName',
         'plateNumber'

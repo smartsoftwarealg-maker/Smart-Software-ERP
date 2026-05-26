@@ -26,7 +26,7 @@ import {ActivityTypesService} from "../services/types.service";
 })
 export class ActivityTypesListComponent extends BaseEntityListComponent<ActivityType> implements OnInit {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'code',
         'name',
         'description',

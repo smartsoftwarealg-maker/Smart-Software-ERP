@@ -23,7 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class SalaryRankListComponent extends BaseChildEntityListComponent<GridRank> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         "rank",
         "index",
         "baseSalary",

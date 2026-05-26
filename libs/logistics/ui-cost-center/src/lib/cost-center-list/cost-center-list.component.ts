@@ -33,7 +33,7 @@ export class CostCenterListComponent extends BaseEntityListComponent<CostCenter>
 
     public ccGroups: { [id: number]: string; };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'code',
         'description',
         'groupId'

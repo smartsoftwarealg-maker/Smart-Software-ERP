@@ -40,7 +40,7 @@ export class LtmMatterTestListComponent implements OnInit {
     readonly searchText = new FormControl<string>('');
     selection = signal<number[]>([]);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'orderNo',
         'testDescription',
         'periodDescription',

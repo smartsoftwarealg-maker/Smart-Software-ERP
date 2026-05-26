@@ -43,7 +43,7 @@ export class CostingPoolCostComponent extends BaseChildEntityListComponent<CPool
     });
     itemLookup = new DefaultAutoCompleteModel(this.itemSrv);
 
-    override displayedColumns = signal<string[]>(['itemDescription', 'value']);
+    override readonly displayedColumns = (['itemDescription', 'value']);
 
     constructor(protected override detailSrv: CostingPoolsCostsService) {
         super(detailSrv, 'CPoolCost');

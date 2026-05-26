@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [MatTable, MatColumnDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatHeaderCellDef]
 })
 export class DocumentNumberingListComponent extends BaseEntityListComponent<LDocument> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'startNumber'
     ]);

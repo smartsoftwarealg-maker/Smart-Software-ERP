@@ -31,7 +31,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 ]
 })
 export class AccFileListComponent extends BaseEntityListComponent<ACCFile> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'fileYear',
         'closed'

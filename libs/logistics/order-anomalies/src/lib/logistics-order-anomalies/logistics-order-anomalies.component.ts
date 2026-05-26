@@ -42,7 +42,7 @@ export class LogisticsOrderAnomaliesComponent
         click: () => this.fix(),
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description',
         'qtyOrdered',

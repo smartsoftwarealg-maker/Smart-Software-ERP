@@ -30,7 +30,7 @@ export class SocialReimbursementsListComponent extends BaseChildEntityListCompon
         }
     });
 
-    override displayedColumns = signal(['reference', 'date', 'amount']);
+    override displayedColumns = (['reference', 'date', 'amount']);
 
     constructor(protected override detailSrv: ReimbursementService) {
         super(detailSrv, 'Reimbursement');

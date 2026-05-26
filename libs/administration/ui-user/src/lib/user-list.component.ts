@@ -22,7 +22,7 @@ import { Observable, tap } from 'rxjs';
 export class UserListComponent extends BaseEntityListComponent<User> implements OnInit {
     private loginSrv = inject(LoginService);
     isManager = this.loginSrv.appCtx.manager;
-    displayedColumns = signal<string[]>(this.loginSrv.appCtx.manager?
+    readonly displayedColumns = (this.loginSrv.appCtx.manager?
         ['description', 'fullName', 'manager', 'responsible',  'blocked'] :
         ['description', 'fullName',]);
 

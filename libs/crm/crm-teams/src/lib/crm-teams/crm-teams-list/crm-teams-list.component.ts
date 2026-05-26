@@ -46,7 +46,7 @@ import { CrmTeamsService } from '../crm-teams.service';
     ],
 })
 export class CrmTeamsListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public override entitySrv: CrmTeamsService,

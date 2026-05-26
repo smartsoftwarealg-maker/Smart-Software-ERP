@@ -151,7 +151,7 @@ export class HrGradingsComponent implements OnInit, OnDestroy {
     });
     labels = [''];
     maxima = [0];
-    displayedColumns = signal(['id', 'lastName', 'firstName']);
+    displayedColumns = (['id', 'lastName', 'firstName']);
     paginator = PaginationModel.newInstance({
         page: 1,
         pageSize: 10,

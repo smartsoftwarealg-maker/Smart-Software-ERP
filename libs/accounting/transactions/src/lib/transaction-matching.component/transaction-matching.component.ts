@@ -51,7 +51,7 @@ export class TransactionMatchingComponent implements OnInit {
 
     UNMATCHED_MODE = 1;
     MATCHED_MODE = 2;
-    displayedColumns = signal<string[]>(['customerCode', 'customerName', 'accountNo', 'description',  'matchKey', 'debit', 'credit']);
+    readonly displayedColumns = (['customerCode', 'customerName', 'accountNo', 'description',  'matchKey', 'debit', 'credit']);
     creditColumns = signal<string[]>(['customerCode',  'description', 'matchKey', 'debit', 'credit', 'matchBtn']);
     debits = signal< MBalanace[]>([]);
     credits = signal<MBalanace[]>([]);

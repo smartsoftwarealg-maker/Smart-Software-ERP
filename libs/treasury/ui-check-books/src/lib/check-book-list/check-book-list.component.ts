@@ -23,7 +23,7 @@ import { BankDescriptionPipe } from '@ss/administration/api-bank';
 })
 export class CheckBookListComponent extends BaseEntityListComponent<CheckBook> implements OnInit {
 
-    displayedColumns = signal([
+    displayedColumns = ([
         'bank',
         'bookYear',
         'fromNumber',

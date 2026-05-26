@@ -32,7 +32,7 @@ import {PurchaseInvoiceService} from "../purchase-invoice.service";
     ],
 })
 export class PurchaseInvoiceListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'agent',

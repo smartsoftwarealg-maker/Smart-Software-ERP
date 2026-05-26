@@ -41,7 +41,7 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 })
 export class LocalExtraCostListComponent extends BaseChildEntityListComponent<ExtraCost> {
 
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'reference',
         'supplierName',
         'amount',

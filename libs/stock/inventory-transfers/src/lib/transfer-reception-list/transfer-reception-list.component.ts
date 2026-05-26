@@ -39,7 +39,7 @@ import { DatePipe } from '@angular/common';
     ],
 })
 export class TransferReceptionListComponent  extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'agent',

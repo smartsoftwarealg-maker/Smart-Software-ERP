@@ -47,7 +47,7 @@ import { DatePipe } from '@angular/common';
 })
 export class CrmLeadsActivityListComponent extends BaseChildEntityListComponent<CRMLeadActivity> {
 
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'subject',
         'activityType',
         'priority',

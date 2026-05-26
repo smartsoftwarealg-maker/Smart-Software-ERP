@@ -59,7 +59,7 @@ export class ProductLiberationListComponent extends BaseEntityListComponent<LTMP
         click: () => this.emailTheReport()
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'date',
         'from',
         'to',

@@ -27,7 +27,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./driver-license-list.component.css'],
 })
 export class DriverLicenseListComponent extends BaseChildEntityListComponent<DriverLicense> {
-    override displayedColumns = signal<string[]>(['licenseType', 'from', 'to']);
+    override readonly displayedColumns = (['licenseType', 'from', 'to']);
 
     constructor(protected override detailSrv: DriverLicenseService) {
         super(detailSrv, 'DriverLicense');

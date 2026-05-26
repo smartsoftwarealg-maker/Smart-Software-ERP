@@ -34,7 +34,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class StoreListComponent extends BaseEntityListComponent<Article> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description2',
         'price',

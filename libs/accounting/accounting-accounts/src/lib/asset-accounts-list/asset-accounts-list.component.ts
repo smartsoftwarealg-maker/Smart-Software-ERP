@@ -22,7 +22,7 @@ import { DecimalPipe } from '@angular/common';
 })
 export class AssetAccountsListComponent extends BaseEntityListComponent<Account> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'accountNo',
         'description',
         'depreciationAccount',

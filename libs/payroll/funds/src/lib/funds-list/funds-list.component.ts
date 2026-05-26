@@ -21,7 +21,7 @@ import { FundService } from '../funds.service';
 ]
 })
 export class FundsListComponent extends BaseEntityListComponent<Fund> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         "description",
         "accountNo"
     ]);

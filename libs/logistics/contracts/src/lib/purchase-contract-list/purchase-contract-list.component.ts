@@ -38,7 +38,7 @@ export class PurchaseContractListComponent extends BaseEntityListComponent<Proje
 
     agentId     = new FormControl<number>(0);
     agentLookup = new DefaultAutoCompleteModel(this.#agentSrv, 'id', 'denomination');
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'contractNo',
         'projDate',
         'description',

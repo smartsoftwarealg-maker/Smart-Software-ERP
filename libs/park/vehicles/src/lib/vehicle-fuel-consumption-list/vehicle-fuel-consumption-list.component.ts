@@ -27,7 +27,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./vehicle-fuel-consumption-list.component.css'],
 })
 export class VehicleFuelConsumptionListComponent extends BaseChildEntityListComponent<FuelConsumption> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'date',
         'driverName',
         'fuelDescription',

@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class CompanyTypeListComponent extends BaseEntityListComponent<CompanyType> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public companyTypeSrv: CompanyTypeService,

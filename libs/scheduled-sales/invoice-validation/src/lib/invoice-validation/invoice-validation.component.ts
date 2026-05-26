@@ -68,7 +68,7 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
 
     @ViewChild('number') inputEl!: ElementRef;
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'serialNumber',
         'date',
         'customerCode',

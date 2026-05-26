@@ -33,7 +33,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
     styleUrls: ['./vehicle-list.component.css']
 })
 export class VehicleListComponent extends BaseEntityListComponent<Vehicle> {
-    public displayedColumns = signal<string[]>([
+    public readonly displayedColumns = ([
         'description',
         'plateNumber',
         'typeDescription',

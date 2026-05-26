@@ -45,7 +45,7 @@ import { PaginatorPersistenceService } from '@ss/common/api-common';
     ],
 })
 export class LanguageListComponent extends BaseEntityListComponent<Language> {
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public override entitySrv: LanguagesService,

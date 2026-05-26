@@ -77,7 +77,7 @@ export class SalesDiscountComponent extends BaseEntityListComponent<Turnover> {
     #destroyRef = inject(DestroyRef);
     #fb = inject(FormBuilder);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'year',
         'customerCode',
         'customerName',

@@ -38,7 +38,7 @@ export class CostingAccountingComponent implements OnInit {
     private dataSrv = inject(CostingAccountingService);
     private fb = inject(FormBuilder);
 
-    displayedColumns = signal<string[]>(['accountNo', 'description', 'debit', 'credit']);
+    readonly displayedColumns = (['accountNo', 'description', 'debit', 'credit']);
 
     projectLookup = new DefaultAutoCompleteModel(this.projectSrv);
     form = this.fb.group({

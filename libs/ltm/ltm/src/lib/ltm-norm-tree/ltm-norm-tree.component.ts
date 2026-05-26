@@ -28,7 +28,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class LtmNormTreeComponent extends BaseEntityListComponent<NormTree> implements OnInit {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'matter'
     ]);
 

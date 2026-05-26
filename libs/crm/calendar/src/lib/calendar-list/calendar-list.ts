@@ -56,7 +56,7 @@ export class CalendarList implements OnInit {
     isResponsible = signal(this.#loginSrv.appCtx.responsible);
 
     selectedRow: CRMCalendar | null = null;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'subject',
         'activityType',
         'priority',

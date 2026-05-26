@@ -28,7 +28,7 @@ import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
     styleUrls: ['./vehicle-maintenance-list.component.css'],
 })
 export class VehicleMaintenanceListComponent extends BaseChildEntityListComponent<VehicleMaintenance> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'date',
         'description',
         'supplierName',

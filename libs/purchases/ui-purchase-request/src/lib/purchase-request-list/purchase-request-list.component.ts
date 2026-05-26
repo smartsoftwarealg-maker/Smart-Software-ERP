@@ -39,7 +39,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
 ],
 })
 export class PurchaseRequestListComponent  extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'reference',

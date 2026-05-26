@@ -18,7 +18,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./person-fault-list.component.css'],
 })
 export class PersonFaultListComponent extends BaseChildEntityListComponent<PersonFault> {
-    override displayedColumns = signal<string[]>(['faultDescription']);
+    override readonly displayedColumns = (['faultDescription']);
 
     constructor(protected override detailSrv: PersonFaultService) {
         super(detailSrv, 'PersonFault');

@@ -58,7 +58,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 export class CmmsAlertListComponent extends BaseEntityListComponent<PM> implements OnInit {
     dateControl = new FormControl<Date>(new Date());
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         // 'reference',
         'selection',
         'description',

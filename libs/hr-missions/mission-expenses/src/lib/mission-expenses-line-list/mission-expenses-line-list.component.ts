@@ -56,7 +56,7 @@ import {zip} from "rxjs";
     ]
 })
 export class MissionExpensesLineListComponent extends BaseChildEntityListComponent<MissionJourney> {
-    override displayedColumns = signal<string[]>(['from', 'to']);
+    override readonly displayedColumns = (['from', 'to']);
 
     constructor(protected override detailSrv: JourneyLineService) {
         super(detailSrv, 'MISSION_EXPENSES');
@@ -67,8 +67,8 @@ export class MissionExpensesLineListComponent extends BaseChildEntityListCompone
     tabIndex = 0; // first tab
     detailData: Detail[] = [];
     summaryData: Summary[] = [];
-    detailDisplayedColumns = signal<string[]>(['element','count', 'amount']);
-    summaryDisplayedColumns = signal<string[]>(['element', 'date', 'amount']);
+    readonly detailDisplayedColumns = ['element','count', 'amount'];
+    readonly summaryDisplayedColumns = ['element', 'date', 'amount'];
 
 
     override ngOnInit() {

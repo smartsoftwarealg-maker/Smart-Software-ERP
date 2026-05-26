@@ -20,7 +20,7 @@ import {MatCheckbox} from "@angular/material/checkbox";
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatCheckbox]
 })
 export class JournalListComponent extends BaseEntityListComponent<Journal> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'abbreviation',
         'defaultLabel',

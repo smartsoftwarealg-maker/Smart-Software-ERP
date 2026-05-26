@@ -37,7 +37,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class AbsenceMotiveListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal(['description', 'descriptionAr']);
+    displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public classSrv: AbsenceMotiveService,

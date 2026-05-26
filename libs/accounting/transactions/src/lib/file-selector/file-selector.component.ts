@@ -34,7 +34,7 @@ export class FileSelectorComponent extends BaseEntityListComponent<ACCFile> impl
     periods = signal<string[]>([]);
     maxPeriod = 1;
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'fileYear',
         'closed'

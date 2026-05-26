@@ -17,7 +17,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./person-location-list.component.css'],
 })
 export class PersonLocationListComponent extends BaseChildEntityListComponent<PersonLocation> {
-    override displayedColumns = signal<string[]>(['locationDescription']);
+    override readonly displayedColumns = (['locationDescription']);
 
     constructor(protected override detailSrv: PersonLocationService) {
         super(detailSrv, 'PersonLocation');

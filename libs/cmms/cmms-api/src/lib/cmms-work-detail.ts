@@ -67,7 +67,7 @@ export class CMMSWorkDetail extends BaseEntityDetailComponent<Work> {
 
     data$: Observable<RoutingDetail[]> = of([]);
     partData$: Observable<RoutingPart[]> = of([]);
-    displayedColumns = signal<string[]>(['order', 'description', 'teamSize', 'hours', 'cost']);
+    readonly displayedColumns = (['order', 'description', 'teamSize', 'hours', 'cost']);
     partColumns = ['reference', 'description', 'qty'];
     selectedId = 0;
     selectedPartId = 0;

@@ -44,7 +44,7 @@ import { SalesPollService } from '../sales-poll.service';
 export class SalesPollListComponent extends BaseEntityListComponent<SalesPoll>{
     private loginSrv = inject(LoginService);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'date',
         'number',
     ]);

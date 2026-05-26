@@ -54,7 +54,7 @@ export class TransactionLineListComponent implements OnInit, OnDestroy {
     id = 0;
     data = signal<TTransactionLine[]>([]);
     paginator = PaginationModel.newInstance();
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'invoiceNo',
         'description',
         'income',

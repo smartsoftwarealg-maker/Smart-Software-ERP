@@ -29,7 +29,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class CenterListComponent extends BaseEntityListComponent<Center> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'address',
         'header_center'
