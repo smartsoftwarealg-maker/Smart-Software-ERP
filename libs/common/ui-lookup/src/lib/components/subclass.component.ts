@@ -22,7 +22,7 @@ import {AssetClassService} from "@ss/assets-component";
 @Component({
     selector: 'ss-subclass-list',
     template: `<div class="container size">
-        <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="description">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_DESCRIPTION</mat-header-cell>

@@ -24,7 +24,7 @@
     </div>
 </mat-card>
 <div class="content_div table__container">
-    <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="matterDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LTM_MATTER</mat-header-cell>

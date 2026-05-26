@@ -1,5 +1,5 @@
 <div class="container_div">
-    <mat-table mat-table [dataSource]="data()" class="content-div" matSort (matSortChange)="sort($event)" >
+    <mat-table mat-table [dataSource]="data" class="content-div" matSort (matSortChange)="sort($event)" >
 
         <ng-container matColumnDef="category">
             <mat-header-cell *matHeaderCellDef  mat-sort-header translate>PAYROLL_CATEGORY</mat-header-cell>

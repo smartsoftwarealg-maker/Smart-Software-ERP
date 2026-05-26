@@ -95,7 +95,7 @@ export class AssetReadingListComponent
                 this.addButton.visible = value > 0;
                 this.entitySrv
                     .getPage(this.pagination)
-                    .subscribe((res) => (this.data.set(res)));
+                    .subscribe((res) => (this.data=res));
             }),
         );
     }

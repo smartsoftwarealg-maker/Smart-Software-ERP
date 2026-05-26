@@ -3,7 +3,7 @@
 
     <div class="data-table">
         <div class="table__div">
-            <mat-table mat-table [dataSource]="data()" class="main-table">
+            <mat-table mat-table [dataSource]="data" class="main-table">
 
                 <ng-container matColumnDef="lastName">
                     <mat-header-cell *matHeaderCellDef translate>COMMON_LAST_NAME</mat-header-cell>
@@ -68,7 +68,7 @@
     </div>
 
     <div class="comparison">
-        <mat-table mat-table [dataSource]="comparisonData()">
+        <mat-table mat-table [dataSource]="comparisonData">
 
             <ng-container matColumnDef="paymonth">
                 <mat-header-cell *matHeaderCellDef translate>PAYROLL_PAYMONTH</mat-header-cell>

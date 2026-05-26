@@ -1,5 +1,5 @@
 <div class="container size">
-    <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="threshold">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_THRESHOLD</mat-header-cell>

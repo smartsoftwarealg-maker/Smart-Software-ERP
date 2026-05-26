@@ -1,5 +1,5 @@
 <div class="main-table container">
-    <mat-table mat-table [dataSource]="data()" matSort (matSortChange)="sort($event)">
+    <mat-table mat-table [dataSource]="data" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="variable">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_VARIABLE</mat-header-cell>

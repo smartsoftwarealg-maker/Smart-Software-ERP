@@ -150,7 +150,7 @@ export class SalesDiscountComponent extends BaseEntityListComponent<Turnover> {
 
     toggleAll(checked: boolean) {
         if (checked) {
-            this.selectedAgents.update(() => this.data().filter(d => d.generated < 0.01).map((d) => d.agentId));
+            this.selectedAgents.update(() => this.data.filter(d => d.generated < 0.01).map((d) => d.agentId));
         } else {
             this.selectedAgents.update(() => []);
         }

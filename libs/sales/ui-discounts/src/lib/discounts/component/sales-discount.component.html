@@ -19,7 +19,7 @@
     </form>
 
     <div class="container size">
-        <mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+        <mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="year">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PERIOD</mat-header-cell>

@@ -89,7 +89,7 @@ export class CostItemAccountingRecords extends BaseEntityListComponent<ACCRecord
                     debounceTime(300),
                     distinctUntilChanged(),
                     switchMap(() => this.entitySrv.list(this.year.value||0))
-                ).subscribe(data => this.data.set(data))
+                ).subscribe(data => this.data=data)
         );
     }
 }

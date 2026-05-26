@@ -10,7 +10,7 @@
 </div>
 
 <div class="table_div size">
-    <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+    <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
         <ng-container matColumnDef="meterDescription">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>CMMS_METER</mat-header-cell>

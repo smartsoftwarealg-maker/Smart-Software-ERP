@@ -1,6 +1,6 @@
 @defer (when !loading()) {
     <div class="table-container main-container">
-        <mat-table [dataSource]="data()" class="main-table" matSort>
+        <mat-table [dataSource]="data" class="main-table" matSort>
 
             <ng-container matColumnDef="code">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_CODE</mat-header-cell>

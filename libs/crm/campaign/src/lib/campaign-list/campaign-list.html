@@ -7,7 +7,7 @@
 <div class="table__div size">
     @if (!loading) {
         <div class="table__div">
-            <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+            <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
                 <ng-container matColumnDef="name">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>PAYROLL_NAME</mat-header-cell>

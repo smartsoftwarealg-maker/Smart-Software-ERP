@@ -12,7 +12,7 @@
 }
 @if (entitySrv.getParentId() > 0) {
     <div class="container_div size">
-        <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="reference">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_REFERENCE</mat-header-cell>

@@ -45,7 +45,7 @@ export class CostingAccountingComponent implements OnInit {
         project: [0, Validators.required],
         units:   [1, [Validators.required, Validators.min(1)]]
     });
-    data =  signal<CACCReport>(null);
+    data: CACCReport|null = null;
     processing = signal(false);
 
     refresh() {
@@ -59,7 +59,7 @@ export class CostingAccountingComponent implements OnInit {
                     this.processing.set(false);
                     throw err;
                 }))
-            .subscribe(res => this.data.set(res));
+            .subscribe(res => this.data = res);
     }
 
     ngOnInit() {

@@ -12,7 +12,7 @@
 </div>
 
 <div class="div_table size">
-  <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+  <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
     <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_FIRST_NAME</mat-header-cell>

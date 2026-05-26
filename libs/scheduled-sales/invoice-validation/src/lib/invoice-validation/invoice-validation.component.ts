@@ -157,7 +157,7 @@ export class InvoiceValidationComponent extends BaseEntityListComponent<Validate
     public override finishLoading(data: ValidatedSale[]) {
         this.processLoadedData(data)
           .subscribe(x => {
-              this.data.set(x);
+              this.data=(x);
               this.shellSrv.setLoading(false);
           });
         setTimeout(() =>{

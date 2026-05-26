@@ -53,7 +53,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     tableWidth = 400;
     selectedId = 0;
     application = '';
-    data = signal<string[][]>([]);
+    data: string[][] = [];
     displayedColumns = signal<string[]>([]);
 
     form = new FormGroup({
@@ -143,9 +143,9 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
             .subscribe({
                 next: res => {
                     this.processing.set(false);
-                    this.data.set(res.body.map(e => e.split('`')));
+                    this.data = res.body.map(e => e.split('`'));
                     this.pagination.elementCount = res.itemCount;
-                    this.tableWidth = (this.data().length > 0) ? this.data()[0].length * 120 : 400;
+                    this.tableWidth = (this.data.length > 0) ? this.data[0].length * 120 : 400;
                 }, error: err => {
                     this.processing.set(false);
                     throw err;

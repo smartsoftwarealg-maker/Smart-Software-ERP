@@ -106,7 +106,7 @@ implements OnInit, OnDestroy {
     public filter: string;
     public sortBy: string;
     //
-    public data: WritableSignal<T[]> = signal<T[]>([]);
+    public data: T[] = [];
 
     //
 
@@ -228,7 +228,7 @@ implements OnInit, OnDestroy {
         this.setLoading(true);
         this.shellSrv.setLoading(this.canShowProcessingStatus());
         this.releaseResources();
-        this.data.set([]);
+        this.data = [];
         (this.preload() || of(null))
             .pipe(switchMap(() => this.getPage()))
             .subscribe({
@@ -241,7 +241,7 @@ implements OnInit, OnDestroy {
                     this.loading.set(false);
                 },
                 error: (err) => {
-                    this.data.set([]); // clear everything;
+                    this.data = []; // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
                     this.loading.set(false);
                     throw err;
@@ -266,7 +266,7 @@ implements OnInit, OnDestroy {
     public finishLoading(data: T[]) {
         this.processLoadedData(data)
             .subscribe((x) => {
-                this.data.set(x);
+                this.data = x;
                 this.shellSrv.setLoading(false);
                 this.setLoading(false);
         });
@@ -404,7 +404,7 @@ implements OnInit, OnDestroy {
         this.confirmationSrv.confirmDelete().subscribe((b) => {
             if (b) {
                 if (this.selectedId() && this.selectedId() > 0) {
-                    const a = this.data().filter(
+                    const a = this.data.filter(
                         (x) => x.id === this.selectedId(),
                     )[0];
                     if (a && a.id) {

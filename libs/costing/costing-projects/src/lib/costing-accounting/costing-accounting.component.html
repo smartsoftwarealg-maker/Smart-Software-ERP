@@ -24,10 +24,10 @@
     </form>
 </mat-card>
 
-@if (!processing() && data()) {
+@if (!processing() && data) {
     <mat-tab-group>
         <mat-tab [label]="'COST_TRIVIAL'|translate">
-            <mat-table mat-table [dataSource]="data().trivial" class="main-table" matSort>
+            <mat-table mat-table [dataSource]="data?.trivial" class="main-table" matSort>
 
                 <ng-container matColumnDef="accountNo">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
@@ -66,7 +66,7 @@
 
         </mat-tab>
         <mat-tab [label]="'COST_SIMPLE'|translate">
-            <mat-table mat-table [dataSource]="data().simple" class="main-table" matSort>
+            <mat-table mat-table [dataSource]="data.simple" class="main-table" matSort>
 
                 <ng-container matColumnDef="accountNo">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
@@ -105,7 +105,7 @@
 
         </mat-tab>
         <mat-tab [label]="'COST_STEP_DOWN'|translate">
-            <mat-table mat-table [dataSource]="data().stepDown" class="main-table" matSort>
+            <mat-table mat-table [dataSource]="data.stepDown" class="main-table" matSort>
 
                 <ng-container matColumnDef="accountNo">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>
@@ -144,7 +144,7 @@
 
         </mat-tab>
         <mat-tab [label]="'COST_RECIPROCAL'|translate">
-            <mat-table mat-table [dataSource]="data().reciprocal" class="main-table" matSort>
+            <mat-table mat-table [dataSource]="data?.reciprocal" class="main-table" matSort>
 
                 <ng-container matColumnDef="accountNo">
                     <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNTNO</mat-header-cell>

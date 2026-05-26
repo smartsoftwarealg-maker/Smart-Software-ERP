@@ -93,7 +93,7 @@
 </mat-card>
 @if (id > 0  && !loading()) {
   <div class="item table_div">
-    <mat-table mat-table [dataSource]="detailData()" class="main-table">
+    <mat-table mat-table [dataSource]="detailData" class="main-table">
 
       <ng-container matColumnDef="reference">
         <mat-header-cell *matHeaderCellDef translate>COMMON_REFERENCE</mat-header-cell>

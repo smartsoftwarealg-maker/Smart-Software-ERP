@@ -65,7 +65,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
     generating = signal(false);
 
     headers: string[] = ['test'];
-    dashboardData= signal<any[][]>([['']]);
+    dashboardData: any[][] = [['']];
     detailPagination = PaginationModel.newInstance({
         page: 1,
         pageSize: 50,
@@ -161,7 +161,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         this.validData.set(false);
         super.select(id || getApplicationId(this.router));
         this.headers = [];
-        this.dashboardData.set([[]]);
+        this.dashboardData = [[]];
         if (id) {
             this.setLoading(true);
             this.shellSrv.setLoading(true);
@@ -195,7 +195,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
             )
             .subscribe({
                 next: (res) => {
-                    this.dashboardData.set(res.body);
+                    this.dashboardData = res.body;
                     this.detailPagination.elementCount = res.itemCount;
                     this.shellSrv.setLoading(false);
                     this.setLoading(false);
@@ -414,7 +414,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         return {
             type: 'bar',
             data: {
-                labels: this.dashboardData().map((a) => a[0]?.toString()),
+                labels: this.dashboardData.map((a) => a[0]?.toString()),
                 // labels: this.dashboardData.map(
                 //     (row) => row[0]?.toString() || '',
                 // ),
@@ -434,7 +434,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                     x: {
                         title: {
                             display: true,
-                            text: this.data()
+                            text: this.data
                                 .filter((e) => e.id === this.selectedId())
                                 .map((e) => e.description)[0],
                         },
@@ -501,7 +501,7 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                 this.filterCtrl.value||'',
             ).subscribe({
                 next: (res) => {
-                    this.dashboardData.set(res.body);
+                    this.dashboardData = res.body;
                     this.detailPagination.elementCount = res.itemCount;
                     this.chartComponent?.destroy();
                     if (res.itemCount < 50 && res.itemCount > 0) {
@@ -552,14 +552,14 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
         const indices: number[] = [];
         const matrix: number[][] = [];
 
-        const normalizedData = this.dashboardData().map(row => row.map((v, i) => v.toString().replaceAll(' ', '').replace(',', '.')));
+        const normalizedData = this.dashboardData.map(row => row.map((v, i) => v.toString().replaceAll(' ', '').replace(',', '.')));
 
-        if (!this.dashboardData()?.length || !this.dashboardData()[0]?.length) {
+        if (!this.dashboardData?.length || !this.dashboardData[0]?.length) {
             return { indices, matrix };
         }
 
-        const totalRows = this.dashboardData().length;
-        const totalCols = Math.min(maxColumns, this.dashboardData()[0].length);
+        const totalRows = this.dashboardData.length;
+        const totalCols = Math.min(maxColumns, this.dashboardData[0].length);
 
         for (let col = 0; col < totalCols; col++) {
             const tempValues: number[] = new Array(totalRows);

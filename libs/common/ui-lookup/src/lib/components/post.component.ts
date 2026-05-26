@@ -27,7 +27,7 @@ import { Observable } from 'rxjs';
     template: `<div class="container size">
             <mat-table
                 mat-table
-                [dataSource]="data()"
+                [dataSource]="data"
                 class="main-table"
                 matSort
                 (matSortChange)="sort($event)">
