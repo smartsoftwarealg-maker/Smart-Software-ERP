@@ -66,7 +66,7 @@ export class PurchaseRequestLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit
 {
-    override displayedColumns = signal([
+    override displayedColumns0 = signal([
         'position',
         'reference',
         'description',

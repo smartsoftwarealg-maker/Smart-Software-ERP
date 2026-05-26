@@ -39,7 +39,7 @@ export class ReceptionLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit
 {
-    override displayedColumns = signal([
+    override displayedColumns0 = signal([
         'position',
         'storeDescription',
         'storeName',

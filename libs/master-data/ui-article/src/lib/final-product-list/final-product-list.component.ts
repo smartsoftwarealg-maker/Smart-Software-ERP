@@ -48,7 +48,7 @@ export class FinalProductListComponent extends BaseEntityListComponent<Article> 
     private bomSrv = inject(BomService);
     private STOCK_COLS = ['image', 'reference', 'description2', 'markDescription', 'laborHours', 'routingValue', 'bomValue'];
     private SALES_COLS = ['image', 'reference', 'description2', 'markDescription', 'laborHours', 'routingValue', 'bomValue'];
-    displayedColumns = signal<string[]>(this.STOCK_COLS);
+    displayedColumns0 = signal<string[]>(this.STOCK_COLS);
     filterCtrl = new FormControl<number>(this.entitySrv.getParentId());
 
     constructor(
@@ -93,7 +93,7 @@ export class FinalProductListComponent extends BaseEntityListComponent<Article> 
         this.route
             .paramMap
             .subscribe(res => {
-                this.displayedColumns.set(res.get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS);
+                this.displayedColumns0.set(res.get('price') === 'price1'? this.SALES_COLS : this.STOCK_COLS);
             });
         this.subscriptions.push(
             this.filterCtrl

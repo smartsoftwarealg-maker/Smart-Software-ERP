@@ -25,9 +25,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class ClassListComponent extends BaseEntityListComponent<Class> {
-    #langSrv = inject(LanguageService);
-
-    displayedColumns = signal<string[]>(['description', 'descriptionAr', 'accountno']);
+    displayedColumns = ['description', 'descriptionAr', 'accountno', 'subclassDescription'];
 
     constructor(
         public classSrv: ClassService,
@@ -40,9 +38,6 @@ export class ClassListComponent extends BaseEntityListComponent<Class> {
         public override pagPersistSrv: PaginatorPersistenceService) {
         super(classSrv, shellSrv, snackBarSrv, route, router, confirmationSrv, defReportSrv, pagPersistSrv, 'COMMON_CLASSES');
         this.pagination.pageSize = 10;
-        if (this.#langSrv.isSodismac) {
-            this.displayedColumns.set(['descriptionAr', 'description', 'accountno', 'subclassDescription']);
-        }
     }
 
     override processLoadedData(data: Class[]): Observable<Class[]> {

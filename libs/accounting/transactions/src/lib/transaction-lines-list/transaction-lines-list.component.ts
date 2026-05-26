@@ -50,7 +50,7 @@ export class TransactionLinesListComponent implements OnInit {
         'c_o_d',
         'debit',
         'credit'];
-    displayedColumns = signal(this.COLUMNS);
+    displayedColumns0 = signal(this.COLUMNS);
 
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);
@@ -99,7 +99,7 @@ export class TransactionLinesListComponent implements OnInit {
                 switchMap(() => this.policySrv.get(this.loginSrv.appCtx.center)))
             .subscribe((res: ACCPolicy) => {
                 this.accPolicy = res;
-                this.displayedColumns.set(this.COLUMNS.filter(e => this.accPolicy?.manualCashFlow || e !== 'c_o_d'));
+                this.displayedColumns0.set(this.COLUMNS.filter(e => this.accPolicy?.manualCashFlow || e !== 'c_o_d'));
                 this.processing.set(false);
             });
 

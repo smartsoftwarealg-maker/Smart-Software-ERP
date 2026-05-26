@@ -45,7 +45,7 @@ import { Observable, tap } from 'rxjs';
 export class CustomerComplaintsListComponent extends BaseEntityListComponent<CustomerComplaint>{
     private loginSrv = inject(LoginService);
 
-    displayedColumns = signal<string[]>([
+    displayedColumns0 = signal<string[]>([
         'date',
         'complaintDescription',
         'complaint',
@@ -87,7 +87,7 @@ export class CustomerComplaintsListComponent extends BaseEntityListComponent<Cus
 
     override ngOnInit() {
         if((this.loginSrv.appCtx.agentId||0) == 0) {
-            this.displayedColumns.update(cols => {
+            this.displayedColumns0.update(cols => {
                 const newCols = [...cols];
                 newCols.splice(1,0,'agentDescription');
                 return newCols;

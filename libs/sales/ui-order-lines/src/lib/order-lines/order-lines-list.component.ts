@@ -51,7 +51,7 @@ export class OrderLinesListComponent
     private weightCaptureSrv = inject(WeightCaptureService);
     private quickOrderSrv = inject(QuickOrderService);
 
-    displayedColumns = signal([
+    displayedColumns0 = signal([
         'position',
         'store',
         'reference',
@@ -92,14 +92,14 @@ export class OrderLinesListComponent
             .pipe(
                 switchMap(() => this.route.data),
                 tap(({ source }) => {
-                    this.displayedColumns.update (v => v.filter(
+                    this.displayedColumns0.update (v => v.filter(
                         (col) => col !== 'store' || source !== 'quick',
                     ));
                 }),
                 switchMap(() => this.weightCaptureSrv.hasScaleConfig()),
                 tap((exists) => {
                     if (exists) {
-                        this.displayedColumns.update(v => [...v, 'tare', 'brut']);
+                        this.displayedColumns0.update(v => [...v, 'tare', 'brut']);
                     }
                 }),
                 switchMap(() => this.quickOrderSrv.getInvoiceInfo(this.detailSrv.getParentId() + '')),
@@ -155,7 +155,7 @@ export class OrderLinesListComponent
             this.loadDetailLines()
                 .subscribe({
                 next: (data) => {
-                    this.data.set(data);
+                    this.data = data;
                     this.loading.set(false);
                 },
             });

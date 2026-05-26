@@ -54,7 +54,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     selectedId = 0;
     application = '';
     data: string[][] = [];
-    displayedColumns = signal<string[]>([]);
+    displayedColumns0 = signal<string[]>([]);
 
     form = new FormGroup({
         options: new FormControl<number>(1),
@@ -115,15 +115,16 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.traceSrv.fromDate = this.form.controls['fromDate'].value;
-        this.traceSrv.toDate = this.form.controls['toDate'].value;
+        const date = new Date();
+        this.traceSrv.fromDate = this.form?.controls['fromDate']?.value||date;
+        this.traceSrv.toDate = this.form?.controls['toDate']?.value||date;
     }
 
     hasChild = (_: number, node: LogFlatNode) => node.level == 0;
 
     select(node: LogFlatNode) {
         this.pagination.page = 1;
-        this.displayedColumns.set(node && node.schema ? node.schema.columns.split('`') : []);
+        this.displayedColumns0.set(node && node.schema ? node.schema.columns.split('`') : []);
         this.selectedId = node && node.schema ? node.schema.id : 0;
         this.refresh();
     }

@@ -87,7 +87,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
     supplierLookup = new DefaultAutoCompleteModel(this.supplierSrv, 'id', 'denomination');
     beneficiaryLookup = new DefaultAutoCompleteModel(this.beneficiarySrv, 'id', 'denomination');
 
-    displayedColumns = signal<string[]>(this.DEF_COLS);
+    displayedColumns0 = signal<string[]>(this.DEF_COLS);
     form = this.fb.group({
         reference: [''],
         reference2: [''],
@@ -143,7 +143,7 @@ export class SearchListComponent extends BaseEntityListComponent<Asset> implemen
     override preload(): Observable<any> {
         return this.isParamSrv
             .is('AQS')
-            .pipe(tap(res => res ? this.displayedColumns.set(this.AQS_COLS) : this.displayedColumns.set(this.DEF_COLS)));
+            .pipe(tap(res => res ? this.displayedColumns0.set(this.AQS_COLS) : this.displayedColumns0.set(this.DEF_COLS)));
     }
 
     override ngOnInit() {

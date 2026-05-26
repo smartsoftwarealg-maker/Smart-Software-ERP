@@ -29,7 +29,7 @@ export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {
 
     showCurrency = input<boolean>(false);
 
-    displayedColumns = signal<string[]>([
+    displayedColumns0 = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -58,11 +58,11 @@ export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {
                 .pipe(switchMap(() => this.#currencySrv.getList(0, 50)),
                     tap((currencies) => {
                         currencies.body.forEach(c => this.currencyMap.set(c.id, c.description))
-                        const chunk1 = this.displayedColumns().slice(0, 5);
-                        const chunk2 = this.displayedColumns().slice(5);
+                        const chunk1 = this.displayedColumns0().slice(0, 5);
+                        const chunk2 = this.displayedColumns0().slice(5);
                         chunk1.push('currency');
                         chunk1.push('currencyRate');
-                        this.displayedColumns.set(chunk1.concat(chunk2));
+                        this.displayedColumns0.set(chunk1.concat(chunk2));
                     })):
             super.preload();
     }

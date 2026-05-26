@@ -29,7 +29,7 @@ import {PurchaseInvoiceLineService} from "../purchase-invoice-line.service";
     ]
 })
 export class PurchaseInvoiceLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    override displayedColumns = signal([
+    override displayedColumns0 = signal([
         'position',
         'storeDescription',
         'storeName',

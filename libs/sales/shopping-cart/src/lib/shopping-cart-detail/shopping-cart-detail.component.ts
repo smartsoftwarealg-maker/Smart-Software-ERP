@@ -65,7 +65,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         'qty',
         'price'
     ]);
-    displayedColumns = signal<string[]>([]);
+    displayedColumns0 = signal<string[]>([]);
 
     constructor(
         private markSrv: MarkService,
@@ -112,7 +112,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
         this.shellSrv.setButtons([this.refreshButton, this.viewReportButton]);
         this.isHandset.subscribe(state => {
             this.isSmallScreen = state.matches;
-            this.displayedColumns.set(this.isSmallScreen ? this.SHORT() : this.LONG());
+            this.displayedColumns0.set(this.isSmallScreen ? this.SHORT() : this.LONG());
         });
     }
 

@@ -121,8 +121,8 @@
                     </ng-container>
 
 
-                    <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: displayedColumns();" class="selectable"
+                    <mat-header-row *matHeaderRowDef="displayedColumns0(); sticky: true"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns0();" class="selectable"
                              [class.selected]="row.id === selectedStore?.id"
                              (click)="selectStore(row)"></mat-row>
                 </mat-table>

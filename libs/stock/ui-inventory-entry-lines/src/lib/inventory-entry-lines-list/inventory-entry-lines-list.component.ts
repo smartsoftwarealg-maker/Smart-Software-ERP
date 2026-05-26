@@ -27,7 +27,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     imports: [MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DecimalPipe, TranslatePipe]
 })
 export class InventoryEntryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit, OnDestroy {
-    displayedColumns = signal([
+    displayedColumns0 = signal([
         'position',
         'store',
         'reference',

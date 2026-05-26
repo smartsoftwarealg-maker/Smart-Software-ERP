@@ -84,7 +84,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
         click: () => this.toggleActivity(),
     }
 
-    displayedColumns = signal(this.DEF_COLS);
+    displayedColumns0 = signal(this.DEF_COLS);
     activeOnly = signal(false);
 
 
@@ -114,7 +114,7 @@ export class AssetsListComponent extends BaseEntityListComponent<Asset> {
     override preload(): Observable<any> {
         return this.isParamSrv
             .is('AQS')
-            .pipe(tap(res => this.displayedColumns.set(res?  this.AQS_COLS : this.DEF_COLS)));
+            .pipe(tap(res => this.displayedColumns0.set(res?  this.AQS_COLS : this.DEF_COLS)));
     }
 
     protected override postInit():any{

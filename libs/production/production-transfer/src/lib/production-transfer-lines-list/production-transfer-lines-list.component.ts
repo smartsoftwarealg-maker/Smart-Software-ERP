@@ -52,7 +52,7 @@ export class ProductionTransferLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit
 {
-    override displayedColumns = signal<string[]>([
+    override displayedColumns0 = signal<string[]>([
         'position',
         'reference',
         'description',
@@ -92,7 +92,7 @@ export class ProductionTransferLinesListComponent
     private refresh() {
         this.detailSrv.getPage(this.pagination).subscribe({
             next: (data) => {
-                this.data.set(data);
+                this.data = data;
             },
             error: () => {
                 this.snackBarSrv.showFailureMessage('refresh failed');

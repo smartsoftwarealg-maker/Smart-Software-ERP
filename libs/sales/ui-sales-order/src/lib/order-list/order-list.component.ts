@@ -65,7 +65,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     ],
 })
 export class OrderListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    displayedColumns0 = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -145,7 +145,7 @@ export class OrderListComponent extends BaseEntityListComponent<Transaction> {
         this.weightCaptureSrv.hasScaleConfig().subscribe({
             next: (exists) => {
                 if (exists) {
-                    this.displayedColumns.update(cols => [...cols, 'option'])
+                    this.displayedColumns0.update(cols => [...cols, 'option'])
                 }
             },
             error: () => {},

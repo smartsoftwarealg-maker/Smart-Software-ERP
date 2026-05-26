@@ -65,7 +65,7 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
     //     click: () => this.cancelAll()
     // };
     //
-    displayedColumns = signal<string[]>([
+    displayedColumns0 = signal<string[]>([
         'number',
         'date',
         'dealer',
@@ -104,7 +104,7 @@ export class ProductionListComponent extends BaseEntityListComponent<Transaction
             .getConfig()
             .pipe(tap((conf) => {
                 const showAltAgent = conf?.['manufacturing']?.showPallet;
-                this.displayedColumns.update(cols => cols.filter(e => e !== 'altAgent' || showAltAgent));
+                this.displayedColumns0.update(cols => cols.filter(e => e !== 'altAgent' || showAltAgent));
             }),
             switchMap(() => super.preload()));
     }

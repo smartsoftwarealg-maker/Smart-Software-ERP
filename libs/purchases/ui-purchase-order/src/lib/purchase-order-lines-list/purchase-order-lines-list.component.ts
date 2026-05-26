@@ -57,7 +57,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 ]
 })
 export class PurchaseOrderLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = signal<string[]>([
+    displayedColumns0 = signal<string[]>([
         'position',
         'reference',
         'description',

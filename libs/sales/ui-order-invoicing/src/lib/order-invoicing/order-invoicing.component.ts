@@ -90,7 +90,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
         [2, 'COMMON_DELIVERY'],
     ]);
 
-    displayedColumns = signal<string[]>([
+    displayedColumns0 = signal<string[]>([
         'number',
         'date',
         'agent',
@@ -151,7 +151,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
                 tap((data) => {
                     const invoicing = data['invoicing'] === true;
                     this.isInvoicing.set(invoicing);
-                    this.displayedColumns.set(this.displayedColumns().filter(
+                    this.displayedColumns0.set(this.displayedColumns0().filter(
                         (col) => col !== 'option' || invoicing,
                     ));
                 }),

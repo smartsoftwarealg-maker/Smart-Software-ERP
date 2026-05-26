@@ -78,7 +78,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     journalSummary = signal<JournalSummary>({ id: 0, debit: 0, credit: 0 });
     journalFilter = new FormControl<string>('');
     journalList = signal<Journal[]>([]);
-    displayedColumns = signal<string[]>(['pieceNo', 'pieceDate']); // , 'debit', 'credit'
+    displayedColumns0 = signal<string[]>(['pieceNo', 'pieceDate']); // , 'debit', 'credit'
     filteredData = this.data.filter(() => !this.loading());
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet;
@@ -113,12 +113,12 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                switchMap(() => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
                    tap((policy => {
                        if (policy.showProjects) {
-                           this.displayedColumns.update(v => [...v, 'projectName']);
+                           this.displayedColumns0.update(v => [...v, 'projectName']);
                        }
                        if (policy.showBudget) {
-                           this.displayedColumns.update(v => [...v, 'isBudget']);
+                           this.displayedColumns0.update(v => [...v, 'isBudget']);
                        }
-                       this.displayedColumns.update(v => [...v, 'userName', 'updateTime']);
+                       this.displayedColumns0.update(v => [...v, 'userName', 'updateTime']);
                    })),
                switchMap(() => super.preload())
            );

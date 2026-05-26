@@ -69,7 +69,7 @@ export class FreeInvoiceLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit
 {
-    override displayedColumns = signal([
+    override displayedColumns0 = signal([
         'position',
         'store',
         'reference',

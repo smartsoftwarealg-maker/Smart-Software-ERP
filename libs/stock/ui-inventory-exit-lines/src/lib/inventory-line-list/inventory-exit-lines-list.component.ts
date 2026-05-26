@@ -27,7 +27,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class InventoryExitLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
 
-    displayedColumns = signal([
+    displayedColumns0 = signal([
         'position',
         'store',
         'reference',

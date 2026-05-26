@@ -69,7 +69,7 @@ export class ElementsEntryListComponent
     slipTableWidth = 600;
 
     slipColumns = ['description', 'base', 'rate', 'gain', 'deduction'];
-    displayedColumns = signal<string[]>(['photo', 'id', 'firstName', 'lastName', 'post']);
+    displayedColumns0 = signal<string[]>(['photo', 'id', 'firstName', 'lastName', 'post']);
     journalColumns = this.FIXED_JOURNAL_HEADERS;
 
     paySlip = signal<PaymentElement[]>([]);
@@ -131,7 +131,7 @@ export class ElementsEntryListComponent
         this.infoSrv.loadDataCols();
         const colList = this.infoSrv.colsList();
         this.mainTableWidth = 600 + 150 * colList.length;
-        this.displayedColumns.set(this.FIXED_COLS.concat(colList));
+        this.displayedColumns0.set(this.FIXED_COLS.concat(colList));
 
         const res = data.map((e) => {
             e.imageModel = new ImageModel(this.httpSrv);

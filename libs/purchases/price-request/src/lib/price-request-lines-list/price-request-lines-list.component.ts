@@ -57,7 +57,7 @@ import { PriceRequestLinesService } from '../services/price-request-lines.servic
     ]
 })
 export class PriceRequestLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = signal<string[]>([
+    displayedColumns0 = signal<string[]>([
         'position',
         'reference',
         'description',

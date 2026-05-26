@@ -91,7 +91,7 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
     journalFilter = new FormControl<number>(0);
     journalLookup = new DefaultAutoCompleteModel(this.#journalSrv);
     summary$: Observable<Summary[]> = null;
-    displayedColumns = signal<string[]>(this.CASH_COLS);
+    displayedColumns0 = signal<string[]>(this.CASH_COLS);
     mode: 1 | 2 = 1;
     TREASURY = APP_TREASURY;
     selectedPeriod = signal(0);
@@ -115,10 +115,10 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
             defReportSrv,
             pagPersistSrv,
             'COMMON_TRANSACTIONS');
-        this.displayedColumns.set(this.entitySrv?.isBank() ? this.BANK_COLS : this.CASH_COLS);
+        this.displayedColumns0.set(this.entitySrv?.isBank() ? this.BANK_COLS : this.CASH_COLS);
         this.journalLookup.onObjectSelected = o => this.onJournal(o);
         this.dateFilter.setValue(this.entitySrv.date);
-        this.journalFilter.setValue(this.entitySrv.journalId);
+        this.journalFilter.setValue(this.entitySrv.journalId||0);
         this.invImportBtn.disabled = !(this.entitySrv.journal);
 
     }
@@ -141,7 +141,7 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
     private onJournal(journal: Journal) {
         this.entitySrv.journal = journal;
         this.invImportBtn.disabled = !journal;
-        this.displayedColumns.set(this.entitySrv.isBank() ? this.BANK_COLS : this.CASH_COLS);
+        this.displayedColumns0.set(this.entitySrv.isBank() ? this.BANK_COLS : this.CASH_COLS);
         this.refresh();
         this.summary$ = this.entitySrv.summary();
     }

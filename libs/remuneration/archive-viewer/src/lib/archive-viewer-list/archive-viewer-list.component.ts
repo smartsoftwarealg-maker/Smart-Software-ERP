@@ -201,7 +201,7 @@ export class ArchiveViewerListComponent
             .sort((a, b) => a.variable.localeCompare(b.variable)),
     );
 
-    displayedColumns = signal(this.FIXED_INFO);
+    displayedColumns0 = signal(this.FIXED_INFO);
 
     constructor(
         public override entitySrv: ArchiveViewerService,
@@ -329,10 +329,10 @@ export class ArchiveViewerListComponent
             )
             .subscribe((res) => {
                 this.pagination.elementCount = res.itemCount;
-                this.displayedColumns.set(this.INFO_COLUMNS.filter(
+                this.displayedColumns0.set(this.INFO_COLUMNS.filter(
                     (e) => personalInfo.indexOf(e) >= 0,
                 ));
-                this.displayedColumns.update(v => [...v, ...this._formulaVariables]);
+                this.displayedColumns0.update(v => [...v, ...this._formulaVariables]);
                 this.data = res.body;
             });
         this.minTableWidth =

@@ -39,7 +39,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './parts-request-line-list.component.html'
 })
 export class PartsRequestLineListComponent extends  BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = signal([
+    displayedColumns0 = signal([
         'position',
         'reference',
         'description',

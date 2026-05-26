@@ -39,7 +39,7 @@ export class CirculationComponent implements OnInit {
     storeName = signal('STOCK_STORE');
 
 
-    displayedColumns = signal<string[]>([
+    displayedColumns0 = signal<string[]>([
         'document',
         'number',
         'date',
@@ -57,7 +57,7 @@ export class CirculationComponent implements OnInit {
         this.#optionSrv
             .get(this.#loginSrv.appCtx.center)
             .pipe(tap(res => {
-                this.displayedColumns.update(v => v.filter(c => res.usesLots || c !== 'storeName'));
+                this.displayedColumns0.update(v => v.filter(c => res.usesLots || c !== 'storeName'));
                 this.storeName.set(res.usesLots? 'STOCK_LOT' : 'STOCK_STORE');
             }),
             switchMap(() => this.#route.queryParams))

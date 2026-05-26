@@ -26,7 +26,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     readonly pagination: PaginationModel = null;
     searchText = new FormControl<string>('');
     parentId: number;
-    data = signal<TransactionLine[]>([]);
+    data: TransactionLine[] = [];
     // selectedId: number;
     selectedRow = signal<TransactionLine|null> (null);
     isEditable = computed(() => this.#_isEditable_);
@@ -35,7 +35,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     loading = signal(true);
     selectedId = computed(() => this.detailSrv.selectedId());
 
-    displayedColumns = signal<string[]>([]);
+    displayedColumns0 = signal<string[]>([]);
 
     constructor(
         public detailSrv: TransactionLinesClass,
@@ -72,7 +72,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 tap((res) => {
                     this.usesLots.set(res.usesLots);
                     this.usesUnits.set(res.usesUnits);
-                    this.displayedColumns.set(this.displayedColumns().filter(
+                    this.displayedColumns0.set(this.displayedColumns0().filter(
                         (e) =>
                             (res.usesLots ||
                                 (e !== 'lotNumber' &&
@@ -127,8 +127,8 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 : of([])
         ).pipe(
             tap((data) => {
-                this.data.set(data);
-                this.data().forEach((d) => (d.unitsDescription = this.#_unitsMap.get(d.units) || d.units + ''));
+                this.data=data;
+                this.data.forEach((d) => (d.unitsDescription = this.#_unitsMap.get(d.units) || d.units + ''));
                 this.loading.set(false);
             }),
         );
@@ -144,7 +144,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
             .confirmDelete()
             .subscribe((b) => {
                 if (b && this.detailSrv.selectedId() > 0) {
-                    const a = this.data().filter(
+                    const a = this.data.filter(
                         (x) => x.id === this.detailSrv.selectedId())[0];
                     if (a && a.id) {
                         this.shellSrv.setLoading(true);

@@ -56,7 +56,7 @@ export class ProductionLinesListComponent
     #productionSrv = inject(ProductionService);
     #optionSrv = inject(OptionService);
     hasQtyStyle = signal<boolean>(false);
-    override displayedColumns = signal<string[]>([
+    override displayedColumns0 = signal<string[]>([
         'position',
         'storeDescription',
         'reference',
@@ -101,7 +101,7 @@ export class ProductionLinesListComponent
     private refresh() {
         this.detailSrv.getPage(this.pagination).subscribe({
             next: (data) => {
-                this.data.set(data);
+                this.data = data;
             },
             error: () => {
                 this.snackBarSrv.showFailureMessage('refresh failed');
@@ -183,7 +183,7 @@ export class ProductionLinesListComponent
         const confidential = ['price', 'total'];
         this.#optionSrv.get(this.loginSrv.appCtx.center).subscribe((res) => {
             this.usesUnits.set(res.usesUnits);
-            this.displayedColumns.update(cols => cols.filter(
+            this.displayedColumns0.update(cols => cols.filter(
                 (e) =>
                     (res.usesUnits || e !== 'units') &&
                     (this.loginSrv.appCtx.responsible ||
