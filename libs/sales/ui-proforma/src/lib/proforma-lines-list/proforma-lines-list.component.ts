@@ -39,7 +39,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 export class ProformaLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     // public readonly pagination = PaginationModel.newInstance();
     //
-    displayedColumns0 = signal([
+    displayedColumns = signal([
         'position',
         // 'store',
         'reference',

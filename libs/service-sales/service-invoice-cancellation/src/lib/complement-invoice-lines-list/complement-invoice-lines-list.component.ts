@@ -37,7 +37,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class ComplementInvoiceLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
     abs = Math.abs;
-    override displayedColumns0 = signal<string[]>([
+    override displayedColumns = signal<string[]>([
         'position',
         'store',
         'reference',

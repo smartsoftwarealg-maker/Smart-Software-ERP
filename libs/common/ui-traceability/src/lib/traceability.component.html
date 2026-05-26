@@ -70,21 +70,21 @@
     </mat-tree>
 
 
-    @if (displayedColumns0().length > 0 && data.length > 0) {
+    @if (displayedColumns().length > 0 && data.length > 0) {
       <div class="right_div">
         <mat-table mat-table [dataSource]="data" class="content-div" [ngStyle]="{ 'min-width.px': tableWidth }">
-          @for (col of displayedColumns0(); track col; let i = $index) {
+          @for (col of displayedColumns(); track col; let i = $index) {
             <ng-container matColumnDef="{{ col }}">
               <mat-header-cell *matHeaderCellDef> {{ col }}</mat-header-cell>
               <mat-cell *matCellDef="let e"
-                [class.changed]="e[i]?.indexOf('->')>0 && displayedColumns0()[i].indexOf('Description') < 1 && displayedColumns0()[i].indexOf('Name') < 1">
+                [class.changed]="e[i]?.indexOf('->')>0 && displayedColumns()[i].indexOf('Description') < 1 && displayedColumns()[i].indexOf('Name') < 1">
                 {{ e[i] }}
               </mat-cell>
             </ng-container>
           }
-          <mat-header-row *matHeaderRowDef="displayedColumns0(); sticky: true"></mat-header-row>
+          <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
           <mat-row class="selectable"
-            *matRowDef="let row; columns: displayedColumns0();">
+            *matRowDef="let row; columns: displayedColumns();">
           </mat-row>
         </mat-table>
       </div>

@@ -41,7 +41,7 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
     private FIXED_COLS = ['photo', 'id', 'firstName', 'lastName', 'post', 'accountNo'];
 
     mainTableWidth = 600;
-    displayedColumns0 = signal<string[]>(['photo', 'id', 'firstName', 'lastName', 'post', 'accountNo']);
+    displayedColumns = signal<string[]>(['photo', 'id', 'firstName', 'lastName', 'post', 'accountNo']);
 
 
     constructor(
@@ -76,7 +76,7 @@ export class FixedElementsListComponent extends BaseEntityListComponent<ELine> {
         this.infoSrv.loadDataCols();
         const colList = this.infoSrv.colsList();
         this.mainTableWidth = 600 + 120 * colList.length;
-        this.displayedColumns0.set(this.FIXED_COLS.concat(colList));
+        this.displayedColumns.set(this.FIXED_COLS.concat(colList));
 
         const res = data.map(e => {
             e.imageModel = new ImageModel(this.httpSrv);

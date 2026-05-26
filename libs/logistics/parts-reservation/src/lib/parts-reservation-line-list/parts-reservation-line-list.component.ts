@@ -44,7 +44,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class PartsReservationLineListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit {
-    override displayedColumns0 = signal<string[]>([
+    override displayedColumns = signal<string[]>([
         'position',
         'store',
         'reference',

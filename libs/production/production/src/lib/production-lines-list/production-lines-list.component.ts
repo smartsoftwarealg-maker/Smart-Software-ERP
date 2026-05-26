@@ -56,7 +56,7 @@ export class ProductionLinesListComponent
     #productionSrv = inject(ProductionService);
     #optionSrv = inject(OptionService);
     hasQtyStyle = signal<boolean>(false);
-    override displayedColumns0 = signal<string[]>([
+    override displayedColumns = signal<string[]>([
         'position',
         'storeDescription',
         'reference',
@@ -183,7 +183,7 @@ export class ProductionLinesListComponent
         const confidential = ['price', 'total'];
         this.#optionSrv.get(this.loginSrv.appCtx.center).subscribe((res) => {
             this.usesUnits.set(res.usesUnits);
-            this.displayedColumns0.update(cols => cols.filter(
+            this.displayedColumns.update(cols => cols.filter(
                 (e) =>
                     (res.usesUnits || e !== 'units') &&
                     (this.loginSrv.appCtx.responsible ||

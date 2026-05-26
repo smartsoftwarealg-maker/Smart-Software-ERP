@@ -54,7 +54,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
     selectedId = 0;
     application = '';
     data: string[][] = [];
-    displayedColumns0 = signal<string[]>([]);
+    displayedColumns = signal<string[]>([]);
 
     form = new FormGroup({
         options: new FormControl<number>(1),
@@ -124,7 +124,7 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
 
     select(node: LogFlatNode) {
         this.pagination.page = 1;
-        this.displayedColumns0.set(node && node.schema ? node.schema.columns.split('`') : []);
+        this.displayedColumns.set(node && node.schema ? node.schema.columns.split('`') : []);
         this.selectedId = node && node.schema ? node.schema.id : 0;
         this.refresh();
     }

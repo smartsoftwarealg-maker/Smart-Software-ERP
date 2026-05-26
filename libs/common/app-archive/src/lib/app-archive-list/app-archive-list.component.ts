@@ -37,32 +37,33 @@ import { ActivePersonnelService } from '@ss/payroll/ui-employee';
 })
 export class AppArchiveListComponent implements OnInit {
     private shellSrv = inject(ShellService);
+    public entitySrv = inject(AppArchiveService);
+    private snackBarSrv = inject(SnackBarService);
+    private router = inject(Router);
+    private route = inject(ActivatedRoute);
+    private confirmationSrv = inject(ConfirmationDialogService);
+
     public activePersonnelSrv = inject(ActivePersonnelService);
     public showBackButton = signal(false);
 
     selectedArchive: AppArchive | null = null;
+    loading = signal(false);
     selectedId = signal(0);
     imgSrc = signal<string | null>(null);
     filename= signal<string|null>(null);
-    data =signal<AppArchive[]> ([]);
+    data: AppArchive[] = [];
     paginator = PaginationModel.newInstance();
     displayedColumns = (['docDescription', 'filename']);
-    isEditable = true;
+    isEditable = signal(true);
     id = input<number>(0);
     onIdChange = effect(() => {
         this.entitySrv.setParentId(this.id() || this.entitySrv.id);
         this.entitySrv.getList(0, 50).subscribe((res) => {
-            this.data.set(res.body || []);
+            this.data = res.body || [];
             this.paginator.elementCount = res.itemCount;
         });
     });
 
-    constructor(public entitySrv: AppArchiveService,
-                private snackBarSrv: SnackBarService,
-                private router: Router,
-                private route: ActivatedRoute,
-                private confirmationSrv: ConfirmationDialogService) {
-    }
 
     ngOnInit(): void {
         this.route.data.subscribe(res => {
@@ -100,7 +101,7 @@ export class AppArchiveListComponent implements OnInit {
                 this.refresh();
             });
         const rights = this.shellSrv.getCurrentNodeRights();
-        this.isEditable = rights.edit;
+        this.isEditable.set(rights.edit);
     }
 
     public showDetail(id: string) {
@@ -120,18 +121,21 @@ export class AppArchiveListComponent implements OnInit {
         this.confirmationSrv.confirmDelete()
             .subscribe(b => {
                 if (b) {
+                    this.loading.set(true);
                     if (this.selectedId && this.selectedId() > 0) {
-                        const a = this.data().filter(x => x.id === this.selectedId())[0];
+                        const a = this.data.filter(x => x.id === this.selectedId())[0];
                         if (a && a.id) {
                             this.entitySrv.remove(a.id)
                                 .subscribe({
                                     next: () => {
                                         this.snackBarSrv.showSuccessMessage();
-                                        this.data.set(this.data().filter(e => e.id !== a.id));
+                                        this.data = this.data.filter(e => e.id !== a.id);
                                         this.imgSrc.set(null);
+                                        this.selectedId.set(0);
                                     },
                                     error: err => {
                                         this.snackBarSrv.showFailureMessage();
+                                        this.loading.set(false);
                                         throw err;
                                     }
                                 });
@@ -144,14 +148,17 @@ export class AppArchiveListComponent implements OnInit {
     refresh() {
         this.imgSrc.set(null);
         if (this.entitySrv.getParentId() > 0) {
+            this.loading.set(true);
             this.entitySrv.getList(0, 50)
                 .subscribe(res => {
-                    this.data.set(res.body || []);
+                    this.data = res.body || [];
                     this.paginator.elementCount = res.itemCount;
+                    this.loading.set(false);
                 });
         } else {
-            this.data.set([]);
+            this.data = [];
             this.paginator.elementCount = 0;
+            this.loading.set(false);
         }
     }
 

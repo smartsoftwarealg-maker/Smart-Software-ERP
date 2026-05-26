@@ -67,7 +67,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     ],
 })
 export class DeliveryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns0 = signal([
+    displayedColumns = signal([
         'position',
         'store',
         'reference',

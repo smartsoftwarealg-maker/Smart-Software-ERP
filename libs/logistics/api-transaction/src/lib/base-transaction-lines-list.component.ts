@@ -35,7 +35,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     loading = signal(true);
     selectedId = computed(() => this.detailSrv.selectedId());
 
-    displayedColumns0 = signal<string[]>([]);
+    displayedColumns = signal<string[]>([]);
 
     constructor(
         public detailSrv: TransactionLinesClass,
@@ -72,7 +72,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 tap((res) => {
                     this.usesLots.set(res.usesLots);
                     this.usesUnits.set(res.usesUnits);
-                    this.displayedColumns0.set(this.displayedColumns0().filter(
+                    this.displayedColumns.set(this.displayedColumns().filter(
                         (e) =>
                             (res.usesLots ||
                                 (e !== 'lotNumber' &&

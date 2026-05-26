@@ -43,7 +43,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./service-cinvoice-line-list.component.scss']
 })
 export class ServiceCinvoiceLineListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns0 = signal<string[]>([
+    displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',

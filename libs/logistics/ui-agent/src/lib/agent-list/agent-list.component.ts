@@ -72,7 +72,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
     isSales = false;
     isAsset = false;
 
-    displayedColumns0 = signal<string[]>(this.DEF_COLUMNS);
+    displayedColumns = signal<string[]>(this.DEF_COLUMNS);
 
     constructor(
         public agentService: AgentService,
@@ -113,7 +113,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
         return this.isParamSrv.is('AQS').pipe(
             tap((b: boolean) => {
                 this.isAQS = b;
-                this.displayedColumns0.set(this.isAQS
+                this.displayedColumns.set(this.isAQS
                     ? this.AQS_COLUMNS
                     : this.DEF_COLUMNS);
             }),

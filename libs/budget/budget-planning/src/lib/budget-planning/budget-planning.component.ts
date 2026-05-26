@@ -60,7 +60,7 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
 
     private currentType = 1;
     selectedPlanning: BudgetPlanningTree = null;
-    displayedColumns0 = signal<string[]>(this.AMOUNT_COLS);
+    displayedColumns = signal<string[]>(this.AMOUNT_COLS);
 
     constructor(private entitySrv: BudgetPlanningService,
                 private budgetSrv: BudgetService,
@@ -122,7 +122,7 @@ export class BudgetPlanningComponent implements OnInit, OnDestroy {
     }
 
     onMode(e: MatRadioChange) {
-        this.displayedColumns0.set(+e.value === 1? this.AMOUNT_COLS : this.QTY_COLS);
+        this.displayedColumns.set(+e.value === 1? this.AMOUNT_COLS : this.QTY_COLS);
         this.refresh(this.currentType);
     }
 

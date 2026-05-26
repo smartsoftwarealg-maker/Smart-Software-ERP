@@ -68,7 +68,7 @@ export class ProductionOrderLinesListComponent
     implements OnInit
 {
     #optionSrv = inject(OptionService);
-    override displayedColumns0 = signal<string[]>([
+    override displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',
@@ -138,7 +138,7 @@ export class ProductionOrderLinesListComponent
 
         this.#optionSrv.get(this.loginSrv.appCtx.center).subscribe((res) => {
             this.usesUnits.set(res.usesUnits);
-            this.displayedColumns0.update(cols => cols.filter(
+            this.displayedColumns.update(cols => cols.filter(
                 (e) => res.usesUnits || e !== 'units',
             ));
         });

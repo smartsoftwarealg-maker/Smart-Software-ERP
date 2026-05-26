@@ -57,7 +57,7 @@ export class ArticleListComponent
         'price1',
         'discount',
     ];
-    displayedColumns0 = signal<string[]>(this.STOCK_COLS);
+    displayedColumns = signal<string[]>(this.STOCK_COLS);
 
     constructor(
         public articleSrv: ArticleService,
@@ -97,7 +97,7 @@ export class ArticleListComponent
         return super.preInit().pipe(
             concatMap(() => this.route.data),
             tap((res) => {
-                this.displayedColumns0.set(
+                this.displayedColumns.set(
                     res['price'] === 'price1'
                         ? this.SALES_COLS
                         : this.STOCK_COLS);

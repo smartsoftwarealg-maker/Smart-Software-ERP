@@ -54,7 +54,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 export class ConsumptionLinesListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit {
-    displayedColumns0 = signal([
+    displayedColumns = signal([
         'position',
         'storeDescription',
         'storeName',

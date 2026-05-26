@@ -32,7 +32,7 @@
             </ng-container>
 
             <ng-container matColumnDef="accountno">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNT_NO</mat-header-cell>
                 <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }">
                     {{ e.accountno }}
                 </mat-cell>
@@ -102,9 +102,9 @@
             </ng-container>
 
 
-            <mat-header-row *matHeaderRowDef="displayedColumns0(); sticky: true"></mat-header-row>
+            <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
             <mat-row class="selectable" [class.selected]="row.id === selectedId()" (click)="selectRow(row)"
-                     *matRowDef="let row; columns: displayedColumns0();"></mat-row>
+                     *matRowDef="let row; columns: displayedColumns();"></mat-row>
         </mat-table>
 </div>
 <div class="container b-b-background">

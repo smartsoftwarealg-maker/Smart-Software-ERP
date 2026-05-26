@@ -86,7 +86,7 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
     journalLookup: DefaultAutoCompleteModel<Journal> = new DefaultAutoCompleteModel(this.journalSrv);
     summary$: Observable<Summary[]> = null;
     selectedJournal: string|null = null;
-    displayedColumns0 = signal<string[]>(this.CASH_COLS);
+    displayedColumns = signal<string[]>(this.CASH_COLS);
 
     constructor(
         public override entitySrv: TreasuryBankExpenseService,
@@ -106,7 +106,7 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
             defReportSrv,
             pagPersistSrv,
             'TRS_BANK_EXPENSES');
-        this.displayedColumns0.set(this.entitySrv?.isBank()? this.BANK_COLS: this.CASH_COLS);
+        this.displayedColumns.set(this.entitySrv?.isBank()? this.BANK_COLS: this.CASH_COLS);
         this.journalLookup.onObjectSelected = o => this.onJournal(o);
         this.dateFilter  = new FormControl<Date>(this.entitySrv.date||new Date());
         this.journalFilter = new FormControl<number>(this.entitySrv.journalId||0);
@@ -119,7 +119,7 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
 
     private onJournal(journal: Journal) {
         this.entitySrv.journal = journal;
-        this.displayedColumns0.set(this.entitySrv.isBank()? this.BANK_COLS : this.CASH_COLS);
+        this.displayedColumns.set(this.entitySrv.isBank()? this.BANK_COLS : this.CASH_COLS);
         this.refresh();
         this.summary$ = this.entitySrv.summary();
     }

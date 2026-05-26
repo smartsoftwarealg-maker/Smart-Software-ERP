@@ -91,7 +91,7 @@ export class ArticleStoreComponent implements OnInit {
 
     data: ArticleStore[] = [];
     selectedStore: ArticleStore = null;
-    displayedColumns0 = signal<string[]>([
+    displayedColumns = signal<string[]>([
         'storeName',
         'lotNumber',
         'locSector',
@@ -143,7 +143,7 @@ export class ArticleStoreComponent implements OnInit {
             .pipe(
                 tap(res => {
                     this.usesLots.set(res.usesLots);
-                    this.displayedColumns0.update(cols => cols.filter(c => res.usesLots || c !== 'storeName'));
+                    this.displayedColumns.update(cols => cols.filter(c => res.usesLots || c !== 'storeName'));
                 }),
                 switchMap(() => this.articleStoreSrv.getList(this.pagination.page - 1, this.pagination.pageSize)))
         .subscribe((x) => {

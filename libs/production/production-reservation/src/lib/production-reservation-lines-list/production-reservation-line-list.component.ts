@@ -53,7 +53,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 export class ProductionReservationLineListComponent
     extends BaseTransactionLinesListComponent
     implements OnInit {
-    override displayedColumns0 = signal<string[]>([
+    override displayedColumns = signal<string[]>([
         'position',
         'store',
         'reference',

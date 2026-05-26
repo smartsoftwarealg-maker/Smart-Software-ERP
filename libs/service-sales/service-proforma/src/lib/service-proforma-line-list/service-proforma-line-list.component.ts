@@ -44,7 +44,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./service-proforma-line-list.component.scss']
 })
 export class ServiceProformaLineListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns0 = signal([
+    displayedColumns = signal([
         'position',
         'reference',
         'description',

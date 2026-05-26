@@ -50,7 +50,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ReceptionCancellationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
 
-    displayedColumns0 = signal([
+    displayedColumns = signal([
         'position',
         'store',
         'reference',

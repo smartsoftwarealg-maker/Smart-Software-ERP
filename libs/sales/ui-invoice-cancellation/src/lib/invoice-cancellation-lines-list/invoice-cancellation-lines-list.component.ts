@@ -34,7 +34,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ]
 })
 export class InvoiceCancellationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns0 = signal([
+    displayedColumns = signal([
         'position',
         'store',
         'reference',

@@ -75,7 +75,7 @@ class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
         'qty',
         'price'
     ]);
-    displayedColumns0 = signal(this.LONG());
+    displayedColumns = signal(this.LONG());
 
     constructor(
         private cartSrv: FoodCartService,
@@ -127,7 +127,7 @@ class FoodCartDetailComponent extends BaseEntityListComponent<Cartline> {
         this.shellSrv.setButtons([this.viewReportButton]);
         this.isHandset.subscribe(state => {
             this.isSmallScreen = state.matches;
-            this.displayedColumns0.set(this.isSmallScreen ? this.SHORT() : this.LONG());
+            this.displayedColumns.set(this.isSmallScreen ? this.SHORT() : this.LONG());
         });
         this.subscriptions
             .push(

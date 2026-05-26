@@ -40,7 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./service-order-line-list.component.scss']
 })
 export class ServiceOrderLineListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns0 = signal<string[]>([
+    displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',

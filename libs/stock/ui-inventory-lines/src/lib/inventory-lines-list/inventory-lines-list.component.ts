@@ -30,7 +30,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ]
 })
 export class InventoryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns0 = signal([
+    displayedColumns = signal([
         'position',
         'storeDescription',
         'storeName',

@@ -34,7 +34,7 @@ export class PriceListListComponent extends BaseEntityListComponent<Location> {
     #loginSrv = inject(LoginService);
     #optionSrv = inject(OptionService);
 
-    displayedColumns0 = signal(['storeName', 'lotNumber', 'reference', 'description', 'price1', 'price2', 'price3']);
+    displayedColumns = signal(['storeName', 'lotNumber', 'reference', 'description', 'price1', 'price2', 'price3']);
     constructor(
         public override entitySrv: LocationService,
         public override shellSrv: ShellService,
@@ -60,7 +60,7 @@ export class PriceListListComponent extends BaseEntityListComponent<Location> {
         return this.#optionSrv
             .get(this.#loginSrv.appCtx.center)
             .pipe(
-                tap(res => this.displayedColumns0.update(v => v.filter(c => res.usesLots || c !== 'lotNumber'))),
+                tap(res => this.displayedColumns.update(v => v.filter(c => res.usesLots || c !== 'lotNumber'))),
                 switchMap(() => super.preload()));
     }
 
