@@ -41,7 +41,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class PrevWorkOrderListComponent extends BaseEntityListComponent<Work> {
     public Types = WORK_TYPES;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'description',

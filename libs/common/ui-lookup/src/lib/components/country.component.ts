@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class CountryListComponent extends BaseEntityListComponent<Country> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public countrySrv: CountryService,

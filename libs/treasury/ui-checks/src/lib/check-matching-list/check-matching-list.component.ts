@@ -56,7 +56,7 @@ export class CheckMatchingListComponent implements OnInit, OnDestroy {
     data = signal<Match[]>([]);
 
     pagination = PaginationModel.newInstance();
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'bank',
         'number',
         'date',

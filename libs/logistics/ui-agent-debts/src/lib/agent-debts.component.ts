@@ -25,7 +25,7 @@ export class AgentDebtsComponent implements OnInit {
 
     data = signal<AgentDebts[]>([]);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'document',
         'debit',
         'credit'

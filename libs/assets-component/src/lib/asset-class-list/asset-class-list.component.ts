@@ -25,7 +25,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ]})
 export class AssetClassListComponent extends BaseEntityListComponent<AssetClass> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'depreciationRate',
         'usefulLife'

@@ -55,7 +55,7 @@ export class ServiceRequestListComponent extends BaseEntityListComponent<Work> i
     };
 
     public Types = WORK_TYPES;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'description',

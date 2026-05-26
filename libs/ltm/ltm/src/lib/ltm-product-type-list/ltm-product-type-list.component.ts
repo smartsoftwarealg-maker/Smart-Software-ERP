@@ -26,7 +26,7 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 })
 export class LtmProductTypeListComponent extends BaseEntityListComponent<Lookup> implements OnInit {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
     ]);
 

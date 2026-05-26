@@ -33,7 +33,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class AccProjectListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public markSrv: AccProjectService,

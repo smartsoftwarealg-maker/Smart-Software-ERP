@@ -43,7 +43,7 @@ export class InventoryAnomaliesComponent extends BaseEntityListComponent<Anomaly
         click: () => this.fixAnomalies()
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'store',
         'reference',
         'description',

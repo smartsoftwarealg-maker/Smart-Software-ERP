@@ -38,7 +38,7 @@ export class TotalComponent implements OnInit {
 
     data = signal<Total[]>([]);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'value',
     ]);

@@ -32,7 +32,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ComplementInvoiceListComponent extends BaseEntityListComponent<Transaction> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'agent',

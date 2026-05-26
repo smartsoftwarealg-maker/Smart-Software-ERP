@@ -44,7 +44,7 @@ import { CrmQuoteItemsService } from '../crm-quote-item.service';
     styleUrl: './crm-quotes-lines-list.component.scss'
 })
 export class CrmQuotesLinesListComponent extends BaseChildEntityListComponent<CRMQuoteItem> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'reference',
         'quantity',
         'listPrice',

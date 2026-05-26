@@ -68,7 +68,7 @@ export class StoreNameListComponent
     extends BaseEntityListComponent<Lot>
     implements OnInit
 {
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public storeNameSrv: StoreNamesService,

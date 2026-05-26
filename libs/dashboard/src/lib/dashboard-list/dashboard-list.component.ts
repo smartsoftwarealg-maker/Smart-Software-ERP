@@ -51,7 +51,7 @@ export class DashboardListComponent extends BaseEntityListComponent<Dashboard> {
 
     applications = signal(APPLICATIONS);
     applicationCtrl = new FormControl();
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
     ]);
 

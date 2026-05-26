@@ -167,7 +167,7 @@ export class AgentListComponent extends BaseEntityListComponent<Agent> {
 
     star(id: number, starred: boolean) {
         if (this.editable) {
-            this.data()
+            this.data
                 .filter((i) => i.id === id)
                 .forEach((i) => {
                     i.starred = starred;

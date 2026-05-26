@@ -32,7 +32,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 ]
 })
 export class AssetRevaluationTypeListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'descriptionAr'
     ]);

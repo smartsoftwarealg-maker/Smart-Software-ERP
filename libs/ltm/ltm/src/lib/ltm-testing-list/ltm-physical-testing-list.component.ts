@@ -34,7 +34,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 export class LtmPhysicalTestingListComponent extends LtmBaseTestingListComponent {
     #_destroyRef = inject(DestroyRef);
 
-    displayedColumns = signal<string[]>(['sampleNo', 'matterDescription',  'timeStamp', 'equipmentDescription', 'pickupDescription', 'siloDescription']);
+    readonly displayedColumns = (['sampleNo', 'matterDescription',  'timeStamp', 'equipmentDescription', 'pickupDescription', 'siloDescription']);
     constructor(
         public override entitySrv: LtmPhysicalTestingService,
         public override shellSrv: ShellService,

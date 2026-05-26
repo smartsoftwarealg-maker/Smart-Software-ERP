@@ -27,7 +27,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 })
 export class BankListComponent extends BaseEntityListComponent<Bank> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'id',
         'description',
         'code'

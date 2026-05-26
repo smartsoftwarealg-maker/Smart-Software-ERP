@@ -46,7 +46,7 @@ export class AssetChildReadingListComponent extends BaseChildEntityListComponent
     assetLookup = new DefaultAutoCompleteModel(this.assetSrv);
     // assetCtrl = new FormControl<number>(0);
 
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'meterDescription',
         'date',
         'amount'

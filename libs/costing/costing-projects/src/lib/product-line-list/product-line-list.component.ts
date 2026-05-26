@@ -26,7 +26,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./product-line-list.component.css'],
 })
 export class ProductLineListComponent extends BaseChildEntityListComponent<CProductLine> {
-    override displayedColumns = signal<string[]>(['reference', 'description', 'units']);
+    override readonly displayedColumns = (['reference', 'description', 'units']);
 
     constructor(protected override detailSrv: CProductLineService) {
         super(detailSrv, 'CProductLine');

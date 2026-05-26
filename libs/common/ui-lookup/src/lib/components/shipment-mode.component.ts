@@ -24,7 +24,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class ShipmentModeListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public LookupSrv: ShipmentModeService,

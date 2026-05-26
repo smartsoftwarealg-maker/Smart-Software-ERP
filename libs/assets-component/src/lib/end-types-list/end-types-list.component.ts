@@ -33,7 +33,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 
 })
 export class EndTypesListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'descriptionAr'
     ]);

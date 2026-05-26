@@ -20,7 +20,7 @@
         }
       </mat-form-field>
       <mat-form-field class="default-50 sm-100">
-        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+        <mat-label translate>COMMON_ACCOUNT_NO</mat-label>
         <ss-auto-complete matInput
           [model]="accountLookup"
           formControlName="accountNo">
@@ -101,6 +101,6 @@
 <!--<div mat-subheader class="title b-primary" translate> {{ 'COMMON_ARCHIVE' }} </div> {{id}}-->
 @if (id > 0 && form !== null) {
   <div class="content">
-    <ss-app-archive-main [id]="id" [appId]="2" [editable]="isEditable"></ss-app-archive-main>
+    <ss-app-archive-main [id]="id" [appId]="2" [editable]="isEditable()"></ss-app-archive-main>
   </div>
 }

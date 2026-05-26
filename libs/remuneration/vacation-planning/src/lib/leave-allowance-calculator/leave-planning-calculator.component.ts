@@ -103,7 +103,7 @@ export class LeavePlanningCalculatorComponent {
 
     selectedId = 0;
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'employee',
         'name',
         'post',

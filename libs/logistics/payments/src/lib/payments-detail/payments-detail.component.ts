@@ -39,7 +39,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
         ['/transporters', 'LOGISTICS_TRANSPORTERS_PAYMENTS'],
     ]);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'date',
         'denomination',
         'description',

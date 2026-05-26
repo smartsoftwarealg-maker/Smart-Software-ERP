@@ -25,7 +25,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 ],
 })
 export class LtmTestListComponent extends BaseEntityListComponent<LTMTest> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'variable',
         'description',
         'descriptionAr',

@@ -23,7 +23,7 @@ import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
     ]
 })
 export class LtmMixtureDetailListComponent extends BaseChildEntityListComponent<LTMMixtureDetail> {
-    override displayedColumns = signal<string[]>(['matterDescription']);
+    override readonly displayedColumns = (['matterDescription']);
 
     constructor(protected override detailSrv: LtmMixtureDetailService) {
         super(detailSrv, 'LTMMixtureDetail');

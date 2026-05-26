@@ -42,7 +42,7 @@ export class SalesQuotaListComponent extends BaseEntityListComponent<Quota> {
     agentFC = new FormControl<number>(this.loginSrv.appCtx.agentId || 0);
     public customerLookup = new DefaultAutoCompleteModel<Agent>(this.customerSrv, 'id', 'denomination');
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'salesDate',
         'reference',
         'customerCode',

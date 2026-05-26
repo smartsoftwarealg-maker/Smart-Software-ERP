@@ -37,7 +37,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ]
 })
 export class CMMSRoutingPartsListComponent extends BaseChildEntityListComponent<RoutingPart>{
-    override displayedColumns = signal<string[]>(['reference', 'description', 'qty']);
+    override readonly displayedColumns = (['reference', 'description', 'qty']);
 
     constructor(protected override detailSrv: CMMSRoutingPartService) {
         super(detailSrv, 'RoutingPart');

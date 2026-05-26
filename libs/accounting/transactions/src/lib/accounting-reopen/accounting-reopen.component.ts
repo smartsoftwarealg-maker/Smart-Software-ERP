@@ -56,7 +56,7 @@ export class AccountingReopenComponent extends BaseEntityListComponent<PeriodSum
         Validators.required,
         Validators.maxLength(50),
     ]);
-    displayedColumns = signal<string[]>(['month', 'debit', 'credit']);
+    readonly displayedColumns = (['month', 'debit', 'credit']);
     constructor(
         public override entitySrv: PeriodSelectorService,
         public override shellSrv: ShellService,

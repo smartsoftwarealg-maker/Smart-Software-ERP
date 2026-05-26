@@ -33,7 +33,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class FurnitureReceiverListComponent extends BaseEntityListComponent<FurnitureReceiver> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
     ]);
 

@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: '../../../../social-api/src/lib/aids.styles.scss',
 })
 export class MedicalAidsListComponent extends BaseEntityListComponent<SocialAid> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'medicalTypeDescription',
         'number',
         'date',

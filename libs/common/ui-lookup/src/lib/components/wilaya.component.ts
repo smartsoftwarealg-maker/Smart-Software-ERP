@@ -26,7 +26,7 @@ import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from "@ss/common/ui-a
 })
 export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public wilayaSrv: WilayaService,

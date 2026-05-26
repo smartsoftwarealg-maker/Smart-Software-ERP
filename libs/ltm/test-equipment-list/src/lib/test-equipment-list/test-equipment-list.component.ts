@@ -30,7 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './test-equipment-list.component.scss',
 })
 export class TestEquipmentListComponent extends BaseEntityListComponent<LTMTestingEquipment> {
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
 
     constructor(

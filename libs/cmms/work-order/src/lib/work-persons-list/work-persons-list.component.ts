@@ -40,7 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./work-persons-list.component.css'],
 })
 export class WorkPersonsListComponent extends BaseChildEntityListComponent<WorkPerson> {
-    override displayedColumns = signal<string[]>(['firstName', 'lastName', 'description', 'from', 'to']);
+    override readonly displayedColumns = (['firstName', 'lastName', 'description', 'from', 'to']);
 
     constructor(protected override detailSrv: CMMSWorkPersonService) {
         super(detailSrv, 'WorkPerson');

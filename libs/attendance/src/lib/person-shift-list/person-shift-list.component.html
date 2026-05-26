@@ -18,7 +18,7 @@
 </div>
 
 <div class="table_div size">
-    <mat-table mat-table [dataSource]="data()" class="main-table">
+    <mat-table mat-table [dataSource]="data" class="main-table">
 
         <ng-container matColumnDef="shiftDescription">
             <mat-header-cell *matHeaderCellDef translate>ATT_SHIFT</mat-header-cell>
@@ -49,9 +49,9 @@
             </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"
-                 *matRowDef="let row; columns: displayedColumns();"></mat-row>
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 </div>
 <div class="size b-b-background">

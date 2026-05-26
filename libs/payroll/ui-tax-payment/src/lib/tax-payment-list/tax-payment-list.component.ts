@@ -63,7 +63,7 @@ export class TaxPaymentListComponent extends BaseEntityListComponent<TaxPayment>
 
     yearCtrl = new FormControl<number>(null);
 
-    displayedColumns = signal<string[]>(['date', 'month', 'base', 'irg']);
+    readonly displayedColumns = (['date', 'month', 'base', 'irg']);
     constructor(
         public override entitySrv: TaxPaymentService,
         public override shellSrv: ShellService,

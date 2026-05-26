@@ -30,7 +30,7 @@ export class TransfersComponent implements OnInit {
     private route = inject(ActivatedRoute);
 
     public data = signal<TransactionLine[]>([]);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description',
         'qtySatisfied',

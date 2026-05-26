@@ -37,7 +37,7 @@ export class ContractArticleListComponent implements OnInit {
     selected: ProjectArticle | null = null;
     articles: ProjectArticle[] = [];
     pagination = PaginationModel.newInstance();
-    displayedColumns = signal<string[]>(['reference', 'description', 'qty', 'price', 'vat']);
+    readonly displayedColumns = (['reference', 'description', 'qty', 'price', 'vat']);
 
     constructor(private router: Router,
                 private route: ActivatedRoute,

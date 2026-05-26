@@ -30,7 +30,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class SalaryGridListComponent extends BaseEntityListComponent<Grid> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         "category",
         "sec",
         "baseSalary",

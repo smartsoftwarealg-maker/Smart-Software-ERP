@@ -34,7 +34,7 @@ export class AttendanceLogListComponent extends BaseEntityListComponent<ATTSigna
 
     dateCtrl = new FormControl<Date>(this.#lastMonth);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'personId',
         'firstName',
         'lastName',

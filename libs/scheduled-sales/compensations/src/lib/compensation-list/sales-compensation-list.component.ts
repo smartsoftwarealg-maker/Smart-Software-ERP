@@ -40,7 +40,7 @@ import { CompensationService } from '../services/compensation.service';
     standalone: true
 })
 export class SalesCompensationListComponent extends BaseChildEntityListComponent<Compensation> {
-    override displayedColumns = signal<string[]>(['description', 'creationTime', 'amount']);
+    override readonly displayedColumns = (['description', 'creationTime', 'amount']);
 
     constructor(entitySrv: CompensationService) {
         super(entitySrv, 'InvoicePayment');

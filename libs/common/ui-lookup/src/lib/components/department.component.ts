@@ -25,7 +25,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class DepartmentListComponent extends BaseEntityListComponent<Department> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public departmentSrv: DepartmentService,

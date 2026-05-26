@@ -68,7 +68,7 @@ export class EvolutionReportComponent implements OnInit {
     #deductionSrv = inject(DeductionService);
 
     paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'id',
         'firstName',
         'lastName',

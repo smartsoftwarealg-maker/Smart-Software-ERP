@@ -39,7 +39,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ],
 })
 export class CMMSFunctionListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
     constructor(
         public markSrv: CMMSFunctionService,
         public override shellSrv: ShellService,

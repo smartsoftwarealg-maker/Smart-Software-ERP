@@ -71,7 +71,7 @@ export class HolidayRequestListComponent extends BaseEntityListComponent<Holiday
         'to',
         'docDescription'
     ];
-    displayedColumns = signal<string[]>(this.loginSrv.appCtx.id? this.userColumns : this.personColumns);
+    readonly displayedColumns = (this.loginSrv.appCtx.id? this.userColumns : this.personColumns);
 
     constructor(
         public override entitySrv: HolidayRequestService,

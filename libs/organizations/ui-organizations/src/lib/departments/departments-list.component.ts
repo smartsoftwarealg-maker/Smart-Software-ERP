@@ -33,7 +33,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ],
 })
 export class DepartmentsListComponent extends BaseEntityListComponent<Department> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'responsible'
     ]);

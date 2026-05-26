@@ -37,7 +37,7 @@ export class FurnitureReceptionLineListComponent implements OnInit {
     selectedId = signal(0);
     pagination = PaginationModel.newInstance({ pageSize: 10, page: 1, elementCount: 0});
     data = signal<FurnitureTransactionDetail[]>([]);
-    displayedColumns = signal<string[]>(['description', 'qty', 'price'])
+    readonly displayedColumns = (['description', 'qty', 'price'])
 
     constructor(private entitySrv: FurnitureReceptionService,
                 private detailSrv: FurnitureTransactionLineService,

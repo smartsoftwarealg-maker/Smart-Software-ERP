@@ -20,7 +20,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class TransacAccountsListComponent extends BaseEntityListComponent<TransacAccount> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'accountno'
     ]);

@@ -30,7 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './mutual-rejections-list.component.scss',
 })
 export class MutualRejectionsListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'descriptionAr',
         'value'

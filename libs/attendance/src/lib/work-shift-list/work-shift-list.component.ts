@@ -34,7 +34,7 @@ import { DatePipe } from '@angular/common';
     ],
 })
 export class WorkShiftListComponent extends BaseEntityListComponent<WorkShift> {
-    displayedColumns = signal([
+    displayedColumns = ([
         'description',
         'startDate',
         'graceTime',

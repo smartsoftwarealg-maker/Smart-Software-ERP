@@ -27,7 +27,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./vehicle-insurance-list.component.css'],
 })
 export class VehicleInsuranceListComponent extends BaseChildEntityListComponent<VehicleInsurance> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'date',
         'policyDescription',
         'agencyDescription',

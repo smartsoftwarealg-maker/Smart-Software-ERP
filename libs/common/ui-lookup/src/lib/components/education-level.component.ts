@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class EducationLevelListComponent extends BaseEntityListComponent<EducationLevel> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public educationLevelSrv: EducationLevelService,

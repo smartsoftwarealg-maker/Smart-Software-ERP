@@ -47,7 +47,7 @@ export class AssetReadingListComponent
     assetLookup = new DefaultAutoCompleteModel(this.assetSrv);
     assetCtrl = new FormControl<number>(0);
 
-    displayedColumns = signal<string[]>(['meterDescription', 'date', 'amount']);
+    readonly displayedColumns = (['meterDescription', 'date', 'amount']);
 
     constructor(
         public override entitySrv: CMMSAssetReadingService,
@@ -95,7 +95,7 @@ export class AssetReadingListComponent
                 this.addButton.visible = value > 0;
                 this.entitySrv
                     .getPage(this.pagination)
-                    .subscribe((res) => (this.data.set(res)));
+                    .subscribe((res) => (this.data=res));
             }),
         );
     }

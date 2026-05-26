@@ -26,7 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrl: './aid-history.component.scss',
 })
 export class AidHistoryComponent extends BaseChildEntityListComponent<SocialAid> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'medicalTypeDescription',
         'number',
         'date',

@@ -35,7 +35,7 @@ import { DatePipe } from '@angular/common';
     ],
 })
 export class PmListComponent extends BaseEntityListComponent<PM> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description',
         'assetDescription',

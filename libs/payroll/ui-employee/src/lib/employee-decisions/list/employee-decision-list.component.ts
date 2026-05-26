@@ -20,7 +20,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
 export class EmployeeDecisionListComponent extends BaseChildEntityListComponent<Decision> {
     // @Input() editable = true;
 
-    public override displayedColumns = signal<string[]>([
+    public override readonly displayedColumns = ([
         'dec_reference',
         'dec_date',
         'application_date',

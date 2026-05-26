@@ -46,7 +46,7 @@ export class ProductLineKeysComponent extends BaseChildEntityListComponent<CLine
     itemLookup = new DefaultAutoCompleteModel(this.itemSrv);
     keyLookup = new DefaultAutoCompleteModel(this.keySrv);
 
-    override displayedColumns = signal<string[]>(['keyDescription', 'value']);
+    override readonly displayedColumns = (['keyDescription', 'value']);
 
     constructor(protected override detailSrv: ProductLineKeysService) {
         super(detailSrv, 'CPoolDetail');

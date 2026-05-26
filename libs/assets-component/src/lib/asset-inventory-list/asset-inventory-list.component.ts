@@ -44,7 +44,7 @@ export class AssetInventoryListComponent
         click: () => this.importDocument(),
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'officeDescription',
         'assetDescription',
         'date',

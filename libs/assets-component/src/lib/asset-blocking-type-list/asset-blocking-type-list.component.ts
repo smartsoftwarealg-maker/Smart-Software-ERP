@@ -31,7 +31,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     PaginationComponent
 ]})
 export class AssetBlockingTypeListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'descriptionAr',
     ])

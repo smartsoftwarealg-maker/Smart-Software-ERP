@@ -25,7 +25,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class NationalityListComponent extends BaseEntityListComponent<Nationality> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public nationalitySrv: NationalityService,

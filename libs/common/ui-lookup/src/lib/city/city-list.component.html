@@ -1,5 +1,5 @@
 <div class="form_container size">
-    <mat-table mat-table [dataSource]="data()" class="main-table" style="width: 700px">
+    <mat-table mat-table [dataSource]="data" class="main-table" style="width: 700px">
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
@@ -29,9 +29,9 @@
             </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"
-                 *matRowDef="let row; columns: displayedColumns();"></mat-row>
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
 </div>

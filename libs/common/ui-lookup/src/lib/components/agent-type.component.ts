@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class AgentTypeListComponent extends BaseEntityListComponent<AgentType> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public agentTypeSrv: AgentTypeService,

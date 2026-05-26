@@ -43,7 +43,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class InspectionOrderListComponent extends BaseEntityListComponent<Work> implements OnInit {
     public types = WORK_TYPES;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'description',

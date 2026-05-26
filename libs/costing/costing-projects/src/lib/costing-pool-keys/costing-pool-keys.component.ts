@@ -40,7 +40,7 @@ export class CostingPoolKeysComponent extends BaseChildEntityListComponent<CPool
     });
     keyLookup = new DefaultAutoCompleteModel(this.keySrv);
 
-    override displayedColumns = signal<string[]>(['keyDescription', 'value']);
+    override readonly displayedColumns = (['keyDescription', 'value']);
 
     constructor(protected override detailSrv: CostingPoolKeysService) {
         super(detailSrv, 'CPoolKey');

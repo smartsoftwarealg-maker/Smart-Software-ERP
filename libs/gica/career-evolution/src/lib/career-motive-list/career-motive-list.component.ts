@@ -32,7 +32,7 @@ import { Observable, tap } from 'rxjs';
     styleUrl: './career-motive-list.component.css',
 })
 export class CareerMotiveListComponent extends BaseEntityListComponent<CareerMotive> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'isPromotion'
     ]);

@@ -38,7 +38,7 @@ export class ReportPrivilegesComponent implements OnInit, OnDestroy {
     };
 
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'folder',
         'manager'
     ]);

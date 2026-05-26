@@ -69,7 +69,7 @@ export class ExtraCostListComponent implements OnInit {
     data = signal<ExtraCost[]>([]);
     isEditable = signal(true);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description',
         'amount',

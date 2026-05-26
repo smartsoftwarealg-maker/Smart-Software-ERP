@@ -29,7 +29,7 @@ import { MatSort } from '@angular/material/sort';
     styleUrl: '../../../../social-api/src/lib/aids.styles.scss',
 })
 export class SocialAidsListComponent extends BaseEntityListComponent<SocialAid> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'typeDescription',
         'number',
         'date',

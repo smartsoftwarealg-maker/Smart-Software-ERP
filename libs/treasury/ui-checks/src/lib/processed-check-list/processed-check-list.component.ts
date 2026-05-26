@@ -50,7 +50,7 @@ export class ProcessedCheckListComponent extends BaseEntityListComponent<Process
         click: () => this.inject()
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'bankName',
         'number',
         'checkDate',

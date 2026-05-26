@@ -123,7 +123,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
                 .subscribe(res => {
                     if (res.count > 0) {
                         this.snackBarSrv.showSuccessMessage();
-                        this.data.update(v => v.filter(e => e.id !== item.id));
+                        this.data = this.data.filter(e => e.id !== item.id);
                         this.cartTotal -= item.qty * item.price;
                     } else {
                         this.snackBarSrv.showFailureMessage();
@@ -139,7 +139,7 @@ export class ShoppingCartDetailComponent extends BaseEntityListComponent<Cartlin
                 .subscribe(res => {
                     if (res.count > 0) {
                         this.snackBarSrv.showSuccessMessage();
-                        this.data().filter(e => e.id !== item.id);
+                        this.data.filter(e => e.id !== item.id);
                         item.qty += qty;
                         this.cartTotal += qty * item.price;
                     } else {

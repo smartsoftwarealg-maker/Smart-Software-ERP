@@ -37,7 +37,7 @@ export class Bom2ListComponent extends BaseEntityListComponent<BOM> {
         click: () => this.duplicate(),
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'productDescription',
         'description',
         'from',

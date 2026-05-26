@@ -25,7 +25,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class FurnitureStatusListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public statusSrv: FurnitureStatusService,

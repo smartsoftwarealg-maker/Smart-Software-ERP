@@ -41,7 +41,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
     standalone: true,
 })
 export class ClassAccountsListComponent extends BaseEntityListComponent<Class> {
-    displayedColumns = signal<string[]>(['description', 'accountno']);
+    readonly displayedColumns = (['description', 'accountno']);
 
     constructor(
         public classSrv: ClassService,

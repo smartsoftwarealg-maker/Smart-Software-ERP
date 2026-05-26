@@ -25,7 +25,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 ],
 })
 export class LtmPickupPointListComponent extends BaseEntityListComponent<LTMPickupPoint> {
-    displayedColumns = signal<string[]>(['description', 'equipmentDescription']);
+    readonly displayedColumns = (['description', 'equipmentDescription']);
 
     constructor(
         public override entitySrv: LtmPickupPointService,

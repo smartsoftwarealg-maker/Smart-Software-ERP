@@ -44,7 +44,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 export class WorkOrderArticleListComponent extends BaseChildEntityListComponent<WorkArticle> {
     private dialog = inject(MatDialog);
 
-    override displayedColumns = signal<string[]>(['reference', 'description', 'qty', 'price']);
+    override readonly displayedColumns = (['reference', 'description', 'qty', 'price']);
 
     constructor(protected override detailSrv: CMMSWorkOrderArticleService) {
         super(detailSrv, 'WorkArticle');

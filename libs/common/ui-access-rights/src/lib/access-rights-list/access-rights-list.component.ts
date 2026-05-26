@@ -88,7 +88,7 @@ export class AccessRightsListComponent extends BaseEntityListComponent<AccessRig
         canEdit: new FormControl(false),
         canDelete: new FormControl(false),
     });
-    displayedColumns = signal<string[]>(['roleId', 'read', 'write', 'edit', 'delete']);
+    readonly displayedColumns = (['roleId', 'read', 'write', 'edit', 'delete']);
     hasCenterRights = signal(false);
 
     constructor(

@@ -29,7 +29,7 @@ export class RequestImportComponent implements OnInit {
 
     pagination = PaginationModel.newInstance();
     workData: Work[] = [];
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'assetDescription',
         'plannedStart',

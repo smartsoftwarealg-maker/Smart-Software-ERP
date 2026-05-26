@@ -43,7 +43,7 @@ import { MatMiniFabButton } from '@angular/material/button';
     styleUrl: './product-liberation-line-list.component.scss',
 })
 export class ProductLiberationLineListComponent extends BaseChildEntityListComponent<LTMProductLiberationLine> {
-    override displayedColumns = signal<string[]>(['product', 'silo', 'type']);
+    override readonly displayedColumns = (['product', 'silo', 'type']);
 
     constructor(public entitySrv: LtmProductLiberationLineService) {
         super(entitySrv, 'LTMProductLiberation');

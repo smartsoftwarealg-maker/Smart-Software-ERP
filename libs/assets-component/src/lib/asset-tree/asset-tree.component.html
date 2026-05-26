@@ -2,7 +2,7 @@
     <div class="container">
         <div class="left">
             <div class="tree_div">
-                <mat-tree #tree [dataSource]="data()" [childrenAccessor]="childrenAccessor" class="example-tree">
+                <mat-tree #tree [dataSource]="data" [childrenAccessor]="childrenAccessor" class="example-tree">
                     <!-- This is the tree node template for leaf nodes -->
                     <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding (click)="selectNode(node)">
                         <!-- use a disabled button to provide padding for tree leaf -->

@@ -32,7 +32,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ],
 })
 export class BudgetListComponent extends BaseEntityListComponent<Budget> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
     ]);
 

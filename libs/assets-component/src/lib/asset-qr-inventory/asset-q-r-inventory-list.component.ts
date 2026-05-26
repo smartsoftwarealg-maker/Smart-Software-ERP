@@ -97,7 +97,7 @@ export class AssetQRInventoryListComponent
         maxValue: [99999999],
     });
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'recorded',
         'reference',
         'description',

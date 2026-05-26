@@ -38,7 +38,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe
     ]})
 export class AssetBlockingListComponent extends BaseChildEntityListComponent<Blocking> {
-    override displayedColumns = signal<string[]>(['decision', 'date', 'fromDate', 'toDate', 'typeDescription']);
+    override readonly displayedColumns = (['decision', 'date', 'fromDate', 'toDate', 'typeDescription']);
 
 
     constructor(protected entitySrv: AssetBlockingService) {

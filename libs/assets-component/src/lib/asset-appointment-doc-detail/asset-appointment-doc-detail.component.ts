@@ -64,7 +64,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
     // public beneficiaryLookup = new DefaultAutoCompleteModel<Agent>(this.consumerSrv, 'id', 'denomination');
     selectedId = signal(0);
     selectedRow: AssetAppointmentLine|null = null;
-    detailData = signal<AssetAppointmentLine[]> ([]);
+    detailData: AssetAppointmentLine[] = [];
     childAttributes: AttribTempl[] = [];
     inputControl = new UntypedFormControl();
     officeAutoCompleteModel  = new DefaultAutoCompleteModel(this.officeSrv);
@@ -107,7 +107,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                 switchMap((_) => this.loginSrv.loadContext()),
                 switchMap((_) => this.detailSrv.getList(0, 5)),
                 tap((res) => {
-                    this.detailData.set(res.body||[]);
+                    this.detailData = res.body||[];
                     this.pagination.elementCount = res.itemCount;
                     this.updateLocationStatus();
                 }),
@@ -177,7 +177,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                     switchMap(b => typeof b === 'boolean'? of(b): this.detailSrv.getList(this.pagination.page - 1, this.pagination.pageSize)),
                     tap(res => {
                         if (typeof res !== 'boolean') {
-                            this.detailData.set(res.body||[]);
+                            this.detailData = res.body||[];
                             this.pagination.elementCount = res.itemCount;
                             this.updateLocationStatus();
                         }
@@ -195,7 +195,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
                 .save({ id: 0, assetId: assetId, appointmentId: this.id})
                 .pipe(switchMap(res => this.detailSrv.getList(this.pagination.page - 1, this.pagination.pageSize)))
                 .subscribe(res => {
-                    this.detailData.set(res.body||[]);
+                    this.detailData = res.body||[];
                     this.pagination.elementCount = res.itemCount;
                     this.inputControl.setValue(null, {onlySelf: true});
                     this.inputControl.reset();
@@ -211,7 +211,7 @@ export class AssetAppointmentDocDetailComponent extends BaseEntityDetailComponen
         this.detailSrv
             .getList(this.pagination.page - 1, this.pagination.pageSize)
             .subscribe(res => {
-                this.detailData.set(res.body||[]);
+                this.detailData = res.body||[];
                 this.pagination.elementCount = res.itemCount;
                 this.loading.set(false);
             });

@@ -41,7 +41,7 @@ import { CRMLeadsProgressLogger } from './api';
 })
 export class CrmLeadsTrackingListComponent extends BaseChildEntityListComponent<CRMLeadsProgressLogger> {
     readonly parentId = input.required<number>();
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'ownerDescription',
         'status',
         'stage',

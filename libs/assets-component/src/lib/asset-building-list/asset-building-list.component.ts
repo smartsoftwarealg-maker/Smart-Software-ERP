@@ -36,7 +36,7 @@ export class AssetBuildingListComponent extends BaseEntityListComponent<AssetBui
     locationLookup = new DefaultAutoCompleteModel(this.locationSrv);
     locationCtrl = new FormControl<number>(0);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         // 'location',
         'code',
         'description',

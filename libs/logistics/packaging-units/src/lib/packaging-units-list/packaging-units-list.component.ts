@@ -40,7 +40,7 @@ import {PackagingUnitsService} from "../packaging-units.service";
     styleUrl: './packaging-units-list.component.scss',
 })
 export class PackagingUnitsListComponent extends BaseEntityListComponent<PackagingUnit> {
-    displayedColumns = signal<string[]>(['description',  'units']);
+    readonly displayedColumns = (['description',  'units']);
 
     constructor(
         public override entitySrv: PackagingUnitsService,

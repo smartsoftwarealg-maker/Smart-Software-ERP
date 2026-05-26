@@ -24,7 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./cmms-checklist-list.component.css'],
 })
 export class CmmsChecklistListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal(['description', 'descriptionAr']);
+    displayedColumns = (['description', 'descriptionAr']);
     constructor(
       public override entitySrv: CmmsChecklistService,
       public override shellSrv: ShellService,

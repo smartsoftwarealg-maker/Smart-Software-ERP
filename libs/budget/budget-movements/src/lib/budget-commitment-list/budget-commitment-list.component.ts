@@ -42,7 +42,7 @@ export class BudgetCommitmentListComponent extends BaseEntityListComponent<Budge
     selectedPlanningId = 0;
     planningPaginator = PaginationModel.newInstance({ page: 0, pageSize: 10, elementCount: 0});
     plannings: BudgetPlanningTree[] = [];
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'decision',
         'description',
         'orderNo',

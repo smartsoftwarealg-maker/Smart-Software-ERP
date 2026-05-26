@@ -40,7 +40,7 @@ import { DatePipe } from '@angular/common';
     ],
 })
 export class InventoryEntryListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'reference',

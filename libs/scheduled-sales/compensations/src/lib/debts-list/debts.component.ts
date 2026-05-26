@@ -36,7 +36,7 @@ export class DebtsComponent extends BaseEntityListComponent<Debt> {
     #compensationSrv = inject(CompensationService);
     #paymentSrv = inject(InvoicePaymentService);
 
-    displayedColumns = signal<string[]>(['date', 'invoiceNumber', 'customerCode', 'customerName', 'ftt', 'payment']);
+    readonly displayedColumns = (['date', 'invoiceNumber', 'customerCode', 'customerName', 'ftt', 'payment']);
     isEditInProgress = this.#compensationDetailSrv.isEditInProgress;
 
     constructor(

@@ -25,7 +25,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ]
 })
 export class AccountListComponent extends BaseEntityListComponent<Account> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'accountNo',
         'description',
         'budgetAccount',

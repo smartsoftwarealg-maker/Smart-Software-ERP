@@ -22,7 +22,7 @@ export class HistoryComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'customer',
         'excDate',
         'excType',

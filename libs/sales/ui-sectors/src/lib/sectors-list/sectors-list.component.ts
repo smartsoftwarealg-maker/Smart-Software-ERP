@@ -47,7 +47,7 @@ import {SectorsService} from "../sectors.service";
     ],
 })
 export class SectorsListComponent extends BaseEntityListComponent<Sector> {
-    displayedColumns = signal<string[]>(['description','descriptionAr']);
+    readonly displayedColumns = (['description','descriptionAr']);
 
     constructor(
         public override entitySrv: SectorsService,

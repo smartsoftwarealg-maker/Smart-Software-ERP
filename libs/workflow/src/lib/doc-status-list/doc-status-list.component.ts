@@ -31,7 +31,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 ]
 })
 export class DocStatusListComponent extends BaseEntityListComponent<DocStatus> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'msgLevel',
         'isFinal',

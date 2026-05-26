@@ -333,7 +333,7 @@ export class ArchiveViewerListComponent
                     (e) => personalInfo.indexOf(e) >= 0,
                 ));
                 this.displayedColumns.update(v => [...v, ...this._formulaVariables]);
-                this.data.set(res.body);
+                this.data = res.body;
             });
         this.minTableWidth =
             900 +

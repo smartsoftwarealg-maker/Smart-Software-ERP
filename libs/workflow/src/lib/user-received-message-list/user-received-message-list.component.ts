@@ -35,7 +35,7 @@ export class UserReceivedMessageListComponent  extends BaseEntityListComponent<U
     private usersSrv =  inject(UserListService);
     userCtrl = new FormControl<number>(this.loginSrv.appCtx.id);
     userAutoComplete = new UserLookup(this.usersSrv);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'messageDescription',
     ]);
 

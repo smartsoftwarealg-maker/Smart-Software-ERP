@@ -38,7 +38,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrl: './work-permit-list.component.css',
 })
 export class WorkPermitListComponent extends BaseChildEntityListComponent<WorkPermit> {
-    override displayedColumns = signal<string[]>(['number', 'date', 'typeDescription', 'startDate', 'dueDate']);
+    override readonly displayedColumns = (['number', 'date', 'typeDescription', 'startDate', 'dueDate']);
 
     constructor(protected override detailSrv: CMMSWorkPermitService) {
         super(detailSrv, 'WorkPermit');

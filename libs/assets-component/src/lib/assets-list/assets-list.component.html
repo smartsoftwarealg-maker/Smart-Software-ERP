@@ -1,5 +1,5 @@
 <div class="container_div container">
-        <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+        <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
             <ng-container matColumnDef="description">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>ADMINISTRATION_DESCRIPTION
@@ -32,7 +32,7 @@
             </ng-container>
 
             <ng-container matColumnDef="accountno">
-                <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_ACCOUNT_NO</mat-header-cell>
                 <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }">
                     {{ e.accountno }}
                 </mat-cell>

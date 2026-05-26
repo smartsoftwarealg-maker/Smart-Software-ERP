@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class ProfessionalFaultListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public listSrv: ProfessionalFaultService,

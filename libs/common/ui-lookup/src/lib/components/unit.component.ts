@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class UnitListComponent extends BaseEntityListComponent<Unit> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public unitSrv: UnitService,

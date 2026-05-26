@@ -44,7 +44,7 @@ export class BudgetTransferListComponent extends BaseEntityListComponent<BudgetT
     selectedPlanningId = 0;
     planningPaginator = PaginationModel.newInstance({ page: 0, pageSize: 10, elementCount: 0});
     plannings: BudgetPlanningTree[] = [];
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'decisionInfo',
         'transferDate',
         'description',

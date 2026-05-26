@@ -31,7 +31,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 })
 
 export class LtmDepositTestingListComponent extends LtmBaseTestingListComponent {
-    displayedColumns = signal<string[]>(['matterDescription', 'timeStamp', 'pickupDescription']);
+    readonly displayedColumns = (['matterDescription', 'timeStamp', 'pickupDescription']);
     constructor(
         public override entitySrv: LtmDepositTestingService,
         public override shellSrv: ShellService,

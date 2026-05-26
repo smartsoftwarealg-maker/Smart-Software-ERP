@@ -25,7 +25,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class RegionListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public override entitySrv: RegionService,

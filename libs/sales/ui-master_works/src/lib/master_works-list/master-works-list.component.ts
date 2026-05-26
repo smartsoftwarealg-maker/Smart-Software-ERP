@@ -47,7 +47,7 @@ import {MasterWorksService} from "../master-works.service";
     ],
 })
 export class MasterWorksListComponent extends BaseEntityListComponent<masterWork> {
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public override entitySrv: MasterWorksService,

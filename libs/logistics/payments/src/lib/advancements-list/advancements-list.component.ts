@@ -41,7 +41,7 @@ import {AdvancementsService} from "../services/advancements.service";
 export class AdvancementsListComponent extends BaseEntityListComponent<Payment> {
     private agentSrv = inject(AgentService);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'date',
         'number',
         'denomination',

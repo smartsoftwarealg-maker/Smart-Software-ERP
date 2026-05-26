@@ -1,6 +1,6 @@
 <div class="size radio__div">
     <mat-form-field appearance="fill">
-        <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+        <mat-label translate>COMMON_ACCOUNT_NO</mat-label>
         <input matInput type="text" [formControl]="accountNo">
     </mat-form-field>
 
@@ -70,11 +70,11 @@
             </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable"
                  [class.selected]="row.id === selectedDebit()?.id && row.lineNumber === selectedDebit()?.lineNumber"
                  (click)="selectDebit(row)"
-                 *matRowDef="let row; columns: displayedColumns();">
+                 *matRowDef="let row; columns: displayedColumns;">
         </mat-row>
     </mat-table>
 </div>

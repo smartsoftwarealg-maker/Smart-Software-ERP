@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./asset-pm-list.component.css'],
 })
 export class AssetPmListComponent extends BaseChildEntityListComponent<PM>{
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         // 'reference',
         'description',
         // 'assetDescription',

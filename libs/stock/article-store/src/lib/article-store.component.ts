@@ -50,9 +50,9 @@ export class ArticleStoreComponent implements OnInit {
         id: 0,
         storeId: 0,
         referenceId: 0,
-        reference: null,
-        location: null,
-        locSector: null,
+        reference: '',
+        location: '',
+        locSector: '',
         stock: 0,
         price1: 0,
         price2: 0,
@@ -89,7 +89,7 @@ export class ArticleStoreComponent implements OnInit {
     //
     public readonly pagination = PaginationModel.newInstance();
 
-    data = signal <ArticleStore[]>([]);
+    data: ArticleStore[] = [];
     selectedStore: ArticleStore = null;
     displayedColumns = signal<string[]>([
         'storeName',
@@ -149,7 +149,7 @@ export class ArticleStoreComponent implements OnInit {
         .subscribe((x) => {
                 this.pagination.elementCount = x.itemCount;
                 // const ids = x.body.map(_ => _.id);
-                this.data.set(x.body);
+                this.data = x.body;
                 this.loading.set(false);
             });
 
@@ -188,7 +188,7 @@ export class ArticleStoreComponent implements OnInit {
                 .subscribe(res => {
                     if (res?.count > 0) {
                         this.snackBarSrv.showSuccessMessage();
-                        this.data.update(v => v.filter((e) => e.id !== this.selectedStore.id));
+                        this.data = this.data.filter((e) => e.id !== this.selectedStore.id);
                     }
                 });
         }
@@ -196,7 +196,7 @@ export class ArticleStoreComponent implements OnInit {
 
     editStore() {
         this.#emptyValue.referenceId = this.article()?.id;
-        this.#emptyValue.reference = this.article()?.reference;
+        this.#emptyValue.reference = this.article()?.reference||null;
         this.storeForm.reset(this.selectedStore||this.#emptyValue);
         if (this.selectedStore?.id) {
             this.storeForm.get('id').disable();

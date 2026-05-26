@@ -123,11 +123,11 @@ export class AccountingGenerationComponent implements OnInit {
     form: UntypedFormGroup | null = null;
     journalLookup = new ActiveJournalLookup(this.journalSrv, this.loginSrv);
     processing = signal(false);
-    data = signal<TDocument[]>([]);
-    payrollData = signal<PAYRow[]>([]);
-    checkData = signal<Check[]>([]);
-    cashData = signal<Check[]>([]);
-    displayedColumns = signal<string[]>(['description', 'number', 'date', 'center']);
+    data: TDocument[] = [];
+    payrollData: PAYRow[] = [];
+    checkData: Check[] = [];
+    cashData: Check[] = [];
+    readonly displayedColumns = ['description', 'number', 'date', 'center'];
     payrollColumns = signal<string[]>([
         'account',
         'description',
@@ -378,7 +378,7 @@ export class AccountingGenerationComponent implements OnInit {
             )
             .subscribe({
                 next: (res) => {
-                    this.data.set(res.body);
+                    this.data=res.body;
                     this.pagination.elementCount = res.itemCount;
                     this.processing.set(false);
                     if (this.totalsMap.get(key)) {
@@ -401,8 +401,8 @@ export class AccountingGenerationComponent implements OnInit {
             next: (res) => {
                 this.processing.set(false);
 
-                this.payrollData.set(res);
-                this.payrollData().forEach((e) => {
+                this.payrollData = res;
+                this.payrollData.forEach((e) => {
                     e.debit = Math.max(e.amount, 0) || 0;
                     e.credit = Math.max(-e.amount, 0) || 0;
                 });
@@ -416,13 +416,13 @@ export class AccountingGenerationComponent implements OnInit {
                     const credit = res
                         .map((e) => Math.max(-e.amount, 0))
                         .reduce((a, b) => a + b);
-                    this.payrollData.update(v => [...v,
+                    this.payrollData.push(
                         {
                         account: total,
                         amount: 0,
                         debit: debit,
                         credit: credit,
-                    }]);
+                    });
                 }
             },
             error: (err) => {
@@ -436,7 +436,7 @@ export class AccountingGenerationComponent implements OnInit {
         this.generationSrv.getChecks().subscribe({
             next: (res) => {
                 this.processing.set(false);
-                this.checkData.set(res);
+                this.checkData = res;
                 const bankId = res.length > 0 ? res[0].journal || null : null;
                 this.form?.controls['journal']?.setValue(bankId);
                 this.shellSrv.setLoading(false);
@@ -453,7 +453,7 @@ export class AccountingGenerationComponent implements OnInit {
         this.generationSrv.getCash().subscribe({
             next: (res) => {
                 this.processing.set(false);
-                this.cashData.set(res);
+                this.cashData = res;
             },
             error: (err) => {
                 this.processing.set(false);

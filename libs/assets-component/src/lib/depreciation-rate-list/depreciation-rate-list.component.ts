@@ -40,7 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 })
 export class DepreciationRateListComponent extends BaseChildEntityListComponent<DepreciationRate>{
-    override displayedColumns = signal<string[]>(['year', 'rate']);
+    override readonly displayedColumns = (['year', 'rate']);
 
     constructor(public entitySrv: DepreciationRateService) {
         super(entitySrv, 'DepreciationRate');

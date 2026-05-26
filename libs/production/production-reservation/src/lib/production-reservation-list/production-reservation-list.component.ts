@@ -50,7 +50,7 @@ import { ProductionReservationService } from '../api/production-reservation.serv
     ],
 })
 export class ProductionReservationListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'reference',

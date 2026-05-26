@@ -46,7 +46,7 @@ import { SalesDiscountsService } from '../sales-discounts.service';
     ],
 })
 export class DiscountsListComponent extends BaseEntityListComponent<SalesDiscount> {
-    displayedColumns = signal<string[]>(['threshold', 'discount']);
+    readonly displayedColumns = (['threshold', 'discount']);
 
     constructor(
         public override entitySrv: SalesDiscountsService,

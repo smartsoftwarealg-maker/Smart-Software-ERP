@@ -29,7 +29,7 @@ export class MrpComponent implements OnInit {
 
     protected langSrv = inject(LanguageService);
     public data = signal<MRP[]>([]);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description',
         'qty',

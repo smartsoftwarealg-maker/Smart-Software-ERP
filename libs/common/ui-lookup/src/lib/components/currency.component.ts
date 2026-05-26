@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public currencySrv: CurrencyService,

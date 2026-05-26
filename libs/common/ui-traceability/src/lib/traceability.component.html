@@ -70,9 +70,9 @@
     </mat-tree>
 
 
-    @if (displayedColumns().length > 0 && data().length > 0) {
+    @if (displayedColumns().length > 0 && data.length > 0) {
       <div class="right_div">
-        <mat-table mat-table [dataSource]="data()" class="content-div" [ngStyle]="{ 'min-width.px': tableWidth }">
+        <mat-table mat-table [dataSource]="data" class="content-div" [ngStyle]="{ 'min-width.px': tableWidth }">
           @for (col of displayedColumns(); track col; let i = $index) {
             <ng-container matColumnDef="{{ col }}">
               <mat-header-cell *matHeaderCellDef> {{ col }}</mat-header-cell>

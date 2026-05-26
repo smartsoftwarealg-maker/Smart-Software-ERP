@@ -36,7 +36,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class CostingItemListComponent extends BaseEntityListComponent<CItem> implements OnInit {
   @HostBinding("@routeAnimation") routeAnimation = true;
 
-  public displayedColumns = signal<string[]>(['code', 'description', 'accountNo', 'accountDescription']);
+  public readonly displayedColumns = (['code', 'description', 'accountNo', 'accountDescription']);
 
   constructor(
     public override entitySrv: CostingItemService,

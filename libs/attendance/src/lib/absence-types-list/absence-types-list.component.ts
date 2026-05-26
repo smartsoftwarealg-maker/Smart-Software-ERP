@@ -34,7 +34,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ],
 })
 export class AbsenceTypesListComponent extends BaseEntityListComponent<AbsenceType> {
-    displayedColumns = signal([
+    displayedColumns = ([
         'description',
         'descriptionAr',
         'letter',

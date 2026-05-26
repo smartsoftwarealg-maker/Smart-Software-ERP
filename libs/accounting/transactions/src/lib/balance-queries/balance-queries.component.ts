@@ -52,12 +52,12 @@ export class BalanceQueriesComponent implements OnInit {
     selectedGLIDs = signal<number[]>([]);
     selectionTotal = computed(() => {
         const selection = this.selectedGLIDs();
-        return this.glData()
+        return this.glData
             .filter(d => selection.indexOf(d.oId) >= 0)
             .reduce((a, d) => ({debit: a.debit + d.debit, credit: a.credit + d.credit}), {debit: 0.0, credit: 0});
     });
 
-    form: UntypedFormGroup = null;
+    form: UntypedFormGroup|null = null;
     balanceCols = [
         'accountNo',
         'description',
@@ -97,9 +97,9 @@ export class BalanceQueriesComponent implements OnInit {
         'credit'
     ];
 
-    balanceData = signal<Balance[]>([]);
-    glData = signal<GL[]>([]);
-    detailData = signal<ACCTransactionLine[]>([]);
+    balanceData: Balance[] = [];
+    glData: GL[] = [];
+    detailData: ACCTransactionLine[]=[];
 
     constructor() {
         this.balancePaginator.onChange = () => this.refreshBalance();
@@ -126,7 +126,7 @@ export class BalanceQueriesComponent implements OnInit {
     }
 
     private getParams(): HttpParams {
-        const formValue = this.form.value;
+        const formValue = this.form?.value;
         return new HttpParams()
             .set('account', formValue.accountNo.trim())
             .set('filter', formValue.filter.trim())
@@ -136,25 +136,25 @@ export class BalanceQueriesComponent implements OnInit {
     }
     private refreshBalance() {
         this.querySrv
-            .getList(this.balancePaginator.page - 1, this.balancePaginator.pageSize, null, null, this.getParams())
+            .getList(this.balancePaginator.page - 1, this.balancePaginator.pageSize, undefined, undefined, this.getParams())
             .subscribe(res => {
-                this.balanceData.set(res.body);
+                this.balanceData = res.body;
                 this.balancePaginator.elementCount = res.itemCount;
             });
     }
 
     private refreshGL() {
-        this.detailData.set([]);
+        this.detailData = [];
         this.querySrv
             .getGL(this.glPaginator, this.getParams())
             .subscribe(res => {
-                this.glData.set(res.body);
+                this.glData = res.body;
                 this.glPaginator.elementCount = res.itemCount;
             });
     }
 
     selectBalance(row: Balance) {
-        this.selectedAccount = row?.accountNo;
+        this.selectedAccount = row?.accountNo||null;
     }
 
     selectGL(row: GL) {
@@ -171,8 +171,8 @@ export class BalanceQueriesComponent implements OnInit {
 
     private refreshDetail() {
         this.detailSrv
-            .getPage(this.detailPaginator, null, null)
-            .subscribe(res => this.detailData.set(res));
+            .getPage(this.detailPaginator)
+            .subscribe(res => this.detailData = res);
     }
 
     sortBalance(event: Sort) {
@@ -190,10 +190,10 @@ export class BalanceQueriesComponent implements OnInit {
 
     selectGLLine(id?: number) {
         this.selectedGLIDs.update(list => {
-            if (list.indexOf(id) >= 0) {
+            if (list.indexOf(id||0) >= 0) {
                 list = list.filter(i => i !== id);
             } else {
-                list.push(id);
+                list.push(id||0);
             }
             return [...list];
         });

@@ -26,7 +26,7 @@ import {MaterialModule} from "@ss/common/api-common";
     styleUrl: './packaging-units-detail.component.scss',
 })
 export class PackagingUnitsDetailComponent extends BaseEntityDetailComponent<PackagingUnit> {
-    displayedColumns = signal<string[]>(['description', 'descriptionAr', 'units']);
+    readonly displayedColumns = (['description', 'descriptionAr', 'units']);
 
     constructor(
         public override entitySrv: PackagingUnitsService,

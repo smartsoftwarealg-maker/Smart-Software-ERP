@@ -26,7 +26,7 @@ export class ProductionUnitListComponent
     extends BaseEntityListComponent<UnitsOfMeasure>
     implements OnInit
 {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'code',
         'name',
         'description',

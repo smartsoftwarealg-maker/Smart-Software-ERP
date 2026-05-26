@@ -42,7 +42,7 @@ export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Spe
 
     employeeLookup = new FormControl<number>(0);
 
-    displayedColumns = signal<string[]>(['id', 'lastName', 'firstName', 'post']);
+    readonly displayedColumns = (['id', 'lastName', 'firstName', 'post']);
     data = signal<ELine[]>([]);
     // replaced primitive selected:number with a writable Signal
     selectedId: WritableSignal<number> = signal(0);

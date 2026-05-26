@@ -41,7 +41,7 @@ export class CustomerSalesHistoryComponent extends BaseEntityListComponent<Sales
         to:     [this.TODAY, Validators.required],
     });
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'date',
         'number',
         'product',

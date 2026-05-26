@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class DecisionMotiveListComponent extends BaseEntityListComponent<Lookup> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public markSrv: DecisionMotiveService,

@@ -40,7 +40,7 @@ export class AssetAppointmentListComponent extends BaseChildEntityListComponent<
         this.entitySrv.setParentId(this.assetId());
         this.refresh();
     });
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'date',
         'number',
         'location',

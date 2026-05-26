@@ -92,7 +92,7 @@ export class ProductionTransferLinesListComponent
     private refresh() {
         this.detailSrv.getPage(this.pagination).subscribe({
             next: (data) => {
-                this.data.set(data);
+                this.data = data;
             },
             error: () => {
                 this.snackBarSrv.showFailureMessage('refresh failed');

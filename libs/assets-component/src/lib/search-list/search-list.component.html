@@ -15,7 +15,7 @@
           <input matInput formControlName="description" type="text">
         </mat-form-field>
         <mat-form-field class="default-25 sm-50">
-          <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+          <mat-label translate>COMMON_ACCOUNT_NO</mat-label>
           <input matInput formControlName="accountNo" type="text">
         </mat-form-field>
         <mat-form-field id="serial_no" class="default-25 sm-50">
@@ -93,7 +93,7 @@
   }
 </div>
 <div class="container_div">
-  <mat-table mat-table [dataSource]="data()" class="main-table" matSort (matSortChange)="sort($event)">
+  <mat-table mat-table [dataSource]="data" class="main-table" matSort (matSortChange)="sort($event)">
 
 
     <ng-container matColumnDef="description">
@@ -112,7 +112,7 @@
     </ng-container>
 
     <ng-container matColumnDef="accountno">
-      <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNT_NO</mat-header-cell>
       <mat-cell *matCellDef="let e" [ngClass]="{ sold: e.dateOut }" >
         {{e.accountno}}
       </mat-cell>

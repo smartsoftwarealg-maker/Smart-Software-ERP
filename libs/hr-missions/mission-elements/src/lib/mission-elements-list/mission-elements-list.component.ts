@@ -44,7 +44,7 @@ import { MissionsElementService } from '../mission-element.service';
     standalone: true,
 })
 export class MissionElementsListComponent extends BaseEntityListComponent<MissionElement> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'fromHour',
         'fromMin',

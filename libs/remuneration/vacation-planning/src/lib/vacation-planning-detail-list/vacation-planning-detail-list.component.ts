@@ -48,7 +48,7 @@ import {MatSort} from "@angular/material/sort";
     ],
 })
 export class VacationPlanningDetailListComponent extends BaseChildEntityListComponent<VacationPlanningDetail> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'description',
         'fromDate',
         'toDate',

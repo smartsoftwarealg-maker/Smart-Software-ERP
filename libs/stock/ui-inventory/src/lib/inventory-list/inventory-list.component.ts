@@ -22,7 +22,7 @@ import { DatePipe } from '@angular/common';
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DatePipe]
 })
 export class InventoryListComponent extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'reference',

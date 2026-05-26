@@ -19,7 +19,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class InputFilterListComponent extends BaseEntityListComponent<InputFilter> {
-    displayedColumns = signal<string[]>(['description', 'selection']);
+    readonly displayedColumns = (['description', 'selection']);
 
     constructor(
         public infoSrv: InputFiltersService,

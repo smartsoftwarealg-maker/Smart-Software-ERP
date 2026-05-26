@@ -66,7 +66,7 @@ export class CrmOpportunityListComponent implements OnInit, OnDestroy {
         elementCount: 0,
     });
     selectedRow: CRMOpportunity | null = null;
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'name',
         'owner',
         'partner',

@@ -49,7 +49,7 @@ export class AssetPmArticleListComponent extends BaseChildEntityListComponent<PM
 
     pmLookup = new DefaultAutoCompleteModel(this.pmSrv);
 
-    override displayedColumns = signal<string[]>(['reference', 'description', 'qty']);
+    override readonly displayedColumns = (['reference', 'description', 'qty']);
     parentId = new FormControl<number>(0);
     constructor(protected override detailSrv: CmmsAssetPmArticleService) {
         super(detailSrv, 'PMPart');

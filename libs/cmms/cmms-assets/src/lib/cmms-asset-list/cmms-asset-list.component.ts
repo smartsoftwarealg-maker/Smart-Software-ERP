@@ -27,7 +27,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './cmms-asset-list.component.html'
 })
 export class CmmsAssetListComponent extends BaseEntityListComponent<Asset> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description',
         'serial_no',

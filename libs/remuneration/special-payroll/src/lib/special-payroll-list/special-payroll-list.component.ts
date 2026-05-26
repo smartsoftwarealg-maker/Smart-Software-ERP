@@ -19,7 +19,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class SpecialPayrollListComponent extends BaseEntityListComponent<Special> implements OnInit {
-    displayedColumns = signal<string[]>(['description', 'paymonth']);
+    readonly displayedColumns = (['description', 'paymonth']);
 
     constructor(
         public infoSrv: SpecialPayrollService,

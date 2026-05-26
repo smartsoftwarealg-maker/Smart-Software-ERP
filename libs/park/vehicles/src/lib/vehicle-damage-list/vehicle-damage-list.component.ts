@@ -27,7 +27,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./vehicle-damage-list.component.css'],
 })
 export class VehicleDamageListComponent extends BaseChildEntityListComponent<VehicleDamage> {
-    override displayedColumns = signal<string[]>(['date', 'fullName', 'description']);
+    override readonly displayedColumns = (['date', 'fullName', 'description']);
 
     constructor(protected override detailSrv: VehicleDamageService) {
         super(detailSrv, 'VehicleDamage');

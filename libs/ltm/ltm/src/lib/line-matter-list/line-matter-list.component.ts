@@ -36,7 +36,7 @@ export class LineMatterListComponent extends BaseEntityListComponent<LTMLineMatt
         click: () => this.duplicate()
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'matterDescription',
         'normDescription'
     ]);

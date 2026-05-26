@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class GenerationAccountsListComponent extends BaseEntityListComponent<GenerationAccount> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'purchase',
         'sales',

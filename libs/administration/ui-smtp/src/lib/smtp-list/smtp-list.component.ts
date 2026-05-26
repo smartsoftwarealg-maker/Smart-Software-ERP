@@ -20,7 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 export class SmtpListComponent extends BaseEntityListComponent<Smtp> {
 
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'domain',
         'property',
         'property_value'

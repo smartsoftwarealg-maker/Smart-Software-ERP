@@ -37,7 +37,7 @@ export class EraReportListComponent extends BaseEntityListComponent<ERAReport> {
         click: () => this.showDetail(0),
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'descriptionAr',
         'accountList'

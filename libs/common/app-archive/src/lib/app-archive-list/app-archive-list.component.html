@@ -2,7 +2,7 @@
     <div class="content_div" [class.full-page]="entitySrv.appId == GENERIC_ARCHIVES">
         <div class="tool_bar ">
             <!--            <mat-label translate>COMMON_ARCHIVE</mat-label>-->
-            @if (isEditable) {
+            @if (isEditable()) {
                 <div class="buttons">
                     <h3 translate>COMMON_ARCHIVE</h3>
                     <div class="button__div">
@@ -38,28 +38,29 @@
         </div>
 
         <div class="list_div">
-            <mat-table mat-table [dataSource]="data()" class="main-table">
+            @if (!loading()) {
+                <mat-table mat-table [dataSource]="data" class="main-table">
 
-                <ng-container matColumnDef="filename">
-                    <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_FILENAME</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{ e.filename }}
-                    </mat-cell>
-                </ng-container>
+                    <ng-container matColumnDef="filename">
+                        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_FILENAME</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.filename }}
+                        </mat-cell>
+                    </ng-container>
 
-                <ng-container matColumnDef="docDescription">
-                    <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
-                    <mat-cell *matCellDef="let e">
-                        {{ e.docDescription }}
-                    </mat-cell>
-                </ng-container>
+                    <ng-container matColumnDef="docDescription">
+                        <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+                        <mat-cell *matCellDef="let e">
+                            {{ e.docDescription }}
+                        </mat-cell>
+                    </ng-container>
 
-                <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
-                <mat-row class="selectable" [class.selected]="row.id === selectedId()"
-                         (click)="select(row)"
-                         *matRowDef="let row; columns: displayedColumns();"></mat-row>
-            </mat-table>
-
+                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                    <mat-row class="selectable" [class.selected]="row.id === selectedId()"
+                             (click)="select(row)"
+                             *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            }
         </div>
     </div>
 
@@ -67,7 +68,6 @@
         <div class="imj">
             <img [src]="imgSrc()"
                  [alt]="'image'"
-                 [ariaColIndexText]=""
                  class="clickable"
                  (dblclick)="onClick($event)"
                  [matTooltip]="'COMMON_DOUBLE_CLICK_OPEN' | translate" />

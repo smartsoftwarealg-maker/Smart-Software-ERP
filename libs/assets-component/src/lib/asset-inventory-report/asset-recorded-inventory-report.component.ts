@@ -38,7 +38,7 @@ export class AssetRecordedInventoryReportComponent implements OnInit {
     selectedRow = signal<InventoryAsset|null>(null);
     selected    = signal(0);
     data = signal<InventoryAsset[]>([]);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description',
         'serialNo',

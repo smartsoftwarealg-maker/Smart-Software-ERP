@@ -30,7 +30,7 @@ export class EmployeeAidsListComponent extends BaseEntityListComponent<SocialAid
     #_effect = effect(() => this.refreshData());
     employeeId = input(0);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'typeDescription',
         'number',
         'date',

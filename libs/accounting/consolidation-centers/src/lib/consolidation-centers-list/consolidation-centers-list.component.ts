@@ -63,7 +63,7 @@ export class ConsolidationCentersListComponent extends BaseEntityListComponent<C
         click: () => this.deleteAll()
     };
 
-    displayedColumns = signal<string[]>(['centerDescription', 'percentage', 'headquarter']);
+    readonly displayedColumns = (['centerDescription', 'percentage', 'headquarter']);
 
 
     constructor(

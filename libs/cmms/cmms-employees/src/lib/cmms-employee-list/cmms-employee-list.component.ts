@@ -30,7 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./cmms-employee-list.component.scss'],
 })
 export class CmmsEmployeeListComponent extends BaseEntityListComponent<Employee> implements OnInit {
-    public displayedColumns = signal<string[]>([
+    public readonly displayedColumns = ([
         'id',
         'fullName',
         'birth',

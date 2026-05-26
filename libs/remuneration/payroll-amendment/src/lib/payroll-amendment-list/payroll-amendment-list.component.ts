@@ -60,7 +60,7 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
         click: () => this.generate()
     };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'employee',
         'lastName',
         'firstName',
@@ -69,15 +69,15 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
         'new_value',
         'percentage'
     ]);
-    comparisonData = signal<Comparison[]>([]);
-    comparisonDisplayedColumns = signal<string[]>([
+    comparisonData: Comparison[] = [];
+    comparisonDisplayedColumns = [
         'paymonth',
         'description',
         'newValue',
         'oldValue',
         'difference',
         'destination'
-    ]);
+    ];
     constructor(public amendSrv: PayrollAmendmentService,
                 public override shellSrv: ShellService,
                 public override snackBarSrv: SnackBarService,
@@ -140,9 +140,9 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
         const obs = row?
             this.amendSrv
                 .comprison(this.selectedId())
-                .pipe(tap(res => this.comparisonData.set(res))):
+                .pipe(tap(res => this.comparisonData = res)):
             of(null);
-        obs.pipe(tap(() => this.comparisonButton.disabled = row == null || !row.id))
+        obs.pipe(tap(() => this.comparisonButton.disabled = row === null || !row.id))
             .subscribe(() => this.loading.set(false));
 
         this.comparisonButton.disabled = row == null || !row.id;
@@ -172,7 +172,7 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
     comparison() {
         this.amendSrv
             .comprison(this.selectedId())
-            .subscribe(res => this.comparisonData.set(res));
+            .subscribe(res => this.comparisonData = res);
     }
     generate() {
         this.confirmationSrv

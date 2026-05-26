@@ -36,7 +36,7 @@ export class WorkCenterActivityListComponent
     extends BaseChildEntityListComponent<WorkCenterActivity>
     implements OnInit
 {
-    public override displayedColumns = signal<string[]>([
+    public override readonly displayedColumns = ([
         'activityTypeId',
         'formulaFactor',
         'baseUnit',

@@ -30,7 +30,7 @@ export class DepositListComponent extends BaseEntityListComponent<Deposit> {
     agents = new Map<number, string>();
     selectedAgent = 0;
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'customerCode',
         'denomination',
         'excDate',

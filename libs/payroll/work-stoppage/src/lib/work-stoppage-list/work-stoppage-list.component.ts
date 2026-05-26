@@ -33,7 +33,7 @@ export class WorkStoppageListComponent extends BaseEntityListComponent<Accident>
     ];
 
     absenceType = new FormControl<number>(0);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'firstName',
         'lastName',
         'motiveDescription',

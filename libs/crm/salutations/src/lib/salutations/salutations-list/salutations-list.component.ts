@@ -46,7 +46,7 @@ import { SalutationsService } from '../salutations.service';
     ],
 })
 export class SalutationsListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public override entitySrv: SalutationsService,

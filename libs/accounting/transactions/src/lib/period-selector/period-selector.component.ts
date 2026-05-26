@@ -56,10 +56,10 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
         'DECEMBER',
     ];
 
-    displayedColumns = signal<string[]>(['month', 'debit', 'credit']);
+    readonly displayedColumns = (['month', 'debit', 'credit']);
 
     anomalyColumns = ['journal', 'pieceNo', 'date', 'debit', 'credit'];
-    anomalyData = signal<Anomaly[]>([]);
+    anomalyData: Anomaly[] = [];
     selectedAnomaly: ACCTransaction | null = null;
 
     accPeriod = new UntypedFormControl(1, [
@@ -134,7 +134,7 @@ export class PeriodSelectorComponent extends BaseEntityListComponent<PeriodSumma
     protected override postInit():Observable<unknown>{
         return this.#transactionSrv
             .getAnomalies()
-            .pipe(tap((res) => (this.anomalyData.set(res))),
+            .pipe(tap((res) => (this.anomalyData = res)),
                 switchMap(() => super.postInit()));
     }
 

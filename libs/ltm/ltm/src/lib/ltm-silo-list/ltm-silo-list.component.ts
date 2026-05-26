@@ -26,7 +26,7 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
 })
 export class LtmSiloListComponent extends BaseEntityListComponent<Lookup> implements OnInit {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public override entitySrv: LTMSiloService,

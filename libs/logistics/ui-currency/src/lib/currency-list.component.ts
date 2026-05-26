@@ -20,7 +20,7 @@ import { DecimalPipe } from '@angular/common';
 })
 export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'code',
         'description',
         'exchangeRate'

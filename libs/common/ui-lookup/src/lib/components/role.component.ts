@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class RoleListComponent extends BaseEntityListComponent<Role> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public roleSrv: RoleService,

@@ -49,7 +49,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './scale-list.component.css',
 })
 export class ScaleListComponent extends BaseEntityListComponent<Scale> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'from',
         'to',
         'rate'

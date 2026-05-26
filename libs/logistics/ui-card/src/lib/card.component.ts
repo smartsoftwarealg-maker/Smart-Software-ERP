@@ -57,7 +57,7 @@ export class CardComponent implements OnInit {
     useStoreForm = false;
     data = signal<Card[]>([]);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'document',
         'number',
         'date',

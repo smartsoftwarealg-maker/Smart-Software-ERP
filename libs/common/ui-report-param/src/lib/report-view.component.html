@@ -39,7 +39,7 @@
   @if (isReady()) {
     <form (ngSubmit)="generateReport()" [formGroup]="form">
       <div class="size__div">
-        @for (d of data(); track d.name) {
+        @for (d of data; track d.name) {
           <div>
             @if (d.lookupTable) {
               <mat-form-field>

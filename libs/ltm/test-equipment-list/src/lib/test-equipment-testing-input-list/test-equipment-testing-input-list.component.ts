@@ -46,7 +46,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './test-equipment-testing-input-list.component.scss',
 })
 export class TestEquipmentTestingInputListComponent extends BaseEntityListComponent<LTMEquipmentTesting> {
-    displayedColumns = signal<string[]>(['equipmentDescription', 'time']);
+    readonly displayedColumns = (['equipmentDescription', 'time']);
 
     constructor(
         public override entitySrv: LtmEquipmentTestingService,

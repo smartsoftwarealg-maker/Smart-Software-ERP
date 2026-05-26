@@ -49,7 +49,7 @@ export class FormulaListComponent extends BaseEntityListComponent<Formula> {
 
     httpSrv = inject(HttpService);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'variable',
         'description',
         'base',

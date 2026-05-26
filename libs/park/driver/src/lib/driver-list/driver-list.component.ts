@@ -38,7 +38,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./driver-list.component.scss'],
 })
 export class DriverListComponent extends BaseEntityListComponent<Driver> {
-    public displayedColumns = signal<string[]>([
+    public readonly displayedColumns = ([
         'id',
         'fullname',
         'birth',

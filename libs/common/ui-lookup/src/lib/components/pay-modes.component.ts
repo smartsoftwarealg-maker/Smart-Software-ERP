@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class PayModeListComponent extends BaseEntityListComponent<PayMode> {
 
-    displayedColumns = signal<string[]>(['description']);
+    readonly displayedColumns = (['description']);
 
     constructor(
         public payModeSrv: PayModeService,

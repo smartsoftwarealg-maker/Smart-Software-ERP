@@ -87,7 +87,7 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
         this.shellSrv.searchFormControl.setValue(null);
     }
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'storeName',
         'reference',
         'description',

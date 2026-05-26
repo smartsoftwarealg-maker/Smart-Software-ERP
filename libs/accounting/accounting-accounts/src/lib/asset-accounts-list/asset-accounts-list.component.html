@@ -1,10 +1,10 @@
 @defer (when loading() == false) {
     <div class="container">
         <div class="container_div">
-            <mat-table mat-table [dataSource]="data()" class="content-div">
+            <mat-table mat-table [dataSource]="data" class="content-div">
 
                 <ng-container matColumnDef="accountNo">
-                    <mat-header-cell *matHeaderCellDef translate>LOGISTICS_ACCOUNT_NO</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef translate>COMMON_ACCOUNT_NO</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.accountNo }}
                     </mat-cell>
@@ -46,9 +46,9 @@
                 </ng-container>
 
 
-                <mat-header-row *matHeaderRowDef="displayedColumns(); sticky: true"></mat-header-row>
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
                 <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="select(row.id)"
-                         *matRowDef="let row; columns: displayedColumns();"></mat-row>
+                         *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
         </div>
         <div class="pagination-container b-b-background">

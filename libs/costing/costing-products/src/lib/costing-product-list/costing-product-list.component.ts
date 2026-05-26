@@ -34,7 +34,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class CostingProductListComponent extends BaseEntityListComponent<CProduct> implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
-  public displayedColumns = signal(['code', 'description']);
+  public displayedColumns = (['code', 'description']);
 
   constructor(
     public override entitySrv: CostingProductService,

@@ -27,7 +27,7 @@ import { Observable, tap } from 'rxjs';
 export class AgentPriceListComponent extends BaseEntityListComponent<AgentPrice> implements OnInit {
 
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'descriptionAr'
     ]);

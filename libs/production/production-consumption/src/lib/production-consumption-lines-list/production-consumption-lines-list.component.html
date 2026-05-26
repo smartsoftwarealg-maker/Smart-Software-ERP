@@ -20,7 +20,7 @@
                 <span class="fas fa-trash-alt"></span>
             </button>
         </div>
-        <mat-table mat-table [dataSource]="data()" class="main-table">
+        <mat-table mat-table [dataSource]="data" class="main-table">
             <ng-container matColumnDef="position">
                 <mat-header-cell *matHeaderCellDef translate>COMMON_POSITION</mat-header-cell>
                 <mat-cell *matCellDef="let e">

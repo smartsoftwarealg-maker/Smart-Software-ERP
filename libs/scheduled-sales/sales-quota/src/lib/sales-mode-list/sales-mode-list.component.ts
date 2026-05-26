@@ -30,7 +30,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class SalesModeListComponent extends BaseEntityListComponent<SalesMode> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'id',
         'description',
         'daysAhead',

@@ -46,7 +46,7 @@ import { StatusService } from '../status.service';
     ],
 })
 export class StatusListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public override entitySrv: StatusService,

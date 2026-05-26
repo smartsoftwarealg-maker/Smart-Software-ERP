@@ -64,7 +64,7 @@ export class ApplicationComponent implements OnInit {
 
     paginator = PaginationModel.newInstance({page: 1, pageSize: 10, elementCount: 0});
     dataLength = signal(0);
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'id',
         'firstName',
         'lastName',

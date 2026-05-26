@@ -45,7 +45,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     ],
 })
 export class ClassAccountsLineListComponent extends BaseChildEntityListComponent<SodismacSupplierAccount> {
-    override displayedColumns = signal<string[]>(['category', 'accountNo']);
+    override readonly displayedColumns = (['category', 'accountNo']);
 
     constructor(protected override detailSrv: ClassAccountsLineService) {
         super(detailSrv, 'CLASS_ACCOUNTS');

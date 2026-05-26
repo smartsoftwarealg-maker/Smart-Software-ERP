@@ -118,7 +118,7 @@ export class TransactionListComponent extends BaseEntityListComponent<TTransacti
         this.displayedColumns.set(this.entitySrv?.isBank() ? this.BANK_COLS : this.CASH_COLS);
         this.journalLookup.onObjectSelected = o => this.onJournal(o);
         this.dateFilter.setValue(this.entitySrv.date);
-        this.journalFilter.setValue(this.entitySrv.journalId);
+        this.journalFilter.setValue(this.entitySrv.journalId||0);
         this.invImportBtn.disabled = !(this.entitySrv.journal);
 
     }

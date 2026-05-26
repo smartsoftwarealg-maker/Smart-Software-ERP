@@ -108,7 +108,7 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
                 distinctUntilChanged(),
                 takeUntilDestroyed(this.#destroyRef)
             )
-            .subscribe(res => this.filteredData = this.data().filter(e => res === '' || e.code.toLowerCase().indexOf(res) >= 0 || e.description?.toLowerCase().indexOf(res) >= 0));
+            .subscribe(res => this.filteredData = this.data.filter(e => res === '' || e.code.toLowerCase().indexOf(res) >= 0 || e.description?.toLowerCase().indexOf(res) >= 0));
         super.ngOnInit();
     }
 
@@ -173,6 +173,6 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
     }
 
     override refresh(callback?: () => void) {
-        super.refresh(callback || (() => this.filteredData = this.data()));
+        super.refresh(callback || (() => this.filteredData = this.data));
     }
 }

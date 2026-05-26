@@ -23,7 +23,7 @@ export class PatientsListComponent extends BaseEntityListComponent<Patient> {
 
     agentTypes: { [id: number]: string; };
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'lastName',
         'firstName',
         'birthDate',

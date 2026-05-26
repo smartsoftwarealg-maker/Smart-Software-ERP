@@ -55,7 +55,7 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
     employeeLookup = new PersonAutocompleteClass(this.employeeSrv);
     serviceLookup  = new DefaultAutoCompleteModel(this.serviceSrv);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'firstName',
         'lastName',
         'shiftDescription',
@@ -94,7 +94,7 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
 
     private refreshByService() {
         this.releaseResources();
-        this.data.set([]);
+        this.data=[];
         this.shellSrv.setLoading(this.canShowProcessingStatus());
         this.select(0);
         this.entitySrv
@@ -102,13 +102,13 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
             .subscribe({
                     next:
                         data => {
-                            this.data.set(data.body);
+                            this.data=data.body;
                             this.pagination.elementCount = data.itemCount;
                             this.shellSrv.setLoading(false); // stop the animation
                         },
                     error:
                         err => {
-                            this.data.set([]); // clear everything;
+                            this.data=[]; // clear everything;
                             this.shellSrv.setLoading(false); // stop the animation
                             throw err;
                         }

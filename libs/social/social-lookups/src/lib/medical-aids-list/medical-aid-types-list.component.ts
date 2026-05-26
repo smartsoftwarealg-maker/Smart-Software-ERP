@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './medical-aid-types-list.component.scss',
 })
 export class MedicalAidTypesListComponent extends BaseEntityListComponent<Lookup> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'descriptionAr',
         'value'

@@ -24,7 +24,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrl: './costing-pool-list.component.css',
 })
 export class CostingPoolListComponent extends BaseChildEntityListComponent<CPool> {
-    override displayedColumns = signal<string[]>(['ccDescription', 'keyDescription', 'isSupport']);
+    override readonly displayedColumns = (['ccDescription', 'keyDescription', 'isSupport']);
 
     constructor(protected override detailSrv: CostingPoolService) {
         super(detailSrv, 'CPool');

@@ -71,7 +71,7 @@ export class AssetAppointmentDocListComponent extends BaseEntityListComponent<AS
 
     detailColumns = this.AQS_COLS;
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'serialNumber',
         'date',
         'officeName',

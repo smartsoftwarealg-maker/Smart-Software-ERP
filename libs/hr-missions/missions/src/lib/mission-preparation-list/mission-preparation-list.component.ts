@@ -19,7 +19,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class MissionPreparationListComponent extends BaseEntityListComponent<Mission> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'lastName',
         'firstName',

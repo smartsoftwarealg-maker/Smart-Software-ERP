@@ -25,7 +25,7 @@ export class PayMethodListComponent extends BaseEntityListComponent<PayMethod> {
     public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMode>(this.payModeSrv);
 
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'mode',
     ]);

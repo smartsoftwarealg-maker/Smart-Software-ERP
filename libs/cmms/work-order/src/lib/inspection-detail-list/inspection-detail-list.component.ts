@@ -38,7 +38,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 })
 export class InspectionDetailListComponent extends BaseChildEntityListComponent<Inspection> {
     public types = WORK_TYPES;
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'description',
         'fail',
         'pass'

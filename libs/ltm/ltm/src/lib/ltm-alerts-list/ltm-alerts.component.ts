@@ -45,7 +45,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
 
     #destroyRef = inject(DestroyRef);
 
-    displayedColumns = signal<string[]>(['matter', 'test',  'time', 'value', 'min', 'max', 'pickupPoint']);
+    readonly displayedColumns = (['matter', 'test',  'time', 'value', 'min', 'max', 'pickupPoint']);
     formBuilder = inject(FormBuilder);
     form = this.formBuilder.group({
         from: [new Date(new Date().getTime() - 24 * 3600 * 1000 * 30 )],
@@ -77,7 +77,7 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
 
     override refresh(callback?: () => void) {
         const formValue = this.form.value;
-        this.data.set([]);
+        this.data=[];
         this.shellSrv.setLoading(this.canShowProcessingStatus());
         this.select(0);
         const today = new Date();
@@ -86,11 +86,11 @@ export class LtmAlertsComponent extends BaseEntityListComponent<LTMAbnormalTest>
             .subscribe({
                 next: data => {
                     this.shellSrv.setLoading(false); // stop the animation
-                    this.data.set(data.body);
+                    this.data = data.body;
                     this.pagination.elementCount = data.itemCount;
                 },
                 error: err => {
-                    this.data.set([]); // clear everything;
+                    this.data = []; // clear everything;
                     this.shellSrv.setLoading(false); // stop the animation
                     throw err;
                 }

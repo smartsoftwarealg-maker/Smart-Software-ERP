@@ -40,7 +40,7 @@ export class AssetUnidentifiedChildInventoryListComponent  implements OnInit {
     });    entitySrv = inject(AssetUnidentifiedInventoryService);
     filter = new FormControl('');
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'creationDate',
         'buildingDescription',
         'classDescription',

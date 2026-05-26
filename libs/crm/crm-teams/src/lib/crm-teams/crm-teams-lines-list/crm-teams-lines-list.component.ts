@@ -43,7 +43,7 @@ import { TeamsLineService } from '../teams-line.service';
     ],
 })
 export class CrmTeamsLinesListComponent extends BaseChildEntityListComponent<CRMTeamMember> {
-    override displayedColumns = signal<string[]>(['userDescription']);
+    override readonly displayedColumns = (['userDescription']);
 
     constructor(protected override detailSrv: TeamsLineService) {
         super(detailSrv, 'CRM_TEAMS');

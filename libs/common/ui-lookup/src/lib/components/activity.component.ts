@@ -24,7 +24,7 @@ import { MatInput } from '@angular/material/input';
 })
 export class ActivityListComponent extends BaseEntityListComponent<Activity> {
 
-    displayedColumns = signal<string[]>(['description', 'descriptionAr']);
+    readonly displayedColumns = (['description', 'descriptionAr']);
 
     constructor(
         public activitySrv: ActivityService,

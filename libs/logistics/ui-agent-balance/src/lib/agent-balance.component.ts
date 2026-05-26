@@ -24,7 +24,7 @@ export class AgentBalanceComponent implements OnInit {
 
     data = signal<AgentBalance[]>([]);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'totalDebit',
         'totalCredit',
         'debit',

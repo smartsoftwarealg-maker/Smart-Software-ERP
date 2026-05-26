@@ -108,8 +108,8 @@ export class BankExpenseListComponent extends BaseEntityListComponent<TTransacti
             'TRS_BANK_EXPENSES');
         this.displayedColumns.set(this.entitySrv?.isBank()? this.BANK_COLS: this.CASH_COLS);
         this.journalLookup.onObjectSelected = o => this.onJournal(o);
-        this.dateFilter  = new FormControl<Date>(this.entitySrv.date);
-        this.journalFilter = new FormControl<number>(this.entitySrv.journalId);
+        this.dateFilter  = new FormControl<Date>(this.entitySrv.date||new Date());
+        this.journalFilter = new FormControl<number>(this.entitySrv.journalId||0);
     }
 
     override ngOnInit() {

@@ -23,7 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ],
 })
 export class LtmTestScheduleListComponent extends BaseChildEntityListComponent<LTMTestSchedule> {
-    override displayedColumns = signal<string[]>(['startDate', 'dueDay', 'nextDate', 'testDate']);
+    override readonly displayedColumns = (['startDate', 'dueDay', 'nextDate', 'testDate']);
 
     constructor(protected override detailSrv: LtmTestScheduleService) {
         super(detailSrv, 'LTMTestSchedule');

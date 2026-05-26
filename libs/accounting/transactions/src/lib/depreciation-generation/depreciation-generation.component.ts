@@ -47,7 +47,7 @@ export class DepreciationGenerationComponent implements OnInit {
     public form: UntypedFormGroup | null = null;
     data = signal<DepreciationRow[]>([]);
     loading = signal(true);
-    displayedColumns = signal<string[]>(['acc', 'description', 'cCenter', 'debit', 'credit']);
+    readonly displayedColumns = (['acc', 'description', 'cCenter', 'debit', 'credit']);
     processing = signal(false);
 
 

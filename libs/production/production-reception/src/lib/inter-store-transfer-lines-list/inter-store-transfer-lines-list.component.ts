@@ -22,7 +22,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     ]
 })
 export class InterStoreTransferLinesListComponent extends BaseChildEntityListComponent<InterStoreTransferLine> {
-    override displayedColumns = signal<string[]>([
+    override readonly displayedColumns = ([
         'storeDescription',
         'lotDescription',
         'reference',

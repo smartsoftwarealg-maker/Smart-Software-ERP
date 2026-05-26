@@ -201,7 +201,7 @@
                     <div class="form__div">
                         <ss-app-archive-main [id]="id"
                                              [appId]="LOCAL_AGENT_ARCHIVES"
-                                             [editable]="isEditable">
+                                             [editable]="isEditable()">
                         </ss-app-archive-main>
                     </div>
                 }
@@ -211,7 +211,7 @@
             <mat-toolbar><span translate>ADMINISTRATION_ATTRIBUTES</span></mat-toolbar>
             <div class="form__div">
                 <ss-child-attributes [childAttribute]="'/agents'" [attributeId]="id" [parentId]="4"
-                                     [editable]="isEditable">
+                                     [editable]="isEditable()">
                 </ss-child-attributes>
             </div>
         }

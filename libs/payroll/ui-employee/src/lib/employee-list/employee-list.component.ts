@@ -49,7 +49,7 @@ export class EmployeeListComponent
     implements OnInit
 {
     activePersonnel = true;
-    public displayedColumns = signal<string[]>([
+    public readonly displayedColumns = ([
         'id',
         'fullname',
         'birth',

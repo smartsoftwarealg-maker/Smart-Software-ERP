@@ -37,7 +37,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ]
 })
 export class QuotationListComponent  extends BaseEntityListComponent<Transaction> {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'number',
         'date',
         'agent',

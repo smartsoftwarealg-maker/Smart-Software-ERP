@@ -27,7 +27,7 @@ import { LtmMailingService } from '@ltm/ltm-api';
 export class LtmMailingListComponent extends BaseEntityListComponent<LTMMailingList> implements OnInit {
     #mailingDocumentSrv = inject(LtmMailingDocumentService);
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'fullName',
         'email',
     ]);

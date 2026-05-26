@@ -36,7 +36,7 @@ import { DatePipe } from '@angular/common';
     ],
 })
 export class HolidayListComponent extends BaseEntityListComponent<Holiday> {
-    displayedColumns = signal([
+    displayedColumns = ([
         'date',
         'description',
     ]);

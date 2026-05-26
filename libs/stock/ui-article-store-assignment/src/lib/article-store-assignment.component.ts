@@ -40,7 +40,7 @@ export class ArticleStoreAssignmentComponent
     extends BaseEntityListComponent<Article>
     implements OnInit
 {
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'reference',
         'description2',
         // 'price',

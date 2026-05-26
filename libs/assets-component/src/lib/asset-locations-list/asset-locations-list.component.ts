@@ -35,7 +35,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class AssetLocationsListComponent extends BaseEntityListComponent<AssetLocation> {
 
-    displayedColumns = signal<string[]>([
+    readonly displayedColumns = ([
         'description',
         'code'
     ]);

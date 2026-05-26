@@ -3,7 +3,7 @@
     @if (form !== null) {
       <form novalidate [formGroup]="form">
         <mat-form-field id="accountNo" class="default-50 sm-100">
-          <mat-label translate>LOGISTICS_ACCOUNT_NO</mat-label>
+          <mat-label translate>COMMON_ACCOUNT_NO</mat-label>
           <input matInput formControlName="accountNo" type="text" required>
           @if (form.controls['accountNo'].invalid) {
             <mat-error translate>COMMON_FIELD_REQUIRED
