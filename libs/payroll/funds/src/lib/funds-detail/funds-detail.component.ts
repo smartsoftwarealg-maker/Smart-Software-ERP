@@ -36,9 +36,9 @@ export class FundsDetailComponent extends BaseEntityDetailComponent<Fund> {
 
     setupForm(b: Fund): UntypedFormGroup {
         return this.formBuilder.group({
-            id: [b.id],
+            id:          [b.id],
             description: [b.description, Validators.required],
-            accountNo: [b.accountNo, Validators.required],
+            accountNo:   [b.accountNo],
         });
     }
 

@@ -294,19 +294,20 @@ export class HttpService {
         fd.append(formName, blob);
         return this
             .httpClient
-            .post(this.baseUrl + url, fd, {
+            .post(this.baseUrl + url,
+                fd,
+                {
                 reportProgress: true,
                 headers: HttpService.getHeaders(),
-                observe: 'events'
-            })
-            .pipe(
-                filter((e: any) => (e as HttpProgressEvent) && (e as HttpProgressEvent).type === HttpEventType.UploadProgress),
-                tap((e: HttpProgressEvent) => {
-                    // todo: show some ui bullshit instead of this
-                    console.log('upload ' + (e.loaded * 100 / e.total) + '%');
-                }),
-                last()
-            );
+            });
+            // .pipe(
+            //     filter((e: any) => (e as HttpProgressEvent) && (e as HttpProgressEvent).type === HttpEventType.UploadProgress),
+            //     tap((e: HttpProgressEvent) => {
+            //         // todo: show some ui bullshit instead of this
+            //         console.log('upload ' + (e.loaded * 100 / e.total) + '%');
+            //     }),
+            //     last()
+            // );
     }
 
     // noinspection JSMethodCanBeStatic

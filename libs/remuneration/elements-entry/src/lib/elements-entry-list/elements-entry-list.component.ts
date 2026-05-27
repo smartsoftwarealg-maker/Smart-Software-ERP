@@ -46,9 +46,7 @@ import { callback } from 'chart.js/helpers';
     ],
 })
 export class ElementsEntryListComponent
-    extends BaseEntityListComponent<ELine>
-    implements OnInit
-{
+    extends BaseEntityListComponent<ELine> {
     private employeeSrv = inject(EmployeeService);
     private httpSrv = inject(HttpService);
     private monthSelectorSrv = inject(PayrollMonthService);
@@ -63,7 +61,7 @@ export class ElementsEntryListComponent
         this.commonFieldSrv,
         'field',
     );
-    form: UntypedFormGroup = null;
+    form: UntypedFormGroup|null = null;
     selectedTabIndex = signal(0);
     mainTableWidth = 600;
     slipTableWidth = 600;
@@ -107,9 +105,12 @@ export class ElementsEntryListComponent
 
     protected override preInit(): Observable<unknown> {
         return super.preInit()
-            .pipe(tap(() => {
-                this.addButton.visible = false;
-            }));
+            .pipe(
+                tap(() => this.addButton.visible = false),
+                switchMap(() => this.monthSelectorSrv.isUpdatableMonth()),
+                tap((upd: boolean) => this.editButton.visible = upd),
+                switchMap(() => this.infoSrv.load()),
+            );
     }
 
     override getPage(): Observable<ELine[]> {
@@ -142,18 +143,15 @@ export class ElementsEntryListComponent
         return of(res);
     }
 
-    override ngOnInit() {
-        // this.deleteButton.visible = false;
+
+    finishLoading(data:ELine[]){
         this.hasFixedRights.set(
             this.shellSrv.getEntityRights('FixedElement')?.write ||
-                this.loginSrv.appCtx.manager,
+            this.loginSrv.appCtx.manager,
         );
-        super.ngOnInit();
-        this.infoSrv.load();
-        this.monthSelectorSrv.isUpdatableMonth().subscribe((upd) => {
-            this.editButton.visible = upd;
-        });
+        super.finishLoading(data);
     }
+
 
     selectInput(ev: MatSelectChange) {
         this.infoSrv.selectedInput = ev.value;
@@ -220,5 +218,10 @@ export class ElementsEntryListComponent
 
     override canShowProcessingStatus() {
         return false;
+    }
+
+    ngOnInit(){
+        console.log('_____________________________On init');
+        super.ngOnInit();
     }
 }
