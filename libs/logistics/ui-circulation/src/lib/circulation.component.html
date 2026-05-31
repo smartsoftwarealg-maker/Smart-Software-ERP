@@ -1,4 +1,4 @@
-@if (data.length > 0) {
+@if (!loading()) {
   <div class="main-container">
     <mat-table mat-table [dataSource]="data" class="main-table">
       <ng-container matColumnDef="document">

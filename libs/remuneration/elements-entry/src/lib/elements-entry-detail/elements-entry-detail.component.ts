@@ -25,6 +25,7 @@ import { FundService } from '@ss/payroll/api-employee';
 import { BankService } from '@ss/administration/api-bank';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { PaymentModeService } from '../services/payment-mode.service';
+import {Observable, switchMap} from 'rxjs';
 
 type Employee = {
     id: number;
@@ -84,11 +85,12 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
         this.imageModel = new ImageModel(this.#httpSrv);
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
+    preload():Observable<unknown>{
         this.hasFixedRights.set(this.shellSrv.getEntityRights('FixedElement')?.write ||
-                                this.#loginSrv.appCtx.manager);
-        this.infoSrv.load();
+            this.#loginSrv.appCtx.manager);
+        return this.infoSrv
+            .load()
+            .pipe(switchMap(() => super.preload()))
     }
 
     public override setupForm(e: ELine): UntypedFormGroup {

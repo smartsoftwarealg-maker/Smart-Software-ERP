@@ -39,7 +39,7 @@ import {
 } from '@ss/common/app-archive';
 import {loginGuard} from '../erp-guards';
 
-export const mainRoutes: Routes = [
+export const contractRoutes: Routes = [
     {
         path: CONTRACTS_AWARD_PROCEDURE_URL,
         children: [

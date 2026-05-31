@@ -64,7 +64,7 @@ import {
 
 import {PackagingUnitsDetailComponent, PackagingUnitsListComponent} from "@ss/logistics/packaging-units";
 
-export const mainRoutes: Routes = [
+export const logisticsAdminRoutes: Routes = [
     // {
     //     path: LOOKUPS_URL,
     //     loadChildren: () => import('./logistics-admin-lookups.module').then(m => m.LogisticsAdminLookupsModule)

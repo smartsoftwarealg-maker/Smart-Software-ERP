@@ -115,7 +115,7 @@ export const langAssets = [
 export const appRoutes: Routes =  [
     {
         path: ARCH_VIEWER_URL,
-        loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
+        loadChildren: () => import('../app/archive-viewer/routes').then(m => m.viewerRoutes)
     },
     {
         path: INDEX_PAGE_URL,
@@ -124,91 +124,91 @@ export const appRoutes: Routes =  [
     },
     {
         path: SERVICE_SALES,
-        loadChildren: () => import('../app/service-sales/service-sales.module').then(m => m.ServiceSalesModule)
+        loadChildren: () => import('../app/service-sales/routes').then(m => m.ssalesRoutes)
     },
     {
         path: PARK_APP_URL,
-        loadChildren: () => import('../app/park/park.module').then(m => m.ParkModule)
+        loadChildren: () => import('../app/park/routes').then(m => m.parkRoutes)
     },
     {
         path: ORGANIZATIONS_APP_URL,
-        loadChildren: () => import('../app/organizations/organizations.module').then(m => m.OrganizationsModule)
+        loadChildren: () => import('../app/organizations/routes').then(m => m.orgRoutes)
     },
     {
         path: FURNITURE_APP_URL,
-        loadChildren: () => import('../app/furniture/furniture.module').then(m => m.FurnitureModule)
+        loadChildren: () => import('../app/furniture/routes').then(m => m.furnitureRoutes)
     },
     {
         path: ATTENDANCE_APP_URL,
-        loadChildren: () => import('../app/attendance/attendance.module').then(m => m.AttendanceModule)
+        loadChildren: () => import('../app/attendance/routes').then(m => m.attendanceRoutes)
     },
     {
         path: ACCOUNTING_APP_URL,
-        loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
+        loadChildren: () => import('../app/accounting/routes').then(m => m.accRoutes)
     },
     {
         path: BUDGET_APP_URL,
-        loadChildren: () => import('../app/budget/budget.module').then(m => m.BudgetModule)
+        loadChildren: () => import('../app/budget/routes').then(m => m.budgetRoutes)
     },
     {
         path: TREASURY_APP_URL,
-        loadChildren: () => import('../app/treasury/treasury.module').then(m => m.TreasuryModule)
+        loadChildren: () => import('../app/treasury/routes').then(m => m.treasuryRoutes)
     },
     {
         path: STOCK_APP_URL,
-        loadChildren: () => import('../app/stock/stock.module').then(m => m.StockModule)
+        loadChildren: () => import('../app/stock/routes').then(m => m.stockRoutes)
     },
     {
         path: SALES_APP_URL,
-        loadChildren: () => import('../app/sales/sales.module').then(m => m.SalesModule)
+        loadChildren: () => import('../app/sales/routes').then(m => m.salesRoutes)
     },
     {
         path: ADMINISTRATION_APP_URL,
-        loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)
+        loadChildren: () => import('../app/administration/routes').then(m => m.administrationRoutes)
     },
     {
         path: PAYROLL_APP_URL,
-        loadChildren: () => import('../app/payroll/payroll.module').then(m => m.PayrollModule)
+        loadChildren: () => import('../app/payroll/routes').then(m => m.payrollRoutes)
     },
     {
         path: HR_APP_URL,
-        loadChildren: () => import('../app/hr/hr.module').then(m => m.HRModule)
+        loadChildren: () => import('../app/hr/routes').then(m => m.hrRoutes)
     },
     {
         path: DASHBOARD_APP_URL,
-        loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
+        loadChildren: () => import('../app/dashboard/routes').then(m => m.dashboardRoutes)
     },
     {
         path: FINANCE_APP_URL,
-        loadChildren: () => import('../app/finance/finance.module').then(m => m.FinanceModule)
+        loadChildren: () => import('../app/finance/routes').then(m => m.financeRoutes)
     },
     {
         path: PURCHASES_APP_URL,
-        loadChildren: () => import('../app/purchases/purchases.module').then(m => m.PurchasesModule)
+        loadChildren: () => import('../app/purchases/routes').then(m => m.purchasesRoutes)
     },
     {
         path: LOGISTICS_APP_URL,
-        loadChildren: () => import('../app/logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
+        loadChildren: () => import('../app/logistics-admin/routes').then(m => m.logisticsAdminRoutes)
     },
     {
         path: WEBARCH_APP_URL,
-        loadChildren: () => import('../app/web-arch/web-arch.module').then(m => m.WebArchModule)
+        loadChildren: () => import('../app/web-arch/routes').then(m => m.webArchRoutes)
     },
     {
         path: ASSETS_APP_URL,
-        loadChildren: () => import('../app/assets-app/assets.module').then(m => m.AssetsModule)
+        loadChildren: () => import('../app/assets-app/routes').then(m => m.assetsRoutes)
     },
     {
         path: MISSIONS_APP_URL,
-        loadChildren: () => import('../app/missions/missions.module').then(m => m.MissionsModule)
+        loadChildren: () => import('../app/missions/routes').then(m => m.missionsRoutes)
     },
     {
         path: CONTRACTS_APP_URL,
-        loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
+        loadChildren: () => import('../app/contracts/routes').then(m => m.contractRoutes)
     },
     {
         path: WORK_FLOW_APP_URL,
-        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+        loadChildren: () => import('../app/workflow/routes').then(m => m.workflowRoutes)
     },
     {
         path: SOCIAL_APP_URL,

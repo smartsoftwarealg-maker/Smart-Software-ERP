@@ -44,7 +44,7 @@
     "AssetCost": "تكلفة الأصول",
     "AssetInventory": "جرد الأصول",
     "AssetInventoryDoc": "مستندات الجرد",
-    "AssetReceipt": "استلام الأصول",
+    "AssetReception": "استلام الأصول",
     "AssetTransfer": "نقل الأصول",
     "ASSLocation": "موقع الأصول",
     "BatchAssetInventory": "جرد 2",
@@ -127,5 +127,7 @@
     "CRM": "إدارة علاقات العملاء",
     "PROJECTS": "المشاريع",
     "ATTENDANCE_APP": "الحضور",
-    "SInvoice": "فاتورة مجدولة"
+    "SInvoice": "فاتورة مجدولة",
+    "ENTREE": "دخول",
+    "EXITS": "خروج"
 }

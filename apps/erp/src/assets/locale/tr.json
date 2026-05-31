@@ -43,5 +43,7 @@
     "AAVIEWER":        "",
     "REPORTING":       "",
     "GICACARRER":     "",
-    "SInvoice":      "Planlanmış fatura"
+    "SInvoice":      "Planlanmış fatura",
+    "ENTREE": "Giriş",
+    "EXITS": "Çıkış"
 }

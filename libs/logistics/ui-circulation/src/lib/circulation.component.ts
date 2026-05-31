@@ -33,6 +33,7 @@ export class CirculationComponent implements OnInit {
 
     public readonly pagination = PaginationModel.newInstance();
 
+    loading = signal(true);
     data: Circulation[] = [];
     articleReference: string;
     articleId: number;
@@ -54,27 +55,38 @@ export class CirculationComponent implements OnInit {
 
 
     ngOnInit() {
+        this.data = [];
         this.#optionSrv
             .get(this.#loginSrv.appCtx.center)
-            .pipe(tap(res => {
-                this.displayedColumns.update(v => v.filter(c => res.usesLots || c !== 'storeName'));
-                this.storeName.set(res.usesLots? 'STOCK_LOT' : 'STOCK_STORE');
-            }),
-            switchMap(() => this.#route.queryParams))
-            .subscribe(x => {
-                // if no reference found go for id
-                this.articleReference = x['articleReference'];
-                this.articleId = +x['articleId'];
-                this.loadCirculation();
+            .pipe(
+                tap(res => {
+                    this.displayedColumns.update(v => v.filter(c => res.usesLots || c !== 'storeName'));
+                    this.storeName.set(res.usesLots? 'STOCK_LOT' : 'STOCK_STORE');
+                }),
+                switchMap(() => this.#route.queryParams),
+                tap(x => {
+                    // if no reference found go for id
+                    this.articleReference = x['articleReference'];
+                    this.articleId = +x['articleId'];
+                }),
+                switchMap(() => this.articleReference? this.loadByReference(this.articleReference): this.loadById(this.articleId || 0))
+            ).subscribe((x: Circulation[]) => {
+                this.data = x;
+                this.loading.set(false);
             });
 
         this.pagination.onChange = () => this.loadCirculation();
     }
 
     loadCirculation() {
+        this.loading.set(true);
         const loader: Observable<Circulation[]> = this.articleReference ?
-            this.loadByReference(this.articleReference) : this.loadById(this.articleId || 0);
-        this.load(loader);
+            this.loadByReference(this.articleReference) :
+            this.loadById(this.articleId || 0);
+        loader.subscribe((x: Circulation[]) => {
+            this.data = x;
+            this.loading.set(false);
+        })
     }
 
     loadById(id: number): Observable<Circulation[]> {
@@ -86,7 +98,4 @@ export class CirculationComponent implements OnInit {
         return this.#circulationSrv.loadByReference(this.pagination, null, null, reference);
     }
 
-    load(observable: Observable<Circulation[]>) {
-        observable.subscribe((x: Circulation[]) => this.data = x);
-    }
 }

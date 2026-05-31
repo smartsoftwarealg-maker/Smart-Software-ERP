@@ -55,7 +55,6 @@ export class EdoComponent implements OnInit {
         special:     ['0',                             [Validators.required, Validators.minLength(1)]],
         all:         [false]
     });
-;
 
     form = signal<UntypedFormGroup|null>(this.#_form);
     loading = signal(true);

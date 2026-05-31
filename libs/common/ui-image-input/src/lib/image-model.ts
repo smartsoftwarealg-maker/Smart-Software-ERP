@@ -98,12 +98,11 @@ export class ImageModel {
 
     public submit(formName: string): Observable<boolean> {
         switch (this.operation) {
-        case Operation.remove:
-            if (this.imageUrl) {
-                return this.httpSrv.remove(this.imageUrl)
-                    .pipe(
-                        map(() => true)
-                    );
+            case Operation.remove:
+                if (this.imageUrl) {
+                    return this.httpSrv
+                        .remove(this.imageUrl)
+                        .pipe(map(() => true));
             }
             break;
         case Operation.upload:

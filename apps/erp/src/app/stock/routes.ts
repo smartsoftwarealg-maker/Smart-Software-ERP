@@ -116,7 +116,7 @@ import { ArticleDetailComponent, ArticleListComponent, ReferenceCorrectionCompon
 import { ArticleTypeDetailComponent, ArticleTypeListComponent } from '@ss/production/production-article';
 import { TransferReintegrationDetailComponent, TransferReintegrationLinesDetailComponent, TransferReintegrationLinesListComponent, TransferReintegrationListComponent } from '@ss/stock/transfer-reintegration';
 
-export const mainRoutes: Routes = [
+export const stockRoutes: Routes = [
     {
         path: DASHBOARD_URL,
         component: DashboardComponent,

@@ -123,9 +123,8 @@ import {
 } from '@ss/sales/category-discounts';
 import { SocialActivitiesDetailComponent, SocialActivitiesListComponent } from '@social/social-lookups';
 
-export const lookupRoutes: Routes = [];
 
-export const mainRoutes: Routes = [
+export const salesRoutes: Routes = [
     {
         path: 'cdelivery',
         children: [

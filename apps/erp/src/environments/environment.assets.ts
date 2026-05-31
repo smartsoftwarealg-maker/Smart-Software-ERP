@@ -45,7 +45,7 @@ export const langAssets = [
 export const appRoutes: Routes =  [
     {
         path: ARCH_VIEWER_URL,
-        loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
+        loadChildren: () => import('../app/archive-viewer/routes').then(m => m.viewerRoutes)
     },
     {
         path: INDEX_PAGE_URL,
@@ -54,27 +54,27 @@ export const appRoutes: Routes =  [
     },
     {
         path: ORGANIZATIONS_APP_URL,
-        loadChildren: () => import('../app/organizations/organizations.module').then(m => m.OrganizationsModule)
+        loadChildren: () => import('../app/organizations/routes').then(m => m.orgRoutes)
     },
     {
         path: ADMINISTRATION_APP_URL,
-        loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)
+        loadChildren: () => import('../app/administration/routes').then(m => m.administrationRoutes)
     },
     {
         path: DASHBOARD_APP_URL,
-        loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
+        loadChildren: () => import('../app/dashboard/routes').then(m => m.dashboardRoutes)
     },
     {
         path: WORK_FLOW_APP_URL,
-        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+        loadChildren: () => import('../app/workflow/routes').then(m => m.workflowRoutes)
     },
     {
         path: DASHBOARD_APP_URL,
-        loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
+        loadChildren: () => import('../app/dashboard/routes').then(m => m.dashboardRoutes)
     },
     {
         path: ASSETS_APP_URL,
-        loadChildren: () => import('../app/assets-app/assets.module').then(m => m.AssetsModule)
+        loadChildren: () => import('../app/assets-app/routes').then(m => m.assetsRoutes)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

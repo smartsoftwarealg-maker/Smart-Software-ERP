@@ -3,7 +3,7 @@ import { BaseEntityService } from '@ss/common/api-base-entity';
 import { ELine, INPUT_ELEMENTS_URL, Journal, PaymentElement, PSpecial } from '../elements-entry-api';
 import { HttpService, PaginationModel } from "@ss/common/api-common";
 import { HttpParams } from '@angular/common/http';
-import { map, Observable, of, zip } from 'rxjs';
+import { map, Observable, of, tap, zip, switchMap } from 'rxjs';
 import { InputFilter, InputFiltersService } from '@ss/remuneration/input-filters';
 import { ElementsInfo, ElementsInfoService, PElement } from '@ss/remuneration/elementsinfo';
 
@@ -34,13 +34,24 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
             .pipe(map(res => res.body));
     }
 
-    load() {
+    loadOld() {
         zip(this.inputFilterSrv.getList(0, 50),
             this.elementInfoSrv.getList(0, 2000))
             .subscribe(res => {
                 this.inputFilter.set(res[0].body);
                 this.elements = res[1].body;
             });
+    }
+
+    load(): Observable<{ itemCount: number; body: ElementsInfo[] }> {
+        console.log('____________________________________loading' );
+        return this.inputFilterSrv
+            .getList(0, 50)
+            .pipe(
+                tap(res => this.inputFilter.set(res.body)),
+                switchMap(() => this.elementInfoSrv.getList(0, 2000)),
+                tap(res => this.elements = res.body )
+            );
     }
 
     public colsList(): string[] {

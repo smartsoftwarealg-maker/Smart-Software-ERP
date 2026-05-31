@@ -10,7 +10,7 @@ import {CustomerProfileComponent} from '@ss/logistics/ui-agent';
 import {ReportViewComponent} from '@ss/common/ui-report-param';
 import {loginGuard} from '../erp-guards';
 
-export const mainRoutes: Routes = [
+export const shoppingCartRoutes: Routes = [
     {
         path: CSPACE_CART_URL,
         component: ShoppingCartComponent,

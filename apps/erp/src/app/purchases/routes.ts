@@ -83,7 +83,7 @@ import {
     FreeInvoiceDetailComponent,
     FreeInvoiceListComponent
 } from "@ss/transactions-common/ui-free-invoice";
-export const routes: Routes = [
+export const purchasesRoutes: Routes = [
     {
         path: PURCHASE_QUOTATION_URL,
         children: [
