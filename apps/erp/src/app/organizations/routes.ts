@@ -20,7 +20,7 @@ import {
 } from '../common';
 import {loginGuard} from '../erp-guards';
 
-export const mainRoutes: Routes = [
+export const orgRoutes: Routes = [
     {
         path: ORGANIZATIONS_CHART_URL,
         component: OrganizationsComponent,

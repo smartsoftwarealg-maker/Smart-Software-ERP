@@ -45,7 +45,7 @@ import {TreasuryGroupDetailComponent, TreasuryGroupListComponent} from '@ss/comm
 import {loginGuard} from '../erp-guards';
 import { TREASURY_ARCHIVES } from '@ss/common/app-archive';
 
-export const mainRoutes: Routes = [
+export const treasuryRoutes: Routes = [
     {
         path: TREASURY_AGENT_URL,
         children: [

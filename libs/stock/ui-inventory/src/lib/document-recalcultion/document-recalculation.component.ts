@@ -57,8 +57,8 @@ export class DocumentRecalculationComponent implements OnInit {
     private readonly MAX_POLL_TIME_MS = 5 * 60 * 1000; // Max 5 minutes
 
     evalDocumentOptions: EvalDocument[] = [
-        { id: 514, name: 'PURCHASES' },
-        { id: 258, name: 'SALES' },
+        { id: 514, name: 'ENTREE' },
+        { id: 258, name: 'EXITS' },
     ];
 
     form: UntypedFormGroup | null = null;

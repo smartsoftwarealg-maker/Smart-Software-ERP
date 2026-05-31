@@ -91,75 +91,75 @@ export const appRoutes: Routes =  [
     },
     {
         path: LOGISTICS_APP_URL,
-        loadChildren: () => import('../app/logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
+        loadChildren: () => import('../app/logistics-admin/routes').then(m => m.logisticsAdminRoutes)
     },
     {
         path: WORK_FLOW_APP_URL,
-        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+        loadChildren: () => import('../app/workflow/routes').then(m => m.workflowRoutes)
     },
     {
         path: ATTENDANCE_APP_URL,
-        loadChildren: () => import('../app/attendance/attendance.module').then(m => m.AttendanceModule)
+        loadChildren: () => import('../app/attendance/routes').then(m => m.attendanceRoutes)
     },
     {
         path: STOCK_APP_URL,
-        loadChildren: () => import('../app/stock/stock.module').then(m => m.StockModule)
+        loadChildren: () => import('../app/stock/routes').then(m => m.stockRoutes)
     },
     {
         path: SALES_APP_URL,
-        loadChildren: () => import('../app/sales/sales.module').then(m => m.SalesModule)
+        loadChildren: () => import('../app/sales/routes').then(m => m.salesRoutes)
     },
     {
         path: ADMINISTRATION_APP_URL,
-        loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)
+        loadChildren: () => import('../app/administration/routes').then(m => m.administrationRoutes)
     },
     {
         path: SALES_APP_URL,
-        loadChildren: () => import('../app/sales/sales.module').then(m => m.SalesModule)
+        loadChildren: () => import('../app/sales/routes').then(m => m.salesRoutes)
     },
     {
         path: SERVICE_SALES,
-        loadChildren: () => import('../app/service-sales/service-sales.module').then(m => m.ServiceSalesModule)
+        loadChildren: () => import('../app/service-sales/routes').then(m => m.ssalesRoutes)
     },
     {
         path: DASHBOARD_APP_URL,
-        loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
+        loadChildren: () => import('../app/dashboard/routes').then(m => m.dashboardRoutes)
     },
     {
         path: FINANCE_APP_URL,
-        loadChildren: () => import('../app/finance/finance.module').then(m => m.FinanceModule)
+        loadChildren: () => import('../app/finance/routes').then(m => m.financeRoutes)
     },
     {
         path: PURCHASES_APP_URL,
-        loadChildren: () => import('../app/purchases/purchases.module').then(m => m.PurchasesModule)
+        loadChildren: () => import('../app/purchases/routes').then(m => m.purchasesRoutes)
     },
     {
         path: LOGISTICS_APP_URL,
-        loadChildren: () => import('../app/logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
+        loadChildren: () => import('../app/logistics-admin/routes').then(m => m.logisticsAdminRoutes)
     },
     {
         path: CONTRACTS_APP_URL,
-        loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
+        loadChildren: () => import('../app/contracts/routes').then(m => m.contractRoutes)
     },
     {
         path: PAYROLL_APP_URL,
-        loadChildren: () => import('../app/payroll/payroll.module').then(m => m.PayrollModule)
+        loadChildren: () => import('../app/payroll/routes').then(m => m.payrollRoutes)
     },
     {
         path: HR_APP_URL,
-        loadChildren: () => import('../app/hr/hr.module').then(m => m.HRModule)
+        loadChildren: () => import('../app/hr/routes').then(m => m.hrRoutes)
     },
     {
         path: ASSETS_APP_URL,
-        loadChildren: () => import('../app/assets-app/assets.module').then(m => m.AssetsModule)
+        loadChildren: () => import('../app/assets-app/routes').then(m => m.assetsRoutes)
     },
     {
         path: ACCOUNTING_APP_URL,
-        loadChildren: () => import('../app/accounting/accounting.module').then(m => m.AccountingModule)
+        loadChildren: () => import('../app/accounting/routes').then(m => m.accRoutes)
     },
     {
         path: TREASURY_APP_URL,
-        loadChildren: () => import('../app/treasury/treasury.module').then(m => m.TreasuryModule)
+        loadChildren: () => import('../app/treasury/routes').then(m => m.treasuryRoutes)
     },
     {
         path: SOCIAL_APP_URL,

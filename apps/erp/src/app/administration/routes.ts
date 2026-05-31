@@ -75,7 +75,7 @@ import { PassEncodingComponent } from '@ss/administration/pass-encoding';
 import { GlobalValidationComponent } from '@ss/administration/global-validation';
 import {PasswordResetComponent} from '@ss/scheduled-sales/password-reset';
 
-export const mainRoutes: Routes = [
+export const administrationRoutes: Routes = [
     //    // NOT USED
     //    {
     //        path: LOOKUPS_URL,

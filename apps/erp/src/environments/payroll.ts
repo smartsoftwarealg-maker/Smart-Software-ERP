@@ -50,7 +50,7 @@ export const langAssets = [
 export const appRoutes: Routes =  [
     {
         path: ARCH_VIEWER_URL,
-        loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
+        loadChildren: () => import('../app/archive-viewer/routes').then(m => m.viewerRoutes)
     },
     {
         path: INDEX_PAGE_URL,
@@ -59,7 +59,7 @@ export const appRoutes: Routes =  [
     },
     {
         path: ORGANIZATIONS_APP_URL,
-        loadChildren: () => import('../app/organizations/organizations.module').then(m => m.OrganizationsModule)
+        loadChildren: () => import('../app/organizations/routes').then(m => m.orgRoutes)
     },
     {
         path: ADMINISTRATION_APP_URL,
@@ -67,11 +67,11 @@ export const appRoutes: Routes =  [
     },
     {
         path: PAYROLL_APP_URL,
-        loadChildren: () => import('../app/payroll/payroll.module').then(m => m.PayrollModule)
+        loadChildren: () => import('../app/payroll/routes').then(m => m.payrollRoutes)
     },
     {
         path: HR_APP_URL,
-        loadChildren: () => import('../app/hr/hr.module').then(m => m.HRModule)
+        loadChildren: () => import('../app/hr/routes').then(m => m.hrRoutes)
     },
     {
         path: DASHBOARD_APP_URL,

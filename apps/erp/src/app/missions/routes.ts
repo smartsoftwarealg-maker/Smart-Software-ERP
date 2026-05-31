@@ -36,7 +36,7 @@ import {
 } from '@ss/hr-missions/mission-elements';
 import { ElementGenerationComponent} from "@ss/hr-missions/element-generation";
 
-export const mainRoutes: Routes = [
+export const missionsRoutes: Routes = [
     {
         path: MISSION_PREPARATION_URL,
         children: [

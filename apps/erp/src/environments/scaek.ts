@@ -21,6 +21,7 @@ import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
 import { costingNavTree } from '../app/costing/side-nav-tree';
+import {scheduledSalesRoutes} from "../app/scheduled-sales/routes";
 
 export const environment = {
     production: true,
@@ -67,7 +68,7 @@ export const langAssets = [
 export const appRoutes: Routes =  [
     {
         path: ARCH_VIEWER_URL,
-        loadChildren: () => import('../app/archive-viewer/archive-viewer.module').then(m => m.ArchiveViewerModule)
+        loadChildren: () => import('../app/archive-viewer/routes').then(m => m.viewerRoutes)
     },
     {
         path: INDEX_PAGE_URL,
@@ -76,43 +77,43 @@ export const appRoutes: Routes =  [
     },
     {
         path: GICA_APP_URL,
-        loadChildren: () => import('../app/gica/gica.module').then(m => m.GicaModule)
+        loadChildren: () => import('../app/gica/routes').then(m => m.gicaRoutes)
     },
     {
         path: ORGANIZATIONS_APP_URL,
-        loadChildren: () => import('../app/organizations/organizations.module').then(m => m.OrganizationsModule)
+        loadChildren: () => import('../app/organizations/routes').then(m => m.orgRoutes)
     },
     {
         path: SCHEDULED_SALES_APP_URL,
-        loadChildren: () => import('../app/scheduled-sales/scheduled-sales.module').then(m => m.ScheduledSalesModule)
+        loadChildren: () => import('../app/scheduled-sales/routes').then(m => m.scheduledSalesRoutes)
     },
     {
         path: ADMINISTRATION_APP_URL,
-        loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)
+        loadChildren: () => import('../app/administration/routes').then(m => m.administrationRoutes)
     },
     {
         path: PAYROLL_APP_URL,
-        loadChildren: () => import('../app/payroll/payroll.module').then(m => m.PayrollModule)
+        loadChildren: () => import('../app/payroll/routes').then(m => m.payrollRoutes)
     },
     {
         path: GICA_APP_URL,
-        loadChildren: () => import('../app/gica/gica.module').then(m => m.GicaModule)
+        loadChildren: () => import('../app/gica/routes').then(m => m.gicaRoutes)
     },
     {
         path: HR_APP_URL,
-        loadChildren: () => import('../app/hr/hr.module').then(m => m.HRModule)
+        loadChildren: () => import('../app/hr/routes').then(m => m.hrRoutes)
     },
     {
         path: DASHBOARD_APP_URL,
-        loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
+        loadChildren: () => import('../app/dashboard/routes').then(m => m.dashboardRoutes)
     },
     {
         path: WORK_FLOW_APP_URL,
-        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+        loadChildren: () => import('../app/workflow/routes').then(m => m.workflowRoutes)
     },
     {
         path: COSTING_APP_URL,
-        loadChildren: () => import('../app/costing/costing.module').then(m => m.CostingModule)
+        loadChildren: () => import('../app/costing/routes').then(m => m.costingRoutes)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

@@ -38,19 +38,19 @@ export const appRoutes: Routes =  [
     },
     {
         path: SCHEDULED_SALES_APP_URL,
-        loadChildren: () => import('../app/scheduled-sales/scheduled-sales.module').then(m => m.ScheduledSalesModule)
+        loadChildren: () => import('../app/scheduled-sales/routes').then(m => m.scheduledSalesRoutes)
     },
     {
         path: ADMINISTRATION_APP_URL,
-        loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)
+        loadChildren: () => import('../app/administration/routes').then(m => m.administrationRoutes)
     },
     {
         path: DASHBOARD_APP_URL,
-        loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
+        loadChildren: () => import('../app/dashboard/routes').then(m => m.dashboardRoutes)
     },
     // {
     //     path: FINANCE_APP_URL,
-    //     loadChildren: () => import('../app/finance/finance.module').then(m => m.FinanceModule)
+    //     loadChildren: () => import('../app/finance/routes').then(m => m.financeRoutes)
     // },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

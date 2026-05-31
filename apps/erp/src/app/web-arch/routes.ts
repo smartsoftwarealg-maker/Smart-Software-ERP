@@ -10,7 +10,7 @@ import {
 } from '@ss/web-arch/ui';
 import {loginGuard} from '../erp-guards';
 
-export const mainRoutes: Routes = [
+export const webArchRoutes: Routes = [
     {
         path: LOOKUPS_URL,
         loadChildren: () => import('./web-arch-lookups.module').then(m => m.WebArchLookupsModule)

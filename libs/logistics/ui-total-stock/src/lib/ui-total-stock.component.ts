@@ -31,7 +31,7 @@ import { DecimalPipe } from '@angular/common';
 export class UiTotalStockComponent implements OnInit {
     private route = inject(ActivatedRoute);
     private stockSrv = inject(TotalStockService);
-    private loginSrv = inject(LoginService);
+    // private loginSrv = inject(LoginService);
     articleReference: string;
     readonly pagination = PaginationModel.newInstance();
     data = signal<TotalStock[]>([]);

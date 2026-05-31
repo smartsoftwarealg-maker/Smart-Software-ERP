@@ -66,43 +66,43 @@ export const appRoutes: Routes =  [
     },
     {
         path: LOGISTICS_APP_URL,
-        loadChildren: () => import('../app/logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
+        loadChildren: () => import('../app/logistics-admin/routes').then(m => m.logisticsAdminRoutes)
     },
     {
         path: WORK_FLOW_APP_URL,
-        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+        loadChildren: () => import('../app/workflow/routes').then(m => m.workflowRoutes)
     },
     {
         path: STOCK_APP_URL,
-        loadChildren: () => import('../app/stock/stock.module').then(m => m.StockModule)
+        loadChildren: () => import('../app/stock/routes').then(m => m.stockRoutes)
     },
     {
         path: SALES_APP_URL,
-        loadChildren: () => import('../app/sales/sales.module').then(m => m.SalesModule)
+        loadChildren: () => import('../app/sales/routes').then(m => m.salesRoutes)
     },
     {
         path: ADMINISTRATION_APP_URL,
-        loadChildren: () => import('../app/administration/administration.module').then(m => m.AdministrationModule)
+        loadChildren: () => import('../app/administration/routes').then(m => m.administrationRoutes)
     },
     {
         path: DASHBOARD_APP_URL,
-        loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
+        loadChildren: () => import('../app/dashboard/routes').then(m => m.dashboardRoutes)
     },
     {
         path: FINANCE_APP_URL,
-        loadChildren: () => import('../app/finance/finance.module').then(m => m.FinanceModule)
+        loadChildren: () => import('../app/finance/routes').then(m => m.financeRoutes)
     },
     {
         path: PURCHASES_APP_URL,
-        loadChildren: () => import('../app/purchases/purchases.module').then(m => m.PurchasesModule)
+        loadChildren: () => import('../app/purchases/routes').then(m => m.purchasesRoutes)
     },
     {
         path: LOGISTICS_APP_URL,
-        loadChildren: () => import('../app/logistics-admin/logistics-admin.module').then(m => m.LogisticsAdminModule)
+        loadChildren: () => import('../app/logistics-admin/routes').then(m => m.logisticsAdminRoutes)
     },
     {
         path: CONTRACTS_APP_URL,
-        loadChildren: () => import('../app/contracts/contracts.module').then(m => m.ContractsModule)
+        loadChildren: () => import('../app/contracts/routes').then(m => m.contractRoutes)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

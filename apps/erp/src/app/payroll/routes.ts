@@ -131,7 +131,7 @@ import { DepositDayComponent } from '@ss/payroll/deposit-day';
 import {PayrollLock} from '@ss/payroll/payroll-lock';
 import { TaxPaymentDetailComponent, TaxPaymentListComponent } from '@ss/payroll/ui-tax-payment';
 
-export const mainRoutes: Routes = [
+export const payrollRoutes: Routes = [
     {
         path: DEPOSIT_DATE_URL,
         component: DepositDayComponent,
@@ -141,13 +141,6 @@ export const mainRoutes: Routes = [
         path: DASHBOARD_URL,
         component: DashboardComponent,
         canActivate: [loginGuard],
-    },
-    {
-        path: LOOKUPS_URL,
-        loadChildren: () =>
-            import('./payroll-lookups.module').then(
-                (m) => m.PayrollLookupsModule,
-            ),
     },
     {
         path: PAY_EDO_URL,

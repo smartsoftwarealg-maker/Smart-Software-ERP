@@ -107,7 +107,7 @@ import {
     AssetsInventoryDocDetailComponent
 } from '@ss/assets-component';
 
-export const mainRoutes: Routes = [
+export const assetsRoutes: Routes = [
     {
         path: ASSETS_ASSET_URL,
         children: [
