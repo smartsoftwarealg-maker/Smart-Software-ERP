@@ -68,6 +68,7 @@ mat-tree {
     max-width: 1200px;
     margin: 4px auto;
     overflow-x: auto;
+    max-height: 600px;
     /*height: calc(100% - 440px);*/
 }
 
