@@ -12,6 +12,7 @@ import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Payment} from '@ss/logistics/api-common';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import { MatCard, MatCardContent } from '@angular/material/card';
+import { CompensationPanelComponent } from '../compensation-panel/compensation-panel.component';
 
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -24,7 +25,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './payments-detail.component.html',
     styleUrls: ['./payments-detail.component.scss'],
     standalone: true,
-    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError, CompensationPanelComponent]
 })
 export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> {
     private typeSrv  = inject(PayModeService);
