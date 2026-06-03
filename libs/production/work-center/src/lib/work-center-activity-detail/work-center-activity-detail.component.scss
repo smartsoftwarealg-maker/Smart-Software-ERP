@@ -23,3 +23,9 @@ mat-card {
 .max__qty {
     font-size: .7em;
 }
+
+.button_div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}

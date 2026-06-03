@@ -57,8 +57,4 @@ export class ActivityTypesListComponent extends BaseEntityListComponent<Activity
             'CRM_ACTIVITY_TYPE'
         );
     }
-
-    override ngOnInit() {
-        super.ngOnInit();
-    }
 }
