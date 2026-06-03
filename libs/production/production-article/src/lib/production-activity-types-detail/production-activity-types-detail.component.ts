@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
@@ -13,6 +13,8 @@ import {CategoriesService} from '../services/categories.service';
 import {UnitsService} from '../services/units.service';
 import {ActivityType} from "@ss/master-data/api-article";
 import {ActivityTypesService} from "../services/types.service";
+import {AsyncPipe} from "@angular/common";
+import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
 
 @Component({
     selector: 'ss-production-activity-types-detail',
@@ -26,15 +28,18 @@ import {ActivityTypesService} from "../services/types.service";
         MatCard,
         MaterialModule,
         TranslatePipe,
-        TranslateDirective
+        TranslateDirective,
+        UiAutoCompleteComponent
     ]
 })
 export class ActivityTypesDetailComponent
     extends BaseEntityDetailComponent<ActivityType>
     implements OnInit {
+    private categorySrv = inject(CategoriesService);
+    private unitsSrv = inject(UnitsService);
 
-    categories: any[] = [];
-    units: any[] = [];
+    categoryLookup = new DefaultAutoCompleteModel(this.categorySrv);
+    unitLookup = new DefaultAutoCompleteModel(this.unitsSrv);
 
     constructor(
         public override entitySrv: ActivityTypesService,
@@ -42,10 +47,7 @@ export class ActivityTypesDetailComponent
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private categoriesSrv: CategoriesService,
-        private unitsSrv: UnitsService
-    ) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(
             entitySrv,
             shellSrv,
@@ -55,16 +57,6 @@ export class ActivityTypesDetailComponent
             confirmationSrv,
             'CRM_ACTIVITY_TYPE'
         );
-    }
-
-    override ngOnInit() {
-        super.ngOnInit();
-
-        this.categoriesSrv.getListSimple()
-            .subscribe(res => this.categories = res || []);
-
-        this.unitsSrv.getListSimple()
-            .subscribe(res => this.units = res || []);
     }
 
     override setupForm(e: ActivityType) {

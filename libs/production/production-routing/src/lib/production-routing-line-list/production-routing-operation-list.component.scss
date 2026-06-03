@@ -22,20 +22,21 @@ mat-header-cell {
 }
 
 .mat-column-operationName {
-    flex: 1 1 150px;
+    flex: 3 1 200px;
     border-left: gray solid 1px;
     padding-left: 4px;
 }
 
 .mat-column-operationNumber {
-    flex: 1 1 100px;
+    flex: 1 1 70px;
     border-left: gray solid 1px;
     padding-left: 4px;
 }
 
 .mat-column-operationType {
-    flex: 1 1 120px;
+    flex: 1 1 100px;
     border-left: gray solid 1px;
+    border-right: gray solid 1px;
     padding-left: 4px;
 }
 

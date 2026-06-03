@@ -82,6 +82,7 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
     #optionSrv = inject(OptionService);
     #loginSrv = inject(LoginService);
     isInvoicing = signal(false);
+    sData = signal<QuickOrder[]>([]);
 
 
     // initialize with translation keys for invoice types
@@ -217,14 +218,15 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
                                 quantity: 20
                             }
                         });
+         this.loading.set(true);
           return dialogRef
               .afterClosed()
               .pipe(switchMap((res: number) => res >= 1 ? this.scheduledInvoiceSrv.generateInvoice(id, res) : of(null)))
               .subscribe({
                 next: res => {
                     if (res !== null) {
-                        this.snackBarSrv.showSuccessMessage();
                         this.refresh();
+                        this.snackBarSrv.showSuccessMessage();
                     }
                 },
                 error: (err) => {
@@ -271,5 +273,10 @@ export class OrderInvoicingComponent extends BaseEntityListComponent<QuickOrder>
 
     selectTransac(id: number) {
         this.transacLineId = id;
+    }
+
+    override processLoadedData(data:any):any{
+        this.sData.set(data);
+        return super.processLoadedData(data);
     }
 }
