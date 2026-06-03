@@ -1,0 +1,35 @@
+@if (paymentId > 0 && agentId > 0) {
+  <div class="panel">
+
+    <mat-card class="compensations">
+      <div mat-subheader class="b-primary label" translate>COMMON_PAYMENTS</div>
+      <mat-list role="list">
+        @for (c of compensations; track c.id) {
+          <mat-list-item role="listitem">
+            <div class="row">
+              <mat-checkbox [checked]="checkedCompensationIds.has(c.id)" (change)="onCompensationCheck(c.id)" (click)="$event.stopPropagation()"></mat-checkbox>
+              <span class="desc">{{ c.description }}</span>
+              <span class="amount">{{ c.balance | number: '1.2-2' }}</span>
+            </div>
+          </mat-list-item>
+        }
+      </mat-list>
+    </mat-card>
+
+    <mat-card class="debts">
+      <div mat-subheader class="b-primary label" translate>LOGISTICS_AGENT_DEBTS</div>
+      <mat-list role="list">
+        @for (d of debts; track d.id) {
+          <mat-list-item role="listitem">
+            <div class="row">
+              <mat-checkbox (change)="onDebtCheck(d.id)" (click)="$event.stopPropagation()"></mat-checkbox>
+              <span class="desc">{{ d.document }}</span>
+              <span class="amount">{{ d.balance | number: '1.2-2' }}</span>
+            </div>
+          </mat-list-item>
+        }
+      </mat-list>
+    </mat-card>
+
+  </div>
+}

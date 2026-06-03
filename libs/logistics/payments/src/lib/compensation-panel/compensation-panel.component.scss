@@ -1,0 +1,51 @@
+.panel {
+    box-sizing: border-box;
+    padding: 0 5px 5px;
+    display: grid;
+    grid-gap: 10px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    height: 360px;
+}
+
+.compensations,
+.debts {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+mat-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.label {
+    height: 3em;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5em;
+    font-weight: bold;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.desc {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.amount {
+    flex: 0 0 110px;
+    text-align: end;
+    font-weight: bold;
+}
