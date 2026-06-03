@@ -14,7 +14,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import {DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { BomListComponent } from '../bom/bom-list.component';
 import { OptionService } from '@ss/logistics/ui-options';
@@ -47,6 +47,7 @@ export class Bom2DetailComponent extends BaseEntityDetailComponent<BOM> {
     #loginSrv = inject(LoginService);
 
     protected packagingUnits: PackagingUnit[] = [];
+    packageUnitLookup = new DefaultAutoCompleteModel(this.#packagingUnitSrv);
 
     finalProductLookup = new ArticleIdAutoCompleteModel(this.#finalProductSrv);
     usesUnits = signal(false);

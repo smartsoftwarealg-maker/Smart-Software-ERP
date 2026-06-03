@@ -19,32 +19,35 @@
                     <input matInput formControlName="description" type="text">
                 </mat-form-field>
 
-                <mat-form-field class="default-50">
+
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_CATEGORY</mat-label>
-                    <mat-select formControlName="activityCategory">
-                        @for (c of categories; track c.id) {
-                            <mat-option [value]="c.id">
-                                {{ c.name }}
-                            </mat-option>
-                        }
-                    </mat-select>
+                    <ss-auto-complete matInput
+                                      [model]="categoryLookup"
+                                      formControlName="activityCategory">
+                    </ss-auto-complete>
                 </mat-form-field>
 
-                <mat-form-field class="default-50">
+
+                <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_UNIT</mat-label>
-                    <mat-select formControlName="unitOfMeasureId">
-                        @for (u of units; track u) {
-                            <mat-option [value]="u.id">
-                                {{ u.name }}
-                            </mat-option>
-                        }
-                    </mat-select>
+                    <ss-auto-complete matInput
+                                      [model]="unitLookup"
+                                      [canAdd]="false"
+                                      formControlName="unitOfMeasureId">
+                    </ss-auto-complete>
                 </mat-form-field>
+
 
                 <mat-form-field class="default-50">
                     <mat-label translate>PROD_BASE_UNIT</mat-label>
-                    <input matInput formControlName="defaultBaseUnit" type="text">
+                    <mat-select formControlName="defaultBaseUnit">
+                        <mat-option value="TIME" translate>COMMON_TIME</mat-option>
+                        <mat-option value="QUANTITY" translate>COMMON_QUANTITY</mat-option>
+                    </mat-select>
                 </mat-form-field>
+
+
 
                 <div class="default-25">
                     <mat-checkbox formControlName="isActive">

@@ -41,7 +41,6 @@ import { QuickOrderService } from '@ss/sales/ui-quick-order';
         DocInfoComponent,
         TranslatePipe,
         PaginationComponent,
-        WeightCaptureDialogButtonComponent,
     ],
 })
 export class OrderLinesListComponent
