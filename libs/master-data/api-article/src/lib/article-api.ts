@@ -22,7 +22,8 @@ export const ARTICLE_RAW_MATERIAL = 1;
 export const ARTICLE_SEMI_FINAL = 2;
 export const ARTICLE_FINAL_PRODUCT = 3;
 
-
+export const CATEGORY_URL = '/production/activity-categories';
+export const CATEGORY_TREE_URL = '/production/category-tree';
 
 export interface BOM {
     id: number;
@@ -194,11 +195,11 @@ export interface ActivityCategory {
     isVariable?: boolean;
     colorCode?: string;
     isActive?: boolean;
-    createdAt?: string;
-    updatedAt?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
     createdBy?: number;
     updatedBy?: number;
-    deletedAt?: string;
+    deletedAt?: Date;
 }
 
 export interface ActivityType {
@@ -214,4 +215,9 @@ export interface ActivityType {
     isCostRelevant?: number;
     isCapacityRelevant?: number;
     isActive?: number;
+}
+
+export interface ActivityCategoryTree {
+    category: ActivityCategory;
+    children: ActivityCategoryTree[];
 }

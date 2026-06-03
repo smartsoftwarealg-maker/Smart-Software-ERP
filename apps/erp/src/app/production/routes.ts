@@ -51,6 +51,7 @@ import { MrpComponent, ProductionConsumptionComponent } from '@ss/production/mrp
 import { Bom2DetailComponent, Bom2ListComponent } from '@ss/master-data/ui-article';
 import {
     ActivityCategoriesListComponent,
+    ActivityCategoryTreeComponent,
     ArticleTypeDetailComponent,
     ArticleTypeListComponent,
     DosageUnitsDetailComponent,
@@ -629,15 +630,9 @@ export const prodRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: ActivityCategoriesListComponent,
+                component: ActivityCategoryTreeComponent,
                 canActivate: [loginGuard],
                 children: docInfoRoutes,
-            },
-            {
-                path: ':id',
-                component: ActivityCategoriesDetailComponent,
-                canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' },
