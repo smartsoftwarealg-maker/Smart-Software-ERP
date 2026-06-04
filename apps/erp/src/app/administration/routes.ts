@@ -26,7 +26,7 @@ import {
     ADMINISTRATION_REPORT_PRIVILEGE_URL,
     ADMIN_WORKFLOW_CHART_URL,
     ADMINISTRATION_PASS_ENCODING_URL,
-    ADMINISTRATION_GLOBAL_VALIDATION_URL, ADMINISTRATION_REGION_URL, PASSWORD_RESET_URL
+    ADMINISTRATION_GLOBAL_VALIDATION_URL, ADMINISTRATION_REGION_URL, PASSWORD_RESET_URL, HOLIDAY_URL
 } from '../common';
 import { ABS_INDEX_URL, LIST_URL, CanDeactivateService } from '@ss/common/api-common';
 import { Routes } from '@angular/router';
@@ -74,6 +74,7 @@ import { ReportPrivilegesComponent } from '@common/report-privileges';
 import { PassEncodingComponent } from '@ss/administration/pass-encoding';
 import { GlobalValidationComponent } from '@ss/administration/global-validation';
 import {PasswordResetComponent} from '@ss/scheduled-sales/password-reset';
+import {HolidayDetailComponent, HolidayListComponent} from "@ss/attendance";
 
 export const administrationRoutes: Routes = [
     //    // NOT USED
@@ -81,6 +82,23 @@ export const administrationRoutes: Routes = [
     //        path: LOOKUPS_URL,
     //        loadChildren: () => import('./administration-lookups.module').then(m => m.AdministrationLookupsModule)
     //    },
+    {
+        path: HOLIDAY_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: HolidayListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: HolidayDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
     {
         path: ADMINISTRATION_ATTRIBUTE_URL,
         children: [

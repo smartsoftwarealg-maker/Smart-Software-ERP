@@ -19,7 +19,8 @@ import {
     ABS_ADMINISTRATION_REPORT_RIGHTS_URL,
     ABS_ADMINISTRATION_REPORT_PRIVILEGE_URL,
     ABS_ADMINISTRATION_PASS_ENCODING_URL,
-    ABS_ADMINISTRATION_GLOBAL_VALIDATION_URL, ABS_ADMINISTRATION_REGION_URL, ABS_ADMINISTRATION_PASS_RESET_URL
+    ABS_ADMINISTRATION_GLOBAL_VALIDATION_URL, ABS_ADMINISTRATION_REGION_URL, ABS_ADMINISTRATION_PASS_RESET_URL,
+    ABS_ATTENDANCE_HOLIDAY_URL, ABS_ADMINISTRATION_HOLIDAY_URL
 } from '../common';
 
 import {SideNavNode} from '@ss/common/api-common';
@@ -112,6 +113,12 @@ export const administrationNavTree: SideNavNode = {
             icon: 'fas fa-list-ol',
             route: ABS_ADMINISTRATION_DOCUMENT_URL,
             accessRights: 'Document'
+        },
+        {
+            name: 'ATT_HOLIDAYS',
+            icon: 'fa-solid fa-lights-holiday',
+            route: ABS_ADMINISTRATION_HOLIDAY_URL,
+            accessRights: 'Holiday'
         },
         {
             name: 'ADMINISTRATION_REPORT_CATALOG',

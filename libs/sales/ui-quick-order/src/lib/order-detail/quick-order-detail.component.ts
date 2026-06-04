@@ -88,8 +88,8 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     salesProjectLookup = new DefaultAutoCompleteModel(this.#salesProjectSrv);
 
     duplicateMode = signal<DuplicateMode>(DuplicateMode.Count);
-    tomorrow: Date = new Date();
-    today: Date = new Date(this.tomorrow.getTime() - 24 * 60 * 60 * 1000);
+    today: Date = new Date();
+    tomorrow: Date = new Date(this.today.getTime() - 24 * 60 * 60 * 1000);
     paymentId: number;
     agentId: number;
     blockedProject = signal(false);

@@ -19,7 +19,7 @@ const routes: Routes = [
             },
             {
                 path: ADMINISTRATION_APP_URL,
-                loadChildren: () => import('./administration/administration.module').then(m => m.AdministrationModule)
+                loadChildren: () => import('./administration/routes').then(m => m.administrationRoutes)
             },
             {
                 path: EXCHANGE_APP_URL,
