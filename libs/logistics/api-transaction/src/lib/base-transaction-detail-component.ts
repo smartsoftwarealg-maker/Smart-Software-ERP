@@ -106,42 +106,21 @@ export abstract class BaseTransactionDetailComponent
     };
     protected lookupsSrv = inject(LookupsService);
     protected isProjectRequired = signal(false);
+    protected selectedTabIndex = signal(0);
 
-    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(
-        this.payMethodSrv,
-    );
-    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(
-        this.usersSrv,
-    );
-    public agentLookup = new DefaultAutoCompleteModel<Lookup>(
-        this.activeAgentSrv,
-    );
-    public purchaseProjectLookup = new ProjectLookupModel(
-        this.purchaseProjectSrv,
-    );
-    public transportProjectLookup = new ProjectLookupModel(
-        this.transportProjectSrv,
-    );
+    public payModeAutoCompleteModel = new DefaultAutoCompleteModel<PayMethod>(this.payMethodSrv);
+    public dealerAutoCompleteModel = new DefaultAutoCompleteModel<User>(this.usersSrv);
+    public agentLookup = new DefaultAutoCompleteModel<Lookup>(this.activeAgentSrv);
+    public purchaseProjectLookup = new ProjectLookupModel(this.purchaseProjectSrv);
+    public transportProjectLookup = new ProjectLookupModel(this.transportProjectSrv);
     public salesProjectLookup = new ProjectLookupModel(this.salesProjectSrv);
     public currencyLookup = new ForeignCurrencyModel(this.currencySrv);
-    public customerLookup = new DefaultAutoCompleteModel<Lookup>(
-        this.activeCustomerSrv,
-    );
-    public supplierLookup = new DefaultAutoCompleteModel<Lookup>(
-        this.activeSupplierSrv,
-    );
-    public supplierAndTransporterLookup = new DefaultAutoCompleteModel(
-        this.activeSupplierAndTransporterSrv,
-    );
-    public transporterLookup = new DefaultAutoCompleteModel<Lookup>(
-        this.activeTransporterSrv,
-    );
-    public consumerLookup = new DefaultAutoCompleteModel<Lookup>(
-        this.activeConsumerSrv,
-    );
-    public branchLookup = new DefaultAutoCompleteModel<Lookup>(
-        this.activeUnitSrv,
-    );
+    public customerLookup = new DefaultAutoCompleteModel<Lookup>(this.activeCustomerSrv);
+    public supplierLookup = new DefaultAutoCompleteModel<Lookup>(this.activeSupplierSrv);
+    public supplierAndTransporterLookup = new DefaultAutoCompleteModel(this.activeSupplierAndTransporterSrv);
+    public transporterLookup = new DefaultAutoCompleteModel<Lookup>(this.activeTransporterSrv);
+    public consumerLookup = new DefaultAutoCompleteModel<Lookup>(this.activeConsumerSrv);
+    public branchLookup = new DefaultAutoCompleteModel<Lookup>(this.activeUnitSrv);
     public executionRef = 0;
     public formId = 0;
     public groups: CCGroup[];
@@ -495,6 +474,10 @@ export abstract class BaseTransactionDetailComponent
             }
         });
     }
+
+    onTabChange(idx: number) {
+        this.selectedTabIndex.set(idx);
+    }
 }
 
 class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {
@@ -525,4 +508,5 @@ class ForeignCurrencyModel extends DefaultAutoCompleteModel<Currency> {
     set localCurrency(value: number) {
         this.#_localCurrency = value;
     }
+
 }

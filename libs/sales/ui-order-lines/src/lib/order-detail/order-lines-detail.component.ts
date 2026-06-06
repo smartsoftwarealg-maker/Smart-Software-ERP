@@ -24,6 +24,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         TranslateDirective,
         ReactiveFormsModule,
         UiAutoCompleteComponent,
+        TranslatePipe,
     ],
 })
 export class OrderLinesDetailComponent
