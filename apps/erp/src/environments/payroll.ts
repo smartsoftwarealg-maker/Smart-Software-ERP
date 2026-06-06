@@ -12,13 +12,14 @@ import {
     ORGANIZATIONS_APP_URL,
     PAYROLL_APP_URL,
     WORK_FLOW_APP_URL,
-    ARCH_VIEWER_URL
+    ARCH_VIEWER_URL, ATTENDANCE_APP_URL
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
 import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
 import {dashboardNavTree} from "../app/dashboard/side-nav-tree";
+import {attendanceNavTree} from "../app/attendance/side-nav-tree";
 
 export const environment = {
     production: true,
@@ -30,7 +31,7 @@ export const navBar = [
     hrLookupNavTree,
     hrNavTree,
     payrollNavTree,
-    gicaNavTree,
+    attendanceNavTree,
     dashboardNavTree,
     aaNavTree
 ];
@@ -56,6 +57,10 @@ export const appRoutes: Routes =  [
         path: INDEX_PAGE_URL,
         component: MainPageComponent,
         canActivate: [CanActivateService]
+    },
+    {
+        path: ATTENDANCE_APP_URL,
+        loadChildren: () => import('../app/attendance/routes').then(m => m.attendanceRoutes)
     },
     {
         path: ORGANIZATIONS_APP_URL,
@@ -88,4 +93,4 @@ export const appRoutes: Routes =  [
 export const APPLICATION_LIST = [
     'ADMINISTRATION', 'DASHBOARD-APP', 'HRMASTER',
     'ORGANIZATION', 'PAYROLL', 'LTM', 'WORKFLOW',
-    'GICACARRER',  'SCHEDULED_SALES'];
+      'SCHEDULED_SALES'];

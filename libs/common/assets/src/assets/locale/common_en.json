@@ -505,5 +505,6 @@
     "WRITES":         "Writes",
     "EDITS":          "Edits",
     "DELETES":        "Deletes",
-    "ACCOUNT_NO": "Account No"
+    "ACCOUNT_NO": "Account No",
+    "HOLIDAYS": "Holidays"
 }

@@ -493,5 +493,7 @@
     "DELETED_AT": "تاريخ الحذف",
     "WRITES": "عمليات الإنشاء",
     "EDITS": "تعديلات",
-    "DELETES": "حذف"
+    "DELETES": "حذف",
+    "ACCOUNT_NO": "رقم الحساب",
+    "HOLIDAYS": "العطل"
 }

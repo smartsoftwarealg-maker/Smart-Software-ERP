@@ -3,7 +3,7 @@ import {Lookup} from '@ss/common/api-lookup';
 export const HOLIDAY_REQUEST_URL = '/payroll/holiday-requests';
 export const ATTENDANCE_MACHINE_URL = '/attendance/machines';
 export const WORK_SHIFT_URL = '/attendance/shifts';
-export const HOLIDAY_URL = '/attendance/holidays';
+export const HOLIDAY_URL = '/holidays';
 export const SIGNATURE_URL = '/attendance/manual-signatures';
 export const ABSENCE_TYPE_URL = '/attendance/absence-types';
 export const ATTENDANCE_PERSONS_URL = '/attendance/persons';

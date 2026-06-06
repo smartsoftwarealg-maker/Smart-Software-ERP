@@ -115,7 +115,7 @@ export const administrationNavTree: SideNavNode = {
             accessRights: 'Document'
         },
         {
-            name: 'ATT_HOLIDAYS',
+            name: 'COMMON_HOLIDAYS',
             icon: 'fa-solid fa-lights-holiday',
             route: ABS_ADMINISTRATION_HOLIDAY_URL,
             accessRights: 'Holiday'
