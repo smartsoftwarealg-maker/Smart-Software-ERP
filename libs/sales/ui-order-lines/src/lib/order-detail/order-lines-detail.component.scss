@@ -1,8 +1,8 @@
 :host {
     display: block;
-    margin: auto;
+    margin: 0 auto;
     max-width: 100%;
-    width: 600px;
+    width: 1000px;
     min-width: 320px;
 }
 
@@ -12,6 +12,7 @@ mat-card {
     mat-card-content {
         margin-top: 24px;
     }
+    border: 1px solid #ccc;
 }
 
 .value {

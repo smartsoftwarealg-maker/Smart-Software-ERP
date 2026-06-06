@@ -458,7 +458,7 @@ export abstract class BaseTransactionLinesDetailComponent extends AbstractEntity
                     this.form.controls['price'].setValue(priceList[this.#priceIndex]);
                 }
             }),
-            switchMap(res => this.articleSrv.get(res.referenceId))
+            switchMap(res => this.articleSrv.get(res?.referenceId||0))
             ).subscribe((article: Article) => this.onArticle(article));
     }
 

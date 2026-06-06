@@ -1,6 +1,10 @@
 @use '@angular/material' as mat;
 @use '@muaazh/angular-datepicker/_theming.css';
 
+// Global theme density setting
+// Options: -3 (most compact) to 0 (default) or positive values for more spacious
+$density: 0;
+
 html {
     --mat-toolbar-container-background-color: var(--mat-sys-primary-container);
     --mat-toolbar-container-text-color: var(--mat-sys-on-primary-container);
@@ -171,7 +175,7 @@ body {
         }
     }
 
-    @include mat.all-component-densities(0);
+    @include mat.all-component-densities($density);
 }
 
 .mat-mdc-header-cell,
@@ -562,3 +566,11 @@ mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
 .has-admob-banner {
     padding-bottom: var(--admob-bottom-padding);
 }
+
+mat-table,
+mat-tree,
+mat-list,
+mat-toolbar {
+    @include mat.table-density(-4);
+}
+

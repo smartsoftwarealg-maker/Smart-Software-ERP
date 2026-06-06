@@ -12,6 +12,7 @@ import { LotsService, MarkService, StoreService } from '@ss/common/api-lookup';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { Sort } from '@angular/material/sort';
 import { OptionService } from '@ss/logistics/ui-options';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'ss-article-search',
@@ -50,20 +51,24 @@ export class ArticleSearchDlg implements OnInit {
 
 
     ngOnInit() {
-        this.pagination.onChange = () => this.refresh();
         this.#optionSrv
             .get(this.#loginSrv.appCtx.center)
-            .subscribe(res => {
-                this.usesLots.set(res.usesLots||false);
-                this.displayedColumns.set(this.displayedColumns().filter(e => res.usesLots || (e !== 'storeName' && e !== 'expirationDate')));
-            });
-        this.form
-            .valueChanges
             .pipe(
-                debounceTime(300),
-                distinctUntilChanged(),
-                takeUntilDestroyed(this.#destroyRef))
-            .subscribe(() => this.refresh());
+                tap(res => {
+                    this.usesLots.set(res.usesLots||false);
+                    this.displayedColumns.set(this.displayedColumns().filter(e => res.usesLots || (e !== 'storeName' && e !== 'expirationDate')));
+                })
+            ).subscribe(res => {
+                this.pagination.onChange = () => this.refresh();
+                this.form
+                    .valueChanges
+                    .pipe(
+                        debounceTime(300),
+                        distinctUntilChanged(),
+                        takeUntilDestroyed(this.#destroyRef))
+                    .subscribe(() => this.refresh());
+
+        });
     }
 
     cancel() {

@@ -28,8 +28,8 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     standalone: true,
     imports: [MaterialModule, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
-export class InvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {
-    showCurrency = input(false);
+export class InvoiceDetailComponent extends BaseTransactionDetailComponent {
+    showCurrency = input<boolean>(false);
 
     constructor(
         protected loginSrv: LoginService,
