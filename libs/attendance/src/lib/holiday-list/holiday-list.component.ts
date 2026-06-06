@@ -58,7 +58,7 @@ export class HolidayListComponent extends BaseEntityListComponent<Holiday> {
             confirmationSrv,
             defReportSrv,
             pagPersistSrv,
-            'ATT_HOLIDAYS');
+            'COMMON_HOLIDAYS');
         this.pagination.pageSize = 15;
     }
 }

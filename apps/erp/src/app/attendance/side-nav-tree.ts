@@ -26,7 +26,7 @@ export const attendanceNavTree: SideNavNode = {
             accessRights: 'WorkShift'
         },
         {
-            name: 'ATT_HOLIDAYS',
+            name: 'COMMON_HOLIDAYS',
             icon: 'fa-solid fa-lights-holiday',
             route: ABS_ATTENDANCE_HOLIDAY_URL,
             accessRights: 'Holiday'

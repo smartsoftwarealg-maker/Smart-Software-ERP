@@ -1,7 +1,6 @@
 {
     "MACHINES":          "Pointeuses",
     "WORKSHIFTS":        "Shifts",
-    "HOLIDAYS":          "Jours Fériés",
     "SHIFT_ASSIGNMENTS": "Affecations",
     "ATTENDANCE_LOG":    "Journal Pointage",
     "IP_ADDRESS":       "Adresse IP",
