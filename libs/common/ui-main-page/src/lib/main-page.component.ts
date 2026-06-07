@@ -54,7 +54,9 @@ export class MainPageComponent implements OnInit, OnDestroy {
                     if (f && f.length) {
                         this.searchResult.set([]);
                         const words = lowF.split(' ');
-                        this.srv.display().forEach(t => this.searchTree(t, words, this.searchResult()));
+                        const temp: SideNavNode[] = [];
+                        this.srv.display().forEach(t => this.searchTree(t, words, temp));
+                        this.searchResult.set(temp);
                     } else {
                         this.searchResult.set([]);
                     }
@@ -112,9 +114,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
     }
 
     clearSearch(): void {
-        if (this.shellSrv.searchFormControl) {
-            this.shellSrv.searchFormControl.setValue(null);
-        }
+        this.shellSrv.setSearchText('');
         this.searchResult.set([]);
     }
 

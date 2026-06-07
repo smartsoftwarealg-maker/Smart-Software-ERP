@@ -21,6 +21,7 @@ import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
 import { LanguageSelectComponent } from '@ss/common/ui-lang';
 import { ThemeSelectComponent } from '@ss/common/ui-theme';
 import { TranslatePipe } from '@ss/common/ui-lang';
+import {FormField} from "@angular/forms/signals";
 
 @Component({
     selector: 'ss-header-page',
@@ -43,6 +44,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         LanguageSelectComponent,
         ThemeSelectComponent,
         TranslatePipe,
+        FormField,
     ],
 })
 export class HeaderPageComponent implements OnInit, OnDestroy {

@@ -84,7 +84,7 @@ export class LotPriorityListComponent implements OnInit, OnDestroy {
         this.shellSrv.setButtons([this.refreshButton, this.editButton]);
         this.pagination.pageSize = 15;
         this.pagination.onChange = () => this.refresh();
-        this.shellSrv.searchFormControl.setValue(null);
+        this.shellSrv.setSearchText('');
     }
 
     readonly displayedColumns = ([

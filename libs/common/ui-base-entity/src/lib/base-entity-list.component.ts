@@ -186,7 +186,7 @@ implements OnInit, OnDestroy {
                 this.enableSearch();
                 this.pagination.onChange = () => this.refresh();
                 this.filter = this.pagPersistSrv.getSearch(this.title);
-                this.shellSrv.searchFormControl.setValue(this.filter);
+                this.shellSrv.setSearchText(this.filter);
                 this.loading.set(false);
                 this.shellSrv.setLoading(false);
             });

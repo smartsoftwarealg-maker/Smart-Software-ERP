@@ -103,7 +103,7 @@
             <div class="ss-form-field large-only">
               <mat-form-field floatLabel="always">
                 <mat-label translate>{{ shellSrv.searchInputTitle }}</mat-label>
-                <input [formControl]="shellSrv.searchFormControl"
+                <input [formField]="shellSrv.searchForm.query"
                   matInput type="text"
                   id="shellSearchField">
                 </mat-form-field>

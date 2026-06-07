@@ -29,6 +29,7 @@ import { catchError, of, switchMap, tap } from 'rxjs';
 import { LanguageSelectComponent } from '@ss/common/ui-lang';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { ThemeSelectComponent } from '@ss/common/ui-theme';
+import {form, FormField} from "@angular/forms/signals";
 
 @Component({
     selector: 'ss-shell',
@@ -42,8 +43,9 @@ import { ThemeSelectComponent } from '@ss/common/ui-theme';
     ThemeSelectComponent,
     LanguageSelectComponent,
     TranslatePipe,
-    TranslateDirective
-]
+    TranslateDirective,
+        FormField
+    ]
 })
 export class ShellComponent implements OnInit, OnDestroy, AfterViewInit, AfterViewChecked {
     #httpSrv = inject(HttpService);
