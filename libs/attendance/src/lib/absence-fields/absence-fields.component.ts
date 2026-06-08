@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import {
@@ -44,6 +44,7 @@ export class AbsenceFieldsComponent implements OnInit {
     private route = inject(ActivatedRoute);
     private formBuilder = inject(UntypedFormBuilder);
     private absenceSrv = inject(AbsenceFieldsService);
+    protected loading = signal(true);
     public form: UntypedFormGroup | null;
     escapeElementLookup = new DefaultAutoCompleteModel(
         this.elementSrv,
@@ -72,6 +73,10 @@ export class AbsenceFieldsComponent implements OnInit {
                 },
                 error: (err) => {
                     console.log(err);
+                    throw err;
+                },
+                complete: () => {
+                    this.loading.set(false);
                 },
             });
     }

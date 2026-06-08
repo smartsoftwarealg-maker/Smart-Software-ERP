@@ -110,8 +110,8 @@
               </div>
             }
 
-            @for (b of shellSrv.buttons().filter(e => e.visible); track $index) {
-              @if (b.keepOnToolbar != 2) {
+            @for (b of shellSrv.visibleButtons(); track $index) {
+              @if (b.keepOnToolbar && b.keepOnToolbar !== 2) {
                 @if (b.menuItems) {
                   @if (b.visible) {
                     <button mat-icon-button matTooltip="{{b.label | translate}}"

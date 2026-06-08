@@ -109,6 +109,7 @@ export class ShellService {
     //
 
     buttons = signal<ToolbarButton[]>([]);
+    visibleButtons = computed(() => this.buttons().filter(b => b.visible));
     labels = signal<ToolbarLabel[]>([this._companyName]);
     appButtons: ToolbarButton[] = [];
     //

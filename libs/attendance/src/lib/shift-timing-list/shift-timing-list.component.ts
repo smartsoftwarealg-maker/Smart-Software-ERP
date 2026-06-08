@@ -37,10 +37,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
     ]
 })
 export class ShiftTimingListComponent extends BaseChildEntityListComponent<Timing> {
-    selected: Timing = null;
+    selected: Timing|null = null;
     data: Timing[] = [];
-
-    periodExhausted = toSignal(this.data$.pipe(map(res => res.length)));
 
     override displayedColumns = ([
         'date',
@@ -53,10 +51,6 @@ export class ShiftTimingListComponent extends BaseChildEntityListComponent<Timin
     constructor(public entitySrv: ShiftTimingService) {
         super(entitySrv, 'Timing');
         this.paginator.pageSize = 100;
-    }
-
-    override refresh() {
-        super.refresh();
     }
 
 }
