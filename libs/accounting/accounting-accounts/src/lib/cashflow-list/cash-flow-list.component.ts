@@ -132,11 +132,9 @@ export class CashFlowListComponent extends BaseEntityListComponent<AnnexCode> {
             }),
             switchMap(() => this.cashFlowSrv.pending('', false, null)))
             .subscribe({
-                next: res => {
-                    this.pendingData = res;
-                    this.shellSrv.setLoading(false);
-                },
-                error: err => this.shellSrv.setLoading(false)
+                next: res => this.pendingData = res,
+                error: err => this.shellSrv.setLoading(false),
+                complete: () => this.shellSrv.setLoading(false)
             });
     }
 

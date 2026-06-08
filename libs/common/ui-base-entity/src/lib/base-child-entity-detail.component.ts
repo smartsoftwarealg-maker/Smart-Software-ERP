@@ -93,11 +93,11 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
                     throw err;
                 },
                 next: () => {
-                    this.shellSrv.setLoading(false);
                     this.router.navigate(['../'], { relativeTo: this.route }).then();
                     this.form?.markAsUntouched();
                     this.snackBarSrv.showSuccessMessage();
-                }
+                },
+                complete: () => this.shellSrv.setLoading(false)
             });
     }
 

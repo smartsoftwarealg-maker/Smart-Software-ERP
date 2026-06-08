@@ -1,7 +1,7 @@
 import {computed, inject, Injectable, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormControl } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import {
     DocRight,
@@ -15,6 +15,8 @@ import {
     MainPageService
 } from '@ss/common/api-common';
 import { BadgeButtonService } from './badge-button-service';
+import {form, FormField} from "@angular/forms/signals";
+import {toObservable} from "@angular/core/rxjs-interop";
 
 export function cloneDeep<T>(obj: T): T {
     return JSON.parse(JSON.stringify(obj)) as T;
@@ -62,7 +64,7 @@ export interface MenuItem {
     providedIn: 'root'
 })
 export class ShellService {
-
+    #_hasSearch = false;
     #badgeButtonSrv = inject(BadgeButtonService);
     private _application = '';
     private navTree: SideNavNode[] = [];
@@ -90,20 +92,24 @@ export class ShellService {
     protected showToolbarFn: () => void = null;
     protected updatePending = false;
     protected updateShellFn: () => void = null;
-    protected subscription: Subscription;
     //
     protected _title = signal<string|null>(null);
     protected appName = signal<string|null>(null);
     //
     protected goBackFn: () => void = null;
-    protected searchControl: UntypedFormControl;
+    // protected searchControl: UntypedFormControl;
+    protected readonly searchModel = signal({ query: '' });
     protected searchInputLabel: string;
+    readonly searchText = toObservable(computed(() => this.searchModel().query));
+    readonly searchString = computed(() => this.searchModel().query);
     public focusSearchField: boolean;
     public visibleSearchField = signal(true);
     public applicationTitle = computed(() => this.appName());
+    public readonly searchForm = form(this.searchModel);
     //
 
     buttons = signal<ToolbarButton[]>([]);
+    visibleButtons = computed(() => this.buttons().filter(b => b.visible));
     labels = signal<ToolbarLabel[]>([this._companyName]);
     appButtons: ToolbarButton[] = [];
     //
@@ -409,28 +415,25 @@ export class ShellService {
     /* SEARCH */
 
     public get hasSearch(): boolean {
-        return this.searchControl != null;
+        return this.#_hasSearch;
     }
 
     public get searchInputTitle(): string {
         return this.searchInputLabel;
     }
 
-    public get searchFormControl(): UntypedFormControl {
-        return this.searchControl;
-    }
 
     public disableSearch(updateShell = true) {
-        this.searchControl = null;
         this.focusSearchField = false;
         this.searchInputLabel = null;
-        if (this.subscription != null) {
-            this.subscription.unsubscribe();
-            this.subscription = null;
-        }
+        this.#_hasSearch = false;
         if (updateShell) {
             this.updateShell();
         }
+    }
+
+    setSearchText(st: string) {
+        this.searchModel.set({ query: st });
     }
 
     /**
@@ -447,20 +450,15 @@ export class ShellService {
             //     'Dear developer, you have called enableSearch twice in a row,\n\t1. either you have not cleared the shellService state by calling .reset()\n\t2. or you called the function twice in the same component.\n\t\tContact muaaz.h.is@gmail.com for more information'
             // );
         } else {
-            this.searchControl = new UntypedFormControl();
-            this.subscription = subFn(
-                this.searchControl
-                    .valueChanges
-                    .pipe(debounceTime(300),
-                        distinctUntilChanged())
-            );
+            this.#_hasSearch = true;
+            subFn(this.searchText);
             this.updateShell();
         }
         this.focusSearchField = focusField;
     }
 
     getSearchText() {
-        return this.searchControl?.value;
+        return this.searchModel().query;
     }
 
     /**
@@ -494,7 +492,7 @@ export class ShellService {
     }
 
     public addButton(btn: ToolbarButton): void {
-        this.buttons.update(v => [...v, btn]);
+        this.buttons.update(v => v.find(e => e.icon === btn.icon)? v : [...v, btn]);
         this.updateShell();
     }
 

@@ -481,7 +481,7 @@ export abstract class BaseTransactionDetailComponent
 }
 
 class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {
-    constructor(srv: BaseEntityService<Project>) {
+    constructor(public srv: BaseEntityService<Project>) {
         super(srv);
     }
 
@@ -491,7 +491,7 @@ class ProjectLookupModel extends DefaultAutoCompleteModel<Project> {
 class ForeignCurrencyModel extends DefaultAutoCompleteModel<Currency> {
     #_localCurrency: number = 0;
 
-    constructor(srv: BaseEntityService<Currency>) {
+    constructor(public srv: BaseEntityService<Currency>) {
         super(srv);
     }
 

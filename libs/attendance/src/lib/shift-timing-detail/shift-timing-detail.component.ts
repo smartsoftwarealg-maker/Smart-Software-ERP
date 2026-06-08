@@ -66,7 +66,7 @@ export class ShiftTimingDetailComponent extends BaseChildEntityDetailComponent<T
         });
         if (e.id === 0) {
             this.entitySrv
-                .getList(0, 1, null, '-id')
+                .getList(0, 1, '', '-id')
                 .subscribe(res => {
                     if (res.itemCount > 0) {
                         const tmg = res.body[0];

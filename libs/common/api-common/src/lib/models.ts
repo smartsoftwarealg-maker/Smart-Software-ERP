@@ -94,6 +94,7 @@ export interface UserInfo {
     user: User;
 }
 
+
 export interface SideNavNode {
     icon: string;
     name: string;

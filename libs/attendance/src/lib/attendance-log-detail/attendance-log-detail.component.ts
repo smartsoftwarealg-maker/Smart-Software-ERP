@@ -11,7 +11,7 @@ import {
 } from '@angular/forms';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { SignatureService } from '../signature.service';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { LoginService, MaterialModule, strToDateTime} from '@ss/common/api-common';
 import { AbsenceMotiveService } from '../absence-motive.service';
 import {
     DefaultAutoCompleteModel,
@@ -126,7 +126,7 @@ export class AttendanceLogDetailComponent extends BaseEntityDetailComponent<ATTS
         const val1: ATTSignature = {
             id: val.id,
             personId: val.personId,
-            dateTime: val.from,
+            dateTime: strToDateTime(val.from),
             manually: true,
             updater: this.#loginSrv.appCtx.id,
             attendanceType: val.attendanceType,
@@ -135,7 +135,7 @@ export class AttendanceLogDetailComponent extends BaseEntityDetailComponent<ATTS
         const val2: ATTSignature = {
             id: val.id,
             personId: val.personId,
-            dateTime: val.to,
+            dateTime: strToDateTime(val.to),
             manually: true,
             updater: this.#loginSrv.appCtx.id,
             attendanceType: val.attendanceType,

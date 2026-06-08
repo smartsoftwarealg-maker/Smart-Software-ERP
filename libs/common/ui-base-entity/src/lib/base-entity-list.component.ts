@@ -186,7 +186,7 @@ implements OnInit, OnDestroy {
                 this.enableSearch();
                 this.pagination.onChange = () => this.refresh();
                 this.filter = this.pagPersistSrv.getSearch(this.title);
-                this.shellSrv.searchFormControl.setValue(this.filter);
+                this.shellSrv.setSearchText(this.filter);
                 this.loading.set(false);
                 this.shellSrv.setLoading(false);
             });
@@ -237,8 +237,6 @@ implements OnInit, OnDestroy {
                     if (callback) {
                         callback();
                     }
-                    this.shellSrv.setLoading(false);
-                    this.loading.set(false);
                 },
                 error: (err) => {
                     this.data = []; // clear everything;
@@ -246,6 +244,10 @@ implements OnInit, OnDestroy {
                     this.loading.set(false);
                     throw err;
                 },
+                complete: () => {
+                    this.shellSrv.setLoading(false);
+                    this.loading.set(false);
+                    }
             });
     }
 

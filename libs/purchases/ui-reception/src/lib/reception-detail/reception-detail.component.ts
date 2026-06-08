@@ -99,12 +99,17 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
 
     override finishLoading(e: Transaction) {
         this.costSrv.setParentId(e?.id);
+        this.onTabChange(0);
         super.finishLoading(e);
     }
 
-    onTabChange(idx: number) {
-        if (this.saveButton.visible) {
-            this.router.navigate([this.URLs[idx]], { relativeTo: this.route }).then();
+    override onTabChange(idx: number) {
+        this.selectedTabIndex.set(idx);
+        const url = idx === 0? this.URLs[0]:
+                    idx === 4? this.URLs[1]:
+                    null;
+        if (url) {
+            this.router.navigate([url], { relativeTo: this.route }).then();
         }
     }
 
@@ -142,5 +147,4 @@ export class ReceptionDetailComponent extends BaseTransactionDetailComponent imp
                 tap(res => this.showAccTab.set(true)),
                 switchMap(() => super.preload()));
     }
-
 }

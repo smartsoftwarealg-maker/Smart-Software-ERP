@@ -76,6 +76,10 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                     this.loading.set(false);
                     this.shellSrv.setLoading(false); // stop the animation
                     throw error;
+                },
+                complete: () => {
+                    this.loading.set(false);
+                    this.shellSrv.setLoading(false); // stop the animation
                 }
             });
     }

@@ -15,6 +15,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MaterialModule } from '@ss/common/api-common';
+import {tap} from "rxjs/operators";
 
 @Component({
     selector: 'ss-work-shift-detail',
@@ -53,8 +54,8 @@ export class WorkShiftDetailComponent extends BaseEntityDetailComponent<WorkShif
 
     public override setupForm(b: WorkShift) {
         this.#childSrv.period = b?.period || 0;
-        this.timingSrv.setParentId(b?.id);
-        this.timingSrv.startDate = b?.startDate;
+        this.timingSrv.setParentId(b?.id||0);
+        this.timingSrv.startDate = b?.startDate||new Date();
         return this.formBuilder.group({
             id:          [b.id],
             startDate:   [b.startDate, Validators.required],
@@ -70,17 +71,16 @@ export class WorkShiftDetailComponent extends BaseEntityDetailComponent<WorkShif
         this.shellSrv.setGoBackEnabled(enabled);
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.disableControls(this.router.url);
+    override preload():Observable<unknown>{
+        return  super.preload().pipe(tap(() => this.disableControls(this.router.url)));
+    }
+
+    override loadEntity(id: number): Observable<WorkShift> {
         this.subscriptions.push(this.router.events
             .pipe(filter((e: any): e is RouterEvent => e instanceof RouterEvent))
             .subscribe((e: RouterEvent) => {
                 this.saveButton.visible = e.url.indexOf('/detail/') < 0;
             }));
-    }
-
-    override loadEntity(id: number): Observable<WorkShift> {
         this.#childSrv.setParentId(id);
         return super.loadEntity(id);
     }

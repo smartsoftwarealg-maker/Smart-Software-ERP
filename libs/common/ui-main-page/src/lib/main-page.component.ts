@@ -35,6 +35,12 @@ export class MainPageComponent implements OnInit, OnDestroy {
         keepOnToolbar: KeepOnToolbar.ALWAYS,
         click: () => this.#router.navigate(['/app/administration/workflow-inbox']).then(() => this.#badgeBtn.visible = false)
     };
+#emptyNode: SideNavNode = {
+    name: '',
+    icon: 'fa-solid fa-empty-set',
+    route: 'COMMON_NO_RESULTS',
+    children: []
+}
 
     public srv = inject(MainPageService);
     public shellSrv = inject(ShellService);
@@ -54,7 +60,12 @@ export class MainPageComponent implements OnInit, OnDestroy {
                     if (f && f.length) {
                         this.searchResult.set([]);
                         const words = lowF.split(' ');
-                        this.srv.display().forEach(t => this.searchTree(t, words, this.searchResult()));
+                        const temp: SideNavNode[] = [];
+                        this.srv.display().forEach(t => this.searchTree(t, words, temp));
+                        if (temp.length === 0) {
+                            temp.push(this.#emptyNode);
+                        }
+                        this.searchResult.set(temp);
                     } else {
                         this.searchResult.set([]);
                     }
@@ -112,9 +123,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
     }
 
     clearSearch(): void {
-        if (this.shellSrv.searchFormControl) {
-            this.shellSrv.searchFormControl.setValue(null);
-        }
+        this.shellSrv.setSearchText('');
         this.searchResult.set([]);
     }
 

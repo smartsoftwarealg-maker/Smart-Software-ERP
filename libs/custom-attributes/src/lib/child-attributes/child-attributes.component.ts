@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnDestroy, OnInit, input } from '@angular/core';
+import { Component, inject, Input, OnDestroy, OnInit, input, signal} from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {of, Subscription} from 'rxjs';
@@ -44,10 +44,10 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
 
     readonly editable = input(true);
     attributeCtrl = new UntypedFormControl();
-    childAttributes: Attrib[] = [];
+    childAttributes = signal<Attrib[]>([]);
     selectedAttributeCtrl = new UntypedFormControl();
     attributeColumns = ['attribName', 'value'];
-    selectedAttribute: Attrib = null;
+    selectedAttribute: Attrib|null = null;
     attributeType = 0;
     $childAttributes: AttribTempl[] = [];
     attributeLookup = new DefaultAutoCompleteModel(this.attribLookupSrv);
@@ -79,8 +79,8 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
         this.childAttribSrv
             .getList(0, 50)
             .subscribe(res => {
-                this.childAttributes = res.body;
-                this.childAttributes
+                this.childAttributes.set(res.body);
+                res.body
                     .forEach(e => e.value = e.stringVal ||
                         e.numericVal?.toLocaleString() ||
                         e.valueName ||
@@ -123,7 +123,7 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
                     if (typeof res === 'object') {
                         if (res.count > 0) {
                             this.snackBarSrv.showSuccessMessage();
-                            this.childAttributes = this.childAttributes.filter(e => e.id !== id);
+                            this.childAttributes.update(v => v.filter(e => e.id !== id));
                         }
                     }
                 });
@@ -134,7 +134,7 @@ export class ChildAttributesComponent implements OnInit, OnDestroy {
         this.selectedAttribute = attrib;
         this.selectedAttributeCtrl.setValue(null);
         const selectedAttrib = this.$childAttributes.find(e => e.id === attrib.attribCode);
-        this.attributeType = selectedAttrib?.attType;
+        this.attributeType = selectedAttrib?.attType||0;
         this.attribLookupSrv.setParentId(attrib.attribCode || 0);
     }
 
