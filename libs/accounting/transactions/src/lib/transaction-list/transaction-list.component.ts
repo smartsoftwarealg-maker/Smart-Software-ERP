@@ -97,11 +97,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         this.pagination.onChange = () => this.refreshTransactions();
     }
 
-    // override preload(): Observable<any> {
-    //     return this.journalSrv
-    //         .getUserJournals(this.journalFilter.value || '')
-    //         .pipe(tap(res => this.journalList = res.body));
-    // }
    override preload():Observable<any>{
        return this.journalSrv
            .getUserJournals(this.journalFilter.value || '')
@@ -112,6 +107,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                }),
                switchMap(() => this.accPolicySrv.get(this.loginSrv.appCtx.center)),
                    tap((policy => {
+                       this.displayedColumns.set(['pieceNo', 'pieceDate']);
                        if (policy.showProjects) {
                            this.displayedColumns.update(v => [...v, 'projectName']);
                        }

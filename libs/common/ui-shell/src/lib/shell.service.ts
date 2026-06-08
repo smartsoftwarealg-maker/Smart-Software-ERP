@@ -492,7 +492,7 @@ export class ShellService {
     }
 
     public addButton(btn: ToolbarButton): void {
-        this.buttons.update(v => [...v, btn]);
+        this.buttons.update(v => v.find(e => e.icon === btn.icon)? v : [...v, btn]);
         this.updateShell();
     }
 
