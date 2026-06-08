@@ -83,7 +83,12 @@
                         <textarea matInput formControlName="altAgent" rows="1"></textarea>
                     </mat-form-field>
 
-                    <mat-tab-group>
+                    <mat-tab-group (selectedIndexChange)="onTabChange($event)">
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <span translate>COMMON_DETAIL</span>
+                            </ng-template>
+                        </mat-tab>
                         <mat-tab>
                             <ng-template mat-tab-label>
                                 <span translate>LOGISTICS_DISCOUNT</span>
@@ -198,6 +203,11 @@
                             </mat-form-field>
 
                         </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <span translate>LOGISTICS_EXTRA_COSTS</span>
+                            </ng-template>
+                        </mat-tab>
                         @if (showAccTab()) {
                             <mat-tab>
                                 <ng-template mat-tab-label>
@@ -220,20 +230,9 @@
         </mat-card-content>
     </mat-card>
 
-    <mat-tab-group class="detail_div" (selectedIndexChange)="onTabChange($event)">
-        <mat-tab [disabled]="!saveButton.visible">
-            <ng-template mat-tab-label>
-                <span translate>COMMON_DETAIL</span>
-            </ng-template>
-        </mat-tab>
-        <mat-tab [disabled]="!saveButton.visible">
-            <ng-template mat-tab-label>
-                <span translate>LOGISTICS_EXTRA_COSTS</span>
-            </ng-template>
-        </mat-tab>
-    </mat-tab-group>
-
+    @if (selectedTabIndex() === 0 || selectedTabIndex() === 4) {
+        <router-outlet></router-outlet>
+    }
     <!--<ss-reception-lines-list class="detail-list" [isEditable]="isEditable" *ngIf="!isLoading && formId" [parentExecutionRef]="executionRef"></ss-reception-lines-list>-->
 
-    <router-outlet></router-outlet>
 }

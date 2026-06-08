@@ -101,6 +101,7 @@ export class ShellService {
     protected readonly searchModel = signal({ query: '' });
     protected searchInputLabel: string;
     readonly searchText = toObservable(computed(() => this.searchModel().query));
+    readonly searchString = computed(() => this.searchModel().query);
     public focusSearchField: boolean;
     public visibleSearchField = signal(true);
     public applicationTitle = computed(() => this.appName());
@@ -443,7 +444,6 @@ export class ShellService {
      */
     public  enableSearch(inputLabel: string, subFn: (a: Observable<any>) => any, focusField = false): void {
         this.searchInputLabel = inputLabel;
-        console.log('enableSearch', this.hasSearch);
         if (this.hasSearch) {
             // alert(
             //     'Dear developer, you have called enableSearch twice in a row,\n\t1. either you have not cleared the shellService state by calling .reset()\n\t2. or you called the function twice in the same component.\n\t\tContact muaaz.h.is@gmail.com for more information'

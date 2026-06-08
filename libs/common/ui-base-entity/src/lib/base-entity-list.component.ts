@@ -237,8 +237,6 @@ implements OnInit, OnDestroy {
                     if (callback) {
                         callback();
                     }
-                    this.shellSrv.setLoading(false);
-                    this.loading.set(false);
                 },
                 error: (err) => {
                     this.data = []; // clear everything;
@@ -246,6 +244,10 @@ implements OnInit, OnDestroy {
                     this.loading.set(false);
                     throw err;
                 },
+                complete: () => {
+                    this.shellSrv.setLoading(false);
+                    this.loading.set(false);
+                    }
             });
     }
 

@@ -62,7 +62,7 @@ export class AssetTreeComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.shellSrv.setButtons([this.refreshButton]);
-        this.shellSrv.enableSearch("SEARCH_APP", obs => obs.subscribe(str => this.refreshList()));
+        this.shellSrv.enableSearch("SEARCH_APP", obs => obs.subscribe(() => this.refreshList()));
         this.shellSrv.setGoBackPath("..", this.route);
         this.refreshTree();
     }

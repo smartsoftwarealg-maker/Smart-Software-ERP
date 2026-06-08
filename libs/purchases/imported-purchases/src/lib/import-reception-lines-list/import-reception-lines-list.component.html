@@ -108,7 +108,7 @@
         <div class="pagination-container b-b-background">
             <ss-pagination [paginationModel]="pagination"></ss-pagination>
         </div>
-        @if (selectedRow?.transacId) {
+        @if (selectedRow()?.transacId) {
             <div class="doc-info">
                 <ss-doc-info
                         [displayedGroups]="['article', 'document']"

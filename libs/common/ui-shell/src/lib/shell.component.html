@@ -110,7 +110,7 @@
               </div>
             }
 
-            @for (b of shellSrv.buttons().filter(e => e.visible && !shellSrv.loading()); track $index) {
+            @for (b of shellSrv.buttons().filter(e => e.visible); track $index) {
               @if (b.keepOnToolbar != 2) {
                 @if (b.menuItems) {
                   @if (b.visible) {
@@ -134,7 +134,7 @@
                     }
                   </mat-menu>
                 }
-                @if (!b.menuItems?.length > 0 && b.visible === true && !shellSrv.loading()) {
+                @if (!b.menuItems?.length > 0 && b.visible === true) {
                   <button mat-icon-button matTooltip="{{b.label | translate}}"
                     (click)="b.click()"
                     [disabled]="b.disabled"
@@ -205,7 +205,7 @@
 
     <mat-menu #menu="matMenu" style="overflow: hidden">
       <div class="nav-bar-settings-menu" (click)="$event.stopPropagation()">
-        @for (b of shellSrv.buttons().filter(b => !shellSrv.loading()); track $index) {
+        @for (b of shellSrv.buttons(); track $index) {
           @if (b.visible) {
             @if (b.menuItems) {
               <div class="settings-item" mat-menu-item (click)="trigger.toggleMenu()"
