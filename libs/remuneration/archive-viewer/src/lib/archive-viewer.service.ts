@@ -14,6 +14,8 @@ export class ArchiveViewerService extends BaseEntityService<PAYArchive> {
     private _formulas = '___';
     private _columns  = 'id,lastname,firstname';
     private _compact  = false;
+    private _consolidated = false;
+
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ARCHIVE_VIEWER_URL);
     }
@@ -57,6 +59,7 @@ export class ArchiveViewerService extends BaseEntityService<PAYArchive> {
         this._formulas = formulas;
         this._columns  = columns;
         this._compact  = compact;
+        this._consolidated = consolidated;
         const params = new HttpParams()
             .set('from', from)
             .set('formula', formulas)
@@ -82,6 +85,7 @@ export class ArchiveViewerService extends BaseEntityService<PAYArchive> {
             .set('formula', this._formulas)
             .set('compact', this._compact)
             .set('to', this._to)
+            .set('consolidated', this._consolidated)
             .set('filter', filter|| '')
             .set('columns', this._columns);
         return super.excelWithParams(params);

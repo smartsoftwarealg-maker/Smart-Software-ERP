@@ -220,8 +220,4 @@ export class ElementsEntryListComponent
         return false;
     }
 
-    ngOnInit(){
-        console.log('_____________________________On init');
-        super.ngOnInit();
-    }
 }
