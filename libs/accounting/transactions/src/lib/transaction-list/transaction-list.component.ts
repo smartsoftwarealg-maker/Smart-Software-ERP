@@ -240,6 +240,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         this.selectedJournal.set(event.options[0].value);
         const journalId = event.options[0].value;
         this.entitySrv.setParentId(journalId);
+        this.entitySrv.selectedId.set(0);
         this.entitySrv
             .findByJournal(this.selectedJournal(), this.pagination.page, this.pagination.pageSize, this.filter)
             .pipe(
@@ -251,6 +252,7 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
                 tap(res => {
                     this.journalSummary.set(res);
                     this.addButton.visible = journalId > 0 && Math.abs(this.journalSummary()?.debit - this.journalSummary()?.credit) < 0.01;
+                    this.editButton.visible = false;
                 })
                 ).subscribe(() => {
                      this.shellSrv.setLoading(false);

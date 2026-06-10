@@ -20,6 +20,7 @@ import { aaNavTree } from '../app/archive-viewer/side-nav-tree';
 import { gicaNavTree } from '../app/gica/side-nav-tree';
 import {dashboardNavTree} from "../app/dashboard/side-nav-tree";
 import {attendanceNavTree} from "../app/attendance/side-nav-tree";
+import {dashboardRoutes} from "../app/dashboard/routes";
 
 export const environment = {
     production: true,
@@ -80,11 +81,11 @@ export const appRoutes: Routes =  [
     },
     {
         path: DASHBOARD_APP_URL,
-        loadChildren: () => import('../app/dashboard/app-dashboard.module').then(m => m.AppDashboardModule)
+        loadChildren: () => import('../app/dashboard/routes').then(m => m.dashboardRoutes)
     },
     {
         path: WORK_FLOW_APP_URL,
-        loadChildren: () => import('../app/workflow/workflow.module').then(m => m.WorkflowModule)
+        loadChildren: () => import('../app/workflow/routes').then(m => m.workflowRoutes)
     },
     { path: '', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' },
     { path: '**', redirectTo: INDEX_PAGE_URL, pathMatch: 'full' }

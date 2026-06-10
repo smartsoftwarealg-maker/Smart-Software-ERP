@@ -48,7 +48,7 @@ export class AccClosedPeriodsComponent implements OnInit {
     public closedPeriodSrv = inject(ClosedPeriodsService);
     public langSrv = inject(LanguageService);
 
-    public data: ClosedPeriod[];
+    public data = signal<ClosedPeriod[]>([]);
     private selectedRow: ClosedPeriod;
 
     public readonly displayedColumns = (['period', 'closed']);
@@ -56,9 +56,11 @@ export class AccClosedPeriodsComponent implements OnInit {
     ngOnInit() {
         this.shellSrv.setTitle('ACC_CLOSED_PERIODS');
         this.shellSrv.setGoBackPath('..', this.route);
-        this.closedPeriodSrv.list().subscribe({
+        this.closedPeriodSrv
+            .list()
+            .subscribe({
             next: (res) => {
-                this.data = res;
+                this.data.set(res);
             },
         });
     }

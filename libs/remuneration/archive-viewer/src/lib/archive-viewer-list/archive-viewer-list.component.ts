@@ -120,7 +120,7 @@ export class ArchiveViewerListComponent
         'paymonth',
     ];
 
-    private FIXED_INFO = ['id', 'lastname', 'firstname', 'post', 'paymonth'];
+    private FIXED_INFO = ['id', 'lastname', 'firstname', 'paymonth'];
 
     private filterSignal = signal<string>('');
     private _formulas = signal<Formula[]>([]);

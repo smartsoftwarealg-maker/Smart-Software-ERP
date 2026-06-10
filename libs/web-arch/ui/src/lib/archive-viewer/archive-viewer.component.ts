@@ -26,7 +26,7 @@ export class ArchiveViewerComponent implements OnInit {
     private service  = inject(ArchiveService);
     private shellSrv  = inject(ShellService);
     private langSrv  = inject(LanguageService);
-    imgSrc: string = null;
+    imgSrc: string|null = null;
     title = 'WAR_ARCHIVE';
 
     constructor() {

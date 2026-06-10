@@ -110,7 +110,7 @@
               </div>
             }
 
-            @for (b of shellSrv.visibleButtons(); track $index) {
+            @for (b of shellSrv.buttons(); track $index) {
               @if (b.keepOnToolbar && b.keepOnToolbar !== 2) {
                 @if (b.menuItems) {
                   @if (b.visible) {

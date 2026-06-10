@@ -44,7 +44,6 @@ export class ElementsEntryService extends BaseEntityService<ELine> {
     }
 
     load(): Observable<{ itemCount: number; body: ElementsInfo[] }> {
-        console.log('____________________________________loading' );
         return this.inputFilterSrv
             .getList(0, 50)
             .pipe(
