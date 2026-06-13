@@ -18,7 +18,8 @@ import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MatButton } from '@angular/material/button';
 import { TranslatePipe } from '@ss/common/ui-lang';
-import { MaterialModule } from '@ss/common/api-common';
+import {Center, LoginService, MaterialModule } from '@ss/common/api-common';
+import {CenterService} from "@ss/administration/api-center";
 
 
 interface Lookup {
@@ -34,15 +35,17 @@ interface Lookup {
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, MatSelect, MatOption, MatButton, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, TranslatePipe]
 })
 export class EdoComponent implements OnInit {
-    @ViewChild('blist') blist: MatSelectionList
+    #_centerSrv = inject(CenterService);
+    #loginSrv = inject(LoginService);
     private shellSrv =  inject(ShellService);
     private edoSrv =  inject(EdoService);
     private route =  inject(ActivatedRoute);
     private formBuilder =  inject(UntypedFormBuilder);
     private monthSrv =  inject(PayrollMonthService);
     private bankSrv =  inject(BankService);
-    private curYear = new Date().getFullYear();
-    private curMonth = new Date().getMonth();
+    protected curYear = new Date().getFullYear();
+    protected curMonth = new Date().getMonth();
+
 
     #_form = this.formBuilder.group({
         month:       [this.curMonth,                   Validators.required],
@@ -50,15 +53,17 @@ export class EdoComponent implements OnInit {
         description: ['',                              Validators.required],
         formula:     ['c990',                          Validators.required],
         bank:        [{ value: 0, disabled: true },    Validators.required],
+        center:      [this.#loginSrv.appCtx.center,   Validators.required],
         date:        [new Date(),                      Validators.required],
         reference:   [1,                               Validators.required],
         special:     ['0',                             [Validators.required, Validators.minLength(1)]],
         all:         [false]
     });
-
+    @ViewChild('blist') blist: MatSelectionList
     form = signal<UntypedFormGroup|null>(this.#_form);
     loading = signal(true);
     bankList = signal<Lookup[]>([]);
+    centers = signal<Center[]>([]);
     receivingBanks = signal<Lookup[]>([]);
     selectedBanks = '';
     edoText: string = '';
@@ -69,6 +74,8 @@ export class EdoComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.#_centerSrv.setParentId(this.#loginSrv.appCtx.company);
+
         this.bankSrv
             .getList(0, 1000)
             .pipe(tap(res => {
@@ -80,6 +87,9 @@ export class EdoComponent implements OnInit {
                     this.curYear = +((res.month % 1_000_000)/100).toFixed(0);
                     this.curMonth = +(res.month % 100).toFixed(0);
                 } ),
+                switchMap(() => this.#_centerSrv.getList(0, 100)),
+                tap(res => this.centers.set(res.body.filter(e => e.id === this.#loginSrv.appCtx.center ||
+                    res.body.find(e => e.id === this.#loginSrv.appCtx.center)?.headCenter === true))),
                 switchMap(_ => this.edoSrv.getCenterBank()),
                 tap(res => this.receivingBanks.set(this.bankList().filter(e => e.id == res))))
             .subscribe(res => {

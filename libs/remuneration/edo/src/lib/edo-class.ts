@@ -11,4 +11,5 @@ export interface EDO {
     special: number;
     edoId: number;
     all: boolean;
+    center: number;
 }
