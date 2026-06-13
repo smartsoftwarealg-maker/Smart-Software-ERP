@@ -88,13 +88,17 @@ export class AttendanceLogComponent implements OnInit {
     canSaveToDB = signal(false);
 
     ngOnInit() {
+        this.processing.set(true);
         registerLocaleData(localeFr);
         registerLocaleData(localeAr);
         this.shellSrv.setGoBackPath('..', this.route);
         this.shellSrv.setTitle('ATTENDANCE');
         this.attMachineSrv
             .getList(0, 1000)
-            .subscribe(res => this.attendanceMachines = res.body);
+            .subscribe(res => {
+                this.attendanceMachines = res.body;
+                this.processing.set(false);
+            });
     }
 
     refresh(e: FileList|null) {

@@ -12,6 +12,7 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
+import {Observable, tap, switchMap} from "rxjs";
 
 @Component({
     selector: 'ss-formula-list',
@@ -31,15 +32,15 @@ export class FormulaListComponent extends BaseEntityListComponent<Formula> {
         click: () => this.generate()
     };
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.shellSrv.addButton(this.generateBtn);
-        this.monthSelectorSrv
-            .isUpdatableMonth()
-            .subscribe(upd => {
-                this.deleteButton.visible = upd;
-                this.addButton.visible = upd;
-            });
+    protected preInit():Observable<unknown>{
+        return  super.preInit()
+            .pipe(
+                tap(() => this.shellSrv.addButton(this.generateBtn)),
+                switchMap(() => this.monthSelectorSrv.isUpdatableMonth()),
+                tap((upd: boolean) => {
+                    this.deleteButton.visible = upd;
+                    this.addButton.visible = upd;
+                }));
     }
 
     override finishLoading(data: Formula[]) {
