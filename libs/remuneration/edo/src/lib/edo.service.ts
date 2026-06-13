@@ -29,8 +29,10 @@ export class EdoService {
             .set('period', period + '')
             .set('banks', bankList.join(','))
             .set('bank', edo.bank + '')
+            .set('center', edo.center + '')
             .set('date', dateToYmdStr(new Date(edo.date)))
             .set('all', edo.all);
+
         return this.httpSrv
             .get<{ edo: string[]}>('/payroll/edo', params)
             .pipe(map(res => res.edo));
