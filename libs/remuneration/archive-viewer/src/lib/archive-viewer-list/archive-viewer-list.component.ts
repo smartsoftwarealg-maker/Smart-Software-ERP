@@ -1,35 +1,39 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import {Component, computed, inject, OnInit, signal} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import { LanguageService, PaginatorPersistenceService } from '@ss/common/api-common';
+import {LanguageService, PaginatorPersistenceService} from '@ss/common/api-common';
 import {PAYArchive} from '../archive-viewer-api';
 import {ArchiveViewerService} from '../archive-viewer.service';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
-import {
-    debounceTime,
-    distinctUntilChanged,
-    Observable,
-    zip,
-    tap,
-    concatMap,
-} from 'rxjs';
+import {concatMap, debounceTime, distinctUntilChanged, Observable, tap, zip,} from 'rxjs';
 import {Formula, PayrollFormulasService} from '@ss/remuneration/payroll-formulas';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SelectionModel} from '@angular/cdk/collections';
-import { MatListOption, MatSelectionList, MatSelectionListChange } from '@angular/material/list';
-import { TranslateDirective } from '@ss/common/ui-lang';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatInput } from '@angular/material/input';
-import { MatCheckbox } from '@angular/material/checkbox';
-import { MatButton } from '@angular/material/button';
-import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
-import { NgStyle, DecimalPipe } from '@angular/common';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import {MatListOption, MatSelectionList, MatSelectionListChange} from '@angular/material/list';
+import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {MatCheckbox} from '@angular/material/checkbox';
+import {MatButton} from '@angular/material/button';
+import {MatTab, MatTabGroup, MatTabLabel} from '@angular/material/tabs';
+import {DecimalPipe, NgStyle} from '@angular/common';
+import {
+    MatCell,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatTable
+} from '@angular/material/table';
+import {PaginationComponent} from '@ss/common/ui-pagination';
+import {ElementsInfo, ElementsInfoService} from "@ss/remuneration/elementsinfo";
 
 @Component({
     selector: 'ss-archive-viewer',
@@ -70,6 +74,7 @@ export class ArchiveViewerListComponent
     extends BaseEntityListComponent<PAYArchive>
     implements OnInit
 {
+    private elementSrv = inject(ElementsInfoService);
     private langSrv = inject(LanguageService);
     private INFO_COLUMNS: string[] = [
         'id',
@@ -188,17 +193,18 @@ export class ArchiveViewerListComponent
     consolidated = new FormControl<boolean>(false);
     formulaFilter = new FormControl<string>('');
 
-    filteredFormulas = computed(() =>
-        this._formulas()
-            .filter((f) => {
+    filteredFormulas = computed(() => {
+        const list = this._formulas()
+            ?.filter((f) => {
                 const filter = this.filterSignal().toLowerCase();
                 return (
                     filter.length == 0 ||
                     f.variable.toLowerCase()?.includes(filter) ||
                     f.description?.toLowerCase().includes(filter)
                 );
-            })
-            .sort((a, b) => a.variable.localeCompare(b.variable)),
+            });
+          return (list||[]).sort((a, b) => a.variable.localeCompare(b.variable));
+          }
     );
 
     displayedColumns = signal(this.FIXED_INFO);
@@ -244,7 +250,8 @@ export class ArchiveViewerListComponent
                 zip(
                     this.selectorSrv.minMonth(),
                     this.selectorSrv.maxMonth(),
-                    this.formulas.getList(0, 500, null, 'variable'),
+                    this.formulas.getList(0, 500, '', 'variable'),
+                    this.elementSrv.getList(0, 500, '', 'field')
                 ),
             ),
             tap((res) => {
@@ -252,17 +259,27 @@ export class ArchiveViewerListComponent
                 this._maxYear = +(res[1].month / 100).toFixed(0);
                 this.shellSrv.disableSearch();
 
-                this._formulas.set(
-                    res[2].body
-                        .filter(
-                            (f) =>
-                                f.description !== null &&
-                                f.description != undefined,
-                        )
-                        .sort((a, b) =>
-                            a?.description?.localeCompare(b.description),
-                        ),
-                );
+                const formulas = res[2].body
+                    .filter(
+                        (f) =>
+                            f.description !== null &&
+                            f.description != undefined,
+                    )
+                    .sort((a, b) =>
+                        a?.description?.localeCompare(b.description),
+                    );
+
+                const elements = res[3].body
+                    .filter(
+                        (f) =>
+                            f.description !== null &&
+                            f.description != undefined,
+                    ).map((e: ElementsInfo) => ({variable: e.field, description: e.description}))
+                    .sort((a, b) =>
+                        a?.description?.localeCompare(b.description),
+                    );
+
+                this._formulas.set([...formulas, ...elements]);
 
                 this.fromYear.setValue(this._maxYear);
                 this.fromMonth.setValue(res[1].month % 100);
@@ -294,14 +311,22 @@ export class ArchiveViewerListComponent
         this._formulaHeaders = [];
         this._formulaVariables = [];
 
-        const selectedFormulas = this._formulas().filter(
-            (e) => this.formulaSelection().indexOf(e.variable) >= 0,
-        );
+        const selectedFormulas = this._formulas().filter((e) => this.formulaSelection().indexOf(e.variable) >= 0).sort((a, b) => a.variable.localeCompare(b.variable));
 
         if (this.compact.value) {
             const periods = this.periodInterval();
-            periods.forEach((p, ip) => {
-                selectedFormulas.forEach((f, fi) => {
+            periods.forEach(p => {
+                selectedFormulas
+                    .filter(e => !e.variable.startsWith('e'))
+                    .forEach(f => {
+                    this._formulaVariables.push(
+                        'v' + (1 + this._formulaVariables.length),
+                    );
+                    this._formulaHeaders.push(p + '-' + f.description);
+                });
+                selectedFormulas
+                    .filter(e => e.variable.startsWith('e'))
+                    .forEach(f => {
                     this._formulaVariables.push(
                         'v' + (1 + this._formulaVariables.length),
                     );
@@ -309,7 +334,7 @@ export class ArchiveViewerListComponent
                 });
             });
         } else {
-            this._formulaHeaders = selectedFormulas.map((e) => e.description);
+            this._formulaHeaders = selectedFormulas.map((e) => e.description||'');
             this._formulaVariables = selectedFormulas.map((e) => e.variable);
         }
 
@@ -322,8 +347,8 @@ export class ArchiveViewerListComponent
                 to,
                 this.formulaSelection(),
                 personalInfo,
-                this.compact.value,
-                this.consolidated.value,
+                this.compact.value||false,
+                this.consolidated.value||false,
                 this.pagination.page - 1,
                 this.pagination.pageSize,
             )
@@ -359,10 +384,14 @@ export class ArchiveViewerListComponent
     }
 
     formulaSelected(event: MatSelectionListChange) {
-        this.formulaSelection.update(
-            (old) =>
-                (old ? `${old},` : '') +
-                event.options.map((e) => e.value.variable).join(','),
+        this.formulaSelection.update( (old) =>   {
+            const selected = event.options.map((e) => e.selected)[0];
+            const newValue = event.options.map((e) => e.value)[0]
+
+            return selected ?
+                [...old.split(','), ...event.options.map((e) => e.value.variable)].filter(e => e.length > 0).join(',') :
+                old.replaceAll(newValue.variable, '').replaceAll(',,', ',').replace(/^,|,$/g, '');
+            },
         );
     }
 

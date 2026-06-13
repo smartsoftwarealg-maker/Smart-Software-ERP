@@ -64,7 +64,7 @@
             </ng-template>
             <div class="formula__div">
                 <mat-selection-list #formulas (selectionChange)="formulaSelected($event)">
-                    @for (f of filteredFormulas(); track f.id) {
+                    @for (f of filteredFormulas(); track f.variable) {
                         <mat-list-option [value]="f">
                             {{ f.variable }} {{ f.description }}
                         </mat-list-option>
