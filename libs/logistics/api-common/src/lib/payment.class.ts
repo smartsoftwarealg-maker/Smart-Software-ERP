@@ -13,6 +13,7 @@ export interface Payment {
     description?: string;
     date?: Date;
     dueDays: number;
+    dueDate: Date;
     agent?: number;
     amount: number;
     mode?: number;
