@@ -89,7 +89,7 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
             bank:         [a.bank],
             description:  [a.description, Validators.required],
             date:         [a.date || new Date(), Validators.required],
-            dueDays:      [a.dueDays || 0, Validators.required],
+            dueDate:      [a.dueDate || new Date(), Validators.required],
             agent:        [a.agent, Validators.required],
             debit:        [{ value: db, disabled: cr > 0.000001}, Validators.required],
             credit:       [{ value: cr, disabled: db > 0.000001}, Validators.required],
