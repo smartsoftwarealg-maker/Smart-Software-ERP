@@ -16,7 +16,10 @@ export class ProductionRoutingService extends BaseEntityService<Routing> {
 
     getRoutings(): Observable<Routing[]> {
         // 👇 REPLACE WITH: return this.http.get<Routing[]>(this.API);
-        return of([
-        ]).pipe(delay(400));
+        return of([ ]).pipe(delay(400));
+    }
+
+    saveRoutingHeader(s: any): Observable<unknown> {
+        return of({}).pipe(delay(400));
     }
 }

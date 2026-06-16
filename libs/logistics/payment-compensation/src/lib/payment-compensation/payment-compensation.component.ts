@@ -70,7 +70,7 @@ export class PaymentCompensationComponent implements OnInit {
     public pagination = PaginationModel.newInstance();
     debts: Debt[] = [];
     selectedPayment: FlatPaymentNode = null;
-    selectedDebt: Debt = null;
+    selectedDebt: Debt|null = null;
     agentAutoCompleteModel = new AgentLookupModel(this.agentSrv);
     agent = new UntypedFormControl();
     date = new UntypedFormControl(new Date());

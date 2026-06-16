@@ -13,6 +13,7 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DecimalPipe, DatePipe } from '@angular/common';
+import {MatSort, MatSortHeader} from "@angular/material/sort";
 
 @Component({
     selector: 'ss-payments-list',
@@ -34,6 +35,8 @@ import { DecimalPipe, DatePipe } from '@angular/common';
         MatCellDef,
         MatRowDef,
         MatHeaderRowDef,
+        MatSort,
+        MatSortHeader,
     ],
 })
 export class PaymentsListComponent extends BaseEntityListComponent<Payment> {

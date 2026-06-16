@@ -1,0 +1,48 @@
+.dialog-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--mat-sys-on-surface, #0f172a);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--mat-sys-outline-variant, #e2e8f0);
+}
+
+.dialog-content {
+    padding: 24px 24px 16px 24px;
+    min-width: 500px;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.dense-field {
+    ::ng-deep .mat-mdc-form-field-subscript-wrapper { display: none; }
+    ::ng-deep .mat-mdc-text-field-wrapper {
+        height: 40px;
+        --mat-form-field-container-height: 40px;
+    }
+}
+
+.dialog-actions {
+    padding: 16px 24px;
+    border-top: 1px solid var(--mat-sys-outline-variant, #e2e8f0);
+    background-color: var(--mat-sys-surface-container-lowest, #f8fafc);
+    gap: 12px;
+
+    i.fa-solid { margin-right: 6px; }
+}
+
+@media (max-width: 600px) {
+    .dialog-content { min-width: 90vw; }
+    .form-grid-2 { grid-template-columns: 1fr; }
+}

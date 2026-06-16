@@ -1,0 +1,90 @@
+<div class="app-container">
+    <!-- Header -->
+    <header class="app-header mat-elevation-z2">
+        <div class="header-left">
+            <button mat-icon-button (click)="router.navigate(['/routings'])" class="back-btn">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <div class="logo">🏭 Manufacturing ERP</div>
+            <span class="breadcrumb">/ Routings / {{ routing()?.number }}</span>
+        </div>
+        <div class="header-actions">
+            <button mat-stroked-button color="primary" (click)="openNewModal()">
+                <i class="fa-solid fa-plus"></i> <span>New Routing</span>
+            </button>
+            <button mat-raised-button color="primary" (click)="saveAll()">
+                <i class="fa-solid fa-floppy-disk"></i> <span>Save Routing</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main 3-Pane Layout -->
+    <main class="main-content">
+        <!-- 1. Sidebar -->
+        <aside class="sidebar mat-elevation-z1">
+            <div class="section-header">
+                <div class="section-title">📋 Routing Info</div>
+                <button mat-icon-button color="primary" (click)="openEditModal()" matTooltip="Edit Routing">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+            </div>
+
+            @if (routing(); as r) {
+                <div class="info-row"><span class="info-label">Number</span><span class="info-value">{{ r.number }}</span></div>
+                <div class="info-row"><span class="info-label">Revision</span><span class="info-value">{{ r.revision }}</span></div>
+                <div class="info-row"><span class="info-label">Status</span><span class="status-badge" [class]="'status-' + r.status.toLowerCase()">{{ r.status }}</span></div>
+                <div class="info-row"><span class="info-label">Valid From</span><span class="info-value">{{ r.validFrom }}</span></div>
+                <div class="info-row"><span class="info-label">Product</span><span class="info-value">{{ r.productName }}</span></div>
+                <div class="info-row"><span class="info-label">Updated By</span><span class="info-value">{{ r.updatedBy }}</span></div>
+                <div class="info-row"><span class="info-label">Change Reason</span><span class="info-value">{{ r.changeReason }}</span></div>
+
+                <div class="summary-box">
+                    <div class="section-title" style="margin:0; border:none; padding:0;">📊 Summary</div>
+                    <div class="summary-item"><span>Setup</span><strong>{{ r.totalSetupTime }}h</strong></div>
+                    <div class="summary-item"><span>Run</span><strong>{{ r.totalRunTime }}h</strong></div>
+                    <div class="summary-item"><span>Lead Time</span><strong>{{ r.totalLeadTime }}h</strong></div>
+                    <div class="summary-item" style="border-top: 1px solid #bae6fd; margin-top: 8px; padding-top: 8px;">
+                        <span>Std Cost</span><strong style="color: #166534; font-size: 1.1rem;">${{ r.standardCost }}</strong>
+                    </div>
+                </div>
+            }
+        </aside>
+
+        <!-- 2. Operations List -->
+        <section class="list-panel mat-elevation-z1">
+            <div class="panel-header">
+                <span>Operations ({{ operations().length }})</span>
+                <button mat-mini-fab color="primary" matTooltip="Add Operation">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+            <app-operations-list
+                [operations]="operations()"
+                [selectedId]="selectedOpId()"
+                (selectOp)="selectOp($event)">
+            </app-operations-list>
+        </section>
+
+        <!-- 3. Detail Panel -->
+        <section class="detail-panel">
+            @if (selectedOpId()) {
+                <app-operation-detail
+                    [operationId]="selectedOpId()!"
+                    [operations]="operations()">
+                </app-operation-detail>
+            } @else {
+                <div class="empty-state">
+                    <i class="fa-solid fa-arrow-left empty-icon"></i>
+                    <p>Select an operation to view details</p>
+                </div>
+            }
+        </section>
+    </main>
+
+    <!-- Loading Overlay -->
+    @if (isLoading()) {
+        <div class="loading-overlay">
+            <mat-spinner diameter="40"></mat-spinner>
+        </div>
+    }
+</div>
