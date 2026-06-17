@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input, OnChanges } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    inject,
+    Input,
+    OnChanges,
+    signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgentService } from '@ss/logistics/api-agent';
 import { SnackBarService } from '@ss/common/ui-shell';
@@ -21,6 +29,7 @@ export class CompensationPanelComponent implements OnChanges {
 
     @Input() paymentId: number;
     @Input() agentId: number;
+    loaded = signal(false)
 
     compensations: Accounting[] = [];
     debts: Debt[] = [];
@@ -33,9 +42,11 @@ export class CompensationPanelComponent implements OnChanges {
     }
 
     private load() {
+        this.loaded.set(false)
         this.agentSrv.getDebts(this.agentId).subscribe(res => {
             this.debts = res.map(d => ({...d, document: d.document.substring(d.document.indexOf(', ') + 1)}));
             this.cdr.markForCheck();
+            this.loaded.set(true)
         });
         this.agentSrv.getCompensations(this.agentId, this.paymentId.toString()).subscribe(res => {
             this.compensations = res.filter(c => c.checkInfo === this.paymentId);

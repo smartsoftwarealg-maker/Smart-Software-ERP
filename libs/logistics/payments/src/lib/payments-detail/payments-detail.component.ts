@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {LookupsService, PayModeService} from '@ss/common/api-lookup';
