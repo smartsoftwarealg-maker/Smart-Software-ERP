@@ -4,12 +4,12 @@
         @defer (when form) {
             <form [formGroup]="form">
 
-                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-form-field floatLabel="always" class="default-50 sm-100 dense-field">
                     <mat-label translate>ADMINISTRATION_CODE</mat-label>
                     <input matInput formControlName="code">
                 </mat-form-field>
 
-                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-form-field floatLabel="always" class="default-50 sm-100 dense-field">
                     <mat-label translate>COMMON_NAME</mat-label>
                     <input matInput formControlName="name" required>
                     @if (form.controls['name']?.invalid) {
@@ -17,12 +17,12 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-form-field floatLabel="always" class="default-50 sm-100 dense-field">
                     <mat-label translate>COMMON_DESCRIPTION</mat-label>
                     <input matInput formControlName="description">
                 </mat-form-field>
 
-                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-form-field floatLabel="always" class="default-50 sm-100 dense-field">
                     <mat-label translate>PROD_UNIT_TYPE</mat-label>
                     <mat-select formControlName="unitType">
                         @for (u of UNIT_TYPES; track u) {
@@ -34,19 +34,19 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-form-field floatLabel="always" class="default-50 sm-100 dense-field">
                     <mat-label translate>PROD_BASED_UNIT</mat-label>
                     <ss-auto-complete formControlName="baseUnitId"
                                       [model]="unitMeasureLookup">
                     </ss-auto-complete>
                 </mat-form-field>
 
-                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-form-field floatLabel="always" class="default-50 sm-100 dense-field">
                     <mat-label translate>PROD_CONVERSATION_FACTOR</mat-label>
                     <input matInput type="number" formControlName="conversionFactor">
                 </mat-form-field>
 
-                <mat-form-field floatLabel="always" class="default-50 sm-100">
+                <mat-form-field floatLabel="always" class="default-50 sm-100 dense-field">
                     <mat-label translate>COMMON_VALUE</mat-label>
                     <input matInput type="number" formControlName="value">
                 </mat-form-field>
@@ -57,28 +57,28 @@
                     </mat-checkbox>
                 </div>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-50 sm-100 dense-field">
                     <mat-label translate>COMMON_CREATED_AT</mat-label>
                     <ss-date-picker formControlName="createdAt"
                                     [type]="'date'">
                     </ss-date-picker>
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-50 sm-100 dense-field">
                     <mat-label translate>COMMON_UPDATED_AT</mat-label>
                     <ss-date-picker formControlName="updatedAt"
                                     [type]="'date'">
                     </ss-date-picker>
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-50 sm-100 dense-field">
                     <mat-label translate>COMMON_CREATED_BY</mat-label>
                     <ss-auto-complete formControlName="createdBy"
                                       [model]="userLookup">
                     </ss-auto-complete>
                 </mat-form-field>
 
-                <mat-form-field class="default-50 sm-100">
+                <mat-form-field class="default-50 sm-100 dense-field">
                     <mat-label translate>COMMON_UPDATED_BY</mat-label>
                     <ss-auto-complete formControlName="updatedBy"
                                       [model]="userLookup">

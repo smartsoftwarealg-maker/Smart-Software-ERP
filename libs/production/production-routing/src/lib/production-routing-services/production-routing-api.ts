@@ -36,6 +36,8 @@ export interface Routing {
     createdBy?: number;
     updatedBy?: number;
     deletedAt?: Date;
+    productName?: string;
+    changeReason?: string;
 }
 
 export interface RoutingOperation {

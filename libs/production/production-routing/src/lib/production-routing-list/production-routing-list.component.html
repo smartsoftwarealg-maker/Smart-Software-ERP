@@ -9,6 +9,13 @@
                 </mat-cell>
             </ng-container>
 
+            <ng-container matColumnDef="productName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_PRODUCT</mat-header-cell>
+                <mat-cell *matCellDef="let e">
+                    {{ e.productName }}
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="revision">
                 <mat-header-cell *matHeaderCellDef mat-sort-header translate>PROD_REVISION</mat-header-cell>
                 <mat-cell *matCellDef="let e">

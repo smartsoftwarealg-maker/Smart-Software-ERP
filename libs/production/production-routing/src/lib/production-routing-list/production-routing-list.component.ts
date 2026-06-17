@@ -47,7 +47,7 @@ import { ProductionRoutingService } from '../production-routing-services/product
     ],
 })
 export class ProductionRoutingListComponent extends BaseEntityListComponent<Routing> {
-    readonly displayedColumns = (['routingNumber', 'revision', 'description', 'status']);
+    readonly displayedColumns = (['routingNumber', 'revision', 'description', 'productName', 'status']);
 
     constructor(
         public override entitySrv: ProductionRoutingService,

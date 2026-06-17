@@ -134,7 +134,7 @@
                     }
                   </mat-menu>
                 }
-                @if (!b.menuItems?.length > 0 && b.visible === true) {
+                @if (!b.menuItems?.length > 0 && b.visible) {
                   <button mat-icon-button matTooltip="{{b.label | translate}}"
                     (click)="b.click()"
                     [disabled]="b.disabled"

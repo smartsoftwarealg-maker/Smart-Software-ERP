@@ -109,7 +109,8 @@ import {
     ProductionRoutingDetailComponent,
     ProductionRoutingOperationListComponent,
     ProductionRoutingOperationDetailComponent,
-    RoutingMaterialLineListComponent, RoutingMaterialLineDetailComponent,
+    RoutingMaterialLineListComponent, RoutingMaterialLineDetailComponent, OperationDetailComponent,
+    RoutingDetailComponent,
 } from '@ss/production/production-routing';
 
 import {
@@ -731,7 +732,7 @@ export const manufacturingRoutes: Routes = [
             },
             {
                 path: ':id',
-                component: ProductionRoutingDetailComponent,
+                component: RoutingDetailComponent,
                 canActivate: [loginGuard],
                 canDeactivate: [CanDeactivateService],
                 canActivateChild: [loginGuard],
