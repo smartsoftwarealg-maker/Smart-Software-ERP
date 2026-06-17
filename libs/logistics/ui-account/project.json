@@ -4,6 +4,11 @@
     "projectType": "library",
     "sourceRoot": "libs/logistics/ui-account/src",
     "prefix": "ss",
+    "generators": {
+        "@nx/angular:component": {
+            "style": "scss"
+        }
+    },
     "targets": {
         "lint": {
             "executor": "@angular-devkit/build-angular:tslint",
@@ -23,14 +28,8 @@
             "options": {
                 "jestConfig": "libs/logistics/ui-account/jest.config.ts",
                 "tsConfig": "libs/logistics/ui-account/tsconfig.spec.json",
-                "passWithNoTests": true,
-                "setupFile": "libs/logistics/ui-account/src/test-setup.ts"
+                "passWithNoTests": true
             }
-        }
-    },
-    "generators": {
-        "@nx/angular:component": {
-            "style": "scss"
         }
     }
 }

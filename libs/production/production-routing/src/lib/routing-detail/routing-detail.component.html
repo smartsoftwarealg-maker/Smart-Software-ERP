@@ -8,8 +8,8 @@
                     <i class="fa-solid fa-arrow-left"></i>
                 </button>
                 <div>
-                    <h1 class="detail-title" >{{'COMMON_EDIT'|translate}}: {{ r.routingNumber }}</h1>
-                    <p class="detail-subtitle">Revision {{ r.revision }} • {{ r.productName }}</p>
+                    <h1 class="detail-title" >{{'COMMON_EDIT'|translate}}: {{ r.description||r.routingNumber }} </h1>
+                    <p class="detail-subtitle">  {{ r.productName }}  • {{ r.revision }} </p>
                 </div>
             </div>
             <div class="header-actions">
@@ -52,7 +52,7 @@
 
                         <mat-form-field appearance="outline" class="dense-field">
                             <mat-label translate>COMMON_DESCRIPTION</mat-label>
-                            <input matInput formControlName="description" readonly>
+                            <input matInput formControlName="description">
                         </mat-form-field>
 
                         <mat-form-field appearance="outline" class="dense-field">
@@ -72,15 +72,16 @@
                                                   formControlName="productId">
                                 </ss-auto-complete>
                         </mat-form-field>
-
+                        <!-- Valid From -->
                         <mat-form-field appearance="outline" class="dense-field">
                             <mat-label translate>PROD_VALID_FROM</mat-label>
-                            <input matInput type="date" formControlName="validFrom">
+                            <ss-date-picker formControlName="validFrom"></ss-date-picker>
                         </mat-form-field>
 
+                        <!-- Valid To -->
                         <mat-form-field appearance="outline" class="dense-field">
                             <mat-label translate>PROD_VALID_TO</mat-label>
-                            <input matInput type="date" formControlName="validTo">
+                            <ss-date-picker formControlName="validTo"></ss-date-picker>
                         </mat-form-field>
 
                         <mat-form-field appearance="outline" class="dense-field full-width">

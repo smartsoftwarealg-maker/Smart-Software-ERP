@@ -22,14 +22,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {ProductionRoutingService} from "../production-routing-services/production-routing.service";
 import {Routing, RoutingOperation} from "../production-routing-services/production-routing-api";
 import {BaseEntityDetailComponent} from "@ss/common/ui-base-entity";
-import * as console from "node:console";
-import {error} from "@capacitor/assets/dist/util/log";
-import {PaymentTermsService} from "../../../../../crm/payment-terms/src/lib/payment-terms/payment-terms.service";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog";
 import {FinalProductService} from "@ss/master-data/api-article";
 import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
 import {TranslateDirective, TranslatePipe} from "@ss/common/ui-lang";
+import {DatePickerComponent} from "@ss/common/ui-datepicker";
+import {MaterialModule} from "@ss/common/api-common";
 
 
 @Component({
@@ -37,6 +36,7 @@ import {TranslateDirective, TranslatePipe} from "@ss/common/ui-lang";
     standalone: true,
     imports: [
         CommonModule,
+        MaterialModule,
         ReactiveFormsModule,
         MatCardModule,
         MatFormFieldModule,
@@ -48,7 +48,8 @@ import {TranslateDirective, TranslatePipe} from "@ss/common/ui-lang";
         MatProgressSpinnerModule,
         TranslateDirective,
         UiAutoCompleteComponent,
-        TranslatePipe
+        TranslatePipe,
+        DatePickerComponent
     ],
     templateUrl: './routing-detail.component.html',
     styleUrls: ['./routing-detail.component.scss']

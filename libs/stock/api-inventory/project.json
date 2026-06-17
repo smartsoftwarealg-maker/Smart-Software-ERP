@@ -4,6 +4,11 @@
     "projectType": "library",
     "sourceRoot": "libs/stock/api-inventory/src",
     "prefix": "ss",
+    "generators": {
+        "@nx/angular:component": {
+            "style": "scss"
+        }
+    },
     "targets": {
         "lint": {
             "executor": "@angular-devkit/build-angular:tslint",
@@ -23,14 +28,8 @@
             "options": {
                 "jestConfig": "libs/stock/inventory/jest.config.js",
                 "tsConfig": "libs/stock/inventory/tsconfig.spec.json",
-                "passWithNoTests": true,
-                "setupFile": "libs/stock/inventory/src/test-setup.ts"
+                "passWithNoTests": true
             }
-        }
-    },
-    "generators": {
-        "@nx/angular:component": {
-            "style": "scss"
         }
     }
 }

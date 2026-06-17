@@ -4,6 +4,11 @@
     "projectType": "library",
     "sourceRoot": "libs/administration/api-bank/src",
     "prefix": "ss",
+    "generators": {
+        "@nx/angular:component": {
+            "style": "scss"
+        }
+    },
     "targets": {
         "lint": {
             "executor": "@angular-devkit/build-angular:tslint",
@@ -23,14 +28,8 @@
             "options": {
                 "jestConfig": "libs/administration/api-bank/jest.config.ts",
                 "tsConfig": "libs/administration/api-bank/tsconfig.spec.json",
-                "passWithNoTests": true,
-                "setupFile": "libs/administration/api-bank/src/test-setup.ts"
+                "passWithNoTests": true
             }
-        }
-    },
-    "generators": {
-        "@nx/angular:component": {
-            "style": "scss"
         }
     }
 }
