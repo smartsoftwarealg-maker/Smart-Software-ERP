@@ -17,7 +17,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-languages-detail.component.html',
     styleUrls: ['./employee-languages-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, MatOption]
 })
 export class EmployeeLanguagesDetailComponent extends BaseChildEntityDetailComponent<PersonLanguage> {

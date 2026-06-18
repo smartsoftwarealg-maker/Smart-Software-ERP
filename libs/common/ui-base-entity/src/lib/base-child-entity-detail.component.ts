@@ -1,4 +1,4 @@
-import { Directive, inject, signal} from '@angular/core';
+import {ChangeDetectorRef, Directive, inject, signal} from '@angular/core';
 import { BaseEntityService } from '@ss/common/api-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -9,6 +9,7 @@ import { LoginService, Right } from '@ss/common/api-common';
 
 @Directive()
 export abstract class BaseChildEntityDetailComponent<T extends { id: number, parentId: number} > {
+    private cdr = inject(ChangeDetectorRef);
     private confirmationSrv  = inject(ConfirmationDialogService);
 
     protected router  = inject(Router);
@@ -55,6 +56,7 @@ export abstract class BaseChildEntityDetailComponent<T extends { id: number, par
                 this.rights = rights || {write: isManager, edit: isManager, read: isManager, delete: isManager};
                 this.isEditable.set(this.rights.edit);
                 this.loading.set(false);
+                this.cdr.markForCheck();
             });
 
         // this.EMPTY_RECORD.parentId = this.entitySrv.getParentId();

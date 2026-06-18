@@ -32,7 +32,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-contracts-detail.component.html',
     styleUrls: ['./employee-contracts-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
 })
 export class EmployeeContractsDetailComponent extends BaseChildEntityDetailComponent<Contract> {

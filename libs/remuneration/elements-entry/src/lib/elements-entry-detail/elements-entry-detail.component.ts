@@ -166,8 +166,8 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
         return data;
     }
 
-    canShowProcessingStatus() {
-        return false;
-    }
+    // canShowProcessingStatus() {
+    //     return false;
+    // }
 
 }

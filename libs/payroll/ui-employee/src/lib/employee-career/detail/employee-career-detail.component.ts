@@ -39,7 +39,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-career-detail.component.html',
     styleUrls: ['./employee-career-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     MatMiniFabButton,
@@ -143,11 +143,12 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
                     }
                 })
         }
+        console.log('mm', (a.paymonth % 100)||1);
         return this.form = this.formBuilder.group({
             id:            [a.id],
             parentId:      [a.parentId || this.employeeCareerSrv.getParentId()],
             paymonthY:     [Math.floor(a.paymonth / 100), Validators.required],
-            paymonthM:     [(a.paymonth % 100)||1, Validators.required],
+            paymonthM:     [((a.paymonth % 100)||1).toString(), Validators.required],
             post:          [a.post, Validators.required],
             division:      [a.division],
             department:    [a.department],
@@ -173,9 +174,9 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
             .pipe(
                 tap(list => this.departments = list),
                 switchMap(() => this.lookupsSrv.getDivisions()),
-                tap(list => this.divisions = list),
+                tap((list: Division[]) => this.divisions = list||[]),
                 switchMap(() => this.lookupsSrv.getServices()),
-                tap(list => this.services = list),
+                tap((list: Service[]) => this.services = list),
                 switchMap(() => this.lookupsSrv.getCategories()),
                 tap(list => this.categories = list),
                 switchMap(() => this.gridService.getList(0, 50)),
@@ -193,7 +194,4 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
         delete formVal.paymonthM;
         return val;
     }
-
-
-
 }

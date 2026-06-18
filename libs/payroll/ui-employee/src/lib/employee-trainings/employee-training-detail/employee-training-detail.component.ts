@@ -22,7 +22,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-training-detail.component.html',
     styleUrls: ['./employee-training-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, MatError, UiAutoCompleteComponent]
 })
 export class EmployeeTrainingDetailComponent extends BaseChildEntityDetailComponent<Training> {

@@ -58,14 +58,14 @@ export class EmployeeQuestioningDetailComponent extends BaseChildEntityDetailCom
 
     override setupForm(a: Questioning): UntypedFormGroup {
         return (this.form = this.formBuilder.group({
-            id: [a.id],
-            centerId: [a.centerId || this.loginSrv.appCtx.center],
-            parentId: [a.parentId || this.employeeQuestioningSrv.getParentId()],
+            id:        [a.id],
+            centerId:  [a.centerId || this.loginSrv.appCtx.center],
+            parentId:  [a.parentId || this.employeeQuestioningSrv.getParentId()],
             reference: [a.reference],
-            refDate: [a.refDate],
-            motive: [a.motive],
-            question: [a.question],
-            answer: [a.answer],
+            refDate:   [a.refDate],
+            motive:    [a.motive],
+            question:  [a.question],
+            answer:    [a.answer],
         }));
     }
 }

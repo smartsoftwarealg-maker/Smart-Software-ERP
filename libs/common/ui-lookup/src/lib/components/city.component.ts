@@ -24,7 +24,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: '../city/city-list.component.html',
     styleUrls: ['../base-templates/classes.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class CityListComponent extends BaseEntityListComponent<City> {

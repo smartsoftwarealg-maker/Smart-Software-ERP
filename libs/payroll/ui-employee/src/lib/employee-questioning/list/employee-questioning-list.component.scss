@@ -15,8 +15,15 @@ $table_width: 1100px;
     padding-left: 8px;
 }
 
-.mat-column-refDate,.mat-column-question, .mat-column-answer {
+.mat-column-refDate {
     flex: 1 1 80px;
+    justify-content: center;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mat-column-question, .mat-column-answer {
+    flex: 2 1 180px;
     justify-content: center;
     padding-right: 8px;
     padding-left: 8px;
