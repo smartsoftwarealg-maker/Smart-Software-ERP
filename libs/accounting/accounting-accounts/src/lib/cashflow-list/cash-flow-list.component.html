@@ -10,7 +10,7 @@
                 <mat-list-item class="selectable"
                                role="listitem"
                                (click)="selectItem(d)"
-                               [class.selected]="d.id === selectedId">
+                               [class.selected]="d.id === selectedId()">
                     {{d.code }} &nbsp; &nbsp; {{ d.description }}
                 </mat-list-item>
             }

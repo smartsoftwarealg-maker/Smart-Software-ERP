@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseTransactionLinesDetailComponent, DOC_SALES_ORDER, OfferLinesService } from '@ss/logistics/api-transaction';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -18,6 +18,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MaterialModule, ReactiveFormsModule, TextFieldModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './service-order-line-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./service-order-line-detail.component.css']
 })
 export class ServiceOrderLineDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

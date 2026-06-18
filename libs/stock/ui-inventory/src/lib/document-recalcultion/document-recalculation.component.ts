@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { MaterialModule } from '@ss/common/api-common';
 import { OptionService } from '@ss/logistics/ui-options';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -30,6 +30,7 @@ interface EvalDocument {
     templateUrl: './document-recalculation.component.html',
     styleUrls: ['./document-recalculation.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,
@@ -81,11 +82,11 @@ export class DocumentRecalculationComponent implements OnInit {
         if (this.form.valid) {
             this.#shellSrv.setLoading(true);
             const value = this.form.value;
-            if (value.document > 0) {
+            if (+value.document > 0) {
                 this.processing.set(true);
 
                 this.#optionSrv
-                    .recalculateDocument2(value.inventory_date, value.document)
+                    .recalculateDocument2(value.inventory_date, +value.document)
                     .pipe(
                         switchMap((jobId) => {
                             // Start polling

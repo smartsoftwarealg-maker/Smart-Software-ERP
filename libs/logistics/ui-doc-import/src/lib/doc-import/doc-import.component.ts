@@ -1,4 +1,4 @@
-import {Component, DestroyRef, inject, Inject, OnInit, signal} from "@angular/core";
+import {Component, DestroyRef, inject, Inject, OnInit, signal, ChangeDetectionStrategy} from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Lookup} from '../lookup';
 import {ImportInfo} from '../import-info';
@@ -25,6 +25,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     templateUrl: './doc-import.component.html',
     styleUrls: ['./doc-import.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatFormField,
         MatLabel,

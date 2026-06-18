@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {  WorkCenterActivityService } from '../work-center-services/work-center-activity.service';
 import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -21,6 +21,7 @@ import {DocInfoComponent} from "@ss/logistics/ui-doc-info";
     templateUrl: './work-center-activity-list.component.html',
     styleUrl: './work-center-activity-list.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTooltip, TranslatePipe,
         MatMiniFabButton,

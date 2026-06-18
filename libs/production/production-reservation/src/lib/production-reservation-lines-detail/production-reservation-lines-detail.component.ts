@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent,
     DOC_PRODUCTION_RESERVATION,
@@ -22,6 +22,7 @@ import {MaterialModule} from '@ss/common/api-common';
         '../../../../../common/assets/src/assets/transac-lines-detail.scss',
     ],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatMiniFabButton,

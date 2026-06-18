@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { AssetReading, AssetTrigger } from '@ss/cmms/cmms-api';
 import { CMMSMeterService } from '@ss/cmms/lookups';
@@ -19,6 +19,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './asset-trigger-detail.component.html',
     styleUrls: ['./asset-trigger-detail.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatSortModule,
     MatTableModule,

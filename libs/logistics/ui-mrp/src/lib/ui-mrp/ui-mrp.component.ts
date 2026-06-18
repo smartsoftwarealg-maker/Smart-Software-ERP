@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { MRP, MRP_URL } from '../../../../../production/mrp/src/lib/api/mrp-api';
 import { HttpService, LanguageService } from '@ss/common/api-common';
@@ -36,6 +36,7 @@ import { DecimalPipe } from '@angular/common';
     ],
     templateUrl: './ui-mrp.component.html',
     styleUrl: './ui-mrp.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class UiMrpComponent implements OnInit {

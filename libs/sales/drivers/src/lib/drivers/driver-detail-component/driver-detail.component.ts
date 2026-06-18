@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
@@ -19,6 +19,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
         DatePickerComponent,
     ],
     styleUrls: ['./driver-detail.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './driver-detail.component.html',
 })
 export class DriverDetailComponent extends BaseEntityDetailComponent<SalesDriver> {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { MaterialModule } from '@ss/common/api-common';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -23,6 +23,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     UiAutoCompleteComponent
 ],
     templateUrl: './reference-correction.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./reference-correction.component.css'],
 })
 export class ReferenceCorrectionComponent implements OnInit {

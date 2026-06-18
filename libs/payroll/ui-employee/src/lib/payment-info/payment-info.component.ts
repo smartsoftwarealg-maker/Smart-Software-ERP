@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ChangeDetectionStrategy } from '@angular/core';
 import {FundService, PaymentInfoService} from '@ss/payroll/api-employee';
 import {UntypedFormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup} from '@angular/forms';
 import {Fund, LookupsService, MaritalStatus} from '@ss/common/api-lookup';
@@ -23,6 +23,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './payment-info.component.html',
     styleUrls: ['./payment-info.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, MatOption, MatError, UiAutoCompleteComponent, MatInput, MatButton]
 })
 export class PaymentInfoComponent {

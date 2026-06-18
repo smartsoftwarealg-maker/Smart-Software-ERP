@@ -1,18 +1,19 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
-    Component,
-    DoCheck,
-    ElementRef,
-    EventEmitter,
-    HostBinding,
-    Input,
-    OnDestroy,
-    OnInit,
-    Optional,
-    Output,
-    Self,
-    ViewChild,
+  Component,
+  DoCheck,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnDestroy,
+  OnInit,
+  Optional,
+  Output,
+  Self,
+  ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { MatFormFieldControl, MatSuffix } from '@angular/material/form-field';
@@ -43,6 +44,7 @@ import { MatDatepickerModule } from '@muaazh/angular-datepicker';
         { provide: MatFormFieldControl, useExisting: DatePickerComponent },
     ],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatInput,
         MatDatepickerModule,

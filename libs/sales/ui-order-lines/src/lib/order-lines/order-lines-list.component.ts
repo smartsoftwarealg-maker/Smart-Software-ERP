@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -32,6 +32,7 @@ import { QuickOrderService } from '@ss/sales/ui-quick-order';
         'order-lines-list.component.scss',
     ],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,
@@ -102,7 +103,6 @@ export class OrderLinesListComponent
                     }
                 }),
                 switchMap(() => this.quickOrderSrv.getInvoiceInfo(this.detailSrv.getParentId() + '')),
-                tap((invoiceInfo) => this.isInvoice.set(invoiceInfo[0]?.invoiceNumber > 0) )
             );
     }
 

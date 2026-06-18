@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import {
     BaseTransactionLinesDetailComponent, DOC_INVOICE_CANCELLATION, TransactionLinesService
@@ -20,6 +20,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MaterialModule, ReactiveFormsModule, TextFieldModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './service-cinvoice-line-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./service-cinvoice-line-detail.component.css']
 })
 export class ServiceCinvoiceLineDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

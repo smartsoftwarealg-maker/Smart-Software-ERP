@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, input, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     AssetInventoryDoc,
     InventoryAsset
@@ -22,6 +22,7 @@ import {debounceTime, distinctUntilChanged} from "rxjs/operators";
     templateUrl: './asset-recorded-inventory-report.component.html',
     styleUrls: ['./asset-recorded-inventory-report.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

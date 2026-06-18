@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ElementsInfo} from './elements-info-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -20,6 +20,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './elements-info-detail.component.html',
     styleUrls: ['./elements-info-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatCheckbox]
 })
 export class ElementsInfoDetailComponent extends BaseEntityDetailComponent<ElementsInfo> {

@@ -1,4 +1,4 @@
-import { Component, Inject, inject, signal } from "@angular/core";
+import { Component, Inject, inject, signal, ChangeDetectionStrategy } from "@angular/core";
 import { LTMLineMatter, LTMMatter } from '@ltm/ltm-api';
 import { MaterialModule } from "@ss/common/api-common";
 import {LtmMatterService} from '@ltm/ltm-api';
@@ -13,6 +13,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './ltm-matter-duplicate.component.html',
     styleUrls: ['./ltm-matter-duplicate.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

@@ -1,13 +1,14 @@
 import {
-    Component,
-    effect,
-    EventEmitter,
-    input,
-    Input,
-    OnInit,
-    Output,
-    WritableSignal,
-    signal,
+  Component,
+  effect,
+  EventEmitter,
+  input,
+  Input,
+  OnInit,
+  Output,
+  WritableSignal,
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {CashFlowAcc, CashFlowAccountService} from '@ss/accounting/accounting-api';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -23,6 +24,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './cash-flow-account-list.component.html',
     styleUrls: ['./cash-flow-account-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class CashFlowAccountListComponent implements OnInit {

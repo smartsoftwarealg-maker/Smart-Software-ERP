@@ -1,4 +1,4 @@
-import { Component, inject, input, output, signal} from '@angular/core';
+import { Component, inject, input, output, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { SocialActivityService, SocialAid } from '@social/social-api';
@@ -45,6 +45,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     templateUrl: './pending-edo.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './pending-edo.component.scss',
 })
 export class PendingEdoComponent extends BaseChildEntityListComponent<SocialAid> {

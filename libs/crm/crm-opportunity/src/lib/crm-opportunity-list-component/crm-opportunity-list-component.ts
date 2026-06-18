@@ -1,4 +1,4 @@
-import {Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CRMOpportunityService } from '../crm-opportunity.service';
 import {LoginService, PaginationModel} from '@ss/common/api-common';
@@ -49,6 +49,7 @@ import {MatRadioButton, MatRadioChange, MatRadioGroup} from "@angular/material/r
     ],
     templateUrl: './crm-opportunity-list-component.html',
     styleUrl: './crm-opportunity-list-component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class CrmOpportunityListComponent implements OnInit, OnDestroy {

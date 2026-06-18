@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Criterion } from '../gica-careers-api';
@@ -17,6 +17,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [MaterialModule, TranslateDirective],
     templateUrl: './criteria-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './criteria-detail.component.css'
 })
 export class CriteriaDetailComponent extends BaseEntityDetailComponent<Criterion> {

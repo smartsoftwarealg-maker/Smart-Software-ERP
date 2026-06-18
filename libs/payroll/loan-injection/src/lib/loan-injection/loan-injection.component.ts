@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import { Component, inject, input, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { finalize, Subscription } from 'rxjs';
 import { HttpEventType } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,6 +22,7 @@ import { LoanTypeService } from '@ss/payroll-common';
     templateUrl: './loan-injection.component.html',
     styleUrls: ['./loan-injection.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         TranslateDirective,
         MatMiniFabButton,

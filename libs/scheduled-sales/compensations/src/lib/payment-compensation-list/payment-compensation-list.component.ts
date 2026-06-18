@@ -1,4 +1,4 @@
-import {Component, computed, DestroyRef, effect, inject, signal, Signal} from '@angular/core';
+import {Component, computed, DestroyRef, effect, inject, signal, Signal, ChangeDetectionStrategy} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Debt } from '../services/compensation-api';
@@ -63,6 +63,7 @@ enum SelectionMode {
         ReactiveFormsModule
     ],
     templateUrl: './payment-compensation-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './payment-compensation-list.component.scss',
 })
 export class PaymentCompensationListComponent extends BaseEntityListComponent<Payment> {
@@ -146,7 +147,7 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
         this.entitySrv.join(joint)
             .subscribe(() => {
                 this.refreshChild();
-                this.refresh(() => this.selectRow(selectedRow));
+                this.refresh(() => this.selectRow(<Payment>selectedRow));
             });
     }
     private free(row: Debt) {
@@ -155,7 +156,7 @@ export class PaymentCompensationListComponent extends BaseEntityListComponent<Pa
         this.entitySrv.free(joint)
             .subscribe(() => {
                 this.refreshChild();
-                this.refresh(() => this.selectRow(selectedRow));
+                this.refresh(() => this.selectRow(<Payment>selectedRow));
             });
     }
 

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {BudgetTransfer, PlanningInfo} from '../budget-movement-api';
 import { DecimalPipe } from '@angular/common';
@@ -24,6 +24,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     templateUrl: './budget-transfer-detail.component.html',
     styleUrls: ['./budget-transfer-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     MaterialModule,

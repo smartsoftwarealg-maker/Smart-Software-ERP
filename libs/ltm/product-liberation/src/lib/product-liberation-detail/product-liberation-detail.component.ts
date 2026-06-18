@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -38,6 +38,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     DatePickerComponent
 ],
     templateUrl: './product-liberation-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './product-liberation-detail.component.scss',
 })
 export class ProductLiberationDetailComponent extends BaseEntityDetailComponent<LTMProductLiberation> {

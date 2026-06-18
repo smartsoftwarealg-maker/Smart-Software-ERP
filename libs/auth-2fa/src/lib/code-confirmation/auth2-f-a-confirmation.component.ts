@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { AgentService } from '@ss/logistics/api-agent';
 import { SnackBarService } from '@ss/common/ui-shell';
@@ -18,6 +18,7 @@ import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
     templateUrl: './auth2-f-a-confirmation.component.html',
     styleUrls: ['./auth2-f-a-confirmation.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         FormsModule,
         MatFormFieldModule,

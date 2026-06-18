@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from "@angular/router";
 
@@ -18,6 +18,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './customer-balance.component.html',
     styleUrls: ['./customer-balance.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

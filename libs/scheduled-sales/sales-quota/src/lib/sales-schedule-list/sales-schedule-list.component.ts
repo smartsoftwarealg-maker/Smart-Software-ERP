@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Schedule, ScheduleService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -19,6 +19,7 @@ import { Observable, tap } from 'rxjs';
     templateUrl: './sales-schedule-list.component.html',
     styleUrls: ['./sales-schedule-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

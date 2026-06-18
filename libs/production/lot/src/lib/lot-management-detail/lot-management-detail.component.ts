@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
@@ -21,6 +21,7 @@ import { StoresService } from '@ss/stock/api-article-store';
     styleUrls: ['./lot-management-detail.component.scss'],
     templateUrl: './lot-management-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         RouterModule,

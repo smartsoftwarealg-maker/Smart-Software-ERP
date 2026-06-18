@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Transaction } from '@ss/logistics/api-transaction';
@@ -26,6 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-price-request',
     imports: [CommonModule, DocInfoComponent, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef],
     templateUrl: './price-request.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class PriceRequestComponent  extends BaseEntityListComponent<Transaction> {

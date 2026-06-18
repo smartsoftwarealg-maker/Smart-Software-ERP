@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ASSAppointmentHeader, AssetAppointmentLine } from '../assets-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -32,6 +32,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './asset-appointment-doc-detail.component.html',
     styleUrls: ['./asset-appointment-doc-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Fault } from '../gica-careers-api';
@@ -31,6 +31,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     standalone: true,
     imports: [MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, DatePickerComponent, UiAutoCompleteComponent],
     templateUrl: './fault-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './fault-detail.component.css'
 })
 export class FaultDetailComponent extends BaseEntityDetailComponent<Fault> {

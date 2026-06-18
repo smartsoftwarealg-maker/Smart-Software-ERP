@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -46,6 +46,7 @@ interface EvalPrice {
         UiAutoCompleteComponent
     ],
     styleUrls: ['./options-detail.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './options-detail.component.html',
 })
 export class OptionsDetailComponent

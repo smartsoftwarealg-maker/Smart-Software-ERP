@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatTableModule } from '@angular/material/table';
@@ -35,6 +35,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     templateUrl: './work-permit-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './work-permit-list.component.css',
 })
 export class WorkPermitListComponent extends BaseChildEntityListComponent<WorkPermit> {

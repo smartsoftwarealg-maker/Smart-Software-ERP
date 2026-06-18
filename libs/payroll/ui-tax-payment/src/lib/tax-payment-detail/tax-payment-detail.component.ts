@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -36,6 +36,7 @@ import { Lookup } from '@ss/common/api-lookup';
     ],
     templateUrl: './tax-payment-detail.component.html',
     styleUrl: './tax-payment-detail.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class TaxPaymentDetailComponent extends BaseEntityDetailComponent<TaxPayment> {

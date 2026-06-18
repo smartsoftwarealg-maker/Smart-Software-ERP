@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Constant } from '../gica-careers-api';
@@ -42,6 +42,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
     TranslateDirective
 ],
     templateUrl: './constant-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './constant-detail.component.css'
 })
 export class ConstantDetailComponent extends BaseEntityDetailComponent<Constant> {

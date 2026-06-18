@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, signal, ChangeDetectionStrategy} from '@angular/core';
 import { CostCenterGroupService, Lookup } from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -25,6 +25,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
         PaginationComponent
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['../base-templates/list-template.scss']
 })
 export class CostCenterGroupListComponent extends BaseEntityListComponent<Lookup> {
@@ -58,6 +59,7 @@ export class CostCenterGroupListComponent extends BaseEntityListComponent<Lookup
 
 
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['../base-templates/detail-template.scss']
 })
 export class CostCenterGroupDetailComponent extends BaseEntityDetailComponent<Lookup> {

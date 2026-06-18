@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { EmployeeDecisionService, Decision } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -15,6 +15,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-decision-list.component.html',
     styleUrls: ['./employee-decision-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCell, TranslateDirective, MatCell, MatHeaderRow, MatRow, PaginationComponent, AsyncPipe, TranslatePipe, MatRowDef, MatHeaderCellDef, MatCellDef, MatHeaderRowDef]
 })
 export class EmployeeDecisionListComponent extends BaseChildEntityListComponent<Decision> {

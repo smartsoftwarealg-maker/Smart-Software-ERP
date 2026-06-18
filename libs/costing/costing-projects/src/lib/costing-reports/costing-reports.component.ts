@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
@@ -24,6 +24,7 @@ interface ChartConfig {
         TranslateDirective,
     ],
     templateUrl: './costing-reports.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './costing-reports.component.css',
 })
 export class CostingReportsComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { OrgChartModule, TreeNode } from 'angular13-organization-chart';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
@@ -19,6 +19,7 @@ interface WorkflowTreeNode extends TreeNode {
     templateUrl: './workflow-chart.component.html',
     styleUrls: ['./workflow-chart.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     OrgChartModule

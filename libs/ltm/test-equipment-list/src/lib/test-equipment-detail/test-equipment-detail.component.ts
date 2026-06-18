@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -20,6 +20,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [MatCard, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule, RouterOutlet, TranslateDirective],
     templateUrl: './test-equipment-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './test-equipment-detail.component.scss'
 })
 export class TestEquipmentDetailComponent extends BaseEntityDetailComponent<LTMTestingEquipment> {

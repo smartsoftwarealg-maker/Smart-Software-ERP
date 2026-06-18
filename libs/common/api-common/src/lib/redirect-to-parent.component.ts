@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 /**
@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
     selector: 'ss-hack-go-back-to-parent',
     template: '',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true
 })
 export class RedirectToParentComponent implements OnInit {

@@ -5,7 +5,7 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
+import { withInterceptorsFromDi, provideHttpClient, withXhr } from '@angular/common/http';
 import { provideRouter, Routes } from '@angular/router';
 import { MAIN_PAGE_URL, INDEX_PAGE_URL, CanActivateService, LOGIN_URL } from '@ss/common/api-common';
 import { ShellComponent, UiShellModule } from '@ss/common/ui-shell';
@@ -60,7 +60,7 @@ bootstrapApplication(AppComponent, {
         // Smart Software modules
         UiThemeModule, UiErrorHandlerModule, UiShellModule, PaginationComponent, UiLoginModule, UiCenterSelectModule, LogisticsUiAgentModule),
         provideAnimations(),
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideRouter(routes),
     ]
 })

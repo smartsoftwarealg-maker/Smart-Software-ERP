@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -23,6 +23,7 @@ import { SalutationsService } from '../salutations.service';
     templateUrl: 'salutations-detail.html',
     styleUrl: 'salutations-detail.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

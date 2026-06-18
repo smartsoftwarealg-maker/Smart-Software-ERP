@@ -8,8 +8,9 @@ import { environment } from './environments/environment';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import {
-    withInterceptorsFromDi,
-    provideHttpClient,
+  withInterceptorsFromDi,
+  provideHttpClient,
+  withXhr
 } from '@angular/common/http';
 import {
     ActivatedRouteSnapshot,
@@ -90,7 +91,7 @@ bootstrapApplication(AppComponent, {
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule),
         provideAnimations(),
         provideZoneChangeDetection(),
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
         { provide: ErrorHandler, useClass: CustomErrorHandler }
     ],

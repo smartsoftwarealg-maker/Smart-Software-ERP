@@ -1,11 +1,12 @@
 import {
-    Component,
-    EventEmitter,
-    inject,
-    input,
-    OnDestroy,
-    OnInit,
-    Output,
+  Component,
+  EventEmitter,
+  inject,
+  input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartService } from '../cart.service';
@@ -22,12 +23,14 @@ import { LanguageSelectComponent } from '@ss/common/ui-lang';
 import { ThemeSelectComponent } from '@ss/common/ui-theme';
 import { TranslatePipe } from '@ss/common/ui-lang';
 import {FormField} from "@angular/forms/signals";
+import {ShellService} from "@ss/common/ui-shell";
 
 @Component({
     selector: 'ss-header-page',
     templateUrl: './header-page.component.html',
     styleUrls: ['./header-page.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatFormField,
         MatLabel,
@@ -54,8 +57,9 @@ export class HeaderPageComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
 
     cartSrv = inject(CartService);
+    shellSrv = inject(ShellService);
 
-    searchControl = new FormControl('');
+    searchControl = new FormControl<string>('');
     logo = './asset/img/logo.png';
 
     constructor() {}

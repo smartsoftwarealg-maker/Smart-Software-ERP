@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { MutualRequest, MutualRequestService } from '@social/social-api';
@@ -43,6 +43,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-mutual-requests',
     standalone: true,
     styleUrl: './mutual-requests-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './mutual-requests-list.component.html'
 })
 export class MutualRequestsListComponent extends BaseEntityListComponent<MutualRequest> {

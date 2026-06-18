@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnInit } from "@angular/core";
+import { Component, inject, Inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
@@ -11,6 +11,7 @@ import { LtmEmailSenderService } from './ltm-email-sender.service';
     styleUrls: ['./ltm-email-sender.component.scss'],
     standalone: true,
     providers: [LtmEmailSenderService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, TranslateDirective, FormsModule, ReactiveFormsModule]
 })
 export class LtmEmailSenderComponent implements OnInit {

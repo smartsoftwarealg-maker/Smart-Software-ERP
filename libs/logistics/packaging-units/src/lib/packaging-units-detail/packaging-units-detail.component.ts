@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {TranslateDirective} from "@ss/common/ui-lang";
 import {BaseEntityDetailComponent} from "@ss/common/ui-base-entity";
 import {PackagingUnit} from "../packaging-units.api";
@@ -23,6 +23,7 @@ import {MaterialModule} from "@ss/common/api-common";
         ReactiveFormsModule
     ],
     templateUrl: './packaging-units-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './packaging-units-detail.component.scss',
 })
 export class PackagingUnitsDetailComponent extends BaseEntityDetailComponent<PackagingUnit> {

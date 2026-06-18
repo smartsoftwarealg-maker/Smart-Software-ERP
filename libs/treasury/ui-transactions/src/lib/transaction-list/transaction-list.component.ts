@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Summary, TImport, TreasuryTransactionService, TTransaction } from '@ss/treasury/api-transactions';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -36,6 +36,7 @@ import { MatDialog } from '@angular/material/dialog';
     templateUrl: './transaction-list.component.html',
     styleUrls: ['./transaction-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatCard,
         MatDatepickerModule,

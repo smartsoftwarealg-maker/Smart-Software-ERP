@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
     UntypedFormGroup,
     Validators,
@@ -23,6 +23,7 @@ import { HolidayTypeService } from '@ss/common/api-lookup';
     templateUrl: './vacation-types-detail.component.html',
     styleUrls: ['./vacation-types-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

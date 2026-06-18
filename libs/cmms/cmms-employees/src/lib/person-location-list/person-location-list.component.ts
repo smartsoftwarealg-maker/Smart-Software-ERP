@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { PersonLocation } from '../employee-api';
@@ -14,6 +14,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, TranslatePipe],
     templateUrl: './person-location-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./person-location-list.component.css'],
 })
 export class PersonLocationListComponent extends BaseChildEntityListComponent<PersonLocation> {

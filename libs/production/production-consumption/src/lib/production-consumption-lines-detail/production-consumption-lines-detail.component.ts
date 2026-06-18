@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent,
     DOC_CONSUMPTION,
@@ -22,6 +22,7 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ProductionConsumptionLinesService } from '../production-consumption-lines.service';
+import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
     selector: 'ss-consumption-lines-detail',
@@ -30,6 +31,7 @@ import { ProductionConsumptionLinesService } from '../production-consumption-lin
         '../../../../../common/assets/src/assets/transac-lines-detail.scss',
     ],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatCard,
@@ -45,6 +47,7 @@ import { ProductionConsumptionLinesService } from '../production-consumption-lin
         MatHint,
         CdkTextareaAutosize,
         TranslatePipe,
+        MatTooltip,
     ],
 })
 export class ProductionConsumptionLinesDetailComponent extends BaseTransactionLinesDetailComponent {

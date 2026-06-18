@@ -1,4 +1,4 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CartService} from '../cart.service';
 import { HeaderPageComponent } from '../header-page/header-page.component';
@@ -19,6 +19,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         '../sales-confirmation/sales-confirmation.component.scss'
     ],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     HeaderPageComponent,
     TranslateDirective,

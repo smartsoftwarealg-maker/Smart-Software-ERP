@@ -1,4 +1,4 @@
-import { Component, inject, signal} from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     Reintegration,
@@ -29,6 +29,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-reintegration-list.component.html',
     styleUrls: ['./employee-reintegration-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatTooltip,

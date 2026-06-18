@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject, signal} from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BadgeButton, KeepOnToolbar, ShellService } from '@ss/common/ui-shell';
 import { Router } from '@angular/router';
 import {LanguageService, MainPageService, SideNavNode} from '@ss/common/api-common';
@@ -15,6 +15,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './main-page.component.html',
     styleUrls: ['./main-page.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         TranslateDirective,
         TranslateDirective

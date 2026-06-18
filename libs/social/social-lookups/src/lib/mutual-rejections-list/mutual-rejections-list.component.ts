@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Lookup } from '@ss/common/api-lookup';
@@ -27,6 +27,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent, TranslateDirective],
     templateUrl: './mutual-rejections-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './mutual-rejections-list.component.scss',
 })
 export class MutualRejectionsListComponent extends BaseEntityListComponent<Lookup> {

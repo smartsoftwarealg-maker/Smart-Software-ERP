@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import {LTMMailingDocument} from '@ltm/ltm-api';
@@ -14,6 +14,7 @@ import { LtmMailingDocumentService } from '@ltm/ltm-api';
     templateUrl: './ltm-mailing-documents-detail.component.html',
     styleUrls: ['../line-matter-detail/line-matter-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     ReactiveFormsModule,

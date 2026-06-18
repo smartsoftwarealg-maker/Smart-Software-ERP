@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, WritableSignal, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, WritableSignal, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from "@angular/router";
@@ -31,6 +31,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './special-payroll-detail.component.html',
     styleUrls: ['./special-payroll-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, ImageInputComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, TranslatePipe]
 })
 export class SpecialPayrollDetailComponent extends BaseEntityDetailComponent<Special> implements OnInit, OnDestroy {

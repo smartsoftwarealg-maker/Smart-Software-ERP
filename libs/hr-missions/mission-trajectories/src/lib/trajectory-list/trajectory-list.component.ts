@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Trajectory} from '../trajectory';
 import {BankService} from '@ss/administration/api-bank';
@@ -17,6 +17,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './trajectory-list.component.html',
     styleUrls: ['./trajectory-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class TrajectoryListComponent extends BaseEntityListComponent<Trajectory> {

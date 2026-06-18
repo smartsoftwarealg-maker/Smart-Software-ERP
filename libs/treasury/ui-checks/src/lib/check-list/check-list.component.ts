@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CheckService, Check } from '@ss/treasury/api-checks';
@@ -25,6 +25,7 @@ import { DecimalPipe } from '@angular/common';
     styleUrls: ['./check-list.component.scss'],
     templateUrl: './check-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MaterialModule, MatHeaderCell, TranslateDirective, MatCell, MatCheckbox, MatHeaderRow, MatRow, PaginationComponent, DecimalPipe]
 })
 export class CheckListComponent extends BaseEntityListComponent<Check> implements OnInit {

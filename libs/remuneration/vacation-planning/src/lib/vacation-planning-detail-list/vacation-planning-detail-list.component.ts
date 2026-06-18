@@ -1,4 +1,4 @@
-import { Component, signal} from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { VacationPlanningDetail } from '../vacation-planning-api';
 import { VacationPlanningDetailService } from '@ss/remuneration/vacation-planning';
 import {
@@ -26,6 +26,7 @@ import {MatSort} from "@angular/material/sort";
     templateUrl: './vacation-planning-detail-list.component.html',
     styleUrls: ['./vacation-planning-detail-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatMiniFabButton,

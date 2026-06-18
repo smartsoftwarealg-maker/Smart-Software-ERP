@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
@@ -42,6 +42,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         MatHeaderCellDef,
     ],
     templateUrl: './test-equipment-test-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './test-equipment-test-list.component.scss',
 })
 export class TestEquipmentTestListComponent extends BaseChildEntityListComponent<LTMTestEquipmentTest> {

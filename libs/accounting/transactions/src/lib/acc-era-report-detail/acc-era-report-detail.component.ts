@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from "@angular/router";
@@ -14,6 +14,7 @@ import {AccEraReportService} from "../../../../accounting-api/src/lib/acc-era-re
     templateUrl: './acc-era-report-detail.component.html',
     styleUrls: ['./acc-era-report-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         RouterModule,
         MaterialModule,

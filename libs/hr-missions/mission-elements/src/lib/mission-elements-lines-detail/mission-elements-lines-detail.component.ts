@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -23,6 +23,7 @@ import { CategoryService } from '@ss/common/api-lookup';
 ],
     templateUrl: './mission-elements-lines-detail.component.html',
     styleUrl: './mission-elements-lines-detail.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class MissionElementsLinesDetailComponent

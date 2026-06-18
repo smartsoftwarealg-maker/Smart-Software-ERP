@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LTMMatter} from '@ltm/ltm-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -19,6 +19,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './ltm-matter-list.component.html',
     styleUrls: ['./ltm-matter-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         PaginationComponent,

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -37,6 +37,7 @@ import { tap } from 'rxjs/operators';
         BomListComponent,
     ],
     templateUrl: './bom2-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './bom2-detail.component.css',
 })
 export class Bom2DetailComponent extends BaseEntityDetailComponent<BOM> {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { F8 } from '../services/balance-tables.api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -17,6 +17,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
     standalone: true,
     imports: [MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, TranslateDirective],
     templateUrl: './f8-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './f8-detail.component.scss'
 })
 export class F8DetailComponent extends BaseEntityDetailComponent<F8> {

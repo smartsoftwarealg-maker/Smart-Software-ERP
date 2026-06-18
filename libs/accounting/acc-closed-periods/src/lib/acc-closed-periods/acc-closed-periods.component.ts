@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { HttpService, LanguageService } from '@ss/common/api-common';
@@ -38,6 +38,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ],
     templateUrl: './acc-closed-periods.component.html',
     styleUrl: './acc-closed-periods.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class AccClosedPeriodsComponent implements OnInit {

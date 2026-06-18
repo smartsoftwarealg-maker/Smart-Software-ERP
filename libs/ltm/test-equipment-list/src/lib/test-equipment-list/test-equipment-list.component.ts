@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -27,6 +27,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [PaginationComponent, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, TranslateDirective],
     templateUrl: './test-equipment-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './test-equipment-list.component.scss',
 })
 export class TestEquipmentListComponent extends BaseEntityListComponent<LTMTestingEquipment> {

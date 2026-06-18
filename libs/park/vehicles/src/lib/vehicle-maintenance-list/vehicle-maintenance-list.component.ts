@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { VehicleMaintenance } from '../vehicle-api';
@@ -25,6 +25,7 @@ import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
 
     ],
     templateUrl: './vehicle-maintenance-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./vehicle-maintenance-list.component.css'],
 })
 export class VehicleMaintenanceListComponent extends BaseChildEntityListComponent<VehicleMaintenance> {

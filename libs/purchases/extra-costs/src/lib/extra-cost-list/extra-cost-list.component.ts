@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ExtraCostService } from '../services/extra-cost.service';
 import { PaginationModel } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -34,6 +34,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './extra-cost-list.component.html',
     styleUrls: ['./extra-cost-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatTooltip,

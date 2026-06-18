@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from "@angular/router";
@@ -17,6 +17,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './ltm-correction-action-list.component.html',
     styleUrls: ['./ltm-correction-action-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     PaginationComponent,

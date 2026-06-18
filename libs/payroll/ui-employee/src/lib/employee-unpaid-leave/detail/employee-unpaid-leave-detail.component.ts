@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {
     FormBuilder,
     UntypedFormGroup,
@@ -24,6 +24,7 @@ import { map } from 'rxjs/operators';
     templateUrl: './employee-unpaid-leave-detail.component.html',
     styleUrls: ['./employee-unpaid-leave-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatMiniFabButton,

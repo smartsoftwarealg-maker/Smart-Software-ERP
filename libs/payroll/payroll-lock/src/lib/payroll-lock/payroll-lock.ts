@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {LoginService, MaterialModule} from "@ss/common/api-common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {TranslateDirective, TranslatePipe} from "@ss/common/ui-lang";
@@ -13,6 +13,7 @@ import {toSignal} from "@angular/core/rxjs-interop";
     selector: 'ss-payroll-lock',
     templateUrl: './payroll-lock.html',
     styleUrl: './payroll-lock.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         ReactiveFormsModule,

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CompanySelectorService, HttpService, LoginService } from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import { LanguageService } from '@ss/common/api-common';
@@ -18,6 +18,7 @@ import { AdService } from '@ss/common/api-admob';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [Dir, RouterOutlet, MatProgressSpinner, MessageComponent],
 })
 export class AppComponent implements OnInit {

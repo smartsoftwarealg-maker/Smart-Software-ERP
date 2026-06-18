@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnInit } from "@angular/core";
+import { Component, inject, Inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogActions } from '@angular/material/dialog';
 import {Cartline, Total} from '@ss/sales/shopping-cart';
 import {CheckoutService} from '../checkout.service';
@@ -15,6 +15,7 @@ import { MatButton } from "@angular/material/button";
     templateUrl: './checkout.component.html',
     styleUrls: ['./checkout.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     TranslateDirective,
     FormsModule,

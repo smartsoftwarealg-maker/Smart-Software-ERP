@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CPool } from '@ss/costing/costing-utils';
@@ -21,6 +21,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         TranslateDirective
     ],
     templateUrl: './costing-pool-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './costing-pool-list.component.css',
 })
 export class CostingPoolListComponent extends BaseChildEntityListComponent<CPool> {

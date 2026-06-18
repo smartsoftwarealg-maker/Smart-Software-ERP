@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
     ReactiveFormsModule,
     UntypedFormBuilder,
@@ -30,6 +30,7 @@ import { CrmContactService } from '../crm-contact.service';
         MatButton,
         MatError,
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class CrmContactsDetailComponent

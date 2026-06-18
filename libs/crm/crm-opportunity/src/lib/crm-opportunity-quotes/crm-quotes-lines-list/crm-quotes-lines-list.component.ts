@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -41,6 +41,7 @@ import { CrmQuoteItemsService } from '../crm-quote-item.service';
         MatHeaderRowDef
     ],
     templateUrl: './crm-quotes-lines-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './crm-quotes-lines-list.component.scss'
 })
 export class CrmQuotesLinesListComponent extends BaseChildEntityListComponent<CRMQuoteItem> {

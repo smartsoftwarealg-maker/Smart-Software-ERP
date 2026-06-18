@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CProductLine } from '@ss/costing/costing-utils';
@@ -32,6 +32,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './product-line-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./product-line-detail.component.css']
 })
 export class ProductLineDetailComponent extends BaseChildEntityDetailComponent<CProductLine> implements OnInit {

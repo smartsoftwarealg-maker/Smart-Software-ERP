@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Formula} from './payroll-formulas-api';
 import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
@@ -26,6 +26,7 @@ import {Observable, switchMap, tap} from 'rxjs';
     templateUrl: './formula-detail.component.html',
     styleUrls: ['./formula-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatSelect, MatOption]
 })
 export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {

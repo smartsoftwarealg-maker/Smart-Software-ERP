@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Wife, EmployeeWivesService } from '@ss/payroll/api-employee';
@@ -18,6 +18,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-wife-detail.component.html',
     styleUrls: ['./employee-wife-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent]
 })
 export class EmployeeWifeDetailComponent extends BaseChildEntityDetailComponent<Wife> {

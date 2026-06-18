@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { F13 } from '../services/balance-tables.api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -34,6 +34,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './f13-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './f13-detail.component.scss',
 })
 export class F13DetailComponent extends BaseEntityDetailComponent<F13> {

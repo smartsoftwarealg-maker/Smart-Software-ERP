@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, signal} from '@angular/core';
+import { Component, effect, inject, input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { SnackBarService } from '@ss/common/ui-shell';
 import {
     UntypedFormGroup,
@@ -36,6 +36,7 @@ import { SalesOrderLinesService } from '@ss/logistics/api-transaction';
     templateUrl: 'payment.component.html',
     styleUrl: 'payment.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         DatePickerComponent,
         MatError,

@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnInit, signal } from '@angular/core';
+import { Component, inject, Inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
@@ -20,6 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     standalone: true,
     imports: [CommonModule, MatButtonModule, MaterialModule, DatePickerComponent, TranslatePipe, PaginationComponent],
     templateUrl: './request-import.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./request-import.component.css'],
 })
 export class RequestImportComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Motive, Scale } from '../gica-careers-api';
@@ -40,6 +40,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     TranslateDirective
 ],
     templateUrl: './scale-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './scale-detail.component.css'
 })
 export class ScaleDetailComponent extends BaseEntityDetailComponent<Scale> {

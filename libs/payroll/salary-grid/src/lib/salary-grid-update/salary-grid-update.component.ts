@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from "@angular/core";
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from "@angular/core";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { FormBuilder, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 
@@ -18,6 +18,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: "./salary-grid-update.component.html",
     styleUrls: ["./salary-grid-update.component.scss"],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

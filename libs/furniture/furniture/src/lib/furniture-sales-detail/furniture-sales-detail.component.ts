@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { FurnitureTransaction } from '../furniture-api';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -33,6 +33,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './furniture-sales-detail.component.html',
     styleUrls: ['./furniture-sales-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatCard,
         MatCardContent,

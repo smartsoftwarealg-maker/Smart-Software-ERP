@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {ArticleService} from '@ss/master-data/api-article';
@@ -23,6 +23,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './delivery-cancellation-lines-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

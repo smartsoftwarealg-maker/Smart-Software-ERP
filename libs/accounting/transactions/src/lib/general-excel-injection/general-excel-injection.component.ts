@@ -1,10 +1,11 @@
 import {
-    Component,
-    DestroyRef,
-    inject,
-    input,
-    OnInit,
-    signal,
+  Component,
+  DestroyRef,
+  inject,
+  input,
+  OnInit,
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import {
     catchError,
@@ -51,6 +52,7 @@ import { LTM_NON_CONFORMITY_DOC } from '@ltm/ltm-api';
     templateUrl: './general-excel-injection.component.html',
     styleUrls: ['./general-excel-injection.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         TranslateDirective,
         MatMiniFabButton,

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Output, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CPoolCost } from '@ss/costing/costing-utils';
@@ -27,6 +27,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         PaginationComponent
     ],
     templateUrl: './costing-pool-costs.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './costing-pool-costs.component.css',
 })
 export class CostingPoolCostComponent extends BaseChildEntityListComponent<CPoolCost> {

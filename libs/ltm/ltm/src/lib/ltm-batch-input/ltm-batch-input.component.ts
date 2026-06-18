@@ -1,11 +1,12 @@
 import {
-    Component,
-    DestroyRef,
-    inject,
-    input,
-    OnDestroy,
-    OnInit,
-    signal, ViewChild
+  Component,
+  DestroyRef,
+  inject,
+  input,
+  OnDestroy,
+  OnInit,
+  signal, ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { CHEMICAL_TEST, DEPOSIT_TEST, LTMBatch, PHYSICAL_TEST, RAW_MATERIAL_TEST } from '@ltm/ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -63,6 +64,7 @@ type ColorRange = {
     templateUrl: './ltm-batch-input.component.html',
     styleUrls: ['./ltm-batch-input.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

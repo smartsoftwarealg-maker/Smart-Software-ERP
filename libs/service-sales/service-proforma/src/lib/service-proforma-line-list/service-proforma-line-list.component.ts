@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     BaseTransactionLinesListComponent,
@@ -41,6 +41,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe
     ],
     templateUrl: './service-proforma-line-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./service-proforma-line-list.component.scss']
 })
 export class ServiceProformaLineListComponent extends BaseTransactionLinesListComponent implements OnInit {

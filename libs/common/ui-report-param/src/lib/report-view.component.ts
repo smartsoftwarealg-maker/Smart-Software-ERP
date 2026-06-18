@@ -1,4 +1,4 @@
-import {Component, inject, input, OnDestroy, OnInit, signal, ViewChild} from '@angular/core';
+import {Component, inject, input, OnDestroy, OnInit, signal, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {LookupsService} from '@ss/common/api-lookup';
@@ -60,6 +60,7 @@ import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
     styleUrls: ['./report-view.component.scss'],
     templateUrl: './report-view.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,
@@ -167,13 +168,15 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.isReady.set(false);
         this.selectedReport = reportNode;
         super.refresh(() => {
-            const cc = {reportType: new FormControl<string>(''), name: new FormControl<string>('')};
+            const cc = {reportType: new FormControl<string>(''), name: new FormControl<string|boolean>('')};
 
             this.data.forEach(e => {
-                cc[e.name] = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp' ?
-                    e.valueString?.substring(0, 11) + '05:00:00' : e.valueString === 'false' ?
-                        false : e.valueString === 'true' ?
-                            true : e.valueString);
+
+                cc.name = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp' ?
+                    e.valueString?.substring(0, 11) + '05:00:00' :
+                    e.valueString === 'false' ? false :
+                        e.valueString === 'true' ? true :
+                            e.valueString);
 
                 if (e.lookupTable) {
                     e.lookupModel = new ParamAutoCompleteModel(this.paramLookupSrv, e.lookupTable);

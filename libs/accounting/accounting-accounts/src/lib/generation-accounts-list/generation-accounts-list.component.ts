@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {GenerationAccount, GenerationAccountService} from '@ss/accounting/api-accounts';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -16,6 +16,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './generation-accounts-list.component.html',
     styleUrls: ['./generation-accounts-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class GenerationAccountsListComponent extends BaseEntityListComponent<GenerationAccount> {

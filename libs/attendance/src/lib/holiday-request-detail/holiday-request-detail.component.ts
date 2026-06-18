@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, ChangeDetectionStrategy} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {HolidayRequest} from '@ss/payroll/api-employee';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -24,6 +24,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     templateUrl: './holiday-request-detail.component.html',
     styleUrls: ['./holiday-request-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

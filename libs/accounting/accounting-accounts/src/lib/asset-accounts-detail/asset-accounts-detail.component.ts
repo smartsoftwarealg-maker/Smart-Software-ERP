@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {
     Account,
@@ -25,6 +25,7 @@ import { DepreciationAccountService } from '@ss/accounting/api-accounts';
     templateUrl: './asset-accounts-detail.component.html',
     styleUrls: ['./asset-accounts-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class AssetAccountsDetailComponent extends BaseEntityDetailComponent<Account> {

@@ -43,7 +43,7 @@
           <mat-label translate>COMMON_ACCOUNTNO</mat-label>
           <input matInput formControlName="accountno" type="text">
         </mat-form-field>
-        @if (isEditable()) {
+        @if (isEditable) {
           <button mat-raised-button type="button"
             color="primary"
             (click)="save()" translate>

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConsolidationCenterService } from '../services/consolidation-center.service';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -42,6 +42,7 @@ import { of, switchMap } from 'rxjs';
         MatCheckbox],
     templateUrl: './consolidation-centers-list.component.html',
     styleUrl: './consolidation-centers-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [ConsolidationCenterService]
 })
 export class ConsolidationCentersListComponent extends BaseEntityListComponent<ConsolidationCenter> {

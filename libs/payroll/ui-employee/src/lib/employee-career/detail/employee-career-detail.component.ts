@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { tap, switchMap } from 'rxjs/operators';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -39,6 +39,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-career-detail.component.html',
     styleUrls: ['./employee-career-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     MatMiniFabButton,

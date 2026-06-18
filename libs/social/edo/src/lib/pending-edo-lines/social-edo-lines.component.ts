@@ -1,4 +1,4 @@
-import { Component, output, signal} from '@angular/core';
+import { Component, output, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {EDOLine} from '@social/social-api';
@@ -17,6 +17,7 @@ import { MaterialModule } from '@ss/common/api-common';
         MaterialModule
     ],
     templateUrl: './social-edo-lines.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './social-edo-lines.component.scss',
 })
 export class SocialEdoLinesComponent extends BaseChildEntityListComponent<EDOLine> {

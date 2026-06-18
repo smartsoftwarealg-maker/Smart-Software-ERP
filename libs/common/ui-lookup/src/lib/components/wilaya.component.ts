@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import {RegionService, Wilaya, WilayaService} from '@ss/common/api-lookup';
@@ -22,6 +22,7 @@ import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from "@ss/common/ui-a
     templateUrl: '../base-templates/list-template.html',
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
@@ -74,6 +75,7 @@ export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
     `,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent]
 })
 export class WilayaDetailComponent extends BaseEntityDetailComponent<Wilaya> {

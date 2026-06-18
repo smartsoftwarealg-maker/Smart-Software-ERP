@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -18,6 +18,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './ltm-bleacher-detail.component.html',
     styleUrls: ['./ltm-bleacher-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, ReactiveFormsModule, TranslateDirective],
 })
 export class LtmBleacherDetailComponent extends BaseEntityDetailComponent<Lookup> {

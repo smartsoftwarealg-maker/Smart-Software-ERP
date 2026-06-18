@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -41,6 +41,7 @@ import {MatTooltip} from "@angular/material/tooltip";
     ],
     templateUrl: './mission-elements-lines-list.component.html',
     styleUrl: './mission-elements-lines-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class MissionElementsLinesListComponent extends BaseChildEntityListComponent<MissionElementPricing> {

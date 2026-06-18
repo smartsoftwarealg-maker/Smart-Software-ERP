@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     MatCell,
     MatCellDef,
@@ -27,6 +27,7 @@ import { PaginatorPersistenceService } from '@ss/common/api-common';
     templateUrl: './language-levels-list.component.html',
     styleUrls: ['./language-levels-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatSort,

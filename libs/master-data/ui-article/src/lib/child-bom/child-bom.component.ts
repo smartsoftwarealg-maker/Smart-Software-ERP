@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { BomService } from '../bom.service';
@@ -26,6 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     templateUrl: './child-bom.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './child-bom.component.css',
 })
 export class ChildBomComponent implements OnInit {

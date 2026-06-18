@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { PersonLocation } from '../employee-api';
@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     standalone: true,
     imports: [FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule, UiAutoCompleteComponent],
     templateUrl: './person-location-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./person-location-detail.component.css'],
 })
 export class PersonLocationDetailComponent extends BaseChildEntityDetailComponent<PersonLocation> {

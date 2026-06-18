@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { EmployeeWivesService, Wife } from '@ss/payroll/api-employee';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -15,6 +15,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-wives-list.component.html',
     styleUrls: ['./employee-wives-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe]
 })
 export class EmployeeWivesListComponent extends BaseChildEntityListComponent<Wife> {

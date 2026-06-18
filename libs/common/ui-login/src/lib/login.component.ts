@@ -1,10 +1,11 @@
 import {
-    Component,
-    computed,
-    inject,
-    input,
-    OnInit,
-    signal,
+  Component,
+  computed,
+  inject,
+  input,
+  OnInit,
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -33,6 +34,7 @@ type User = {
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         FormsModule,
         MaterialModule,

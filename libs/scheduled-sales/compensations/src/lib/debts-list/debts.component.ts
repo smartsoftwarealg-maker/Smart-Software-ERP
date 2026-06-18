@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, signal} from '@angular/core';
+import { Component, computed, effect, inject, input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Compensation, Debt } from '../services/compensation-api';
@@ -29,6 +29,7 @@ import { Observable, tap } from 'rxjs';
     selector: 'ss-sales-debts',
     imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef, RouterOutlet, MatRadioGroup, MatRadioButton],
     templateUrl: './debts.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './debts.component.scss',
 })
 export class DebtsComponent extends BaseEntityListComponent<Debt> {

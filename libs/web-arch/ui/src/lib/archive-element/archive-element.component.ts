@@ -1,4 +1,4 @@
-import { Component, EventEmitter, input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './archive-element.component.html',
     styleUrls: ['./archive-element.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,
@@ -29,7 +30,7 @@ export class ArchiveElementComponent {
     @Output() selected = new EventEmitter<number>();
     size = input(0);
     editDate = input('2018-01-07 10:00:00');
-    checkSum = input<string>(null);
+    checkSum = input<string|null>(null);
     defImage = of('./assets/img/Dummy.png');
 
     constructor(private sanitizer: DomSanitizer) {}

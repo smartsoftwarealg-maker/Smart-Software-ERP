@@ -1,4 +1,4 @@
-import { Component, signal} from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     HttpService,
     LanguageService,
@@ -32,6 +32,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './shopping-cart-detail.component.html',
     styleUrls: ['./shopping-cart-detail.component.scss', '../shopping-cart-list/shopping-cart.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

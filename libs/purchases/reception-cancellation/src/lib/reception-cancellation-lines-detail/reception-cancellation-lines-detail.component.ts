@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent,
     DOC_RECEPTION_CANCELLATION,
@@ -19,6 +19,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './reception-cancellation-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatMiniFabButton,
     MatCard,

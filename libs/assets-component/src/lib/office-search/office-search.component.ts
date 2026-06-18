@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnDestroy, OnInit, signal} from '@angular/core';
+import { Component, inject, Inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Lookup, Office, OfficeService } from '@ss/common/api-lookup';
 import { AssetLocationService, AssetsBuildingService } from '@ss/assets-component';
@@ -24,6 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './office-search.component.html',
     styleUrls: ['./office-search.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

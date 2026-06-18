@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, ChangeDetectionStrategy } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Quota, SSArticleService, SSQuotaService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -20,6 +20,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './sales-quota-detail.component.html',
     styleUrls: ['./sales-quota-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

@@ -1,4 +1,4 @@
-import { Component, inject, input, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, input, Input, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {AppArchiveService} from '../app-archive.service';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     templateUrl: './app-archive-main.component.html',
     styleUrls: ['./app-archive-main.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         RouterModule,
         MaterialModule,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { PersonFault } from '../employee-api';
@@ -17,6 +17,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [FormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, ReactiveFormsModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './person-fault-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./person-fault-detail.component.css'],
 })
 export class PersonFaultDetailComponent extends BaseChildEntityDetailComponent<PersonFault>{

@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ShellService } from '@ss/common/ui-shell';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { HttpParams } from '@angular/common/http';
     selector: 'ss-irg',
     imports: [MaterialModule, MatCard, ReactiveFormsModule, MatInput, MatLabel, TranslateDirective],
     templateUrl: './irg.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './irg.component.scss',
 })
 export class IrgComponent implements OnInit {

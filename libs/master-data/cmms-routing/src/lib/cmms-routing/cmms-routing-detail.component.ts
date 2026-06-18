@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -24,6 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [MatCheckboxModule, MatSortModule, MatTableModule, MaterialModule, RouterOutlet, TranslatePipe, TranslateDirective],
     templateUrl: './cmms-routing-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./cmms-routing-detail.component.css']
 })
 export class CMMSRoutingDetailComponent extends BaseEntityDetailComponent<Lookup> implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { VehicleInsurance } from '../vehicle-api';
@@ -41,6 +41,7 @@ import {MaterialModule} from "@ss/common/api-common";
         MaterialModule
     ],
     templateUrl: './vehicle-insurance-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./vehicle-insurance-detail.component.css'],
 })
 export class VehicleInsuranceDetailComponent extends BaseChildEntityDetailComponent<VehicleInsurance> {

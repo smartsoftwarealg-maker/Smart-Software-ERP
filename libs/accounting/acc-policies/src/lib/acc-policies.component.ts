@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -23,6 +23,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './acc-policies.component.html',
     styleUrls: ['./acc-policies.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatCheckbox, MatFormField, MatLabel, UiAutoCompleteComponent, MatInput]
 })
 export class AccPoliciesComponent extends BaseEntityDetailComponent<ACCPolicy> {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ProcessedCheck, ProcessedCheckService} from '@ss/treasury/api-checks';
 import { HttpService, LoginService, MaterialModule } from '@ss/common/api-common';
@@ -21,6 +21,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     templateUrl: './processed-check-detail.component.html',
     styleUrls: ['./processed-check-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     MatCard,

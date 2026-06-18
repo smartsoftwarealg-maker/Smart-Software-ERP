@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -22,6 +22,7 @@ import { CustomerPollService } from '../customer-poll.service';
         MaterialModule
     ],
     templateUrl: './customer-poll.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './customer-poll.component.scss',
 })
 export class CustomerPollComponent implements OnInit {

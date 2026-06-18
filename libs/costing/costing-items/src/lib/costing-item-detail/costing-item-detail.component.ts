@@ -1,4 +1,4 @@
-import { Component, HostBinding, inject, OnInit } from "@angular/core";
+import { Component, HostBinding, inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup,
   Validators
 } from "@angular/forms";
@@ -29,6 +29,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     ReactiveFormsModule,
     UiAutoCompleteComponent
 ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   animations: [slideToRight]
 })
 export class CostingItemDetailComponent extends BaseEntityDetailComponent<CItem> implements OnInit {

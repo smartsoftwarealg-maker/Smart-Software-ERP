@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -39,6 +39,7 @@ import { SalesPollService } from '../sales-poll.service';
         TranslateDirective
     ],
     templateUrl: './sales-poll-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './sales-poll-list.component.css',
 })
 export class SalesPollListComponent extends BaseEntityListComponent<SalesPoll>{

@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, OnInit, signal} from '@angular/core';
+import { Component, effect, inject, input, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { SnackBarService } from '@ss/common/ui-shell';
 import {
     FormBuilder,
@@ -28,6 +28,7 @@ import { DriverService, SalesDriver } from '@ss/sales/drivers';
     templateUrl: 'dispatch.component.html',
     styleUrl: 'dispatch.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         DatePickerComponent,
         MatFormField,

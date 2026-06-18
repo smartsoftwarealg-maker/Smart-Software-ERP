@@ -15,873 +15,872 @@
         "lib": ["es2022", "dom"],
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
-        "baseUrl": ".",
         "paths": {
             "@common/report-privileges": [
-                "libs/common/report-privileges/src/index.ts"
+                "./libs/common/report-privileges/src/index.ts"
             ],
             "@customer-complaints-list": [
-                "libs/scheduled-sales/customer-complaints/src/index.ts"
+                "./libs/scheduled-sales/customer-complaints/src/index.ts"
             ],
-            "@gica.careers": ["libs/gica.careers/src/index.ts"],
+            "@gica.careers": ["./libs/gica.careers/src/index.ts"],
             "@gica/career-evolution": [
-                "libs/gica/career-evolution/src/index.ts"
+                "./libs/gica/career-evolution/src/index.ts"
             ],
             "@logistics/order-anomalies": [
-                "libs/logistics/order-anomalies/src/index.ts"
+                "./libs/logistics/order-anomalies/src/index.ts"
             ],
             "@logistics/parts-reservation": [
-                "libs/logistics/parts-reservation/src/index.ts"
+                "./libs/logistics/parts-reservation/src/index.ts"
             ],
-            "@ltm/ltm-api": ["libs/ltm/ltm-api/src/index.ts"],
+            "@ltm/ltm-api": ["./libs/ltm/ltm-api/src/index.ts"],
             "@ltm/test-equipment": [
-                "libs/ltm/test-equipment-list/src/index.ts"
+                "./libs/ltm/test-equipment-list/src/index.ts"
             ],
             "@scheduled-sales/customer-history": [
-                "libs/scheduled-sales/customer-history/src/index.ts"
+                "./libs/scheduled-sales/customer-history/src/index.ts"
             ],
             "@scheduled-sales/header": [
-                "libs/scheduled-sales/header/src/index.ts"
+                "./libs/scheduled-sales/header/src/index.ts"
             ],
             "@scheduled-sales/main-page": [
-                "libs/scheduled-sales/main-page/src/index.ts"
+                "./libs/scheduled-sales/main-page/src/index.ts"
             ],
             "@scheduled-sales/payments": [
-                "libs/scheduled-sales/payments/src/index.ts"
+                "./libs/scheduled-sales/payments/src/index.ts"
             ],
             "@scheduled-sales/products-page": [
-                "libs/scheduled-sales/products-page/src/index.ts"
+                "./libs/scheduled-sales/products-page/src/index.ts"
             ],
-            "@social/aid-history": ["libs/social/aid-history/src/index.ts"],
-            "@social/edo": ["libs/social/edo/src/index.ts"],
+            "@social/aid-history": ["./libs/social/aid-history/src/index.ts"],
+            "@social/edo": ["./libs/social/edo/src/index.ts"],
             "@social/loans": [
-                "libs/social/consolidated-loan-list/src/index.ts"
+                "./libs/social/consolidated-loan-list/src/index.ts"
             ],
             "@social/medical-aids-detail": [
-                "libs/social/medical-aids-detail/src/index.ts"
+                "./libs/social/medical-aids-detail/src/index.ts"
             ],
             "@social/medical-aids-list": [
-                "libs/social/medical-aids-list/src/index.ts"
+                "./libs/social/medical-aids-list/src/index.ts"
             ],
-            "@social/social-api": ["libs/social/social-api/src/index.ts"],
+            "@social/social-api": ["./libs/social/social-api/src/index.ts"],
             "@social/social-dashboard": [
-                "libs/social/social-dashboard/src/index.ts"
+                "./libs/social/social-dashboard/src/index.ts"
             ],
             "@social/social-lookups": [
-                "libs/social/social-lookups/src/index.ts"
+                "./libs/social/social-lookups/src/index.ts"
             ],
             "@social/social-works-detail": [
-                "libs/social/social-works-detail/src/index.ts"
+                "./libs/social/social-works-detail/src/index.ts"
             ],
             "@social/social-works-list": [
-                "libs/social/social-works-list/src/index.ts"
+                "./libs/social/social-works-list/src/index.ts"
             ],
             "@ss/accounting/acc-closed-periods": [
-                "libs/accounting/acc-closed-periods/src/index.ts"
+                "./libs/accounting/acc-closed-periods/src/index.ts"
             ],
             "@ss/accounting/acc-policies": [
-                "libs/accounting/acc-policies/src/index.ts"
+                "./libs/accounting/acc-policies/src/index.ts"
             ],
             "@ss/accounting/accounting-accounts": [
-                "libs/accounting/accounting-accounts/src/index.ts"
+                "./libs/accounting/accounting-accounts/src/index.ts"
             ],
             "@ss/accounting/accounting-api": [
-                "libs/accounting/accounting-api/src/index.ts"
+                "./libs/accounting/accounting-api/src/index.ts"
             ],
             "@ss/accounting/accounting-journal": [
-                "libs/accounting/accounting-journal/src/index.ts"
+                "./libs/accounting/accounting-journal/src/index.ts"
             ],
             "@ss/accounting/api-accounts": [
-                "libs/accounting/api-accounts/src/index.ts"
+                "./libs/accounting/api-accounts/src/index.ts"
             ],
             "@ss/accounting/balance-tables": [
-                "libs/accounting/balance-tables/src/index.ts"
+                "./libs/accounting/balance-tables/src/index.ts"
             ],
             "@ss/accounting/category-accounts": [
-                "libs/accounting/category-accounts/src/index.ts"
+                "./libs/accounting/category-accounts/src/index.ts"
             ],
             "@ss/accounting/class-accounts": [
-                "libs/accounting/class-accounts/src/index.ts"
+                "./libs/accounting/class-accounts/src/index.ts"
             ],
             "@ss/accounting/consolidation": [
-                "libs/accounting/consolidation-centers/src/index.ts"
+                "./libs/accounting/consolidation-centers/src/index.ts"
             ],
             "@ss/accounting/transactions": [
-                "libs/accounting/transactions/src/index.ts"
+                "./libs/accounting/transactions/src/index.ts"
             ],
             "@ss/administration/api-bank": [
-                "libs/administration/api-bank/src/index.ts"
+                "./libs/administration/api-bank/src/index.ts"
             ],
             "@ss/administration/api-center": [
-                "libs/administration/api-center/src/index.ts"
+                "./libs/administration/api-center/src/index.ts"
             ],
             "@ss/administration/api-company": [
-                "libs/administration/api-company/src/index.ts"
+                "./libs/administration/api-company/src/index.ts"
             ],
             "@ss/administration/api-report-catalog": [
-                "libs/administration/api-report-catalog/src/index.ts"
+                "./libs/administration/api-report-catalog/src/index.ts"
             ],
             "@ss/administration/api-smtp": [
-                "libs/administration/api-smtp/src/index.ts"
+                "./libs/administration/api-smtp/src/index.ts"
             ],
             "@ss/administration/api-user": [
-                "libs/administration/api-user/src/index.ts"
+                "./libs/administration/api-user/src/index.ts"
             ],
             "@ss/administration/db-updater": [
-                "libs/administration/db-updater/src/index.ts"
+                "./libs/administration/db-updater/src/index.ts"
             ],
             "@ss/administration/global-validation": [
-                "libs/administration/global-validation/src/index.ts"
+                "./libs/administration/global-validation/src/index.ts"
             ],
             "@ss/administration/pass-encoding": [
-                "libs/administration/pass-encoding/src/index.ts"
+                "./libs/administration/pass-encoding/src/index.ts"
             ],
             "@ss/administration/reports-rights": [
-                "libs/administration/reports-rights/src/index.ts"
+                "./libs/administration/reports-rights/src/index.ts"
             ],
             "@ss/administration/ui-bank": [
-                "libs/administration/ui-bank/src/index.ts"
+                "./libs/administration/ui-bank/src/index.ts"
             ],
             "@ss/administration/ui-center": [
-                "libs/administration/ui-center/src/index.ts"
+                "./libs/administration/ui-center/src/index.ts"
             ],
             "@ss/administration/ui-company": [
-                "libs/administration/ui-company/src/index.ts"
+                "./libs/administration/ui-company/src/index.ts"
             ],
             "@ss/administration/ui-report-catalog": [
-                "libs/administration/ui-report-catalog/src/index.ts"
+                "./libs/administration/ui-report-catalog/src/index.ts"
             ],
             "@ss/administration/ui-roles": [
-                "libs/administration/ui-roles/src/index.ts"
+                "./libs/administration/ui-roles/src/index.ts"
             ],
             "@ss/administration/ui-smtp": [
-                "libs/administration/ui-smtp/src/index.ts"
+                "./libs/administration/ui-smtp/src/index.ts"
             ],
             "@ss/administration/ui-user": [
-                "libs/administration/ui-user/src/index.ts"
+                "./libs/administration/ui-user/src/index.ts"
             ],
-            "@ss/assets-component": ["libs/assets-component/src/index.ts"],
-            "@ss/attendance": ["libs/attendance/src/index.ts"],
-            "@ss/attendance/assets": ["libs/attendance/assets/src/index.ts"],
-            "@ss/auth-2fa": ["libs/auth-2fa/src/index.ts"],
-            "@ss/budget/assets": ["libs/budget/assets/src/index.ts"],
-            "@ss/budget/budget": ["libs/budget/budget/src/index.ts"],
+            "@ss/assets-component": ["./libs/assets-component/src/index.ts"],
+            "@ss/attendance": ["./libs/attendance/src/index.ts"],
+            "@ss/attendance/assets": ["./libs/attendance/assets/src/index.ts"],
+            "@ss/auth-2fa": ["./libs/auth-2fa/src/index.ts"],
+            "@ss/budget/assets": ["./libs/budget/assets/src/index.ts"],
+            "@ss/budget/budget": ["./libs/budget/budget/src/index.ts"],
             "@ss/budget/budget-groups": [
-                "libs/budget/budget-groups/src/index.ts"
+                "./libs/budget/budget-groups/src/index.ts"
             ],
             "@ss/budget/budget-movements": [
-                "libs/budget/budget-movements/src/index.ts"
+                "./libs/budget/budget-movements/src/index.ts"
             ],
             "@ss/budget/budget-planning": [
-                "libs/budget/budget-planning/src/index.ts"
+                "./libs/budget/budget-planning/src/index.ts"
             ],
             "@ss/cmms/asset-readings": [
-                "libs/cmms/asset-readings/src/index.ts"
+                "./libs/cmms/asset-readings/src/index.ts"
             ],
             "@ss/cmms/asset-triggers": [
-                "libs/cmms/asset-triggers/src/index.ts"
+                "./libs/cmms/asset-triggers/src/index.ts"
             ],
-            "@ss/cmms/assets": ["libs/cmms/assets/src/index.ts"],
-            "@ss/cmms/cmms-api": ["libs/cmms/cmms-api/src/index.ts"],
-            "@ss/cmms/cmms-assets": ["libs/cmms/cmms-assets/src/index.ts"],
-            "@ss/cmms/cmms-charts": ["libs/cmms/cmms-charts/src/index.ts"],
+            "@ss/cmms/assets": ["./libs/cmms/assets/src/index.ts"],
+            "@ss/cmms/cmms-api": ["./libs/cmms/cmms-api/src/index.ts"],
+            "@ss/cmms/cmms-assets": ["./libs/cmms/cmms-assets/src/index.ts"],
+            "@ss/cmms/cmms-charts": ["./libs/cmms/cmms-charts/src/index.ts"],
             "@ss/cmms/cmms-checklists": [
-                "libs/cmms/cmms-checklists/src/index.ts"
+                "./libs/cmms/cmms-checklists/src/index.ts"
             ],
             "@ss/cmms/cmms-employees": [
-                "libs/cmms/cmms-employees/src/index.ts"
+                "./libs/cmms/cmms-employees/src/index.ts"
             ],
-            "@ss/cmms/cmms-ui": ["libs/cmms/cmms-ui/src/index.ts"],
-            "@ss/cmms/lookups": ["libs/cmms/lookups/src/index.ts"],
-            "@ss/cmms/plans": ["libs/cmms/plans/src/index.ts"],
-            "@ss/cmms/pm": ["libs/cmms/pm/src/index.ts"],
+            "@ss/cmms/cmms-ui": ["./libs/cmms/cmms-ui/src/index.ts"],
+            "@ss/cmms/lookups": ["./libs/cmms/lookups/src/index.ts"],
+            "@ss/cmms/plans": ["./libs/cmms/plans/src/index.ts"],
+            "@ss/cmms/pm": ["./libs/cmms/pm/src/index.ts"],
             "@ss/cmms/prev-work-order": [
-                "libs/cmms/prev-work-order/src/index.ts"
+                "./libs/cmms/prev-work-order/src/index.ts"
             ],
             "@ss/cmms/service-request": [
-                "libs/cmms/service-request/src/index.ts"
+                "./libs/cmms/service-request/src/index.ts"
             ],
-            "@ss/cmms/work-order": ["libs/cmms/work-order/src/index.ts"],
-            "@ss/cmms/work-request": ["libs/cmms/work-request/src/index.ts"],
+            "@ss/cmms/work-order": ["./libs/cmms/work-order/src/index.ts"],
+            "@ss/cmms/work-request": ["./libs/cmms/work-request/src/index.ts"],
             "@ss/common/api-access-rights": [
-                "libs/common/api-access-rights/src/index.ts"
+                "./libs/common/api-access-rights/src/index.ts"
             ],
-            "@ss/common/api-admob": ["libs/common/api-admob/src/index.ts"],
+            "@ss/common/api-admob": ["./libs/common/api-admob/src/index.ts"],
             "@ss/common/api-base-entity": [
-                "libs/common/api-base-entity/src/index.ts"
+                "./libs/common/api-base-entity/src/index.ts"
             ],
-            "@ss/common/api-common": ["libs/common/api-common/src/index.ts"],
-            "@ss/common/api-lookup": ["libs/common/api-lookup/src/index.ts"],
-            "@ss/common/api-reports": ["libs/common/api-reports/src/index.ts"],
-            "@ss/common/api-users": ["libs/common/api-users/src/index.ts"],
-            "@ss/common/app-archive": ["libs/common/app-archive/src/index.ts"],
+            "@ss/common/api-common": ["./libs/common/api-common/src/index.ts"],
+            "@ss/common/api-lookup": ["./libs/common/api-lookup/src/index.ts"],
+            "@ss/common/api-reports": ["./libs/common/api-reports/src/index.ts"],
+            "@ss/common/api-users": ["./libs/common/api-users/src/index.ts"],
+            "@ss/common/app-archive": ["./libs/common/app-archive/src/index.ts"],
             "@ss/common/ui-access-rights": [
-                "libs/common/ui-access-rights/src/index.ts"
+                "./libs/common/ui-access-rights/src/index.ts"
             ],
             "@ss/common/ui-auto-complete": [
-                "libs/common/ui-auto-complete/src/index.ts"
+                "./libs/common/ui-auto-complete/src/index.ts"
             ],
             "@ss/common/ui-backend-select": [
-                "libs/common/ui-backend-select/src/index.ts"
+                "./libs/common/ui-backend-select/src/index.ts"
             ],
             "@ss/common/ui-base-entity": [
-                "libs/common/ui-base-entity/src/index.ts"
+                "./libs/common/ui-base-entity/src/index.ts"
             ],
             "@ss/common/ui-center-select": [
-                "libs/common/ui-center-select/src/index.ts"
+                "./libs/common/ui-center-select/src/index.ts"
             ],
             "@ss/common/ui-color-select": [
-                "libs/common/ui-color-select/src/index.ts"
+                "./libs/common/ui-color-select/src/index.ts"
             ],
             "@ss/common/ui-confirmation-dialog": [
-                "libs/common/ui-confirmation-dialog/src/index.ts"
+                "./libs/common/ui-confirmation-dialog/src/index.ts"
             ],
             "@ss/common/ui-datepicker": [
-                "libs/common/ui-datepicker/src/index.ts"
+                "./libs/common/ui-datepicker/src/index.ts"
             ],
             "@ss/common/ui-default-report-component": [
-                "libs/common/ui-default-report-component/src/index.ts"
+                "./libs/common/ui-default-report-component/src/index.ts"
             ],
             "@ss/common/ui-error-handler": [
-                "libs/common/ui-error-handler/src/index.ts"
+                "./libs/common/ui-error-handler/src/index.ts"
             ],
             "@ss/common/ui-hour-picker": [
-                "libs/common/ui-hour-picker/src/index.ts"
+                "./libs/common/ui-hour-picker/src/index.ts"
             ],
             "@ss/common/ui-image-input": [
-                "libs/common/ui-image-input/src/index.ts"
+                "./libs/common/ui-image-input/src/index.ts"
             ],
-            "@ss/common/ui-lang": ["libs/common/ui-lang/src/index.ts"],
+            "@ss/common/ui-lang": ["./libs/common/ui-lang/src/index.ts"],
             "@ss/common/ui-loading-spinner": [
-                "libs/common/ui-loading-spinner/src/index.ts"
+                "./libs/common/ui-loading-spinner/src/index.ts"
             ],
-            "@ss/common/ui-login": ["libs/common/ui-login/src/index.ts"],
-            "@ss/common/ui-logout": ["libs/common/ui-logout/src/index.ts"],
-            "@ss/common/ui-lookup": ["libs/common/ui-lookup/src/index.ts"],
+            "@ss/common/ui-login": ["./libs/common/ui-login/src/index.ts"],
+            "@ss/common/ui-logout": ["./libs/common/ui-logout/src/index.ts"],
+            "@ss/common/ui-lookup": ["./libs/common/ui-lookup/src/index.ts"],
             "@ss/common/ui-main-page": [
-                "libs/common/ui-main-page/src/index.ts"
+                "./libs/common/ui-main-page/src/index.ts"
             ],
             "@ss/common/ui-pagination": [
-                "libs/common/ui-pagination/src/index.ts"
+                "./libs/common/ui-pagination/src/index.ts"
             ],
             "@ss/common/ui-report-param": [
-                "libs/common/ui-report-param/src/index.ts"
+                "./libs/common/ui-report-param/src/index.ts"
             ],
-            "@ss/common/ui-shell": ["libs/common/ui-shell/src/index.ts"],
-            "@ss/common/ui-theme": ["libs/common/ui-theme/src/index.ts"],
+            "@ss/common/ui-shell": ["./libs/common/ui-shell/src/index.ts"],
+            "@ss/common/ui-theme": ["./libs/common/ui-theme/src/index.ts"],
             "@ss/common/ui-traceability": [
-                "libs/common/ui-traceability/src/index.ts"
+                "./libs/common/ui-traceability/src/index.ts"
             ],
             "@ss/costing/costing-items": [
-                "libs/costing/costing-items/src/index.ts"
+                "./libs/costing/costing-items/src/index.ts"
             ],
             "@ss/costing/costing-keys": [
-                "libs/costing/costing-keys/src/index.ts"
+                "./libs/costing/costing-keys/src/index.ts"
             ],
             "@ss/costing/costing-products": [
-                "libs/costing/costing-products/src/index.ts"
+                "./libs/costing/costing-products/src/index.ts"
             ],
             "@ss/costing/costing-projects": [
-                "libs/costing/costing-projects/src/index.ts"
+                "./libs/costing/costing-projects/src/index.ts"
             ],
             "@ss/costing/costing-utils": [
-                "libs/costing/costing-utils/src/index.ts"
+                "./libs/costing/costing-utils/src/index.ts"
             ],
-            "@ss/crm/assets": ["libs/crm/assets/src/index.ts"],
-            "@ss/crm/calendar-list": ["libs/crm/calendar/src/index.ts"],
-            "@ss/crm/campaign": ["libs/crm/campaign/src/index.ts"],
+            "@ss/crm/assets": ["./libs/crm/assets/src/index.ts"],
+            "@ss/crm/calendar-list": ["./libs/crm/calendar/src/index.ts"],
+            "@ss/crm/campaign": ["./libs/crm/campaign/src/index.ts"],
             "@ss/crm/contact-methods": [
-                "libs/crm/contact-methods/src/index.ts"
+                "./libs/crm/contact-methods/src/index.ts"
             ],
-            "@ss/crm/contacts": ["libs/crm/contacts/src/index.ts"],
-            "@ss/crm/crm-customer": ["libs/crm/crm-customer/src/index.ts"],
-            "@ss/crm/crm-teams": ["libs/crm/crm-teams/src/index.ts"],
-            "@ss/crm/departments": ["libs/crm/departments/src/index.ts"],
+            "@ss/crm/contacts": ["./libs/crm/contacts/src/index.ts"],
+            "@ss/crm/crm-customer": ["./libs/crm/crm-customer/src/index.ts"],
+            "@ss/crm/crm-teams": ["./libs/crm/crm-teams/src/index.ts"],
+            "@ss/crm/departments": ["./libs/crm/departments/src/index.ts"],
             "@ss/crm/email-templates": [
-                "libs/crm/email-templates/src/index.ts"
+                "./libs/crm/email-templates/src/index.ts"
             ],
-            "@ss/crm/jobs": ["libs/crm/jobs/src/index.ts"],
-            "@ss/crm/leads": ["libs/crm/crm-leads/src/index.ts"],
-            "@ss/crm/mailing-list": ["libs/crm/mailing-list/src/index.ts"],
-            "@ss/crm/opportunity": ["libs/crm/crm-opportunity/src/index.ts"],
-            "@ss/crm/payment-terms": ["libs/crm/payment-terms/src/index.ts"],
-            "@ss/crm/salutations": ["libs/crm/salutations/src/index.ts"],
-            "@ss/crm/status": ["libs/crm/status/src/index.ts"],
-            "@ss/custom-attributes": ["libs/custom-attributes/src/index.ts"],
-            "@ss/dashboard": ["libs/dashboard/src/index.ts"],
+            "@ss/crm/jobs": ["./libs/crm/jobs/src/index.ts"],
+            "@ss/crm/leads": ["./libs/crm/crm-leads/src/index.ts"],
+            "@ss/crm/mailing-list": ["./libs/crm/mailing-list/src/index.ts"],
+            "@ss/crm/opportunity": ["./libs/crm/crm-opportunity/src/index.ts"],
+            "@ss/crm/payment-terms": ["./libs/crm/payment-terms/src/index.ts"],
+            "@ss/crm/salutations": ["./libs/crm/salutations/src/index.ts"],
+            "@ss/crm/status": ["./libs/crm/status/src/index.ts"],
+            "@ss/custom-attributes": ["./libs/custom-attributes/src/index.ts"],
+            "@ss/dashboard": ["./libs/dashboard/src/index.ts"],
             "@ss/employee-services/employee-services": [
-                "libs/employee-services/employee-services/src/index.ts"
+                "./libs/employee-services/employee-services/src/index.ts"
             ],
             "@ss/exchange/api-currency-deposit": [
-                "libs/exchange/api-currency-deposit/src/index.ts"
+                "./libs/exchange/api-currency-deposit/src/index.ts"
             ],
             "@ss/exchange/api-currency-exchange": [
-                "libs/exchange/api-currency-exchange/src/index.ts"
+                "./libs/exchange/api-currency-exchange/src/index.ts"
             ],
-            "@ss/exchange/assets": ["libs/exchange/assets/src/index.ts"],
+            "@ss/exchange/assets": ["./libs/exchange/assets/src/index.ts"],
             "@ss/exchange/ui-currency-deposit": [
-                "libs/exchange/ui-currency-deposit/src/index.ts"
+                "./libs/exchange/ui-currency-deposit/src/index.ts"
             ],
             "@ss/exchange/ui-currency-exchange": [
-                "libs/exchange/ui-currency-exchange/src/index.ts"
+                "./libs/exchange/ui-currency-exchange/src/index.ts"
             ],
             "@ss/exchange/ui-deposit-type": [
-                "libs/exchange/ui-deposit-type/src/index.ts"
+                "./libs/exchange/ui-deposit-type/src/index.ts"
             ],
             "@ss/exchange/ui-idiot-page": [
-                "libs/exchange/ui-idiot-page/src/index.ts"
+                "./libs/exchange/ui-idiot-page/src/index.ts"
             ],
-            "@ss/exchange/ui-info": ["libs/exchange/ui-info/src/index.ts"],
+            "@ss/exchange/ui-info": ["./libs/exchange/ui-info/src/index.ts"],
             "@ss/furniture/furniture": [
-                "libs/furniture/furniture/src/index.ts"
+                "./libs/furniture/furniture/src/index.ts"
             ],
-            "@ss/hr-missions": ["libs/hr-missions/missions/src/index.ts"],
-            "@ss/hr-missions/assets": ["libs/hr-missions/assets/src/index.ts"],
+            "@ss/hr-missions": ["./libs/hr-missions/missions/src/index.ts"],
+            "@ss/hr-missions/assets": ["./libs/hr-missions/assets/src/index.ts"],
             "@ss/hr-missions/element-generation": [
-                "libs/hr-missions/element-generation/src/index.ts"
+                "./libs/hr-missions/element-generation/src/index.ts"
             ],
             "@ss/hr-missions/mission-elements": [
-                "libs/hr-missions/mission-elements/src/index.ts"
+                "./libs/hr-missions/mission-elements/src/index.ts"
             ],
             "@ss/hr-missions/mission-expenses": [
-                "libs/hr-missions/mission-expenses/src/index.ts"
+                "./libs/hr-missions/mission-expenses/src/index.ts"
             ],
             "@ss/hr-missions/mission-trajectories": [
-                "libs/hr-missions/mission-trajectories/src/index.ts"
+                "./libs/hr-missions/mission-trajectories/src/index.ts"
             ],
             "@ss/hr-missions/missions": [
-                "libs/hr-missions/missions/src/index.ts"
+                "./libs/hr-missions/missions/src/index.ts"
             ],
             "@ss/logistics/agent-merge": [
-                "libs/logistics/agent-merge/src/index.ts"
+                "./libs/logistics/agent-merge/src/index.ts"
             ],
             "@ss/logistics/api-account": [
-                "libs/logistics/api-account/src/index.ts"
+                "./libs/logistics/api-account/src/index.ts"
             ],
             "@ss/logistics/api-agent": [
-                "libs/logistics/api-agent/src/index.ts"
+                "./libs/logistics/api-agent/src/index.ts"
             ],
             "@ss/logistics/api-agent-balance": [
-                "libs/logistics/api-agent-balance/src/index.ts"
+                "./libs/logistics/api-agent-balance/src/index.ts"
             ],
             "@ss/logistics/api-agent-debts": [
-                "libs/logistics/api-agent-debts/src/index.ts"
+                "./libs/logistics/api-agent-debts/src/index.ts"
             ],
             "@ss/logistics/api-agent-price": [
-                "libs/logistics/api-agent-price/src/index.ts"
+                "./libs/logistics/api-agent-price/src/index.ts"
             ],
-            "@ss/logistics/api-card": ["libs/logistics/api-card/src/index.ts"],
+            "@ss/logistics/api-card": ["./libs/logistics/api-card/src/index.ts"],
             "@ss/logistics/api-circulation": [
-                "libs/logistics/api-circulation/src/index.ts"
+                "./libs/logistics/api-circulation/src/index.ts"
             ],
             "@ss/logistics/api-common": [
-                "libs/logistics/api-common/src/index.ts"
+                "./libs/logistics/api-common/src/index.ts"
             ],
             "@ss/logistics/api-cost-center": [
-                "libs/logistics/api-cost-center/src/index.ts"
+                "./libs/logistics/api-cost-center/src/index.ts"
             ],
             "@ss/logistics/api-logistics-common": [
-                "libs/logistics/api-logistics-common/src/index.ts"
+                "./libs/logistics/api-logistics-common/src/index.ts"
             ],
             "@ss/logistics/api-totals": [
-                "libs/logistics/api-totals/src/index.ts"
+                "./libs/logistics/api-totals/src/index.ts"
             ],
             "@ss/logistics/api-transaction": [
-                "libs/logistics/api-transaction/src/index.ts"
+                "./libs/logistics/api-transaction/src/index.ts"
             ],
             "@ss/logistics/article-search": [
-                "libs/logistics/article-search/src/index.ts"
+                "./libs/logistics/article-search/src/index.ts"
             ],
             "@ss/logistics/contracts": [
-                "libs/logistics/contracts/src/index.ts"
+                "./libs/logistics/contracts/src/index.ts"
             ],
             "@ss/logistics/document-numbering": [
-                "libs/logistics/document-numbering/src/index.ts"
+                "./libs/logistics/document-numbering/src/index.ts"
             ],
             "@ss/logistics/packaging-units": [
-                "libs/logistics/packaging-units/src/index.ts"
+                "./libs/logistics/packaging-units/src/index.ts"
             ],
             "@ss/logistics/payment-compensation": [
-                "libs/logistics/payment-compensation/src/index.ts"
+                "./libs/logistics/payment-compensation/src/index.ts"
             ],
-            "@ss/logistics/payments": ["libs/logistics/payments/src/index.ts"],
+            "@ss/logistics/payments": ["./libs/logistics/payments/src/index.ts"],
             "@ss/logistics/quantities": [
-                "libs/logistics/ui-transactionline-quantities/src/index.ts"
+                "./libs/logistics/ui-transactionline-quantities/src/index.ts"
             ],
             "@ss/logistics/ui-account": [
-                "libs/logistics/ui-account/src/index.ts"
+                "./libs/logistics/ui-account/src/index.ts"
             ],
-            "@ss/logistics/ui-agent": ["libs/logistics/ui-agent/src/index.ts"],
+            "@ss/logistics/ui-agent": ["./libs/logistics/ui-agent/src/index.ts"],
             "@ss/logistics/ui-agent-balance": [
-                "libs/logistics/ui-agent-balance/src/index.ts"
+                "./libs/logistics/ui-agent-balance/src/index.ts"
             ],
             "@ss/logistics/ui-agent-debts": [
-                "libs/logistics/ui-agent-debts/src/index.ts"
+                "./libs/logistics/ui-agent-debts/src/index.ts"
             ],
             "@ss/logistics/ui-agent-price": [
-                "libs/logistics/ui-agent-price/src/index.ts"
+                "./libs/logistics/ui-agent-price/src/index.ts"
             ],
-            "@ss/logistics/ui-card": ["libs/logistics/ui-card/src/index.ts"],
+            "@ss/logistics/ui-card": ["./libs/logistics/ui-card/src/index.ts"],
             "@ss/logistics/ui-circulation": [
-                "libs/logistics/ui-circulation/src/index.ts"
+                "./libs/logistics/ui-circulation/src/index.ts"
             ],
             "@ss/logistics/ui-cost-center": [
-                "libs/logistics/ui-cost-center/src/index.ts"
+                "./libs/logistics/ui-cost-center/src/index.ts"
             ],
             "@ss/logistics/ui-currency": [
-                "libs/logistics/ui-currency/src/index.ts"
+                "./libs/logistics/ui-currency/src/index.ts"
             ],
             "@ss/logistics/ui-doc-import": [
-                "libs/logistics/ui-doc-import/src/index.ts"
+                "./libs/logistics/ui-doc-import/src/index.ts"
             ],
             "@ss/logistics/ui-doc-info": [
-                "libs/logistics/ui-doc-info/src/index.ts"
+                "./libs/logistics/ui-doc-info/src/index.ts"
             ],
             "@ss/logistics/ui-document-archive": [
-                "libs/logistics/ui-document-archive/src/index.ts"
+                "./libs/logistics/ui-document-archive/src/index.ts"
             ],
-            "@ss/logistics/ui-mrp": ["libs/logistics/ui-mrp/src/index.ts"],
+            "@ss/logistics/ui-mrp": ["./libs/logistics/ui-mrp/src/index.ts"],
             "@ss/logistics/ui-options": [
-                "libs/logistics/ui-options/src/index.ts"
+                "./libs/logistics/ui-options/src/index.ts"
             ],
             "@ss/logistics/ui-pay-method": [
-                "libs/logistics/ui-pay-method/src/index.ts"
+                "./libs/logistics/ui-pay-method/src/index.ts"
             ],
             "@ss/logistics/ui-stock-info": [
-                "libs/logistics/ui-stock-info/src/index.ts"
+                "./libs/logistics/ui-stock-info/src/index.ts"
             ],
             "@ss/logistics/ui-totals": [
-                "libs/logistics/ui-totals/src/index.ts"
+                "./libs/logistics/ui-totals/src/index.ts"
             ],
-            "@ss/ltm/assets": ["libs/ltm/assets/src/index.ts"],
-            "@ss/ltm/ltm": ["libs/ltm/ltm/src/index.ts"],
+            "@ss/ltm/assets": ["./libs/ltm/assets/src/index.ts"],
+            "@ss/ltm/ltm": ["./libs/ltm/ltm/src/index.ts"],
             "@ss/ltm/product-liberation": [
-                "libs/ltm/product-liberation/src/index.ts"
+                "./libs/ltm/product-liberation/src/index.ts"
             ],
             "@ss/master-data/api-article": [
-                "libs/master-data/api-article/src/index.ts"
+                "./libs/master-data/api-article/src/index.ts"
             ],
             "@ss/master-data/cmms-routing": [
-                "libs/master-data/cmms-routing/src/index.ts"
+                "./libs/master-data/cmms-routing/src/index.ts"
             ],
             "@ss/master-data/price-list": [
-                "libs/master-data/price-list/src/index.ts"
+                "./libs/master-data/price-list/src/index.ts"
             ],
             "@ss/master-data/ui-article": [
-                "libs/master-data/ui-article/src/index.ts"
+                "./libs/master-data/ui-article/src/index.ts"
             ],
             "@ss/master-data/ui-store": [
-                "libs/master-data/ui-store/src/index.ts"
+                "./libs/master-data/ui-store/src/index.ts"
             ],
             "@ss/organizations/api-organizations": [
-                "libs/organizations/api-organizations/src/index.ts"
+                "./libs/organizations/api-organizations/src/index.ts"
             ],
             "@ss/organizations/ui-organizations": [
-                "libs/organizations/ui-organizations/src/index.ts"
+                "./libs/organizations/ui-organizations/src/index.ts"
             ],
-            "@ss/park/driver": ["libs/park/driver/src/index.ts"],
-            "@ss/park/vehicles": ["libs/park/vehicles/src/index.ts"],
+            "@ss/park/driver": ["./libs/park/driver/src/index.ts"],
+            "@ss/park/vehicles": ["./libs/park/vehicles/src/index.ts"],
             "@ss/patients/api-patient": [
-                "libs/patients/api-patient/src/index.ts"
+                "./libs/patients/api-patient/src/index.ts"
             ],
             "@ss/patients/api-patients": [
-                "libs/patients/api-patients/src/index.ts"
+                "./libs/patients/api-patients/src/index.ts"
             ],
-            "@ss/patients/assets": ["libs/patients/assets/src/index.ts"],
+            "@ss/patients/assets": ["./libs/patients/assets/src/index.ts"],
             "@ss/patients/ui-patients": [
-                "libs/patients/ui-patients/src/index.ts"
+                "./libs/patients/ui-patients/src/index.ts"
             ],
-            "@ss/payroll-common": ["libs/payroll-common/src/index.ts"],
+            "@ss/payroll-common": ["./libs/payroll-common/src/index.ts"],
             "@ss/payroll/api-employee": [
-                "libs/payroll/api-employee/src/index.ts"
+                "./libs/payroll/api-employee/src/index.ts"
             ],
-            "@ss/payroll/funds": ["libs/payroll/funds/src/index.ts"],
+            "@ss/payroll/funds": ["./libs/payroll/funds/src/index.ts"],
             "@ss/payroll/hr-cirteria": [
-                "libs/payroll/hr-cirteria/src/index.ts"
+                "./libs/payroll/hr-cirteria/src/index.ts"
             ],
-            "@ss/payroll/hr-grade": ["libs/payroll/hr-grade/src/index.ts"],
-            "@ss/payroll/irg": ["libs/payroll/irg/src/index.ts"],
+            "@ss/payroll/hr-grade": ["./libs/payroll/hr-grade/src/index.ts"],
+            "@ss/payroll/irg": ["./libs/payroll/irg/src/index.ts"],
             "@ss/payroll/loan-injection": [
-                "libs/payroll/loan-injection/src/index.ts"
+                "./libs/payroll/loan-injection/src/index.ts"
             ],
             "@ss/payroll/payroll-lock": [
-                "libs/payroll/payroll-lock/src/index.ts"
+                "./libs/payroll/payroll-lock/src/index.ts"
             ],
             "@ss/payroll/salary-grid": [
-                "libs/payroll/salary-grid/src/index.ts"
+                "./libs/payroll/salary-grid/src/index.ts"
             ],
             "@ss/payroll/ui-employee": [
-                "libs/payroll/ui-employee/src/index.ts"
+                "./libs/payroll/ui-employee/src/index.ts"
             ],
             "@ss/payroll/ui-employee-career": [
-                "libs/payroll/ui-employee-career/src/index.ts"
+                "./libs/payroll/ui-employee-career/src/index.ts"
             ],
             "@ss/payroll/ui-employee-contract": [
-                "libs/payroll/ui-employee-contract/src/index.ts"
+                "./libs/payroll/ui-employee-contract/src/index.ts"
             ],
             "@ss/payroll/ui-employee-wives": [
-                "libs/payroll/ui-employee-wives/src/index.ts"
+                "./libs/payroll/ui-employee-wives/src/index.ts"
             ],
             "@ss/payroll/work-stoppage": [
-                "libs/payroll/work-stoppage/src/index.ts"
+                "./libs/payroll/work-stoppage/src/index.ts"
             ],
-            "@ss/production/lot": ["libs/production/lot/src/index.ts"],
+            "@ss/production/lot": ["./libs/production/lot/src/index.ts"],
             "@ss/production/lot-input-dialog": [
-                "libs/production/lot-input-dialog/src/index.ts"
+                "./libs/production/lot-input-dialog/src/index.ts"
             ],
-            "@ss/production/mrp": ["libs/production/mrp/src/index.ts"],
+            "@ss/production/mrp": ["./libs/production/mrp/src/index.ts"],
             "@ss/production/production": [
-                "libs/production/production/src/index.ts"
+                "./libs/production/production/src/index.ts"
             ],
             "@ss/production/production-article": [
-                "libs/production/production-article/src/index.ts"
+                "./libs/production/production-article/src/index.ts"
             ],
             "@ss/purchases/ui-transporters": [
-                "libs/purchases/ui-transporters/src/index.ts"
+                "./libs/purchases/ui-transporters/src/index.ts"
             ],
             "@ss/production/production-consumption": [
-                "libs/production/production-consumption/src/index.ts"
+                "./libs/production/production-consumption/src/index.ts"
             ],
             "@ss/production/production-order": [
-                "libs/production/production-order/src/index.ts"
+                "./libs/production/production-order/src/index.ts"
             ],
             "@ss/production/production-formulas": [
-                "libs/production/production-formulas/src/index.ts"
+                "./libs/production/production-formulas/src/index.ts"
             ],
             "@ss/production/production-reception": [
-                "libs/production/production-reception/src/index.ts"
+                "./libs/production/production-reception/src/index.ts"
             ],
             "@ss/production/production-transfer": [
-                "libs/production/production-transfer/src/index.ts"
+                "./libs/production/production-transfer/src/index.ts"
             ],
             "@ss/purchases/api-purchase-order": [
-                "libs/purchases/api-purchase-order/src/index.ts"
+                "./libs/purchases/api-purchase-order/src/index.ts"
             ],
             "@ss/purchases/api-purchase-formulas": [
-                "libs/purchases/api-purchase-formulas/src/index.ts"
+                "./libs/purchases/api-purchase-formulas/src/index.ts"
             ],
             "@ss/purchases/api-reception": [
-                "libs/purchases/api-reception/src/index.ts"
+                "./libs/purchases/api-reception/src/index.ts"
             ],
             "@ss/purchases/extra-costs": [
-                "libs/purchases/extra-costs/src/index.ts"
+                "./libs/purchases/extra-costs/src/index.ts"
             ],
             "@ss/purchases/imported-purchases": [
-                "libs/purchases/imported-purchases/src/index.ts"
+                "./libs/purchases/imported-purchases/src/index.ts"
             ],
             "@ss/purchases/payment-orders": [
-                "libs/purchases/payment-orders/src/index.ts"
+                "./libs/purchases/payment-orders/src/index.ts"
             ],
             "@ss/purchases/preiceRequest": [
-                "libs/purchases/price-request/src/index.ts"
+                "./libs/purchases/price-request/src/index.ts"
             ],
             "@ss/purchases/purchase-invoice": [
-                "libs/purchases/purchase-invoice/src/index.ts"
+                "./libs/purchases/purchase-invoice/src/index.ts"
             ],
             "@ss/purchases/reception-cancellation": [
-                "libs/purchases/reception-cancellation/src/index.ts"
+                "./libs/purchases/reception-cancellation/src/index.ts"
             ],
             "@ss/purchases/ui-purchase-order": [
-                "libs/purchases/ui-purchase-order/src/index.ts"
+                "./libs/purchases/ui-purchase-order/src/index.ts"
             ],
             "@ss/purchases/ui-purchase-request": [
-                "libs/purchases/ui-purchase-request/src/index.ts"
+                "./libs/purchases/ui-purchase-request/src/index.ts"
             ],
             "@ss/purchases/ui-quotation": [
-                "libs/purchases/ui-quotation/src/index.ts"
+                "./libs/purchases/ui-quotation/src/index.ts"
             ],
             "@ss/purchases/ui-reception": [
-                "libs/purchases/ui-reception/src/index.ts"
+                "./libs/purchases/ui-reception/src/index.ts"
             ],
             "@ss/remuneration/archive-viewer": [
-                "libs/remuneration/archive-viewer/src/index.ts"
+                "./libs/remuneration/archive-viewer/src/index.ts"
             ],
             "@ss/remuneration/assets": [
-                "libs/remuneration/assets/src/index.ts"
+                "./libs/remuneration/assets/src/index.ts"
             ],
-            "@ss/remuneration/caco": ["libs/remuneration/caco/src/index.ts"],
-            "@ss/remuneration/das": ["libs/remuneration/das/src/index.ts"],
-            "@ss/remuneration/edo": ["libs/remuneration/edo/src/index.ts"],
+            "@ss/remuneration/caco": ["./libs/remuneration/caco/src/index.ts"],
+            "@ss/remuneration/das": ["./libs/remuneration/das/src/index.ts"],
+            "@ss/remuneration/edo": ["./libs/remuneration/edo/src/index.ts"],
             "@ss/remuneration/element-types": [
-                "libs/remuneration/element-types/src/index.ts"
+                "./libs/remuneration/element-types/src/index.ts"
             ],
             "@ss/remuneration/elements-entry": [
-                "libs/remuneration/elements-entry/src/index.ts"
+                "./libs/remuneration/elements-entry/src/index.ts"
             ],
             "@ss/remuneration/elementsinfo": [
-                "libs/remuneration/elementsinfo/src/index.ts"
+                "./libs/remuneration/elementsinfo/src/index.ts"
             ],
             "@ss/remuneration/employee-space": [
-                "libs/remuneration/employee-space/src/index.ts"
+                "./libs/remuneration/employee-space/src/index.ts"
             ],
             "@ss/remuneration/excel-injection": [
-                "libs/remuneration/excel-injection/src/index.ts"
+                "./libs/remuneration/excel-injection/src/index.ts"
             ],
             "@ss/remuneration/input-filters": [
-                "libs/remuneration/input-filters/src/index.ts"
+                "./libs/remuneration/input-filters/src/index.ts"
             ],
-            "@ss/remuneration/loans": ["libs/remuneration/loans/src/index.ts"],
+            "@ss/remuneration/loans": ["./libs/remuneration/loans/src/index.ts"],
             "@ss/remuneration/paymonth-editor": [
-                "libs/remuneration/paymonth-editor/src/index.ts"
+                "./libs/remuneration/paymonth-editor/src/index.ts"
             ],
             "@ss/remuneration/payroll-amendment": [
-                "libs/remuneration/payroll-amendment/src/index.ts"
+                "./libs/remuneration/payroll-amendment/src/index.ts"
             ],
             "@ss/remuneration/payroll-formulas": [
-                "libs/remuneration/payroll-formulas/src/index.ts"
+                "./libs/remuneration/payroll-formulas/src/index.ts"
             ],
             "@ss/remuneration/payroll-month": [
-                "libs/remuneration/payroll-month/src/index.ts"
+                "./libs/remuneration/payroll-month/src/index.ts"
             ],
             "@ss/remuneration/special-payroll": [
-                "libs/remuneration/special-payroll/src/index.ts"
+                "./libs/remuneration/special-payroll/src/index.ts"
             ],
             "@ss/remuneration/special-payroll-common": [
-                "libs/remuneration/special-payroll-common/src/index.ts"
+                "./libs/remuneration/special-payroll-common/src/index.ts"
             ],
             "@ss/remuneration/vacation-planning": [
-                "libs/remuneration/vacation-planning/src/index.ts"
+                "./libs/remuneration/vacation-planning/src/index.ts"
             ],
-            "@ss/sales/api-delivery": ["libs/sales/api-delivery/src/index.ts"],
+            "@ss/sales/api-delivery": ["./libs/sales/api-delivery/src/index.ts"],
             "@ss/sales/api-delivery-cancellation": [
-                "libs/sales/api-delivery-cancellation/src/index.ts"
+                "./libs/sales/api-delivery-cancellation/src/index.ts"
             ],
             "@ss/sales/api-delivery-lines": [
-                "libs/sales/api-delivery-lines/src/index.ts"
+                "./libs/sales/api-delivery-lines/src/index.ts"
             ],
-            "@ss/sales/api-invoice": ["libs/sales/api-invoice/src/index.ts"],
+            "@ss/sales/api-invoice": ["./libs/sales/api-invoice/src/index.ts"],
             "@ss/sales/api-invoice-cancellation": [
-                "libs/sales/api-invoice-cancellation/src/index.ts"
+                "./libs/sales/api-invoice-cancellation/src/index.ts"
             ],
             "@ss/sales/api-sales-order": [
-                "libs/sales/api-sales-order/src/index.ts"
+                "./libs/sales/api-sales-order/src/index.ts"
             ],
-            "@ss/sales/ecommerce": ["libs/sales/ecommerce/src/index.ts"],
-            "@ss/sales/food-cart": ["libs/sales/food-cart/src/index.ts"],
-            "@ss/sales/paypal": ["libs/sales/paypal/src/index.ts"],
+            "@ss/sales/ecommerce": ["./libs/sales/ecommerce/src/index.ts"],
+            "@ss/sales/food-cart": ["./libs/sales/food-cart/src/index.ts"],
+            "@ss/sales/paypal": ["./libs/sales/paypal/src/index.ts"],
             "@ss/sales/shopping-cart": [
-                "libs/sales/shopping-cart/src/index.ts"
+                "./libs/sales/shopping-cart/src/index.ts"
             ],
-            "@ss/sales/ui-delivery": ["libs/sales/ui-delivery/src/index.ts"],
+            "@ss/sales/ui-delivery": ["./libs/sales/ui-delivery/src/index.ts"],
             "@ss/sales/ui-delivery-cancellation": [
-                "libs/sales/ui-delivery-cancellation/src/index.ts"
+                "./libs/sales/ui-delivery-cancellation/src/index.ts"
             ],
             "@ss/sales/ui-delivery-lines": [
-                "libs/sales/ui-delivery-lines/src/index.ts"
+                "./libs/sales/ui-delivery-lines/src/index.ts"
             ],
-            "@ss/sales/ui-discounts": ["libs/sales/ui-discounts/src/index.ts"],
-            "@ss/sales/ui-invoice": ["libs/sales/ui-invoice/src/index.ts"],
+            "@ss/sales/ui-discounts": ["./libs/sales/ui-discounts/src/index.ts"],
+            "@ss/sales/ui-invoice": ["./libs/sales/ui-invoice/src/index.ts"],
             "@ss/sales/ui-invoice-cancellation": [
-                "libs/sales/ui-invoice-cancellation/src/index.ts"
+                "./libs/sales/ui-invoice-cancellation/src/index.ts"
             ],
             "@ss/sales/ui-master_works": [
-                "libs/sales/ui-master_works/src/index.ts"
+                "./libs/sales/ui-master_works/src/index.ts"
             ],
             "@ss/sales/ui-order-invoicing": [
-                "libs/sales/ui-order-invoicing/src/index.ts"
+                "./libs/sales/ui-order-invoicing/src/index.ts"
             ],
             "@ss/sales/ui-order-lines": [
-                "libs/sales/ui-order-lines/src/index.ts"
+                "./libs/sales/ui-order-lines/src/index.ts"
             ],
-            "@ss/sales/ui-proforma": ["libs/sales/ui-proforma/src/index.ts"],
+            "@ss/sales/ui-proforma": ["./libs/sales/ui-proforma/src/index.ts"],
             "@ss/sales/ui-quick-order": [
-                "libs/sales/ui-quick-order/src/index.ts"
+                "./libs/sales/ui-quick-order/src/index.ts"
             ],
             "@ss/sales/ui-sales-order": [
-                "libs/sales/ui-sales-order/src/index.ts"
+                "./libs/sales/ui-sales-order/src/index.ts"
             ],
-            "@ss/sales/ui-sectors": ["libs/sales/ui-sectors/src/index.ts"],
+            "@ss/sales/ui-sectors": ["./libs/sales/ui-sectors/src/index.ts"],
             "@ss/sales/ui-transactionlines": [
-                "libs/sales/ui-transactionlines/src/index.ts"
+                "./libs/sales/ui-transactionlines/src/index.ts"
             ],
             "@ss/sales/weight-capture": [
-                "libs/sales/weight-capture/src/index.ts"
+                "./libs/sales/weight-capture/src/index.ts"
             ],
             "@ss/scheduled-sales/api-scheduled-sales": [
-                "libs/scheduled-sales/api-scheduled-sales/src/index.ts"
+                "./libs/scheduled-sales/api-scheduled-sales/src/index.ts"
             ],
             "@ss/scheduled-sales/article": [
-                "libs/scheduled-sales/article/src/index.ts"
+                "./libs/scheduled-sales/article/src/index.ts"
             ],
             "@ss/scheduled-sales/compensations": [
-                "libs/scheduled-sales/compensations/src/index.ts"
+                "./libs/scheduled-sales/compensations/src/index.ts"
             ],
             "@ss/scheduled-sales/customer-suggestions": [
-                "libs/scheduled-sales/customer-suggestions/src/index.ts"
+                "./libs/scheduled-sales/customer-suggestions/src/index.ts"
             ],
             "@ss/scheduled-sales/password-reset": [
-                "libs/scheduled-sales/password-reset/src/index.ts"
+                "./libs/scheduled-sales/password-reset/src/index.ts"
             ],
             "@ss/scheduled-sales/projects": [
-                "libs/scheduled-sales/projects/src/index.ts"
+                "./libs/scheduled-sales/projects/src/index.ts"
             ],
             "@ss/scheduled-sales/sales-quota": [
-                "libs/scheduled-sales/sales-quota/src/index.ts"
+                "./libs/scheduled-sales/sales-quota/src/index.ts"
             ],
             "@ss/scheduled-sales/sales-validation": [
-                "libs/scheduled-sales/invoice-validation/src/index.ts"
+                "./libs/scheduled-sales/invoice-validation/src/index.ts"
             ],
             "@ss/scheduled-sales/supplier-trucks": [
-                "libs/scheduled-sales/supplier-trucks/src/index.ts"
+                "./libs/scheduled-sales/supplier-trucks/src/index.ts"
             ],
             "@ss/scheduleds-sales/poll-charts": [
-                "libs/scheduled-sales/poll-charts/src/index.ts"
+                "./libs/scheduled-sales/poll-charts/src/index.ts"
             ],
             "@ss/scheduleds-sales/polls": [
-                "libs/scheduled-sales/polls/src/index.ts"
+                "./libs/scheduled-sales/polls/src/index.ts"
             ],
             "@ss/service-sales/service-articles": [
-                "libs/service-sales/service-articles/src/index.ts"
+                "./libs/service-sales/service-articles/src/index.ts"
             ],
             "@ss/service-sales/service-invoice": [
-                "libs/service-sales/service-invoice/src/index.ts"
+                "./libs/service-sales/service-invoice/src/index.ts"
             ],
             "@ss/service-sales/service-invoice-cancellation": [
-                "libs/service-sales/service-invoice-cancellation/src/index.ts"
+                "./libs/service-sales/service-invoice-cancellation/src/index.ts"
             ],
             "@ss/service-sales/service-order": [
-                "libs/service-sales/service-order/src/index.ts"
+                "./libs/service-sales/service-order/src/index.ts"
             ],
             "@ss/service-sales/service-proforma": [
-                "libs/service-sales/service-proforma/src/index.ts"
+                "./libs/service-sales/service-proforma/src/index.ts"
             ],
-            "@ss/social/mutual-aids": ["libs/social/mutual-aids/src/index.ts"],
+            "@ss/social/mutual-aids": ["./libs/social/mutual-aids/src/index.ts"],
             "@ss/social/mutual-requests": [
-                "libs/social/mutual-requests/src/index.ts"
+                "./libs/social/mutual-requests/src/index.ts"
             ],
             "@ss/stock/api-article-store": [
-                "libs/stock/api-article-store/src/index.ts"
+                "./libs/stock/api-article-store/src/index.ts"
             ],
             "@ss/stock/api-consumption": [
-                "libs/stock/api-consumption/src/index.ts"
+                "./libs/stock/api-consumption/src/index.ts"
             ],
             "@ss/stock/api-consumption-lines": [
-                "libs/stock/api-consumption-lines/src/index.ts"
+                "./libs/stock/api-consumption-lines/src/index.ts"
             ],
             "@ss/stock/api-inventory": [
-                "libs/stock/api-inventory/src/index.ts"
+                "./libs/stock/api-inventory/src/index.ts"
             ],
             "@ss/stock/api-inventory-entry": [
-                "libs/stock/api-inventory-entry/src/index.ts"
+                "./libs/stock/api-inventory-entry/src/index.ts"
             ],
             "@ss/stock/api-inventory-entry-lines": [
-                "libs/stock/api-inventory-entry-lines/src/index.ts"
+                "./libs/stock/api-inventory-entry-lines/src/index.ts"
             ],
             "@ss/stock/api-inventory-exit": [
-                "libs/stock/api-inventory-exit/src/index.ts"
+                "./libs/stock/api-inventory-exit/src/index.ts"
             ],
             "@ss/stock/api-inventory-exit-lines": [
-                "libs/stock/api-inventory-exit-lines/src/index.ts"
+                "./libs/stock/api-inventory-exit-lines/src/index.ts"
             ],
             "@ss/stock/api-inventory-lines": [
-                "libs/stock/api-inventory-lines/src/index.ts"
+                "./libs/stock/api-inventory-lines/src/index.ts"
             ],
             "@ss/stock/api-reception": [
-                "libs/stock/api-reception/src/index.ts"
+                "./libs/stock/api-reception/src/index.ts"
             ],
             "@ss/stock/api-reception-lines": [
-                "libs/stock/api-reception-lines/src/index.ts"
+                "./libs/stock/api-reception-lines/src/index.ts"
             ],
             "@ss/stock/article-store": [
-                "libs/stock/article-store/src/index.ts"
+                "./libs/stock/article-store/src/index.ts"
             ],
             "@ss/stock/inventory-transfers": [
-                "libs/stock/inventory-transfers/src/index.ts"
+                "./libs/stock/inventory-transfers/src/index.ts"
             ],
             "@ss/stock/transfer-reintegration": [
-                "libs/stock/transfer-reintegration/src/index.ts"
+                "./libs/stock/transfer-reintegration/src/index.ts"
             ],
             "@ss/stock/ui-article-store-assignment": [
-                "libs/stock/ui-article-store-assignment/src/index.ts"
+                "./libs/stock/ui-article-store-assignment/src/index.ts"
             ],
             "@ss/stock/ui-consumption": [
-                "libs/stock/ui-consumption/src/index.ts"
+                "./libs/stock/ui-consumption/src/index.ts"
             ],
             "@ss/stock/ui-consumption-lines": [
-                "libs/stock/ui-consumption-lines/src/index.ts"
+                "./libs/stock/ui-consumption-lines/src/index.ts"
             ],
-            "@ss/stock/ui-inventory": ["libs/stock/ui-inventory/src/index.ts"],
+            "@ss/stock/ui-inventory": ["./libs/stock/ui-inventory/src/index.ts"],
             "@ss/stock/ui-inventory-anomalies": [
-                "libs/stock/ui-inventory-anomalies/src/index.ts"
+                "./libs/stock/ui-inventory-anomalies/src/index.ts"
             ],
             "@ss/stock/ui-inventory-entry": [
-                "libs/stock/ui-inventory-entry/src/index.ts"
+                "./libs/stock/ui-inventory-entry/src/index.ts"
             ],
             "@ss/stock/ui-inventory-entry-lines": [
-                "libs/stock/ui-inventory-entry-lines/src/index.ts"
+                "./libs/stock/ui-inventory-entry-lines/src/index.ts"
             ],
             "@ss/stock/ui-inventory-exit": [
-                "libs/stock/ui-inventory-exit/src/index.ts"
+                "./libs/stock/ui-inventory-exit/src/index.ts"
             ],
             "@ss/stock/ui-inventory-exit-lines": [
-                "libs/stock/ui-inventory-exit-lines/src/index.ts"
+                "./libs/stock/ui-inventory-exit-lines/src/index.ts"
             ],
             "@ss/stock/ui-inventory-lines": [
-                "libs/stock/ui-inventory-lines/src/index.ts"
+                "./libs/stock/ui-inventory-lines/src/index.ts"
             ],
             "@ss/stock/ui-parts-request": [
-                "libs/stock/ui-parts-request/src/index.ts"
+                "./libs/stock/ui-parts-request/src/index.ts"
             ],
-            "@ss/stock/ui-reception": ["libs/stock/ui-reception/src/index.ts"],
+            "@ss/stock/ui-reception": ["./libs/stock/ui-reception/src/index.ts"],
             "@ss/stock/ui-reception-lines": [
-                "libs/stock/ui-reception-lines/src/index.ts"
+                "./libs/stock/ui-reception-lines/src/index.ts"
             ],
             "@ss/transactions-common/ui-free-invoice": [
-                "libs/transactions-common/ui-free-invoice/src/index.ts"
+                "./libs/transactions-common/ui-free-invoice/src/index.ts"
             ],
             "@ss/treasury/api-check-books": [
-                "libs/treasury/api-check-books/src/index.ts"
+                "./libs/treasury/api-check-books/src/index.ts"
             ],
             "@ss/treasury/api-checks": [
-                "libs/treasury/api-checks/src/index.ts"
+                "./libs/treasury/api-checks/src/index.ts"
             ],
             "@ss/treasury/api-journal": [
-                "libs/treasury/api-journal/src/index.ts"
+                "./libs/treasury/api-journal/src/index.ts"
             ],
             "@ss/treasury/api-transactions": [
-                "libs/treasury/api-transactions/src/index.ts"
+                "./libs/treasury/api-transactions/src/index.ts"
             ],
             "@ss/treasury/ui-check-books": [
-                "libs/treasury/ui-check-books/src/index.ts"
+                "./libs/treasury/ui-check-books/src/index.ts"
             ],
-            "@ss/treasury/ui-checks": ["libs/treasury/ui-checks/src/index.ts"],
+            "@ss/treasury/ui-checks": ["./libs/treasury/ui-checks/src/index.ts"],
             "@ss/treasury/ui-journal": [
-                "libs/treasury/ui-journal/src/index.ts"
+                "./libs/treasury/ui-journal/src/index.ts"
             ],
             "@ss/treasury/ui-transactions": [
-                "libs/treasury/ui-transactions/src/index.ts"
+                "./libs/treasury/ui-transactions/src/index.ts"
             ],
-            "@ss/web-arch/assets": ["libs/web-arch/assets/src/index.ts"],
-            "@ss/web-arch/ui": ["libs/web-arch/ui/src/index.ts"],
-            "@ss/workflow": ["libs/workflow/src/index.ts"],
-            "home.page": ["libs/scheduled-sales/home-page/src/index.ts"],
+            "@ss/web-arch/assets": ["./libs/web-arch/assets/src/index.ts"],
+            "@ss/web-arch/ui": ["./libs/web-arch/ui/src/index.ts"],
+            "@ss/workflow": ["./libs/workflow/src/index.ts"],
+            "home.page": ["./libs/scheduled-sales/home-page/src/index.ts"],
             "logistics/ui-document-sources": [
-                "libs/logistics/ui-document-sources/src/index.ts"
+                "./libs/logistics/ui-document-sources/src/index.ts"
             ],
             "payroll/payroll-options": [
-                "libs/payroll/payroll-options/src/index.ts"
+                "./libs/payroll/payroll-options/src/index.ts"
             ],
             "social/reimbursements": [
-                "libs/social/reimbursements/src/index.ts"
+                "./libs/social/reimbursements/src/index.ts"
             ],
             "@ss/sales/category-discounts": [
-                "libs/sales/category-discounts/src/index.ts"
+                "./libs/sales/category-discounts/src/index.ts"
             ],
             "@ss/payroll/deposit-day": [
-                "libs/payroll/deposit-day/src/index.ts"
+                "./libs/payroll/deposit-day/src/index.ts"
             ],
             "@ss/payroll/ui-tax-payment": [
-                "libs/payroll/ui-tax-payment/src/index.ts"
+                "./libs/payroll/ui-tax-payment/src/index.ts"
             ],
             "@ss/production/production-reservation": [
-                "libs/production/production-reservation/src/index.ts"
+                "./libs/production/production-reservation/src/index.ts"
             ],
-            "@ss/sales/drivers": ["libs/sales/drivers/src/index.ts"],
+            "@ss/sales/drivers": ["./libs/sales/drivers/src/index.ts"],
             "@ss/production/work-center": [
-                "libs/production/work-center/src/index.ts"
+                "./libs/production/work-center/src/index.ts"
             ],
             "@ss/production/production-routing": [
-                "libs/production/production-routing/src/index.ts"
+                "./libs/production/production-routing/src/index.ts"
             ],
             "@ss/production/production-recycling": [
                 "./libs/production/production-recycling/src/index.ts"

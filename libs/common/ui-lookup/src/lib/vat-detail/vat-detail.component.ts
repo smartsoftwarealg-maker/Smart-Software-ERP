@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, ChangeDetectionStrategy} from '@angular/core';
 import {Vat, VatService} from '@ss/common/api-lookup';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -26,6 +26,7 @@ import {UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
         TranslateDirective,
         UiAutoCompleteComponent
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./vat-detail.component.scss']
 })
 export class VatDetailComponent extends BaseEntityDetailComponent<Vat> {

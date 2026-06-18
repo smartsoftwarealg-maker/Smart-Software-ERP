@@ -75,7 +75,8 @@ import {ssalesRoutes} from "../app/service-sales/routes";
 export const environment = {
     production: false,
     multiCompany: false,
-    company: null,
+    company: <string>null,
+    homePage: <string>null,
     sodismac: false
 };
 

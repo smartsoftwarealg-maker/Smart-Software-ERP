@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, HostBinding, ChangeDetectionStrategy} from '@angular/core';
 import { FormGroup, ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
@@ -24,6 +24,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     TranslateDirective,
     ReactiveFormsModule
 ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     animations: [slideToRight]
 })
 export class CostingProductDetailComponent extends BaseEntityDetailComponent<CProduct> {

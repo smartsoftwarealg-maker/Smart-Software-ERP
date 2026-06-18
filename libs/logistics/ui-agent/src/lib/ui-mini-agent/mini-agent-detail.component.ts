@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {AgentDetailComponent} from '../agent-detail/agent-detail.component';
 
 import { MaterialModule } from '@ss/common/api-common';
@@ -14,6 +14,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     styleUrls: ['./mini-agent-detail.component.scss'],
     templateUrl: './mini-agent-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

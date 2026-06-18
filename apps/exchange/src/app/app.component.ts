@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {HttpService, LanguageService, LoginService} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -11,6 +11,7 @@ import {MessageComponent} from "@ss/common/ui-error-handler";
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MessageComponent
     ]

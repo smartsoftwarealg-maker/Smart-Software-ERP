@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {CheckoutService} from '../checkout.service';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {of, switchMap} from 'rxjs';
@@ -14,6 +14,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './review.component.html',
     styleUrls: ['./review.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     TranslateDirective,

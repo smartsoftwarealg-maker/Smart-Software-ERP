@@ -1,16 +1,17 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
-    Component, computed,
-    DoCheck,
-    ElementRef,
-    HostBinding,
-    inject, input,
-    Input,
-    OnDestroy,
-    OnInit,
-    Optional,
-    Self, signal
+  Component, computed,
+  DoCheck,
+  ElementRef,
+  HostBinding,
+  inject, input,
+  Input,
+  OnDestroy,
+  OnInit,
+  Optional,
+  Self, signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ControlValueAccessor, UntypedFormControl, NgControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
@@ -34,6 +35,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         { provide: MatFormFieldControl, useExisting: UiAutoCompleteComponent }
     ],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatInput,
     FormsModule,

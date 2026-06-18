@@ -1,10 +1,11 @@
 import {
-    Component,
-    inject,
-    input,
-    OnInit,
-    output,
-    signal,
+  Component,
+  inject,
+  input,
+  OnInit,
+  output,
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -22,6 +23,7 @@ import { DOC_RECEPTION } from '@ss/logistics/api-transaction';
     standalone: true,
     imports: [MatButtonModule],
     templateUrl: './weight-capture-dialog-button.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './weight-capture-dialog-button.component.scss',
 })
 export class WeightCaptureDialogButtonComponent implements OnInit {

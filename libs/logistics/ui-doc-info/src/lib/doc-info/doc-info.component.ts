@@ -1,4 +1,4 @@
-import { Component, inject, Input, input } from '@angular/core';
+import { Component, inject, Input, input, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DOCUMENT_ARCHIVES } from '@ss/common/app-archive';
 
@@ -27,6 +27,7 @@ interface GroupEntry {
     templateUrl: './doc-info.component.html',
     styleUrls: ['./doc-info.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

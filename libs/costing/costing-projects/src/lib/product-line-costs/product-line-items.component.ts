@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Output, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CLineCost } from '@ss/costing/costing-utils';
@@ -27,6 +27,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         PaginationComponent
     ],
     templateUrl: './product-line-items.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './product-line-items.component.css',
 })
 export class CProductLineCostComponent extends BaseChildEntityListComponent<CLineCost> {

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -18,6 +18,7 @@ import { DatePipe } from '@angular/common';
     templateUrl: './pm-list.component.html',
     styleUrls: ['./pm-list.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatSort,
@@ -32,6 +33,8 @@ import { DatePipe } from '@angular/common';
         MatRow,
         PaginationComponent,
         DatePipe,
+        MatHeaderCellDef,
+        MatCellDef
     ],
 })
 export class PmListComponent extends BaseEntityListComponent<PM> {

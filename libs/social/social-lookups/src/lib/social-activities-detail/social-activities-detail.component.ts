@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Lookup, LookupsService } from '@ss/common/api-lookup';
@@ -36,6 +36,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './social-activities-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './social-activities-detail.component.scss',
 })
 export class SocialActivitiesDetailComponent extends BaseEntityDetailComponent<SocialActivity> {

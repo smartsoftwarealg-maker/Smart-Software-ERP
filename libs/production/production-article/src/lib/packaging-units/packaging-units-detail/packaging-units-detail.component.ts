@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
@@ -17,6 +17,7 @@ import { PackagingUnitService } from '../../services/packaging-unit.service';
     templateUrl: 'packaging-types-detail.html',
     styleUrl: 'packaging-types-detail.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class PackagingUnitsDetailComponent extends BaseEntityDetailComponent<Lookup> {

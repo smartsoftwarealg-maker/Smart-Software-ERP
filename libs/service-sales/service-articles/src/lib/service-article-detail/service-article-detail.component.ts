@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Service } from '../service-article-api';
@@ -45,6 +45,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         UiAutoCompleteComponent
     ],
     templateUrl: './service-article-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./service-article-detail.component.css']
 })
 export class ServiceArticleDetailComponent extends BaseEntityDetailComponent<Service>{

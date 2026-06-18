@@ -1,4 +1,4 @@
-import { Component, signal } from "@angular/core";
+import { Component, signal, ChangeDetectionStrategy } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BaseChildEntityListComponent } from "@ss/common/ui-base-entity";
 import { JournalUser, JournalUserService } from "@ss/treasury/api-journal";
@@ -14,6 +14,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     standalone: true,
     imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, TranslatePipe, PaginationComponent, TranslateDirective],
     templateUrl: "./journal-user-list.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ["./journal-user-list.component.css"]
 })
 export class JournalUserListComponent extends  BaseChildEntityListComponent <JournalUser> {

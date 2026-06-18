@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { ProductionConsumption } from '../api/mrp-api';
@@ -22,6 +22,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ],
     templateUrl: './production-consumption.component.html',
     styleUrl: './production-consumption.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true
 })
 export class ProductionConsumptionComponent implements OnInit {

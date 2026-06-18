@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     FormsModule,
     FormControl,
@@ -37,6 +37,7 @@ import { SnackBarService } from '@ss/common/ui-shell';
     templateUrl: './leave-planning-calculator.component.html',
     styleUrls: ['./leave-planning-calculator.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,
@@ -101,7 +102,7 @@ export class LeavePlanningCalculatorComponent {
     // base3 = toSignal(this.#calcSrv.formulas().pipe(map(res => res.filter(v => v.variable?.startsWith('b')))));
     history = signal<VHistory[]>([]);
 
-    selectedId = 0;
+    selectedId = signal(0);
 
     readonly displayedColumns = ([
         'employee',
@@ -143,11 +144,11 @@ export class LeavePlanningCalculatorComponent {
     }
 
     select(h: VHistory) {
-        this.selectedId = h?.employee || 0;
+        this.selectedId.set(h?.employee || 0);
         this.selection.update((c) => {
-            c.has(this.selectedId)
-                ? c.delete(this.selectedId)
-                : c.add(this.selectedId);
+            c.has(this.selectedId())
+                ? c.delete(this.selectedId())
+                : c.add(this.selectedId());
             return new Set([...c]);
         });
     }

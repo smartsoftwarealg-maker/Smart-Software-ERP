@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from "@angular/core";
+import { Component, OnInit, signal, ChangeDetectionStrategy } from "@angular/core";
 import { BaseEntityListComponent } from "@ss/common/ui-base-entity";
 import { Grid } from "../grid-api";
 import { BankService } from "@ss/administration/api-bank";
@@ -19,6 +19,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: "./salary-grid-list.component.html",
     styleUrls: ["./salary-grid-list.component.scss"],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

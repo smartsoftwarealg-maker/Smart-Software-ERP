@@ -11,7 +11,7 @@
                     <mat-label translate>COMMON_TYPE</mat-label>
                     <mat-select formControlName="type" required>
                         @for (v of types; track v.id) {
-                            <mat-option [value]="v.id" translate>
+                            <mat-option [value]="v.id.toString()" translate>
                                 {{ v ? v.description : '' }}
                             </mat-option>
                         }
@@ -34,10 +34,10 @@
 
                 <div class="button__div">
                     <mat-radio-group (change)="toggleSource($event)">
-                        <mat-radio-button [value]="1" [checked]="inputSource() === DATABASE" translate>ATT_DATABASE
+                        <mat-radio-button value="1" [checked]="inputSource() === DATABASE" translate>ATT_DATABASE
                         </mat-radio-button>
-                        <mat-radio-button [value]="2" translate>ATT_MACHINES</mat-radio-button>
-                        <mat-radio-button [value]="3" translate>ATT_LOG_FILE</mat-radio-button>
+                        <mat-radio-button value="2" translate>ATT_MACHINES</mat-radio-button>
+                        <mat-radio-button value="3" translate>ATT_LOG_FILE</mat-radio-button>
                     </mat-radio-group>
 
                 </div>

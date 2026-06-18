@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent,
     DOC_PURCHASE_ORDER
@@ -19,6 +19,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './purchase-request-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatMiniFabButton,
     MatCard,

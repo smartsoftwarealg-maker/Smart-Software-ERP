@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { EmployeeOldCareerService, OldCareer } from '@ss/payroll/api-employee';
@@ -17,6 +17,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-old-career-detail.component.html',
     styleUrls: ['./employee-old-career-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardTitle, MatMiniFabButton, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent]
 })
 export class EmployeeOldCareerDetailComponent extends BaseChildEntityDetailComponent<OldCareer>  {

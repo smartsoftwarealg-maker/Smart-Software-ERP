@@ -1,4 +1,4 @@
-import {Component, Inject, inject, input} from '@angular/core';
+import {Component, Inject, inject, input, ChangeDetectionStrategy} from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
 import { LotsService, Lot } from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -14,6 +14,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './agent-import.component.html',
     styleUrls: ['./agent-import.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

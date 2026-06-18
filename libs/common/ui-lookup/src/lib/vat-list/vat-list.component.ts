@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Vat, VatService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -27,6 +27,7 @@ import { MatSort } from '@angular/material/sort';
     PaginationComponent,
     MatSort
 ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./vat-list.component.scss']
 })
 export class VatListComponent extends BaseEntityListComponent<Vat> {

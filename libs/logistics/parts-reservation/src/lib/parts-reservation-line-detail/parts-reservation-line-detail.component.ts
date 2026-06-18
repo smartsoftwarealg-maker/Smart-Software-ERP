@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseTransactionLinesDetailComponent, DOC_RESERVATION } from '@ss/logistics/api-transaction';
 import { ReservationLinesService } from '../services/reservation-lines.service';
@@ -28,6 +28,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     TranslateDirective
     ],
     templateUrl: './parts-reservation-line-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: '../../../../../common/assets/src/assets/transac-lines-detail.scss',
 })
 export class PartsReservationLineDetailComponent extends BaseTransactionLinesDetailComponent {

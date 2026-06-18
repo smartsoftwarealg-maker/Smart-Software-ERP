@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     EmploymentTypeService,
     SuspensionReasonService
@@ -29,6 +29,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     templateUrl: './id-update.component.html',
     styleUrls: ['./id-update.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

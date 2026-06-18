@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { JournalUser, JournalUserService } from '@ss/treasury/api-journal';
@@ -23,6 +23,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
   templateUrl: './journal-user-detail.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./journal-user-detail.component.css']
 })
 export class JournalUserDetailComponent extends BaseChildEntityDetailComponent<JournalUser> {

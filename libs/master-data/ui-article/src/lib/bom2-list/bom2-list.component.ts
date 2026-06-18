@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,6 +25,7 @@ import { tap } from 'rxjs/operators';
         PaginationComponent,
     ],
     templateUrl: './bom2-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './bom2-list.component.css',
 })
 export class Bom2ListComponent extends BaseEntityListComponent<BOM> {

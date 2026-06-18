@@ -90,7 +90,7 @@
                 <mat-header-cell *matHeaderCellDef><i class="fas fa-file-invoice"
                                                       matTooltip="SALES_GENERATE_INVOICE"></i></mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    @if (!e.qty > 0) {
+                    @if (e.qty > 0) {
                         <button matIconButton (click)="generateInvoice(e.id)">
                             <i class="fa-solid fa-check"></i>
                         </button>
@@ -116,7 +116,7 @@
         <ss-doc-info
             [displayedGroups]="['agent','document']"
             [params]="{
-            agentId: selectedRow()?.agent,
+            agentId: (selectedRow()?.agent),
             documentId: selectedRow()?.id,
             detailId: selectedRow()?.id,
             documentURL:'/delivery'

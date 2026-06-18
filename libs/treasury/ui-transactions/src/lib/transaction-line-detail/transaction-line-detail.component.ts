@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import {TransactionLineService, TTransactionLine} from '@ss/treasury/api-transactions';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -19,6 +19,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './transaction-line-detail.component.html',
     styleUrls: ['./transaction-line-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatMiniFabButton,
     MaterialModule,

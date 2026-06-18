@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -46,6 +46,7 @@ import { MatDialog } from '@angular/material/dialog';
               TranslateDirective
     ],
     templateUrl: './product-liberation-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './product-liberation-list.component.scss',
 })
 export class ProductLiberationListComponent extends BaseEntityListComponent<LTMProductLiberation> {

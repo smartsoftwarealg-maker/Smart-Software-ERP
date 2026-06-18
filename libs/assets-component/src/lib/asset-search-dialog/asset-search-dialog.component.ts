@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, signal } from '@angular/core';
+import { Component, Inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Asset } from '../assets-api';
 import { AssetsService } from '../services/assets.service';
@@ -16,6 +16,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './asset-search-dialog.component.html',
     styleUrls: ['./asset-search-dialog.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,
@@ -26,7 +27,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 })
 export class AssetSearchDialogComponent implements OnInit {
     readonly pagination = PaginationModel.newInstance();
-    selectedId: number = null;
+    selectedId: number = 0;
     assetList: Asset[] = [];
     selectedAsset: Asset = {
         id: 0,

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { Inspection, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { MaterialModule } from '@ss/common/api-common';
@@ -22,6 +22,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './inspection-detail-list.component.html',
     styleUrls: ['./inspection-detail-list.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MatTableModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BaseTransactionDetailComponent, TransactionLinesService } from "@ss/logistics/api-transaction";
 import {CCGroup, Lookup} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
@@ -25,6 +25,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './transfer-reception-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class TransferReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {

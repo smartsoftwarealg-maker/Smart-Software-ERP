@@ -1,4 +1,4 @@
-import { Component, signal } from "@angular/core";
+import { Component, signal, ChangeDetectionStrategy } from "@angular/core";
 import { MaterialModule } from "@ss/common/api-common";
 import { LTMMixtureDetail } from '@ltm/ltm-api';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -13,6 +13,7 @@ import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
     templateUrl: './ltm-mixture-detail-list.component.html',
     styleUrls: ['./ltm-mixture-detail-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

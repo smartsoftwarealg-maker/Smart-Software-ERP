@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from "@angular/router";
 import {UntypedFormBuilder} from '@angular/forms';
@@ -42,6 +42,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     UiAutoCompleteComponent
 ],
     templateUrl: './service-invoice-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ServiceInvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MaterialModule, UserService } from '@ss/common/api-common';
@@ -19,6 +19,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './password-reset.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './password-reset.component.scss',
 })
 export class PasswordResetComponent implements OnInit {

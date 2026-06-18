@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {ContractArticleService} from '../contract-article.service';
 import { FormBuilder, FormControl, ReactiveFormsModule, UntypedFormGroup, Validators } from "@angular/forms";
@@ -22,6 +22,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './contract-article-detail.component.html',
     styleUrls: ['./contract-article-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

@@ -1,4 +1,4 @@
-import { Component, inject, Inject, input } from '@angular/core';
+import { Component, inject, Inject, input, ChangeDetectionStrategy } from '@angular/core';
 import { finalize, Subscription } from 'rxjs';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { HttpEventType } from '@angular/common/http';
@@ -15,6 +15,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './inventory-import.component.html',
     styleUrls: ['./inventory-import.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, TranslateDirective, TranslatePipe, RouterModule],
 })
 export class InventoryImportComponent {

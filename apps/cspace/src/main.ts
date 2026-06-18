@@ -16,7 +16,7 @@ import { MainPageComponent } from '@ss/common/ui-main-page';
 import { CSPACE_APP_URL } from './app/common';
 import { AppComponent } from './app/app.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { CustomErrorHandler } from '@ss/common/ui-error-handler';
 import { LoginComponent } from '@ss/common/ui-login';
 import { CenterSelectComponent } from '@ss/common/ui-center-select';
@@ -61,7 +61,7 @@ bootstrapApplication(AppComponent, {
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule),
         provideAnimations(),
         provideZoneChangeDetection(),
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
         { provide: ErrorHandler, useClass: CustomErrorHandler }
     ]

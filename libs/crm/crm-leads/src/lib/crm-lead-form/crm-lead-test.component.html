@@ -11,13 +11,17 @@
                 <mat-form-field appearance="outline" class="flex-1">
                     <mat-label>First Name</mat-label>
                     <input matInput formControlName="firstName" required>
-                    <mat-error *ngIf="hasError('firstName', 'required')">First name is required</mat-error>
+                    @if (hasError('firstName', 'required')) {
+                        <mat-error>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="flex-1">
                     <mat-label>Last Name</mat-label>
                     <input matInput formControlName="lastName" required>
-                    <mat-error *ngIf="hasError('lastName', 'required')">Last name is required</mat-error>
+                    @if (hasError('lastName', 'required')) {
+                        <mat-error>COMMON_FIELD_REQUIRED</mat-error>
+                    }
                 </mat-form-field>
             </div>
 
@@ -46,7 +50,9 @@
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Company</mat-label>
                 <input matInput formControlName="company" required>
-                <mat-error *ngIf="hasError('company', 'required')">Company is required</mat-error>
+                @if (hasError('company', 'required')) {
+                <mat-error>COMMON_FIELD_REQUIRED</mat-error>
+                }
             </mat-form-field>
 
             <div class="row">

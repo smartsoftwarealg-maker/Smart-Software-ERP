@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {
     FormBuilder,
     UntypedFormGroup,
@@ -24,6 +24,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-invitation-detail.component.html',
     styleUrls: ['./employee-invitation-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatMiniFabButton,

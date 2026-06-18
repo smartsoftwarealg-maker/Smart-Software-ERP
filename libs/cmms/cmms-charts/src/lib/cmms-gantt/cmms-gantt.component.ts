@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ChartService } from '../chart.service';
 import { ShellService } from '@ss/common/ui-shell';
@@ -15,6 +15,7 @@ import { Chart, ChartConfiguration, ChartItem, registerables } from 'chart.js';
     standalone: true,
     imports: [DatePickerComponent, MaterialModule],
     templateUrl: './cmms-gantt.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./cmms-gantt.component.css'],
 })
 export class CmmsGanttComponent implements OnInit {

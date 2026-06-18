@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { HttpService, LanguageService } from '@ss/common/api-common';
 import {
@@ -20,6 +20,7 @@ import { ActivatedRoute } from '@angular/router';
     imports: [MatTable, MatHeaderCell, MatColumnDef, MatCell, MatHeaderCellDef, MatCellDef, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, TranslateDirective],
     templateUrl: './mrp.component.html',
     styleUrl: './mrp.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true
 })
 export class MrpComponent implements OnInit {

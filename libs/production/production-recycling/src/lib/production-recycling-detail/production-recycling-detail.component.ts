@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
     KeepOnToolbar,
     ShellService,
@@ -33,6 +33,7 @@ import { ProductionRecyclingLinesListComponent } from '../production-recycling-l
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './production-recycling-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

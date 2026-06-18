@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Account, AccountService} from '@ss/accounting/api-accounts';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -18,6 +18,7 @@ import { DecimalPipe } from '@angular/common';
     templateUrl: './asset-accounts-list.component.html',
     styleUrls: ['./asset-accounts-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class AssetAccountsListComponent extends BaseEntityListComponent<Account> {

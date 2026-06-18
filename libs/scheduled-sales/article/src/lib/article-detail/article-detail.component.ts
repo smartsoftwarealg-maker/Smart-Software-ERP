@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ImageModel } from '@ss/common/ui-image-input';
 import {
@@ -40,6 +40,7 @@ import { ColorPickerDirective } from 'ngx-color-picker';
     templateUrl: './article-detail.component.html',
     styleUrls: ['./article-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent, BaseEntityListComponent } from '@ss/common/ui-base-entity';
 
@@ -40,6 +40,7 @@ import { MatMiniFabButton } from '@angular/material/button';
         MatRowDef
     ],
     templateUrl: './product-liberation-line-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './product-liberation-line-list.component.scss',
 })
 export class ProductLiberationLineListComponent extends BaseChildEntityListComponent<LTMProductLiberationLine> {

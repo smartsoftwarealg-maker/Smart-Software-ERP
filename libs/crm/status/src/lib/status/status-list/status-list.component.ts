@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -28,6 +28,7 @@ import { StatusService } from '../status.service';
     templateUrl: 'status-list.html',
     styleUrls: ['status-list.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatSort,

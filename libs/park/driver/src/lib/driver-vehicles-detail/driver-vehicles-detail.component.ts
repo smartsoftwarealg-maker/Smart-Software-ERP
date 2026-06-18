@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { DriverVehicle } from '../driver-api';
@@ -24,6 +24,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './driver-vehicles-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./driver-vehicles-detail.component.css']
 })
 export class DriverVehiclesDetailComponent extends BaseChildEntityDetailComponent<DriverVehicle> {

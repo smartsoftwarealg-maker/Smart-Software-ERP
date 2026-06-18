@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal} from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from "@angular/core";
 import { LoginService, MaterialModule, PaginationModel, User } from "@ss/common/api-common";
 import {UserListService} from '@ss/common/api-users';
 import {UserStoresService} from './user-stores.service';
@@ -25,6 +25,7 @@ import {sign} from "chart.js/helpers";
     templateUrl: './user-stores.component.html',
     styleUrls: ['./user-stores.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

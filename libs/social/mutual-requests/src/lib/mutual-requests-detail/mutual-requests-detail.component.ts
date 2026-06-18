@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { MutualRequest, MutualRequestLineService, MutualRequestService } from '@social/social-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -31,6 +31,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     RouterOutlet
 ],
     templateUrl: './mutual-requests-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './mutual-requests-detail.component.scss'
 })
 export class MutualRequestsDetailComponent extends BaseEntityDetailComponent<MutualRequest> {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
     Activity,
     Category,
@@ -20,6 +20,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './discount-category-detail.component.html',
     styleUrls: ['./discount-category-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

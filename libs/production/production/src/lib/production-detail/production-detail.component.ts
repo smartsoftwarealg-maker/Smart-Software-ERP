@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
@@ -23,6 +23,7 @@ import { signalGetFn } from '@angular/core/primitives/signals';
     templateUrl: './production-detail.component.html',
     styleUrl: './production-detail.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         DatePickerComponent,

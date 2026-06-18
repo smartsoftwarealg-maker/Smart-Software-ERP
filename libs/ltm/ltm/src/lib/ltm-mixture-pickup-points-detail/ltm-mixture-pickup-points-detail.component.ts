@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, ChangeDetectionStrategy} from '@angular/core';
 import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
 import {FormBuilder, ReactiveFormsModule, UntypedFormGroup} from "@angular/forms";
 import {
@@ -16,6 +16,7 @@ import {TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
     templateUrl: './ltm-mixture-pickup-points-detail.component.html',
     styleUrls: ['../line-matter-detail/line-matter-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         ReactiveFormsModule,

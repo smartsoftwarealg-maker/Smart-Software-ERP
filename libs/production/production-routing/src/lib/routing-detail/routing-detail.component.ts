@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import {
@@ -52,6 +52,7 @@ import {MaterialModule} from "@ss/common/api-common";
         DatePickerComponent
     ],
     templateUrl: './routing-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./routing-detail.component.scss']
 })
 export class RoutingDetailComponent extends BaseEntityDetailComponent<Routing>{

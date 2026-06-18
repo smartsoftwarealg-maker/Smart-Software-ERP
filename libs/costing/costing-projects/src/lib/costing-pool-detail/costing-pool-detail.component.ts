@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CPool } from '@ss/costing/costing-utils';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -28,6 +28,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './costing-pool-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './costing-pool-detail.component.css'
 })
 export class CostingPoolDetailComponent extends BaseChildEntityDetailComponent<CPool> {

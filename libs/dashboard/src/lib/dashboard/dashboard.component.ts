@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { DashboardService } from '../services/dashboard.service';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Dashboard } from '../dashboard';
@@ -41,6 +41,7 @@ import { AccessRightsService } from '@ss/common/api-access-rights';
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

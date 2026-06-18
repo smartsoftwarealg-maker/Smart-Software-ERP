@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_RECEPTION, TransactionLine
 } from '@ss/logistics/api-transaction';
@@ -15,6 +15,7 @@ import {PurchaseInvoiceLineService} from "../purchase-invoice-line.service";
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './purchase-invoice-lines-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Lookup } from '@ss/common/api-lookup';
 import { AssetBlockingTypeService } from '../services/asset-blocking-type.service';
@@ -24,6 +24,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './end-types-list.component.html',
     styleUrls: ['./end-types-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

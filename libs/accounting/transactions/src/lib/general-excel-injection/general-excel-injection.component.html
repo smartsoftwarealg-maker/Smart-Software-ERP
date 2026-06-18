@@ -165,7 +165,7 @@
                                 <mat-option [value]="format">{{format.description}}</mat-option>
                             }
                         </mat-autocomplete>
-                        <button mat-mini-fab (click)="saveFormat(auto.value)" [disabled]="!excelFormat.value"><i class="fa-solid fa-floppy-disk"></i></button>
+                        <button mat-mini-fab (click)="saveFormat('')" [disabled]="!excelFormat.value"><i class="fa-solid fa-floppy-disk"></i></button>
                         <button mat-mini-fab (click)="deleteFormat()"><i class="fa-solid fa-trash-xmark"></i></button>
                     </div>
                     <button mat-raised-button color="warn" type="button" (click)="cancel()">

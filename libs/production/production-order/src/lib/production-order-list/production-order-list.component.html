@@ -62,10 +62,10 @@
                 [params]="{
                         documentId: selectedRow()?.id,
                         documentURL:'/reception',
-                        agentId : selectedRow()?.agent,
+                        agentId : (selectedRow()?.agent),
                         detailId: selectedRow()?.id,
-                        prodId: selectedRow()?.id,
-                        reservationsId: selectedRow()?.id,
+                        prodId: (selectedRow()?.id),
+                        reservationsId: (selectedRow()?.id),
                         appId: 5 }">
             </ss-doc-info>
         </div>

@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {UnitsOfMeasure} from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -15,6 +15,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./production-units-list.component.scss'],
     templateUrl: './production-units-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

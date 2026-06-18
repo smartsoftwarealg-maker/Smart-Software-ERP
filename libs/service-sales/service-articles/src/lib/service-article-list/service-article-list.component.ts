@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Service } from '../service-article-api';
@@ -30,6 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         PaginationComponent
     ],
     templateUrl: './service-article-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./service-article-list.component.css']
 })
 export class ServiceArticleListComponent extends BaseEntityListComponent<Service> {

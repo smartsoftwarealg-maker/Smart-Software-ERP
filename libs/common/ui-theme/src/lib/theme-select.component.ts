@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {LanguageService} from '@ss/common/api-common';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { ThemeService } from './theme.service';
@@ -10,6 +10,7 @@ import { MatIconButton } from '@angular/material/button';
     styleUrls: ['./theme-select.component.scss'],
     templateUrl: './theme-select.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem]
 })
 export class ThemeSelectComponent {

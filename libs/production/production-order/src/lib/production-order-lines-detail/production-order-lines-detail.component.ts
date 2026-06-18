@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_PRODUCTION_ORDER, TransactionLine
 } from '@ss/logistics/api-transaction';
@@ -31,6 +31,7 @@ import { DecimalPipe } from '@angular/common';
     ],
     templateUrl: './production-order-lines-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatCard,

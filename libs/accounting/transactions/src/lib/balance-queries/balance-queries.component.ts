@@ -1,4 +1,4 @@
-import { Component, computed, DestroyRef, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, DestroyRef, effect, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     ACCTransactionLine,
     AccTransactionLineService,
@@ -24,6 +24,7 @@ import { generate } from 'rxjs';
     templateUrl: './balance-queries.component.html',
     styleUrls: ['./balance-queries.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         RouterModule,

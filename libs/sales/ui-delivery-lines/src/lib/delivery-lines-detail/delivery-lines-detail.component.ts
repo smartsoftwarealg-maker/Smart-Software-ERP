@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import { UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     BaseTransactionLinesDetailComponent, DOC_DELIVERY, TransactionLine
@@ -20,6 +20,7 @@ import {MaterialModule} from '@ss/common/api-common';
     templateUrl: './delivery-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MaterialModule,

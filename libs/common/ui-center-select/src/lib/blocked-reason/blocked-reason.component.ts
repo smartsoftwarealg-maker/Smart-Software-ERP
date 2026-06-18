@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AgentService } from '@ss/logistics/api-agent';
 import { MatCard, MatCardContent, MatCardFooter, MatCardTitle } from '@angular/material/card';
 import { INDEX_PAGE_URL, LOGIN_URL, LoginService } from '@ss/common/api-common';
@@ -11,6 +11,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './blocked-reason.component.html',
     styleUrls: ['./blocked-reason.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatCard,
         MatCardTitle,

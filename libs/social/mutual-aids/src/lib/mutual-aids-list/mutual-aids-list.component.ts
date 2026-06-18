@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject, signal, ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {SocialAid, SocialWorksService} from '@social/social-api';
@@ -29,6 +29,7 @@ import {ExcelInjectionComponent} from "../excel-injection-document/excel-injecti
     standalone: true,
     imports: [CommonModule, TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './mutual-aids-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: '../../../../social-api/src/lib/aids.styles.scss',
 })
 export class MutualAidsListComponent extends BaseEntityListComponent<SocialAid> {

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { AbsenceWeight } from '../gica-careers-api';
@@ -31,6 +31,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, PaginationComponent, TranslateDirective],
     templateUrl: './absence-weight-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './absence-weight-list.component.css',
 })
 export class AbsenceWeightListComponent extends BaseEntityListComponent<AbsenceWeight> {

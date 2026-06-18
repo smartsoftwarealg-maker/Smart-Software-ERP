@@ -1,9 +1,10 @@
 import {
-    Component,
-    DestroyRef,
-    inject, OnDestroy,
-    OnInit,
-    signal
+  Component,
+  DestroyRef,
+  inject, OnDestroy,
+  OnInit,
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -86,6 +87,7 @@ import { HrGrade } from '../hr-grading-api';
         TranslateDirective,
     ],
     templateUrl: './hr-gradings.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: 'hr-gradings.component.scss',
 })
 export class HrGradingsComponent implements OnInit, OnDestroy {

@@ -4,8 +4,8 @@
         <!-- Header -->
         <div class="detail-header mat-elevation-z1">
             <div>
-                <h1 class="detail-title">Operation {{ op.sequence }}: {{ op.name }}</h1>
-                <p class="detail-subtitle"><i class="fa-solid fa-location-dot"></i> {{ op.workCenterName }}</p>
+                <h1 class="detail-title">{{ op.operationSequence }}: {{ op.operationNumber }}</h1>
+                <p class="detail-subtitle"><i class="fa-solid fa-location-dot"></i> {{ op.workCenterId }}</p>
             </div>
             <button mat-raised-button color="primary" (click)="saveOp()">
                 <i class="fa-solid fa-floppy-disk"></i> Save Operation
@@ -13,8 +13,8 @@
         </div>
 
         <!-- Tabs -->
-        <mat-tab-group [selectedIndex]="tabs.findIndex(t => t.id === activeTab())"
-                       (selectedIndexChange)="activeTab.set(tabs[$event].id)"
+        <mat-tab-group [selectedIndex]="tabs.findIndex(t => t.id === activeTab().id)"
+                       (selectedIndexChange)="activeTab.set(tabs[$event])"
                        animationDuration="200ms" class="detail-tabs">
 
             <!-- 1. GENERAL TAB -->
@@ -199,12 +199,12 @@
                         <h3><i class="fa-solid fa-coins"></i> Standard Cost Breakdown (per Unit)</h3>
                     </div>
                     <div class="cost-card mat-elevation-z1">
-                        <div class="cost-row"><span>Direct Material (incl. scrap)</span><span>${{ op.materials.reduce((sum, m) => sum + (m.qtyPerUnit * (1 + m.scrapPct/100) * 12.5), 0).toFixed(2) }}</span></div>
+                        <div class="cost-row"><span>Direct Material (incl. scrap)</span><span>${{ 0 }}</span></div>
                         <div class="cost-row"><span>Direct Labor</span><span>${{ (op.runTimePerUnit * op.laborCrewSize * 58.5).toFixed(2) }}</span></div>
                         <div class="cost-row"><span>Machine Run</span><span>${{ (op.runTimePerUnit * 80).toFixed(2) }}</span></div>
                         <div class="cost-row"><span>Variable Overhead</span><span>$2.16</span></div>
                         <div class="cost-row"><span>Fixed Overhead (Allocated)</span><span>$45.00</span></div>
-                        <div class="cost-row total"><span>Total Standard Cost</span><span>${{ op.standardCost.toFixed(2) }}</span></div>
+                        <div class="cost-row total"><span>Total Standard Cost</span><span>${{ op.standardCost?.toFixed(2) }}</span></div>
                     </div>
                 </div>
             </mat-tab>

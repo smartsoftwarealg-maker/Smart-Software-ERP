@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnDestroy, OnInit, input, signal} from '@angular/core';
+import { Component, inject, Input, OnDestroy, OnInit, input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {of, Subscription} from 'rxjs';
@@ -28,6 +28,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './child-attributes.component.html',
     styleUrls: ['./child-attributes.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatFormField, MatLabel, MatSelect, FormsModule, ReactiveFormsModule, MatOption, MatInput, UiAutoCompleteComponent, DatePickerComponent, TranslatePipe]
 })
 export class ChildAttributesComponent implements OnInit, OnDestroy {

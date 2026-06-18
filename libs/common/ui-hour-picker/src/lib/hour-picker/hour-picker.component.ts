@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCard } from '@angular/material/card';
 import { MatFormField } from '@angular/material/form-field';
@@ -10,6 +10,7 @@ import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
     templateUrl: './hour-picker.component.html',
     styleUrls: ['./hour-picker.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatCard,
         MatFormField,

@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, inject, ChangeDetectionStrategy } from '@angular/core';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivityCategory } from '@ss/master-data/api-article';
@@ -16,6 +16,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe,
     ],
     templateUrl: './activity_category-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './activity_category_dialog.component.scss',
 })
 export class ActivityCategoryDialogComponent {

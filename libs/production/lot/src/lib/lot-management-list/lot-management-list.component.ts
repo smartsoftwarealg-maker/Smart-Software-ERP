@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -15,6 +15,7 @@ import { Lot, LotsService } from '@ss/common/api-lookup';
     styleUrls: ['./lot-management-list.component.scss'],
     templateUrl: './lot-management-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

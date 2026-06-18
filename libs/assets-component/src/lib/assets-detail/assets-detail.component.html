@@ -180,7 +180,7 @@
                     <mat-select formControlName="depreciationType">
                         @for (v of depreciationTypes; track v) {
                             <mat-option [value]="v.id">
-                                {{ v?.description | translate }}
+                                {{ (v?.description) | translate }}
                             </mat-option>
                         }
                     </mat-select>

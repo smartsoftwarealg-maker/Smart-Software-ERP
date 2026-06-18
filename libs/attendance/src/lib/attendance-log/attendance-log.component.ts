@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {AttendanceLogService} from '../attendance-log.service';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +23,7 @@ import { finalize, map, Subscription } from 'rxjs';
     templateUrl: './attendance-log.component.html',
     styleUrls: ['./attendance-log.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         FormsModule,

@@ -1,4 +1,4 @@
-import {Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import { DatePipe } from '@angular/common';
 import {
     MatCell,
@@ -44,6 +44,7 @@ import {HttpParams} from '@angular/common/http';
     ],
     templateUrl: './calendar-list.html',
     styleUrl: './calendar-list.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true
 })
 export class CalendarList implements OnInit {

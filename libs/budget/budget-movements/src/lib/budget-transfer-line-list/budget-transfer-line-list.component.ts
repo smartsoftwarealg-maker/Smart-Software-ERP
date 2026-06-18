@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {BudgetTransferService} from '../budget-transfer.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {of, switchMap} from 'rxjs';
@@ -16,6 +16,7 @@ import { DecimalPipe } from '@angular/common';
     templateUrl: './budget-transfer-line-list.component.html',
     styleUrls: ['./budget-transfer-line-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatTable,

@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaginationModel } from '@ss/common/api-common';
@@ -28,6 +28,7 @@ import {sign} from "chart.js/helpers";
     templateUrl: 'campaign-list.html',
     styleUrls: ['campaign-list.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatSort,

@@ -53,8 +53,8 @@
                                         </ol>
                                     }
                                     @if (data[k].showMemo) {
-                                        <textarea type="text" rows="3" class="default-100"
-                                                  (keyup)="setMemoVal(k, $event.target.value)"
+                                        <textarea #memo type="text" rows="3" class="default-100"
+                                                  (keyup)="setMemoVal(k, memo.value)"
                                                   [value]="getMemoVal(k)">
                                         </textarea>
                                     }

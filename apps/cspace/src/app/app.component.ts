@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CompanySelectorService, HttpService, LoginService, LoginType } from '@ss/common/api-common';
 import { switchMap } from 'rxjs/operators';
 import {LanguageService} from '@ss/common/api-common';
@@ -15,6 +15,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterOutlet, MessageComponent],
 })
 export class AppComponent implements OnInit {

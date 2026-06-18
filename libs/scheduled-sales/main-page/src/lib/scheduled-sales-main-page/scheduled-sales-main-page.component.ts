@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { MatCard, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { MatButton } from '@angular/material/button';
@@ -11,6 +11,7 @@ import { LanguageService } from '@ss/common/api-common';
     standalone: true,
     imports: [MatCard, MatCardContent],
     templateUrl: './scheduled-sales-main-page.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './scheduled-sales-main-page.component.scss',
 })
 export class ScheduledSalesMainPageComponent {

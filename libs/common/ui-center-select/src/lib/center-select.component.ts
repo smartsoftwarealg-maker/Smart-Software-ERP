@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, signal, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {CenterService} from './center.service';
 import {Router} from '@angular/router';
 import {
@@ -36,6 +36,7 @@ import { AgentService } from '@ss/logistics/api-agent';
     templateUrl: './center-select.component.html',
     styleUrls: ['./center-select.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatStepper,
         MatStepperIcon,

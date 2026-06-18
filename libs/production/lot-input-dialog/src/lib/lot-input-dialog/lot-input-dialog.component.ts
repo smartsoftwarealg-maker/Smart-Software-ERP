@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { Agent, SupplierService } from '@ss/logistics/api-agent';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -15,6 +15,7 @@ import { StoresService } from '@ss/stock/api-article-store';
     selector: 'ss-lot-input-dialog',
     imports: [MaterialModule, MatCard, MatCardContent, ReactiveFormsModule, TranslateDirective, UiAutoCompleteComponent, DatePickerComponent],
     templateUrl: './lot-input-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './lot-input-dialog.component.scss'
 })
 export class LotInputDialogComponent {

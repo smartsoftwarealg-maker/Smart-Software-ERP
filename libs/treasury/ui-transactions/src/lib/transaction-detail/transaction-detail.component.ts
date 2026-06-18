@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {TreasuryTransactionService, TTransaction} from '@ss/treasury/api-transactions';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -25,6 +25,7 @@ import {CostCenterService} from '@ss/logistics/api-cost-center';
     templateUrl: './transaction-detail.component.html',
     styleUrls: ['./transaction-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatCard,
         MaterialModule,

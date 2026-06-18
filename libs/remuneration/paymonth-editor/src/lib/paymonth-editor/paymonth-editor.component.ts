@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, inject, Input, OnDestroy, Optional, Self } from "@angular/core";
+import { Component, ElementRef, HostBinding, inject, Input, OnDestroy, Optional, Self, ChangeDetectionStrategy } from "@angular/core";
 import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup, NgControl, Validators, FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatFormFieldControl} from '@angular/material/form-field';
 import {Subject, Subscription} from 'rxjs';
@@ -12,6 +12,7 @@ import { MatInput } from "@angular/material/input";
     providers: [{ provide: MatFormFieldControl, useExisting: PaymonthEditorComponent }],
     styleUrls: ['./paymonth-editor.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, MatInput]
 })
 export class PaymonthEditorComponent implements MatFormFieldControl<number>, OnDestroy, ControlValueAccessor {

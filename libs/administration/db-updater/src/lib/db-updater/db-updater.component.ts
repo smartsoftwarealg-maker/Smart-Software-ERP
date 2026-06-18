@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {DbUpdaterService} from '../db-updater.service';
 import { MatListOption, MatSelectionList } from '@angular/material/list';
 import {catchError, concatMap, delay, from, map, Observable, of, switchMap, tap} from 'rxjs';
@@ -21,6 +21,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     templateUrl: './db-updater.component.html',
     styleUrls: ['./db-updater.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatProgressBar, MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, MatSelectionList, MatListOption, MatButton, TranslatePipe, MatProgressSpinner]
 })
 export class DbUpdaterComponent implements OnInit {

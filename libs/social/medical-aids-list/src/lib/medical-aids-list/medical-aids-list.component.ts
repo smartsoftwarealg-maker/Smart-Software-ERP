@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { SocialAid } from '@social/social-api';
@@ -26,6 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './medical-aids-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: '../../../../social-api/src/lib/aids.styles.scss',
 })
 export class MedicalAidsListComponent extends BaseEntityListComponent<SocialAid> {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Output, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CLineKey } from '@ss/costing/costing-utils';
@@ -28,6 +28,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         PaginationComponent
     ],
     templateUrl: './product-line-keys.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './product-line-keys.component.css',
 })
 export class ProductLineKeysComponent extends BaseChildEntityListComponent<CLineKey> {

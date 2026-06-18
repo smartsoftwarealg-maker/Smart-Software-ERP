@@ -1,4 +1,4 @@
-import { Component, inject, signal} from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { EmployeeLanguagesService, PersonLanguage } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { AsyncPipe } from '@angular/common';
@@ -16,6 +16,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-languages-list.component.html',
     styleUrls: ['./employee-languages-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe]
 })
 export class EmployeeLanguagesListComponent extends BaseChildEntityListComponent<PersonLanguage>{

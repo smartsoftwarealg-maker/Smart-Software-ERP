@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { AssetInventoryDoc, AssetReception, OfficeAutoComplete } from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -34,6 +34,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './assets-inventory-doc-detail.component.html',
     styleUrls: ['./assets-inventory-doc-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

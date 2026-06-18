@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CMMSWorkDetail, IS_INSPECTION, Work } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -29,6 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './inspection-detail.component.html',
     styleUrls: ['./inspection-detail.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTableModule,
         FormsModule,

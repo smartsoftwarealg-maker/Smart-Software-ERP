@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Amendment } from '../payroll-amendment.class';
 import { ElementsInfoService } from '@ss/remuneration/elementsinfo';
@@ -23,6 +23,7 @@ import { Lookup } from '@ss/common/api-lookup';
     templateUrl: './payroll-amendment-detail.component.html',
     styleUrls: ['./payroll-amendment-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

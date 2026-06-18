@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
     FormControl,
     ReactiveFormsModule,
@@ -48,6 +48,7 @@ import {Observable, switchMap, tap} from "rxjs";
         UiAutoCompleteComponent,
         NgxEditorModule,
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class CrmOpportunityActivitiesDetailComponent

@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit, signal } from '@angular/core';
+import { Component, HostBinding, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -27,6 +27,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ReactiveFormsModule,
     PaginationComponent
 ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     animations: [slideToRight]
 })
 export class CostingKeyListComponent extends BaseEntityListComponent<CKey> implements OnInit {

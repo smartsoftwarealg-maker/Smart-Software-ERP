@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CustomerComplaint } from '../customer-complaint.class';
@@ -40,6 +40,7 @@ import { Observable, tap } from 'rxjs';
         TranslateDirective
     ],
     templateUrl: './customer-complaints-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './customer-complaints-list.component.css',
 })
 export class CustomerComplaintsListComponent extends BaseEntityListComponent<CustomerComplaint>{

@@ -58,9 +58,9 @@
       <ss-doc-info
         [displayedGroups]="['article']"
             [params]="{
-                         articleId: selectedRow()?.id,
+                         articleId: (selectedRow()?.id),
                          articleUseStoreSearch : true,
-                         articleReference: selectedRow()?.reference
+                         articleReference: (selectedRow()?.reference)
                      }">
       </ss-doc-info>
     }

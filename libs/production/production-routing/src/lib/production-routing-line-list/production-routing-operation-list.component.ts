@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -25,6 +25,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     templateUrl: './production-routing-operation-list.component.html',
     styleUrls: ['./production-routing-operation-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatSort,

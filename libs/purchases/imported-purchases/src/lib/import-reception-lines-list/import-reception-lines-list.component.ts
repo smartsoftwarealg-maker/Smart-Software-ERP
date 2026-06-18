@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionLinesListComponent,
     TransactionLine,
@@ -26,6 +26,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './import-reception-lines-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatFormField,
         MatLabel,

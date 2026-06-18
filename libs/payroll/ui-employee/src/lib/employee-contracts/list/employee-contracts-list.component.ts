@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { EmployeeContractService, Contract } from '@ss/payroll/api-employee';
 import { PaginationModel } from '@ss/common/api-common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -17,6 +17,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-contracts-list.component.html',
     styleUrls: ['./employee-contracts-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, DecimalPipe, DatePipe, TranslatePipe]
 })
 export class EmployeeContractListComponent extends BaseChildEntityListComponent<Contract> {

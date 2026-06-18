@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -17,6 +17,7 @@ import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-comm
     templateUrl: './ltm-product-type-list.component.html',
     styleUrls: ['./ltm-product-type-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     PaginationComponent,

@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {ActivityCategory, UnitsOfMeasure} from '@ss/master-data/api-article';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -17,6 +17,7 @@ import {TranslatePipe} from "@ss/common/ui-lang";
     styleUrls: ['./production-activity-categories-list.component.scss'],
     templateUrl: './production-activity-categories-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

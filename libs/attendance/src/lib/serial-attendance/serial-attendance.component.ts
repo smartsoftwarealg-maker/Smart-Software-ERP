@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { SSignature } from '../attendance-api';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -36,6 +36,7 @@ import { SerialAttendanceService } from '../serial-attendance.service';
         TranslateDirective,
         UiAutoCompleteComponent,
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class SerialAttendanceComponent extends BaseEntityDetailComponent<SSignature> {

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
@@ -22,6 +22,7 @@ import { Observable } from 'rxjs';
     templateUrl: './asset-building-list.component.html',
     styleUrls: ['./asset-building-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

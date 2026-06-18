@@ -1,4 +1,4 @@
-import {Component, OnInit, input, signal} from '@angular/core';
+import {Component, OnInit, input, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ExcelInjectionService} from './excel-injection.service';
 import {finalize, Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
@@ -17,6 +17,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './excel-injection.component.html',
     styleUrls: ['./excel-injection.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [TranslateDirective, MatMiniFabButton, MatCheckbox, MatButton, MatProgressBar, TranslatePipe]
 })
 export class ExcelInjectionComponent implements OnInit {

@@ -47,4 +47,5 @@ export interface QuickOrder {
 export interface InvoiceInfo {
     id: number;
     quantity?: number;
+    invoiceNumber?: string;
 }

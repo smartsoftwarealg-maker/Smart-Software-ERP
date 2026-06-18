@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild, input, inject, signal} from '@angular/core';
+import { AfterContentInit, Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild, input, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ImageModel } from './image-model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { LanguageService, MaterialModule } from '@ss/common/api-common';
@@ -11,6 +11,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: 'image-input.component.html',
     styleUrls: ['image-input.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, TranslateDirective]
 })
 export class ImageInputComponent implements OnInit, OnDestroy, AfterContentInit {

@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
@@ -56,6 +56,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     selector: 'ss-gica-deduction-report',
     standalone: true,
     styleUrl: './evolution-report.component.css',
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './evolution-report.component.html'
 })
 export class EvolutionReportComponent implements OnInit {

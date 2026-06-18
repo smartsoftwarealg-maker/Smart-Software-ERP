@@ -20,7 +20,7 @@ import { TransportService } from '../zone.service';
 import { ZoneService } from '../transport.service';
 import { TrajectoryService } from '../trajectory.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
@@ -31,6 +31,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './mission-preparation-detail.component.html',
     styleUrls: ['./mission-preparation-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         ReactiveFormsModule,

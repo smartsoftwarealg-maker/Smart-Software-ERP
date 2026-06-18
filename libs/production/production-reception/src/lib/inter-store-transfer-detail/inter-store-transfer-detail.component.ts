@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {
@@ -25,6 +25,7 @@ import { Observable } from 'rxjs';
     templateUrl: './inter-store-transfer-detail.component.html',
     styleUrl: './inter-store-transfer-detail.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

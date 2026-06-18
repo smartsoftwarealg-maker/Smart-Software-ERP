@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CheckBookService, CheckBook } from '@ss/treasury/api-check-books';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,6 +22,7 @@ import { MatInput } from '@angular/material/input';
     styleUrls: ['./check-book-detail.component.scss'],
     templateUrl: './check-book-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatSelect, MatOption, MatInput]
 })
 export class CheckBookDetailComponent extends BaseEntityDetailComponent<CheckBook> implements OnInit {

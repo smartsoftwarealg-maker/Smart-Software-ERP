@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +12,7 @@ import { LanguageService } from '@ss/common/api-common';
     standalone: true,
     imports: [MatCard],
     templateUrl: './social-dashboard.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './social-dashboard.component.scss'
 })
 export class SocialDashboardComponent implements OnInit {

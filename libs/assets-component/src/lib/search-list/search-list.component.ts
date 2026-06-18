@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, signal} from '@angular/core';
+import { Component, inject, OnDestroy, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Asset, SearchCriteria } from '../assets-api';
 import { AssetsService } from '../services/assets.service';
@@ -32,6 +32,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './search-list.component.html',
     styleUrls: ['./search-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Employee } from '@ss/employee-services/employee-services';
@@ -27,6 +27,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     templateUrl: './cmms-employee-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./cmms-employee-list.component.scss'],
 })
 export class CmmsEmployeeListComponent extends BaseEntityListComponent<Employee> implements OnInit {

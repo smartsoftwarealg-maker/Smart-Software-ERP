@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Lookup } from '@ss/common/api-lookup';
@@ -26,6 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './medical-aid-types-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './medical-aid-types-list.component.scss',
 })
 export class MedicalAidTypesListComponent extends BaseEntityListComponent<Lookup> {

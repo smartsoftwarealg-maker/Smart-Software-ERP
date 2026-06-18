@@ -1,4 +1,4 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable, Subscription, switchMap, tap} from 'rxjs';
 import {HttpService, ImageUploaderUtil} from '@ss/common/api-common';
 import {ArticleService, AvailableArticle, AvailableStock} from '@ss/master-data/api-article';
@@ -25,6 +25,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './main-page.component.html',
     styleUrls: ['./main-page.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     HeaderPageComponent,
     MatList,

@@ -1,4 +1,4 @@
-import {Component, effect, inject, input, Input, OnInit, signal} from '@angular/core';
+import {Component, effect, inject, input, Input, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -40,6 +40,7 @@ interface StoreForm {
     styleUrls: ['./article-store.component.scss'],
     templateUrl: './article-store.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatError, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, TranslatePipe, DecimalPipe]
 })
 export class ArticleStoreComponent implements OnInit {

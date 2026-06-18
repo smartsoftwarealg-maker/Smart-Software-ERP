@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import {
     MatCell,
@@ -41,6 +41,7 @@ import { MissionsElementService } from '../mission-element.service';
 ],
     templateUrl: './mission-elements-list.component.html',
     styleUrl: './mission-elements-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class MissionElementsListComponent extends BaseEntityListComponent<MissionElement> {

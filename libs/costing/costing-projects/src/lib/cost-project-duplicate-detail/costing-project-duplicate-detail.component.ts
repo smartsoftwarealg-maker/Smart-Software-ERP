@@ -1,4 +1,4 @@
-import { Component, HostBinding, inject, OnInit, signal } from '@angular/core';
+import { Component, HostBinding, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { CProject, slideToRight } from '@ss/costing/costing-utils';
@@ -17,6 +17,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./costing-project-duplicate-detail.component.scss'],
     animations: [slideToRight],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterModule, MaterialModule, TranslateDirective],
 })
 export class CostingProjectDuplicateDetailComponent

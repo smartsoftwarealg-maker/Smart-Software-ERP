@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {LoginService, UserRightsService} from '@ss/common/api-common';
 import { MatIconButton } from '@angular/material/button';
 
@@ -7,6 +7,7 @@ import { MatIconButton } from '@angular/material/button';
     templateUrl: './logout.component.html',
     styleUrls: ['./logout.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatIconButton]
 })
 export class LogoutComponent {

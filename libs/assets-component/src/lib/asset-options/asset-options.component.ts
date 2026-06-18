@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { AccJournalsService, AccPoliciesService, ACCPolicy } from '@ss/accounting/accounting-api';
 import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -26,6 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './asset-options.component.html',
     styleUrls: ['./asset-options.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

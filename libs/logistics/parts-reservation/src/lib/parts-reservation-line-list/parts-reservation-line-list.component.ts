@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseTransactionLinesListComponent } from '@ss/logistics/api-transaction';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -39,6 +39,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: [
         '../../../../../common/assets/src/assets/transac-lines-list.scss',
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './parts-reservation-line-list.component.html',
 })
 export class PartsReservationLineListComponent

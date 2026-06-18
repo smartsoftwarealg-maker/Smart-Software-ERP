@@ -109,6 +109,7 @@ export interface Transaction {
     invoiceNumber?: number;
     paymentId?: number;
     driverId?: number;
+    email?: string;
 }
 
 export interface ExtraCost {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     AssetBuilding,
@@ -35,6 +35,7 @@ import { tap } from 'rxjs/operators';
     templateUrl: './asset-q-r-inventory-list.component.html',
     styleUrls: ['./asset-q-r-inventory-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

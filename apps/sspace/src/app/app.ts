@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {CompanySelectorService, HttpService, LanguageService, LoginService, LoginType} from "@ss/common/api-common";
 import {ShellService} from "@ss/common/ui-shell";
@@ -14,6 +14,7 @@ import { MessageComponent } from '@ss/common/ui-error-handler';
     selector: 'app-root',
     templateUrl: './app.html',
     styleUrl: './app.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true
 })
 export class App implements OnInit {

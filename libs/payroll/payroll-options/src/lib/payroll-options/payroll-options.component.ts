@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
@@ -34,6 +34,7 @@ import { PayrollFormulasService } from '@ss/remuneration/payroll-formulas';
         TranslateDirective
     ],
     templateUrl: './payroll-options.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './payroll-options.component.scss'
 })
 export class PayrollOptionsComponent extends BaseEntityDetailComponent<POption> implements OnInit {

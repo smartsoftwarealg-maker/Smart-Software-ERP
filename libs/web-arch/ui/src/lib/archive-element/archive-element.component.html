@@ -2,7 +2,7 @@
     <div (click)="onSelect()" style="padding-bottom: 5px" class="im">
         <img class="thumb-nail" [src]="(imgSrc() ? imgSrc() : defImage) | async">
     </div>
-    <div class="des theme-background-primary"> {{ description }}</div>
+    <div class="des theme-background-primary"> {{ description() }}</div>
     <div class="info theme-background-accent">
         <span class="ls" translate>SIZE</span>
         <div class="sv">: {{ docSize() }}</div>

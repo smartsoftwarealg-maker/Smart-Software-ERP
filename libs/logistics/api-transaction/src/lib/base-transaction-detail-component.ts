@@ -369,16 +369,16 @@ export abstract class BaseTransactionDetailComponent
             license: [b.license],
             licenseDate: [b.licenseDate],
             licenseIssuer: [b.licenseIssuer],
-            plateNumber: [b.plateNumber],
-            plateNumber2: [b.plateNumber2],
-            deliveryTime: [b.deliveryTime],
-            vfGuarantee: [b.vfGuarantee],
-            ftGuarantee: [b.ftGuarantee],
-            advancement: [b.advancement],
-            advancementFT: [b.advancementFT],
-            receptionType: [b.receptionType || 1],
-            isValidated: [b.isValidated],
-            shipMode: [b.shipMode],
+            plateNumber:       [b.plateNumber],
+            plateNumber2:      [b.plateNumber2],
+            deliveryTime:      [b.deliveryTime],
+            vfGuarantee:       [b.vfGuarantee],
+            ftGuarantee:       [b.ftGuarantee],
+            advancement:       [b.advancement],
+            advancementFT:     [b.advancementFT],
+            receptionType:     [(b.receptionType || 1)+''],
+            isValidated:       [b.isValidated],
+            shipMode:          [b.shipMode],
             advancementAmount: [b.advancementAmount],
         });
     }
@@ -477,6 +477,12 @@ export abstract class BaseTransactionDetailComponent
 
     onTabChange(idx: number) {
         this.selectedTabIndex.set(idx);
+    }
+
+    readForm():Transaction{
+        const value = super.readForm();
+        value.receptionType = +value.receptionType;
+        return value;
     }
 }
 

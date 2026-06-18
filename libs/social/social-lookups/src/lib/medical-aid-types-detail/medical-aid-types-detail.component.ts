@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Lookup, LookupsService } from '@ss/common/api-lookup';
@@ -19,6 +19,7 @@ import { MaterialModule } from '@ss/common/api-common';
     standalone: true,
     imports: [TranslateDirective, MaterialModule, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
     templateUrl: './medical-aid-types-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './medical-aid-types-detail.component.scss',
 })
 export class MedicalAidTypesDetailComponent extends BaseEntityDetailComponent<MedicalAid> {

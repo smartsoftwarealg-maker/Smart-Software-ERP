@@ -1,4 +1,4 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, computed, effect, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CategoryDiscount } from '../api/category-discount';
 import { CMMSAssetReadingService } from '@ss/cmms/asset-readings';
@@ -42,6 +42,7 @@ import { MatTooltip } from '@angular/material/tooltip';
         MatTooltip,
     ],
     templateUrl: './category-discounts-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './category-discounts-list.component.scss',
 })
 export class CategoryDiscountsListComponent extends BaseChildEntityListComponent<CategoryDiscount> {

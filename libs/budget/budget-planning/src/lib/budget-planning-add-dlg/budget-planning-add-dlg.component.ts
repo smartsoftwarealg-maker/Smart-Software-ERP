@@ -1,4 +1,4 @@
-import { Component, inject, Inject } from "@angular/core";
+import { Component, inject, Inject, ChangeDetectionStrategy } from "@angular/core";
 import { FormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {BudgetPlanningTree} from '../budget-planning-api';
@@ -16,6 +16,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './budget-planning-add-dlg.component.html',
     styleUrls: ['./budget-planning-add-dlg.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     FormsModule,

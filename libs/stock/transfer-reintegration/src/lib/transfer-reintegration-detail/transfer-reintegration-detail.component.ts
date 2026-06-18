@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {BaseTransactionDetailComponent, DOC_TRANSFER, TransactionLinesService} from "@ss/logistics/api-transaction";
 import {Lookup} from '@ss/common/api-lookup';
 import { LoginService, MaterialModule, User } from '@ss/common/api-common';
@@ -23,6 +23,7 @@ import {TransferReintegrationService} from "../services/transfer-reintegration.s
     templateUrl: './transfer-reintegration-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class TransferReintegrationDetailComponent extends BaseTransactionDetailComponent {

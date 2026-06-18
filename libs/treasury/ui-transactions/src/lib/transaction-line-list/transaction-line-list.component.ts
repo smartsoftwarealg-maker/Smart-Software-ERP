@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, signal} from '@angular/core';
+import {Component, OnDestroy, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {TransactionLineService, TTransactionLine} from '@ss/treasury/api-transactions';
 import {ActivatedRoute, Router} from '@angular/router';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
@@ -22,6 +22,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './transaction-line-list.component.html',
     styleUrls: ['./transaction-line-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatFormField,
         MatLabel,

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,6 +23,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./employee-list.component.scss'],
     templateUrl: './employee-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTabGroup,
         MatTab,
@@ -101,8 +102,8 @@ export class EmployeeListComponent
     protected postInit(): Observable<unknown> {
         return super.postInit().pipe(
             concatMap(() => this.route.data),
-            tap((data) => {
-                this.activePersonnel = !!data['active'];
+            tap((data: {active?: boolean}) => {
+                this.activePersonnel = !!data?.active;
                 this.employeeSrv.setMode(this.activePersonnel);
                 this.shellSrv.setTitle(
                     this.activePersonnel

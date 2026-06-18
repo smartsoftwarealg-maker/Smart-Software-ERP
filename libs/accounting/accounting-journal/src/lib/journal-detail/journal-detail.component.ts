@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -32,6 +32,7 @@ import { MatMiniFabButton } from '@angular/material/button';
     templateUrl: './journal-detail.component.html',
     styleUrls: ['./journal-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatListSubheaderCssMatStyler, MatMiniFabButton, MatSelectionList, MatListOption]
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {

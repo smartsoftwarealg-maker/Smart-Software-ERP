@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, inject, input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -27,6 +27,7 @@ import { HttpEventType } from '@angular/common/http';
 ],
     templateUrl: './agent-merge.component.html',
     styleUrl: './agent-merge.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class AgentMergeComponent implements OnInit {

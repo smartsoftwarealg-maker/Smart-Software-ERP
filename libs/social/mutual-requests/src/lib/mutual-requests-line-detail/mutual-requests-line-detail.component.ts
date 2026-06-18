@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import {
     BaseChildEntityDetailComponent,
@@ -36,6 +36,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './mutual-requests-line-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './mutual-requests-line-detail.component.scss'
 })
 export class MutualRequestsLineDetailComponent extends BaseChildEntityDetailComponent<MutualRequestLine> {

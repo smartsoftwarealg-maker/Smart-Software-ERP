@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {HttpService, LanguageService, LoginService} from '@ss/common/api-common';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {langAssets} from '../environments/environment';
@@ -11,6 +11,7 @@ import { MessageComponent } from '@ss/common/ui-error-handler';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         RouterOutlet,
         MessageComponent,

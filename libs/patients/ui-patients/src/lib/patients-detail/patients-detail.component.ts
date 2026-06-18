@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {catchError, switchMap, tap} from 'rxjs/operators';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
@@ -36,6 +36,7 @@ import { MatOption } from '@angular/material/core';
     templateUrl: './patients-detail.component.html',
     styleUrls: ['./patients-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, TranslateDirective, MatFormField, MatLabel, MatInput, MatError, DatePickerComponent, MatRadioGroup, MatRadioButton, Dir, MatSelect, MatOption]
 })
 export class PatientsDetailComponent extends  BaseEntityDetailComponent<Patient> {

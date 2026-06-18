@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, OnInit, WritableSignal, signal } from '@angular/core';
+import { Component, effect, inject, input, OnInit, WritableSignal, signal, ChangeDetectionStrategy } from '@angular/core';
 import { UnidentifiedInventory } from '../assets-api';
 import { RouterModule } from '@angular/router';
 
@@ -23,6 +23,7 @@ import {debounceTime, distinctUntilChanged} from "rxjs/operators";
     templateUrl: './asset-unidentified-child-inventory-list.component.html',
     styleUrls: ['./asset-unidentified-child-inventory-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

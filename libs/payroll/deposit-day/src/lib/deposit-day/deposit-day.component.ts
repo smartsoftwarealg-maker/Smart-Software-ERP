@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { DepositDate } from './deposit-date';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -27,6 +27,7 @@ import { Observable } from 'rxjs';
         TranslateDirective,
     ],
     templateUrl: './deposit-day.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './deposit-day.component.scss',
 })
 export class DepositDayComponent extends BaseEntityDetailComponent<DepositDate> {

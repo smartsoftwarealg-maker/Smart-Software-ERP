@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Transaction } from '@ss/logistics/api-transaction';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -30,6 +30,7 @@ import { ProductionReservationService } from '../api/production-reservation.serv
     templateUrl: './production-reservation-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatSort,

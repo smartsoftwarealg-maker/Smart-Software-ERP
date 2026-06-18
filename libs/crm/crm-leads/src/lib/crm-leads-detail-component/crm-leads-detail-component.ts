@@ -5,7 +5,8 @@ import {
   Input,
   OnInit,
   signal,
-  input
+  input,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CRMLeadsService } from '../crm-lead.service';
@@ -61,6 +62,7 @@ enum Panels {
     templateUrl: './crm-leads-detail-component.html',
     styleUrl: './crm-leads-detail-component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [
         {
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, ChangeDetectionStrategy } from "@angular/core";
 import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { DocStatus, UserMessage } from "../workflow-api";
 import { DocStatusService } from "../doc-status.service";
@@ -24,6 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: '../user-message-detail/user-message-detail.component.html',
     styleUrls: ['../user-message-detail/user-message-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

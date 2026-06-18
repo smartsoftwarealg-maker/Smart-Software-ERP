@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, ChangeDetectionStrategy} from '@angular/core';
 
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Vehicle} from '../vehicle-api';
@@ -55,6 +55,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
         TranslateDirective
     ],
     templateUrl: './vehicle-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./vehicle-detail.component.css']
 })
 export class VehicleDetailComponent extends BaseEntityDetailComponent<Vehicle> {

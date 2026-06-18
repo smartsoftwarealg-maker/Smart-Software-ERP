@@ -1,4 +1,4 @@
-import { Component, computed, DestroyRef, inject, Inject, OnInit, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, Inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -18,6 +18,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
     templateUrl: './transaction-matching.component.html',
     styleUrls: ['./transaction-matching.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

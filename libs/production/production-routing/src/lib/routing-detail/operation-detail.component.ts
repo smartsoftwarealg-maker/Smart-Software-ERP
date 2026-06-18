@@ -1,4 +1,4 @@
-import { Component, input, computed, inject } from '@angular/core';
+import { Component, input, computed, inject, ChangeDetectionStrategy, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 
@@ -25,6 +25,7 @@ import {RoutingOperation} from "../production-routing-services/production-routin
         MatTableModule, MatButtonModule, MatTooltipModule
     ],
     templateUrl: './operation-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./operation-detail.component.scss']
 })
 export class OperationDetailComponent {
@@ -33,7 +34,7 @@ export class OperationDetailComponent {
 
     operationId = input.required<number>();
     operations = input.required<RoutingOperation[]>();
-    activeTab = input('general');
+    activeTab = signal<{id: string}>({ id: 'general'});
 
     tabs = [
         { id: 'general', label: 'General', icon: 'fa-solid fa-sliders' },

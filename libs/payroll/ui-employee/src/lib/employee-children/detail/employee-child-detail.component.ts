@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Child, EmployeeChildrenService } from '@ss/payroll/api-employee';
@@ -12,12 +12,14 @@ import { MatRadioGroup, MatRadioButton } from '@angular/material/radio';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { MaterialModule } from '@ss/common/api-common';
 import { ActivePersonnelService } from '../../active-personnel.service';
+import {Observable, tap} from "rxjs";
 
 @Component({
     selector: 'ss-emp-child-detail',
     templateUrl: './employee-child-detail.component.html',
     styleUrls: ['./employee-child-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatRadioGroup, MatRadioButton, DatePickerComponent]
 })
 export class EmployeeChildDetailComponent extends BaseChildEntityDetailComponent<Child> {
@@ -28,10 +30,11 @@ export class EmployeeChildDetailComponent extends BaseChildEntityDetailComponent
         super(employeeChildrenSrv, 'Child');
     }
 
-    override ngOnInit() {
-        super.ngOnInit();
-        this.isEditable.set(this.activePersonnelSrv.val);
+    protected load():Observable<Child>{
+        return  super.load()
+            .pipe(tap(() => this.isEditable.set(this.activePersonnelSrv.val)));
     }
+
     override setupForm(a: Child): UntypedFormGroup {
         // this.entity = a;
         return this.form = this.formBuilder.group({

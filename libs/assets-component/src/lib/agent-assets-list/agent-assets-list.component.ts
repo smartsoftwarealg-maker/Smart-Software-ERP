@@ -1,4 +1,4 @@
-import {Component, OnInit, WritableSignal, signal} from '@angular/core';
+import {Component, OnInit, WritableSignal, signal, ChangeDetectionStrategy} from '@angular/core';
 import {Asset} from '../assets-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -13,6 +13,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './agent-assets-list.component.html',
     styleUrls: ['./agent-assets-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

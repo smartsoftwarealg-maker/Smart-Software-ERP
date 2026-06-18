@@ -1,4 +1,4 @@
-import { Component, inject, output, signal } from '@angular/core';
+import { Component, inject, output, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CompanySelectorService, MaterialModule } from '@ss/common/api-common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslatePipe } from '@ss/common/ui-lang';
@@ -8,6 +8,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './backend-select.component.html',
     styleUrl: './backend-select.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, ReactiveFormsModule, TranslatePipe]
 })
 export class BackendSelectComponent {

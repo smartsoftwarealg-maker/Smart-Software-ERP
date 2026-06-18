@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal,} from '@angular/core';
+import {Component, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Circulation, CirculationService} from '@ss/logistics/api-circulation';
@@ -16,6 +16,7 @@ import {OptionService} from '@ss/logistics/ui-options';
     styleUrls: ['./circulation.component.scss'],
     templateUrl: './circulation.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Furniture} from '../furniture-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -30,6 +30,7 @@ import { AppArchiveMainComponent } from '@ss/common/app-archive';
     templateUrl: './furniture-detail.component.html',
     styleUrls: ['./furniture-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     FormsModule,

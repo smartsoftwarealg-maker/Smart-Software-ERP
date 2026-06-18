@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -57,6 +57,7 @@ import { HrCriterionService } from '../hr-criterion.service';
     UiAutoCompleteComponent
 ],
     templateUrl: './hr-criteria-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './hr-criteria-list.component.scss',
 })
 export class HrCriteriaListComponent extends BaseEntityListComponent<HrCriterion> {

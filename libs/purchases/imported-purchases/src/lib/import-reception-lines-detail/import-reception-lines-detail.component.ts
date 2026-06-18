@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent,
     DOC_RECEPTION,
@@ -14,6 +14,7 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import {Article} from '@ss/master-data/api-article';
+import {MatTooltip, MatTooltipModule} from "@angular/material/tooltip";
 
 @Component({
     selector: 'ss-import-reception-lines-detail',
@@ -21,6 +22,7 @@ import {Article} from '@ss/master-data/api-article';
     styleUrls: ['./import-reception-lines-detail.component.scss',
         '../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatCard,
@@ -34,7 +36,8 @@ import {Article} from '@ss/master-data/api-article';
         UiAutoCompleteComponent,
         MatError,
         CdkTextareaAutosize,
-        TranslatePipe
+        TranslatePipe,
+        MatTooltipModule
     ]
 })
 export class ImportReceptionLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
@@ -44,7 +47,7 @@ export class ImportReceptionLinesDetailComponent extends BaseTransactionLinesDet
 
     override onArticle(a: Article) {
         super.onArticle(a);
-        this.form.controls['vat'].setValue(0);
-        this.form.controls['charge3'].setValue(a?.importTax || 0);
+        this.form?.controls['vat'].setValue(0);
+        this.form?.controls['charge3'].setValue(a?.importTax || 0);
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {ProjectArticle} from '../contract-api.class';
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import {map, of, switchMap} from 'rxjs';
@@ -21,6 +21,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './contract-article-list.component.html',
     styleUrls: ['./contract-article-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

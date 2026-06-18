@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, QueryList, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, QueryList, signal, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ValidatedSale } from '@ss/scheduled-sales/api-scheduled-sales';
@@ -53,6 +53,7 @@ import { debounceTime, distinctUntilChanged, Observable, tap } from 'rxjs';
         MatInput],
     templateUrl: './invoice-validation.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './invoice-validation.component.scss'
 })
 export class InvoiceValidationComponent extends BaseEntityListComponent<ValidatedSale> {

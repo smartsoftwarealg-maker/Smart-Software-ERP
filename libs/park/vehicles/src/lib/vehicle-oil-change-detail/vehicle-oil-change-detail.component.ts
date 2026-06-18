@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
@@ -32,6 +32,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './vehicle-oil-change-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./vehicle-oil-change-detail.component.css'],
 })
 export class VehicleOilChangeDetailComponent extends BaseChildEntityDetailComponent<OilChange> {

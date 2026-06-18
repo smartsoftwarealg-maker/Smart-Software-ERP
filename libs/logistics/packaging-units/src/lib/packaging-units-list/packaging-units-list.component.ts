@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     MatCell,
     MatCellDef,
@@ -37,6 +37,7 @@ import {PackagingUnitsService} from "../packaging-units.service";
         TranslateDirective
     ],
     templateUrl: './packaging-units-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './packaging-units-list.component.scss',
 })
 export class PackagingUnitsListComponent extends BaseEntityListComponent<PackagingUnit> {

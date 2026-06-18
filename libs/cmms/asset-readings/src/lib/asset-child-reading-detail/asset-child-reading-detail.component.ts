@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseChildEntityDetailComponent
 } from '@ss/common/ui-base-entity';
@@ -24,6 +24,7 @@ import { of, switchMap, tap } from 'rxjs';
     templateUrl: './asset-child-reading-detail.component.html',
     styleUrls: ['./asset-child-reading-detail.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatSortModule,
     MatTableModule,

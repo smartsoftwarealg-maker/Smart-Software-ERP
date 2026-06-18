@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, signal} from '@angular/core';
+import {Component, Input, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {Blocking} from '../assets-api';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -25,6 +25,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
   templateUrl: './asset-blocking-list.component.html',
   styleUrls: ['../asset-revaluation-list/asset-revaluation-list.component.scss'],
   standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

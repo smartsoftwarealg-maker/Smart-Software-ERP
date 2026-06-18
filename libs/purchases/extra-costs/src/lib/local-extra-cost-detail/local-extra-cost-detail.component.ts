@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ExtraCostService } from '@ss/purchases/extra-costs';
 import { FormBuilder, FormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExtraCost } from '@ss/logistics/api-transaction';
@@ -18,6 +18,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './local-extra-cost-detail.component.html',
     styleUrls: ['./local-extra-cost-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatCard,

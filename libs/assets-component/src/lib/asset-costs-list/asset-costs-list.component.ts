@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, WritableSignal, signal } from '@angular/core';
+import { Component, Input, OnInit, WritableSignal, signal, ChangeDetectionStrategy } from '@angular/core';
 import {SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
@@ -24,6 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './asset-costs-list.component.html',
     styleUrls: ['./asset-costs-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

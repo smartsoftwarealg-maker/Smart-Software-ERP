@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent,
     DOC_CONSUMPTION_CANCELLATION
@@ -20,6 +20,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './consumption-cancellation-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatMiniFabButton,
     MatCard,

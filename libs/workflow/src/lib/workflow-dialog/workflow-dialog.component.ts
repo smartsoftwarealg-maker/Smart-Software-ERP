@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {UserMessageService} from '../user-message.service';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
@@ -24,6 +24,7 @@ type MBData = {
     templateUrl: './workflow-dialog.component.html',
     styleUrls: ['./workflow-dialog.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

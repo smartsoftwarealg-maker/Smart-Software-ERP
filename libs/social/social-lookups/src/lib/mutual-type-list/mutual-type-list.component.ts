@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -28,6 +28,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './mutual-type-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './mutual-type-list.component.scss',
 })
 export class MutualTypeListComponent extends BaseEntityListComponent<SocialActivity> {

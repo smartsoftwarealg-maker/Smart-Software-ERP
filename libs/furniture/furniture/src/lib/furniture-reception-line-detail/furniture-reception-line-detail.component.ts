@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {of} from 'rxjs';
 import {BudgetService} from '@ss/budget/budget';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -28,6 +28,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './furniture-reception-line-detail.component.html',
     styleUrls: ['./furniture-reception-line-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     MatCardHeader,

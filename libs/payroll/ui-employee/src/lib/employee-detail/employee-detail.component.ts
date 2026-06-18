@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {EmployeeService} from '@ss/employee-services/employee-services';
 import {
     AbstractControl,
@@ -90,6 +90,7 @@ import { ActivePersonnelService } from '../active-personnel.service';
     styleUrls: ['./employee-detail.component.scss'],
     templateUrl: './employee-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         FormsModule,
         ReactiveFormsModule,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import {
@@ -37,6 +37,7 @@ import { ExcDocInfoComponent } from '@ss/exchange/ui-info';
     styleUrls: ['./cash-commission-detail.component.scss'],
     templateUrl: './cash-commission-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

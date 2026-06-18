@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, signal} from '@angular/core';
+import {Component, OnDestroy, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AttribTempl} from '../attributes';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -24,6 +24,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './attributes-list.component.html',
     styleUrls: ['./attributes-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, MatOption, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, TranslatePipe]
 })
 export class AttributesListComponent extends BaseEntityListComponent<AttribTempl> implements OnInit, OnDestroy {

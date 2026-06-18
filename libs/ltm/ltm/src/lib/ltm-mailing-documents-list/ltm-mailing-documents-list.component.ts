@@ -1,4 +1,4 @@
-import { Component, signal } from "@angular/core";
+import { Component, signal, ChangeDetectionStrategy } from "@angular/core";
 import { MaterialModule } from "@ss/common/api-common";
 import { LTMMailingDocument } from '@ltm/ltm-api';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -13,6 +13,7 @@ import { LtmMailingDocumentService } from '@ltm/ltm-api';
     templateUrl: './ltm-mailing-documents-list.component.html',
     styleUrls: ['./ltm-mailing-documents-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

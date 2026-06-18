@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
@@ -28,6 +28,7 @@ import { Editor, NgxEditorModule, toDoc, toHTML, Toolbar } from 'ngx-editor';
     templateUrl: './crm-email-templates-detail-component.html',
     styleUrl: './crm-email-templates-detail-component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [
         {
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
