@@ -1,4 +1,4 @@
-import { Component, DestroyRef, effect, inject, input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, DestroyRef, effect, inject, input, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { BomService } from '../bom.service';
@@ -26,6 +26,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         TranslatePipe
     ],
     templateUrl: './bom-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './bom-list.component.css',
 })
 export class BomListComponent implements OnDestroy, OnInit {

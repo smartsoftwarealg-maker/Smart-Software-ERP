@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal} from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from "@angular/core";
 import {Match, ProcessedCheckService} from '@ss/treasury/api-checks';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -21,6 +21,7 @@ import { DecimalPipe, DatePipe } from "@angular/common";
     templateUrl: './check-matching-list.component.html',
     styleUrls: ['./check-matching-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatFormField,
         MatLabel,

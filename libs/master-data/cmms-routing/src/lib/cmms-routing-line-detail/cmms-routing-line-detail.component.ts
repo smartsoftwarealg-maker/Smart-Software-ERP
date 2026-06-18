@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
 import { RoutingDetail } from '@ss/cmms/cmms-api';
@@ -18,6 +18,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './cmms-routing-line-detail.component.html',
     styleUrls: ['./cmms-routing-line-detail.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatSortModule,
     MatTableModule,

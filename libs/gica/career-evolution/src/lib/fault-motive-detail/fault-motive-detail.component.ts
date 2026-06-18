@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Motive } from '../gica-careers-api';
@@ -27,6 +27,7 @@ import { MatInput } from '@angular/material/input';
     standalone: true,
     imports: [MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
     templateUrl: './fault-motive-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './fault-motive-detail.component.css'
 })
 export class FaultMotiveDetailComponent extends BaseEntityDetailComponent<Motive> {

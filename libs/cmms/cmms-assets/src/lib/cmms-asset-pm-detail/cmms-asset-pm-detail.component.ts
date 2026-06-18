@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Asset } from '../services/asset-api';
@@ -42,6 +42,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [FormsModule, MatButtonModule, MatExpansionModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatTableModule, MatTooltipModule, ReactiveFormsModule, RouterOutlet, MaterialModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './cmms-asset-pm-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./cmms-asset-pm-detail.component.scss'],
 })
 export class CmmsAssetPmDetailComponent extends BaseEntityDetailComponent<Asset> implements OnInit {

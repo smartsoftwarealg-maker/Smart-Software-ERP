@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CMMSWorkDetail, INSPECTION, IS_NOT_INSPECTION, Work, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,6 +25,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './service-request-detail.component.html',
     styleUrls: ['./service-request-detail.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     MatCard,

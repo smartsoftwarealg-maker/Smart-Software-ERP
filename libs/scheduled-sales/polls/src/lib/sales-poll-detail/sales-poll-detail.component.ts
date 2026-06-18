@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -58,6 +58,7 @@ import { SalesPoll } from '@ss/scheduled-sales/api-scheduled-sales';
     DatePickerComponent
 ],
     templateUrl: './sales-poll-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './sales-poll-detail.component.css',
 })
 export class SalesPollDetailComponent extends BaseEntityDetailComponent<SalesPoll> {

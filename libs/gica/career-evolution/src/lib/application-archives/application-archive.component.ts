@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
@@ -52,6 +52,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         PaginationComponent
     ],
     templateUrl: './application-archive.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './application-archive.component.css'
 })
 export class ApplicationArchiveComponent implements OnInit {

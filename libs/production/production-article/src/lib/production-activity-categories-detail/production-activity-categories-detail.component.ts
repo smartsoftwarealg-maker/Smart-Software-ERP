@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {
     ActivityCategory,
@@ -20,6 +20,7 @@ import {TranslateDirective, TranslatePipe} from "@ss/common/ui-lang";
     templateUrl: './production-activity-categories-detail.component.html',
     styleUrls: ['./production-activity-categories-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterModule, MatFormField, MatCardContent, MatCard, MaterialModule, TranslatePipe, TranslateDirective]
 })
 export class ActivityCategoriesDetailComponent

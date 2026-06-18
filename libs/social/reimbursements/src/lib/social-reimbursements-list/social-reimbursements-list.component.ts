@@ -1,4 +1,4 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component, effect, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { Reimbursement, ReimbursementService } from '@social/social-api';
@@ -21,6 +21,7 @@ import { MatSort, MatSortHeader } from '@angular/material/sort';
     standalone: true,
     imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, MatMiniFabButton, MatTooltip, TranslatePipe, MatSort, MatSortHeader],
     templateUrl: './social-reimbursements-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './social-reimbursements-list.component.scss',
 })
 export class SocialReimbursementsListComponent extends BaseChildEntityListComponent<Reimbursement> {

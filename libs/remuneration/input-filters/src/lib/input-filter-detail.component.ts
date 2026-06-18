@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {InputFilter} from './input-filter-api';
 import {ElementsInfo, ElementsInfoService} from '@ss/remuneration/elementsinfo';
@@ -24,6 +24,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './input-filter-detail.component.html',
     styleUrls: ['./input-filter-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatToolbar, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, MatMiniFabButton, TranslatePipe]
 })
 export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputFilter> {

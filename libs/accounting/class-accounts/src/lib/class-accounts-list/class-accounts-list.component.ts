@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Class, ClassService } from '@ss/common/api-lookup';
@@ -38,6 +38,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
 ],
     templateUrl: './class-accounts-list.component.html',
     styleUrl: './class-accounts-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class ClassAccountsListComponent extends BaseEntityListComponent<Class> {

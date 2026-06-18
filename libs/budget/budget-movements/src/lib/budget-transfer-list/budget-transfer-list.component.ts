@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {BudgetCommitment, BudgetTransfer} from '../budget-movement-api';
 import {PaginationModel, PaginatorPersistenceService} from '@ss/common/api-common';
@@ -21,6 +21,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './budget-transfer-list.component.html',
     styleUrls: ['./budget-transfer-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatList,
     MatListItem,

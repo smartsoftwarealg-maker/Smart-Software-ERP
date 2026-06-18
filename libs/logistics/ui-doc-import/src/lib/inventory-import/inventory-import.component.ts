@@ -1,4 +1,4 @@
-import { Component, inject, Inject, signal, input } from '@angular/core';
+import { Component, inject, Inject, signal, input, ChangeDetectionStrategy } from '@angular/core';
 import { finalize, Subscription } from 'rxjs';
 import {
     UntypedFormBuilder,
@@ -30,6 +30,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     templateUrl: './inventory-import.component.html',
     styleUrls: ['./inventory-import.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         TranslateDirective,
         MatMiniFabButton,
@@ -140,7 +141,7 @@ export class InventoryImportComponent {
         this.form.controls['id'].setValue(data.transactId);
     }
 
-    onFileSelected(files: unknown) {
+    onFileSelected(files: FileList) {
         const file: File = files[0];
         if (file) {
             this.fileName = file.name;
@@ -187,7 +188,7 @@ export class InventoryImportComponent {
         this.dialogRef.close();
     }
 
-    onChange(e: unknown) {
+    onChange(e: FileList) {
         this.fileName = e[0]?.name;
     }
 

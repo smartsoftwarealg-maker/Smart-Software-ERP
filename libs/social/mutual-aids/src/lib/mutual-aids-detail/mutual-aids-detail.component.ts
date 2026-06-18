@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {
@@ -29,6 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [TranslateDirective, MaterialModule, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatLabel, ReactiveFormsModule, MatInput, UiAutoCompleteComponent],
     templateUrl: './mutual-aids-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './mutual-aids-detail.component.scss'
 })
 export class MutualAidsDetailComponent extends BaseEntityDetailComponent<SocialAid> {

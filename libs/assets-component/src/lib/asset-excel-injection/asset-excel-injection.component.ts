@@ -1,4 +1,4 @@
-import {Component, inject, input, OnInit} from "@angular/core";
+import {Component, inject, input, OnInit, ChangeDetectionStrategy} from "@angular/core";
 import {finalize, Subscription} from 'rxjs';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -13,6 +13,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './asset-excel-injection.component.html',
     styleUrls: ['./asset-excel-injection.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

@@ -1,12 +1,13 @@
 import {
-    Component,
-    inject,
-    input,
-    OnInit,
-    OnDestroy,
-    ViewChild,
-    ElementRef,
-    effect,
+  Component,
+  inject,
+  input,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ElementRef,
+  effect,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { LanguageService } from '@ss/common/api-common';
@@ -18,6 +19,7 @@ import { SATISFACTION, YES_NO, COLORS } from '../common';
     standalone: true,
     imports: [],
     templateUrl: './line-chart.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './line-chart.component.scss',
 })
 export class LineChartComponent implements OnInit, OnDestroy {

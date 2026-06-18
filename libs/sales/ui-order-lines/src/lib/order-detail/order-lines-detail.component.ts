@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent,
     DOC_SALES_ORDER,
@@ -19,6 +19,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         '../../../../../common/assets/src/assets/transac-lines-detail.scss',
     ],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

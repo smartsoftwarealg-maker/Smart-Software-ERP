@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_PRICE_INQUIRY, DOC_PURCHASE_ORDER
 } from '@ss/logistics/api-transaction';
@@ -18,6 +18,7 @@ import { PriceRequestLinesService } from '../services/price-request-lines.servic
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './price-request-lines-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatMiniFabButton,
     MatCard,

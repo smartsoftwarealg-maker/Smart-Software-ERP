@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {BudgetTransferDetail} from '../budget-movement-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -28,6 +28,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './budget-transfer-line-detail.component.html',
     styleUrls: ['./budget-transfer-line-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     MatCardHeader,

@@ -15,7 +15,7 @@ import {
     UiAutoCompleteComponent,
 } from '@ss/common/ui-auto-complete';
 import {LoginService, MaterialModule} from '@ss/common/api-common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 
@@ -29,6 +29,7 @@ import {ZoneService} from '@ss/hr-missions';
     templateUrl: './mission-expenses-detail.component.html',
     styleUrls: ['./mission-expenses-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     ReactiveFormsModule,

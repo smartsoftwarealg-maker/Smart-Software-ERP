@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Lookup } from '@ss/common/api-lookup';
@@ -20,6 +20,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './app-archive-viewer.component.html',
     styleUrls: ['./app-archive-viewer.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         RouterModule,
         MaterialModule,

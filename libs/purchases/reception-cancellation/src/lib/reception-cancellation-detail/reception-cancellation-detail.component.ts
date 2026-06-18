@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BaseTransactionDetailComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {Lookup} from '@ss/common/api-lookup';
@@ -23,6 +23,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './reception-cancellation-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class ReceptionCancellationDetailComponent extends BaseTransactionDetailComponent implements OnInit {

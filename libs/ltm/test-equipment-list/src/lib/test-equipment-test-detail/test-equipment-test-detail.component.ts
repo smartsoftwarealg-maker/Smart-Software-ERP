@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { LtmEquipmentTestService } from '../services/ltm-equipment-test.service';
@@ -30,6 +30,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         UiAutoCompleteComponent
     ],
     templateUrl: './test-equipment-test-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './test-equipment-test-detail.component.scss'
 })
 export class TestEquipmentTestDetailComponent extends BaseChildEntityDetailComponent<LTMTestEquipmentTest> {

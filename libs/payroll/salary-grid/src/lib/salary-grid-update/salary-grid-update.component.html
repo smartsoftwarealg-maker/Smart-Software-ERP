@@ -33,7 +33,7 @@
           </button>
         </div>
       } @else {
-        @if (processing) {
+        @if (processing()) {
           <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         }
       }

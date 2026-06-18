@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { EDOHeader } from '@social/social-api';
@@ -34,6 +34,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-edo-header-detail',
     standalone: true,
     styleUrl: './social-edo-header-detail.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './social-edo-header-detail.component.html'
 })
 export class SocialEdoHeaderDetailComponent extends BaseEntityDetailComponent<EDOHeader> {

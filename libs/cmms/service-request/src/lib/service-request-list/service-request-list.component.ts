@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Work, WORK_TYPES } from '@ss/cmms/cmms-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -22,6 +22,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './service-request-list.component.html',
     styleUrls: ['./service-request-list.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatTable,

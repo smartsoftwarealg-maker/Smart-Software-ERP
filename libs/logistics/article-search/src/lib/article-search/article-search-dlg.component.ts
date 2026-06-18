@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit, DestroyRef } from '@angular/core';
+import { Component, inject, signal, OnInit, DestroyRef, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { Location, LocationService } from '@ss/master-data/api-article';
@@ -18,6 +18,7 @@ import { tap } from 'rxjs/operators';
     selector: 'ss-article-search',
     imports: [CommonModule, MaterialModule, TranslateDirective, PaginationComponent, TranslatePipe, UiAutoCompleteComponent],
     templateUrl: './article-search-dlg.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './article-search-dlg.component.scss',
 })
 export class ArticleSearchDlg implements OnInit {

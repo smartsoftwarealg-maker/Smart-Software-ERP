@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -16,6 +16,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './furniture-receiver-list.component.html',
     styleUrls: ['./furniture-receiver-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatColumnDef,

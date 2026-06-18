@@ -1,4 +1,4 @@
-import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -48,6 +48,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
     templateUrl: './sales-discount.component.html',
     styleUrls: ['./sales-discount.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatSort,

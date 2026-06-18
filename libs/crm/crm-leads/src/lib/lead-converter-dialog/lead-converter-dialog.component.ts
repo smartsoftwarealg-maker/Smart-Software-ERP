@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MaterialModule } from '@ss/common/api-common';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -25,6 +25,7 @@ import { CRMLeadsService } from '@ss/crm/leads';
         UiAutoCompleteComponent,
     ],
     templateUrl: './lead-converter-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './lead-converter-dialog.component.scss',
 })
 export class LeadConverterDialogComponent {

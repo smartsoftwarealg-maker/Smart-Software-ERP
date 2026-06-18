@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionDetailComponent,
     DOC_RESERVATION,
@@ -30,6 +30,7 @@ import { ProductionReservationService } from '../api/production-reservation.serv
     templateUrl: './production-reservation-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

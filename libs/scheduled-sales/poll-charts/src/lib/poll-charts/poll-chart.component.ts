@@ -1,10 +1,11 @@
 import {
-    Component,
-    inject,
-    OnInit,
-    ViewChild,
-    ElementRef,
-    OnDestroy,
+  Component,
+  inject,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  OnDestroy,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -25,6 +26,7 @@ import { SATISFACTION, YES_NO, COLORS } from '../common';
     standalone: true,
     imports: [MatCard, PieChartComponent],
     templateUrl: './poll-chart.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './poll-chart.component.scss',
 })
 export class PollChartComponent implements OnInit, OnDestroy {

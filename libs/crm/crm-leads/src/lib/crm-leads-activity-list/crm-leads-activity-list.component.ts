@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, input, signal } from '@angular/core';
+import { Component, EventEmitter, Output, input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -25,6 +25,7 @@ import { DatePipe } from '@angular/common';
     templateUrl: 'crm-leads-activity-list.component.html',
     styleUrls: ['crm-leads-activity-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatColumnDef,

@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
+import { Component, effect, inject, OnDestroy, OnInit, signal, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import {
     AccFileService,
@@ -31,6 +31,7 @@ import {MatOption} from "@angular/material/core";
     templateUrl: './transaction-list.component.html',
     styleUrls: ['./transaction-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         RouterModule,

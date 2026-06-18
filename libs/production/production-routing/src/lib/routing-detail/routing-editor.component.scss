@@ -1,0 +1,160 @@
+@use '@angular/material' as mat;
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--mat-sys-surface-container-low, #f8fafc);
+}
+
+.app-header {
+    background: var(--mat-sys-primary-container, #0f172a);
+    color: white;
+    height: 56px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .back-btn { color: white; }
+    .logo { font-weight: 700; font-size: 1.1rem; }
+    .breadcrumb { color: #94a3b8; font-size: 0.9rem; }
+
+    .header-actions { display: flex; gap: 12px; }
+
+    // Ensure FA icons in header buttons are white and aligned
+    ::ng-deep .mat-mdc-button, ::ng-deep .mat-mdc-raised-button {
+        i.fa-solid { margin-right: 6px; }
+    }
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 280px 340px 1fr;
+    height: 100%;
+    overflow: hidden;
+}
+
+.sidebar {
+    background: var(--mat-sys-surface, #ffffff);
+    border-right: 1px solid var(--mat-sys-outline-variant, #e2e8f0);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--mat-sys-outline-variant, #e2e8f0);
+}
+
+.section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--mat-sys-on-surface-variant, #64748b);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--mat-sys-surface-container-low, #f1f5f9);
+    font-size: 0.85rem;
+}
+
+.info-label { color: var(--mat-sys-on-surface-variant, #64748b); }
+.info-value { font-weight: 600; text-align: right; }
+
+.status-badge {
+    padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+    &.status-released { background: #dcfce7; color: #166534; }
+    &.status-draft { background: #fef3c7; color: #92400e; }
+    &.status-obsolete { background: #f1f5f9; color: #475569; }
+}
+
+.summary-box {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 16px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.list-panel {
+    background: var(--mat-sys-surface, #ffffff);
+    border-right: 1px solid var(--mat-sys-outline-variant, #e2e8f0);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .panel-header {
+        padding: 16px;
+        border-bottom: 1px solid var(--mat-sys-outline-variant, #e2e8f0);
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.detail-panel {
+    background: var(--mat-sys-surface-container-low, #f8fafc);
+    overflow-y: auto;
+    padding: 24px;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 300px;
+    color: var(--mat-sys-on-surface-variant, #64748b);
+
+    .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
+}
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+}
+
+// Responsive Breakpoints
+@media (max-width: 1024px) {
+    .main-content { grid-template-columns: 240px 300px 1fr; }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+    }
+    .sidebar { display: none; } // Could be moved to a mat-drawer in a full mobile implementation
+    .list-panel {
+        height: 40vh;
+        border-right: none;
+        border-bottom: 1px solid var(--mat-sys-outline-variant, #e2e8f0);
+    }
+    .detail-panel { padding: 16px; }
+    .header-actions span { display: none; } // Hide button text on mobile, keep icons
+}

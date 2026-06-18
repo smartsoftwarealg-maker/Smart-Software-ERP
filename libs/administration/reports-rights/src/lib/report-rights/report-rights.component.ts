@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -31,6 +31,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     TranslateDirective
 ],
     templateUrl: './report-rights.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./report-rights.component.scss'],
 })
 export class ReportRightsComponent implements OnInit {

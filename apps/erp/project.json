@@ -2,13 +2,13 @@
     "name": "erp",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
+    "sourceRoot": "apps/erp/src",
+    "prefix": "ss",
     "generators": {
         "@nx/angular:component": {
             "style": "scss"
         }
     },
-    "sourceRoot": "apps/erp/src",
-    "prefix": "ss",
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:browser",
@@ -2050,8 +2050,7 @@
             "options": {
                 "jestConfig": "apps/erp/jest.config.ts",
                 "tsConfig": "apps/erp/tsconfig.spec.json",
-                "passWithNoTests": true,
-                "setupFile": "apps/erp/src/test-setup.ts"
+                "passWithNoTests": true
             }
         }
     }

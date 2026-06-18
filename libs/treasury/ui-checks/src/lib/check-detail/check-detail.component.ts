@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CheckService, Check } from '@ss/treasury/api-checks';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,6 +21,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     styleUrls: ['./check-detail.component.scss'],
     templateUrl: './check-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, DatePickerComponent, MatCheckbox]
 })
 export class CheckDetailComponent extends BaseEntityDetailComponent<Check> implements OnInit {

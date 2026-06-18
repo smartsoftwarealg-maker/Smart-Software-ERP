@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     Activity,
     Category,
@@ -22,6 +22,7 @@ import { CategoryDiscountService } from '../api/category-discount.service';
     templateUrl: './discount-category-list.component.html',
     styleUrls: ['./discount-category-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatSort,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CMMSPlan } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -21,6 +21,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './cmms-plan-detail.component.html',
     styleUrls: ['./cmms-plan-detail.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     MatCardContent,

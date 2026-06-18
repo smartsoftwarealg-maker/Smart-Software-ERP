@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -28,6 +28,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         './cmms-alert-list.component.css'
     ],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatFormField,
         MaterialModule,

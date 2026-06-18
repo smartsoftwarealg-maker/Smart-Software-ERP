@@ -1,4 +1,4 @@
-import { Component, DestroyRef, effect, inject, input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, DestroyRef, effect, inject, input, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivityCategory, ActivityCategoryTree } from '@ss/master-data/api-article';
@@ -27,6 +27,7 @@ import { ActivatedRoute, Router } from '@angular/router';
         TranslatePipe,
     ],
     templateUrl: './activity_category_tree.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './activity_category_tree.component.scss',
 })
 export class ActivityCategoryTreeComponent implements OnDestroy, OnInit {

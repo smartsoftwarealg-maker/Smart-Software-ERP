@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -51,6 +51,7 @@ import { switchMap, tap } from 'rxjs/operators';
     TranslatePipe
 ],
     templateUrl: './customer-complaints-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './customer-complaints-detail.component.scss',
 })
 export class CustomerComplaintsDetailComponent extends BaseEntityDetailComponent<CustomerComplaint> {

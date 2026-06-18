@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 
 @Component({
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     standalone: true,
     imports: [],
     templateUrl: './scheduled-sales-header.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './scheduled-sales-header.component.scss',
 })
 export class ScheduledSalesHeaderComponent {}

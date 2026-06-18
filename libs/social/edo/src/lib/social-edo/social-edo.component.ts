@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, input, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 import { MatListOption, MatListSubheaderCssMatStyler, MatSelectionList } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -38,6 +38,7 @@ import { MaterialModule } from '@ss/common/api-common';
     TranslateDirective
 ],
     templateUrl: './social-edo.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './social-edo.component.scss'
 })
 export class SocialEdoComponent implements OnInit {

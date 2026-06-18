@@ -1,4 +1,4 @@
-import { Component, inject, Inject } from "@angular/core";
+import { Component, inject, Inject, ChangeDetectionStrategy } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
@@ -15,6 +15,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './ltm-anomaly-detail.component.html',
     styleUrls: ['./ltm-anomaly-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     ReactiveFormsModule,

@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, signal } from '@angular/core';
+import { Component, inject, input, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { finalize, Subscription } from 'rxjs';
 import { HttpEventType} from '@angular/common/http';
 import { ActivatedRoute, Router} from '@angular/router';
@@ -19,6 +19,7 @@ import { FormControl } from '@angular/forms';
     templateUrl: './sales-excel-injection.component.html',
     styleUrls: ['./sales-excel-injection.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         TranslateDirective,
         MatMiniFabButton,

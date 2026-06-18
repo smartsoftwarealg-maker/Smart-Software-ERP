@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, signal, ChangeDetectionStrategy} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -13,12 +13,14 @@ import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, Ma
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { DecimalPipe, DatePipe } from '@angular/common';
+import {MatSort, MatSortHeader} from "@angular/material/sort";
 
 @Component({
     selector: 'ss-payments-list',
     templateUrl: './payments-list.component.html',
     styleUrls: ['./payments-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatColumnDef,
@@ -34,6 +36,8 @@ import { DecimalPipe, DatePipe } from '@angular/common';
         MatCellDef,
         MatRowDef,
         MatHeaderRowDef,
+        MatSort,
+        MatSortHeader,
     ],
 })
 export class PaymentsListComponent extends BaseEntityListComponent<Payment> {

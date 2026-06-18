@@ -1,0 +1,67 @@
+<h2 mat-dialog-title class="dialog-title">
+    @if (mode === 'edit') {
+        <i class="fa-solid fa-pen-to-square"></i> Edit Routing Information
+    } @else {
+        <i class="fa-solid fa-plus-circle"></i> Create New Routing
+    }
+</h2>
+
+<mat-dialog-content class="dialog-content">
+    <form [formGroup]="form" class="form-grid-2">
+        <mat-form-field appearance="outline" class="dense-field">
+            <mat-label>Routing Number</mat-label>
+            <input matInput formControlName="number">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="dense-field">
+            <mat-label>Revision</mat-label>
+            <input matInput formControlName="revision">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="dense-field">
+            <mat-label>Product *</mat-label>
+            <mat-select formControlName="productId">
+                <mat-option value="WIDGET-A">Steel Bracket (WIDGET-A)</mat-option>
+                <mat-option value="WIDGET-B">Aluminum Housing (WIDGET-B)</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="dense-field">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+                <mat-option value="DRAFT">DRAFT</mat-option>
+                <mat-option value="RELEASED">RELEASED</mat-option>
+                <mat-option value="OBSOLETE">OBSOLETE</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="dense-field">
+            <mat-label>Valid From *</mat-label>
+            <input matInput type="date" formControlName="validFrom">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="dense-field">
+            <mat-label>Valid To</mat-label>
+            <input matInput type="date" formControlName="validTo">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="dense-field full-width">
+            <mat-label>Change Reason / Notes</mat-label>
+            <textarea matInput formControlName="changeReason" rows="3"></textarea>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+    <button mat-stroked-button (click)="dialogRef.close()">
+        <i class="fa-solid fa-xmark"></i> Cancel
+    </button>
+    <button mat-raised-button color="primary" (click)="submit()" [disabled]="form.invalid || isSaving">
+        @if (isSaving) {
+            <mat-spinner diameter="16" style="margin-right: 8px;"></mat-spinner>
+        } @else {
+            <i class="fa-solid fa-floppy-disk"></i>
+        }
+        {{ mode === 'edit' ? 'Save Changes' : 'Create & Open' }}
+    </button>
+</mat-dialog-actions>

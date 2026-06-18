@@ -1,4 +1,4 @@
-import {Component, computed, inject, signal} from '@angular/core';
+import {Component, computed, inject, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ClassService, Subclass, SubclassService} from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -56,6 +56,7 @@ import {AssetClassService} from "@ss/assets-component";
     `,
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class SubclassListComponent extends BaseEntityListComponent<Subclass> {
@@ -105,6 +106,7 @@ export class SubclassListComponent extends BaseEntityListComponent<Subclass> {
     `,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class SubclassDetailComponent extends BaseEntityDetailComponent<Subclass> {

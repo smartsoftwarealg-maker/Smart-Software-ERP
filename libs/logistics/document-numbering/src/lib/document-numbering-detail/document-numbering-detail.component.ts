@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {LDocument} from '../document-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -22,6 +22,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
     templateUrl: './document-numbering-detail.component.html',
     styleUrls: ['./document-numbering-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class DocumentNumberingDetailComponent extends BaseEntityDetailComponent<LDocument> implements OnInit {

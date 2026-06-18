@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, signal } from '@angular/core';
+import { Component, Input, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { DepreciationRate } from '../assets-api';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { SnackBarService } from '@ss/common/ui-shell';
@@ -25,6 +25,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './depreciation-rate-list.component.html',
     styleUrls: ['./depreciation-rate-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

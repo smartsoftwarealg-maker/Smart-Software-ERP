@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RoutingDetail } from '@ss/cmms/cmms-api';
 import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -22,6 +22,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './cmms-routing-line-list.component.html',
     styleUrls: ['./cmms-routing-line-list.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
 

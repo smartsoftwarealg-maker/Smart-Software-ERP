@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { F13 } from '../services/balance-tables.api';
@@ -47,6 +47,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-f13-list',
     standalone: true,
     styleUrl: './f13-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './f13-list.component.html',
 })
 export class F13ListComponent extends BaseEntityListComponent<F13> {

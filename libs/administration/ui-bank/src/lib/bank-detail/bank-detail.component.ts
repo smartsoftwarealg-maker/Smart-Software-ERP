@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
@@ -22,6 +22,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ReactiveFormsModule
 ],
     styleUrls: ['./bank-detail.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './bank-detail.component.html'
 })
 export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {

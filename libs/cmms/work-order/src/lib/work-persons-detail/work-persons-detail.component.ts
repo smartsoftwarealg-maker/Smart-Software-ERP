@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 
 import { MatTableModule } from '@angular/material/table';
@@ -36,6 +36,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './work-persons-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./work-persons-detail.component.css'],
 })
 export class WorkPersonsDetailComponent extends BaseChildEntityDetailComponent<WorkPerson> {

@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Lookup, Wilaya } from '@ss/common/api-lookup';
@@ -22,6 +22,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: '../base-templates/list-template.html',
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable,
         MatSort,
         MatColumnDef,
@@ -62,6 +63,7 @@ export class VehicleTypeListComponent extends BaseEntityListComponent<Lookup> {
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class VehicleTypeDetailComponent extends BaseEntityDetailComponent<Lookup> {

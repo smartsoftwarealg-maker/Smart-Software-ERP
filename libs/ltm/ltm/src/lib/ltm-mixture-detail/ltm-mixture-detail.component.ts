@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { LTMMixture} from '@ltm/ltm-api';
 import { ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -18,6 +18,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './ltm-mixture-detail.component.html',
     styleUrls: ['./ltm-mixture-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     ReactiveFormsModule,

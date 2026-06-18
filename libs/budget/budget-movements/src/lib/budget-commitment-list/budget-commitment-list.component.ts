@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {BudgetCommitment} from '../budget-movement-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -20,6 +20,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './budget-commitment-list.component.html',
     styleUrls: ['./budget-commitment-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatList,
     MatListItem,

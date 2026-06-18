@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {CartService} from '../cart.service';
 import {ImageUploaderUtil} from '@ss/common/api-common';
 import {FormControl} from '@angular/forms';
@@ -17,6 +17,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './shopping-cart.component.html',
     styleUrls: ['./shopping-cart.component.scss', '../main-page/main-page.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     HeaderPageComponent,
     MatCard,

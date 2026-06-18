@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -24,6 +24,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
   templateUrl: './asset-cost-type-list.component.html',
   styleUrls: ['./asset-cost-type-list.component.scss'],
   standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

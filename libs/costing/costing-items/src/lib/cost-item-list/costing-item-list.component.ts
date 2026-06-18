@@ -1,23 +1,15 @@
-import { Component, HostBinding, OnInit, signal } from "@angular/core";
+import { Component, HostBinding, OnInit, signal, ChangeDetectionStrategy } from "@angular/core";
 import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 import { CItem } from '@ss/costing/costing-utils';
-import { slideToRight } from '@ss/costing/costing-utils';
-import { BaseEntityListComponent } from 'libs/common/ui-base-entity/src';
 import { MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { CostingItemService } from "../costing-item.service";
-
-
-
 import { ReactiveFormsModule } from '@angular/forms';
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-
+import { TranslateDirective } from '@ss/common/ui-lang';
+import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
 
 @Component({
   selector: "ss-costing-item-list",
@@ -31,7 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ReactiveFormsModule,
     PaginationComponent
 ],
-  animations: [slideToRight]
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class CostingItemListComponent extends BaseEntityListComponent<CItem> implements OnInit {
   @HostBinding("@routeAnimation") routeAnimation = true;

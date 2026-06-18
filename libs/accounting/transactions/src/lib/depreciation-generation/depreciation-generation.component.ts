@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal} from "@angular/core";
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from "@angular/core";
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {DepreciationGenerationService} from './depreciation-generation.service';
@@ -21,6 +21,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './depreciation-generation.component.html',
     styleUrls: ['./depreciation-generation.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         RouterModule,

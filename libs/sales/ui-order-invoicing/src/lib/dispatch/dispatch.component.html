@@ -10,7 +10,7 @@
                 color="warn"
                 [matTooltip]="'COMMON_CANCEL' | translate"
                 (click)="cancel()"
-                [disabled]="form?.pristine">
+                [disabled]="(form?.pristine)">
             <i class="fas fa-redo"></i>
         </button>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { AssetLocation } from '../assets-api';
 import { BankService } from '@ss/administration/api-bank';
@@ -25,6 +25,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './asset-locations-list.component.html',
     styleUrls: ['./asset-locations-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

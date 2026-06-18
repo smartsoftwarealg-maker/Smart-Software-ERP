@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Transaction } from '@ss/logistics/api-transaction';
@@ -26,6 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     templateUrl: './parts-reservation-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class PartsReservationListComponent  extends BaseEntityListComponent<Transaction> {

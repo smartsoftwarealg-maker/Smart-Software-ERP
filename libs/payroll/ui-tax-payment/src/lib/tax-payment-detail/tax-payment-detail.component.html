@@ -16,7 +16,7 @@
                 <mat-label translate>COMMON_MONTH</mat-label>
                 <mat-select formControlName="month">
                     @for (m of MONTHS; track m.id) {
-                        <mat-option [value]=m.id translate>{{ m.description }}</mat-option>
+                        <mat-option [value]=m.id.toString() translate> {{ m.description }} </mat-option>
                     }
                 </mat-select>
             </mat-form-field>

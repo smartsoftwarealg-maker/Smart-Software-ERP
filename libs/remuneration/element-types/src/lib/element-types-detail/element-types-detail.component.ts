@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ElementsInfoService } from "@ss/remuneration/elementsinfo";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
@@ -19,6 +19,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: "./element-types-detail.component.html",
     styleUrls: ["./element-types-detail.component.scss"],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

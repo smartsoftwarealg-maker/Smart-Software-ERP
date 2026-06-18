@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -21,6 +21,7 @@ import { MailingLineListService } from '../mailing-line-list.service';
     templateUrl: 'mailing-lines-detail.component.html',
     styleUrl: 'mailing-lines-detail.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

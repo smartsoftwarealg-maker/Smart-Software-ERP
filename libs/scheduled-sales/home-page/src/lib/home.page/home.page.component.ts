@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import {
     MatCard,
@@ -20,6 +20,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [RouterOutlet, RouterLink, RouterLinkActive, ScheduledSalesHeaderComponent, TranslatePipe],
     templateUrl: './home.page.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './home.page.component.css',
 })
 export class HomePageComponent implements OnInit {

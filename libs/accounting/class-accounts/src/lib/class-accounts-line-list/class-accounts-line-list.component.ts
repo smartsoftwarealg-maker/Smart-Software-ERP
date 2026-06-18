@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -25,6 +25,7 @@ import { MatTooltip } from '@angular/material/tooltip';
     templateUrl: './class-accounts-line-list.component.html',
     styleUrls: ['./class-accounts-line-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTooltip,
         MatMiniFabButton,

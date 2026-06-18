@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseTransactionDetailComponent } from '@ss/logistics/api-transaction';
 import { CCGroup, Lookup } from '@ss/common/api-lookup';
@@ -40,6 +40,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     TranslateDirective
 ],
     templateUrl: './parts-reservation-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PartsReservationDetailComponent extends BaseTransactionDetailComponent {

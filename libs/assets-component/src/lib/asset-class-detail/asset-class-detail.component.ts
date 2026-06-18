@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { BaseEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { AssetClass } from "../assets-api";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
@@ -26,6 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     RouterModule
 ],
 
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ["./asset-class-detail.component.scss"]
 })
 export class AssetClassDetailComponent extends BaseEntityDetailComponent<AssetClass> {

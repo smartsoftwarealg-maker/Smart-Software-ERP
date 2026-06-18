@@ -1,4 +1,4 @@
-import {Component, OnInit, signal } from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 import { HttpService, LanguageService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -25,6 +25,7 @@ import { tap } from 'rxjs/operators';
     templateUrl: './archive-list.component.html',
     styleUrls: ['./archive-list.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

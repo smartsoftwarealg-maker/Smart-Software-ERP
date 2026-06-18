@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, DestroyRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { AssetInventoryDoc, UnidentifiedInventory } from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -21,6 +21,7 @@ import { Agent, ConsumerService } from '@ss/logistics/api-agent';
     templateUrl: './asset-unidentified-inventory-detail.component.html',
     styleUrls: ['./asset-unidentified-inventory-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

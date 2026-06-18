@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject, signal, ChangeDetectionStrategy} from '@angular/core';
 import {BaseEntityListComponent} from "@ss/common/ui-base-entity";
 import {ShellService, SnackBarService} from "@ss/common/ui-shell";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -21,6 +21,7 @@ import {AdvancementsService} from "../services/advancements.service";
     templateUrl: './advancements-list.component.html',
     styleUrls: ['./advancements-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatColumnDef,

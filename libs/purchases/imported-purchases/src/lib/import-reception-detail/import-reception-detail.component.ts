@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionDetailComponent, Transaction, TransactionLinesService
 } from '@ss/logistics/api-transaction';
@@ -28,6 +28,7 @@ import { Observable } from 'rxjs';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss',
         './import-reception-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class ImportReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {

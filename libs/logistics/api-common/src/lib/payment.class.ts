@@ -41,6 +41,7 @@ export interface Accounting {
 
 export interface Debt {
     id: number;
+    payId: number;
     document: string;
     balance: number;
 }

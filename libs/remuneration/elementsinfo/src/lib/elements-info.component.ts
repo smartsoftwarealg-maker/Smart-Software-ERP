@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ElementsInfo} from './elements-info-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -19,6 +19,7 @@ import { DecimalPipe } from '@angular/common';
     templateUrl: './elements-info.component.html',
     styleUrls: ['./elements-info.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class ElementsInfoComponent extends BaseEntityListComponent<ElementsInfo> {

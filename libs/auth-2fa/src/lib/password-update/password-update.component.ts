@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CENTER_SELECT_URL, LOGIN_URL, LoginService } from '@ss/common/api-common';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { AgentService } from '@ss/logistics/api-agent';
@@ -18,6 +18,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './password-update.component.html',
     styleUrls: ['./password-update.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     FormsModule,
     MatFormFieldModule,

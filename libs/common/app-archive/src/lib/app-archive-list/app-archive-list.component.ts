@@ -1,10 +1,11 @@
 import {
-    Component,
-    effect,
-    inject,
-    input,
-    OnInit,
-    signal,
+  Component,
+  effect,
+  inject,
+  input,
+  OnInit,
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {  ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -26,6 +27,7 @@ import { ActivePersonnelService } from '@ss/payroll/ui-employee';
     templateUrl: './app-archive-list.component.html',
     styleUrls: ['./app-archive-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         RouterModule,
         MaterialModule,

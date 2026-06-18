@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, ViewChild } from '@angular/core';
+import { Component, DestroyRef, inject, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {
     AnnexCode,
@@ -33,6 +33,7 @@ import { callback } from 'chart.js/helpers';
     templateUrl: './cash-flow-list.component.html',
     styleUrls: ['./cash-flow-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         CashFlowAccountListComponent,

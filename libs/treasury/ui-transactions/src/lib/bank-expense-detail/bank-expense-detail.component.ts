@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {TreasuryBankExpenseService, TreasuryTransactionService, TTransaction} from '@ss/treasury/api-transactions';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -24,6 +24,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './bank-expense-detail.component.html',
     styleUrls: ['./../transaction-detail/transaction-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     MatCardContent,

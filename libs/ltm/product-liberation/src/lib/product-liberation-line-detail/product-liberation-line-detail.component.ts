@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -37,6 +37,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './product-liberation-line-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './product-liberation-line-detail.component.scss'
 })
 export class ProductLiberationLineDetailComponent extends BaseChildEntityDetailComponent<LTMProductLiberationLine> {

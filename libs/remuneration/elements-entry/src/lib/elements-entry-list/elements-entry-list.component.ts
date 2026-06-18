@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ELine, MJournal, PaymentElement} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -32,6 +32,7 @@ import { callback } from 'chart.js/helpers';
     templateUrl: './elements-entry-list.component.html',
     styleUrls: ['./elements-entry-list.component.scss', '../common-css.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

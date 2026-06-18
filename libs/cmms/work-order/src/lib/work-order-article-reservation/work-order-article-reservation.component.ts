@@ -1,4 +1,4 @@
-import { Component, inject, Inject } from '@angular/core';
+import { Component, inject, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable, of, switchMap, tap } from 'rxjs';
@@ -37,6 +37,7 @@ import { CMMSWorkOrderArticleService } from '@ss/cmms/work-order';
         MaterialModule
     ],
     templateUrl: './work-order-article-reservation.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './work-order-article-reservation.component.css',
 })
 export class WorkOrderArticleReservationComponent {

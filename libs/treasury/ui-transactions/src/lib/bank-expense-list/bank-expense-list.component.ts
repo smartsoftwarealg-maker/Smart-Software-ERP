@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {Observable} from 'rxjs';
@@ -28,6 +28,7 @@ import { AsyncPipe, DecimalPipe } from '@angular/common';
     templateUrl: './bank-expense-list.component.html',
     styleUrls: ['../transaction-list/transaction-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatDatepickerModule,

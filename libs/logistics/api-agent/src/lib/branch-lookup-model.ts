@@ -8,5 +8,5 @@ export class BranchLookupModel extends DefaultAutoCompleteModel<Agent> {
     }
 
     override toString = (x: Agent) =>
-        x ? x[this.descriptionField] : null;
+        x ? x.denomination : null;
 }

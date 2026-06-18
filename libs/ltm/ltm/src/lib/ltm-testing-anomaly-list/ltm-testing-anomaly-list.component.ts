@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { LTMTestingAnomaly } from '@ltm/ltm-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -21,6 +21,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './ltm-testing-anomaly-list.component.html',
     styleUrls: ['./ltm-testing-anomaly-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

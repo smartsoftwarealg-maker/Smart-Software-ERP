@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     Questioning,
@@ -29,6 +29,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-questioning-list.component.html',
     styleUrls: ['./employee-questioning-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatTooltip,

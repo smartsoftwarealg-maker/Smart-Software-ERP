@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {AgentLookupModel, AgentService} from '@ss/logistics/api-agent';
 import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
@@ -47,6 +47,7 @@ interface PaymentTree {
     templateUrl: './payment-compensation.component.html',
     styleUrls: ['./payment-compensation.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [CommonModule,
         DragDropModule,
         MaterialModule,
@@ -70,7 +71,7 @@ export class PaymentCompensationComponent implements OnInit {
     public pagination = PaginationModel.newInstance();
     debts: Debt[] = [];
     selectedPayment: FlatPaymentNode = null;
-    selectedDebt: Debt = null;
+    selectedDebt: Debt|null = null;
     agentAutoCompleteModel = new AgentLookupModel(this.agentSrv);
     agent = new UntypedFormControl();
     date = new UntypedFormControl(new Date());
@@ -127,13 +128,14 @@ export class PaymentCompensationComponent implements OnInit {
     }
 
     private updatePaymentTree(next: Accounting[], ret: PaymentTree[]) {
+        const empty: PaymentTree[] = [];
         ret.forEach(ent => {
             ent.children = next.filter(r => r.checkInfo === ent.id)
                 .map(e => {
                     return {
                         description: e.description,
                         amount: e.balance,
-                        children: null,
+                        children: empty,
                         id: e.id
                     };
                 });

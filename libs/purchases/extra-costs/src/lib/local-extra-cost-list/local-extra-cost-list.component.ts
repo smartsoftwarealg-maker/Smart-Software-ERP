@@ -1,4 +1,4 @@
-import { Component, signal} from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ExtraCostService } from '@ss/purchases/extra-costs';
 import { ExtraCost } from '@ss/logistics/api-transaction';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
@@ -16,6 +16,7 @@ import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
     templateUrl: './local-extra-cost-list.component.html',
     styleUrls: ['./local-extra-cost-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatTooltip,

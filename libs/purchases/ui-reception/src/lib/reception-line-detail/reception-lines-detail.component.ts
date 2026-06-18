@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_RECEPTION, TransactionLine
 } from '@ss/logistics/api-transaction';
@@ -17,6 +17,7 @@ import { Article } from '@ss/master-data/api-article';
     ],
     templateUrl: './reception-lines-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

@@ -4,7 +4,7 @@ import {
     ReactiveFormsModule,
 } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MissionJourney } from '../journey-api.class';
 import { JourneyLineService } from '../journey.service';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -17,6 +17,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './mission-expenses-line-detail.component.html',
     styleUrls: ['./mission-expenses-line-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     ReactiveFormsModule,

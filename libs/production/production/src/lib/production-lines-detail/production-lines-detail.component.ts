@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BaseTransactionLinesDetailComponent, DOC_PRODUCTION, Transaction, TransactionLine } from '@ss/logistics/api-transaction';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -22,6 +22,7 @@ import { ProductionFormulasService } from '@ss/production/production-formulas';
     styleUrl: 'production-lines-detail.component.scss',
     templateUrl: './production-lines-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatCard,

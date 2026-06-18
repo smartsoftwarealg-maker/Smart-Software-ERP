@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Accident } from '../api-work-stoppage';
@@ -22,6 +22,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MatSortModule, MatTableModule, FormsModule, MaterialModule, PaginationComponent, TranslatePipe, TranslateDirective],
     templateUrl: './work-stoppage-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./work-stoppage-list.component.css']
 })
 export class WorkStoppageListComponent extends BaseEntityListComponent<Accident> implements OnInit {

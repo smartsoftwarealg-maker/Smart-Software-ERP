@@ -1,4 +1,4 @@
-import { Component, computed, effect, signal, Signal } from '@angular/core';
+import { Component, computed, effect, signal, Signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { Compensation, InvoicePayment } from '../services/compensation-api';
@@ -37,6 +37,7 @@ import { CompensationService } from '../services/compensation.service';
         MatTooltip],
     templateUrl: './sales-compensation-list.component.html',
     styleUrl: './sales-compensation-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true
 })
 export class SalesCompensationListComponent extends BaseChildEntityListComponent<Compensation> {

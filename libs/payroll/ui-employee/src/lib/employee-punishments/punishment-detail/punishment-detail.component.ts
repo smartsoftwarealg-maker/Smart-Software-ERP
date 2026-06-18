@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Punishment, PUNISHMENTS_NATURE } from '../punishment-api';
 import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +22,7 @@ import { Lookup } from '@ss/common/api-lookup';
     templateUrl: './punishment-detail.component.html',
     styleUrls: ['./punishment-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent]
 })
 export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Punishment> {
@@ -69,7 +70,7 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
             sanction:       [a.sanction],
             memo:           [a.memo],
             dayCount:       [a.dayCount],
-            nature:         [a.nature],
+            nature:         [a.nature?.toString()],
             from:           [a.from],
             to:             [a.to],
             paymonthY:      [Math.floor(a.paymonth / 100)],
@@ -79,6 +80,7 @@ export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Pu
 
     public override readForm(): Punishment {
         const formVal = this.form.value;
+        formVal.nature = +formVal.nature;
         const val: Punishment = formVal;
         val.paymonth = (+formVal.paymonthY) * 100 + (+formVal.paymonthM);
         delete formVal.paymonthY;

@@ -12,7 +12,7 @@
     <div class="node-name"><span>{{node?.name}}</span></div>
     @if (node?.responsible) {
       <div class="responsible">
-        <ss-image-input class="responsible-img" [imageModel]="node?.imageModel"></ss-image-input>
+        <ss-image-input class="responsible-img" [imageModel]="(node?.imageModel)"></ss-image-input>
         <!--img [src]="node?.image"-->
       <!--div class="type">{{node?.description}}</div-->
       <div class="responsible-name">

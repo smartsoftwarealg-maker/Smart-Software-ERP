@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ProcessedCheck, ProcessedCheckService} from '@ss/treasury/api-checks';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -22,6 +22,7 @@ import { DecimalPipe, DatePipe } from '@angular/common';
     templateUrl: './processed-check-list.component.html',
     styleUrls: ['./processed-check-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatColumnDef,

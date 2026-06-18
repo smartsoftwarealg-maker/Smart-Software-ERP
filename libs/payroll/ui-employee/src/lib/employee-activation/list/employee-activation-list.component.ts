@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { EmployeeActivationService, EmployeeActivation } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -15,6 +15,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './employee-activation-list.component.html',
     styleUrls: ['./employee-activation-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, DatePipe, TranslatePipe]
 })
 export class EmployeeActivationListComponent extends BaseChildEntityListComponent<EmployeeActivation> {

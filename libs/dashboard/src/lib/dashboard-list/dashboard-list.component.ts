@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Dashboard} from '../dashboard';
 import {DashboardService} from '../services/dashboard.service';
@@ -35,6 +35,7 @@ import { AccessRightsService } from '@ss/common/api-access-rights';
     templateUrl: './dashboard-list.component.html',
     styleUrls: ['./dashboard-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

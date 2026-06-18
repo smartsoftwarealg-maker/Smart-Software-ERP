@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { RouterOutlet } from "@angular/router";
 
@@ -7,6 +7,7 @@ import { RouterOutlet } from "@angular/router";
     standalone: true,
     imports: [RouterOutlet],
     templateUrl: './driver-vehicles-main.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./driver-vehicles-main.component.css']
 })
 export class DriverVehiclesMainComponent {}

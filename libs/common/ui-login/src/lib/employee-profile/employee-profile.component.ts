@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { LoginService } from '@ss/common/api-common';
@@ -17,6 +17,7 @@ import { MatButton } from '@angular/material/button';
     templateUrl: './employee-profile.component.html',
     styleUrls: ['./employee-profile.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     FormsModule,

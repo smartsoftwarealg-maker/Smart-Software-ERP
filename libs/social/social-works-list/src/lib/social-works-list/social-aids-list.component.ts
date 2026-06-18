@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { SocialAid, SocialWorksService } from '@social/social-api';
@@ -26,6 +26,7 @@ import { MatSort } from '@angular/material/sort';
     standalone: true,
     imports: [CommonModule, MaterialModule, TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent, MatSort],
     templateUrl: './social-aids-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: '../../../../social-api/src/lib/aids.styles.scss',
 })
 export class SocialAidsListComponent extends BaseEntityListComponent<SocialAid> {

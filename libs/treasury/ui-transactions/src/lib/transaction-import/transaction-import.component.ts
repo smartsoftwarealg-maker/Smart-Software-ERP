@@ -1,4 +1,4 @@
-import { Component, inject, Inject } from '@angular/core';
+import { Component, inject, Inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
@@ -29,6 +29,7 @@ import { TImport } from '@ss/treasury/api-transactions';
 ],
     templateUrl: './transaction-import.component.html',
     styleUrl: './transaction-import.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true
 })
 export class TransactionImportComponent {

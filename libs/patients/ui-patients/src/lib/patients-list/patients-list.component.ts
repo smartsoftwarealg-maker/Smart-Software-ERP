@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AgentType, LookupsService} from '@ss/common/api-lookup';
@@ -17,6 +17,7 @@ import { DatePipe } from '@angular/common';
     styleUrls: ['./patients-list.component.scss'],
     templateUrl: './patients-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, DatePipe]
 })
 export class PatientsListComponent extends BaseEntityListComponent<Patient> {

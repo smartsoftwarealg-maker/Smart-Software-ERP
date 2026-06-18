@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { F12 } from '../services/balance-tables.api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -43,6 +43,7 @@ import {MaterialModule} from "@ss/common/api-common";
         MaterialModule
     ],
     templateUrl: './f12-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './f12-detail.component.scss',
 })
 export class F12DetailComponent extends BaseEntityDetailComponent<F12> {

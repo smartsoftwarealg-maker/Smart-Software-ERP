@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     MatCell,
     MatCellDef,
@@ -28,6 +28,7 @@ import { HolidayTypeService } from '@ss/common/api-lookup';
     templateUrl: './vacation-types-list.component.html',
     styleUrls: ['./vacation-types-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatSort,

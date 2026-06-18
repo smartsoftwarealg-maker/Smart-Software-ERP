@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -27,6 +27,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './extra-cost-detail.component.html',
     styleUrls: ['./extra-cost-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatMiniFabButton,
     MatCard,

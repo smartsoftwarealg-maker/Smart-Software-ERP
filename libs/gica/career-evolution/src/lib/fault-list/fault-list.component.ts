@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Fault } from '../gica-careers-api';
@@ -34,6 +34,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     standalone: true,
     imports: [MaterialModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, MatFormField, PaginationComponent, UiAutoCompleteComponent],
     templateUrl: './fault-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './fault-list.component.css',
 })
 export class FaultListComponent extends BaseEntityListComponent<Fault> {

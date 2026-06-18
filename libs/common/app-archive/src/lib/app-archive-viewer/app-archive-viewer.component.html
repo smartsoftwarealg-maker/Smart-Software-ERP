@@ -14,28 +14,28 @@
     <mat-card>
       <mat-card-content>
         <form novalidate [formGroup]="form">
-          @if (numberDateDocs.indexOf(selectedApp?.id) >= 0) {
+          @if (numberDateDocs.indexOf((selectedApp?.id)) >= 0) {
             <mat-form-field class="default-100">
               <mat-label translate>COMMON_NUMBER</mat-label>
               <input matInput formControlName="number" type="number">
             </mat-form-field>
           }
 
-          @if (numberDateDocs.indexOf(selectedApp?.id) >= 0) {
+          @if (numberDateDocs.indexOf((selectedApp?.id)) >= 0) {
             <mat-form-field class="default-100">
               <mat-label translate>COMMON_DATE</mat-label>
               <ss-date-picker formControlName="date"></ss-date-picker>
             </mat-form-field>
           }
 
-          @if (transactionDocs.indexOf(selectedApp?.id) >= 0 || selectedApp?.id === 7) {
+          @if (transactionDocs.indexOf((selectedApp?.id)) >= 0 || selectedApp?.id === 7) {
             <mat-form-field class="default-100">
               <mat-label translate>COMMON_REFERENCE</mat-label>
               <input matInput formControlName="reference" type="text">
             </mat-form-field>
           }
 
-          @if (transactionDocs.indexOf(selectedApp?.id) >= 0) {
+          @if (transactionDocs.indexOf((selectedApp?.id)) >= 0) {
             <mat-form-field class="default-100">
               <mat-label translate>COMMON_DATE</mat-label>
               <ss-date-picker formControlName="refDate"></ss-date-picker>
@@ -100,7 +100,7 @@
 
 <div class="img_div">
   <div class="archive_div">
-    <mat-table mat-table [dataSource]="data" class="main-table">
+    <mat-table mat-table [dataSource]="data()" class="main-table">
 
       <ng-container matColumnDef="info1">
         <mat-header-cell *matHeaderCellDef translate>{{ columnHeaders[0] }}</mat-header-cell>

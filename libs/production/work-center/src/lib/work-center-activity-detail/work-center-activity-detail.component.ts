@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatMiniFabButton } from '@angular/material/button';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import {
@@ -24,6 +24,7 @@ import {MatCheckbox} from "@angular/material/checkbox";
     templateUrl: './work-center-activity-detail.component.html',
     styleUrl: './work-center-activity-detail.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatCard, MatCardContent,
         MatFormField, ReactiveFormsModule,

@@ -16,14 +16,14 @@
       <ng-container matColumnDef="moduleId">
         <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_MODULE</mat-header-cell>
         <mat-cell *matCellDef="let e">
-          {{entitySrv.modules[(e.moduleId || 1) - 1]?.description | translate}}
+          {{(entitySrv.modules[(e.moduleId || 1) - 1]?.description) | translate}}
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="attType">
         <mat-header-cell *matHeaderCellDef translate>COMMON_TYPE</mat-header-cell>
         <mat-cell *matCellDef="let e">
-          {{entitySrv.attributeTypes[(e.attType || 1) - 1]?.description  | translate}}
+          {{(entitySrv.attributeTypes[(e.attType || 1) - 1]?.description)  | translate}}
         </mat-cell>
       </ng-container>
 

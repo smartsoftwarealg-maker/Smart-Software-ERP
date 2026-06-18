@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { HttpService, LanguageService } from '@ss/common/api-common';
 import { Lookup, ORGANIZATION_URL, Organization } from '@ss/organizations/api-organizations';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -33,6 +33,7 @@ interface OrgTreeNode extends TreeNode {
     styleUrls: ['./organizations.component.scss'],
     templateUrl: 'organizations.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [OrgChartModule, MatIconButton, ImageInputComponent]
 })
 export class OrganizationsComponent implements OnInit {

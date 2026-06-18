@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     EmployeeAidService,
@@ -33,6 +33,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         UiAutoCompleteComponent
     ],
     templateUrl: './social-reimbursements.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './social-reimbursements.component.scss',
 })
 export class SocialReimbursementsComponent implements OnInit {

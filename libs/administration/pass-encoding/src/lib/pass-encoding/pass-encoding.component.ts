@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -24,6 +24,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 ],
     templateUrl: './pass-encoding.component.html',
     styleUrl: './pass-encoding.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class PassEncodingComponent implements OnInit {

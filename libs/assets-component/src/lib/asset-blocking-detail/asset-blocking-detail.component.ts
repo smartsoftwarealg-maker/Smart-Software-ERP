@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {BaseChildEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {Blocking} from '../assets-api';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -21,6 +21,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './asset-blocking-detail.component.html',
     styleUrls: ['./asset-blocking-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     ReactiveFormsModule,
     MaterialModule,

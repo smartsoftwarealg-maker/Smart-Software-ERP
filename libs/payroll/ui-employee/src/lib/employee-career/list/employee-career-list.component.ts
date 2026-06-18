@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {Career, EmployeeCareerService} from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -15,6 +15,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-career-list.component.html',
     styleUrls: ['./employee-career-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe, DatePipe]
 })
 export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Career> implements OnInit {

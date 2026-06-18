@@ -4,6 +4,11 @@
     "projectType": "library",
     "sourceRoot": "libs/administration/api-smtp/src",
     "prefix": "ss",
+    "generators": {
+        "@nx/angular:component": {
+            "style": "scss"
+        }
+    },
     "targets": {
         "lint": {
             "executor": "@angular-devkit/build-angular:tslint",
@@ -23,14 +28,8 @@
             "options": {
                 "jestConfig": "libs/administration/api-smtp/jest.config.ts",
                 "tsConfig": "libs/administration/api-smtp/tsconfig.spec.json",
-                "passWithNoTests": true,
-                "setupFile": "libs/administration/api-smtp/src/test-setup.ts"
+                "passWithNoTests": true
             }
-        }
-    },
-    "generators": {
-        "@nx/angular:component": {
-            "style": "scss"
         }
     }
 }

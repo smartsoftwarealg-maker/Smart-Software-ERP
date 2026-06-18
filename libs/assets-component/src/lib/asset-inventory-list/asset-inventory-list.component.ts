@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { AssetInventory } from '../assets-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -23,6 +23,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './asset-inventory-list.component.html',
     styleUrls: ['./asset-inventory-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

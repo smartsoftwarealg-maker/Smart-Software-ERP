@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {
@@ -30,6 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [MaterialModule, TranslateDirective, DatePickerComponent, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, AidHistoryComponent, UiAutoCompleteComponent],
     templateUrl: './medical-aids-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './medical-aids-detail.component.scss',
 })
 export class MedicalAidsDetailComponent extends BaseEntityDetailComponent<SocialAid> {

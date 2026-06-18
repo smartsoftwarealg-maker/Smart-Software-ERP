@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {PaginationModel} from '@ss/common/api-common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -16,6 +16,7 @@ import { DecimalPipe } from '@angular/common';
     templateUrl: './furniture-reception-line-list.component.html',
     styleUrls: ['./furniture-reception-line-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatTable,

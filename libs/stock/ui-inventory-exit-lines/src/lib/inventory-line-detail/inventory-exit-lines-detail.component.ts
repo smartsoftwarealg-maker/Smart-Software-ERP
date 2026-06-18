@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_CORRECTION_OUT,
     TransactionLinesService
@@ -20,6 +20,7 @@ import {MaterialModule} from "@ss/common/api-common";
     templateUrl: './inventory-exit-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatMiniFabButton,

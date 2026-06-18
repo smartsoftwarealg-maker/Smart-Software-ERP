@@ -65,10 +65,10 @@
     <ss-doc-info
       [displayedGroups]="['document']"
         [params]="{
-            id: selectedRow()?.id,
+            id: (selectedRow()?.id),
             documentId: selectedRow()?.id,
             documentURL:'/consumption',
-            agentId : selectedRow()?.agent,
+            agentId : (selectedRow()?.agent),
             detailId: selectedRow()?.id,
             editable: editable
         }">

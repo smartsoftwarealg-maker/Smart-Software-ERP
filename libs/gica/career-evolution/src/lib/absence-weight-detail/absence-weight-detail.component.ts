@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { AbsenceWeight } from '../gica-careers-api';
@@ -45,6 +45,7 @@ import { MatRadioButton } from '@angular/material/radio';
     UiAutoCompleteComponent
 ],
     templateUrl: './absence-weight-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './absence-weight-detail.component.css'
 })
 export class AbsenceWeightDetailComponent extends BaseEntityDetailComponent<AbsenceWeight> {

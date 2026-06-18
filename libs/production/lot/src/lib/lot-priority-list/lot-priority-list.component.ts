@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, WritableSignal, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, WritableSignal, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     KeepOnToolbar,
     ShellService,
@@ -26,6 +26,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './lot-priority-list.component.html',
     styleUrl: './lot-priority-list.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

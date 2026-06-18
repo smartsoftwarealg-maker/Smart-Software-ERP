@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginationModel } from '@ss/common/api-common';
 import {
@@ -46,6 +46,7 @@ import { EmailTemplate } from '../crm-email-templates.api';
     ],
     templateUrl: './crm-email-templates-list-component.html',
     styleUrl: './crm-email-templates-list-component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class CrmEmailTemplatesListComponent implements OnInit, OnDestroy {

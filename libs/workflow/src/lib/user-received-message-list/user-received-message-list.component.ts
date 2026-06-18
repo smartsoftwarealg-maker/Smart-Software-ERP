@@ -1,5 +1,5 @@
 
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { UserMessage } from '../workflow-api';
 import { LoginService, MaterialModule, PaginatorPersistenceService } from '@ss/common/api-common';
@@ -21,6 +21,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: '../user-message-list/user-message-list.component.html',
     styleUrls: ['../user-message-list/user-message-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

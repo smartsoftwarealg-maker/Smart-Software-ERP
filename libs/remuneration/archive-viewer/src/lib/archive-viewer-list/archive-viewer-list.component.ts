@@ -1,4 +1,4 @@
-import {Component, computed, inject, OnInit, signal} from '@angular/core';
+import {Component, computed, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -35,11 +35,17 @@ import {
 import {PaginationComponent} from '@ss/common/ui-pagination';
 import {ElementsInfo, ElementsInfoService} from "@ss/remuneration/elementsinfo";
 
+export type TFormula = {
+    variable: string;
+    description: string;
+}
+
 @Component({
     selector: 'ss-archive-viewer',
     templateUrl: './archive-viewer-list.component.html',
     styleUrls: ['./archive-viewer-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         TranslateDirective,
         MatFormField,
@@ -128,7 +134,7 @@ export class ArchiveViewerListComponent
     private FIXED_INFO = ['id', 'lastname', 'firstname', 'paymonth'];
 
     private filterSignal = signal<string>('');
-    private _formulas = signal<Formula[]>([]);
+    private _formulas = signal<TFormula[]>([]);
 
     minTableWidth = 1000;
 
@@ -259,17 +265,17 @@ export class ArchiveViewerListComponent
                 this._maxYear = +(res[1].month / 100).toFixed(0);
                 this.shellSrv.disableSearch();
 
-                const formulas = res[2].body
+                const formulas: TFormula[] = res[2].body
                     .filter(
                         (f) =>
                             f.description !== null &&
                             f.description != undefined,
-                    )
+                    ).map((e: Formula) => ({variable: e.variable, description: e.description}))
                     .sort((a, b) =>
                         a?.description?.localeCompare(b.description),
                     );
 
-                const elements = res[3].body
+                const elements: TFormula[] = res[3].body
                     .filter(
                         (f) =>
                             f.description !== null &&
@@ -296,7 +302,7 @@ export class ArchiveViewerListComponent
         this.subscriptions.push(
             this.formulaFilter.valueChanges
                 .pipe(debounceTime(300), distinctUntilChanged())
-                .subscribe((str) => this.filterSignal.set(str)),
+                .subscribe((str) => this.filterSignal.set(str||'')),
         );
     }
 

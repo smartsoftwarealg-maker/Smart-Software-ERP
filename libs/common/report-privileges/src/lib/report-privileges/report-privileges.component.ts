@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RPrivilege } from './report-privilege.api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
@@ -18,6 +18,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule,  MatSortModule, MatTableModule,  MatCheckboxModule, TranslateDirective],
     templateUrl: './report-privileges.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./report-privileges.component.css'],
 })
 export class ReportPrivilegesComponent implements OnInit, OnDestroy {

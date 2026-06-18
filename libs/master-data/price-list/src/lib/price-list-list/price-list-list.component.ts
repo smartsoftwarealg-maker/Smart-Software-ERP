@@ -1,4 +1,4 @@
-import { Component, inject, signal} from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Location, LocationService } from '@ss/master-data/api-article';
@@ -28,6 +28,7 @@ import { OptionService } from '@ss/logistics/ui-options';
     selector: 'ss-price-list',
     imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef, MatSort],
     templateUrl: './price-list-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './price-list-list.component.scss',
 })
 export class PriceListListComponent extends BaseEntityListComponent<Location> {

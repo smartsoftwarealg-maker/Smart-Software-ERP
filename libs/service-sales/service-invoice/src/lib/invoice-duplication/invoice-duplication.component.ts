@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -34,6 +34,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe
     ],
     templateUrl: './invoice-duplication.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./invoice-duplication.component.css'],
 })
 export class InvoiceDuplicationComponent implements OnInit {

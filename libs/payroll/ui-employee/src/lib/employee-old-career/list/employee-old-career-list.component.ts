@@ -1,4 +1,4 @@
-import { Component, inject, signal} from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { EmployeeOldCareerService, OldCareer } from '@ss/payroll/api-employee';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { AsyncPipe, DatePipe } from '@angular/common';
@@ -16,6 +16,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-old-career-list.component.html',
     styleUrls: ['./employee-old-career-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, DatePipe, TranslatePipe]
 })
 export class EmployeeOldCareerListComponent extends BaseChildEntityListComponent<OldCareer> {

@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
     KeepOnToolbar,
     ShellService,
@@ -51,6 +51,7 @@ import { WeightCaptureService } from '@ss/sales/weight-capture';
     selector: 'ss-ui-order-detail',
     standalone: true,
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './order-detail.component.html',
 })
 export class OrderDetailComponent extends BaseTransactionDetailComponent {

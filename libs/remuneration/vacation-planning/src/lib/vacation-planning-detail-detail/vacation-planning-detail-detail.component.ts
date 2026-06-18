@@ -1,4 +1,4 @@
-import { Component, inject, signal} from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { VacationPlanningDetail } from '../vacation-planning-api';
 import {
@@ -26,6 +26,7 @@ import {switchMap, tap} from "rxjs";
     templateUrl: './vacation-planning-detail-detail.component.html',
     styleUrls: ['./vacation-planning-detail-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

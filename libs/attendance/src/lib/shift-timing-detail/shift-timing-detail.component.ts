@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, ChangeDetectionStrategy } from "@angular/core";
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { ShiftTimingService } from '../shift-timing.service';
 import { Timing } from '../attendance-api';
@@ -21,6 +21,7 @@ import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
     templateUrl: './shift-timing-detail.component.html',
     styleUrls: ['./shift-timing-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatCard,
         MaterialModule,

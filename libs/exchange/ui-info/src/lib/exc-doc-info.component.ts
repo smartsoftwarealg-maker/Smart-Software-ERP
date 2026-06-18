@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ActivatedRoute, Router, RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -16,6 +16,7 @@ interface Entry {
     templateUrl: './exc-doc-info.component.html',
     styleUrls: ['./exc-doc-info.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatToolbar, RouterLinkActive, RouterLink, TranslateDirective, RouterOutlet]
 })
 

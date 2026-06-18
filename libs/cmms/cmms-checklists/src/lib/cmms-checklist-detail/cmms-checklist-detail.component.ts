@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -23,6 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [MatCheckboxModule, MatSortModule, MatTableModule, MaterialModule, RouterOutlet, TranslateDirective, TranslatePipe],
     templateUrl: 'cmms-checklist-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['cmms-checklist-detail.component.css']
 })
 export class CMMSChecklistDetailComponent extends BaseEntityDetailComponent<Lookup> implements OnInit {

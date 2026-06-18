@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatTableModule } from '@angular/material/table';
@@ -37,6 +37,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     templateUrl: './work-persons-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./work-persons-list.component.css'],
 })
 export class WorkPersonsListComponent extends BaseChildEntityListComponent<WorkPerson> {

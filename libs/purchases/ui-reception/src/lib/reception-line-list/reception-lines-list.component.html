@@ -125,10 +125,10 @@
                 <ss-doc-info
                         [displayedGroups]="['article', 'document']"
                         [params]="{
-                        documentId: selectedRow()?.transacId,
+                        documentId: (selectedRow()?.transacId),
                         documentURL:'/correctionIn',
-                        articleReference: selectedRow()?.reference,
-                        articleStoreId: selectedRow()?.store,
+                        articleReference: (selectedRow()?.reference),
+                        articleStoreId: (selectedRow()?.store),
                         detailId: selectedRow()?.id||0
                }">
                 </ss-doc-info>

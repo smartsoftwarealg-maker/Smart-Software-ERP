@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -30,6 +30,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
         TranslateDirective
     ],
     templateUrl: './vehicle-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./vehicle-list.component.css']
 })
 export class VehicleListComponent extends BaseEntityListComponent<Vehicle> {

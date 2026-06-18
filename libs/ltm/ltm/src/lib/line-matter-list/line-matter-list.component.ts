@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { LTMLineMatter } from '@ltm/ltm-api';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,6 +18,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './line-matter-list.component.html',
     styleUrls: ['./line-matter-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         PaginationComponent,

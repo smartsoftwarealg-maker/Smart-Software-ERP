@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
@@ -21,6 +21,7 @@ import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from "@ss/common/ui-a
     templateUrl: './production-activity-types-detail.component.html',
     styleUrls: ['./production-activity-types-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         RouterModule,
         MatFormField,

@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, OnInit, signal } from '@angular/core';
+import { Component, HostListener, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     FormBuilder,
     ReactiveFormsModule,
@@ -26,6 +26,7 @@ import {ArticleSearchDlg} from '@ss/logistics/article-search';
     templateUrl: './inter-store-transfer-lines-detail.component.html',
     styleUrl: './inter-store-transfer-lines-detail.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

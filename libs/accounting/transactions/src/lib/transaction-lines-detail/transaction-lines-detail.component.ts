@@ -1,4 +1,4 @@
-import { Component, computed, HostListener, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, HostListener, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     AbstractControl, ReactiveFormsModule,
     UntypedFormBuilder,
@@ -37,6 +37,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './transaction-lines-detail.component.html',
     styleUrls: ['./transaction-lines-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         RouterModule,
         MaterialModule,

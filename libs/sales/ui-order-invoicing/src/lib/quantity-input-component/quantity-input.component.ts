@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { MaterialModule } from '@ss/common/api-common';
 import {FormControl, Validators} from '@angular/forms';
@@ -17,6 +17,7 @@ export interface QuantityInputData {
     templateUrl: './quantity-input.component.html',
     styleUrls: ['./quantity-input.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

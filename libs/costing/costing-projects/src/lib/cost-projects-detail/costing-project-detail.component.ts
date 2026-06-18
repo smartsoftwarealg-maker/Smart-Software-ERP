@@ -1,4 +1,4 @@
-import { Component, HostBinding, inject, OnInit, signal } from '@angular/core';
+import { Component, HostBinding, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     ActivatedRoute,
     Router,
@@ -27,6 +27,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./costing-project-detail.component.scss'],
     animations: [slideToRight],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterModule, MaterialModule, TranslatePipe, TranslateDirective],
 })
 export class CostingProjectDetailComponent

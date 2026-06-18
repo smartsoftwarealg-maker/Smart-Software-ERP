@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { MaterialModule } from '@ss/common/api-common';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -21,6 +21,7 @@ import { MissionsElementPricingService } from '../mission-elementPricing.service
     imports: [MaterialModule, TranslateDirective, RouterOutlet],
     templateUrl: './mission-elements-detail.component.html',
     styleUrl: './mission-elements-detail.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class MissionElementsDetailComponent extends BaseEntityDetailComponent<MissionElement> {

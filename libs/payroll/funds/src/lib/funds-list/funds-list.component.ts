@@ -1,4 +1,4 @@
-import { Component, signal } from "@angular/core";
+import { Component, signal, ChangeDetectionStrategy } from "@angular/core";
 import { BaseEntityListComponent } from "@ss/common/ui-base-entity";
 import { ShellService, SnackBarService } from "@ss/common/ui-shell";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -15,6 +15,7 @@ import { FundService } from '../funds.service';
     templateUrl: "./funds-list.component.html",
     styleUrls: ["./funds-list.component.scss"],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective

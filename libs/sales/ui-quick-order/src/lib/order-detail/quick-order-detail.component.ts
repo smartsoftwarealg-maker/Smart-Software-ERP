@@ -1,4 +1,4 @@
-import { Component, inject, signal, ViewChild } from '@angular/core';
+import { Component, inject, signal, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import {
@@ -63,6 +63,7 @@ export enum DuplicateMode {
     selector: 'ss-ui-quick-order-detail',
     standalone: true,
     styleUrls: ['./quick-order-detail.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './quick-order-detail.component.html',
 })
 export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOrder> {
@@ -172,10 +173,7 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
             duplicateCount: [q.duplicateCount || 0, Validators.max(50)],
             from: [q.from],
             to: [q.to],
-            invoiceType: [
-                q.invoiceType || 1,
-                [Validators.min(1), Validators.max(2)],
-            ],
+            invoiceType: [(q.invoiceType || 1)+'', [Validators.min(1), Validators.max(2)]],
             shipMode: [0],
             altAgent: [q.altAgent],
             footer: [q.footer],
@@ -245,5 +243,11 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
                 this.isManager.set(this.#loginSrv.appCtx.manager)}),
             switchMap((_) => super.preload()),
         );
+    }
+
+    override readForm():QuickOrder{
+        const value = super.readForm();
+        value.invoiceType = +(value.invoiceType || '1') as 1 | 2;
+        return value;
     }
 }

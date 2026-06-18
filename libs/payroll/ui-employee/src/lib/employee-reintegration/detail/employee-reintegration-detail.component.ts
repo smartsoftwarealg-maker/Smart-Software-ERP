@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {
     FormBuilder,
     UntypedFormGroup,
@@ -33,6 +33,7 @@ import {
     templateUrl: './employee-reintegration-detail.component.html',
     styleUrls: ['./employee-reintegration-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatMiniFabButton,

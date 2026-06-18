@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Driver } from '../driver-api';
@@ -35,6 +35,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './driver-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./driver-list.component.scss'],
 })
 export class DriverListComponent extends BaseEntityListComponent<Driver> {

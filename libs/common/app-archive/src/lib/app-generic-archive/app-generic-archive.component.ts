@@ -1,4 +1,4 @@
-import {Component, computed, inject, OnInit, signal} from '@angular/core';
+import {Component, computed, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {
     AppArchiveMainComponent,
     AppArchiveService,
@@ -12,6 +12,7 @@ import { ShellService } from '@ss/common/ui-shell';
     imports: [AppArchiveMainComponent],
     templateUrl: './app-generic-archive.component.html',
     styleUrl: './app-generic-archive.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class AppGenericArchiveComponent implements OnInit {

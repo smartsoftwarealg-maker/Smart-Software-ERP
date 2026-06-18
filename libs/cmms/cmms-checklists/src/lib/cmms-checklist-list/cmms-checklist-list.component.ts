@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -21,6 +21,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [MatCheckboxModule, MatSortModule, MatTableModule, PaginationComponent, TranslatePipe, TranslateDirective],
     templateUrl: './cmms-checklist-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./cmms-checklist-list.component.css'],
 })
 export class CmmsChecklistListComponent extends BaseEntityListComponent<Lookup> {

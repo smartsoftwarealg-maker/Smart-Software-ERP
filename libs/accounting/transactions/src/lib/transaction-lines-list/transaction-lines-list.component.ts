@@ -1,4 +1,4 @@
-import { Component, DestroyRef, HostListener, inject, OnInit, WritableSignal, signal } from '@angular/core';
+import { Component, DestroyRef, HostListener, inject, OnInit, WritableSignal, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     AccFileService,
     AccPoliciesService, ACCPolicy,
@@ -24,6 +24,7 @@ import { PieceDuplicationComponent } from '../piece-duplication/piece-duplicatio
     templateUrl: './transaction-lines-list.component.html',
     styleUrls: ['./transaction-lines-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         RouterModule,

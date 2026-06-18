@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CustomerSuggestion } from '../customer-suggestion.class';
@@ -49,6 +49,7 @@ import { Observable, tap } from 'rxjs';
         TranslateDirective,
     ],
     templateUrl: './customer-suggestions-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './customer-suggestions-list.component.scss',
 })
 export class CustomerSuggestionsListComponent extends BaseEntityListComponent<CustomerSuggestion> {

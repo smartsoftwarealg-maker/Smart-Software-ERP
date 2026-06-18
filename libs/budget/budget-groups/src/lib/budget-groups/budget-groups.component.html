@@ -14,7 +14,7 @@
           draggable="true"
           (drop)="onGroupDrop($event, node.id)"
           (dragover)="onOverChild($event, node.id)"
-          (dragstart)="onStart($event, node?.id+ '')"
+          (dragstart)="onStart($event, (node?.id)+ '')"
           [class.selected]="node.id == selectedGroup?.id"
           (click)="select(node)">
           {{ node.code }} {{ node.description }}
@@ -24,7 +24,7 @@
             draggable="true"
             (drop)="onGroupDrop($event, node.id)"
             (dragover)="onOverChild($event, node.id)"
-            (dragstart)="onStart($event, node?.id+ '')"
+            (dragstart)="onStart($event, (node?.id)+ '')"
             (click)="select(node)"
             [class.selected]="node.id == selectedGroup?.id">
             <button mat-icon-button matTreeNodeToggle
@@ -75,7 +75,7 @@
         @for (a of accountData; track a) {
           <mat-list-item
             (click)="selectAccount(a)"
-            (dragstart)="onStart($event, a?.id+ '')"
+            (dragstart)="onStart($event, (a?.id)+ '')"
             [class.selected]="a?.id === selectedAccount?.id"
             draggable="true">
             {{ a.accountNo + ' ' + a.description }}

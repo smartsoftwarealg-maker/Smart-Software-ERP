@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { AssetInventoryDoc, CountSummary } from '../assets-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -24,6 +24,7 @@ import {callback} from "chart.js/helpers";
     templateUrl: './assets-inventory-doc-list.component.html',
     styleUrls: ['./assets-inventory-doc-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

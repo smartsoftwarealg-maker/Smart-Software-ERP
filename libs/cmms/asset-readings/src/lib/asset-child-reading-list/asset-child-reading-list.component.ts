@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CMMSAssetReadingService } from '../cmms-asset-reading.service';
 import {  DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
@@ -24,6 +24,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './asset-child-reading-list.component.html',
     styleUrls: ['./asset-child-reading-list.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MatSortModule,

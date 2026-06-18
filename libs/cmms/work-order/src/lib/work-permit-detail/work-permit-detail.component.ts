@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CmmsPersonService, WorkPermit } from "@ss/cmms/cmms-api";
@@ -33,6 +33,7 @@ import { CMMSPermitTypeService } from "@ss/cmms/lookups";
     UiAutoCompleteComponent
 ],
     templateUrl: './work-permit-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './work-permit-detail.component.css'
 })
 export class WorkPermitDetailComponent extends BaseChildEntityDetailComponent<WorkPermit> {

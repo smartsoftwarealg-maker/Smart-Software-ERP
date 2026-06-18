@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { CategoryDiscount } from '../api/category-discount';
 import { FormBuilder, FormsModule, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
@@ -31,6 +31,7 @@ import { sign } from 'chart.js/helpers';
         TranslateDirective,
     ],
     templateUrl: './category-discounts-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './category-discounts-detail.component.scss',
 })
 export class CategoryDiscountsDetailComponent extends BaseChildEntityDetailComponent<CategoryDiscount> {

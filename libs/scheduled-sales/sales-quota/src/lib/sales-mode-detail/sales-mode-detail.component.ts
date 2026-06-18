@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {SalesMode, SalesModeService} from '@ss/scheduled-sales/api-scheduled-sales';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -19,6 +19,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './sales-mode-detail.component.html',
     styleUrls: ['./sales-mode-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

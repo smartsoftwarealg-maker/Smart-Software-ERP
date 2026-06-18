@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Criterion } from '../gica-careers-api';
@@ -54,6 +54,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './criteria-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './criteria-list.component.css',
 })
 export class CriteriaListComponent extends BaseEntityListComponent<Criterion> {

@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal, ViewChild} from '@angular/core';
+import {Component, inject, OnInit, signal, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +32,7 @@ interface Lookup {
     templateUrl: './edo.component.html',
     styleUrls: ['./edo.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, MatSelect, MatOption, MatButton, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, TranslatePipe]
 })
 export class EdoComponent implements OnInit {

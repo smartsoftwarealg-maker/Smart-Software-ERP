@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CMMSWorkDetail, IS_NOT_INSPECTION } from '@ss/cmms/cmms-api';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -23,6 +23,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './prev-work-order-detail.component.html',
     styleUrls: ['./prev-work-order-detail.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     MatCardContent,

@@ -4,6 +4,11 @@
     "projectType": "library",
     "sourceRoot": "libs/payroll/assets/src",
     "prefix": "ss",
+    "generators": {
+        "@nx/angular:component": {
+            "style": "scss"
+        }
+    },
     "targets": {
         "lint": {
             "executor": "@angular-devkit/build-angular:tslint",
@@ -20,14 +25,8 @@
             "options": {
                 "jestConfig": "libs/payroll/assets/jest.config.js",
                 "tsConfig": "libs/payroll/assets/tsconfig.spec.json",
-                "passWithNoTests": true,
-                "setupFile": "libs/payroll/assets/src/test-setup.ts"
+                "passWithNoTests": true
             }
-        }
-    },
-    "generators": {
-        "@nx/angular:component": {
-            "style": "scss"
         }
     }
 }

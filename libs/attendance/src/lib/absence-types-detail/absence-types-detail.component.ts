@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { AbsenceType } from '../attendance-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -24,6 +24,7 @@ import { ElementsInfoService } from '@ss/remuneration/elementsinfo';
     templateUrl: './absence-types-detail.component.html',
     styleUrls: ['./absence-types-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatCard,
         MatCardContent,

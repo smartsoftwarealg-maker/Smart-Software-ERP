@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Injectable } from '@angular/core';
+import { Component, Inject, OnInit, Injectable, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import { Lookup, Organization } from '@ss/organizations/api-organizations';
 import { BaseEntityService } from '@ss/common/api-base-entity';
@@ -33,6 +33,7 @@ class LookupService extends BaseEntityService<Lookup> {
         LookupService
     ],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [TranslateDirective, CdkScrollable, MatDialogContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatSelect, MatOption, MatDialogActions, MatMiniFabButton]
 })
 export class OrganizationsDetailComponent {

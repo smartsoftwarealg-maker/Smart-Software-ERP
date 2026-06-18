@@ -1,4 +1,4 @@
-import {Component, computed, inject, OnInit, signal} from '@angular/core';
+import {Component, computed, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {
     KeepOnToolbar,
     ShellService,
@@ -84,6 +84,7 @@ const TRANSPORTER = 3;
     styleUrls: ['./agent-detail.component.scss'],
     templateUrl: './agent-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

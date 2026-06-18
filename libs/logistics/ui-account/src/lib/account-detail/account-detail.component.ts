@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {Observable, of} from 'rxjs';
@@ -13,12 +13,14 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 
 
 
+type TAccount = { id: number; description: string; }
 
 @Component({
     selector: 'ss-account-detail',
     styleUrls: ['./account-detail.component.scss'],
     templateUrl: './account-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,
@@ -28,7 +30,12 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class AccountDetailComponent extends BaseEntityDetailComponent<Account> {
 
 
-    accountTypes: any[];
+    accountTypes: TAccount[] = [
+        {id: 1, description: 'DEBITOR'},
+        {id: 2, description: 'CREDITOR'},
+        {id: 3, description: 'BALANCED'},
+        {id: 4, description: 'ANY'}
+    ];
 
 
     constructor(
@@ -43,14 +50,12 @@ export class AccountDetailComponent extends BaseEntityDetailComponent<Account> {
     }
 
 
-    override preload(): Observable<any> {
-        this.accountTypes = Object.keys(ACCOUNT_TYPES)
-            .map(x => {
-                return {'id': +x, 'description': ACCOUNT_TYPES[x]};
-            });
-
-        return of(null);
-    }
+    // override preload(): Observable<unknown> {
+    //     this.accountTypes = Object.keys(ACCOUNT_TYPES)
+    //         .map(x => ({id: +x, description: ACCOUNT_TYPES[x]||'ANY'} as TAccount));
+    //
+    //     return of(null);
+    // }
 
     public override setupForm(a: Account) {
         // Make sure to update the template if you edit the configuration here

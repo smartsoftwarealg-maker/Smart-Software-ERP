@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { OH } from '@ss/costing/costing-utils';
@@ -27,6 +27,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './costing-oh-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./costing-oh-detail.component.scss'],
 })
 export class CostingOhDetailComponent

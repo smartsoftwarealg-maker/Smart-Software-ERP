@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -38,6 +38,7 @@ import { AnswerTypes } from '@ss/scheduleds-sales/polls'
     TranslateDirective
 ],
     templateUrl: './poll-question-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './poll-question-detail.component.css',
 })
 export class PollQuestionDetailComponent extends BaseEntityDetailComponent<PollQuestion> {

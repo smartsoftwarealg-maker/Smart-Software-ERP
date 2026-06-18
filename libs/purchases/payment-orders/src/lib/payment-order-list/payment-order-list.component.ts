@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PaymentOrder} from '../payment-order';
 import {BankService} from '@ss/administration/api-bank';
@@ -18,6 +18,7 @@ import { DecimalPipe, DatePipe } from '@angular/common';
     templateUrl: './payment-order-list.component.html',
     styleUrls: ['./payment-order-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, DatePipe]
 })
 export class PaymentOrderListComponent extends BaseEntityListComponent<PaymentOrder> {

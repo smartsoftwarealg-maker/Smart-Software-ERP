@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Lookup, RoleService } from '@ss/common/api-lookup';
 import { APPLICATIONS } from '../app-archive-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -17,6 +17,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './app-archive-rights.component.html',
     styleUrls: ['./app-archive-rights.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     RouterModule,
     MaterialModule,

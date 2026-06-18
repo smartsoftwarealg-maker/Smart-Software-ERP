@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, Input, OnInit, ViewChild, input, signal} from '@angular/core';
+import { Component, ElementRef, inject, Input, OnInit, ViewChild, input, signal, ChangeDetectionStrategy } from '@angular/core';
 import {ExtendedPaginationModel, isString, LanguageService, PaginationModel} from '@ss/common/api-common';
 import { NgStyle } from '@angular/common';
 import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
@@ -14,6 +14,7 @@ import { ShellService } from '@ss/common/ui-shell';
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NgStyle, MatIconButton, MatMiniFabButton, MatMenuTrigger, MatInput, TranslateDirective, MatMenu, MatMenuItem]
 })
 export class PaginationComponent implements OnInit {

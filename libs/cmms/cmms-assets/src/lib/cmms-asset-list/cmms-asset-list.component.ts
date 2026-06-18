@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Asset } from '../services/asset-api';
@@ -24,6 +24,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-cmms-asset-list',
     standalone: true,
     styleUrls: ['./cmms-asset-list.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './cmms-asset-list.component.html'
 })
 export class CmmsAssetListComponent extends BaseEntityListComponent<Asset> {

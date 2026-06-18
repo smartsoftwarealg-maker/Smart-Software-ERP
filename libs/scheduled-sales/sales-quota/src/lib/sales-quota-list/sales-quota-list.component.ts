@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import { Quota } from '@ss/scheduled-sales/api-scheduled-sales';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -22,6 +22,7 @@ import { Observable, tap } from 'rxjs';
     templateUrl: './sales-quota-list.component.html',
     styleUrls: ['./sales-quota-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

@@ -1,4 +1,4 @@
-import { Component, signal, OnInit } from '@angular/core';
+import { Component, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,6 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MatCell, TranslateDirective, MatColumnDef, MatHeaderCell, MatHeaderRow, MatRow, MatSort, MatSortHeader, MatTable, MatHeaderRowDef, MatHeaderCellDef, MatRowDef, MatCellDef],
     templateUrl: './document-sources.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './document-sources.component.scss',
 })
 export class DocumentSourcesComponent implements OnInit {

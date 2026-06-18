@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { JournalService, Journal, JournalUserService } from '@ss/treasury/api-journal';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -22,6 +22,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./journal-detail.component.scss'],
     templateUrl: './journal-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, MatOption, RouterOutlet, TranslatePipe]
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> implements OnInit {

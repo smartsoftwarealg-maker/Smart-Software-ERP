@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ShellService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -21,6 +21,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MaterialModule, TranslatePipe, TranslateDirective],
     templateUrl: './cmms-charts.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./cmms-charts.component.scss']
 })
 export class CMMSChartsComponent implements OnInit {

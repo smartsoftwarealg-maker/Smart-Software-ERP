@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -25,6 +25,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     templateUrl: './pm-detail.component.html',
     styleUrls: ['./pm-detail.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     MatCardContent,

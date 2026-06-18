@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {WorkShift} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -22,6 +22,7 @@ import {tap} from "rxjs/operators";
     templateUrl: './work-shift-detail.component.html',
     styleUrls: ['./work-shift-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     MatCard,

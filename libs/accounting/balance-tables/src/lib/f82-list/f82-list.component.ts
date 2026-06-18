@@ -1,4 +1,4 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { F8 } from '../services/balance-tables.api';
@@ -28,6 +28,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
     standalone: true,
     imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, PaginationComponent, TranslateDirective],
     templateUrl: './f82-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './f82-list.component.scss',
 })
 export class F82ListComponent extends BaseEntityListComponent<F8> {

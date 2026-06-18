@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent,
     DOC_PRODUCTION_TRANSFER,
@@ -22,6 +22,7 @@ import { ProductionTransferLinesService } from '../production-services/productio
         '../../../../../common/assets/src/assets/transac-lines-detail.scss',
     ],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatMiniFabButton,

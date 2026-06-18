@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { Article, ArticleService, AVAILABLE_ARTICLES_URL } from '@ss/master-data/api-article';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
@@ -26,6 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './shopping-cart.component.html',
     styleUrls: ['./shopping-cart.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

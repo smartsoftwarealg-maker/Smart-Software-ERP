@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +15,7 @@ import { CMMSRoutingDetailService } from '@ss/master-data/cmms-routing';
     selector: 'ss-cmms-checklist-line-detail',
     standalone: true,
     styleUrls: ['./cmms-checklist-line-detail.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './cmms-checklist-line-detail.component.html'
 })
 export class CmmsChecklistLineDetailComponent extends BaseChildEntityDetailComponent<RoutingDetail> {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ShellService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -18,6 +18,7 @@ import { SATISFACTION, YES_NO} from '../common';
     LineChartComponent
 ],
     templateUrl: './poll-history-chart.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './poll-history-chart.component.scss',
 })
 export class PollHistoryChartComponent implements OnInit {

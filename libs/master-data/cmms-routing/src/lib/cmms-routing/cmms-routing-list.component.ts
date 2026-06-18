@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -21,6 +21,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MatCheckboxModule, MatSortModule, MatTableModule, PaginationComponent, TranslatePipe, TranslateDirective],
     templateUrl: './cmms-routing-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['../list-template/cmms-fault-list.component.css'],
 })
 export class CMMSRoutingListComponent extends BaseEntityListComponent<CMMSRouting> {

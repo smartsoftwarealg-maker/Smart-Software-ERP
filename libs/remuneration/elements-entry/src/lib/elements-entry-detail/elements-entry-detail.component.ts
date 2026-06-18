@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {ELine} from '../elements-entry-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -38,6 +38,7 @@ type Employee = {
     templateUrl: './elements-entry-detail.component.html',
     styleUrls: ['./elements-entry-detail.component.scss', '../common-css.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,
@@ -165,8 +166,8 @@ export class ElementsEntryDetailComponent extends BaseEntityDetailComponent<ELin
         return data;
     }
 
-    canShowProcessingStatus() {
-        return false;
-    }
+    // canShowProcessingStatus() {
+    //     return false;
+    // }
 
 }

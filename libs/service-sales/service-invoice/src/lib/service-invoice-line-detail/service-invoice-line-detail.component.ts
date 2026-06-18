@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import {
     BaseTransactionLinesDetailComponent, DOC_INVOICE
@@ -31,6 +31,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './service-invoice-line-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./service-invoice-line-detail.component.css']
 })
 export class ServiceInvoiceLineDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

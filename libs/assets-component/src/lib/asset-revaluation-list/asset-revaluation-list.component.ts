@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, signal } from '@angular/core';
+import { Component, Input, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { AssetCost, AssetRevaluation } from '../assets-api';
 import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
 import { AssetCostsService } from '../services/asset-costs.service';
@@ -26,6 +26,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './asset-revaluation-list.component.html',
     styleUrls: ['./asset-revaluation-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

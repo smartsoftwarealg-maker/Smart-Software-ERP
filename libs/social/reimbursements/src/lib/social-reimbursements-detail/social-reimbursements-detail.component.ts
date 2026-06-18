@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { REIMBURSEMENT, Reimbursement, ReimbursementService } from '@social/social-api';
@@ -18,6 +18,7 @@ import { convertToParamMap, ParamMap } from '@angular/router';
     standalone: true,
     imports: [MatCard, DatePickerComponent, MatError, MatFormField, MatInput, MatLabel, MaterialModule, ReactiveFormsModule],
     templateUrl: './social-reimbursements-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './social-reimbursements-detail.component.scss'
 })
 export class SocialReimbursementsDetailComponent extends BaseChildEntityDetailComponent<Reimbursement> {

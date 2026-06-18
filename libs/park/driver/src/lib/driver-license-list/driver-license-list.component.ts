@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { DriverLicense } from '../driver-api';
@@ -24,6 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './driver-license-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./driver-license-list.component.css'],
 })
 export class DriverLicenseListComponent extends BaseChildEntityListComponent<DriverLicense> {

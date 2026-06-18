@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import {
     BaseTransactionLinesDetailComponent,
@@ -31,6 +31,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './parts-request-line-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: [
         '../../../../../common/assets/src/assets/transac-lines-detail.scss',
     ],

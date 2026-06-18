@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { HttpService } from '@ss/common/api-common';
 import { ShellService } from '@ss/common/ui-shell';
@@ -22,6 +22,7 @@ import {TransactionLine} from '@ss/logistics/api-transaction';
     imports: [MatTable, MatHeaderCell, MatColumnDef, MatHeaderCellDef, MatCellDef, MatCell, MatHeaderRow, MatRow, MatHeaderRowDef, MatRowDef, TranslateDirective],
     templateUrl: './reservations.component.html',
     styleUrl: './reservations.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true
 })
 export class ReservationsComponent implements OnInit {

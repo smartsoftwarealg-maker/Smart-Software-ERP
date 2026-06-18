@@ -1,10 +1,11 @@
 import {
-    Component,
-    Inject,
-    inject,
-    OnDestroy,
-    OnInit,
-    signal,
+  Component,
+  Inject,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { MaterialModule } from '@ss/common/api-common';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +28,7 @@ const T = 0.001; // One Kilogram = 0.001T
     standalone: true,
     imports: [MatButtonModule, TranslateDirective, MaterialModule],
     templateUrl: './weight-capture-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './weight-capture-dialog.component.scss',
 })
 export class WeightCaptureDialogComponent implements OnInit, OnDestroy {

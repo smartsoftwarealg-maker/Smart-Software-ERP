@@ -4,6 +4,11 @@
     "projectType": "library",
     "sourceRoot": "libs/common/ui-loading-spinner/src",
     "prefix": "ss",
+    "generators": {
+        "@nx/angular:component": {
+            "style": "scss"
+        }
+    },
     "targets": {
         "lint": {
             "executor": "@angular-devkit/build-angular:tslint",
@@ -12,7 +17,10 @@
                     "libs/common/ui-loading-spinner/tsconfig.lib.json",
                     "libs/common/ui-loading-spinner/tsconfig.spec.json"
                 ],
-                "exclude": ["**/node_modules/**", "!libs/common/ui-loading-spinner/**/*"]
+                "exclude": [
+                    "**/node_modules/**",
+                    "!libs/common/ui-loading-spinner/**/*"
+                ]
             }
         },
         "test": {
@@ -20,14 +28,8 @@
             "options": {
                 "jestConfig": "libs/common/ui-loading-spinner/jest.config.ts",
                 "tsConfig": "libs/common/ui-loading-spinner/tsconfig.spec.json",
-                "passWithNoTests": true,
-                "setupFile": "libs/common/ui-loading-spinner/src/test-setup.ts"
+                "passWithNoTests": true
             }
-        }
-    },
-    "generators": {
-        "@nx/angular:component": {
-            "style": "scss"
         }
     }
 }

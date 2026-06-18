@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Lookup, LookupsService } from '@ss/common/api-lookup';
@@ -24,6 +24,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [TranslateDirective, MaterialModule, MatCard, MatCardContent, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule],
     templateUrl: './mutual-type-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './mutual-type-detail.component.scss',
 })
 export class MutualTypeDetailComponent extends BaseEntityDetailComponent<Lookup> {

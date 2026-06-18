@@ -1,15 +1,14 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmployeeService } from '@ss/employee-services/employee-services';
+import {Employee, EmployeeService } from '@ss/employee-services/employee-services';
 import { concatMap, Observable, of, tap } from 'rxjs';
 import { LookupsService } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ImageModel } from '@ss/common/ui-image-input';
 import { HttpService, LanguageService, PaginatorPersistenceService } from '@ss/common/api-common';
 import { DefaultReportService } from '@ss/common/ui-default-report-component';
-import { Employee } from '@ss/employee-services/employee-services';
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { ImageInputComponent } from '@ss/common/ui-image-input';
@@ -23,6 +22,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./employee-list.component.scss'],
     templateUrl: './employee-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTabGroup,
         MatTab,
@@ -46,8 +46,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
 })
 export class EmployeeListComponent
     extends BaseEntityListComponent<Employee>
-    implements OnInit
-{
+    implements OnInit {
     activePersonnel = true;
     public readonly displayedColumns = ([
         'id',
@@ -91,9 +90,11 @@ export class EmployeeListComponent
     }
 
     protected override preInit(): Observable<unknown> {
-        return super.preInit().pipe(
+        return super.preInit()
+            .pipe(
             tap(() => {
                 this.addButton.visible = this.activePersonnel;
+                this.shellSrv.setGoBackPath('..', this.route);
             }),
         );
     }
@@ -101,8 +102,8 @@ export class EmployeeListComponent
     protected postInit(): Observable<unknown> {
         return super.postInit().pipe(
             concatMap(() => this.route.data),
-            tap((data) => {
-                this.activePersonnel = !!data['active'];
+            tap((data: {active?: boolean}) => {
+                this.activePersonnel = !!data?.active;
                 this.employeeSrv.setMode(this.activePersonnel);
                 this.shellSrv.setTitle(
                     this.activePersonnel
@@ -112,14 +113,9 @@ export class EmployeeListComponent
             }),
         );
     }
-    override ngOnInit(): void {
-        super.ngOnInit();
-        this.shellSrv.setGoBackPath('..', this.route);
-    }
 
-    public override processLoadedData(
-        data: Employee[],
-    ): Observable<Employee[]> {
+
+    public override processLoadedData(data: Employee[]): Observable<Employee[]> {
         return of(
             data.map((p) => {
                 // note: formatting the date here means it will not change when the language

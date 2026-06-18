@@ -1,4 +1,4 @@
-import {Component, effect, inject} from '@angular/core';
+import {Component, effect, inject, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
@@ -18,6 +18,7 @@ import {toSignal} from "@angular/core/rxjs-interop";
     templateUrl: 'article-types-detail.html',
     styleUrls: ['article-types-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class ArticleTypeDetailComponent extends BaseEntityDetailComponent<Lookup> {

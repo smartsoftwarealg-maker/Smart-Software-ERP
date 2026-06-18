@@ -1,4 +1,4 @@
-import { Component, OnInit, signal} from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     BaseTransactionLinesListComponent
@@ -40,6 +40,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     templateUrl: './service-invoice-line-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./service-invoice-line-list.component.scss']
 })
 export class ServiceInvoiceLineListComponent extends BaseTransactionLinesListComponent implements OnInit {

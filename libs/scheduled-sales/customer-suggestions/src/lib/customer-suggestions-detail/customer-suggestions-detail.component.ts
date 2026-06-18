@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -48,6 +48,7 @@ import { Agent, AgentService } from '@ss/logistics/api-agent';
     TranslateDirective
 ],
     templateUrl: './customer-suggestions-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './customer-suggestions-detail.component.scss',
 })
 export class CustomerSuggestionsDetailComponent extends BaseEntityDetailComponent<CustomerSuggestion> {

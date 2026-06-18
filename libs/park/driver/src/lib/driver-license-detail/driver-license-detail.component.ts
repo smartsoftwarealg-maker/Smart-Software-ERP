@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { DriverLicense } from '../driver-api';
@@ -25,6 +25,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     DatePickerComponent
 ],
     templateUrl: './driver-license-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./driver-license-detail.component.css']
 })
 export class DriverLicenseDetailComponent extends BaseChildEntityDetailComponent<DriverLicense> {

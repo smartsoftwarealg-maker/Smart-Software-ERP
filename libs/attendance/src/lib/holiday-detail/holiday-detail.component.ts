@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Holiday } from '../attendance-api';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -24,6 +24,7 @@ import {MaterialModule} from "@ss/common/api-common";
     templateUrl: './holiday-detail.component.html',
     styleUrls: ['./holiday-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     MatCardContent,

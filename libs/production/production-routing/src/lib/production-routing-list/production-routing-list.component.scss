@@ -8,7 +8,7 @@ mat-header-cell {
 .table-container {
     width: 96%;
     height: 45%;
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
     flex: 1 0 60%;
     overflow-x: auto;
@@ -29,6 +29,12 @@ mat-header-cell {
 
 .mat-column-revision {
     flex: 1 1 150px;
+    border-left: gray solid 1px;
+    padding-left: 4px;
+}
+
+.mat-column-productName {
+    flex: 2 1 250px;
     border-left: gray solid 1px;
     padding-left: 4px;
 }

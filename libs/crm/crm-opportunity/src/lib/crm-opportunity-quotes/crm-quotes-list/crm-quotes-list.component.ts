@@ -1,4 +1,4 @@
-import {Component, inject, signal} from '@angular/core';
+import {Component, inject, signal, ChangeDetectionStrategy} from '@angular/core';
 import {CRMQuote} from '../quotes-api';
 import {CrmQuotesService} from '../crm-quotes.service';
 import {BaseChildEntityListComponent} from '@ss/common/ui-base-entity';
@@ -50,6 +50,7 @@ import {DefaultReportService} from "@ss/common/ui-default-report-component";
         MatDialogModule
     ],
     templateUrl: './crm-quotes-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./crm-quotes-list.component.scss']
 })
 export class CrmQuotesListComponent extends BaseChildEntityListComponent<CRMQuote> {

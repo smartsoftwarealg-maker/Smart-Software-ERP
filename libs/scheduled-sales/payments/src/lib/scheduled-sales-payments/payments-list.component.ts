@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -65,6 +65,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
         MatFormField
     ],
     templateUrl: './payments-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './payments-list.component.css',
 })
 export class PaymentsListComponent extends BaseEntityListComponent<Payment> {

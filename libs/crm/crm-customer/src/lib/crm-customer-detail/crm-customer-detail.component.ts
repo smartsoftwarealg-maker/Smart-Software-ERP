@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     ShellService,
     SnackBarService,
@@ -73,6 +73,7 @@ enum Panels {
     styleUrls: ['./crm-customer-detail.component.scss'],
     templateUrl: './crm-customer-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal} from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseTransactionLinesListComponent, TransactionLinesService } from '@ss/logistics/api-transaction';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -37,6 +37,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     templateUrl: './service-order-line-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./service-order-line-list.component.scss']
 })
 export class ServiceOrderLineListComponent extends BaseTransactionLinesListComponent implements OnInit {

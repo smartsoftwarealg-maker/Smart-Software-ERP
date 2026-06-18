@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {ACCFile, AccFileService} from '@ss/accounting/accounting-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -22,6 +22,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
   templateUrl: './acc-file-list.component.html',
   styleUrls: ['./acc-file-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     RouterModule,
     MaterialModule,

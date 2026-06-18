@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Project } from '../contract-api.class';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -19,6 +19,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './cement-contract-list.component.html',
     styleUrls: ['./cement-contract-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, HostBinding, ChangeDetectionStrategy} from '@angular/core';
 import {
     FormGroup,
     ReactiveFormsModule,
@@ -32,6 +32,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     TranslateDirective,
     ReactiveFormsModule
 ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     animations: [slideToRight]
 })
 export class CostingKeyDetailComponent extends BaseEntityDetailComponent<CKey> {

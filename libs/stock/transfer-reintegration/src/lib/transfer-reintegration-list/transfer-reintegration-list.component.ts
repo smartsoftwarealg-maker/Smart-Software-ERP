@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     MatCell,
     MatCellDef,
@@ -44,6 +44,7 @@ import {TransferReintegrationService} from "../services/transfer-reintegration.s
         DatePipe,
     ],
     templateUrl: './transfer-reintegration-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class TransferReintegrationListComponent extends BaseEntityListComponent<Transaction> {

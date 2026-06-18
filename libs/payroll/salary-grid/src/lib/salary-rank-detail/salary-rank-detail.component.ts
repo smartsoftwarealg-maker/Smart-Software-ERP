@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, ChangeDetectionStrategy } from "@angular/core";
 import { BaseChildEntityDetailComponent } from "@ss/common/ui-base-entity";
 import { GridRank } from "../grid-api";
 import { MaterialModule } from "@ss/common/api-common";
@@ -14,6 +14,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: "./salary-rank-detail.component.html",
     styleUrls: ['./salary-rank-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective

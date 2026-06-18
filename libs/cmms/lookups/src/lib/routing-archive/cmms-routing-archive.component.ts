@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { AppArchiveMainComponent, CMMS_ROUTING_ARCHIVES } from '@ss/common/app-archive';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     standalone: true,
     imports: [AppArchiveMainComponent],
     templateUrl: './cmms-routing-archive.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./cmms-routing-archive.component.css'],
 })
 export class CMMSRoutingArchiveComponent implements OnInit {

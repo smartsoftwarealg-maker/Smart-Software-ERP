@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {
     FormBuilder,
     UntypedFormGroup,
@@ -25,6 +25,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
     templateUrl: './employee-questioning-detail.component.html',
     styleUrls: ['./employee-questioning-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatMiniFabButton,
@@ -57,14 +58,14 @@ export class EmployeeQuestioningDetailComponent extends BaseChildEntityDetailCom
 
     override setupForm(a: Questioning): UntypedFormGroup {
         return (this.form = this.formBuilder.group({
-            id: [a.id],
-            centerId: [a.centerId || this.loginSrv.appCtx.center],
-            parentId: [a.parentId || this.employeeQuestioningSrv.getParentId()],
+            id:        [a.id],
+            centerId:  [a.centerId || this.loginSrv.appCtx.center],
+            parentId:  [a.parentId || this.employeeQuestioningSrv.getParentId()],
             reference: [a.reference],
-            refDate: [a.refDate],
-            motive: [a.motive],
-            question: [a.question],
-            answer: [a.answer],
+            refDate:   [a.refDate],
+            motive:    [a.motive],
+            question:  [a.question],
+            answer:    [a.answer],
         }));
     }
 }

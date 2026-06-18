@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { MaterialModule } from '@ss/common/api-common';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +20,7 @@ import {JsonPipe} from "@angular/common";
         UiAutoCompleteComponent,
     ],
     templateUrl: './bom-dialog.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './bom-dialog.component.css',
 })
 export class BomDialogComponent {

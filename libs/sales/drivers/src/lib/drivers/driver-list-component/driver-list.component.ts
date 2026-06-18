@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {SalesDriver} from '../driver-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -23,6 +23,7 @@ import {DriverService} from '../driver.service';
         DatePipe,
     ],
     styleUrls: ['./driver-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './driver-list.component.html'
 })
 export class DriverListComponent extends BaseEntityListComponent<SalesDriver> {

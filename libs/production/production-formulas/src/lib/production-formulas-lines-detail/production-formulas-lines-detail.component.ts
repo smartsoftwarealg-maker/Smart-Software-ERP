@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent,
     DOC_PRODUCTION_ORDER,
@@ -26,6 +26,7 @@ import { PRODUCTION_FORMULA } from '@ss/workflow';
     ],
     templateUrl: './production-formulas-lines-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatMiniFabButton,
         MatCard,

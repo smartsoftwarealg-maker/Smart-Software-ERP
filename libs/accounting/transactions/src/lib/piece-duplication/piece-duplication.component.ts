@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnInit } from "@angular/core";
+import { Component, inject, Inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@ss/common/api-common';
@@ -12,6 +12,7 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
     templateUrl: './piece-duplication.component.html',
     styleUrls: ['./piece-duplication.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

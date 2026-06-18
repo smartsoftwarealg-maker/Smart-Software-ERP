@@ -1,4 +1,4 @@
-import { Component, signal} from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { MutualRequestLine, MutualRequestLineService } from '@social/social-api';
@@ -39,6 +39,7 @@ import { MaterialModule } from '@ss/common/api-common';
         TranslatePipe
     ],
     templateUrl: './mutual-requests-line-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './mutual-requests-line-list.component.scss',
 })
 export class MutualRequestsLineListComponent extends BaseChildEntityListComponent<MutualRequestLine> {

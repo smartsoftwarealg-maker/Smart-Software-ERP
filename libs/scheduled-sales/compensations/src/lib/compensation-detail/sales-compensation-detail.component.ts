@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, signal } from '@angular/core';
+import { Component, inject, OnDestroy, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     BaseChildEntityDetailComponent,
@@ -24,6 +24,7 @@ import { CompensationDetailService } from '../services/compensation-detail.servi
         TranslatePipe
     ],
     templateUrl: './sales-compensation-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './sales-compensation-detail.component.scss',
 })
 export class SalesCompensationDetailComponent extends BaseChildEntityDetailComponent<Compensation> implements OnDestroy {

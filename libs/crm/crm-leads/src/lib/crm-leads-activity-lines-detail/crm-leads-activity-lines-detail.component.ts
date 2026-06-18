@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, Output, EventEmitter, input } from '@angular/core';
+import { Component, inject, OnInit, Output, EventEmitter, input, ChangeDetectionStrategy } from '@angular/core';
 import {
     FormBuilder,
     FormControl,
@@ -34,6 +34,7 @@ import { CRMLeadsService } from '@ss/crm/leads';
     templateUrl: './crm-leads-activity-lines-detail.component.html',
     styleUrls: ['./crm-leads-activity-lines-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

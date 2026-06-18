@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, ChangeDetectionStrategy } from "@angular/core";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +28,7 @@ import { ExcDocInfoComponent } from '@ss/exchange/ui-info';
     styleUrls: ['./currency-transfer-detail.component.scss'],
     templateUrl: './currency-transfer-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError, ExcDocInfoComponent]
 })
 export class CurrencyTransferDetailComponent extends BaseEntityDetailComponent<Deposit> {

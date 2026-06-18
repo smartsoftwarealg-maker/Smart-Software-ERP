@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { PersonFault } from '../employee-api';
@@ -15,6 +15,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MatButtonModule, MatTableModule, MaterialModule, TranslatePipe, TranslateDirective],
     templateUrl: './person-fault-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./person-fault-list.component.css'],
 })
 export class PersonFaultListComponent extends BaseChildEntityListComponent<PersonFault> {

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent} from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -25,6 +25,7 @@ import { MailingLineListService } from '../mailing-line-list.service';
     templateUrl: 'mailing-lines-list.component.html',
     styleUrls: ['mailing-lines-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatColumnDef,

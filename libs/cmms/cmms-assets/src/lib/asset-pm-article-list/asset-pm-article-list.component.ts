@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 
@@ -41,6 +41,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         PaginationComponent
     ],
     templateUrl: './asset-pm-article-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./asset-pm-article-list.component.css'],
 })
 export class AssetPmArticleListComponent extends BaseChildEntityListComponent<PMPart> {

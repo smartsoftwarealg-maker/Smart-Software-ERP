@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
@@ -33,6 +33,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './work-order-article-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./work-order-article-detail.component.css'],
 })
 export class WorkOrderArticleDetailComponent extends BaseChildEntityDetailComponent<WorkArticle> {

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { PM } from '@ss/cmms/cmms-api';
@@ -17,6 +17,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     standalone: true,
     imports: [CommonModule, MatSortModule, MatTableModule, MatButtonModule, MaterialModule, TranslatePipe, PaginationComponent, TranslateDirective],
     templateUrl: './asset-pm-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./asset-pm-list.component.css'],
 })
 export class AssetPmListComponent extends BaseChildEntityListComponent<PM>{

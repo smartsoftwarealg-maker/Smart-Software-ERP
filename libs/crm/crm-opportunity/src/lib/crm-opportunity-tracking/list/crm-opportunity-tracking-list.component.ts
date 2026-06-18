@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -37,6 +37,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     ],
     templateUrl: './crm-opportunity-tracking-list.component.html',
     styleUrl: './crm-opportunity-tracking-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class CrmOpportunityTrackingListComponent extends BaseChildEntityListComponent<CRMOpportunityProgressLogger> {

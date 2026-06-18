@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { VehicleInsurance } from '../vehicle-api';
@@ -24,6 +24,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         TranslateDirective
     ],
     templateUrl: './vehicle-insurance-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./vehicle-insurance-list.component.css'],
 })
 export class VehicleInsuranceListComponent extends BaseChildEntityListComponent<VehicleInsurance> {

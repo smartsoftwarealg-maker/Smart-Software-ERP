@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
@@ -20,6 +20,7 @@ import { Location, LocationService } from '@ss/master-data/api-article';
     styleUrls: ['./lot-analysis-detail.component.scss'],
     templateUrl: './lot-analysis-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     RouterModule,

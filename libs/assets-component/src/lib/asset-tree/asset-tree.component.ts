@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnDestroy, OnInit, signal} from "@angular/core";
+import { Component, computed, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from "@angular/core";
 
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from "@ss/common/ui-shell";
 import { ActivatedRoute } from "@angular/router";
@@ -21,6 +21,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     standalone: true,
     imports: [MaterialModule, MatTreeModule, TranslatePipe, PaginationComponent, TranslateDirective],
     templateUrl: "./asset-tree.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ["./asset-tree.component.css"]
 })
 export class AssetTreeComponent implements OnInit, OnDestroy {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { UnitsOfMeasure } from '@ss/master-data/api-article';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -26,6 +26,7 @@ import { ACTIVITY_TYPE } from '@ss/crm/opportunity';
     styleUrls: ['./production-unit-detail.component.scss'],
     templateUrl: './production-unit-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         RouterModule,

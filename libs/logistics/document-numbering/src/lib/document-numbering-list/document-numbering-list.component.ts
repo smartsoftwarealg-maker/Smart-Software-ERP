@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {LDocument} from '../document-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -17,6 +17,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './document-numbering-list.component.html',
     styleUrls: ['./document-numbering-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatHeaderCellDef]
 })
 export class DocumentNumberingListComponent extends BaseEntityListComponent<LDocument> {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { Accident } from '../api-work-stoppage';
@@ -29,6 +29,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './work-stoppage-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./work-stoppage-detail.component.css']
 })
 export class WorkStoppageDetailComponent extends BaseEntityDetailComponent<Accident> implements OnInit {

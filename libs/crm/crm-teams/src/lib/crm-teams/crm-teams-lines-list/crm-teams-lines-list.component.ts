@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import {
     MatTable,
@@ -24,6 +24,7 @@ import { TeamsLineService } from '../teams-line.service';
     templateUrl: 'crm-teams-lines-list.component.html',
     styleUrls: ['crm-teams-lines-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatColumnDef,

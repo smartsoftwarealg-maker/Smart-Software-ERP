@@ -1,3 +1,5 @@
+import {ActivityType} from "@ss/master-data/api-article";
+
 export const PRODUCTION_ROUTING_URL = '/production/routing';
 export const ROUTING_OPERATION_URL = '/operations';
 export const ROUTING_MATERIAL_URL = '/materials';
@@ -36,6 +38,8 @@ export interface Routing {
     createdBy?: number;
     updatedBy?: number;
     deletedAt?: Date;
+    productName?: string;
+    changeReason?: string;
 }
 
 export interface RoutingOperation {
@@ -65,6 +69,11 @@ export interface RoutingOperation {
     createdBy?: number;
     updatedBy?: number;
     deletedAt?: Date;
+    standardCost?: number;
+    materials: RoutingMaterial[];
+    activities: ActivityType[];
+    safetyNotes?: string;
+    instructions?: string;
 }
 
 export interface RoutingMaterial {

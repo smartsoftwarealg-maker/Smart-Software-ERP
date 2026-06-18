@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaxPayment } from '../tax-payment.api';
@@ -56,6 +56,7 @@ import { DatePipe, DecimalPipe } from '@angular/common';
     ],
     templateUrl: './tax-payment-list.component.html',
     styleUrl: './tax-payment-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class TaxPaymentListComponent extends BaseEntityListComponent<TaxPayment> {

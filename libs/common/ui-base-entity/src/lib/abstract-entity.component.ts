@@ -1,4 +1,4 @@
-import { Directive, inject, OnDestroy, OnInit, signal} from '@angular/core';
+import {computed, Directive, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import { switchMap, tap } from 'rxjs/operators';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { Observable, of, Subscription } from 'rxjs';
@@ -10,6 +10,7 @@ import {sign} from "chart.js/helpers";
 @Directive()
 export abstract class AbstractEntityComponent<T extends { id: number }> implements OnInit, OnDestroy {
     public loading = signal(true);
+    public processing = computed(() => this.shellSrv?.loading()||false);
     public shellSrv = inject(ShellService);
     public snackBarSrv = inject(SnackBarService);
     public confirmationSrv = inject(ConfirmationDialogService);

@@ -1,4 +1,4 @@
-import {Component, OnInit, signal,} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationModel} from '@ss/common/api-common';
 import {switchMap} from 'rxjs/operators';
@@ -13,6 +13,7 @@ import { DecimalPipe, DatePipe } from '@angular/common';
     styleUrls: ['./history.component.scss'],
     templateUrl: './history.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, DatePipe]
 })
 export class HistoryComponent implements OnInit {

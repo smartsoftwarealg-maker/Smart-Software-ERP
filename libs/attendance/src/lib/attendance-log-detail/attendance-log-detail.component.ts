@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ATTSignature } from '../attendance-api';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -45,6 +45,7 @@ import { of, zip } from 'rxjs';
         MatError,
         TranslateDirective,
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class AttendanceLogDetailComponent extends BaseEntityDetailComponent<ATTSignature> {

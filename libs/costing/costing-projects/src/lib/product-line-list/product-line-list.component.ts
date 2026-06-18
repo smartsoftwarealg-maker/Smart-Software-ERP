@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { CProductLine } from '@ss/costing/costing-utils';
@@ -23,6 +23,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         TranslateDirective
     ],
     templateUrl: './product-line-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./product-line-list.component.css'],
 })
 export class ProductLineListComponent extends BaseChildEntityListComponent<CProductLine> {

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     BaseTransactionLinesListComponent
@@ -36,6 +36,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     selector: 'ss-parts-request-line-list',
     standalone: true,
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './parts-request-line-list.component.html'
 })
 export class PartsRequestLineListComponent extends  BaseTransactionLinesListComponent implements OnInit {

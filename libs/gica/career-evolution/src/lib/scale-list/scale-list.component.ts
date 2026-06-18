@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { Scale } from '../gica-careers-api';
@@ -46,6 +46,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     MatCellDef
 ],
     templateUrl: './scale-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './scale-list.component.css',
 })
 export class ScaleListComponent extends BaseEntityListComponent<Scale> {

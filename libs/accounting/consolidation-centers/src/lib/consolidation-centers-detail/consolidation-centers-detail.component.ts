@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { ConsolidationCenterService } from '../services/consolidation-center.service';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -45,6 +45,7 @@ import { CenterService } from '@ss/administration/api-center';
 ],
     templateUrl: './consolidation-centers-detail.component.html',
     styleUrl: './consolidation-centers-detail.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [ConsolidationCenterService]
 })
 export class ConsolidationCentersDetailComponent extends BaseEntityDetailComponent<ConsolidationCenter> {

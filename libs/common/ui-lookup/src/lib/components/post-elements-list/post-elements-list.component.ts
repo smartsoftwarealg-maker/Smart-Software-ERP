@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     PostElement,
     PostElementsService,
@@ -28,6 +28,7 @@ import { PaginationModel } from '@ss/common/api-common';
     templateUrl: './post-elements-list.component.html',
     styleUrl: './post-elements-list.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTooltip,
         TranslatePipe,

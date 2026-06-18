@@ -1,4 +1,4 @@
-import {Component, OnInit, signal,} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
@@ -16,6 +16,7 @@ import { DecimalPipe } from '@angular/common';
     styleUrls: ['./total.component.scss'],
     templateUrl: './total.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatColumnDef,

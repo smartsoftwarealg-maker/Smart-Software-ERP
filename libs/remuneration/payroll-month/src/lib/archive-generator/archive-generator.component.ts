@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -19,6 +19,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './archive-generator.component.html',
     styleUrls: ['./archive-generator.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, TranslatePipe]
 })
 export class ArchiveGeneratorComponent implements OnInit {

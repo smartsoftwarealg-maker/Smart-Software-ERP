@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import {SubjectService} from '@ss/payroll/api-employee';
 import {PersonDiploma} from '../employee-diploma-api';
@@ -23,6 +23,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-diploma-detail.component.html',
     styleUrls: ['./employee-diploma-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, UiAutoCompleteComponent, MatError, DatePickerComponent, MatInput]
 })
 export class EmployeeDiplomaDetailComponent extends BaseChildEntityDetailComponent<PersonDiploma> {

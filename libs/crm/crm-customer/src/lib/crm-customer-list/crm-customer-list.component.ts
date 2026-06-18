@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     KeepOnToolbar,
     ShellService,
@@ -37,6 +37,7 @@ import {MatDialog} from "@angular/material/dialog";
     styleUrls: ['./crm-customer-list.component.scss'],
     templateUrl: './crm-customer-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

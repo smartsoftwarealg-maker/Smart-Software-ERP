@@ -1,10 +1,11 @@
 import {
-    Component,
-    computed,
-    inject,
-    OnDestroy,
-    OnInit,
-    signal,
+  Component,
+  computed,
+  inject,
+  OnDestroy,
+  OnInit,
+  signal,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -49,6 +50,7 @@ enum Panels {
     templateUrl: 'campaign-detail.html',
     styleUrl: 'campaign-detail.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { MaterialModule } from '@ss/common/api-common';
 import { InterStoreTransferLine } from '@ss/logistics/api-transaction';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -13,6 +13,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     styleUrl: './inter-store-transfer-lines-list.component.scss',
     templateUrl: './inter-store-transfer-lines-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

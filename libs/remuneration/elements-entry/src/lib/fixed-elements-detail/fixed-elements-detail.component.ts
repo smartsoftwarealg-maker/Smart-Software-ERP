@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ELine } from '../elements-entry-api';
 import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
@@ -31,6 +31,7 @@ type Employee = {
     templateUrl: './fixed-elements-detail.component.html',
     styleUrls: ['./fixed-elements-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

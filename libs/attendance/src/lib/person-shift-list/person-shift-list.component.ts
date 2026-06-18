@@ -1,4 +1,4 @@
-import { Component, inject, signal } from "@angular/core";
+import { Component, inject, signal, ChangeDetectionStrategy } from "@angular/core";
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {PersonShift} from '../attendance-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -24,6 +24,7 @@ import { DatePipe } from "@angular/common";
     templateUrl: './person-shift-list.component.html',
     styleUrls: ['./person-shift-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatFormField,
         MatLabel,

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {HolidayRequest} from '@ss/payroll/api-employee';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -24,6 +24,7 @@ import { DatePipe } from '@angular/common';
     templateUrl: './holiday-request-list.component.html',
     styleUrls: ['./holiday-request-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatFormField,
         MatLabel,

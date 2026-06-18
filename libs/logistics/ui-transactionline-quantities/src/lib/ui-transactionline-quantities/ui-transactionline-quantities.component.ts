@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable, of } from 'rxjs';
 import { Source } from '../../../../ui-document-sources/src/lib/document-sources/document-sources.api';
@@ -27,6 +27,7 @@ import { Quantities } from './transactionie-quantities-api';
     selector: 'ss-ui-transactionline-quantities',
     imports: [CommonModule, MatCell, MatColumnDef, MatHeaderCell, MatHeaderRow, MatRow, MatSort, MatSortHeader, MatTable, TranslateDirective, MatCellDef, MatHeaderCellDef, MatHeaderRowDef, MatRowDef],
     templateUrl: './ui-transactionline-quantities.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './ui-transactionline-quantities.component.scss',
 })
 export class UiTransactionlineQuantitiesComponent implements OnInit {

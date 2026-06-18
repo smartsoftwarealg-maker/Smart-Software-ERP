@@ -1,4 +1,4 @@
-import {Component, OnInit, signal,} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService, Article } from '@ss/master-data/api-article';
@@ -20,6 +20,7 @@ import { ArticleStoreComponent } from '@ss/stock/article-store';
     styleUrls: ['./article-store-assignment.component.scss'],
     templateUrl: './article-store-assignment.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatColumnDef,

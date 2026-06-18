@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {FurnitureReceiver, FurnitureTransaction} from '../furniture-api';
 import {FurnitureReceiverService} from '../furniture-receiver.service';
@@ -19,6 +19,7 @@ import { DatePipe } from '@angular/common';
     templateUrl: './furniture-reception-list.component.html',
     styleUrls: ['./furniture-reception-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatColumnDef,

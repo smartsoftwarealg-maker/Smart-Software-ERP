@@ -1,4 +1,4 @@
-import {Component, signal,} from '@angular/core';
+import {Component, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -17,6 +17,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./account-list.component.scss'],
     templateUrl: './account-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         TranslateDirective,

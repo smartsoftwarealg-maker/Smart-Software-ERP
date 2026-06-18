@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -37,6 +37,7 @@ import { CRMLeadsProgressLogger } from './api';
     ],
     templateUrl: './crm-leads-tracking-list.component.html',
     styleUrls: ['./crm-leads-tracking-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class CrmLeadsTrackingListComponent extends BaseChildEntityListComponent<CRMLeadsProgressLogger> {

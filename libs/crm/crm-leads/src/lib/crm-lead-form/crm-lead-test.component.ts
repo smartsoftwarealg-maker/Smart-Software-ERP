@@ -1,5 +1,5 @@
 // lead-form.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MaterialModule} from "@ss/common/api-common";
@@ -13,6 +13,7 @@ import {CRMLead} from "../lead-api";
         ReactiveFormsModule,
         MaterialModule
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./lead-form.component.scss']
 })
 export class LeadFormComponent implements OnInit {

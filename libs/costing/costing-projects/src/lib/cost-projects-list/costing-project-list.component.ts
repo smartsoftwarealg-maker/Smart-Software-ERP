@@ -1,4 +1,4 @@
-import { Component, HostBinding, inject, OnInit, ViewChild, signal } from '@angular/core';
+import { Component, HostBinding, inject, OnInit, ViewChild, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { CostingProjectService } from '../services/costing-project.service';
@@ -28,6 +28,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     CostingReportsComponent,
     PaginationComponent
 ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     animations: [slideToRight]
 })
 export class CostingProjectListComponent extends BaseEntityListComponent<CProject> implements OnInit {

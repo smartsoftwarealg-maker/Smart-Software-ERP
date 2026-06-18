@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
@@ -23,6 +23,7 @@ import { Location, LocationService } from '@ss/master-data/api-article';
     ReactiveFormsModule
 ],
     styleUrls: ['./price-list-detail.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     templateUrl: './price-list-detail.component.html'
 })
 export class PriceListDetailComponent extends BaseEntityDetailComponent<Location> {

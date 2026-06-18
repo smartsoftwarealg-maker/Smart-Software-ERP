@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {InputFilter} from './input-filter-api';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -16,6 +16,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './input-filter-list.component.html',
     styleUrls: ['./input-filter-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class InputFilterListComponent extends BaseEntityListComponent<InputFilter> {

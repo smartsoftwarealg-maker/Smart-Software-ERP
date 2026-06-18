@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -23,6 +23,7 @@ import { AgentService } from '@ss/logistics/api-agent';
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './reception-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,
@@ -91,7 +92,7 @@ export class ReceptionListComponent extends BaseEntityListComponent<Transaction>
         this.entitySrv.selectedId.set(id);
         const itemControlsOn = this.selectedId() !== null && this.selectedId() > 0;
         this.viewReportButton.disabled = !itemControlsOn;
-        this.emailReportButton.disabled = !this.selectedRow || !itemControlsOn || !this.selectedRow['email'];
+        this.emailReportButton.disabled = !this.selectedRow() || !itemControlsOn || this.selectedRow()['email']!== undefined;
         if (id) {
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down
         }

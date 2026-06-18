@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {PersonDiploma} from '../employee-diploma-api';
 import {EmployeeDiplomaService} from '../employee-diploma.service';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
@@ -16,6 +16,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-diploma-list.component.html',
     styleUrls: ['./employee-diploma-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, DatePipe, TranslatePipe]
 })
 export class EmployeeDiplomaListComponent extends BaseChildEntityListComponent<PersonDiploma> {

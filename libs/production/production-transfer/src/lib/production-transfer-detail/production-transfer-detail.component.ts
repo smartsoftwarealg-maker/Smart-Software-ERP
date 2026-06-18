@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder } from '@angular/forms';
@@ -25,6 +25,7 @@ import { DocImportComponent } from '@ss/logistics/ui-doc-import';
     templateUrl: './production-transfer-detail.component.html',
     styleUrl: './production-transfer-detail.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         DatePickerComponent,

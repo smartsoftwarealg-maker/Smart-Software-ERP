@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal,} from '@angular/core';
+import {Component, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PaginationModel} from '@ss/common/api-common';
 import {AgentDebts, AgentDebtsService} from '@ss/logistics/api-agent-debts';
@@ -13,6 +13,7 @@ import { DecimalPipe } from '@angular/common';
     styleUrls: ['./agent-debts.component.scss'],
     templateUrl: './agent-debts.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class AgentDebtsComponent implements OnInit {

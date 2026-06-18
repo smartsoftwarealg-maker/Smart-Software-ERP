@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatCard, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle } from '@angular/material/card';
@@ -17,6 +17,7 @@ type Product =  {
     standalone: true,
     imports: [MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatCardFooter],
     templateUrl: './scheduled-sales-products-page.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './scheduled-sales-products-page.component.scss',
 })
 export class ScheduledSalesProductsPageComponent {

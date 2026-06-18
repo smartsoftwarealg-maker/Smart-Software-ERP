@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormData} from '../FormData';
 import {SnackBarService} from '@ss/common/ui-shell';
@@ -19,6 +19,7 @@ import { MatButton } from '@angular/material/button';
     templateUrl: './default-report.component.html',
     styleUrls: ['./default-report.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatCard, MatCardContent, MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, MatOption, MatButton]
 })
 export class DefaultReportComponent implements OnInit {

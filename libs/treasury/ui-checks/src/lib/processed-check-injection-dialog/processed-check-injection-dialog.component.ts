@@ -1,4 +1,4 @@
-import {Component, inject, input} from '@angular/core';
+import {Component, inject, input, ChangeDetectionStrategy} from '@angular/core';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import { LotsService } from '@ss/common/api-lookup';
 import { finalize, Subscription } from 'rxjs';
@@ -22,6 +22,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './processed-check-injection-dialog.component.html',
     styleUrls: ['./processed-check-injection-dialog.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [TranslateDirective, MatMiniFabButton, MatProgressBar, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, UiAutoCompleteComponent, MatSelect, MatOption, MatButton, TranslatePipe]
 })
 export class ProcessedCheckInjectionDialogComponent {

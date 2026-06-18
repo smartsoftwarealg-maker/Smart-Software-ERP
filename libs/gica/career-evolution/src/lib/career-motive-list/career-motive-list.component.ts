@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { CareerMotive } from '../gica-careers-api';
@@ -29,6 +29,7 @@ import { Observable, tap } from 'rxjs';
     standalone: true,
     imports: [MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, MatHeaderCellDef, PaginationComponent, MatCheckbox, TranslateDirective],
     templateUrl: './career-motive-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './career-motive-list.component.css',
 })
 export class CareerMotiveListComponent extends BaseEntityListComponent<CareerMotive> {

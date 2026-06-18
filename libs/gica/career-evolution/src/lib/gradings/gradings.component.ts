@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
@@ -62,6 +62,7 @@ import { DefaultReportService } from '@ss/common/ui-default-report-component';
         TranslateDirective
     ],
     templateUrl: './gradings.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: 'gradings.component.scss'
 })
 export class GradingsComponent implements OnInit, OnDestroy {

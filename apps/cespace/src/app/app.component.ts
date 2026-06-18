@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {HttpService, LanguageService} from '@ss/common/api-common';
 import { switchMap } from 'rxjs/operators';
 import { ShellService } from '@ss/common/ui-shell';
@@ -13,6 +13,7 @@ import {MessageComponent} from '@ss/common/ui-error-handler';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterOutlet, MessageComponent],
 })
 export class AppComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
@@ -19,6 +19,7 @@ import { HrCriterionService } from '../hr-criterion.service';
     standalone: true,
     imports: [MaterialModule, TranslateDirective],
     templateUrl: './hr-criteria-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './hr-criteria-detail.component.scss',
 })
 export class HrCriteriaDetailComponent extends BaseEntityDetailComponent<HrCriterion> {

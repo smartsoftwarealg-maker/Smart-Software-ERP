@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
@@ -33,6 +33,7 @@ import { of, switchMap, tap } from 'rxjs';
         UiAutoCompleteComponent
     ],
     templateUrl: './asset-pm-article-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./asset-pm-article-detail.component.css'],
 })
 export class AssetPmArticleDetailComponent extends BaseChildEntityDetailComponent<PMPart> implements OnInit {

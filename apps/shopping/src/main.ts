@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { withEnabledBlockingInitialNavigation, provideRouter, Routes, RouterModule } from '@angular/router';
 import { MainPageComponent, ShoppingCartComponent, ShoppingGuard, SalesAcknowledgementComponent, SalesConfirmationComponent } from '@ss/sales/ecommerce';
-import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
+import { withInterceptorsFromDi, provideHttpClient, withXhr } from '@angular/common/http';
 import { ThemeSelect } from '@ss/common/ui-theme';
 import { UiErrorHandlerModule } from '@ss/common/ui-error-handler';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -34,8 +34,8 @@ bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(CommonModule, BrowserModule, RouterModule, UiThemeModule, UiErrorHandlerModule, TranslatePipe),
         provideRouter(shoppingRoutes, withEnabledBlockingInitialNavigation()),
-        provideHttpClient(withInterceptorsFromDi()),
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideAnimations(),
     ]
 })

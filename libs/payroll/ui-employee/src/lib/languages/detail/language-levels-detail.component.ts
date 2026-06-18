@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
     UntypedFormGroup,
     Validators,
@@ -22,6 +22,7 @@ import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
     templateUrl: './language-levels-detail.component.html',
     styleUrls: ['./language-levels-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

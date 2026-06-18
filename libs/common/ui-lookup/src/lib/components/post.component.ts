@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Post, PostElementsService, PostService } from '@ss/common/api-lookup';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -79,6 +79,7 @@ import { Observable } from 'rxjs';
          `,
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatTable,
         MatSort,
@@ -174,6 +175,7 @@ export class PostListComponent extends BaseEntityListComponent<Post> {
                 }`,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     MatCard,

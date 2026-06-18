@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -22,6 +22,7 @@ import { UserListService } from '@ss/common/api-users';
     templateUrl: 'crm-teams-lines-detail.component.html',
     styleUrl: 'crm-teams-lines-detail.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

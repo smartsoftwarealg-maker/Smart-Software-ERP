@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import {BudgetGroupsService} from '../budget-groups.service';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
@@ -32,6 +32,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './budget-groups.component.html',
     styleUrls: ['./budget-groups.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatRadioGroup,
     MatRadioButton,

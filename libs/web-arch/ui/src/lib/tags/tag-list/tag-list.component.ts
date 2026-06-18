@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnDestroy, OnInit, signal} from '@angular/core';
+import {Component, HostBinding, OnDestroy, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {TagService} from './tag.service';
 import {Tag} from '../tag';
@@ -21,6 +21,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
   templateUrl: './tag-list.component.html',
   styleUrls: ['./tag-list.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     ReactiveFormsModule,

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
     AccessRight, LanguageService,
     LoginService, MaterialModule,
@@ -38,6 +38,7 @@ interface APP {
     templateUrl: './access-rights-list.component.html',
     styleUrls: ['./access-rights-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCheckbox,

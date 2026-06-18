@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, ChangeDetectionStrategy} from '@angular/core';
 
 import {BaseChildEntityDetailComponent} from '@ss/common/ui-base-entity';
 import {FuelConsumption} from '../vehicle-api';
@@ -31,6 +31,7 @@ import {TranslateDirective} from "@ss/common/ui-lang";
         TranslateDirective,
     ],
     templateUrl: './vehicle-fuel-consumption-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./vehicle-fuel-consumption-detail.component.css'],
 })
 export class VehicleFuelConsumptionDetailComponent extends BaseChildEntityDetailComponent<FuelConsumption> {

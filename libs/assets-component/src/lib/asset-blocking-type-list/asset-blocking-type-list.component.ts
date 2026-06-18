@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Lookup} from '@ss/common/api-lookup';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -24,6 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
   templateUrl: './asset-blocking-type-list.component.html',
   styleUrls: ['./asset-blocking-type-list.component.scss'],
   standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     TranslateDirective,

@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, ChangeDetectionStrategy } from "@angular/core";
 
 import { MaterialModule } from '@ss/common/api-common';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
@@ -23,6 +23,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './vehicle-maintenance-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./vehicle-maintenance-detail.component.css']
 })
 export class VehicleMaintenanceDetailComponent extends BaseChildEntityDetailComponent<VehicleMaintenance> {

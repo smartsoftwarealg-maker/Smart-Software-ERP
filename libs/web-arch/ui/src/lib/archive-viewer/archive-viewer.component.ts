@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 import {ArchiveService} from '../archive.service';
@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     templateUrl: './archive-viewer.component.html',
     styleUrls: ['./archive-viewer.component.css'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         ReactiveFormsModule,

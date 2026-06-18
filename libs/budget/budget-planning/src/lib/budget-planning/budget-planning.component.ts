@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, signal} from '@angular/core';
+import {Component, OnDestroy, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import {AccountService} from '@ss/accounting/api-accounts';
@@ -26,6 +26,7 @@ import { DecimalPipe } from '@angular/common';
     templateUrl: './budget-planning.component.html',
     styleUrls: ['./budget-planning.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatRadioGroup,
         MatRadioButton,

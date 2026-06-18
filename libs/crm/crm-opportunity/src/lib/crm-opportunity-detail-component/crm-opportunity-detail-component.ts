@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { CRMOpportunityService } from '../crm-opportunity.service';
 import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
@@ -54,6 +54,7 @@ enum Panels {
     templateUrl: './crm-opportunity-detail-component.html',
     styleUrl: './crm-opportunity-detail-component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [
         {
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

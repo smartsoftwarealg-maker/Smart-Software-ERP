@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ImageUploaderUtil, LoginService, MaterialModule } from '@ss/common/api-common';
@@ -15,6 +15,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './app-archive-detail.component.html',
     styleUrls: ['./app-archive-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     RouterModule,
     MaterialModule,

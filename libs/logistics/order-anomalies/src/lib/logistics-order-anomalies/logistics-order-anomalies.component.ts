@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { OrderAnomaly } from './api-order-anomalies';
@@ -27,6 +27,7 @@ import { Observable, tap } from 'rxjs';
         PaginationComponent,
     ],
     templateUrl: './logistics-order-anomalies.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './logistics-order-anomalies.component.css',
 })
 export class LogisticsOrderAnomaliesComponent

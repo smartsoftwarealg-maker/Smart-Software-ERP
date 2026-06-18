@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 
 import {
     MatCell,
@@ -40,6 +40,7 @@ import {LoginService} from "@ss/common/api-common";
 ],
     templateUrl: './element-generation.component.html',
     styleUrl: './element-generation.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class ElementGenerationComponent implements OnInit {

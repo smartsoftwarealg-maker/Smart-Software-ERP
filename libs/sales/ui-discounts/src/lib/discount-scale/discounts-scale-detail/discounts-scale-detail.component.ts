@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
@@ -23,6 +23,7 @@ import { SalesDiscountsService } from '../sales-discounts.service';
     templateUrl: 'discounts-scale-detail.component.html',
     styleUrl: 'discounts-scale-detail.component.scss',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,

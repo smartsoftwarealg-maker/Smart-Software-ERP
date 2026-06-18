@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {PayrollMonthService} from '../payroll-month.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -21,6 +21,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './month-selector.component.html',
     styleUrls: ['./month-selector.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatSelect, MatOption, MatButton, MatProgressBar, TranslatePipe]
 })
 export class MonthSelectorComponent implements OnInit {

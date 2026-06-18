@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, Validators, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
@@ -19,6 +19,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-decision-detail.component.html',
     styleUrls: ['./employee-decision-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardHeader, MatMiniFabButton, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent]
 })
 export class EmployeeDecisionDetailComponent extends BaseChildEntityDetailComponent<Decision> {

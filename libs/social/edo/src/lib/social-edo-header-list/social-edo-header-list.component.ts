@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseEntityListComponent } from '@ss/common/ui-base-entity';
 import { EDOHeader } from '@social/social-api';
@@ -30,6 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MaterialModule, TranslateDirective, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatHeaderCellDef, PaginationComponent],
     templateUrl: './social-edo-header-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './social-edo-header-list.component.scss',
 })
 export class SocialEdoHeaderListComponent extends BaseEntityListComponent<EDOHeader> {

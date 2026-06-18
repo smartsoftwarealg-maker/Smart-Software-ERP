@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder } from "@angular/forms";
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent, RouterOutlet } from '@angular/router';
 import { LTMLineMatter,  } from '@ltm/ltm-api';
@@ -20,6 +20,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './line-matter-detail.component.html',
     styleUrls: ['./line-matter-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     ReactiveFormsModule,

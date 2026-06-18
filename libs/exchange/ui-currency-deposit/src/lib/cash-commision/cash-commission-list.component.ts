@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -27,6 +27,7 @@ import { DecimalPipe, DatePipe } from '@angular/common';
         '../../../../../common/assets/src/assets/main-container.scss'],
     templateUrl: './cash-commission-list.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, ExcDocInfoComponent, DecimalPipe, DatePipe]
 })
 export class CashCommissionListComponent extends BaseEntityListComponent<Deposit> {

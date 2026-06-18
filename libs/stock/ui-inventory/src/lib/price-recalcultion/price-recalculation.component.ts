@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import { Currency, LotsService, Lot } from '@ss/common/api-lookup';
 import { DefaultAutoCompleteModel } from '@ss/common/ui-auto-complete';
 import {
@@ -48,6 +48,7 @@ interface EvalPrice {
     templateUrl: './price-recalculation.component.html',
     styleUrls: ['./price-recalculation.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatCard,
@@ -125,7 +126,7 @@ export class PriceRecalculationComponent implements OnInit {
         this.optionSrv
             .get(this.loginSrv.appCtx.center)
             .subscribe(res => {
-                this.form.controls.eval_price.setValue(res?.evalPrice||2);
+                this.form.controls.eval_price.setValue((res?.evalPrice||2)+'');
                 this.processing.set(false);
                 // this.form = this.formBuilder.group({
                 //     id:             [this.loginSrv.appCtx.center],

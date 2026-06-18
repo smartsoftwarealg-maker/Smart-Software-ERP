@@ -4,6 +4,11 @@
     "projectType": "library",
     "sourceRoot": "libs/common/ui-theme/src",
     "prefix": "ss",
+    "generators": {
+        "@nx/angular:component": {
+            "style": "scss"
+        }
+    },
     "targets": {
         "lint": {
             "executor": "@angular-devkit/build-angular:tslint",
@@ -20,14 +25,8 @@
             "options": {
                 "jestConfig": "libs/common/ui-theme/jest.config.ts",
                 "tsConfig": "libs/common/ui-theme/tsconfig.spec.json",
-                "passWithNoTests": true,
-                "setupFile": "libs/common/ui-theme/src/test-setup.ts"
+                "passWithNoTests": true
             }
-        }
-    },
-    "generators": {
-        "@nx/angular:component": {
-            "style": "scss"
         }
     }
 }

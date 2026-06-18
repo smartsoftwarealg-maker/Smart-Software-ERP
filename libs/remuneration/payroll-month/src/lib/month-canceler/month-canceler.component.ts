@@ -1,4 +1,4 @@
-import { Component, OnInit, signal} from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {PayrollMonthService} from '@ss/remuneration/payroll-month';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -21,6 +21,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './month-canceler.component.html',
     styleUrls: ['./month-canceler.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, MatProgressSpinner, TranslatePipe]
 })
 export class MonthCancelerComponent implements OnInit {

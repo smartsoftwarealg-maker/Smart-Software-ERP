@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {LookupsService, PayModeService} from '@ss/common/api-lookup';
@@ -25,6 +25,7 @@ import {AdvancementsService} from "../services/advancements.service";
     templateUrl: './advancements-detail.component.html',
     styleUrls: ['./advancements-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class AdvancementsDetailComponent extends BaseEntityDetailComponent<Payment> {

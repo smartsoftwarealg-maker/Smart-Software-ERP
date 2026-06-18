@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {MaterialModule, PaginatorPersistenceService} from '@ss/common/api-common';
@@ -16,6 +16,7 @@ import {ActivityTypesService} from "../services/types.service";
     templateUrl: './production-activity-types-list.component.html',
     styleUrls: ['./production-activity-types-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

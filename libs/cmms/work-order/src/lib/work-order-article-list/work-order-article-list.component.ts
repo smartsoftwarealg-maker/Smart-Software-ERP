@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { WorkArticle } from '@ss/cmms/cmms-api';
@@ -39,6 +39,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
         PaginationComponent
     ],
     templateUrl: './work-order-article-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./work-order-article-list.component.css'],
 })
 export class WorkOrderArticleListComponent extends BaseChildEntityListComponent<WorkArticle> {

@@ -1,14 +1,15 @@
 import {
-    Component,
-    OnInit,
-    OnDestroy,
-    HostListener,
-    ViewChild,
-    ElementRef,
-    AfterViewInit,
-    ChangeDetectorRef,
-    AfterViewChecked,
-    inject, computed
+  Component,
+  OnInit,
+  OnDestroy,
+  HostListener,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  ChangeDetectorRef,
+  AfterViewChecked,
+  inject, computed,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { ShellService } from './shell.service';
 import { CdkTree } from '@angular/cdk/tree';
@@ -36,6 +37,7 @@ import {form, FormField} from "@angular/forms/signals";
     templateUrl: './shell.component.html',
     styleUrls: ['./shell.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     RouterModule,
     MaterialModule,

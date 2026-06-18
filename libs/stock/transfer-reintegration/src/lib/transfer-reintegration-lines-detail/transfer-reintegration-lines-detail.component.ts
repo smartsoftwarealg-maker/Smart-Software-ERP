@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {
     BaseTransactionLinesDetailComponent, DOC_TRANSFER_CANCELLATION, DOC_TRANSFER_RECEPTION
 } from "@ss/logistics/api-transaction";
@@ -19,6 +19,7 @@ import {MaterialModule} from "@ss/common/api-common";
     templateUrl: './transfer-reintegration-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MaterialModule,
         MatMiniFabButton,

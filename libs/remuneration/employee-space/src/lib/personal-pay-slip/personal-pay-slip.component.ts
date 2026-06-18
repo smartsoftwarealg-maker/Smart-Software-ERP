@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal} from "@angular/core";
+import { Component, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from "@angular/core";
 import { ElementsEntryService, PaymentElement } from '@ss/remuneration/elements-entry';
 import { FormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of, Subscription, switchMap, tap, zip } from 'rxjs';
@@ -25,6 +25,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './personal-pay-slip.component.html',
     styleUrls: ['./personal-pay-slip.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatCard,
     MatCardContent,

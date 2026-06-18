@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal} from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BudgetService} from '../budget.service';
 import {Budget} from '../budget-api';
 import { LoginService, PaginationModel } from '@ss/common/api-common';
@@ -18,6 +18,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     templateUrl: './budget-selector-dlg.component.html',
     styleUrls: ['./budget-selector-dlg.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         MatCard,
         MatCardTitle,

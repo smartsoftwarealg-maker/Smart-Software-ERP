@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
     HttpService,
     LanguageService,
@@ -18,6 +18,7 @@ import { MessageComponent } from '@ss/common/ui-error-handler';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [RouterOutlet, MessageComponent],
 })
 export class AppComponent implements OnInit {

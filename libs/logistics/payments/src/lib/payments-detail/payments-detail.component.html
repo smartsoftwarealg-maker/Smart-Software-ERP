@@ -90,7 +90,7 @@
 </mat-card>
 
 <ss-compensation-panel
-    [paymentId]="form?.get('id')?.value"
-    [agentId]="form?.get('agent')?.value">
+    [paymentId]="(form?.get('id')?.value)"
+    [agentId]="(form?.get('agent')?.value)">
 </ss-compensation-panel>
 

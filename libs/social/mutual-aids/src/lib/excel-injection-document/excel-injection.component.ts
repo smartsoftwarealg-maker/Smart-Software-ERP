@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal, input} from '@angular/core';
+import {Component, inject, OnInit, signal, input, ChangeDetectionStrategy} from '@angular/core';
 import {finalize, Subscription} from 'rxjs';
 import {HttpEventType} from '@angular/common/http';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -18,6 +18,7 @@ import {MatDialogRef} from "@angular/material/dialog";
     templateUrl: './excel-injection.component.html',
     styleUrls: ['./excel-injection.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [TranslateDirective, MaterialModule, MatMiniFabButton, MatButton, MatProgressBar, TranslatePipe, FormsModule, MatCard]
 })
 export class ExcelInjectionComponent implements OnInit {

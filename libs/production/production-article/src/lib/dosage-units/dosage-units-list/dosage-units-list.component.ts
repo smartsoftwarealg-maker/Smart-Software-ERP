@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, signal, ChangeDetectionStrategy} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
@@ -17,6 +17,7 @@ import { DosageUnitService } from '../../services/dosage-unit.service';
     templateUrl: 'dosage-units-list.html',
     styleUrls: ['dosage-units-list.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatTable,
         MatSort,
         MatColumnDef,

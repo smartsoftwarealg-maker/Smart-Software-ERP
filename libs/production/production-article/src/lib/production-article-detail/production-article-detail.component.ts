@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { Article, ARTICLE_FINAL_PRODUCT, ARTICLE_SEMI_FINAL, ArticleService } from '@ss/master-data/api-article';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -33,6 +33,7 @@ import { ChildAttributesComponent } from '@ss/custom-attributes';
     styleUrls: ['./production-article-detail.component.scss'],
     templateUrl: './production-article-detail.component.html',
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     RouterModule,

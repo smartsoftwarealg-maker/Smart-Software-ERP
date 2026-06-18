@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
@@ -29,6 +29,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         ReactiveFormsModule
     ],
     templateUrl: './costing-accounting.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './costing-accounting.component.css',
 })
 export class CostingAccountingComponent implements OnInit {

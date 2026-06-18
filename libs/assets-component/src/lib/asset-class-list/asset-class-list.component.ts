@@ -1,4 +1,4 @@
-import {  Component, signal} from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {AssetClass} from '../assets-api';
 import {AssetClassService} from '../services/asset-class.service';
@@ -16,6 +16,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
   templateUrl: './asset-class-list.component.html',
   styleUrls: ['./asset-class-list.component.scss'],
   standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

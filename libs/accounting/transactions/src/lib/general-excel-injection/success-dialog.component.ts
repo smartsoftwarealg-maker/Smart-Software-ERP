@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { XITotal } from '@ss/accounting/accounting-api';
 import { TranslateDirective } from '@ss/common/ui-lang';
@@ -8,6 +8,7 @@ import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
     selector: 'app-dialog',
     templateUrl: './success-dialog.component.html',
     styleUrls: ['./success-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [TranslateDirective, MatMiniFabButton],
 })
 export class SuccessDialogComponent {

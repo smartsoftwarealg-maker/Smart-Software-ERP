@@ -10,7 +10,7 @@ import {
     PaginatorPersistenceService,
     Right,
 } from '@ss/common/api-common';
-import {computed, Directive, OnDestroy, OnInit, WritableSignal, signal } from '@angular/core';
+import {computed, Directive, OnDestroy, OnInit, WritableSignal, signal, inject, ChangeDetectorRef} from '@angular/core';
 import { concatMap, Observable, of, Subscription } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -21,6 +21,7 @@ import { Sort } from '@angular/material/sort';
 @Directive()
 export class BaseEntityListComponent<T extends { id: number; email?: string }>
 implements OnInit, OnDestroy {
+    private cdr = inject(ChangeDetectorRef);
     private _editable = true;
     private reportForm: string|null = null;
 
@@ -221,7 +222,7 @@ implements OnInit, OnDestroy {
     }
 
     protected canShowProcessingStatus(): boolean {
-        return true;
+        return false;
     }
 
     public refresh(callback?: () => void) {
@@ -237,6 +238,7 @@ implements OnInit, OnDestroy {
                     if (callback) {
                         callback();
                     }
+                    this.cdr.markForCheck();
                 },
                 error: (err) => {
                     this.data = []; // clear everything;

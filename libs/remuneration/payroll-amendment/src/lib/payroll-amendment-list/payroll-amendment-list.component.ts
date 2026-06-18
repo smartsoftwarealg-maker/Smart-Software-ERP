@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit, signal, ChangeDetectionStrategy} from '@angular/core';
 import {BaseEntityListComponent} from '@ss/common/ui-base-entity';
 import {Amendment, Comparison} from '../payroll-amendment.class';
 import {KeepOnToolbar, ShellService, SnackBarService, ToolbarButton} from '@ss/common/ui-shell';
@@ -22,6 +22,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
   templateUrl: './payroll-amendment-list.component.html',
   styleUrls: ['./payroll-amendment-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute } from '@angular/router';
@@ -52,6 +52,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './test-equipment-testing-input-detail.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './test-equipment-testing-input-detail.component.scss',
 })
 export class TestEquipmentTestingInputDetailComponent extends BaseEntityDetailComponent<LTMTestEquipmentTestingInput> {

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {BaseTransactionDetailComponent, Transaction} from '@ss/logistics/api-transaction';
 import { CCGroup, DeliveryTimeService, Lookup, LookupsService, PayMethod } from '@ss/common/api-lookup';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
@@ -29,6 +29,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './purchase-request-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class PurchaseRequestDetailComponent extends BaseTransactionDetailComponent implements OnInit {

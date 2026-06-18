@@ -4,6 +4,11 @@
     "projectType": "library",
     "sourceRoot": "libs/social/assets/src",
     "prefix": "ss",
+    "generators": {
+        "@nx/angular:component": {
+            "style": "scss"
+        }
+    },
     "targets": {
         "lint": {
             "executor": "@angular-devkit/build-angular:tslint",
@@ -20,14 +25,8 @@
             "options": {
                 "jestConfig": "libs/social/assets/jest.config.js",
                 "tsConfig": "libs/social/assets/tsconfig.spec.json",
-                "passWithNoTests": true,
-                "setupFile": "libs/social/assets/src/test-setup.ts"
+                "passWithNoTests": true
             }
-        }
-    },
-    "generators": {
-        "@nx/angular:component": {
-            "style": "scss"
         }
     }
 }

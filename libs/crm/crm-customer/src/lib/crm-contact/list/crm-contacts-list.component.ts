@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
     MatCell,
@@ -42,6 +42,7 @@ import { LanguageService } from '@ss/common/api-common';
     ],
     templateUrl: './crm-contacts-list.component.html',
     styleUrl: './crm-contacts-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: true,
 })
 export class CrmContactsListComponent extends BaseChildEntityListComponent<CRMContact> {

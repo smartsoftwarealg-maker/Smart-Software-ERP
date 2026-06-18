@@ -5,7 +5,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { BaseChildEntityDetailComponent } from '@ss/common/ui-base-entity';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { MaterialModule } from '@ss/common/api-common';
@@ -23,6 +23,7 @@ import { SalesCategoryService } from '@ss/common/api-lookup';
     templateUrl: './class-accounts-line-detail.component.html',
     styleUrls: ['./class-accounts-line-detail.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MaterialModule,
     ReactiveFormsModule,

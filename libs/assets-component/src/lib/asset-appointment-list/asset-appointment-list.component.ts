@@ -1,4 +1,4 @@
-import { Component, effect, input, Input, OnInit, signal } from '@angular/core';
+import { Component, effect, input, Input, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import {DefaultReportService} from '@ss/common/ui-default-report-component';
@@ -25,6 +25,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './asset-appointment-list.component.html',
     styleUrls: ['./asset-appointment-list.component.scss'],
     standalone: true,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MaterialModule,

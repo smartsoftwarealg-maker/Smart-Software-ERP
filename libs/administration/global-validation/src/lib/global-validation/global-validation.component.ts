@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { MatCard, MatCardContent } from '@angular/material/card';
@@ -16,6 +16,7 @@ import { of, switchMap, tap } from 'rxjs';
     imports: [MaterialModule, MatCard, MatCardContent, ReactiveFormsModule, MatFormField, MatInput, MatLabel, TranslateDirective, MatFormField, TranslatePipe],
     templateUrl: './global-validation.component.html',
     styleUrl: './global-validation.component.scss',
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [ValidationService]
 })
 export class GlobalValidationComponent implements OnInit {
