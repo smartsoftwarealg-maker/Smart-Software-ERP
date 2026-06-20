@@ -42,6 +42,7 @@ import {budgetNavTree} from "../app/budget/side-nav-tree";
 import {dashboardNavTree} from "../app/dashboard/side-nav-tree";
 import {workflowNavTree} from "../app/workflow/side-nav-tree";
 import {viewerRoutes} from "../app/archive-viewer/routes";
+import {socialRoutes} from "../app/social/routes";
 
 export const environment = {
     production: true,
@@ -166,7 +167,7 @@ export const appRoutes: Routes = [
     },
     {
         path: SOCIAL_APP_URL,
-        loadChildren: () => import('../app/social/routes').then((m) => m.socialRotes),
+        loadChildren: () => import('../app/social/routes').then((m) => m.socialRoutes),
     },
     {
         path: PRODUCTION_APP_URL,
