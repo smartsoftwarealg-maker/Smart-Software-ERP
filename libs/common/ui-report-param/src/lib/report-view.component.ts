@@ -3,7 +3,6 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {LookupsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {NestedTreeControl} from '@angular/cdk/tree';
 
 
 import {
@@ -102,11 +101,12 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
     ]);
 
     reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
-    treeControl = new NestedTreeControl<ReportNode>(node => node.list);
+    // treeControl = new NestedTreeControl<ReportNode>(node => node.list);
     selectedReport: ReportNode;
     app: string;
 
-    hasChild = (_: number, node: ReportNode) => !!node && node.list.length > 0;
+    readonly childrenAccessor = (node: ReportNode) => node.list ?? [];
+    readonly hasChild = (_: number, node: ReportNode) => !!node && node.list.length > 0;
 
     constructor(
         public reportsService: ReportTreeService,

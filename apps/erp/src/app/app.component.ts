@@ -38,14 +38,14 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.themeSrv.load();
-        const multiCompany = environment['multiCompany'] === true;
-        const company = environment['company'];
-        const homePage = environment['homePage'];
+        const multiCompany = environment.multiCompany === true;
+        const company = environment.company;
+        const homePage = environment.homePage;
         this.#companySelectorSrv.multiCompany = multiCompany;
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage = homePage;
-        this.#langSrv.isSodismac = !!environment['sodismac'];
-        this.shellSrv.setApplicationTitle('Smart ERP 3.1.1');
+        this.#langSrv.isSodismac = !!environment.sodismac;
+        this.shellSrv.setApplicationTitle('Smart ERP 3.2.0');
         this.httpSrv
             .init()
             .pipe(

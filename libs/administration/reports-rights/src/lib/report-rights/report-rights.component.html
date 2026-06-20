@@ -8,7 +8,7 @@
             </ss-auto-complete>
         </mat-form-field>
         <div class="tree-div">
-            <mat-tree #role class="tree" [dataSource]="roleTree" [treeControl]="roleTreeControl">
+            <mat-tree #role class="tree" [dataSource]="roleData" [childrenAccessor]="roleChildAccessor">
 
                 <mat-nested-tree-node *matTreeNodeDef="let node">
                     <li class="tree-leaf"
@@ -22,12 +22,12 @@
                 <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
                     <li>
                         <button mat-icon-button matTreeNodeToggle>
-                            <i class="{{roleTreeControl.isExpanded(node) ? 'fa-solid fa-minus' : 'fa-solid fa-plus' }}"></i>
+                            <i class="{{role.isExpanded(node) ? 'fa-solid fa-minus' : 'fa-solid fa-plus' }}"></i>
                         </button>
                         {{ node.name }}
                         <mat-divider></mat-divider>
 
-                        <ul [class.tree-invisible]="!roleTreeControl.isExpanded(node)">
+                        <ul [class.tree-invisible]="!role.isExpanded(node)">
                             <ng-container matTreeNodeOutlet></ng-container>
                         </ul>
                     </li>
@@ -48,7 +48,7 @@
 
     <div class="report_div">
         <div class="tree-div">
-            <mat-tree #tree class="tree" [dataSource]="reportTree" [treeControl]="reportTreeControl">
+            <mat-tree #tree class="tree" [dataSource]="reportData" [childrenAccessor]="reportChildAccessor">
                 <!-- This is the tree node template for leaf nodes -->
 
                 <mat-nested-tree-node *matTreeNodeDef="let node">
@@ -63,12 +63,12 @@
                 <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
                     <li>
                         <button mat-icon-button matTreeNodeToggle>
-                            <i class="{{reportTreeControl.isExpanded(node) ? 'fa-solid fa-minus' : 'fa-solid fa-plus'}}"></i>
+                            <i class="{{tree.isExpanded(node) ? 'fa-solid fa-minus' : 'fa-solid fa-plus'}}"></i>
                         </button>
                         {{ node.name }}
                         <mat-divider></mat-divider>
 
-                        <ul [class.tree-invisible]="!reportTreeControl.isExpanded(node)">
+                        <ul [class.tree-invisible]="!tree.isExpanded(node)">
                             <ng-container matTreeNodeOutlet></ng-container>
                         </ul>
                     </li>

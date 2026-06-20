@@ -22,14 +22,22 @@ import {dashboardNavTree} from "../app/dashboard/side-nav-tree";
 import {attendanceNavTree} from "../app/attendance/side-nav-tree";
 import {dashboardRoutes} from "../app/dashboard/routes";
 import {accountingNavTree} from "../app/accounting/side-nav-tree";
+import {stockNavTree} from "../app/stock/side-nav-tree";
+import {purchasesNavTree} from "../app/purchases/side-nav-tree";
 
 export const environment = {
-    production: true,
+    production: false,
+    multiCompany: false,
+    company: <string>null,
+    homePage: <string>null,
+    sodismac: false
 };
 
 export const navBar = [
     administrationNavTree,
     organizationsNavTree,
+    purchasesNavTree,
+    stockNavTree,
     hrLookupNavTree,
     hrNavTree,
     payrollNavTree,
@@ -50,6 +58,8 @@ export const langAssets = [
     ['assets/locale/att_', 'ATT_'],
     ['assets/locale/missions_', 'MISSION_'],
     ['assets/locale/accounting_', 'ACC_'],
+    ['assets/locale/purchases_', 'PURCHASES_'],
+    ['assets/locale/stock_', 'STOCK_'],
 ];
 
 export const appRoutes: Routes =  [
