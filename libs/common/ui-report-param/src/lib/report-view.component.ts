@@ -40,7 +40,7 @@ import {
     timer
 } from 'rxjs';
 import {HttpParams} from '@angular/common/http';
-import {FormControl, FormGroup, UntypedFormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, UntypedFormGroup} from '@angular/forms';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {map, switchMap} from 'rxjs/operators';
 import {DeviceDetectorService} from 'ngx-device-detector';
@@ -70,6 +70,7 @@ import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
     ],
 })
 export class ReportViewComponent extends BaseEntityListComponent<ReportParam> implements OnInit, OnDestroy {
+    private fb = inject(FormBuilder);
     private deviceService = inject(DeviceDetectorService);
     private paramLookupSrv = inject(ReportParamLookupService);
     private readonly POLL_INTERVAL_MS = 3000; // Poll every 3 seconds
@@ -167,24 +168,30 @@ export class ReportViewComponent extends BaseEntityListComponent<ReportParam> im
         this.form = null;
         this.isReady.set(false);
         this.selectedReport = reportNode;
+        const controls: { [key: string]: any } = {};
         super.refresh(() => {
             const cc = {reportType: new FormControl<string>(''), name: new FormControl<string|boolean>('')};
 
             this.data.forEach(e => {
-
-                cc.name = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp' ?
+                controls[e.name] = this.isLTM() && e.typeName === 'java.sql.Timestamp' ?
                     e.valueString?.substring(0, 11) + '05:00:00' :
                     e.valueString === 'false' ? false :
                         e.valueString === 'true' ? true :
-                            e.valueString);
+                            e.valueString;
+                // cc.name = new FormControl(this.isLTM() && e.typeName === 'java.sql.Timestamp' ?
+                //     e.valueString?.substring(0, 11) + '05:00:00' :
+                //     e.valueString === 'false' ? false :
+                //         e.valueString === 'true' ? true :
+                //             e.valueString);
 
                 if (e.lookupTable) {
                     e.lookupModel = new ParamAutoCompleteModel(this.paramLookupSrv, e.lookupTable);
                     e.description = e.description.substring(0, e.description.indexOf('//'));
                 }
             });
-            cc['reportType'] = new FormControl(this.isLTM() ? 'HTML' : 'PDF');
-            this.form = new FormGroup(cc);
+            controls['reportType'] = (this.isLTM() ? 'HTML' : 'PDF');
+            controls['name'] = '';
+            this.form = this.fb.group(controls)
             this.isReady.set(true);
         });
     }

@@ -47,7 +47,7 @@ interface PaymentTree {
     templateUrl: './payment-compensation.component.html',
     styleUrls: ['./payment-compensation.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [CommonModule,
         DragDropModule,
         MaterialModule,
