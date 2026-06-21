@@ -17,7 +17,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './document-numbering-list.component.html',
     styleUrls: ['./document-numbering-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatColumnDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, MatHeaderCellDef]
 })
 export class DocumentNumberingListComponent extends BaseEntityListComponent<LDocument> {

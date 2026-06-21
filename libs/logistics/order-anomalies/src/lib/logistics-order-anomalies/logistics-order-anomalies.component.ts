@@ -27,7 +27,7 @@ import { Observable, tap } from 'rxjs';
         PaginationComponent,
     ],
     templateUrl: './logistics-order-anomalies.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrl: './logistics-order-anomalies.component.css',
 })
 export class LogisticsOrderAnomaliesComponent

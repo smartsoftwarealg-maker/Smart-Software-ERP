@@ -21,7 +21,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     templateUrl: './db-updater.component.html',
     styleUrls: ['./db-updater.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatProgressBar, MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, MatSelectionList, MatListOption, MatButton, TranslatePipe, MatProgressSpinner]
 })
 export class DbUpdaterComponent implements OnInit {

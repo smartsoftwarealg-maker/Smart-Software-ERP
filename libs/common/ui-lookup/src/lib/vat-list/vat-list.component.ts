@@ -27,7 +27,7 @@ import { MatSort } from '@angular/material/sort';
     PaginationComponent,
     MatSort
 ],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./vat-list.component.scss']
 })
 export class VatListComponent extends BaseEntityListComponent<Vat> {

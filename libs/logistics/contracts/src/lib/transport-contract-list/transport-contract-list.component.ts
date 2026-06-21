@@ -19,7 +19,7 @@ import {TransportContractService} from "@ss/logistics/contracts";
     templateUrl: './transport-contract-list.component.html',
     styleUrls: ['./transport-contract-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

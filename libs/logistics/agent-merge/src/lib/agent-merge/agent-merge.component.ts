@@ -27,7 +27,7 @@ import { HttpEventType } from '@angular/common/http';
 ],
     templateUrl: './agent-merge.component.html',
     styleUrl: './agent-merge.component.scss',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
 })
 export class AgentMergeComponent implements OnInit {
