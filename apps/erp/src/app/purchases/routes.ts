@@ -188,7 +188,7 @@ export const purchasesRoutes: Routes = [
                 canActivate: [loginGuard],
                 children: docInfoRoutes
             },
-            {
+            {   
                 path: ':id',
                 component: PurchaseRequestDetailComponent,
                 canActivate: [loginGuard],

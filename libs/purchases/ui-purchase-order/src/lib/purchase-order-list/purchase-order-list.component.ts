@@ -20,7 +20,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     templateUrl: './purchase-order-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MatTable,
     MatSort,

@@ -23,7 +23,7 @@ import { TRANSPORTER } from '../../../../api-reception/src/lib/reception-api';
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './transporter-reception-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,
