@@ -12,7 +12,8 @@ import {
     ORGANIZATIONS_APP_URL,
     PAYROLL_APP_URL,
     WORK_FLOW_APP_URL,
-    ARCH_VIEWER_URL, ATTENDANCE_APP_URL, ACCOUNTING_APP_URL
+    ARCH_VIEWER_URL, ATTENDANCE_APP_URL, ACCOUNTING_APP_URL, PURCHASES_APP_URL, LOGISTICS_APP_URL, FINANCE_APP_URL,
+    STOCK_APP_URL
 } from '../app/common';
 import {hrLookupNavTree} from '../app/hr-lookups/side-nav-tree';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -24,6 +25,7 @@ import {dashboardRoutes} from "../app/dashboard/routes";
 import {accountingNavTree} from "../app/accounting/side-nav-tree";
 import {stockNavTree} from "../app/stock/side-nav-tree";
 import {purchasesNavTree} from "../app/purchases/side-nav-tree";
+import {logisticsAdminNavTree} from "../app/logistics-admin/side-nav-tree";
 
 export const environment = {
     production: false,
@@ -36,6 +38,7 @@ export const environment = {
 export const navBar = [
     administrationNavTree,
     organizationsNavTree,
+    logisticsAdminNavTree,
     purchasesNavTree,
     stockNavTree,
     hrLookupNavTree,
@@ -95,6 +98,22 @@ export const appRoutes: Routes =  [
     {
         path: DASHBOARD_APP_URL,
         loadChildren: () => import('../app/dashboard/routes').then(m => m.dashboardRoutes)
+    },
+    {
+        path: PURCHASES_APP_URL,
+        loadChildren: () => import('../app/purchases/routes').then(m => m.purchasesRoutes)
+    },
+    {
+        path: FINANCE_APP_URL,
+        loadChildren: () => import('../app/finance/routes').then(m => m.financeRoutes)
+    },
+    {
+        path: STOCK_APP_URL,
+        loadChildren: () => import('../app/stock/routes').then(m => m.stockRoutes)
+    },
+    {
+        path: LOGISTICS_APP_URL,
+        loadChildren: () => import('../app/logistics-admin/routes').then(m => m.logisticsAdminRoutes)
     },
     {
         path: ACCOUNTING_APP_URL,

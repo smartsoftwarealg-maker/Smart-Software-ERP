@@ -3,7 +3,7 @@ import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import {MatTree, MatTreeNestedDataSource } from '@angular/material/tree';
+import {MatTree } from '@angular/material/tree';
 import {
     ReportNode, ReportTreeService
 } from '@ss/common/api-reports';
@@ -39,12 +39,12 @@ export class ReportRightsComponent implements OnInit {
     @ViewChild('tree', { static: false }) tree: MatTree<any>;
     @ViewChild('role', { static: false }) role: MatTree<any>;
 
-    reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
+    // reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
     selectedRole: ReportNode | null = null;
     selectedReport: ReportNode | null = null;
     roleLookup = new DefaultAutoCompleteModel(this.roleSrv);
 
-    roleTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
+    // roleTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
     roleReports: RoleReport[] = [];
     reportNode: ReportNode | null = null;
     reports: ReportNode | null = null;
@@ -85,8 +85,8 @@ export class ReportRightsComponent implements OnInit {
 
     private updateTrees() {
         const reports = this.roleReports.map(r => r.report);
-        this.reportTree.data = this.parseTree(this.filter(this.reportNode?.list??[], n => reports.indexOf(n.name) < 0), '');
-        this.roleTree.data = this.parseTree(this.filter(this.reportNode?.list??[], n => reports.indexOf(n.name) >= 0), '');
+        // this.reportTree.data = this.parseTree(this.filter(this.reportNode?.list??[], n => reports.indexOf(n.name) < 0), '');
+        // this.roleTree.data = this.parseTree(this.filter(this.reportNode?.list??[], n => reports.indexOf(n.name) >= 0), '');
 
         this.reportData = this.parseTree(this.filter(this.reportNode?.list??[], n => reports.indexOf(n.name) < 0), '');
         this.roleData = this.parseTree(this.filter(this.reportNode?.list??[], n => reports.indexOf(n.name) >= 0), '');
@@ -153,7 +153,7 @@ export class ReportRightsComponent implements OnInit {
             const roleReport: RoleReport = {
                 id: 0,
                 parentId: this.roleReportSrv.getParentId(),
-                report: this.selectedReport?.name
+                report: this.selectedReport?.name||''
             };
             this.roleReportSrv
                 .add(roleReport)

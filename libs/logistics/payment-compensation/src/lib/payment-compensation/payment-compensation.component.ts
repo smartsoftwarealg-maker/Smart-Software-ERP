@@ -70,7 +70,7 @@ export class PaymentCompensationComponent implements OnInit {
     public partner = this.AGENT;
     public pagination = PaginationModel.newInstance();
     debts: Debt[] = [];
-    selectedPayment: FlatPaymentNode = null;
+    selectedPayment: FlatPaymentNode|null = null;
     selectedDebt: Debt|null = null;
     agentAutoCompleteModel = new AgentLookupModel(this.agentSrv);
     agent = new UntypedFormControl();
@@ -119,7 +119,7 @@ export class PaymentCompensationComponent implements OnInit {
     private paymentToTree(res: Payment[]): PaymentTree[] {
         return res.map(e => {
             const acc: PaymentTree = {
-                description: e.description||e.bank,
+                description: e.description||e.bank||'',
                 amount: e.amount,
                 id: e.id
             };
@@ -133,7 +133,7 @@ export class PaymentCompensationComponent implements OnInit {
             ent.children = next.filter(r => r.checkInfo === ent.id)
                 .map(e => {
                     return {
-                        description: e.description,
+                        description: e.description||'',
                         amount: e.balance,
                         children: empty,
                         id: e.id
@@ -178,13 +178,13 @@ export class PaymentCompensationComponent implements OnInit {
         if (this.selectedPayment && this.selectedDebt && this.selectedDebt.id) {
             const date = this.date.value || new Date();
             this.agentSrv
-                .makePayment(this.selectedPayment?.id, this.selectedDebt?.id, dateToYmdStr(date), this.selectedDebt.balance)
+                .makePayment(this.selectedPayment?.id||0, this.selectedDebt?.id||0, dateToYmdStr(date), this.selectedDebt.balance)
                 .pipe(switchMap(res => {
                     if (res.id > 0) {
                         this.snackBarSrv.showSuccessMessage();
                         this.selectedPayment = null;
                         this.selectedDebt = null;
-                        return this.dataObs(this.agentAutoCompleteModel.cache?.id);
+                        return this.dataObs(this.agentAutoCompleteModel.cache?.id||0);
                     } else {
                         this.snackBarSrv.showFailureMessage();
                         this.selectedPayment = null;
