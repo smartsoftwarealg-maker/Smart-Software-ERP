@@ -1,15 +1,9 @@
-import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
+import { Component, inject, OnInit, ChangeDetectionStrategy, ViewChild} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MaterialModule } from '@ss/common/api-common';
-
-
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
-import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatTreeNestedDataSource } from '@angular/material/tree';
+import {MatTree } from '@angular/material/tree';
 import {
     ReportNode, ReportTreeService
 } from '@ss/common/api-reports';
@@ -31,7 +25,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     TranslateDirective
 ],
     templateUrl: './report-rights.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./report-rights.component.scss'],
 })
 export class ReportRightsComponent implements OnInit {
@@ -42,24 +36,29 @@ export class ReportRightsComponent implements OnInit {
     private route = inject(ActivatedRoute);
     private shellSrv = inject(ShellService);
 
-    // @ViewChild('tree', { static: false }) tree: MatTree<any>;
-    // @ViewChild('role', { static: false }) role: MatTree<any>;
+    @ViewChild('tree', { static: false }) tree: MatTree<any>;
+    @ViewChild('role', { static: false }) role: MatTree<any>;
 
-    reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
+    // reportTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
     selectedRole: ReportNode | null = null;
     selectedReport: ReportNode | null = null;
     roleLookup = new DefaultAutoCompleteModel(this.roleSrv);
 
-    roleTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
+    // roleTree: MatTreeNestedDataSource<ReportNode> = new MatTreeNestedDataSource();
     roleReports: RoleReport[] = [];
     reportNode: ReportNode | null = null;
-    reportList$: Observable<ReportNode> | null = null;
+    reports: ReportNode | null = null;
+    roleData: ReportNode[] = [];
+    reportData: ReportNode[] = [];
+
 
     hasChild = (_: number, node: any) => !!node && node.list.length > 0;
 
     roleCtrl = new FormControl<number>(0);
-    reportTreeControl = new NestedTreeControl<ReportNode>(node => node.list);
-    roleTreeControl = new NestedTreeControl<ReportNode>(node => node.list);
+    reportChildAccessor = (node: ReportNode) => node.list ?? [];
+    roleChildAccessor = (node: ReportNode) => node.list ?? [];
+    // reportTreeControl = new NestedTreeControl<ReportNode>(node => node.list);
+    // roleTreeControl = new NestedTreeControl<ReportNode>(node => node.list);
 
     constructor() {
         this.roleLookup.onObjectSelected = r => this.onRole(r);
@@ -86,12 +85,16 @@ export class ReportRightsComponent implements OnInit {
 
     private updateTrees() {
         const reports = this.roleReports.map(r => r.report);
-        this.reportTree.data = this.parseTree(this.filter(this.reportNode?.list, n => reports.indexOf(n.name) < 0), '');
-        this.roleTree.data = this.parseTree(this.filter(this.reportNode?.list, n => reports.indexOf(n.name) >= 0), '');
-        this.reportTreeControl.dataNodes = this.reportTree.data;
-        this.roleTreeControl.dataNodes = this.roleTree.data;
-        this.reportTreeControl.expandAll();
-        this.roleTreeControl.expandAll();
+        // this.reportTree.data = this.parseTree(this.filter(this.reportNode?.list??[], n => reports.indexOf(n.name) < 0), '');
+        // this.roleTree.data = this.parseTree(this.filter(this.reportNode?.list??[], n => reports.indexOf(n.name) >= 0), '');
+
+        this.reportData = this.parseTree(this.filter(this.reportNode?.list??[], n => reports.indexOf(n.name) < 0), '');
+        this.roleData = this.parseTree(this.filter(this.reportNode?.list??[], n => reports.indexOf(n.name) >= 0), '');
+
+        // this.reportTreeControl.dataNodes = this.reportTree.data;
+        // this.roleTreeControl.dataNodes = this.roleTree.data;
+        this.tree.expandAll();
+        this.role.expandAll();
     }
 
     selectReport(reportNode: ReportNode) {
@@ -116,6 +119,7 @@ export class ReportRightsComponent implements OnInit {
 
 
     private parseTree(tree: ReportNode[], parent: string): ReportNode[] {
+
         return tree.filter(n => n.name !== 'forms')
             .map(x => {
                 if (x.list.length > 0) x.list = this.parseTree(x.list, `${parent}/${x.name}`);
@@ -136,8 +140,8 @@ export class ReportRightsComponent implements OnInit {
                             this.updateTrees();
                             this.snackBar.showSuccessMessage();
                             this.selectedRole = null;
-                            this.reportTreeControl.expandAll();
-                            this.roleTree
+                            this.tree.expandAll();
+                            this.role.expandAll();
                         }
                     });
             }
@@ -149,7 +153,7 @@ export class ReportRightsComponent implements OnInit {
             const roleReport: RoleReport = {
                 id: 0,
                 parentId: this.roleReportSrv.getParentId(),
-                report: this.selectedReport?.name
+                report: this.selectedReport?.name||''
             };
             this.roleReportSrv
                 .add(roleReport)

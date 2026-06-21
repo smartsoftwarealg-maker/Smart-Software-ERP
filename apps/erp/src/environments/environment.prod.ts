@@ -69,7 +69,9 @@ import {manufacturingNavTree} from "../app/manufacturing/side-nav-tree";
 export const environment = {
     production: true,
     multiCompany: false,
-    company: null,
+    company: <string>null,
+    homePage: <string>null,
+    sodismac: false
 };
 
 export const navBar = [

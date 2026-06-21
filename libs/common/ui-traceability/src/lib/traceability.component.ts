@@ -1,19 +1,16 @@
-import { Component, DestroyRef, inject, OnDestroy, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import {LogNode, Schema, TraceabilityService} from "./traceability.service";
-import {FlatTreeControl} from "@angular/cdk/tree";
-import {MatTreeFlatDataSource, MatTreeFlattener} from "@angular/material/tree";
-import { FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import { LanguageService, MaterialModule, PaginationModel } from '@ss/common/api-common';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {LanguageService, MaterialModule, PaginationModel} from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
-import { debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+import {CommonModule} from '@angular/common';
 
 
-
-import { DatePickerComponent } from '@ss/common/ui-datepicker';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
-import { PaginationComponent } from '@ss/common/ui-pagination';
+import {DatePickerComponent} from '@ss/common/ui-datepicker';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TranslateDirective} from '@ss/common/ui-lang';
+import {PaginationComponent} from '@ss/common/ui-pagination';
 
 
 /** Flat node with expandable and level information */
@@ -31,31 +28,34 @@ interface LogFlatNode {
     templateUrl: './traceability.component.html',
     styleUrls: ['./traceability.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,
         TranslateDirective,
         ReactiveFormsModule,
         DatePickerComponent,
-        PaginationComponent,
-        TranslatePipe
+        PaginationComponent
     ]
 
 })
 export class TraceabilityComponent implements OnInit, OnDestroy {
+    private cdr = inject(ChangeDetectorRef);
     private destroyRef = inject(DestroyRef);
     private traceSrv = inject(TraceabilityService);
     private shellSrv = inject(ShellService);
     public langSrv = inject(LanguageService);
 
     processing = signal<boolean>(false);
+    logData: LogNode[] = [];
+    schemaData: Schema[] = [];
 
     tableWidth = 400;
-    selectedId = 0;
+    selectedId = signal(0);
     application = '';
     data: string[][] = [];
     displayedColumns = signal<string[]>([]);
+    schemaColums = ['description', 'creationDate'];
 
     form = new FormGroup({
         options: new FormControl<number>(1),
@@ -65,32 +65,9 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
         consolidated: new FormControl<boolean>(false),
     });
 
+    selectedApplication = new FormControl<string>('');
     public readonly pagination = PaginationModel.newInstance({ page: 1, pageSize: 20, elementCount: 0 });
     apps = signal<string[]>([]);
-    treeControl = new FlatTreeControl<LogFlatNode>(
-        node => node.level,
-        node => node.expandable
-    );
-
-    private _transformer = (node: LogNode, level: number) => {
-        return {
-            expandable: level == 0,
-            name: node.application, // ${node.schema?.schemaVersion || ''} ${(node.schema?.creationDate.substring(0, 10)) || ''}
-            version: node.schema?.schemaVersion || 0,
-            level: level,
-            schema: node.schema
-        };
-    };
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    treeFlattener =
-        new MatTreeFlattener(
-        this._transformer,
-        node => node.level,
-        node => node.expandable,
-        node => node.children
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
     ngOnInit(): void {
         this.processing.set(true);
@@ -123,10 +100,10 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
 
     hasChild = (_: number, node: LogFlatNode) => node.level == 0;
 
-    select(node: LogFlatNode) {
+    select(node: Schema) {
         this.pagination.page = 1;
-        this.displayedColumns.set(node && node.schema ? node.schema.columns.split('`') : []);
-        this.selectedId = node && node.schema ? node.schema.id : 0;
+        this.displayedColumns.set(node.columns.split('`')||[]);
+        this.selectedId.set(node?.id||0);
         this.refresh();
     }
 
@@ -139,15 +116,16 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
             value.options,
             value.consolidated,
             value.filter,
-            this.selectedId,
+            this.selectedId(),
             this.pagination.page - 1,
             this.pagination.pageSize)
             .subscribe({
                 next: res => {
-                    this.processing.set(false);
                     this.data = res.body.map(e => e.split('`'));
                     this.pagination.elementCount = res.itemCount;
                     this.tableWidth = (this.data.length > 0) ? this.data[0].length * 120 : 400;
+                    this.cdr.markForCheck();
+                    this.processing.set(false);
                 }, error: err => {
                     this.processing.set(false);
                     throw err;
@@ -161,15 +139,17 @@ export class TraceabilityComponent implements OnInit, OnDestroy {
         this.traceSrv.getSchemaMap(this.application)
             .subscribe({
                 next: res => {
-                    this.processing.set(false);
-                    const nodes: LogNode[] = res.map(e => {
+                    this.schemaData = res.flatMap(e => e.schemas);
+
+                    // this.dataSource.data = nodes;
+                    this.logData = res.map(e => {
                         const children: LogNode[] = e.schemas.map(f => {
-                            const fNode: LogNode = { application: f.description, schema: f };
+                            const fNode: LogNode = {application: f.description, schema: f};
                             return fNode;
                         });
-                        return { application: e.application, children: children };
+                        return {application: e.application, children: children};
                     });
-                    this.dataSource.data = nodes;
+                    this.processing.set(false);
                 }, error: err => {
                     this.processing.set(false);
                     throw err;

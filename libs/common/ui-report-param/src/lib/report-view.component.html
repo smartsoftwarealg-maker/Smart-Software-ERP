@@ -1,7 +1,7 @@
 @if (!generating()) {
   <div class="main-container">
     <div class="tree-div">
-      <mat-tree #tree class="tree" [dataSource]="reportTree" [treeControl]="treeControl">
+      <mat-tree #tree class="tree" [dataSource]="reportTree" [childrenAccessor]="childrenAccessor">
         <!-- This is the tree node template for leaf nodes -->
 
         <mat-nested-tree-node *matTreeNodeDef="let node">
@@ -16,14 +16,14 @@
         <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
           <li>
             <button mat-icon-button matTreeNodeToggle>
-              <i class="{{treeControl.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
+              <i class="{{tree.isExpanded(node) ? 'fas fa-chevron-down' : (langSrv.rtl ? 'fas fa-chevron-left' : 'fas fa-chevron-right')}}"></i>
             </button>
             {{ node.name }}
             <mat-divider>
 
             </mat-divider>
 
-            <ul [class.tree-invisible]="!treeControl.isExpanded(node)">
+            <ul [class.tree-invisible]="!tree.isExpanded(node)">
               <ng-container matTreeNodeOutlet></ng-container>
             </ul>
           </li>
