@@ -23,7 +23,7 @@ import {DriverService} from '../driver.service';
         DatePipe,
     ],
     styleUrls: ['./driver-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './driver-list.component.html'
 })
 export class DriverListComponent extends BaseEntityListComponent<SalesDriver> {

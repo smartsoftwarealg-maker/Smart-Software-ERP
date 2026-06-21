@@ -28,7 +28,7 @@ import { OptionService } from '@ss/logistics/ui-options';
     selector: 'ss-price-list',
     imports: [CommonModule, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef, MatSort],
     templateUrl: './price-list-list.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrl: './price-list-list.component.scss',
 })
 export class PriceListListComponent extends BaseEntityListComponent<Location> {

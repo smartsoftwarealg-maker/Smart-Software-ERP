@@ -29,7 +29,7 @@ import {MasterWorksService} from "../master-works.service";
     templateUrl: 'master-works-list.component.html',
     styleUrls: ['master-works-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,

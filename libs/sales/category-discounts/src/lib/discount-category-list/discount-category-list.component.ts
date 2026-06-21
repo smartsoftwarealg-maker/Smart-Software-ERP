@@ -22,7 +22,7 @@ import { CategoryDiscountService } from '../api/category-discount.service';
     templateUrl: './discount-category-list.component.html',
     styleUrls: ['./discount-category-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,

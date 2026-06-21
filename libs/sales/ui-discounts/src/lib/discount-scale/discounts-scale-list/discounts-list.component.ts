@@ -28,7 +28,7 @@ import { SalesDiscountsService } from '../sales-discounts.service';
     templateUrl: 'discounts-list.component.html',
     styleUrls: ['discounts-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,

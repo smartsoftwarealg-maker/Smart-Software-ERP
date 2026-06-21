@@ -30,7 +30,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         PaginationComponent
     ],
     templateUrl: './service-article-list.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./service-article-list.component.css']
 })
 export class ServiceArticleListComponent extends BaseEntityListComponent<Service> {

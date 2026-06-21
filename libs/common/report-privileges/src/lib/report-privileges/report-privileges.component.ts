@@ -18,7 +18,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule,  MatSortModule, MatTableModule,  MatCheckboxModule, TranslateDirective],
     templateUrl: './report-privileges.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./report-privileges.component.css'],
 })
 export class ReportPrivilegesComponent implements OnInit, OnDestroy {

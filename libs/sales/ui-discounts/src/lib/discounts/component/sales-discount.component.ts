@@ -48,7 +48,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
     templateUrl: './sales-discount.component.html',
     styleUrls: ['./sales-discount.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,
