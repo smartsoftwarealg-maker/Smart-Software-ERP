@@ -145,5 +145,6 @@
     "UNIT_TYPE":            "نوع الوحدة",
     "BASED_UNIT":           "الوحدة الأساسية",
     "CONVERSATION_FACTOR":  "عامل التحويل",
-    "PRODUCTIONS_RECYCLING":"إعادة تدوير المنتجات"
+    "PRODUCTIONS_RECYCLING":"إعادة تدوير المنتجات",
+    "RELEASED":             "تم الإصدار"
 }

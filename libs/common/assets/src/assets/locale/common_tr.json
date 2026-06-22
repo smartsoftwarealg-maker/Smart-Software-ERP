@@ -252,5 +252,6 @@
     "WRITES": "Oluşturmalar",
     "EDITS": "Düzenlemeler",
     "DELETES": "Silinmeler",
-    "HOLIDAYS": "Tatiller"
+    "HOLIDAYS": "Tatiller",
+    "GENERAL_INFO": "Genel Bilgi"
 }

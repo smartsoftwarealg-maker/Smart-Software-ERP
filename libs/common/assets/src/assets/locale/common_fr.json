@@ -258,7 +258,7 @@
     "CONTRACTS":            "Contrats",
     "CONTRACT":             "Contrat",
     "MOTIVES":              "Motifs",
-    "MOTIVE":               "Motif",
+    "MOTIF":               "Motif",
     "FIRST_NAME":           "Prénom",
     "LAST_NAME":            "Nom",
     "WORKFLOW":             "Workflow",
@@ -448,7 +448,7 @@
     "COMPLETED":           "Terminé",
     "SOCIAL_MEDIA":        "Réseaux sociaux",
     "SMS":                 "SMS",
-    "FULLNAME":            "Nom complet",
+    "FULL_NAME": "Nom complet",
     "EMAIL":               "Email",
     "IS_UNSUBSCRIBED":     "Est desabonne",
     "WEB_SITE":            "Site web",
@@ -494,11 +494,11 @@
     "PENDING_SUPPLIER":      "Compte instance reception",
     "IS_ADVANCE":            "Est un acompte",
     "CHECK_BANK":            "Cheque de Banque",
-    "FULL_NAME": "Nom complet",
     "CSV_EXPORT":            "Exporter vers csv",
     "DELETED_AT":            "Supprimé le",
     "WRITES":                "Créations",
     "EDITS":                 "Modifications",
     "DELETES":               "Suppressions",
-    "HOLIDAYS":              "Jours Fériés"
+    "HOLIDAYS":              "Jours Fériés",
+    "GENERAL_INFO": "Informations générales"
 }

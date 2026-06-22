@@ -102,11 +102,10 @@ import {
 } from '@ss/production/production-reservation';
 import {WorkCenterDetailComponent, WorkCenterListComponent} from '@ss/production/work-center';
 
-import { ActivityCategoriesDetailComponent } from '../../../../../libs/production/production-article/src/lib/production-activity-categories-detail/production-activity-categories-detail.component';
+import { ActivityCategoriesDetailComponent } from '@ss/production/production-article';
 
 import {
     ProductionRoutingListComponent,
-    ProductionRoutingDetailComponent,
     ProductionRoutingOperationListComponent,
     ProductionRoutingOperationDetailComponent,
     RoutingMaterialLineListComponent, RoutingMaterialLineDetailComponent, OperationDetailComponent,
@@ -719,7 +718,12 @@ export const manufacturingRoutes: Routes = [
             },
         ],
     },
-
+    {
+      path: 'operations',
+        children: [
+            { path: ':id', component: OperationDetailComponent }
+        ]
+    },
     {
         path: PRODUCTION_ROUTING_URL,
         children: [
@@ -741,11 +745,6 @@ export const manufacturingRoutes: Routes = [
                     {
                         path: 'operations',
                         children:[
-                            {
-                                path: '',
-                                component: ProductionRoutingOperationListComponent,
-                                pathMatch: 'full',
-                            },
                             {
                                 path: ':id',
                                 component:

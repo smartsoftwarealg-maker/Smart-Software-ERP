@@ -145,5 +145,6 @@
     "UNIT_TYPE":           "Unit type",
     "BASED_UNIT":          "Based unit",
     "CONVERSATION_FACTOR": "Conversation factor",
-    "PRODUCTIONS_RECYCLING": "Productions recycling"
+    "PRODUCTIONS_RECYCLING": "Productions recycling",
+    "RELEASED":              "Released"
 }

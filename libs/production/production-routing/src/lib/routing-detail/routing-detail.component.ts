@@ -29,6 +29,7 @@ import {DefaultAutoCompleteModel, UiAutoCompleteComponent} from "@ss/common/ui-a
 import {TranslateDirective, TranslatePipe} from "@ss/common/ui-lang";
 import {DatePickerComponent} from "@ss/common/ui-datepicker";
 import {MaterialModule} from "@ss/common/api-common";
+import {ProductionRoutingOperationService} from "../production-routing-services/production-routing-operation.service";
 
 
 @Component({
@@ -56,6 +57,10 @@ import {MaterialModule} from "@ss/common/api-common";
     styleUrls: ['./routing-detail.component.scss']
 })
 export class RoutingDetailComponent extends BaseEntityDetailComponent<Routing>{
+    #router = inject(Router);
+    #route = inject(ActivatedRoute);
+    #operationSrv = inject(ProductionRoutingOperationService);
+
     private readonly fb = inject(FormBuilder);
     protected readonly finalProductSrv = inject(FinalProductService);
 
@@ -103,5 +108,11 @@ export class RoutingDetailComponent extends BaseEntityDetailComponent<Routing>{
             validTo:       [e.validTo],
             changeReason:  [e.changeReason]
         });
+    }
+
+    addOperation() {
+        const id = this.form?.controls['id'].value;
+        this.#operationSrv.setParentId(id);
+        this.#router.navigate(['/app/manufacturing/operations/', 0], { relativeTo: this.#route }).then();
     }
 }

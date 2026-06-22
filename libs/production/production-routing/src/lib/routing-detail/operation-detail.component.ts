@@ -1,6 +1,6 @@
 import { Component, input, computed, inject, ChangeDetectionStrategy, signal} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, UntypedFormGroup, UntypedFormBuilder} from '@angular/forms';
 
 // Material Modules
 import { MatTabsModule } from '@angular/material/tabs';
@@ -12,8 +12,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {ProductionRoutingService} from "../production-routing-services/production-routing.service";
-import {RoutingOperation} from "../production-routing-services/production-routing-api";
+import { ProductionRoutingService} from "../production-routing-services/production-routing.service";
+import { RoutingOperation} from "../production-routing-services/production-routing-api";
+import { BaseEntityDetailComponent} from "@ss/common/ui-base-entity";
+import { ShellService, SnackBarService } from "@ss/common/ui-shell";
+import { ActivatedRoute } from "@angular/router";
+import { ConfirmationDialogService } from "@ss/common/ui-confirmation-dialog";
+import { ProductionRoutingOperationService } from "../production-routing-services/production-routing-operation.service";
 
 
 @Component({
@@ -25,10 +30,10 @@ import {RoutingOperation} from "../production-routing-services/production-routin
         MatTableModule, MatButtonModule, MatTooltipModule
     ],
     templateUrl: './operation-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./operation-detail.component.scss']
 })
-export class OperationDetailComponent {
+export class OperationDetailComponent extends BaseEntityDetailComponent<RoutingOperation> {
     private readonly fb = inject(FormBuilder);
     private readonly service = inject(ProductionRoutingService);
 
@@ -44,7 +49,7 @@ export class OperationDetailComponent {
         { id: 'costing', label: 'Costing', icon: 'fa-solid fa-coins' }
     ];
 
-    currentOp = computed(() => this.operations().find(op => op.id === this.operationId()) || null);
+    currentOp = signal<RoutingOperation|null>(null);
 
     opForm: FormGroup = this.fb.nonNullable.group({
         setupTime: [0], runTimePerUnit: [0], teardownTime: [0],
@@ -58,6 +63,17 @@ export class OperationDetailComponent {
     displayedMaterialColumns = ['component', 'sku', 'qty', 'scrap', 'type', 'point'];
     displayedActivityColumns = ['activity', 'category', 'baseUnit', 'factor', 'rate', 'cost'];
 
+    constructor(
+        public override entitySrv: ProductionRoutingOperationService,
+        public override shellSrv: ShellService,
+        public override snackBarSrv: SnackBarService,
+        public override route: ActivatedRoute,
+        public override formBuilder: UntypedFormBuilder,
+        public override confirmationSrv: ConfirmationDialogService) {
+        super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'PROD_ROUTING_OPERATIONS');
+    }
+
+
     saveOp() {
         const op = this.currentOp();
         if (op && this.opForm.valid) {
@@ -66,5 +82,18 @@ export class OperationDetailComponent {
                 alert('Operation saved successfully!');
             });
         }
+    }
+
+    override setupForm(e:RoutingOperation):UntypedFormGroup {
+        const op: RoutingOperation = {
+            workCenterId: 0,
+            id: 0,
+            parentId: this.entitySrv.getParentId(),
+            operationSequence: 10,
+            materials: [],
+            activities: []
+        };
+        this.currentOp.set(op);
+        return this.opForm;
     }
 }
