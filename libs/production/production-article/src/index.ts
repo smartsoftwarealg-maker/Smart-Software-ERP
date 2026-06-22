@@ -15,3 +15,4 @@ export * from './lib/services/packaging-unit.service';
 export * from './lib/production-activity-types-list/production-activity-types-list.component';
 export * from './lib/production-activity-types-detail/production-activity-types-detail.component';
 export * from './lib/production_activity_categories_tree/activity_category_tree.component';
+export * from './lib/production-activity-categories-detail/production-activity-categories-detail.component';

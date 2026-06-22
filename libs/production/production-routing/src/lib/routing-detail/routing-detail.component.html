@@ -58,9 +58,9 @@
                         <mat-form-field appearance="outline" class="dense-field">
                             <mat-label translate>COMMON_STATUS</mat-label>
                             <mat-select formControlName="status">
-                                <mat-option value="DRAFT">DRAFT</mat-option>
-                                <mat-option value="RELEASED">RELEASED</mat-option>
-                                <mat-option value="OBSOLETE">OBSOLETE</mat-option>
+                                <mat-option value="DRAFT" translate>PROD_DRAFT</mat-option>
+                                <mat-option value="RELEASED" translate>PROD_RELEASED</mat-option>
+                                <mat-option value="OBSOLETE" translate>PROD_OBSOLETE</mat-option>
                             </mat-select>
                         </mat-form-field>
 
@@ -98,7 +98,7 @@
                     <mat-card-title>
                         <i class="fa-solid fa-list-check"></i> {{'PROD_ROUTING_OPERATIONS'|translate}}
                     </mat-card-title>
-                    <button mat-stroked-button color="primary" class="add-op-btn">
+                    <button mat-stroked-button color="primary" class="add-op-btn" (click)="addOperation()">
                         <i class="fa-solid fa-plus"></i> {{ 'PROD_ADD_OPERATION'|translate }}
                     </button>
                 </mat-card-header>

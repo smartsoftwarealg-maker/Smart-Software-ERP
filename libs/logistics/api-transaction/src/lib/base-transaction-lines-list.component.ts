@@ -8,7 +8,7 @@ import {debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators
 import { LoginService, PaginationModel } from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import {FormControl} from '@angular/forms';
-import {computed, Directive, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
+import {ChangeDetectorRef, computed, Directive, inject, Input, OnDestroy, OnInit, signal } from '@angular/core';
 import { TransactionLinesClass } from './transaction-lines.class';
 import { OptionService } from '@ss/logistics/ui-options';
 import {PackagingUnitsService} from '@ss/logistics/packaging-units';
@@ -21,6 +21,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     #_unitsMap = new Map<number, string>();
 
     protected optionSrv = inject(OptionService);
+    protected cdr = inject(ChangeDetectorRef);
     protected loginSrv = inject(LoginService);
     protected subscription: Subscription = null;
     readonly pagination: PaginationModel = null;
@@ -60,6 +61,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 .subscribe(() => {
                     this.shellSrv.setLoading(false);
                     this.loading.set(false);
+                    this.cdr.markForCheck();
                     }
                 );
         };
@@ -107,6 +109,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 this.shellSrv.setLoading(false);
                 this.loading.set(false);
+                this.cdr.markForCheck();
             });
 
         this.subscription = this.searchText
@@ -116,7 +119,6 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
     }
 
     public loadDetailLines(): Observable<TransactionLine[]> {
-        this.loading.set(true);
         return (
             this.detailSrv.getParentId()
                 ? this.detailSrv.getPage(

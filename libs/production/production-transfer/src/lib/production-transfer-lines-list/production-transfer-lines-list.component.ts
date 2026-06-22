@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, OnInit, signal, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -24,14 +24,14 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 import { ProductionTransferLinesService } from '../production-services/production-transfer-lines.service';
 import { AccTransactionLineService } from '@ss/accounting/accounting-api';
 import { MaterialModule } from '@ss/common/api-common';
-import { Observable } from 'rxjs';
+import {concatMap, Observable, of} from 'rxjs';
 
 @Component({
     selector: 'ss-production-transfer-lines-list',
     templateUrl: './production-transfer-lines-list.component.html',
     styleUrl: './production-transfer-lines-list.component.scss',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatFormField,
@@ -51,8 +51,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductionTransferLinesListComponent
     extends BaseTransactionLinesListComponent
-    implements OnInit
-{
+    implements OnInit {
     override displayedColumns = signal<string[]>([
         'position',
         'reference',
@@ -90,22 +89,26 @@ export class ProductionTransferLinesListComponent
 
     entitySrv = inject(AccTransactionLineService);
 
-    private refresh() {
-        this.detailSrv.getPage(this.pagination).subscribe({
-            next: (data) => {
-                this.data = data;
-            },
-            error: () => {
-                this.snackBarSrv.showFailureMessage('refresh failed');
-            },
-        });
-    }
+    // private refresh() {
+    //     this.detailSrv.getPage(this.pagination).subscribe({
+    //         next: (data) => {
+    //             this.data = data;
+    //             this.cdr.detectChanges();
+    //         },
+    //         error: () => {
+    //             this.snackBarSrv.showFailureMessage('refresh failed');
+    //         },
+    //     });
+    // }
 
     transfer() {
         if (this.selectedRow()?.id) {
-            this.detailSrv.transfer(this.selectedRow()?.id || 0).subscribe({
+            this.detailSrv
+                .transfer(this.selectedRow()?.id || 0)
+                .pipe(concatMap(() => this.loadDetailLines()))
+                .subscribe({
                 next: () => {
-                    this.refresh();
+                    this.cdr.detectChanges();
                     this.snackBarSrv.showSuccessMessage();
                 },
                 error: (err) => {
@@ -120,9 +123,10 @@ export class ProductionTransferLinesListComponent
         if (this.selectedRow()?.transacId) {
             this.detailSrv
                 .transferAll(this.selectedRow()?.transacId || 0)
+                .pipe(concatMap(() => this.loadDetailLines()))
                 .subscribe({
                     next: () => {
-                        this.refresh();
+                        this.cdr.detectChanges();
                         this.snackBarSrv.showSuccessMessage();
                     },
                     error: (err) => {
@@ -139,11 +143,11 @@ export class ProductionTransferLinesListComponent
                 'PROD_CANCEL_TRANSFER_CONFIRMATION',
                 'PROD_CANCEL_TRANSFER_CONFIRMATION',
             )
+            .pipe(concatMap((res) => res? this.loadDetailLines(): of([])))
             .subscribe((res) => {
                 if (res) {
                     obs.subscribe({
                         next: () => {
-                            this.refresh();
                             this.snackBarSrv.showSuccessMessage();
                         },
                         error: (err) => {
@@ -171,9 +175,9 @@ export class ProductionTransferLinesListComponent
                 if (res) {
                     this.detailSrv
                         .cancelTransfer(this.selectedRow()?.id || 0)
+                        .pipe(concatMap(() => this.loadDetailLines()))
                         .subscribe({
                             next: () => {
-                                this.refresh();
                                 this.snackBarSrv.showSuccessMessage();
                             },
                             error: (err) => {
