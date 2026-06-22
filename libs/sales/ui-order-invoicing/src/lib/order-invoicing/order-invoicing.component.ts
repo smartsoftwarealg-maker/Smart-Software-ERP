@@ -53,7 +53,7 @@ import {QuantityInputComponent} from "../quantity-input-component/quantity-input
         '../../../../../common/assets/src/assets/transac-lines-list.scss',
     ],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatColumnDef,

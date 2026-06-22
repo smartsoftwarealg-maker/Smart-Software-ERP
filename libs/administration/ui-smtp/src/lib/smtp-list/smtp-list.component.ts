@@ -15,7 +15,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./smtp-list.component.scss'],
     templateUrl: './smtp-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class SmtpListComponent extends BaseEntityListComponent<Smtp> {

@@ -19,7 +19,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './cement-contract-list.component.html',
     styleUrls: ['./cement-contract-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

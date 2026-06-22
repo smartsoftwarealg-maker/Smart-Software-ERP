@@ -16,7 +16,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './sales-ads-list.component.html',
     styleUrls: ['./sales-ads-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatColumnDef,

@@ -26,7 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     selector: 'ss-price-request',
     imports: [CommonModule, DocInfoComponent, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatSort, MatSortHeader, MatTable, PaginationComponent, TranslateDirective, MatHeaderCellDef],
     templateUrl: './price-request.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class PriceRequestComponent  extends BaseEntityListComponent<Transaction> {

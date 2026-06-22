@@ -36,7 +36,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     templateUrl: './quick-order-list.component.html',
     styleUrls: ['./quick-order-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,

@@ -23,7 +23,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     styleUrls: ['./bank-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './bank-list.component.html'
 })
 export class BankListComponent extends BaseEntityListComponent<Bank> {

@@ -29,7 +29,7 @@ import {SectorsService} from "../sectors.service";
     templateUrl: 'sectors-list.component.html',
     styleUrls: ['sectors-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,

@@ -37,7 +37,7 @@ import {PackagingUnitsService} from "../packaging-units.service";
         TranslateDirective
     ],
     templateUrl: './packaging-units-list.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrl: './packaging-units-list.component.scss',
 })
 export class PackagingUnitsListComponent extends BaseEntityListComponent<PackagingUnit> {

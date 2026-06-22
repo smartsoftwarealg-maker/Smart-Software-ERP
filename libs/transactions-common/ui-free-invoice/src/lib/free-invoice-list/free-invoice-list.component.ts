@@ -20,7 +20,7 @@ import {FreeInvoiceService} from "../free-invoice.service";
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './free-invoice-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DatePipe, DecimalPipe]
 })
 export class FreeInvoiceListComponent extends BaseEntityListComponent<Transaction> {

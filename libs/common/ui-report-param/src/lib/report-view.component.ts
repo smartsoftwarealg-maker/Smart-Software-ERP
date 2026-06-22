@@ -59,7 +59,7 @@ import {UiAutoCompleteComponent} from '@ss/common/ui-auto-complete';
     styleUrls: ['./report-view.component.scss'],
     templateUrl: './report-view.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         TranslateDirective,

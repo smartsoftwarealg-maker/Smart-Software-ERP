@@ -22,7 +22,7 @@ import {PurchaseInvoiceService} from "../purchase-invoice.service";
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './purchase-invoice-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

@@ -17,7 +17,7 @@ import { Observable, tap } from 'rxjs';
     styleUrls: ['./user-list.component.scss'],
     templateUrl: './user-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class UserListComponent extends BaseEntityListComponent<User> implements OnInit {

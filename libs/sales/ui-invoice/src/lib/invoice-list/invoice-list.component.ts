@@ -21,7 +21,7 @@ import {switchMap, tap} from 'rxjs';
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './invoice-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DatePipe, DecimalPipe]
 })
 export class InvoiceListComponent extends BaseEntityListComponent<Transaction> {

@@ -23,7 +23,7 @@ import { AgentService } from '@ss/logistics/api-agent';
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './reception-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,
