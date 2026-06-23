@@ -573,3 +573,7 @@ mat-list,
 mat-toolbar {
     @include mat.table-density(-4);
 }
+
+mat-form-field {
+    padding-top: 1px!important;
+}

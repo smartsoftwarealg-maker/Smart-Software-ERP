@@ -115,7 +115,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
         this.subscription = this.searchText
             .valueChanges
             .pipe(debounceTime(300), distinctUntilChanged())
-            .subscribe(() => this.loadDetailLines().subscribe());
+            .subscribe(() => this.loadDetailLines().subscribe(() => this.cdr.markForCheck()));
     }
 
     public loadDetailLines(): Observable<TransactionLine[]> {

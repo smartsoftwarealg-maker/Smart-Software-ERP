@@ -24,7 +24,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
         '../../../../../common/assets/src/assets/transac-lines-list.scss',
     ],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatFormField,
         MatLabel,

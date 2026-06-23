@@ -13,7 +13,6 @@ import { MatMiniFabButton } from '@angular/material/button';
     imports: [TranslateDirective, MatMiniFabButton]
 })
 export class MessageComponent {
-    private cdRef= inject(ChangeDetectorRef);
     protected errorSrv = inject(CustomErrorHandlerService);
 
     constructor() {
