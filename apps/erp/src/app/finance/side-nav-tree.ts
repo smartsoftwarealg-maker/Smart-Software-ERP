@@ -16,6 +16,7 @@ import {
     ABS_FINANCE_TRANSPORTER_PAYMENTS_COMPENSATION,
     ABS_PURCHASE_DASHBOARD_URL,
     ABS_PURCHASE_REPORTS_URL,
+    ABS_FINANCE_CHECK_ASSIGNMENTS,
 } from '../common';
 
 export const financeNavTree: SideNavNode = {
@@ -82,6 +83,12 @@ export const financeNavTree: SideNavNode = {
             icon: 'fa-solid fa-coins',
             route: ABS_FINANCE_ADVANCEMENTS,
             accessRights: 'Advancement'
+        },
+        {
+            name: 'TRS_CHECK_ASSIGNMENTS',
+            icon: 'fa-solid fa-money-check',
+            route: ABS_FINANCE_CHECK_ASSIGNMENTS,
+            accessRights: 'CheckAssignment'
         },
         {
             name: 'COMMON_DASHBOARD',

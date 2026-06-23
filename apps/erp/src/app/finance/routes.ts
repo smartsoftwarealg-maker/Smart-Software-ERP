@@ -13,6 +13,7 @@ import {
     LOGISTICS_BPAYMENTS_URL,
     LOGISTICS_TPAYMENTS_URL,
     LOGISTICS_TRANSPORTERS_URL,
+    FINANCE_CHECK_ASSIGNMENTS_URL,
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -22,6 +23,7 @@ import {
     AdvancementsListComponent,
     AdvancementsDetailComponent
 } from '@ss/logistics/payments';
+import {CheckAssignmentsComponent} from '@ss/treasury/ui-checks';
 import {PaymentCompensationComponent} from '@ss/logistics/payment-compensation';
 import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '@ss/purchases/payment-orders';
 import {DashboardComponent} from '@ss/dashboard';
@@ -207,6 +209,11 @@ export const financeRoutes: Routes = [
         ]
     },
 
+    {
+        path: FINANCE_CHECK_ASSIGNMENTS_URL,
+        component: CheckAssignmentsComponent,
+        canActivate: [loginGuard],
+    },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
 ];
