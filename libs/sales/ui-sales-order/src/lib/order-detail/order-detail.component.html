@@ -225,7 +225,7 @@
             </mat-card-content>
         </mat-card>
     }
-    @if (!loading() && selectedTabIndex() === 0) {
+    @if (!loading() && selectedTabIndex() === 0 && formId != 0) {
         <router-outlet></router-outlet>
     }
 

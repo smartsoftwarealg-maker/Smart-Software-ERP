@@ -32,7 +32,7 @@ import { QuickOrderService } from '@ss/sales/ui-quick-order';
         'order-lines-list.component.scss',
     ],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

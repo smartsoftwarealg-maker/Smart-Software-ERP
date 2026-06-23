@@ -21,7 +21,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     templateUrl: './delivery-cancellation-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         TranslateDirective,

@@ -27,7 +27,7 @@ import { ActivePersonnelService } from '@ss/payroll/ui-employee';
     templateUrl: './app-archive-list.component.html',
     styleUrls: ['./app-archive-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         RouterModule,
         MaterialModule,

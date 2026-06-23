@@ -23,7 +23,7 @@ import {SectorsService} from '../sectors.service';
     templateUrl: 'sectors-detail.component.html',
     styleUrl: 'sectors-detail.component.scss',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatCard,

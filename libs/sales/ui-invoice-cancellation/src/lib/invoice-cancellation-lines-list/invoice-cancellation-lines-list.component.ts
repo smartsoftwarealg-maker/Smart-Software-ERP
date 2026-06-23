@@ -21,7 +21,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './invoice-cancellation-lines-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

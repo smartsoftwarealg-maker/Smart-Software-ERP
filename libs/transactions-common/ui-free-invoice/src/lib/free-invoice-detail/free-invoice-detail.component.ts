@@ -32,7 +32,7 @@ import { FreeInvoiceLinesService } from '../invoice-lines.service';
     templateUrl: './free-invoice-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         FormsModule,
