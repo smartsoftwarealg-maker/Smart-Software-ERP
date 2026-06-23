@@ -23,7 +23,7 @@ import { SalesDiscountsService } from '../sales-discounts.service';
     templateUrl: 'discounts-scale-detail.component.html',
     styleUrl: 'discounts-scale-detail.component.scss',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatCard,

@@ -51,7 +51,7 @@ import { WeightCaptureService } from '@ss/sales/weight-capture';
     selector: 'ss-ui-order-detail',
     standalone: true,
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './order-detail.component.html',
 })
 export class OrderDetailComponent extends BaseTransactionDetailComponent {

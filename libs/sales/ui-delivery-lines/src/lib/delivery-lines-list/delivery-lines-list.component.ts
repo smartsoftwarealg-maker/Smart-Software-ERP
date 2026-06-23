@@ -38,7 +38,7 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     ],
     templateUrl: './delivery-lines-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatFormField,
         MatLabel,

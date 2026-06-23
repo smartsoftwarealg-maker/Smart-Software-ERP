@@ -19,7 +19,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
         DatePickerComponent,
     ],
     styleUrls: ['./driver-detail.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './driver-detail.component.html',
 })
 export class DriverDetailComponent extends BaseEntityDetailComponent<SalesDriver> {

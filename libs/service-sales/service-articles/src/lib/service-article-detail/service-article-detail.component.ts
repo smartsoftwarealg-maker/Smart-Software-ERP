@@ -45,7 +45,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         UiAutoCompleteComponent
     ],
     templateUrl: './service-article-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./service-article-detail.component.css']
 })
 export class ServiceArticleDetailComponent extends BaseEntityDetailComponent<Service>{

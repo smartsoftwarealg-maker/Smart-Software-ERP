@@ -23,7 +23,7 @@ import {masterWork} from '../master-works-api.class';
     templateUrl: 'master-works-detail.component.html',
     styleUrl: 'master-works-detail.component.scss',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatCard,

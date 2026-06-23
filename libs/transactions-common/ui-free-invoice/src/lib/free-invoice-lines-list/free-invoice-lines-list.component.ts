@@ -38,7 +38,7 @@ import {FreeInvoiceLinesService} from "../invoice-lines.service";
         '../../../../../common/assets/src/assets/transac-lines-list.scss',
     ],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatFormField,
         MatLabel,
