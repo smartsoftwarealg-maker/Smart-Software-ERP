@@ -1,4 +1,12 @@
-import {computed, Directive, inject, OnDestroy, OnInit, signal} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    computed,
+    Directive,
+    inject,
+    OnDestroy,
+    OnInit,
+    signal,
+} from '@angular/core';
 import { switchMap, tap } from 'rxjs/operators';
 import { KeepOnToolbar, ShellService, SnackBarService, ToolbarButton } from '@ss/common/ui-shell';
 import { Observable, of, Subscription } from 'rxjs';
@@ -9,6 +17,7 @@ import {sign} from "chart.js/helpers";
 
 @Directive()
 export abstract class AbstractEntityComponent<T extends { id: number }> implements OnInit, OnDestroy {
+    protected cdr = inject(ChangeDetectorRef);
     public loading = signal(true);
     public processing = computed(() => this.shellSrv?.loading()||false);
     public shellSrv = inject(ShellService);
@@ -146,6 +155,7 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
         if (!this.isEditable() && this.form) {
             this.form.disable();
         }
+        this.cdr.markForCheck();
         // this.shellSrv.setLoading(false);
         // this.shellSrv.setLoading(false);
         // this.loading.set(false);

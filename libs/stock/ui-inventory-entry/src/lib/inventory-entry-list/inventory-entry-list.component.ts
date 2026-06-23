@@ -20,7 +20,7 @@ import { DatePipe } from '@angular/common';
     templateUrl: './inventory-entry-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,

@@ -132,6 +132,7 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 this.data=data;
                 this.data.forEach((d) => (d.unitsDescription = this.#_unitsMap.get(d.units) || d.units + ''));
                 this.loading.set(false);
+                this.cdr.markForCheck()
             }),
         );
     }

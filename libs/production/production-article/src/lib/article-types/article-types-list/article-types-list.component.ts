@@ -18,7 +18,7 @@ import {toSignal} from "@angular/core/rxjs-interop";
     templateUrl: 'article-types-list.html',
     styleUrls: ['article-types-list.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable,
         MatSort,
         MatColumnDef,

@@ -15,7 +15,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './app-archive-detail.component.html',
     styleUrls: ['./app-archive-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     RouterModule,
     MaterialModule,

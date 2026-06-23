@@ -19,7 +19,7 @@ import {MaterialModule} from '@ss/common/api-common';
     templateUrl: './inventory-transfer-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatMiniFabButton,

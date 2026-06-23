@@ -22,7 +22,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     ReactiveFormsModule
 ],
     styleUrls: ['./bank-detail.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './bank-detail.component.html'
 })
 export class BankDetailComponent extends BaseEntityDetailComponent<Bank> {

@@ -36,7 +36,7 @@ import { ChildAttributesComponent } from '@ss/custom-attributes';
     styleUrls: ['./article-detail.component.scss'],
     templateUrl: './article-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         RouterModule,

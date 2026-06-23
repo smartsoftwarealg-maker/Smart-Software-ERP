@@ -19,7 +19,7 @@ import { DocInfoComponent } from '@ss/logistics/ui-doc-info';
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
     templateUrl: './consumption-cancellation-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DatePipe]
 })
 export class ConsumptionCancellationListComponent extends BaseEntityListComponent<Transaction> {

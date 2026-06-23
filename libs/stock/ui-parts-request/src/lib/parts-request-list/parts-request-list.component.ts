@@ -21,7 +21,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MatSortModule, MatTableModule, DocInfoComponent, PaginationComponent, TranslateDirective],
     templateUrl: './parts-request-list.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class PartsRequestListComponent extends BaseEntityListComponent<Transaction> {

@@ -44,7 +44,7 @@ import {TransferReintegrationService} from "../services/transfer-reintegration.s
         DatePipe,
     ],
     templateUrl: './transfer-reintegration-list.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class TransferReintegrationListComponent extends BaseEntityListComponent<Transaction> {

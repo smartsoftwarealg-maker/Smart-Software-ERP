@@ -19,7 +19,7 @@ import {MatTooltip} from "@angular/material/tooltip";
     templateUrl: './consumption-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatMiniFabButton,
         MatCard,

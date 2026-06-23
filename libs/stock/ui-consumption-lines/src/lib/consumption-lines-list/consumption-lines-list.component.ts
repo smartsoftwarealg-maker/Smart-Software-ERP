@@ -25,7 +25,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     ],
     templateUrl: './consumption-lines-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatFormField,
         MatLabel,

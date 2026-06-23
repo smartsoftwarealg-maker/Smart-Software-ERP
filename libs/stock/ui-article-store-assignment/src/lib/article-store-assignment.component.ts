@@ -20,7 +20,7 @@ import { ArticleStoreComponent } from '@ss/stock/article-store';
     styleUrls: ['./article-store-assignment.component.scss'],
     templateUrl: './article-store-assignment.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatColumnDef,

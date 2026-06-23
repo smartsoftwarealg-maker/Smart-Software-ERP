@@ -18,7 +18,7 @@ import {toSignal} from "@angular/core/rxjs-interop";
     templateUrl: 'article-types-detail.html',
     styleUrls: ['article-types-detail.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class ArticleTypeDetailComponent extends BaseEntityDetailComponent<Lookup> {

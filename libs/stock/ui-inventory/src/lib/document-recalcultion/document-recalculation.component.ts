@@ -30,7 +30,7 @@ interface EvalDocument {
     templateUrl: './document-recalculation.component.html',
     styleUrls: ['./document-recalculation.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatCard,
