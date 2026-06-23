@@ -47,13 +47,13 @@ bootstrapApplication(AppComponent, {
         provideHttpClient(withInterceptorsFromDi()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
         { provide: ErrorHandler, useClass: CustomErrorHandler },
-        // {
-        //     provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-        //     useValue: {
-        //         appearance: 'outline',
-        //         subscriptSizing: 'fixed'  // Reserves space for errors even when not shown
-        //     }
-        // }
+        {
+            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+            useValue: {
+                appearance: 'outline',
+                subscriptSizing: 'fixed'  // Reserves space for errors even when not shown
+            }
+        }
     ]
 }).catch((err) => {
     console.error('main.ts (line 45): ', err);
