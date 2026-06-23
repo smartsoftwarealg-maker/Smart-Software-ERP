@@ -79,7 +79,8 @@ export const TREASURY_GROUPS_URL = 'treasury-groups';
 export const TREASURY_JOURNAL_TYPE_URL = 'journal-types';
 export const TREASURY_TRANSACTION_URL = 'transactions';
 export const TREASURY_BANK_EXPENSE_URL = 'bank-expenses';
-export const TREASURY_CHECK_MATCHING_URL = 'check-matching';
+export const TREASURY_CHECK_MATCHING_URL    = 'check-matching';
+export const FINANCE_CHECK_ASSIGNMENTS_URL  = 'check-assignments';
 
 // Administration
 export const ADMINISTRATION_COMPANY_URL = 'companies';
@@ -821,6 +822,7 @@ export const ABS_FINANCE_REPORTS_URL = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, CO
 export const ABS_FINANCE_ADVANCEMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_ADVANCEMENTS_URL].join('/');
 export const ABS_FINANCE_BRANCHES_PAYMENTS_COMPENSATION = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_BRANCHES_URL].join('/');
 export const ABS_FINANCE_TRANSPORTER_PAYMENTS_COMPENSATION = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, LOGISTICS_TRANSPORTERS_URL].join('/');
+export const ABS_FINANCE_CHECK_ASSIGNMENTS = '/' + [MAIN_PAGE_URL, FINANCE_APP_URL, FINANCE_CHECK_ASSIGNMENTS_URL].join('/');
 
 // HR
 export const ABS_HR_CATEGORIES_URL = '/' + [MAIN_PAGE_URL, HR_APP_URL, HR_CATEGORIES_URL].join('/');

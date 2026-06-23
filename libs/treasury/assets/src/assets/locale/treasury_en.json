@@ -18,5 +18,14 @@
     "BANK_EXPENSES":   "Bank expenses",
     "MATCHING":        "Matching checks",
     "NOT_MATCHING":    "Non matching checks",
-    "CHECK_MATCHING":  "Check matching"
+    "CHECK_MATCHING":       "Check matching",
+    "AGENT":                "Agent",
+    "CHECK_ASSIGNMENTS":    "Check Assignments",
+    "UNASSIGNED_CHECKS":    "Unassigned Checks",
+    "DUE_DATE":             "Due Date",
+    "FROM_DATE":            "From date",
+    "NO_UNASSIGNED_CHECKS": "No unassigned checks",
+    "NO_BANKS":             "No banks available",
+    "SELECT_BANK":          "Select a bank to view its checks",
+    "NO_BANK_CHECKS":       "No checks assigned to this bank"
 }

@@ -18,5 +18,14 @@
     "BANK_EXPENSES":   "Frais bancaires",
     "MATCHING":        "Chèques correspondants",
     "NOT_MATCHING":    "Chèques non concordants",
-    "CHECK_MATCHING":  "Rapprochemnts cheques"
+    "CHECK_MATCHING":       "Rapprochements chèques",
+    "AGENT":                "Agent",
+    "CHECK_ASSIGNMENTS":    "Affectation de chèques",
+    "UNASSIGNED_CHECKS":    "Chèques non affectés",
+    "DUE_DATE":             "Date d'échéance",
+    "FROM_DATE":            "À partir de",
+    "NO_UNASSIGNED_CHECKS": "Aucun chèque non affecté",
+    "NO_BANKS":             "Aucune banque disponible",
+    "SELECT_BANK":          "Sélectionnez une banque pour afficher ses chèques",
+    "NO_BANK_CHECKS":       "Aucun chèque affecté à cette banque"
 }
