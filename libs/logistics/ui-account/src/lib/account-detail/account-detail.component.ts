@@ -20,7 +20,7 @@ type TAccount = { id: number; description: string; }
     styleUrls: ['./account-detail.component.scss'],
     templateUrl: './account-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,

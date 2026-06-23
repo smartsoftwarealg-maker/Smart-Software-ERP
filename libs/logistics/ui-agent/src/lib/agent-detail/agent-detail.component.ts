@@ -84,7 +84,7 @@ const TRANSPORTER = 3;
     styleUrls: ['./agent-detail.component.scss'],
     templateUrl: './agent-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         TranslateDirective,

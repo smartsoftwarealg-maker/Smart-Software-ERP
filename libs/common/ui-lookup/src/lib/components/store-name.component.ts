@@ -47,7 +47,7 @@ import { StoreNamesService } from '@ss/common/api-lookup';
     templateUrl: '../base-templates/list-template.html',
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,
@@ -100,7 +100,7 @@ export class StoreNameListComponent
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatCard,

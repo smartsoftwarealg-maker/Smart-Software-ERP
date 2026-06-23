@@ -20,7 +20,7 @@ import { InventoryEntryLinesService } from '@ss/stock/api-inventory-entry-lines'
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './inventory-entry-lines-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, CdkTextareaAutosize]
 })
 export class InventoryEntryLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {

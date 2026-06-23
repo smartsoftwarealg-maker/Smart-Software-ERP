@@ -25,7 +25,7 @@ import {sign} from "chart.js/helpers";
     templateUrl: './user-stores.component.html',
     styleUrls: ['./user-stores.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,

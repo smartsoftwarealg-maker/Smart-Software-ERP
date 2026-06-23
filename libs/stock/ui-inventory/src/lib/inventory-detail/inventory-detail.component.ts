@@ -25,7 +25,7 @@ import { of } from 'rxjs';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss'],
     templateUrl: './inventory-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent, CdkTextareaAutosize, RouterOutlet]
 })
 export class InventoryDetailComponent extends BaseTransactionDetailComponent implements OnInit {

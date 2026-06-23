@@ -56,7 +56,7 @@ import {AssetClassService} from "@ss/assets-component";
     `,
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class SubclassListComponent extends BaseEntityListComponent<Subclass> {
@@ -106,7 +106,7 @@ export class SubclassListComponent extends BaseEntityListComponent<Subclass> {
     `,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class SubclassDetailComponent extends BaseEntityDetailComponent<Subclass> {

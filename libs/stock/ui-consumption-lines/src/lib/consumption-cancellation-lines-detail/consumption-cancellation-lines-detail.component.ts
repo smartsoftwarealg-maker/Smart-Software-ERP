@@ -20,7 +20,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     templateUrl: './consumption-cancellation-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MatMiniFabButton,
     MatCard,

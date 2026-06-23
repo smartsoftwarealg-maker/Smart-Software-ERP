@@ -25,7 +25,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [MaterialModule, DatePickerComponent, FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, RouterOutlet, TextFieldModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './parts-request-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PartsRequestDetailComponent extends BaseTransactionDetailComponent implements OnInit {

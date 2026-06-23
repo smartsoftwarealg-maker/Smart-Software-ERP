@@ -273,6 +273,7 @@ implements OnInit, OnDestroy {
                 this.data = x;
                 this.shellSrv.setLoading(false);
                 this.setLoading(false);
+                this.cdr.markForCheck()
         });
     }
 

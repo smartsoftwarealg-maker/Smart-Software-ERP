@@ -24,7 +24,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     templateUrl: './inventory-entry-lines-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, ReactiveFormsModule, MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIconButton, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DocInfoComponent, DecimalPipe, TranslatePipe]
 })
 export class InventoryEntryLinesListComponent extends BaseTransactionLinesListComponent implements OnInit, OnDestroy {

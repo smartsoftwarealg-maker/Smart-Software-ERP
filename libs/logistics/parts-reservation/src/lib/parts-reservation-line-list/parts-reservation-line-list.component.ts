@@ -39,7 +39,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: [
         '../../../../../common/assets/src/assets/transac-lines-list.scss',
     ],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './parts-reservation-line-list.component.html',
 })
 export class PartsReservationLineListComponent

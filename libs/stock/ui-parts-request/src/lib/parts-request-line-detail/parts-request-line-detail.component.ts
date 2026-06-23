@@ -31,7 +31,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './parts-request-line-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: [
         '../../../../../common/assets/src/assets/transac-lines-detail.scss',
     ],

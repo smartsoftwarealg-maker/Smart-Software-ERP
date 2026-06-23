@@ -16,7 +16,7 @@ import { Observable, tap } from 'rxjs';
     templateUrl: './transac-accounts-list.component.html',
     styleUrls: ['./transac-accounts-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class TransacAccountsListComponent extends BaseEntityListComponent<TransacAccount> {

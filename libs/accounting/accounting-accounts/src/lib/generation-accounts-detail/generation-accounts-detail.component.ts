@@ -23,7 +23,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './generation-accounts-detail.component.html',
     styleUrls: ['./generation-accounts-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class GenerationAccountsDetailComponent extends BaseEntityDetailComponent<GenerationAccount> {

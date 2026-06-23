@@ -26,7 +26,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     templateUrl: './parts-reservation-list.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['../../../../../common/assets/src/assets/transac-list.scss'],
 })
 export class PartsReservationListComponent  extends BaseEntityListComponent<Transaction> {

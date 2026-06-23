@@ -40,7 +40,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     TranslateDirective
 ],
     templateUrl: './parts-reservation-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class PartsReservationDetailComponent extends BaseTransactionDetailComponent {

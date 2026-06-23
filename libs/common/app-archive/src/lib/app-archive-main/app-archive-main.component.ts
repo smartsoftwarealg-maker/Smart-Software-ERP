@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     templateUrl: './app-archive-main.component.html',
     styleUrls: ['./app-archive-main.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         RouterModule,
         MaterialModule,

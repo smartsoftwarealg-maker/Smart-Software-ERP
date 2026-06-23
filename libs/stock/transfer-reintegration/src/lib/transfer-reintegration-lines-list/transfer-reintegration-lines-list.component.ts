@@ -22,7 +22,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './transfer-reintegration-lines-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MatFormField,
     MatLabel,
