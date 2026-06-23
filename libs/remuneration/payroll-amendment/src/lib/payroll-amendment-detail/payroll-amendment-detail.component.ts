@@ -53,23 +53,25 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
 
     setupForm(e: Amendment): UntypedFormGroup {
         return this.formBuilder.group({
-            id: [e.id],
-            center: [e.center || this.loginSrv.appCtx.center],
-            employee: [e.employee || 0],
-            paymonth: [e.paymonth || this.loginSrv.appCtx.payMonth],
+            id:         [e.id],
+            center:     [e.center || this.loginSrv.appCtx.center],
+            employee:   [e.employee || 0],
+            paymonth:   [e.paymonth || this.loginSrv.appCtx.payMonth],
+            month_count:[e.month_count||0],
             applicationMonth: [e.applicationMonth || 0, Validators.required],
             to:         [0],
             element:    [e.element || 'e001'],
             elementId:  [e.elementId, Validators.required],
             new_value:  [e.new_value, Validators.required],
             percentage: [e.percentage || 0],
-            lastName:   [{ value: e.lastName, disabled: true }],
-            firstName:  [{ value: e.firstName, disabled: true }]
+            lastName:   [{ value: e.lastName||'', disabled: true }],
+            firstName:  [{ value: e.firstName||'', disabled: true }],
+            rounded:    [e.rounded??false]
         });
     }
 
     private saveMany() {
-        const value = this.form.value;
+        const value = this.readForm();
         const range = PayrollUtil.range(value.applicationMonth, value.to);
         delete value.to;
         const list = range.map((e: number) => <Amendment>{
@@ -80,25 +82,27 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
             applicationMonth: e,
             element: value.element,
             new_value: value.new_value,
-            percentage: value.percentage
+            percentage: value.percentage? 1 : 0,
+            rounded: value.rounded,
+            month_count: value.month_count||0
         });
         this.detailSrv
             .insertAll(list)
-            .subscribe(res => {
+            .subscribe({
+                next: res => {
                 this.snackBarSrv.showSuccessMessage();
-                this.form.reset();
+                this.form?.reset();
                 this.shellSrv.goBack();
+            },
+                error:  err => {
+                    console.error(err);
+                    throw err;
+                }
             });
     }
 
     override save() {
-        const value = this.form.value;
-        if (value.applicationMonth['month']) {
-            value.applicationMonth = value.applicationMonth.month + 100 * value.applicationMonth.year;
-        }
-        if (value.to['month']) {
-            value.to = value.to.month + 100 * value.to.year;
-        }
+        const value = this.readForm();
         if (PayrollUtil.isValidOrZero(value.applicationMonth) && PayrollUtil.isValidOrZero(value.to)) {
             if (value.to) {
                 this.saveMany();
@@ -108,5 +112,17 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
         } else {
             this.snackBarSrv.showFailureMessage();
         }
+    }
+
+    override readForm():Amendment{
+        const value = this.form?.getRawValue();
+        console.log('_______________________', value);
+        if (value.applicationMonth['month']) {
+            value.applicationMonth = value.applicationMonth.month + 100 * value.applicationMonth.year;
+        }
+        if (value.to['month']) {
+            value.to = value.to.month + 100 * value.to.year;
+        }
+        return value;
     }
 }
