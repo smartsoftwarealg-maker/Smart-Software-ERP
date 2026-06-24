@@ -17,8 +17,13 @@ import {
     LOGISTICS_ORDER_ANOMALIES_URL,
     LOGISTICS_TRANSPORTER_URL,
     DELIVERY_TIME_URL,
-    LOGISTICS_AGENT_MERGE_URL, LOGISTICS_DELIVERY_TIME_URL, LOGISTICS_SHIPMENT_MODE_URL, PACKAGING_UNITS_URL,
-    LOGISTICS_INTERNAL_AGENT_URL, LOGISTICS_UNIT_URL
+    LOGISTICS_AGENT_MERGE_URL,
+    LOGISTICS_DELIVERY_TIME_URL,
+    LOGISTICS_SHIPMENT_MODE_URL,
+    PACKAGING_UNITS_URL,
+    LOGISTICS_INTERNAL_AGENT_URL,
+    LOGISTICS_UNIT_URL,
+    LOGISTICS_TRANSACTION_TYPES_URL,
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -63,6 +68,10 @@ import {
 } from '@ss/common/ui-lookup';
 
 import {PackagingUnitsDetailComponent, PackagingUnitsListComponent} from "@ss/logistics/packaging-units";
+import {
+    TransactionTypesDetailComponent,
+    TransactionTypesListComponent,
+} from '@ss/logistics/transaction-types';
 
 export const logisticsAdminRoutes: Routes = [
     // {
@@ -538,6 +547,23 @@ export const logisticsAdminRoutes: Routes = [
         ]
     },
 
+    {
+        path: LOGISTICS_TRANSACTION_TYPES_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: TransactionTypesListComponent,
+                canActivate: [loginGuard],
+            },
+            {
+                path: ':id',
+                component: TransactionTypesDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService]
+            },
+            { path: '**', redirectTo: LIST_URL, pathMatch: 'full' }
+        ]
+    },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
 ];

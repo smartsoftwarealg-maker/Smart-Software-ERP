@@ -235,5 +235,7 @@
     "ACTIVITY_SEGMENT":       "قسم النشاط",
     "ARTICLE_BLOCKED":        "هذا الصنف محظور",
     "IMPORT_REFERENCE":       "مرجع الاستيراد",
-    "DRIVERS":                "السائقين"
+    "DRIVERS":                "السائقين",
+    "TRANSACTION_TYPES":      "أنواع المعاملات",
+    "TRANSACTION_TYPE":      "نوع المعاملة"
 }
