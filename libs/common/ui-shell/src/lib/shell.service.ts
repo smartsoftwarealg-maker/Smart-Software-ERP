@@ -121,7 +121,7 @@ export class ShellService {
     public error   = computed(() => this.isError());
     public shellTitle = computed(() => this._title());
 
-    public goBackEnabled = true;
+    public goBackEnabled = signal(true);
     // side nav data
     public navData: SideNavNode[] = [];
 
@@ -444,16 +444,11 @@ export class ShellService {
      * @param focusField
      */
     public  enableSearch(inputLabel: string, subFn: (a: Observable<any>) => any, focusField = false): void {
+        this.setSearchText('');
         this.searchInputLabel = inputLabel;
-        if (this.hasSearch) {
-            // alert(
-            //     'Dear developer, you have called enableSearch twice in a row,\n\t1. either you have not cleared the shellService state by calling .reset()\n\t2. or you called the function twice in the same component.\n\t\tContact muaaz.h.is@gmail.com for more information'
-            // );
-        } else {
-            this.#_hasSearch = true;
-            subFn(this.searchText);
-            this.updateShell();
-        }
+        this.#_hasSearch = true;
+        subFn(this.searchText);
+        this.updateShell();
         this.focusSearchField = focusField;
     }
 
@@ -605,7 +600,7 @@ export class ShellService {
     }
 
     setGoBackEnabled(enable: boolean) {
-        this.goBackEnabled = enable;
+        this.goBackEnabled.set(enable);
     }
 
     setVisibleSearch(visible: boolean) {

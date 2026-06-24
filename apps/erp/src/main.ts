@@ -14,11 +14,12 @@ import {
 import { ShellComponent } from '@ss/common/ui-shell';
 import { PasswordUpdateComponent, Auth2FAConfirmationComponent } from '@ss/auth-2fa';
 import { AppComponent } from './app/app.component';
-import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { LoginComponent } from '@ss/common/ui-login';
 import { CenterSelectComponent } from '@ss/common/ui-center-select';
 import { CustomErrorHandler } from '@ss/common/ui-error-handler';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 
 const routes: Routes = [
     {
@@ -43,10 +44,17 @@ bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule),
         provideAnimationsAsync(),
-        provideHttpClient(withInterceptorsFromDi(), withFetch()),
+        provideBrowserGlobalErrorListeners(),
+        provideHttpClient(withInterceptorsFromDi()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
         { provide: ErrorHandler, useClass: CustomErrorHandler },
-        provideBrowserGlobalErrorListeners()
+        {
+            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+            useValue: {
+                appearance: 'outline',
+                subscriptSizing: 'fixed'  // Reserves space for errors even when not shown
+            }
+        }
     ]
 }).catch((err) => {
     console.error('main.ts (line 45): ', err);

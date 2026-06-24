@@ -50,8 +50,7 @@ import { ChildAttributesComponent } from '@ss/custom-attributes';
 })
 export class ArticleDetailComponent
     extends BaseEntityDetailComponent<Article>
-    implements OnInit
-{
+    implements OnInit {
     private subClassSrv = inject(SubclassService);
     private classSrv = inject(ClassService);
     private markSrv = inject(MarkService);

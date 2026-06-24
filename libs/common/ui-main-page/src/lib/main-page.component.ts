@@ -51,7 +51,8 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.updateGoBackButton();
-        this.shellSrv.setTitle(this.shellSrv.applicationTitle());
+        this.shellSrv.setTitle(this.shellSrv.applicationTitle()||'');
+
 
         this.shellSrv.enableSearch(
             'SEARCH_APP',

@@ -79,7 +79,7 @@
               [matTooltip]="'COMMON_GO_BACK' | translate"
               mat-icon-button
               (click)="shellSrv.goBack()"
-              [disabled]="shellSrv.loading() || !shellSrv.goBackEnabled"
+              [disabled]="shellSrv.loading() || !shellSrv.goBackEnabled()"
               class="hidden-during-search">
               @if (langSrv.rtl) {
                 <i class="fas fa-arrow-right"></i>
@@ -101,7 +101,7 @@
 
           @if (shellSrv.hasSearch && shellSrv.visibleSearchField()) {
             <div class="ss-form-field large-only">
-              <mat-form-field floatLabel="always">
+              <mat-form-field floatLabel="always" appearance="fill">
                 <mat-label translate>{{ shellSrv.searchInputTitle }}</mat-label>
                 <input [formField]="shellSrv.searchForm.query"
                   matInput type="text"

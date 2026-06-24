@@ -27,7 +27,7 @@
                         @if (form?.controls['storeId'].hasError('required')) {
                             <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                         }
-                        <mat-hint> {{ storeName()}}</mat-hint>
+                        <mat-hint class="info f-warn"> {{ storeName()}}</mat-hint>
                     </mat-form-field>
                     @let message = ('COMMON_SEARCH' | translate) + " CTRL F";
                     <button mat-mini-fab

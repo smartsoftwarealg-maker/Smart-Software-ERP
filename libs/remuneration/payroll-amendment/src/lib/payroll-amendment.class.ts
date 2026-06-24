@@ -18,8 +18,8 @@ export interface Amendment {
     element: string;
     new_value: number;
     percentage: number;
-    month_count?: number;
-    rounded?: boolean;
+    month_count: number;
+    rounded: boolean;
     lastName?: string;
     firstName?: string;
     elementId?: number;

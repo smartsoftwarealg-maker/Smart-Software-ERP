@@ -570,6 +570,11 @@ mat-sidenav-content.mat-drawer-content.mat-sidenav-content {
 mat-table,
 mat-tree,
 mat-list,
-mat-toolbar {
+mat-toolbar,
+mat-expansion-pannel-header {
     @include mat.table-density(-4);
+}
+
+mat-form-field {
+    padding-top: 1px!important;
 }
