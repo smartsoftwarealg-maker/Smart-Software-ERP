@@ -110,6 +110,7 @@ export interface Transaction {
     paymentId?: number;
     driverId?: number;
     email?: string;
+    transactionType?: number;
 }
 
 export interface ExtraCost {

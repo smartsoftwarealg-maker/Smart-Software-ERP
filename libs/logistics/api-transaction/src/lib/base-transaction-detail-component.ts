@@ -50,6 +50,7 @@ export abstract class BaseTransactionDetailComponent
     extends BaseEntityDetailComponent<Transaction> implements OnInit {
     #deliveryTimeSrv = inject(DeliveryTimeService);
     #shipmentModeSrv = inject(ShipmentModeService);
+    #transacTypeSrv = inject(DeliveryTimeService);
 
     private CONSUMPTION_DOCUMENT = 260;
     private PURCHASE_REQUEST = 10;
@@ -78,12 +79,9 @@ export abstract class BaseTransactionDetailComponent
     protected purchaseProjectSrv = inject(PurchaseContractService);
     protected transportProjectSrv = inject(TransportContractService);
     protected salesProjectSrv = inject(SalesContractService);
-    protected deliveryTimeLookup = new DefaultAutoCompleteModel(
-        this.#deliveryTimeSrv,
-    );
-    protected shipmentModeLookup = new DefaultAutoCompleteModel(
-        this.#shipmentModeSrv,
-    );
+    protected deliveryTimeLookup = new DefaultAutoCompleteModel(this.#deliveryTimeSrv);
+    protected shipmentModeLookup = new DefaultAutoCompleteModel(this.#shipmentModeSrv);
+    protected transacTypeLookup = new DefaultAutoCompleteModel(this.#transacTypeSrv);
 
     @ViewChild(RouterOutlet) outlet: RouterOutlet | null = null;
 
@@ -380,6 +378,7 @@ export abstract class BaseTransactionDetailComponent
             isValidated:       [b.isValidated],
             shipMode:          [b.shipMode],
             advancementAmount: [b.advancementAmount],
+            transactionType:   [b.transactionType]
         });
     }
 
