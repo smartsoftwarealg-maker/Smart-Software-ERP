@@ -22,7 +22,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './reception-cancellation-lines-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatFormField,
         MatLabel,
@@ -51,7 +51,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
 })
 export class ReceptionCancellationLinesListComponent extends BaseTransactionLinesListComponent implements OnInit {
 
-    displayedColumns = signal([
+    override displayedColumns = signal([
         'position',
         'store',
         'reference',

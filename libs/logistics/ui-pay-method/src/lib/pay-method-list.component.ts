@@ -18,7 +18,7 @@ import { PaginationComponent } from "@ss/common/ui-pagination";
     styleUrls: ['./pay-method-list.component.scss'],
     templateUrl: './pay-method-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class PayMethodListComponent extends BaseEntityListComponent<PayMethod> {

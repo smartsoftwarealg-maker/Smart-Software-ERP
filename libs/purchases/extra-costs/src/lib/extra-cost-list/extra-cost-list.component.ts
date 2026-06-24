@@ -34,7 +34,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './extra-cost-list.component.html',
     styleUrls: ['./extra-cost-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatMiniFabButton,
         MatTooltip,
