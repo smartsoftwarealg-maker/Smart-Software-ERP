@@ -211,9 +211,13 @@
             ],
             "@ss/common/api-common": ["./libs/common/api-common/src/index.ts"],
             "@ss/common/api-lookup": ["./libs/common/api-lookup/src/index.ts"],
-            "@ss/common/api-reports": ["./libs/common/api-reports/src/index.ts"],
+            "@ss/common/api-reports": [
+                "./libs/common/api-reports/src/index.ts"
+            ],
             "@ss/common/api-users": ["./libs/common/api-users/src/index.ts"],
-            "@ss/common/app-archive": ["./libs/common/app-archive/src/index.ts"],
+            "@ss/common/app-archive": [
+                "./libs/common/app-archive/src/index.ts"
+            ],
             "@ss/common/ui-access-rights": [
                 "./libs/common/ui-access-rights/src/index.ts"
             ],
@@ -335,7 +339,9 @@
                 "./libs/furniture/furniture/src/index.ts"
             ],
             "@ss/hr-missions": ["./libs/hr-missions/missions/src/index.ts"],
-            "@ss/hr-missions/assets": ["./libs/hr-missions/assets/src/index.ts"],
+            "@ss/hr-missions/assets": [
+                "./libs/hr-missions/assets/src/index.ts"
+            ],
             "@ss/hr-missions/element-generation": [
                 "./libs/hr-missions/element-generation/src/index.ts"
             ],
@@ -369,7 +375,9 @@
             "@ss/logistics/api-agent-price": [
                 "./libs/logistics/api-agent-price/src/index.ts"
             ],
-            "@ss/logistics/api-card": ["./libs/logistics/api-card/src/index.ts"],
+            "@ss/logistics/api-card": [
+                "./libs/logistics/api-card/src/index.ts"
+            ],
             "@ss/logistics/api-circulation": [
                 "./libs/logistics/api-circulation/src/index.ts"
             ],
@@ -403,14 +411,18 @@
             "@ss/logistics/payment-compensation": [
                 "./libs/logistics/payment-compensation/src/index.ts"
             ],
-            "@ss/logistics/payments": ["./libs/logistics/payments/src/index.ts"],
+            "@ss/logistics/payments": [
+                "./libs/logistics/payments/src/index.ts"
+            ],
             "@ss/logistics/quantities": [
                 "./libs/logistics/ui-transactionline-quantities/src/index.ts"
             ],
             "@ss/logistics/ui-account": [
                 "./libs/logistics/ui-account/src/index.ts"
             ],
-            "@ss/logistics/ui-agent": ["./libs/logistics/ui-agent/src/index.ts"],
+            "@ss/logistics/ui-agent": [
+                "./libs/logistics/ui-agent/src/index.ts"
+            ],
             "@ss/logistics/ui-agent-balance": [
                 "./libs/logistics/ui-agent-balance/src/index.ts"
             ],
@@ -619,7 +631,9 @@
             "@ss/remuneration/input-filters": [
                 "./libs/remuneration/input-filters/src/index.ts"
             ],
-            "@ss/remuneration/loans": ["./libs/remuneration/loans/src/index.ts"],
+            "@ss/remuneration/loans": [
+                "./libs/remuneration/loans/src/index.ts"
+            ],
             "@ss/remuneration/paymonth-editor": [
                 "./libs/remuneration/paymonth-editor/src/index.ts"
             ],
@@ -641,7 +655,9 @@
             "@ss/remuneration/vacation-planning": [
                 "./libs/remuneration/vacation-planning/src/index.ts"
             ],
-            "@ss/sales/api-delivery": ["./libs/sales/api-delivery/src/index.ts"],
+            "@ss/sales/api-delivery": [
+                "./libs/sales/api-delivery/src/index.ts"
+            ],
             "@ss/sales/api-delivery-cancellation": [
                 "./libs/sales/api-delivery-cancellation/src/index.ts"
             ],
@@ -668,7 +684,9 @@
             "@ss/sales/ui-delivery-lines": [
                 "./libs/sales/ui-delivery-lines/src/index.ts"
             ],
-            "@ss/sales/ui-discounts": ["./libs/sales/ui-discounts/src/index.ts"],
+            "@ss/sales/ui-discounts": [
+                "./libs/sales/ui-discounts/src/index.ts"
+            ],
             "@ss/sales/ui-invoice": ["./libs/sales/ui-invoice/src/index.ts"],
             "@ss/sales/ui-invoice-cancellation": [
                 "./libs/sales/ui-invoice-cancellation/src/index.ts"
@@ -744,7 +762,9 @@
             "@ss/service-sales/service-proforma": [
                 "./libs/service-sales/service-proforma/src/index.ts"
             ],
-            "@ss/social/mutual-aids": ["./libs/social/mutual-aids/src/index.ts"],
+            "@ss/social/mutual-aids": [
+                "./libs/social/mutual-aids/src/index.ts"
+            ],
             "@ss/social/mutual-requests": [
                 "./libs/social/mutual-requests/src/index.ts"
             ],
@@ -799,7 +819,9 @@
             "@ss/stock/ui-consumption-lines": [
                 "./libs/stock/ui-consumption-lines/src/index.ts"
             ],
-            "@ss/stock/ui-inventory": ["./libs/stock/ui-inventory/src/index.ts"],
+            "@ss/stock/ui-inventory": [
+                "./libs/stock/ui-inventory/src/index.ts"
+            ],
             "@ss/stock/ui-inventory-anomalies": [
                 "./libs/stock/ui-inventory-anomalies/src/index.ts"
             ],
@@ -821,7 +843,9 @@
             "@ss/stock/ui-parts-request": [
                 "./libs/stock/ui-parts-request/src/index.ts"
             ],
-            "@ss/stock/ui-reception": ["./libs/stock/ui-reception/src/index.ts"],
+            "@ss/stock/ui-reception": [
+                "./libs/stock/ui-reception/src/index.ts"
+            ],
             "@ss/stock/ui-reception-lines": [
                 "./libs/stock/ui-reception-lines/src/index.ts"
             ],
@@ -843,7 +867,9 @@
             "@ss/treasury/ui-check-books": [
                 "./libs/treasury/ui-check-books/src/index.ts"
             ],
-            "@ss/treasury/ui-checks": ["./libs/treasury/ui-checks/src/index.ts"],
+            "@ss/treasury/ui-checks": [
+                "./libs/treasury/ui-checks/src/index.ts"
+            ],
             "@ss/treasury/ui-journal": [
                 "./libs/treasury/ui-journal/src/index.ts"
             ],
@@ -884,6 +910,9 @@
             ],
             "@ss/production/production-recycling": [
                 "./libs/production/production-recycling/src/index.ts"
+            ],
+            "@ss/logistics/transaction-types": [
+                "./libs/logistics/ui-transaction-types/src/index.ts"
             ]
         }
     },

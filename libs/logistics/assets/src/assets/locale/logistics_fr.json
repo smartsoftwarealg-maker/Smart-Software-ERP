@@ -235,5 +235,7 @@
     "ACTIVITY_SEGMENT":       "Segment d'activité",
     "ARTICLE_BLOCKED":        "Cet article est bloqué",
     "IMPORT_REFERENCE":       "Référence import",
-    "DRIVERS":                "Chauffeurs"
+    "DRIVERS":                "Chauffeurs",
+    "TRANSACTION_TYPES":      "Types de transactions",
+    "TRANSACTION_TYPE":      "Type de transaction"
 }

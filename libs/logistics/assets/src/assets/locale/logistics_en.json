@@ -236,5 +236,7 @@
     "ACTIVITY_SEGMENT": "Activity segment",
     "ARTICLE_BLOCKED": "This article is blocked",
     "IMPORT_REFERENCE": "Import reference",
-    "DRIVERS": "Drivers"
+    "DRIVERS": "Drivers",
+    "TRANSACTION_TYPES": "Transaction types",
+    "TRANSACTION_TYPE": "Transaction type"
 }

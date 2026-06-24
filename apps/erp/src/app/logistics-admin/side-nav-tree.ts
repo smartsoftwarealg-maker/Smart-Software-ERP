@@ -18,7 +18,9 @@ import {
     ABS_LOGISTICS_AGENT_MERGE,
     ABS_LOGISTICS_SHIPMENT_MODES,
     ABS_LOGISTICS_PACKAGING_UNITS,
-    ABS_LOGISTICS_INTERNAL_AGENTS_URL, ABS_LOGISTICS_UNITS_URL
+    ABS_LOGISTICS_INTERNAL_AGENTS_URL,
+    ABS_LOGISTICS_UNITS_URL,
+    ABS_LOGISTICS_TRANSACTION_TYPES_URL,
 } from '../common';
 import {SideNavNode} from '@ss/common/api-common';
 
@@ -146,6 +148,12 @@ export const logisticsAdminNavTree: SideNavNode = {
             icon: 'fa-solid fa-circle-exclamation',
             route: ABS_LOGISTICS_ORDER_ANOMALIES,
             accessRights: 'POrder'
+        },
+        {
+            name: 'LOGISTICS_TRANSACTION_TYPES',
+            icon: 'fa-solid fa-atom',
+            route: ABS_LOGISTICS_TRANSACTION_TYPES_URL,
+                accessRights: 'TransactionType'
         },
         {
             name: 'COMMON_OPTIONS',
