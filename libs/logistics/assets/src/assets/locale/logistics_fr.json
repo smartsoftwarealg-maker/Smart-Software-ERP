@@ -236,6 +236,6 @@
     "ARTICLE_BLOCKED":        "Cet article est bloqué",
     "IMPORT_REFERENCE":       "Référence import",
     "DRIVERS":                "Chauffeurs",
-    "TRANSACTION_TYPES":      "Types de transactions",
-    "TRANSACTION_TYPE":      "Type de transaction"
+    "TRANSACTION_TYPES":      "Types mouvements",
+    "TRANSACTION_TYPE":      "Type mouvement"
 }
