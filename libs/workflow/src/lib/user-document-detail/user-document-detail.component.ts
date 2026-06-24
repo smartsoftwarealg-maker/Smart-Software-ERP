@@ -25,7 +25,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './user-document-detail.component.html',
     styleUrls: ['./user-document-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,

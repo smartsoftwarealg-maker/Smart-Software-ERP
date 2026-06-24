@@ -24,7 +24,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './sales-contract-list.component.html',
     styleUrls: ['./sales-contract-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

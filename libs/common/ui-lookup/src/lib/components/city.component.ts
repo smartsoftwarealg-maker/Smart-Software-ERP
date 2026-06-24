@@ -51,7 +51,7 @@ export class CityListComponent extends BaseEntityListComponent<City> {
     templateUrl: '../city/city-detail.component.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, Dir, UiAutoCompleteComponent]
 })
 export class CityDetailComponent extends BaseEntityDetailComponent<City> {

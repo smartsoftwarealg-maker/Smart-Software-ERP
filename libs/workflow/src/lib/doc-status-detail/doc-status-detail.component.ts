@@ -23,7 +23,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './doc-status-detail.component.html',
     styleUrls: ['./doc-status-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,

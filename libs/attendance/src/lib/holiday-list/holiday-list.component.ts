@@ -18,7 +18,7 @@ import { DatePipe } from '@angular/common';
     templateUrl: './holiday-list.component.html',
     styleUrls: ['./holiday-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,

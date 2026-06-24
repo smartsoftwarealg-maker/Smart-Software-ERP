@@ -46,7 +46,7 @@ interface EvalPrice {
         UiAutoCompleteComponent
     ],
     styleUrls: ['./options-detail.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './options-detail.component.html',
 })
 export class OptionsDetailComponent

@@ -22,7 +22,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     styleUrls: ['./report-catalog-detail.component.scss'],
     templateUrl: './report-catalog-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,

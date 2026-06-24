@@ -20,7 +20,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './user-message-list.component.html',
     styleUrls: ['./user-message-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,
@@ -33,7 +33,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 export class UserMessageListComponent extends BaseEntityListComponent<UserMessage> {
     private loginSrv  = inject(LoginService);
     private usersSrv =  inject(UserListService);
-    userCtrl = new FormControl<number>(this.loginSrv.appCtx.id);
+    userCtrl = new FormControl<number>(0);
     userAutoComplete = new UserLookup(this.usersSrv);
     readonly displayedColumns = ([
         'messageDescription',
@@ -62,6 +62,7 @@ export class UserMessageListComponent extends BaseEntityListComponent<UserMessag
             this.entitySrv.setParentId(u?.id || 0);
             this.refresh();
         };
-        this.entitySrv.setParentId(this.loginSrv.appCtx.id);
+        this.entitySrv.setParentId(this.loginSrv.appCtx?.id || 0);
+        this.userCtrl.setValue(this.loginSrv.appCtx?.id || 0);
     }
 }

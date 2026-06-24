@@ -18,7 +18,7 @@ import { MaterialModule } from '@ss/common/api-common';
     styleUrls: ['./smtp-detail.component.scss'],
     templateUrl: './smtp-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError]
 })
 export class SmtpDetailComponent extends BaseEntityDetailComponent<Smtp> {

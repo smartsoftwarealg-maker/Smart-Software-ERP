@@ -75,7 +75,7 @@ export class WilayaListComponent extends BaseEntityListComponent<Wilaya> {
     `,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent]
 })
 export class WilayaDetailComponent extends BaseEntityDetailComponent<Wilaya> {

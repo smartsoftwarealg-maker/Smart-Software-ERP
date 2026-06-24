@@ -30,7 +30,7 @@ import {TransportContractService} from "../transport-contract.service";
     templateUrl: './transport-contract-detail.component.html',
     styleUrls: ['./transport-contract-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,
