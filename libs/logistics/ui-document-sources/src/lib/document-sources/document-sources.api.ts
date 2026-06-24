@@ -8,4 +8,5 @@ export interface Source {
     date: Date;
     qtyOrdered: number;
     qtySatisfied: number;
+    stockPrice?: number;
 }

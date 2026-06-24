@@ -29,6 +29,13 @@
             </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="stockPrice">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_EVAL_PRICE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{e.stockPrice | number: '1.2-2'}}
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="qtySatisfied">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>LOGISTICS_QTY_SATISFIED</mat-header-cell>
             <mat-cell *matCellDef="let e">
