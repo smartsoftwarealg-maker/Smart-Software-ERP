@@ -21,7 +21,7 @@ import { MaterialModule } from '@ss/common/api-common';
     styleUrls: ['./pay-method-detail.component.scss'],
     templateUrl: './pay-method-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent]
 })
 export class PayMethodDetailComponent extends BaseEntityDetailComponent<PayMethod> {

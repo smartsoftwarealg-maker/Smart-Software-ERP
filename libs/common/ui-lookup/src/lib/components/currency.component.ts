@@ -49,7 +49,7 @@ export class CurrencyListComponent extends BaseEntityListComponent<Currency> {
     templateUrl: '../base-templates/detail-template.html',
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput]
 })
 export class CurrencyDetailComponent extends BaseEntityDetailComponent<Currency> implements OnInit {

@@ -23,7 +23,7 @@ import {MaterialModule} from "@ss/common/api-common";
         ReactiveFormsModule
     ],
     templateUrl: './packaging-units-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrl: './packaging-units-detail.component.scss',
 })
 export class PackagingUnitsDetailComponent extends BaseEntityDetailComponent<PackagingUnit> {

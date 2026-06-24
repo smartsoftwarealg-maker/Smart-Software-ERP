@@ -15,7 +15,7 @@ import {PurchaseInvoiceLineService} from "../purchase-invoice-line.service";
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './purchase-invoice-lines-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,

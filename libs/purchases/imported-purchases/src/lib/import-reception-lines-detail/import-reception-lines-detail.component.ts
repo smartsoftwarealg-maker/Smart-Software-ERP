@@ -22,7 +22,7 @@ import {MatTooltip, MatTooltipModule} from "@angular/material/tooltip";
     styleUrls: ['./import-reception-lines-detail.component.scss',
         '../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatMiniFabButton,
         MatCard,

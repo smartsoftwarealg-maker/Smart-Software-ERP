@@ -17,7 +17,7 @@ import { Article } from '@ss/master-data/api-article';
     ],
     templateUrl: './reception-lines-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         TranslateDirective,

@@ -18,7 +18,7 @@ import { PriceRequestLinesService } from '../services/price-request-lines.servic
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     templateUrl: './price-request-lines-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MatMiniFabButton,
     MatCard,

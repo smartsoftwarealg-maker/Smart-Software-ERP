@@ -26,7 +26,7 @@ import {UiAutoCompleteComponent} from "@ss/common/ui-auto-complete";
         TranslateDirective,
         UiAutoCompleteComponent
     ],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./vat-detail.component.scss']
 })
 export class VatDetailComponent extends BaseEntityDetailComponent<Vat> {
