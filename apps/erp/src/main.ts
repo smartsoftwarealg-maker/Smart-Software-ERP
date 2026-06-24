@@ -14,7 +14,7 @@ import {
 import { ShellComponent } from '@ss/common/ui-shell';
 import { PasswordUpdateComponent, Auth2FAConfirmationComponent } from '@ss/auth-2fa';
 import { AppComponent } from './app/app.component';
-import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { LoginComponent } from '@ss/common/ui-login';
 import { CenterSelectComponent } from '@ss/common/ui-center-select';
 import { CustomErrorHandler } from '@ss/common/ui-error-handler';
@@ -44,6 +44,7 @@ bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, MatProgressSpinnerModule),
         provideAnimationsAsync(),
+        provideBrowserGlobalErrorListeners(),
         provideHttpClient(withInterceptorsFromDi()),
         provideRouter(routes, withComponentInputBinding()), //, withDebugTracing()
         { provide: ErrorHandler, useClass: CustomErrorHandler },

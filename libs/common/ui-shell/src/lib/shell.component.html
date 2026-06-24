@@ -79,7 +79,7 @@
               [matTooltip]="'COMMON_GO_BACK' | translate"
               mat-icon-button
               (click)="shellSrv.goBack()"
-              [disabled]="shellSrv.loading() || !shellSrv.goBackEnabled"
+              [disabled]="shellSrv.loading() || !shellSrv.goBackEnabled()"
               class="hidden-during-search">
               @if (langSrv.rtl) {
                 <i class="fas fa-arrow-right"></i>

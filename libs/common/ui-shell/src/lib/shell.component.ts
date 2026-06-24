@@ -37,7 +37,7 @@ import {form, FormField} from "@angular/forms/signals";
     templateUrl: './shell.component.html',
     styleUrls: ['./shell.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     RouterModule,
     MaterialModule,

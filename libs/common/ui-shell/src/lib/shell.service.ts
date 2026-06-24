@@ -121,7 +121,7 @@ export class ShellService {
     public error   = computed(() => this.isError());
     public shellTitle = computed(() => this._title());
 
-    public goBackEnabled = true;
+    public goBackEnabled = signal(true);
     // side nav data
     public navData: SideNavNode[] = [];
 
@@ -600,7 +600,7 @@ export class ShellService {
     }
 
     setGoBackEnabled(enable: boolean) {
-        this.goBackEnabled = enable;
+        this.goBackEnabled.set(enable);
     }
 
     setVisibleSearch(visible: boolean) {

@@ -14,7 +14,7 @@ import {
     Validators,
     FormsModule,
     ReactiveFormsModule,
-    UntypedFormGroup,
+
 } from '@angular/forms';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { DatePipe } from '@angular/common';
@@ -138,7 +138,8 @@ export class PriceRecalculationComponent implements OnInit {
 
     recalculate() {
         if (this.form.valid) {
-            this.shellSrv.setLoading(true);
+            // this.shellSrv.setLoading(true);
+            this.shellSrv.setGoBackEnabled(false);
             const value = this.form.value;
             this.processing.set(true);
             this.optionSrv
@@ -162,9 +163,11 @@ export class PriceRecalculationComponent implements OnInit {
                             this.snackBarSrv.showSuccessMessage();
                             this.shellSrv.setLoading(false);
                             this.processing.set(false);
+                            this.shellSrv.setGoBackEnabled(true);
                         }
                     },
                     error: (err) => {
+                        this.shellSrv.setGoBackEnabled(true);
                         this.shellSrv.setLoading(false);
                         this.processing.set(false);
                         if (err.status === 0 || err.status === 502) {
