@@ -27,7 +27,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './extra-cost-detail.component.html',
     styleUrls: ['./extra-cost-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MatMiniFabButton,
     MatCard,

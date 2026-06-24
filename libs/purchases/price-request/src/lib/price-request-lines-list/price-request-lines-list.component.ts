@@ -30,7 +30,7 @@ import { PriceRequestLinesService } from '../services/price-request-lines.servic
     templateUrl: './price-request-lines-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatFormField,
         MatLabel,
@@ -58,7 +58,7 @@ import { PriceRequestLinesService } from '../services/price-request-lines.servic
     ]
 })
 export class PriceRequestLinesListComponent extends  BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = signal<string[]>([
+    override displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',

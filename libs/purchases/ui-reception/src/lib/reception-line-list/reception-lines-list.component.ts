@@ -24,7 +24,7 @@ import { WeightCaptureDialogButtonComponent } from '@ss/sales/weight-capture';
     ],
     templateUrl: './reception-lines-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

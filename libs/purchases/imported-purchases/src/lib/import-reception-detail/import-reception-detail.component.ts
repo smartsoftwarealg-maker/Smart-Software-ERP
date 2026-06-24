@@ -28,7 +28,7 @@ import { Observable } from 'rxjs';
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss',
         './import-reception-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
 })
 export class ImportReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
@@ -86,7 +86,7 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
         }
     }
 
-    onTabChange(idx: number) {
+    override onTabChange(idx: number) {
         if (this.saveButton.visible) {
             this.router.navigate([this.URLs[idx]], { relativeTo: this.route }).then();
         }
