@@ -44,13 +44,14 @@ import { TransactionLinesClass } from './transaction-lines.class';
 import { BaseTransactionLinesListComponent } from './base-transaction-lines-list.component';
 import { Project, PurchaseContractService, SalesContractService, TransportContractService } from '@ss/logistics/contracts';
 import { OptionService } from '@ss/logistics/ui-options';
+import {TransactionTypesService} from '@ss/logistics/transaction-types';
 
 @Directive()
 export abstract class BaseTransactionDetailComponent
     extends BaseEntityDetailComponent<Transaction> implements OnInit {
     #deliveryTimeSrv = inject(DeliveryTimeService);
     #shipmentModeSrv = inject(ShipmentModeService);
-    #transacTypeSrv = inject(DeliveryTimeService);
+    #transacTypeSrv = inject(TransactionTypesService);
 
     private CONSUMPTION_DOCUMENT = 260;
     private PURCHASE_REQUEST = 10;

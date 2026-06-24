@@ -9,7 +9,7 @@ import { LoginService, MaterialModule } from '@ss/common/api-common';
 import {
     BaseTransactionDetailComponent,
     DOC_PART_REQUEST,
-    DOC_RESERVATION,
+
 } from '@ss/logistics/api-transaction';
 import { MatDialog } from '@angular/material/dialog';
 import { ConsumptionLinesService } from '@ss/stock/api-consumption-lines';
