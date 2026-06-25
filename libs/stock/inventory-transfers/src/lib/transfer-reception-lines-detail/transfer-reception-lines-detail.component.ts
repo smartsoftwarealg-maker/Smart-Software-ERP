@@ -13,6 +13,7 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import {MaterialModule} from '@ss/common/api-common';
+import {DecimalPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-transfer-reception-lines-detail',
@@ -35,6 +36,7 @@ import {MaterialModule} from '@ss/common/api-common';
         MatError,
         MatHint,
         CdkTextareaAutosize,
+        DecimalPipe,
     ],
 })
 export class TransferReceptionLinesDetailComponent  extends BaseTransactionLinesDetailComponent {

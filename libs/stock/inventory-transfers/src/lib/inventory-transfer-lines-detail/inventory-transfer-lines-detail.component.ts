@@ -13,6 +13,7 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import {MaterialModule} from '@ss/common/api-common';
+import {DecimalPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-inventory-transfer-lines-detail',
@@ -34,7 +35,8 @@ import {MaterialModule} from '@ss/common/api-common';
         UiAutoCompleteComponent,
         MatError,
         MatHint,
-        CdkTextareaAutosize
+        CdkTextareaAutosize,
+        DecimalPipe
     ],
 })
 export class InventoryTransferLinesDetailComponent extends BaseTransactionLinesDetailComponent {

@@ -13,6 +13,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import {DecimalPipe} from "@angular/common";
 
 
 @Component({
@@ -34,8 +35,9 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     UiAutoCompleteComponent,
     MatError,
     MatHint,
-    CdkTextareaAutosize
-],
+    CdkTextareaAutosize,
+        DecimalPipe
+    ],
 })
 export class ConsumptionCancellationLinesDetailComponent extends BaseTransactionLinesDetailComponent {
     constructor(public detailSrv: ConsumptionCancellationLinesService) {

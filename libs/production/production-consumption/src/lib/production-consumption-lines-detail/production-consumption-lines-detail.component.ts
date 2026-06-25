@@ -23,6 +23,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ProductionConsumptionLinesService } from '../production-consumption-lines.service';
 import {MatTooltip} from "@angular/material/tooltip";
+import {DecimalPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-consumption-lines-detail',
@@ -48,6 +49,7 @@ import {MatTooltip} from "@angular/material/tooltip";
         CdkTextareaAutosize,
         TranslatePipe,
         MatTooltip,
+        DecimalPipe,
     ],
 })
 export class ProductionConsumptionLinesDetailComponent extends BaseTransactionLinesDetailComponent {

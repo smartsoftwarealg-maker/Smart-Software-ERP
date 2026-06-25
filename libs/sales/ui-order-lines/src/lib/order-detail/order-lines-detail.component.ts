@@ -11,6 +11,7 @@ import { ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import {DecimalPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-order-lines-detail',
@@ -26,6 +27,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
         ReactiveFormsModule,
         UiAutoCompleteComponent,
         TranslatePipe,
+        DecimalPipe,
     ],
 })
 export class OrderLinesDetailComponent

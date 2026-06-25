@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { DeliveryCancellationLinesService } from '../delivery-cancellation-lines.service';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
+import {DecimalPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-delivery-cancellation-lines-detail',
@@ -21,8 +22,9 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     TranslateDirective,
     ReactiveFormsModule,
     RouterModule,
-    UiAutoCompleteComponent
-]
+    UiAutoCompleteComponent,
+        DecimalPipe
+    ]
 })
 export class DeliveryCancellationLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(

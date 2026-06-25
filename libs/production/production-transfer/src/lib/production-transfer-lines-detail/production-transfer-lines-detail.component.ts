@@ -14,6 +14,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MaterialModule } from '@ss/common/api-common';
 import { ProductionTransferLinesService } from '../production-services/production-transfer-lines.service';
+import {DecimalPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-product-transfer-lines-detail',
@@ -38,6 +39,7 @@ import { ProductionTransferLinesService } from '../production-services/productio
         MatError,
         MatHint,
         CdkTextareaAutosize,
+        DecimalPipe,
     ],
 })
 export class ProductionTransferLinesDetailComponent extends BaseTransactionLinesDetailComponent {

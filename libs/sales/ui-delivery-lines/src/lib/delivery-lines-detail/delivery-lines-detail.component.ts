@@ -14,6 +14,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MatTooltip } from '@angular/material/tooltip';
 import {MaterialModule} from '@ss/common/api-common';
+import {DecimalPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-delivery-lines-detail',
@@ -38,6 +39,7 @@ import {MaterialModule} from '@ss/common/api-common';
         CdkTextareaAutosize,
         TranslatePipe,
         MatTooltip,
+        DecimalPipe,
     ]
 })
 export class DeliveryLinesDetailComponent extends BaseTransactionLinesDetailComponent {

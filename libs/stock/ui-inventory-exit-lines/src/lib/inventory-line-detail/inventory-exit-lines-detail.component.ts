@@ -14,6 +14,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { InventoryExitLinesService } from '@ss/stock/api-inventory-exit-lines';
 import {MaterialModule} from "@ss/common/api-common";
+import {DecimalPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-inventory-exit-lines-detail',
@@ -36,6 +37,7 @@ import {MaterialModule} from "@ss/common/api-common";
         MatError,
         MatHint,
         CdkTextareaAutosize,
+        DecimalPipe,
     ],
 })
 export class InventoryExitLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
