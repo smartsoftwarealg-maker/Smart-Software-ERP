@@ -12,6 +12,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MaterialModule } from '@ss/common/api-common';
 import {FreeInvoiceLinesService} from "../invoice-lines.service";
+import {DecimalPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-free-invoice-lines-detail',
@@ -19,7 +20,7 @@ import {FreeInvoiceLinesService} from "../invoice-lines.service";
     templateUrl: './free-invoice-lines-detail.component.html',
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, MatHint, CdkTextareaAutosize, TranslatePipe]
+    imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, UiAutoCompleteComponent, MatError, MatHint, CdkTextareaAutosize, TranslatePipe, DecimalPipe]
 })
 export class FreeInvoiceLinesDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
     constructor(

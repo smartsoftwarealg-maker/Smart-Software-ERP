@@ -12,6 +12,7 @@ import { MatInput } from '@angular/material/input';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import {MatTooltip} from "@angular/material/tooltip";
+import {DecimalPipe} from "@angular/common";
 
 
 @Component({
@@ -35,7 +36,8 @@ import {MatTooltip} from "@angular/material/tooltip";
         MatHint,
         CdkTextareaAutosize,
         TranslatePipe,
-        MatTooltip
+        MatTooltip,
+        DecimalPipe
     ]
 })
 export class ConsumptionLinesDetailComponent extends BaseTransactionLinesDetailComponent {

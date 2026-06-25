@@ -13,6 +13,7 @@ import { TextFieldModule } from "@angular/cdk/text-field";
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { TranslateDirective } from '@ss/common/ui-lang';
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {DecimalPipe} from "@angular/common";
 
 @Component({
     selector: 'ss-parts-reservation-line-detail',
@@ -25,7 +26,8 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     ReactiveFormsModule,
     TextFieldModule,
     UiAutoCompleteComponent,
-    TranslateDirective
+    TranslateDirective,
+        DecimalPipe
     ],
     templateUrl: './parts-reservation-line-detail.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

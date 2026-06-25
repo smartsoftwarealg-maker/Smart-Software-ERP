@@ -33,7 +33,7 @@
                         <mat-error translate>COMMON_NO_MATCH</mat-error>
                     }
                     @if (showStock()) {
-                        <mat-hint class="info f-warn"><span translate>STOCK_STOCK</span>: {{ articleStock() }}</mat-hint>
+                        <mat-hint class="info f-warn"><span translate>STOCK_STOCK</span>: {{ articleStock() | number: '1.2-2'}}</mat-hint>
                     }
 
 
@@ -59,7 +59,7 @@
                         }
                         @if (showStock()) {
                             <mat-hint class="info f-warn"><span
-                                translate>STOCK_STOCK</span>: {{ articleStock() }}
+                                translate>STOCK_STOCK</span>: {{ articleStock() | number: '1.2-2'}}
                             </mat-hint>
                         }
                     </mat-form-field>

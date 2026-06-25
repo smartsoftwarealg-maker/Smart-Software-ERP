@@ -28,7 +28,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './attributes-detail.component.html',
     styleUrls: ['./attributes-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         FormsModule,
         ReactiveFormsModule,
