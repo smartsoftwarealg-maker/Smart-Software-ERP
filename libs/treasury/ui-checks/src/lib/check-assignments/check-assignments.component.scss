@@ -65,6 +65,26 @@
     color: var(--mat-table-header-headline-color, inherit);
 }
 
+.panel-icon {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.header-spacer {
+    flex: 1;
+}
+
+.header-search {
+    flex-basis: 200px;
+    flex-grow: 0;
+    height: 60px;
+}
+
+.pagination-bar {
+    flex-shrink: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
 .selection-badge {
     display: inline-flex;
     align-items: center;

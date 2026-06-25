@@ -2,11 +2,12 @@
 
   <div class="panel panel--left">
     <div class="panel-header">
+      <i class="fas fa-money-check panel-icon"></i>
       <span class="panel-title" translate>TRS_UNASSIGNED_CHECKS</span>
     </div>
 
     <div class="filter-bar">
-      <mat-form-field class="default-25 sm-100">
+      <mat-form-field class="default-50 sm-100">
         <mat-label translate>TRS_DUE_DATE</mat-label>
         <ss-date-picker [formControl]="dueDateCtrl"></ss-date-picker>
       </mat-form-field>
@@ -17,7 +18,7 @@
     }
 
     <div class="table-scroll">
-      <mat-table [dataSource]="unassignedDataSource" class="main-table" matSort #unassignedSort="matSort">
+      <mat-table [dataSource]="unassignedPage()" class="main-table" matSort #unassignedSort="matSort">
 
         <ng-container matColumnDef="number">
           <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NUMBER</mat-header-cell>
@@ -62,13 +63,31 @@
         <div class="empty-state" translate>TRS_NO_UNASSIGNED_CHECKS</div>
       }
     </div>
+
+    <div class="pagination-bar">
+      <ss-pagination [paginationModel]="unassignedPagination"></ss-pagination>
+    </div>
   </div>
 
   <div class="panel panel--right">
 
     <div class="sub-panel">
       <div class="panel-header">
+        <i class="fas fa-university panel-icon"></i>
         <span class="panel-title" translate>ADMINISTRATION_BANKS</span>
+        <span class="header-spacer"></span>
+        @if (bankSearchOpen()) {
+          <mat-form-field class="header-search" appearance="fill">
+            <input matInput type="text" [formControl]="bankSearchCtrl">
+            <button mat-icon-button matSuffix type="button" (click)="bankSearchOpen.set(false)">
+              <i class="far fa-search"></i>
+            </button>
+          </mat-form-field>
+        } @else {
+          <button mat-icon-button type="button" (click)="bankSearchOpen.set(true)">
+            <i class="far fa-search"></i>
+          </button>
+        }
       </div>
 
       @if (loadingBanks()) {
@@ -76,7 +95,7 @@
       }
 
       <div class="table-scroll">
-        <mat-table [dataSource]="banks()" class="main-table">
+        <mat-table [dataSource]="banksPage()" class="main-table">
 
           <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef translate>COMMON_DESCRIPTION</mat-header-cell>
@@ -96,11 +115,29 @@
           <div class="empty-state" translate>TRS_NO_BANKS</div>
         }
       </div>
+
+      <div class="pagination-bar">
+        <ss-pagination [paginationModel]="bankPagination"></ss-pagination>
+      </div>
     </div>
 
     <div class="sub-panel">
       <div class="panel-header">
+        <i class="fas fa-money-check-alt panel-icon"></i>
         <span class="panel-title" translate>TRS_CHECKS</span>
+        <span class="header-spacer"></span>
+        @if (bankCheckSearchOpen()) {
+          <mat-form-field class="header-search" appearance="fill">
+            <input matInput type="text" [formControl]="bankCheckSearchCtrl">
+            <button mat-icon-button matSuffix type="button" (click)="bankCheckSearchOpen.set(false)">
+              <i class="far fa-search"></i>
+            </button>
+          </mat-form-field>
+        } @else {
+          <button mat-icon-button type="button" (click)="bankCheckSearchOpen.set(true)">
+            <i class="far fa-search"></i>
+          </button>
+        }
       </div>
 
       @if (loadingBankChecks() || removing()) {
@@ -108,7 +145,7 @@
       }
 
       <div class="table-scroll">
-        <mat-table [dataSource]="bankCheckDataSource" class="main-table" matSort #bankCheckSort="matSort">
+        <mat-table [dataSource]="bankCheckPage()" class="main-table" matSort #bankCheckSort="matSort">
 
           <ng-container matColumnDef="number">
             <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NUMBER</mat-header-cell>
@@ -156,6 +193,10 @@
         @if (!loadingBankChecks() && selectedBankId() !== null && bankCheckDataSource.data.length === 0) {
           <div class="empty-state" translate>TRS_NO_BANK_CHECKS</div>
         }
+      </div>
+
+      <div class="pagination-bar">
+        <ss-pagination [paginationModel]="bankCheckPagination"></ss-pagination>
       </div>
     </div>
 
