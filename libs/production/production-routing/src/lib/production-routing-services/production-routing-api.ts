@@ -40,6 +40,7 @@ export interface Routing {
     deletedAt?: Date;
     productName?: string;
     changeReason?: string;
+    operations?: RoutingOperation[];
 }
 
 export interface RoutingOperation {
@@ -74,6 +75,8 @@ export interface RoutingOperation {
     activities: ActivityType[];
     safetyNotes?: string;
     instructions?: string;
+    status?: string;
+    workCenterName?: string;
 }
 
 export interface RoutingMaterial {

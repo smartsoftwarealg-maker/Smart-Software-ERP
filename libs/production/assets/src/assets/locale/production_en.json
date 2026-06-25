@@ -146,5 +146,17 @@
     "BASED_UNIT":          "Based unit",
     "CONVERSATION_FACTOR": "Conversation factor",
     "PRODUCTIONS_RECYCLING": "Productions recycling",
-    "RELEASED":              "Released"
+    "RELEASED":              "Released",
+
+    "ADD_OPERATION":         "Add an operation",
+    "CHANGE_REASON":         "Change reason",
+    "TIME_COST_SUMMARY":     "Time cost summary",
+    "RUN_TIME":              "Run time",
+    "QUEUE_MOVE_WAIT":       "Queue move time",
+    "HRS":                   "HRS",
+    "TOTAL_LEAD_TIME":    "Total lead time",
+    "STANDARD_COST":    "Standard cost",
+    "NO_OPERATIONS_DEFINED": "No operations defined",
+    "SELECT_OPERATION_TO_VIEW_DETAILS": "Select an operation to view details",
+    "ROUTING_INFORMATION": "Routing information"
 }
