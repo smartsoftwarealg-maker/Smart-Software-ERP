@@ -1,4 +1,10 @@
-import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+    Component,
+    inject,
+    OnInit,
+    ChangeDetectionStrategy,
+    signal,
+} from '@angular/core';
 import { OrgChartModule, TreeNode } from 'angular13-organization-chart';
 import { HttpService, MaterialModule } from '@ss/common/api-common';
 import {ShellService} from "@ss/common/ui-shell";
@@ -19,7 +25,7 @@ interface WorkflowTreeNode extends TreeNode {
     templateUrl: './workflow-chart.component.html',
     styleUrls: ['./workflow-chart.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     OrgChartModule
@@ -29,7 +35,11 @@ export class WorkflowChartComponent implements OnInit {
     private httpSrv = inject( HttpService);
     private shellSrv = inject( ShellService);
     private route = inject( ActivatedRoute);
-    root: WorkflowTreeNode;
+    root = signal({
+        id: 0,
+        name: '',
+        children:[],
+    });
 
 
     ngOnInit(): void {
@@ -41,18 +51,18 @@ export class WorkflowChartComponent implements OnInit {
         this.shellSrv.setLoading(true);
         this.httpSrv.get<WorkflowChartTree[]>(CHART_TREE + CMMS_WORK_ORDER)
             .subscribe(e => {
-                this.root = this.toChartNode(e[0]);
+                this.root.set(this.toChartNode(e[0]));
                 this.shellSrv.setLoading(false);
             });
     }
 
     toChartNode(n: WorkflowChartTree): WorkflowTreeNode {
         const x: WorkflowTreeNode = {
-            name: n.message.childDescription,
-            id: n.message.id,
+            name: n?.message.childDescription || '',
+            id: n?.message.id || 0,
             children: []
         };
-        x.children = n.children == null ? [] : n.children.map(y => this.toChartNode(y));
+        x.children = n?.children == null ? [] : n.children.map(y => this.toChartNode(y));
         return x;
     }
 }

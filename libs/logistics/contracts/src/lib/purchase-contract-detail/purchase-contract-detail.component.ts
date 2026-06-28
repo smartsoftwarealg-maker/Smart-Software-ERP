@@ -29,7 +29,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './purchase-contract-detail.component.html',
     styleUrls: ['./purchase-contract-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         TranslateDirective,

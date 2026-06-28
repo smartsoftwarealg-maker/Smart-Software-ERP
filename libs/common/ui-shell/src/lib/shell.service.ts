@@ -577,7 +577,7 @@ export class ShellService {
     }
 
     getRights(node: SideNavNode): Right {
-        return this.loginSrv.appCtx.id > 0 ?
+        return this.loginSrv.appCtx?.id || 0 > 0 ?
             this.rightsSrv.getUserRights(node.accessRights) :
             node.customerRights;
     }

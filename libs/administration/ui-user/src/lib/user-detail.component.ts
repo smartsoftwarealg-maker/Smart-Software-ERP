@@ -36,7 +36,7 @@ import { ImageInputComponent, ImageModel } from '@ss/common/ui-image-input';
     styleUrls: ['./user-detail.component.scss'],
     templateUrl: './user-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatCard,

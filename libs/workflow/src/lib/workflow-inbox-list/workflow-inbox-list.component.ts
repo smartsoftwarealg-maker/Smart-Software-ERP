@@ -19,7 +19,7 @@ import { Observable, tap } from 'rxjs';
     templateUrl: './workflow-inbox-list.component.html',
     styleUrls: ['./workflow-inbox-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

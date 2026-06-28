@@ -38,7 +38,7 @@ interface APP {
     templateUrl: './access-rights-list.component.html',
     styleUrls: ['./access-rights-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatCheckbox,

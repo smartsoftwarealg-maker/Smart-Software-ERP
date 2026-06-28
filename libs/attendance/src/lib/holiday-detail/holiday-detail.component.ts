@@ -24,7 +24,7 @@ import {MaterialModule} from "@ss/common/api-common";
     templateUrl: './holiday-detail.component.html',
     styleUrls: ['./holiday-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MatCard,
     MatCardContent,
