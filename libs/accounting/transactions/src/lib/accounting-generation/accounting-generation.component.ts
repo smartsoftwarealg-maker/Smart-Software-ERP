@@ -75,9 +75,9 @@ export class AccountingGenerationComponent implements OnInit {
     readonly TRANSFER_OUT = 8;
     readonly TRANSFER_IN = 9;
 
-    readonly INITIAL_STATE = 0;
-    readonly PROCESSING = 1;
-    readonly DONE = 2;
+    // readonly INITIAL_STATE = 0;
+    // readonly PROCESSING = 1;
+    // readonly DONE = 2;
     journalMap = new Map<string, number>([
         ['purchaseJr', 1],
         ['inventoryJr', 2],
@@ -195,7 +195,9 @@ export class AccountingGenerationComponent implements OnInit {
                 'transferOutJr',
             ];
             journals.forEach((journal) =>
-                this.form.controls[journal].valueChanges
+                this.form
+                    .controls[journal]
+                    .valueChanges
                     .pipe(
                         debounceTime(300),
                         distinctUntilChanged(),
@@ -400,15 +402,13 @@ export class AccountingGenerationComponent implements OnInit {
     private showPayrollLines() {
         this.generationSrv.getPayrollLines().subscribe({
             next: (res) => {
-                this.processing.set(false);
-
                 this.payrollData = res;
                 this.payrollData.forEach((e) => {
                     e.debit = Math.max(e.amount, 0) || 0;
                     e.credit = Math.max(-e.amount, 0) || 0;
                 });
                 // add total line
-                this.form.controls['payrollCount'].setValue(res.length);
+                this.form?.controls['payrollCount'].setValue(res.length);
                 if (res.length > 0) {
                     const total = this.langSrv.translate('COMMON_TOTAL');
                     const debit = res
@@ -425,9 +425,12 @@ export class AccountingGenerationComponent implements OnInit {
                         credit: credit,
                     });
                 }
+                this.processing.set(false);
+                this.loading.set(false);
             },
             error: (err) => {
                 this.processing.set(false);
+                this.loading.set(false);
                 throw err;
             },
         });
@@ -580,8 +583,7 @@ export class AccountingGenerationComponent implements OnInit {
 class ActiveJournalLookup extends DefaultAutoCompleteModel<Journal> {
     constructor(
         public srv: AccJournalsService,
-        public loginSrv: LoginService,
-    ) {
+        public loginSrv: LoginService) {
         super(srv);
     }
 

@@ -158,5 +158,6 @@
     "STANDARD_COST":    "Standard cost",
     "NO_OPERATIONS_DEFINED": "No operations defined",
     "SELECT_OPERATION_TO_VIEW_DETAILS": "Select an operation to view details",
-    "ROUTING_INFORMATION": "Routing information"
+    "ROUTING_INFORMATION": "Routing information",
+    "IS_ACTIVE": "Is active"
 }

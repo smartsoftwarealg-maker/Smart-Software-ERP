@@ -3,16 +3,26 @@
         <!-- Sticky Header with Actions -->
         <header class="app-header mat-elevation-z2">
             <div class="header-left">
-                <button mat-icon-button color="primary" matTooltip="{{'COMMON_BACK_TO_LIST'|translate}}" (click)="goBack()">
+                <button mat-icon-button color="primary" matTooltip="{{'COMMON_BACK_TO_LIST'|translate}}"
+                        (click)="goBack()">
                     <i class="fa-solid fa-arrow-left"></i>
                 </button>
                 <div class="app-title">
-                    <h1 class="mat-headline-6">{{'PROD_ROUTINGS'|translate}} / {{ r.routingNumber }} {{ 'PROD_REV' | translate }} {{ r.revision }}</h1>
+                    <h1 class="mat-headline-6">{{ r.routingNumber }} {{ 'PROD_REV' | translate }}: {{ r.revision }}</h1>
                 </div>
             </div>
             <div class="header-actions">
                 <button mat-stroked-button color="warn" (click)="goBack()">
-                    <i class="fa-solid fa-xmark"></i> {{'COMMON_CANCEL'|translate}}
+                    <i class="fa-solid fa-xmark"></i> {{ 'COMMON_CANCEL'|translate }}
+                </button>
+                <button mat-raised-button color="primary" (click)="openEditRoutingDialog()"
+                        [disabled]="(form?.invalid || processing())">
+                    @if (processing()) {
+                        <mat-spinner diameter="16" style="margin-right: 8px;"></mat-spinner>
+                    } @else {
+                        <i class="fa-solid fa-pen"></i>
+                    }
+                    {{ 'COMMON_EDIT'|translate }}
                 </button>
                 <button mat-raised-button color="primary" (click)="save()" [disabled]="(form?.invalid || processing())">
                     @if (processing()) {
@@ -29,10 +39,16 @@
             <!-- Column 1: Routing Information -->
             <mat-card class="routing-info-column mat-elevation-z1">
                 <mat-card-header>
-                    <mat-card-title><i class="fa-solid fa-clipboard-list"></i> {{ 'PROD_ROUTING_INFORMATION' | translate }}</mat-card-title>
+                    <mat-card-title><i
+                        class="fa-solid fa-clipboard-list"></i> {{ 'PROD_ROUTING_INFORMATION' | translate }}
+                    </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                     <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label" translate>COMMON_DESCRIPTION</span>
+                            <span class="info-value">{{ r.description }}</span>
+                        </div>
                         <div class="info-item">
                             <span class="info-label" translate>PROD_ROUTING_NUMBER</span>
                             <span class="info-value">{{ r.routingNumber }}</span>
@@ -45,7 +61,8 @@
                             <span class="info-label" translate>COMMON_STATUS</span>
                             <span class="info-value">
                                 <mat-chip-set>
-                                    <mat-chip [color]="r.status === 'RELEASED' ? 'primary' : (r.status === 'DRAFT' ? 'accent' : 'warn')" selected>
+                                    <mat-chip
+                                        [color]="r.status === 'RELEASED' ? 'primary' : (r.status === 'DRAFT' ? 'accent' : 'warn')">
                                         {{ 'PROD_' + r.status | translate }}
                                     </mat-chip>
                                 </mat-chip-set>
@@ -53,11 +70,11 @@
                         </div>
                         <div class="info-item">
                             <span class="info-label" translate>PROD_VALID_FROM</span>
-                            <span class="info-value">{{ r.validFrom | date:'shortDate' }}</span>
+                            <span class="info-value">{{ r.validFrom | date:'dd/MM/yy' }}</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label" translate>PROD_VALID_TO</span>
-                            <span class="info-value">{{ r.validTo | date:'shortDate' }}</span>
+                            <span class="info-value">{{ r.validTo | date:'dd/MM/yy' }}</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label" translate>COMMON_PRODUCT</span>
@@ -72,36 +89,38 @@
                             <span class="info-value">{{ r.updatedAt }}</span>
                         </div>
                         <div class="info-item">
-                            <span class="info-label" >{{'PROD_CHANGE_REASON'|translate}}</span>
-                            <span class="info-value">{{ ((r.changeReason||'COMMON_NONE') | translate) }}</span>
+                            <span class="info-label">{{ 'PROD_CHANGE_REASON'|translate }}</span>
+                            <span class="info-value">{{ ((r.changeReason || 'COMMON_NONE') | translate) }}</span>
                         </div>
                     </div>
 
                     <mat-divider class="summary-divider"></mat-divider>
 
-                    <div class="summary-box">
-                        <h3 class="summary-title" translate>PROD_TIME_COST_SUMMARY</h3>
-                        <div class="summary-item">
-                            <span translate>PROD_SETUP_TIME</span>
-                            <strong>{{ 0 | number:'1.1-1' }} {{ 'PROD_HRS' | translate }}</strong>
+                    @if (summary(); as r) {
+                        <div class="summary-box">
+                            <h3 class="summary-title" translate>PROD_TIME_COST_SUMMARY</h3>
+                            <div class="summary-item">
+                                <span translate>PROD_SETUP_TIME</span>
+                                <strong>{{ r.setupTime | number:'1.1-1' }} {{ 'PROD_HRS' | translate }}</strong>
+                            </div>
+                            <div class="summary-item">
+                                <span translate>PROD_RUN_TIME</span>
+                                <strong>{{ r.runTime | number:'1.1-1' }} {{ 'PROD_HRS' | translate }}</strong>
+                            </div>
+                            <div class="summary-item">
+                                <span translate>PROD_QUEUE_MOVE_WAIT</span>
+                                <strong>{{ r.moveTime | number:'1.1-1' }} {{ 'PROD_HRS' | translate }}</strong>
+                            </div>
+                            <div class="summary-item total-lead-time">
+                                <span translate>PROD_TOTAL_LEAD_TIME</span>
+                                <strong>{{ (r.setupTime + r.runTime + r.moveTime) | number:'1.1-1' }} {{ 'PROD_HRS' | translate }}</strong>
+                            </div>
+                            <div class="summary-item total-cost">
+                                <span translate>PROD_STANDARD_COST</span>
+                                <strong>{{ 0 | currency:'DZD':'symbol':'1.2-2' }}</strong>
+                            </div>
                         </div>
-                        <div class="summary-item">
-                            <span translate>PROD_RUN_TIME</span>
-                            <strong>{{ 0 | number:'1.1-1' }} {{ 'PROD_HRS' | translate }}</strong>
-                        </div>
-                        <div class="summary-item">
-                            <span translate>PROD_QUEUE_MOVE_WAIT</span>
-                            <strong>{{ 0 | number:'1.1-1' }} {{ 'PROD_HRS' | translate }}</strong>
-                        </div>
-                        <div class="summary-item total-lead-time">
-                            <span translate>PROD_TOTAL_LEAD_TIME</span>
-                            <strong>{{ 0 | number:'1.1-1' }} {{ 'PROD_HRS' | translate }}</strong>
-                        </div>
-                        <div class="summary-item total-cost">
-                            <span translate>PROD_STANDARD_COST</span>
-                            <strong>{{ 0 | currency:'DZD':'symbol':'1.2-2' }}</strong>
-                        </div>
-                    </div>
+                    }
                 </mat-card-content>
             </mat-card>
 
@@ -109,7 +128,7 @@
             <mat-card class="operations-list-column mat-elevation-z1">
                 <mat-card-header>
                     <mat-card-title>{{ 'PROD_OPERATIONS' | translate }} ({{ operations().length }})</mat-card-title>
-                    <button mat-stroked-button color="primary" class="add-op-btn" (click)="addOperation()">
+                    <button mat-stroked-button color="primary" class="add-op-btn" (click)="editOperation(null)">
                         <i class="fa-solid fa-plus"></i> {{ 'PROD_ADD_OPERATION' | translate }}
                     </button>
                 </mat-card-header>
@@ -122,7 +141,9 @@
                                 <div class="op-header">
                                     <span class="op-seq">{{ op.operationSequence }}</span>
                                     <mat-chip-set>
-                                        <mat-chip [color]="op.status === 'RELEASED' ? 'primary' : (op.status === 'DRAFT' ? 'accent' : 'warn')" selected>
+                                        <mat-chip
+                                            [color]="op.status === 'RELEASED' ? 'primary' : (op.status === 'DRAFT' ? 'accent' : 'warn')"
+                                            selected>
                                             {{ 'PROD_'  | translate }}
                                         </mat-chip>
                                     </mat-chip-set>
@@ -130,9 +151,12 @@
                                 <div class="op-name">{{ op.operationName }}</div>
                                 <div class="op-wc">{{ op.workCenterName }}</div>
                                 <div class="op-stats">
-                                    <span translate>PROD_SETUP_TIME_SHORT</span>: <span>{{ op.setupTime | number:'1.1-1' }}h</span> |
-                                    <span translate>PROD_RUN_TIME_SHORT</span>: <span>{{ op.runTimePerUnit | number:'1.1-1' }}h</span> |
-                                    <span translate>COMMON_COST</span>: <span>{{ op.standardCost | currency:'DZD':'symbol':'1.2-2' }}</span>
+                                    <span translate>PROD_SETUP_TIME_SHORT</span>:
+                                    <span>{{ op.setupTime | number:'1.1-1' }}h</span> |
+                                    <span translate>PROD_RUN_TIME_SHORT</span>:
+                                    <span>{{ op.runTimePerUnit | number:'1.1-1' }}h</span> |
+                                    <span translate>COMMON_COST</span>:
+                                    <span>{{ op.standardCost | currency:'DZD':'symbol':'1.2-2' }}</span>
                                 </div>
                                 @if (op.isCritical || op.requiresInspection) {
                                     <div class="op-badges">
@@ -140,7 +164,8 @@
                                             <mat-chip color="warn" selected>{{ 'PROD_CRITICAL' | translate }}</mat-chip>
                                         }
                                         @if (op.requiresInspection) {
-                                            <mat-chip color="primary" selected>{{ 'PROD_INSPECTION_REQ' | translate }}</mat-chip>
+                                            <mat-chip color="primary" selected>{{ 'PROD_INSPECTION_REQ' | translate }}
+                                            </mat-chip>
                                         }
                                     </div>
                                 }
@@ -159,19 +184,25 @@
             <mat-card class="operation-detail-column mat-elevation-z1">
                 @if (selectedOperation(); as op) {
                     <mat-card-header>
-                        <mat-card-title>{{ 'PROD_OPERATION' | translate }} {{ op.operationSequence }}: {{ op.operationName }}</mat-card-title>
-                        <mat-card-subtitle>{{ 'PROD_WORK_CENTER' | translate }}: {{ op.workCenterName }}</mat-card-subtitle>
+                        <mat-card-title>{{ 'PROD_OPERATION' | translate }} {{ op.operationSequence }}
+                            : {{ op.operationName }}
+                        </mat-card-title>
+                        <mat-card-subtitle>{{ 'PROD_WORK_CENTER' | translate }}: {{ op.workCenterName }}
+                        </mat-card-subtitle>
                         <div class="header-actions">
-                            <button mat-icon-button color="primary" matTooltip="{{'COMMON_EDIT'|translate}}" (click)="editOperation(op)">
+                            <button mat-icon-button color="primary" matTooltip="{{'COMMON_EDIT'|translate}}"
+                                    (click)="editOperation(op)">
                                 <i class="fa-solid fa-pen"></i>
                             </button>
-                            <button mat-icon-button color="warn" matTooltip="{{'COMMON_DELETE'|translate}}" (click)="deleteOperation(op)">
+                            <button mat-icon-button color="warn" matTooltip="{{'COMMON_DELETE'|translate}}"
+                                    (click)="deleteOperation(op)">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>
                     </mat-card-header>
                     <mat-card-content class="operation-detail-content">
-                        <mat-tab-group [selectedIndex]="0" (selectedTabChange)="switchTab($event.tab.textLabel?.toLowerCase())">
+                        <mat-tab-group [selectedIndex]="0"
+                                       (selectedTabChange)="switchTab($event.tab.textLabel?.toLowerCase())">
                             <mat-tab [label]="'PROD_GENERAL' | translate">
                                 <!-- General Tab Content -->
                                 <div class="tab-content-padding">
@@ -234,10 +265,18 @@
                                     <mat-divider></mat-divider>
 
                                     <div class="checkbox-group">
-                                        <mat-checkbox [checked]="op.isMilestone" disabled>{{ 'PROD_IS_MILESTONE' | translate }}</mat-checkbox>
-                                        <mat-checkbox [checked]="op.isCritical" disabled>{{ 'PROD_IS_CRITICAL' | translate }}</mat-checkbox>
-                                        <mat-checkbox [checked]="op.requiresInspection" disabled>{{ 'PROD_REQUIRES_INSPECTION' | translate }}</mat-checkbox>
-                                        <mat-checkbox [checked]="op.allowsBackflush" disabled>{{ 'PROD_ALLOWS_BACKFLUSH' | translate }}</mat-checkbox>
+                                        <mat-checkbox [checked]="op.isMilestone"
+                                                      disabled>{{ 'PROD_IS_MILESTONE' | translate }}
+                                        </mat-checkbox>
+                                        <mat-checkbox [checked]="op.isCritical"
+                                                      disabled>{{ 'PROD_IS_CRITICAL' | translate }}
+                                        </mat-checkbox>
+                                        <mat-checkbox [checked]="op.requiresInspection"
+                                                      disabled>{{ 'PROD_REQUIRES_INSPECTION' | translate }}
+                                        </mat-checkbox>
+                                        <mat-checkbox [checked]="op.allowsBackflush"
+                                                      disabled>{{ 'PROD_ALLOWS_BACKFLUSH' | translate }}
+                                        </mat-checkbox>
                                     </div>
                                 </div>
                             </mat-tab>
@@ -255,7 +294,8 @@
                                         <table mat-table [dataSource]="op.materials" class="data-table">
                                             <ng-container matColumnDef="component">
                                                 <th mat-header-cell *matHeaderCellDef translate>PROD_COMPONENT</th>
-                                                <td mat-cell *matCellDef="let mat"><strong>{{ mat.componentName }}</strong></td>
+                                                <td mat-cell *matCellDef="let mat">
+                                                    <strong>{{ mat.componentName }}</strong></td>
                                             </ng-container>
                                             <ng-container matColumnDef="sku">
                                                 <th mat-header-cell *matHeaderCellDef translate>PROD_SKU</th>
@@ -263,40 +303,57 @@
                                             </ng-container>
                                             <ng-container matColumnDef="qtyPer">
                                                 <th mat-header-cell *matHeaderCellDef translate>PROD_QTY_PER_UNIT</th>
-                                                <td mat-cell *matCellDef="let mat">{{ mat.quantityPer | number:'1.1-2' }} {{ mat.unit }}</td>
+                                                <td mat-cell
+                                                    *matCellDef="let mat">{{ mat.quantityPer | number:'1.1-2' }} {{ mat.unit }}
+                                                </td>
                                             </ng-container>
                                             <ng-container matColumnDef="scrap">
-                                                <th mat-header-cell *matHeaderCellDef translate>PROD_SCRAP_PERCENTAGE</th>
-                                                <td mat-cell *matCellDef="let mat">{{ mat.scrapPercentage | number:'1.1-1' }}%</td>
+                                                <th mat-header-cell *matHeaderCellDef translate>PROD_SCRAP_PERCENTAGE
+                                                </th>
+                                                <td mat-cell
+                                                    *matCellDef="let mat">{{ mat.scrapPercentage | number:'1.1-1' }}%
+                                                </td>
                                             </ng-container>
                                             <ng-container matColumnDef="consumptionType">
-                                                <th mat-header-cell *matHeaderCellDef translate>PROD_CONSUMPTION_TYPE</th>
-                                                <td mat-cell *matCellDef="let mat" translate>PROD_{{ mat.consumptionType }}</td>
+                                                <th mat-header-cell *matHeaderCellDef translate>PROD_CONSUMPTION_TYPE
+                                                </th>
+                                                <td mat-cell *matCellDef="let mat" translate>
+                                                    PROD_{{ mat.consumptionType }}
+                                                </td>
                                             </ng-container>
                                             <ng-container matColumnDef="consumptionPoint">
-                                                <th mat-header-cell *matHeaderCellDef translate>PROD_CONSUMPTION_POINT</th>
+                                                <th mat-header-cell *matHeaderCellDef translate>PROD_CONSUMPTION_POINT
+                                                </th>
                                                 <td mat-cell *matCellDef="let mat">
                                                     <mat-chip-set>
-                                                        <mat-chip [color]="mat.consumptionPoint === 'START' ? 'primary' : (mat.consumptionPoint === 'END' ? 'accent' : 'warn')" selected>
+                                                        <mat-chip
+                                                            [color]="mat.consumptionPoint === 'START' ? 'primary' : (mat.consumptionPoint === 'END' ? 'accent' : 'warn')"
+                                                            selected>
                                                             {{ 'PROD_' + mat.consumptionPoint | translate }}
                                                         </mat-chip>
                                                     </mat-chip-set>
                                                 </td>
                                             </ng-container>
                                             <ng-container matColumnDef="actions">
-                                                <th mat-header-cell *matHeaderCellDef class="actions-header" translate>COMMON_ACTIONS</th>
+                                                <th mat-header-cell *matHeaderCellDef class="actions-header" translate>
+                                                    COMMON_ACTIONS
+                                                </th>
                                                 <td mat-cell *matCellDef="let mat" class="actions-cell">
-                                                    <button mat-icon-button color="primary" matTooltip="{{'COMMON_EDIT'|translate}}" type="button">
+                                                    <button mat-icon-button color="primary"
+                                                            matTooltip="{{'COMMON_EDIT'|translate}}" type="button">
                                                         <i class="fa-solid fa-pen"></i>
                                                     </button>
-                                                    <button mat-icon-button color="warn" matTooltip="{{'COMMON_DELETE'|translate}}" type="button">
+                                                    <button mat-icon-button color="warn"
+                                                            matTooltip="{{'COMMON_DELETE'|translate}}" type="button">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>
                                                 </td>
                                             </ng-container>
 
-                                            <tr mat-header-row *matHeaderRowDef="['component', 'sku', 'qtyPer', 'scrap', 'consumptionType', 'consumptionPoint', 'actions']"></tr>
-                                            <tr mat-row *matRowDef="let row; columns: ['component', 'sku', 'qtyPer', 'scrap', 'consumptionType', 'consumptionPoint', 'actions'];"></tr>
+                                            <tr mat-header-row
+                                                *matHeaderRowDef="['component', 'sku', 'qtyPer', 'scrap', 'consumptionType', 'consumptionPoint', 'actions']"></tr>
+                                            <tr mat-row
+                                                *matRowDef="let row; columns: ['component', 'sku', 'qtyPer', 'scrap', 'consumptionType', 'consumptionPoint', 'actions'];"></tr>
 
                                             <tr class="mat-row" *matNoDataRow>
                                                 <td class="mat-cell empty-cell" [attr.colspan]="7">
@@ -317,7 +374,8 @@
                                         <table mat-table [dataSource]="op.activities" class="data-table">
                                             <ng-container matColumnDef="activityType">
                                                 <th mat-header-cell *matHeaderCellDef translate>PROD_ACTIVITY_TYPE</th>
-                                                <td mat-cell *matCellDef="let act"><strong>{{ act.activityType }}</strong></td>
+                                                <td mat-cell *matCellDef="let act">
+                                                    <strong>{{ act.activityType }}</strong></td>
                                             </ng-container>
                                             <ng-container matColumnDef="category">
                                                 <th mat-header-cell *matHeaderCellDef translate>COMMON_CATEGORY</th>
@@ -329,31 +387,44 @@
                                             </ng-container>
                                             <ng-container matColumnDef="formulaFactor">
                                                 <th mat-header-cell *matHeaderCellDef translate>PROD_FORMULA_FACTOR</th>
-                                                <td mat-cell *matCellDef="let act">{{ act.formulaFactor | number:'1.4-4' }}</td>
+                                                <td mat-cell
+                                                    *matCellDef="let act">{{ act.formulaFactor | number:'1.4-4' }}
+                                                </td>
                                             </ng-container>
                                             <ng-container matColumnDef="rateAmount">
                                                 <th mat-header-cell *matHeaderCellDef translate>PROD_RATE_AMOUNT</th>
-                                                <td mat-cell *matCellDef="let act">{{ act.rateAmount | currency:'DZD':'symbol':'1.2-2' }} / {{ act.baseUnit }}</td>
+                                                <td mat-cell
+                                                    *matCellDef="let act">{{ act.rateAmount | currency:'DZD':'symbol':'1.2-2' }}
+                                                    / {{ act.baseUnit }}
+                                                </td>
                                             </ng-container>
                                             <ng-container matColumnDef="costPerUnit">
                                                 <th mat-header-cell *matHeaderCellDef translate>PROD_COST_PER_UNIT</th>
-                                                <td mat-cell *matCellDef="let act">{{ act.costPerUnit | currency:'DZD':'symbol':'1.2-2' }}</td>
+                                                <td mat-cell
+                                                    *matCellDef="let act">{{ act.costPerUnit | currency:'DZD':'symbol':'1.2-2' }}
+                                                </td>
                                             </ng-container>
 
                                             <ng-container matColumnDef="actions">
-                                                <th mat-header-cell *matHeaderCellDef class="actions-header" translate>COMMON_ACTIONS</th>
+                                                <th mat-header-cell *matHeaderCellDef class="actions-header" translate>
+                                                    COMMON_ACTIONS
+                                                </th>
                                                 <td mat-cell *matCellDef="let act" class="actions-cell">
-                                                    <button mat-icon-button color="primary" matTooltip="{{'COMMON_EDIT'|translate}}" type="button">
+                                                    <button mat-icon-button color="primary"
+                                                            matTooltip="{{'COMMON_EDIT'|translate}}" type="button">
                                                         <i class="fa-solid fa-pen"></i>
                                                     </button>
-                                                    <button mat-icon-button color="warn" matTooltip="{{'COMMON_DELETE'|translate}}" type="button">
+                                                    <button mat-icon-button color="warn"
+                                                            matTooltip="{{'COMMON_DELETE'|translate}}" type="button">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>
                                                 </td>
                                             </ng-container>
 
-                                            <tr mat-header-row *matHeaderRowDef="['activityType', 'category', 'baseUnit', 'formulaFactor', 'rateAmount', 'costPerUnit', 'actions']"></tr>
-                                            <tr mat-row *matRowDef="let row; columns: ['activityType', 'category', 'baseUnit', 'formulaFactor', 'rateAmount', 'costPerUnit', 'actions'];"></tr>
+                                            <tr mat-header-row
+                                                *matHeaderRowDef="['activityType', 'category', 'baseUnit', 'formulaFactor', 'rateAmount', 'costPerUnit', 'actions']"></tr>
+                                            <tr mat-row
+                                                *matRowDef="let row; columns: ['activityType', 'category', 'baseUnit', 'formulaFactor', 'rateAmount', 'costPerUnit', 'actions'];"></tr>
 
                                             <tr class="mat-row" *matNoDataRow>
                                                 <td class="mat-cell empty-cell" [attr.colspan]="7">
@@ -417,45 +488,45 @@
 
                                     <h3 class="section-title" translate>PROD_LAST_BATCH_VARIANCE_ANALYSIS</h3>
                                     <div class="table-container mat-elevation-z1">
-<!--                                        <table mat-table [dataSource]="op.varianceAnalysis" class="data-table">-->
-<!--                                            <ng-container matColumnDef="costElement">-->
-<!--                                                <th mat-header-cell *matHeaderCellDef translate>PROD_COST_ELEMENT</th>-->
-<!--                                                <td mat-cell *matCellDef="let va">{{ va.costElement }}</td>-->
-<!--                                            </ng-container>-->
-<!--                                            <ng-container matColumnDef="standard">-->
-<!--                                                <th mat-header-cell *matHeaderCellDef translate>PROD_STANDARD</th>-->
-<!--                                                <td mat-cell *matCellDef="let va">{{ va.standard | currency:'DZD':'symbol':'1.2-2' }}</td>-->
-<!--                                            </ng-container>-->
-<!--                                            <ng-container matColumnDef="actual">-->
-<!--                                                <th mat-header-cell *matHeaderCellDef translate>PROD_ACTUAL</th>-->
-<!--                                                <td mat-cell *matCellDef="let va">{{ va.actual | currency:'DZD':'symbol':'1.2-2' }}</td>-->
-<!--                                            </ng-container>-->
-<!--                                            <ng-container matColumnDef="varianceAmount">-->
-<!--                                                <th mat-header-cell *matHeaderCellDef translate>PROD_VARIANCE_AMOUNT</th>-->
-<!--                                                <td mat-cell *matCellDef="let va" [class.negative-variance]="va.varianceAmount > 0" [class.positive-variance]="va.varianceAmount < 0">-->
-<!--                                                    {{ va.varianceAmount | currency:'DZD':'symbol':'1.2-2' }}-->
-<!--                                                </td>-->
-<!--                                            </ng-container>-->
-<!--                                            <ng-container matColumnDef="variancePercentage">-->
-<!--                                                <th mat-header-cell *matHeaderCellDef translate>PROD_VARIANCE_PERCENTAGE</th>-->
-<!--                                                <td mat-cell *matCellDef="let va">-->
-<!--                                                    <mat-chip-set>-->
-<!--                                                        <mat-chip [color]="va.variancePercentage > 0 ? 'warn' : (va.variancePercentage < 0 ? 'primary' : undefined)" selected>-->
-<!--                                                            {{ va.variancePercentage | number:'1.1-1' }}%-->
-<!--                                                        </mat-chip>-->
-<!--                                                    </mat-chip-set>-->
-<!--                                                </td>-->
-<!--                                            </ng-container>-->
+                                        <!--                                        <table mat-table [dataSource]="op.varianceAnalysis" class="data-table">-->
+                                        <!--                                            <ng-container matColumnDef="costElement">-->
+                                        <!--                                                <th mat-header-cell *matHeaderCellDef translate>PROD_COST_ELEMENT</th>-->
+                                        <!--                                                <td mat-cell *matCellDef="let va">{{ va.costElement }}</td>-->
+                                        <!--                                            </ng-container>-->
+                                        <!--                                            <ng-container matColumnDef="standard">-->
+                                        <!--                                                <th mat-header-cell *matHeaderCellDef translate>PROD_STANDARD</th>-->
+                                        <!--                                                <td mat-cell *matCellDef="let va">{{ va.standard | currency:'DZD':'symbol':'1.2-2' }}</td>-->
+                                        <!--                                            </ng-container>-->
+                                        <!--                                            <ng-container matColumnDef="actual">-->
+                                        <!--                                                <th mat-header-cell *matHeaderCellDef translate>PROD_ACTUAL</th>-->
+                                        <!--                                                <td mat-cell *matCellDef="let va">{{ va.actual | currency:'DZD':'symbol':'1.2-2' }}</td>-->
+                                        <!--                                            </ng-container>-->
+                                        <!--                                            <ng-container matColumnDef="varianceAmount">-->
+                                        <!--                                                <th mat-header-cell *matHeaderCellDef translate>PROD_VARIANCE_AMOUNT</th>-->
+                                        <!--                                                <td mat-cell *matCellDef="let va" [class.negative-variance]="va.varianceAmount > 0" [class.positive-variance]="va.varianceAmount < 0">-->
+                                        <!--                                                    {{ va.varianceAmount | currency:'DZD':'symbol':'1.2-2' }}-->
+                                        <!--                                                </td>-->
+                                        <!--                                            </ng-container>-->
+                                        <!--                                            <ng-container matColumnDef="variancePercentage">-->
+                                        <!--                                                <th mat-header-cell *matHeaderCellDef translate>PROD_VARIANCE_PERCENTAGE</th>-->
+                                        <!--                                                <td mat-cell *matCellDef="let va">-->
+                                        <!--                                                    <mat-chip-set>-->
+                                        <!--                                                        <mat-chip [color]="va.variancePercentage > 0 ? 'warn' : (va.variancePercentage < 0 ? 'primary' : undefined)" selected>-->
+                                        <!--                                                            {{ va.variancePercentage | number:'1.1-1' }}%-->
+                                        <!--                                                        </mat-chip>-->
+                                        <!--                                                    </mat-chip-set>-->
+                                        <!--                                                </td>-->
+                                        <!--                                            </ng-container>-->
 
-<!--                                            <tr mat-header-row *matHeaderRowDef="['costElement', 'standard', 'actual', 'varianceAmount', 'variancePercentage']"></tr>-->
-<!--                                            <tr mat-row *matRowDef="let row; columns: ['costElement', 'standard', 'actual', 'varianceAmount', 'variancePercentage'];"></tr>-->
+                                        <!--                                            <tr mat-header-row *matHeaderRowDef="['costElement', 'standard', 'actual', 'varianceAmount', 'variancePercentage']"></tr>-->
+                                        <!--                                            <tr mat-row *matRowDef="let row; columns: ['costElement', 'standard', 'actual', 'varianceAmount', 'variancePercentage'];"></tr>-->
 
-<!--                                            <tr class="mat-row" *matNoDataRow>-->
-<!--                                                <td class="mat-cell empty-cell" [attr.colspan]="5">-->
-<!--                                                    <i class="fa-solid fa-chart-line"></i> {{ 'PROD_NO_VARIANCE_DATA' | translate }}-->
-<!--                                                </td>-->
-<!--                                            </tr>-->
-<!--                                        </table>-->
+                                        <!--                                            <tr class="mat-row" *matNoDataRow>-->
+                                        <!--                                                <td class="mat-cell empty-cell" [attr.colspan]="5">-->
+                                        <!--                                                    <i class="fa-solid fa-chart-line"></i> {{ 'PROD_NO_VARIANCE_DATA' | translate }}-->
+                                        <!--                                                </td>-->
+                                        <!--                                            </tr>-->
+                                        <!--                                        </table>-->
                                     </div>
                                 </div>
                             </mat-tab>

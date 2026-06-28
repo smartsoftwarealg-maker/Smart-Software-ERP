@@ -1,0 +1,62 @@
+@use '@angular/material' as mat;
+
+.mat-mdc-dialog-container {
+    .mat-mdc-dialog-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--mat-sys-on-surface);
+        border-bottom: 1px solid var(--mat-sys-outline-variant);
+        padding: 16px 24px;
+        margin: -24px -24px 16px -24px; // Adjust to span full width of dialog
+    }
+
+    .mat-mdc-dialog-content {
+        padding: 0 24px; // Remove default padding, add to form directly
+        overflow: hidden; // Prevent internal scrollbars if form is small
+    }
+
+    .mat-mdc-dialog-actions {
+        padding: 16px 24px;
+        border-top: 1px solid var(--mat-sys-outline-variant);
+        margin: 16px -24px -24px -24px; // Adjust to span full width of dialog
+    }
+}
+
+.dialog-form {
+    padding: 16px 0; // Add padding to form content
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--mat-sys-outline-variant);
+}
+
+// Font Awesome Icon Alignment in Material Buttons
+::ng-deep .mat-mdc-icon-button,
+::ng-deep .mat-mdc-raised-button,
+::ng-deep .mat-mdc-stroked-button {
+    i.fa-solid {
+        font-size: 14px;
+        line-height: 1;
+        vertical-align: middle;
+        margin-right: 6px;
+    }
+}
+
+// Responsive adjustments for smaller dialogs
+@media (max-width: 600px) {
+    .form-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
