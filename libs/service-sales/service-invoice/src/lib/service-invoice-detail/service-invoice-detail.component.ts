@@ -42,7 +42,7 @@ import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
     UiAutoCompleteComponent
 ],
     templateUrl: './service-invoice-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['../../../../../common/assets/src/assets/transac-detail.scss']
 })
 export class ServiceInvoiceDetailComponent extends BaseTransactionDetailComponent implements OnInit {

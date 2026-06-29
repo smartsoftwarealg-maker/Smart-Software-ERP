@@ -25,7 +25,7 @@ import { MatInput } from '@angular/material/input';
     templateUrl: './payments-detail.component.html',
     styleUrls: ['./payments-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError, CompensationPanelComponent]
 })
 export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> {

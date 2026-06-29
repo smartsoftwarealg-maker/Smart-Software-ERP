@@ -41,11 +41,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe
     ],
     templateUrl: './service-proforma-line-list.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./service-proforma-line-list.component.scss']
 })
 export class ServiceProformaLineListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = signal([
+    override displayedColumns = signal([
         'position',
         'reference',
         'description',

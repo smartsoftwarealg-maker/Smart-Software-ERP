@@ -20,7 +20,7 @@ import {MatSort, MatSortHeader} from "@angular/material/sort";
     templateUrl: './payments-list.component.html',
     styleUrls: ['./payments-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatColumnDef,

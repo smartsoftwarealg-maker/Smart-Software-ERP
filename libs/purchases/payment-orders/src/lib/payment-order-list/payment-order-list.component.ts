@@ -18,7 +18,7 @@ import { DecimalPipe, DatePipe } from '@angular/common';
     templateUrl: './payment-order-list.component.html',
     styleUrls: ['./payment-order-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, DatePipe]
 })
 export class PaymentOrderListComponent extends BaseEntityListComponent<PaymentOrder> {

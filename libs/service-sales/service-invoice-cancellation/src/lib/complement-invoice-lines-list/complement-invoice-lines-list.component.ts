@@ -24,7 +24,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './complement-invoice-lines-list.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-list.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

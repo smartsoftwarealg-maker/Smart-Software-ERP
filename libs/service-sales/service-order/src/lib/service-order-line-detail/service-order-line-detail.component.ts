@@ -18,7 +18,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     standalone: true,
     imports: [MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MaterialModule, ReactiveFormsModule, TextFieldModule, UiAutoCompleteComponent, TranslateDirective],
     templateUrl: './service-order-line-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./service-order-line-detail.component.css']
 })
 export class ServiceOrderLineDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
