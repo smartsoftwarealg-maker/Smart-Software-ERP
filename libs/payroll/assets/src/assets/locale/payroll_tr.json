@@ -122,5 +122,6 @@
     "SUSPENSION_DATE":   "",
     "PERMANENT_DATE":    "",
     "WORK_STOPPAGES":    "",
-    "CAREER_MOTIVES":        ""
+    "CAREER_MOTIVES":        "",
+    "SS": "Sosyal güvenlik"
 }

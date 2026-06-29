@@ -91,5 +91,6 @@
     "PAYROLL_LOCK_READY": "Payroll lock ready",
     "LOCK_PAYROLL": "Lock payroll",
     "DEPOSIT_DAY": "Electronic payment day",
-    "REST": "Rest"
+    "REST": "Rest",
+    "BASE_SALARY_CALCULATOR": "Base salary calculator"
 }

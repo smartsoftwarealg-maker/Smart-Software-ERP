@@ -44,7 +44,9 @@ import {accRoutes} from "../app/accounting/routes";
 
 export const environment = {
     production: true,
-    sodismac: true
+    company: <string|null>null,
+    homePage: <string|null>null,
+    multiCompany: false
 };
 
 

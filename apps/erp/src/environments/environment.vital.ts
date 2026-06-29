@@ -51,7 +51,6 @@ export const environment = {
     multiCompany: false,
     company: <string>null,
     homePage: <string>null,
-    sodismac: false
 };
 
 export const navBar = [

@@ -66,7 +66,7 @@
     "CACO_CONTRIBUTION": "Contribution CACOBPTH",
     "CACO": "CACOBAPTH D.A.S",
     "NORMAL_PAY": "Paie normale",
-    "FOLLOWUP": "Suivi",
+    "FOLLOWUP": "Rappel",
     "STRICT_POSITIVE": "Supérieur à zéro",
     "ARCHIVE_GENERATOR": "Générateur d'archives",
     "LOAN": "Prêt",
@@ -91,5 +91,6 @@
     "PAYROLL_LOCK_READY": "La paie est prête à être verrouillée",
     "LOCK_PAYROLL": "Verrouiller la paie",
     "DEPOSIT_DAY": "Jour de virement EDI",
-    "REST": "Restant"
+    "REST": "Restant",
+    "BASE_SALARY_CALCULATOR": "Calculateur de salaire de base"
 }
