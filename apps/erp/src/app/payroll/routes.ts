@@ -23,7 +23,7 @@ import {
     PAY_LOANS_URL,
     PAY_MONTH_CANCELER,
     PAY_MONTH_CLOSER,
-    PAY_MONTH_SELECTOR,
+    PAY_MONTH_SELECTOR, PAY_NET_BASE,
     PAY_OPTIONS_URL,
     PAY_PERIOD_LOCK_URL,
     PAY_SALARY_GRID,
@@ -125,7 +125,7 @@ import {
 } from '@ss/payroll/salary-grid';
 import { PayrollOptionsComponent } from 'payroll/payroll-options';
 import { FundsListComponent, FundsDetailComponent } from '@ss/payroll/funds';
-import { IrgComponent } from '@ss/payroll/irg';
+import { IrgComponent, NetBaseComponent} from '@ss/payroll/irg';
 import {LoanInjectionComponent} from '@ss/payroll/loan-injection';
 import { DepositDayComponent } from '@ss/payroll/deposit-day';
 import {PayrollLock} from '@ss/payroll/payroll-lock';
@@ -884,6 +884,11 @@ export const payrollRoutes: Routes = [
     {
         path: PAY_IRG_CALC,
         component: IrgComponent,
+        canActivate: [loginGuard, payrollGuard],
+    },
+    {
+        path: PAY_NET_BASE,
+        component: NetBaseComponent,
         canActivate: [loginGuard, payrollGuard],
     },
     {

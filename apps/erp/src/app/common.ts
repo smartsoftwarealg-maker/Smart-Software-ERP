@@ -334,6 +334,7 @@ export const PAY_CACO_URL             = 'caco';
 export const PAY_OPTIONS_URL          = 'payroll-options';
 export const PAY_FUNDS_URL            = 'payroll-funds';
 export const PAY_IRG_CALC             = 'irg-calc';
+export const PAY_NET_BASE             = 'net-base';
 export const PAYROLL_LOAN_INJECTION_URL = 'loan-injection';
 export const PAY_PERIOD_LOCK_URL = 'payroll-periods';
 export const PAYROLL_TAX_PAYMENT_URL = 'tax-payment'
@@ -902,6 +903,7 @@ export const ABS_PAYROLL_FUNDS_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_
 export const ABS_PAYROLL_IRG_CALC_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_IRG_CALC].join('/');
 export const ABS_PAYROLL_LOAN_INJECTION_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_LOAN_INJECTION_URL].join('/');
 export const ABS_PAYROLL_TAX_PAYMENT_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAYROLL_TAX_PAYMENT_URL].join('/');
+export const ABS_PAYROLL_NET_BASE_CALC_URL = '/' + [MAIN_PAGE_URL, PAYROLL_APP_URL, PAY_NET_BASE].join('/');
 
 // ltm
 export const ABS_LTM_MATTERS_URL       = '/' + [MAIN_PAGE_URL, LTM_APP_URL, LTM_MATTER_URL].join('/');

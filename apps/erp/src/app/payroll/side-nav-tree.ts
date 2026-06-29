@@ -25,7 +25,7 @@ import {
     ABS_PAYROLL_EMPLOYEES_URL,
     ABS_PAYROLL_FUNDS_URL,
     ABS_PAYROLL_IRG_CALC_URL,
-    ABS_PAYROLL_LOAN_INJECTION_URL,
+    ABS_PAYROLL_LOAN_INJECTION_URL, ABS_PAYROLL_NET_BASE_CALC_URL,
     ABS_PAYROLL_OPTIONS_URL,
     ABS_PAYROLL_REPORT_PRIVILEGE_URL,
     ABS_PAYROLL_REPORT_RIGHT_URL,
@@ -237,6 +237,12 @@ export const payrollNavTree: SideNavNode = {
             name: 'REMUN_IRG_CALCULATOR',
             icon: 'fa-solid fa-calculator-simple',
             route: ABS_PAYROLL_IRG_CALC_URL,
+            accessRights: 'Element',
+        },
+        {
+            name: 'REMUN_BASE_SALARY_CALCULATOR',
+            icon: 'fa-solid fa-calculator',
+            route: ABS_PAYROLL_NET_BASE_CALC_URL,
             accessRights: 'Element',
         },
         {

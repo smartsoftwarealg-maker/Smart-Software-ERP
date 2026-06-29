@@ -247,6 +247,7 @@
     "TAX_PAYMENTS": "مدفوعات الضرائب",
     "TAX_PAYMENT": "دفع ضريبي",
     "NIN": "الرقم الوطني",
-    "ELECTRONIC_DEPOSIT_ORDER": "أمر إيداع إلكتروني"
+    "ELECTRONIC_DEPOSIT_ORDER": "أمر إيداع إلكتروني",
+    "SS": "الضمان الاجتماعي"
 }
 

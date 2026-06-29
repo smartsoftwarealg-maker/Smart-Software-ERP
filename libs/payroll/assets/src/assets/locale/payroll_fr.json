@@ -247,5 +247,6 @@
     "TAX_PAYMENTS": "Etat 301Bis",
     "TAX_PAYMENT": "Paie de taxe",
     "NIN": "NIN",
-    "ELECTRONIC_DEPOSIT_ORDER": "Ordre de depot electronique"
+    "ELECTRONIC_DEPOSIT_ORDER": "Ordre de depot electronique",
+    "SS": "Sécurité sociale"
 }
