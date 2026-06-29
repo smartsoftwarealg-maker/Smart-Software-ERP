@@ -21,10 +21,10 @@ import { Sort } from '@angular/material/sort';
 @Directive()
 export class BaseEntityListComponent<T extends { id: number; email?: string }>
 implements OnInit, OnDestroy {
-    private cdr = inject(ChangeDetectorRef);
     private _editable = true;
     private reportForm: string|null = null;
 
+    protected cdr = inject(ChangeDetectorRef);
     subscriptions: Subscription[] = [];
     loading = signal(true);
     selectedId = computed(() => this.entitySrv.selectedId());

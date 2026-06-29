@@ -27,7 +27,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './extra-cost-detail.component.html',
     styleUrls: ['./extra-cost-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatMiniFabButton,
     MatCard,
@@ -96,6 +96,7 @@ export class ExtraCostDetailComponent extends AbstractEntityComponent<ExtraCost>
             .subscribe(res => {
                 this.entity = res;
                 this.form = this.setupForm(res);
+                this.cdr.markForCheck();
             });
         super.ngOnInit();
     }

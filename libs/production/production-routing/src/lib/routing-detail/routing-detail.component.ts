@@ -203,10 +203,9 @@ export class RoutingDetailComponent extends BaseEntityDetailComponent<Routing>{
         });
 
         dialogRef.afterClosed()
-            .pipe(tap(res => this.routing.update(v => res? res : v)),
-                  switchMap(res => res? this.entitySrv.update(res) : of(0)))
-            .subscribe(result => {
-                if (result) {
+            .subscribe((routing: Routing) => {
+                if (routing) {
+                    this.routing.update(v => routing? routing : v);
                     this.snackBarSrv.showSuccessMessage();
                 }
         });

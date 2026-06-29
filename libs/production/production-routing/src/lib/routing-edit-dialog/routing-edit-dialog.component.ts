@@ -23,7 +23,10 @@ import { DefaultAutoCompleteModel, UiAutoCompleteComponent } from '@ss/common/ui
 import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { FinalProductService } from '@ss/master-data/api-article';
-import { MaterialModule } from '@ss/common/api-common'; // Assuming this module exports MatDividerModule, MatChipsModule etc.
+import { MaterialModule } from '@ss/common/api-common';
+import {ProductionRoutingService} from "../production-routing-services/production-routing.service";
+import {of, switchMap, tap} from "rxjs";
+import {ConfirmationDialogService} from "@ss/common/ui-confirmation-dialog"; // Assuming this module exports MatDividerModule, MatChipsModule etc.
 
 @Component({
     selector: 'app-routing-edit-dialog',
@@ -50,7 +53,9 @@ import { MaterialModule } from '@ss/common/api-common'; // Assuming this module 
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RoutingEditDialogComponent implements OnInit {
+    private readonly productionRoutingSrv = inject(ProductionRoutingService);
     private readonly fb = inject(FormBuilder);
+    private confirmationSrv = inject(ConfirmationDialogService);
     protected readonly finalProductSrv = inject(FinalProductService);
     readonly dialogRef = inject(MatDialogRef<RoutingEditDialogComponent>);
     readonly data: Routing = inject(MAT_DIALOG_DATA);
@@ -69,8 +74,8 @@ export class RoutingEditDialogComponent implements OnInit {
     ngOnInit(): void {
         this.form = this.fb.group({
             productId:     [this.data.productId, Validators.required],
-            routingNumber: [{ value: this.data.routingNumber, disabled: true }], // Usually not editable
-            revision:      [{ value: this.data.revision, disabled: true }],      // Usually not editable
+            routingNumber: [{ value: this.data.routingNumber, disabled: this.data.id > 0 }], // Usually not editable
+            revision:      [{ value: this.data.revision, disabled: this.data.id > 0 }],      // Usually not editable
             description:   [this.data.description],
             status:        [this.data.status || 'DRAFT', Validators.required],
             isDefault:     [this.data.isDefault || false],
@@ -87,13 +92,24 @@ export class RoutingEditDialogComponent implements OnInit {
 
     onSave(): void {
         if (this.form.valid) {
-            this.dialogRef.close({ ...this.data, ...this.form.getRawValue() });
+           const routing = { ...this.data, ...this.form.getRawValue() };
+           this.productionRoutingSrv
+               .update(routing)
+               .subscribe(res => {
+                   routing.id = res;
+                   this.dialogRef.close(routing);
+               });
         } else {
             this.form.markAllAsTouched();
         }
     }
 
     onCancel(): void {
-        this.dialogRef.close();
+        const obs = this.form.dirty? this.confirmationSrv.confirmDontSave() : of(true);
+        obs.subscribe(result => {
+            if (result) {
+                this.dialogRef.close();
+            }
+        });
     }
 }

@@ -69,7 +69,9 @@
                         </mat-error>
                     }
                 </mat-form-field>
-                <mat-tab-group>
+                <mat-tab-group  (selectedIndexChange)="onTabChange($event)">
+                    <mat-tab label="{{'COMMON_DETAIL'|translate }}"> </mat-tab>
+                    <mat-tab label="{{'LOGISTICS_EXTRA_COSTS'|translate }}"> </mat-tab>
                     <mat-tab>
                         <ng-template mat-tab-label>
                             <span translate>LOGISTICS_DISCOUNT</span>
@@ -147,38 +149,20 @@
     </mat-card-content>
 </mat-card>
 
-<!--<div class="btn_div b-primary" >-->
-<!--    <button mat-raised-button-->
-<!--            color="{{ selectedIndex == 0? 'accent' : 'primary' }}"-->
-<!--            type="button"-->
-<!--            (click)="navigate(0,'./lines-list')">-->
-<!--        <i class="fa-solid fa-list"></i>-->
-<!--        {{ 'COMMON_DETAIL' | translate }}-->
-<!--    </button>-->
+<!--<mat-tab-group class="btn_div" (selectedIndexChange)="onTabChange($event)">-->
+<!--    <mat-tab [disabled]="!saveButton.visible">-->
+<!--        <ng-template mat-tab-label>-->
+<!--            <span translate>COMMON_DETAIL</span>-->
+<!--        </ng-template>-->
+<!--    </mat-tab>-->
+<!--    <mat-tab [disabled]="!saveButton.visible">-->
+<!--        <ng-template mat-tab-label>-->
+<!--            <span translate>LOGISTICS_EXTRA_COSTS</span>-->
+<!--        </ng-template>-->
+<!--    </mat-tab>-->
+<!--</mat-tab-group>-->
 
-<!--    <button mat-raised-button-->
-<!--            color="{{ selectedIndex == 1? 'accent' : 'primary' }}"-->
-<!--            type="button"-->
-<!--            (click)="navigate(1,'./costs-list')">-->
-<!--        <i class="fa-solid fa-file-invoice"></i>-->
-<!--        {{ 'LOGISTICS_EXTRA_COSTS' | translate }}-->
-<!--    </button>-->
-<!--</div>-->
-
-<mat-tab-group class="btn_div" (selectedIndexChange)="onTabChange($event)">
-    <mat-tab [disabled]="!saveButton.visible">
-        <ng-template mat-tab-label>
-            <span translate>COMMON_DETAIL</span>
-        </ng-template>
-    </mat-tab>
-    <mat-tab [disabled]="!saveButton.visible">
-        <ng-template mat-tab-label>
-            <span translate>LOGISTICS_EXTRA_COSTS</span>
-        </ng-template>
-    </mat-tab>
-</mat-tab-group>
-
-@if (formId) {
+@if (formId && selectedIndex() < 2) {
     <router-outlet></router-outlet>
 }
 

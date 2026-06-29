@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy, signal} from '@angular/core';
 import {
     BaseTransactionDetailComponent, Transaction, TransactionLinesService
 } from '@ss/logistics/api-transaction';
@@ -14,7 +14,7 @@ import { ExtraCostService } from '@ss/purchases/extra-costs';
 import { MatCard, MatCardContent } from '@angular/material/card';
 
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
@@ -29,13 +29,13 @@ import { Observable } from 'rxjs';
         './import-reception-detail.component.scss'],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet]
+    imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, MatTabGroup, MatTab, MatTabLabel, CdkTextareaAutosize, RouterOutlet, TranslatePipe]
 })
 export class ImportReceptionDetailComponent extends BaseTransactionDetailComponent implements OnInit {
     private extraCostSrv = inject(ExtraCostService);
     private URLs = ['./lines-list', './costs-list'];
     private costSrv = inject(ExtraCostService);
-    selectedIndex = 0;
+    protected selectedIndex = signal(0);
 
     constructor(
         public receptionService: ImportReceptionService,
@@ -79,15 +79,16 @@ export class ImportReceptionDetailComponent extends BaseTransactionDetailCompone
         return [{ id: 2, description: 'LOGISTICS_PURCHASE_ORDER' }];
     }
 
-    navigate(idx: number, url: string) {
-        if (this.saveButton.visible) {
-            this.selectedIndex = idx;
-            this.router.navigate([url], { relativeTo: this.route }).then();
-        }
-    }
+    // navigate(idx: number, url: string) {
+    //     if (this.saveButton.visible) {
+    //         this.selectedIndex = idx;
+    //         this.router.navigate([url], { relativeTo: this.route }).then();
+    //     }
+    // }
 
     override onTabChange(idx: number) {
-        if (this.saveButton.visible) {
+        this.selectedIndex.set(idx);
+        if (this.saveButton.visible && idx < 2) {
             this.router.navigate([this.URLs[idx]], { relativeTo: this.route }).then();
         }
     }

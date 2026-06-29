@@ -11,7 +11,7 @@ export class LtmEmailSenderService {
         const params = new HttpParams()
             .set('document', document + '')
             .set('form', form)
-            .set('password', password)
+            .set('password', password||'')
             .set('message', message??'')
             .set('id', id)
             .set('subject', subject??'');
