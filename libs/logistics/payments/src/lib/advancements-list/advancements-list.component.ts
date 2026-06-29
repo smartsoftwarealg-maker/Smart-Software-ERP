@@ -21,7 +21,7 @@ import {AdvancementsService} from "../services/advancements.service";
     templateUrl: './advancements-list.component.html',
     styleUrls: ['./advancements-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatColumnDef,

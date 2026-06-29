@@ -15,7 +15,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './employee-activation-list.component.html',
     styleUrls: ['./employee-activation-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, DatePipe, TranslatePipe]
 })
 export class EmployeeActivationListComponent extends BaseChildEntityListComponent<EmployeeActivation> {
@@ -35,6 +35,9 @@ export class EmployeeActivationListComponent extends BaseChildEntityListComponen
 
     constructor(public entitySrv: EmployeeActivationService) {
         super(entitySrv, 'Activation');
+        const rights = this.shellSrv.getCurrentNodeRights();
+        const loginCtx = this.loginSrv.appCtx
+        this.isEditable.set(rights.edit && loginCtx.manager);
     }
 
     override selectRow(row: EmployeeActivation) {

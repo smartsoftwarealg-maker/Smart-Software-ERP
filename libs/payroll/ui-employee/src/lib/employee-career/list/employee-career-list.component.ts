@@ -15,7 +15,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-career-list.component.html',
     styleUrls: ['./employee-career-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, AsyncPipe, TranslatePipe, DatePipe]
 })
 export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Career> implements OnInit {
@@ -42,6 +42,7 @@ export class EmployeeCareerListComponent extends BaseChildEntityListComponent<Ca
 
     constructor(public entitySrv: EmployeeCareerService) {
         super(entitySrv, 'Career');
+        this.isEditable.set(this.loginSrv.appCtx.manager);
     }
 
 
