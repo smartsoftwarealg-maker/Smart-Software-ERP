@@ -27,7 +27,11 @@ import { DefaultAutoCompleteModel, UserLookup } from '@ss/common/ui-auto-complet
 import { filter, Observable, of, switchMap } from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
-import { HttpService, MaterialModule } from '@ss/common/api-common';
+import {
+    HttpService,
+    LoginService,
+    MaterialModule,
+} from '@ss/common/api-common';
 import {ELine, FixedElementsEntryService} from '@ss/remuneration/elements-entry';
 import {Employee} from '@ss/employee-services/employee-services';
 import {AppArchiveService, EMPLOYEE_ARCHIVES} from '@ss/common/app-archive';
@@ -90,7 +94,7 @@ import { ActivePersonnelService } from '../active-personnel.service';
     styleUrls: ['./employee-detail.component.scss'],
     templateUrl: './employee-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -167,6 +171,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         ACTIVATION_ROUTE_URL, //0
     ];
 
+    private loginSrv = inject(LoginService)
     readonly MIN_DATE = new Date(new Date().getTime() - 16 * 366 * 24 * 60 * 60 * 1000);
     readonly dateValidator: ValidatorFn = (control: AbstractControl): { [key: string]: any } | null => {
         const date = new Date(control.value);
@@ -306,7 +311,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.loadFixedElements().subscribe();
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.id), false);
         this.elementDescriptions.set(this.infoSrv.dataCols().map(e => e.description));
-
+        this.isEditable.set(this.loginSrv.appCtx.manager);
         return this.formBuilder.group({
             // birth info
             id:            [p.id],

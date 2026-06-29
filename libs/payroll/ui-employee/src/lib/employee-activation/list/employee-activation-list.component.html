@@ -1,19 +1,21 @@
-<div class="buttons" >
-    <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
-        <span class="fas fa-plus"></span>
-    </button>
-    <button mat-mini-fab (click)="edit()"
-            [disabled]="!selectedId || foreignRecord"
-            [matTooltip]="'COMMON_EDIT' | translate"
-            color="accent">
-        <span class="fas fa-pen"></span>
-    </button>
-    <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
-            [disabled]="!selectedId || foreignRecord"
-            color="warn">
-        <span class="fas fa-trash-alt"></span>
-    </button>
-</div>
+@if (isEditable()) {
+    <div class="buttons">
+        <button mat-mini-fab color="primary" (click)="showDetail(0)" [matTooltip]="'COMMON_ADD' | translate">
+            <span class="fas fa-plus"></span>
+        </button>
+        <button mat-mini-fab (click)="edit()"
+                [disabled]="!selectedId || foreignRecord"
+                [matTooltip]="'COMMON_EDIT' | translate"
+                color="accent">
+            <span class="fas fa-pen"></span>
+        </button>
+        <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
+                [disabled]="!selectedId || foreignRecord"
+                color="warn">
+            <span class="fas fa-trash-alt"></span>
+        </button>
+    </div>
+}
 <div class="table-container">
     <mat-table mat-table [dataSource]="data$ | async" class="main-table">
 
@@ -22,7 +24,7 @@
                 PAYROLL_SUSP_DATE
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.suspensionDate | date: 'dd/MM/yyyy'}}
+                {{ e.suspensionDate | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
@@ -31,7 +33,7 @@
                 PAYROLL_HIRE_DATE
             </mat-header-cell>
             <mat-cell *matCellDef="let e" style="justify-content: center">
-                {{e.hireDate  | date: 'dd/MM/yyyy'}}
+                {{ e.hireDate  | date: 'dd/MM/yyyy' }}
             </mat-cell>
         </ng-container>
 
@@ -51,7 +53,7 @@
                 PAYROLL_EMPLOYMENT_TYPE
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.empTypeDescription}}
+                {{ e.empTypeDescription }}
             </mat-cell>
         </ng-container>
 
@@ -60,14 +62,14 @@
                 PAYROLL_SUSPENSION_REASON
             </mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.suspendReasonDescription}}
+                {{ e.suspendReasonDescription }}
             </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="centerName">
             <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_CENTER</mat-header-cell>
             <mat-cell *matCellDef="let e">
-                {{e.centerName}}
+                {{ e.centerName }}
             </mat-cell>
         </ng-container>
 
@@ -95,7 +97,7 @@
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row class="selectable" [class.selected]="row.id === selectedId()" (click)="selectRow(row)"
-            *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
 </div>

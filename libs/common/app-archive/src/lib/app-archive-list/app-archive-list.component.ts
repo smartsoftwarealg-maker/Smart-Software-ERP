@@ -14,6 +14,7 @@ import { ImageUploaderUtil, MaterialModule, PaginationModel } from '@ss/common/a
 import {AppArchiveService} from '../app-archive.service';
 import {AppArchive, GENERIC_ARCHIVES} from '../app-archive-api';
 import { tap } from 'rxjs';
+import {LoginService} from '@ss/common/api-common';
 
 
 
@@ -44,7 +45,7 @@ export class AppArchiveListComponent implements OnInit {
     private router = inject(Router);
     private route = inject(ActivatedRoute);
     private confirmationSrv = inject(ConfirmationDialogService);
-
+private loginSrv = inject(LoginService)
     public activePersonnelSrv = inject(ActivePersonnelService);
     public showBackButton = signal(false);
 
@@ -103,7 +104,8 @@ export class AppArchiveListComponent implements OnInit {
                 this.refresh();
             });
         const rights = this.shellSrv.getCurrentNodeRights();
-        this.isEditable.set(rights.edit);
+        const loginCtx = this.loginSrv.appCtx
+        this.isEditable.set(rights.edit && loginCtx.manager);
     }
 
     public showDetail(id: string) {

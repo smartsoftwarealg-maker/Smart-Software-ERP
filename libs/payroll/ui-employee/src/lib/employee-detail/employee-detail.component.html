@@ -355,7 +355,7 @@
             </mat-tab>
         } @else {
             <mat-tab label="{{'PAYROLL_FIXED_ELEMENTS'|translate}}">
-                @if (activePersonnelSrv.val && isEditable) {
+                @if (activePersonnelSrv.val && isEditable()) {
                     <div class="ctrl-div">
                         @if (fixedElementEditInProgress) {
                             <mat-form-field appearance="fill">

@@ -25,7 +25,7 @@ import {AdvancementsService} from "../services/advancements.service";
     templateUrl: './advancements-detail.component.html',
     styleUrls: ['./advancements-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, UiAutoCompleteComponent, MatInput, MatError]
 })
 export class AdvancementsDetailComponent extends BaseEntityDetailComponent<Payment> {
