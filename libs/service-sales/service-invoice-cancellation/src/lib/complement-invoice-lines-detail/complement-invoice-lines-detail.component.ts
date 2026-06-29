@@ -21,7 +21,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './complement-invoice-lines-detail.component.html',
     styleUrls: ['../../../../../common/assets/src/assets/transac-lines-detail.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,

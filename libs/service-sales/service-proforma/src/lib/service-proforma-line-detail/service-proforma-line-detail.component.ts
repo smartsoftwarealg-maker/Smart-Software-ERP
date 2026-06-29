@@ -33,7 +33,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
         TranslateDirective,
     ],
     templateUrl: './service-proforma-line-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./service-proforma-line-detail.component.css'],
 })
 export class ServiceProformaLineDetailComponent

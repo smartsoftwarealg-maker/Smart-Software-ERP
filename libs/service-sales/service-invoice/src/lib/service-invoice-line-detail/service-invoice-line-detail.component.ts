@@ -31,7 +31,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './service-invoice-line-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./service-invoice-line-detail.component.css']
 })
 export class ServiceInvoiceLineDetailComponent extends BaseTransactionLinesDetailComponent implements OnInit, OnDestroy {
