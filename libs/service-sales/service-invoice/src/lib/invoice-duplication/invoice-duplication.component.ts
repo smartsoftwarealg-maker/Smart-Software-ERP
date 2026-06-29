@@ -34,7 +34,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslatePipe
     ],
     templateUrl: './invoice-duplication.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./invoice-duplication.component.css'],
 })
 export class InvoiceDuplicationComponent implements OnInit {

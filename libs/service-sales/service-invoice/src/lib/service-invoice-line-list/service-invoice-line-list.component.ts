@@ -40,11 +40,11 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
         TranslateDirective
     ],
     templateUrl: './service-invoice-line-list.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./service-invoice-line-list.component.scss']
 })
 export class ServiceInvoiceLineListComponent extends BaseTransactionLinesListComponent implements OnInit {
-    displayedColumns = signal<string[]>([
+    override displayedColumns = signal<string[]>([
         'position',
         'reference',
         'description',
