@@ -1,4 +1,4 @@
-import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy, inject} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
@@ -22,13 +22,15 @@ import { TranslateDirective } from '@ss/common/ui-lang';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { Routing } from '../production-routing-services/production-routing-api';
 import { ProductionRoutingService } from '../production-routing-services/production-routing.service';
+import {RoutingEditDialogComponent} from "../routing-edit-dialog/routing-edit-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
     selector: 'ss-production-list',
     templateUrl: './production-routing-list.component.html',
     styleUrls: ['./production-routing-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,
@@ -48,6 +50,7 @@ import { ProductionRoutingService } from '../production-routing-services/product
     ],
 })
 export class ProductionRoutingListComponent extends BaseEntityListComponent<Routing> {
+    #dialog = inject(MatDialog);
     readonly displayedColumns = (['routingNumber', 'revision', 'description', 'productName', 'status']);
 
     constructor(
@@ -71,5 +74,33 @@ export class ProductionRoutingListComponent extends BaseEntityListComponent<Rout
             pagPersistSrv,
             'PROD_PRODUCTIONS_ROUTING',
         );
+    }
+
+    override showDetail(id:number){
+        if (id === 0) {
+            this.openEAddRoutingDialog();
+        } else {
+            super.showDetail(id);
+        }
+    }
+
+    openEAddRoutingDialog(): void {
+        const routing: Routing = { id: 0, productId: 0, routingNumber: '', revision: '', description: '', status: 'DRAFT', validFrom: new Date()};
+        const dialogRef = this.#dialog.open(RoutingEditDialogComponent, {
+            width: '900px',
+            maxWidth: '900px',
+            data: routing, // Pass the current routing object to the dialog
+            disableClose: true // Prevent closing by clicking outside
+        });
+
+        dialogRef.afterClosed()
+            .subscribe((routing: Routing) => {
+                console.log('routing', routing);
+                if (routing) {
+                    this.data = [...this.data, routing]; //.push(routing);
+                    this.snackBarSrv.showSuccessMessage();
+                    this.cdr.markForCheck();
+                }
+            });
     }
 }

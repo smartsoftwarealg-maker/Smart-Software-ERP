@@ -25,8 +25,8 @@ export interface Routing {
     revision: string;
     description?: string;
     status?: string;
-    isDefault?: number;
-    isActive?: number;
+    isDefault?: boolean;
+    isActive?: boolean;
     validFrom: Date;
     validTo?: Date;
     lotSizeFrom?: number;
@@ -40,6 +40,8 @@ export interface Routing {
     deletedAt?: Date;
     productName?: string;
     changeReason?: string;
+    operations?: RoutingOperation[];
+    materials?: RoutingMaterial[];
 }
 
 export interface RoutingOperation {
@@ -74,6 +76,8 @@ export interface RoutingOperation {
     activities: ActivityType[];
     safetyNotes?: string;
     instructions?: string;
+    status?: string;
+    workCenterName?: string;
 }
 
 export interface RoutingMaterial {

@@ -173,7 +173,7 @@ export class PaymentComponent {
     readForm(): Payment {
         const p = this.form?.getRawValue() as Payment;
         p.amount = p['debit'] || 0 - p['credit'] || 0;
-        p.debit = p.credit = null;
+        p.debit = p.credit = 0;
         p.center = this.#loginSrv.appCtx.center;
         return p;
     }

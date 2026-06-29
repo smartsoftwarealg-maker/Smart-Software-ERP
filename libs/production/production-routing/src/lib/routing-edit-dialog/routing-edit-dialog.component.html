@@ -1,0 +1,87 @@
+<!-- libs/production/production-routing/src/lib/routing-edit-dialog/routing-edit-dialog.component.html -->
+<h2 mat-dialog-title translate>PROD_PRODUCTION_ROUTING</h2>
+
+<mat-dialog-content class="mat-typography">
+    @if (form; as f) {
+        <form [formGroup]="f" class="dialog-form">
+            <div class="form-grid-2">
+                <!-- Product -->
+                <mat-form-field appearance="outline">
+                    <mat-label translate>COMMON_PRODUCT</mat-label>
+                    <ss-auto-complete matInput
+                                      [model]="productLookup"
+                                      [canAdd]="false"
+                                      formControlName="productId">
+                    </ss-auto-complete>
+                    @if (form.get('productId')?.invalid && f.get('productId')?.touched) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <!-- Routing Number (Readonly) -->
+                <mat-form-field appearance="outline">
+                    <mat-label translate>PROD_ROUTING_NUMBER</mat-label>
+                    <input matInput formControlName="routingNumber" [readonly]="f.get('id')?.value > 0">
+                </mat-form-field>
+
+                <!-- Revision (Readonly) -->
+                <mat-form-field appearance="outline">
+                    <mat-label translate>PROD_REVISION</mat-label>
+                    <input matInput formControlName="revision" [readonly]="f.get('id')?.value > 0">
+                </mat-form-field>
+
+                <!-- Description -->
+                <mat-form-field appearance="outline">
+                    <mat-label translate>COMMON_DESCRIPTION</mat-label>
+                    <input matInput formControlName="description">
+                </mat-form-field>
+
+                <!-- Status -->
+                <mat-form-field appearance="outline">
+                    <mat-label translate>COMMON_STATUS</mat-label>
+                    <mat-select formControlName="status">
+                        @for (status of statusOptions(); track status) {
+                            <mat-option [value]="status" translate>PROD_{{ status }}</mat-option>
+                        }
+                    </mat-select>
+                    @if (form.get('status')?.invalid && form.get('status')?.touched) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <!-- Valid From -->
+                <mat-form-field appearance="outline">
+                    <mat-label translate>PROD_VALID_FROM</mat-label>
+                    <ss-date-picker formControlName="validFrom"></ss-date-picker>
+                    @if (form.get('validFrom')?.invalid && form.get('validFrom')?.touched) {
+                        <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
+                    }
+                </mat-form-field>
+
+                <!-- Valid To -->
+                <mat-form-field appearance="outline">
+                    <mat-label translate>PROD_VALID_TO</mat-label>
+                    <ss-date-picker formControlName="validTo"></ss-date-picker>
+                </mat-form-field>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="checkbox-group">
+                <!-- Is Default -->
+                <mat-checkbox formControlName="isDefault">{{ 'PROD_IS_DEFAULT' | translate }}</mat-checkbox>
+                <!-- Is Active -->
+                <mat-checkbox formControlName="isActive">{{ 'PROD_IS_ACTIVE' | translate }}</mat-checkbox>
+            </div>
+        </form>
+    }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-stroked-button color="warn" (click)="onCancel()">
+        <i class="fa-solid fa-xmark"></i> {{ 'COMMON_CANCEL'|translate }}
+    </button>
+    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">
+        <i class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE'|translate }}
+    </button>
+</mat-dialog-actions>

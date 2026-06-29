@@ -87,7 +87,7 @@ export class BaseEntityService<T> {
     public update(a: T): Observable<number> {
         return this.httpSrv
             .put(this.getUrl(), a)
-            .pipe(map((res: { count: number }) => res['count']));
+            .pipe(map((res: { count?: number, id?: number }) => res?.count||res?.id||0));
     }
 
     public add2(a: T): Observable<number> {

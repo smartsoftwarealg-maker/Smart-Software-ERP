@@ -1,14 +1,14 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal} from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Lookup } from '@ss/common/api-lookup';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { ConsumptionService } from '@ss/stock/api-consumption';
-import { LoginService, MaterialModule } from '@ss/common/api-common';
+import { LoginService, MaterialModule, UserRightsService} from '@ss/common/api-common';
 import {
     BaseTransactionDetailComponent,
-    DOC_PART_REQUEST,
+    DOC_PART_REQUEST, Transaction,
 
 } from '@ss/logistics/api-transaction';
 import { MatDialog } from '@angular/material/dialog';
@@ -21,6 +21,9 @@ import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
 import { UiAutoCompleteComponent } from '@ss/common/ui-auto-complete';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import {AccessRightsService} from "@ss/common/api-access-rights";
+import {Observable} from "rxjs";
+import {tap} from "rxjs/operators";
 
 
 @Component({
@@ -32,6 +35,9 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent, MatError, CdkTextareaAutosize, RouterOutlet]
 })
 export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
+    #userRightsSrv = inject(UserRightsService);
+
+    canAddTypes = signal(false);
 
     constructor(
         public consumptionSrv: ConsumptionService,
@@ -75,5 +81,12 @@ export class ConsumptionDetailComponent extends BaseTransactionDetailComponent {
 
     protected showImportButton(): boolean {
         return true;
+    }
+
+    loadEntity(id:number):Observable<Transaction> {
+        return  super.loadEntity(id)
+            .pipe(
+                tap(() => this.canAddTypes.set(this.#userRightsSrv.getUserRights('TransactionType').write)),
+            );
     }
 }

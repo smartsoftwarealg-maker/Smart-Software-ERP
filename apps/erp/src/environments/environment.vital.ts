@@ -48,6 +48,10 @@ import {financeNavTree} from "../app/finance/side-nav-tree";
 
 export const environment = {
     production: true,
+    multiCompany: false,
+    company: <string>null,
+    homePage: <string>null,
+    sodismac: false
 };
 
 export const navBar = [

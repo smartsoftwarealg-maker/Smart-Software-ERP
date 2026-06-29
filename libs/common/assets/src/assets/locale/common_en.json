@@ -507,5 +507,6 @@
     "DELETES":        "Deletes",
     "ACCOUNT_NO": "Account No",
     "HOLIDAYS": "Holidays",
-    "GENERAL_INFO": "General Info."
+    "GENERAL_INFO": "General Info.",
+    "NONE":  "None"
 }

@@ -79,14 +79,15 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
                 this.form?.markAsPristine();
                 this.form?.markAsUntouched({onlySelf: false});
                 this.snackBarSrv.showSuccessMessage();
-                // this.shellSrv.setLoading(false);
-                // this.loading.set(false);
+                this.shellSrv.setLoading(false);
+                this.loading.set(false);
             },
             error: err => {
                 this.snackBarSrv.showFailureMessage();
                 this.saveButton.disabled = false;
                 this.shellSrv.setLoading(false);
                 this.loading.set(false);
+                this.shellSrv.setLoading(false);
                 throw err;
             }
         });
@@ -156,9 +157,6 @@ export abstract class AbstractEntityComponent<T extends { id: number }> implemen
             this.form.disable();
         }
         this.cdr.markForCheck();
-        // this.shellSrv.setLoading(false);
-        // this.shellSrv.setLoading(false);
-        // this.loading.set(false);
     }
 
     cancel() {

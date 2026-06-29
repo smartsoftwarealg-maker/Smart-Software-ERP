@@ -75,11 +75,13 @@ export abstract class BaseEntityDetailComponent<T extends { id: number }> extend
                     this.shellSrv.showRetry(() => this.load());
                     this.loading.set(false);
                     this.shellSrv.setLoading(false); // stop the animation
+                    this.cdr.markForCheck();
                     throw error;
                 },
                 complete: () => {
                     this.loading.set(false);
                     this.shellSrv.setLoading(false); // stop the animation
+                    this.cdr.detectChanges();
                 }
             });
     }

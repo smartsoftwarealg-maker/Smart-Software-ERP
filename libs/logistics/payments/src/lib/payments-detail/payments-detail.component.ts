@@ -95,15 +95,15 @@ export class PaymentsDetailComponent extends BaseEntityDetailComponent<Payment> 
             debit:        [{ value: db, disabled: cr > 0.000001}, Validators.required],
             credit:       [{ value: cr, disabled: db > 0.000001}, Validators.required],
             mode:         [a.mode || 2, Validators.required],
-            canceled:     [a.canceled],
-            isAdvancement:[a.isAdvancement]
+            canceled:     [a.canceled??false],
+            isAdvancement:[a.isAdvancement??false]
         });
     }
 
     override readForm(): Payment {
         const p =  super.readForm();
-        p.amount = p['debit'] || 0 - p['credit'] || 0;
-        p.debit = p.credit = null;
+        p.amount = p.debit - p.credit;
+        p.debit = p.credit = 0.0;
         p.center = this.loginSrv.appCtx.center;
         return p;
     }

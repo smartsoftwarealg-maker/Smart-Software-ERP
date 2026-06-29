@@ -37,7 +37,7 @@ import { MatMiniFabButton } from '@angular/material/button';
 })
 export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
     private centerSrv  = inject(CenterService);
-    private loginSrv  = inject(LoginService);
+    // private loginSrv  = inject(LoginService);
     private journalTypeSrv  = inject(JournalTypeService);
     private journalUserSrv  = inject(JournalUserService);
     private bankSrv  = inject(BankService);
