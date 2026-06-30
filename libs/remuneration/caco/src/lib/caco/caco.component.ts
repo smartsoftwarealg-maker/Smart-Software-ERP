@@ -26,7 +26,7 @@ interface Lookup {
     templateUrl: './caco.component.html',
     styleUrls: ['./caco.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatSelect, MatOption, MatButton, TranslatePipe]
 })
 export class CacoComponent implements OnInit {

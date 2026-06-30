@@ -26,7 +26,7 @@ import {MatSort} from "@angular/material/sort";
     templateUrl: './vacation-planning-detail-list.component.html',
     styleUrls: ['./vacation-planning-detail-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatMiniFabButton,

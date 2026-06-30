@@ -45,7 +45,7 @@ export type TFormula = {
     templateUrl: './archive-viewer-list.component.html',
     styleUrls: ['./archive-viewer-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         TranslateDirective,
         MatFormField,

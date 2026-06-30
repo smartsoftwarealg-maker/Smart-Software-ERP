@@ -56,7 +56,7 @@ import { DatePipe, DecimalPipe } from '@angular/common';
     ],
     templateUrl: './tax-payment-list.component.html',
     styleUrl: './tax-payment-list.component.scss',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
 })
 export class TaxPaymentListComponent extends BaseEntityListComponent<TaxPayment> {

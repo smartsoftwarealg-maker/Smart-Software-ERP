@@ -31,7 +31,7 @@ type Employee = {
     templateUrl: './fixed-elements-detail.component.html',
     styleUrls: ['./fixed-elements-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,

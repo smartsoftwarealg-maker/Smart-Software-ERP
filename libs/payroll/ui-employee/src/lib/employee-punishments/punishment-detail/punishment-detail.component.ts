@@ -22,7 +22,7 @@ import { Lookup } from '@ss/common/api-lookup';
     templateUrl: './punishment-detail.component.html',
     styleUrls: ['./punishment-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatMiniFabButton, MatCard, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, DatePickerComponent, UiAutoCompleteComponent]
 })
 export class PunishmentDetailComponent extends BaseChildEntityDetailComponent<Punishment> {

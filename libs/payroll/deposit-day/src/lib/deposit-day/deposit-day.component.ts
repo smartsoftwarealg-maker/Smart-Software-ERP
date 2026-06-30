@@ -27,7 +27,7 @@ import { Observable } from 'rxjs';
         TranslateDirective,
     ],
     templateUrl: './deposit-day.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrl: './deposit-day.component.scss',
 })
 export class DepositDayComponent extends BaseEntityDetailComponent<DepositDate> {

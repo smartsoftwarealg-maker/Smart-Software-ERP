@@ -18,7 +18,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-wife-detail.component.html',
     styleUrls: ['./employee-wife-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent]
 })
 export class EmployeeWifeDetailComponent extends BaseChildEntityDetailComponent<Wife> {

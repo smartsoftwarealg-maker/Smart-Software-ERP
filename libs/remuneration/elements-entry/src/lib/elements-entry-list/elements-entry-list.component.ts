@@ -32,7 +32,7 @@ import { callback } from 'chart.js/helpers';
     templateUrl: './elements-entry-list.component.html',
     styleUrls: ['./elements-entry-list.component.scss', '../common-css.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

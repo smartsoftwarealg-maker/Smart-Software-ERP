@@ -36,7 +36,7 @@ import { Lookup } from '@ss/common/api-lookup';
     ],
     templateUrl: './tax-payment-detail.component.html',
     styleUrl: './tax-payment-detail.component.scss',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
 })
 export class TaxPaymentDetailComponent extends BaseEntityDetailComponent<TaxPayment> {

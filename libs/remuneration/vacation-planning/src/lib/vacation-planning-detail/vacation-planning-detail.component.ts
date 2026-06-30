@@ -26,7 +26,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './vacation-planning-detail.component.html',
     styleUrls: ['./vacation-planning-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatCard,

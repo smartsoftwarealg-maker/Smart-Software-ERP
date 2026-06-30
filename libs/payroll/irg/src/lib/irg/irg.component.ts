@@ -16,7 +16,7 @@ import { HttpParams } from '@angular/common/http';
     selector: 'ss-irg',
     imports: [MaterialModule, MatCard, ReactiveFormsModule, MatInput, MatLabel, TranslateDirective],
     templateUrl: './irg.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrl: './irg.component.scss',
 })
 export class IrgComponent implements OnInit {

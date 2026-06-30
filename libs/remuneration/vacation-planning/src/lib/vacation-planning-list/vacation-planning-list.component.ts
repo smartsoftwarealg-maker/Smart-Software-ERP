@@ -26,7 +26,7 @@ import { Observable, tap } from 'rxjs';
     templateUrl: './vacation-planning-list.component.html',
     styleUrls: ['./vacation-planning-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatFormField, MatLabel, TranslateDirective, MatSelect, FormsModule, ReactiveFormsModule, MatOption, MatInput, MatButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe, TranslatePipe]
 })
 export class VacationPlanningListComponent extends BaseEntityListComponent<VacationPlanning> {
