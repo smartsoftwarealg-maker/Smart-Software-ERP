@@ -27,5 +27,7 @@
     "NO_UNASSIGNED_CHECKS": "Aucun chèque non affecté",
     "NO_BANKS":             "Aucune banque disponible",
     "SELECT_BANK":          "Sélectionnez une banque pour afficher ses chèques",
-    "NO_BANK_CHECKS":       "Aucun chèque affecté à cette banque"
+    "NO_BANK_CHECKS":       "Aucun chèque affecté à cette banque",
+    "CONFIRM_ASSIGN_CHECK":   "Êtes-vous sûr de vouloir affecter ce chèque",
+    "CONFIRM_UNASSIGN_CHECK": "Êtes-vous sûr de vouloir désaffecter ce chèque"
 }
