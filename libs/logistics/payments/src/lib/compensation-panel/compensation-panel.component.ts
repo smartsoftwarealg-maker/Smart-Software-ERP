@@ -13,6 +13,9 @@ import { SnackBarService } from '@ss/common/ui-shell';
 import { MaterialModule, dateToYmdStr } from '@ss/common/api-common';
 import { Accounting, Debt } from '@ss/logistics/api-common';
 import { TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
+import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
+import { NumberInputDialogComponent } from '../number-input-dialog/number-input-dialog.component';
+import {of, switchMap, tap} from "rxjs"; // Import the new dialog component
 
 @Component({
     selector: 'ss-compensation-panel',
@@ -26,6 +29,7 @@ export class CompensationPanelComponent implements OnChanges {
     private agentSrv = inject(AgentService);
     private snackBarSrv = inject(SnackBarService);
     private cdr = inject(ChangeDetectorRef);
+    private dialog = inject(MatDialog); // Inject MatDialog
 
     @Input() paymentId: number;
     @Input() agentId: number;
@@ -78,6 +82,33 @@ export class CompensationPanelComponent implements OnChanges {
     }
 
     edit(id: number) {
-        console.log('_______________________________________id', id);
+        console.log('Opening dialog for compensation ID:', id);
+        this.openNumberInputDialog(id);
+    }
+
+    openNumberInputDialog(compensationId: number): void {
+        const compensation = this.compensations.find(c => c.id === compensationId);
+        const initialValue = compensation ? compensation.balance : 0;
+
+        const dialogRef = this.dialog.open(NumberInputDialogComponent, {
+            width: '300px',
+            data: {
+                title: 'COMMON_AMOUNT', // You'll need to add this key to your i18n files
+                label: 'COMMON_AMOUNT',
+                initialValue: initialValue,
+                minValue: 0.01 // Example: minimum amount
+            }
+        });
+
+        dialogRef.afterClosed()
+            .pipe(switchMap(res => typeof res === 'number'?
+                this.agentSrv.updatePayment(compensationId, res).pipe(tap(() => this.compensations.find(c => c.id === compensationId)!.balance = res)) :
+                of({ count: 0}))) // Update the payment if a number is returned
+            .subscribe(result => {
+                if (result.count > 0) {
+                    this.snackBarSrv.showSuccessMessage();
+                    this.cdr.markForCheck();
+                }
+            });
     }
 }

@@ -1,0 +1,14 @@
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>{{ data.label | translate }}</mat-label>
+      <input matInput type="number" formControlName="value">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()" translate>COMMON_CANCEL</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="form.invalid" translate>COMMON_OK</button>
+</mat-dialog-actions>
