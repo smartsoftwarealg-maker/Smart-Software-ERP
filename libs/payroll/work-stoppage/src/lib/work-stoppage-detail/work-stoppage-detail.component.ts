@@ -29,7 +29,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     UiAutoCompleteComponent
 ],
     templateUrl: './work-stoppage-detail.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./work-stoppage-detail.component.css']
 })
 export class WorkStoppageDetailComponent extends BaseEntityDetailComponent<Accident> implements OnInit {

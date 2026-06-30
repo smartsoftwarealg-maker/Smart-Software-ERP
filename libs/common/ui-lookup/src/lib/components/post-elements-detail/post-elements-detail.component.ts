@@ -13,7 +13,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrl: './post-elements-detail.component.scss',
     templateUrl: './post-elements-detail.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatCard,
         MatCardContent,

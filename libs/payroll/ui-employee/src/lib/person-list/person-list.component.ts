@@ -43,7 +43,7 @@ interface PersonSummary extends IPersonSummary {
     styleUrls: ['./person-list.component.scss'],
     templateUrl: './person-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,
