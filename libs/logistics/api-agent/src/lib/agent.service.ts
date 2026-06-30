@@ -49,6 +49,11 @@ export class AgentService extends BaseAgentClass {
         return  this.httpSrv.post('/payments/compensations', data);
     }
 
+    updatePayment(id: number, amount: number): Observable<{ count: number }> {
+        const data = { id: id, amount: amount};
+        return  this.httpSrv.put('/payments/compensations', data);
+    }
+
     cancelPayment(payId: number): Observable<{ count: number }> {
         return this.httpSrv.remove(`/payments/compensations/${payId}`);
     }
