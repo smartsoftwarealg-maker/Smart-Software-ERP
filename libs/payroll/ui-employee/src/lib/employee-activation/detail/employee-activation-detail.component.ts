@@ -23,7 +23,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './employee-activation-detail.component.html',
     styleUrls: ['./employee-activation-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatMiniFabButton, MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, DatePickerComponent, MatSelect, MatOption, MatCheckbox, AsyncPipe]
 })
 export class EmployeeActivationDetailComponent extends BaseChildEntityDetailComponent<EmployeeActivation> {

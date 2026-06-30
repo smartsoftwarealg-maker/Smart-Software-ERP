@@ -13,7 +13,7 @@ import {toSignal} from "@angular/core/rxjs-interop";
     selector: 'ss-payroll-lock',
     templateUrl: './payroll-lock.html',
     styleUrl: './payroll-lock.scss',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         ReactiveFormsModule,

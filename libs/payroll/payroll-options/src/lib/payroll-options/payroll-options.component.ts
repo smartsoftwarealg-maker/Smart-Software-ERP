@@ -34,7 +34,7 @@ import { PayrollFormulasService } from '@ss/remuneration/payroll-formulas';
         TranslateDirective
     ],
     templateUrl: './payroll-options.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrl: './payroll-options.component.scss'
 })
 export class PayrollOptionsComponent extends BaseEntityDetailComponent<POption> implements OnInit {

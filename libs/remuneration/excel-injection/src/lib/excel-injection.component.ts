@@ -17,7 +17,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './excel-injection.component.html',
     styleUrls: ['./excel-injection.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [TranslateDirective, MatMiniFabButton, MatCheckbox, MatButton, MatProgressBar, TranslatePipe]
 })
 export class ExcelInjectionComponent implements OnInit {

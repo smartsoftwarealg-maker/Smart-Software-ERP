@@ -19,7 +19,7 @@ import { DecimalPipe } from '@angular/common';
     templateUrl: './elements-info.component.html',
     styleUrls: ['./elements-info.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatCheckbox, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent, DecimalPipe]
 })
 export class ElementsInfoComponent extends BaseEntityListComponent<ElementsInfo> {

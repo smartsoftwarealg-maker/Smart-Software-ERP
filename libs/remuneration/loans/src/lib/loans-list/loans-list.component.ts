@@ -21,7 +21,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     templateUrl: './loans-list.component.html',
     styleUrls: ['./loans-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         MaterialModule,

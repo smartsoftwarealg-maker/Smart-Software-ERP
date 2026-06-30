@@ -1,7 +1,7 @@
-@if (form) {
+@if (form()) {
     <mat-card>
         <mat-card-content>
-            <form novalidate [formGroup]="form">
+            <form novalidate [formGroup]="form()">
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>PAYROLL_MONTH</mat-label>
                     <input matInput formControlName="month" type="number" required autofocus step="1">
@@ -27,7 +27,7 @@
                     <div class="default-50 sm-50">
                         <button mat-raised-button color="primary"
                                 type="button"
-                                [disabled]="+form.controls['year'].value * 100 + (+form.controls['month'].value) > maxMonth()"
+                                [disabled]="+form().controls['year'].value * 100 + (+form().controls['month'].value) > maxMonth()"
                                 (click)="select(true)">
                             <i class="fa-solid fa-truck-ramp-box"></i>
                             {{ 'REMUN_LOAD_SPECIAL' | translate }}
@@ -45,7 +45,7 @@
                     <div class="default-50 sm-50">
                         <button mat-raised-button color="primary"
                                 type="button"
-                                [disabled]="+form.controls['year'].value * 100 + (+form.controls['month'].value)> maxMonth()"
+                                [disabled]="+form().controls['year'].value * 100 + (+form().controls['month'].value)> maxMonth()"
                                 (click)="select(false)">
                             <i class="fa-solid fa-check"></i>
                             {{ 'REMUN_SELECT_MONTH' | translate }}

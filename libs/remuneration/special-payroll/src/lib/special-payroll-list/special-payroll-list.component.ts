@@ -16,7 +16,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './special-payroll-list.component.html',
     styleUrls: ['./special-payroll-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class SpecialPayrollListComponent extends BaseEntityListComponent<Special> implements OnInit {

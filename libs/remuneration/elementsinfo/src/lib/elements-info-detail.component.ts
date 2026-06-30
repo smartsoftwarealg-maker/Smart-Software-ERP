@@ -20,7 +20,7 @@ import { MaterialModule } from '@ss/common/api-common';
     templateUrl: './elements-info-detail.component.html',
     styleUrls: ['./elements-info-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatCheckbox]
 })
 export class ElementsInfoDetailComponent extends BaseEntityDetailComponent<ElementsInfo> {

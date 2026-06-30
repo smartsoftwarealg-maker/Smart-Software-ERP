@@ -34,7 +34,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './month-closer.component.html',
     styleUrls: ['./month-closer.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, MatProgressSpinner, TranslatePipe]
 })
 export class MonthCloserComponent implements OnInit {

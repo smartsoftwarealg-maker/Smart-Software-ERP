@@ -16,7 +16,7 @@ import { FundService } from '../funds.service';
     templateUrl: "./funds-detail.component.html",
     styleUrls: ["./funds-detail.component.scss"],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective
