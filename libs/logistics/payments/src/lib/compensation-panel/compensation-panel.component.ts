@@ -12,7 +12,7 @@ import { AgentService } from '@ss/logistics/api-agent';
 import { SnackBarService } from '@ss/common/ui-shell';
 import { MaterialModule, dateToYmdStr } from '@ss/common/api-common';
 import { Accounting, Debt } from '@ss/logistics/api-common';
-import { TranslateDirective } from '@ss/common/ui-lang';
+import { TranslateDirective, TranslatePipe} from '@ss/common/ui-lang';
 
 @Component({
     selector: 'ss-compensation-panel',
@@ -20,7 +20,7 @@ import { TranslateDirective } from '@ss/common/ui-lang';
     styleUrls: ['./compensation-panel.component.scss'],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [CommonModule, MaterialModule, TranslateDirective]
+    imports: [CommonModule, MaterialModule, TranslateDirective, TranslatePipe]
 })
 export class CompensationPanelComponent implements OnChanges {
     private agentSrv = inject(AgentService);
@@ -75,5 +75,9 @@ export class CompensationPanelComponent implements OnChanges {
                 else this.snackBarSrv.showFailureMessage();
                 this.load();
             });
+    }
+
+    edit(id: number) {
+        console.log('_______________________________________id', id);
     }
 }

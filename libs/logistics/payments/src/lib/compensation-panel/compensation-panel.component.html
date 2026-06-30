@@ -10,6 +10,11 @@
               <mat-checkbox [checked]="checkedCompensationIds.has(c.id)" (change)="onCompensationCheck(c.id)" (click)="$event.stopPropagation()"></mat-checkbox>
               <span class="desc">{{ c.description }}</span>
               <span class="amount">{{ c.balance | number: '1.2-2' }}</span>
+                <button  matButton="elevated" color="primary"
+                        (click)="edit(c.id)"
+                        [matTooltip]="'COMMON_EDIT' | translate">
+                    <i class="fas fa-pencil"></i>
+                </button>
             </div>
           </mat-list-item>
         }

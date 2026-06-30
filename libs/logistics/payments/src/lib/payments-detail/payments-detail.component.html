@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-content>
-        @if (form !== null) {
-            <form novalidate [formGroup]="form">
+        @if (form; as f) {
+            <form novalidate [formGroup]="f">
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_DATE</mat-label>
                     <ss-date-picker formControlName="date"></ss-date-picker>
@@ -20,7 +20,7 @@
                            formControlName="debit"
                            (change)="onDebitChange($event)"
                            type="number" required>
-                    @if (form.controls['debit']?.invalid) {
+                    @if (f.controls['debit']?.invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
@@ -31,14 +31,14 @@
                            (change)="onCreditChange($event)"
                            type="number"
                            step="0.01" required>
-                    @if (form.controls['credit']?.invalid) {
+                    @if (f.controls['credit']?.invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>COMMON_DESCRIPTION</mat-label>
                     <input matInput formControlName="description" type="text" required>
-                    @if (form.controls['description']?.invalid) {
+                    @if (f.controls['description']?.invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
@@ -49,7 +49,7 @@
                 <mat-form-field id="number" class="default-50">
                     <mat-label translate>COMMON_NUMBER</mat-label>
                     <input matInput formControlName="number" type="text">
-                    @if (form.controls['number']?.invalid) {
+                    @if (f.controls['number']?.invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED
                         </mat-error>
                     }
@@ -75,7 +75,7 @@
                 <mat-form-field class="default-50 sm-100">
                     <mat-label translate>LOGISTICS_AGENCY</mat-label>
                     <input matInput formControlName="bank" type="text">
-                    @if (form.controls['bank'].invalid) {
+                    @if (f.controls['bank'].invalid) {
                         <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
                     }
                 </mat-form-field>
@@ -89,8 +89,9 @@
     </mat-card-content>
 </mat-card>
 
-<ss-compensation-panel
-    [paymentId]="(form?.get('id')?.value)"
-    [agentId]="(form?.get('agent')?.value)">
-</ss-compensation-panel>
-
+@if (form; as f) {
+    <ss-compensation-panel
+        [paymentId]="(f.get('id')?.value)"
+        [agentId]="(f.get('agent')?.value)">
+    </ss-compensation-panel>
+}
