@@ -21,7 +21,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './month-canceler.component.html',
     styleUrls: ['./month-canceler.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, MatProgressSpinner, TranslatePipe]
 })
 export class MonthCancelerComponent implements OnInit {

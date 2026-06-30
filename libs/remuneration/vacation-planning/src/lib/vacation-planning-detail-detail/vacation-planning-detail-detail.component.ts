@@ -26,7 +26,7 @@ import {switchMap, tap} from "rxjs";
     templateUrl: './vacation-planning-detail-detail.component.html',
     styleUrls: ['./vacation-planning-detail-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatCard,

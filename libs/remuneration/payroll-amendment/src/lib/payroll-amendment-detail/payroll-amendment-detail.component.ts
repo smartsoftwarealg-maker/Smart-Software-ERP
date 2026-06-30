@@ -23,7 +23,7 @@ import { Lookup } from '@ss/common/api-lookup';
     templateUrl: './payroll-amendment-detail.component.html',
     styleUrls: ['./payroll-amendment-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,

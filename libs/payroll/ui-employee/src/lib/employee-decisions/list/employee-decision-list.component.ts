@@ -15,7 +15,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-decision-list.component.html',
     styleUrls: ['./employee-decision-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatMiniFabButton, MatTooltip, MatTable, MatColumnDef, MatHeaderCell, TranslateDirective, MatCell, MatHeaderRow, MatRow, PaginationComponent, AsyncPipe, TranslatePipe, MatRowDef, MatHeaderCellDef, MatCellDef, MatHeaderRowDef]
 })
 export class EmployeeDecisionListComponent extends BaseChildEntityListComponent<Decision> {

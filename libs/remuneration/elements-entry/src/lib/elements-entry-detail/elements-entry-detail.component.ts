@@ -38,7 +38,7 @@ type Employee = {
     templateUrl: './elements-entry-detail.component.html',
     styleUrls: ['./elements-entry-detail.component.scss', '../common-css.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         TranslateDirective,

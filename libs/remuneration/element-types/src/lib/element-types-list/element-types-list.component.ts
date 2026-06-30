@@ -22,7 +22,7 @@ import { Observable, tap } from 'rxjs';
     templateUrl: './element-types-list.component.html',
     styleUrls: ['./element-types-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     TranslateDirective,

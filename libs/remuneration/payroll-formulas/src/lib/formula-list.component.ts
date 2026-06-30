@@ -19,7 +19,7 @@ import {Observable, tap, switchMap} from "rxjs";
     templateUrl: './formula-list.component.html',
     styleUrls: ['./formula-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class FormulaListComponent extends BaseEntityListComponent<Formula> {

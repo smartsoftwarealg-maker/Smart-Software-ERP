@@ -24,7 +24,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './input-filter-detail.component.html',
     styleUrls: ['./input-filter-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, MatToolbar, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption, MatMiniFabButton, TranslatePipe]
 })
 export class InputFilterDetailComponent extends BaseEntityDetailComponent<InputFilter> {

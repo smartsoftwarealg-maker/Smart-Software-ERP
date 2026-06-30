@@ -22,7 +22,7 @@ import { LoanTypeService } from '@ss/payroll-common';
     templateUrl: './loan-injection.component.html',
     styleUrls: ['./loan-injection.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         TranslateDirective,
         MatMiniFabButton,

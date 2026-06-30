@@ -19,7 +19,7 @@ import {Observable, tap} from "rxjs";
     templateUrl: './employee-child-detail.component.html',
     styleUrls: ['./employee-child-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatMiniFabButton, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatRadioGroup, MatRadioButton, DatePickerComponent]
 })
 export class EmployeeChildDetailComponent extends BaseChildEntityDetailComponent<Child> {

@@ -16,7 +16,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     templateUrl: './input-filter-list.component.html',
     styleUrls: ['./input-filter-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, TranslateDirective, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, PaginationComponent]
 })
 export class InputFilterListComponent extends BaseEntityListComponent<InputFilter> {

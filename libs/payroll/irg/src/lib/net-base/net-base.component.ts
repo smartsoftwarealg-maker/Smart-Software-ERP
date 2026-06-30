@@ -24,7 +24,7 @@ interface Net {
     selector: 'ss-net-base',
     imports: [MaterialModule, MatCard, ReactiveFormsModule, MatInput, MatLabel, TranslateDirective, FormField],
     templateUrl: './net-base.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrl: './net-base.component.scss',
 })
 export class NetBaseComponent implements OnInit {

@@ -26,7 +26,7 @@ import {Observable, switchMap, tap} from 'rxjs';
     templateUrl: './formula-detail.component.html',
     styleUrls: ['./formula-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatError, UiAutoCompleteComponent, MatSelect, MatOption]
 })
 export class FormulaDetailComponent extends BaseEntityDetailComponent<Formula> {

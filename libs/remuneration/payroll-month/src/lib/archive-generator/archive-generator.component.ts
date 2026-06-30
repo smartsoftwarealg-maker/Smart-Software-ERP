@@ -19,7 +19,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './archive-generator.component.html',
     styleUrls: ['./archive-generator.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatButton, MatProgressBar, TranslatePipe]
 })
 export class ArchiveGeneratorComponent implements OnInit {

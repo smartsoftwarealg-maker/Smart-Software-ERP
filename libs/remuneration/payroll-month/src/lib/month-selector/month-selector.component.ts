@@ -21,7 +21,7 @@ import { TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './month-selector.component.html',
     styleUrls: ['./month-selector.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [ MatCard, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, MatSelect, MatOption, MatButton, MatProgressBar, TranslatePipe]
 })
 export class MonthSelectorComponent implements OnInit {
@@ -42,7 +42,7 @@ export class MonthSelectorComponent implements OnInit {
     maxMM = computed(() => this.maxMonth() % 100);
     maxYY = computed(() => +((this.maxMonth() / 100).toFixed(0)));
 
-    form: UntypedFormGroup | null = null;
+    form = signal<UntypedFormGroup | null>(null);
     processing = false;
 
     ngOnInit(): void {
@@ -67,12 +67,12 @@ export class MonthSelectorComponent implements OnInit {
                         paymonth: res[2].payMonth % 1_000_000,
                         description: this.langSrv.translate('REMUN_NORMAL_PAY')
                     });
-                    this.form = this.formBuilder
+                    this.form.set(this.formBuilder
                         .group({
                             year: [curYear, [Validators.required, Validators.min(min), Validators.max(max)]],
                             month: [curMonth, [Validators.required, Validators.min(1), Validators.max(12)]],
                             offset: [res[2].payMonth, Validators.required]
-                        });
+                        }))
                     this.shellSrv.setLoading(false);
                 }, error: err => {
                     this.shellSrv.setLoading(false);
@@ -86,9 +86,9 @@ export class MonthSelectorComponent implements OnInit {
     }
 
     select(loadSpecial: boolean) {
-        const year  = this.form.controls['year'].value;
-        const month = this.form.controls['month'].value;
-        let special = this.form.controls['offset'].value;
+        const year  = this.form().controls['year'].value;
+        const month = this.form().controls['month'].value;
+        let special = this.form().controls['offset'].value;
         if (special % 1_000_000 != year * 100 + month) {
             special = 0;
         }

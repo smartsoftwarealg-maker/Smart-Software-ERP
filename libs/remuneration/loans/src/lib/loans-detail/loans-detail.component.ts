@@ -25,7 +25,7 @@ type Period = {
     templateUrl: './loans-detail.component.html',
     styleUrls: ['./loans-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     UiAutoCompleteComponent,

@@ -19,7 +19,7 @@ import { ActivePersonnelService } from '../../active-personnel.service';
     templateUrl: './employee-decision-detail.component.html',
     styleUrls: ['./employee-decision-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MaterialModule, MatCard, MatCardHeader, MatMiniFabButton, MatCardContent, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, TranslateDirective, MatInput, DatePickerComponent, UiAutoCompleteComponent]
 })
 export class EmployeeDecisionDetailComponent extends BaseChildEntityDetailComponent<Decision> {

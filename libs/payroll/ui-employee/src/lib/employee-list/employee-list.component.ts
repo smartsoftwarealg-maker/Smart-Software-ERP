@@ -22,7 +22,7 @@ import { PaginationComponent } from '@ss/common/ui-pagination';
     styleUrls: ['./employee-list.component.scss'],
     templateUrl: './employee-list.component.html',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTabGroup,
         MatTab,
