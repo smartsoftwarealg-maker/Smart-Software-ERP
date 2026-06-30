@@ -27,5 +27,7 @@
     "NO_UNASSIGNED_CHECKS": "No unassigned checks",
     "NO_BANKS":             "No banks available",
     "SELECT_BANK":          "Select a bank to view its checks",
-    "NO_BANK_CHECKS":       "No checks assigned to this bank"
+    "NO_BANK_CHECKS":       "No checks assigned to this bank",
+    "CONFIRM_ASSIGN_CHECK":   "Are you sure you want to assign this check",
+    "CONFIRM_UNASSIGN_CHECK": "Are you sure you want to unassign this check"
 }

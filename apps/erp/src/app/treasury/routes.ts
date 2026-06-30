@@ -9,7 +9,7 @@ import {
     TREASURY_TRANSACTION_URL,
     TREASURY_GROUPS_URL,
     TREASURY_BANK_EXPENSE_URL,
-    TREASURY_PROCESSED_CHECKS_URL, TREASURY_CHECK_MATCHING_URL
+    TREASURY_PROCESSED_CHECKS_URL, TREASURY_CHECK_MATCHING_URL, TREASURY_CHECK_ASSIGNMENTS_URL
 } from '../common';
 import { LIST_URL, CanDeactivateService, ABS_INDEX_URL } from '@ss/common/api-common';
 import {
@@ -22,7 +22,7 @@ import {
     CheckListComponent,
     CheckDetailComponent,
     ProcessedCheckListComponent,
-    ProcessedCheckDetailComponent, CheckMatchingListComponent
+    ProcessedCheckDetailComponent, CheckMatchingListComponent, CheckAssignmentsComponent
 } from '@ss/treasury/ui-checks';
 import { CheckBookListComponent, CheckBookDetailComponent } from '@ss/treasury/ui-check-books';
 import {
@@ -223,9 +223,16 @@ export const treasuryRoutes: Routes = [
         canActivate: [loginGuard],
     },
     {
+        path: TREASURY_CHECK_ASSIGNMENTS_URL,
+        component: CheckAssignmentsComponent,
+        canActivate: [loginGuard],
+    },
+    {
         path: COMMON_REPORTS_URL,
         data: {reportBase: 'treasury'},
         component: ReportViewComponent,
         canActivate: [loginGuard]
     },
+    {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
+    {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}
 ];

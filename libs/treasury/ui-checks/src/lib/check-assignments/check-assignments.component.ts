@@ -24,6 +24,7 @@ import { PaginationModel } from '@ss/common/api-common';
 import { PaginationComponent } from '@ss/common/ui-pagination';
 import { Bank, BankService } from '@ss/administration/api-bank';
 import { BankCheck, CheckService, UnassignedCheck } from '@ss/treasury/api-checks';
+import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 
 @Component({
     selector: 'ss-check-assignments',
@@ -41,10 +42,11 @@ import { BankCheck, CheckService, UnassignedCheck } from '@ss/treasury/api-check
     ],
 })
 export class CheckAssignmentsComponent implements OnInit, AfterViewInit, OnDestroy {
-    private readonly checkSrv  = inject(CheckService);
-    private readonly bankSrv   = inject(BankService);
-    private readonly shellSrv  = inject(ShellService);
-    private readonly route     = inject(ActivatedRoute);
+    private readonly checkSrv        = inject(CheckService);
+    private readonly bankSrv         = inject(BankService);
+    private readonly shellSrv        = inject(ShellService);
+    private readonly route           = inject(ActivatedRoute);
+    private readonly confirmationSrv = inject(ConfirmationDialogService);
 
     private readonly subs = new Subscription();
 
@@ -239,14 +241,17 @@ export class CheckAssignmentsComponent implements OnInit, AfterViewInit, OnDestr
         const bankId = this.selectedBankId();
         if (!bankId || this.assigning()) return;
 
-        this.assigning.set(true);
-        this.checkSrv.assignChecks(bankId, [id]).subscribe({
-            next: () => {
-                this.assigning.set(false);
-                this.loadUnassigned();
-                this.loadBankChecks(bankId);
-            },
-            error: () => this.assigning.set(false),
+        this.confirmationSrv.confirm(null, 'TRS_CONFIRM_ASSIGN_CHECK').subscribe(ok => {
+            if (!ok) return;
+            this.assigning.set(true);
+            this.checkSrv.assignChecks(bankId, [id]).subscribe({
+                next: () => {
+                    this.assigning.set(false);
+                    this.loadUnassigned();
+                    this.loadBankChecks(bankId);
+                },
+                error: () => this.assigning.set(false),
+            });
         });
     }
 
@@ -255,14 +260,17 @@ export class CheckAssignmentsComponent implements OnInit, AfterViewInit, OnDestr
         const ids    = this.unassignedDataSource.filteredData.map(c => c.id);
         if (!bankId || ids.length === 0 || this.assigning()) return;
 
-        this.assigning.set(true);
-        this.checkSrv.assignChecks(bankId, ids).subscribe({
-            next: () => {
-                this.assigning.set(false);
-                this.loadUnassigned();
-                this.loadBankChecks(bankId);
-            },
-            error: () => this.assigning.set(false),
+        this.confirmationSrv.confirm(null, 'TRS_CONFIRM_ASSIGN_CHECK').subscribe(ok => {
+            if (!ok) return;
+            this.assigning.set(true);
+            this.checkSrv.assignChecks(bankId, ids).subscribe({
+                next: () => {
+                    this.assigning.set(false);
+                    this.loadUnassigned();
+                    this.loadBankChecks(bankId);
+                },
+                error: () => this.assigning.set(false),
+            });
         });
     }
 
@@ -270,14 +278,17 @@ export class CheckAssignmentsComponent implements OnInit, AfterViewInit, OnDestr
         const bankId = this.selectedBankId();
         if (!bankId || this.removing()) return;
 
-        this.removing.set(true);
-        this.checkSrv.unassignChecks([id]).subscribe({
-            next: () => {
-                this.removing.set(false);
-                this.loadUnassigned();
-                this.loadBankChecks(bankId);
-            },
-            error: () => this.removing.set(false),
+        this.confirmationSrv.confirm(null, 'TRS_CONFIRM_UNASSIGN_CHECK').subscribe(ok => {
+            if (!ok) return;
+            this.removing.set(true);
+            this.checkSrv.unassignChecks([id]).subscribe({
+                next: () => {
+                    this.removing.set(false);
+                    this.loadUnassigned();
+                    this.loadBankChecks(bankId);
+                },
+                error: () => this.removing.set(false),
+            });
         });
     }
 
@@ -286,14 +297,17 @@ export class CheckAssignmentsComponent implements OnInit, AfterViewInit, OnDestr
         const ids    = this.bankCheckDataSource.filteredData.map(c => c.id);
         if (!bankId || ids.length === 0 || this.removing()) return;
 
-        this.removing.set(true);
-        this.checkSrv.unassignChecks(ids).subscribe({
-            next: () => {
-                this.removing.set(false);
-                this.loadUnassigned();
-                this.loadBankChecks(bankId);
-            },
-            error: () => this.removing.set(false),
+        this.confirmationSrv.confirm(null, 'TRS_CONFIRM_UNASSIGN_CHECK').subscribe(ok => {
+            if (!ok) return;
+            this.removing.set(true);
+            this.checkSrv.unassignChecks(ids).subscribe({
+                next: () => {
+                    this.removing.set(false);
+                    this.loadUnassigned();
+                    this.loadBankChecks(bankId);
+                },
+                error: () => this.removing.set(false),
+            });
         });
     }
 }
