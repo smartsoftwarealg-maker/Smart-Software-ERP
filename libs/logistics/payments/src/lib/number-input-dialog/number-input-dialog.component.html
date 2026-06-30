@@ -9,6 +9,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button (click)="onCancel()" translate>COMMON_CANCEL</button>
-  <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="form.invalid" translate>COMMON_OK</button>
+  <button mat-button (click)="onCancel()" translate><i class="fas fa-times"> </i> COMMON_CANCEL</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()" [disabled]="form.invalid" translate><i class="fas fa-check"> </i> COMMON_OK</button>
 </mat-dialog-actions>

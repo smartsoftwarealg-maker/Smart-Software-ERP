@@ -7,7 +7,9 @@
         @for (c of compensations; track c.id) {
           <mat-list-item role="listitem">
             <div class="row">
-              <mat-checkbox [checked]="checkedCompensationIds.has(c.id)" (change)="onCompensationCheck(c.id)" (click)="$event.stopPropagation()"></mat-checkbox>
+              <mat-checkbox [checked]="checkedCompensationIds.has(c.id)"
+                            (change)="onCompensationCheck(c.id)"
+                            (click)="$event.stopPropagation()"></mat-checkbox>
               <span class="desc">{{ c.description }}</span>
               <span class="amount">{{ c.balance | number: '1.2-2' }}</span>
                 <button  mat-icon-button color="primary"
