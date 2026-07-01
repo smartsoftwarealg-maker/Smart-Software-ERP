@@ -26,7 +26,7 @@ import {
     STOCK_APP_URL,
     WEBARCH_APP_URL,
     WORK_FLOW_APP_URL, ARCH_VIEWER_URL, MISSIONS_APP_URL, PAYROLL_APP_URL, HR_APP_URL, TREASURY_APP_URL, ASSETS_APP_URL,
-    BUDGET_APP_URL
+    BUDGET_APP_URL, ATTENDANCE_APP_URL
 } from '../app/common';
 import {Routes} from '@angular/router';
 import {workflowNavTree} from '../app/workflow/side-nav-tree';
@@ -40,7 +40,6 @@ import { attendanceNavTree } from '../app/attendance/side-nav-tree';
 import { missionsNavTree } from '../app/missions/side-nav-tree';
 import { treasuryNavTree } from '../app/treasury/side-nav-tree';
 import {budgetNavTree} from '../app/budget/side-nav-tree';
-import {accRoutes} from "../app/accounting/routes";
 
 export const environment = {
     production: true,
@@ -123,6 +122,10 @@ export const appRoutes: Routes =  [
     {
         path: TREASURY_APP_URL,
         loadChildren: () => import('../app/treasury/routes').then(m => m.treasuryRoutes)
+    },
+    {
+        path: ATTENDANCE_APP_URL,
+        loadChildren: () => import('../app/attendance/routes').then(m => m.attendanceRoutes)
     },
     {
         path: STOCK_APP_URL,
