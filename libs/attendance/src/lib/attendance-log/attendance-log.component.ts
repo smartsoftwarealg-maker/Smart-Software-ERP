@@ -80,9 +80,9 @@ export class AttendanceLogComponent implements OnInit {
     varHeaders: string[] = [];
     displayedCols = this.headers;
 
-    readonly DATABASE = 1;
-    readonly MACHINES = 2;
-    readonly TEXT = 3;
+    readonly DATABASE = '1';
+    readonly MACHINES = '2';
+    readonly TEXT = '3';
 
     processing = signal(false);
     inputSource = signal(this.DATABASE);
