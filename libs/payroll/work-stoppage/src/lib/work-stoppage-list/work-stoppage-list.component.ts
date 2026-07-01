@@ -22,7 +22,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     standalone: true,
     imports: [CommonModule, MatSortModule, MatTableModule, FormsModule, MaterialModule, PaginationComponent, TranslatePipe, TranslateDirective],
     templateUrl: './work-stoppage-list.component.html',
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./work-stoppage-list.component.css']
 })
 export class WorkStoppageListComponent extends BaseEntityListComponent<Accident> implements OnInit {

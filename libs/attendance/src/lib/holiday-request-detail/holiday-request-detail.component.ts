@@ -24,7 +24,7 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     templateUrl: './holiday-request-detail.component.html',
     styleUrls: ['./holiday-request-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         MatCard,

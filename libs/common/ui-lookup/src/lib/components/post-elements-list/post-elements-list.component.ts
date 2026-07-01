@@ -19,7 +19,7 @@ import {
     MatRowDef,
 } from '@angular/material/table';
 import { PaginationComponent } from '@ss/common/ui-pagination';
-import { TranslatePipe } from '@ss/common/ui-lang';
+import { TranslatePipe, TranslateDirective } from '@ss/common/ui-lang';
 import { BaseChildEntityListComponent } from '@ss/common/ui-base-entity';
 import { PaginationModel } from '@ss/common/api-common';
 
@@ -28,7 +28,7 @@ import { PaginationModel } from '@ss/common/api-common';
     templateUrl: './post-elements-list.component.html',
     styleUrl: './post-elements-list.component.scss',
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTooltip,
         TranslatePipe,
@@ -45,6 +45,7 @@ import { PaginationModel } from '@ss/common/api-common';
         MatRowDef,
         MatHeaderRowDef,
         PaginationComponent,
+        TranslateDirective,
     ],
 })
 export class PostElementsListComponent

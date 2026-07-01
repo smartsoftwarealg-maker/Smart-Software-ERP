@@ -24,7 +24,7 @@ import { DatePipe } from '@angular/common';
     templateUrl: './holiday-request-list.component.html',
     styleUrls: ['./holiday-request-list.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatFormField,
         MatLabel,

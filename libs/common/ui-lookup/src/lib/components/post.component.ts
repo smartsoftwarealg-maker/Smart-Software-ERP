@@ -79,7 +79,7 @@ import { Observable } from 'rxjs';
          `,
     styleUrls: ['../base-templates/list-template.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MatTable,
         MatSort,
@@ -175,7 +175,7 @@ export class PostListComponent extends BaseEntityListComponent<Post> {
                 }`,
     styleUrls: ['../base-templates/detail-template.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     MaterialModule,
     MatCard,
