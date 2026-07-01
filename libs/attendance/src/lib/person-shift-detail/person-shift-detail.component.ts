@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject} from '@angular/core';
 import {BaseEntityDetailComponent} from '@ss/common/ui-base-entity';
 import { PersonShift, WorkShift } from "../attendance-api";
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
@@ -9,7 +9,7 @@ import {PersonShiftService} from '../person-shift.service';
 import { EmployeeService } from '@ss/employee-services/employee-services';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
 import {WorkshiftService} from '../workshift.service';
-import { Service, ServiceService } from "@ss/common/api-lookup";
+import {DivisionService, Service, ServiceService } from "@ss/common/api-lookup";
 import { PersonAutocompleteClass } from '@ss/employee-services/employee-services';
 import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
@@ -40,9 +40,14 @@ import { MaterialModule } from '@ss/common/api-common';
 ],
 })
 export class PersonShiftDetailComponent extends BaseEntityDetailComponent<PersonShift> {
-    employeeLookup: PersonAutocompleteClass = null;
-    shiftLookup: DefaultAutoCompleteModel<WorkShift> = null;
-    serviceLookup: DefaultAutoCompleteModel<Service> = null;
+    private employeeSrv = inject(EmployeeService);
+    private shiftSrv = inject(WorkshiftService);
+    private serviceSrv = inject(ServiceService);
+    private divisionSrv = inject(DivisionService);
+    employeeLookup  = new PersonAutocompleteClass(this.employeeSrv);
+    shiftLookup     = new DefaultAutoCompleteModel(this.shiftSrv);
+    serviceLookup   = new DefaultAutoCompleteModel(this.serviceSrv);
+    divisionLookup  = new DefaultAutoCompleteModel(this.divisionSrv);
 
     constructor(
         public override entitySrv: PersonShiftService,
@@ -50,14 +55,8 @@ export class PersonShiftDetailComponent extends BaseEntityDetailComponent<Person
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: UntypedFormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private employeeSrv: EmployeeService,
-        private shiftSrv: WorkshiftService,
-        private serviceSrv: ServiceService) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(entitySrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'ATT_SHIFT_ASSIGNMENTS');
-        this.employeeLookup  = new PersonAutocompleteClass(this.employeeSrv);
-        this.shiftLookup     = new DefaultAutoCompleteModel(this.shiftSrv);
-        this.serviceLookup   = new DefaultAutoCompleteModel(this.serviceSrv);
     }
 
     public override setupForm(b: PersonShift) {
@@ -68,7 +67,8 @@ export class PersonShiftDetailComponent extends BaseEntityDetailComponent<Person
             date:             [b.date,  Validators.required],
             shift:            [b.shift, Validators.required],
             shiftDescription: [b.shiftDescription],
-            service:          [0]
+            service:          [0],
+            division:         [0]
         });
     }
 

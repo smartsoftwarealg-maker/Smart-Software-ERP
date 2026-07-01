@@ -99,7 +99,7 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
         this.shellSrv.setLoading(this.canShowProcessingStatus());
         this.select(0);
         this.entitySrv
-            .getListByService(this.selectedService, this.pagination.page - 1, this.pagination.pageSize)
+            .getListByService(this.serviceLookup.cache?.id||0, this.pagination.page - 1, this.pagination.pageSize)
             .subscribe({
                     next:
                         data => {
@@ -128,9 +128,10 @@ export class PersonShiftListComponent extends BaseEntityListComponent<PersonShif
     }
 
     override refresh(callback?: () => void) {
-        if (this.selectedService > 0) {
+        if (this.serviceLookup.cache?.id||0 > 0) {
             this.refreshByService();
         } else {
+            this.entitySrv.setParentId(this.employeeLookup.cache?.id||0);
             super.refresh(callback);
         }
     }
