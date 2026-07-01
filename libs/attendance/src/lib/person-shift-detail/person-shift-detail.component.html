@@ -1,7 +1,8 @@
 @defer (when form) {
 <mat-card>
   <mat-card-content>
-    <form novalidate [formGroup]="form">
+      @if (form; as f) {
+          <form novalidate [formGroup]="f">
 
       <mat-form-field class="default-100">
         <mat-label translate>PAYROLL_EMPLOYEE</mat-label>
@@ -20,12 +21,20 @@
       </mat-form-field>
 
       <mat-form-field class="default-100">
+        <mat-label translate>COMMON_DIVISION</mat-label>
+        <ss-auto-complete matInput
+          [model]="divisionLookup"
+          formControlName="division">
+        </ss-auto-complete>
+      </mat-form-field>
+
+      <mat-form-field class="default-100">
         <mat-label translate>ATT_SHIFT</mat-label>
         <ss-auto-complete matInput
           [model]="shiftLookup"
           formControlName="shift">
         </ss-auto-complete>
-        @if (form.controls['shift'].invalid) {
+        @if (f.controls['shift'].invalid) {
           <mat-error translate>COMMON_FIELD_REQUIRED</mat-error>
         }
       </mat-form-field>
@@ -37,7 +46,7 @@
 
       <!--            <pre>{{form.value | json}}</pre>-->
     </form>
-
+      }
   </mat-card-content>
 </mat-card>
 }
