@@ -94,7 +94,7 @@
           <div class="list-container">
             <mat-selection-list color="primary" multiple="false"
               (selectionChange)="roleSelectionChanged($event)">
-              @for (role of userRoles; track role) {
+              @for (role of userRoles(); track role) {
                 <mat-list-option
                   [value]="role.id"> {{ role.description }}
                 </mat-list-option>
@@ -130,7 +130,7 @@
             <div class="list-container">
               <mat-selection-list color="primary" multiple="false"
                 (selectionChange)="centerSelectionChanged($event)">
-                @for (center of userCenters; track center) {
+                @for (center of userCenters(); track center) {
                   <mat-list-option
                     [value]="center.id"> {{ center.description }}
                   </mat-list-option>

@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy, signal} from '@angular/core';
 import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -77,8 +77,8 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
     isManager = this.#loginSrv.appCtx?.manager;
     imageModel: ImageModel|null = null;
 
-    userRoles: UserRole[] = [];
-    userCenters: UserCenter[] = [];
+    userRoles = signal<UserRole[]>([]);
+    userCenters = signal<UserCenter[]>([]);
 
     selectedRole = 0;
     selectedCenter = 0;
@@ -143,7 +143,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 switchMap(res => !res || res['count'] > 0? this.#userSrv.loadRoles(this.curUser.id) : of(null)))
                 .subscribe(res => {
                     if (res) {
-                        this.userRoles = res;
+                        this.userRoles.set(res);
                         this.snackBarSrv.showSuccessMessage();
                     }
                 });
@@ -156,7 +156,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 .addRole(this.curUser.id, this.roleCtrl.value)
                 .pipe(switchMap(() => this.#userSrv.loadRoles(this.curUser.id)))
                 .subscribe(res => {
-                    this.userRoles = res;
+                    this.userRoles.set(res);
                     this.snackBarSrv.showSuccessMessage();
                 });
         }
@@ -175,7 +175,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 switchMap(res => !res || res['count'] > 0? this.#userSrv.loadCenters(this.curUser.id) : of(null)))
                 .subscribe(res => {
                     if (res) {
-                        this.userCenters = res;
+                        this.userCenters.set(res);
                         this.snackBarSrv.showSuccessMessage();
                     }
                 });
@@ -188,7 +188,7 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
                 .addCenter(this.curUser.id, this.centerCtrl.value)
                 .pipe(switchMap(() => this.#userSrv.loadCenters(this.curUser.id)))
                 .subscribe(res => {
-                    this.userCenters = res;
+                    this.userCenters.set(res);
                     this.snackBarSrv.showSuccessMessage();
                 });
         }
@@ -203,9 +203,9 @@ export class UserDetailComponent extends BaseEntityDetailComponent<User> {
         this.#userSrv
             .loadCenters(this.curUser.id)
             .pipe(
-                tap(res => this.userCenters = res),
+                tap(res => this.userCenters.set(res)),
                 switchMap(() => this.#userSrv.loadRoles(this.curUser.id))
-            ).subscribe(res => this.userRoles = res);
+            ).subscribe(res => this.userRoles.set(res));
     }
 
     uploadAttachments(id?: number): Observable<any> {
