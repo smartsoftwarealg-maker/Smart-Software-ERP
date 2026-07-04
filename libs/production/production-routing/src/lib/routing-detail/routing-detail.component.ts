@@ -178,7 +178,8 @@ export class RoutingDetailComponent extends BaseEntityDetailComponent<Routing>{
         this.#operationSrv.setParentId(id);
         return forkJoin({
             routing: super.loadEntity(id),
-            operations: this.#operationSrv.getList(0, 50)
+            operations: this.#operationSrv.getList(0, 50),
+            costs: this.entitySrv.getCosts(id)
         }).pipe(
             tap(res => {
                     if (res.routing) {

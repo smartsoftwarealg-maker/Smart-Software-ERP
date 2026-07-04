@@ -24,14 +24,14 @@
                     }
                     {{ 'COMMON_EDIT'|translate }}
                 </button>
-<!--                <button mat-raised-button color="primary" (click)="save()" [disabled]="(form?.invalid || processing())">-->
-<!--                    @if (processing()) {-->
-<!--                        <mat-spinner diameter="16" style="margin-right: 8px;"></mat-spinner>-->
-<!--                    } @else {-->
-<!--                        <i class="fa-solid fa-floppy-disk"></i>-->
-<!--                    }-->
-<!--                    {{ 'COMMON_SAVE'|translate }}-->
-<!--                </button>-->
+                <!--                <button mat-raised-button color="primary" (click)="save()" [disabled]="(form?.invalid || processing())">-->
+                <!--                    @if (processing()) {-->
+                <!--                        <mat-spinner diameter="16" style="margin-right: 8px;"></mat-spinner>-->
+                <!--                    } @else {-->
+                <!--                        <i class="fa-solid fa-floppy-disk"></i>-->
+                <!--                    }-->
+                <!--                    {{ 'COMMON_SAVE'|translate }}-->
+                <!--                </button>-->
             </div>
         </header>
 
@@ -140,31 +140,32 @@
                             <mat-card-content>
                                 <div class="op-header">
                                     <span class="op-seq">{{ op.operationSequence }}</span>
-                                    <mat-chip-set>
-                                        <mat-chip
-                                            [color]="op.status === 'RELEASED' ? 'primary' : (op.status === 'DRAFT' ? 'accent' : 'warn')"
-                                            selected>
-                                            {{ 'PROD_'  | translate }}
-                                        </mat-chip>
-                                    </mat-chip-set>
+                                    @if (op.status) {
+                                        <mat-chip-set>
+                                            <mat-chip
+                                                [color]="op.status === 'RELEASED' ? 'primary' : (op.status === 'DRAFT' ? 'accent' : 'warn')">
+                                                {{ `PROD_${op.status}`  | translate }}
+                                            </mat-chip>
+                                        </mat-chip-set>
+                                    }
                                 </div>
                                 <div class="op-name">{{ op.operationName }}</div>
                                 <div class="op-wc">{{ op.workCenterName }}</div>
                                 <div class="op-stats">
-                                    <span translate>PROD_SETUP_TIME_SHORT</span>:
-                                    <span>{{ op.setupTime | number:'1.1-1' }}h</span> |
-                                    <span translate>PROD_RUN_TIME_SHORT</span>:
-                                    <span>{{ op.runTimePerUnit | number:'1.1-1' }}h</span> |
-                                    <span translate>COMMON_COST</span>:
+                                    <span translate>PROD_SETUP_TIME</span>:
+                                    <span>{{ op.setupTime | number:'1.1-1' }}h</span>
+                                    <span translate>PROD_RUN_TIME</span>:
+                                    <span>{{ op.runTimePerUnit | number:'1.1-1' }}h</span>
+                                    <span translate>PROD_COST</span>:
                                     <span>{{ op.standardCost | currency:'DZD':'symbol':'1.2-2' }}</span>
                                 </div>
                                 @if (op.isCritical || op.requiresInspection) {
                                     <div class="op-badges">
                                         @if (op.isCritical) {
-                                            <mat-chip color="warn" selected>{{ 'PROD_CRITICAL' | translate }}</mat-chip>
+                                            <mat-chip color="warn" highlighted> <i class="fa-solid fa-exclamation"></i>  {{ 'PROD_CRITICAL' | translate }}</mat-chip>
                                         }
                                         @if (op.requiresInspection) {
-                                            <mat-chip color="primary" selected>{{ 'PROD_INSPECTION_REQ' | translate }}
+                                            <mat-chip color="primary" highlighted> <i class="fa-solid fa-check"></i> {{ 'PROD_INSPECTION_REQ' | translate }}
                                             </mat-chip>
                                         }
                                     </div>
@@ -203,7 +204,7 @@
                     <mat-card-content class="operation-detail-content">
                         <mat-tab-group [selectedIndex]="0"
                                        (selectedTabChange)="switchTab($event.tab.textLabel?.toLowerCase())">
-                            <mat-tab [label]="'PROD_GENERAL' | translate">
+                            <mat-tab [label]="'LOGISTICS_GENERAL' | translate">
                                 <!-- General Tab Content -->
                                 <div class="tab-content-padding">
                                     <h3 class="section-title" translate>PROD_TIME_STANDARDS</h3>
@@ -365,7 +366,7 @@
                                 </div>
                             </mat-tab>
 
-                            <mat-tab [label]="'PROD_ACTIVITIES' | translate">
+                            <mat-tab [label]="'COMMON_ACTIVITIES' | translate">
                                 <!-- Activities Tab Content -->
                                 <div class="tab-content-padding">
                                     <h3 class="section-title" translate>PROD_ACTIVITY_CONSUMPTION_RATES</h3>
@@ -452,7 +453,7 @@
                                 </div>
                             </mat-tab>
 
-                            <mat-tab [label]="'PROD_COSTING' | translate">
+                            <mat-tab [label]="'COMMON_COSTING' | translate">
                                 <!-- Costing Tab Content -->
                                 <div class="tab-content-padding">
                                     <h3 class="section-title" translate>PROD_STANDARD_COST_BREAKDOWN</h3>
