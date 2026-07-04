@@ -44,6 +44,18 @@ export interface Routing {
     materials?: RoutingMaterial[];
 }
 
+export interface RoutingCost {
+    id: number;
+    sequence: number;
+    operationName: string;
+    materialCost: number;
+    laborCost: number;
+    machineCost: number;
+    variableOverhead: number;
+    fixedOverhead: number;
+    totalCost: number;
+}
+
 export interface RoutingOperation {
     id: number;
     parentId: number;

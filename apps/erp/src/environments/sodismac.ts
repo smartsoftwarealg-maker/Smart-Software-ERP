@@ -10,7 +10,7 @@ import {stockNavTree} from '../app/stock/side-nav-tree';
 import {salesNavTree} from '../app/sales/side-nav-tree';
 import {financeNavTree} from '../app/finance/side-nav-tree';
 import {dashboardNavTree} from '../app/dashboard/side-nav-tree';
-import {CanActivateService, INDEX_PAGE_URL, SideNavNode} from '@ss/common/api-common';
+import {CanActivateService, INDEX_PAGE_URL} from '@ss/common/api-common';
 import {contractsNavTree} from '../app/contracts/side-nav-tree';
 import {MainPageComponent} from '@ss/common/ui-main-page';
 import {

@@ -50,7 +50,6 @@ import { loginGuard } from '../erp-guards';
 import { MrpComponent, ProductionConsumptionComponent } from '@ss/production/mrp';
 import { Bom2DetailComponent, Bom2ListComponent } from '@ss/master-data/ui-article';
 import {
-    ActivityCategoriesListComponent,
     ActivityCategoryTreeComponent,
     ArticleTypeDetailComponent,
     ArticleTypeListComponent,
@@ -113,7 +112,6 @@ import {
 } from '@ss/production/production-article';
 import {WorkCenterDetailComponent, WorkCenterListComponent} from '@ss/production/work-center';
 
-import { ActivityCategoriesDetailComponent } from '../../../../../libs/production/production-article/src/lib/production-activity-categories-detail/production-activity-categories-detail.component';
 
 import {
     ProductionRoutingListComponent,

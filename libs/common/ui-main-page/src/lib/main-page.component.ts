@@ -58,12 +58,12 @@ export class MainPageComponent implements OnInit, OnDestroy {
             'SEARCH_APP',
             e => e.subscribe(
                 (f: string) => {
-                    const lowF = f ? f.toLowerCase().trim() : null;
+                    const lowF = f ? f.toLowerCase().trim() : <string>null;
                     if (f && f.length) {
                         this.searchResult.set([]);
                         const words = lowF.split(' ');
                         const temp: SideNavNode[] = [];
-                        this.srv.display().forEach(t => this.searchTree(t, words, temp));
+                        this.srv.display()?.forEach(t => this.searchTree(t, words, temp));
                         if (temp.length === 0) {
                             temp.push(this.#emptyNode);
                         }

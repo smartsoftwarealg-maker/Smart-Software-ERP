@@ -106,7 +106,6 @@ import { ActivityCategoriesDetailComponent } from '@ss/production/production-art
 
 import {
     ProductionRoutingListComponent,
-    ProductionRoutingOperationListComponent,
     ProductionRoutingOperationDetailComponent,
     RoutingMaterialLineListComponent, RoutingMaterialLineDetailComponent, OperationDetailComponent,
     RoutingDetailComponent,
