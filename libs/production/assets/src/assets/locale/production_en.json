@@ -165,5 +165,10 @@
     "INSTRUCTIONS": "Instructions",
     "COST": "Cost",
     "CRITICAL": "Critical",
-    "INSPECTION_REQ": "Inspection Required"
+    "INSPECTION_REQ": "Inspection Required",
+    "BOM_NUMBER": "BOM Number",
+    "LAST_UPDATED": "Last Updated",
+    "BASE_QTY": "Base Qty",
+    "COMPONENTS": "Components",
+    "BOM_TYPE": "BOM Type"
 }

@@ -15,7 +15,7 @@ import {
     ABS_PRODUCTION_ROUTING_URL,
     ABS_MANUFACTURING_ACTIVITY_TYPES_URL,
     ABS_MANUFACTURING_UNITS_URL,
-    ABS_MANUFACTURING_ACTIVITY_CATEGORIES_URL, ABS_MANUFACTURING_ROUTING_URL,
+    ABS_MANUFACTURING_ACTIVITY_CATEGORIES_URL, ABS_MANUFACTURING_ROUTING_URL, ABS_MANUFACTURING_BOM_PRODUCTS,
 } from '../common';
 
 export const manufacturingNavTree: SideNavNode = {
@@ -68,7 +68,7 @@ export const manufacturingNavTree: SideNavNode = {
         {
             name: 'PROD_BOM',
             icon: 'fa-solid fa-list-tree',
-            route: ABS_PRODUCTION_BOM_PRODUCTS,
+            route: ABS_MANUFACTURING_BOM_PRODUCTS,
             accessRights: 'BOM',
         },
         {

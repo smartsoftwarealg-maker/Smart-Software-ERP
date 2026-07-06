@@ -508,5 +508,7 @@
     "ACCOUNT_NO": "Account No",
     "HOLIDAYS": "Holidays",
     "GENERAL_INFO": "General Info.",
-    "NONE":  "None"
+    "NONE":  "None",
+
+    "EXPAND": "Expand hierarchy"
 }
