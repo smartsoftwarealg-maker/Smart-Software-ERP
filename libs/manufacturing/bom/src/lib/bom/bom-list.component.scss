@@ -1,0 +1,1010 @@
+@use '@angular/material' as mat;
+
+/* ==========================================================================
+   1. CSS VARIABLES & RESET (Adapted for Angular Material)
+   ========================================================================== */
+:root {
+    --primary: #0f766e;
+    --primary-dark: #115e59;
+    --primary-light: #14b8a6;
+    --primary-bg: #f0fdfa;
+    --accent: #0369a1;
+    --danger: #dc2626;
+    --warning: #d97706;
+    --success: #16a34a;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-alt: #f1f5f9;
+    --text: #0f172a;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --radius: 6px;
+    --radius-lg: 8px;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+:host {
+    font-family: var(--font);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    font-size: 14px;
+    min-height: 100vh;
+    display: block; // Host needs to be a block element for full height
+}
+
+/* ==========================================================================
+   2. TOP NAVIGATION BAR (mat-toolbar)
+   ========================================================================== */
+.top-nav {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    height: 56px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .logo {
+        font-weight: 700;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        mat-icon {
+            color: var(--primary-light);
+        }
+    }
+
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #94a3b8;
+
+        a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+
+            &:hover {
+                color: white;
+            }
+        }
+
+        .separator {
+            font-size: 10px;
+        }
+
+        .current {
+            color: white;
+            font-weight: 500;
+        }
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .nav-icon-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    }
+}
+
+/* ==========================================================================
+   3. PAGE HEADER
+   ========================================================================== */
+.page-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    .page-title-group {
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            mat-icon {
+                color: var(--primary);
+            }
+        }
+    }
+
+    .page-subtitle {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-top: 4px;
+    }
+
+    .header-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+}
+
+/* ==========================================================================
+   4. BUTTONS (Angular Material Buttons)
+   ========================================================================== */
+// mat-stroked-button and mat-flat-button are used in HTML,
+// so we style them directly or rely on Material's theming.
+// Custom adjustments for size/gap if needed
+.mat-mdc-button, .mat-mdc-stroked-button, .mat-mdc-flat-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+    white-space: nowrap;
+    line-height: normal; // Override material default line-height
+    height: auto; // Allow padding to dictate height
+    min-width: unset; // Allow content to dictate width
+}
+
+/* ==========================================================================
+   5. STATISTICS CARDS (mat-card)
+   ========================================================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm); // Material cards have shadow by default, adjust if needed
+    &:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow);
+        transform: translateY(-2px);
+    }
+
+    &.active {
+        border-color: var(--primary);
+        background: var(--primary-bg);
+    }
+
+    .stat-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+
+        mat-icon {
+            font-size: 18px;
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    .stat-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .stat-label {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-secondary);
+        margin-bottom: 2px;
+    }
+
+    .stat-value {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.2;
+    }
+
+    .stat-trend {
+        font-size: 11px;
+        color: var(--success);
+        margin-top: 2px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        mat-icon {
+            font-size: 11px;
+            width: 11px;
+            height: 11px;
+        }
+    }
+}
+
+/* ==========================================================================
+   6. QUICK FILTER TABS (mat-button)
+   ========================================================================== */
+.quick-filters {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+
+    .quick-filter-tab {
+        padding: 10px 16px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+
+        &:hover {
+            color: var(--primary);
+        }
+
+        &.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .filter-count {
+            background: var(--surface-alt);
+            color: var(--text-secondary);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        &.active .filter-count {
+            background: var(--primary-bg);
+            color: var(--primary);
+        }
+    }
+}
+
+/* ==========================================================================
+   7. TOOLBAR & FILTERS (mat-toolbar, mat-form-field, mat-select, mat-button-toggle-group)
+   ========================================================================== */
+.toolbar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 4px 8px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+
+    .search-box {
+        flex: 1;
+        min-width: 120px;
+
+        .mat-mdc-form-field-subscript-wrapper {
+            display: none; // Hide hint/error messages for compactness
+        }
+
+        .mat-mdc-text-field-wrapper {
+            height: 36px; // Adjust height
+            .mat-mdc-form-field-flex {
+                padding: 0 8px;
+
+                .mat-mdc-form-field-infix {
+                    padding: 0;
+                    min-height: unset;
+
+                    .mat-mdc-form-field-input {
+                        height: 36px;
+                        line-height: 36px;
+                        padding: 0 0 0 28px; // Space for icon
+                    }
+                }
+            }
+        }
+
+        mat-icon {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 16px;
+            width: 16px;
+            height: 16px;
+            z-index: 1;
+        }
+    }
+
+    .filter-select {
+        min-width: 140px;
+
+        .mat-mdc-form-field-subscript-wrapper {
+            display: none; // Hide hint/error messages for compactness
+        }
+
+        .mat-mdc-text-field-wrapper {
+            height: 36px; // Adjust height
+            .mat-mdc-form-field-flex {
+                padding: 0 8px;
+
+                .mat-mdc-form-field-infix {
+                    padding: 0;
+                    min-height: unset;
+
+                    .mat-mdc-select-trigger {
+                        height: 36px;
+                        line-height: 36px;
+                    }
+                }
+            }
+        }
+    }
+
+    //.toolbar-divider {
+    //    width: 1px;
+    //    height: 28px;
+    //    background: var(--border);
+    //    margin: 0 4px;
+    //}
+
+    mat-button-toggle-group0 {
+        border: 1px solid var(--border);
+        //border-radius: var(--radius);
+        overflow: hidden;
+
+        .mat-button-toggle {
+            padding: 7px 12px;
+            //background: var(--surface);
+            border: none;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: normal;
+            height: auto;
+            min-width: unset;
+
+            & + .mat-button-toggle {
+                border-left: 1px solid var(--border);
+            }
+
+            &.mat-button-toggle-checked {
+                //background: var(--primary-bg);
+                color: var(--primary);
+            }
+
+            &:hover:not(.mat-button-toggle-checked) {
+                background: var(--surface-alt);
+            }
+
+            .mat-button-toggle-button {
+                padding: 0;
+                line-height: normal;
+            }
+
+            mat-icon {
+                font-size: 16px;
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   8. DATA TABLE (mat-table)
+   ========================================================================== */
+.table-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+
+
+    .mat-mdc-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+
+        .mat-mdc-header-row {
+            //background: var(--surface-alt);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mat-mdc-header-cell {
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: bolder;
+            color: var(--text-secondary);
+            font-size: 12px;
+            //text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+            position: relative;
+
+            &.mat-sort-header-sorted {
+                .mat-sort-header-arrow {
+                    opacity: 1 !important;
+                    color: var(--primary) !important;
+                }
+            }
+
+            &:hover {
+                background: #e2e8f0;
+                color: var(--text);
+            }
+
+            .mat-sort-header-arrow {
+                font-size: 10px;
+                width: 10px;
+                height: 10px;
+                margin-left: 4px;
+                opacity: 0.4;
+            }
+        }
+
+        .mat-mdc-cell {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+            vertical-align: middle;
+        }
+
+        .mat-mdc-row {
+            transition: background 0.15s;
+
+            &:hover {
+                background: var(--primary-bg);
+            }
+
+            &.selected {
+                background: #f0fdfa;
+            }
+
+            &:last-child .mat-mdc-cell {
+                border-bottom: none;
+            }
+        }
+
+        .col-checkbox {
+            width: 40px;
+            text-align: center;
+
+            .mat-mdc-checkbox {
+                .mdc-checkbox__native-control {
+                    accent-color: var(--primary);
+                }
+            }
+        }
+
+        /* BOM Number Link */
+        .bom-link {
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            .tree-icon {
+                color: var(--text-muted);
+                font-size: 11px;
+                cursor: pointer;
+                width: 11px;
+                height: 11px;
+
+                &:hover {
+                    color: var(--primary);
+                }
+            }
+        }
+
+        /* Product Cell */
+        .product-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            .product-name {
+                font-weight: 600;
+                color: var(--text);
+            }
+
+            .product-sku {
+                font-size: 11px;
+                color: var(--text-muted);
+                font-family: 'Courier New', monospace;
+            }
+        }
+
+        /* Status Badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+
+            mat-icon {
+                font-size: 8px;
+                width: 8px;
+                height: 8px;
+            }
+        }
+
+        .status-released {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-draft {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-obsolete {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .status-pending {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        /* BOM Type Badge */
+        .type-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+
+            mat-icon {
+                font-size: 12px;
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        .type-production {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .type-engineering {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .type-costing {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        .type-manufacturing {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        /* Component Count */
+        .component-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            color: var(--text);
+
+            mat-icon {
+                color: var(--primary);
+                font-size: 12px;
+                width: 12px;
+                height: 12px;
+            }
+
+            .level-indicator {
+                background: var(--surface-alt);
+                color: var(--text-secondary);
+                padding: 1px 6px;
+                border-radius: 8px;
+                font-size: 10px;
+                font-weight: 700;
+            }
+        }
+
+        /* Date Cell */
+        .date-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 12px;
+
+            .date-primary {
+                color: var(--text);
+                font-weight: 500;
+            }
+
+            .date-secondary {
+                color: var(--text-muted);
+                font-size: 11px;
+            }
+        }
+
+        /* User Cell */
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .user-avatar {
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                background: var(--primary-bg);
+                color: var(--primary);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                font-weight: 700;
+                flex-shrink: 0;
+            }
+
+            .user-info {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .user-name {
+                font-size: 12px;
+                font-weight: 500;
+                color: var(--text);
+            }
+
+            .user-time {
+                font-size: 11px;
+                color: var(--text-muted);
+            }
+        }
+
+        /* Actions Cell */
+        .actions-cell {
+            display: flex;
+            gap: 2px;
+            justify-content: flex-end;
+
+            .action-btn {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: var(--radius);
+                border: none;
+                background: transparent;
+                color: var(--text-secondary);
+                cursor: pointer;
+                transition: all 0.2s;
+                font-size: 13px;
+
+                &:hover {
+                    background: var(--surface-alt);
+                    color: var(--primary);
+                }
+
+                &.delete:hover {
+                    background: #fef2f2;
+                    color: var(--danger);
+                }
+
+                &.menu {
+                    color: var(--text-muted);
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   9. PAGINATION (mat-paginator)
+   ========================================================================== */
+.mat-mdc-paginator {
+    padding: 12px 16px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-secondary);
+
+    .mat-mdc-paginator-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; // Allow wrapping on smaller screens
+    }
+
+    .mat-mdc-paginator-range-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        strong {
+            color: var(--text);
+        }
+    }
+
+    .mat-mdc-paginator-page-size {
+        .mat-mdc-form-field-subscript-wrapper {
+            display: none; // Hide hint/error messages for compactness
+        }
+
+        .mat-mdc-text-field-wrapper {
+            height: 36px; // Adjust height
+            .mat-mdc-form-field-flex {
+                padding: 0 8px;
+
+                .mat-mdc-form-field-infix {
+                    padding: 0;
+                    min-height: unset;
+
+                    .mat-mdc-select-trigger {
+                        height: 36px;
+                        line-height: 36px;
+                    }
+                }
+            }
+        }
+    }
+
+    .mat-mdc-paginator-range-actions {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        .mat-mdc-icon-button {
+            padding: 6px 10px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 12px;
+            color: var(--text);
+            min-width: 32px;
+            transition: all 0.2s;
+
+            &:hover:not(:disabled) {
+                background: var(--surface-alt);
+                border-color: var(--primary);
+            }
+
+            &:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+
+            &.active { // Custom class for active page button if needed
+                background: var(--primary);
+                color: white;
+                border-color: var(--primary);
+            }
+
+            mat-icon {
+                font-size: 16px;
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   10. EMPTY STATE
+   ========================================================================== */
+.empty-state {
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--text-secondary);
+
+    .empty-state-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 16px;
+        background: var(--surface-alt);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: var(--text-muted);
+
+        mat-icon {
+            font-size: 28px;
+            width: 28px;
+            height: 28px;
+        }
+    }
+
+    h3 {
+        color: var(--text);
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    p {
+        margin-bottom: 16px;
+        font-size: 13px;
+    }
+}
+
+/* ==========================================================================
+   11. TOOLTIPS (Angular Material matTooltip is used, rely on its styling)
+   ========================================================================== */
+
+/* ==========================================================================
+   12. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        padding: 16px;
+    }
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .toolbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-box {
+        min-width: 100%;
+    }
+    .filter-select {
+        width: 100%;
+    }
+    .toolbar-divider {
+        display: none;
+    }
+    .mat-mdc-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .mat-mdc-paginator-container {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    .mat-mdc-paginator-range-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .breadcrumb {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   13. ANIMATIONS
+   ========================================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table-container {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface-alt);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}

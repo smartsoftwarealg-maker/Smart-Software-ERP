@@ -1,0 +1,330 @@
+<mat-toolbar class="top-nav">
+    <div class="nav-left">
+        <div class="logo">
+            <i class="fa-solid fa-industry"></i>
+            Smart ERP 3.4.4
+        </div>
+        <div class="breadcrumb">
+
+            <a href="#"><i class="fa-solid fa-house" style="font-size: 11px; width: 11px; height: 11px;"></i></a>
+            <i class="fa-solid fa-chevron-right separator"></i>
+            <a href="#">{{ 'PROD_PRODUCTION' | translate }}</a>
+            <i class="fa-solid fa-chevron-right separator"></i>
+            <span class="current"> {{ 'PROD_BOM' | translate }} </span>
+        </div>
+    </div>
+    <div class="nav-right">
+        <button mat-icon-button class="nav-icon-btn" matTooltip="Notifications">
+            <i class="fa-solid fa-bell"></i>
+        </button>
+        <button mat-icon-button class="nav-icon-btn" matTooltip="Help">
+            <i class="fa-solid fa-circle-question"></i>
+        </button>
+        <button mat-icon-button class="nav-icon-btn" matTooltip="User">
+            <i class="fa-solid fa-user-circle"></i>
+        </button>
+    </div>
+</mat-toolbar>
+
+<div class="page-container">
+    <div class="page-header">
+        <div class="page-title-group">
+            <h1>
+                <i class="fa-solid fa-list-check" style="color: var(--mat-color-primary)"></i>
+                {{ 'PROD_BOM' | translate }}
+            </h1>
+            <p class="page-subtitle">Manage product structures, components, and multi-level BOM hierarchies</p>
+        </div>
+        <!--        <div class="header-actions">-->
+        <!--            &lt;!&ndash;            <button mat-stroked-button color="primary" (click)="importBOM()">&ndash;&gt;-->
+        <!--            &lt;!&ndash;                <i class="fa-solid fa-upload"></i> Import&ndash;&gt;-->
+        <!--            &lt;!&ndash;            </button>&ndash;&gt;-->
+        <!--            &lt;!&ndash;            <button mat-stroked-button color="primary" (click)="exportBOM()">&ndash;&gt;-->
+        <!--            &lt;!&ndash;                <i class="fa-solid fa-download"></i> Export&ndash;&gt;-->
+        <!--            &lt;!&ndash;            </button>&ndash;&gt;-->
+        <!--            <button mat-flat-button color="primary" (click)="edit()">-->
+        <!--                <i class="fa-solid fa-pencil"></i> {{ 'COMMON_EDIT' | translate }}-->
+        <!--            </button>-->
+        <!--            <button mat-flat-button color="primary" (click)="newBOM()">-->
+        <!--                <i class="fa-solid fa-plus"></i> {{ 'COMMON_ADD' | translate }}-->
+        <!--            </button>-->
+        <!--        </div>-->
+    </div>
+
+    <!--    <div class="stats-grid">-->
+    <!--        @for (card of statsCards; track card.label) {-->
+    <!--            <mat-card class="stat-card" [class.active]="card.active" (click)="onStatCardClick(card)">-->
+    <!--                <div class="stat-icon" [ngStyle]="{'background-color': card.iconBgColor, 'color': card.iconColor}">-->
+    <!--                    <i class="fa-solid {{ card.icon }}"></i>-->
+    <!--                </div>-->
+    <!--                <div class="stat-content">-->
+    <!--                    <div class="stat-label">{{ card.label }}</div>-->
+    <!--                    <div class="stat-value">{{ card.value | number }}</div>-->
+    <!--                    <div class="stat-trend" [ngStyle]="{'color': card.trendColor}">-->
+    <!--                        <i class="fa-solid {{ card.trendIcon }}"></i> {{ card.trend }}-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </mat-card>-->
+    <!--        }-->
+    <!--    </div>-->
+
+
+    <div class="quick-filters">
+        @for (tab of filterTabs; track tab.label) {
+            <button mat-button class="quick-filter-tab" [class.active]="tab.active" (click)="onFilterTabClick(tab)">
+                <i class="fa-solid {{ tab.icon }}"></i> {{ tab.label }}
+                <span class="filter-count">{{ tab.count }}</span>
+            </button>
+        }
+    </div>
+
+    <div class="toolbar">
+
+
+        <mat-form-field appearance="outline" class="search-box">
+            <!--            <i class="fa-solid fa-search"></i>-->
+            <input matInput [formControl]="searchControl" placeholder="{{'COMMON_SEARCH' | translate}}">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-select">
+            <mat-label translate>COMMON_STATUS</mat-label>
+            <mat-select [formControl]="statusFilterControl"
+                        (selectionChange)="applyFilter(searchControl.value || '')">
+                <mat-option value="">All Statuses</mat-option>
+                <mat-option value="RELEASED">Released</mat-option>
+                <mat-option value="DRAFT">Draft</mat-option>
+                <mat-option value="PENDING">Pending Approval</mat-option>
+                <mat-option value="OBSOLETE">Obsolete</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-select">
+            <mat-label>All BOM Types</mat-label>
+            <mat-select [formControl]="typeFilterControl"
+                        (selectionChange)="applyFilter(searchControl.value || '')">
+                <mat-option value="">All BOM Types</mat-option>
+                <mat-option value="PRODUCTION">Production</mat-option>
+                <mat-option value="ENGINEERING">Engineering</mat-option>
+                <mat-option value="MANUFACTURING">Manufacturing</mat-option>
+                <mat-option value="COSTING">Costing</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-select">
+            <mat-label>All Product Types</mat-label>
+            <mat-select [formControl]="productTypeFilterControl"
+                        (selectionChange)="applyFilter(searchControl.value || '')">
+                <mat-option value="">All Product Types</mat-option>
+                <mat-option value="FINISHED">Finished Goods</mat-option>
+                <mat-option value="SUB_ASSEMBLY">Sub-Assemblies</mat-option>
+                <mat-option value="SEMI">Semi-Finished</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!--    <mat-form-field appearance="outline" class="filter-select">-->
+        <!--      <mat-label>All Plants</mat-label>-->
+        <!--      <mat-select [formControl]="plantFilterControl" (selectionChange)="applyFilter(searchControl.value || '')">-->
+        <!--        <mat-option value="">All Plants</mat-option>-->
+        <!--        <mat-option value="PLANT-A">Plant A - Chicago</mat-option>-->
+        <!--        <mat-option value="PLANT-B">Plant B - Houston</mat-option>-->
+        <!--        <mat-option value="PLANT-C">Plant C - Frankfurt</mat-option>-->
+        <!--      </mat-select>-->
+        <!--    </mat-form-field>-->
+
+        <button mat-button (click)="clearFilters()">
+            <i class="fa-solid fa-filter-slash"></i> {{ 'COMMON_CLEAR' | translate }}
+        </button>
+        <!--        <div class="toolbar-divider"></div>-->
+
+        <mat-button-toggle-group [value]="viewMode()" (valueChange)="onViewToggle($event)">
+            <mat-button-toggle value="list" matTooltip="List View">
+                <i class="fa-solid fa-list"></i> List
+            </mat-button-toggle>
+            <mat-button-toggle value="tree" matTooltip="Tree View">
+                <i class="fa-solid fa-sitemap"></i> Tree
+            </mat-button-toggle>
+            <mat-button-toggle value="cards" matTooltip="Card View">
+                <i class="fa-solid fa-grip"></i> Cards
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+
+    </div>
+
+    <div class="table-container">
+        <mat-table mat-table [dataSource]="dataSource" matSort (matSortChange)="sort($event)" class="data-table">
+
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <mat-header-cell *matHeaderCellDef class="col-checkbox">
+                    <mat-checkbox (change)="$event ? onSelectAll($event) : null"
+                                  [checked]="selectedBOMs().length > 0 && allBOMsSelected()"
+                                  [indeterminate]="selectedBOMs().length > 0 && !allBOMsSelected()">
+                    </mat-checkbox>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row" class="col-checkbox">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                                  (change)="$event ? onRowSelect($event, row) : null"
+                                  [checked]="isRowSelected(row)">
+                    </mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+            <!-- BOM Number Column -->
+            <ng-container matColumnDef="bomNumber">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_BOM_NUMBER' | translate }}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <a class="bom-link" href="#">
+                        <i class="fa-solid fa-chevron-right tree-icon" matTooltip="{{ 'EXPAND' | translate }}"></i>
+                        {{ row.bomNumber }}
+                    </a>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Revision Column -->
+            <ng-container matColumnDef="revision">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_REVISION' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row"><strong>{{ row.revision }}</strong></mat-cell>
+            </ng-container>
+
+            <!-- Product Column -->
+            <ng-container matColumnDef="product">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'COMMON_PRODUCT' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="product-cell">
+                        <span class="product-name">{{ row.productDescription }}</span>
+                        <span class="product-sku">{{ row.productRef }}</span>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <!-- BOM Type Column -->
+            <ng-container matColumnDef="bomType">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_BOM_TYPE' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+          <span class="type-badge" [ngClass]="{
+            'type-production': row.bomType === 'PRODUCTION',
+            'type-engineering': row.bomType === 'ENGINEERING',
+            'type-manufacturing': row.bomType === 'MANUFACTURING',
+            'type-costing': row.bomType === 'COSTING'
+          }">
+            <i class="fa-solid {{ row.bomType === 'PRODUCTION' ? 'fa-gear' : (row.bomType === 'ENGINEERING' ? 'fa-pen-ruler' : (row.bomType === 'MANUFACTURING' ? 'fa-industry' : 'fa-money-bill')) }}"></i>
+              {{ row.bomType }}
+          </span>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Components Column -->
+            <ng-container matColumnDef="components">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Components</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="component-count">
+                        <i class="fa-solid fa-layer-group"></i>
+                        {{ row.totalComponents }}
+                        <span class="level-indicator"><i
+                            class="fa-solid fa-stairs"></i>{{ row.maxHierarchyLevel }}</span>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Status Column -->
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'COMMON_STATUS' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+          <span class="status-badge" [ngClass]="{
+            'status-released': row.status === 'RELEASED',
+            'status-draft': row.status === 'DRAFT',
+            'status-pending': row.status === 'PENDING',
+            'status-obsolete': row.status === 'OBSOLETE'
+          }">
+            <i class="fa-solid fa-circle"></i> {{ `PROD_${row.status}` | translate }}
+          </span>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Base Qty Column -->
+            <ng-container matColumnDef="baseQty">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_BASE_QTY' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row"><strong>{{ row.qty }}</strong></mat-cell>
+            </ng-container>
+
+            <!-- Valid From Column -->
+            <ng-container matColumnDef="validFrom">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_VALID_FROM' | translate }}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="date-cell">
+                        <span class="date-primary">{{ row.from|date:'dd/MM/yyyy' }} </span>
+                        <span class="date-secondary">{{ row.to ? (' => ' + row.to|date:'dd/MM/yyyy') : '' }}</span>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Last Updated Column -->
+            <ng-container matColumnDef="lastUpdated">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_LAST_UPDATED' | translate }}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="user-cell">
+                        <!--                        <div class="user-avatar">{{ row.updateDate|date:'dd/MM/yyyy' }}</div>-->
+                        <div class="user-info">
+                            @if (row.updateDate) {
+                                <span class="user-name">{{ row.updateDate|date:'dd/MM/yyyy' }}</span>
+                                <span class="user-time">{{ timeAgo(row.updateDate) }}</span>
+                            }
+                        </div>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Actions Column -->
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef style="text-align: right;">Actions</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <div class="actions-cell">
+                        <button mat-icon-button class="action-btn" matTooltip="View"><i class="fa-solid fa-eye"></i>
+                        </button>
+                        <button mat-icon-button class="action-btn" matTooltip="Edit"><i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button mat-icon-button class="action-btn" matTooltip="Explode BOM"><i
+                            class="fa-solid fa-sitemap"></i></button>
+                        <button mat-icon-button class="action-btn" matTooltip="Where Used"><i
+                            class="fa-solid fa-search"></i></button>
+                        <button mat-icon-button [matMenuTriggerFor]="moreMenu" class="action-btn menu"
+                                matTooltip="More"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <mat-menu #moreMenu="matMenu">
+                            <button mat-menu-item>
+                                <i class="fa-solid fa-copy"></i>
+                                <span>Copy</span>
+                            </button>
+                            <button mat-menu-item>
+                                <i class="fa-solid fa-trash"></i>
+                                <span>Delete</span>
+                            </button>
+                        </mat-menu>
+                    </div>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns()"></mat-header-row>
+
+            <mat-row class="selectable" *matRowDef="let row; columns: displayedColumns()"
+                     (click)="selectRow(row)" [class.selected]="row.id === selectedId()">
+            </mat-row>
+
+            <!-- Row shown when there is no matching data. -->
+            <mat-row class="mat-row" *matNoDataRow>
+                <td class="mat-cell"
+                    [attr.colspan]="displayedColumns().length"> {{ 'COMMON_NO_DATA_FILTER' | translate }}
+                    "{{ searchControl.value }}"
+                </td>
+            </mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                       [pageSize]="pagination.pageSize"
+                       [length]="pagination.elementCount"
+                       (page)="onPageChange($event)"
+                       showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>
