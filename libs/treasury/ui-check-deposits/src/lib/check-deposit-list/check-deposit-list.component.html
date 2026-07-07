@@ -1,0 +1,55 @@
+<div class="table-container size">
+    <mat-table mat-table [dataSource]="data" class="main-table">
+
+        <ng-container matColumnDef="depositNumber">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.depositNumber }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="depositDate">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.depositDate | date: 'dd/MM/yyyy' }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="bankName">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_BANK</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.bankName }}
+                {{ e.bankId | bankDescription | async }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef translate>ADMINISTRATION_DESCRIPTION</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.description }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="creatorName">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_CREATED_BY</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.creatorName }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="createdAt">
+            <mat-header-cell *matHeaderCellDef translate>COMMON_CREATED_AT</mat-header-cell>
+            <mat-cell *matCellDef="let e">
+                {{ e.createdAt | date: 'dd/MM/yyyy HH:mm' }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="selectable" [class.selected]="row.id == selectedId()" (click)="selectRow(row)"
+                 *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+
+<div class="size b-b-background">
+    <ss-pagination [paginationModel]="pagination"></ss-pagination>
+</div>

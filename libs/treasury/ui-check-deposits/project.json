@@ -1,0 +1,29 @@
+{
+    "name": "treasury-ui-check-deposits",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/treasury/ui-check-deposits/src",
+    "prefix": "ss",
+    "targets": {
+        "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+                "{workspaceRoot}/coverage/libs/treasury/ui-check-deposits"
+            ],
+            "options": {
+                "jestConfig": "libs/treasury/ui-check-deposits/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "options": {
+                "lintFilePatterns": [
+                    "libs/treasury/ui-check-deposits/**/*.ts",
+                    "libs/treasury/ui-check-deposits/**/*.html"
+                ]
+            }
+        }
+    },
+    "tags": []
+}

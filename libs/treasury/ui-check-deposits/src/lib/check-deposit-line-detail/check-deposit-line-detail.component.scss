@@ -1,0 +1,14 @@
+.content__div {
+    width: 96%;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 8px;
+}
+.ctrl__div {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+mat-card {
+    border-radius: 1.5em;
+}

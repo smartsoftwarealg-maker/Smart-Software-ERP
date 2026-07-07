@@ -14,6 +14,7 @@ import {
     LOGISTICS_TPAYMENTS_URL,
     LOGISTICS_TRANSPORTERS_URL,
     FINANCE_CHECK_ASSIGNMENTS_URL,
+    FINANCE_CHECK_DEPOSITS_URL,
 } from '../common';
 import {ABS_INDEX_URL, CanDeactivateService, LIST_URL} from '@ss/common/api-common';
 import {Routes} from '@angular/router';
@@ -24,6 +25,12 @@ import {
     AdvancementsDetailComponent
 } from '@ss/logistics/payments';
 import {CheckAssignmentsComponent} from '@ss/treasury/ui-checks';
+import {
+    CheckDepositListComponent,
+    CheckDepositDetailComponent,
+    CheckDepositLineListComponent,
+    CheckDepositLineDetailComponent
+} from '@ss/treasury/ui-check-deposits';
 import {PaymentCompensationComponent} from '@ss/logistics/payment-compensation';
 import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '@ss/purchases/payment-orders';
 import {DashboardComponent} from '@ss/dashboard';
@@ -213,6 +220,32 @@ export const financeRoutes: Routes = [
         path: FINANCE_CHECK_ASSIGNMENTS_URL,
         component: CheckAssignmentsComponent,
         canActivate: [loginGuard],
+    },
+    {
+        path: FINANCE_CHECK_DEPOSITS_URL,
+        children: [
+            {
+                path: LIST_URL,
+                component: CheckDepositListComponent,
+                canActivate: [loginGuard]
+            },
+            {
+                path: ':id',
+                component: CheckDepositDetailComponent,
+                canActivate: [loginGuard],
+                canDeactivate: [CanDeactivateService],
+                children: [
+                    { path: '', redirectTo: 'lines', pathMatch: 'full' },
+                    { path: 'lines',
+                        children: [
+                            { path: '', component: CheckDepositLineListComponent, pathMatch: 'full'},
+                            { path: ':id', component: CheckDepositLineDetailComponent }
+                        ] },
+                ]
+            },
+            { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
+            { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
+        ]
     },
     {path: '', redirectTo: ABS_INDEX_URL, pathMatch: 'full'},
     {path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full'}

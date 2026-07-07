@@ -29,5 +29,7 @@
     "SELECT_BANK":          "Select a bank to view its checks",
     "NO_BANK_CHECKS":       "No checks assigned to this bank",
     "CONFIRM_ASSIGN_CHECK":   "Are you sure you want to assign this check",
-    "CONFIRM_UNASSIGN_CHECK": "Are you sure you want to unassign this check"
+    "CONFIRM_UNASSIGN_CHECK": "Are you sure you want to unassign this check",
+    "CHECK":           "Check",
+    "CHECK_DEPOSITS":  "Check Deposits"
 }
