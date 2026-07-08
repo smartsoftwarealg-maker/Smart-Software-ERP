@@ -1,0 +1,15 @@
+.size {
+    width: 90%;
+    max-width: 900px;
+    margin: 4px auto;
+}
+
+.table-container {
+    min-height: calc(100% - 56px);
+    overflow-x: auto;
+}
+
+.mat-row, .mat-header-row {
+    padding-right: 16px;
+    padding-left: 16px;
+}

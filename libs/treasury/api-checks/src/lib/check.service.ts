@@ -24,6 +24,10 @@ export class CheckService extends BaseEntityExtendedService<Check> {
         return this.httpSrv.get<BankCheck[]>(`/banks/${bankId}/checks`);
     }
 
+    getUndepositedChecks(bankId: number): Observable<BankCheck[]> {
+        return this.httpSrv.get<BankCheck[]>(`/banks/${bankId}/undeposited-checks`);
+    }
+
     assignChecks(bankId: number, checkIds: number[]): Observable<number[]> {
         return this.setBankId(checkIds, bankId);
     }

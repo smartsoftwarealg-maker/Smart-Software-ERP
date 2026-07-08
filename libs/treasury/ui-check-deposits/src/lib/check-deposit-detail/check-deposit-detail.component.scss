@@ -1,0 +1,36 @@
+.form_container {
+    width: 90%;
+    max-width: 700px;
+    margin: 16px auto;
+    padding: 8px;
+    border-radius: 1.4em;
+}
+
+.lines-layout {
+    display: flex;
+    gap: 16px;
+    width: 96%;
+    max-width: 1400px;
+    margin: 16px auto;
+}
+
+.lines-panel {
+    flex: 1;
+    min-width: 0;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+@media (max-width: 800px) {
+    .lines-layout {
+        flex-direction: column;
+    }
+
+    .lines-panel {
+        min-height: 260px;
+    }
+}

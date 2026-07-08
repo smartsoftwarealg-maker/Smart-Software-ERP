@@ -855,6 +855,9 @@
             "@ss/treasury/api-check-books": [
                 "./libs/treasury/api-check-books/src/index.ts"
             ],
+            "@ss/treasury/api-check-deposits": [
+                "./libs/treasury/api-check-deposits/src/index.ts"
+            ],
             "@ss/treasury/api-checks": [
                 "./libs/treasury/api-checks/src/index.ts"
             ],
@@ -866,6 +869,9 @@
             ],
             "@ss/treasury/ui-check-books": [
                 "./libs/treasury/ui-check-books/src/index.ts"
+            ],
+            "@ss/treasury/ui-check-deposits": [
+                "./libs/treasury/ui-check-deposits/src/index.ts"
             ],
             "@ss/treasury/ui-checks": [
                 "./libs/treasury/ui-checks/src/index.ts"

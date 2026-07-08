@@ -1,0 +1,67 @@
+<div class="panel-header">
+    <span class="panel-title" translate>TRS_DEPOSITED_CHECKS</span>
+    <span class="header-spacer"></span>
+    @if (searchOpen()) {
+        <mat-form-field class="header-search" appearance="fill">
+            <input matInput type="text" [formControl]="searchCtrl">
+            <button mat-icon-button matSuffix type="button" (click)="searchOpen.set(false)">
+                <i class="far fa-search"></i>
+            </button>
+        </mat-form-field>
+    } @else {
+        <button mat-icon-button type="button" (click)="searchOpen.set(true)">
+            <i class="far fa-search"></i>
+        </button>
+    }
+</div>
+
+@if (loading() || removing()) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
+
+<div class="table-scroll">
+    <mat-table [dataSource]="page()" class="main-table" matSort>
+
+        <ng-container matColumnDef="checkNumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>COMMON_NUMBER</mat-header-cell>
+            <mat-cell *matCellDef="let e">{{ e.checkNumber }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef mat-sort-header translate>TRS_DUE_DATE</mat-header-cell>
+            <mat-cell *matCellDef="let e">{{ e.date | date: 'dd/MM/yyyy' }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="cell-right" translate>COMMON_AMOUNT</mat-header-cell>
+            <mat-cell *matCellDef="let e" class="cell-right">{{ e.amount | number: '1.2-2' }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef class="col-select">
+                <mat-checkbox
+                    [disabled]="removing() || dataSource.filteredData.length === 0"
+                    (change)="removeAll()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let e" class="col-select" (click)="$event.stopPropagation()">
+                <mat-checkbox
+                    [checked]="true"
+                    [disabled]="removing()"
+                    (change)="removeOne(e.id)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    @if (!loading() && dataSource.data.length === 0) {
+        <div class="empty-state" translate>TRS_NO_DEPOSITED_CHECKS</div>
+    }
+</div>
+
+<div class="pagination-bar">
+    <ss-pagination [paginationModel]="paginator"></ss-pagination>
+</div>
