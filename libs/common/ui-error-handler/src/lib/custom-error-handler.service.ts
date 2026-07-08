@@ -15,6 +15,9 @@ export class CustomErrorHandlerService {
 
     // todo: Push error into a queue instead of keeping the last one only
     public setError(err: HttpErrorResponse | any) {
+        if (err.name == 'AbortError') {
+            return;
+        }
         // Business logic exception has this type: { code: string, params: string[] }
         console.log('____________________error:', err);
         if (err?.error && isString(err.error.code)) {

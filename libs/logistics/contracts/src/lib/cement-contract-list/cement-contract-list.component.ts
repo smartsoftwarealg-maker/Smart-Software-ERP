@@ -75,7 +75,6 @@ export class CementContractListComponent extends BaseEntityListComponent<Project
     }
 
     private onCustomer(a: Agent) {
-        console.log('**********************************8', a);
         const id = a?.id | 0;
         this.entitySrv.setParentId(id);
         this.entitySrv.selectedId.set(id);

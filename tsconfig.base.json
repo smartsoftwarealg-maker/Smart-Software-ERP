@@ -919,7 +919,8 @@
             ],
             "@ss/logistics/transaction-types": [
                 "./libs/logistics/ui-transaction-types/src/index.ts"
-            ]
+            ],
+            "@ss/manufacturing/bom": ["./libs/manufacturing/bom/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

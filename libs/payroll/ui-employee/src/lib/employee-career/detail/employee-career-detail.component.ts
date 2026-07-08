@@ -143,7 +143,6 @@ export class EmployeeCareerDetailComponent extends BaseChildEntityDetailComponen
                     }
                 })
         }
-        console.log('mm', (a.paymonth % 100)||1);
         return this.form = this.formBuilder.group({
             id:            [a.id],
             parentId:      [a.parentId || this.employeeCareerSrv.getParentId()],

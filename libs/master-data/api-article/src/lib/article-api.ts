@@ -28,6 +28,7 @@ export const CATEGORY_TREE_URL = '/production/category-tree';
 export interface BOM {
     id: number;
     bomId?: number;
+    bomNumber?: string;
     productId: number;
     qty: number;
     price?: number;
@@ -40,6 +41,11 @@ export interface BOM {
     version: number;
     productRef?: string;
     productDescription?: string;
+    bomType?: string;
+    status?: string;
+    lastUpdatedBy?: string;
+    lastUpdatedTime?: Date;
+    email?: string; // For BaseEntityListComponent
 }
 
 export interface BOMTree {

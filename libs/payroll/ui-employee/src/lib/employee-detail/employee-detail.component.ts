@@ -311,7 +311,7 @@ export class EmployeeDetailComponent extends BaseEntityDetailComponent<Employee>
         this.loadFixedElements().subscribe();
         this.imageModel.setImageUrl(this.employeeSrv.getPhotoUrl(this.id), false);
         this.elementDescriptions.set(this.infoSrv.dataCols().map(e => e.description));
-        this.isEditable.set(this.loginSrv.appCtx.manager);
+        // this.isEditable.set(this.loginSrv.appCtx.manager);
         return this.formBuilder.group({
             // birth info
             id:            [p.id],

@@ -71,8 +71,8 @@ export class AttendanceLogComponent implements OnInit {
         id:     [0],
         from:   [new Date(new Date().getTime() - (30 * 24 * 60 * 60 * 1000)), Validators.required],
         to:     [new Date(), Validators.required],
-        type:   [1,          Validators.required],
-        source: [1, Validators.required]
+        type:   ['1',          Validators.required],
+        source: [1,            Validators.required]
     });
 
     headers = this.FIXED_HEADERS;
@@ -166,7 +166,7 @@ export class AttendanceLogComponent implements OnInit {
             const value = this.form.value;
 
             this.uploadSub = this.attendanceLog
-                .upload(value.type, formData)
+                .upload(+value.type, formData)
                 .pipe(finalize(() => this.reset()),
                       map(res => res.body))
                 .subscribe({
@@ -187,7 +187,7 @@ export class AttendanceLogComponent implements OnInit {
         this.processing.set(true);
         const value = this.form.value;
         const ipList = this.inputSource() === this.MACHINES? this.ipList().join(',') : null;
-        const source = this.attendanceLog.getReport(value.type, value.id, value.from, value.to, ipList);
+        const source = this.attendanceLog.getReport(+value.type, value.id, value.from, value.to, ipList);
         source.subscribe({
                 next: res => this.processData(res),
                 error: err => {
@@ -243,7 +243,7 @@ export class AttendanceLogComponent implements OnInit {
     }
 
     toggleSource(event: MatRadioChange) {
-        this.inputSource.set( event.value);
+        this.inputSource.set(event.value);
     }
 
     onSelection(event: MatSelectionListChange) {

@@ -7,6 +7,7 @@ import {
 import {HttpService} from '@ss/common/api-common';
 import {Observable} from 'rxjs';
 import {HttpParams} from '@angular/common/http';
+import {TransactionLine} from "@ss/logistics/api-transaction";
 
 @Injectable({
     providedIn: 'root'
@@ -34,4 +35,5 @@ export class AccTransactionLineService extends BaseEntityService<ACCTransactionL
     getAnomalies(): Observable<Anomaly[]> {
         return this.httpSrv.get('/accounting/anomalies');
     }
+
 }

@@ -116,7 +116,6 @@ export class PayrollAmendmentDetailComponent extends BaseEntityDetailComponent<A
 
     override readForm():Amendment{
         const value = this.form?.getRawValue();
-        console.log('_______________________', value);
         if (value.applicationMonth['month']) {
             value.applicationMonth = value.applicationMonth.month + 100 * value.applicationMonth.year;
         }

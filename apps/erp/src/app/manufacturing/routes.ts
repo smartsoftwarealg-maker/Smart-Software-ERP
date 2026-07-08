@@ -121,6 +121,7 @@ import {
 import {
     ActivityTypesListComponent
 } from '@ss/production/production-article';
+import {BomListComponent} from "@ss/manufacturing/bom";
 
 
 export const manufacturingRoutes: Routes = [
@@ -210,7 +211,7 @@ export const manufacturingRoutes: Routes = [
         children: [
             {
                 path: LIST_URL,
-                component: Bom2ListComponent,
+                component: BomListComponent,
                 canActivate: [loginGuard],
             },
             {

@@ -37,7 +37,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './transaction-lines-detail.component.html',
     styleUrls: ['./transaction-lines-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         RouterModule,
         MaterialModule,
@@ -156,7 +156,7 @@ export class TransactionLinesDetailComponent implements OnInit {
 
     public loadEntity(id: number): Observable<ACCTransactionLine> {
         if (id == null) {
-            this.shellSrv.goBack();
+            this.goBack();
             return of(null);
         }
         if (id === 0) {
@@ -265,7 +265,6 @@ export class TransactionLinesDetailComponent implements OnInit {
                 next: () => {
                     this.form.markAsUntouched();
                     this.snackBarSrv.showSuccessMessage();
-                    // this.shellSrv.goBack();
                     this.entitySrv.updateStatus();
                     this.goBack();
                 },
