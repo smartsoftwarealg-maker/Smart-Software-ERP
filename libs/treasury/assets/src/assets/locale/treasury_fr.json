@@ -30,6 +30,12 @@
     "NO_BANK_CHECKS":       "Aucun chèque affecté à cette banque",
     "CONFIRM_ASSIGN_CHECK":   "Êtes-vous sûr de vouloir affecter ce chèque",
     "CONFIRM_UNASSIGN_CHECK": "Êtes-vous sûr de vouloir désaffecter ce chèque",
+    "CONFIRM_DEPOSIT_CHECK":   "Êtes-vous sûr de vouloir déposer ce chèque",
+    "CONFIRM_UNDEPOSIT_CHECK": "Êtes-vous sûr de vouloir retirer ce chèque du dépôt",
     "CHECK":           "Chèque",
-    "CHECK_DEPOSITS":  "Dépôts de chèques"
+    "CHECK_DEPOSITS":  "Dépôts de chèques",
+    "UNDEPOSITED_CHECKS":    "Chèques non déposés",
+    "DEPOSITED_CHECKS":      "Chèques déposés",
+    "NO_UNDEPOSITED_CHECKS": "Aucun chèque non déposé pour cette banque",
+    "NO_DEPOSITED_CHECKS":   "Aucun chèque déposé pour le moment"
 }

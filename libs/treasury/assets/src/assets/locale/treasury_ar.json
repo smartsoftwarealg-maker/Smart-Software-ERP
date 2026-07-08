@@ -30,6 +30,12 @@
     "NO_BANK_CHECKS":       "لا توجد شيكات مخصصة لهذا البنك",
     "CONFIRM_ASSIGN_CHECK":   "هل أنت متأكد أنك تريد تخصيص هذا الشيك",
     "CONFIRM_UNASSIGN_CHECK": "هل أنت متأكد أنك تريد إلغاء تخصيص هذا الشيك",
+    "CONFIRM_DEPOSIT_CHECK":   "هل أنت متأكد أنك تريد إيداع هذا الشيك",
+    "CONFIRM_UNDEPOSIT_CHECK": "هل أنت متأكد أنك تريد إزالة هذا الشيك من الإيداع",
     "CHECK":           "شيك",
-    "CHECK_DEPOSITS":  "إيداعات الشيكات"
+    "CHECK_DEPOSITS":  "إيداعات الشيكات",
+    "UNDEPOSITED_CHECKS":    "شيكات غير مودعة",
+    "DEPOSITED_CHECKS":      "شيكات مودعة",
+    "NO_UNDEPOSITED_CHECKS": "لا توجد شيكات غير مودعة لهذا البنك",
+    "NO_DEPOSITED_CHECKS":   "لا توجد شيكات مودعة بعد"
 }

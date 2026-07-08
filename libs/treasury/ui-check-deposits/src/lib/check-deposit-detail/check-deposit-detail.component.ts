@@ -1,13 +1,13 @@
 import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ShellService, SnackBarService } from '@ss/common/ui-shell';
 import { CheckDepositService, CheckDeposit, CheckDepositLineService } from '@ss/treasury/api-check-deposits';
-import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseEntityDetailComponent } from '@ss/common/ui-base-entity';
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { LoginService, MaterialModule } from '@ss/common/api-common';
 import { Observable, of } from 'rxjs';
-import { filter, switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
 import { LookupsService, Bank } from '@ss/common/api-lookup';
 import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -16,6 +16,9 @@ import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
 import { MatInput } from '@angular/material/input';
 import { DatePickerComponent } from '@ss/common/ui-datepicker';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader } from '@angular/material/expansion';
+import { CheckDepositLineListComponent } from '../check-deposit-line-list/check-deposit-line-list.component';
+import { UndepositedChecksListComponent } from '../undeposited-checks-list/undeposited-checks-list.component';
 
 @Component({
     selector: 'ss-check-deposit-detail',
@@ -26,7 +29,8 @@ import { DatePickerComponent } from '@ss/common/ui-datepicker';
     imports: [
         MaterialModule, MatCard, FormsModule, ReactiveFormsModule,
         MatFormField, MatLabel, TranslateDirective, MatSelect, MatOption, MatInput,
-        DatePickerComponent, RouterOutlet
+        DatePickerComponent, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader,
+        CheckDepositLineListComponent, UndepositedChecksListComponent
     ]
 })
 export class CheckDepositDetailComponent extends BaseEntityDetailComponent<CheckDeposit> implements OnInit {
@@ -43,24 +47,11 @@ export class CheckDepositDetailComponent extends BaseEntityDetailComponent<Check
         public override snackBarSrv: SnackBarService,
         public override route: ActivatedRoute,
         public override formBuilder: FormBuilder,
-        public override confirmationSrv: ConfirmationDialogService,
-        private router: Router) {
+        public override confirmationSrv: ConfirmationDialogService) {
         super(checkDepositSrv, shellSrv, snackBarSrv, route, formBuilder, confirmationSrv, 'TRS_CHECK_DEPOSITS');
     }
 
     override ngOnInit() {
-        this.subscriptions.push(
-            this.router
-                .events
-                .pipe(filter(event => event instanceof NavigationEnd))
-                .subscribe(event => {
-                    if (event instanceof NavigationEnd) {
-                        this.saveButton.visible = event.url.indexOf('/lines/') < 0;
-                        if (event.url.indexOf('/lines/') < 0) {
-                            this.refreshHasLines();
-                        }
-                    }
-                }));
         this.subscriptions.push(
             this.lineSrv.changed$.subscribe(() => this.refreshHasLines()));
         super.ngOnInit();

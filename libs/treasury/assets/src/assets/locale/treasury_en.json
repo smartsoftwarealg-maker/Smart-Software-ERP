@@ -30,6 +30,12 @@
     "NO_BANK_CHECKS":       "No checks assigned to this bank",
     "CONFIRM_ASSIGN_CHECK":   "Are you sure you want to assign this check",
     "CONFIRM_UNASSIGN_CHECK": "Are you sure you want to unassign this check",
+    "CONFIRM_DEPOSIT_CHECK":   "Are you sure you want to deposit this check",
+    "CONFIRM_UNDEPOSIT_CHECK": "Are you sure you want to remove this check from the deposit",
     "CHECK":           "Check",
-    "CHECK_DEPOSITS":  "Check Deposits"
+    "CHECK_DEPOSITS":  "Check Deposits",
+    "UNDEPOSITED_CHECKS":    "Undeposited checks",
+    "DEPOSITED_CHECKS":      "Deposited checks",
+    "NO_UNDEPOSITED_CHECKS": "No undeposited checks for this bank",
+    "NO_DEPOSITED_CHECKS":   "No checks deposited yet"
 }

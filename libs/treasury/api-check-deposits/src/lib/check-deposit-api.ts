@@ -23,6 +23,7 @@ export interface CheckDepositLine {
     depositId: number;
     checkId: number;
     checkNumber?: string;
+    number?: string;
     bankDescription?: string;
     date?: string;
     amount?: number;

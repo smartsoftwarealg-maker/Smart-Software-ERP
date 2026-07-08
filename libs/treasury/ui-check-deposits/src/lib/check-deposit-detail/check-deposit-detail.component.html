@@ -31,25 +31,41 @@
             </mat-form-field>
 
             @if (form.value.id) {
-                <mat-form-field class="default-50">
-                    <mat-label translate>COMMON_CREATED_AT</mat-label>
-                    <input matInput formControlName="createdAt" type="text">
-                </mat-form-field>
-                <mat-form-field class="default-50">
-                    <mat-label translate>COMMON_CREATED_BY</mat-label>
-                    <input matInput formControlName="creatorName" type="text">
-                </mat-form-field>
-                <mat-form-field class="default-50">
-                    <mat-label translate>COMMON_UPDATED_AT</mat-label>
-                    <input matInput formControlName="updatedAt" type="text">
-                </mat-form-field>
-                <mat-form-field class="default-50">
-                    <mat-label translate>COMMON_UPDATED_BY</mat-label>
-                    <input matInput formControlName="updaterName" type="text">
-                </mat-form-field>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header></mat-expansion-panel-header>
+                        <mat-form-field class="default-50">
+                            <mat-label translate>COMMON_CREATED_AT</mat-label>
+                            <input matInput formControlName="createdAt" type="text">
+                        </mat-form-field>
+                        <mat-form-field class="default-50">
+                            <mat-label translate>COMMON_CREATED_BY</mat-label>
+                            <input matInput formControlName="creatorName" type="text">
+                        </mat-form-field>
+                        <mat-form-field class="default-50">
+                            <mat-label translate>COMMON_UPDATED_AT</mat-label>
+                            <input matInput formControlName="updatedAt" type="text">
+                        </mat-form-field>
+                        <mat-form-field class="default-50">
+                            <mat-label translate>COMMON_UPDATED_BY</mat-label>
+                            <input matInput formControlName="updaterName" type="text">
+                        </mat-form-field>
+                    </mat-expansion-panel>
+                </mat-accordion>
             }
         </form>
     }
 </mat-card>
 
-<router-outlet></router-outlet>
+@if (id > 0) {
+    <div class="lines-layout">
+        <div class="lines-panel">
+            <ss-undeposited-checks-list [bankId]="form.controls['bankId'].value"
+                                         [depositId]="id">
+            </ss-undeposited-checks-list>
+        </div>
+        <div class="lines-panel">
+            <ss-check-deposit-line-list [parentId]="id"></ss-check-deposit-line-list>
+        </div>
+    </div>
+}

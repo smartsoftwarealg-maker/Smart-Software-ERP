@@ -27,9 +27,7 @@ import {
 import {CheckAssignmentsComponent} from '@ss/treasury/ui-checks';
 import {
     CheckDepositListComponent,
-    CheckDepositDetailComponent,
-    CheckDepositLineListComponent,
-    CheckDepositLineDetailComponent
+    CheckDepositDetailComponent
 } from '@ss/treasury/ui-check-deposits';
 import {PaymentCompensationComponent} from '@ss/logistics/payment-compensation';
 import {PaymentOrderDetailComponent, PaymentOrderListComponent} from '@ss/purchases/payment-orders';
@@ -233,15 +231,7 @@ export const financeRoutes: Routes = [
                 path: ':id',
                 component: CheckDepositDetailComponent,
                 canActivate: [loginGuard],
-                canDeactivate: [CanDeactivateService],
-                children: [
-                    { path: '', redirectTo: 'lines', pathMatch: 'full' },
-                    { path: 'lines',
-                        children: [
-                            { path: '', component: CheckDepositLineListComponent, pathMatch: 'full'},
-                            { path: ':id', component: CheckDepositLineDetailComponent }
-                        ] },
-                ]
+                canDeactivate: [CanDeactivateService]
             },
             { path: '', redirectTo: LIST_URL, pathMatch: 'full' },
             { path: '**', redirectTo: ABS_INDEX_URL, pathMatch: 'full' }
