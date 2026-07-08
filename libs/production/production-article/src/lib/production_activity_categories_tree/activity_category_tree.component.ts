@@ -206,7 +206,6 @@ export class ActivityCategoryTreeComponent implements OnDestroy, OnInit {
 
     protected showAddDialog() {
         const category = this.selectedCategory?.category;
-        console.log(category);
         this.edit({
             id: 0,
             code: '',

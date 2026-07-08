@@ -2,7 +2,7 @@
     <div class="nav-left">
         <div class="logo">
             <i class="fa-solid fa-industry"></i>
-            Smart ERP 3.4.4
+            Smart ERP 3.4.6
         </div>
         <div class="breadcrumb">
 
@@ -320,11 +320,11 @@
                 </td>
             </mat-row>
         </mat-table>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]"
-                       [pageSize]="pagination.pageSize"
-                       [length]="pagination.elementCount"
-                       (page)="onPageChange($event)"
-                       showFirstLastButtons>
-        </mat-paginator>
     </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]"
+                   [pageSize]="pagination.pageSize"
+                   [length]="pagination.elementCount"
+                   (page)="onPageChange($event)"
+                   showFirstLastButtons>
+    </mat-paginator>
 </div>

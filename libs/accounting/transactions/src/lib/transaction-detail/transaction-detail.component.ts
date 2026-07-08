@@ -25,7 +25,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     templateUrl: './transaction-detail.component.html',
     styleUrls: ['./transaction-detail.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
         RouterModule,
@@ -71,6 +71,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.subscriptions.forEach(s => s.unsubscribe());
     }
+
 
     ngOnInit() {
         this.loading.set(true);

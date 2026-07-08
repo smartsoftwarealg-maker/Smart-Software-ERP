@@ -82,7 +82,6 @@ export class CompensationPanelComponent implements OnChanges {
     }
 
     edit(id: number) {
-        console.log('Opening dialog for compensation ID:', id);
         this.openNumberInputDialog(id);
     }
 

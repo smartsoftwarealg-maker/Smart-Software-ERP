@@ -57,18 +57,6 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
     private detailSrv = inject(AccTransactionLineService);
     private loginSrv = inject(LoginService);
     private accPolicySrv = inject(AccPoliciesService);
-    private updateEffect = effect(() => {
-        if (this.detailSrv.updateCounter() > 0) {
-            if (this.selectedRow()) {
-                this.entitySrv
-                    .get(this.selectedId())
-                    .subscribe(res => {
-                        this.entitySrv.select(res);
-                        this.selectedRow.update(v => (v? {...v, debit: res?.debit||0, credit: res?.credit||0}: null));
-                    });
-            }
-        }
-    });
 
 
     selectedJournal = signal(0);
@@ -189,10 +177,25 @@ export class TransactionListComponent extends BaseEntityListComponent<ACCTransac
         }
     }
 
+    // private updateEffect = effect(() => {
+    //     if (this.detailSrv.updateCounter() > 0) {
+    //         if (this.selectedRow()) {
+    //             this.entitySrv
+    //                 .get(this.selectedId())
+    //                 .subscribe(res => {
+    //                     this.entitySrv.select(res);
+    //                     this.selectedRow.update(v => (v? {...v, debit: res?.debit||0, credit: res?.credit||0}: null));
+    //                 });
+    //         }
+    //     }
+    // });
 
     override selectRow(row: ACCTransaction) {
         if (this.isRoot()) {
             super.selectRow(row);
+            this.entitySrv
+                .get(row?.id||0)
+                .subscribe(res => this.selectedRow.update(v => (v? {...v, debit: res?.debit||0, credit: res?.credit||0}: null)));
             this.edit();
             this.entitySrv.select(row);
         }

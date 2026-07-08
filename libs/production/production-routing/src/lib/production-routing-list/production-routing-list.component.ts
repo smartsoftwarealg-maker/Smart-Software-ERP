@@ -95,7 +95,6 @@ export class ProductionRoutingListComponent extends BaseEntityListComponent<Rout
 
         dialogRef.afterClosed()
             .subscribe((routing: Routing) => {
-                console.log('routing', routing);
                 if (routing) {
                     this.data = [...this.data, routing]; //.push(routing);
                     this.snackBarSrv.showSuccessMessage();

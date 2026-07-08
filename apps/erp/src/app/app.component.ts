@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
         this.#companySelectorSrv.spaceCompany = company;
         this.#companySelectorSrv.homePage = homePage;
         this.#langSrv.isSodismac = false;
-        this.shellSrv.setApplicationTitle('Smart ERP 3.4.4');
+        this.shellSrv.setApplicationTitle('Smart ERP 3.4.6');
         this.httpSrv
             .init()
             .pipe(

@@ -34,7 +34,7 @@
     color: var(--text);
     line-height: 1.5;
     font-size: 14px;
-    min-height: 100vh;
+    //min-height: 100vh;
     display: block; // Host needs to be a block element for full height
 }
 
@@ -463,11 +463,16 @@
 /* ==========================================================================
    8. DATA TABLE (mat-table)
    ========================================================================== */
+mat-table {
+    width: fit-content;
+    min-width: 1000px;
+}
 .table-container {
+    width: 100%;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    overflow: hidden;
+    overflow-x: auto;
     box-shadow: var(--shadow-sm);
 
 
@@ -955,7 +960,7 @@
     }
     .mat-mdc-table {
         display: block;
-        overflow-x: auto;
+        //overflow-x: auto;
         white-space: nowrap;
     }
     .mat-mdc-paginator-container {
@@ -1007,4 +1012,22 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-muted);
+}
+
+.mat-column-lastUpdated,
+.mat-column-validFrom,
+.mat-column-components,
+.mat-column-bomNumber,
+.mat-column-bomType {
+    flex: 1 1 90px;
+}
+
+.mat-column-baseQty,
+.mat-column-revision,
+.mat-column-status {
+    flex: 1 1 80px;
+}
+
+.mat-column-product {
+    flex: 2 1 200px;
 }

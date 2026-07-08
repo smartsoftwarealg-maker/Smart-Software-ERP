@@ -48,12 +48,7 @@ export class AccTransactionService extends BaseEntityService<ACCTransaction> {
         return this.httpSrv.post('/accounting/pack/' + journalId, null);
     }
 
-    override getPage(
-        pageModel: PaginationModel,
-        filter?: string,
-        sortBy?: string,
-        extraPrams?: HttpParams,
-    ): Observable<ACCTransaction[]> {
-        return super.getPage(pageModel, filter, sortBy, extraPrams);
+    override getList(page: number, pageSize: number, filter?: string, sortBy?: string, extraPrams?: HttpParams): Observable<{ itemCount: number, body: ACCTransaction[] }> {
+        return this.httpSrv.getData<ACCTransaction>(this.getUrl(), page, pageSize, filter, sortBy, extraPrams);
     }
 }

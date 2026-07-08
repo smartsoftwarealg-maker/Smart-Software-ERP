@@ -156,7 +156,6 @@ export class RoutingDetailComponent extends BaseEntityDetailComponent<Routing>{
     }
 
     deleteOperation(op: RoutingOperation): void {
-        console.log('Delete operation:', op);
         this.confirmationSrv.confirmDelete().subscribe(result => {
             if (result) {
                 // this.#operationSrv.delete(op.id).subscribe(() => {

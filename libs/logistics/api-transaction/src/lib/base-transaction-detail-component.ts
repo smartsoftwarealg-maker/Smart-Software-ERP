@@ -169,7 +169,6 @@ export abstract class BaseTransactionDetailComponent
     }
 
     private updateProjectStatus(p: Project) {
-        debugger;
         if (!this.loading()) {
             const blocked = p?.isBlocked;
             if (blocked) {
