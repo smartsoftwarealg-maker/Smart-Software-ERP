@@ -23,6 +23,7 @@ export class AttendanceLogService extends BaseEntityService<ATTReport> {
         [3, '/attendance/absences'],
         [4, '/attendance/lateness'],
         [5, '/attendance/shifts-log'],
+        [6, '/attendance/excel'],
     ]);
     constructor(protected override httpSrv: HttpService, private langSrv: LanguageService) {
         super(httpSrv, ATT_ATTENDANCE);
@@ -41,6 +42,18 @@ export class AttendanceLogService extends BaseEntityService<ATTReport> {
                 .pipe(map(res => res.body)) :
             of([]);
     }
+
+    exportToExcel(id: number, from: Date, to: Date, ipList: string|null): Observable<Blob> {
+        const params = new HttpParams()
+            .set('id', id)
+            .set('from', this.langSrv.formatDate(from))
+            .set('to', this.langSrv.formatDate(to));
+        const params2 = ipList? params.set("ip", ipList) : params;
+
+        return this.httpSrv.getBlob('/attendance/excel',  params2);
+    }
+
+
 
 
     upload(log: number, data: FormData): Observable<any> {

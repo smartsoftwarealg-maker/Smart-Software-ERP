@@ -394,14 +394,16 @@ implements OnInit, OnDestroy {
     }
 
     public excel() {
-        this.entitySrv.excel(this.filter).subscribe((blob) => {
-            if (blob && blob.size > 100) {
-                const link = document.createElement('a');
-                link.href = window.URL.createObjectURL(blob);
-                link.download = this.entitySrv.constructor.name + '.xlsx';
-                link.click();
-                setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
-            }
+        this.entitySrv
+            .excel(this.filter)
+            .subscribe((blob) => {
+                if (blob && blob.size > 100) {
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = this.entitySrv.constructor.name + '.xlsx';
+                    link.click();
+                    setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+               }
         });
     }
 

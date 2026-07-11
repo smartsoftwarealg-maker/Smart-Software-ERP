@@ -12,4 +12,5 @@ export class AttendanceMachineService extends BaseEntityService<AttendanceMachin
     constructor(protected override httpSrv: HttpService) {
         super(httpSrv, ATTENDANCE_MACHINE_URL);
     }
+
 }

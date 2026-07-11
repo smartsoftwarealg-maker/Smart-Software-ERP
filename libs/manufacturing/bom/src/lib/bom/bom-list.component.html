@@ -2,7 +2,7 @@
     <div class="nav-left">
         <div class="logo">
             <i class="fa-solid fa-industry"></i>
-            Smart ERP 3.4.6
+            Smart ERP 3.4.8
         </div>
         <div class="breadcrumb">
 
@@ -174,7 +174,7 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_BOM_NUMBER' | translate }}
                 </mat-header-cell>
                 <mat-cell *matCellDef="let row">
-                    <a class="bom-link" href="#">
+                    <a class="bom-link" (click)="expandRow(row)">
                         <i class="fa-solid fa-chevron-right tree-icon" matTooltip="{{ 'EXPAND' | translate }}"></i>
                         {{ row.bomNumber }}
                     </a>
