@@ -45,7 +45,7 @@ export class AppArchiveListComponent implements OnInit {
     private router = inject(Router);
     private route = inject(ActivatedRoute);
     private confirmationSrv = inject(ConfirmationDialogService);
-private loginSrv = inject(LoginService)
+    private loginSrv = inject(LoginService)
     public activePersonnelSrv = inject(ActivePersonnelService);
     public showBackButton = signal(false);
 
@@ -105,7 +105,7 @@ private loginSrv = inject(LoginService)
             });
         const rights = this.shellSrv.getCurrentNodeRights();
         const loginCtx = this.loginSrv.appCtx
-        this.isEditable.set(rights.edit && loginCtx.manager);
+        this.isEditable.set(rights.edit || loginCtx.manager);
     }
 
     public showDetail(id: string) {

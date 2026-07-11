@@ -273,6 +273,10 @@ export class BomListComponent extends BaseEntityListComponent<BOM> implements On
     return this.selectedBOMs().some(b => b.id === row.id);
   }
 
+ expandRow(row: BOM): void {
+   console.log(row);
+ }
+
   newBOM(): void {
     this.showDetail(0); // Assuming 0 means new entity
   }

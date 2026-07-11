@@ -18,7 +18,7 @@
           <mat-label translate>LOGISTICS_EVAL_PRICE</mat-label>
           <mat-select formControlName="evalPrice" required>
             @for (f of evalPriceOptions; track f.id) {
-              <mat-option [value]="f.id.toString()" translate>{{ f.name }}</mat-option>
+              <mat-option [value]="f.id" translate>{{ f.name }}</mat-option>
             }
           </mat-select>
           @if (form.controls['evalPrice'].invalid) {

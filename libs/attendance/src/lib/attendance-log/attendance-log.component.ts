@@ -23,7 +23,7 @@ import { finalize, map, Subscription } from 'rxjs';
     templateUrl: './attendance-log.component.html',
     styleUrls: ['./attendance-log.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         MaterialModule,
         FormsModule,
@@ -71,8 +71,8 @@ export class AttendanceLogComponent implements OnInit {
         id:     [0],
         from:   [new Date(new Date().getTime() - (30 * 24 * 60 * 60 * 1000)), Validators.required],
         to:     [new Date(), Validators.required],
-        type:   ['1',          Validators.required],
-        source: [1,            Validators.required]
+        type:   ['1',        Validators.required],
+        source: [1,          Validators.required]
     });
 
     headers = this.FIXED_HEADERS;
@@ -268,4 +268,27 @@ export class AttendanceLogComponent implements OnInit {
         this.processing.set(false);
     }
 
+    exportToExcel() {
+        this.processing.set(true);
+        const value = this.form.value;
+        const ipList = this.inputSource() === this.MACHINES? this.ipList().join(',') : null;
+        this.attendanceLog
+            .exportToExcel(value.id, value.from, value.to, ipList)
+            .subscribe( {
+                next: (blob) => {
+                    console.log(blob);
+                    if (blob && blob.size > 100) {
+                                const link = document.createElement('a');
+                                link.href = window.URL.createObjectURL(blob);
+                                link.download = 'attendance.xlsx';
+                                link.click();
+                                setTimeout(() => window.URL.revokeObjectURL(link.href), 5000);
+                    }
+                    this.processing.set(false);
+                }, error: err => {
+                    this.processing.set(false);
+                    throw err;
+                }
+        })
+    }
 }

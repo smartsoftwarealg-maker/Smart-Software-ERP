@@ -79,7 +79,7 @@
 
                     <button mat-raised-button color="primary" type="button" (click)="refresh(fileUpload.files)"
                             [disabled]="processing()">
-                        {{ 'COMMON_REFRESH' | translate }}
+                        <i class="fa-solid fa-arrows-rotate"></i> {{ 'COMMON_REFRESH' | translate }}
                     </button>
                     @if (inputSource() !== DATABASE) {
                         <button mat-raised-button
@@ -87,9 +87,16 @@
                                 type="button"
                                 (click)="saveToDB()"
                                 [disabled]="processing() || !canSaveToDB()">
-                            {{ 'COMMON_SAVE' | translate }}
+                            <i class="fa-solid fa-floppy-disk"></i> {{ 'COMMON_SAVE' | translate }}
                         </button>
                     }
+                <button mat-raised-button
+                        color="primary"
+                        type="button"
+                        (click)="exportToExcel()"
+                        [disabled]="processing() ">
+                    <i class="fa-solid fa-file-excel"></i> {{ 'COMMON_EXCEL_EXPORT' | translate }}
+                </button>
                 </div>
             </form>
             <div class="ip__list">

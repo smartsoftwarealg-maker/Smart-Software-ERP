@@ -263,30 +263,6 @@ export class DashboardComponent extends BaseEntityListComponent<Dashboard> {
                     throw err;
                 },
             });
-        // *****************************
-        // this.dashboardSrv
-        //     .getExcel(
-        //         this.selected,
-        //         this.detailPagination.page,
-        //         this.detailPagination.pageSize,
-        //         from,
-        //         to,
-        //         this.selectedAgentId,
-        //         consolidated,
-        //     )
-        //     .subscribe((blob) => {
-        //         // saveAs(blob, this.entitySrv.constructor.name + '.xlsx');
-        //         if (blob && blob.size > 100) {
-        //             const link = document.createElement('a');
-        //             link.href = window.URL.createObjectURL(blob);
-        //             link.download = this.entitySrv.constructor.name + '.xlsx';
-        //             link.click();
-        //             setTimeout(
-        //                 () => window.URL.revokeObjectURL(link.href),
-        //                 5000,
-        //             );
-        //         }
-        //     });
     }
 
     csv() {
