@@ -76,3 +76,8 @@ mat-table {
     //justify-content: center;
     //align-items: center;
 }
+
+/* styles.css */
+.no-subscript .mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+    display: none !important;
+}
