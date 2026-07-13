@@ -99,14 +99,14 @@
                 </ng-container>
 
                 <ng-container matColumnDef="taken">
-                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_EARNED</span> 1</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_TAKEN</span> 1</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.taken | number: '1.2-2' }}
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="taken2">
-                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_EARNED</span> 2</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_TAKEN</span> 2</mat-header-cell>
                     2
                     <mat-cell *matCellDef="let e">
                         {{ e.taken2 | number: '1.2-2' }}
@@ -114,7 +114,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef="taken3">
-                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_EARNED</span> 3</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef><span translate>REMUN_TAKEN</span> 3</mat-header-cell>
                     3
                     <mat-cell *matCellDef="let e">
                         {{ e.taken3 | number: '1.2-2' }}
@@ -138,7 +138,7 @@
                 <ng-container matColumnDef="toTake">
                     <mat-header-cell *matHeaderCellDef translate>REMUN_TO_TAKE</mat-header-cell>
                     <mat-cell *matCellDef="let i = index" [formGroupName]="i">
-                        <mat-form-field>
+                        <mat-form-field class="no-subscript">
                             <input matInput type="number" formControlName="days" >
                         </mat-form-field>
                     </mat-cell>

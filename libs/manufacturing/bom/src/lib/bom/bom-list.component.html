@@ -1,330 +1,628 @@
-<mat-toolbar class="top-nav">
-    <div class="nav-left">
-        <div class="logo">
-            <i class="fa-solid fa-industry"></i>
-            Smart ERP 3.4.8
-        </div>
-        <div class="breadcrumb">
-
-            <a href="#"><i class="fa-solid fa-house" style="font-size: 11px; width: 11px; height: 11px;"></i></a>
-            <i class="fa-solid fa-chevron-right separator"></i>
-            <a href="#">{{ 'PROD_PRODUCTION' | translate }}</a>
-            <i class="fa-solid fa-chevron-right separator"></i>
-            <span class="current"> {{ 'PROD_BOM' | translate }} </span>
-        </div>
-    </div>
-    <div class="nav-right">
-        <button mat-icon-button class="nav-icon-btn" matTooltip="Notifications">
-            <i class="fa-solid fa-bell"></i>
-        </button>
-        <button mat-icon-button class="nav-icon-btn" matTooltip="Help">
-            <i class="fa-solid fa-circle-question"></i>
-        </button>
-        <button mat-icon-button class="nav-icon-btn" matTooltip="User">
-            <i class="fa-solid fa-user-circle"></i>
-        </button>
-    </div>
-</mat-toolbar>
-
 <div class="page-container">
+
+    <!-- PAGE HEADER -->
     <div class="page-header">
         <div class="page-title-group">
-            <h1>
-                <i class="fa-solid fa-list-check" style="color: var(--mat-color-primary)"></i>
-                {{ 'PROD_BOM' | translate }}
+            <h1 class="page-title">
+                <i class="fa-solid fa-list-check"></i> Bill of Materials
             </h1>
-            <p class="page-subtitle">Manage product structures, components, and multi-level BOM hierarchies</p>
+            <p class="page-subtitle">
+                Manage product structures, components, and multi-level BOM hierarchies
+            </p>
         </div>
-        <!--        <div class="header-actions">-->
-        <!--            &lt;!&ndash;            <button mat-stroked-button color="primary" (click)="importBOM()">&ndash;&gt;-->
-        <!--            &lt;!&ndash;                <i class="fa-solid fa-upload"></i> Import&ndash;&gt;-->
-        <!--            &lt;!&ndash;            </button>&ndash;&gt;-->
-        <!--            &lt;!&ndash;            <button mat-stroked-button color="primary" (click)="exportBOM()">&ndash;&gt;-->
-        <!--            &lt;!&ndash;                <i class="fa-solid fa-download"></i> Export&ndash;&gt;-->
-        <!--            &lt;!&ndash;            </button>&ndash;&gt;-->
-        <!--            <button mat-flat-button color="primary" (click)="edit()">-->
-        <!--                <i class="fa-solid fa-pencil"></i> {{ 'COMMON_EDIT' | translate }}-->
-        <!--            </button>-->
-        <!--            <button mat-flat-button color="primary" (click)="newBOM()">-->
-        <!--                <i class="fa-solid fa-plus"></i> {{ 'COMMON_ADD' | translate }}-->
-        <!--            </button>-->
-        <!--        </div>-->
-    </div>
-
-    <!--    <div class="stats-grid">-->
-    <!--        @for (card of statsCards; track card.label) {-->
-    <!--            <mat-card class="stat-card" [class.active]="card.active" (click)="onStatCardClick(card)">-->
-    <!--                <div class="stat-icon" [ngStyle]="{'background-color': card.iconBgColor, 'color': card.iconColor}">-->
-    <!--                    <i class="fa-solid {{ card.icon }}"></i>-->
-    <!--                </div>-->
-    <!--                <div class="stat-content">-->
-    <!--                    <div class="stat-label">{{ card.label }}</div>-->
-    <!--                    <div class="stat-value">{{ card.value | number }}</div>-->
-    <!--                    <div class="stat-trend" [ngStyle]="{'color': card.trendColor}">-->
-    <!--                        <i class="fa-solid {{ card.trendIcon }}"></i> {{ card.trend }}-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </mat-card>-->
-    <!--        }-->
-    <!--    </div>-->
-
-
-    <div class="quick-filters">
-        @for (tab of filterTabs; track tab.label) {
-            <button mat-button class="quick-filter-tab" [class.active]="tab.active" (click)="onFilterTabClick(tab)">
-                <i class="fa-solid {{ tab.icon }}"></i> {{ tab.label }}
-                <span class="filter-count">{{ tab.count }}</span>
+        <div class="header-actions">
+            <button class="btn btn-secondary hide-on-mobile">
+                <i class="fa-solid fa-file-import"></i> Import
             </button>
-        }
+            <button class="btn btn-secondary hide-on-mobile">
+                <i class="fa-solid fa-file-export"></i> Export
+            </button>
+            <button class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> <span class="hide-on-mobile">New BOM</span>
+            </button>
+        </div>
     </div>
 
+    <!-- STATS CARDS -->
+    <div class="stats-grid">
+        <div class="stat-card" [class.active]="!filter().status" (click)="updateFilter({ status: '' })">
+            <div class="stat-icon total"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="stat-content">
+                <div class="stat-label">Total BOMs</div>
+                <div class="stat-value">{{ stats().total }}</div>
+            </div>
+        </div>
+        <div class="stat-card" [class.active]="filter().status === 'RELEASED'" (click)="updateFilter({ status: 'RELEASED' })">
+            <div class="stat-icon released"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="stat-content">
+                <div class="stat-label">Released</div>
+                <div class="stat-value">{{ stats().released }}</div>
+            </div>
+        </div>
+        <div class="stat-card" [class.active]="filter().status === 'DRAFT'" (click)="updateFilter({ status: 'DRAFT' })">
+            <div class="stat-icon draft"><i class="fa-solid fa-pen-to-square"></i></div>
+            <div class="stat-content">
+                <div class="stat-label">Draft</div>
+                <div class="stat-value">{{ stats().draft }}</div>
+            </div>
+        </div>
+        <div class="stat-card" [class.active]="filter().status === 'OBSOLETE'" (click)="updateFilter({ status: 'OBSOLETE' })">
+            <div class="stat-icon obsolete"><i class="fa-solid fa-ban"></i></div>
+            <div class="stat-content">
+                <div class="stat-label">Obsolete</div>
+                <div class="stat-value">{{ stats().obsolete }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOOLBAR -->
     <div class="toolbar">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" placeholder="Search BOM #, product, or SKU..."
+                   (input)="onSearchInput($event)" [value]="filter().search">
+        </div>
 
+        <select class="filter-select" [ngModel]="filter().status" (ngModelChange)="updateFilter({ status: $event })">
+            <option value="">All Statuses</option>
+            <option value="RELEASED">Released</option>
+            <option value="DRAFT">Draft</option>
+            <option value="PENDING">Pending</option>
+            <option value="OBSOLETE">Obsolete</option>
+        </select>
 
-        <mat-form-field appearance="outline" class="search-box">
-            <!--            <i class="fa-solid fa-search"></i>-->
-            <input matInput [formControl]="searchControl" placeholder="{{'COMMON_SEARCH' | translate}}">
-        </mat-form-field>
+        <select class="filter-select hide-on-mobile" [ngModel]="filter().bomType" (ngModelChange)="updateFilter({ bomType: $event })">
+            <option value="">All Types</option>
+            <option value="PRODUCTION">Production</option>
+            <option value="ENGINEERING">Engineering</option>
+            <option value="MANUFACTURING">Manufacturing</option>
+            <option value="COSTING">Costing</option>
+        </select>
 
-        <mat-form-field appearance="outline" class="filter-select">
-            <mat-label translate>COMMON_STATUS</mat-label>
-            <mat-select [formControl]="statusFilterControl"
-                        (selectionChange)="applyFilter(searchControl.value || '')">
-                <mat-option value="">All Statuses</mat-option>
-                <mat-option value="RELEASED">Released</mat-option>
-                <mat-option value="DRAFT">Draft</mat-option>
-                <mat-option value="PENDING">Pending Approval</mat-option>
-                <mat-option value="OBSOLETE">Obsolete</mat-option>
-            </mat-select>
-        </mat-form-field>
+        <div class="toolbar-divider hide-on-mobile"></div>
 
-        <mat-form-field appearance="outline" class="filter-select">
-            <mat-label>All BOM Types</mat-label>
-            <mat-select [formControl]="typeFilterControl"
-                        (selectionChange)="applyFilter(searchControl.value || '')">
-                <mat-option value="">All BOM Types</mat-option>
-                <mat-option value="PRODUCTION">Production</mat-option>
-                <mat-option value="ENGINEERING">Engineering</mat-option>
-                <mat-option value="MANUFACTURING">Manufacturing</mat-option>
-                <mat-option value="COSTING">Costing</mat-option>
-            </mat-select>
-        </mat-form-field>
+        <!-- VIEW MODE TOGGLE -->
+        <div class="view-toggle">
+            <button class="view-btn" [class.active]="viewMode() === 'list'" (click)="setViewMode('list')" title="List View">
+                <i class="fa-solid fa-list"></i> <span class="hide-on-mobile">List</span>
+            </button>
+            <button class="view-btn" [class.active]="viewMode() === 'tree'" (click)="setViewMode('tree')" title="Tree View">
+                <i class="fa-solid fa-sitemap"></i> <span class="hide-on-mobile">Tree</span>
+            </button>
+            <button class="view-btn" [class.active]="viewMode() === 'card'" (click)="setViewMode('card')" title="Card View">
+                <i class="fa-solid fa-grip"></i> <span class="hide-on-mobile">Cards</span>
+            </button>
+        </div>
 
-        <mat-form-field appearance="outline" class="filter-select">
-            <mat-label>All Product Types</mat-label>
-            <mat-select [formControl]="productTypeFilterControl"
-                        (selectionChange)="applyFilter(searchControl.value || '')">
-                <mat-option value="">All Product Types</mat-option>
-                <mat-option value="FINISHED">Finished Goods</mat-option>
-                <mat-option value="SUB_ASSEMBLY">Sub-Assemblies</mat-option>
-                <mat-option value="SEMI">Semi-Finished</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <!--    <mat-form-field appearance="outline" class="filter-select">-->
-        <!--      <mat-label>All Plants</mat-label>-->
-        <!--      <mat-select [formControl]="plantFilterControl" (selectionChange)="applyFilter(searchControl.value || '')">-->
-        <!--        <mat-option value="">All Plants</mat-option>-->
-        <!--        <mat-option value="PLANT-A">Plant A - Chicago</mat-option>-->
-        <!--        <mat-option value="PLANT-B">Plant B - Houston</mat-option>-->
-        <!--        <mat-option value="PLANT-C">Plant C - Frankfurt</mat-option>-->
-        <!--      </mat-select>-->
-        <!--    </mat-form-field>-->
-
-        <button mat-button (click)="clearFilters()">
-            <i class="fa-solid fa-filter-slash"></i> {{ 'COMMON_CLEAR' | translate }}
+        <button class="btn btn-ghost" (click)="clearFilters()">
+            <i class="fa-solid fa-filter-circle-xmark"></i> <span class="hide-on-mobile">Clear</span>
         </button>
-        <!--        <div class="toolbar-divider"></div>-->
-
-        <mat-button-toggle-group [value]="viewMode()" (valueChange)="onViewToggle($event)">
-            <mat-button-toggle value="list" matTooltip="List View">
-                <i class="fa-solid fa-list"></i> List
-            </mat-button-toggle>
-            <mat-button-toggle value="tree" matTooltip="Tree View">
-                <i class="fa-solid fa-sitemap"></i> Tree
-            </mat-button-toggle>
-            <mat-button-toggle value="cards" matTooltip="Card View">
-                <i class="fa-solid fa-grip"></i> Cards
-            </mat-button-toggle>
-        </mat-button-toggle-group>
-
     </div>
 
-    <div class="table-container">
-        <mat-table mat-table [dataSource]="dataSource" matSort (matSortChange)="sort($event)" class="data-table">
-
-            <!-- Checkbox Column -->
-            <ng-container matColumnDef="select">
-                <mat-header-cell *matHeaderCellDef class="col-checkbox">
-                    <mat-checkbox (change)="$event ? onSelectAll($event) : null"
-                                  [checked]="selectedBOMs().length > 0 && allBOMsSelected()"
-                                  [indeterminate]="selectedBOMs().length > 0 && !allBOMsSelected()">
-                    </mat-checkbox>
-                </mat-header-cell>
-                <mat-cell *matCellDef="let row" class="col-checkbox">
-                    <mat-checkbox (click)="$event.stopPropagation()"
-                                  (change)="$event ? onRowSelect($event, row) : null"
-                                  [checked]="isRowSelected(row)">
-                    </mat-checkbox>
-                </mat-cell>
-            </ng-container>
-
-            <!-- BOM Number Column -->
-            <ng-container matColumnDef="bomNumber">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_BOM_NUMBER' | translate }}
-                </mat-header-cell>
-                <mat-cell *matCellDef="let row">
-                    <a class="bom-link" (click)="expandRow(row)">
-                        <i class="fa-solid fa-chevron-right tree-icon" matTooltip="{{ 'EXPAND' | translate }}"></i>
-                        {{ row.bomNumber }}
-                    </a>
-                </mat-cell>
-            </ng-container>
-
-            <!-- Revision Column -->
-            <ng-container matColumnDef="revision">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_REVISION' | translate }}</mat-header-cell>
-                <mat-cell *matCellDef="let row"><strong>{{ row.revision }}</strong></mat-cell>
-            </ng-container>
-
-            <!-- Product Column -->
-            <ng-container matColumnDef="product">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'COMMON_PRODUCT' | translate }}</mat-header-cell>
-                <mat-cell *matCellDef="let row">
-                    <div class="product-cell">
-                        <span class="product-name">{{ row.productDescription }}</span>
-                        <span class="product-sku">{{ row.productRef }}</span>
-                    </div>
-                </mat-cell>
-            </ng-container>
-
-            <!-- BOM Type Column -->
-            <ng-container matColumnDef="bomType">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_BOM_TYPE' | translate }}</mat-header-cell>
-                <mat-cell *matCellDef="let row">
-          <span class="type-badge" [ngClass]="{
-            'type-production': row.bomType === 'PRODUCTION',
-            'type-engineering': row.bomType === 'ENGINEERING',
-            'type-manufacturing': row.bomType === 'MANUFACTURING',
-            'type-costing': row.bomType === 'COSTING'
-          }">
-            <i class="fa-solid {{ row.bomType === 'PRODUCTION' ? 'fa-gear' : (row.bomType === 'ENGINEERING' ? 'fa-pen-ruler' : (row.bomType === 'MANUFACTURING' ? 'fa-industry' : 'fa-money-bill')) }}"></i>
-              {{ row.bomType }}
-          </span>
-                </mat-cell>
-            </ng-container>
-
-            <!-- Components Column -->
-            <ng-container matColumnDef="components">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Components</mat-header-cell>
-                <mat-cell *matCellDef="let row">
-                    <div class="component-count">
-                        <i class="fa-solid fa-layer-group"></i>
-                        {{ row.totalComponents }}
-                        <span class="level-indicator"><i
-                            class="fa-solid fa-stairs"></i>{{ row.maxHierarchyLevel }}</span>
-                    </div>
-                </mat-cell>
-            </ng-container>
-
-            <!-- Status Column -->
-            <ng-container matColumnDef="status">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'COMMON_STATUS' | translate }}</mat-header-cell>
-                <mat-cell *matCellDef="let row">
-          <span class="status-badge" [ngClass]="{
-            'status-released': row.status === 'RELEASED',
-            'status-draft': row.status === 'DRAFT',
-            'status-pending': row.status === 'PENDING',
-            'status-obsolete': row.status === 'OBSOLETE'
-          }">
-            <i class="fa-solid fa-circle"></i> {{ `PROD_${row.status}` | translate }}
-          </span>
-                </mat-cell>
-            </ng-container>
-
-            <!-- Base Qty Column -->
-            <ng-container matColumnDef="baseQty">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_BASE_QTY' | translate }}</mat-header-cell>
-                <mat-cell *matCellDef="let row"><strong>{{ row.qty }}</strong></mat-cell>
-            </ng-container>
-
-            <!-- Valid From Column -->
-            <ng-container matColumnDef="validFrom">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_VALID_FROM' | translate }}
-                </mat-header-cell>
-                <mat-cell *matCellDef="let row">
-                    <div class="date-cell">
-                        <span class="date-primary">{{ row.from|date:'dd/MM/yyyy' }} </span>
-                        <span class="date-secondary">{{ row.to ? (' => ' + row.to|date:'dd/MM/yyyy') : '' }}</span>
-                    </div>
-                </mat-cell>
-            </ng-container>
-
-            <!-- Last Updated Column -->
-            <ng-container matColumnDef="lastUpdated">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'PROD_LAST_UPDATED' | translate }}
-                </mat-header-cell>
-                <mat-cell *matCellDef="let row">
-                    <div class="user-cell">
-                        <!--                        <div class="user-avatar">{{ row.updateDate|date:'dd/MM/yyyy' }}</div>-->
-                        <div class="user-info">
-                            @if (row.updateDate) {
-                                <span class="user-name">{{ row.updateDate|date:'dd/MM/yyyy' }}</span>
-                                <span class="user-time">{{ timeAgo(row.updateDate) }}</span>
+    <!-- ============================================================
+         LIST VIEW — flat list of BOM HEADERS
+         ============================================================ -->
+    @if (viewMode() === 'list') {
+        <div class="table-container">
+            @if (isLoading()) {
+                <div class="loading-state">
+                    <i class="fa-solid fa-spinner fa-spin loading-spinner"></i>
+                    <p class="loading-text">Loading BOMs...</p>
+                </div>
+            } @else {
+                <div class="table-scroll">
+                    <table class="data-table">
+                        <thead>
+                        <tr>
+                            <th class="col-checkbox">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" [checked]="isAllSelected() && items().length > 0"
+                                           [indeterminate]="selectedIds().size > 0 && !isAllSelected()"
+                                           (change)="toggleSelectAll()">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </th>
+                            <th class="sortable" (click)="onSortChange({ active: 'bomNumber', direction: getSortDirection('bomNumber') })">
+                                BOM Number <i class="sort-icon" [class]="getSortIcon('bomNumber')"></i>
+                            </th>
+                            <th class="sortable" (click)="onSortChange({ active: 'revision', direction: getSortDirection('revision') })">
+                                Revision <i class="sort-icon" [class]="getSortIcon('revision')"></i>
+                            </th>
+                            <th class="sortable" (click)="onSortChange({ active: 'productName', direction: getSortDirection('productName') })">
+                                Product <i class="sort-icon" [class]="getSortIcon('productName')"></i>
+                            </th>
+                            <th class="sortable hide-on-mobile" (click)="onSortChange({ active: 'bomType', direction: getSortDirection('bomType') })">
+                                BOM Type <i class="sort-icon" [class]="getSortIcon('bomType')"></i>
+                            </th>
+                            <th class="sortable" (click)="onSortChange({ active: 'componentCount', direction: getSortDirection('componentCount') })">
+                                Components <i class="sort-icon" [class]="getSortIcon('componentCount')"></i>
+                            </th>
+                            <th class="sortable" (click)="onSortChange({ active: 'status', direction: getSortDirection('status') })">
+                                Status <i class="sort-icon" [class]="getSortIcon('status')"></i>
+                            </th>
+                            <th class="hide-on-mobile">Base Qty</th>
+                            <th class="sortable hide-on-mobile" (click)="onSortChange({ active: 'validFrom', direction: getSortDirection('validFrom') })">
+                                Valid From <i class="sort-icon" [class]="getSortIcon('validFrom')"></i>
+                            </th>
+                            <th class="hide-on-mobile">Last Updated</th>
+                            <th class="actions-header">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of items(); track item.id) {
+                                <tr [class.selected]="isSelected(item)" (click)="toggleSelect(item)">
+                                    <td class="col-checkbox">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" [checked]="isSelected(item)" (change)="toggleSelect(item, $event)">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td><a class="bom-link" (click)="viewBom(item); $event.stopPropagation()">{{ item.bomNumber }}</a></td>
+                                    <td><strong>{{ item.revision }}</strong></td>
+                                    <td>
+                                        <div class="product-cell">
+                      <span class="type-icon" [ngClass]="getTypeClass(item.productType)">
+                        <i class="fa-solid" [ngClass]="getTypeIcon(item.productType)"></i>
+                      </span>
+                                            <div class="product-info">
+                                                <span class="product-name">{{ item.productName }}</span>
+                                                <span class="product-sku">{{ item.productSku }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="hide-on-mobile">
+                    <span class="bom-type-badge" [ngClass]="'type-' + item.bomType.toLowerCase()">
+                      @switch (item.bomType) {
+                          @case ('PRODUCTION') { <i class="fa-solid fa-gear"></i> }
+                          @case ('ENGINEERING') { <i class="fa-solid fa-compass-drafting"></i> }
+                          @case ('MANUFACTURING') { <i class="fa-solid fa-industry"></i> }
+                          @case ('COSTING') { <i class="fa-solid fa-coins"></i> }
+                      }
+                        {{ item.bomType }}
+                    </span>
+                                    </td>
+                                    <td>
+                                        <div class="component-count">
+                                            <i class="fa-solid fa-cubes"></i>
+                                            <span>{{ item.componentCount }}</span>
+                                            @if (item.maxHierarchyLevel > 1) {
+                                                <span class="level-indicator">L{{ item.maxHierarchyLevel }}</span>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>
+                    <span class="status-badge" [ngClass]="'status-' + item.status.toLowerCase()">
+                      <i class="fa-solid fa-circle"></i> {{ item.status }}
+                    </span>
+                                    </td>
+                                    <td class="hide-on-mobile"><strong>{{ item.baseQuantity }} {{ item.baseUom }}</strong></td>
+                                    <td class="hide-on-mobile">
+                                        <div class="date-cell">
+                                            <span class="date-primary">{{ item.validFrom | date:'dd MMM yyyy' }}</span>
+                                            <span class="date-secondary">
+                        {{ item.validTo ? ('Until ' + (item.validTo | date:'dd MMM yyyy')) : 'No expiry' }}
+                      </span>
+                                        </div>
+                                    </td>
+                                    <td class="hide-on-mobile">
+                                        <div class="user-cell">
+                                            <div class="user-avatar">{{ item.updatedByInitials }}</div>
+                                            <div class="user-info">
+                                                <span class="user-name">{{ item.updatedBy }}</span>
+                                                <span class="user-time">{{ relativeTime(item.updatedAt) }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <ng-container [ngTemplateOutlet]="bomHeaderActions" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+                                    </td>
+                                </tr>
                             }
+                        </tbody>
+                    </table>
+                </div>
+
+                @if (items().length === 0) {
+                    <div class="empty-state">
+                        <i class="fa-solid fa-inbox empty-icon"></i>
+                        <h3 class="empty-title">No BOMs found</h3>
+                        <p class="empty-text">Try adjusting your search or filters.</p>
+                        <button class="btn btn-primary" (click)="clearFilters()">
+                            <i class="fa-solid fa-filter-circle-xmark"></i> Clear Filters
+                        </button>
+                    </div>
+                }
+
+                <!-- PAGINATION -->
+                <div class="pagination">
+                    <div class="pagination-info">
+            <span>
+              Showing <strong>{{ (currentPage() * pageSize()) + 1 }}</strong>-<strong>{{ Math.min((currentPage() + 1) * pageSize(), totalCount()) }}</strong>
+              of <strong>{{ totalCount() }}</strong>
+            </span>
+                        <select class="page-size-select" [ngModel]="pageSize()" (ngModelChange)="onPageSizeChange($event)">
+                            <option [ngValue]="10">10 per page</option>
+                            <option [ngValue]="25">25 per page</option>
+                            <option [ngValue]="50">50 per page</option>
+                            <option [ngValue]="100">100 per page</option>
+                        </select>
+                    </div>
+                    <div class="pagination-controls">
+                        <button class="page-btn" [disabled]="currentPage() === 0" (click)="goToPage(0)" title="First">
+                            <i class="fa-solid fa-angles-left"></i>
+                        </button>
+                        <button class="page-btn" [disabled]="currentPage() === 0" (click)="goToPage(currentPage() - 1)" title="Previous">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        @for (page of getPageNumbers(); track page) {
+                            @if (page === -1) {
+                                <span class="ellipsis">...</span>
+                            } @else {
+                                <button class="page-btn" [class.active]="page === currentPage()" (click)="goToPage(page)">{{ page + 1 }}</button>
+                            }
+                        }
+                        <button class="page-btn" [disabled]="currentPage() === totalPages() - 1" (click)="goToPage(currentPage() + 1)" title="Next">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <button class="page-btn" [disabled]="currentPage() === totalPages() - 1" (click)="goToPage(totalPages() - 1)" title="Last">
+                            <i class="fa-solid fa-angles-right"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <!-- ============================================================
+         TREE VIEW — BOM EXPLOSION (components of ONE selected BOM)
+         ============================================================ -->
+    @if (viewMode() === 'tree') {
+        <div class="table-container">
+
+            <!-- TREE HEADER: BOM selector + info -->
+            <div class="tree-header">
+                <div class="tree-header-left">
+                    <button class="btn btn-ghost" (click)="goBackToList()" title="Back to list">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
+                    <div class="tree-divider"></div>
+                    <div class="tree-bom-info">
+                        <label class="tree-bom-label">Exploding BOM:</label>
+                        <select class="tree-bom-select"
+                                [ngModel]="selectedBomForTree()?.id || ''"
+                                (ngModelChange)="onTreeBomChange($event)">
+                            <option value="" disabled>Select a BOM to explode...</option>
+                            @for (bom of allBomSummaries(); track bom.id) {
+                                <option [value]="bom.id">{{ bom.bomNumber }} — {{ bom.productName }}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                @if (selectedBomForTree(); as bom) {
+                    <div class="tree-header-right">
+                        <div class="tree-stats">
+              <span class="tree-stat">
+                <i class="fa-solid fa-cubes"></i>
+                <strong>{{ treeStats().totalComponents }}</strong> components
+              </span>
+                            <span class="tree-stat">
+                <i class="fa-solid fa-layer-group"></i>
+                <strong>{{ treeStats().maxLevel }}</strong> levels
+              </span>
+                            <span class="tree-stat">
+                <i class="fa-solid fa-ghost"></i>
+                <strong>{{ treeStats().phantomCount }}</strong> phantoms
+              </span>
                         </div>
                     </div>
-                </mat-cell>
-            </ng-container>
+                }
+            </div>
 
-            <!-- Actions Column -->
-            <ng-container matColumnDef="actions">
-                <mat-header-cell *matHeaderCellDef style="text-align: right;">Actions</mat-header-cell>
-                <mat-cell *matCellDef="let row">
-                    <div class="actions-cell">
-                        <button mat-icon-button class="action-btn" matTooltip="View"><i class="fa-solid fa-eye"></i>
-                        </button>
-                        <button mat-icon-button class="action-btn" matTooltip="Edit"><i class="fa-solid fa-pen"></i>
-                        </button>
-                        <button mat-icon-button class="action-btn" matTooltip="Explode BOM"><i
-                            class="fa-solid fa-sitemap"></i></button>
-                        <button mat-icon-button class="action-btn" matTooltip="Where Used"><i
-                            class="fa-solid fa-search"></i></button>
-                        <button mat-icon-button [matMenuTriggerFor]="moreMenu" class="action-btn menu"
-                                matTooltip="More"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                        <mat-menu #moreMenu="matMenu">
-                            <button mat-menu-item>
-                                <i class="fa-solid fa-copy"></i>
-                                <span>Copy</span>
+            <!-- TREE CONTENT -->
+            @if (!selectedBomForTree()) {
+                <div class="empty-state">
+                    <i class="fa-solid fa-sitemap empty-icon"></i>
+                    <h3 class="empty-title">Select a BOM to explode</h3>
+                    <p class="empty-text">Choose a BOM from the dropdown above to view its component hierarchy.</p>
+                </div>
+            } @else if (isLoadingExplosion()) {
+                <div class="loading-state">
+                    <i class="fa-solid fa-spinner fa-spin loading-spinner"></i>
+                    <p class="loading-text">Loading BOM explosion...</p>
+                </div>
+            } @else if (treeVisibleRows().length === 0) {
+                <div class="empty-state">
+                    <i class="fa-solid fa-inbox empty-icon"></i>
+                    <h3 class="empty-title">This BOM has no components</h3>
+                    <p class="empty-text">Add components to this BOM to see them here.</p>
+                </div>
+            } @else {
+                <div class="table-scroll">
+                    <table class="data-table tree-table">
+                        <thead>
+                        <tr>
+                            <th class="col-checkbox">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" [checked]="isAllSelected() && treeVisibleRows().length > 0"
+                                           [indeterminate]="selectedIds().size > 0 && !isAllSelected()"
+                                           (change)="toggleSelectAll()">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </th>
+                            <th>Component</th>
+                            <th>SKU</th>
+                            <th class="hide-on-mobile">Type</th>
+                            <th>Quantity</th>
+                            <th class="hide-on-mobile">Scrap %</th>
+                            <th class="hide-on-mobile">Flags</th>
+                            <th class="actions-header">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of treeVisibleRows(); track item.id) {
+                                <tr [attr.data-item-id]="item.id"
+                                    [class.bom-row]="true"
+                                    [class.child-row]="item.parentId !== null"
+                                    [class.expanded-parent]="isExpanded(item)"
+                                    [ngClass]="getIndentClass(item)"
+                                    [class.selected]="isSelected(item)"
+                                    (click)="toggleSelect(item)">
+                                    <td class="col-checkbox">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" [checked]="isSelected(item)" (change)="toggleSelect(item, $event)">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <div class="component-cell" [ngClass]="getIndentClass(item)">
+                                            @if (item.hasChildren) {
+                                                <button class="expand-btn"
+                                                        [class.expanded]="isExpanded(item)"
+                                                        (click)="toggleExpansion(item, $event)"
+                                                        title="Toggle sub-components">
+                                                    <i class="fa-solid fa-chevron-right"></i>
+                                                </button>
+                                            } @else {
+                                                <span class="expand-placeholder"><i class="fa-solid fa-minus"></i></span>
+                                            }
+                                            <span class="type-icon-sm" [ngClass]="getTypeClass(item.componentType)">
+                        <i class="fa-solid" [ngClass]="getTypeIcon(item.componentType)"></i>
+                      </span>
+                                            <span class="component-name">{{ item.componentName }}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="sku-text">{{ item.componentSku }}</span>
+                                    </td>
+                                    <td class="hide-on-mobile">
+                    <span class="type-badge-sm" [ngClass]="'type-' + item.componentType.toLowerCase()">
+                      {{ item.componentType | titlecase }}
+                    </span>
+                                    </td>
+                                    <td>
+                                        <strong>{{ item.quantity }}</strong>
+                                        <span class="unit-text">{{ item.unit }}</span>
+                                    </td>
+                                    <td class="hide-on-mobile">
+                                        @if (item.scrapPct > 0) {
+                                            <span class="scrap-badge">{{ item.scrapPct }}%</span>
+                                        } @else {
+                                            <span class="text-muted">—</span>
+                                        }
+                                    </td>
+                                    <td class="hide-on-mobile">
+                                        <div class="flag-badges">
+                                            @if (item.isPhantom) {
+                                                <span class="flag-badge phantom" title="Phantom sub-assembly">
+                          <i class="fa-solid fa-ghost"></i> Phantom
+                        </span>
+                                            }
+                                            @if (item.hasOwnBom) {
+                                                <span class="flag-badge has-bom" title="Has its own BOM">
+                          <i class="fa-solid fa-diagram-project"></i> BOM
+                        </span>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <ng-container [ngTemplateOutlet]="bomItemActions" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    }
+
+    <!-- ============================================================
+         CARD VIEW — visual grid of BOM HEADERS
+         ============================================================ -->
+    @if (viewMode() === 'card') {
+        @if (isLoading()) {
+            <div class="loading-state card-loading">
+                <i class="fa-solid fa-spinner fa-spin loading-spinner"></i>
+                <p class="loading-text">Loading BOMs...</p>
+            </div>
+        } @else if (items().length === 0) {
+            <div class="empty-state-card">
+                <i class="fa-solid fa-inbox empty-icon"></i>
+                <h3 class="empty-title">No BOMs found</h3>
+                <p class="empty-text">Try adjusting your search or filters.</p>
+                <button class="btn btn-primary" (click)="clearFilters()">
+                    <i class="fa-solid fa-filter-circle-xmark"></i> Clear Filters
+                </button>
+            </div>
+        } @else {
+            <div class="card-grid">
+                @for (item of items(); track item.id) {
+                    <div class="bom-card" [class.selected]="isSelected(item)" (click)="toggleSelect(item)">
+                        <div class="card-header">
+                            <div class="card-title-row">
+                                <a class="bom-link" (click)="viewBom(item); $event.stopPropagation()">{{ item.bomNumber }}</a>
+                                <span class="status-badge" [ngClass]="'status-' + item.status.toLowerCase()">
+                  <i class="fa-solid fa-circle"></i> {{ item.status }}
+                </span>
+                            </div>
+                            <div class="card-revision">Rev {{ item.revision }}</div>
+                        </div>
+
+                        <div class="card-divider"></div>
+
+                        <div class="card-body">
+                            <div class="card-product">
+                <span class="type-icon" [ngClass]="getTypeClass(item.productType)">
+                  <i class="fa-solid" [ngClass]="getTypeIcon(item.productType)"></i>
+                </span>
+                                <div class="product-info">
+                                    <span class="product-name">{{ item.productName }}</span>
+                                    <span class="product-sku">{{ item.productSku }}</span>
+                                </div>
+                            </div>
+
+                            <div class="card-meta">
+                                <div class="meta-item">
+                                    <i class="fa-solid fa-tag"></i>
+                                    <span class="bom-type-badge" [ngClass]="'type-' + item.bomType.toLowerCase()">{{ item.bomType }}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fa-solid fa-cubes"></i>
+                                    <span>{{ item.componentCount }} components</span>
+                                    @if (item.maxHierarchyLevel > 1) {
+                                        <span class="level-indicator">L{{ item.maxHierarchyLevel }}</span>
+                                    }
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fa-solid fa-calendar"></i>
+                                    <span>{{ item.validFrom | date:'dd MMM yyyy' }}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span>{{ item.updatedBy }} · {{ relativeTime(item.updatedAt) }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-divider"></div>
+
+                        <div class="card-actions">
+                            <button class="icon-btn" title="View" (click)="viewBom(item); $event.stopPropagation()">
+                                <i class="fa-solid fa-eye"></i>
                             </button>
-                            <button mat-menu-item>
-                                <i class="fa-solid fa-trash"></i>
-                                <span>Delete</span>
+                            @if (item.status !== 'OBSOLETE') {
+                                <button class="icon-btn" title="Edit" (click)="editBom(item); $event.stopPropagation()">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            }
+                            <button class="icon-btn" title="Explode BOM" (click)="explodeBom(item); $event.stopPropagation()">
+                                <i class="fa-solid fa-diagram-project"></i>
                             </button>
-                        </mat-menu>
+                            <button class="icon-btn" title="Where Used" (click)="whereUsed(item); $event.stopPropagation()">
+                                <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
+                            </button>
+                        </div>
                     </div>
-                </mat-cell>
-            </ng-container>
+                }
+            </div>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns()"></mat-header-row>
+            <!-- PAGINATION -->
+            <div class="pagination">
+                <div class="pagination-info">
+          <span>
+            Showing <strong>{{ (currentPage() * pageSize()) + 1 }}</strong>-<strong>{{ Math.min((currentPage() + 1) * pageSize(), totalCount()) }}</strong>
+            of <strong>{{ totalCount() }}</strong>
+          </span>
+                    <select class="page-size-select" [ngModel]="pageSize()" (ngModelChange)="onPageSizeChange($event)">
+                        <option [ngValue]="9">9 per page</option>
+                        <option [ngValue]="18">18 per page</option>
+                        <option [ngValue]="36">36 per page</option>
+                    </select>
+                </div>
+                <div class="pagination-controls">
+                    <button class="page-btn" [disabled]="currentPage() === 0" (click)="goToPage(0)">
+                        <i class="fa-solid fa-angles-left"></i>
+                    </button>
+                    <button class="page-btn" [disabled]="currentPage() === 0" (click)="goToPage(currentPage() - 1)">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    @for (page of getPageNumbers(); track page) {
+                        @if (page === -1) {
+                            <span class="ellipsis">...</span>
+                        } @else {
+                            <button class="page-btn" [class.active]="page === currentPage()" (click)="goToPage(page)">{{ page + 1 }}</button>
+                        }
+                    }
+                    <button class="page-btn" [disabled]="currentPage() === totalPages() - 1" (click)="goToPage(currentPage() + 1)">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <button class="page-btn" [disabled]="currentPage() === totalPages() - 1" (click)="goToPage(totalPages() - 1)">
+                        <i class="fa-solid fa-angles-right"></i>
+                    </button>
+                </div>
+            </div>
+        }
+    }
 
-            <mat-row class="selectable" *matRowDef="let row; columns: displayedColumns()"
-                     (click)="selectRow(row)" [class.selected]="row.id === selectedId()">
-            </mat-row>
+    <!-- ============================================================
+         SHARED TEMPLATE: Actions for BOM HEADERS (list/card views)
+         ============================================================ -->
+    <ng-template #bomHeaderActions let-item>
+        <button class="icon-btn" title="View" (click)="viewBom(item); $event.stopPropagation()">
+            <i class="fa-solid fa-eye"></i>
+        </button>
+        @if (item.status !== 'OBSOLETE') {
+            <button class="icon-btn" title="Edit" (click)="editBom(item); $event.stopPropagation()">
+                <i class="fa-solid fa-pen"></i>
+            </button>
+        }
+        <button class="icon-btn"
+                title="Explode BOM — show component hierarchy"
+                (click)="explodeBom(item); $event.stopPropagation()">
+            <i class="fa-solid fa-diagram-project"></i>
+        </button>
+        <button class="icon-btn" title="Where Used" (click)="whereUsed(item); $event.stopPropagation()">
+            <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
+        </button>
+        <button class="icon-btn menu-btn" title="More" (click)="toggleMenu(item.id, $event)">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </button>
+        @if (activeMenu() === item.id) {
+            <div class="dropdown-menu">
+                <button class="menu-item" (click)="$event.stopPropagation()">
+                    <i class="fa-solid fa-copy"></i> Copy BOM
+                </button>
+                <button class="menu-item" (click)="$event.stopPropagation()">
+                    <i class="fa-solid fa-code-branch"></i> New Revision
+                </button>
+                <button class="menu-item" (click)="$event.stopPropagation()">
+                    <i class="fa-solid fa-print"></i> Print
+                </button>
+                @if (item.status !== 'OBSOLETE') {
+                    <div class="menu-divider"></div>
+                    <button class="menu-item danger" (click)="$event.stopPropagation()">
+                        <i class="fa-solid fa-ban"></i> Mark Obsolete
+                    </button>
+                }
+            </div>
+        }
+    </ng-template>
 
-            <!-- Row shown when there is no matching data. -->
-            <mat-row class="mat-row" *matNoDataRow>
-                <td class="mat-cell"
-                    [attr.colspan]="displayedColumns().length"> {{ 'COMMON_NO_DATA_FILTER' | translate }}
-                    "{{ searchControl.value }}"
-                </td>
-            </mat-row>
-        </mat-table>
-    </div>
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]"
-                   [pageSize]="pagination.pageSize"
-                   [length]="pagination.elementCount"
-                   (page)="onPageChange($event)"
-                   showFirstLastButtons>
-    </mat-paginator>
+    <!-- ============================================================
+         SHARED TEMPLATE: Actions for BOM ITEMS (tree view)
+         ============================================================ -->
+    <ng-template #bomItemActions let-item>
+        <button class="icon-btn" title="View Component" (click)="$event.stopPropagation()">
+            <i class="fa-solid fa-eye"></i>
+        </button>
+        @if (item.hasOwnBom) {
+            <button class="icon-btn" title="Open this component's BOM" (click)="openSubAssemblyBom(item); $event.stopPropagation()">
+                <i class="fa-solid fa-diagram-project"></i>
+            </button>
+        }
+        <button class="icon-btn" title="Where Used" (click)="whereUsed(item); $event.stopPropagation()">
+            <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
+        </button>
+    </ng-template>
+
 </div>

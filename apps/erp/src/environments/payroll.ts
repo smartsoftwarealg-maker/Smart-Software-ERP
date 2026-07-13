@@ -24,6 +24,9 @@ import {dashboardRoutes} from "../app/dashboard/routes";
 
 export const environment = {
     production: true,
+    homePage: <string>null,
+    multiCompany: false,
+    company: <string>null,
 };
 
 export const navBar = [

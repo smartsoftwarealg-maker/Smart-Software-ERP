@@ -25,6 +25,9 @@ import { salesNavTree } from '../app/sales/side-nav-tree';
 
 export const environment = {
     production: true,
+    multiCompany: false,
+    company: <string>null,
+    homePage: <string>null,
 };
 
 export const navBar = [
