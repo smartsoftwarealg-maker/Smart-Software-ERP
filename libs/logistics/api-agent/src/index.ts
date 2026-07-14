@@ -9,3 +9,4 @@ export * from './lib/branch.service';
 export * from './lib/agent-center.service';
 export * from './lib/transporter.service';
 export * from './lib/branch-lookup-model';
+export * from './lib/internal-agent.service';
