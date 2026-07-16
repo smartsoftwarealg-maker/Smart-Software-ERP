@@ -108,6 +108,15 @@
     "EXIT":                     "Sortie",
     "F9_F10":                   "T9/T10",
     "ERA_REPORT":               "Etat de rapprochement automatique",
-    "ACCOUNT_LIST":             "Liste des comptes"
+    "ACCOUNT_LIST":             "Liste des comptes",
+    "PURCHASE":                 "Achat",
+    "SALES":                    "Ventes",
+    "TRANSFER":                 "Transfert",
+    "PAYROLL":                  "Paie",
+    "BANK":                      "Banque",
+    "FUND":                      "Fonds",
+    "STOCK_ENTRY":               "Entrée de stock",
+    "STOCK_EXIT":                "Sortie de stock",
+    "TRANSFER_IN":               "Transfert entrant",
+    "TRANSFER_OUT":              "Transfert sortant"
 }
-

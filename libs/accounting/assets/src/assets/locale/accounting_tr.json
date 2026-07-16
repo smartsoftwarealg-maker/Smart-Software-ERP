@@ -65,8 +65,8 @@
     "PAYROLL":                  "Bordro",
     "BANK":                     "Banka",
     "FUND":                     "Fon",
-    "STOCK_ENTRY":              "Stok giriş",
-    "STOCK_EXIT":               "Stok çıkış",
+    "STOCK_ENTRY":              "Stok girişi",
+    "STOCK_EXIT":               "Stok çıkışı",
     "TRANSFER_IN":              "Gelen transfer",
     "TRANSFER_OUT":             "Giden transfer"
 }

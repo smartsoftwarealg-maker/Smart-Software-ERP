@@ -100,30 +100,24 @@ export class PayrollAmendmentListComponent extends BaseEntityListComponent<Amend
     }
 
 
+    protected override postInit():any{
+        return  super.postInit()
+            .pipe(tap(() => {
+                // this.shellSrv.addButton(this.comparisonButton);
+                this.shellSrv.addButton(this.generateButton);
+                this.shellSrv.addButton(this.deleteAllButton);
+            }));
+    }
     protected override preInit():Observable<unknown> {
         return this.monthSelectorSrv
             .isUpdatableMonth()
             .pipe(tap(upd => {
-                    this.shellSrv.addButton(this.deleteAllButton);
-                    this.shellSrv.addButton(this.generateButton);
-                    this.editButton.visible = upd;
+                     this.editButton.visible = upd;
                     this.deleteButton.visible = upd;
                     this.addButton.visible = upd;
-            }),
+                }),
                 switchMap(() => super.preInit()));
     }
-    // override ngOnInit() {
-    //     super.ngOnInit();
-    //     this.shellSrv.addButton(this.deleteAllButton);
-    //     this.shellSrv.addButton(this.generateButton);
-    //     this.monthSelectorSrv
-    //         .isUpdatableMonth()
-    //         .subscribe(upd => {
-    //             this.editButton.visible = upd;
-    //             this.deleteButton.visible = upd;
-    //             this.addButton.visible = upd;
-    //         });
-    // }
 
     override refresh(callback?: () => void) {
         super.refresh(() => {
