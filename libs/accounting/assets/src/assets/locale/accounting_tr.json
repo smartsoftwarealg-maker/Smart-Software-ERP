@@ -58,5 +58,15 @@
     "GL":                       "",
     "DEPRECIATION_RATE": "",
     "USEFUL_LIFE":       "",
-    "ACC_STOCK_ACCOUNTS":       ""
+    "ACC_STOCK_ACCOUNTS":       "",
+    "PURCHASE":                 "Satınalma",
+    "SALES":                    "Satış",
+    "TRANSFER":                 "Transfer",
+    "PAYROLL":                  "Bordro",
+    "BANK":                     "Banka",
+    "FUND":                     "Fon",
+    "STOCK_ENTRY":              "Stok giriş",
+    "STOCK_EXIT":               "Stok çıkış",
+    "TRANSFER_IN":              "Gelen transfer",
+    "TRANSFER_OUT":             "Giden transfer"
 }

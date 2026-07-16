@@ -500,5 +500,6 @@
     "EDITS":                 "Modifications",
     "DELETES":               "Suppressions",
     "HOLIDAYS":              "Jours Fériés",
-    "GENERAL_INFO": "Informations générales"
+    "GENERAL_INFO": "Informations générales",
+    "ACCOUNT_NO": "N°Compte"
 }

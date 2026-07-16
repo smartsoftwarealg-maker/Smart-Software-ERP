@@ -107,5 +107,15 @@
     "EXIT":                     "خروخ",
     "F9_F10":                   "ج9/ج10",
     "ERA_REPORT":               " التقرير السنوي",
-    "ACCOUNT_LIST":               "قائمة الحسابات"
+    "ACCOUNT_LIST":               "قائمة الحسابات",
+    "PURCHASE":                 "شراء",
+    "SALES":                    "مبيعات",
+    "TRANSFER":                 "تحويل",
+    "PAYROLL":                  "كشف الرواتب",
+    "BANK":                      "بنك",
+    "FUND":                      "صندوق",
+    "STOCK_ENTRY":               "إدخال المخزون",
+    "STOCK_EXIT":                "إخراج المخزون",
+    "TRANSFER_IN":               "تحويل وارد",
+    "TRANSFER_OUT":              "تحويل صادر"
 }
