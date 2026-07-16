@@ -4,7 +4,7 @@ import {ShellService, SnackBarService} from '@ss/common/ui-shell';
 import {ActivatedRoute} from '@angular/router';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
-import {Lookup, LookupsService} from '@ss/common/api-lookup';
+import {Lookup, LookupsService, Office} from '@ss/common/api-lookup';
 import {
     AccJournalsService,
     Journal,
@@ -14,7 +14,7 @@ import {
 } from '@ss/accounting/accounting-api';
 import {CenterService} from '@ss/administration/api-center';
 import {DefaultAutoCompleteModel} from '@ss/common/ui-auto-complete';
-import { LoginService, MaterialModule, PaginationModel, User } from '@ss/common/api-common';
+import {LanguageService, LoginService, MaterialModule, PaginationModel, User } from '@ss/common/api-common';
 import { MatSelectionListChange, MatListSubheaderCssMatStyler, MatSelectionList, MatListOption } from '@angular/material/list';
 import {UserListService} from '@ss/common/api-users';
 import {of, switchMap, tap} from 'rxjs';
@@ -44,7 +44,7 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
     private usersSrv  = inject(UserListService);
 
     centerLookup = new DefaultAutoCompleteModel(this.centerSrv);
-    typeLookup = new DefaultAutoCompleteModel(this.journalTypeSrv);
+    typeLookup = new JournalType();
     bankLookup = new DefaultAutoCompleteModel(this.bankSrv);
     users: JournalUser[] = [];
     paginator = PaginationModel.newInstance({page: 1, pageSize: 5, elementCount: 0});
@@ -127,4 +127,12 @@ export class JournalDetailComponent extends BaseEntityDetailComponent<Journal> {
             });
         }
     }
+}
+
+class JournalType extends DefaultAutoCompleteModel<Lookup> {
+    private  translateSrv = inject(LanguageService);
+    constructor() {
+        super(inject(JournalTypeService));
+    }
+    override toString = (x: Lookup) =>  this.translateSrv.translate(x? 'ACC_' + x.description :'');
 }

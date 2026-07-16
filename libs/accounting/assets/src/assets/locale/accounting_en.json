@@ -107,5 +107,15 @@
     "EXIT":                     "Stock out",
     "F9_F10" :                  "T9/T10",
     "ERA_REPORT":               "Era Report",
-    "ACCOUNT_LIST":             "Account List"
+    "ACCOUNT_LIST":             "Account List",
+    "PURCHASE":                 "Purchase",
+    "SALES":                    "Sales",
+    "TRANSFER":                 "Transfer",
+    "PAYROLL":                  "Payroll",
+    "BANK":                      "Bank",
+    "FUND":                      "Fund",
+    "STOCK_ENTRY":               "Inventory in",
+    "STOCK_EXIT":                "Inventory out",
+    "TRANSFER_IN":               "Transfer in",
+    "TRANSFER_OUT":              "Transfer out"
 }

@@ -19,7 +19,7 @@ import { MatButton } from '@angular/material/button';
     templateUrl: './default-report.component.html',
     styleUrls: ['./default-report.component.scss'],
     standalone: true,
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [MatCard, MatCardContent, MatFormField, MatLabel, TranslateDirective, MatInput, FormsModule, MatAutocompleteTrigger, ReactiveFormsModule, MatAutocomplete, MatOption, MatButton]
 })
 export class DefaultReportComponent implements OnInit {
