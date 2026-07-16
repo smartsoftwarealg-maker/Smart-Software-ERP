@@ -79,7 +79,10 @@ mat-radio-group {
     gap: 20px;
 }
 
-mat-radio-group, mat-checkbox {
+mat-radio-group,
+mat-checkbox,
+button,
+mat-form-field {
     filter: invert(100%);
     font-weight: bolder;
 }

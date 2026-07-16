@@ -15,7 +15,7 @@
                 <mat-select formControlName="jType" (valueChange)="onJournalType($event)" required>
                     @for (p of journalTypes; track p.id) {
                         <mat-option [value]="p.id">
-                            {{ 'COMMON_' + p.description | translate }}
+                            {{ ('COMMON_' + p.description) | translate }}
                         </mat-option>
                     }
                 </mat-select>
