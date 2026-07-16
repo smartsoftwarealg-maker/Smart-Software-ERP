@@ -34,7 +34,7 @@ import {
 } from '@ss/common/api-lookup';
 import {
     AgentService,
-    CustomerService,
+    CustomerService, InternalAgentService,
     SupplierService
 } from '@ss/logistics/api-agent';
 import { PayMethodService } from '@ss/logistics/api-logistics-common';
@@ -62,14 +62,13 @@ export abstract class BaseTransactionDetailComponent
     // private consumerSrv = inject(ConsumerService);
     // private branchSrv = inject(BranchService);
     private _isManager = false;
+    private internalSrv = inject(InternalAgentService);
     private supplierSrv = inject(SupplierService);
     private customerSrv = inject(CustomerService);
     private activeCustomerSrv = inject(ActiveCustomerService);
     private activeSupplierSrv = inject(ActiveSupplierService);
     private activeTransporterSrv = inject(ActiveTransporterService);
-    private activeSupplierAndTransporterSrv = inject(
-        ActiveSupplierAndTransportersService,
-    );
+    private activeSupplierAndTransporterSrv = inject(ActiveSupplierAndTransportersService);
     private activeUnitSrv = inject(ActiveUnitService);
     private activeConsumerSrv = inject(ActiveConsumerService);
     private activeAgentSrv = inject(ActiveAgentService);
@@ -118,6 +117,7 @@ export abstract class BaseTransactionDetailComponent
     public supplierLookup = new DefaultAutoCompleteModel<Lookup>(this.activeSupplierSrv);
     public supplierAndTransporterLookup = new DefaultAutoCompleteModel(this.activeSupplierAndTransporterSrv);
     public transporterLookup = new DefaultAutoCompleteModel<Lookup>(this.activeTransporterSrv);
+    protected internalAgentLookup = new DefaultAutoCompleteModel(this.internalSrv, 'id', 'denomination');
     public consumerLookup = new DefaultAutoCompleteModel<Lookup>(this.activeConsumerSrv);
     public branchLookup = new DefaultAutoCompleteModel<Lookup>(this.activeUnitSrv);
     public executionRef = 0;

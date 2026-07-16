@@ -14,15 +14,15 @@ export class CustomerService extends BaseAgentClass {
         super(httpSrv, CUSTOMER_URL);
     }
 
-    getByIDList(ids: Array<number>): Observable<Agent[]> {
-        return this.httpSrv.get<Agent[]>('/customers?ids=' + ids.join(','));
-    }
-
-    currentCustomer(): Observable<Agent> {
-        return this.httpSrv.get<Agent>('/ccustomer');
-    }
-
-    updatePassword(pwd: Password): Observable<any> {
-        return this.httpSrv.post('/password', pwd);
-    }
+    // getByIDList(ids: Array<number>): Observable<Agent[]> {
+    //     return this.httpSrv.get<Agent[]>('/customers?ids=' + ids.join(','));
+    // }
+    //
+    // currentCustomer(): Observable<Agent> {
+    //     return this.httpSrv.get<Agent>('/ccustomer');
+    // }
+    //
+    // updatePassword(pwd: Password): Observable<any> {
+    //     return this.httpSrv.post('/password', pwd);
+    // }
  }

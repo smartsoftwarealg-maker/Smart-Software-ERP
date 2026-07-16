@@ -133,5 +133,8 @@
     "ATTENDANCE_APP": "Attendance",
     "SInvoice": "Scheduled invoice",
     "ENTREE": "Entree",
-    "EXITS": "Exits"
+    "EXITS": "Exits",
+
+
+    "CConsumption": "Consumption cancellation"
 }

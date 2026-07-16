@@ -129,5 +129,6 @@
     "ATTENDANCE_APP": "الحضور",
     "SInvoice": "فاتورة مجدولة",
     "ENTREE": "دخول",
-    "EXITS": "خروج"
+    "EXITS": "خروج",
+    "CConsuption": "إلغاء الاستهلاك"
 }

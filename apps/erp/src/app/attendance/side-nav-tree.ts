@@ -59,7 +59,7 @@ export const attendanceNavTree: SideNavNode = {
             name: 'ATT_MANUAL_SIGNATURES',
             icon: 'fa-solid fa-clock',
             route: ABS_MANUAL_SIGNATURE_URL,
-            accessRights: 'ATTSignature'
+            accessRights: 'ATTLog'
         },
         {
             name: 'ATT_ATTENDANCE_LOG',

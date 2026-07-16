@@ -35,7 +35,7 @@
             <ng-container matColumnDef="description">
                 <mat-header-cell *matHeaderCellDef translate> COMMON_DESCRIPTION</mat-header-cell>
                 <mat-cell *matCellDef="let e">
-                    {{ e.description }}
+                    {{ e.description | translate}}
                 </mat-cell>
             </ng-container>
             <ng-container matColumnDef="creationDate">
@@ -78,8 +78,8 @@
         <mat-label><span translate>ADMINISTRATION_SELECT_APP</span></mat-label>
         <mat-select (selectionChange)="setApp($event)" [formControl]="selectedApplication">
             @for (app of apps(); track app) {
-                <mat-option [value]="app">
-                    {{ langSrv.translate('COMMON_' + app) }}
+                <mat-option [value]="app" translate>
+                    {{ 'COMMON_' + app }}
                 </mat-option>
             }
         </mat-select>
