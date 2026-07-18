@@ -237,5 +237,7 @@
     "IMPORT_REFERENCE":       "مرجع الاستيراد",
     "DRIVERS":                "السائقين",
     "TRANSACTION_TYPES":      "أنواع المعاملات",
-    "TRANSACTION_TYPE":      "نوع المعاملة"
+    "TRANSACTION_TYPE":      "نوع المعاملة",
+    "SATISFY_ALL":            "تلبية جميع البنود",
+    "UNSATISFY_ALL":          "إلغاء تلبية جميع البنود"
 }

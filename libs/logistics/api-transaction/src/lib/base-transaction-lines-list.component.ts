@@ -4,7 +4,7 @@ import {ArticleService} from '@ss/master-data/api-article';
 import {LotsService} from '@ss/common/api-lookup';
 import {ConfirmationDialogService} from '@ss/common/ui-confirmation-dialog';
 import { Observable, of, Subscription } from 'rxjs';
-import {debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, switchMap, tap} from 'rxjs/operators';
 import { LoginService, PaginationModel } from '@ss/common/api-common';
 import {TransactionLine} from './transaction-line';
 import {FormControl} from '@angular/forms';
@@ -213,6 +213,80 @@ export class BaseTransactionLinesListComponent implements OnInit, OnDestroy {
                 relativeTo: this.route.parent,
             })
             .then();
+    }
+
+
+    satisfyAll() {
+        this.confirmationSrv
+            .confirm('LOGISTICS_TOTAL_SATISFACTION', 'LOGISTICS_SATISFY_ALL')
+            .pipe(switchMap((result) => {
+                    if (result) {
+                        this.shellSrv.setLoading(true);
+                        return this.detailSrv.satisfyAll(this.detailSrv.getParentId());
+                    }
+                    return of({count: 0});
+                }),
+                switchMap((res: {count: number}) => res.count>0? this.loadDetailLines().pipe(map(res => res.length||0)) : of(res)))
+            .subscribe({
+                next: () => {
+                    this.shellSrv.setLoading(false);
+                    this.loading.set(false);
+                    this.snackBarSrv.showSuccessMessage();
+                },
+                error: (err) => {
+                    this.snackBarSrv.showFailureMessage();
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
+    }
+    unsatisfyAll() {
+        this.confirmationSrv
+            .confirm('LOGISTICS_TOTAL_SATISFACTION', 'LOGISTICS_UNSATISFY_ALL')
+            .pipe(switchMap((result) => {
+                    if (result) {
+                        this.shellSrv.setLoading(true);
+                        return this.detailSrv.unsatisfyAll(this.detailSrv.getParentId());
+                    }
+                    return of({count: 0});
+                }),
+                switchMap((res: {count: number}) => res.count>0? this.loadDetailLines().pipe(map(res => res.length||0)) : of(res)))
+            .subscribe({
+                next: () => {
+                    this.shellSrv.setLoading(false);
+                    this.loading.set(false);
+                    this.snackBarSrv.showSuccessMessage();
+                },
+                error: (err) => {
+                    this.snackBarSrv.showFailureMessage();
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
+    }
+    deleteAll() {
+        this.confirmationSrv
+            .confirm('LOGISTICS_TOTAL_SATISFACTION', 'DELETE_ALL_LINES')
+            .pipe(switchMap((result) => {
+                    if (result) {
+                        this.shellSrv.setLoading(true);
+                        return this.detailSrv.deleteAll(this.parentId);
+                    }
+                    return of({count: 0});
+                }),
+                switchMap((res: {count: number}) => res.count>0? this.loadDetailLines().pipe(map(res => res.length||0)) : of(res)))
+            .subscribe({
+                next: () => {
+                    this.shellSrv.setLoading(false);
+                    this.loading.set(false);
+                    this.snackBarSrv.showSuccessMessage();
+                },
+                error: (err) => {
+                    this.snackBarSrv.showFailureMessage();
+                    this.shellSrv.setLoading(false);
+                    throw err;
+                }
+            });
     }
 
 }

@@ -27,4 +27,14 @@ export class TransactionLinesClass extends BaseEntityExtendedService<Transaction
     set editable(v: boolean) {
         this._editable = v;
     }
+
+    satisfyAll(id: number): Observable<{ count: number }> {
+        return this.httpSrv.put(`/logistics/transaction-detail/${id}/satisfy-all`) as Observable <{count: number}>;
+    }
+    unsatisfyAll(id: number): Observable<{ count: number }> {
+        return this.httpSrv.put(`/logistics/transaction-detail/${id}/unsatisfy-all`) as Observable <{count: number}>;
+    }
+    deleteAll(id: number): Observable<{ count: number }> {
+        return this.httpSrv.remove(`/logistics/transaction-detail/${id}/delete-all`) as Observable <{count: number}>;
+    }
 }

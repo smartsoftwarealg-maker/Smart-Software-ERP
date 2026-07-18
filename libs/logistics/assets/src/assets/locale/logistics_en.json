@@ -238,5 +238,7 @@
     "IMPORT_REFERENCE": "Import reference",
     "DRIVERS": "Drivers",
     "TRANSACTION_TYPES": "Transaction types",
-    "TRANSACTION_TYPE": "Transaction type"
+    "TRANSACTION_TYPE": "Transaction type",
+    "SATISFY_ALL": "Satisfy all items",
+    "UNSATISFY_ALL": "Unsatisfy all items"
 }
