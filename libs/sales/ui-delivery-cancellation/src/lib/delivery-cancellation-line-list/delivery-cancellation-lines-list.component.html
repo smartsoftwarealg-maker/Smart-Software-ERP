@@ -22,6 +22,19 @@
                         color="warn">
                     <span class="fas fa-trash-alt"></span>
                 </button>
+                <button mat-mini-fab (click)="satisfyAll()" [matTooltip]="'LOGISTICS_SATISFY_ALL' | translate"
+                        color="warn">
+                    <i class="fa-solid fa-check-double"></i>
+                </button>
+                <button mat-mini-fab (click)="unsatisfyAll()" [matTooltip]="'LOGISTICS_UNSATISFY_ALL' | translate"
+                        color="warn">
+                    <i class="fa-solid fa-reply-all"></i>
+                </button>
+
+                <button mat-mini-fab (click)="deleteAll()" [matTooltip]="'COMMON_DELETE_ALL' | translate"
+                        color="warn">
+                    <i class="fa-solid fa-trash-list"></i>
+                </button>
             }
         </div>
 
