@@ -23,8 +23,22 @@
                     <span class="fas fa-trash-alt"></span>
                 </button>
             }
+            <button mat-mini-fab (click)="satisfyAll()" [matTooltip]="'LOGISTICS_SATISFY_ALL' | translate"
+                    color="warn">
+                <i class="fa-solid fa-check-double"></i>
+            </button>
+            <button mat-mini-fab (click)="unsatisfyAll()" [matTooltip]="'LOGISTICS_UNSATISFY_ALL' | translate"
+                    color="warn">
+                <i class="fa-solid fa-reply-all"></i>
+            </button>
+
+            <button mat-mini-fab (click)="deleteAll()" [matTooltip]="'COMMON_DELETE_ALL' | translate"
+                    color="warn">
+                <i class="fa-solid fa-trash-list"></i>
+            </button>
             <ss-weight-capture-dialog-button-dialog
-                [transactionId]="selectedId()"></ss-weight-capture-dialog-button-dialog>
+                [transactionId]="selectedId()">
+            </ss-weight-capture-dialog-button-dialog>
         </div>
 
         <div class="main-table">
@@ -38,13 +52,13 @@
                 </ng-container>
 
                 <ng-container matColumnDef="storeName">
-                    <mat-header-cell *matHeaderCellDef translate>STOCK_LOT</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.storeName }}
                     </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="storeDescription">
-                    <mat-header-cell *matHeaderCellDef translate>STOCK_STORE</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef translate>STOCK_LOT</mat-header-cell>
                     <mat-cell *matCellDef="let e">
                         {{ e.storeDescription }}
                     </mat-cell>
