@@ -101,5 +101,6 @@
     "NO_CASH_MODE":                  "The cash pay method does not exists in this system.",
     "OUT_OF_TOLERANCE":              "The actual weights are out of tolerance. Please, verify the weights and try again.",
     "INEXISTENT_ASSET":              "The specified asset no longer exists.",
-    "MISSING_INVENTORY_PRICE":       "The inventory price is missing."
+    "MISSING_INVENTORY_PRICE":       "The inventory price is missing.",
+    "MISSING_FISCAL_DATA":           "Invoicing is not possible because fiscal data is missing."
 }

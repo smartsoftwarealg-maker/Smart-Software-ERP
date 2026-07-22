@@ -172,5 +172,6 @@
     "TRANSACTION_TYPES": "İşlem türleri",
     "TRANSACTION_TYPE": "İşlem türü",
     "SATISFY_ALL": "Tüm öğeleri karşıla",
-    "UNSATISFY_ALL": "Tüm öğeleri karşılamayı iptal et"
+    "UNSATISFY_ALL": "Tüm öğeleri karşılamayı iptal et",
+    "FISCAL_DATA_REQUIRED": "Fatura için mali veriler gereklidir"
 }

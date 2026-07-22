@@ -19,9 +19,14 @@
     flex: 1 1 190px;
     justify-content: flex-start;
 }
+
 .mat-column-description {
     flex: 2 1 250px;
     justify-content: flex-start;
+}
+
+.mat-column-document {
+    flex: 1 1 150px;
 }
 .mat-column-qty,
 .mat-column-price,

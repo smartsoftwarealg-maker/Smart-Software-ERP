@@ -32,10 +32,10 @@
                         @if (form.controls['store'].hasError('validOption')) {
                             <mat-error translate>COMMON_NO_MATCH</mat-error>
                         }
-<!--                        @if (showStock()) {-->
-<!--                            <mat-hint class="info f-warn"><span translate>STOCK_STOCK</span>: {{ articleStock() | number: '1.2-2'}}-->
-<!--                            </mat-hint>-->
-<!--                        }-->
+                        <!--                        @if (showStock()) {-->
+                        <!--                            <mat-hint class="info f-warn"><span translate>STOCK_STOCK</span>: {{ articleStock() | number: '1.2-2'}}-->
+                        <!--                            </mat-hint>-->
+                        <!--                        }-->
 
 
                     </mat-form-field>
@@ -60,7 +60,7 @@
                             }
                             @if (showStock()) {
                                 <mat-hint class="info f-warn"><span
-                                    translate>STOCK_STOCK</span>: {{ articleStock() | number: '1.2-2'}}
+                                    translate>STOCK_STOCK</span>: {{ articleStock() | number: '1.2-2' }}
                                 </mat-hint>
                             }
                         </mat-form-field>
@@ -137,10 +137,9 @@
 
 
                     <mat-form-field class="default-25 sm-50">
-                        <mat-label translate>LOGISTICS_DISCOUNT</mat-label>
+                        <mat-label translate>LOGISTICS_CHARGE</mat-label>
                         <input matInput formControlName="charge" type="number" step="1">
                     </mat-form-field>
-
                     <mat-form-field class="default-50 sm-100">
                         <mat-label translate>COMMON_COST_CENTER</mat-label>
                         <ss-auto-complete matInput

@@ -19,13 +19,11 @@
         <span class="fas fa-pen"></span>
       </button>
       @if (isEditable()) {
-        @if (isEditable()) {
           <button mat-mini-fab (click)="deleteSelected()" [matTooltip]="'COMMON_DELETE' | translate"
             [disabled]="!selectedId"
             color="warn">
             <span class="fas fa-trash-alt"></span>
           </button>
-        }
       }
     </div>
 

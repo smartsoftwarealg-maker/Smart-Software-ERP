@@ -31,7 +31,7 @@
     "NIS": "NIS",
     "NIF": "NIF",
     "DEBT_LIMIT": "Crédit maximum",
-    "DEBT_TERM": "Durée de la dette",
+    "DEBT_TERM": "Durée d'échéance",
     "PAY_MODE": "Mode de paiement",
     "CHECK_DUE_DAYS": "Jours d'échéance",
     "ACTIVITIES": "Activités",
@@ -177,7 +177,7 @@
     "PPRICE":               "Cout unitaire",
     "QUANTITIES":           "Quantités",
     "QTY_RETURNED":         "Quantité retournee",
-    "CHARGE":               "Frais ou remise si négatif",
+    "CHARGE":               "Remise (+) / Majoration (-)",
     "DELIVERY_TIMES":       "Délais de livraison",
     "SUPPLIER_COMPENSATION": "Compensations fournisseurs",
     "CUSTOMER_COMPENSATION": "Compensations clients",
@@ -236,7 +236,8 @@
     "IMPORT_REFERENCE":       "Référence import",
     "DRIVERS":                "Chauffeurs",
     "TRANSACTION_TYPES":      "Types mouvements",
-    "TRANSACTION_TYPE":      "Type mouvement",
+    "TRANSACTION_TYPE":       "Type mouvement",
     "SATISFY_ALL":            "Satisfaire tous les articles",
-    "UNSATISFY_ALL":          "Annuler la satisfaction de tous les articles"
+    "UNSATISFY_ALL":          "Annuler la satisfaction de tous les articles",
+    "FISCAL_DATA_REQUIRED":   "Données fiscales requises pour la facturation"
 }

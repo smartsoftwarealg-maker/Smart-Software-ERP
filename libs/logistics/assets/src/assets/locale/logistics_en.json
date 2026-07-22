@@ -178,7 +178,7 @@
     "NEXT_CODE":            "Next code",
     "QUANTITIES":           "Quantities",
     "QTY_RETURNED":         "Quantity Returned",
-    "CHARGE":               "Charge or discount if negative",
+    "CHARGE":               "Discount (+) / Surcharge (-)",
     "DELIVERY_TIMES":       "Delivery times",
     "SUPPLIER_COMPENSATION": "Supplier compensations",
     "CUSTOMER_COMPENSATION": "Customer compensations",
@@ -240,5 +240,6 @@
     "TRANSACTION_TYPES": "Transaction types",
     "TRANSACTION_TYPE": "Transaction type",
     "SATISFY_ALL": "Satisfy all items",
-    "UNSATISFY_ALL": "Unsatisfy all items"
+    "UNSATISFY_ALL": "Unsatisfy all items",
+    "FISCAL_DATA_REQUIRED": "Fiscal data required for invoicing"
 }

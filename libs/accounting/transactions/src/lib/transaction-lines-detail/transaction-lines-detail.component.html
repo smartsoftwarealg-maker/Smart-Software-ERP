@@ -107,26 +107,28 @@
                     <input matInput formControlName="lineNumber" type="number">
                 </mat-form-field>
             </form>
+        } @else {
+            <h1>Form is loading... {{ form }}</h1>
         }
         @if (!saving()) {
             <div class="ctrl default-100">
-                <button mat-flat-button
-                        color="primary"
-                        (click)="save()"
-                        [matTooltip]="('COMMON_CANCEL' | translate)  + ' (ALT+s)'"
-                        [disabled]="saveDisabled()">
-                    <i class="fas fa-save"></i>
-                    <span translate> COMMON_SAVE </span>
-                </button>
                 @if (!isClosed) {
                     <button mat-flat-button
-                            color="warn"
-                            [matTooltip]="('COMMON_CANCEL' | translate)  + ' (ALT+c)'"
-                            (click)="goBack()">
-                        <i class="fas fa-redo"></i>
-                        <span translate> COMMON_CANCEL </span>
+                            color="primary"
+                            (click)="save()"
+                            [matTooltip]="('COMMON_CANCEL' | translate)  + ' (ALT+s)'"
+                            [disabled]="saveDisabled()">
+                        <i class="fas fa-save"></i>
+                        <span translate> COMMON_SAVE </span>
                     </button>
                 }
+                <button mat-flat-button
+                        color="warn"
+                        [matTooltip]="('COMMON_CANCEL' | translate)  + ' (ALT+c)'"
+                        (click)="goBack()">
+                    <i class="fas fa-redo"></i>
+                    <span translate> COMMON_CANCEL </span>
+                </button>
             </div>
         }
         <!--        <div>valid: {{form?.valid}}</div>-->
