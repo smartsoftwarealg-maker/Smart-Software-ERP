@@ -336,7 +336,7 @@ export class AgentDetailComponent
             companyType: [a.companyType],
             email: [a.email, Validators.email],
             website: [a.website, Validators.pattern(urlRegExp)],
-            nis: [a.nis, this.isCustomer() ? [Validators.required, Validators.minLength(15), Validators.maxLength(18)] : null],
+            nis: [a.nis, this.isCustomer() && this.isSodismac? [Validators.required, Validators.minLength(15), Validators.maxLength(18)] : null],
             nif: [a.nif, this.isCustomer() ? [Validators.required, Validators.minLength(15), Validators.maxLength(20)] : null],
             debtLimit: [a.debtLimit || 0],
             debtTerm: [a.debtTerm, FormValidators.integerValidator],
