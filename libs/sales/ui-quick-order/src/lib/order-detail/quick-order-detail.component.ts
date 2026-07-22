@@ -237,11 +237,13 @@ export class QuickOrderDetailComponent extends BaseEntityDetailComponent<QuickOr
     }
 
     override preload(): Observable<unknown> {
-        return this.#appConfigSrv.getConfig().pipe(
-            tap((conf: { schb: boolean }) => {
-                this.isSchb.set(conf?.schb === true);
-                this.isManager.set(this.#loginSrv.appCtx.manager)}),
-            switchMap((_) => super.preload()),
+        return this.#appConfigSrv
+            .getConfig()
+            .pipe(
+                tap((conf: { schb: boolean }) => {
+                    this.isSchb.set(conf?.schb === true);
+                    this.isManager.set(this.#loginSrv.appCtx.manager)}),
+                switchMap((_) => super.preload()),
         );
     }
 

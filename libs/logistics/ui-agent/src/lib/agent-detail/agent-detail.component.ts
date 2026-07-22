@@ -42,6 +42,7 @@ import {
 import { ConfirmationDialogService } from '@ss/common/ui-confirmation-dialog';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import {
+    AppConfigService,
     FormValidators,
     IsParamService,
     LoginService,
@@ -97,8 +98,8 @@ const TRANSPORTER = 3;
 })
 export class AgentDetailComponent
     extends BaseEntityDetailComponent<Agent>
-    implements OnInit
-{
+    implements OnInit {
+    #appConfigSrv = inject(AppConfigService);
     #postSrv = inject(PostService);
     #userSrv = inject(UserListService);
     private optionSrv = inject(OptionService);
@@ -121,6 +122,7 @@ export class AgentDetailComponent
     private citySrv = inject(CityService);
     private countrySrv = inject(CountryService);
     private accountSrv = inject(AccountService);
+    private isSodismac = false;
     private invImportBtn: ToolbarButton = {
         disabled: false,
         icon: 'fas fa-file-import',
@@ -163,9 +165,7 @@ export class AgentDetailComponent
         () => this.agentType() === 0 || this.agentType() === 1,
     );
     AQS = signal(false);
-    isCustomer = computed(
-        () => this.agentType() === 0,
-    );
+    isCustomer = computed( () => this.agentType() === 0);
     isUnit = computed(() => this.agentType() === 3);
     isInternal = computed(() => this.agentType() === 4);
     isTransporter = computed(() => this.agentType() === 5);
@@ -275,7 +275,10 @@ export class AgentDetailComponent
                 this.shellSrv.addButton(this.invImportBtn);
             }),
             switchMap(() => this.isParamSrv.is('AQS')),
-            tap(res => this.AQS.set(res))
+            tap(res => this.AQS.set(res)),
+            switchMap(() => this.#appConfigSrv.getConfig()),
+            tap(res => this.isSodismac = res?.sodismac === true),
+            tap(res => console.log(res)),
         );
     }
 
@@ -306,12 +309,12 @@ export class AgentDetailComponent
             ],
             isInternal: [a.isInternal],
             denomination: [a.denomination, Validators.required],
-            address: [a.address],
+            address: [a.address, this.isCustomer() && !this.isSodismac ? Validators.required : null],
             address2: [a.address2],
             city: [a.city],
             country: [a.country],
-            phone: [a.phone],
-            mobile: [a.mobile],
+            phone: [a.phone, this.isSodismac && this.isCustomer() ? Validators.required : null],
+            mobile: [a.mobile, this.isSodismac && this.isCustomer() ? Validators.required : null],
             fax: [a.fax],
             contact: [a.contact],
             info: [a.info],
@@ -327,14 +330,14 @@ export class AgentDetailComponent
             address2Ar: [a.address2Ar],
             capital: [a.capital],
             bank: [a.bank],
-            bankAccount: [a.bankAccount],
+            bankAccount: [a.bankAccount, this.isSodismac &&  this.isCustomer() ? [Validators.required, Validators.minLength(20), Validators.maxLength(20)] : null],
             swift: [a.swift],
             agentType: [a.agentType || this.defaultAgentType],
             companyType: [a.companyType],
             email: [a.email, Validators.email],
             website: [a.website, Validators.pattern(urlRegExp)],
-            nis: [a.nis],
-            nif: [a.nif],
+            nis: [a.nis, this.isCustomer() ? [Validators.required, Validators.minLength(15), Validators.maxLength(18)] : null],
+            nif: [a.nif, this.isCustomer() ? [Validators.required, Validators.minLength(15), Validators.maxLength(20)] : null],
             debtLimit: [a.debtLimit || 0],
             debtTerm: [a.debtTerm, FormValidators.integerValidator],
             payMode: [a.payMode],

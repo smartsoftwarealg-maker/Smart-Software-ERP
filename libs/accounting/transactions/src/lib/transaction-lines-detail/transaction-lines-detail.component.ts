@@ -1,4 +1,4 @@
-import { Component, computed, HostListener, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, HostListener, inject, OnInit, signal, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {
     AbstractControl, ReactiveFormsModule,
     UntypedFormBuilder,
@@ -48,6 +48,7 @@ import { TranslateDirective, TranslatePipe } from '@ss/common/ui-lang';
     ]
 })
 export class TransactionLinesDetailComponent implements OnInit {
+    private cdr = inject(ChangeDetectorRef);
     private ccSrv = inject(CostCenterService);
     private router = inject(Router);
     private fileSrv = inject(AccFileService);
@@ -179,6 +180,7 @@ export class TransactionLinesDetailComponent implements OnInit {
             .subscribe(res => this.selectedAccount.set(res));
         this.form = this.setupForm(e);
         this.saveDisabled.set(this.isClosed);
+        this.cdr.markForCheck();
     }
 
 

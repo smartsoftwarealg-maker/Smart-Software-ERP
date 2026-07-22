@@ -102,5 +102,6 @@
     "NO_CASH_MODE":                       "La méthode de paiement en espèces n'existe pas dans ce système.",
     "OUT_OF_TOLERANCE":                   "Les poids réels sont hors tolérance. Veuillez vérifier les poids et réessayer.",
     "INEXISTENT_ASSET":                    "L'actif spécifié n'existe plus.",
-    "MISSING_INVENTORY_PRICE":             "Le prix d'inventaire est manquant."
+    "MISSING_INVENTORY_PRICE":             "Le prix d'inventaire est manquant.",
+    "MISSING_FISCAL_DATA":                "La facturation n'est pas possible car les données fiscales sont manquantes."
 }

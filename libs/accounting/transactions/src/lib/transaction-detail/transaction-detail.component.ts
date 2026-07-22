@@ -53,7 +53,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     readonly isClosed = signal<boolean>(this.fileSrv.accFile.closed);
     isOnEdit = signal(false);
     form: UntypedFormGroup = null;
-    id = 0;
+    id = signal(0);
     isEmpty = false;
     minDate: Date = new Date();
     maxDate: Date = new Date();
@@ -77,9 +77,9 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
         this.loading.set(true);
         this.route
             .params
-            .pipe(tap(params => this.id = +params['id']),
+            .pipe(tap(params => this.id.set(+params['id'])),
                 switchMap(_ => this.preload()),
-                switchMap(_ => this.id > 0? this.entitySrv.get(this.id) :
+                switchMap(_ => this.id() > 0? this.entitySrv.get(this.id()) :
                     of({
                         id: 0,
                         fileId: this.fileSrv.accFile.id,
@@ -163,7 +163,7 @@ export class TransactionDetailComponent implements OnInit, OnDestroy {
     public deleteSelected(): void {
         this.confirmationSrv
             .confirmDelete()
-            .pipe(switchMap(b => b ? this.entitySrv.remove(this.id) : of(b)))
+            .pipe(switchMap(b => b ? this.entitySrv.remove(this.id()) : of(b)))
             .subscribe({
                 next: res => {
                     if (typeof res === 'object') {

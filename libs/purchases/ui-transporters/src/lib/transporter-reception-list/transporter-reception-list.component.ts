@@ -80,10 +80,12 @@ export class TransporterReceptionListComponent extends BaseEntityListComponent<T
                 agent.agentType == TRANSPORTER;
             this.editButton.disabled = !itemControlsOn;
             this.deleteButton.disabled = !itemControlsOn;
+            this.cdr.markForCheck();
         });
     }
 
     override select(id: number): void {
+        this.entitySrv.selectedId.set(id);
         this.entitySrv.setParentId(id);
         if (id) {
             this.shellSrv.showToolbar(); // The toolbar can disappear when scrolling down

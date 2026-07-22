@@ -16,6 +16,7 @@ mat-card {
     border-radius: 1.4em;
     flex: 0 0 auto;
 }
+
 .doc-info {
     width: 100%;
     max-width: 1400px;
@@ -63,4 +64,13 @@ mat-card {
     //}
 }
 
+.discount__hint {
+    display: flex;
 
+    mat-checkbox {
+        font-size: .75em;
+        margin-top: -33px;
+        margin-left: 3em;
+        padding: 0;
+    }
+}
